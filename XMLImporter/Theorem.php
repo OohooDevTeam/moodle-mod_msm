@@ -76,7 +76,7 @@ class Theorem extends Element
         $data = new stdClass();
         $data->theorem_type = $this->theorem_type;
         $data->string_id = $this->string_id;
-        $data->caption = $this->caption->content;
+        $data->caption = $this->caption;
         $data->textcaption = $this->textcaption;
         $data->description = $this->description;
         

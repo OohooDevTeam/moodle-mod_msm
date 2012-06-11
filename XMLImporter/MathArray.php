@@ -29,75 +29,47 @@ class MathArray extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        
+
         $this->content = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+         $this->suboridnates = array();
 
         $this->string_id = $DomElement->getAttribute('id');
         $this->no_column = $DomElement->getAttribute('column'); //specifies number of column
 
         $position = $position + 1;
-        
-        $parabodys = $DomElement->getElementsByTagName('para.body');
-        $doc = new DOMDocument();
 
-        foreach ($parabodys as $parabody)
+//        $parabodys = $DomElement->getElementsByTagName('para.body');
+//
+//        foreach ($parabodys as $parabody)
+//        {
+        foreach ($this->processSubordinate($DomElement, $position)->subordinates as $subordinate)
         {
-            $position = $position + 1;
-
-
-            $subordinates = $parabody->getElementsByTagName('subordinate');
-
-            foreach ($subordinates as $s)
-            {
-                $hot = $s->getElementsByTagName('hot')->item(0);
-
-                $position = $position + 1;
-                $subordinate = new Subordinate($this->xmlpath);
-                $subordinate->loadFromXml($s, $position);
-                $this->subordinates[] = $subordinate;
-
-                $s->parentNode->replaceChild($hot, $s);
-            }
-
-            $indexauthors = $parabody->getElementsByTagName('index.author');
-            foreach ($indexauthors as $ia)
-            {
-                $position = $position + 1;
-                $indexauthor = new MathIndex($this->xmlpath);
-                $indexauthor->loadFromXml($ia, $position);
-                $this->indexauthors[] = $indexauthor;
-
-                $ia->parentNode->removeChild($ia);
-            }
-
-            $indexglossarys = $parabody->getElementsByTagName('index.glossary');
-            foreach ($indexglossarys as $ig)
-            {
-                $position = $position + 1;
-                $indexglossary = new MathIndex($this->xmlpath);
-                $indexglossary->loadFromXml($ig, $position);
-                $this->indexglossarys[] = $indexglossary;
-
-                $ig->parentNode->removeChild($ig);
-            }
-
-            $indexsymbols = $parabody->getElementsByTagName('index.symbol');
-            foreach ($indexsymbols as $is)
-            {
-                $position = $position + 1;
-                $indexsymbol = new MathIndex($this->xmlpath);
-                $indexsymbol->loadFromXml($is, $position);
-                $this->indexsymbols[] = $indexsymbol;
-
-                $is->parentNode->removeChild($is);
-            }
-
-            $element = $doc->importNode($parabody, true);
-            $this->content[] = $doc->saveXML($element);
+            $this->subordinates[] = $subordinate;
         }
+
+        foreach ($this->processSubordinate($DomElement, $position)->indexauthors as $indexauthor)
+        {
+            $this->indexauthors[] = $indexauthor;
+        }
+
+        foreach ($this->processSubordinate($DomElement, $position)->indexglossarys as $indexglossary)
+        {
+            $this->indexglossarys[] = $subordinate;
+        }
+
+        foreach ($this->processSubordinate($DomElement, $position)->indexsymbols as $indexsymbol)
+        {
+            $this->indexsymbols[] = $subordinate;
+        }
+
+        foreach ($this->processSubordinate($DomElement, $position)->content as $content)
+        {
+            $this->content[] = $content;
+        }
+//        }
     }
 
 }

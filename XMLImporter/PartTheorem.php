@@ -24,49 +24,46 @@ class PartTheorem extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        
+
         $this->content = array();
-        
+        $this->subordinates = array();
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
+
         $this->partid = $DomElement->getAttribute('partid');
         $this->counter = $DomElement->getAttribute('counter');
         $this->equiv_mark = $DomElement->getAttribute('equivalence.mark');
 
-        $this->caption = $this->getDomAttribute($DomElement->getElementsByTagName('caption'));
+        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
         $part_bodys = $DomElement->getElementsByTagName('part.body');
         foreach ($part_bodys as $parb)
         {
-            $position = $position + 1;
-            $content = new stdClass();
-            $content = $this->getContent($parb, $position, $this->xmlpath);
-            $this->content[] = $content->content;
-        }
+            foreach ($this->processSubordinate($parb, $position)->subordinates as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-        $this->indexs = array();
-        
-        $index_authors = $DomElement->getElementsByTagName('index.author');
-        foreach ($index_authors as $inda)
-        {
-            $position = $position + 1;
-            $index_author = new MathIndex($this->xmlpath);
-            $index_author->loadFromXml($inda, $position);
-            $this->indexs[] = $index_author;
-        }
-        $index_glossarys = $DomElement->getElementsByTagName('index.glossary');
-        foreach ($index_glossarys as $indg)
-        {
-            $position = $position + 1;
-            $index_glossary = new MathIndex($this->xmlpath);
-            $index_glossary->loadFromXml($indg, $position);
-            $this->indexs[] = $index_glossary;
-        }
-        $index_symbols = $DomElement->getElementsByTagName('index.symbol');
-        foreach ($index_symbols as $inds)
-        {
-            $position = $position + 1;
-            $index_symbol = new MathIndex($this->xmlpath);
-            $index_symbol->loadFromXml($inds, $position);
-            $this->indexs[] = $index_symbol;
+            foreach ($this->processSubordinate($parb, $position)->indexauthors as $indexauthor)
+            {
+                $this->indexauthors[] = $indexauthor;
+            }
+
+            foreach ($this->processSubordinate($parb, $position)->indexglossarys as $indexglossary)
+            {
+                $this->indexglossarys[] = $subordinate;
+            }
+
+            foreach ($this->processSubordinate($parb, $position)->indexsymbols as $indexsymbol)
+            {
+                $this->indexsymbols[] = $subordinate;
+            }
+
+            foreach ($this->processSubordinate($parb, $position)->content as $content)
+            {
+                $this->content[] = $content;
+            }
         }
     }
 

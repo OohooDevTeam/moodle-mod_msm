@@ -43,9 +43,12 @@ class Definition extends Element
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
 
         $this->associates = array();
-        $this->indexs = array();
+      
         $this->content = array();
         $this->subordinates = array();
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
 
 
         $associates = $DomElement->getElementsByTagName('associate');
@@ -64,56 +67,30 @@ class Definition extends Element
 
         foreach ($defbodys as $d)
         {
-            $position = $position + 1;
-            $subordinates = $d->getElementsByTagName('subordinate');
-
-            foreach ($subordinates as $s)
+            foreach ($this->processSubordinate($d, $position)->subordinates as $subordinate)
             {
-                $hot = $s->getElementsByTagName('hot')->item(0);
-
-                $position = $position + 1;
-                $subordinate = new Subordinate($this->xmlpath);
-                $subordinate->loadFromXml($s, $position);
                 $this->subordinates[] = $subordinate;
-
-                $s->parentNode->replaceChild($hot, $s);
             }
 
-            $indexauthors = $d->getElementsByTagName('index.author');
-            foreach ($indexauthors as $ia)
+            foreach ($this->processSubordinate($d, $position)->indexauthors as $indexauthor)
             {
-                $position = $position + 1;
-                $indexauthor = new MathIndex($this->xmlpath);
-                $indexauthor->loadFromXml($ia, $position);
                 $this->indexauthors[] = $indexauthor;
-
-                $ia->parentNode->removeChild($ia);
             }
 
-            $indexglossarys = $d->getElementsByTagName('index.glossary');
-            foreach ($indexglossarys as $ig)
+            foreach ($this->processSubordinate($d, $position)->indexglossarys as $indexglossary)
             {
-                $position = $position + 1;
-                $indexglossary = new MathIndex($this->xmlpath);
-                $indexglossary->loadFromXml($ig, $position);
-                $this->indexglossarys[] = $indexglossary;
-
-                $ig->parentNode->removeChild($ig);
+                $this->indexglossarys[] = $subordinate;
             }
 
-            $indexsymbols = $d->getElementsByTagName('index.symbol');
-            foreach ($indexsymbols as $is)
+            foreach ($this->processSubordinate($d, $position)->indexsymbols as $indexsymbol)
             {
-                $position = $position + 1;
-                $indexsymbol = new MathIndex($this->xmlpath);
-                $indexsymbol->loadFromXml($is, $position);
-                $this->indexsymbols[] = $indexsymbol;
-
-                $is->parentNode->removeChild($is);
+                $this->indexsymbols[] = $subordinate;
             }
 
-            $element = $doc->importNode($d, true);
-            $this->content[] = $doc->saveXML($element);
+            foreach ($this->processSubordinate($d, $position)->content as $content)
+            {
+                $this->content[] = $content;
+            }
         }
     }
 
@@ -125,16 +102,17 @@ class Definition extends Element
         $data->string_id = $this->string_id;
         if (!empty($this->caption))
         {
-            $data->caption = $this->caption->content;
+            $data->caption = $this->caption;
         }
 
         $data->description = $this->description;
 
         if (!empty($this->content))
         {
-            foreach ($this->content as $key => $content)
+            foreach ($this->content as $content)
             {
                 $data->def_content = $content;
+              
                 $this->id = $DB->insert_record($this->tablename, $data);
             }
         }

@@ -106,10 +106,10 @@ class Subordinate extends Element
         global $DB;
         
         $data = new stdClass();
-        $data->hot = $this->hot->content;
+        $data->hot = $this->hot;
         
-        echo "hot in sub";
-        print_object($data->hot);
+//        echo "hot in sub";
+//        print_object($data->hot);
         
         $this->id = $DB->insert_record($this->tablename, $data);
         

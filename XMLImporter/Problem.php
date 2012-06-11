@@ -34,6 +34,7 @@ class Problem extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->suboridnates = array();
 
         $this->content = array();
 
@@ -42,58 +43,65 @@ class Problem extends Element
 
         foreach ($problembodys as $prob)
         {
+             $doc = new DOMDocument();
+        
+        $position = $position + 1;
+
+        $subordinates = $DomElement->getElementsByTagName('subordinate');
+       
+        $length = $subordinates->length;
+
+        for ($i = 0; $i < $length; $i++)
+        {
+            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
+
             $position = $position + 1;
+            $subordinate = new Subordinate($this->xmlpath);
+            $subordinate->loadFromXml($subordinates->item(0), $position);
+            $this->subordinates[] = $subordinate;
 
+            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
+        }
+        
 
-            $subordinates = $prob->getElementsByTagName('subordinate');
+        $indexauthors = $DomElement->getElementsByTagName('index.author');
+        $ialength = $indexauthors->length;
+        for ($i = 0; $i < $ialength; $i++)
+        {
+            $position = $position + 1;
+            $indexauthor = new MathIndex($this->xmlpath);
+            $indexauthor->loadFromXml($indexauthors->item(0), $position);
+            $this->indexauthors[] = $indexauthor;
 
-            foreach ($subordinates as $s)
-            {
-                $hot = $s->getElementsByTagName('hot')->item(0);
+            $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
+        }
 
-                $position = $position + 1;
-                $subordinate = new Subordinate($this->xmlpath);
-                $subordinate->loadFromXml($s, $position);
-                $this->subordinates[] = $subordinate;
+        $indexglossarys = $DomElement->getElementsByTagName('index.glossary');
+        $iglength = $indexglossarys->length;
+        for ($i = 0; $i < $iglength; $i++)
+        {
+            $position = $position + 1;
+            $indexglossary = new MathIndex($this->xmlpath);
+            $indexglossary->loadFromXml($indexglossarys->item(0), $position);
+            $this->indexglossarys[] = $indexglossary;
 
-                $s->parentNode->replaceChild($hot, $s);
-            }
+            $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
+        }
+       
+        $indexsymbols = $DomElement->getElementsByTagName('index.symbol');
+        $islength = $indexsymbols->length;
+        for ($i = 0; $i < $islength; $i++)
+        {
+            $position = $position + 1;
+            $indexsymbol = new MathIndex($this->xmlpath);
+            $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
+            $this->indexsymbols[] = $indexsymbol;
 
-            $indexauthors = $prob->getElementsByTagName('index.author');
-            foreach ($indexauthors as $ia)
-            {
-                $position = $position + 1;
-                $indexauthor = new MathIndex($this->xmlpath);
-                $indexauthor->loadFromXml($ia, $position);
-                $this->indexauthors[] = $indexauthor;
+            $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
+        }
 
-                $ia->parentNode->removeChild($ia);
-            }
-
-            $indexglossarys = $prob->getElementsByTagName('index.glossary');
-            foreach ($indexglossarys as $ig)
-            {
-                $position = $position + 1;
-                $indexglossary = new MathIndex($this->xmlpath);
-                $indexglossary->loadFromXml($ig, $position);
-                $this->indexglossarys[] = $indexglossary;
-
-                $ig->parentNode->removeChild($ig);
-            }
-
-            $indexsymbols = $prob->getElementsByTagName('index.symbol');
-            foreach ($indexsymbols as $is)
-            {
-                $position = $position + 1;
-                $indexsymbol = new MathIndex($this->xmlpath);
-                $indexsymbol->loadFromXml($is, $position);
-                $this->indexsymbols[] = $indexsymbol;
-
-                $is->parentNode->removeChild($is);
-            }
-
-            $element = $doc->importNode($prob, true);
-            $this->content[] = $doc->saveXML($element);
+        $element = $doc->importNode($DomElement, true);
+        $this->content[] = $doc->saveXML($element);
         }
     }
 

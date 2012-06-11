@@ -30,11 +30,37 @@ class Table extends Element
         $this->table_class = $DomElement->getAttribute('class');
         $this->table_summary = $DomElement->getAttribute('summary');
         $this->table_title = $DomElement->getAttribute('title');
+        
+        $this->content = array();
+        $this->subordinates = array();
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
 
-        $position = $position + 1;
-        $content = new stdClass();
-        $content = $this->getContent($DomElement, $position, $this->xmlpath);
-        $this->content = $content->content;
+        foreach ($this->processSubordinate($DomElement, $position)->subordinates as $subordinate)
+        {
+            $this->subordinates[] = $subordinate;
+        }
+
+        foreach ($this->processSubordinate($DomElement, $position)->indexauthors as $indexauthor)
+        {
+            $this->indexauthors[] = $indexauthor;
+        }
+
+        foreach ($this->processSubordinate($DomElement, $position)->indexglossarys as $indexglossary)
+        {
+            $this->indexglossarys[] = $subordinate;
+        }
+
+        foreach ($this->processSubordinate($DomElement, $position)->indexsymbols as $indexsymbol)
+        {
+            $this->indexsymbols[] = $subordinate;
+        }
+
+        foreach ($this->processSubordinate($DomElement, $position)->content as $content)
+        {
+            $this->content[] = $content;
+        }
     }
 
 }

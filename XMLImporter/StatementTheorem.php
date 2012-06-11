@@ -26,7 +26,10 @@ class StatementTheorem extends Element
         $this->position = $position;
         $this->content = array();
         $this->part_theorems = array();
-        $this->indexs = array();
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
+        $this->subordinates = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -39,21 +42,32 @@ class StatementTheorem extends Element
                     $parttheorem->loadFromXml($child, $position);
                     $this->part_theorems[] = $parttheorem;
                 }
-                //currently there is no indices in the statement theorem element directly
-                // all the indices are wrapped in para...
-                else if (($child->tagName == 'index.symbol') || ($child->tagName == 'index.glossary') || ($child->tagName == 'index.author'))
-                {
-                    $position = $position + 1;
-                    $index = new MathIndex($this->xmlpath);
-                    $index->loadFromXml($child, $position);
-                    $this->indexs[] = $index;
-                }
                 else
                 {
-                    $position = $position + 1;
-                    $content = new stdClass();
-                    $content = $this->getContent($child, $position, $this->xmlpath);
-                    $this->content[] = $content->content;
+                    foreach ($this->processSubordinate($child, $position)->subordinates as $subordinate)
+                    {
+                        $this->subordinates[] = $subordinate;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->indexauthors as $indexauthor)
+                    {
+                        $this->indexauthors[] = $indexauthor;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->indexglossarys as $indexglossary)
+                    {
+                        $this->indexglossarys[] = $subordinate;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->indexsymbols as $indexsymbol)
+                    {
+                        $this->indexsymbols[] = $subordinate;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->content as $content)
+                    {
+                        $this->content[] = $content;
+                    }
                 }
             }
         }

@@ -35,15 +35,38 @@ class Showme extends Element
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
 
         $this->statements = array();
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
 
         $statements = $DomElement->getElementsByTagName('statement.showme');
 
         foreach ($statements as $st)
-        {
-            $position = $position + 1;
-            $content = new stdClass();
-            $content = $this->getContent($st, $position, $this->xmlpath);
-            $this->statements[] = $content->content;
+        {         
+            foreach ($this->processSubordinate($st, $position)->subordinates as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
+
+            foreach ($this->processSubordinate($st, $position)->indexauthors as $indexauthor)
+            {
+                $this->indexauthors[] = $indexauthor;
+            }
+
+            foreach ($this->processSubordinate($st, $position)->indexglossarys as $indexglossary)
+            {
+                $this->indexglossarys[] = $subordinate;
+            }
+
+            foreach ($this->processSubordinate($st, $position)->indexsymbols as $indexsymbol)
+            {
+                $this->indexsymbols[] = $subordinate;
+            }
+
+            foreach ($this->processSubordinate($st, $position)->content as $content)
+            {
+                $this->statements[] = $content;
+            }
         }
 
         $answer_showmes = $DomElement->getElementsByTagName('answer.showme');

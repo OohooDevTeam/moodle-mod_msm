@@ -378,7 +378,7 @@ class Unit extends Element
 
         $data = new stdClass();
         $data->string_id = $this->unitid;
-        $data->title = $this->title->content;
+        $data->title = $this->title;
         $data->plain_title = $this->plain_title;
         $data->creationdate = $this->creation;
         $data->last_revision_date = $this->last_revision;

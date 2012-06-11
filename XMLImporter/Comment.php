@@ -57,58 +57,30 @@ class Comment extends Element
 
         foreach ($commentbodys as $c)
         {
-            $position = $position + 1;
-
-
-            $subordinates = $c->getElementsByTagName('subordinate');
-
-            foreach ($subordinates as $s)
+            foreach ($this->processSubordinate($c, $position)->subordinates as $subordinate)
             {
-                $hot = $s->getElementsByTagName('hot')->item(0);
-
-                $position = $position + 1;
-                $subordinate = new Subordinate($this->xmlpath);
-                $subordinate->loadFromXml($s, $position);
                 $this->subordinates[] = $subordinate;
-
-                $s->parentNode->replaceChild($hot, $s);
             }
 
-            $indexauthors = $c->getElementsByTagName('index.author');
-            foreach ($indexauthors as $ia)
+            foreach ($this->processSubordinate($c, $position)->indexauthors as $indexauthor)
             {
-                $position = $position + 1;
-                $indexauthor = new MathIndex($this->xmlpath);
-                $indexauthor->loadFromXml($ia, $position);
                 $this->indexauthors[] = $indexauthor;
-
-                $ia->parentNode->removeChild($ia);
             }
 
-            $indexglossarys = $c->getElementsByTagName('index.glossary');
-            foreach ($indexglossarys as $ig)
+            foreach ($this->processSubordinate($c, $position)->indexglossarys as $indexglossary)
             {
-                $position = $position + 1;
-                $indexglossary = new MathIndex($this->xmlpath);
-                $indexglossary->loadFromXml($ig, $position);
-                $this->indexglossarys[] = $indexglossary;
-
-                $ig->parentNode->removeChild($ig);
+                $this->indexglossarys[] = $subordinate;
             }
 
-            $indexsymbols = $c->getElementsByTagName('index.symbol');
-            foreach ($indexsymbols as $is)
+            foreach ($this->processSubordinate($c, $position)->indexsymbols as $indexsymbol)
             {
-                $position = $position + 1;
-                $indexsymbol = new MathIndex($this->xmlpath);
-                $indexsymbol->loadFromXml($is, $position);
-                $this->indexsymbols[] = $indexsymbol;
-
-                $is->parentNode->removeChild($is);
+                $this->indexsymbols[] = $subordinate;
             }
-            
-            $element = $doc->importNode($c, true);
-            $this->content[] = $doc->saveXML($element);
+
+            foreach ($this->processSubordinate($c, $position)->content as $content)
+            {
+                $this->content[] = $content;
+            }
         }
     }
 
@@ -119,9 +91,9 @@ class Comment extends Element
         $data = new stdClass();
         $data->comment_type = $this->comment_type;
         $data->string_id = $this->string_id;
-        if (!empty($this->caption->content))
+        if (!empty($this->caption))
         {
-            $data->caption = $this->caption->content;
+            $data->caption = $this->caption;
         }
 
         if (!empty($this->content))

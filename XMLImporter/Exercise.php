@@ -31,7 +31,7 @@ class Exercise extends Element
         $this->position = $position;
         $this->string_id = $DomElement->getAttribute('id');
         $this->difficulty = $DomElement->getAttribute('Difficulty');
-        $this->caption = $this->getDomAttribute($DomElement->getElementsByTagName('caption'));
+        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
         
         $this->problems = array();
         $problems = $DomElement->getElementsByTagName('problem');        

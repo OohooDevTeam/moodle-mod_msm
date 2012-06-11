@@ -34,6 +34,9 @@ class Approach extends Element
         $this->answerexercises = array();
         $this->solutions = array();
         $this->subordinates = array();
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -41,14 +44,29 @@ class Approach extends Element
             {
                 if ($child->tagName == 'solution.hint')
                 {
-                    $position = $position + 1;
-                    $content = new stdClass();
-                    $content = $this->getContent($child, $position, $this->xmlpath);
-                    $this->content[] = $content->content;
-
-                    foreach ($content->subordinates as $subordinate)
+                    foreach ($this->processSubordinate($child, $position)->subordinates as $subordinate)
                     {
-                        $this->subordinates[$key][] = $subordinate;
+                        $this->subordinates[] = $subordinate;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->indexauthors as $indexauthor)
+                    {
+                        $this->indexauthors[] = $indexauthor;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->indexglossarys as $indexglossary)
+                    {
+                        $this->indexglossarys[] = $subordinate;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->indexsymbols as $indexsymbol)
+                    {
+                        $this->indexsymbols[] = $subordinate;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->content as $content)
+                    {
+                        $this->content[] = $content;
                     }
                 }
                 if ($child->tagName == 'answer.exercise')

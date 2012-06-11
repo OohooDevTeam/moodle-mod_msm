@@ -42,81 +42,91 @@ class Para extends Element
         $this->subordinates = array();
 
         $this->content = array();
+        
+       foreach($this->processSubordinate($DomElement, $position)->subordinates as $subordinate)
+       {
+           $this->subordinates[] = $subordinate;
+       }
+       
+       foreach($this->processSubordinate($DomElement, $position)->indexauthors as $indexauthor)
+       {
+           $this->indexauthors[] = $indexauthor;
+       }
+       
+       foreach($this->processSubordinate($DomElement, $position)->indexglossarys as $indexglossary)
+       {
+           $this->indexglossarys[] = $subordinate;
+       }
+       
+       foreach($this->processSubordinate($DomElement, $position)->indexsymbols as $indexsymbol)
+       {
+           $this->indexsymbols[] = $subordinate;
+       }
+       
+       foreach($this->processSubordinate($DomElement, $position)->content as $content)
+       {
+           $this->content[] = $content;
+       }
 
-//        $parabodys = $DomElement->getElementsByTagName('para.body');
-        $doc = new DOMDocument();
+//        $doc = new DOMDocument();
+//        
+//        $position = $position + 1;
 //
-//        foreach ($parabodys as $parabody)
-//        {
-        $position = $position + 1;
-
-
-        $subordinates = $DomElement->getElementsByTagName('subordinate');
-
-        echo "length of sub in para";
-        print_object($subordinates->length);
-
-        foreach ($subordinates as $s)
-        {
-            $hot = $s->getElementsByTagName('hot')->item(0);
-
-            $position = $position + 1;
-            $subordinate = new Subordinate($this->xmlpath);
-            $subordinate->loadFromXml($s, $position);
-            $this->subordinates[] = $subordinate;
-
-//                 echo "value of sub in para";
-//                 print_object($hot->nodeValue);
-//            print_object($s);
+//        $subordinates = $DomElement->getElementsByTagName('subordinate');
+//       
+//        $length = $subordinates->length;
 //
-            $s->parentNode->replaceChild($hot, $s);
-        }
-//        foreach ($subordinates as $subor)
+//        for ($i = 0; $i < $length; $i++)
 //        {
-//            $hot = $subor->getElementsByTagName('hot')->item(0);
-////            echo "value of sub in para";
-////            print_object($hot->nodeValue);
-////            print_object($key);
-////            print_object($sub);
-////            print_object($sub->parentNode->tagName);
-//            $subor->parentNode->replaceChild($hot, $subor);
+//            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
+//
+//            $position = $position + 1;
+//            $subordinate = new Subordinate($this->xmlpath);
+//            $subordinate->loadFromXml($subordinates->item(0), $position);
+//            $this->subordinates[] = $subordinate;
+//
+//            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
 //        }
-
-        $indexauthors = $DomElement->getElementsByTagName('index.author');
-        foreach ($indexauthors as $inda)
-        {
-            $position = $position + 1;
-            $indexauthor = new MathIndex($this->xmlpath);
-            $indexauthor->loadFromXml($inda, $position);
-            $this->indexauthors[] = $indexauthor;
-
-            $inda->parentNode->removeChild($inda);
-        }
-
-        $indexglossarys = $DomElement->getElementsByTagName('index.glossary');
-        foreach ($indexglossarys as $ig)
-        {
-            $position = $position + 1;
-            $indexglossary = new MathIndex($this->xmlpath);
-            $indexglossary->loadFromXml($ig, $position);
-            $this->indexglossarys[] = $indexglossary;
-
-            $ig->parentNode->removeChild($ig);
-        }
-
-        $indexsymbols = $DomElement->getElementsByTagName('index.symbol');
-        foreach ($indexsymbols as $is)
-        {
-            $position = $position + 1;
-            $indexsymbol = new MathIndex($this->xmlpath);
-            $indexsymbol->loadFromXml($is, $position);
-            $this->indexsymbols[] = $indexsymbol;
-
-            $is->parentNode->removeChild($is);
-        }
-
-        $element = $doc->importNode($DomElement, true);
-        $this->content[] = $doc->saveXML($element);
+//        
+//
+//        $indexauthors = $DomElement->getElementsByTagName('index.author');
+//        $ialength = $indexauthors->length;
+//        for ($i = 0; $i < $ialength; $i++)
+//        {
+//            $position = $position + 1;
+//            $indexauthor = new MathIndex($this->xmlpath);
+//            $indexauthor->loadFromXml($indexauthors->item(0), $position);
+//            $this->indexauthors[] = $indexauthor;
+//
+//            $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
+//        }
+//
+//        $indexglossarys = $DomElement->getElementsByTagName('index.glossary');
+//        $iglength = $indexglossarys->length;
+//        for ($i = 0; $i < $iglength; $i++)
+//        {
+//            $position = $position + 1;
+//            $indexglossary = new MathIndex($this->xmlpath);
+//            $indexglossary->loadFromXml($indexglossarys->item(0), $position);
+//            $this->indexglossarys[] = $indexglossary;
+//
+//            $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
+//        }
+//       
+//        $indexsymbols = $DomElement->getElementsByTagName('index.symbol');
+//        $islength = $indexsymbols->length;
+//        for ($i = 0; $i < $islength; $i++)
+//        {
+//            $position = $position + 1;
+//            $indexsymbol = new MathIndex($this->xmlpath);
+//            $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
+//            $this->indexsymbols[] = $indexsymbol;
+//
+//            $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
+//        }
+//
+//        $element = $doc->importNode($DomElement, true);
+//        $this->content[] = $doc->saveXML($element);
 //        }
     }
 
@@ -127,7 +137,7 @@ class Para extends Element
         $data = new stdClass();
         $data->string_id = $this->string_id;
         $data->para_align = $this->align;
-        $data->caption = $this->caption->content;
+        $data->caption = $this->caption;
         $data->description = $this->description;
 
         if (!empty($this->content))
@@ -138,6 +148,7 @@ class Para extends Element
             foreach ($this->content as $key => $content)
             {
                 $data->para_content = $content;
+               
                 $this->id = $DB->insert_record($this->tablename, $data);
             }
         }

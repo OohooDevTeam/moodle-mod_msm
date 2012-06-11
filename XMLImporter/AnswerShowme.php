@@ -31,26 +31,44 @@ class AnswerShowme extends Element
         $this->position = $position;
         $this->content = array();
         $this->subordinates = array();
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
 
         $answer_showme_blocks = $DomElement->getElementsByTagName('answer.showme.block');
 
         foreach ($answer_showme_blocks as $asb)
         {
-            $this->caption = $this->getDomAttribute($asb->getElementsByTagName('caption'));
+            $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
             $answer_showme_block_bodys = $asb->getElementsByTagName('answer.showme.block.body');
 
-            foreach ($answer_showme_block_bodys as $key=>$asbb)
+            foreach ($answer_showme_block_bodys as $asbb)
             {
-                $position = $position + 1;
-                $content = new stdClass();
-                $content = $this->getContent($asbb, $position, $this->xmlpath);
-                $this->content[] = $content->content;
+                foreach ($this->processSubordinate($asbb, $position)->subordinates as $subordinate)
+                {
+                    $this->subordinates[] = $subordinate;
+                }
 
-                foreach($content->subordinates as $subordinate)
-            {
-                $this->subordinates[$key][] = $subordinate;
-            }
+                foreach ($this->processSubordinate($asbb, $position)->indexauthors as $indexauthor)
+                {
+                    $this->indexauthors[] = $indexauthor;
+                }
+
+                foreach ($this->processSubordinate($asbb, $position)->indexglossarys as $indexglossary)
+                {
+                    $this->indexglossarys[] = $subordinate;
+                }
+
+                foreach ($this->processSubordinate($asbb, $position)->indexsymbols as $indexsymbol)
+                {
+                    $this->indexsymbols[] = $subordinate;
+                }
+
+                foreach ($this->processSubordinate($asbb, $position)->content as $content)
+                {
+                    $this->content[] = $content;
+                }
             }
         }
     }

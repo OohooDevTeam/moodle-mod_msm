@@ -29,21 +29,39 @@ class AnswerExercise extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        $this->caption = $this->getDomAttribute($DomElement->getElementsByTagName('caption'));
-        $this->bodys = array();
+        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
+        $this->content = array();
         $this->subordinates = array();
-        $bodys = $DomElement->getElementsByTagName('answer.exercise.block.body');
-        foreach ($bodys as $key=>$b)
-        {
-            $position = $position + 1;
-            $content = new stdClass();
-            $content = $this->getContent($b, $position, $this->xmlpath);
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
 
-            $this->bodys[] = $content->content;
-            
-            foreach($content->subordinates as $subordinate)
+        $bodys = $DomElement->getElementsByTagName('answer.exercise.block.body');
+        foreach ($bodys as $b)
+        {
+            foreach ($this->processSubordinate($b, $position)->subordinates as $subordinate)
             {
-                $this->subordinates[$key][] = $subordinate;
+                $this->subordinates[] = $subordinate;
+            }
+
+            foreach ($this->processSubordinate($b, $position)->indexauthors as $indexauthor)
+            {
+                $this->indexauthors[] = $indexauthor;
+            }
+
+            foreach ($this->processSubordinate($b, $position)->indexglossarys as $indexglossary)
+            {
+                $this->indexglossarys[] = $subordinate;
+            }
+
+            foreach ($this->processSubordinate($b, $position)->indexsymbols as $indexsymbol)
+            {
+                $this->indexsymbols[] = $subordinate;
+            }
+
+            foreach ($this->processSubordinate($b, $position)->content as $content)
+            {
+                $this->content[] = $content;
             }
         }
     }

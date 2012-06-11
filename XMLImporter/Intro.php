@@ -47,7 +47,7 @@ class Intro extends Element
         global $DB;
         $data = new stdClass();
         $data->string_id = $this->id;
-        $data->caption = $this->caption->content;
+        $data->caption = $this->caption;
         
         $this->id = $DB->insert_record($this->tablename, $data);
         
