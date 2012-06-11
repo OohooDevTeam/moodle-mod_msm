@@ -94,7 +94,7 @@ abstract class Element
             $position = $position + 1;
             $subordinate = new Subordinate($this->xmlpath);
             $subordinate->loadFromXml($subordinates->item(0), $position);
-            $this->subordinates[] = $subordinate;
+            $content->subordinates[] = $subordinate;
 
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
@@ -107,7 +107,7 @@ abstract class Element
             $position = $position + 1;
             $indexauthor = new MathIndex($this->xmlpath);
             $indexauthor->loadFromXml($indexauthors->item(0), $position);
-            $this->indexauthors[] = $indexauthor;
+            $content->indexauthors[] = $indexauthor;
 
             $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
         }
@@ -119,7 +119,7 @@ abstract class Element
             $position = $position + 1;
             $indexglossary = new MathIndex($this->xmlpath);
             $indexglossary->loadFromXml($indexglossarys->item(0), $position);
-            $this->indexglossarys[] = $indexglossary;
+            $content->indexglossarys[] = $indexglossary;
 
             $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
         }
@@ -131,7 +131,7 @@ abstract class Element
             $position = $position + 1;
             $indexsymbol = new MathIndex($this->xmlpath);
             $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
-            $this->indexsymbols[] = $indexsymbol;
+            $content->indexsymbols[] = $indexsymbol;
 
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
