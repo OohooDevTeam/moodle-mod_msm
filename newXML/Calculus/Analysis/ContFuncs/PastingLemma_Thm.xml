@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_PastingLemma"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Pasting Lemma</caption>
+   <associate type="Illustration">
+      <info>
+         <info.caption>
+            <caption>Illustration</caption>
+         </info.caption>
+         <para>
+            <para.body>An illustration of the Pasting Lemma.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>f\from \OCIntrvl{a}{b}\to \RNr</latex>
+            </math> and <math>
+               <latex>g\from \COIntrvl{b}{c}\to \RNr</latex>
+            </math> be functions. If <math>
+               <latex>f(b)=g(b)</latex>
+            </math> then the pasted function</para.body>
+      </para>
+      <math.display>
+         <latex>
+				
+h\from \OOIntrvl{a}{c} \longrightarrow \RNr,\quad h(x) := \left\{
+\begin{array}{rcl}
+f(x) &amp; \text{if} &amp; x\leq b \\
+g(x) &amp; \text{if} &amp; x\geq b
+\end{array}\right.
+				
+			</latex>
+      </math.display>
+      <para>
+         <para.body>is continuous at all points <math>
+               <latex>x\neq b</latex>
+            </math> at which either <math>
+               <latex>f</latex>
+            </math> or <math>
+               <latex>g</latex>
+            </math> is continuous. Moreover, if both <math>
+               <latex>f</latex>
+            </math> and <math>
+               <latex>g</latex>
+            </math> are continuous at <math>
+               <latex>b</latex>
+            </math> then so is <math>
+               <latex>h</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>
+                  <strong>Step 1</strong>   The condition <math>
+                     <latex>f(b)=g(b)</latex>
+                  </math> ensures that <math>
+                     <latex>h</latex>
+                  </math> is a well defined function.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Step 2</strong>   If <math>
+                     <latex>f</latex>
+                  </math> is continuous at <math>
+                     <latex> x &lt; b </latex>
+                  </math>, we need to show that <math>
+                     <latex>h</latex>
+                  </math> is continuous at <math>
+                     <latex>x</latex>
+                  </math> as well. So let there be given a deviation tolerance <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math>, then we know there is <math>
+                     <latex> \delta_1 &gt; 0 </latex>
+                  </math> such that <math>
+                     <latex> \Abs{ f(t) - f(x) } &lt; \varepsilon </latex>
+                  </math> whenever <math>
+                     <latex>t\in \OCIntrvl{a}{b}</latex>
+                  </math> and <math>
+                     <latex> \Abs{ t-x } &lt; \delta_1 </latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Now set <math>
+                     <latex>\delta := \min\Set{ (b-x),\delta_1}</latex>
+                  </math>. Then, for <math>
+                     <latex>t\in \OOIntrvl{a}{c}</latex>
+                  </math> and <math>
+                     <latex> \Abs{ t-x } &lt; \delta </latex>
+                  </math>,</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ h(t) - h(x) } = \Abs{ f(t) - f(x) } &lt; \delta\leq \delta_1 </latex>
+            </math.display>
+            <para>
+               <para.body>Thus <math>
+                     <latex>h</latex>
+                  </math> is continuous at <math>
+                     <latex>x</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>So it remains to check that it is continuous at <math>
+                     <latex>b</latex>
+                  </math>. So let a deviation tolerance <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> be given. We need to find <math>
+                     <latex> \delta&gt;0 </latex>
+                  </math> such that <math>
+                     <latex> \Abs{ h(t) - h(b) } &lt; \varepsilon </latex>
+                  </math> for all <math>
+                     <latex> t\in \OOIntrvl{a}{c} </latex>
+                  </math> with <math>
+                     <latex> \Abs{ t-b } &lt; \delta</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Step 3</strong>   If <math>
+                     <latex>g</latex>
+                  </math> is continuous at <math>
+                     <latex> x &gt; b </latex>
+                  </math>, we need to show that <math>
+                     <latex>h</latex>
+                  </math> is continuous at <math>
+                     <latex>x</latex>
+                  </math> as well. So let there be given a deviation tolerance <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math>, then we know there is <math>
+                     <latex> \delta_1 &gt; 0 </latex>
+                  </math> such that <math>
+                     <latex> \Abs{ g(t) - g(x) } &lt; \varepsilon </latex>
+                  </math> whenever <math>
+                     <latex>t\in \COIntrvl{b}{c}</latex>
+                  </math> and <math>
+                     <latex> \Abs{ t-x } &lt; \delta_1 </latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Now set <math>
+                     <latex>\delta := \min\Set{ (x-b),\delta_1}</latex>
+                  </math>. Then, for <math>
+                     <latex>t\in \OOIntrvl{a}{c}</latex>
+                  </math> and <math>
+                     <latex> \Abs{ t-x } &lt; \delta </latex>
+                  </math>,</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ h(t) - h(x) } = \Abs{ g(t) - g(x) } &lt; \delta\leq \delta_1 </latex>
+            </math.display>
+            <para>
+               <para.body>Thus <math>
+                     <latex>h</latex>
+                  </math> is continuous at <math>
+                     <latex>x</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Step 4</strong>   So it remains to check that it is continuous at <math>
+                     <latex>b</latex>
+                  </math> if both <math>
+                     <latex>f</latex>
+                  </math> and <math>
+                     <latex>g</latex>
+                  </math> are. So let a deviation tolerance <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> be given. We need to find <math>
+                     <latex> \delta&gt;0 </latex>
+                  </math> such that <math>
+                     <latex> \Abs{ h(t) - h(b) } &lt; \varepsilon </latex>
+                  </math> for all <math>
+                     <latex> t\in \OOIntrvl{a}{c} </latex>
+                  </math> with <math>
+                     <latex> \Abs{ t-b } &lt; \delta</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>We know that <math>
+                     <latex>f</latex>
+                  </math> is continuous at <math>
+                     <latex>b</latex>
+                  </math>. So there exists <math>
+                     <latex> \delta_1 &gt; 0 </latex>
+                  </math> such that</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex> \Abs{ f(t) - f(b) } &lt; \delta_1 </latex>
+                  </math> for all <math>
+                     <latex>t\in \OCIntrvl{a}{b}</latex>
+                  </math> with <math>
+                     <latex> \Abs{ f(t) - f(b) } &lt; \delta_1 </latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Step 5</strong>   We know that <math>
+                     <latex>g</latex>
+                  </math> is continuous at <math>
+                     <latex>b</latex>
+                  </math>. So there exists <math>
+                     <latex> \delta_2 &gt; 0 </latex>
+                  </math> such that</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex> \Abs{ g(t) - g(b) } &lt; \delta_2 </latex>
+                  </math> for all <math>
+                     <latex>t\in \COIntrvl{b}{c}</latex>
+                  </math> with <math>
+                     <latex> \Abs{ g(t) - g(b) } &lt; \delta_2 </latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Step 6</strong>   Choose <math>
+                     <latex>\delta:=\min\Set{ \delta_1,\delta_2 }</latex>
+                  </math>. Then</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\Abs{ h(t) - h(b) }\ =\ \left\{
+\begin{array}{rcl}
+\Abs{ f(t) - f(b) } &lt; \delta_1\leq \delta &amp; \text{if} &amp; t\leq b \\
+\Abs{ g(t) - g(b) } &lt; \delta_2\leq \delta &amp; \text{if} &amp; t\geq b
+\end{array}
+\right.
+				
+			</latex>
+            </math.display>
+            <para>
+               <para.body>So <math>
+                     <latex>h</latex>
+                  </math> is continuous at <math>
+                     <latex>b</latex>
+                  </math>, and the proof of the Pasting Lemma is complete.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

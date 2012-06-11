@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illustr_Hyperplane">
+	<title>Hyperplane – Illustration</title>
+	<sub.page.body>
+		<block>
+		<para>Here we illustrate a hyperplane in <latex>\RNr[2]</latex> or in <latex>\RNr[3]</latex>.</para>
+		<para>
+			<b>A hyperplane in</b> 
+			<latex>\RNr[2]</latex> 
+			<b>is just a line</b>
+		</para>
+		<para align="center"><img src="ims/HyperPlane2D.gif"/></para>
+		<para>In the picture above, the blue line is the hyperspace which is perpendicular to the green normal vector. The red line <latex>L</latex> is a hyperplane. It results from parallel translating the blue hyperspace.</para>
+		</block>
+		<block>
+		<para>
+			<b>A hyperplane in</b> 
+			<latex>\RNr[3]</latex> 
+			<b>is just a plane in the usual sense</b>
+		</para>
+		<para align="center">
+			<img src="ims/HyperPlane3D.gif"/>
+		</para>
+		<para>In the picture above, the planes are hyperplanes in 3-space. The tail of the two arrows is supposed to be at the origin. So the lower hyperplane passes through the origin and, hence, is even a hyperspace. In general, we characterize the location of a hyperplane by specifying a vector <latex>\Vect{n}</latex> (blue) perpendicular to it and by specifying a point on it (the tip of the red arrow). Alternatively, we can think of a hyperplane as being obtained by parallel translating the hyperspace which is perpendicular to <latex>\Vect{n}</latex> off of the origin by a suitable vector (red).</para>
+		</block>
+	</sub.page.body>
+</sub.page>

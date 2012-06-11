@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_SumProdCompContinuous">
+	<caption>Sums, products, compositions of continuous maps</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment</caption>
+			<para>We prove this proposition directly from the <latex>\varepsilon</latex>-<latex>\delta</latex> definition of continuity. Alternatively, it may be deduced from the corresponding proposition about limits of sequences, once we have shown that a function is continuous exactly  when it commutes with limits.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Let <latex>D,T,S\subseteq \RNr</latex>. For functions <latex>f,g\from D\to T</latex> and <latex>h\from T\to S</latex> the following hold</para>
+		<part partid="Sum">
+			<para>If <latex>f</latex> and <latex>g</latex> are continuous at <latex>x\in D</latex>, then the sum <latex>(f+g)\from D\to \RNr</latex> is continuous at <latex>x</latex>.</para>
+		</part>
+		<part partid="Product">
+			<para>If <latex>f</latex> and <latex>g</latex> are continuous at <latex>x\in D</latex>, then the product <latex>(f\cdot g)\from D\to \RNr</latex> is continuous at <latex>x</latex>.</para>
+		</part>
+		<part partid="Composition">
+			<para>If <latex>g</latex> is continuous at <latex>x\in D</latex> and <latex>h</latex> is continuous at <latex>g(x)\in T</latex>, then the composition <latex>h\Comp g\from D\to S</latex> is continuous at <latex>x</latex>.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>Sum</partref> Sums of continuous functions are continuous</caption>
+		<para>For <latex><![CDATA[ \varepsilon > 0 ]]></latex>, choose <latex><![CDATA[ \delta_1 > 0 ]]></latex> such that <latex><![CDATA[ \Abs{ f(t) - f(x) } < \varepsilon/2 ]]></latex> for all <latex>t\in \OOIntrvl{x - \delta_1}{ x + \delta_1}</latex>, and choose <latex><![CDATA[ \delta_2 > 0 ]]></latex> such that <latex><![CDATA[ \Abs{ g(t) - g(x) } < \varepsilon/2 ]]></latex> for all <latex>t \in \OOIntrvl{x-\delta_2}{x+\delta_2}</latex>.</para>
+		<para>Now let <latex>\delta:=\min\Set{ \delta_1 , \delta_2}</latex>. Then we find that for <latex>t\in \OOIntrvl{ x-\delta }{ x+\delta}</latex>,</para>
+		<computation>
+			<left>\Abs{ (g+f)(t) - (g+f)(x) }</left>
+			<center>=</center>
+			<right>\Abs{ (g(t) - g(x))\ +\ (f(t) - f(x)) }</right>
+			<left></left>
+			<center>\leq	<info><para>by the triangle inequality</para></info></center>
+			<right>\Abs{ g(t) - g(x) }\ +\ \Abs{ f(t) - f(x) }</right>
+			<left></left>
+			<center><![CDATA[ < ]]></center>
+			<right>\frac{\varepsilon}{2}\ +\ \frac{\varepsilon}{2}\ =\ \varepsilon</right>
+		</computation>
+		<para>Thus <latex>(f+g)</latex> is continuous at <latex>x</latex>.</para>
+		
+		
+		<caption><partref>Product</partref> Products of continuous functions are continuous</caption>
+		<para>Given <latex><![CDATA[ \varepsilon > 0 ]]></latex>, we need to establish the existence of <latex><![CDATA[ \delta >0 ]]></latex> such that</para>
+		<math.display>
+			<latex>
+				<![CDATA[ \Abs{ f(t)g(t) - f(x)g(x) } < \varepsilon]]>
+			</latex>
+		</math.display>
+		<para>whenever <latex><![CDATA[ \Abs{ t-x } < \delta ]]></latex>. To this end we make the preliminary estimate:</para>
+		<computation>
+			<left>\Abs{ f(t)g(t) - f(x)g(x) }</left>
+			<center>=</center>
+			<right>\Abs{ [f(t)g(t) - f(t)g(x)]\ +\ [f(t)g(x) - f(x)g(x)] }</right>
+			<left></left>
+			<center>\leq	<info><para>... by the triangle inequality</para></info></center>
+			<right>\Abs{ f(t)g(t) - f(t)g(x) }\ +\ \Abs{ f(t)g(x) - f(x)g(x) }</right>
+			<left></left>
+			<center>=</center>
+			<right>\Abs{ f(t) }\Abs{ g(t)-g(x) }\ +\ \Abs{ f(t)-f(x) } \Abs{ g(x) }</right>
+		</computation>
+		<para>By choosing <latex>t</latex> close enough to <latex>x</latex>, we can force each of these two summands to be less than <latex>\varepsilon/2</latex>. Here are the details:</para>
+		<ol>
+			<li>
+				<para>Chose <latex><![CDATA[ \delta_1>0 ]]></latex> such that</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+							\Abs{ g(t) - g(x) } < \min \Set{ 1, \dfrac{1}{2}\cdot \dfrac{1}{ \Abs{f(x) + 1} } }
+						]]>
+					</latex>
+				</math.display>
+			</li>
+			<li>
+				<para>Chose <latex><![CDATA[ \delta_2>0 ]]></latex> such that</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+							\Abs{ f(t) - f(x) } < \min \Set{ 1, \dfrac{1}{2}\cdot \dfrac{1}{ \Abs{g(x) + 1} } }
+						]]>
+					</latex>
+				</math.display>
+			</li>
+		</ol>
+		<para>Then set <latex>\delta := \min{\delta_1,\delta_2}</latex>. For <latex>t\in D</latex> and <latex><![CDATA[ \Abs{ t-x } < \delta ]]></latex> we then obtain</para>
+		<computation>
+			<left>\Abs{ f(t)g(t) - f(x)g(x) }</left>
+			<center>\leq</center>
+			<right>\Abs{ f(t) }\Abs{ g(t)-g(x) }\ +\ \Abs{ f(t)-f(x) } \Abs{ g(x) }</right>
+			<left></left>
+			<center><![CDATA[ < ]]></center>
+			<right>\Abs{ f(t) }\cdot \delta_1\ +\ \delta_2\cdot \Abs{ g(x) }</right>
+			<left></left>
+			<center><![CDATA[ < ]]></center>
+			<right>(\Abs{ f(x) } + 1)\cdot \dfrac{\varepsilon}{2} \cdot \dfrac{1}{ \Abs{f(x)} + 1 }\ +\ \dfrac{\varepsilon}{2} \cdot \dfrac{\Abs{g(x)}}{ \Abs{g(x)} + 1}</right>
+			<left></left>
+			<center>\leq</center>
+			<right>\varepsilon/2\ +\ \varepsilon/2 = \varepsilon</right>
+		</computation>
+		<para>So <latex>(f+g)</latex> is continuous at <latex>x</latex>.</para>
+		
+		<caption><partref>Composition</partref> Composition of continuous functions are continuous</caption>
+		<para>Given <latex><![CDATA[ \varepsilon > 0 ]]></latex> we need to establish the existence of <latex><![CDATA[ \delta > 0 ]]></latex> such that</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+					\Abs{ (h\Comp g)(t) - (h\Comp g)(x) } < \varepsilon 
+				]]>
+			</latex>
+		</math.display>
+		<para>whenever <latex><![CDATA[ \Abs{ t-x } < \delta ]]></latex>. We achieve this in two steps:</para>
+		
+		<para><b>Step 1</b> &nbsp; As <latex>h</latex> is continuous at <latex>g(x)</latex>, there is <latex><![CDATA[ \delta_1 > 0 ]]></latex> such that</para>
+		<math.display>
+			<latex><![CDATA[
+					\Abs{ h(s) - (h\Comp g)(x) } < \varepsilon\quad \text{whenever}\quad \Abs{ s-g(x) }< \delta_1
+				]]></latex>
+		</math.display>
+		
+		<para><b>Step 2</b> &nbsp; As <latex>g</latex> is continuous at <latex>x</latex>, there is <latex><![CDATA[ \delta>0 ]]></latex> such that</para>
+		<math.display>
+			<latex><![CDATA[
+					\Abs{ g(t) - g(x) } < \delta_1\quad \text{whenever}\quad \Abs{ t-x }< \varepsilon
+				]]></latex>
+		</math.display>
+		
+		<para>It follows that, whenever <latex><![CDATA[ \Abs{ t-x } < \delta ]]></latex>,</para>
+		<computation>
+			<left>\Abs{ (h\Comp g)(t) - (h\Comp g)(x) }</left>
+			<center>=</center>
+			<right>\Abs{ h(g(t)) - h(g(x)) }</right>
+			<left></left>
+			<center><![CDATA[ < ]]></center>
+			<right>\varepsilon</right>
+		</computation>
+		<para>as was to be shown.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_Dilation"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Dilation Transformations</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The dilation transformations of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> are given by</para.body>
+            </para>
+            <math.display>
+               <latex>D\from \RNr[n] \longrightarrow \RNr[n],\quad D(\Vect{x}) := s\cdot\Vect{x}</latex>
+            </math.display>
+            <para>
+               <para.body>where <math>
+                     <latex> s &gt; 1 </latex>
+                  </math> is a fixed number. Thus <math>
+                     <latex>D</latex>
+                  </math> magnifies or dilates each vector and, therefore, each object in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> by the factor <math>
+                     <latex>s</latex>
+                  </math> – hence the name ‘dilation transformation’.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Dilation.png"/>
+               <extended.caption>A dilation of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> with dilation factor <math>
+                     <latex>3/2</latex>
+                  </math>.</extended.caption>
+            </media>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>To find the matrix representing <math>
+                     <latex>D</latex>
+                  </math>, we note that <math>
+                     <latex>D</latex>
+                  </math> transforms the basic vector <math>
+                     <latex>\StdBss{j}</latex>
+                  </math> into
+				</para.body>
+               <index.glossary>
+                  <term>matrix</term>
+                  <term>of a dilation</term>
+                  <info>
+                     <para>
+                        <para.body>The matrix representing the dilation of <math>
+                              <latex>\RNr[n]</latex>
+                           </math> with factor <math>
+                              <latex> s &gt; 1 </latex>
+                           </math> is represented by the matrix <math>
+                              <latex>s\cdot \IdMtrx[n]</latex>
+                           </math>; i.e. <math>
+                              <latex>s</latex>
+                           </math> times the identity matrix of size <math>
+                              <latex>(n,n)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>dilation</term>
+                  <term>matrix</term>
+                  <info>
+                     <para>
+                        <para.body>The matrix representing the dilation of <math>
+                              <latex>\RNr[n]</latex>
+                           </math> with factor <math>
+                              <latex> s &gt; 1 </latex>
+                           </math> is represented by the matrix <math>
+                              <latex>s\cdot \IdMtrx[n]</latex>
+                           </math>; i.e. <math>
+                              <latex>s</latex>
+                           </math> times the identity matrix of size <math>
+                              <latex>(n,n)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+            <math.display>
+               <latex>D(\StdBss{j}) = s\cdot \StdBss{j} = (0,\dots ,0,s,0,\dots ,0)</latex>
+            </math.display>
+            <para>
+               <para.body>Therefore <math>
+                     <latex>D</latex>
+                  </math> is represented by the matrix of size <math>
+                     <latex>(n,n)</latex>
+                  </math>
+               </para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+s\cdot \IdMtrx[n] = 
+\left[
+\begin{array}{cccc}
+s &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; s &amp;             &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; s
+\end{array}
+\right]
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>For example, the dilation of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> in the picture above is</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+D\from \RNr[2] \longrightarrow \RNr[2],\qquad D(x,y)=\tfrac{3}{2}\cdot (x,y) = 
+\left[
+\begin{array}{cc}
+\tfrac{3}{2} &amp; 0 \\
+0 &amp; \tfrac{3}{2}
+\end{array}
+\right] \left[ \begin{array}{c} x \\ y \end{array} \right]
+					
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+   </body>
+</unit>

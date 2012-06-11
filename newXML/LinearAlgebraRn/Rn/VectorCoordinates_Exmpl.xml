@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_VectorCoordinates"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Vectors and Coordinates: Examples</title>
+	  <showme>
+		    <caption xmlns="">Arrows representing <math>
+            <latex>\Vect{x} = (3,-1)</latex>
+         </math>
+		    </caption>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The vector <math>
+                  <latex>\Vect{x} = (3,-1)</latex>
+               </math> is represented by any of the arrows in the picture below.</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <media type="image" active="0" inline="0">
+                  <img src="ims/VectorCoordinates_Exmpl1.gif"/>
+               </media>
+            </para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Indeed, consider any of these arrows. Starting from its tail, we find its tip by</para.body>
+               </para>
+			            <ol>
+				              <li>
+					                <para>
+                        <para.body>moving <math>
+                              <latex>3</latex>
+                           </math> units in the first coordinate direction, and</para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>from there moving <math>
+                              <latex>-1</latex>
+                           </math> unit in the second coordinate direction.</para.body>
+                     </para>
+				              </li>
+			            </ol>
+			            <para>
+                  <para.body>For example, if we choose</para.body>
+               </para>
+			            <ul>
+				              <li>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>R(2,2)</latex>
+                           </math> as the tail point of an arrow representing <math>
+                              <latex>\Vect{x}</latex>
+                           </math>, the tip of this arrow will be at <math>
+                              <latex>S(2+3,2+(-1))=S(5,1)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>A(14,-6)</latex>
+                           </math> as the tail point of an arrow representing <math>
+                              <latex>\Vect{x}</latex>
+                           </math>, the tip of this arrow will be at <math>
+                              <latex>B(17,-7)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>U(0,0)</latex>
+                           </math> as the tail point of an arrow representing <math>
+                              <latex>\Vect{x}</latex>
+                           </math>, the tip of this arrow will be at <math>
+                              <latex>V(3,-1)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+			            </ul>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

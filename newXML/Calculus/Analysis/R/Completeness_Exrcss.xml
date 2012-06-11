@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_Completeness"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: Completeness of the Real Number System</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the sets below determine if it is bounded above or below. If so suggest an upper, respectively a lower bound.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The set <math>
+                        <latex>S:=\CCIntrvl{-10}{10}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This set is bounded above by <math>
+                           <latex>10</latex>
+                        </math> or any <math>
+                           <latex>u\in \RNr</latex>
+                        </math> with <math>
+                           <latex>u\geq 10</latex>
+                        </math>. It is bounded below by <math>
+                           <latex>-10</latex>
+                        </math> or any <math>
+                           <latex>l\in \RNr</latex>
+                        </math> with <math>
+                           <latex>l\leq -10</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The set <math>
+                        <latex>T:=\Set{ \tfrac{x}{x+3}\in \RNr \st x\geq 0 }</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>This set is bounded below by any <math>
+                              <latex>l\in \RNr</latex>
+                           </math> with <math>
+                              <latex>l\leq 0</latex>
+                           </math>. It is bounded above by any <math>
+                              <latex>u\in \RNr</latex>
+                           </math> with <math>
+                              <latex>u\geq 1</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The elements of <math>
+                        <latex>T</latex>
+                     </math> are ratios of the form <math>
+                        <latex>\tfrac{x}{x+3}</latex>
+                     </math> with <math>
+                        <latex>x\geq 0</latex>
+                     </math>. So compare the size of numerator <math>
+                        <latex>x</latex>
+                     </math> to the size of the denominator <math>
+                        <latex>x+3</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The set <math>
+                        <latex>\NNr</latex>
+                     </math> of natural numbers.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>The set <math>
+                        <latex>\ZNr</latex>
+                     </math> of integers</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>The set <math>
+                        <latex>\QNr</latex>
+                     </math> of rational numbers</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>The set <math>
+                        <latex>U:=\Set{ t\in \RNr \st t^2\leq 4}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>The set <math>
+                        <latex>V:=\Set{ s\in \RNr \st s^3\leq 8}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>The set <math>
+                        <latex>A:=\Set{ x\in \RNr \st \sin x \geq 0}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>The set <math>
+                        <latex>B:=\Set{ y\in \RNr \st \cos y \geq 2}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>In each of the problems below use the completeness axiom to show that there is exactly one number with the stated property. Then show that this number is not rational.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>a number <math>
+                        <latex>x</latex>
+                     </math> with <math>
+                        <latex>x^2=3</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>a number <math>
+                        <latex>s</latex>
+                     </math> with <math>
+                        <latex>s^2=5</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>If <math>
+                        <latex>t\in\NNr</latex>
+                     </math> is a prime number, a number <math>
+                        <latex>x</latex>
+                     </math> with <math>
+                        <latex>x^2=t</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

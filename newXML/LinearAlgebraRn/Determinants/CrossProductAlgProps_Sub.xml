@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_CrossProductAlgebraicProperties"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Explanation: Algebraic Properties of the Cross Product</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Let us analyze a bit what the equations describing the algebraic properties of the cross product actually say.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Short version</strong>
+               </para.body>
+            </para>
+            <ol type="i">
+               <li>
+                  <para>
+                     <para.body>The three equations in i. together say that the cross product operation is bilinear.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The equation in ii. says that the cross product is alternating.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body/>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Detailed version</strong>
+               </para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>The equation <math>
+                           <latex>\CrssPr{(\Vect{u}+\Vect{v})}{\Vect{y}} = (\CrssPr{ \Vect{u} }{ \Vect{y} }) + (\CrssPr{ \Vect{v} }{\Vect{y}})</latex>
+                        </math> says that the cross product is additive in the first variable.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The equation <math>
+                           <latex>\CrssPr{\Vect{u}}{(\Vect{x} + \Vect{y})} = (\CrssPr{ \Vect{u} }{ \Vect{x} }) + (\CrssPr{ \Vect{u} }{\Vect{y}})</latex>
+                        </math> says that the cross product is additive in the second variable.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The equations <math>
+                           <latex>\CrssPr{ (t\cdot \Vect{x}) }{ \Vect{y} } = t\cdot (\CrssPr{ \Vect{x} }{ \Vect{y} }) = \CrssPr{ \Vect{x} }{ (t\cdot \Vect{y}) }</latex>
+                        </math> say that the cross product commutes with scalar multiplication in each variable.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>Combined these equations say that the cross product is a linear function <math>
+                     <latex>\RNr[3]\to \RNr[3]</latex>
+                  </math> in each of its two variables.</para.body>
+            </para>
+            <para>
+               <para.body>The equation <math>
+                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = -(\CrssPr{ \Vect{y} }{ \Vect{x} })</latex>
+                  </math> says that the cross product switches its sign if we interchange the two vectors. So the cross product is an alternating function.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

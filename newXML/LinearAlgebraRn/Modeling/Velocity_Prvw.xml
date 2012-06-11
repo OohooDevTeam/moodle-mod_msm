@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_Velocity"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Velocity - Preview</title>
+   </titles>
+   <body>
+      <para>
+         <para.body>Let us begin with an illustration of a motion of a particle: the example below shows a particle moving along a parabola.</para.body>
+      </para>
+      <para>
+         <para.body>During its trip,  the particle changes its location at each instant. This change of location is characterized by the direction and the speed of the motion at that instant. Both data combined comprise the velocity at that instant. As velocity is characterized by direction and magnitude, we may represent it by a vector. Below you can see an illustration of the velocity vectors at two instants of this motion</para.body>
+      </para>
+      <media type="image" active="0" inline="0">
+         <img src="ims/VelocityVector01.gif"/>
+      </media>
+   </body>
+</unit>

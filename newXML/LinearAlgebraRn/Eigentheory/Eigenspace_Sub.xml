@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="EigenvectorSpace_Sub"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Eigenspace - Comments</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Subspace property of an eigenspace</strong>   Given an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>, the eigenspace <math>
+                     <latex>E_k</latex>
+                  </math> of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> with eigenvalue <math>
+                     <latex>\lambda_k</latex>
+                  </math> is a subvector space of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>. This is so because <math>
+                     <latex>E_k</latex>
+                  </math> is the null space of the matrix <math>
+                     <latex>(\Mtrx{A} - \IdMtrx[n])</latex>
+                  </math>, hence is the orthogonal complement of the row vectors of <math>
+                     <latex>(\Mtrx{A} - \IdMtrx[n])</latex>
+                  </math>, and this is a subspace of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Algebraic vs. geometric multiplicity</strong>   One can show that the algebraic and geometric multiplicity of an eigenvalue are related by the inequality</para.body>
+            </para>
+            <math.display>
+               <latex>1 \leq \text{geometric multiplicity} \leq \text{algebraic multiplicity}</latex>
+            </math.display>
+         </block.body>
+      </block>
+   </body>
+</unit>

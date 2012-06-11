@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_MonoEpiVectorEquation"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Mono-, epimorphism and vector equations</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Given a linear transformation <math>
+               <latex>L\from V\to W</latex>
+            </math> and <math>
+               <latex>\Vect{y}</latex>
+            </math> in <math>
+               <latex>W</latex>
+            </math> the following hold for the vector equation</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>L(\Vect{x})</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Vect{y}</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+      <part.theorem partid="MonoSolUnique">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>L</latex>
+                  </math> is a monomorphism if and only if for each <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>W</latex>
+                  </math> the equation above has at most one solution.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="EpiSolExists">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>L</latex>
+                  </math> is an epimorphism if and only if for each <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>W</latex>
+                  </math> the equation above has at least one solution.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>MonoSolUnique</part.ref>
+         </logic>
+         <caption>MonoSolUnique</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>L</latex>
+                  </math> is a monomorphism, suppose</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>EpiSolExists</part.ref>
+         </logic>
+         <caption>EpiSolExists</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We just need to recall the definition of <math>
+                     <latex>\Img{L}</latex>
+                  </math>: it is the collection of all those <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>W</latex>
+                  </math> for which there exists <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math> with <math>
+                     <latex>L(\Vect{x}) = \Vect{y}</latex>
+                  </math>. Thus, if <math>
+                     <latex>\Img{L} = W</latex>
+                  </math>, this means that the equation</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

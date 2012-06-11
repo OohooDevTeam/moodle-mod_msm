@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_SubSpace">
+	<title>Subvector space - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>A subvector space of <latex>\RNr[n]</latex> is a collection of vectors <latex>V</latex> containing the 0-vector and which is closed under vector addition and scalar multiplication of a vector in <latex>V</latex> by a number. Here is a visual interpretation of what this means.</para>
+			<ul>
+				<li><para>If <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are vectors in <latex>V</latex>, then <latex>\Vect{x}+\Vect{y}</latex> is also in <latex>V</latex>.</para></li>
+				<li><para>If <latex>\Vect{x}</latex> is a vector in <latex>V</latex>, and <latex>t</latex> is a number, then <latex>t \Vect{x}</latex> is also in <latex>V</latex>.</para></li>
+			</ul>
+			<figure>
+				<img src="ims/SubSpaceClosedAddition.gif"></img>
+				<caption>The sum of two vectors in <latex>V</latex> is again in <latex>V</latex>.</caption>
+			</figure>
+			<figure>
+				<img src="ims/SubSpaceClosedScalarMultiplication.gif"></img>
+				<caption>The scalar multiple of <latex>\Vect{x}</latex> by any number is again in <latex>V</latex>.</caption>
+			</figure>
+		</block>
+		<block>
+			<para>In contrast, here is a subset <latex>V</latex> of <latex>\RNr[2]</latex> which is not a subvector space.</para>
+			<figure>
+				<img src="ims/SubSetNotClosedAddition.gif"></img>
+			</figure>
+			<para>Indeed, there are (at least) two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex> whose sum <latex>\Vect{x} + \Vect{y}</latex> is not in <latex>V</latex>; i.e. this line is not closed under vector addition, hence is not a subvector space.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

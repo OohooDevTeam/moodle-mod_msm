@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_DirectionAnglesSum">
+	<caption>Sum of Cosines of Direction Angles</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_DirectionAnglesSum"/>
+		<info>
+			<para>An example for this proposition on the sum of cosines of direction angles</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>The sum of cosines of direction angles <latex>\omega_i</latex> of a nonzero vector <latex>\mathbf{x}</latex> in <latex>\RNr[n]</latex> satisfy</para>
+		
+		<math.display>
+			<latex>\cos^2 \omega_1\ +\ \cos^2 \omega_2\ +\ \cdots\ +\ \cos^2 \omega_n\ =\ 1</latex>
+		</math.display>
+	</statement>
+	
+	<proof>
+		<para>We know that the <latex>i</latex>-th direction angle of <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex> satisfies</para>
+		
+		<math.display>
+			<latex>\cos \omega_i = \dfrac{x_i}{ |\mathbf{x} | }</latex>
+		</math.display>
+		
+		<para>Therefore,</para>
+		
+		<math.display>
+			<latex>\cos^2 \omega_i\ =\ \dfrac{ x_{i}^{2} }{ |\mathbf{x}|^2 }\ =\ \dfrac{ x_{i}^{2} }{ x_{1}^{2}+\cdots + x_{n}^{2} }</latex>
+		</math.display>
+		
+		<para>Adding all of these terms up yields</para>
+		
+		<math.display>
+			<latex>\cos^{2} \omega_1 + \cdots + \cos^2 \omega_{n}^{2} = \dfrac{ x_{1}^{2}+\cdots + x_{n}^{2} }{ x_{1}^{2}+\cdots + x_{n}^{2} } = 1</latex>
+		</math.display>
+		
+		<para>This was to be shown.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixShapes"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Matrix Shapes: Exercises</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>How many nonzero entries can an <math>
+                     <latex>(n,n)</latex>
+                  </math> diagonal matrix have?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+                  <para>
+                     <para.body>An <math>
+                           <latex>(n,n)</latex>
+                        </math>-diagonal matrix can have at most <math>
+                           <latex>n</latex>
+                        </math> entries which are not <math>
+                           <latex>0</latex>
+                        </math>.</para.body>
+                  </para>
+               </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>A diagonal matrix is square shaped, and only entries in positions <math>
+                        <latex>(i,i)</latex>
+                     </math>, <math>
+                        <latex>1\leq i\leq n</latex>
+                     </math>, can be nonzero. There are precisely <math>
+                        <latex>n</latex>
+                     </math> such diagonal positions. Therefore such matrix can have at most <math>
+                        <latex>n</latex>
+                     </math> entries which are not <math>
+                        <latex>0</latex>
+                     </math>.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>How many nonzero entries can these upper triangular matrices have?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(2,2)</latex>
+                     </math> upper triangular matrices</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Such a matrix can have up to <math>
+                              <latex>3</latex>
+                           </math> nonzero entries</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(3,3)</latex>
+                     </math> upper triangular matrices</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Such a matrix can have up to <math>
+                              <latex>6</latex>
+                           </math> nonzero entries</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(4,4)</latex>
+                     </math> upper triangular matrices</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Such a matrix can have up to <math>
+                              <latex>10</latex>
+                           </math> nonzero entries</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(n,n)</latex>
+                     </math> upper triangular matrices</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Such a matrix can have up to <math>
+                              <latex>\frac{1}{2}\cdot n\cdot (n+1)</latex>
+                           </math> nonzero entries</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Look at the columns of an upper triangular matrix of size <math>
+                           <latex>(n,n)</latex>
+                        </math>. The first column can contain <math>
+                           <latex>1</latex>
+                        </math> nonzero entry. The second column can contain up to <math>
+                           <latex>2</latex>
+                        </math> nonzero entries. The third column can contain up to <math>
+                           <latex>3</latex>
+                        </math> nonzero entries, and so on until, finally, the <math>
+                           <latex>n</latex>
+                        </math>-th column can contain up to <math>
+                           <latex>n</latex>
+                        </math> nonzero entries.</para.body>
+                  </para>
+					
+					             <para>
+                     <para.body>Therefore, an <math>
+                           <latex>(n,n)</latex>
+                        </math>-matrix can contain up to</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>1+2+3+\cdots+n\ =\ \dfrac{n\cdot (n+1)}{2}</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>nonzero entries.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

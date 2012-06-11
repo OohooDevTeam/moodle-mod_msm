@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_DetUpperTriangular"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Determinant of an upper triangular matrix</caption>
+   <associate type="Comment">
+      <info>
+         <para>
+            <para.body>In other words, the determinant of an upper triangular matrix is just the product of its diagonal entries.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Example">
+      <info>
+         <info.caption>
+            <caption>Example</caption>
+         </info.caption>
+         <math.display>
+            <latex>
+					
+\det\, 
+\left[
+\begin{array}{rrr}
+7 &amp; 91 &amp; -77 \\
+0 &amp; -3 &amp; 304 \\
+0 &amp; 0 &amp; 2
+\end{array}
+\right]\ =\ 7\cdot (-3)\cdot 2\ =\ -42
+
+				</latex>
+         </math.display>
+      </info>
+   </associate>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment on the strength of this proposition</caption>
+         </info.caption>
+         <para>
+            <para.body>To be able to better appreciate the substance of this proposition here is an estimate of the computational effort required if one wants to evaluate determinants of large matrices with the cofactor method.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <math.display>
+         <latex>
+				
+\det\, 
+\left[
+\begin{array}{cccc}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+0 &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; 0 &amp; a_{nn}
+\end{array}
+\right]\ =\ a_{11}\, a_{22}\, \cdots \, a_{nn}
+
+			</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We prove this claim by induction on the size of the upper triangular matrix:</para.body>
+            </para>
+            <para>
+               <para.body>If <math>
+                     <latex>n=1</latex>
+                  </math>
+               </para.body>
+            </para>
+            <math.display>
+               <latex>\det [a_{11}] = a_{11}</latex>
+            </math.display>
+            <para>
+               <para.body>as claimed.</para.body>
+            </para>
+            <para>
+               <para.body>So assume now that the claim holds for some <math>
+                     <latex>n\geq 1</latex>
+                  </math>. – This is called the ‘induction hypothesis’. Under this assumption, we need to show that it holds for any upper triangular <math>
+                     <latex>(n+1)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. Indeed,</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\aligned
+\det(\Mtrx{A})\ &amp;=\ 
+\det\, 
+\left[
+\begin{array}{cccc}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1,n+1} \\
+0 &amp; a_{22} &amp; \cdots &amp; a_{2,n+1} \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; 0 &amp; a_{n+1,n+1}
+\end{array}
+\right] \\
+	&amp;=\ a_{11}\cdot
+\det\, 
+\left[
+\begin{array}{ccc}
+a_{22} &amp; \cdots &amp; a_{2,n+1} \\
+0 &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; a_{n+1,n+1}
+\end{array}
+\right] + 0\cdot c_{21}(\Mtrx{A}) + \cdots + 0\cdot c_{n+1,1}(\Mtrx{A}) \\
+	&amp;=\ a_{11}\, a_{22}\ \cdots \ a_{n+1,n+1}
+\endaligned
+
+			</latex>
+            </math.display>
+            <para>
+               <para.body>In this last identity we have used the induction hypothesis: the matrix</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\left[
+\begin{array}{ccc}
+a_{22} &amp; \cdots &amp; a_{2,n+1} \\
+0 &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; a_{n+1,n+1}
+\end{array}
+\right]
+				
+			</latex>
+            </math.display>
+            <para>
+               <para.body>has size <math>
+                     <latex>(n,n)</latex>
+                  </math>. So the induction hypothesis applies, and it tells us that </para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\det\, \left[
+\begin{array}{ccc}
+a_{22} &amp; \cdots &amp; a_{2,n+1} \\
+0 &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; a_{n+1,n+1}
+\end{array}
+\right]\ =\ a_{22}\, a_{33}\cdots\, a_{n+1,n+1}
+				
+			</latex>
+            </math.display>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

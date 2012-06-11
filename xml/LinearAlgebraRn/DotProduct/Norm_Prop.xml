@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition" id="theo_NormAlgebraicProperties">
+	<caption>Algebraic Properties of the Norm Operation</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation of <latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex></caption>
+			<para>This property is intuitively quite plausible: The vector <latex>t\cdot \Vect{x}</latex> results from <latex>\Vect{x}</latex> by stretching or shrinking its length by a factor of <latex>|t|</latex>, followed by reversing it, in case <latex>t</latex> is negative. In either case, the length of the resulting vector is <latex>|t|\cdot |\Vect{x}|</latex>, and this is exactly what the formula claims.</para>
+		</info>
+	</associate>
+	
+	<associate Description="Example">
+		<info>
+			<caption>Example of a Unit Vector</caption>
+			<para>For example, the unit vector in the direction of <latex>\Vect{x}=(4,2,4)</latex> is</para>
+			<math.display>
+				<latex>\Vect{u} = \tfrac{1}{\abs{\Vect{x}} }\cdot \Vect{x} = \tfrac{1}{6}\cdot (4,2,4)</latex>
+			</math.display>
+		</info>
+	</associate>
+	
+	<associate Description="Comment">
+		<info>
+			<caption>Comment on nondegeneracy property of norm</caption>
+			<para>In other words: there is exactly one vector in <latex>\RNr[n]</latex> whose norm is <latex>0</latex>, namely the zero-vector.</para>
+		</info>
+	</associate>
+	
+	
+	<statement>
+		<para>For vectors <latex>\Vect{x}</latex>, and <latex>\Vect{y}</latex>, and numbers <latex>t</latex> in <latex>\RNr</latex> the following hold:<index.glossary>
+			<term>norm</term>
+			<term>of a vector: properties</term>
+			<info>
+				<para>Click for the proposition formulating basic properties of the norm operation</para>
+			</info>
+		</index.glossary>
+		</para>
+		
+		<part partid="Prop_NormCommutesScalars">
+			<para><latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex></para>
+		</part>
+		
+		<part partid="Prop_ConstructUnitVector">
+			<para>If <latex>\Vect{x}\neq \Vect{0}</latex>, the vector <latex>\Vect{u} := \tfrac{\Vect{x}}{|\Vect{x}|}</latex> has <subordinate>
+				<hot>length 1 and the same direction as <latex>\Vect{x}</latex>
+				</hot>
+				<info>
+					<para>Note how <latex>\Vect{u}</latex> is built: Start with the vector <latex>\Vect{x}</latex>. It has length <latex>|\Vect{x}|</latex>. Then divide <latex>\Vect{x}</latex> by its length. So you get a vector of length <latex>1</latex>.</para>
+				</info>
+			</subordinate>; we call <latex>\Vect{u}</latex> the unit vector in the direction of  <latex>\Vect{x}</latex>.<index.glossary>
+				<term>unit</term>
+				<term>vector</term>
+				<info>
+					<para>A vector of length <latex>1</latex>; click to see how to compute the unit vector in the direction of a given nonzero vector.</para>
+				</info>
+			</index.glossary>
+				
+			</para>
+		</part>
+		
+		<part partid="Prop_NormNonDegenerate">
+			<caption>Non degeneracy of norm</caption>
+			<para><latex>|\Vect{x}| = 0</latex> &nbsp; if and only if &nbsp; <latex>\Vect{x} = \Vect{0}</latex>.
+				<index.glossary>
+				<term>non-degenerate</term>
+				<term>norm</term>
+				<info>
+					<para>The non-degeneracy property of the norm operation asserts that, for a vector <latex>\Vect{x}</latex>, <latex>|\Vect{x}| = 0</latex> if and only if <latex>\Vect{x}</latex> is the zero vector. – Click to see why it is true.</para>
+				</info>
+			</index.glossary>
+			
+			<index.glossary>
+				<term>norm</term>
+				<term>non-degeneracy</term>
+				<info>
+					<para>The non-degeneracy property of the norm operation asserts that, for a vector <latex>\Vect{x}</latex>, <latex>|\Vect{x}| = 0</latex> if and only if <latex>\Vect{x}</latex> is the zero vector. – Click to see why it is true.</para>
+				</info>
+			</index.glossary>
+			</para>
+		</part>
+	</statement>
+	
+	<proof type="Proof">
+		<caption>
+			<partref>Prop_NormCommutesScalars</partref>
+			We verify this property by direct computation:
+		</caption>
+		<computation>
+			<left>|t\cdot \Vect{x}|</left>
+			<center>=</center>
+			<right>|t\cdot (x_1,\dots ,x_n)|</right>
+			<left></left>
+			<center>=</center>
+			<right>|(tx_1,\dots ,tx_n)|</right>
+			<left></left>
+			<center>=</center>
+			<right>\sqrt{(tx_1)^2+\cdots + (tx_n)^2}</right>
+			<left></left>
+			<center>=</center>
+			<right>\sqrt{t^2x_{1}^{2}+ \cdots + t^2x_{n}^{2}}</right>
+			<left></left>
+			<center>=</center>
+			<right>\sqrt{t^2(x_{1}^{2}+\cdots + x_{n}^{2})}</right>
+			<left></left>
+			<center>=</center>
+			<right>|t|\cdot \sqrt{x_{1}^{2}+\cdots +x_{n}^{2}}</right>
+			<left></left>
+			<center>=</center>
+			<right>|t|\cdot |\Vect{x}|</right>
+		</computation>
+
+		<para>as was to be shown.</para>
+		
+		
+		<caption>
+			<partref>Prop_ConstructUnitVector</partref>
+			We verify this property by direct computation:
+		</caption>
+		<para align="center">
+			<latex>\left| \frac{\Vect{x}}{|\Vect{x}|} \right|</latex> 
+			<subordinate>
+				<hot>
+					<latex>=</latex>
+				</hot>
+				<info>
+					<caption>Explanation</caption>
+					<para>Here we use the previous property of the norm operation: <latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex>.</para>
+				</info>
+			</subordinate> 
+			<latex>|1/|\Vect{x}| | \cdot |\Vect{x}|</latex> 
+			<subordinate>
+				<hot>
+					<latex>=</latex>
+				</hot>
+				<info>
+					<caption>Explanation</caption>
+					<para>Here we use that <latex>|\Vect{x}| &gt; 0</latex>
+					</para>
+				</info>
+			</subordinate> 
+			<latex>= 1</latex>
+		</para>
+		
+		
+		<caption>
+			<partref>Prop_NormNonDegenerate</partref>
+			Non degeneracy of norm:
+		</caption>
+		<para>If <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>, consider first the case where <latex>\Vect{x}= \Vect{0}</latex>. In this case <latex>|\Vect{x}| = \sqrt{0^2+\cdots +0^2} = 0</latex>. So, as expected: the zero vector has norm <latex>0</latex>.</para>
+		<para>For the converse, suppose <latex>\Vect{x}</latex> satisfies <latex>|\Vect{x}| = 0</latex>. We verify by direct computation that <latex>\Vect{x} = \Vect{0}</latex>. Indeed, we have</para>
+		<math.display>
+			<latex>0 = |\Vect{x}|^2 = x_{1}^{2} + \cdots + x_{n}^{2}</latex>
+		</math.display>
+		<para>Each of the squares on the right is greater than or equal to <latex>0</latex>. So, if the sum of these squares vanishes, so must each square by itself. Therefore <latex>x_1=\cdots =x_n=0</latex>; i.e. <latex>\Vect{x}=\Vect{0}</latex> as claimed.</para>
+	</proof>
+</theorem>

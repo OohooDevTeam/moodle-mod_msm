@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_SolutionsExist"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Infinitely many solutions - existence version</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Suppose a system of linear equations with <math>
+               <latex>n</latex>
+            </math> variables has 
+			<subordinate>
+               <hot>rank</hot>
+               <info>
+                  <para>
+                     <para.body>Recall: the rank of a system of linear equations is the number of leading <math>
+                           <latex>1</latex>
+                        </math>'s in the non-augmented part of its RREF-matrix</para.body>
+                  </para>
+               </info>
+            </subordinate>
+            <math>
+               <latex> r&lt;n </latex>
+            </math>. If its RREF-matrix has no leading 1 in the augmentation column, then this system has infinitely many solutions. Moreover, number values for all variables whose associated columns do not contain a leading <math>
+               <latex>1</latex>
+            </math> may be chosen freely, and each such set of choices determines unique values for the remaining variables which solve the system.</para.body>
+      </para>
+   </statement.theorem>
+</theorem>

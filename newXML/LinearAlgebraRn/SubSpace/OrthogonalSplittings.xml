@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_OrthogonalSplittings"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Orthogonal Splittings</title>
+      <plain.title>Orthogonal Splittings</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A splitting of a subspace <math>
+                     <latex>W</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> is given by two subspaces <math>
+                     <latex>U</latex>
+                  </math> and <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>W</latex>
+                  </math> such that</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>U</latex>
+                        </math> and <math>
+                           <latex>V</latex>
+                        </math> have only the zero vector in common, and</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The vectors of <math>
+                           <latex>U</latex>
+                        </math> and <math>
+                           <latex>V</latex>
+                        </math> combined span all of <math>
+                           <latex>W</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>Such a splitting is orthogonal if each vector of <math>
+                     <latex>U</latex>
+                  </math> is perpendicular to each vector of <math>
+                     <latex>V</latex>
+                  </math>. A convenient way to obtain an orthogonal splitting of <math>
+                     <latex>W</latex>
+                  </math> is via the orthogonal 
+				<subordinate>
+                     <hot>complement operation</hot>
+                     <crossref>
+                        <definition.ref definitionID="Def_OrthogonalComplement"/>
+                        <info>
+                           <para>
+                              <para.body>Look up the definition of the operation</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>.
+			Accordingly, we develop below the basic properties of this operation.</para.body>
+            </para>
+            <para>
+               <para.body>Using a splitting we can express each <math>
+                     <latex>\Vect{w}\in W</latex>
+                  </math> uniquely as <math>
+                     <latex>\Vect{w}=\Vect{u} + \Vect{v}</latex>
+                  </math> with <math>
+                     <latex>\Vect{u}\in U</latex>
+                  </math> and <math>
+                     <latex>\Vect{v}\in V</latex>
+                  </math>. We will see later how this simplifies the description of certain linear transformations, such as rotations, reflections, and projections.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_VectorSpaceSplitting">
+               <caption>(Orthogonal) Splitting</caption>
+               <def.body>
+                  <para>
+                     <para.body>A splitting of a subspace <math>
+                           <latex>W</latex>
+                        </math> of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> is given by two subspaces <math>
+                           <latex>U</latex>
+                        </math> and <math>
+                           <latex>V</latex>
+                        </math> of <math>
+                           <latex>W</latex>
+                        </math> satisfying
+				</para.body>
+                     <index.glossary>
+                        <term>splitting</term>
+                        <term>of a subspace</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <ul>
+                     <li>
+                        <para>
+                           <para.body>If <math>
+                                 <latex>\Vect{w}</latex>
+                              </math> in <math>
+                                 <latex>W</latex>
+                              </math> belongs to both <math>
+                                 <latex>U</latex>
+                              </math> and <math>
+                                 <latex>V</latex>
+                              </math>, then <math>
+                                 <latex>\Vect{w}=\Vect{0}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <subordinate>
+                                 <hot>
+                                    <math>
+                                       <latex>W=\span(U\cup V)</latex>
+                                    </math>
+                                 </hot>
+                                 <info>
+                                    <info.caption>What does this notation mean?</info.caption>
+                                    <para>
+                                       <para.body>
+                                          <math>
+                                             <latex>U\cup V</latex>
+                                          </math> is the union of the sets <math>
+                                             <latex>U</latex>
+                                          </math> and <math>
+                                             <latex>V</latex>
+                                          </math>; i.e. a vector belongs to <math>
+                                             <latex>U\cup V</latex>
+                                          </math> if it belongs to <math>
+                                             <latex>U</latex>
+                                          </math> or to <math>
+                                             <latex>V</latex>
+                                          </math>.</para.body>
+                                    </para>
+                                 </info>
+                              </subordinate>
+                           </para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>U\cup V</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>This denotes the union of the sets <math>
+                                          <latex>U</latex>
+                                       </math> and <math>
+                                          <latex>V</latex>
+                                       </math>. Thus an object belongs to <math>
+                                          <latex>(U\cup V)</latex>
+                                       </math> if it belongs to <math>
+                                          <latex>U</latex>
+                                       </math> or to <math>
+                                          <latex>V</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                        </para>
+                     </li>
+                  </ul>
+                  <para>
+                     <para.body>In this case we write <math>
+                           <latex>W=U\dotplus V</latex>
+                        </math>. Such a splitting of <math>
+                           <latex>W</latex>
+                        </math> is called orthogonal if <math>
+                           <latex>\DotPr{ \Vect{u} }{ \Vect{v} } = 0</latex>
+                        </math> for each <math>
+                           <latex>\Vect{u}</latex>
+                        </math> in <math>
+                           <latex>U</latex>
+                        </math> and each <math>
+                           <latex>\Vect{v}</latex>
+                        </math> in <math>
+                           <latex>V</latex>
+                        </math>.
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>W=U\dotplus V</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>Denotes a splitting of <math>
+                                    <latex>W</latex>
+                                 </math> with subspaces <math>
+                                    <latex>U</latex>
+                                 </math> and <math>
+                                    <latex>V</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>orthogonal</term>
+                        <term>splitting of a subspace</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Given that <math>
+                     <latex>W</latex>
+                  </math> is the span of <math>
+                     <latex>U</latex>
+                  </math> and <math>
+                     <latex>V</latex>
+                  </math>, we know that every <math>
+                     <latex>\Vect{w}\in W</latex>
+                  </math> can be expressed as <math>
+                     <latex>\Vect{w}=\Vect{u}+\Vect{v}</latex>
+                  </math> with <math>
+                     <latex>\Vect{u}\in U</latex>
+                  </math> and <math>
+                     <latex>\Vect{v}\in V</latex>
+                  </math>. The lemma below says that <math>
+                     <latex>\Vect{u}</latex>
+                  </math> and <math>
+                     <latex>\Vect{v}</latex>
+                  </math> are unique.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="SplittingUniqueSum_Thm.xml"/>
+            <para>
+               <para.body>A convenient tool to obtain orthogonal splittings is the orthogonal complement operation. So we develop basic properties of this operation next.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="OrthogonalComplementProps_Thm.xml"/>
+            <para>
+               <para.body>Given a subspace <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>W</latex>
+                  </math>, we want to be able to split a vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> of <math>
+                     <latex>W</latex>
+                  </math> as <math>
+                     <latex>\Vect{x} = \Vect{v} + \Vect{c}</latex>
+                  </math>, with <math>
+                     <latex>\Vect{v}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>\Vect{c}</latex>
+                  </math> in <math>
+                     <latex>V^{\bot}</latex>
+                  </math>. The following definition of orthogonal projection is the key.</para.body>
+            </para>
+            <def type="Definition" id="Def_ProjectionOperator">
+               <caption>Orthogonal projection</caption>
+               <def.body>
+                  <para>
+                     <para.body>Given subspaces <math>
+                           <latex>V\subseteq W</latex>
+                        </math> of <math>
+                           <latex>\RNr[n]</latex>
+                        </math>, the orthogonal projection of <math>
+                           <latex>W</latex>
+                        </math> onto <math>
+                           <latex>V</latex>
+                        </math> is
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>\pr_V</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>Orthogonal projection of a subspace <math>
+                                    <latex>W</latex>
+                                 </math> of <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> onto a subspace <math>
+                                    <latex>V</latex>
+                                 </math> of <math>
+                                    <latex>W</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>orthogonal</term>
+                        <term>projection</term>
+                        <info>
+                           <para>
+                              <para.body>Of a subspace <math>
+                                    <latex>W</latex>
+                                 </math> of <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> onto a subspace <math>
+                                    <latex>V</latex>
+                                 </math> of <math>
+                                    <latex>W</latex>
+                                 </math>. – Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>\pr_V\from W \longrightarrow V,\quad \pr_V(\Vect{x}) := (\DotPr{ \Vect{x} }{ \Vect{b}_1 })\Vect{b}_1 + \cdots + (\DotPr{ \Vect{x} }{ \Vect{b}_r })\Vect{b}_r</latex>
+                  </math.display>
+                  <para>
+                     <para.body>where <math>
+                           <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_r)</latex>
+                        </math> is an arbitrary ONB of <math>
+                           <latex>V</latex>
+                        </math>.</para.body>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Notice that the definition of the projection <math>
+                     <latex>\pr_V</latex>
+                  </math> involves an ONB for <math>
+                     <latex>V</latex>
+                  </math>. If <math>
+                     <latex>\Dim{V}\geq 2</latex>
+                  </math>, it will have infinitely many ONB's. So we face the question: ‘does a different ONB yield a different projection operator?’ Fortunately, this is not the case. Indeed, the following lemma confirms that all ONB's yield the same projection operation.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="OrthoProjWellDefined_Thm.xml"/>
+            <para>
+               <para.body>We now show that every subspace <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>W</latex>
+                  </math>, together with its orthogonal complement <math>
+                     <latex>V^{\bot}</latex>
+                  </math> form an orthogonal splitting of <math>
+                     <latex>W</latex>
+                  </math>.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="OrthoSplit_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="OrthoSplit1_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="PerpPerpSpan_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_OrthogonalSplittings"/>
+   </studymaterials>
+</unit>

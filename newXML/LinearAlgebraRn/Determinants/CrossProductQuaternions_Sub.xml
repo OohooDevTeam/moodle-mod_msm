@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_CrossProductQuaternions"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Cross Product and Quaternion Number System</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>There is a notational convention, used by engineers and physicists, which may make the formula for the cross product a little easier to remember. Let us name the standard coordinate vectors of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> as.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>\Vect{i}:=(1,0,0)</latex>
+                  </math>,   <math>
+                     <latex>\Vect{j}:= (0,1,0)</latex>
+                  </math>,   <math>
+                     <latex>\Vect{k}:=(0,0,1)</latex>
+                  </math>
+               </para.body>
+            </para>
+            <para>
+               <para.body>Now a vector <math>
+                     <latex>\Vect{z}=(a,b,c)</latex>
+                  </math> can be written as <math>
+                     <latex>\Vect{z} = a \Vect{i} + b \Vect{j} + c \Vect{k}</latex>
+                  </math>. The formula for the cross product results from 
+				<subordinate>
+                     <hot>symbolically</hot>
+                     <info>
+                        <info.caption>Comment on ‘symbolically’</info.caption>
+                        <para>
+                           <para.body>Let us be clear: Strictly speaking, the proposed determinant does not exist, as the entries in the first column are not numbers. However, nothing can stop us from applying the formula for evaluating <math>
+                                 <latex>(3,3)</latex>
+                              </math>-determinants to the symbols appearing in the proposed matrix. Magically the formula for the cross product results. Only now we remember that <math>
+                                 <latex>\Vect{i}</latex>
+                              </math>, <math>
+                                 <latex>\Vect{j}</latex>
+                              </math>, and <math>
+                                 <latex>\Vect{k}</latex>
+                              </math> are vectors in <math>
+                                 <latex>\RNr[3]</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+				evaluating the determinant below along the first column. Here <math>
+                     <latex>\Vect{x} = (x_1,y_1,z_1)</latex>
+                  </math> and <math>
+                     <latex>\Vect{y} = (y_1,y_2,y_3)</latex>
+                  </math>.</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\aligned
+\CrssPr{ \Vect{x} }{ \Vect{y} }\ &amp;=\ \det
+\left[
+\begin{array}{ccc}
+\Vect{i} &amp; x_1 &amp; y_1 \\
+\Vect{j} &amp; x_2 &amp; y_2 \\
+\Vect{k} &amp; x_3 &amp; y_3
+\end{array}
+\right] \\
+	&amp;=\ \det
+\left[
+\begin{array}{cc}
+x_2 &amp; y_2 \\
+x_3 &amp; y_3
+\end{array}
+\right]\Vect{i}\ +\ 
+(-1)\det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_3 &amp; y_3
+\end{array}
+\right] \Vect{j}\ +\ 
+\det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2
+\end{array}
+\right] \Vect{k} \\
+	&amp;=\ (x_2y_3-x_3y_2 , -(x_1y_3-x_3y_1) , x_1y_2 - x_2y_1)
+\endaligned
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>Recalling that, for a square matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>, <math>
+                     <latex>\det(\Mtrx{A}) = \det(\Mtrx{A}^T)</latex>
+                  </math>, we can alternatively express the above formula as follows:</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\aligned
+\CrssPr{ \Vect{x} }{ \Vect{y} }\ &amp;=\ \det
+\left[
+\begin{array}{ccc}
+\Vect{i} &amp; \Vect{j} &amp; \Vect{k} \\
+x_1 &amp; x_2 &amp; x_3 \\
+y_1 &amp; y_2 &amp;  y_3
+\end{array}
+\right] \\
+	&amp;=\ \det
+\left[
+\begin{array}{cc}
+x_2 &amp; y_2 \\
+x_3 &amp; y_3
+\end{array}
+\right]\Vect{i}\ +\ 
+(-1)\det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_3 &amp; y_3
+\end{array}
+\right] \Vect{j}\ +\ 
+\det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2
+\end{array}
+\right] \Vect{k} \\
+	&amp;=\ (x_2y_3-x_3y_2 , -(x_1y_3-x_3y_1) , x_1y_2 - x_2y_1)
+\endaligned
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>The <math>
+                     <latex>(3,3)</latex>
+                  </math>-determinant above has been evaluated along its first row.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Advanced Information</strong>   We sketch how the cross product can be defined using multiplication of quaternion numbers.</para.body>
+            </para>
+            <ol type="1">
+               <li>
+                  <para>
+                     <para.body>Write an element <math>
+                           <latex>(a,b,c,d)</latex>
+                        </math> of <math>
+                           <latex>\RNr[4]</latex>
+                        </math> as <math>
+                           <latex>a + b \Vect{i} +c \Vect{j} + d \Vect{k}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Define addition of quaternion numbers by</para.body>
+                  </para>
+                  <math.display>
+                     <latex>
+							
+\aligned
+&amp;(a + b \Vect{i} + c \Vect{j} + d \Vect{k})\ +\ (w + x \Vect{i} + y \Vect{j} + z \Vect{k})\ = \\
+&amp;\qquad (a+w) + (b+x) \Vect{i} + (c+y)\Vect{j} + (d+z)\Vect{k}
+\endaligned
+
+						</latex>
+                  </math.display>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Define multiplication of quaternion numbers by</para.body>
+                  </para>
+                  <math.display>
+                     <latex>
+							
+\aligned
+&amp;(a + b \Vect{i} + c \Vect{j} + d \Vect{k})\cdot (w + x \Vect{i} + y \Vect{j} + z \Vect{k})\ = \\
+&amp;\qquad (aw-bx-cy-dz) + (ax+bw+cz-dy) \Vect{i} + (ay+cw-bz+dx)\Vect{j} + (az+dw+by-cx)\Vect{k}
+\endaligned
+
+						</latex>
+                  </math.display>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Define the imaginary part of <math>
+                           <latex>\Vect{u}=a+b \Vect{i} +c \Vect{j} + d \Vect{k}</latex>
+                        </math> by</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Im(\Vect{u})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>b \Vect{i} +c \Vect{j} + d \Vect{k}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Identify <math>
+                           <latex>\Vect{x} = (x,y,z)</latex>
+                        </math> in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> with the purely imaginary quaternion number <math>
+                           <latex>x \Vect{i} + y \Vect{j} + z \Vect{k}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>\Vect{x},\Vect{y}\in \RNr[3]</latex>
+                        </math>, a computation gives <math>
+                           <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Im (\Vect{x}\cdot \Vect{y})</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>In other words, the cross product of <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> results from interpreting <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> as quaternion numbers (as in 4.), multiplying them (as in 2.), and taking the imaginary part of the resulting quaternion number (as in 3.).</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

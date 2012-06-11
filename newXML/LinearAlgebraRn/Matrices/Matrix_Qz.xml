@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE quiz.pack
+  SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns="Compositor"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           id="Quz_MatrixTypes"
+           xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	  <title>Matrix Quiz</title>
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>
+				Which of the following matrices is of type <math>
+                  <latex>(2,3)</latex>
+               </math>?
+			</para.body>
+         </para>
+		    </question>
+		
+		    <choice>
+			      <answer>
+				        <math.display>
+					          <latex>
+						
+						\left[\begin{array}{rr}
+4 &amp; -1 \\
+0 &amp; 0 \\
+1 &amp; 6
+\end{array}\right]
+						
+					</latex>
+				        </math.display>
+			      </answer>
+			      <info>
+				        <para>
+               <para.body>This matrix has <math>
+                     <latex>3</latex>
+                  </math> rows and <math>
+                     <latex>2</latex>
+                  </math> columns. So it is of size <math>
+                     <latex>(3,2)</latex>
+                  </math>. – Not the correct answer!</para.body>
+            </para>
+			      </info>
+		    </choice>
+		    <choice>
+			      <answer>
+				        <math.display>
+					          <latex>
+						
+						\left[\begin{array}{rrr}
+1 &amp; 3 &amp; 2 \\
+3 &amp; 1 &amp; 2
+\end{array}\right]
+						
+					</latex>
+				        </math.display>
+			      </answer>
+			      <info>
+				        <para>
+               <para.body>This matrix has <math>
+                     <latex>2</latex>
+                  </math> rows and <math>
+                     <latex>3</latex>
+                  </math> columns. So it is of size <math>
+                     <latex>(2,3)</latex>
+                  </math>. – So it is the correct answer to this question!</para.body>
+            </para>
+			      </info>
+		    </choice>
+		    <choice>
+			      <answer>
+				        <math.display>
+					          <latex>
+						
+						\left[\begin{array}{rrr}
+4 &amp; -4 &amp; 1 \\
+3 &amp; 2 &amp; 3 \\
+1 &amp; -3 &amp; 6
+\end{array}\right]
+						
+					</latex>
+				        </math.display>
+			      </answer>
+			      <info>
+				        <para>
+               <para.body>This matrix has <math>
+                     <latex>3</latex>
+                  </math> rows and <math>
+                     <latex>3</latex>
+                  </math> columns. So it is of size <math>
+                     <latex>(3,3)</latex>
+                  </math>. – Not the correct answer to this question!</para.body>
+            </para>
+			      </info>
+		    </choice>
+	  </quiz>
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>What is the size the following matrix?</para.body>
+         </para>
+			
+			      <math.display>
+				        <latex>
+					
+					\left[\begin{array}{rrrrrrr}
+6 &amp; 5 &amp; 3 &amp; 12 &amp; 19 &amp; 403 &amp; 121 \\
+3 &amp; 0 &amp; 0 &amp; 1 &amp; 21 &amp; -12 &amp; 11 \\
+1 &amp; 1 &amp; 2 &amp; 2 &amp; 4 &amp; 4 &amp; 8
+\end{array}\right]
+					
+				</latex>
+			      </math.display>
+		    </question>
+		    <choice>
+			      <answer>
+				        <para>
+               <para.body>This matrix is of size or type <math>
+                     <latex>(7,3)</latex>
+                  </math>
+               </para.body>
+            </para>
+			      </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! - No!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+				        <para>
+               <para.body>This matrix is of size or type <math>
+                     <latex>(3,7)</latex>
+                  </math>
+               </para.body>
+            </para>
+			      </answer>
+			      <info>
+            <para>
+               <para.body>Yes!</para.body>
+            </para>
+         </info>
+		    </choice>
+	  </quiz>
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Identyify the entry <math>
+                  <latex>a_{26}</latex>
+               </math> of the matrix</para.body>
+         </para>
+			
+			      <math.display>
+				        <latex>
+					
+					A := \left[\begin{array}{rrrrrrr}
+6 &amp; 5 &amp; 3 &amp; 12 &amp; 19 &amp; 403 &amp; 121 \\
+3 &amp; 0 &amp; 0 &amp; 1 &amp; 21 &amp; -12 &amp; 11 \\
+1 &amp; 1 &amp; 2 &amp; 2 &amp; 4 &amp; 4 &amp; 8
+\end{array}\right]
+					
+				</latex>
+			      </math.display>
+		    </question>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>0</para.body>
+            </para>
+         </answer>
+			      <info>
+				        <para>
+               <para.body>Sorry! No! – We have <math>
+                     <latex>a_{22} = 0 = a_{23}</latex>
+                  </math>. But <math>
+                     <latex>a_{26}</latex>
+                  </math> is something else.</para.body>
+            </para>
+			      </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>-12</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Correct! – <math>
+                     <latex>a_{26}</latex>
+                  </math> is the entry in the second row and the sixth column. So this is <math>
+                     <latex>-12</latex>
+                  </math>.</para.body>
+            </para>
+         </info>
+		    </choice>
+	  </quiz>
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Which positions of the matrix <math>
+                  <latex>A</latex>
+               </math> below are occupied by the number 1?</para.body>
+         </para>
+			      <math.display>
+				        <latex>
+					
+					A := \left[\begin{array}{rrrrrrr}
+6 &amp; 5 &amp; 3 &amp; 12 &amp; 19 &amp; 403 &amp; 121 \\
+3 &amp; 0 &amp; 0 &amp; 1 &amp; 21 &amp; -12 &amp; 11 \\
+1 &amp; 1 &amp; 2 &amp; 2 &amp; 4 &amp; 4 &amp; 8
+\end{array}\right]
+					
+				</latex>
+			      </math.display>
+		    </question>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>(1,4)</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>(1,7)</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>(2,4)</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Yes!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>(3,8)</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>(3,1)</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Yes!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>(3,5)</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>(3,2)</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Yes!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>(2,7)</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+	  </quiz>
+	
+</quiz.pack>

@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Basis2">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Bases for Row-, Column-, Nullspace</title>
+	<exercise>
+		<problem>
+			<para>Given the following matrix <latex>\Mtrx{A}</latex> and its RREF <latex>\Mtrx{B}</latex>, do the problems below.</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+\Mtrx{A} =
+\left[
+\begin{array}{rr}
+1 & 3 \\
+-2 & 3 \\
+-1 & -2 \\
+2 & 4
+\end{array}
+\right]\quad \text{and} \quad
+\Mtrx{B} =
+\left[
+\begin{array}{rr}
+1 & 0 \\
+0 & 1 \\
+0 & 0 \\
+0 & 0
+\end{array}
+\right]
+					]]>
+								</latex>
+							</math.display>
+		</problem>
+		<part>
+			<problem><para>What is <latex>\rk(\Mtrx{A})</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>\rk(\Mtrx{A}) = \rk(\Mtrx{B}) = 2</latex></para></answer>
+				<solution>
+					<para>The rank of <latex>\Mtrx{A}</latex> is defined to be the number of leading <latex>1</latex>'s in the RREF <latex>\Mtrx{B}</latex> of <latex>\Mtrx{A}</latex>. We conclude</para>
+					<math.display>
+						<latex>\rk(\Mtrx{A}) = \rk(\Mtrx{B}) = 2</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find a basis for the row space <latex>V</latex> of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>\EuScript{B} := \Set{ (1,0),(0,1) }</latex> is a basis for <latex>\RowSp{ \Mtrx{A} }</latex>.</para></answer>
+				<solution>
+					<para>A basis for <latex>V</latex> consists of the nonzero rows of the RREF of <latex>\Mtrx{A}</latex>. Therefore a basis for <latex>V</latex> is <latex>\EuScript{B} := \Set{ (1,0),(0,1) }</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the dimension of <latex>V</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>\dim(V) = 2</latex></para></answer>
+				<solution>
+					<para>The dimension of <latex>V</latex> is the number of vectors in any one of its bases. We found earlier that <latex>V</latex> has a basis with two vectors. Thus <latex>\dim(V) = 2</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find a basis for the column space <latex>W</latex> of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach version="1">
+				<answer><para>The columns of <latex>\Mtrx{A}</latex> form a basis of <latex>\ColSp{ \Vect{A} }</latex>.</para></answer>
+				<solution>
+					<para>Columns 1, 2 of , the RREF of <latex>\Mtrx{A}</latex>, have leading 1´s. Therefore, columns 1, 2 of , namely <latex>(1,2,1,2), (3,3,2,4)</latex>, form a basis for <latex>W</latex>.</para>
+				</solution>
+			</approach>
+			<approach>
+				<solution>
+					<para>The determinant test for linear independence shows that the column vectors of <latex>\Mtrx{A}</latex> are linearly independent, hence form a basis for the subspace <latex>W</latex> of <latex>\RNr[4]</latex> they span.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the dimension of <latex>W</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>\dim(W) = 2</latex></para></answer>
+				<solution><para>We found earlier that <latex>W</latex> has a basis of two vectors. Thus <latex>\dim(W) = 2</latex>.</para></solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find a basis for the null space of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer><para>The empty set is the only basis of <latex>\NllSp{ \Mtrx{A} }</latex>.</para></answer>
+				<solution>
+					<para><latex>\NllSp{ \Mtrx{A} } = \Set{ \Vect{0} }</latex>. So the empty set is its only basis.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find the dimension of the null space of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>\dim (\NllSp{ \Mtrx{A} }) = 0</latex></para></answer>
+				<solution>
+					<para>We found earlier that the empty set <latex>\emptyset</latex> is the only basis of <latex>\NllSp{ \Mtrx{A} }</latex>. The number of vectors in <latex>\NllSp{ \Mtrx{A} }</latex> is <latex>0</latex>. Thus <latex>\dim( \NllSp{ \Mtrx{A} } ) = \Mtrx{A}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find a basis for <latex>V^{\bot}</latex>.</para></problem>
+			<approach>
+				<answer><para>The empty set is the only basis of <latex>V^{\bot}</latex>.</para></answer>
+				<solution>
+					<para>The orthogonal complement of the row space of <latex>\Mtrx{A}</latex> is, by definition, the null space of <latex>\Mtrx{A}</latex>. We know from an earlier part that <latex>\emptyset</latex> is its only basis.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the dimension of <latex>V^{\bot}</latex></para></problem>
+			<approach>
+				<answer><para><latex>\dim( V^{\bot}) = 0</latex></para></answer>
+				<solution>
+					<para>We have seen that <latex>V^{\bot} = \Set{ \Vect{0} }</latex>. Therefore, <latex>\dim(V^{\bot}) = 0</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider the following matrix <latex>\Mtrx{A}</latex> and its RREF matrix <latex>\Mtrx{B}</latex>.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+1 & -1 & 5 & -2 & 2 \\
+2 & 3 & -2 & 5 & 1 \\
+0 & 5 & -12 & 9 & -3 \\
+1 & 4 & -7 & 8 & -1 \\
+\end{array}
+\right]\qquad
+\Mtrx{B} =
+\left[
+\begin{array}{rrrrr}
+1 & 0 & \tfrac{13}{5} & 0 & \tfrac{7}{5} \\
+0 & 1 & -\tfrac{12}{5} & 0 & -\tfrac{3}{5} \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem><para>Find a basis for the row space <latex>V</latex> of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para><latex>\EuScript{B} := \Set{ (5,0,13,0,7), (0,5,-12,0,-3),(0,0,0,1,0) }</latex> is a basis for <latex>\RowSp{ \Mtrx{A} }</latex>.</para>
+				</answer>
+				<solution>
+					<para>A basis for the row space of <latex>\Mtrx{A}</latex> consists of the nonzero rows of its RREF <latex>\Mtrx{B}</latex>, namely</para>
+					<math.display>
+						<latex>\Set{ (1,0,\tfrac{13}{5},0,\tfrac{7}{5}) , (0,1,-\tfrac{12}{5}, 0, -\tfrac{3}{5}), (0,0,0,1,0) }</latex>
+					</math.display>
+					<para>Now</para>
+					<computation>
+						<left>\span \Set{ (1,0,\tfrac{13}{5},0,\tfrac{7}{5}) }</left>
+						<center>=</center>
+						<right>\span \Set{ (5,0,13,0,7) }</right>
+						<left>\span \Set{ (0,1,-\tfrac{12}{5},0,-\tfrac{3}{5}) }</left>
+						<center>=</center>
+						<right>\span \Set{ (0,5,-12,0,-3) }</right>
+					</computation>
+					<para>Therefore, an alternate basis for <latex>\RowSp{ \Mtrx{A} }</latex> is</para>
+					<computation>
+						<left>\EuScript{B}</left>
+						<center>:=</center>
+						<right>\Set{ (5,0,13,0,7), (0,5,-12,0,-3),(0,0,0,1,0) }</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the dimension of <latex>V</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>\dim(V) = 3</latex></para></answer>
+				<solution>
+					<para>The dimension of <latex>\RowSp{ \Mtrx{A} }</latex> is the number of vectors in any of its bases. In a previous part of this problem we found that <latex>V</latex> has a basis of three vectors. Therefore,</para>
+					<math.display>
+						<latex>\dim\RowSp{ \Mtrx{A} } = 3</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find a basis for the row space of <latex>\Mtrx{B}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para><latex>\EuScript{B} := \Set{ (5,0,13,0,7), (0,5,-12,0,-3),(0,0,0,1,0) }</latex> is a basis for <latex>\RowSp{ \Mtrx{B} }</latex>.</para>
+				</answer>
+				<solution.hint>
+					<para>Recall how the row spaces of a matrix and its RREF are related.</para>
+				</solution.hint>
+				<solution>
+					<para>We now that <latex>\RowSp{\Mtrx{A}} = \RowSp{ \Mtrx{B} }</latex>. Therefore the basis</para>
+					<math.display>
+						<latex>\EuScript{B} := \Set{ (5,0,13,0,7), (0,5,-12,0,-3),(0,0,0,1,0) }</latex>
+					</math.display>
+					<para>for <latex>\RowSp{ \Mtrx{A} }</latex> is also a basis for <latex>\RowSp{ \Mtrx{B} }</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find a basis for the column space <latex>W</latex> of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>A basis for <latex>\ColSp{ \Mtrx{A} }</latex> is</para>
+					<computation>
+						<left>\EuScript{C}</left>
+						<center>:=</center>
+						<right>\Set{ (1,2,0,1), (-1,3,5,4),(-2,5,9,8) }</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>Columns 1, 2, and 4 of <latex>\Mtrx{B}</latex> have leading 1&rsquo;s. Therefore columns 1,2, and 4 of <latex>\Mtrx{A}</latex> form a basis <latex>\EuScript{C}</latex> of the column space of <latex>\Mtrx{A}</latex>. This means</para>
+					<computation>
+						<left>\EuScript{C}</left>
+						<center>:=</center>
+						<right>\Set{ (1,2,0,1), (-1,3,5,4),(-2,5,9,8) }</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the dimension of <latex>W</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>\dim \ColSp{ \Mtrx{A} } = 3</latex>.</para></answer>
+				<solution>
+					<para>We know that <latex>W</latex> has a basis consisting of 3 vectors. Therefore</para>
+					<math.display>
+						<latex>\dim \ColSp{ \Mtrx{A} } = 3</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find a basis for the column space of <latex>\Mtrx{B}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>A basis for the column space of <latex>\Mtrx{B}</latex> is</para>
+					<computation>
+						<left>\EuScript{D}</left>
+						<center>:=</center>
+						<right>\Set{ (1,0,0,0), (0,1,0,0), (0,0,1,0) }</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>A basis for the column space of <latex>\Mtrx{B}</latex> consists of those columns of <latex>\Mtrx{B}</latex> containing a leading <latex>1</latex>. This is so because <latex>\Mtrx{B}</latex> is already in RREF. Thus a basis for <latex>\ColSp{ \Mtrx{B} }</latex> is</para>
+					<computation>
+						<left>\EuScript{D}</left>
+						<center>:=</center>
+						<right>\Set{ (1,0,0,0), (0,1,0,0), (0,0,1,0) }</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find a basis for the null space of <latex>\Mtrx{A}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>A basis for <latex>\NllSp{ \Mtrx{A} }</latex> is</para>
+					<computation>
+						<left>\EuScript{E}</left>
+						<center>:=</center>
+						<right>\Set{ (-1,12,5,0,0), (-7,3,0,0,5) }</right>
+					</computation>
+				</answer>
+				<solution>
+					<para><latex>\NllSp{ \Mtrx{A} }</latex> is the solution set to the matrix equation <latex>\Mtrx{A}\Vect{x} = \Vect{0}</latex>. With <latex>\Vect{x}=(x,y,z,u,v)</latex> we read off of the RREF of <latex>\Mtrx{A}</latex>: <latex>z</latex> and <latex>v</latex> are arbitrary, and</para>
+					<computation>
+						<left>x</left>
+						<center>=</center>
+						<right>-\tfrac{13}{5}z - \tfrac{7}{5}v</right>
+						<left>y</left>
+						<center>=</center>
+						<right>\tfrac{12}{5} z + \tfrac{3}{5} v</right>
+						<left>u</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>Thus <latex>\Vect{x}</latex> is in <latex>\NllSp{ \Mtrx{A} }</latex> exactly when it is of the form</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>z(-13,12,1,0,0) + v(-7,3,0,0,1)</right>
+					</computation>
+					<para>with <latex>z</latex>and <latex>v</latex> in <latex>\RNr</latex> arbitrary. Therefore the vectors</para>
+					<computation>
+						<left>\Vect{s}</left>
+						<center>:=</center>
+						<right>(-13,12,5,0,0)</right>
+						<left>\Vect{t}</left>
+						<center>:=</center>
+						<right>(-7,3,0,0,5)</right>
+					</computation>
+					<para>span <latex>\NllSp{ \Mtrx{A} }</latex>. The determinant test shows that <latex>\Vect{s}</latex> and <latex>\Vect{t}</latex> are linearly independent. Therefore <latex>\Set{ \Vect{s} , \Vect{t} }</latex> is a basis for <latex>\NllSp{ \Mtrx{A} }</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find the dimension of <latex>\NllSp{ \Mtrx{A} }</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>\dim\, \NllSp{ \Mtrx{A} } = 2</latex></para></answer>
+				<solution>
+					<para>We know that <latex>\NllSp{ \Mtrx{A} }</latex> has a basis consisting of 2 vectors. Therefore</para>
+					<computation>
+						<left>\dim\, \NllSp{ \Mtrx{A} }</left>
+						<center>=</center>
+						<right>2</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find a basis for <latex>V^{\bot}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>A basis for <latex>V^{\bot}</latex> is</para>
+					<computation>
+						<left>\EuScript{E}</left>
+						<center>:=</center>
+						<right>\Set{ (-1,12,5,0,0), (-7,3,0,0,5) }</right>
+					</computation>
+				</answer>
+				<solution.hint><para>Recall the relationship between the null space of a matrix and the orthogonal complement of its row space.</para></solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider the following set <latex>S</latex> of vectors in <latex>\RNr[4]</latex>.</para>
+			<computation>
+				<left>\Vect{w}</left>
+				<center>=</center>
+				<right>(1,2,3,2)</right>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>(2,-1,1,4)</right>
+				<left>\Vect{y}</left>
+				<center>=</center>
+				<right>(-1,3,2,-2)</right>
+				<left>\Vect{z}</left>
+				<center>=</center>
+				<right>(0,1,1,0)</right>
+			</computation>
+		</problem>
+		<part>
+			<problem><para>From the vectors of <latex>S</latex> select a basis for <latex>\span(S)</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>A basis for <latex>\span(S)</latex> is <latex>\Set{ \Vect{w}, \Vect{x} }</latex>.</para>
+				</answer>
+				<solution>
+					<para>Use the given vectors as the column vectors of the matrix <latex>\Mtrx{A} = [ \Vect{w} \ \ \Vect{x} \ \ \Vect{y} \ \ \Vect{z} ]</latex>. The RREF of <latex>\Mtrx{A}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B} = 
+\left[
+\begin{array}{rrrr}
+1 & 0 & 1 & \tfrac{2}{5} \\
+0 & 1 & -1 & -\tfrac{1}{5} \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Columns 1 and 2 of <latex>\Mtrx{B}</latex> have leading <latex>1</latex>'s. Therefore a basis for <latex>\span(S)</latex> from the amongst the vectors in <latex>S</latex> consists of columns 1 and 2 of <latex>\Mtrx{A}</latex>; i. e. <latex>\Set{ \Vect{w} , \Vect{x} }</latex> is a basis for <latex>\span(S)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find a basis for <latex>S^{\bot}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>A basis for <latex>S^{\bot}</latex> is</para>
+					<computation>
+						<left>\EuScript{B}</left>
+						<center>:=</center>
+						<right>\Set{ (-1,-1,1,0) , (-2,0,0,1) }</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We know that the orthogonal complement of <latex>S</latex> is the null space of the matrix <latex>\Mtrx{T}</latex> whose rows are <latex>\Vect{w},\Vect{x},\Vect{y},\Vect{z}</latex>.</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{T} = 
+\left[
+\begin{array}{rrrr}
+1 & 2 & 3 & 2 \\
+0 & 1 & 1 & 0 \\
+2 & -1 & 1 & 4 \\
+-1 & 3 & 2 & -2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>The RREF of <latex>\Mtrx{T}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+U = 
+\left[
+\begin{array}{rrrr}
+1 & 0 & 1 & 2 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>We see that <latex>\Vect{x} = (u,x,y,z)</latex> belongs to the null space of <latex>\Mtrx{T}</latex> if and only if </para>
+					<computation>
+						<left>u</left>
+						<center>=</center>
+						<right>-y-2z</right>
+						<left>x</left>
+						<center>=</center>
+						<right>-y</right>
+					</computation>
+					<para>where <latex>y</latex> and <latex>z</latex> are arbitrary numbers. Thus <latex>\Vect{x}</latex> is in the null space if and only if </para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>y(-1,-1,1,0) + z(-2,0,0,1)</right>
+					</computation>
+					<para>This means that</para>
+					<computation>
+						<left>S^{\bot}</left>
+						<center>=</center>
+						<right>\span \Set{ (-1,-1,1,0) , (-2,0,0,1) }</right>
+					</computation>
+					<para>The determinant test shows that these two vectors are linearly independent. Therefore they form a basis for <latex>S^{\bot}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+		
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the matrices below find a basis for their row space and their column space.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+1 & 2 & 0 & 3 & 0 \\
+0 & 0 & 1 & 2 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<ol>
+						<li>
+							<para>A basis for the row space of <latex>\Mtrx{A}</latex> is <latex>S = \Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>, with</para>
+							<computation>
+								<left>\Vect{a}</left>
+								<center>:=</center>
+								<right>(1,2,0,3,0)</right>
+								<left>\Vect{b}</left>
+								<center>:=</center>
+								<right>(0,0,1,2,0)</right>
+								<left>\Vect{c}</left>
+								<center>:=</center>
+								<right>(0,0,0,0,1)</right>
+							</computation>
+						</li>
+						<li>
+							<para>A basis for the column space of <latex>\Mtrx{A}</latex> is <latex>T = \Set{ \Vect{u}, \Vect{v}, \Vect{w} }</latex>, with</para>
+							<computation>
+								<left>\Vect{u}</left>
+								<center>:=</center>
+								<right>(1,0,0)</right>
+								<left>\Vect{v}</left>
+								<center>:=</center>
+								<right>(0,1,0)</right>
+								<left>\Vect{w}</left>
+								<center>:=</center>
+								<right>(0,0,1)</right>
+							</computation>
+						</li>
+					</ol>
+				</answer>
+				<solution.hint><para>A convenient way to find a basis for the row / column space of a matrix is by transforming the matrix into RREF.</para></solution.hint>
+				<solution>
+					<para>The matrix <latex>\Mtrx{A}</latex> is already in RREF. Therefore a basis for its row space is given by all those rows of the RREF containing a leading <latex>1</latex>. Consequently, a basis for the row space of <latex>\Mtrx{A}</latex> is <latex>S = \Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>, with</para>
+					<computation>
+						<left>\Vect{a}</left>
+						<center>:=</center>
+						<right>(1,2,0,3,0)</right>
+						<left>\Vect{b}</left>
+						<center>:=</center>
+						<right>(0,0,1,2,0)</right>
+						<left>\Vect{c}</left>
+						<center>:=</center>
+						<right>(0,0,0,0,1)</right>
+					</computation>
+					<para>Thus the row space of <latex>\Mtrx{A}</latex> forms a subspace of <latex>\RNr[5]</latex> of dimension <latex>3</latex>.</para>
+					<para>Moreover, a basis for the column space of <latex>\Mtrx{A}</latex> is <latex>T = \Set{ \Vect{u}, \Vect{v}, \Vect{w} }</latex>, with</para>
+					<computation>
+						<left>\Vect{u}</left>
+						<center>:=</center>
+						<right>(1,0,0)</right>
+						<left>\Vect{v}</left>
+						<center>:=</center>
+						<right>(0,1,0)</right>
+						<left>\Vect{w}</left>
+						<center>:=</center>
+						<right>(0,0,1)</right>
+					</computation>
+					<para>Thus the column space of <latex>\Mtrx{A}</latex> is all of <latex>\RNr[3]</latex></para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+2 & 1 & 2 \\
+-2 & 2 & -2 \\
+2 & 4 & 2
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<ol>
+						<li>
+							<para>A basis for the row space of <latex>\Mtrx{A}</latex> is <latex>S = \Set{ \Vect{a}, \Vect{b} }</latex>, with</para>
+							<computation>
+								<left>\Vect{a}</left>
+								<center>:=</center>
+								<right>(1,0,1)</right>
+								<left>\Vect{b}</left>
+								<center>:=</center>
+								<right>(0,1,0)</right>
+							</computation>
+						</li>
+						<li>
+							<para>A basis for the column space of <latex>\Mtrx{A}</latex> is <latex>T = \Set{ \Vect{u}, \Vect{v} }</latex>, with</para>
+							<computation>
+								<left>\Vect{u}</left>
+								<center>:=</center>
+								<right>(2,-2,2)</right>
+								<left>\Vect{v}</left>
+								<center>:=</center>
+								<right>(1,2,4)</right>
+							</computation>
+						</li>
+					</ol>
+				</answer>
+				<solution>
+					<para>We transform <latex>\Mtrx{A}</latex> into RREF and find the matrix <latex>\Mtrx{B}</latex>:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+1 & 0 & 1 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>A basis for the row space is given by all those rows of <latex>\Mtrx{B}</latex> containing a leading <latex>1</latex>. Consequently, a basis for the row space of <latex>\Mtrx{A}</latex> is <latex>S = \Set{ \Vect{a}, \Vect{b} }</latex>, with</para>
+					<computation>
+						<left>\Vect{a}</left>
+						<center>:=</center>
+						<right>(1,0,1)</right>
+						<left>\Vect{b}</left>
+						<center>:=</center>
+						<right>(0,1,0)</right>
+					</computation>
+					<para>Thus the row space of <latex>\Mtrx{A}</latex> forms a subspace of <latex>\RNr[3]</latex> of dimension <latex>2</latex>.</para>
+					<para>Moreover, a basis for the column space of <latex>\Mtrx{A}</latex> is <latex>T = \Set{ \Vect{u}, \Vect{v} }</latex>, consisting of those columns of <latex>\Mtrx{A}</latex> in which <latex>\Mtrx{B}</latex> has a leading <latex>1</latex>:</para>
+					<computation>
+						<left>\Vect{u}</left>
+						<center>:=</center>
+						<right>(2,-2,2)</right>
+						<left>\Vect{v}</left>
+						<center>:=</center>
+						<right>(1,2,4)</right>
+					</computation>
+					<para>Thus the column space of <latex>\Mtrx{A}</latex> is a <latex>2</latex>-dimensional subspace of <latex>\RNr[3]</latex></para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+2 & 6 & -10 & 36 & 38 \\
+0 & 3 & -9 & 15 & 21 \\
+1 & 3 & -5 & 18 & 21 \\
+1 & 0 & 4 & 3 & 0
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<ol>
+						<li>
+							<para>A basis for the row space of <latex>\Mtrx{A}</latex> is <latex>S = \Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>, with</para>
+							<computation>
+								<left>\Vect{a}</left>
+								<center>:=</center>
+								<right>(1,0,4,3,0)</right>
+								<left>\Vect{b}</left>
+								<center>:=</center>
+								<right>(0,1,-3,5,0)</right>
+								<left>\Vect{c}</left>
+								<center>:=</center>
+								<right>(0,0,0,0,1)</right>
+							</computation>
+						</li>
+						<li>
+							<para>A basis for the column space of <latex>\Mtrx{A}</latex> is <latex>T = \Set{ \Vect{u}, \Vect{v}, \Vect{w} }</latex>, with</para>
+							<computation>
+								<left>\Vect{u}</left>
+								<center>:=</center>
+								<right>(2,0,1,1)</right>
+								<left>\Vect{v}</left>
+								<center>:=</center>
+								<right>(6,3,3,0)</right>
+								<left>\Vect{w}</left>
+								<center>:=</center>
+								<right>(38,21,21,0)</right>
+							</computation>
+						</li>
+					</ol>
+				</answer>
+				<solution.hint>
+					<para>The RREF of <latex>\Mtrx{A}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B}\ =\ 
+\left[
+\begin{array}{rrrrr}
+1 & 0 & 4 & 3 & 0 \\
+0 & 1 & -3 & 5 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the matrices below find a basis for their null space.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+1 & 2 & 0 & 3 & 0 \\
+0 & 0 & 1 & 2 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>A basis for the null space of <latex>\Mtrx{A}</latex> is <latex>N = \Set{ \Vect{a}, \Vect{b} }</latex>, with</para>
+					<computation>
+						<left>\Vect{a}</left>
+						<center>:=</center>
+						<right>(-2,1,0,0,0)</right>
+						<left>\Vect{b}</left>
+						<center>:=</center>
+						<right>(-3,0,-2,1,0)</right>
+					</computation>
+				</answer>
+				<solution.hint><para>The null space of <latex>\Mtrx{A}</latex> consists of all solutions of the vector equation <latex>\Mtrx{A}\cdot \Vect{x} = \Vect{0}</latex>.</para></solution.hint>
+				<solution>
+					<para>The matrix <latex>\Mtrx{A}</latex> is already in RREF. Therefore its null space consists of all vectors <latex>(u,v,x,y,z)</latex> with</para>
+					<math.display>
+						<latex>z=0,\quad x = -2y,\quad u=-2v - 3y</latex>
+					</math.display>
+					<para>while <latex>v</latex> and <latex>y</latex> are arbitrary. This means that the null space of <latex>\Mtrx{A}</latex> consists of all vectors of the form</para>
+					<computation>
+						<left>(u,v,x,y,z)</left>
+						<center>=</center>
+						<right>(-2v - 3y,v,-2y,y,0)</right>
+						<left></left>
+						<center>=</center>
+						<right>v\cdot (-2,1,0,0,0)\ +\ y\cdot (-3,0,-2,1,0)</right>
+					</computation>
+					<para>Thus, a basis for the null space of <latex>\Mtrx{A}</latex> is <latex>N = \Set{ \Vect{a}, \Vect{b} }</latex>, with</para>
+					<computation>
+						<left>\Vect{a}</left>
+						<center>:=</center>
+						<right>(-2,1,0,0,0)</right>
+						<left>\Vect{b}</left>
+						<center>:=</center>
+						<right>(-3,0,-2,1,0)</right>
+					</computation>
+					<para>This means that <latex>\NllSp{ \Mtrx{A} }</latex> is a 2-dimensional subvector space of <latex>\RNr[5]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+2 & 1 & 2 \\
+-2 & 2 & -2 \\
+2 & 4 & 2
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>A basis for the null space of <latex>\Mtrx{A}</latex> is <latex>S = \Set{ (1,0,-1) }</latex>.</para>
+				</answer>
+				<solution.hint>
+					<para>The RREF of <latex>\Mtrx{A}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+1 & 0 & 1 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+2 & 6 & -10 & 36 & 38 \\
+0 & 3 & -9 & 15 & 21 \\
+1 & 3 & -5 & 18 & 21 \\
+1 & 0 & 4 & 3 & 0
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>The RREF of <latex>\Mtrx{A}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B}\ =\ 
+\left[
+\begin{array}{rrrrr}
+1 & 0 & 4 & 3 & 0 \\
+0 & 1 & -3 & 5 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

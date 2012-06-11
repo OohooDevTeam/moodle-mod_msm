@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_KernelImage"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Linear Transformations II - Kernel and Image</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider the projection function</para.body>
+            </para>
+			         <math.display>
+				           <latex>P\from \RNr[5] \longrightarrow \RNr[2],\quad P(u,v,x,y,z) := (v,y)</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Show that <math>
+                        <latex>P</latex>
+                     </math> is a linear function</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>You have at least two approaches to answering this problem:</para.body>
+               </para>
+					          <ol>
+						            <li>
+                     <para>
+                        <para.body>Show that <math>
+                              <latex>P</latex>
+                           </math> satisfies the definition of a linear function; that is, it commutes with vector addition and with scalar multiplication.</para.body>
+                     </para>
+                  </li>
+						            <li>
+                     <para>
+                        <para.body>Show that <math>
+                              <latex>P</latex>
+                           </math> can be represented by a matrix.</para.body>
+                     </para>
+                  </li>
+					          </ol>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>One way to solve this problem is to show that <math>
+                           <latex>P</latex>
+                        </math> is represented by a matrix. Indeed, put</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A}\ :=\ 
+\left[
+\begin{array}{ccccc}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Then we find that for every <math>
+                           <latex>\Vect{x} = (u,v,x,y,z)</latex>
+                        </math> in <math>
+                           <latex>\RNr[5]</latex>
+                        </math>,</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+(v,y) = P(\Vect{x}) \ =\ \Mtrx{A}\ :=\ 
+\left[
+\begin{array}{ccccc}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+\end{array}
+\right]\, 
+\left[
+\begin{array}{r}
+u \\ v \\ x \\ y \\ z
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> which represents <math>
+                        <latex>P</latex>
+                     </math> with respect to standard coordinates.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>See the solution of the previous part of this problem.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>\Rnk{\Mtrx{A}}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Rnk{\Mtrx{A}} = 2</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall: the rank of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is the number of leading 1’s in the RREF of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the image of <math>
+                        <latex>P</latex>
+                     </math> and its dimension.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>The image of <math>
+                        <latex>P</latex>
+                     </math> consists of all those <math>
+                        <latex>(a,b)</latex>
+                     </math> in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> for which there exists <math>
+                        <latex>\Vect{x}</latex>
+                     </math> in <math>
+                        <latex>\RNr[5]</latex>
+                     </math> with</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>P(\Vect{x})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(a,b)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>You need to determine for which <math>
+                        <latex>(a,b)</latex>
+                     </math> in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>, there exists <math>
+                        <latex>\Vect{x}=(u,v,x,y,z)</latex>
+                     </math> in <math>
+                        <latex>\RNr[5]</latex>
+                     </math> with <math>
+                        <latex>P(\Vect{x}) = (a,b)</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that the image of <math>
+                           <latex>P</latex>
+                        </math> consists of all those <math>
+                           <latex>(a,b)</latex>
+                        </math> in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> for which there exists <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>\RNr[5]</latex>
+                        </math> with</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>P(\Vect{x})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(a,b)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Now, given such <math>
+                           <latex>(a,b)</latex>
+                        </math>, we find</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>P(0,a,0,b,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(a,b)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore every vector in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> belongs to <math>
+                           <latex>\Img{P}</latex>
+                        </math>; in other words</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Img{P}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\RNr[2]</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+			      <approach version="2">
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall that the dimension of <math>
+                        <latex>\Img{P}</latex>
+                     </math> equals the rank of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that the dimension of <math>
+                           <latex>\Img{P}</latex>
+                        </math> equals the rank of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>. Thus <math>
+                           <latex>\Img{P}</latex>
+                        </math> is a 2-dimensional subspace of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>. So</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Img{P}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\RNr[2]</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the column space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and its dimension.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall that the column space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> equals the image of <math>
+                        <latex>P</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\ColSp{\Mtrx{A}} = \Img{P} = \RNr[2]</latex>
+					             </math.display>
+					             <para>
+                     <para.body>using a previous part of this problem.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the kernel of <math>
+                        <latex>P</latex>
+                     </math> and its dimension.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall the definition of ‘kernel of <math>
+                        <latex>P</latex>
+                     </math>’: it is the collection of all those <math>
+                        <latex>(u,v,x,y,z)</latex>
+                     </math> in <math>
+                        <latex>\RNr[5]</latex>
+                     </math> with</para.body>
+               </para>
+					          <math.display>
+						            <latex>P(u,v,x,y,z) = (0,0)</latex>
+					          </math.display>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that the kernel of <math>
+                           <latex>P</latex>
+                        </math> is the collection of all those <math>
+                           <latex>(u,v,x,y,z)</latex>
+                        </math> in <math>
+                           <latex>\RNr[5]</latex>
+                        </math> with</para.body>
+                  </para>
+					             <math.display>
+						               <latex>P(u,v,x,y,z) = (0,0)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Thus <math>
+                           <latex>\Ker{P}</latex>
+                        </math> consists of all those <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>\RNr[5]</latex>
+                        </math> of the form</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(u,0,x,0,z)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus <math>
+                           <latex>\Ker{P}</latex>
+                        </math> has the ordered basis</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\EuScript{K} = (\StdBss{1},\StdBss{3},\StdBss{5})</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore,</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Dim{ \Ker{P} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>3</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>\NllSp{ \Mtrx{A} }</latex>
+                     </math> and its dimension.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall that <math>
+                        <latex>\NllSp{\Mtrx{A}}</latex>
+                     </math> equals <math>
+                        <latex>\Ker{P}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\NllSp{ \Mtrx{A} } = \Ker{P} = \Span{ \StdBss{1}, \StdBss{3}, \StdBss{5} }</latex>
+					             </math.display>
+					             <para>
+                     <para.body>So, in particular,</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Dim{ \NllSp{ \Mtrx{A} } } = \Dim{ \Ker{P} } = 3 = 5 - \Rnk{ \Mtrx{A} }</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Determine if <math>
+                        <latex>P</latex>
+                     </math> is a monomorphism, an epimorphism, or an isomorphism.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <ul>
+						                  <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>P</latex>
+                                 </math> is not a monomorphism.</para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>P</latex>
+                                 </math> is an epimorphism.</para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>P</latex>
+                                 </math> is not an isomorphism, as it is not a monomorphism.</para.body>
+                           </para>
+                        </li>
+					                </ul>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>You are given the matrix</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\Mtrx{A} :=
+\left[
+\begin{array}{rrrrr}
+1 &amp; 0 &amp; -1 &amp; 0 &amp; -4 \\
+-2 &amp; -1 &amp; 3 &amp; 1 &amp; 5 \\
+0 &amp; 1 &amp; -1 &amp; -1 &amp; 3 \\
+2 &amp; 1 &amp; -3 &amp; -1 &amp; -5
+\end{array}
+\right]
+
+				</latex>
+			         </math.display>
+			         <para>
+               <para.body>and the linear map <math>
+                     <latex>L\from \RNr[5] \to \RNr[4]</latex>
+                  </math> represented by <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> with respect to standard coordinates.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find the rank of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Rnk{\Mtrx{A}}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>2</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall: the rank of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is the number of leading <math>
+                        <latex>1</latex>
+                     </math>’s in the Row Reduced Echelon Form of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The RREF of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{rrrrr}
+1 &amp; 0 &amp; -1 &amp; 0 &amp; -4 \\
+0 &amp; 1 &amp; -1 &amp; -1 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This RREF has <math>
+                           <latex>2</latex>
+                        </math> leading <math>
+                           <latex>1</latex>
+                        </math>’s. Therefore,</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Rnk{\Mtrx{A}}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is <math>
+                        <latex>\dim(\RowSp{\Mtrx{A}})</latex>
+                     </math>, the dimension of the row space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\dim(\RowSp{\Mtrx{A}})</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>2</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dim(\RowSp{\Mtrx{A}})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Rnk{\Mtrx{A}} = 2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which vector space <math>
+                        <latex>\RNr[k]</latex>
+                     </math> contains the row space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> as a subvector space?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\RNr[5]</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Each row of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is a vector in <math>
+                           <latex>\RNr[5]</latex>
+                        </math>. The row space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is the space spanned by its row vectors. So the row space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is a subvector space of <math>
+                           <latex>\RNr[5]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is <math>
+                        <latex>\dim(\ColSp{\Mtrx{A}})</latex>
+                     </math>, the dimension of the column space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\dim(\ColSp{\Mtrx{A}})</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>2</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dim(\ColSp{\Mtrx{A}})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Rnk{\Mtrx{A}} = 2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which vector space <math>
+                        <latex>\RNr[k]</latex>
+                     </math> contains the column space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> as a subvector space?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\RNr[4]</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Each column of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is a vector in <math>
+                           <latex>\RNr[4]</latex>
+                        </math>. The column space is the span of the column vectors. Therefore the column space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is a subvector space of <math>
+                           <latex>\RNr[4]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find <math>
+                        <latex>\dim(\NllSp{\Mtrx{A}})</latex>
+                     </math>, the dimension of the null space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para> 
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Dim{\NllSp{ \Mtrx{A} }} = 5 - 2 = 3</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is <math>
+                        <latex>\Dim{\Ker{L}}</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Dim{ \Ker{L} } = \Dim{\NllSp{ \Mtrx{A} } } = 3</latex>
+                           </math>
+                        </para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is <math>
+                        <latex>\Dim{\Img{L}}</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Dim{\Img{L}} = \Dim{ \ColSp{A} } = 2</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider two linear transformations</para.body>
+            </para>
+			         <math.display>
+				           <latex>R\from U \longrightarrow V \quad\text{and}\quad S\from V \longrightarrow W</latex>
+			         </math.display>
+			         <para>
+               <para.body>If <math>
+                     <latex>(S\Comp R)\from U\to W</latex>
+                  </math> is the 0-map, i.e. <math>
+                     <latex>(S\Comp R)(\Vect{x}) = \Vect{0}</latex>
+                  </math> for all <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math>, show that every <math>
+                     <latex>\Vect{v}</latex>
+                  </math> in the image of <math>
+                     <latex>R</latex>
+                  </math> is in the kernel of <math>
+                     <latex>S</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider two linear transformations</para.body>
+            </para>
+			         <math.display>
+				           <latex>R\from \RNr[5] \longrightarrow \RNr[3] \quad\text{and}\quad S\from \RNr[3] \longrightarrow \RNr[5]</latex>
+			         </math.display>
+			         <para>
+               <para.body>Show that <math>
+                     <latex>S\Comp R</latex>
+                  </math> is not invertible.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We show that <math>
+                        <latex>\Ker{ S\Comp R } \neq \Vect{0}</latex>
+                     </math>: The dimension formula applied to <math>
+                        <latex>R</latex>
+                     </math> tells us that</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Dim{ \Ker{R} }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>5 - \Dim{ \Img{R} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Now, the image of <math>
+                        <latex>R</latex>
+                     </math> is contained in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>. Therefore,</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Dim{ \Img{R} }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>\leq</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>3</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Consequently,</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>5-\Dim{ \Img{R} }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>\geq 2</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>This means that there is <math>
+                        <latex>\Vect{x}\neq \Vect{0}</latex>
+                     </math> in <math>
+                        <latex>\RNr[5]</latex>
+                     </math> with <math>
+                        <latex>R(\Vect{x})=\Vect{0}</latex>
+                     </math>. But then</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>S\Comp R(\Vect{x})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>S(\Vect{0})</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{0}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>It follows that <math>
+                        <latex>(\S\Comp R)</latex>
+                     </math> fails to be a monomorphism. So it can not be an isomorphism.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider two linear transformations</para.body>
+            </para>
+			         <math.display>
+				           <latex>L\from \RNr[n] \longrightarrow \RNr[k] \quad\text{and}\quad T\from \RNr[k] \longrightarrow \RNr[n]</latex>
+			         </math.display>
+			         <para>
+               <para.body>If <math>
+                     <latex> k &lt; n </latex>
+                  </math>, show that <math>
+                     <latex>T\Comp L</latex>
+                  </math> is not invertible.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>Show that the kernel of <math>
+                     <latex>T\Comp L</latex>
+                  </math> must have positive dimension.</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose the linear map <math>
+                     <latex>L\from \RNr[6] \to \RNr[6]</latex>
+                  </math> has <math>
+                     <latex>\dim(\im(L))=4</latex>
+                  </math>. Show that <math>
+                     <latex>L^2:= L\Comp L</latex>
+                  </math> is not the 0-map.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>The function <math>
+                     <latex>T\from \RNr[n] \to \RNr</latex>
+                  </math> is defined by <math>
+                     <latex>T(x_1,\dots ,x_n) = x_1</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Show that <math>
+                        <latex>T</latex>
+                     </math> is a linear transformation.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find the kernel of <math>
+                        <latex>T</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find the image of <math>
+                        <latex>T</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

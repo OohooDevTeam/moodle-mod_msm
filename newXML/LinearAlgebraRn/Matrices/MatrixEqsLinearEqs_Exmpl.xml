@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_MatrixEqsLinearEqs"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>An Example of Turning Systems of Linear Equations into Matrix Equations</title>
+	  <caption xmlns="">Matrix Transposition</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Solve the two systems of linear equations below.</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{rcrcrcr}
+-x &amp; - &amp; y &amp; + &amp; 3z &amp; = &amp; 1 \\
+-2x &amp; + &amp; y &amp; - &amp; 3z &amp; = &amp; 4 \\
+-x &amp; - &amp; 2y &amp; + &amp; 2z &amp; = &amp; -1
+\end{array}\text{ \ and \ }
+\begin{array}{rcrcrcr}
+-x &amp; - &amp; y &amp; + &amp; 3z &amp; = &amp; 24 \\
+-2x &amp; + &amp; y &amp; - &amp; 3z &amp; = &amp; -8 \\
+-x &amp; - &amp; 2y &amp; + &amp; 2z &amp; = &amp; -14
+\end{array}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>First of all we observe that both systems of linear equations have the same coefficient matrix</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+A\ =\
+\left[\begin{array}{rrr}
+-1 &amp; -1 &amp; 3 \\
+-2 &amp;  1 &amp; -3 \\
+-1 &amp; -2 &amp; 2
+\end{array}
+\right]
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>This matrix is square-shaped and of size <math>
+                        <latex>(3,3)</latex>
+                     </math>. If it happens to be invertible, we can use its inverse to conveniently solve both systems. Indeed, we find</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+A^{-1}\ =\
+\dfrac{1}{12}\,
+\left[\begin{array}{rrr}
+-4 &amp; -4 &amp; 0 \\
+7  &amp;  1 &amp; -9 \\
+5  &amp;  -1 &amp; -3
+\end{array}\right]
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Consequently, the first system has the unique solution</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+\begin{bmatrix} x \\ y \\ z \end{bmatrix}\ =\ \dfrac{1}{12}\, 
+\left[\begin{array}{rrr}
+-4 &amp; -4 &amp; 0 \\
+7  &amp;  1 &amp; -9 \\
+5  &amp;  -1 &amp; -3
+\end{array}\right]
+\left[\begin{array}{r} 1 \\ 4 \\ -1 \end{array}\right]\ =\
+\dfrac{1}{3}\, \left[\begin{array}{r} -5 \\ 5 \\ 1 \end{array}\right]
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>While, the second system has the unique solution</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+\begin{bmatrix} x \\ y \\ z \end{bmatrix}\ =\ \dfrac{1}{12}\, 
+\left[\begin{array}{rrr}
+-4 &amp; -4 &amp; 0 \\
+7  &amp;  1 &amp; -9 \\
+5  &amp;  -1 &amp; -3
+\end{array}\right]
+\left[\begin{array}{r} 24 \\ -8 \\ -14 \end{array}\right]\ =\
+\dfrac{1}{6}\, \left[\begin{array}{r} -32 \\ 143 \\ 85  \end{array}\right]
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

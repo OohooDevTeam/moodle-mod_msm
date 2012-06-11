@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_SqueezeTheorem">
+	<caption>Squeeze Theorem</caption>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="Illu_SqueezeTheorem"/>
+		<info>
+			<para>The content of the Squeeze Theorem is actually quite intuitive. See an illustration of this.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Let <latex>(a_n)</latex>, <latex>(x_n)</latex>, and <latex>(b_n)</latex> be sequences satisfying
+			<index.glossary>
+				<term>squeeze theorem</term>
+				<info><para>A way of testing a sequence for convergence.</para></info>
+			</index.glossary>
+		</para>
+		<math.display>
+			<latex>a_n \leq x_n \leq b_n\qquad \text{for all $n\in\NNr$}</latex>
+		</math.display>
+		<para>If <latex>(a_n)</latex> and <latex>(b_n)</latex> converge with <latex>\lim_{n\to\infty} a_n = \lim_{n\to \infty} b_n</latex>, then <latex>(x_n)</latex> also converges, and</para>
+		<math.display>
+			<latex>\lim_{n\to \infty} a_n = \lim_{n\to \infty} x_n = \lim_{n\to \infty} b_n</latex>
+		</math.display>
+	</statement>
+	<proof>
+		<para>Set <latex>c:=\lim_{n\to \infty} a_n</latex>. We check that <latex>(x_n)</latex> satisfies the definition of convergence to <latex>c</latex>. So, let <latex><![CDATA[ \varepsilon > 0 ]]></latex> be given. Then we know</para>
+		<ul>
+			<li><para>There exists <latex>n_1\in\NNr</latex> such that <latex><![CDATA[ c-\varepsilon < a_n < c+\varepsilon]]></latex> for all <latex>n\geq n_1</latex>.</para></li>
+			<li><para>There exists <latex>n_2\in\NNr</latex> such that <latex><![CDATA[ c-\varepsilon < b_n < c+\varepsilon]]></latex> for all <latex>n\geq n_2</latex>.</para></li>
+		</ul>
+		<para>Now choose <latex>n_0 := \max \Set{ n_1 , n_2 }</latex>, and observe that for all <latex>n\geq n_0</latex>,</para>
+		<math.display>
+			<latex><![CDATA[ c-\varepsilon < a_n \leq x_n \leq b_n < c + \varepsilon ]]></latex>
+		</math.display>
+		<para>as was to be shown.</para>
+	</proof>
+</theorem>

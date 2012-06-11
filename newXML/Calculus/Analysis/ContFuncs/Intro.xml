@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para align="center">
+            <para.body>
+               <strong>Natura non facit saltus</strong> = <strong>Nature does not make jumps</strong>
+            </para.body>
+         </para>
+         <para>
+            <para.body>This 
+		<subordinate>
+                  <hot>ancient principle</hot>
+                  <companion>
+                     <unit.ref unitId="Intro_NaturaNonFacitSaltus"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>Some explanation of this ancient principle of natural philosophy.</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>
+		of natural philosophy also played a parental role for the mathematical concept of continuity. Indeed, amongst functions</para.body>
+         </para>
+         <para align="center">
+            <para.body>
+               <math>
+                  <latex>f\from J \longrightarrow \RNr</latex>
+               </math>,   where <math>
+                  <latex>J\subseteq \RNr</latex>
+               </math> is an interval,</para.body>
+         </para>
+         <para>
+            <para.body>the continuous ones are exactly those functions whose 
+		<subordinate>
+                  <hot>graph makes no jumps</hot>
+                  <companion>
+                     <unit.ref unitId="Illu_DisContinuousContinuousViaGraph"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>An illustration of this.</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>.</para.body>
+         </para>
+         <para>
+            <para.body>We offer two equivalent approaches to the mathematical concept of continuous functions. Here is a brief sketch:</para.body>
+         </para>
+         <ol>
+		          <li>
+			            <para>
+                  <para.body>The ‘epsilon-delta’ definition of continuity. At first sight it might appear a bit mysterious. It is, however, quite effective in that it is capable of vast generalization. This generalization is implemented within the theory of ‘Point Set Topology’.</para.body>
+               </para>
+		          </li>
+		          <li>
+			            <para>
+                  <para.body>The ‘limit definition’ of continuity. It is quite intuitive: a continuous function <math>
+                        <latex>f</latex>
+                     </math> must satisfy: whenever a sequence <math>
+                        <latex>(x_n)</latex>
+                     </math> converges to a point <math>
+                        <latex>x</latex>
+                     </math>, then the sequence <math>
+                        <latex>(f(x_n))</latex>
+                     </math> converges to <math>
+                        <latex>f(x)</latex>
+                     </math>. – In other words: <math>
+                        <latex>f(x)</latex>
+                     </math> can not jump away from the points <math>
+                        <latex>f(x_n)</latex>
+                     </math>.</para.body>
+               </para>
+		          </li>
+	        </ol>
+      </block.body>
+   </block>
+</intro>

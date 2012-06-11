@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_ProjectionVectorLine">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Orthogonal Projection of a Vector on a Line: Exercises</title>
+	<exercise>
+		<problem>
+			<caption>Concept comprehension</caption>
+			<para>In regards to the projection of a vector <latex>\Vect{x}</latex> along a nonzero vector <latex>\Vect{y}</latex>, which of the following are true?</para>
+		</problem>
+		<part>
+			<problem>
+				<para>This projection is a number in <latex>\RNr</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>No! If <latex><![CDATA[ n > 1 ]]></latex>, the projection is a vector. – If <latex>n=1</latex>, the projection vector may also be interpreted as a number.</para>
+				</answer>				
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>This projection is a vector.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>Yes! The projection vector is a multiple of the vector <latex>\Vect{y}</latex>.</para>
+				</solution>		
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>This projection is a line.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>No! We start with a vector, and projecting it onto a line <latex>L</latex> yields a single vector contained in <latex>L</latex>.</para>
+				</answer>		
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>If <latex>\pr_L(\Vect{x}) = \Vect{0}</latex>, what can you conclude about <latex>\Vect{x}</latex> in relation to the line  <latex>L</latex>?</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>We can conclude that <latex>\Vect{x}</latex> is perpendicular to <latex>L</latex>.</para>
+			</answer>
+			<solution>
+				<para>If <latex>\pr_L(\Vect{x}) = \Vect{0}</latex>, we claim that <latex>\Vect{x}</latex> is perpendicular to <latex>L</latex>. To see this, recall</para>
+				<math.display>
+					<latex>\pr_{L(\Vect{x})} = \dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{\DotPr{ \Vect{y} }{\Vect{y} } } \cdot \Vect{y}</latex>
+				</math.display>
+				<para>Given that <latex>\Vect{y} \neq \Vect{0}</latex>, the expression on the right hand side vanishes exactly when</para>
+				<math.display>
+					<latex>\dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{ \Vect{y} } } = 0</latex>
+				</math.display>
+				<para>Now this ratio takes the value <latex>0</latex> if and only if its numerator is <latex>0</latex>; i.e. <latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex>, and this happens exactly when <latex>\Vect{x}</latex> is perpendicular to <latex>\Vect{y}</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find the following orthogonal projections</para>
+		</problem>
+		<part>
+			<problem>
+				<para>of <latex>\Vect{x} = (4,6)</latex> onto the line in the direction of <latex>\Vect{y} = (-1,2)</latex>
+				</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>
+						<latex>\pr_{\Vect{y}}(\Vect{x}) = (8/5) \cdot (-1,2)</latex>.</para>
+				</answer>
+				<solution>            
+					<para>The formula for the projection of <latex>\Vect{x}</latex> along <latex>\Vect{y}</latex> yields</para>
+					<table align="center">
+						<row>
+							<cell align="right">
+								<para>
+									<latex>\pr_{\Vect{y}} (\Vect{x})</latex>
+								</para>
+							</cell>
+							<cell align="center">
+								<para>
+									<latex>=</latex>
+								</para>
+							</cell>
+							<cell align="left">
+								<para>
+									<latex>\dfrac{ \DotPr{ (4,6) }{ (-1,2) } }{ \DotPr{ (-1,2) }{ (-1,2) } } \cdot (-1,2)</latex>
+								</para>
+							</cell>
+						</row>
+						<row>
+							<cell align="right">
+								<para> </para>
+							</cell>
+							<cell align="center">
+								<para>
+									<latex>=</latex>
+								</para>
+							</cell>
+							<cell align="left">
+								<para>
+									<latex>\dfrac{ 8 }{ 5 } \cdot (-1,2)</latex>
+								</para>
+							</cell>
+						</row>
+					</table>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>of <latex>\Vect{x} = (-1,1)</latex> onto the line <latex>L</latex> consisting of all those points <latex>(x,y)</latex> in <latex>\RNr[2]</latex> satisfying <latex>x=-t</latex>, <latex>y = 3t</latex>, where <latex>t</latex> is in <latex>\RNr</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>
+						<latex>\pr_L(\Vect{x} = (2/5) \cdot (-1,3)</latex>
+					</para>
+				</answer>
+				<solution>
+					<para>We know that a point on <latex>L</latex> is of the form <latex>(x,y) = (-t,3t) = t\cdot (-1,3)</latex>. Therefore <latex>L</latex> has the direction of <latex>\Vect{y} = (-1,3)</latex>. So the require projection is given by</para>
+					<math.display>
+						<latex>\pr_{\Vect{y}}(\Vect{x}) = \dfrac{ (-1,1) \bullet (-1,3) }{ \DotPr{ (-1,3) }{ (-1,3) } } \cdot (-1,3) = \dfrac{2}{5} \cdot (-1,3)</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>of <latex>\Vect{x} = (2,3)</latex> onto the line of all those <latex>(x,y)</latex> in <latex>\RNr[2]</latex> satisfying <latex>2x - y = 0</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>
+						<latex>\pr_L(\Vect{x}) = (8/5)\cdot (1,2)</latex>
+					</para>
+				</answer>
+				<solution.hint>
+					<para>First find a nonzero vector in the direction of the given line. &ndash; There are infinitely many such vectors. Any one will do.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>A vector has the direction of the given line if it is perpendicular to any of the normal vectors to the line.</para>
+				</solution.hint>
+				<solution>
+					<para>A nonzero vector in the direction of <latex>L</latex> is <latex>\Vect{a} = (1,2)</latex>. Therefore the required projection vector is given by</para>
+					<math.display>
+						<latex>\pr_{\Vect{a}}(\Vect{x}) = \dfrac{ \DotPr{ (2,3) }{ (1,2) } }{ \DotPr{ (1,2) }{ (1,2) } } \cdot (1,2) = \dfrac{8}{5} \cdot (1,2)</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>of <latex>\Vect{x} = (2,1,2)</latex> onto the line <latex>L:\, t\cdot \Vect{a}</latex>, with <latex>\Vect{a}=(1,-1,3)</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>
+						<latex>\pr_L(\Vect{x}) = (7/11)\cdot (1,-1,3)</latex>
+					</para>
+				</answer>
+				<solution>
+					<para>The required projection is given by</para>
+					<table align="center">
+						<row>
+							<cell align="right">
+								<para>
+									<latex>\pr_L(\Vect{x})</latex>
+								</para>
+							</cell>
+							<cell align="center">
+								<para>
+									<latex>=</latex>
+								</para>
+							</cell>
+							<cell align="left">
+								<para>
+									<latex>\dfrac{ \DotPr{ (2,1,2) }{ (1,-1,3) } }{ \DotPr{ (1,-1,3) }{ (1,-1,3) } } \cdot (1,-1,3)</latex>
+								</para>
+							</cell>
+						</row>
+						<row>
+							<cell align="right">
+								<para> </para>
+							</cell>
+							<cell align="center">
+								<para>
+									<latex>=</latex>
+								</para>
+							</cell>
+							<cell align="left">
+								<para>
+									<latex>\dfrac{ 7 }{ 11} \cdot (1,-1,3)</latex>
+								</para>
+							</cell>
+						</row>
+					</table>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>of <latex>\Vect{x} = (1,-1,4)</latex> onto the line of all those <latex>(x,y,z)</latex> in <latex>\RNr[3]</latex> satisfying <latex>x = -3t</latex>, <latex>y = -2t</latex>, <latex>z = 4t</latex>, where <latex>t</latex> is in <latex>\RNr</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>
+						<latex>\pr_L(\Vect{x}) = (15/29) \cdot (-3,-2,4)</latex>
+					</para>
+				</answer>
+				<solution>
+					<para>The position vector of a point on <latex>L</latex> is of the form <latex>(x,y,z) = (-3t,-2t,4t) = t\cdot (-3,-2,4)</latex>. Therefore <latex>L</latex> has the direction of <latex>\Vect{a} = (-3,-2,4)</latex>, and the required projection is given</para>
+					<math.display>
+						<latex>\pr_{\Vect{a}} (\Vect{x}) = \dfrac{ \DotPr{ (1,-1,4) }{ (-3,-2,4) } } { \DotPr{ (-3,-2,4) }{ (-3,-2,4) } } \cdot (-3,-2,4) = \dfrac{ 15 }{ 29 } \cdot (-3,-2,4)</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	<exercise>
+		<caption>Orthogonalizing Formula</caption>
+		<problem>
+			<para>Given an nonzero vector <latex>\Vect{a}</latex> and an arbitrary vector <latex>\Vect{b}</latex>, show that the vector</para>
+			<math.display>
+				<latex>\Vect{v} = \Vect{b} - \dfrac{ \DotPr{ \Vect{a} }{ \Vect{b} } }{ | \Vect{a} |^2 } \cdot \Vect{a}</latex>
+			</math.display>
+			<para>satisfies <latex>\pr_{\Vect{a}}(\Vect{v}) = \Vect{0}</latex>.</para>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>Vector <latex>\Vect{ v }</latex> looks complicated. However, to test if its projection along <latex>\Vect{a}</latex> vanishes amounts to testing if <latex>\Vect{a}</latex> and <latex>\Vect{v}</latex> are perpendicular. To do this, we check if the dot product <latex>\DotPr{ \Vect{a} }{ \Vect{v} }</latex> is <latex>0</latex>.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>Use the rules for computing with dot products to show that the dot product of <latex>\Vect{v}</latex> by <latex>\Vect{a}</latex> is <latex>0</latex>.</para>
+			</solution.hint>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Suppose <latex>\Vect{a}\neq \Vect{0}</latex>. If <latex>\pr_{\Vect{a}}(\Vect{v}) = \Vect{0} = \pr_{\Vect{a}}(\Vect{w})</latex>, do the following:</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that <latex>\pr_{\Vect{a}}(\Vect{v}+\Vect{w}) = \Vect{0}</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\pr_{\Vect{a}}(\Vect{v}+\Vect{w})</left>
+						<center>=</center>
+						<right>\dfrac{ \DotPr{ \Vect{a} }{ (\Vect{v} + \Vect{w} )}}{ \DotPr{ \Vect{a} }{\Vect{a}} } \cdot \Vect{a}</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{ \DotPr{ \Vect{a} }{ \Vect{v} } + \DotPr{ \Vect{a} }{ \Vect{w} }}{ \DotPr{ \Vect{a} }{\Vect{a}} } \cdot \Vect{a}</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{ \DotPr{ \Vect{a} }{ \Vect{v} }}{ \DotPr{ \Vect{a} }{\Vect{a}} } \cdot \Vect{a}\ +\ \dfrac{ \DotPr{ \Vect{a} }{ \Vect{w} } }{ \DotPr{ \Vect{a} }{\Vect{a}} } \cdot \Vect{a}</right>
+						<left></left>
+						<center>=</center>
+						<right>\pr_{\Vect{a}}(\Vect{v})\ +\ \pr_{\Vect{a}}(\Vect{w})</right>
+						<left></left>
+						<center>=</center>
+						<right>\Vect{0} + \Vect{0}</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Show that <latex>\pr_{\Vect{a}}(s\cdot \Vect{v}) = \Vect{0}</latex>, for all <latex>s</latex> in <latex>\RNr</latex>.</para>
+			</problem>
+			<approach>
+				<solution.hint><para>Adapt the argument given in the first part of the problem to the present situation.</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Show that <latex>\pr_{\Vect{a}}(s\cdot \Vect{v} + t\cdot \Vect{w}) = \Vect{0}</latex> for all <latex>s,t\in \RNr</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+</exercise.pack>

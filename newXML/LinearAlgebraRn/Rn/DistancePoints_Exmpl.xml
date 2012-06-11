@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_DistancePoints"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Examples of Computing the Distance Between Points</title>
+	  <caption xmlns="">Distance between Points - Example</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the distance between the points <math>
+                  <latex>R(4,-1,11)</latex>
+               </math> and <math>
+                  <latex>Q(-2,6,4)</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math>.  
+			</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>According to the general formula for the distance between two points, we find</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+			       		\aligned
+ 					\Dstnc{R}{Q}\ &amp;=\ \sqrt{(-2-4)^2+(6-(-1))^2+(4-11)^2} \\
+ 					&amp;=\ \sqrt{36+49+49} \\
+ 					&amp;=\ \sqrt{134}
+ 					\endaligned
+ 					
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Note that we obtain the same answer if we reverse the roles of the points <math>
+                        <latex>P</latex>
+                     </math> and <math>
+                        <latex>Q</latex>
+                     </math>:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+			       		\aligned
+ 					\Dstnc{Q}{R}\ &amp;=\ \sqrt{(4-(-2))^2+((-1)-6)^2+(11-4)^2} \\
+ 					&amp;=\ \sqrt{36+49+49} \\
+ 					&amp;=\ \sqrt{134}
+ 					\endaligned
+ 					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the distance between the points <math>
+                  <latex>A(6,0,3,-1,5)</latex>
+               </math> and <math>
+                  <latex>B(1,-2,3,0,6)</latex>
+               </math> in <math>
+                  <latex>\RNr[5]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>According to the general formula for the distance between two points, we find</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+			       		\aligned
+ 					\Dstnc{B}{A}\ &amp;=\ \sqrt{(6-1)^2+(0-(-2))^2+(3-3)^2 + ((-1)-0)^2 + (5-6)^2} \\
+ 					&amp;=\ \sqrt{25+4+0+1+1} \\
+ 					&amp;=\ \sqrt{31}
+ 					\endaligned
+ 					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

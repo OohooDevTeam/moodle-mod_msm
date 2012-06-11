@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_ShearTransformation">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of Shear Transformations</title>
+	<caption>Shear Transformations</caption>
+	<showme>
+		<statement>
+			<para>Find the matrix representing the shear transformation <latex>S</latex> of <latex>\RNr[2]</latex>, parallel to the <latex>x</latex>-axis which transforms the vector <latex>\Vect{n} = (0,1)</latex> into the vector <latex>S(\Vect{n}) = (1,1)</latex>.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para><latex>\Vect{n}</latex> is a unit vector. Therefore the shear vector is</para>
+			
+			<math.display>
+				<latex>\Vect{s} = S(\Vect{n}) - \Vect{n} = (1,1) - (0,1) = (1,0)</latex>
+			</math.display>
+			
+			<figure>
+				<img src="ims/ShearR2_2.png"></img><!-- svg available -->
+			</figure>
+			
+			<para>To find the 
+				<subordinate>
+					<hot>matrix representing <latex>S</latex></hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_LinearMapGivesMatrix"/>
+						<para>Look up how to find the matrix representing a given linear map</para>
+					</crossref>
+				</subordinate>, we determine  the effect of <latex>S</latex> on the vectors  <latex>\StdBss{1}=(1,0)</latex> and <latex>\StdBss{2}=(0,1)</latex></para>
+			
+			<computation>
+				<left>S(1,0)</left>
+				<center>=</center>
+				<right>(1,0) + \left( \DotPr{(1,0)}{(0,1)}\right) \cdot \Vect{s} = (1,0)</right>
+				<left>S(0,1)</left>
+				<center>=</center>
+				<right>(1,1)</right>
+			</computation>
+			
+			<para>Therefore,</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+A = 
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>As in the example above we see that the general shear transformation of <latex>\RNr[2]</latex> parallel to the <latex>x</latex>-axis is described by</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+S(x,y) = 
+\left[
+\begin{array}{rr}
+1 & a \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>In particular, <latex>S</latex> leaves <latex>\StdBss{1}</latex> unchanged, and it shears <latex>\StdBss{2}</latex> into <latex>(0,1) + (a,0) = (a,1)</latex>. So the shear vector is <latex>\Vect{s} = (a,0)</latex>.</para>
+			
+			<figure>
+				<img src="ims/ShearR2_3.png"></img><!-- svg available -->
+			</figure>
+			
+		</statement>
+	</showme>
+	
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Similarly, the shear transformation of <latex>\RNr[3]</latex> parallel to the <latex>xy</latex>-plane with shear vector <latex>\Vect{s} = (a,b,0)</latex>  is given by</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+S\from \RNr[3] \longrightarrow \RNr[3],\quad S(x,y,z) =
+\left[
+\begin{array}{ccc}
+1 & 0 & a \\
+0 & 1 & b \\
+0 & 0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The picture below shows the effect of such a shear transformation on the unit cube of <latex>\RNr[3]</latex>.</para>
+			
+			<figure>
+				<img src="ims/Trafo_Shear3D.jpg"></img>
+			</figure>
+		</statement>
+	</showme>
+	
+</showme.pack>

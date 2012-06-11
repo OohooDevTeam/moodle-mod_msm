@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_Root2NotRational">
+	<title>Square Root of 2 is not a Rational Number</title>
+	<sub.page.body>
+		<block>
+			<para>According to the Theorem of Pythagoras the lengths of the sides of a  right triangle are related by the identity</para>
+			<computation>
+				<left>c^2</left>
+				<center>=	<info><para>Here <latex>c</latex> denotes the hypothenuse, i.e. the side opposite to the right angle, of the right triangle. </para></info></center>
+				<right>a^2 + b^2</right>
+			</computation>
+			<para>Therefore, in a square of edge length 1, we find for the length of the diagonal</para>
+			<computation>
+				<left>c^2</left>
+				<center>=</center>
+				<right>1^2 + 1^2 = 2</right>
+			</computation>
+			<para>which implies that <latex>c=\sqrt{2}</latex>.</para>
+			<figure>
+				<img src="ims/Square.png"></img><!-- svg available -->
+			</figure>
+			<para>Thus, from a geometric point of view, the number <latex>\sqrt{2}</latex> has a natural place in the number system. Yet, it is not the ratio of any two integers. One way to see this is by the following proof by contradiction:</para>
+			<para>The following argument will show that if there were integers <latex>a</latex> and <latex>b</latex> such that <latex>a/b = \sqrt{2}</latex>, with no common divisor in <latex>a,b</latex>, then <latex>a</latex> and <latex>b</latex> would have to be both even. But then <latex>a</latex> and <latex>b</latex> have the common divisor <latex>2</latex>, a contradiction, and so the assumption that <latex>\sqrt{2}</latex> is a ratio of two integers must be false.</para>
+			<para>To see this argument, let's analyze what happens if there were integers <latex>a</latex> and <latex>b</latex> satisfying <latex>a/b = \sqrt{2}</latex>. Through cancellation, we can then achieve that <latex>a</latex> and <latex>b</latex> have no common divisor. Now we would then have the following observations:</para>
+			<computation>
+				<left>\sqrt{2}</left>
+				<center>=</center>
+				<right>\dfrac{a}{b}</right>
+				<left>2</left>
+				<center>=</center>
+				<right>\dfrac{a^2}{b^2}</right>
+				<left>2b^2</left>
+				<center>=</center>
+				<right>a^2</right>
+			</computation>
+			<para>Now if <latex>a</latex> and <latex>b</latex> are integers, this means that <latex>a^2</latex> and, hence, <latex>a</latex> is even. So we know that <latex>a=2k</latex> and, hence, <latex>a^2=4k^2</latex>. Substituting in the last identity above, we find,</para>
+			<computation>
+				<left>2b^2</left>
+				<center>=</center>
+				<right>4k^2</right>
+				<left>b^2</left>
+				<center>=</center>
+				<right>2k^2</right>
+			</computation>
+			<para>Thus <latex>b^2</latex> and, hence, <latex>b</latex> are even. So we see that <latex>a</latex> and <latex>b</latex> have the common divisor <latex>2</latex>, a contradiction to the assumption that <latex>a</latex> and <latex>b</latex> have no common divisor.</para>
+		</block>
+		<block>
+			<para>Thus we have evidence that there are points on the number line which do not correspond to any ratio of integers. We call such numbers &lsquo;irrational&rsquo; for short.</para>
+		</block>
+		<block>
+			<para>Some reports about the discovery of irrational numbers paint quite a dramatic picture: among historians there is wide agreement that, within the school of Pythagorean philosophers, Hippasus of Metapontum discovered that <latex>\sqrt{2}</latex> was irrational. Up to that point, however, the Pythagoreans believed that every number was a ratio of integers. Hippasus' discovery contradicted this belief, and according to some reports he was punished by being drowned at sea.
+				<index.author>
+					<name>
+						<first>&nbsp;</first>
+						<last>Pythagoras</last>
+					</name>
+					<info>
+						<caption>Pythagoras</caption>
+						<para>Appears here as the leader of Greek philosophers who believed that every number was a ratio of integers.</para>
+					</info>
+				</index.author>
+				<index.author>
+					<name>
+						<first>&nbsp;</first>
+						<last>Hippasus of Metapontum</last>
+					</name>
+					<info>
+						<caption>Hippasus of Metapontum</caption>
+						<para>Appears here as a member of Greek philosophers, the Pythagoreans, who believed that every number was a ratio of integers. Hippasus shattered this belief by showing that <latex>\sqrt{2}</latex> is not a rational number.</para></info>
+				</index.author>
+			</para>
+		</block>
+	</sub.page.body>
+</sub.page>

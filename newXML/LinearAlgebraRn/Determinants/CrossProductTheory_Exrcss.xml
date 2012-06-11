@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_CrossProductTheory"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Cross Product Theory</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Show that, for arbitrary vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>, any scalar multiple <math>
+                     <latex>t\cdot (\CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+                  </math> of the cross product is perpendicular to both <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Show that, for arbitrary vectors <math>
+                     <latex>\Vect{u}</latex>
+                  </math>, <math>
+                     <latex>\Vect{v}</latex>
+                  </math>, and <math>
+                     <latex>\Vect{w}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>,</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\DotPr{ (\Vect{u} + \Vect{v} ) }{( \CrssPr{(\Vect{u} + \Vect{v})}{ \Vect{w} }) }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>0</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Show that, for arbitrary vectors <math>
+                     <latex>\Vect{u}</latex>
+                  </math>, <math>
+                     <latex>\Vect{v}</latex>
+                  </math>, and <math>
+                     <latex>\Vect{w}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>,</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\DotPr{ \Vect{u} }{ (\CrssPr{ \Vect{v} }{ \Vect{w} }) }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>-\DotPr{ \Vect{v} }{ (\CrssPr{ \Vect{u} }{ \Vect{w} }) }</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>Recall the formula which relates dot product, cross product, and determinant:</para.body>
+            </para>
+				        <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\DotPr{ \Vect{u} }{ (\CrssPr{ \Vect{v} }{ \Vect{w} }) }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\det[\Vect{u}\ \ \Vect{v}\ \ \Vect{w}]</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If <math>
+                     <latex>\Vect{a}</latex>
+                  </math> and <math>
+                     <latex>\Vect{b}</latex>
+                  </math> are orthonormal vectors in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> which lie in a hyperspace <math>
+                     <latex>H</latex>
+                  </math>, show that <math>
+                     <latex>\CrssPr{ \Vect{a} }{ \Vect{b} }</latex>
+                  </math> is a unit normal vector of <math>
+                     <latex>H</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+</exercise.pack>

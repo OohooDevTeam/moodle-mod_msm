@@ -1,0 +1,64 @@
+%
+%	Categorical / Simplicial Constructs
+%
+\newcommand{\Ord}{\mathbf{\Delta}}			% category of finite ordinals
+\newcommand{\Ordhy}{\mathbf{\Delta}\hy}		% category of finite ordinals with hyphen
+\newcommand{\Ordop}{\mathbf{\nabla}}		% opposite of the category of finite ordinals
+\newcommand{\Ordophy}{\mathbf{\nabla}\hy}	% opposite of the category of finite ordinals
+\newcommand{\Rng}{\text{\it $\cal R$\hskip -.1em ng}}	% category of rings
+\newcommand{\Set}{\text{\it $\cal S$\hskip -.1em et}\,}	% category of sets
+\newcommand{\cSet}{\Ordhy\Set}				% cosimplicial sets
+\newcommand{\sSet}{\Ordophy\Set}			% simplicial sets
+\newcommand{\scSet}{\Ordop\Ordhy\Set}		% simplicial cosimplicial sets
+\newcommand{\csSet}{\Ord\Ordophy\Set}		% cosimplicial simplicial sets
+%
+%	Named Categories
+\newcommand{\Ab}{\text{\it $\cal A$\hskip -.04em b}}			% Abelian Groups
+\newcommand{\Alg}{\text{\it $\cal A$\hskip -.04em lg}}			% Algebras
+\newcommand{\Ban}{\text{\it $\cal B$\hskip -.1em an}}			% Banach spaces
+\newcommand{\BanAlg}{\text{\it $\cal B$\hskip -.1em an$\cal A$\hskip -.04em lg}}    % Banach algebras
+\newcommand{\Cat}{\text{\it $\cal C$\hskip -.1em at}}			% Category of small categories (deprecated)
+\newcommand{\SmllCats}{\text{\it $\cal C$\hskip -.1em at}}		% Category of small categories
+\newcommand{\CW}{{\cal CW}}										% category of CW-complexes
+\newcommand{\hoCW}{\ho\CW}										% homotopy category of CW-complexes
+\newcommand{\Fld}{\text{\it $\cal F$\hskip -.08em ld}}			% Category of fields
+\DeclareMathOperator{\Func}{Func}								% Category of functors
+\newcommand{\Hd}{\text{\it $\cal H$\hskip -.04em d}}			% Hausdorff spaces
+\newcommand{\CHd}{\text{\it $\cal CH$\hskip -.04em d}}			% compactly generatted Hd's
+\newcommand{\hoCHd}{\ho\text{\it $\cal CH$\hskip -.04em d}} 	% Homotopy cat of compactly generated Hd's
+\newcommand{\Hil}{\text{\it $\cal H$\hskip -.08em il}}			% Category of Hilbert spaces
+\newcommand{\Top}{\text{\it $\cal T$\hskip -.25em op}}			% Category of topological spaces
+\newcommand{\hoTop}{\text{\it ho$\cal T$\hskip -.25em op}}		% homotopy category of topological spaces
+\newcommand{\Spectra}{\text{\it $\cal S$\hskip -1.04pt pec}\,}		% Category of spectra
+%
+\newcommand{\Mdl}{\text{\it $\cal M$\hskip -.09em dl}\hskip .1em}	% Models
+\newcommand{\Mod}{\text{\it $\cal M$\hskip -.09em od}\hskip .1em}	% Modules
+\newcommand{\RMod}{R\text{-$\cal M$\hskip -.09em\it od\hskip .1em}}	% Category of left R-modules
+\newcommand{\ModR}{{\cal M}\hskip -.1em\text{\it od}\text{-}R}		% Category of right R-modules
+\newcommand{\SMod}{S\text{-\it{\cal M}\hskip -.1em od\hskip .1em}}
+\newcommand{\ModS}{{\cal M}\hskip -.1em\text{\it od}\text{-}S}
+\newcommand{\RModS}{R\text{-}{\cal M}\hskip -.1em\text{\it od}\text{-}S}
+\newcommand{\Grp}{\text{\it $\cal G\text{\hskip -.08em rp}$}}	% Category of groups
+\newcommand{\TGrp}{\text{\it ${\cal TG}$\hskip -.08em rp}}		% Topological groups
+\DeclareMathOperator{\Trafo}{Trafo}								% Category of natural transformations (deprecated)
+\DeclareMathOperator{\TrafoCat}{Trafo}							% Category of natural transformations
+%
+\DeclareMathOperator{\clim}{\varinjlim}		% colimit
+\DeclareMathOperator{\colim}{\varinjlim}	% colimit
+\DeclareMathOperator{\ilim}{\varprojlim}	% inverse limit
+%\DeclareMathOperator{\hom}{hom}			% hom(X^{\bullet},Z) already defined
+\DeclareMathOperator{\Id}{Id} 				% identity map / operation
+\newcommand{\Ob}{\text{Ob}}   			% object class of a category
+\newcommand{\Arr}{\text{Arr}}   		% morphism (arrow) class of a category
+\newcommand{\Mor}{\text{Mor}} 			% morphism category of a category
+\newcommand{\op}{\text{op}}				% opposite operation
+\newcommand{\ab}{\text{ab}} 			% abelianization
+\newcommand{\pull}{\begin{picture}(14,9)\drawline(2,0)(11,0)(11,9)\put(2,0){\circle*{2}}\put(2,9){\circle{2}}\put(11,0){\circle*{2}}\put(11,9){\circle*{2}}\end{picture}}
+\newcommand{\push}{\begin{picture}(14,9)\drawline(2,0)(2,9)(11,9)\put(2,0){\circle*{2}}\put(2,9){\circle*{2}}\put(11,0){\circle{2}}\put(11,9){\circle*{2}}\end{picture}}
+\newcommand{\Horn}[2]{\Lambda^{#1}_{#2}}	% simplicial Horn; #1=Dim of Simplex; #2=Missing Face
+\DeclareMathOperator{\Sing}{Sing}   		% Singular simplicial set functor
+\DeclareMathOperator{\Tot}{Tot}				% Total complex of a bi-simplicial set
+\DeclareMathOperator{\sk}{sk}   		% skeleton of a simplicial object
+\DeclareMathOperator{\Eq}{Eq}				  % Equalizer
+\DeclareMathOperator{\Map}{Map} 	% Simplicial Mapping space
+\DeclareMathOperator{\HOM}{\text{\bf Hom}}   % simplicial mapping space

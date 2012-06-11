@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_OrthogonalProjection">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Example of an Orthogonal Projection of <latex>\RNr[3]</latex></title>
+	<caption>Projection of 3-Space</caption>
+	<showme>
+		<statement>
+			<para>Find the matrix representing the orthogonal projection <latex>P</latex> of <latex>\RNr[3]</latex> onto the hyperspace perpendicular to <latex>\Vect{c}=(1,2,1)</latex>.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>We know that the matrix <latex>A</latex> representing <latex>P</latex> is of size <latex>(3,3)</latex>, and that its  <latex>j</latex>-th column consists of the coordinates of <latex>P(\StdBss{j})</latex>, <latex>1\leq j\leq 3</latex>. Therefore we compute</para>
+			
+			<computation>
+				<left>P(\StdBss{1})</left>
+				<center>=</center>
+				<right>(1,0,0) - \dfrac{\DotPr{(1,0,0)}{(1,2,1)}}{\DotPr{(1,2,1)}{(1,2,1)}} \cdot (1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>(1,0,0) - \tfrac{1}{6}(1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>\tfrac{1}{6}(5,-2,-1)</right>
+				<left>P(\StdBss{2})</left>
+				<center>=</center>
+				<right>(0,1,0) - \dfrac{\DotPr{(0,1,0)}{(1,2,1)}}{\DotPr{(1,2,1)}{(1,2,1)}} \cdot (1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>(0,1,0) - \tfrac{2}{6}(1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>\tfrac{1}{6}(-2,2,-2)</right>
+				<left>P(\StdBss{3})</left>
+				<center>=</center>
+				<right>(0,0,1) - \dfrac{\DotPr{(0,0,1)}{(1,2,1)}}{\DotPr{(1,2,1)}{(1,2,1)}} \cdot (1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>(0,0,1) - \tfrac{1}{6}(1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>\tfrac{1}{6}(-1,-2,5)</right>
+			</computation>
+			
+			<para><latex>P(\StdBss{1})</latex>, <latex>P(\StdBss{2})</latex>, and <latex>P(\StdBss{3})</latex> form the columns of the matrix <latex>\Mtrx{A}</latex> representing <latex>P</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A = \dfrac{1}{6}
+\left[
+\begin{array}{rrr}
+5 & -2 & -1 \\
+-2 & 2 & -2 \\
+-1 & -2 & 5
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

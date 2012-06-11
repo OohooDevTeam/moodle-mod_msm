@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_RREFMatrix">
+	<caption>Shape of an RREF cofficient matrix</caption>
+	<statement>
+		<para>An augmented coefficient matrix in RREF has the following form</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{ccccccccccccccc|c}
+0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & 0 & * & \cdots & * & {\color{blue} d_1 } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & {\color{blue} d_2 } \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & {\color{blue} \vdots } \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & {\color{blue} \vdots } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & {\color{blue} d_r } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & {\color{blue} * } \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & {\color{blue} \vdots } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & {\color{blue} 0 }
+\end{array}
+				]]>
+			</latex>
+		</math.display>
+		<para>The <latex>{*}</latex> in the augmentation column of the <latex>(r+1)</latex>-st row is either a <latex>0</latex> or a <latex>1</latex>. If it is a <latex>1</latex>, then <latex>d_1=\cdots =d_r=0</latex>.</para>
+	</statement>
+</theorem>

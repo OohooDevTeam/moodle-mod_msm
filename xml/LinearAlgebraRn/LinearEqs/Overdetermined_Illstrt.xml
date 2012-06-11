@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illustr_Overdetermined">
+	<title>An Overdetermined System of Equations – Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The picture below shows the lines of solution of three linear equations in two variables.</para>
+			
+			<para align="center"><img src="ims/ThreeEqnsR2Overdetermined.gif" width="434" height="318"/></para>
+			
+			<para>Each of these 3 lines is the solution set of a linear equation in two unknowns. These three lines have no point in common. Therefore the set of simultaneous solutions of the three equations is empty.</para>
+		</block>
+		
+		<block>
+			<para>When dealing with 3 equations in 2 variables, how &lsquo;often&rsquo; does this happen? &ndash; Observe: shifting or rotating any of these solution lines a little will not qualitative change the picture  in the sense there is still no point common to all three lines.</para>
+			<para>On the other hand, start from a situation where all three lines pass through a common point. It is then possible to displace two of these lines by a suitable tiny amount so that they have no point in common. (Try this!) So this situation where three lines in the plane have a point in common is a &lsquo;rare&rsquo; and special case.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

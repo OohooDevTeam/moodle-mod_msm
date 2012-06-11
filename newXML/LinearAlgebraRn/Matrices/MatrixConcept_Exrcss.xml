@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixConcept"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Matrix Concept: Exercises</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the following pairs of matrices decide if they are equal? – Justify your answer!</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+						\left[
+						\begin{array}{rr}
+						1 &amp; 2 \\
+						0 &amp; 1
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{rr}
+						0 &amp; 1 \\
+						1 &amp; 2
+						\end{array}
+						\right]
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>No! - These matrices are not equal.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The two matrices</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+						\left[
+						\begin{array}{rr}
+						1 &amp; 2 \\
+						0 &amp; 1
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{rr}
+						0 &amp; 1 \\
+						1 &amp; 2
+						\end{array}
+						\right]
+						
+						</latex>
+					             </math.display>
+
+					             <para>
+                     <para.body>are not equal. To see this recall that two matrices are equal if they satisfy these two conditions:</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>they are of equal size;</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>their entries in matching positions are equal.</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>In this case the size condition is satisfied. However, for example, the entries in position <math>
+                           <latex>(1,1)</latex>
+                        </math> are distinct. So the matrices are not equal.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+						\left[
+						\begin{array}{cccc}
+						2 &amp; 4 &amp; 7 &amp; 3 \\
+						1 &amp; 2 &amp; 7 &amp; 4
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{cc}
+						2 &amp; 1 \\
+						4 &amp; 2 \\
+						7 &amp; 7 \\
+						3 &amp; 4
+						\end{array}
+						\right]
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>These matrices are not equal, as they fail to be of the same size.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall the two conditions under which two matrices are equal.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Try to answer this problem by using the solution to part a. as a template.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrices in question are not equal. Reason: For matrices to be equal, they must be of the same size, and the entries in corresponding positions must be equal. In this case, the matrix on the left has size <math>
+                           <latex>(2,4)</latex>
+                        </math>, while the matrix on the right has size <math>
+                           <latex>(4,2)</latex>
+                        </math>. Consequently, the size condition is not satisfied. So the matrices are not equal.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+						\left[
+						\begin{array}{ccc}
+						4 &amp; 3 &amp; 0 \\
+						1 &amp; 1 &amp; 4 \\
+						2 &amp; 3 &amp; 5
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{ccc}
+						4 &amp; 3 &amp; 0 \\
+						1 &amp; 1 &amp; 4 \\
+						2 &amp; 3 &amp; 5
+						\end{array}
+						\right]
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>These two matrices are equal: they are of equal size, and the entries in matching positions are equal.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>These two matrices are equal: For matrices to be equal, they must be of the same size, and the entries in corresponding positions must be equal. In this case, both matrices are of size <math>
+                           <latex>(3,3)</latex>
+                        </math>. So the size-condition is satisfied. Moreover, for each position <math>
+                           <latex>(i,j)</latex>
+                        </math>, the entries in both matrices are the same. So the matrices are equal.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+						\left[
+						\begin{array}{cccc}
+						2 &amp; 4 &amp; 7 &amp; 3 \\
+						1 &amp; 2 &amp; 7 &amp; 4
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{cccc}
+						1 &amp; 2 &amp; 7 &amp; 4 \\
+						2 &amp; 4 &amp; 7 &amp; 3
+						\end{array}
+						\right]
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>These two matrices are not equal; one criterion for equality that is not satisfied is that the entries in position <math>
+                              <latex>(1,1)</latex>
+                           </math> are not equal</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>These two matrices are not equal; reason: For matrices to be equal, they must be of the same size, and the entries in corresponding positions must be equal. In this case, both matrices are of size <math>
+                           <latex>(2,4)</latex>
+                        </math>. So the size-condition is satisfied. However, there are positions, such as <math>
+                           <latex>(1,1)</latex>
+                        </math>, <math>
+                           <latex>(1,2)</latex>
+                        </math>, <math>
+                           <latex>(1,4)</latex>
+                        </math>, <math>
+                           <latex>(2,1)</latex>
+                        </math>, <math>
+                           <latex>(2,2)</latex>
+                        </math>, <math>
+                           <latex>(2,4)</latex>
+                        </math>, where both matrices have distinct entries. So the matrices are not equal.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>How many entries does a matrix of size <math>
+                     <latex>(5,3)</latex>
+                  </math> have?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+                  <para>
+                     <para.body>A matrix of size <math>
+                           <latex>(5,3)</latex>
+                        </math> has <math>
+                           <latex>15</latex>
+                        </math> entries.</para.body>
+                  </para>
+               </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+		    </approach>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>How many entries does a matrix of size <math>
+                     <latex>(m,n)</latex>
+                  </math> have?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+                  <para>
+                     <para.body>A matrix of size <math>
+                           <latex>(m,n)</latex>
+                        </math> has <math>
+                           <latex>m\cdot n</latex>
+                        </math> entries.</para.body>
+                  </para>
+               </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>A matrix of size <math>
+                        <latex>(m,n)</latex>
+                     </math> has <math>
+                        <latex>m</latex>
+                     </math> rows, each of which has <math>
+                        <latex>n</latex>
+                     </math> entries. So there are a total of <math>
+                        <latex>m\cdot n</latex>
+                     </math> entries.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find all numbers <math>
+                     <latex>w,x,y,z</latex>
+                  </math> for which the matrices below are equal.</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\left[
+\begin{array}{cc}
+x-w &amp; z \\
+y-w &amp; x
+\end{array}
+\right] \qquad\qquad
+\left[
+\begin{array}{cc}
+w &amp; x \\
+y &amp; z
+\end{array}
+\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The two matrices are equal exactly when</para.body>
+                  </para>
+				              <ol>
+					                <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>w=x=z=0</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+					                <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>y</latex>
+                              </math> is arbitrary.</para.body>
+                        </para>
+                     </li>
+				              </ol>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>These given matrices are equal exactly when their entries in matching positions are equal, that is when the four equations below are satisfied.</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x-w</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>w</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>y-w</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>y</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>z</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>So we are looking for all simultaneous solutions of these four equations. Each of these equations is linear. Arranging them in standard form yields the system of four linear equations in four variables</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rcrcrcrcr}
+-2w &amp; + &amp; x &amp; &amp;&amp;&amp;&amp; = &amp; 0 \\
+    &amp;   &amp; x &amp; &amp;&amp; - &amp; z &amp; = &amp; 0 \\
+  w &amp;   &amp;   &amp; &amp;&amp;&amp;&amp; = &amp; 0 \\
+    &amp;   &amp; x &amp; &amp;&amp; - &amp; z &amp; = &amp; 0
+\end{array}
+						
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>We extract the augmented coefficient matrix of this system of linear equations and transform it into RREF:</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rrrr|r}
+-2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; 1 &amp; 0 &amp; -1 &amp; 0 \\
+ 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; 1 &amp; 0 &amp; -1 &amp; 0 \\ \hline
+ 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; 0 &amp; 0 &amp; -1 &amp; 0 \\
+ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+						
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Thus we find that the two matrices are equal exactly when</para.body>
+               </para>
+				           <ol>
+					             <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>w=x=z=0</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+					             <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>y</latex>
+                           </math> is arbitrary.</para.body>
+                     </para>
+                  </li>
+				           </ol>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+</exercise.pack>

@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_GeometricallySolve"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Solving Linear Equations Geometrically - Exercises</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>In each of the problems below, describe the relationship between the solution sets of the two linear equations given. Then draw conclusions about the simultaneous solutions of both equations</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>3x - 21y</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>12</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>12x - 28y</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>16</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The solution set of each equation is a line in <math>
+                              <latex>\RNr[2]</latex>
+                           </math>. The two lines are equal. So one equation can be omitted from the system without changing the solution set of the system.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The solutions of each of these equations form a line in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>. Find the normal vectors of these lines and check if they are parallel.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Each of the given linear equations represents a hyperplane in <math>
+                           <latex>\RNr[2]</latex>
+                        </math>; i.e. a line. So our task is to determine how these lines are related to each other.</para.body>
+                  </para>
+					             <para>
+                     <para.body>To determine if these 
+						<subordinate>
+                           <hot>lines are parallel</hot>
+                           <info>
+								                      <para>
+                                 <para.body>Remember: Given two linear equations in <math>
+                                       <latex>n</latex>
+                                    </math> variables, the solution set of each of them forms a hyperplane in <math>
+                                       <latex>\RNr[n]</latex>
+                                    </math>. These two hyperplanes are parallel exactly when their normal vectors are parallel.</para.body>
+                              </para>
+							                    </info>
+                        </subordinate>, we check if the normal vectors to these lines are parallel. We find:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(9,-21) = 3\cdot (3,-7)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(12,-28) = 4\cdot (3,-7)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So <math>
+                           <latex>\Vect{n}_2 = \tfrac{4}{3}\cdot \Vect{n}_1</latex>
+                        </math>, implying that the two normal vectors are parallel. So the two lines of solutions of the given equations are parallel.</para.body>
+                  </para>
+					
+					             <para>
+                     <para.body>This prompts the question as whether these lines are distinct, i.e. they have no point in common, or if they are equal. We offer two approaches to answer this question.</para.body>
+                  </para>
+					             <para>
+                     <para.body>
+                        <emphasis>Approach 1</emphasis>   We pick a random solution of one equation and check if it is also a solution of the other. If yes, the two parallel lines are equal. If not, they are distinct.</para.body>
+                  </para>
+					             <para>
+                     <para.body>A solution of the first equation is <math>
+                           <latex>(-1,-1)</latex>
+                        </math>. We see immediately that this is also a solution of the second equation. Therefore the two lines are equal.</para.body>
+                  </para>
+					             <para>
+                     <para.body>
+                        <emphasis>Approach 2</emphasis>   We compare the augmented normal vectors of the two equations</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(9,-21,12) = 3\cdot (3,-7,4)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(12,-28,16) = 4\cdot (3,-7,4)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So <math>
+                           <latex>\Vect{a}_2 = \tfrac{4}{3} \Vect{a}_1</latex>
+                        </math>, implying that the two lines are equal.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Either way, we conclude that the collection of pairs <math>
+                           <latex>(x,y)</latex>
+                        </math> solving both equations simultaneously, is the same as the collection of pairs which solve just one the equations.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>5x-4y</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>1</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x + 2y</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>3</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The solution set of each equation is a line in <math>
+                              <latex>\RNr[2]</latex>
+                           </math>. The two lines are not parallel. So their intersection is a single point. This means that the two equations have exactly one common solution.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The solutions of each of the two equations form a line in . To determine if these lines are parallel, we check if their normal vectors are parallel. We find:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(5,-4)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>There is 
+						<subordinate>
+                           <hot>no number</hot>
+                           <info>
+                              <info.caption>
+                                 <caption>Why is there no such number</caption>
+                              </info.caption>
+								
+								                      <para>
+                                 <para.body>Suppose <math>
+                                       <latex>t</latex>
+                                    </math> is such a number. Consider the first coordinates of <math>
+                                       <latex>\Vect{n}_1</latex>
+                                    </math> and <math>
+                                       <latex>\Vect{n}_2</latex>
+                                    </math>. We find</para.body>
+                              </para>
+								                      <math.array column="3">
+                                 <row rowspan="1">
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>5</latex>
+                                       </math>
+                                    </cell>
+                                    <cell colspan="1" halign="center" valign="middle">
+                                       <text>=</text>
+                                    </cell>
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>t\cdot 1</latex>
+                                       </math>
+                                    </cell>
+                                 </row>
+                              </math.array>
+								                      <para>
+                                 <para.body>and, therefore, <math>
+                                       <latex>t=5</latex>
+                                    </math>. Now consider the second coordinates of <math>
+                                       <latex>\Vect{n}_1</latex>
+                                    </math> and <math>
+                                       <latex>\Vect{n}_2</latex>
+                                    </math>. We find</para.body>
+                              </para>
+								                      <math.array column="3">
+                                 <row rowspan="1">
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>4</latex>
+                                       </math>
+                                    </cell>
+                                    <cell colspan="1" halign="center" valign="middle">
+                                       <text>=</text>
+                                    </cell>
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>t\cdot 2</latex>
+                                       </math>
+                                    </cell>
+                                 </row>
+                              </math.array>
+								                      <para>
+                                 <para.body>and, therefore, <math>
+                                       <latex>t=2</latex>
+                                    </math>. Thus <math>
+                                       <latex>t=5</latex>
+                                    </math> and, simultaneously, <math>
+                                       <latex>t=2</latex>
+                                    </math>. This is impossible.</para.body>
+                              </para>
+							                    </info>
+                        </subordinate>
+						                  <math>
+                           <latex>t</latex>
+                        </math> in <math>
+                           <latex>\RNr</latex>
+                        </math> with <math>
+                           <latex>\Vect{n}_1 = t\cdot \Vect{n}_2</latex>
+                        </math>. Hence, the two lines which form the solutions of the two given equations are not parallel. Therefore, the lines intersect in exactly one point. Therefore the two equations have exactly one common solution.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>	
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>8x + 12y</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>7</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>10x + 15y</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>10</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The solutions of the two equations form two distinct parallel lines in <math>
+                              <latex>\RNr[2]</latex>
+                           </math>. As these lines have no point in common, the equations have no common solutions. Alternate ways of expressing the same conclusion are: ‘The two equations are inconsistent» or ‘the set of solutions of the given system of linear equations is empty’.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The solutions of each of the given linear equations form a line in <math>
+                           <latex>\RNr[2]</latex>
+                        </math>. To determine if these lines are parallel we compare their normal vectors. We find:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(8,12) = 4\cdot (2,3)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(10,15) = 5\cdot (2,3)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So <math>
+                           <latex>\Vect{n}_2 = \tfrac{5}{4}\cdot \Vect{n}_1</latex>
+                        </math>, implying that the two lines are parallel. To determine if the two lines are the same or have no point in common, we consider the augmented normal vectors. We find</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(8,12,7)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(10,15,10)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Now <math>
+                           <latex>(5/4)\Vect{a}_1 = (10,15,\tfrac{35}{4} \neq \Vect{a}_2</latex>
+                        </math>. Therefore the extended normal vectors are not parallel, implying that the two lines have no point in common. This means that the two equations have no common solution. We also say: ‘the set of solutions of the given system of linear equations is empty’, or ‘the two equations are inconsistent’.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>In each of the problems below, describe the relationship between the solution sets of the two linear equations given. Then draw conclusions about the simultaneous solutions of both equations</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>10x+6y+14z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-12</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-5x-3y-7z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-6</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The solution set of each equation is a plane in <math>
+                              <latex>\RNr[3]</latex>
+                           </math>. The two planes are parallel and distinct. As these planes have no point in common, the equations have no common solution. In other words, the set of solutions of the given system of linear equations is empty, or ‘the equations are inconsistent’.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Each of the given linear equations represents a hyperplane in <math>
+                           <latex>\RNr[3]</latex>
+                        </math>; i.e. a plane in the conversational use of the word. So our task is to determine how these planes are related to each other.</para.body>
+                  </para>
+					             <para>
+                     <para.body>To determine if these 
+						<subordinate>
+                           <hot>planes are parallel</hot>
+                           <info>
+								                      <para>
+                                 <para.body>Remember: Given two linear equations in <math>
+                                       <latex>n</latex>
+                                    </math> variables, the solution set of each of them forms a hyperplane in <math>
+                                       <latex>\RNr[n]</latex>
+                                    </math>. These two hyperplanes are parallel exactly when their normal vectors are parallel.</para.body>
+                              </para>
+							                    </info>
+                        </subordinate>, we check if the normal vectors to these lines are parallel. We find:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(10,6,14) = 2\cdot (5,3,7)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-5,-3,-7) = (-1)\cdot (5,3,7)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So the two normal vectors are parallel. So the two planes of solutions of the given equations are parallel. We need to determine whether these solution planes are distinct or equal. To this end we consider the augmented normal vectors.</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(10,6,14,-12) = 2\cdot (5,3,7,-6)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-5,-3,-7,-6) = (-1)\cdot (5,3,7,6)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>The vectors <math>
+                           <latex>(5,3,7,–6)</latex>
+                        </math> and <math>
+                           <latex>(5,3,7,6)</latex>
+                        </math> are  
+						<subordinate>
+                           <hot>not parallel</hot>
+                           <info>
+                              <info.caption>
+                                 <caption>Why are these vectors not parallel?</caption>
+                              </info.caption>
+								
+								                      <para>
+                                 <para.body>Suppose <math>
+                                       <latex>\Vect{a}_1</latex>
+                                    </math> were parallel to <math>
+                                       <latex>\Vect{a}_2</latex>
+                                    </math>. Then we would have <math>
+                                       <latex>\Vect{a}_1 = t\cdot \Vect{a}_2</latex>
+                                    </math> for some number <math>
+                                       <latex>t</latex>
+                                    </math>. Comparing the first three coordinates of these vectors requires <math>
+                                       <latex>t=-2</latex>
+                                    </math>. But comparing the fourth coordinates forces <math>
+                                       <latex>t=2\neq -2</latex>
+                                    </math>. Therefore no such <math>
+                                       <latex>t</latex>
+                                    </math> exists. The two vectors are not parallel.</para.body>
+                              </para>
+							                    </info>
+                        </subordinate>
+						. Therefore the two planes of solutions are distinct and parallel, hence have no point in common. Consequently the given system of linear equations has no common solution. – The set of solutions of the system is empty.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>w-2x + 3y+z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>3</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>2w+y-z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-1</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The solution set of each equation is a hyperplane in <math>
+                              <latex>\RNr[4]</latex>
+                           </math>. These hyperplanes are not parallel. Therefore the two equations have infinitely many common solutions.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The solution set of each equation is a hyperplane in <math>
+                           <latex>\RNr[4]</latex>
+                        </math>. To determine if these hyperplanes are parallel we consider their normal vectors. We find:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,-2,3,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,0,1,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>These normal vectors are not parallel. Therefore the corresponding hyperplanes are not parallel. We conclude that the two hyperplanes have infinitely many points in common. Each of these common points corresponds to a common solution of both equations. Consequently, the given system of linear equations has infinitely many solutions.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>	
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>39x + 52y -26z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>13</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>21x + 28y - 14z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>7</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The solutions of each of the two linear equations form a plane in <math>
+                              <latex>\RNr[3]</latex>
+                           </math>. These two planes are equal. Therefore the solutions of one of the equations are at the same time solutions of the other. Consequently, the given system of linear equations has infinitely many solutions.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The solutions of each of the given linear equations form a line in <math>
+                           <latex>\RNr[3]</latex>
+                        </math>. To determine if these planes are parallel we compare their normal vectors. We find:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(39,52,-26) = 13\cdot (3,4,-2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(21,28,-14) = 7\cdot (3,4,-2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So <math>
+                           <latex>\Vect{n}_1</latex>
+                        </math> is parallel to <math>
+                           <latex>\Vect{n}_2</latex>
+                        </math>, implying that the two planes are parallel. To determine if the two planes are the same or have no point in common, we consider the augmented normal vectors. We find</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(39,52,-26,13) = 13\cdot (3,4,-2,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(21,28,-14,7) = 7\cdot (3,4,-2,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So <math>
+                           <latex>\Vect{a}_1</latex>
+                        </math> and <math>
+                           <latex>\Vect{a}_2</latex>
+                        </math> are parallel. This means that the two planes of solutions of the given equations coincide. Therefore every solution of one of the equations is, at the same time, a solution of the entire system. In particular, there are infinitely many solutions.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>39x + 52y -26z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>13</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>21x + 28y - 14z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The solutions of each of the two linear equations form a plane in <math>
+                              <latex>\RNr[3]</latex>
+                           </math>. These two planes are distinct. So they have no point in common. Therefore the solutions of common solutions is empty.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>From the previous problem we know already that the solution planes of the two equations are parallel. We see immediately that</para.body>
+                  </para>
+					             <math.display>
+						               <latex>x=0,\quad y=0,\quad z=0</latex>
+					             </math.display>
+					             <para>
+                     <para.body>is a solution of the second equation, but not of the first. Therefore the solution planes are distinct. Consequently they have no point in common, implying that the given system of linear equations has no common solution. The set of solutions of the given system of linear equations is empty.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

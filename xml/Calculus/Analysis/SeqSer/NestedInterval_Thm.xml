@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_NestedInverval">
+	<caption>Nested Interval Theorem</caption>
+	
+	<statement>
+		<para>For <latex>n\geq 0</latex> let <latex>I_n := \CCIntrvl{a_n}{b_n}\subset \RNr</latex> be a closed interval in <latex>\RNr</latex> with <latex>a_n\leq b_n</latex>. If <latex>I_{n+1}\subseteq I_n</latex> for each <latex>n\geq 0</latex>, then the intersection <latex>I := \intrsctn_n I_n</latex> is not empty.</para>
+	</statement>
+	<proof>
+		<para>From the given intervals we have two sequences of numbers, namely <latex>(a_n)</latex> and <latex>(b_n)</latex>. We have <latex>a_{n+1}\geq a_n</latex> and <latex>b_{n+1}\leq b_n</latex> because <latex>I_{n+1} \subseteq I_n</latex>. So <latex>(a_n)</latex> is increasing, and <latex>(b_n)</latex> is decreasing.</para>
+		<para>Moreover, every <latex>b_n</latex> is an upper bound of the sequence <latex>(a_n)</latex>, and every <latex>a_n</latex> is a lower bound of the sequence <latex>(b_n)</latex>. So both sequence converge. Let</para>
+		<math.display>
+			<latex>a := \lim_{n\to\infty} a_n \quad\text{and}\quad b:= \lim_{n\to\infty} b_n</latex>
+		</math.display>
+		<para>Then we know that</para>
+		<math.display>
+			<latex>a = \sup(a_n) \leq \inf(b_n) = b</latex>
+		</math.display>
+		<para>Thus <latex>\CCIntrvl{a}{b}\subseteq \CCIntrvl{a_n}{b_n}</latex> for all <latex>n\in \NNr</latex>. So <latex>\emptyset \neq \CCIntrvl{a}{b} \subseteq \intrsctn_n \CCIntrvl{a_n}{b_n}</latex>.</para>
+	</proof>
+</theorem>

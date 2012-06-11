@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_LinearEqsSolveFromRREF"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Solving from Row Reduced Echelon Form - Example</title>
+	  <caption xmlns="">Solving from RREF - Example</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find all solutions of the system of 3 linear equations in 7 variables below.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+					\begin{array}{rcr}
+\colorbox{lightgreen}{$1$}{\color{red}x_1}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_2}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_3}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_4}\ -\ \colorbox{lightgreen}{$3$}{\color{red}x_5}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_6}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_7} &amp; = &amp; 4 \\
+%
+\colorbox{lightgreen}{0}{\color{red}x_1}\ +\ \colorbox{lightgreen}{0}{\color{red}x_2}\ +\ \colorbox{lightgreen}{1}{\color{red}x_3}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$4$}{\color{red}x_5} \ +\ \colorbox{lightgreen}{$0$}{\color{red}x_6}\ +\ \colorbox{lightgreen}{$3$}{\color{red}x_7} &amp; = &amp; -2 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}x_1}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_2}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_3}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_5}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_6}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_7} &amp; = &amp; 3 \\
+\end{array}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The <strong>solutions of the first equation</strong> can be found by choosing freely number values for all variables, except for <math>
+                        <latex>x_1</latex>
+                     </math>, and then defining</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					{\color{red}x_1}\ :=\ 4\ -\ \colorbox{lightgreen}{2}{\color{red}x_2} - \colorbox{lightgreen}{1}{\color{red}x_4} + \colorbox{lightgreen}{$3$}{\color{red}x_5} - \colorbox{lightgreen}{$2$}{\color{red}x_7}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>The <strong>solutions of the second equation</strong> can be found by choosing freely number values for all variables, except for <math>
+                        <latex>x_3</latex>
+                     </math>, and then defining</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					{\color{red}x_3}\ :=\ -2\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_4} - \colorbox{lightgreen}{$4$}{\color{red}x_5} - \colorbox{lightgreen}{$3$}{\color{red}x_7}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>The <strong>solutions of the third equation</strong> can be found by choosing freely number values for all variables, except for <math>
+                        <latex>x_6</latex>
+                     </math>, and then defining</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					{\color{red}x_6}\ :=\ 3\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_7}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Accordingly, we find the <strong>simultaneous solutions of the system of equations</strong> by choosing freely number values for all variables, except for <math>
+                        <latex>x_1,x_3,x_6</latex>
+                     </math>, and then defining</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\aligned
+{\color{red}x_1}\ &amp;:=\phantom{\ -} 4\ -\ \colorbox{lightgreen}{2}{\color{red}x_2} - \colorbox{lightgreen}{$1$}{\color{red}x_4} + \colorbox{lightgreen}{$3$}{\color{red}x_5} - \colorbox{lightgreen}{$2$}{\color{red}x_7} \\
+%
+{\color{red}x_3}\ &amp;:=\ -2\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_4} - \colorbox{lightgreen}{$4$}{\color{red}x_5} - \colorbox{lightgreen}{$3$}{\color{red}x_7} \\
+%
+{\color{red}x_6}\ &amp;:=\phantom{\ -} 3\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_7}
+\endaligned
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>For example, choosing</para.body>
+               </para>
+			            <math.display>
+				              <latex>{\color{red}x_2}:=3,\quad {\color{red}x_4}:=-2,\quad {\color{red}x_5}:=-1,\quad {\color{red}x_7}:=5</latex>
+			            </math.display>
+			            <para>
+                  <para.body>we obtain the specific solution  <math>
+                        <latex>(-13,3,-17,-2,-1,13,5)</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>In general, arbitrarily chosen number values for each of <math>
+                        <latex>r,s,t,u</latex>
+                     </math> yields a solution of the given system of linear equations of the form</para.body>
+               </para>
+			            <ol>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>x_1 := 4 - 2r - s + 3t - 2u</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>x_2 := r</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>x_3 := -2 + 2s-4t-3u</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>x_4 := s</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>x_5 := t</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>x_6 := 3 + 2u</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>x_7 := u</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+			            </ol>
+			            <para>
+                  <para.body>Thus each solution of the given system determine a vector in <math>
+                        <latex>\RNr[7]</latex>
+                     </math> of the form</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{l}
+(4-2r-s+3t-2u,r,-2+2s-4t-2u,s,t,3+2u,u)\ = \\
+(4,0,-2,0,0,3,0) + r\cdot (-2,1,0,0,0,0,0) + s\cdot (-1,0,2,1,0,0,0)\ + \\
+\ + t\cdot (3,0,-4,0,1,0,0) + u\cdot (-2,0,-2,0,0,2,1)
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			
+			            <para>
+                  <para.body>Once again, here <math>
+                        <latex>r,s,t,u</latex>
+                     </math> are arbitrary numbers in <math>
+                        <latex>\RNr</latex>
+                     </math>. These four numbers are completely independent of one another. We say that the solution space of the given system is the space spanned the vectors</para.body>
+               </para>
+			            <ul>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(-2,1,0,0,0,0,0)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(-1,0,2,1,0,0,0)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(3,0,-4,0,1,0,0)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(-2,0,-2,0,0,2,1)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+			            </ul>
+			            <para>
+                  <para.body>shifted by the vector <math>
+                        <latex>(4,0,-2,0,0,3,0)</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+</showme.pack>

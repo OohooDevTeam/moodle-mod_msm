@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      unitid="Chap_Reals">
+   <titles>
+      <title>The Real Number System</title>
+      <plain.title>The Real Number System</plain.title>
+   </titles>
+   <legitimate.children>
+			
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/Intro.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/FieldAxioms.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/OrderingStructureR.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="R/AbsoluteValueOperation.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/NormDistance.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/Intervals.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/RExtended.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/RComplete.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/RComplete_InfSup.xml"/>
+			
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ZenoParadox_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/R_Axioms_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/FieldAxioms_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/DistanceR_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="R/TriangleInequalityR_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="R/Root2NotRational_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/Completeness_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/RExtended_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="R/InfSup_Exrcss.xml"/>
+		</legitimate.children>
+</unit>

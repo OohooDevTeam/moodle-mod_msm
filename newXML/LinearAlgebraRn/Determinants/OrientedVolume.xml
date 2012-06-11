@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_OrientedVolume"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Orientated Volume</title>
+      <plain.title>Orientated Volume</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In this section we introduce the concept of ‘oriented volume’ of a slanted box spanned by <math>
+                     <latex>n</latex>
+                  </math> vectors in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>. We then observe that the oriented volume operation has the properties ‘alternating’, and ‘<math>
+                     <latex>n</latex>
+                  </math>-fold linear’. Moreover, it takes the value <math>
+                     <latex>1</latex>
+                  </math> on the unit cube spanned by the vectors <math>
+                     <latex>\StdBss{1},\dots ,\StdBss{n}</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <subordinate>
+                     <hot>Therefore</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                        <info>
+                           <para>
+                              <para.body>Look up these algebraic properties of the determinant operation</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			this oriented volume operation equals the determinant operation: we have a achieved a very powerful geometric interpretation of the determinant operation. Examples of oriented volume in dimensions 1, 2, and 3 close this section.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_OrientedVolumenTuples">
+         <titles>
+            <title>Oriented Volume of an n-Tuple of Vectors</title>
+            <plain.title>Oriented Volume</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_SlantedBox">
+                     <caption>Slanted box</caption>
+                     <associate type="Example">
+                        <info>
+                           <info.caption>Box in <math>
+                                 <latex>\RNr[1]</latex>
+                              </math>
+                           </info.caption>
+                           <para>
+                              <para.body>In <math>
+                                    <latex>\RNr[1]</latex>
+                                 </math>, <math>
+                                    <latex>\SltdBox{x}</latex>
+                                 </math> is the interval <math>
+                                    <latex>[0,x]</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Explanation">
+                        <unit.ref unitId="Expla_Box2"/>
+                        <info>
+                           <info.caption>Box in <math>
+                                 <latex>\RNr[2]</latex>
+                              </math>
+                           </info.caption>
+                           <para>
+                              <para.body>In <math>
+                                    <latex>\RNr[2]</latex>
+                                 </math>, <math>
+                                    <latex>\SltdBox{\Vect{x},\Vect{y}}</latex>
+                                 </math> is the parallelogram spanned by the vectors <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> and <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math>. – See details of this construction.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>In <math>
+                                 <latex>\RNr[n]</latex>
+                              </math>, the slanted box determined by an <math>
+                                 <latex>n</latex>
+                              </math>-tuple of vectors <math>
+                                 <latex>(\Vect{x}_1,\dots ,\Vect{x}_n)</latex>
+                              </math> is
+					</para.body>
+                           <index.glossary>
+                              <term>slanted box</term>
+                           </index.glossary>
+                        </para>
+                        <math.display>
+                           <latex>\SltdBox{ \Vect{x}_1,\dots ,\Vect{x}_n } := \Set{ t_1 \Vect{x}_1+\cdots +t_n \Vect{x}_n \st 0\leq t_1,\dots ,t_n\leq 1 }</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <def type="Definition" id="Def_OrientedVolumeSlantedBox">
+                     <caption>Volume and oriented volume</caption>
+                     <associate type="Illustration">
+                        <unit.ref unitId="Illu_OrientedVolume"/>
+                        <info>
+                           <para>
+                              <para.body>An illustration of the ‘oriented volume’.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>Given vectors <math>
+                                 <latex>\Vect{x}_1,\dots ,\Vect{x}_n</latex>
+                              </math> in <math>
+                                 <latex>\RNr[n]</latex>
+                              </math>,</para.body>
+                        </para>
+                        <math.display>
+                           <latex>\Vol(\Vect{x}_1,\dots ,\Vect{x}_n) := \Vol (\SltdBox{ \Vect{x}_1,\dots ,\Vect{x}_n } )</latex>
+                        </math.display>
+                        <para>
+                           <para.body>is the volume of the slanted box in <math>
+                                 <latex>\RNr[n]</latex>
+                              </math> spanned by the vectors <math>
+                                 <latex>\Vect{x}_1,\dots ,\Vect{x}_n</latex>
+                              </math>.
+					
+					The oriented volume of this box is
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>\Vol(\Vect{x}_1,\dots ,\Vect{x}_n)</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>denotes the volume of the slanted box spanned by the vectors <math>
+                                          <latex>\Vect{(x}_1,\dots ,\Vect{x}_n</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>\OriVol(\Vect{x}_1,\dots ,\Vect{x}_n)</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>The oriented volume of the slanted box spanned by the vectors <math>
+                                          <latex>\Vect{x}_1,\dots ,\Vect{x}_n</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>volume</term>
+                              <term>of slanted box</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>oriented</term>
+                              <term>volume</term>
+                           </index.glossary>
+                        </para>
+                        <math.display>
+                           <latex>\OriVol(\Vect{x}_1,\dots ,\Vect{x}_n) := \omega(\Vect{x}_1,\dots \Vect{x}_n)\cdot \Vol(\Vect{x}_1,\dots ,\Vect{x}_n)</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="OrientedVolume_Thm.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_OrientedVolume1Tuple">
+         <titles>
+            <title>Oriented Volume of a 1-Tuple</title>
+            <plain.title>1-Tuple Oriented Volume</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>The oriented volume in <math>
+                           <latex>\RNr[1]</latex>
+                        </math> just gives the length of a vector with the sign corresponding to its direction: If <math>
+                           <latex>\Vect{x}=(x)</latex>
+                        </math>, then</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\OriVol(\Vect{x})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>x</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\omega(\Vect{x})\cdot \abs{\Vect{x}}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_OrientedVolume2Tuple">
+         <titles>
+            <title>Oriented Volume of a Pair of Vectors</title>
+            <plain.title>Oriented Area</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>The oriented volume in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> could also be called ‘oriented area’. Applied to a pair of vectors <math>
+                           <latex>(\Vect{x},\Vect{y})</latex>
+                        </math>, it gives the area of the parallelogram spanned by <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math>, together with a sign corresponding to the orientation of <math>
+                           <latex>\RNr[2]</latex>
+                        </math> represented by the pair <math>
+                           <latex>(\Vect{x},\Vect{y})</latex>
+                        </math>.</para.body>
+                  </para>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_OrientedVolume3Tuple">
+         <titles>
+            <title>Oriented Volume of a Triple of Vectors</title>
+            <plain.title>Oriented Volume</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>The oriented volume in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> is applied to a triple of vectors <math>
+                           <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                        </math>, it gives the volume of the parallelepiped (slanted box) spanned by <math>
+                           <latex>\Vect{x}</latex>
+                        </math>, <math>
+                           <latex>\Vect{y}</latex>
+                        </math>, and <math>
+                           <latex>\Vect{z}</latex>
+                        </math>, together with a sign corresponding to the orientation of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> represented by the tiple <math>
+                           <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                        </math>.</para.body>
+                  </para>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_OrientedVolume"/>
+   </studymaterials>
+</unit>

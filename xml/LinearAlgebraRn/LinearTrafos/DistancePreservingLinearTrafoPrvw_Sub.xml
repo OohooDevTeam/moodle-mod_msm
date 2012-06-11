@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_DistancePreservingLinearTrafo">
+	<title>Preview: Distance Preserving Linear Transformations</title>
+	<sub.page.body>
+		<block>
+			<para>Of particular importance for practical purposes are those linear transformations which preserve all distances. This ensures that size and shape of any object remains unaltered by the transformation. Only its position can change. This is something we take for granted when moving an object from one place to another place in the real world. Here are the main facts.</para>
+			
+			<ol type="1">
+				<li><para><b>Definition</b> &nbsp; A linear transformation <latex>L\from \RNr[n] \to \RNr[n]</latex> is said to preserve distances if, for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>,</para>
+					
+					<math.display>
+						<latex>\norm{L(\Vect{x})} = \Vect{x}</latex>
+					</math.display>
+				</li>
+				<li><para><b>Proposition</b> &nbsp; Let <latex>L\from \RNr[n]\to \RNr[n]</latex> be a linear transformation represented by the matrix <latex>\Mtrx{A}</latex> of size <latex>(n,n)</latex>. Then <latex>L</latex> preserves all distances if and only if conditions (i) and (ii) below hold:</para>
+					<ol type="i">
+						<li><para>Each column vector <latex>A_j</latex> of <latex>\Mtrx{A}</latex> has length <latex>1</latex>: <latex>\DotPr{A_j}{A_j} = 1</latex>.</para></li>
+						<li><para>Any two distinct column vectors of <latex>A</latex> are perpendicular: whenever <latex>1\leq j\neq k\leq n</latex>, <latex>\DotPr{A_j}{A_k} = 0</latex>.</para></li>
+					</ol>
+				</li>
+				<li><para><b>Corollary</b> &nbsp; A linear transformation <latex>L\from \RNr[n]\to \RNr[n]</latex> preserves distances if and only if the transpose of <latex>\Mtrx{A}</latex> is also the inverse of <latex>\Mtrx{A}</latex>: <latex>\Mtrx{A}^{-1} = \Mtrx{A}^T</latex>.</para>
+				</li>
+			</ol>
+		</block>
+	</sub.page.body>
+</sub.page>

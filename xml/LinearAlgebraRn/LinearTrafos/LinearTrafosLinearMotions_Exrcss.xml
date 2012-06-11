@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_LinearTrafosLinearMotions">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Linear Transformations and Linear Motions</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the functions below determine if it is linear. If so, find the matrix representing it.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para><latex>T\from \RNr[1] \longrightarrow \RNr[2]</latex>, <latex>T(x) = (3x,x^2)</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para>No! - <latex>T</latex> is not linear.</para>
+				</answer>
+				<solution>
+					<para><latex>T</latex> is not compatible with scalar multiplication: We compute</para>
+					<computation>
+						<left>T(1)</left>
+						<center>=</center>
+						<right>(3,1)</right>
+					</computation>
+					<para>If <latex>T</latex> is linear, we must have</para>
+					<computation>
+						<left>T(2)</left>
+						<center>=</center>
+						<right>T(2\cdot 1)</right>
+						<left></left>
+						<center>\overset{?}{=}</center>
+						<right>2\cdot T(1) = (6,2)</right>
+					</computation>
+					
+					<para>However, we find:</para>
+					
+					<computation>
+						<left>T(2)</left>
+						<center>=</center>
+						<right>(6,4) \neq (6,2)</right>
+					</computation>
+					
+					<para>This means that <latex>T</latex> fails to commute with scalar multiplication, hence is not linear. &ndash; In general, in a linear function each variable can only appear with tan exponent of <latex>1</latex>, just like in a linear equation.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>L\from \RNr[1] \longrightarrow \RNr[2]</latex>, <latex>L(x) = 2(x,-x)</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> is linear. It is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+L(1) = 
+\left[
+\begin{array}{r}
+2 \\ - 2
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We suspect that <latex>L</latex> is linear because its one and only variable occurs only by itself and with exponent <latex>1</latex>. Therefore we may try to show that <latex>L</latex> is linear by comparing the effect of <latex>L</latex> on an arbitrary <latex>x\in\RNr</latex> with the effect of the matrix <latex>A</latex> associated to the effect of <latex>L</latex> on the standard vector <latex>\StdBss{1}=1</latex> of  .<latex>\RNr</latex>.</para>
+					
+					<para>The matrix <latex>A</latex> has size <latex>(2,1)</latex> and is given by</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+A = L(1) = 
+\left[
+\begin{array}{r}
+2 \\ - 2
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>The effect of <latex>A</latex> on an arbitrary <latex>x\in \RNr</latex> is given by</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+A[x] = 
+\left[
+\begin{array}{r}
+2 \\ - 2
+\end{array}
+\right] [x] = 
+\left[
+\begin{array}{r}
+2x \\ -2x
+\end{array}
+\right] = L(x)
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>We 
+						<subordinate>
+							<hot>conclude</hot>
+							<crossref>
+								<theorem.ref theoremID="Thm_LinearMapGivesMatrix"/>
+								<para>Review the relationship between linear maps and matrices.</para>
+							</crossref>
+						</subordinate>
+						that <latex>L</latex> is linear and that the matrix representing it is <latex>A</latex>.
+					</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>F\from \RNr[2] \longrightarrow \RNr[2]</latex>, <latex>L(x,y) = (x+y,y-x)</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>F</latex> is linear. It is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+-1 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We suspect that <latex>F</latex> is linear because its one and only variable occurs only by itself and with exponent <latex>1</latex>. Therefore we may try to show that <latex>F</latex> is linear by comparing the effect of <latex>F</latex> on an arbitrary <latex>\Vect{x}\in\RNr[2]</latex> with the effect of the <latex>(2,2)</latex>-matrix <latex>A</latex> whose first column is <latex>F(\StdBss{1})</latex> and whose second column is <latex>F(\StdBss{2})</latex>. We find</para>
+					
+					<computation>
+						<left>F(\StdBss{1})</left>
+						<center>=</center>
+						<right>F(1,0) = (1,-1)</right>
+						<left>F(\StdBss{2})</left>
+						<center>=</center>
+						<right>F(0,1) = (1,1)</right>
+					</computation>
+					
+					<para>Therefore</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rr}
+1 & 1 \\
+-1 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>Next we compare the effect of <latex>F</latex> on an arbitrary vector <latex>(x,y)</latex> to the effect of the linear function represented by <latex>\Mtrx{A}</latex>:</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+A 
+\left[
+\begin{array}{r}
+x \\ y
+\end{array}
+\right] = 
+\left[
+\begin{array}{rr}
+1 & 1 \\
+-1 & 1
+\end{array}
+\right] 
+\left[
+\begin{array}{r}
+x \\ y
+\end{array}
+\right] = 
+\left[
+\begin{array}{r}
+x + y \\ -x + y
+\end{array}
+\right] = F(x,y)
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>Thus <latex>F</latex> agrees with the linear function defined by the matrix <latex>\Mtrx{A}</latex>. In particular, this means that <latex>F</latex> is linear and is represented by  <latex>\Mtrx{A}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para><latex>H\from \RNr[2] \longrightarrow \RNr[4]</latex>, <latex>H(x,y) = (y,y-2x,x-1, x+2y)</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para>This function is not linear &ndash; despite the fact that each variable of <latex>H</latex> occurs only by itself and with exponent <latex>1</latex>!</para>
+				</answer>
+				<solution>
+					<para>Each variable of <latex>H</latex> occurs with exponent <latex>1</latex>. So we might initially suspect that <latex>H</latex> is linear. However, when we attempt to verify if the 
+						<subordinate>
+							<hot>defining properties</hot>
+							<crossref>
+								<definition.ref definitionID="Def_LinearMap"/>
+								<para>Look up the defining properties of a linear map</para>
+							</crossref>
+						</subordinate>
+						of a linear map are satisfied, we run into problems. Further, we find
+					</para>
+					
+					<math.display>
+						<latex>H(0,0) = (0,0,-1,0) \neq (0,0,0,0)</latex>
+					</math.display>
+					
+					<para>So <latex>H</latex> is not  linear.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para><latex>Q\from \RNr[3] \longrightarrow \RNr[3]</latex>,  <latex>Q(x,y,z) = (xz,y-4x,-3y)</latex></para>
+			</problem>
+			<approach>
+				<answer><para><latex>Q</latex> is not linear.</para></answer>
+				<solution>
+					<para>Each variable of <latex>Q</latex> occurs with exponent <latex>1</latex>. So we might initially suspect that <latex>H</latex> is linear. However, <latex>Q</latex> fails to commute with vector addition:</para>
+					
+					<computation>
+						<left>Q((1,0,0) + (0,0,1)) = Q(1,0,1)</left>
+						<center>=</center>
+						<right>(1,-4,0)</right>
+						<left>Q(1,0,0) + Q(0,0,1)</left>
+						<center>=</center>
+						<right>(0,-4,0) + (0,0,0) = (0,-4,0)</right>
+					</computation>
+					
+					<para>Therefore <latex>Q</latex> fails to commute with vector addition, so <latex>Q</latex> is not linear.</para>
+					
+					<para>Further analysis shows that the reason why <latex>Q</latex> fails to commute with vector addition is the product of variables <latex>xy</latex>; in a linear function variables can only be multiplied by a constant.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para><latex>N\from \RNr[4] \longrightarrow \RNr[4]</latex>, <latex>N(x,y,z,w) = (z+3w,w-8x,e^5z)</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>N</latex> is linear and is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rrrr}
+0 & 0 & 1 &  3 \\
+-8 & 0 & 0 & 1 \\
+0 & 0 & e^5 & 0
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution.hint>
+					<para>Try comparing the effect of <latex>N</latex> on an arbitrary vector <latex>\Vect{x}=(x,y,z,w)</latex> to the effect of the linear map given by the <latex>(3,4)</latex>-matrix <latex>\Mtrx{A}</latex> with</para>
+					
+					<ul>
+						<li><para>first column given by <latex>N(\StdBss{1}) = N(1,0,0,0)</latex></para></li>
+						<li><para>second column given by <latex>N(\StdBss{2}) = N(0,1,0,0)</latex></para></li>
+						<li><para>third column given by <latex>N(\StdBss{3}) = N(0,0,1,0)</latex></para></li>
+						<li><para>fourth column given by <latex>N(\StdBss{4}) = N(0,0,0,1)</latex></para></li>
+					</ul>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>S\from \RNr[3]\to \RNr[2]</latex> be the linear map represented by the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A = 
+\left[
+\begin{array}{rrr}
+4 & -1 & 2 \\
+-3 & 2 & 3
+\end{array}
+\right]
+							]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Into which linear motion of <latex>\RNr[2]</latex> does <latex>L</latex> transform the linear motion</para>
+				<math.display>
+					<latex>\Vect{x}(t) = (1,0,0) + t\cdot (0,1,1)</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> transforms the given linear motion into the linear motion</para>
+					<math.display>
+						<latex>L(\Vect{x}(t)) = (4,-3) + t\cdot (1,5)</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>For each <latex>t</latex> in <latex>\RNr</latex> we need to find <latex>L(\Vect{x}(t))</latex>:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+L(\Vect{x}(t))\ &=\ 
+\left[
+\begin{array}{rrr}
+4 & -1 & 2 \\
+-3 & 2 & 3
+\end{array}
+\right] \left(
+\left[\begin{array}{r} 1 \\ 0 \\ 0 \end{array}\right]\ +\ t\cdot
+\left[\begin{array}{r} 0 \\ 1 \\ 1 \end{array}\right]\right) \\
+	&=\ \left[\begin{array}{r} 4 \\ -3 \end{array}\right]\ +\ t\cdot
+\left[\begin{array}{r} 1 \\ 5 \end{array}\right]
+\endaligned
+							]]>
+						</latex>
+					</math.display>
+					<para>Therefore <latex>L</latex> transforms the given linear motion into the linear motion</para>
+					<math.display>
+						<latex>L(\Vect{x}(t)) = (4,-3) + t\cdot (1,5)</latex>
+					</math.display>
+					<para>of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Into which linear motion of <latex>\RNr[2]</latex> does <latex>L</latex> transform the linear motion</para>
+				<math.display>
+					<latex>\Vect{u}(t) = (6,-9,5) + t\cdot (-1,-1,-1)</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> transforms the given linear motion into the linear motion</para>
+					<math.display>
+						<latex>L(\Vect{x}(t)) = (43,-21) + t\cdot (-5,-2)</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>For each <latex>t</latex> in <latex>\RNr</latex> we need to find <latex>L(\Vect{u}(t))</latex>:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+L(\Vect{u}(t))\ &=\ 
+\left[
+\begin{array}{rrr}
+4 & -1 & 2 \\
+-3 & 2 & 3
+\end{array}
+\right] \left(
+\left[\begin{array}{r} 6 \\ -9 \\ 5 \end{array}\right]\ +\ t\cdot
+\left[\begin{array}{r} -1 \\ -1 \\ -1 \end{array}\right]\right) \\
+	&=\ \left[\begin{array}{r} 43 \\ -21 \end{array}\right]\ +\ t\cdot
+\left[\begin{array}{r} -5 \\ -2 \end{array}\right]
+\endaligned
+						]]>
+						</latex>
+					</math.display>
+					<para>Therefore <latex>L</latex> transforms the given linear motion into the linear motion</para>
+					<math.display>
+						<latex>L(\Vect{x}(t)) = (43,-21) + t\cdot (-5,-2)</latex>
+					</math.display>
+					<para>of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Into which linear motion of <latex>\RNr[2]</latex> does <latex>L</latex> transform the linear motion</para>
+				<math.display>
+					<latex>\Vect{u}(t) = (7,-1,-2) + t\cdot (-3,0,1)</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> transforms the given linear motion into the linear motion</para>
+					<math.display>
+						<latex>L(\Vect{x}(t)) = (25,-31) + t\cdot (-10,12)</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Into which linear motion of <latex>\RNr[2]</latex> does <latex>L</latex> transform the linear motion</para>
+				<math.display>
+					<latex>\Vect{u}(t) = (5,-2,4) + t\cdot (3,2,2)</latex>
+				</math.display>
+			</problem>
+		</part>
+	</exercise>
+</exercise.pack>

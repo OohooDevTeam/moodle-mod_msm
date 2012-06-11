@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_Force">
+	<headers>
+	      <full>Vectors Modeling Forces</full>
+		<toc>Vectors Modeling Forces</toc>
+		<short>Forces</short>
+	</headers>
+	<intro>
+		<para>When a force acts on an object, it does so in a certain direction and with a certain strength. Thus we can model a force by a vector. The direction in which the force acts corresponds to the direction of the vector, and the magnitude of the force corresponds to the length of the vector.</para>
+	</intro>
+	<section.body>
+		<para>For example, suppose a vector of length <latex>1</latex> corresponds to a force of <latex>1000N</latex>. Then the following arrows represent forces as 
+			<subordinate>
+				<hot>indicated</hot>
+				<info>
+					<para>Place your pointer over an arrow to get answers.</para>
+				</info>
+			</subordinate>.
+			<index.glossary>
+				<term>vector</term><term>force</term>
+			</index.glossary>
+		</para>
+		
+		<para align="center"><image src="ims/ForceArrows.gif" width="319" height="169">
+			<area shape="rect" coords="25,29,121,47">
+				<info>
+					<caption>What does the red vector represent?</caption>
+					<para>This vector represents a force of <latex>4000N</latex> to the right.</para>
+				</info>
+			</area>
+			<area shape="poly" coords="15,131,25,149,191,77,175,59">
+				<info>
+					<caption>What does the green vector represent?</caption>
+					<para>This vector represents a force of <latex>\sqrt{58} \cdot 1000N</latex> directed to the upper right.</para>
+				</info>
+			</area>
+			<area shape="poly" coords="189,31,285,105,301,87,209,15">
+				<info>
+					<caption>What does the blue vector represent?</caption>
+					<para>This vector represents a force of <latex>5000N</latex> directed to the lower right</para>
+				</info>
+			</area>
+		</image>
+		</para>
+		
+		<para>From experiments we learn that several forces acting simultaneously on an object can be consolidated into a single force. Moreover, the consolidated force corresponds to the vector sum of the individual forces. – The picture below illustrates this. Here we have two forces, <latex>F_1</latex> and <latex>F_2</latex> acting on an object. The resulting combined force is described by the red vector <latex>F_1 + F_2</latex>.</para>
+		
+		<para align="center">
+			<image src="ims/ForceSum.gif" width="391" height="173">
+				<area shape="poly" coords="11,97,27,109,285,41,259,23,21,89,21,91,21,97">
+					<info>
+						<caption>What does the green vector represent?</caption>
+						<para>This vector represents the force vector <latex>F_2</latex> acting on the object, assumed to be at its tail.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="25,113,121,161,133,143,45,105">
+					<info>
+						<caption>What does the blue vector represent?</caption>
+						<para>This vector represents the force vector <latex>F_1</latex> acting on the object, assumed to be at its tail.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="369,95,369,77,95,93,67,105">
+					<info>
+						<caption>What does the red vector represent?</caption>
+						<para>This vector represents the single force that results from the combined actions of <latex>F_1</latex> and <latex>F_2</latex>.</para>
+					</info>
+				</area>
+			</image>
+		</para>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_Force"/>
+	</studymaterials>
+</section>

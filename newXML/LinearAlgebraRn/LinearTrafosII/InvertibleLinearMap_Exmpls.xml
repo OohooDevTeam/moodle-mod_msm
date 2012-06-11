@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_InvertibleLinearMap"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Invertible Linear Map - Example</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Let <math>
+                  <latex>V</latex>
+               </math> be the orthogonal complement of <math>
+                  <latex>\Vect{n} = (1,1,1)</latex>
+               </math>  in <math>
+                  <latex>\RNr[3]</latex>
+               </math>, and let <math>
+                  <latex>W</latex>
+               </math> be the subspace of <math>
+                  <latex>\RNr[4]</latex>
+               </math> spanned by the vectors <math>
+                  <latex>\Vect{b}_1:=(1,0,1,0)</latex>
+               </math>  and <math>
+                  <latex>\Vect{b}_2:=(1,1,1,1)</latex>
+               </math>. Determine whether the linear transformation</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>L\from V \longrightarrow W,\quad L(x,y,z)= (x+y-z)\cdot \Vect{b}_1\ +\ (y+z)\cdot \Vect{b}_2</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>is invertible. If it is, find its inverse.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+                     <strong>Step 1</strong>   Setting up a basis for <math>
+                        <latex>V</latex>
+                     </math>. <math>
+                        <latex>V</latex>
+                     </math> has 
+				<subordinate>
+                        <hot>dimension 2</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_OrthogonalSplittingByOrthogonalComplement"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>This follows from the dimension formula for orthogonal splittings in a vector space.</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>
+				So any basis of <math>
+                        <latex>V</latex>
+                     </math> has two vectors. The vectors
+			</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{a}_1:=(1,0,-1) \quad\text{and}\quad \Vect{a}_2:= (1,-2,1)</latex>
+			            </math.display>
+			            <para>
+                  <para.body>are 
+				<subordinate>
+                        <hot>perpendicular to each other</hot>
+                        <info>
+						                     <para>
+                              <para.body>To see this, evaluate</para.body>
+                           </para>
+						                     <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\DotPr{ \Vect{a}_1 }{ \Vect{a}_2 }</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>0</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+					                   </info>
+                     </subordinate>, and are 
+				<subordinate>
+                        <hot>perpendicular to <math>
+                              <latex>\Vect{n}</latex>
+                           </math>
+                        </hot>
+                        <info>
+						                     <para>
+                              <para.body>To see this, evaluate</para.body>
+                           </para>
+						                     <math.display>
+							                       <latex>\DotPr{ \Vect{a}_1 }{ \Vect{n} } = 0 = \DotPr{ \Vect{a}_2 }{ \Vect{n} }</latex>
+						                     </math.display>
+					                   </info>
+                     </subordinate>.
+				So <math>
+                        <latex>\EuScript{A}:=(\Vect{a}_1,\Vect{a}_2)</latex>
+                     </math> forms an ordered basis of <math>
+                        <latex>V</latex>
+                     </math>.
+			</para.body>
+               </para>
+			            <para>
+                  <para.body>
+                     <strong>Step 2</strong>   Setting up a basis for <math>
+                        <latex>W</latex>
+                     </math>. As <math>
+                        <latex>\Vect{b}_1</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}_2</latex>
+                     </math> are linearly independent, they form an ordered 
+				<subordinate>
+                        <hot>basis</hot>
+                        <info>
+                           <info.caption>
+                              <caption>Explanation</caption>
+                           </info.caption>
+						
+						                     <para>
+                              <para.body>This is the very definition of a ‘basis’: A linearly independent subset of <math>
+                                    <latex>W</latex>
+                                 </math> which spans <math>
+                                    <latex>W</latex>
+                                 </math>.</para.body>
+                           </para>
+					                   </info>
+                     </subordinate>
+				                 <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> for <math>
+                        <latex>W</latex>
+                     </math>.</para.body>
+               </para>
+			
+			            <para>
+                  <para.body>
+                     <strong>Step 3</strong>   Finding the matrix representing <math>
+                        <latex>L</latex>
+                     </math> with respect to the bases <math>
+                        <latex>\EuScript{A}</latex>
+                     </math> and <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>. We find</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(\Vect{a}_1)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(1,0,-1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1-(-1))\cdot \Vect{b}_1\ +\ (0+(-1))\cdot \Vect{b}_2</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>2\cdot \Vect{b}_1 + (-1)\cdot \Vect{b}_2</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(\Vect{a}_2)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(1,-2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1+(-2)+(-1))\cdot \Vect{b}_1\ +\ ((-2) + 1)\cdot \Vect{b}_2</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-2\cdot \Vect{b}_1 + (-1)\cdot \Vect{b}_2</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore,</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{A}_{\EuScript{B}\EuScript{A}} = 
+\left[
+\begin{array}{rr}
+2 &amp; -2 \\
+-1 &amp; -1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>This matrix has</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\det(\Mtrx{A}_{\EuScript{B}\EuScript{A}})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-4\neq 0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>So <math>
+                        <latex>L</latex>
+                     </math> is invertible, and <math>
+                        <latex>L^{-1}</latex>
+                     </math> is represented by</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{A}_{\EuScript{A}\EuScript{B}}(L^{-1}) = \left( \Mtrx{A}_{\EuScript{B}\EuScript{A}}\right)^{-1} = 
+-\dfrac{1}{4}
+\left[
+\begin{array}{rr}
+-1 &amp; 2 \\
+1 &amp; 2
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>	
+</showme.pack>

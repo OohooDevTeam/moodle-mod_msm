@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<example.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_OrientedVolume">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Examples of Oriented Volume</title>
+	<caption>Oriented Volume</caption>
+	
+	
+	
+	<example>
+		<statement>
+			<para>Assume that the box spanned by <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> below has edges of length</para>
+			<para align="center"><latex>\abs{ \Vect{x} } = 5</latex>, &nbsp; <latex>\abs{ \Vect{y} } = 2</latex>, &nbsp; and &nbsp; <latex>\abs{ \Vect{z} } = 3</latex>.</para>
+			<figure>
+				<img src="ims/RightHandBox.gif"></img>
+			</figure>
+			
+			<computation>
+				<left>\OriVol(\Vect{x},\Vect{y},\Vect{z})</left>
+				<center>=</center>
+				<right>\omega(\Vect{x},\Vect{y},\Vect{z})\cdot 5\cdot 2\cdot 3</right>
+				<left></left>
+				<center>=</center>
+				<right>(+1)\cdot 30</right>
+			</computation>
+			<para>because <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> represents the right hand or positive orientation of <latex>\RNr[3]</latex>.</para>
+		</statement>
+	</example>
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>Assume that the box spanned by <latex>(\Vect{u},\Vect{v},\Vect{w})</latex> below has edges of length</para>
+			<para align="center"><latex>\abs{ \Vect{u} } = 3</latex>, &nbsp; <latex>\abs{ \Vect{v} } = 4</latex>, &nbsp; and &nbsp; <latex>\abs{ \Vect{w} } = 7</latex>.</para>
+			<figure>
+				<img src="ims/LeftHandBox.gif"></img>
+			</figure>
+			
+			<computation>
+				<left>\OriVol(\Vect{u},\Vect{v},\Vect{w})</left>
+				<center>=</center>
+				<right>\omega(\Vect{u},\Vect{v},\Vect{w})\cdot 3\cdot 4\cdot 7</right>
+				<left></left>
+				<center>=</center>
+				<right>(-1)\cdot 84</right>
+			</computation>
+			<para>because <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> represents the left hand or negative orientation of <latex>\RNr[3]</latex>.</para>
+		</statement>
+	</example>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>Find the oriented volume of the box in <latex>\RNr[3]</latex> spanned by the vector triple <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> with</para>
+			<para align="center"><latex>\Vect{x}= (5,0,0)</latex>, &nbsp; <latex>\Vect{y}=(0,2,0)</latex>, and &nbsp; <latex>\Vect{z} = (0,0,3)</latex></para>
+			<figure>
+				<img src="ims/OrientedVolumeBox1.jpg"></img>
+			</figure>
+			
+		</statement>
+		<answer type="Solution">
+			<para>The oriented volume of this box is given by <latex>\det[ \Vect{x}\ \Vect{y}\ \Vect{z}]</latex>. Therefore</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\OriVol(\Vect{x},\Vect{y},\Vect{z})\ =\ 
+\det
+\left[
+\begin{array}{rrr}
+5 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 3
+\end{array}
+\right] = +30
+]]>
+				</latex>
+			</math.display>
+			<para>This agrees with what the theorem on oriented volume has us expect: the vectors <latex>\Vect{x}</latex>, <latex>\Vect{y}</latex>, and <latex>\Vect{z}</latex> span a rectangular box with edges of length 5,2, and 3. So its unoriented volume is 30. Moreover the triple of vectors <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> determine the right hand or positive orientation of <latex>\RNr[3]</latex>. Therefore <latex>\omega(\Vect{x},\Vect{y},\Vect{z})=+1</latex>, and so the determinant is positive.</para>
+		</answer>
+	</example>
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>Find the oriented volume of the box in <latex>\RNr[3]</latex> spanned by the vector triple <latex>(\Vect{u},\Vect{v},\Vect{w})</latex> with</para>
+			<para align="center"><latex>\Vect{u}= (3,0,0)</latex>, &nbsp; <latex>\Vect{v}=(0,4,0)</latex>, and &nbsp; <latex>\Vect{w} = (0,0,-7)</latex></para>
+			<figure>
+				<img src="ims/OrientedVolumeBox2.jpg"></img>
+			</figure>
+			
+		</statement>
+		<answer type="Solution">
+			<para>The oriented volume of this box is given by <latex>\det[ \Vect{u}\ \Vect{v}\ \Vect{w}]</latex>. Therefore</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\OriVol(\Vect{u},\Vect{v},\Vect{w})\ =\ 
+\det
+\left[
+\begin{array}{rrr}
+3 & 0 & 0 \\
+0 & 4 & 0 \\
+0 & 0 & -7
+\end{array}
+\right] = -84
+]]>
+				</latex>
+			</math.display>
+			<para>This agrees with what the theorem on oriented volume has us expect: the vectors <latex>\Vect{u}</latex>, <latex>\Vect{v}</latex>, and <latex>\Vect{w}</latex> span a rectangular box with edges of length 3, 4, and 7. So its unoriented volume is 84. Moreover the triple of vectors <latex>(\Vect{u},\Vect{v},\Vect{w})</latex> determine the left hand or negative orientation of <latex>\RNr[3]</latex>. Therefore <latex>\omega(\Vect{u},\Vect{v},\Vect{w})=-1</latex>, and so the determinant is negative.</para>
+		</answer>
+	</example>
+	
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>Find the orientation of <latex>\RNr[3]</latex> given by the triple of vectors <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> with <latex>\Vect{x}=(3,-2,1)</latex> and <latex>\Vect{y}=(7,4,0)</latex>, and <latex>\Vect{z}=(-1,3,6)</latex>. </para>
+		</statement>
+		<answer type="Solution">
+			<para>The orientation of <latex>\RNr[3]</latex> given by <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\omega(\Vect{x},\Vect{y},\Vect{z}) = \dfrac{
+\det
+\left[
+\begin{array}{rrr}
+3 & 7 & -1 \\
+-2 & 4 & 3 \\
+1 & 0 & 6
+\end{array}
+\right] }{
+\abs{
+\det
+\left[
+\begin{array}{rrr}
+3 & 7 & -1 \\
+-2 & 4 & 3 \\
+1 & 0 & 6
+\end{array}
+\right]
+} } = \dfrac{ 181 }{\abs{ 181 } } = +1
+]]>
+				</latex>
+			</math.display>
+			<para>So the given triple of vectors determines the positive or right hand orientation of <latex>\RNr[3]</latex>. – Notice that, contrary to the previous two examples, it is not so easy to arrive at this conclusion by &lsquo;inspection&rsquo;.</para>
+		</answer>
+	</example>
+</example.pack>

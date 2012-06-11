@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_CoordinateVector"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Coordinate Vector: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>You are given the ordered basis <math>
+                  <latex>\EuScript{B} = (\Vect{a},\Vect{b})</latex>
+               </math> of <math>
+                  <latex>\RNr[2]</latex>
+               </math> with</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{a} = (2,1)</latex>
+               </math> and <math>
+                  <latex>\Vect{b} = (-3,4)</latex>
+               </math>.</para.body>
+         </para>
+			      <para xmlns="">
+            <para.body>Find <math>
+                  <latex>\Vect{x}_{\EuScript{S}}</latex>
+               </math> if <math>
+                  <latex>\Vect{x}_{\EuScript{B}} = (6,5)</latex>
+               </math>
+            </para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We recall that <math>
+                        <latex>\Vect{x}_{\EuScript{B}} = (6,5)</latex>
+                     </math> means that</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>6\cdot \Vect{a} + 5\cdot \Vect{b}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>6\cdot (2,1) + 5\cdot (-3,4)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(12,6) + (-15,20)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-3,26)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Let <math>
+                  <latex>V</latex>
+               </math> be the subspace of <math>
+                  <latex>\RNr[3]</latex>
+               </math> spanned by the linearly independent vectors <math>
+                  <latex>\Vect{a} = (1,-1,2)</latex>
+               </math> and <math>
+                  <latex>\Vect{b}= (3,2,-3)</latex>
+               </math>. You are given the information that <math>
+                  <latex>\Vect{x}= (0,-5,9)</latex>
+               </math> is in <math>
+                  <latex>V</latex>
+               </math>. Find its coordinate vector with respect to the ordered basis <math>
+                  <latex>\EuScript{B}:= ( \Vect{a} , \Vect{b} )</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We have <math>
+                        <latex>\Vect{x}_{\EuScript{B}} = (s,t)</latex>
+                     </math> for the two uniquely determined numbers <math>
+                        <latex>s</latex>
+                     </math> and <math>
+                        <latex>t</latex>
+                     </math> satisfying</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>s \Vect{a} + t \Vect{b}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore we need to solve the vector equation</para.body>
+               </para>
+							        <math.display>
+								          <latex>
+									
+s
+\left[
+\begin{array}{r}
+1 \\ -1 \\ 2
+\end{array}
+\right]\ +\ t
+\left[
+\begin{array}{r}
+3 \\ 2 \\ -3
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{r}
+0 \\ -5 \\ 9
+\end{array}
+\right]
+					
+								</latex>
+							        </math.display>
+			            <para>
+                  <para.body>This vector equation is equivalent to the system of linear equations</para.body>
+               </para>
+							        <math.display>
+								          <latex>
+									
+\begin{array}{rcccr}
+s &amp; + &amp; 3t &amp; = &amp; 0 \\
+-s &amp; + &amp; 2t &amp; = &amp; -5 \\
+2s &amp; - &amp; 3t &amp; = &amp; 9
+\end{array}
+					
+								</latex>
+							        </math.display>
+			            <para>
+                  <para.body>The row reduction method applied to the augmented coefficient matrix of this system yields</para.body>
+               </para>
+							        <math.display>
+								          <latex>
+									
+\begin{array}{rr|r}
+1 &amp; 3 &amp; 0 \\
+-1 &amp; 2 &amp; -5 \\
+2 &amp; -3 &amp; 9
+\end{array} \qquad\qquad
+\begin{array}{rr|r}
+1 &amp; 0 &amp; 3 \\
+0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 0
+\end{array}
+					
+								</latex>
+							        </math.display>
+			            <para>
+                  <para.body>Thus <math>
+                        <latex>s=3</latex>
+                     </math> and <math>
+                        <latex>t=-1</latex>
+                     </math> are the only solution of the given vector equation, and so we conclude:</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>3 \Vect{a} + (-1) \Vect{b}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}_{\EuScript{B}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(3,-1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>is the coordinate vector of <math>
+                        <latex>\Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Suppose <math>
+                  <latex>\EuScript{B}=(\Vect{a},\Vect{b},\Vect{c})</latex>
+               </math> is an ordered basis of a subvector space <math>
+                  <latex>V</latex>
+               </math> of <math>
+                  <latex>\RNr[n]</latex>
+               </math>. Find <math>
+                  <latex>\Vect{x}_{\EuScript{B}}</latex>
+               </math> if</para.body>
+         </para>
+			      <ol xmlns="">
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = \Vect{a}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = \Vect{b}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = \Vect{c}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = 3\cdot\Vect{a}-\Vect{b} - 2\cdot \Vect{c}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+			      </ol>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The required coordinate vectors are</para.body>
+               </para>
+			            <ol>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x}_{\EuScript{B}}=({\color{red} 1},{\color{blue} 0},{\color{green} 0})</latex>
+                           </math> as <math>
+                              <latex>\Vect{x} = {\color{red} 1}\cdot \Vect{a} + {\color{blue} 0}\cdot \Vect{b} + {\color{green} 0}\cdot \Vect{c}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x}_{\EuScript{B}}=({\color{red} 0},{\color{blue} 1},{\color{green} 0})</latex>
+                           </math> as <math>
+                              <latex>\Vect{x} = {\color{red} 0}\cdot \Vect{a} + {\color{blue} 1}\cdot \Vect{b} + {\color{green} 0}\cdot \Vect{c}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x}_{\EuScript{B}}=({\color{red} 0},{\color{blue} 0},{\color{green} 1})</latex>
+                           </math> as <math>
+                              <latex>\Vect{x} = {\color{red} 0}\cdot \Vect{a} + {\color{blue} 0}\cdot \Vect{b} + {\color{green} 1}\cdot \Vect{c}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x}_{\EuScript{B}}=({\color{red} 3},{\color{blue} -1},{\color{green} -2})</latex>
+                           </math> as <math>
+                              <latex>\Vect{x} = {\color{red} 3}\cdot \Vect{a} + {\color{blue} (-1)}\cdot \Vect{b} + {\color{green} (-2)}\cdot \Vect{c}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+			            </ol>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Suppose <math>
+                  <latex>\EuScript{B}=(\Vect{a},\Vect{b},\Vect{c})</latex>
+               </math> is an ordered basis of a subvector space <math>
+                  <latex>V</latex>
+               </math> of <math>
+                  <latex>\RNr[n]</latex>
+               </math>. Then <math>
+                  <latex>\EuScript{C}=(\Vect{b},\Vect{c},\Vect{a})</latex>
+               </math> is another ordererd basis of <math>
+                  <latex>V</latex>
+               </math>. If <math>
+                  <latex>\Vect{x}_{\EuScript{B}} = (-2,6,-5)</latex>
+               </math>, find <math>
+                  <latex>\Vect{x}_{\EuScript{C}}</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We know that</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-2)\cdot \Vect{a} + 6\cdot \Vect{b} + (-5)\cdot \Vect{c}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>6\cdot \Vect{b} + (-5)\cdot \Vect{c} + (-2)\cdot \Vect{a}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}_{\EuScript{C}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(6,-5,-2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

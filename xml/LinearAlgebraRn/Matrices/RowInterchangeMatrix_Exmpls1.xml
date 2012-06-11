@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_RowInterchangeMatrixExplanation">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of Row Interchange Matrices</title>
+	<caption>Examples of Interchange Matrices</caption>
+	
+	<showme>
+		<statement>
+			<para>The matrix <latex magnify="yes">R_{ij}</latex> allows us to perform the row operation &lsquo;interchange rows <latex>i</latex> and <latex>j</latex> of an <latex>(n,p)</latex>-matrix <latex>\Mtrx{B}</latex>&rsquo;. In symbols</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{bmatrix}
+1 & \cdots & \cdots & \cdots & 0 \\
+\vdots & 0 & \vdots & 1 & \vdots \\
+0 & \cdots & 1 & \cdots & 0 \\
+\vdots & 1 & \vdots & 0 & \vdots \\
+0 & \cdots & \cdots & \cdots & 1
+\end{bmatrix}
+\begin{bmatrix}
+* & \cdots & * \\
+\vdots & & \vdots \\
+a_{i1} & \cdots & a_{ip} \\
+\vdots & & \vdots \\
+a_{j1} & \cdots & a_{jp} \\
+\vdots & & \vdots \\
+{*} & \cdots & *
+\end{bmatrix}\ =\
+\begin{bmatrix}
+* & \cdots & * \\
+\vdots & & \vdots \\
+a_{j1} & \cdots & a_{jp} \\
+\vdots & & \vdots \\
+a_{i1} & \cdots & a_{ip} \\
+\vdots & & \vdots \\
+{*} & \cdots & *
+\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>The matrix which, in the set of <latex>(5,5)</latex>-matrices interchanges rows <latex>1</latex> and <latex>4</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+R_{1,4}\ :=\ \begin{bmatrix}
+0 & 0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 & 0  \\
+0 & 0 & 1 & 0 & 0 \\
+1 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>	
+</showme.pack>

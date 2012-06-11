@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_InvertibleMapsComposition"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Composition of invertible linear maps</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation for the conclusion of this proposition</caption>
+         </info.caption>
+         <para>
+            <para.body>Conceptually the conclusion of this proposition is quite transparent: If we want to reverse the effect of the composite <math>
+                  <latex>(T\Comp S)</latex>
+               </math>, we can do so by first reversing the effect of <math>
+                  <latex>T</latex>
+               </math>, using <math>
+                  <latex>T^{-1}</latex>
+               </math>, and then reversing the effect of <math>
+                  <latex>S</latex>
+               </math>, using <math>
+                  <latex>S^{-1}</latex>
+               </math>. In other words:</para.body>
+         </para>
+         <math.display>
+            <latex>S^{-1}\Comp T^{-1} \Comp T\Comp S = \Id[n]</latex>
+         </math.display>
+         <para>
+            <para.body>Hence the claim.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>If <math>
+               <latex>S,T\from \RNr[n]\to \RNr[n]</latex>
+            </math> are invertible linear transformations, then <math>
+               <latex>(T\Comp S)</latex>
+            </math> is also invertible and</para.body>
+      </para>
+      <math.display>
+         <latex>(T\Comp S)^{-1} = S^{-1}\Comp T^{-1}</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We need to show that the composite <math>
+                     <latex>S^{-1}\Comp T^{-1}</latex>
+                  </math> is the inverse of <math>
+                     <latex>(T\Comp S)</latex>
+                  </math>. To this end we compute:</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(S^{-1}\Comp T^{-1})\Comp (T\Comp S)</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion>
+                        <info>
+                           <para>
+                              <para.body>Here we use the associate law of composition of functions <math>
+                                    <latex>f,g,h</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                           <math.display>
+                              <latex>h\Comp (g\Comp f) = (h\Comp g)\Comp f</latex>
+                           </math.display>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>S^{-1}\Comp (T^{-1}\Comp T)\Comp S</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>S^{-1}\Comp \Id[n]\Comp S</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>S^{-1}\Comp S</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Id[n]</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>and</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(T\Comp S)\Comp (S^{-1}\Comp T)</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion>
+                        <info>
+                           <para>
+                              <para.body>Here we use the associate law of composition of functions <math>
+                                    <latex>f,g,h</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                           <math.display>
+                              <latex>h\Comp (g\Comp f) = (h\Comp g)\Comp f</latex>
+                           </math.display>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>T\Comp (S\Comp S^{-1})\Comp T^{-1}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>T\Comp \Id[n]\Comp T^{-1}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>T\Comp T^{-1}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Id[n]</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>This proves the claim.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

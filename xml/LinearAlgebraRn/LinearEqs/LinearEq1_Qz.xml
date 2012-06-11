@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE quiz.pack	SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Qz_LinearEquations">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	<title>Linear Equations &ndash; Quiz</title>
+	<caption>Linear Equations &ndash; Quiz</caption>
+	<quiz>
+		<question>
+			<para>For each of the following expressions determine if it is a linear equation.</para>
+		</question>
+		<part>
+			<question>
+				<para><latex>4x - y + 11z = 14</latex></para>
+			</question>
+			<choice>
+				<answer><para>Yes!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;Yes!&rsquo;</caption>
+					<para>Correct! This is a linear equation in three variables.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>No!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;No!&rsquo;</caption>
+					<para>Hmmm! Honest &ndash; I don't have a clue why you might think this equation is not linear, for it is!</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para><latex>x^2 + x + 1 = 0</latex></para>
+			</question>
+			<choice>
+				<answer><para>Yes!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;Yes!&rsquo;</caption>
+					<para>Sorry! &ndash; This equation is not linear because the variable <latex>x</latex> appears with its square <latex>x^2</latex>.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>No!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;No!&rsquo;</caption>
+					<para>Correct! &ndash; This equation is not linear because the variable <latex>x</latex> appears with its square <latex>x^2</latex>.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para><latex>2u - 3 + x = 3y - 2x</latex></para>
+			</question>
+			<choice>
+				<answer><para>Yes!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;Yes!&rsquo;</caption>
+					<para>Correct! &ndash; The given equation is equivalent to</para>
+					<math.display>
+						<latex>2u -x - 3y = 3</latex>
+					</math.display>
+					<para>and this expression fits exactly the template of an inhomogeneous linear equation.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>No!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;No!&rsquo;</caption>
+					<para>Sorry! &ndash; This equation is linear. If you bring all expressions containing a variable to the left and the constant summand <latex>-3</latex> to the right, you will see that it fits exactly the template for a linear equation.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para><latex>\sqrt{2}\, x + \sin(\pi/2)\, y = 0</latex></para>
+			</question>
+			<choice>
+				<answer><para>Yes!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;Yes!&rsquo;</caption>
+					<para>Correct! &ndash; This is a homogeneous linear equation.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>No!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;No!&rsquo;</caption>
+					<para>Sorry! &ndash; This equation is linear. Perhaps the expression &lsquo;<latex>\sqrt{2}</latex>&rsquo; and &lsquo;<latex>\sin(\pi/2)</latex>&rsquo; throw you off? &ndash; Remember: these are just complicated looking numbers; e.g. <latex>\sin(\pi/2) = 1</latex>. So the given equation fits exactly the template for a homogeneous linear equation in two variables.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para><latex magnify="yes">e^{2x} - y = 3</latex></para>
+			</question>
+			<choice>
+				<answer><para>Yes!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;Yes!&rsquo;</caption>
+					<para>Sorry! &ndash; This equation is not linear because the variable <latex>x</latex> appears in the exponent of Euler&rsquo;s number <latex>e</latex>. This is not allowed in a linear equation.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>No!</para></answer>
+				<info>
+					<caption>Comment on &lsquo;No!&rsquo;</caption>
+					<para>Correct! &ndash; This equation is not linear because the variable <latex>x</latex> appears in the exponent of Euler&rsquo;s number <latex>e</latex>. This is not allowed in a linear equation.</para>
+				</info>
+			</choice>
+		</part>
+	</quiz>
+	
+	
+</quiz.pack>

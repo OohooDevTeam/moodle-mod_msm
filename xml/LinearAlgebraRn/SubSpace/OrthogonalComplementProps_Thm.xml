@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_OrthogonalComplementOperationProperties">
+	<caption>Orthogonal complement: properties</caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Expla_OrthogonalComplementProperties"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>An explanation of the meaning of the properties of the orthogonal complement operation.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>In a subspace <latex>W</latex> of <latex>\RNr[n]</latex> the following hold:</para>
+		<part partid="SSubsetT"><para>If 
+			<subordinate>
+				<hot><latex>S\subseteq T\subseteq W</latex></hot>
+				<info>
+					<caption>What does this notation mean?</caption>
+					<para>Given sets <latex>S</latex> and <latex>T</latex>, to say that <latex>S\subseteq T</latex>, read: &lsquo;<latex>S</latex> is a subset of <latex>T</latex>&rsquo;, means that every element of <latex>S</latex> also an element of <latex>T</latex></para>
+				</info>
+			</subordinate>,
+			then <latex>T^{\bot}\subseteq S^{\bot}</latex>
+			<index.symbol>
+				<symbol><latex>S\subseteq T</latex></symbol>
+				<info><para>Given sets <latex>S</latex> and <latex>T</latex>, to say that <latex>S\subseteq T</latex>, read: &lsquo;<latex>S</latex> is a subset of <latex>T</latex>&rsquo;, means that every element of <latex>S</latex> also an element of <latex>T</latex></para></info>
+			</index.symbol>
+		</para></part>
+		<part partid="SpanPerp"><para><latex>S^{\bot}=\span(S)^{\bot}</latex></para></part>
+		<part partid="OrthogonalSplit0"><para>If <latex>V</latex> is a subspace of <latex>W</latex>, then <latex>V</latex> and <latex>V^{\bot}</latex> have only the zero vector in common.</para></part>
+		<part partid="TripleComplement"><para>For every subset <latex>S</latex> of <latex>W</latex>, <latex>S^{\bot} = S^{\bot\bot\bot}</latex>.</para></part>
+	</statement>
+	<proof type="Proof">
+		<caption><partref>SSubsetT</partref> &nbsp; If <latex>S\subseteq T</latex> then <latex>T^{\bot}\subseteq S^{\bot}</latex></caption>
+		<para>If <latex>\Vect{x}\in T^{\bot}</latex>, we need to show that <latex>\Vect{x}\in S^{\bot}</latex>. So we need to show that <latex>\DotPr{ \Vect{x} }{ \Vect{s} } = 0</latex>, for every <latex>s\in S</latex>. &ndash; But if <latex>\Vect{s}\in S</latex>, then also <latex>\Vect{s}\in T</latex>, and so <latex>\DotPr{ \Vect{x} }{ \Vect{s} } = 0</latex> because <latex>\Vect{x} \in T^{\bot}</latex>.</para>
+		
+		<caption><partref>SpanPerp</partref></caption>
+		<para>We need to verify the two properties below</para>
+		<ol type="1">
+			<li><para><latex>S^{\bot}</latex> contains <latex>\span(S)^{\bot}</latex></para></li>
+			<li><para><latex>\span(S)^{\bot}</latex> contains <latex>S^{\bot}</latex></para></li>
+		</ol>
+		<para>The inclusion 1. holds by part (i), using that <latex>S\subseteq \span(S)</latex>. To see that inclusion 2. holds, consider <latex>\Vect{x}\in S^{\bot}</latex>. We need to show that <latex>\DotPr{ \Vect{x} }{ \Vect{v} } = 0</latex> for every <latex>\Vect{v} \in \span(S)</latex>. Now <latex>\Vect{v} = t_1 \Vect{s}_1 + \cdots + t_k \Vect{s}_k</latex>, for some <latex>\Vect{s}_1</latex>, ... , <latex>\Vect{s}_k</latex> in <latex>S</latex>, and <latex>t_1</latex>, ... , <latex>t_k</latex> in <latex>\RNr</latex>. Therefore</para>
+		<computation>
+			<left>\DotPr{ \Vect{x} }{ \Vect{v} }</left>
+			<center>=</center>
+			<right>\DotPr{ \Vect{x} }{t_1 \Vect{s}_1 + \cdots + t_k \Vect{s}_k) }</right>
+			<left></left>
+			<center>=</center>
+			<right>t_1(\DotPr{ \Vect{x} }{ \Vect{s}_1 }) + \cdots + t_k(\DotPr{ \Vect{x} }{ \Vect{s}_k })</right>
+			<left></left>
+			<center>=</center>
+			<right>0</right>
+		</computation>
+		<para>This proves part (ii) of the proposition.</para>
+		<caption><partref>OrthogonalSplit0</partref> &nbsp; <latex>V\cap V^{\bot} = \Vect{0}</latex>.</caption>
+		<para>Suppose <latex>\Vect{x}</latex> belongs to <latex>V</latex> and to <latex>V^{\bot}</latex>, then <latex>\DotPr{ \Vect{x} }{ \Vect{x} } = 0</latex>, and 
+			<subordinate>
+				<hot>so</hot>
+				<info><para>Here we use the non-degeneracy property of the dot product operation.</para></info>
+			</subordinate>
+			<latex>\Vect{x} = \Vect{0}</latex>.</para>
+		<caption><partref>TripleComplement</partref> &nbsp; <latex>S^{\bot} = S^{\bot\bot\bot}</latex></caption>
+		<para>We need to show that the two inclusions below hold</para>
+		<ol>
+			<li><para><latex>S^{\bot}\subseteq S^{\bot\bot\bot}</latex></para></li>
+			<li><para><latex>S^{\bot\bot\bot}\subseteq S^{\bot}</latex></para></li>
+		</ol>
+		<para>Consider <latex>\Vect{x}\in S^{\bot}</latex>. We need to show that <latex>\DotPr{ \Vect{x} }{ \Vect{y} }=0</latex> for all <latex>\Vect{y}\in S^{\bot\bot}</latex>. But <latex>\Vect{y}</latex> is in <latex>S^{\bot\bot}</latex> because <latex>\DotPr{ \Vect{x} }{ \Vect{y} }=0</latex> for each <latex>\Vect{x}\in S^{\bot}</latex>, and this is exactly what we wanted to show.</para>
+		<para>The converse inclusion <latex>S^{\bot\bot\bot}\subseteq S^{\bot}</latex> holds because <latex>S\subseteq S^{\bot\bot}</latex>.</para>
+		<para>This completes the proof of the proposition.</para>
+	</proof>
+</theorem>

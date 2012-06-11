@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_Diagonalize"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Diagonalization of Matrices</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the following matrices <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> determine if it is diagonalizable. If it is find a matrix identity <math>
+                     <latex>\Mtrx{D} = \Mtrx{C}^{-1} \Mtrx{A} \Mtrx{C}</latex>
+                  </math>, with <math>
+                     <latex>\Mtrx{D}</latex>
+                  </math> a diagonal matrix.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+1 &amp; 3 \\
+1 &amp; 2
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is diagonalizable, and</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\dfrac{1}{2}
+\left[
+\begin{array}{cc}
+3 + \sqrt{13} &amp; 0 \\
+0 &amp; 3 -\sqrt{13}
+\end{array}
+\right]\ =\ \Mtrx{C}^{-1} \Mtrx{A} \Mtrx{C}
+
+						</latex>
+					                </math.display>
+					                <para>
+                        <para.body>with</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{C}\ :=\ 
+\left[
+\begin{array}{cc}
+1 - \sqrt{13} &amp; 1 + \sqrt{13} \\
+-2 &amp; -2
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>First find the characteristic polynomial of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>The characteristic polynomial of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>p(\lambda) = \lambda^2 - 3\lambda -1</latex>
+					          </math.display>
+					          <para>
+                  <para.body>Find those numbers for which <math>
+                        <latex>p</latex>
+                     </math> is <math>
+                        <latex>0</latex>
+                     </math>. These are the eigenvalues of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>The eigenvalues of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> are</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lambda_1</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ 3 + \sqrt{13} }{ 2 }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lambda_2</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ 3 - \sqrt{13} }{ 2 }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+					          <para>
+                  <para.body>Each of these eigenvalues has algebraic multiplicity <math>
+                        <latex>1</latex>
+                     </math> and, hence, also geometric multiplicity <math>
+                        <latex>1</latex>
+                     </math>. What does that tell you?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>The algebraic multiplicity of the eigenvalues equals their geometric multiplicity. So <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is diagonalizable. – Next find a basis <math>
+                        <latex>\RNr[2]</latex>
+                     </math> consisting of eigenvectors of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>An eigenvector corresponding to <math>
+                        <latex>\lambda_1=\tfrac{1}{2}(3+\sqrt{13})</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>\Vect{u} = (1-\sqrt{13},-2)</latex>
+					          </math.display>
+					          <para>
+                  <para.body>An eigenvector corresponding to <math>
+                        <latex>\lambda_2=\tfrac{1}{2}(3-\sqrt{13})</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>\Vect{v} = (1+\sqrt{13},-2)</latex>
+					          </math.display>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>An ordered basis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> consisting of eigenvectors <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>\EuScript{B} = (\Vect{u},\Vect{v})</latex>
+					          </math.display>
+					          <para>
+                  <para.body>Now find the matrix <math>
+                        <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>
+                     </math> which converts from <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>-coordinates to standard coordinates; i.e. <math>
+                        <latex>\EuScript{S}</latex>
+                     </math>-coordinates.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>A basis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> consisting of eigenvectors of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>\EuScript{B} = \left( (1-\sqrt{13},-2) , (1+\sqrt{13},-2) \right)</latex>
+					          </math.display>
+					          <para>
+                  <para.body>Therefore, the matrix which converts from <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>-coordinates to standard coordinates is</para.body>
+               </para>
+					          <math.display>
+						            <latex>
+							
+\Mtrx{C} := \Mtrx{C}_{\EuScript{S}\EuScript{B}}\ =\ 
+\left[
+\begin{array}{cc}
+1 - \sqrt{13} &amp; 1 + \sqrt{13} \\
+-2 &amp; -2
+\end{array}
+\right]
+							
+						</latex>
+					          </math.display>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A}\ =\ 
+\left[
+\begin{array}{ccc}
+2 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 2
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is diagonalizable, and</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\left[
+\begin{array}{ccc}
+3 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\ =\ \Mtrx{C}^{-1} \Mtrx{A} \Mtrx{C}
+
+						</latex>
+					                </math.display>
+					                <para>
+                        <para.body>with</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{C}\ =\ 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; -1
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>We have a result which enables you to predict for some matrices if they are diagonalizable without computing its eigenvalues first.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>We know that every symmetric matrix is diagonalizable. This criterion applies to the matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> given here.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>To find the eigenvalues of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, find its characteristic polynomial <math>
+                        <latex>p(\lambda) = \det(\Mtrx{A} - \lambda\cdot \IdMtrx[3])</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>The characteristic polynomial of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>p(\lambda) = (\lambda-3)(\lambda-1)^2</latex>
+					          </math.display>
+					          <para>
+                  <para.body>So what are the eigenvalues of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>For the characteristic polynomial <math>
+                        <latex>p(\lambda) = (\lambda-3)(\lambda-1)^2</latex>
+                     </math> we see that the eigenvalues of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> are</para.body>
+               </para>
+					          <ul>
+						            <li>
+							              <para>
+                        <para.body>
+                           <math>
+                              <latex>\lambda_1 = 3</latex>
+                           </math> with algebraic multiplicity 3, and</para.body>
+                     </para>
+						            </li>
+						            <li>
+							              <para>
+                        <para.body>
+                           <math>
+                              <latex>\lambda_2 = 1</latex>
+                           </math> with algebraic multiplicity 2.</para.body>
+                     </para>
+						            </li>
+					          </ul>
+					          <para>
+                  <para.body>So, what is a corresponding basis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> consisting of eigenvectors or <math>
+                        <latex>\Mtrx{A}?</latex>
+                     </math>
+                  </para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>An eigenvector for <math>
+                        <latex>\lambda_1=3</latex>
+                     </math> is <math>
+                        <latex>\Vect{a}=(1,0,1)</latex>
+                     </math>, and a pair of linearly independent eigenvectors for <math>
+                        <latex>\lambda_2=1</latex>
+                     </math> is <math>
+                        <latex>\Vect{b}=(0,1,0)</latex>
+                     </math> and <math>
+                        <latex>\Vect{c}=(1,0,-1)</latex>
+                     </math>.</para.body>
+               </para>
+					          <para>
+                  <para.body>So with respect to which basis does <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> have a diagonal representation?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>An ordered basis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> consisting of eigenvectors of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>\EuScript{B} = (\Vect{a},\Vect{b},\Vect{c}) = \left( (1,0,1), (0,1,0), (1,0,-1) \right).</latex>
+					          </math.display>
+					          <para>
+                  <para.body>So, which matrix converts from <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>-coordinates to standard coordinates?</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A}\ =\ 
+\left[
+\begin{array}{rrrrr}
+2 &amp; 1 &amp; -3 &amp; 7 &amp; -5 \\
+0 &amp; 4 &amp; 4 &amp; -1 &amp; 4 \\
+0 &amp; 0 &amp; 2 &amp; 1 &amp; -9 \\
+0 &amp; 0 &amp; 0 &amp; 2 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -1
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is not diagonalizable.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The characteristic polynomial of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>p(\lambda)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\lambda + 1)(\lambda - 2)^3 (\lambda - 4)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>The eigenspace of <math>
+                           <latex>\lambda_2 := 2</latex>
+                        </math> is the null space of the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} - 2\IdMtrx[5]\ =\ 
+\left[
+\begin{array}{rrrrr}
+0 &amp; 1 &amp; -3 &amp; 7 &amp; -5 \\
+0 &amp; 2 &amp; 4 &amp; -1 &amp; 4 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; -9 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -3
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The RREF of this matrix is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{rrrrr}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>and so the null space of <math>
+                           <latex>(\Mtrx{A} - 2\IdMtrx[5])</latex>
+                        </math> is the span of the vector <math>
+                           <latex>(1,0,0,0,0)</latex>
+                        </math>, a <math>
+                           <latex>1</latex>
+                        </math>-dimensional space. Consequently, we find:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>3 = (\text{alg multiplicity of $\lambda_2$})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>\neq</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\text{geom multiplicity of $\lambda_2$}) = 1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>It follows that <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is not diagonalizable.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find matrices <math>
+                     <latex>\Mtrx{P}</latex>
+                  </math> and <math>
+                     <latex>\Mtrx{Q}</latex>
+                  </math> such that <math>
+                     <latex>\Mtrx{Q}\Mtrx{A}\Mtrx{P}</latex>
+                  </math> is diagonal, where</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\Mtrx{A} =
+\left[
+\begin{array}{ccc}
+1 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 2
+\end{array}
+\right]
+
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <math.display>
+					                <latex>
+						
+\Mtrx{P} = 
+\left[
+\begin{array}{rrr}
+-1 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+					</latex>
+				              </math.display>
+				              <para>
+                     <para.body>and <math>
+                           <latex>\Mtrx{Q}:= \Mtrx{P}^{-1}</latex>
+                        </math> give</para.body>
+                  </para>
+				              <math.display>
+					                <latex>
+						
+\Mtrx{Q} \Mtrx{A} \Mtrx{P} = 
+\left[
+\begin{array}{ccc}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 2 &amp; 0 \\
+0 &amp; 0 &amp; 2
+\end{array}
+\right]
+
+					</latex>
+				              </math.display>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>\Mtrx{D}</latex>
+                  </math> be an <math>
+                     <latex>(n,n)</latex>
+                  </math>-diagonal matrix with diagonal entries <math>
+                     <latex>d_1</latex>
+                  </math>, ... , <math>
+                     <latex>d_n</latex>
+                  </math>. If <math>
+                     <latex>\Mtrx{X}</latex>
+                  </math> is an arbitrary invertible <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix, let</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Mtrx{A}\ :=\ \Mtrx{X}\Mtrx{D}\Mtrx{X}^{-1}</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> always invertible?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No, <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is not always invertible.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>What is <math>
+                        <latex>\Mtrx{X}</latex>
+                     </math> if <math>
+                        <latex>\Mtrx{D}</latex>
+                     </math> is the 0-matrix?</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Suppose <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is invertible. Then</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Mtrx{D}\ =\ \Mtrx{X}^{-1} \Mtrx{A} \Mtrx{X}</latex>
+					             </math.display>
+					             <para>
+                     <para.body>is invertible as well because it is a product of invertible matrices. However,</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A}\ =\ 
+\left[
+\begin{array}{cccc}
+d_1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; d_2 &amp; \cdots &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; 0 &amp; d_n
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>is invertible if and only if <math>
+                           <latex>d_1,\dots ,d_n\neq 0</latex>
+                        </math>. As this is not part of the requirements, <math>
+                           <latex>\Mtrx{D}</latex>
+                        </math> and, hence, <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> need not be invertible.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> always symmetric?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No, <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is not always symmetric.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> always diagonalizable?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! - <math>
+                              <latex>\Mtrx{D}</latex>
+                           </math> is a diagonalization of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose for an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> there exist invertible <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrices <math>
+                     <latex>\Mtrx{X}</latex>
+                  </math> and <math>
+                     <latex>\Mtrx{Y}</latex>
+                  </math> such that <math>
+                     <latex>\Mtrx{D}</latex>
+                  </math> and <math>
+                     <latex>\Mtrx{E}</latex>
+                  </math> defined as</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>D</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{X} \Mtrx{A} \Mtrx{X}^{-1}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>E</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{Y} \Mtrx{A} \Mtrx{Y}^{-1}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+			         <para>
+               <para.body>are diagonal. Is always <math>
+                     <latex>\Mtrx{D} = \Mtrx{E}</latex>
+                  </math>?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+</exercise.pack>

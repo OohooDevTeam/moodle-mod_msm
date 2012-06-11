@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para>
+            <para.body>We use the term matrix to refer to any rectangular arrangement of objects.
+		
+		Here, in linear algebra, we encounter primarily matrices of numbers, that is 
+		<subordinate>
+                  <hot>rectangular arrangement of numbers</hot>
+                  <companion>
+                     <unit.ref unitId="Sub_MatrixIllstrtn"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>An illustration of matrices</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>. 
+		Such an arrangement can serve any one of a vast variety of organizational purposes. For example, when we learned how to solve  
+		<subordinate>
+                  <hot>system of linear equations</hot>
+                  <crossref>
+                     <info>
+				
+				                    <para>
+                           <para.body>Review the section on systems of linear equations and their coefficient matrices.</para.body>
+                        </para>
+			                  </info>
+                  </crossref>
+               </subordinate> we arranged the coefficients of the system in a matrix to facilitate the execution of row operations.
+	</para.body>
+            <index.glossary>
+               <term>matrix</term>
+               <info>
+                  <para>
+                     <para.body>General description as a rectangular arrangement of objects</para.body>
+                  </para>
+               </info>
+            </index.glossary>
+         </para>
+         <para>
+            <para.body>But matrices can do much more than serve organizational purposes: like vectors, matrices of equal size can be added; it is possible to multiply a matrix by a number; and then there is a new operation: whenever the sizes of two matrices <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> and <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> are compatible, the product <math>
+                  <latex>\Mtrx{A}\cdot \Mtrx{B}</latex>
+               </math> is defined.</para.body>
+         </para>
+         <para>
+            <para.body>It is possible to embed the system <math>
+                  <latex>\RNr</latex>
+               </math> of real numbers in the system of matrices, for example by turning a number <math>
+                  <latex>x</latex>
+               </math> into the matrix <math>
+                  <latex>[x]</latex>
+               </math> consisting of a single entry. Thus the system of all matrices vastly extends the system of real numbers, an extension which is enormously versatile and powerful.</para.body>
+         </para>
+         <para>
+            <para.body>We will use matrices for a variety of purposes: they will enable us to obtain additional tools to solve systems of linear equations. Further, we will learn how to use matrices to transform space, how to manipulate the location of objects in space, and how alter the shape of objects in space.</para.body>
+         </para>
+         <para>
+            <para.body>Let us now sketch a few stages of the history of matrices. The benefits of organizing numbers into a rectangular arrangement have been observed quite early. For example</para.body>
+         </para>
+         <ul>
+		          <li>
+               <para>
+                  <para.body>The ‘Lo Shu’-<subordinate>
+                        <hot>magic square</hot>
+                        <info>
+                           <info.caption>The Lo Shu-magic square</info.caption>
+				
+				                       <para>
+                              <para.body>In  today's language, the Lo Shu-magic square is a matrix of size <math>
+                                    <latex>(3,3)</latex>
+                                 </math> with the ‘magical’ property that the sum of the numbers in any one row, column, or diagonal all equal the same number. For example, the matrix below is a Lo Shu-magic square whose row-, column-, and diagonal sums all equal <math>
+                                    <latex>15</latex>
+                                 </math>.</para.body>
+                           </para>
+				                       <math.display>
+					                         <latex>
+						
+						\left[
+						\begin{array}{ccc}
+						2 &amp; 7 &amp; 6 \\
+						9 &amp; 5 &amp; 1 \\
+						4 &amp; 3 &amp; 8
+						\end{array}
+						\right]
+						
+					</latex>
+				                       </math.display>
+			                     </info>
+                     </subordinate>
+		of China was recorded around 650 BCE in China.
+			
+		</para.body>
+                  <index.glossary>
+                     <term>Lo Shu-magic square</term>
+                     <info>
+                        <para>
+                           <para.body>appears here as an early example of organizing numbers in a rectangular shape.</para.body>
+                        </para>
+                     </info>
+                  </index.glossary>
+               </para>
+            </li>
+		
+		          <li>
+               <para>
+                  <para.body>Also in China, the use of matrices to solve systems of linear equations is documented in Jiu Shang Suan Shu's <emphasis>The Nine Chapters on the Mathematical Art</emphasis>, which originated between 300 BCE and 200 CE.
+			
+		</para.body>
+                  <index.author>
+                     <name>
+                        <name>
+					                      <first>Jiu</first>
+					                      <middle>Shang Suan</middle>
+					                      <last>Shu</last>
+					                      <initials>J.S.S.</initials>
+				                    </name>
+                     </name>
+                     <info>
+                        <para>
+                           <para.body>Appears here as the author of the ancient Chinese work on ‘The Nine Chapters on the Mathematical Art’.</para.body>
+                        </para>
+                     </info>
+                  </index.author>
+               </para>
+            </li>
+		
+		          <li>
+               <para>
+                  <para.body>Magic squares appear in the Arab literature around 700 CE. One can speculate that the became familiar with this concept via links to the ancient Chinese culture when they invaded parts of India's north-west.</para.body>
+               </para>
+            </li>
+	        </ul>
+         <para>
+            <para.body>The word ‘matrix’ itself for a rectangular arrangement of numbers was introduced much later in 1848 by J.J. Sylvester,
+		
+		and the theory of matrices evolved subsequently with many contributors, among them R.W. Hamilton (1805-1865),
+		
+		H. Grassmann (1809-1877),
+		
+		A. Cayley (1821-1895),
+		
+		F.G. Frobenius (1849-1917),
+		
+		J. von Neumann (1903-1957),
+		
+		O. Taussky-Todd (1906-1995).
+		
+	</para.body>
+            <index.author>
+               <name>
+                  <name>
+				                 <first>James</first>
+				                 <middle>Joseph</middle>
+				                 <last>Sylvester</last>
+				                 <initials>J.J.</initials>
+			               </name>
+               </name>
+               <info>
+                  <para>
+                     <para.body>Appears here for introducing the term ‘matrix’ for a rectangular arrangement of numbers.</para.body>
+                  </para>
+               </info>
+            </index.author>
+            <index.author>
+               <name>
+                  <name>
+				                 <first>Rowan</first>
+				                 <middle>William</middle>
+				                 <last>Hamilton</last>
+				                 <initials>R.W.</initials>
+			               </name>
+               </name>
+               <info>
+                  <para>
+                     <para.body>Appears here for contributing to the early evolution of the theory of matrices.</para.body>
+                  </para>
+               </info>
+            </index.author>
+            <index.author>
+               <name>
+                  <name>
+				                 <first>Hermann</first>
+				                 <middle>Günther</middle>
+				                 <last>Grassmann</last>
+				                 <initials>R.W.</initials>
+			               </name>
+               </name>
+               <info>
+                  <para>
+                     <para.body>Appears here for contributing to the early evolution of the theory of matrices.</para.body>
+                  </para>
+               </info>
+            </index.author>
+            <index.author>
+               <name>
+                  <name>
+				                 <first>Arthur</first>
+				                 <last>Cayley</last>
+				                 <initials>A.</initials>
+			               </name>
+               </name>
+               <info>
+                  <para>
+                     <para.body>Appears here for contributing to the evolution of the theory of matrices.</para.body>
+                  </para>
+               </info>
+            </index.author>
+            <index.author>
+               <name>
+                  <name>
+				                 <first>Ferdinand</first>
+				                 <middle>Georg</middle>
+				                 <last>Frobenius</last>
+				                 <initials>F.G.</initials>
+			               </name>
+               </name>
+               <info>
+                  <para>
+                     <para.body>Appears here for contributing to the evolution of the theory of matrices.</para.body>
+                  </para>
+               </info>
+            </index.author>
+            <index.author>
+               <name>
+                  <name>
+				                 <first>John</first>
+				                 <last>von Neumann</last>
+				                 <initials>J.</initials>
+			               </name>
+               </name>
+               <info>
+                  <para>
+                     <para.body>Appears here for contributing to the evolution of the theory of matrices.</para.body>
+                  </para>
+               </info>
+            </index.author>
+            <index.author>
+               <name>
+                  <name>
+				                 <first>Olga</first>
+				                 <last>Taussky-Todd</last>
+				                 <initials>O.</initials>
+			               </name>
+               </name>
+               <info>
+                  <para>
+                     <para.body>Appears here for contributing to the evolution of the theory of matrices.</para.body>
+                  </para>
+               </info>
+            </index.author>
+         </para>
+      </block.body>
+   </block>
+</intro>

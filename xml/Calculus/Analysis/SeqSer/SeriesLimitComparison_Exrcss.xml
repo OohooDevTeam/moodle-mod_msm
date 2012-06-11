@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_SeriesLimitComparison">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Limit Comparison of Series</title>
+	<exercise>
+		<problem>
+			<para>Analyze the convergence behavior of the following series.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>\sum_{n=1}^{\infty}(1/n^{1+\frac{1}{n}})</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>\sum_{n=1}^{\infty} \dfrac{1}{n^{1+\frac{1}{n}}}\ =\ \infty</latex>
+					</math.display>
+				</answer>
+				<solution.hint>
+					<para>Try a limit comparison with <latex>\sum_{n=1}^{\infty}(1/n)</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=3}^{\infty}\frac{1}{n^2 - n + 1}</latex></para>
+			</problem>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty}\frac{3}{n^2 +1}</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=1}^{\infty}\frac{2+\sin n}{n^2 + n - 1}</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=1}^{\infty}\frac{1}{\sqrt{n} + \sqrt{n + 1}}</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=1}^{\infty}\frac{1}{n - \sqrt{n}}</latex></para>
+			</problem>
+		</part>
+	</exercise>	
+</exercise.pack>

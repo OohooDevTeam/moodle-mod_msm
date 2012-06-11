@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Info_MatrixInversion">
+	<title>Matrix Multiplication: Exceptional Properties</title>
+	<sub.page.body>
+		<block>
+			<para>Let us recall: So far we have extended the operations of addition and multiplication of numbers to the world of matrices. How about division? i.e. how can we make sense of an expression like this one?
+				<index.glossary>
+					<term>invertible</term><term>matrix</term>
+					<info>
+						<caption>Invertible Matrix</caption>
+						<para>An analysis which motivates the concept of an invertible matrix.</para>
+					</info>
+				</index.glossary>
+				
+			</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\dfrac{
+					\left[
+					\begin{array}{rr}
+					4 & 3 \\
+					1 & 0
+					\end{array}
+					\right] }{
+					\left[
+					\begin{array}{rr}
+					7 & 4 \\
+					5 & 3
+					\end{array}
+					\right]}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>To answer this question, let us analyze division by a number to get an idea of how to extend division to the world of matrices: Dividing a number <latex>x</latex> by another, say <latex>2</latex>, amounts to multiplying <latex>x</latex>  by  <latex>1/2=2^{-1}</latex>. Now, the number <latex>1/2</latex> is characterized by the property</para>
+			
+			<math.display>
+				<latex>2\cdot (1/2)\ =\ 1\ (1/2)\cdot 2</latex>
+			</math.display>
+			
+			<para>This is the key: Our goal is to divide an <latex>(n,n)</latex>-matrix <latex>\Mtrx{X}</latex> by another <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>. So, if we can find a matrix <latex>\Mtrx{B}</latex> with</para>
+			
+			<math.display>
+				<latex>\Mtrx{A}\Mtrx{B}\ =\ \IdMtrx[n]\ =\ \Mtrx{B}\Mtrx{A}</latex>
+			</math.display>
+			
+			<para>then it makes sense to define <latex>\Mtrx{A}^{-1} := B</latex>. So then we can define</para>
+			
+			<math.display>
+				<latex>\dfrac{\Mtrx{X}}{\Mtrx{A}}\ :=\ \Mtrx{X}\cdot \Mtrx{B}</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para><b>Alert</b> &nbsp; Here is a new point which we must really pay attention to: In the world of matrices there are two ways of multiplying <latex>\Mtrx{X}</latex>by <latex>\Mtrx{A}</latex>. Reason:</para>
+			
+			<para align="center"><latex>\Mtrx{B}\Mtrx{X}</latex> &nbsp; is 
+				<subordinate>
+					<hot>generally distinct</hot>
+					<crossref>
+						<subpage.ref subpageID="Exa_MatrixOperationsExceptions"/>
+						<para>Review an example of this phenomenon.</para>
+					</crossref>
+				</subordinate>
+				from <latex>\Mtrx{X}\Mtrx{B}</latex>.
+			</para>
+			
+			<para>Accordingly, we must carefully decide whether we want to</para>
+			
+			<ul>
+				<li><para>divide <latex>\Mtrx{X}</latex> by <latex>\Mtrx{A}</latex> on the left; i.e. form the product  <latex>\Mtrx{B}\Mtrx{X}</latex>, or</para></li>
+				<li><para>divide <latex>\Mtrx{X}</latex> by <latex>\Mtrx{A}</latex> on the right; i.e. form the product  <latex>\Mtrx{X}\Mtrx{B}</latex>.</para></li>
+			</ul>
+			
+		</block>
+	</sub.page.body>
+</sub.page>

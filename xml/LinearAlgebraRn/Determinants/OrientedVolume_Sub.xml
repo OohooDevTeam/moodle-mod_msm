@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_OrientedVolume">
+	<title>Oriented Volume - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>To see the difference between &lsquo;volume&rsquo; and &lsquo;oriented volume&rsquo;, consider the picture below</para>
+			<figure>
+				<img src="ims/OrientedVolume.png"></img><!-- svg available -->
+			</figure>
+			<para>Here we have</para>
+			<computation>
+				<left>\Vol(\Vect{x},\Vect{y})</left>
+				<center>=</center>
+				<right>6</right>
+				<left>\Vol(\Vect{u},\Vect{v})</left>
+				<center>=</center>
+				<right>6</right>
+			</computation>
+			<para>However, taking into account orientations, note that <latex>\omega(\Vect{x},\Vect{y})=+1</latex>, while <latex>\omega(\Vect{u},\Vect{v})=-1</latex>. Therefore</para>
+			<computation>
+				<left>\OriVol(\Vect{x},\Vect{y})</left>
+				<center>=</center>
+				<right>6</right>
+				<left>\OriVol(\Vect{u},\Vect{v})</left>
+				<center>=</center>
+				<right>-6</right>
+			</computation>
+		</block>
+	</sub.page.body>
+</sub.page>

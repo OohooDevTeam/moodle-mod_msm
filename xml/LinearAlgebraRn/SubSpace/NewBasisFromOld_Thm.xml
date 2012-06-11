@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_NewBasisFromOld">
+	<caption>New basis from old</caption>
+	<statement>
+		<para>Let <latex>\Vect{a}_1,\dots ,\Vect{a}_p</latex> be linearly independent vectors in <latex>V</latex>, and let <latex>\Vect{x}_1=(x_{11},\dots ,x_{1p})</latex>, ... , <latex>\Vect{x}_p=(x_{p1},\dots ,x_{pp})</latex> be a basis of <latex>\RNr[p]</latex>. Then</para>
+		<computation>
+			<left>\Vect{y}_1</left>
+			<center>:=</center>
+			<right>x_{11}\Vect{a}_1 + \cdots + x_{1p} \Vect{a}_p</right>
+			<left>\vdots{\ \ }</left>
+			<center>\vdots</center>
+			<right>{\quad }\vdots\qquad\qquad \vdots</right>
+			<left>\Vect{y}_p</left>
+			<center>:=</center>
+			<right>x_{p1}\Vect{a}_1 + \cdots + x_{pp} \Vect{a}_p</right>
+		</computation>
+		<para>form a basis for <latex>\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p}</latex>.</para>
+	</statement>
+	<proof>
+		<para>Let <latex>W:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p }</latex>. We need to show</para>
+		<ol>
+			<li><para>
+				<subordinate>
+					<hot><latex>\span\Set{ \Vect{y}_1,\dots ,\Vect{y}_p } = W</latex></hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_SpanCompare1"/>
+						<para>Look up this result</para>
+					</crossref>
+				</subordinate>
+			</para></li>
+			<li><para><latex>\Set{ \Vect{y}_1,\dots ,\Vect{y}_p }</latex> is linearly independent.
+			</para></li>
+		</ol>
+		<para>Now, we proved earlier that the vectors <latex>\Vect{y}_1,\dots ,\Vect{y}_p</latex>, as constructed, are 
+			<subordinate>
+				<hot>linearly independent.</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_LinearIndepentFromOld"/>
+					<para>Look up this result which we proved earlier</para>
+				</crossref>
+			</subordinate>. These vectors a vector space <latex>Y</latex>, and so they form a basis of <latex>Y</latex>. But then <latex>Y</latex> is a <latex>p</latex>-dimensional subvector space of the <latex>p</latex>-dimensional vector space <latex>W</latex>. <subordinate>
+				<hot>So</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
+					<para>Look up this result.</para>
+				</crossref>
+			</subordinate>
+			<latex>Y=W</latex>, and the claim follows.</para>
+	</proof>
+</theorem>

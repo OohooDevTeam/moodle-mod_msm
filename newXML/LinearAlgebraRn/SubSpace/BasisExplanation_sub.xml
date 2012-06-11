@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_Basis"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Basis - Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Let’s examine a bit what the concept of a basis really means.</para.body>
+            </para>
+            <para>
+               <para.body>The first condition: <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> spans <math>
+                     <latex>V</latex>
+                  </math> means that every vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math> can be expressed in some way as a linear combination of vectors in <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>:</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1\Vect{b}_1 + \cdots + t_k\Vect{b}_k</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>with <math>
+                     <latex>\Vect{b}_1, \dots ,\Vect{b}_k</latex>
+                  </math> in <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> and <math>
+                     <latex>t_1, \dots ,t_k</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math>. – Now, if there is one way of expressing <math>
+                     <latex>\Vect{x}</latex>
+                  </math> as a linear combination of vectors in <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>, there might be many ways of doing so. This is where the second requirement for a basis comes in:</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> is linearly independent. This means that if <math>
+                     <latex>\Vect{x}</latex>
+                  </math> can be expressed as a linear combination of vectors in <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>, then there is exactly one way of doing so.</para.body>
+            </para>
+            <para>
+               <para.body>The two conditions combined, then, tell us that every vector in <math>
+                     <latex>V</latex>
+                  </math> can be expressed in exactly one way as a linear combination of vectors in <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

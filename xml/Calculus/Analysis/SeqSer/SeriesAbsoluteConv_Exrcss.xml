@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_SeriesAbsoluteConvergence">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Absolute and Conditional Convergence</title>
+	<exercise>
+		<problem>
+			<para>For each of the series below determine if it converges absolutely, conditionally, or neither.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} \frac{(-1)^n}{2^n}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} \frac{(-1)}{2n}</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex><![CDATA[ x<0 ]]></latex> is arbitrary, <latex>\sum_{n=0}^{\infty}\frac{x^n}{n!}</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex magnify="yes">1-\frac{2!}{1} + \frac{3!}{1\cdot 3} -\frac{4!}{1\cdot 3} + \frac{5!}{1\cdot 3\cdot 5} - \cdots</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex magnify="yes">1 - \frac{2!}{1\cdot 3} + \frac{3!}{1\cdot 3\cdot 5} - \frac{4!}{1\cdot 3\cdot 5\cdot 7} + \cdots + \frac{n!}{1\cdot 3\cdot \ \cdots\ \cdot (2n-1)}</latex></para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Suppose <latex>\sum_{n=0}^{\infty}a_n</latex> converges absolutely. Show the following</para>
+		</problem>
+		<part>
+			<problem>
+				<math.display>
+					<latex>\Abs{ \sum_{n=0}^{\infty} a_n } \leq \sum_{n=0}^{\infty}\Abs{ a_n }</latex>
+				</math.display>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>(a_{n_i})</latex> is an arbitrary subsequence of <latex>(a_n)</latex>, show that</para>
+				<math.display>
+					<latex>\sum_{i=0}^{\infty} a_{n_i}</latex>
+				</math.display>
+				<para>converges absolutely.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>For a conditionally convergent series <latex>\sum_{n=0}^{\infty}a_n</latex> prove the following:</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Dropping from the sequence of summands <latex>(a_n)</latex> all negative summands leaves the infinite subsequence <latex>b_0,b_1, \dots ,b_n,\dots</latex> of non-negative numbers.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>\lim_{n\to \infty} b_n = 0</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} b_n = +\infty</latex>.</para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Dropping from the sequence of summands <latex>(a_n)</latex> all non-positive summands leaves an infinite subsequence <latex>c_0,c_1,\dots ,c_n,\dots</latex> of negative numbers.</para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\lim_{n\to \infty} c_n = 0</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} c_n = -\infty</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>About a conditionally convergent series <latex>\sum_{n=0}^{\infty} a_n</latex> answer the following questions:</para>
+		</problem>
+		<part>
+			<problem>
+				<para>If <latex>(a_{n_i})</latex> is a subsequence of <latex>(a_n)</latex>, does <latex>\sum_{i=0}^{\infty} a_{n_i}</latex> always converge conditionally?</para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Is it possible to find infinitely many negative terms in the sequence <latex>(a_n)</latex>?</para>
+			</problem>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Is it possible to find infinitely many positive terms in the sequence <latex>(a_n)</latex>?</para>
+			</problem>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Is it always possible to find a subsequence <latex>(a_{n_i})</latex> of <latex>(a_n)</latex> such that <latex>\sum_{i=0}^{\infty} a_{n_i}</latex> converges absolutely?</para>
+			</problem>
+		</part>
+	</exercise>
+</exercise.pack>

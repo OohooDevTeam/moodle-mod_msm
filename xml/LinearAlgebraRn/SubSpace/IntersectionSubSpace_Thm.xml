@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_IntersectionSubSpace">
+	<caption>Intersection of subspaces</caption>
+		
+	<statement>
+		<para>If <latex>V</latex> and <latex>W</latex> are subvector spaces of <latex>\RNr[n]</latex>, then their intersection <latex>\Intrsctn{V}{W}</latex> is also a subvector space of <latex>\RNr[n]</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>To shorten notation, set <latex>U:=\Intrsctn{V}{W}</latex>. Then <latex>U</latex> contains the <latex>\Vect{0}</latex>-vector, as it is contained in both <latex>V</latex>and <latex>W</latex>. So it remains to show that <latex>U</latex> is closed under vector addition and scalar multiplication</para>
+		<para>To see that <latex>U</latex> is closed under vector addition, let <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> be in <latex>U</latex>. This means that both vectors belong to <latex>V</latex> and to <latex>W</latex>. Now, both <latex>V</latex> and <latex>W</latex> are closed under vector addition. So <latex>\Vect{x} + \Vect{y}</latex> belongs to <latex>V</latex> and to <latex>W</latex> and, hence, to <latex>U</latex>.</para>
+		<para>To see that <latex>U</latex> is closed under scalar multiplication, let <latex>\Vect{x}</latex> in <latex>U</latex> and <latex>t</latex> in <latex>\RNr</latex> be arbitrary. So <latex>\Vect{x}</latex> belongs to <latex>V</latex> and to <latex>W</latex>. As both <latex>V</latex> and <latex>W</latex> are closed under scalar multiplication, <latex>t \Vect{x}</latex> also belongs to <latex>V</latex> and to <latex>W</latex> and, hence, to <latex>U</latex>.</para>
+		<para>We have show that the intersection  <latex>\Intrsctn{V}{W}</latex> satisfies all requirements of a subvector space.</para>
+	</proof>
+</theorem>

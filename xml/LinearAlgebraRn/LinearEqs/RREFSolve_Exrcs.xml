@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_SolveLinearEqsRREF1">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/><title>Solving Systems of Linear Equations in RREF - Exercises</title>
+	
+	<exercise>
+		<problem>
+			<para>For each of the following systems of linear equations, determine whether it is in reduced row echelon form (RREF, for short). If it is, find its rank and find all its solutions.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Two equations in two variables</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcr}
+x & = & 7 \\
+y & = & -5
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<solution>
+					<para>To answer this question, it is best to arrange the given equations in standard form:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcr}
+1\cdot x & + & 0\cdot y & = & 7 \\
+0\cdot x & + & 1\cdot y & = & -5
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>Now we see that the system is in RREF; its rank is <latex>2</latex>, and it has exactly one simultaneous solution: <latex>(x,y) = (7,-5)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Two equations in three variables</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcr}
+x + z & = & 0 \\
+y - z & = & -3
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<ul>
+						<li><para>The system is in RREF</para></li>
+						<li><para>Its rank is <latex>2</latex></para></li>
+						<li><para>General solutions are of the form</para></li>
+					</ul>
+					<para align="center"><latex>x=-z</latex> &nbsp; and &nbsp; <latex>y=z-3</latex> &nbsp; with <latex>z</latex> in <latex>\RNr</latex> arbitrary.</para>
+					
+					<para>Equivalently, the solutions consist of all vectors of the form</para>
+					
+					<math.display>
+						<latex>(-z,z-3,z) = (0,-3,0)\ +\ z\cdot (-1,1,1)</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We reorganize the given equations to see if they fit the criteria of RREF.</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcr}
+1\cdot x & + & 0\cdot y & + & 1\cdot z & = & 0 \\
+0\cdot x & + & 1\cdot y & - & 1\cdot z & = & -3
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>Now it is easier to see that the criteria for RREF are, indeed, satisfied. There are <latex>2</latex> leading <latex>1</latex>&rsquo;s. So the rank of this system of linear equations is <latex>2</latex>.</para>
+					
+					<para>To find the solutions of the system, we note that the variables <latex>x</latex> and <latex>y</latex> have leading <latex>1</latex> coefficients, while <latex>z</latex> does not. Therefore we can choose number values for <latex>z</latex> arbitrarily and then solve for <latex>x</latex> and <latex>z</latex> in terms of <latex>z</latex>. Therefore solutions of this system are of the form</para>
+					
+					<para align="center"><latex>x=-z</latex> &nbsp; and &nbsp; <latex>y=z-3</latex> &nbsp; with <latex>z</latex> in <latex>\RNr</latex> arbitrary.</para>
+					
+					<para>Equivalently, the solutions consist of all vectors of the form</para>
+					
+					<math.display>
+						<latex>(-z,z-3,z) = (0,-3,0)\ +\ z\cdot (-1,1,1)</latex>
+					</math.display>
+					
+					<para>So the solutions of the given system form the 
+						<subordinate>
+							<hot>line</hot>
+							<crossref>
+								<definition.ref definitionID="Def_LinearMotion"></definition.ref>
+								<caption>Linear Motion</caption>
+								<para>Lookup the concept of line and linear motion</para>
+							</crossref>
+						</subordinate>
+						through <latex>(0,-3,0)</latex> in the direction of the vector <latex>(-1,1,1)</latex>.</para>
+				</solution>	
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>One equation, three variables</para>
+				<math.display>
+					<latex>x - y + z = 0</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This system is in RREF. Its rank is <latex>1</latex>. Solutions are of the form</para>
+					<para align="center"><latex>x=y-z</latex>, &nbsp; with <latex>y,z</latex> arbitrary in <latex>\RNr</latex>.</para>
+				</answer>
+				<solution>
+					<para>The coefficient of <latex>x</latex> is a leading <latex>1</latex>. So this system is in RREF. There is exactly one leading <latex>1</latex>. So the system has rank <latex>1</latex>. Solve for <latex>x</latex> to see that its solutions are of the form</para>
+					<para align="center"><latex>x=y-z</latex>, &nbsp; with <latex>y,z</latex> arbitrary in <latex>\RNr</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>Two equations with three variables</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcr}
+x + 6y & = & 7 \\
+z      & = & -5
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This system is in RREF. Its rank is <latex>2</latex>. Solutions are of the form</para>
+					<para align="center"><latex>x=7-6y</latex>, <latex>z=-5</latex> &nbsp; with <latex>y</latex> in <latex>\RNr</latex> arbitrary.</para>
+					<para>Equivalently, solutions are vectors in <latex>\RNr[3]</latex> of the form</para>
+					<para align="center"><latex>(7,0,-5) + y\cdot (6,1,0)</latex> &nbsp; with <latex>y</latex> in <latex>\RNr</latex> arbitrary.</para>
+					<para>This is a line through <latex>(7,0,-5)</latex> in the direction of <latex>(6,1,0)</latex>.</para>
+				</answer>
+				<solution>
+					<para>We begin by arranging the system to standard form:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcr}
+1x & + & 6y & + & 0z & = & 7 \\
+0x & + & 0y & + & 1z & = & -5
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>We see that the system is in RREF and has two leading <latex>1</latex>&rsquo;s. So the sytem has rank <latex>2</latex>. Solving for the variables with leading <latex>1</latex>&rsquo;s yields</para>
+					<para align="center"><latex>x=7-6y</latex>, <latex>z=-5</latex> &nbsp; with <latex>y</latex> in <latex>\RNr</latex> arbitrary.</para>
+					<para>Equivalently, solutions are vectors in <latex>\RNr[3]</latex> of the form</para>
+					<para align="center"><latex>(7,0,-5) + y\cdot (6,1,0)</latex> &nbsp; with <latex>y</latex> in <latex>\RNr</latex> arbitrary.</para>
+					<para>This is a line through <latex>(7,0,-5)</latex> in the direction of <latex>(6,1,0)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Two equations in two variables:</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcr}
+y + 7x & = & -9 \\
+0y     & = & 1
+\end{array}
+						]]>
+					</latex>
+				</math.display>	
+			</problem>
+			<approach>
+				<answer>
+					<para>The system is in RREF. Its rank is <latex>1</latex>. It has no solution.</para>
+				</answer>
+				<solution>
+					<para>We rearrange the equations into standard form:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcr}
+1y & + & 7x & = & -9 \\
+0y & + & 0x & = & 1
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>We see that the system is in RREF. There is a single leading <latex>1</latex>. So the system has rank <latex>1</latex>. Considering the second equation shows that the system has no solution.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>Two equations with four variables</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcr}
+x+w & = & -2 \\
+y+3z & = & 6
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>The system is in RREF. Its rank is <latex>2</latex>. Solutions are of the form</para>
+					<para align="center"><latex>x=-2-w</latex>, &nbsp; <latex>y = 6 - 3z</latex>, &nbsp; with &nbsp; <latex>w,z</latex> arbitrary in <latex>\RNr</latex>.</para>
+					<para>Equivalently, solutions are vectors in <latex>\RNr[4]</latex> of the form</para>
+					<para align="center"><latex>(-2,0,6,0)\ +\ w\cdot (1,-1,0,0)\ +\ z\cdot (0,0,1,3)</latex></para>
+					<para>with <latex>w,z</latex> arbitrary in <latex>\RNr</latex>.</para>
+				</answer>
+				<solution>
+					<para>If we rearrange the system suitably, we find that it is in RREF:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+1x & + & 1w & + & 0y & + & 0z & = & -2 \\
+0x & + & 0w & + & 1y & + & 3z & = & 6
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>Solving for the variables with leading <latex>1</latex>&rsquo;s shows that solutions are of the form</para>
+					<para align="center"><latex>(-2,0,6,0)\ +\ w\cdot (1,-1,0,0)\ +\ z\cdot (0,0,1,3)</latex></para>
+					<para>with <latex>w,z</latex> arbitrary in <latex>\RNr</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>Five equations in five variables:</para>
+				<math.display>
+					<latex>x = -5\quad y=6\quad v=0\quad z=23\quad w=-174</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This system is in RREF. Its rank is <latex>5</latex>. Its one and only solution is already given by the system. It consists of the vector</para>
+					<para align="center"><latex>(-5,6,0,23,-174)</latex> &nbsp; in &nbsp; <latex>\RNr[5]</latex>.</para>	
+				</answer>
+				<solution>
+					<para>Completing the presentation of the system shows that it is in RREF:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrcr}
+1x & + & 0y & + & 0v & + & 0z & + & 0w & = & -5 \\
+0x & + & 1y & + & 0v & + & 0z & + & 0w & = & 6 \\
+0x & + & 0y & + & 1v & + & 0z & + & 0w & = & 0 \\
+0x & + & 0y & + & 0v & + & 1z & + & 0w & = & 23 \\
+0x & + & 0y & + & 0v & + & 0z & + & 1w & = & -174
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>It follows that the one and only solution of this system is the vector <latex>(-5,6,0,23,-174)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>Three equations in three variables:</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcr}
+x+2y-z & = & 0 \\
+2x+3z & = & 0 \\
+y-z & = & 0
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This system is not in RREF. At this stage we still need to learn how to transform it into one which is. Only then will we have a general tool to easily determine its rank and all of its solutions.</para>
+				</answer>
+				<solution>
+					<para>We begin by rearranging this system in standard form</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcr}
+1x & + & 2y & - & 1z & = & 0 \\
+2x & + & 0y & + & 3z & = & 0 \\
+0x & + & 1y & - & 1z & - & 0
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>If this system were in RREF, the <latex>1</latex> in the top left corner would have to be a leading <latex>1</latex>. But then we should have only <latex>0x</latex>&rsquo;s below it. This is not the case. Therefore the system is not in RREF.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

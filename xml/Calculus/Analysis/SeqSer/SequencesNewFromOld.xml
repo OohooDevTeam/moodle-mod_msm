@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book
+	http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_SequencesNewFromOld">
+	<headers>
+		<full>New Sequences from Old</full>
+		<toc>New Sequences from Old</toc>
+		<short>New Sequences from Old</short>
+	</headers>
+	<intro>
+		<para>Here we describe several ways of building a new sequences from one or several given ones: the product of a sequence bby a number, the sum of two sequences, the product of two sequences, a subsequence of a sequence, and a rearrangement of a sequence.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_SumProductSequences">
+			<caption>Sum and product of sequences</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_SequenceSumProduct"/>
+				<info><para>Some examples of sums and products of sequences</para></info>
+			</associate>
+			<para>Given sequences <latex>(a_n)</latex> and <latex>(b_n)</latex> in <latex>\RNr</latex>,</para>
+			<ul>
+				<li><para>their sum is <latex>(a_n) + (b_n) := (a_n + b_n)</latex>;
+					<index.glossary>
+						<term>sum</term><term>of two sequences</term>
+						<info><para>Definition of the concept</para></info>
+					</index.glossary>
+				</para></li>
+				<li><para>their product is <latex>(a_n) \cdot (b_n) := (a_n \cdot b_n)</latex>;
+					<index.glossary>
+						<term>product</term><term>of two sequences</term>
+						<info><para>Definition of the concept</para></info>
+					</index.glossary>
+				</para></li>
+				<li><para>the product of <latex>(a_n)</latex> by <latex>t\in \RNr</latex> is <latex>t\cdot(a_n) := (t\cdot a_n)</latex>.
+					<index.glossary>
+						<term>product</term><term>of a sequence by a number</term>
+						<info><para>Definition of the concept</para></info>
+					</index.glossary>
+				</para></li>
+			</ul>
+		</def>
+		
+		<def type="Definition" id="Def_SubSequence">
+			<caption>Subsequence</caption>
+			<associate Description="Illustration">
+				<subpage.ref subpageID="Illu_SubSequence"/>
+				<info><para>An illustration of the concept of subsequence.</para></info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_SubSequence"/>
+				<info><para>A set of worked examples on subsequences.</para></info>
+			</associate>
+			
+			<para>A subsequence of a sequence <latex>(a_n)</latex> is given by a composite
+				<index.glossary>
+					<term>subsequence</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>\NNr \overset{n}{\longrightarrow} \NNr \overset{a}{\longrightarrow} \RNr</latex>
+			</math.display>
+			<para>where <latex>n</latex> is a strictly increasing function. We write <latex>(a_{n_i})</latex> for the resulting subsequence of <latex>(a_n)</latex>.
+				<index.symbol>
+					<symbol><latex>a_{n_i}</latex></symbol>
+					<info><para>Subsequence of the sequence <latex>a_n</latex>.</para></info>
+				</index.symbol>
+			</para>
+		</def>
+		
+		<para>To prepare for the study of limits of sequences, we introduce the following special kind of subsequence.</para>
+		
+		<def type="Terminology" id="Def_TailEnd">
+			<caption>Tail (end) of a sequence</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_SequenceTail"/>
+				<info>
+					<caption>Example</caption>
+					<para>A tail end of <latex magnify="yes">(a_n)</latex> results from omitting an initial segment</para>
+					<math.display>
+						<latex>a_0,\ a_1,\ a_2,\ \dots\ ,a_{N-1}</latex>
+					</math.display>
+					<para>from the original sequence. &ndash; Worked examples are available here.</para>
+				</info>
+			</associate>
+			<para>A tail (end) of a sequence <latex>(a_n)</latex> is a subsequence of the form</para>
+			<math.display>
+				<latex magnify="yes">(a_{n_i} = a_{N+i})</latex>
+			</math.display>
+			<para>for some <latex>N\in \NNr</latex>.
+				<index.glossary>
+					<term>tail end</term>
+					<info><para>A special kind of subsequence. &ndash; Definition of the concept.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>sequence</term><term>tail (end)</term>
+					<info><para>A special kind of subsequence. &ndash; Definition of the concept.</para></info>
+				</index.glossary>
+			</para>
+		</def>
+		
+		<para>For future reference we include here the less frequently used concept of rearrangement of a sequence.</para>
+		<def type="Definition" id="Def_SequenceRearrangement">
+			<caption>Rearrangement of a sequence</caption>
+			<para>A rearrangement of a sequence <latex>(a_n)</latex> is given by a composite</para>
+			<math.display>
+				<latex>\NNr \overset{n}{\longrightarrow} \NNr \overset{a}{\longrightarrow} \RNr</latex>
+			</math.display>
+			<para>in which the function <latex>n\from \NNr\to \NNr</latex> is invertible.
+				<index.glossary>
+					<term>rearrangement</term><term>of a sequence</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>sequence</term><term>rearrangement</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+			</para>
+		</def>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_SequencesNewFromOld"/>
+	</studymaterials>
+</section>

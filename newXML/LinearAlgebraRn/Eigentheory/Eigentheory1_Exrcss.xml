@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_Eigentheory1"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Eigenvectors and Eigenvalues, Computational</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose the <math>
+                     <latex>(4,4)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> transforms vectors as specified below. Determine if the given vector is an eigenvector of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. If so, find the corresponding eigenvalue.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> transforms <math>
+                        <latex>\Vect{x}=(1,0,2,0)</latex>
+                     </math> into <math>
+                        <latex>\Vect{y} = (0,1,0,0)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x}</latex>
+                           </math> is not an eigenvector of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>If <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is an eigenvector of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>, there must exist a number <math>
+                           <latex>\lambda</latex>
+                        </math> with <math>
+                           <latex>\Mtrx{A}\cdot \Vect{x} = \lambda\Vect{x}</latex>
+                        </math>; that is <math>
+                           <latex>\lambda</latex>
+                        </math> must satisfy</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\lambda\cdot (1,0,2,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,1,0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Considering the coordinates in position 2, we find that <math>
+                           <latex>\lambda</latex>
+                        </math> must satisfy</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\lambda\cdot 0</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>No such number exists. Therefore <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is not an eigenvector of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> transforms <math>
+                        <latex>\Vect{u}=(2,-1,2,-1)</latex>
+                     </math> into <math>
+                        <latex>\Vect{v} = (-6,3,-6,3)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{u}</latex>
+                           </math> is an eigenvector of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> with eigenvalue <math>
+                              <latex>\lambda = -3</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>If <math>
+                           <latex>\Vect{u}</latex>
+                        </math> is an eigenvector of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>, there must exist a number <math>
+                           <latex>\lambda</latex>
+                        </math> with <math>
+                           <latex>\Mtrx{A}\cdot \Vect{u} = \lambda\Vect{u}</latex>
+                        </math>; that is <math>
+                           <latex>\lambda</latex>
+                        </math> must satisfy</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\lambda\cdot (2,-1,2,-1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-6,3,-6,3)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>We find that <math>
+                           <latex>\lambda = -3</latex>
+                        </math> solves this vector equation. Therefore <math>
+                           <latex>\Vect{u}</latex>
+                        </math> is an eigenvector of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> with eigenvalue <math>
+                           <latex>\lambda=-3</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> transforms <math>
+                        <latex>\Vect{a}=(1,2,2,1)</latex>
+                     </math> into <math>
+                        <latex>\Vect{b} = (-2,-4,-4,-2)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{a}</latex>
+                           </math> is an eigenvector of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> with eigenvalue <math>
+                              <latex>\lambda=-2</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> transforms <math>
+                        <latex>\Vect{c}=(-1,2,2,1)</latex>
+                     </math> into <math>
+                        <latex>\Vect{d} = (0,0,0,0)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{c}</latex>
+                           </math> is an eigenvector of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> with eigenvalue <math>
+                              <latex>\lambda=0</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> transforms <math>
+                        <latex>\Vect{r}=(6,2,5,4)</latex>
+                     </math> into <math>
+                        <latex>\Vect{s} = (12,-4,10,8)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{r}</latex>
+                           </math> is not an eigenvector of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the following matrices find</para.body>
+            </para>
+			         <ol>
+				           <li>
+                  <para>
+                     <para.body>The characteristic polynomial</para.body>
+                  </para>
+               </li>
+				           <li>
+                  <para>
+                     <para.body>The eigenvalues</para.body>
+                  </para>
+               </li>
+				           <li>
+                  <para>
+                     <para.body>The eigenspaces corresponding to the eigenvalues</para.body>
+                  </para>
+               </li>
+				           <li>
+                  <para>
+                     <para.body>The algebraic multiplicity of each eigenvalue</para.body>
+                  </para>
+               </li>
+				           <li>
+                  <para>
+                     <para.body>The geometric multiplicity of each eigenvalue</para.body>
+                  </para>
+               </li>
+			         </ol>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A}\ =\
+\begin{bmatrix}
+1 &amp; 3 \\
+1 &amp; 2
+\end{bmatrix}
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The eigenvalues of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> are:</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>\lambda_1 = \dfrac{3+\sqrt{13}}{2} \quad\text{and}\quad \lambda_2 = \dfrac{3-\sqrt{13}}{2}</latex>
+					                </math.display>
+					                <para>
+                        <para.body>Each eigenvalue has algebraic multiplicity 1, and geometric multiplicity 1. The eigenspaces of <math>
+                              <latex>\lambda_1</latex>
+                           </math> and <math>
+                              <latex>\lambda_2</latex>
+                           </math> are the orthogonal complements of the vectors <math>
+                              <latex>(1,1/2(1 - \sqrt{13}))</latex>
+                           </math> and <math>
+                              <latex>(1,1/2(1 - \sqrt{13}))</latex>
+                           </math>, respectively.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The characteristic polynomial of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is computed from</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>p(\lambda)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\det( \Mtrx{A} - \lambda \IdMtrx[n])</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We begin by computing the characteristic polynomial of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+\text{det}(A\ -\ \lambda I_2)\ &amp;=\
+\text{det}\ \begin{bmatrix}
+1-\lambda &amp; 3 \\
+1 &amp; 2-\lambda
+\end{bmatrix} \\
+    &amp;=\ (1-\lambda)(2-\lambda)\ -\ 3 \\
+    &amp;=\ 2 - 3 \lambda + \lambda^2 -3 \\
+    &amp;=\ \lambda^2 -3 \lambda-1 \\
+    &amp;=\ \left(\lambda - \frac{3 + \sqrt{13}}{2}\right)\left(\lambda - \frac{3 - \sqrt{13}}{2}\right) \\
+\endaligned
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Thus the characteristic polynomial has exactly two places where it takes the value 0, namely</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\lambda_1 = \dfrac{3+\sqrt{13}}{2} \quad\text{and}\quad \lambda_2 = \dfrac{3-\sqrt{13}}{2}</latex>
+					             </math.display>
+					             <para>
+                     <para.body>These are the eigenvalues of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>. Each of them has algebraic multiplicity 1. The eigenspace <math>
+                           <latex>E(\lambda_1)</latex>
+                        </math> of <math>
+                           <latex>\lambda_1</latex>
+                        </math> is the null space of the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\begin{bmatrix}
+\tfrac{2 - 3 - \sqrt{13}}{2} &amp; 3 \\
+1 &amp; \tfrac{4 - 3 - \sqrt{13}}{2}
+\end{bmatrix} \ =\ 
+\begin{bmatrix}
+-\tfrac{1+\sqrt{13}}{2} &amp; 3 \\
+1 &amp; \tfrac{1-\sqrt{13}}{2}
+\end{bmatrix}
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Using our method for finding the null space of a matrix we see that <math>
+                           <latex>E(\lambda_1)</latex>
+                        </math> is spanned by the vector <math>
+                           <latex>\varepsilon_1:=(\tfrac{1}{2}(1-\sqrt{13}) , -1)</latex>
+                        </math>. Therefore, <math>
+                           <latex>\dim\, E(\lambda_1) = 1</latex>
+                        </math>, and <math>
+                           <latex>\lambda_1</latex>
+                        </math> has geometric multiplicity 1.</para.body>
+                  </para>
+					             <para>
+                     <para.body>The eigenspace <math>
+                           <latex>E(\lambda_2)</latex>
+                        </math> of <math>
+                           <latex>\lambda_2</latex>
+                        </math> is the null space of the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\begin{bmatrix}
+\tfrac{2 - 3 + \sqrt{13}}{2} &amp; 3 \\
+1 &amp; \tfrac{4 - 3 + \sqrt{13}}{2}
+\end{bmatrix} \ =\ 
+\begin{bmatrix}
+-\tfrac{1-\sqrt{13}}{2} &amp; 3 \\
+1 &amp; \tfrac{1+\sqrt{13}}{2}
+\end{bmatrix}
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>We find that <math>
+                           <latex>E(\lambda_2)</latex>
+                        </math> is spanned by <math>
+                           <latex>\varepsilon_2:=( \tfrac{1}{2}(1+\sqrt{13}) , -1)</latex>
+                        </math>. Therefore <math>
+                           <latex>\Dim{E(\lambda_2)} = 1</latex>
+                        </math>, and  <math>
+                           <latex>\lambda_2</latex>
+                        </math> has geometric multiplicity 1.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A}\ =\
+\begin{bmatrix}
+2 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 2
+\end{bmatrix}
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The characteristic polynomial of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>p(\lambda)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>-(\lambda-3)(\lambda-1)^2</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+					                <para>
+                        <para.body>This means that <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> has two distinct eigenvalues, namely</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>\lambda_1 = 3 \quad\text{and}\quad \lambda_2 = 1</latex>
+					                </math.display>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\lambda_1</latex>
+                           </math> has algebraic multiplicity 1, and <math>
+                              <latex>\lambda_2</latex>
+                           </math> has algebraic multiplicity 2.</para.body>
+                     </para>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>E(3)=\span(1,0,1)</latex>
+                           </math>. So <math>
+                              <latex>\lambda_1</latex>
+                           </math> has geometric multiplicity 1. <math>
+                              <latex>E(1)=(1,0,1)^{\bot}</latex>
+                           </math> is a hyperspace in <math>
+                              <latex>\RNr[3]</latex>
+                           </math>, hence has dimension 2. Therefore, <math>
+                              <latex>\lambda_2</latex>
+                           </math> has geometric multiplicity 2.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We begin by computing the characteristic polynomial of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>
+                     </para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+p(\lambda)\ &amp;=\
+    \text{det}\left( \Mtrx{A}\ -\ \lambda I_3\right) \\
+    &amp;=\ \text{det}
+        \begin{bmatrix}
+        2-\lambda &amp; 0 &amp; 1 \\
+        0 &amp; 1-\lambda &amp; 0 \\
+        1 &amp; 0 &amp; 2-\lambda
+        \end{bmatrix} \\
+    &amp;=\ \text{det}
+        \begin{bmatrix}
+        2-\lambda &amp; 1 &amp; 0 \\
+        1 &amp; 2-\lambda &amp; 0 \\
+        0 &amp; 0 &amp; 1-\lambda
+        \end{bmatrix} \\
+    &amp;=\ \left((2-\lambda)(2-\lambda) - 1\right)(1-\lambda) \\
+    &amp;=\ -(\lambda - 3)(\lambda-1)(\lambda-1) \\
+    &amp;=\ -(\lambda-3)(\lambda-1)^2
+\endaligned
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Thus the characteristic polynomial has exactly two places where it takes the value 0, namely</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\lambda_1 = 3 \quad\text{and}\quad \lambda_2 =1</latex>
+					             </math.display>
+					             <para>
+                     <para.body>These are the eigenvalues of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>; <math>
+                           <latex>\lambda_1</latex>
+                        </math> has algebraic multiplicity 1, and <math>
+                           <latex>\lambda_2</latex>
+                        </math> has algebraic multiplicity 2.</para.body>
+                  </para>
+					             <para>
+                     <para.body>The eigenspace <math>
+                           <latex>E(3)</latex>
+                        </math> of <math>
+                           <latex>\lambda_1</latex>
+                        </math> is the nullspace of the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} - 3\IdMtrx[3]\ =\ 
+\left[
+\begin{array}{rrr}
+-1 &amp; 0 &amp; 1 \\
+0 &amp; -2 &amp; 0 \\
+1 &amp; 0 &amp; -1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>With the row reduction method we see that a vector <math>
+                           <latex>(x,y,z)</latex>
+                        </math> belongs to <math>
+                           <latex>E(3)</latex>
+                        </math> if and only if it is of the form</para.body>
+                  </para>
+					             <math.display>
+						               <latex>z\cdot (1,0,1),\qquad \text{ with $z\in\RNr$ arbitrary}</latex>
+					             </math.display>
+					             <para>
+                     <para.body>So <math>
+                           <latex>E(3) = \span(1,0,1)</latex>
+                        </math> has dimension 1. It has basis <math>
+                           <latex>\EuScript{B}(3)=(\Vect{b}_1)</latex>
+                        </math> with <math>
+                           <latex>\Vect{b}_1 = (1,0,1)</latex>
+                        </math>. So <math>
+                           <latex>\lambda_1</latex>
+                        </math> has geometric multiplicity 1.</para.body>
+                  </para>
+					             <para>
+                     <para.body>The eigenspace <math>
+                           <latex>E(1)</latex>
+                        </math> of <math>
+                           <latex>\lambda_2</latex>
+                        </math> is the nullspace of the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} - 1\cdot\IdMtrx[3]\ =\ 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Thus <math>
+                           <latex>E(1)</latex>
+                        </math> is the orthogonal complement of the vector <math>
+                           <latex>(1,0,1)</latex>
+                        </math> in <math>
+                           <latex>\RNr[3]</latex>
+                        </math>. This hyperspace has dimension 2 with basis <math>
+                           <latex>\EuScript{B}(1)=(\Vect{b}_2,\Vect{b}_3)</latex>
+                        </math>, where</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Vect{b}_2=(0,1,0) \quad\text{and}\quad \Vect{b}_3 = (1,0,-1)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore <math>
+                           <latex>\lambda_2</latex>
+                        </math> has geometric multiplicity 2.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Collecting all the information we have acquired, we conclude that <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> acts as the identity map on  <math>
+                           <latex>E(1)</latex>
+                        </math>, and it stretches the line <math>
+                           <latex>E(3)</latex>
+                        </math> by the factor 3. With respect to <math>
+                           <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2,\Vect{b}_3)</latex>
+                        </math> the transformation of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> given by <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is represented by the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A}_{\EuScript{B}\EuScript{B}} = 
+\left[
+\begin{array}{rrr}
+3 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The matrix converting from <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>-coordinates to standard coordinates is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{C}_{\EuScript{S}\EuScript{B}} = 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; -1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}} \Mtrx{A}_{\EuScript{B}\EuScript{B}} \left( \Mtrx{C}_{\EuScript{S}\EuScript{B}}\right)^{-1}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A}\ =\
+\left[\begin{array}{rrrrr}
+2 &amp; 1 &amp; -3 &amp; 7 &amp; -5 \\
+0 &amp; 4 &amp; 4 &amp; -1 &amp; 4 \\
+0 &amp; 0 &amp; 2 &amp; 1 &amp; -9 \\
+0 &amp; 0 &amp; 0 &amp; 2 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -1
+\end{array}\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The characteristic polynomial of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>p(\lambda)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>-(\lambda - 2)^3 (\lambda -4)(\lambda +1)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+					                <para>
+                        <para.body>This means that <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> three distinct eigenvalues, namely</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>\lambda_1 = 2 \quad\text{and}\quad \lambda_2 = 4 \quad\text{and}\quad \lambda_3 = -1</latex>
+					                </math.display>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\lambda_1</latex>
+                           </math> has algebraic multiplicity 3, both of  <math>
+                              <latex>\lambda_2</latex>
+                           </math> and <math>
+                              <latex>\lambda_3</latex>
+                           </math> have algebraic multiplicity 1.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We begin by computing the characteristic polynomial of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+p(\lambda)\ &amp;=\
+    \text{det}
+    \begin{bmatrix}
+    2-\lambda &amp; 1 &amp; -3 &amp; 7 &amp; -5 \\
+    0 &amp; 4-\lambda &amp; 4 &amp; -1 &amp; 4 \\
+    0 &amp; 0 &amp; 2-\lambda &amp; 1 &amp; -9 \\
+    0 &amp; 0 &amp; 0 &amp; 2-\lambda &amp; 3 \\
+    0 &amp; 0 &amp; 0 &amp; 0 &amp; -1-\lambda
+    \end{bmatrix} \\
+    &amp;=\ -(\lambda-2)^3(\lambda-4)(\lambda+1)
+\endaligned
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Thus the characteristic polynomial has exactly three places where it takes the value 0, namely</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\lambda_1 = 2 \quad\text{and}\quad \lambda_2 = 4 \quad\text{and}\quad \lambda_3 = -1</latex>
+					             </math.display>
+					             <para>
+                     <para.body>These are the eigenvalues of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>; <math>
+                           <latex>\lambda_1</latex>
+                        </math> has algebraic multiplicity 3, <math>
+                           <latex>\lambda_2</latex>
+                        </math> has algebraic multiplicity 1, and <math>
+                           <latex>\lambda_3</latex>
+                        </math> has algebraic multiplicity 1.</para.body>
+                  </para>
+					             <para>
+                     <para.body>The eigenspace <math>
+                           <latex>E(2)</latex>
+                        </math> of <math>
+                           <latex>\lambda_1</latex>
+                        </math> is the nullspace of the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} - 2\cdot \IdMtrx[5]\ =\ 
+\left[
+\begin{array}{rrrrr}
+0 &amp; 1 &amp; -3 &amp; 7 &amp; -5 \\
+0 &amp; 2 &amp; 4 &amp; -1 &amp; 4 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; -9 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -3
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The row reduction method shows that <math>
+                           <latex>E(2) = \span \EuScript{B}_1=(\Vect{b}_1)</latex>
+                        </math>, with <math>
+                           <latex>\Vect{b}_1:= (1,0,0,0,0)</latex>
+                        </math>. This space has dimension 1, implying that the geometric multiplicity of <math>
+                           <latex>\lambda_1</latex>
+                        </math> is 1.</para.body>
+                  </para>
+					             <para>
+                     <para.body>The eigenspace <math>
+                           <latex>E(4)</latex>
+                        </math> of <math>
+                           <latex>\lambda_2</latex>
+                        </math> is the nullspace of the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} - 4\cdot \IdMtrx[5]\ =\ 
+\left[
+\begin{array}{rrrrr}
+-2 &amp; 1 &amp; -3 &amp; 7 &amp; -5 \\
+0 &amp; 0 &amp; 4 &amp; -1 &amp; 4 \\
+0 &amp; 0 &amp; -2 &amp; 1 &amp; -9 \\
+0 &amp; 0 &amp; 0 &amp; -2 &amp; -5 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -3
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The row reduction method shows that <math>
+                           <latex>E(4) = \span \EuScript{B}_2=(\Vect{b}_2)</latex>
+                        </math>, with <math>
+                           <latex>\Vect{b}_2:= (1,2,0,0,0)</latex>
+                        </math>. This space has dimension 1, implying that the geometric multiplicity of <math>
+                           <latex>\lambda_2</latex>
+                        </math> is 1.</para.body>
+                  </para>
+					             <para>
+                     <para.body>The eigenspace <math>
+                           <latex>E(-1)</latex>
+                        </math> of <math>
+                           <latex>\lambda_3</latex>
+                        </math> is the nullspace of the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} - (-1)\cdot \IdMtrx[5]\ =\ 
+\left[
+\begin{array}{rrrrr}
+3 &amp; 1 &amp; -3 &amp; 7 &amp; -5 \\
+0 &amp; 5 &amp; 4 &amp; -1 &amp; 4 \\
+0 &amp; 0 &amp; 3 &amp; 1 &amp; -9 \\
+0 &amp; 0 &amp; 0 &amp; 3 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The row reduction method shows that <math>
+                           <latex>E(-1) = \span \EuScript{B}_3=(\Vect{b}_3)</latex>
+                        </math>, with <math>
+                           <latex>\Vect{b}_3:= (0,0,0,0,1)</latex>
+                        </math>. This space has dimension 1, implying that the geometric multiplicity of <math>
+                           <latex>\lambda_3</latex>
+                        </math> is 1.</para.body>
+                  </para>
+					             <para>
+                     <para.body>In this case the eigenspaces <math>
+                           <latex>E(2)</latex>
+                        </math>, <math>
+                           <latex>E(4)</latex>
+                        </math>, and <math>
+                           <latex>E(-1)</latex>
+                        </math> do not span all of <math>
+                           <latex>\RNr[5]</latex>
+                        </math>. So we do not obtain a complete description of the transformation properties of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> from the eigendata available to us at this point. In later sections you can learn how to extend the analysis of eigendata so as to achieve a complete description of the transformation properties of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

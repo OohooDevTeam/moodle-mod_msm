@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_CoordinateVectorONB">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Coordinate Vector with Respect to an ONB: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Let <latex>V</latex> be the subspace of <latex>\RNr[4]</latex> spanned by the orthonormal vectors</para>
+			<computation>
+				<left>\Vect{a}</left>
+				<center>:=</center>
+				<right>\tfrac{1}{3} (1,-2,0,2)</right>
+				<left>\Vect{b}</left>
+				<center>:=</center>
+				<right>\tfrac{1}{3}(0,2,1,2)</right>
+				<left>\Vect{c}</left>
+				<center>:=</center>
+				<right>\tfrac{1}{3} (2,0,2,-1)</right>
+			</computation>
+			<para>Given that <latex>\Vect{x} :=(-1,-8,-5,15)</latex> is in <latex>V</latex>, find its coordinate vector with respect to the ordered basis <latex>\EuScript{B}:= (\Vect{a} , \Vect{b} , \Vect{c} )</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We need to express <latex>\Vect{x}</latex> as a linear combination of <latex>\Vect{a}</latex>, <latex>\Vect{b}</latex>, and <latex>\Vect{c}</latex>; i.e.</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>s \Vect{a} + t \Vect{b} + u \Vect{c}</right>
+			</computation>
+			<para>Given that <latex>\EuScript{B}</latex> is an ONB of <latex>V</latex>, we compute:</para>
+			<computation>
+				<left>s = \DotPr{ \Vect{x} }{ \Vect{a} }</left>
+				<center>=</center>
+				<right>15</right>
+				<left>t = \DotPr{ \Vect{x} }{ \Vect{b} }</left>
+				<center>=</center>
+				<right>3</right>
+				<left>u = \DotPr{ \Vect{x} }{ \Vect{c} }</left>
+				<center>=</center>
+				<right>-9</right>
+			</computation>
+			<para>Therefore the coordinate vector of <latex>\Vect{x}</latex> with respect to <latex>\EuScript{B}</latex> is</para>
+			<computation>
+				<left>\Vect{x}_{\EuScript{B}}</left>
+				<center>=</center>
+				<right>(15,3,-9)</right>
+			</computation>
+		</answer>
+	</showme>
+</showme.pack>

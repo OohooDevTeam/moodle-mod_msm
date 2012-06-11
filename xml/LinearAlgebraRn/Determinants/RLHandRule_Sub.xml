@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_RLHandRule">
+	<title>3-Dimensional Orientation and Rotations</title>
+	<sub.page.body>
+		<block>
+			<para>The right hand orientation is closely related to what is called rotation about an oriented axis according to the right hand rule. </para>
+			<para align="center"><img src="ims/RightHandRule.jpg"></img></para>
+			<para>In the picture above the 
+				<subordinate>
+					<hot>toroidal</hot>
+					<info><para>A torus looks like the surface of a donut or an inner tube</para></info>
+				</subordinate>
+				object above 
+					<subordinate>
+						<hot>rotates</hot>
+						<link href="http://webmath.math.ualberta.ca/~gepe/LinearAlgebraRn/Determinants/ims/RightHandRule.avi" target="new" type="animation">
+							<para>View an animation of this rotation. You need to have an animation player capable of using the avi-file format.</para>
+						</link>
+					</subordinate>
+				in the direction of the arrows near "FCM". To identify this rotation as one according to the right hand rule we note: The axis of rotation is oriented by the displayed vector, call it <latex>\Vect{z}</latex>. Upon aligning the thumb of your right hand with <latex>\Vect{z}</latex>, your curled fingers point in the direction of the rotation.</para>
+		</block>
+		
+		<block>
+			<para>The relationship between a "rotation according to the right hand rule" and the "right hand orientation" is obtained as follows.</para>
+			<ol>
+				<li><para>Choose any nonzero vector <latex>\Vect{x}</latex> perpendicular to <latex>\Vect{z}</latex>.</para></li>
+				<li><para>Let <latex>\Vect{y}</latex> be the result of rotating <latex>\Vect{y}</latex> through the angle of <latex>\pi/2</latex> according to the right hand rule.</para></li>
+				<li><para>Then the triple <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> represents the right hand orientation of <latex>\RNr[3]</latex>.</para></li>
+			</ol>
+			
+		</block>
+	</sub.page.body>
+</sub.page>

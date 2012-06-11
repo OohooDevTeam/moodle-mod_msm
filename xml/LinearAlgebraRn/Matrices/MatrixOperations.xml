@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_MatrixOperations">
+	<headers>
+		<full>Matrix Operations</full>
+		<toc>Matrix Operations</toc>
+		<short>Matrix Operations</short>
+	</headers>
+	
+	<intro>
+		<para>Here we explain how to add matrices, how to multiply a matrix by a number, how to multiply two matrices, and what the transpose of a matrix is. The system of all matrices, endowed with these operations, forms a vast and powerful extension of the system of real number <latex>\RNr</latex>.</para>
+	</intro>
+	
+	<section.body>
+		<def type="Definition" id="Def_MatrixSum">
+			<caption>Sum of two Matrices</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment on Sum of Matrices</caption>
+					<para>Thus the sum of two matrices is only defined if both matrices have the same size.</para>
+				</info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_MatrixAddition"/>
+				<info>
+					<caption>Example of Sum of Matrices</caption>
+					<para>Thus, to add two matrices, we simply add their intries in matching positions. &ndash; Here are some examples.</para>
+				</info>
+			</associate>
+			
+			<para>The sum of two matrices <latex magnify="yes">A = [a_{ij}]</latex> and <latex magnify="yes">B=[b_{ij}]</latex> of size <latex>(m,n)</latex> is
+				<index.glossary>
+					<term>sum</term><term>of matrices</term>
+					<info>
+						<caption>sum of matrices</caption>
+						<para>The sum of two matrices <latex magnify="yes">A = [a_{ij}]</latex> and <latex magnify="yes">B=[b_{ij}]</latex> of size <latex>(m,n)</latex> is</para>
+						<math.display>
+							<latex>A\ +\ B\ :=\ [a_{ij} + b_{ij}]</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>sum</term>
+					<info>
+						<caption>matrix sum</caption>
+						<para>The sum of two matrices <latex magnify="yes">A = [a_{ij}]</latex> and <latex magnify="yes">B=[b_{ij}]</latex> of size <latex>(m,n)</latex> is</para>
+						<math.display>
+							<latex>A\ +\ B\ :=\ [a_{ij} + b_{ij}]</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>addition</term><term>of matrices</term>
+					<info>
+						<caption>addition of matrices</caption>
+						<para>The sum of two matrices <latex magnify="yes">A = [a_{ij}]</latex> and <latex magnify="yes">B=[b_{ij}]</latex> of size <latex>(m,n)</latex> is</para>
+						<math.display>
+							<latex>A\ +\ B\ :=\ [a_{ij} + b_{ij}]</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>addition</term>
+					<info>
+						<caption>matrix addition</caption>
+						<para>The sum of two matrices <latex magnify="yes">A = [a_{ij}]</latex> and <latex magnify="yes">B=[b_{ij}]</latex> of size <latex>(m,n)</latex> is</para>
+						<math.display>
+							<latex>A\ +\ B\ :=\ [a_{ij} + b_{ij}]</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+			</para>
+			
+			<math.display>
+				<latex>A\ +\ B\ :=\ [a_{ij} + b_{ij}]</latex>
+			</math.display>
+		</def>
+		
+		
+		
+		<def type="Definition" id="Def_MatrixScalarMultiplication">
+			<caption>Scalar Product of a Matrix</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment on scalar multiplication of a matrix</caption>
+					<para>For every number <latex>t</latex> and every matrix <latex>A</latex>, the scalar product <latex>t\cdot A</latex> is defined.
+						<index.glossary>
+							<term>scalar product</term><term>of a matrix</term>
+							<info>
+								<caption>scalar product of a matrix</caption>
+								<para>For every number <latex>t</latex> and every matrix <latex>A</latex>, the scalar product <latex>t\cdot A</latex> is</para>
+								<math.display>
+									<latex>t\cdot A\ :=\ [t\cdot a_{ij}]</latex>
+								</math.display>
+							</info>
+						</index.glossary>
+						<index.glossary>
+							<term>matrix</term><term>scalar product</term>
+							<info>
+								<caption>scalar product of a matrix</caption>
+								<para>For every number <latex>t</latex> and every matrix <latex>A</latex>, the scalar product <latex>t\cdot A</latex> is</para>
+								<math.display>
+									<latex>t\cdot A\ :=\ [t\cdot a_{ij}]</latex>
+								</math.display>
+							</info>
+						</index.glossary>
+					</para>
+				</info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_NumberScalarMultiplicationMatrix"/>
+				<info>
+					<caption>Scalar Multiplication of a Matrix by a Number</caption>
+					<para>To multiply a matrix <latex>A</latex> by a number <latex>t</latex>, we multiply every entry of <latex>A</latex> by the number <latex>t</latex>.  &ndash; Here are some examples.</para>
+				</info>
+			</associate>
+			
+			<para>The (scalar) product of a matrix <latex magnify="yes">A = [a_{ij}]</latex> by a number <latex>t</latex> is</para>
+			<math.display>
+				<latex>t\cdot A\ :=\ [t\cdot a_{ij}]</latex>
+			</math.display>
+		</def>
+		
+		<para>Addition of matrices and scalar multiplying a matrix by a number probably seem familiar because they behave completely like the corresponding operations on vectors. However, the next operation, multiplying one matrix by another, is new. Please pay particular attention to the size compatibility we require if we want to multiply two matrices.</para>
+		
+		<def type="Definition" id="Def_MatrixMultiplication">
+			<caption>Matrix Multiplication</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment on Matrix multiplication</caption>
+					<para>The product of matrices <latex>A\cdot B</latex> is only defined if the number of (vertical) columns of <latex>A</latex> is equal to the number of (horizontal) rows of <latex>B</latex>. The resulting matrix will have as many rows as <latex>A</latex> and as many columns as <latex>B</latex>.</para>
+				</info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_MatrixMultiplication"/>
+				<info>
+					<caption>Example: Matrix Multiplication</caption>
+					<para>To form the matrix product <latex>\Mtrx{A}\cdot \Mtrx{B}</latex> we take dot products of the rows of <latex>\Mtrx{A}</latex> by the columns of <latex>B</latex>. &ndash; Here is an example.</para>
+				</info>
+			</associate>
+<!--			<associate Description="Exploration">
+				<info>
+					<caption>Matrix Multiplication Tutor</caption>
+					<para>If you are using an MS-Windows computer you can use our highly interactive 
+						<subordinate>
+							<hot>matrix multiplication tutor</hot>
+							<link href="../../LearningObjects/MatrixMultiply.zip"></link>
+						</subordinate>
+						to practice how to multiply matrices. After unzipping the file, run &lsquo;multiply.exe&rsquo;. The rest is completely self explanatory.</para>
+				</info>
+			</associate>-->
+			
+			<para>The product of a matrix <latex magnify="yes">\Mtrx{A} = [a_{ij}]</latex> of size <latex>(m,n)</latex> by a matrix <latex>\Mtrx{B} = [b_{jk}]</latex> of size <latex>(n,p)</latex> is the matrix if size <latex>(m,p)</latex> given by
+				<index.glossary>
+					<term>product</term><term>of two matrices</term>
+					<info>
+						<caption>product of two matrices</caption>
+						<para>The product of a matrix <latex magnify="yes">\Mtrx{A} = [a_{ij}]</latex> of size <latex>(m,n)</latex> by a matrix <latex>\Mtrx{B} = [b_{jk}]</latex> of size <latex>(n,p)</latex> is the matrix if size <latex>(m,p)</latex> given by</para>
+						<math.display>
+							<latex magnify="yes">\Mtrx{A}\cdot \Mtrx{B}\ :=\ [c_{ik}]</latex>
+						</math.display>
+						<para>where <latex magnify="yes">c_{ik}</latex> is the dot product of the <latex>i</latex>-th row of <latex>\Mtrx{A}</latex> by the <latex>k</latex>-th column of <latex>B</latex>:</para>
+						<math.display>
+							<latex>c_{ik}\ :=\ a_{i1}b_{1k} + a_{i2}b_{2k} + \cdots + a_{in}b_{nk}</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>multiplication</term>
+					<info>
+						<caption>Matrix Multiplication</caption>
+						<para>The product of a matrix <latex magnify="yes">\Mtrx{A} = [a_{ij}]</latex> of size <latex>(m,n)</latex> by a matrix <latex>\Mtrx{B} = [b_{jk}]</latex> of size <latex>(n,p)</latex> is the matrix if size <latex>(m,p)</latex> given by</para>
+						<math.display>
+							<latex magnify="yes">\Mtrx{A}\cdot \Mtrx{B}\ :=\ [c_{ik}]</latex>
+						</math.display>
+						
+						<para>where <latex magnify="yes">c_{ik}</latex> is the dot product of the <latex>i</latex>-th row of <latex>\Mtrx{A}</latex> by the <latex>k</latex>-th column of <latex>\Mtrx{B}</latex>:</para>
+						
+						<math.display>
+							<latex>c_{ik}\ :=\ a_{i1}b_{1k} + a_{i2}b_{2k} + \cdots + a_{in}b_{nk}</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+			</para>
+			
+			<math.display>
+				<latex magnify="yes">\Mtrx{A}\cdot \Mtrx{B}\ :=\ [c_{ik}]</latex>
+			</math.display>
+			
+			<para>where <latex magnify="yes">c_{ik}</latex> is the dot product of the <latex>i</latex>-th row of <latex>\Mtrx{A}</latex> by the <latex>k</latex>-th column of <latex>\Mtrx{B}</latex>:</para>
+			
+			<math.display>
+				<latex>c_{ik}\ :=\ a_{i1}b_{1k} + a_{i2}b_{2k} + \cdots + a_{in}b_{nk}</latex>
+			</math.display>
+		</def>
+		
+		<def type="Definition" id="Def_MatrixTransposition">
+			<caption>Transpose of a Matrix</caption>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation on Matrix Transposition</caption>
+					<para>Thus when transposing a matrix, we simply turn its rows into columns and vice versa; i.e. the first row of <latex>A</latex> turns into the first column of <latex>B</latex>. The second row of <latex>A</latex> turns into the second column of <latex>B</latex>, etc.
+					</para>
+				</info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_MatrixTransposition"/>
+				<info><para>Some examples of matrix transposition.</para></info>
+			</associate>
+			<para>The transpose of a matrix
+				<index.glossary>
+					<term>transposition</term><term>of a matrix</term>
+					<info>
+						<caption>Transpose of a Matrix</caption>
+						<para>The transpose of a matrix</para>
+						<math.display>
+							<latex>A\ =\ [a_{ij}],\qquad 1\leq i\leq m,\ \ 1\leq j\leq n</latex>
+						</math.display>
+						<para>is the matrix</para>
+						<math.display>
+							<latex>A^T\ :=\ [a_{ji}],\qquad 1\leq j\leq n,\ \ 1\leq i\leq m</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>transpose</term>
+					<info>
+						<caption>Matrix Transpose</caption>
+						<para>The transpose of a matrix</para>
+						<math.display>
+							<latex>A\ =\ [a_{ij}],\qquad 1\leq i\leq m,\ \ 1\leq j\leq n</latex>
+						</math.display>
+						<para>is the matrix</para>
+						<math.display>
+							<latex>A^T\ :=\ [a_{ji}],\qquad 1\leq j\leq n,\ \ 1\leq i\leq m</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>A^T</latex></symbol>
+					<info><para>Transpose of a matrix</para></info>
+				</index.symbol>
+			</para>
+			<math.display>
+				<latex>A\ =\ [a_{ij}],\qquad 1\leq i\leq m,\ \ 1\leq j\leq n</latex>
+			</math.display>
+			<para>is the matrix</para>
+			<math.display>
+				<latex>A^T\ :=\ [a_{ji}],\qquad 1\leq j\leq n,\ \ 1\leq i\leq m</latex>
+			</math.display>
+		</def>
+		
+		<para>The transpose operation helps us single out the following special kind of matrix:</para>
+		
+		<def type="Definition" id="Def_SymmetricMatrix">
+			<caption>(Anti-)Symmetric Matrix</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment on: Symmetric Matrix</caption>
+					<para>The first thing to observe about a symmetric matrix <latex>A</latex> is that its number of rows must be the same as its number of columns. Therefore <latex>A</latex> is square shaped. Moreover, we have the identity of entries <latex magnify="yes">a_{ij}=a_{ji}</latex>.</para>
+				</info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_SymmetricMatrix"/>
+				<info><para>Examples of (non-)symmetric matrices.</para></info>
+			</associate>
+			
+			<para>A matrix <latex>\Mtrx{A}</latex> is said to be symmetric if &nbsp; <latex>\Mtrx{A} = \Mtrx{A}^T</latex>. It is called antisymmetric if <latex>\Mtrx{A} = - \Mtrx{A}^T</latex>
+				<index.glossary>
+					<term>symmetric</term><term>matrix</term>
+					<info>
+						<caption>Symmetric Matrix</caption>
+						<para>A matrix <latex>A</latex> is said to be symmetric if &nbsp; <latex>A = A^T</latex>.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>symmetric</term>
+					<info>
+						<caption>Symmetric Matrix</caption>
+						<para>A matrix <latex>A</latex> is said to be symmetric if &nbsp; <latex>A = A^T</latex>.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>antisymmetric</term><term>matrix</term>
+					<info>
+						<caption>Antisymmetric Matrix</caption>
+						<para>A matrix <latex>\Mtrx{A}</latex> is antisymmetric if &nbsp; <latex>\Mtrx{A} = -\Mtrx{A}^T</latex>.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>antisymmetric</term>
+					<info>
+						<caption>Antisymmetric Matrix</caption>
+						<para>A matrix <latex>\Mtrx{A}</latex> is antisymmetric if &nbsp; <latex>\Mtrx{A} = -\Mtrx{A}^T</latex>.</para>
+					</info>
+				</index.glossary>
+			</para>
+		</def>
+	</section.body>
+	
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_MatrixOperations"/>
+	</studymaterials>
+</section>

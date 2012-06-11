@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_SeriesAbsoluteConvergence"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Absolute Convergence</title>
+      <plain.title>Absolute Convergence</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The concept of ‘absolute convergence’ of a series is motivated by the observation that the choice of the sign of its summands can influence its convergence properties significantly; recall the following example:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>The harmonic series <math>
+                           <latex>1+\tfrac{1}{2}+\tfrac{1}{3}+\cdots +\tfrac{1}{n}+\cdots</latex>
+                        </math> fails to converge to a number. However,</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>switching some signs, such as in <math>
+                           <latex>1-\tfrac{1}{2}+\tfrac{1}{3}-\cdots + (-1)^{n+1}\tfrac{1}{n}+\cdots</latex>
+                        </math> may result in a series which does converge to a number.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>Thus we say that a series <math>
+                     <latex>\sum_{n=0}^{\infty} a_n</latex>
+                  </math> converges absolute, if the series <math>
+                     <latex>\sum_{n=0}^{\infty} \Abs{a_n}</latex>
+                  </math> converges to a number. We will then obtain the following properties of absolutely converging series:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Switching the signs of arbitrary summands results in a series which converges to a number.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>Rearranging the summands</hot>
+                           <companion>
+                              <unit.ref unitId="Expl_SeriesRearrange"/>
+                              <info>
+                                 <para>
+                                    <para.body>Rearranging the summands of a series means to alter the order in which these summands are to be added. In finite sums, this makes no difference. For infinite sums, however, surprising things may happen. – See details on this.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>
+				 of the series leaves the number to which it converges unchanged.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_SeriesAbsoluteConvergence">
+               <caption>Absolute convergence of a series</caption>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_AbsoluteConditionalConvergence"/>
+                  <info>
+                     <para>
+                        <para.body>Examples of absolutely convergent series and conditionally convergent series.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A series <math>
+                           <latex>\sum_{n=0}^{\infty} a_n</latex>
+                        </math>
+                     </para.body>
+                  </para>
+                  <ol>
+                     <li>
+                        <para>
+                           <para.body>converges absolutely if <math>
+                                 <latex>\sum_{n=0}^{\infty} \Abs{ a_n }</latex>
+                              </math> converges to a number;
+					</para.body>
+                           <index.glossary>
+                              <term>series</term>
+                              <term>absolute convergence</term>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>absolutely convergent series</term>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>converges conditionally if <math>
+                                 <latex>\sum_{n=0}^{\infty} a_n</latex>
+                              </math> converges to a number while <math>
+                                 <latex>\sum_{n=0}^{\infty} \Abs{a_n}=+\infty</latex>
+                              </math>.
+					</para.body>
+                           <index.glossary>
+                              <term>series</term>
+                              <term>conditional convergence</term>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>conditionally convergent series</term>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                  </ol>
+               </def.body>
+            </def>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="AbsoluteImpliesConvergence_Thm.xml"/>
+            <para>
+               <para.body>Let us turn now to the question of how does rearranging the summands of an infinite series affect its convergence behavior?</para.body>
+            </para>
+            <def type="Definition" id="Def_SeriesRearrangement">
+               <caption>Rearrangement of a series</caption>
+               <def.body>
+                  <para>
+                     <para.body>A rearrangement of an infinite series <math>
+                           <latex>\sum_{n=0}^{\infty} a_n</latex>
+                        </math> is given by a bijective function (a permutation) <math>
+                           <latex>\sigma\from \NNr\to \NNr</latex>
+                        </math> and the associated rearranged series <math>
+                           <latex>\sum_{n=0}^{\infty} a_{\sigma(n)}</latex>
+                        </math>.
+				</para.body>
+                     <index.glossary>
+                        <term>series</term>
+                        <term>rearrangement</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>rearrangement of an infinite series</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="AbsoluteConvergentInvariantRearrange.xml"/>
+            <para>
+               <para.body>Thus an absolutely convergent series is robust with respect to rearrangements of its summands. On the other hand, the following theorem of Riemann 
+		demonstrates just how fragile conditionally convergent series are with respect to rearrangements of its summands.</para.body>
+               <index.author>
+                  <name>
+                     <name>
+                        <first>Bernhard</first>
+                        <last>Riemann</last>
+                     </name>
+                  </name>
+                  <info>
+                     <para>
+                        <para.body>Appears here because of the ‘Riemann rearrangment theorem’ for conditionally convergent series.</para.body>
+                     </para>
+                  </info>
+               </index.author>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="RiemannRearrange_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_SeriesAbsoluteConvergence"/>
+   </studymaterials>
+</unit>

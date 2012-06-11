@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ROrderingProperties">
+	<caption>Further properties of <latex>(\RNr,+,\cdot,\leq)</latex></caption>
+	<statement>
+		<para>The following hold:</para>
+		<part partid="PositiveOrNegative">
+			<para>For every <latex>x\in \RNr</latex> exactly one of the following applies: &lsquo;<latex>x</latex> is positive&rsquo;, &lsquo;<latex>x=0</latex>&rsquo;, &lsquo;<latex>x</latex> is negative&rsquo;.</para>
+		</part>
+		<part partid="PositiveToNegative">
+			<para><latex>x\in \RNr</latex> is positive if and only if <latex>(-x)</latex> is negative.</para>
+		</part>
+		<part partid="SumComparison">
+			<para>If <latex><![CDATA[ a < b ]]></latex> and <latex><![CDATA[ x < y ]]></latex>, then <latex><![CDATA[ a+x < b+y ]]></latex>.</para>
+		</part>
+		<part partid="TimesPositiveComparison">
+			<para>For <latex><![CDATA[ 0< x ]]></latex> and <latex>a,b\in \RNr</latex> arbitrary,  <latex><![CDATA[ a < b ]]></latex> if and only if <latex><![CDATA[ ax < bx ]]></latex>.</para>
+		</part>
+		<part partid="TimesNegativeComparison">
+			<para>For <latex><![CDATA[ x< 0 ]]></latex> and <latex>a,b\in \RNr</latex> arbitrary,  <latex><![CDATA[ a < b ]]></latex> if and only if <latex><![CDATA[ ax > bx ]]></latex>.</para>
+		</part>
+		<part partid="MultiplicativeInversion">
+			<para>For <latex><![CDATA[ 0 < x,y ]]></latex>, <latex><![CDATA[ x<y ]]></latex> if and only if <latex><![CDATA[ 1/y < 1/x ]]></latex>.</para>
+		</part>
+		<part partid="InequalityTimesInequality">
+			<para>If <latex><![CDATA[ 0 < a < b ]]></latex> and <latex><![CDATA[ 0 < x < y ]]></latex>, then <latex><![CDATA[ ax < by ]]></latex>.</para>
+		</part>
+		<part partid="PositiveSquare">
+			<para>For all <latex>0\neq x\in \RNr</latex>, <latex><![CDATA[ 0 < x^2 ]]></latex>.</para>
+		</part>
+		<part partid="ZeroLessOne"><para><latex><![CDATA[ 0 < 1 ]]></latex>.</para></part>
+	</statement>
+	<proof type="Proof">
+		<caption><partref>PositiveOrNegative</partref> &nbsp; exactly one: <latex><![CDATA[ x>0 ]]></latex>;  <latex>x=0</latex>; <latex><![CDATA[ x<0 ]]></latex></caption>
+		<para>This follows from the total ordering structure on <latex>\RNr</latex>: If <latex>x=0</latex>, there is nothing left to show. Given <latex>0\neq x\in \RNr</latex>, we know that <latex><![CDATA[ 0 < x ]]></latex> or <latex><![CDATA[ x < 0 ]]></latex>. Both can not be true simultaneously by the antisymmetry property of &lsquo;<latex>\leq</latex>&rsquo;. But in the former case, <latex>x</latex> is positive, while in the latter case <latex>x</latex> is negative.</para>
+		<caption><partref>PositiveToNegative</partref> <latex>x\in \RNr</latex> is positive if and only if <latex>(-x)</latex> is negative.</caption>
+		<para>If <latex>x</latex> is positive, then <latex><![CDATA[ 0 < x ]]></latex>. But then</para>
+		<computation>
+			<left>-x</left>
+			<center><![CDATA[ < ]]></center>
+			<right>(-x) + x = 0</right>
+		</computation>
+		<para>which says exactly that <latex>(-x)</latex> is negative. Conversely, if <latex><![CDATA[ x < 0 ]]></latex>, then</para>
+		<computation>
+			<left>0 = (-x) + x</left>
+			<center><![CDATA[ < ]]></center>
+			<right>(-x)</right>
+		</computation>
+		<para>which says that <latex>(-x)</latex> is positive in this case.</para>
+		<caption><partref>SumComparison</partref> If <latex><![CDATA[ a < b ]]></latex> and <latex><![CDATA[ x < y ]]></latex>, then <latex><![CDATA[ a+x < b+y ]]></latex>.</caption>
+		<para>From the axiom expressing compatibility of addition with the ordering relation in <latex>\RNr</latex> we get</para>
+		<ul>
+			<li><para><latex><![CDATA[ a-b < 0]]></latex> from <latex><![CDATA[ a < b ]]></latex>.</para></li>
+			<li><para><latex><![CDATA[ 0 < y-x ]]></latex> from <latex><![CDATA[ x < y ]]></latex>.</para></li>
+		</ul>
+		<para>The transitivity property of the ordering now gives</para>
+		<computation>
+			<left>a-b</left>
+			<center><![CDATA[ < ]]></center>
+			<right>y-x</right>
+			<left>(a-b)+b</left>
+			<center><![CDATA[ < ]]>		<info><para>From the axiom stating compatibility of the ordering with addition.</para></info></center>
+			<right>(y-x) + b</right>
+			<left>a</left>
+			<center><![CDATA[ < ]]>		<info>
+				<para>On the left:</para>
+				<math.display>
+					<latex>(a-b)+b = a + ((-b)+b) = a + 0 = a</latex>
+				</math.display>
+				<para>using the associativity property of addition, and neutrality of <latex>0</latex> with respect to addition. On the right:</para>
+				<math.display>
+					<latex>(y-x)+b = b + (y-x) = (b+y) -x</latex>
+				</math.display>
+			</info></center>
+			<right>(b+y)-x</right>
+			<left>a+x</left>
+			<center><![CDATA[ < ]]></center>
+			<right>(b+y) + (-x) + x</right>
+			<left>a+x</left>
+			<center><![CDATA[ < ]]></center>
+			<right>b+y</right>
+		</computation>
+		
+		
+		
+		<caption><partref>TimesPositiveComparison</partref> &nbsp; If <latex><![CDATA[ 0< x ]]></latex>,  then <latex><![CDATA[ a < b ]]></latex> if and only if <latex><![CDATA[ ax < bx ]]></latex></caption>
+		<para>Consider first the case where <latex><![CDATA[ a<b ]]></latex>. We need to show that <latex><![CDATA[ ax < bx ]]></latex>. We get <latex><![CDATA[ 0 < b-a ]]></latex> from the axiom that says addition is compatible with ordering relation. Further, the axiom which says that multiplication is compatible with the ordering relation gives</para>
+		<computation>
+			<left>0</left>
+			<center><![CDATA[ < ]]></center>
+			<right>(b-a)\cdot x</right>
+			<left>0</left>
+			<center><![CDATA[ < ]]>		<info><para>By the distributivity axiom</para></info></center>
+			<right>bx - ax</right>
+			<left>ax</left>
+			<center><![CDATA[ < ]]></center>
+			<right>bx</right>
+		</computation>
+		<para>For the converse, consider now the situation where <latex><![CDATA[ ax < bx ]]></latex>. We need to show that <latex><![CDATA[ a<b ]]></latex>. Now if this were false, we would have <latex>b\geq a</latex> and, by what we just proved,</para>
+		<computation>
+			<left>bx</left>
+			<center>\leq</center>
+			<right>ax</right>
+		</computation>
+		<para>a contradiction to the fact that <latex><![CDATA[ ax < bx ]]></latex>. Therefore it is false that <latex>b\leq a</latex>, and we conclude that <latex><![CDATA[ a<b ]]></latex>, as claimed.</para>
+		
+		
+		
+		<caption><partref>TimesNegativeComparison</partref> &nbsp; If <latex><![CDATA[ x< 0 ]]></latex>,  then <latex><![CDATA[ a < b ]]></latex> if and only if <latex><![CDATA[ ax > bx ]]></latex></caption>
+		<para>Consider first the situation where <latex><![CDATA[ a<b ]]></latex>. We need to show that <latex><![CDATA[ ax > bx ]]></latex>. If <latex>x</latex> is negative, then <latex>(-x)</latex> is positive. Now the inequality <latex><![CDATA[ 0< b-a ]]></latex> gives</para>
+		<math.display>
+			<latex><![CDATA[ 0 < (b-a)(-x) = b(-x) + (-a)(-x) = -(bx) + ax ]]></latex>
+		</math.display>
+		<para>and, therefore, <latex><![CDATA[ bx < ax ]]></latex>, as claimed.</para>
+		<para>For the converse consider now the situation where <latex><![CDATA[ bx < ax ]]></latex>. We need to show that <latex><![CDATA[ a<b ]]></latex>. If this were false, we would have <latex>b\geq a</latex> and, hence, <latex>ax \leq bx</latex>. This contradicts the fact that <latex><![CDATA[ bx < ax ]]></latex>, and the claim follows.</para>
+		
+		
+		<caption><partref>MultiplicativeInversion</partref> &nbsp; For <latex><![CDATA[ 0 < x,y ]]></latex>, <latex><![CDATA[ x<y ]]></latex> if and only if <latex><![CDATA[ 1/y < 1/x ]]></latex>.</caption>
+		<para>If <latex><![CDATA[ 0<x<y ]]></latex>, <latex><![CDATA[ 0<1/(xy) ]]></latex> and, therefore</para>
+		<math.display>
+			<latex><![CDATA[ \dfrac{1}{y} = \dfrac{x}{xy} < \dfrac{y}{xy} = \dfrac{1}{x} ]]></latex>
+		</math.display>
+		<para>as was to be shown. Conversely, if <latex><![CDATA[ 1/y < 1/x]]></latex>, multiply this inequality by <latex>xy</latex> to infer <latex><![CDATA[ x<y ]]></latex>.</para>
+		
+		
+		<caption><partref>InequalityTimesInequality</partref> &nbsp; <latex><![CDATA[ a < b ]]></latex> and <latex><![CDATA[ 0 < x < y ]]></latex>, then <latex><![CDATA[ ax < by ]]></latex>.</caption>
+		<para>Multiplying the inequality <latex><![CDATA[ a<b ]]></latex> by the positive <latex>x</latex>, we infer with the previous part</para>
+		<computation>
+			<left>ax</left>
+			<center><![CDATA[ < ]]></center>
+			<right>bx</right>
+		</computation>
+		<para>Similarly, multiplying the inequality <latex><![CDATA[ x<y ]]></latex> by the positive <latex>y</latex> gives</para>
+		<computation>
+			<left>bx</left>
+			<center><![CDATA[ < ]]></center>
+			<right>by</right>
+		</computation>
+		<para>Now the transitivity property of the ordering relation on <latex>\RNr</latex> gives</para>
+		<computation>
+			<left>ax</left>
+			<center><![CDATA[ < ]]></center>
+			<right>by</right>
+		</computation>
+		<para>as claimed.</para>
+		
+		<caption><partref>PositiveSquare</partref> For all <latex>x\in \RNr</latex>, <latex>0\leq x^2</latex></caption>
+		<para>If <latex>x\neq 0</latex> is positive, this follows from the axiom which says that multiplication is compatible with the ordering. If <latex>x</latex> is negative, we have <latex><![CDATA[ x < 0 ]]></latex>, and
+			<subordinate>
+				<hot>so</hot>
+				<info><para>Here we use property (v).</para></info>
+			</subordinate>
+		</para>
+		<math.display>
+			<latex><![CDATA[ 0 = 0x < x^2 ]]></latex>
+		</math.display>
+		<para>as claimed.</para>
+		
+		<caption><partref>ZeroLessOne</partref> <latex><![CDATA[ 0 < 1 ]]></latex></caption>
+		<para>By axiom, <latex>0\neq 1</latex>. So we just learned that</para>
+		<math.display>
+			<latex><![CDATA[ 0 < 1^2 = 1]]></latex>
+		</math.display>
+	</proof>
+</theorem>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_DoubleInverse"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Double inverse of a linear map</caption>
+   <statement.theorem>
+      <para>
+         <para.body>If the linear transformation <math>
+               <latex>L\from \RNr[n]\to \RNr[n]</latex>
+            </math> is invertible, with inverse <math>
+               <latex>M=L^{-1}</latex>
+            </math>, then <math>
+               <latex>M</latex>
+            </math> is also invertible and</para.body>
+      </para>
+      <math.display>
+         <latex>L = M^{-1} = \left( L^{-1} \right)^{-1}</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>By definition of <math>
+                     <latex>L^{-1}</latex>
+                  </math>, we write <math>
+                     <latex>M=L^{-1}</latex>
+                  </math> because there is a linear transformation <math>
+                     <latex>M</latex>
+                  </math> with</para.body>
+            </para>
+            <math.display>
+               <latex>M\Comp L = \Id[n] = L\Comp M</latex>
+            </math.display>
+            <para>
+               <para.body>These two equations, however, also mean that <math>
+                     <latex>M</latex>
+                  </math> is invertible and that <math>
+                     <latex>M^{-1} = L</latex>
+                  </math>. But then</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion>
+                        <info>
+                           <para>
+                              <para.body>... as we just said</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>M^{-1}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion>
+                        <info>
+                           <para>
+                              <para.body>substitute <math>
+                                    <latex>L^{-1}</latex>
+                                 </math> for <math>
+                                    <latex>M</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\left( L^{-1} \right)^{-1}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>This was to be shown.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Explntn_RealNumbers"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Real Numbers: Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We use the symbol <math>
+                     <latex>\RNr</latex>
+                  </math> to denote the set of all real numbers. These include</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>all natural numbers <math>
+                           <latex>\NNr</latex>
+                        </math>: <math>
+                           <latex>0,1,2,3,\cdots</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>all integers <math>
+                           <latex>\ZNr</latex>
+                        </math>: <math>
+                           <latex>0,1,-1,2,-2,3,-3,\cdots</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>all rational numbers <math>
+                           <latex>\QNr</latex>
+                        </math>: a number is called rational if it can be expressed as a ratio <math>
+                           <latex>\frac{m}{n}</latex>
+                        </math> in which <math>
+                           <latex>m</latex>
+                        </math> and <math>
+                           <latex>n</latex>
+                        </math> are integers, with <math>
+                           <latex>n\neq 0</latex>
+                        </math>. Examples of rational numbers are: <math>
+                           <latex>\frac{1}{2}</latex>
+                        </math>, <math>
+                           <latex>-\frac{7}{3}</latex>
+                        </math>, <math>
+                           <latex>101 = \frac{101}{1}</latex>
+                        </math>, etc.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>In general, a number is ‘real’ if it can be expressed in decimal form</para.body>
+            </para>
+            <math.display>
+               <latex>n.d_1d_2d_3\cdots</latex>
+            </math.display>
+            <para>
+               <para.body>where <math>
+                     <latex>n</latex>
+                  </math> is an integer, and each of <math>
+                     <latex>d_1,d_2,d_3,\dots</latex>
+                  </math> is one of <math>
+                     <latex>0,1,2,3,4,5,6,7,8,9</latex>
+                  </math>. This includes all roots of integers, but also numbers like <math>
+                     <latex>\pi</latex>
+                  </math>, <math>
+                     <latex>e</latex>
+                  </math>, <math>
+                     <latex>\ln 2</latex>
+                  </math>, etc.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

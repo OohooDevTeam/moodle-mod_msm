@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ExactlyOneSolution">
+	<caption>Exactly one solution</caption>
+	<associate Description="Illustration">
+		<showme.pack.ref showmePackID="Illstrtn_LinearEqsOneSolution"/>
+		<info><para>How to recognize a system of linear equations with exactly one solution.</para></info>
+	</associate>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment</caption>
+			<para>In the RREF-display, possible rows of <latex>0</latex>&rsquo;s have been omitted.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Suppose a system of linear equations yields an RREF-matrix without a leading 1 in its augmentation column, and such that the rank of the coefficient matrix equals the number of variables.</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{cccc|c}
+1 & 0 & \cdots & 0 & {\color{blue} d_1 } \\
+0 & 1 & \cdots & 0 & {\color{blue} d_2 } \\
+\vdots & \vdots & \ddots & 0 & {\color{blue} \vdots } \\
+0 & 0 & \cdots & 1 & {\color{blue} d_r }
+\end{array}
+					]]>
+			</latex>
+		</math.display>
+		<para>Then the system has exactly one solution.</para>
+	</statement>
+	<proof type="Proof">
+		<para>The RREF-matrix corresponds to the system of linear equations</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$1$} {\color{red} x_1} & + & \colorbox{lightgreen}{$0$} {\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$0$} {\color{red} x_r} & = & {\color{blue} d_1 } \\
+\colorbox{lightgreen}{$0$} {\color{red} x_1} & + & \colorbox{lightgreen}{$1$} {\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$0$} {\color{red} x_r} & = & {\color{blue} d_2 } \\
+%
+\vdots &  & \vdots &  & \ddots & & & \vdots & & {\color{blue} \vdots } \\
+\vdots &  & \vdots &  &  & \ddots & &  \vdots & & {\color{blue} \vdots } \\
+\colorbox{lightgreen}{$0$} {\color{red} x_1} & + & \colorbox{lightgreen}{$0$} {\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$1$} {\color{red} x_r} & = & {\color{blue} d_r} \\
+\end{array}
+						]]>
+			</latex>
+		</math.display>
+		<para>It follows that this system has exactly the solution</para>
+		<math.display>
+			<latex>(x_1,x_2,\dots ,x_r) = (d_1,d_2,\dots ,d_r)</latex>
+		</math.display>
+	</proof>
+</theorem>

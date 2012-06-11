@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_ChangeCoordinatesLinearMap"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Matrix and change of coordinates</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>V</latex>
+            </math> and <math>
+               <latex>W</latex>
+            </math> be subvector spaces of <math>
+               <latex>\RNr[k]</latex>
+            </math> with ordered bases <math>
+               <latex>\EuScript{A}</latex>
+            </math> and <math>
+               <latex>\EuScript{B}</latex>
+            </math> of <math>
+               <latex>V</latex>
+            </math>, and <math>
+               <latex>\EuScript{C}</latex>
+            </math> and <math>
+               <latex>\EuScript{D}</latex>
+            </math> of <math>
+               <latex>W</latex>
+            </math>. Given a linear map <math>
+               <latex>L\from V\to W</latex>
+            </math>, denote by</para.body>
+      </para>
+      <table align="center" border="3" cellpadding="3" cellspacing="3">
+         <row>
+            <cell>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{C}_{\EuScript{B}\EuScript{A}}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </cell>
+            <cell>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\EuScript{A}</latex>
+                     </math>- to <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>-conversion matrix</para.body>
+               </para>
+            </cell>
+         </row>
+         <row>
+            <cell>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}}(L)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </cell>
+            <cell>
+               <para>
+                  <para.body>matrix representing <math>
+                        <latex>L</latex>
+                     </math> with respect to <math>
+                        <latex>\EuScript{C}</latex>
+                     </math>- and <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>-coordinates</para.body>
+               </para>
+            </cell>
+         </row>
+         <row>
+            <cell>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{C}_{\EuScript{D}\EuScript{C}}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </cell>
+            <cell>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\EuScript{C}</latex>
+                     </math>- to <math>
+                        <latex>\EuScript{D}</latex>
+                     </math>-conversion matrix</para.body>
+               </para>
+            </cell>
+         </row>
+      </table>
+      <para>
+         <para.body>Then these matrices are related by the following identity:</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Mtrx{A}_{\EuScript{D}\EuScript{A}}(L)</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Mtrx{C}_{\EuScript{D}\EuScript{C}}\cdot \Mtrx{A}_{\EuScript{C}\EuScript{B}}(L) \cdot \Mtrx{C}_{\EuScript{B}\EuScript{A}}</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We reduce this claim to a special case of the theorem which describes the 
+			<subordinate>
+                     <hot>matrix representing a composition of linear maps</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_MatrixCompositionLinearMaps"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_MatrixCompositionLinearMaps"/>
+                           <para>
+                              <para.body>Look up this theorem</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>: The coordinate transformation matrix <math>
+                     <latex>\Mtrx{C}_{\EuScript{B}\EuScript{A}}</latex>
+                  </math> actually represents the identity map <math>
+                     <latex>V \to V</latex>
+                  </math> with respect to the basis <math>
+                     <latex>\EuScript{A}</latex>
+                  </math> on the domain side and the basis <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> on the target side. Similarly, the matrix <math>
+                     <latex>\Mtrx{C}_{\EuScript{D}\EuScript{C}}</latex>
+                  </math> represents the identity map with respect to the basis <math>
+                     <latex>\EuScript{C}</latex>
+                  </math> on the domain side and the basis <math>
+                     <latex>\EuScript{D}</latex>
+                  </math> on the target side. Therefore</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{A}_{\EuScript{D}\EuScript{A}}(L)</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{A}_{\EuScript{D}\EuScript{A}}(\Id[W]\Comp L\Comp \Id[V])</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{A}_{\EuScript{D}\EuScript{C}}(\Id[W]) \cdot \Mtrx{A}_{\EuScript{C}\EuScript{B}}(L)\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(\Id[V])</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{C}_{\EuScript{D}\EuScript{C}}\cdot \Mtrx{A}_{\EuScript{C}\EuScript{B}}(L) \cdot \Mtrx{C}_{\EuScript{B}\EuScript{A}}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>This was to be shown.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

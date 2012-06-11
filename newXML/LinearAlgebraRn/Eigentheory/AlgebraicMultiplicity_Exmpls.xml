@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_AlgebraicMultiplicity"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Algebraic Multiplicity: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the roots of the polynomial <math>
+                  <latex>q(\lambda)</latex>
+               </math> and their algebraic multiplicities if</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>q(\lambda)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\lambda^3 +4\lambda^2-3\lambda-18</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>First we need to find the roots of <math>
+                        <latex>q</latex>
+                     </math>, that is those number values for <math>
+                        <latex>\lambda</latex>
+                     </math> with <math>
+                        <latex>q(\lambda)=0</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>By trial and error we find</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>q(2)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>2^3 + 4\cdot 2^2 - 3\cdot 2-18</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>So <math>
+                        <latex>\lambda_1:=2</latex>
+                     </math> is a root of <math>
+                        <latex>q</latex>
+                     </math>. So we know that <math>
+                        <latex>(\lambda-2)</latex>
+                     </math> divides <math>
+                        <latex>q</latex>
+                     </math>. Via long division we find</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>q(\lambda)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(\lambda-2)(\lambda^2 +6\lambda +9)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(\lambda-2)^1(\lambda+3)^2</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>We conclude that <math>
+                        <latex>q</latex>
+                     </math> has</para.body>
+               </para>
+			            <ol>
+				              <li>
+					                <para>
+                        <para.body>the root <math>
+                              <latex>\lambda_1=2</latex>
+                           </math> with algebraic multiplicity <math>
+                              <latex>1</latex>
+                           </math>, and</para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>the root <math>
+                              <latex>\lambda_2=3</latex>
+                           </math> with algebraic multiplicity <math>
+                              <latex>2</latex>
+                           </math>.</para.body>
+                     </para>
+				              </li>
+			            </ol>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the algebraic multiplicities of the roots of the polynomial</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>p(\lambda)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\lambda-3)^5(\lambda+1)^2</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Here we get lucky: <math>
+                        <latex>p</latex>
+                     </math> is given to us in a form from which we can read off its roots and their multiplicities right away.</para.body>
+               </para>
+			            <para>
+                  <para.body>Indeed, the product <math>
+                        <latex>(\lambda-3)^5(\lambda+1)^2</latex>
+                     </math> is <math>
+                        <latex>0</latex>
+                     </math> exactly when at least one of its factors <math>
+                        <latex>(\lambda-3)</latex>
+                     </math> or <math>
+                        <latex>(\lambda+1)</latex>
+                     </math> is <math>
+                        <latex>0</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>Now, <math>
+                        <latex>\lambda-3=0</latex>
+                     </math> exactly when <math>
+                        <latex>\lambda=3</latex>
+                     </math>. So <math>
+                        <latex>p</latex>
+                     </math> has the root <math>
+                        <latex>\lambda_1 = 3</latex>
+                     </math> with algebraic multiplicity <math>
+                        <latex>5</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>Similarly, <math>
+                        <latex>\lambda+1=0</latex>
+                     </math> exactly when <math>
+                        <latex>\lambda=-1</latex>
+                     </math>. So <math>
+                        <latex>p</latex>
+                     </math> has the root <math>
+                        <latex>\lambda_2=-1</latex>
+                     </math> with algebraic multiplicity <math>
+                        <latex>2</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

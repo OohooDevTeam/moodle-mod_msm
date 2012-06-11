@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ColumnSpaceLinearEq">
+	<caption>Column space and solution of linear equation</caption>
+		
+	<statement>
+		<para>Given a system of <latex>m</latex> linear equations in <latex>n</latex> variables,</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{ccccccc}
+a_{11}x_1 & + & \cdots & + & a_{1n}x_n & = & c_1 \\
+\vdots &&&& \vdots && \vdots \\
+a_{m1}x_1 & + & \cdots & + & a_{mn}x_n & = & c_m
+\end{array}
+					]]>
+			</latex>
+		</math.display>
+		<para>let <latex>\Mtrx{A}</latex> denote its unaugmented coefficient matrix. Then the system of linear equations has a solution if and only if its augmentation column is in the column space of <latex>\Mtrx{A}</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>We know that <latex>\Vect{x} = (x_1,\dots ,x_n)</latex> is a solution of this system if and only if it is a solution of the matrix equation</para>
+						<math.display>
+							<latex>
+								<![CDATA[
+\left[
+\begin{array}{ccc}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots  & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+c_1 \\ \vdots \\ c_m
+\end{array}
+\right]
+					]]>
+							</latex>
+						</math.display>
+		<para>Writing <latex>C_1,\dots, C_n</latex> for the columns of the unaugmented coefficient matrix <latex>\Mtrx{A}=[a_{ij}]</latex>, we observe that</para>
+						<math.display>
+							<latex>
+								<![CDATA[
+\left[
+\begin{array}{ccc}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots  & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right] = x_1C_1 + \cdots + x_n C_n
+					]]>
+							</latex>
+						</math.display>
+		<para>The right hand side of this equation is a linear combination of the column vectors of <latex>\Mtrx{A}</latex>. The original system of linear equations may now be interpreted as: find all possible ways of expressing the augmentation column</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+C\ :=\ \left[\begin{array}{c} c_1 \\ \vdots \\ c_m \end{array}\right]
+]]>
+			</latex>
+		</math.display>
+		<para>as a linear combination of the column vectors of <latex>\Mtrx{A}</latex>. In particular, this means that this system of linear equations has a solution if and only if the augmentation column is in the column space of <latex>\Mtrx{A}</latex>.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Diagonalizable_Sub"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Diagonalizable Matrix - Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>To see the meaning of the concept of ‘diagonalizable matrix’, let's do the following:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>use the column vectors of <math>
+                           <latex>\Mtrx{C}</latex>
+                        </math> to form an ordered basis <math>
+                           <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_n)</latex>
+                        </math> of <math>
+                           <latex>\RNr[n]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Then <math>
+                           <latex>\Mtrx{C}=\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>
+                        </math> converts from <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>-coordinates to standard coordinates.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Both matrices <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> and <math>
+                           <latex>\Mtrx{D}</latex>
+                        </math> represent the same linear transformation of <math>
+                           <latex>\RNr[n]</latex>
+                        </math>. The difference is: <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> describes it in standard coordinates, while <math>
+                           <latex>\Mtrx{D}</latex>
+                        </math> describes it in <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>-coordinates.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>Now, denote the diagonal entries of <math>
+                     <latex>\Mtrx{D}</latex>
+                  </math> by <math>
+                     <latex>d_1,\dots ,d_n</latex>
+                  </math>:</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\Mtrx{D} = 
+\left[
+\begin{array}{cccc}
+d_1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; d_2 &amp; &amp; \vdots \\
+\vdots &amp; &amp; \ddots &amp; 0 \\
+0 &amp; \cdots &amp; 0 &amp; d_n
+\end{array}
+\right]
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>Then</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{D}\cdot (\Vect{b}_i)_{\EuScript{B}}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>d_i\cdot \Vect{b}_i</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>In other words, <math>
+                     <latex>\Vect{b}_i</latex>
+                  </math> is an eigenvector of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> with eigenvalue <math>
+                     <latex>d_i</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Conclusion: Given <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> we may try to diagonalize it by looking for a basis of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> consisting of eigenvectors of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

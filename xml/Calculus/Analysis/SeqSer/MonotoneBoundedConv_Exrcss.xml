@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MonotoneBoundedConverges">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Convergence of Monotone Bounded Sequences</title>
+	<exercise>
+		<problem>
+			<para>Use criteria for the convergence of monotone bounded sequences to show that each of the sequences below converges. If possible, find its limit.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>(x_n)</latex> with <latex magnify="yes">x_n = \frac{2n}{3n +2}</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>(u_n)</latex> with <latex magnify="yes">u_n = \frac{n^2}{9n + 3}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>(a_n)</latex> with <latex magnify="yes">a_n = n + \frac{1}{n+1}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>(y_n)</latex> with <latex magnify="yes">y_n = \frac{n!}{3^n}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>(a_n)</latex> with <latex magnify="yes">a_n = \frac{n!}{n^n}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>(b_n)</latex> with <latex magnify="yes">b_n = \frac{1}{n+\cos n}</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>(c_n)</latex> with <latex magnify="yes">c_n = \frac{1}{n+1}(\sin n + \cos n)</latex></para>
+			</problem>
+		</part>
+		
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Each of  the sequences below is recursively defined. Write down the first 5 sequence elements. Then show that it converges.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>x_0 := 1</latex>, and <latex magnify="yes">x_{n+1} := x_n \cdot \frac{n+1}{2n+1}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>a_0 := 1</latex>, and <latex magnify="yes">a_{n+1} := a_n\cdot \frac{2n+1}{2n+2}</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>t_0 := 10</latex>, and <latex magnify="yes">t_{n+1} := \sqrt{t_n}</latex>.</para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>s_0 := \cos 0</latex>, and <latex>s_{n+1} := s_n\cdot \cos n</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>If <latex>(x_n)</latex> is an increasing sequence which fails to have an upper bound, show that <latex>\lim_{n\to \infty} x_n = +\infty</latex>.</para>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>If <latex>(x_n)</latex> is a decreasing sequence which fails to have a lower bound, show that <latex>\lim_{n\to \infty} x_n = -\infty</latex>.</para>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Suppose the sequence <latex>(x_n)</latex> is bounded. Show that it can not converge to <latex>+\infty</latex> nor to <latex>-\infty</latex>.</para>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>(x_n)</latex> be a sequence in <latex>\RNr</latex> with <latex>\lim_{n\to \infty} x_n = c</latex>. If <latex>(x_{n_i})</latex> is a subsequence of <latex>(x_n)</latex>, show that</para>
+			<math.display>
+				<latex>\lim_{i\to \infty} x_{n_i}\ =\ c</latex>
+			</math.display>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Find an example of a sequence <latex>(x_n)</latex> which is bounded, but fails to converge.</para>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>About the recursively defined sequence</para>
+			<math.display>
+				<latex>a_0 := 0,\qquad a_{n+1} := a_n + \frac{1}{(n+1)^2}</latex>
+			</math.display>
+			<para>you are given the information: <latex>\lim_{n\to\infty} a_n = \frac{\pi^2}{6}</latex>. &ndash; What exactly does this mean?</para>
+		</problem>
+	</exercise>
+	
+</exercise.pack>

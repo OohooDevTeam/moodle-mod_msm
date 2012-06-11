@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_TwoLinearEqsGeometricalSoln">
+	<caption>Simultaneous solutions of two linear equations</caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Illust_ScalarMultiplicationOfVectors"/>
+		<info>
+			<caption>Explanation: How do I test if two vectors are parallel?</caption>
+			<para><latex>\Vect{n}_1</latex> and <latex>\Vect{n}_2</latex> are parallel if there is <latex>t\in \RNr</latex> with <latex magnify="yes">\Vect{n}_1=t\cdot \Vect{n}_2</latex>. &ndash; Review an illustration of this.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Given two linear equations in <latex>n</latex> variables</para>
+		
+		<math.display>
+			<latex>
+				<![CDATA[
+						\begin{array}{rcrccccrcl}
+\colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} & = & {\color{blue} c} \\
+\colorbox{lightgreen}{$b_{1}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$b_{2}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$b_{n}$}{\color{red}x_n} & = & {\color{blue} d}
+						\end{array}
+					]]>
+			</latex>
+		</math.display>
+		
+		<para>form the coefficient vectors <latex>\Vect{n}_1</latex>, <latex>\Vect{n}_2</latex>, and the augmented coefficient vectors <latex>\Vect{N}_1</latex> given by
+			<index.glossary>
+				<term>coefficient</term><term>vector</term><term>in a linear equation</term>
+			</index.glossary>
+			<index.glossary>
+				<term>coefficient</term><term>vector</term><term>augmented</term>
+			</index.glossary>
+			<index.glossary>
+				<term>augmented</term><term>coefficient vector</term>
+			</index.glossary>
+		</para>
+		
+		<table align="center" border="1" cellpadding="2">
+			<row>
+				<cell align="left"><para><latex magnify="yes">\colorbox{lightgreen}{$\Vect{n}_1 := (a_1,\dots ,a_n)$}</latex></para></cell>
+				<cell align="left"><para><latex magnify="yes">\colorbox{lightgreen}{$\Vect{n}_2 := (b_1,\dots ,b_n)$}</latex></para></cell>
+			</row>
+			<row>
+				<cell align="left"><para><latex>\Vect{N}_1 := (\colorbox{lightgreen}{$a_1,\dots ,a_n$},{\color{blue} c})</latex></para></cell>
+				<cell align="left"><para><latex>\Vect{N}_2 := (\colorbox{lightgreen}{$b_1,\dots ,b_n$},{\color{blue} d})</latex></para></cell>
+			</row>
+		</table>
+		
+		<para>If <latex>\Vect{n}_1,\Vect{n}_2\neq \Vect{0}</latex> the following hold:</para>
+		
+		<ul>
+			<li><para>If <latex>n=2</latex>, and if <latex>\colorbox{lightgreen}{$\Vect{n}_1$}</latex> and <latex>\colorbox{lightgreen}{$\Vect{n}_2$}</latex> are not parallel, then the given equations have exactly  one common solution.</para></li>
+			<li><para>If <latex>n\geq 3</latex>, and if <latex>\colorbox{lightgreen}{$\Vect{n}_1$}</latex> and <latex>\colorbox{lightgreen}{$\Vect{n}_2$}</latex> are not parallel, then the given equations have infinitely many common solutions.</para></li>
+			<li><para>If <latex magnify="yes">\Vect{n}_1</latex> and <latex magnify="yes">\Vect{n}_2</latex> are parallel but <latex magnify="yes">\mathbf{N}_1</latex> and <latex magnify="yes">\mathbf{N}_2</latex> are not parallel, the given equations have no simultaneous solutions.</para></li>
+			<li><para>If <latex magnify="yes">\Vect{N}_1</latex> and <latex magnify="yes">\Vect{N}_2</latex> are parallel, one of the equations is redundant, and the solutions hyperplane of one equation also forms the simultaneous solution set of both equations.</para></li>
+		</ul>
+	</statement>
+</theorem>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Composition">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Example: Composition of Linear Transformations</title>
+	<caption>Example: Composition of Linear Transformations</caption>
+	<showme>
+		<statement>
+			<para>Form the composite <latex>R\Comp S</latex> of the two linear transformations <latex>S</latex> and <latex>R</latex> below. Then describe the transformation properties of the composite.</para>
+			
+			<ul>
+				<li><para><latex>S\from \RNr[2] \to \RNr[2]</latex> is the shear map given by</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+S(x,y) =
+\left[
+\begin{array}{rr}
+1 & 2 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+x \\ y
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</li>
+				<li><para><latex>R\from \RNr[2]\to \RNr[2]</latex> is the counterclockwise rotation about the origin through the angle <latex>2\pi/3</latex> given by.</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+R(x,y) =
+\dfrac{1}{2}\cdot \left[
+\begin{array}{rr}
+-1 & -\sqrt{3} \\
+\sqrt{3} & -1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+x \\ y
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</li>
+			</ul>
+		</statement>
+		<answer type="Solution">
+			<para>The matrix representing <latex>R\Comp S\from \RNr[2] \to \RNr[2]</latex> is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\dfrac{1}{2}\left[
+\begin{array}{rr}
+-1 & -\sqrt{3} \\
+\sqrt{3} & -1
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+1 & 2 \\
+0 & 1
+\end{array}
+\right] = 
+\dfrac{1}{2}\cdot \left[
+\begin{array}{rr}
+-1 & -2 - \sqrt{3} \\
+\sqrt{3} & 2\sqrt{3} -1
+\end{array}
+\right]
+							]]>
+				</latex>
+			</math.display>
+			
+			<para>The transformation effect of <latex>R\Comp S</latex> on <latex>\RNr[2]</latex> is given by first performing the shear map, then performing the rotation on the result; as in the picture below.</para>
+			
+			<figure>
+				<img src="ims/ShearRotate.png"></img><!-- svg available -->
+			</figure>
+		</answer>
+	</showme>	
+</showme.pack>

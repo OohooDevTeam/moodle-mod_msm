@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_OrthogonalmpliesLinearIndependence">
+	<caption>Orthogonal set is linearly independent</caption>
+	<statement>
+		<para>An orthogonal set of vectors is linearly independent.</para>
+	</statement>
+	<proof type="Proof">
+		<para>Consider a representation of <latex>\Vect{0}</latex> as a linear combination of pairwise distinct vectors in an orthogonal set <latex>S</latex>:</para>
+		<computation>
+			<left>t_1 \Vect{a}_1 + \cdots + t_m \Vect{a}_m</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>We need to show that <latex>t_1=\cdots = t_m =0</latex>. To test the value of <latex>t_i</latex>, we take the dot product of both sides of this equation by the vector <latex>\Vect{a}_i</latex>, and find</para>
+		<computation>
+			<left>t_1(\DotPr{ \Vect{a}_1 }{ \Vect{a}_i }) + \cdots + t_i(\DotPr{ \Vect{a}_i }{ \Vect{a}_i })+ \cdots + t_m(\DotPr{ \Vect{a}_m }{ \Vect{a}_i })</left>
+			<center>=</center>
+			<right>\DotPr{ \Vect{0} }{ \Vect{a}_i }</right>
+			<left>t_i(\DotPr{ \Vect{a}_i }{ \Vect{a}_i })</left>
+			<center>=	<info>
+				<caption>Why is this so?</caption>
+				<para>Here we use that, for <latex>j\neq i</latex>, <latex>\Vect{a}_j</latex> is perpendicular to <latex>\Vect{a}_i</latex>, and so <latex>\DotPr{ \Vect{a}_j }{ \Vect{a}_i }=0</latex>.</para>
+			</info></center>
+			<right>0</right>
+		</computation>
+		<para>We have <latex>\DotPr{ \Vect{a}_i }{ \Vect{a}_i } \neq 0</latex> because <latex>\Vect{a}_i\neq \Vect{0}</latex> and, therefore, <latex>t_i=0</latex>. This implies that <latex>S</latex> is linearly independent.</para>
+	</proof>
+</theorem>

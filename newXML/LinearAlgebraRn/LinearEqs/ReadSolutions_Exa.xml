@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_ReadSolutions"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Linear Equations with Infinitely Many Solutions - Examples</title>
+	  <caption xmlns="">Linear Equations with Infinitely Many Solutions</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the solutions of the system of linear equations which leads to the RREF</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{cccc|r}
+1 &amp; 3 &amp; 0 &amp; 1 &amp; {\color{blue} 2 } \\
+0 &amp; 0 &amp; 1 &amp; 2 &amp; {\color{blue} -2 }
+\end{array}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We can read off the solutions of this system of linear equations in four variables <math>
+                        <latex>w</latex>
+                     </math>, <math>
+                        <latex>x</latex>
+                     </math>, <math>
+                        <latex>y</latex>
+                     </math>, and <math>
+                        <latex>z</latex>
+                     </math> directly by observing:</para.body>
+               </para>
+			            <ol>
+				              <li>
+					                <para>
+                        <para.body>There is no leading <math>
+                              <latex>1</latex>
+                           </math> in the augmentation column. Therefore this system has at least one solution.</para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The variables <math>
+                              <latex>x</latex>
+                           </math> and <math>
+                              <latex>z</latex>
+                           </math> occur in columns without a leading <math>
+                              <latex>1</latex>
+                           </math>. Therefore number values for these variables can be chosen freely.</para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>For each arbitrary choice of number values for <math>
+                              <latex>x</latex>
+                           </math> and <math>
+                              <latex>z</latex>
+                           </math>, a solution of the system results from setting</para.body>
+                     </para>
+				              </li>
+			            </ol>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>w</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>2 - 3x - z</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>y</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-2 - 2z</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>In other words, an arbitrary solution of the system is given by a vector of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(w,x,y,z)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2-3x-z,x,-2-2z,z)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2,0,-2,0) + x(-3,1,0,0) + z(-1,0,-2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>with <math>
+                        <latex>x</latex>
+                     </math> and <math>
+                        <latex>y</latex>
+                     </math> arbitrary in <math>
+                        <latex>\RNr</latex>
+                     </math>. Thus, the set of solutions of this system of linear equations fits the general format if we set</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{d}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2,0,-2,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{b}_1</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-3,1,0,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{b}_2</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-1,0,-2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>This system of linear equations has infinitely many solutions: We obtain a distinguished solution</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{d}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2,0,-2,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>by inserting the augmentation column into the positions of leading <math>
+                        <latex>1</latex>
+                     </math>’s, and placing <math>
+                        <latex>0</latex>
+                     </math>’s everywhere else.</para.body>
+               </para>
+			            <para>
+                  <para.body>So an arbitrary solution is of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{d} + x_2\cdot \Vect{b}_1 + x_4\cdot \Vect{b}_2</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>The vectors <math>
+                        <latex>\Vect{b}_1</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}_2</latex>
+                     </math> are built as follows:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{cccc|r}
+u_1 &amp; {\color{green} j_1} &amp; u_2 &amp; {\color{red} j_2} &amp; \\ \hline
+1 &amp; {\color{green} 3} &amp; 0 &amp; {\color{red} 1} &amp; {\color{blue} 2 } \\
+0 &amp; {\color{green} 0} &amp; 1 &amp; {\color{red} 2} &amp; {\color{blue} -2 }
+\end{array}
+					
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The vector <math>
+                        <latex>\Vect{b}_1</latex>
+                     </math> has a <math>
+                        <latex>1</latex>
+                     </math> in position <math>
+                        <latex>j_1=2</latex>
+                     </math>, and the negative of column <math>
+                        <latex>j_1</latex>
+                     </math> in positions <math>
+                        <latex>u_1</latex>
+                     </math> and <math>
+                        <latex>u_2</latex>
+                     </math>. Thus</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{b}_1:= ({\color{green} -3},1,{\color{green} 0},0)</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Similarly, <math>
+                        <latex>\Vect{b}_2</latex>
+                     </math> has a <math>
+                        <latex>1</latex>
+                     </math> in position <math>
+                        <latex>j_2=4</latex>
+                     </math>, and the negative of column <math>
+                        <latex>j_2</latex>
+                     </math> in positions <math>
+                        <latex>u_1</latex>
+                     </math> and <math>
+                        <latex>u_2</latex>
+                     </math>. Thus</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{b}_2:= ({\color{red} -1},0,{\color{red} -2},1)</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the solutions of the system of linear equations which leads to the RREF</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{rrrrrr|r}
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 6 &amp; -3 &amp; {\color{blue} 9 } \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; -1 &amp; 5 &amp; {\color{blue} 7 }
+\end{array}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>This system of linear equations has infinitely many solutions. It has the distinguished solution</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{d}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,0,9,7,0,0,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>It has been obtained by inserting the augmentation column into the positions of leading <math>
+                        <latex>1</latex>
+                     </math>’s, and placing <math>
+                        <latex>0</latex>
+                     </math>’s everywhere else.</para.body>
+               </para>
+			            <para>
+                  <para.body>So an arbitrary solution is of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{d} + x_1\cdot \Vect{b}_1 + x_2\cdot \Vect{b}_2 + x_5\cdot \Vect{b}_3 + x_6\cdot \Vect{b}_4</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>The vectors <math>
+                        <latex>\Vect{b}_1,\dots, \Vect{b}_4</latex>
+                     </math> are built as follows:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rrrrrr|r}
+j_1 &amp; j_2 &amp; u_1 &amp; u_2 &amp; j_3 &amp; j_4 &amp; \\ \hline
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 6 &amp; -3 &amp; {\color{blue} 9 } \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; -1 &amp; 5 &amp; {\color{blue} 7 }
+\end{array}
+					
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The vector <math>
+                        <latex>\Vect{b}_1</latex>
+                     </math> has a <math>
+                        <latex>1</latex>
+                     </math> in position <math>
+                        <latex>j_1=1</latex>
+                     </math>, and the negative of column <math>
+                        <latex>j_1</latex>
+                     </math> in positions <math>
+                        <latex>u_1=3</latex>
+                     </math> and <math>
+                        <latex>u_2=4</latex>
+                     </math>. Thus</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{b}_1:= (1,0,0,0,0,0)</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The vector <math>
+                        <latex>\Vect{b}_2</latex>
+                     </math> has a <math>
+                        <latex>1</latex>
+                     </math> in position <math>
+                        <latex>j_2=2</latex>
+                     </math>, and the negative of column <math>
+                        <latex>j_2</latex>
+                     </math> in positions <math>
+                        <latex>u_1=3</latex>
+                     </math> and <math>
+                        <latex>u_2=4</latex>
+                     </math>. Thus</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{b}_2:= (0,1,0,0,0,0)</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The vector <math>
+                        <latex>\Vect{b}_3</latex>
+                     </math> has a <math>
+                        <latex>1</latex>
+                     </math> in position <math>
+                        <latex>j_3=5</latex>
+                     </math>, and the negative of column <math>
+                        <latex>j_3</latex>
+                     </math> in positions <math>
+                        <latex>u_1=3</latex>
+                     </math> and <math>
+                        <latex>u_2=4</latex>
+                     </math>. Thus</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{b}_3:= (0,0,-6,1,1,0)</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The vector <math>
+                        <latex>\Vect{b}_4</latex>
+                     </math> has a <math>
+                        <latex>1</latex>
+                     </math> in position <math>
+                        <latex>j_4=6</latex>
+                     </math>, and the negative of column <math>
+                        <latex>j_4</latex>
+                     </math> in positions <math>
+                        <latex>u_1=3</latex>
+                     </math> and <math>
+                        <latex>u_2=4</latex>
+                     </math>. Thus</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{b}_4:= (0,0,3,-5,0,1)</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

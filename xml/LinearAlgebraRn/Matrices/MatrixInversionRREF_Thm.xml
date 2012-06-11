@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_MatrixInversionRREF">
+	<statement>
+		<para>An <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> is invertible if and only if its RREF is <latex>\IdMtrx[n]</latex>.</para>
+	</statement>
+	
+	<proof>
+		<caption>The case where <latex>\Mtrx{A}</latex> is invertible</caption>
+		<para>Consider first the situation where <latex>\Mtrx{A}</latex> is invertible. We want to show that the RREF of <latex>\Mtrx{A}</latex> is the identity matrix.</para>
+		
+		<para>Each of the row operations which accomplish this reduction can be performed by multiplying <latex>\Mtrx{A}</latex> on the left with a row rescaling matrix <latex magnify="yes">D_u(s)</latex>, an elementary matrix <latex magnify="yes">E_{ij}(t)</latex>, or a row interchanging matrix <latex magnify="yes">R_{ij}</latex>. If <latex>k</latex> such moves are required, we have</para>
+		
+		<para align="center"><subordinate>
+			<hot><latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \Mtrx{A}\ =\ \Mtrx{T}</latex></hot>
+			<info>
+				<para>Here each of <latex>\Mtrx{R}_k,\dots ,\Mtrx{R}_1</latex> denotes the appropriate one of a row rescaling matrix <latex magnify="yes">D_u(s)</latex>, an elementary matrix <latex magnify="yes">E_{ij}(t)</latex>, or a row interchanging matrix <latex magnify="yes">R_{ij}</latex></para>
+			</info>
+		</subordinate>
+		</para>
+		
+		<para>where <latex>\Mtrx{T}</latex> is in RREF. If <latex>\Mtrx{T}</latex> is not the identity matrix, we will show that <latex>\Mtrx{A}</latex> could not have been invertible. – Indeed, if the RREF <latex>\Mtrx{T}</latex> of <latex>\Mtrx{A}</latex> is not <latex>\IdMtrx[n]</latex>, then the last row of <latex>\Mtrx{T}</latex> will consist of <latex>0</latex>’s only. We can rewrite the above identity as:</para>
+		
+		<math.display>
+			<latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\ =\ \Mtrx{T} \Mtrx{A}^{-1}</latex>
+		</math.display>
+		
+		<para>The matrix on the 
+			<subordinate>
+				<hot>left</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_MatrixInversionProperties"/>
+					<para>because a product of invertible matrices is invertible.</para>
+				</crossref>
+			</subordinate>
+			is invertible. So <latex>\Mtrx{T}\Mtrx{A}^{-1}</latex> is invertible. But the bottom row of  <latex>\Mtrx{T}\Mtrx{A}^{-1}</latex>  consists of <latex>0</latex>’s  only, 
+				<subordinate>
+					<hot>hence cannot be invertible</hot>
+					<info>
+						<caption>Reason</caption>
+						<para>Denote the inverse of <latex>\Mtrx{T}\Mtrx{A}^{-1}</latex> by <latex>\Mtrx{X}</latex>. Then</para>
+						<ul>
+							<li><para><latex>(\Mtrx{T}\Mtrx{A}^{-1})\cdot \Mtrx{X}</latex> is a matrix whose bottom row consists of <latex>0</latex>'s only.</para></li>
+							<li><para>On the other hand, <latex>(\Mtrx{T}\Mtrx{A}^{-1})\cdot \Mtrx{X} = \IdMtrx[n]</latex> has a <latex>1</latex> in the bottom row.</para></li>
+						</ul>
+					</info>
+				</subordinate>
+			. This contradiction resulted from the assumption that <latex>\Mtrx{T}\neq \IdMtrx[n]</latex>. Therefore this assumption is false, and we conclude that <latex>\Mtrx{T} = \IdMtrx[n]</latex>.
+		</para>
+		
+		
+		
+		<caption>The case where the RREF of <latex>\Mtrx{A}</latex> is the identity matrix</caption>
+		<para>Let us now consider the situation where the RREF of  <latex>\Mtrx{A}</latex>  is the identity matrix. We need to show that <latex>\Mtrx{A}</latex> is invertible, and we need to verify the proposed method of computing <latex>\Mtrx{A}^{-1}</latex>. From the above, we know now that</para>
+		
+		<para align="center"><subordinate>
+			<hot><latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \Mtrx{A}\ =\ \Mtrx{T}</latex></hot>
+			<info>
+				<para>Here each of <latex>\Mtrx{R}_k,\dots ,\Mtrx{R}_1</latex> denotes the appropriate one of a row rescaling matrix <latex magnify="yes">D_u(s)</latex>, an elementary matrix <latex magnify="yes">E_{ij}(t)</latex>, or a row interchanging matrix <latex magnify="yes">R_{ij}</latex></para>
+			</info>
+		</subordinate>
+		</para>
+		
+		<para>Each of the row transformation matrices <latex>\Mtrx{R}_k,\dots ,\Mtrx{R}_1</latex>  is invertible. So we get</para>
+		
+		<math.display>
+			<latex>A = \Mtrx{R}_{1}^{-1}\cdot \dots \cdot \Mtrx{R}_{k}^{-1}\cdot \IdMtrx[n] = \Mtrx{R}_{1}^{-1}\cdot \dots \cdot \Mtrx{R}_{k}^{-1}</latex>
+		</math.display>
+		
+		<para>But then we see that <latex>\Mtrx{A}</latex>  is a product of invertible matrices, 
+			<subordinate>
+				<hot>hence</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_MatrixInversionProperties"/>
+					<para>because a product of invertible matrices is invertible.</para>
+				</crossref>
+			</subordinate>
+			is itself invertible, and</para>
+		
+		<computation>
+			<left>\Mtrx{A}^{-1}</left>
+			<center>=</center>
+			<right>\left( \Mtrx{R}_{1}^{-1} \cdot \dots \cdot \Mtrx{R}_{k}^{-1} \right)^{-1}</right>
+			<left></left>
+			<center>=</center>
+			<right>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1</right>
+			<left></left>
+			<center>=	<info>
+				<caption>Why is this true?</caption>
+				<para>Here we use repeatedly the formula for the inverse of a product:</para>
+				<math.display>
+					<latex>(\Mtrx{U}\Mtrx{V})^{-1} = \Mtrx{V}^{-1} \Mtrx{U}^{-1}</latex>
+				</math.display>
+			</info></center>
+			<right>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \IdMtrx[n]</right>
+		</computation>
+		
+		<para>This last identity says exactly that the inverse of  <latex>\Mtrx{A}</latex> can be found by applying to <latex>\IdMtrx[n]</latex> the exact same sequence of row operations which transforms <latex>\Mtrx{A}</latex> to <latex>\IdMtrx[n]</latex>. – This completes the proof.</para>
+	</proof>
+</theorem>

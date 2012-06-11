@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_RankFormulaMatrix">
+	<caption>Rank formula</caption>
+	<statement>
+		<para>For a matrix <latex>\Mtrx{A}</latex> of size <latex>(m,n)</latex>,
+			<index.glossary>
+				<term>rank</term><term>formula for matrices</term>
+				<info>
+					<caption>Rank formula for matrices</caption>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcl}
+n & = & \Rnk{ \Mtrx{ A } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
+  & = & \Dim{ \RowSp{ \Mtrx{ A } } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
+  & = & \Dim{ \ColSp{ \Mtrx{ A } } } + \Dim{ \NllSp{ \Mtrx{ A } } }
+\end{array}
+]]>
+						</latex>
+					</math.display>
+				</info>
+			</index.glossary>
+		</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{rcl}
+n & = & \Rnk{ \Mtrx{ A } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
+  & = & \Dim{ \RowSp{ \Mtrx{ A } } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
+  & = & \Dim{ \ColSp{ \Mtrx{ A } } } + \Dim{ \NllSp{ \Mtrx{ A } } }
+\end{array}
+]]>
+			</latex>
+		</math.display>
+	</statement>
+	<proof type="Proof">
+		<para>We proved the first identity when we found a 
+			<subordinate>
+				<hot>basis for the null space of a matrix</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_BasisNullSpace"/>
+					<para>Look up this theorem.</para>
+				</crossref>
+			</subordinate>. Then we 
+			<subordinate>
+				<hot>proved</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_BasisRowColumnSpace"/>
+					<para>Look up this theorem.</para>
+				</crossref>
+			</subordinate> that <latex>\Rnk{ \Mtrx{A} } = \Dim{ \RowSp{ \Mtrx{A} } } = \Dim{ \ColSp{ \Mtrx{ A } } }</latex>, which implies the second and the third identity.
+		</para>
+	</proof>
+</theorem>

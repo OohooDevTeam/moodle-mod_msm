@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_LinearTrafoCommutesPlusTimes">
+	<title>Explanation: Meaning of the Linear Transformation Properties</title>
+	<sub.page.body>
+		<block>
+			<para>A linear transformation <latex>L\from \RNr[n] \to \RNr[m]</latex> satisfies the identities</para>
+			<ul>
+				<li><para><latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex> for all <latex>\Vect{x},\Vect{y}\in\RNr[n]</latex></para></li>
+				<li><para><latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex> for all <latex>t\in\RNr</latex>, and all <latex>\Vect{x}\in\RNr[n]</latex>.</para></li>
+			</ul>
+			<para>What do these identities mean? &ndash; The short answer is that a linear <latex>L</latex> commutes with the operations &lsquo;vector addition&rsquo; and &lsquo;scalar multiplication&rsquo;. For a more detailed description, read on:</para>
+		</block>
+		<block>
+			<para>What does the identity <latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex> mean?</para>
+			<para>This identity begins with two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[n]</latex>, and then demands the following:</para>
+			<ul>
+				<li><para>Form the sum in <latex>\RNr[n]</latex>: <latex>\Vect{x} + \Vect{y}</latex></para></li>
+				<li><para>Transform the resulting vector <latex>(\Vect{x} +\Vect{y})</latex> of <latex>\RNr[n]</latex> with <latex>L</latex>.</para></li>
+				<li><para>The result is the vector <latex>L(\Vect{x}+\Vect{y})</latex> of <latex>\RNr[m]</latex>. It must be equal to the outcome of the process:</para></li>
+				<li><para>Using <latex>L</latex>, transform <latex>\Vect{x}</latex> into the vector <latex>L(\Vect{x})</latex> of <latex>\RNr[m]</latex>.</para></li>
+				<li><para>Using <latex>L</latex>, transform <latex>\Vect{y}</latex> into the vector <latex>L(\Vect{y})</latex> of <latex>\RNr[m]</latex>.</para></li>
+				<li><para>In <latex>\RNr[m]</latex>, form the sum <latex>L(\Vect{x}) + L(\Vect{y})</latex></para></li>
+			</ul>
+			<para>In other words, we get the same result along each of these two computational paths:</para>
+			<ol>
+				<li>
+					<para>First add <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[n]</latex>, then transform the sum vector <latex>\Vect{x}+\Vect{y}</latex> using <latex>L</latex>.</para>
+				</li>
+				<li>
+					<para>First transform <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> individually, and then add the transformed vectors <latex>L(\Vect{x})</latex> and <latex>L(\Vect{y})</latex> in <latex>\RNr[m]</latex>.</para>
+				</li>
+			</ol>
+			<para>So, it doesn&rsquo;t matter if we first add and then transform or if we first transform and then add. This is what it means when we say: <latex>L</latex> commutes with vector addition.</para>
+		</block>
+		<block>
+			<para>What does the identity <latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex> mean?</para>
+			<para>This identity begins with a number <latex>t</latex> and a vector <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>, and then demands the following:</para>
+			<ul>
+				<li><para>Form the scalar product in <latex>\RNr[n]</latex>: <latex>t\cdot \Vect{x}</latex></para></li>
+				<li><para>Transform the resulting vector <latex>t\cdot \Vect{x}</latex> of <latex>\RNr[n]</latex> with <latex>L</latex>.</para></li>
+				<li><para>The result must be equal to the outcome of the process:</para></li>
+				<li><para>Using <latex>L</latex>, transform <latex>\Vect{x}</latex> into the vector <latex>L(\Vect{x})</latex> of <latex>\RNr[m]</latex>.</para></li>
+				<li><para>In <latex>\RNr[m]</latex>, form the scalar product <latex>t\cdot L(\Vect{x})</latex></para></li>
+			</ul>
+			<para>In other words, we get the same result along each of these two computational paths:</para>
+			<ol>
+				<li>
+					<para>First scalar multiply <latex>\Vect{x}</latex> by the scalar <latex>t</latex>, then transform the resulting vector <latex>t\cdot \Vect{x}</latex>.</para>
+				</li>
+				<li>
+					<para>First transform <latex>\Vect{x}</latex> using <latex>L</latex>, and then scalar multiply the transformed vector by <latex>t</latex>.</para>
+				</li>
+			</ol>
+			<para>So, it doesn&rsquo;t matter if we first scalar multiply and then transform or if we first transform and then scalar multiply. This is what it means when we say: <latex>L</latex> commutes with scalar multiplication.</para>
+		</block>
+		
+		<block>
+			<para>Examples of two processes which do not commute include</para>
+			<ul>
+				<li><para>Putting socks and shoes on.</para></li>
+				<li><para>Washing the salad and eating it (a cynical recommendation offered by a computing scientist to a fellow worker who just refused to pay attention to the order in which he invoked certain functions in his code).</para></li>
+			</ul>
+		</block>
+	</sub.page.body>
+</sub.page>

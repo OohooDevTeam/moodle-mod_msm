@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_RotationR3">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Rotation of 3-Space &ndash; Example</title>
+	<showme>
+		<statement>
+			<para>Let <latex>\mathbf{L} := \span(1,1,1)</latex> be the diagonal of the first octant, oriented by the direction of the vector <latex>(1,1,1)</latex>. Let <latex>R</latex> be the rotation of <latex>\RNr[3]</latex> about <latex>\mathbf{L}</latex>, according to the  
+				<subordinate>
+					<hot>RHR</hot>
+					<info><para>Right Hand Rule</para></info>
+				</subordinate>,
+				through an angle of  45 degrees. Find the matrix representing <latex>R</latex> with respect to standard coordinates. Then find the location of the point <latex>(1,1,0)</latex> after the rotation.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We begin by setting up a suitable ONB.</para>
+			<math.display>
+				<latex>\Vect{n}:= \dfrac{(1,1,1)}{ \Abs{ (1,1,1) } } = \dfrac{1}{\sqrt{3}}(1,1,1)</latex>
+			</math.display>
+			<para>is the unit vector in the direction of <latex>(1,1,1)</latex>. A unit vector perpendicular to <latex>\Vect{n}</latex> is</para>
+			<computation>
+				<left>\Vect{a}</left>
+				<center>:=</center>
+				<right>\tfrac{1}{\sqrt{2}} (1,-1,0)</right>
+			</computation>
+			<para>Thus we obtain</para>
+			<computation>
+				<left>\Vect{b}</left>
+				<center>=</center>
+				<right>\CrssPr{ \Vect{n} }{ \Vect{a} } = \dfrac{1}{3\sqrt{6}}\, (3,3,-6)</right>
+			</computation>
+			<para>Accordingly, the matrix representing <latex>R</latex> with respect to the ordered basis <latex>\EuScript{B} = (\Vect{a} , \Vect{b} , \Vect{n} )</latex> is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}_{\EuScript{B}\EuScript{B}} =
+\left[
+\begin{array}{rrr}
+\cos \alpha & - \sin \alpha & 0 \\
+\sin \alpha & \cos \alpha & 0 \\
+0 & 0 & 1
+\end{array}
+\right] = 
+\dfrac{1}{\sqrt{2}}\ 
+\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+1 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>To find the matrix representing <latex>R</latex> with respect to the standard basis <latex>\EuScript{S}</latex> of <latex>\RNr[3]</latex>, we need the coordinate conversion matrices</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{C}_{\EuScript{S}\EuScript{B}} = \dfrac{1}{3\sqrt{6}}
+\left[
+\begin{array}{rrr}
+3\sqrt{3} & 3 & 3\sqrt{2} \\
+-3 \sqrt{3} & 3 & 3\sqrt{2} \\
+0 & -6 & 3\sqrt{2}
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>and</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+C_{\EuScript{B}\EuScript{S}} = \left( C_{\EuScript{S}\EuScript{B}} \right)^{-1} = \dfrac{1}{3\sqrt{6}}
+\left[
+\begin{array}{ccc}
+3\sqrt{3} & -3\sqrt{3} & 0 \\
+3 & 3 & -6 \\
+s\sqrt{2} & 3\sqrt{2} & 3\sqrt{2}
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>With the aid of the coordinate conversion matrices, we find</para>
+			<computation>
+				<left>\Mtrx{A}_{\EuScript{S}\EuScript{S}}</left>
+				<center>=</center>
+				<right>\Mtrx{C}_{\EuScript{S}\EuScript{B}}\, \Mtrx{A}_{\EuScript{B}\EuScript{B}}\, \Mtrx{C}_{\EuScript{B}\EuScript{S}}</right>
+				<left></left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+					\dfrac{1}{12}
+					\left[
+\begin{array}{ccc}
+5\sqrt{2} + 4 & -\sqrt{2} - 2 \sqrt{6} + 4 & 2\sqrt{6} - 4\sqrt{2} + 4 \\
+-\sqrt{2} + \sqrt{6} + 4 & 5 \sqrt{2} + 4 & -2 \sqrt{6} - 4 \sqrt{2} + 4 \\
+-2 \sqrt{6} -4\sqrt{2} + 4 & 2\sqrt{6} + 4\sqrt{2} + 4 & 4 + 8 \sqrt{2}
+\end{array}
+\right]
+					]]>
+				</right>
+			</computation>
+			<para>Finally, the rotation <latex>R</latex> moves the point <latex>\Vect{x} = (1,1,0)</latex> to the location</para>
+			<computation>
+				<left>R(\Vect{x})</left>
+				<center>=</center>
+				<right>\Mtrx{A}_{\EuScript{S}\EuScript{S}}\, \Vect{x}</right>
+				<left></left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+					\dfrac{1}{12}
+					\left[
+\begin{array}{ccc}
+5\sqrt{2} + 4 & -\sqrt{2} - 2 \sqrt{6} + 4 & 2\sqrt{6} - 4\sqrt{2} + 4 \\
+-\sqrt{2} + \sqrt{6} + 4 & 5 \sqrt{2} + 4 & -2 \sqrt{6} - 4 \sqrt{2} + 4 \\
+-2 \sqrt{6} -4\sqrt{2} + 4 & 2\sqrt{6} + 4\sqrt{2} + 4 & 4 + 8 \sqrt{2}
+\end{array}
+\right] \, \left[\begin{array}{c} 1 \\ 1 \\ 0 \end{array}\right]
+					]]>
+				</right>
+				<left></left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+\dfrac{1}{12}
+\left[
+\begin{array}{c}
+4\sqrt{2} + 8 - 2 \sqrt{6} \\ 4\sqrt{2} + 8 + 2\sqrt{6} \\ - 8\sqrt{2} + 8
+\end{array}
+\right]
+					]]>
+				</right>
+			</computation>
+			<para>The solution of the given problem is complete.</para>
+		</answer>
+	</showme>	
+</showme.pack>

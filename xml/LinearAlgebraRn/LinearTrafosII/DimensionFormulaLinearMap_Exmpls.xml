@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_DimensionFormulaLinearMap">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Dimension Formula for a Linear Map - Example</title>
+	<showme>
+		<statement>
+			<para>Given a unit vector <latex>\Vect{e}</latex> in <latex>\RNr[n]</latex>, <latex>n\geq 1</latex>, let</para>
+			<math.display>
+				<latex>P\from \RNr[n] \longrightarrow \RNr[n],\quad P(\Vect{x}) = (\DotPr{ \Vect{x} }{ \Vect{e} })\cdot \Vect{e}</latex>
+			</math.display>
+			<para>be the linear map which sends a vector <latex>\Vect{x}</latex> to its projection along <latex>\Vect{e}</latex>. Find the kernel and image of <latex>P</latex> and their dimensions.</para>
+		</statement>
+		<answer type="Solution">
+			<para>The image of <latex>P</latex> is just the span of <latex>\Vect{e}</latex>: indeed, <latex>P(\Vect{x})</latex> is a scalar multiple of <latex>\Vect{e}</latex>, hence belongs to the span of <latex>\Vect{e}</latex>. On the other hand, <latex>\span(\Vect{e})</latex> is contained in the image of <latex>P</latex> because we know that <latex>\im(P)</latex> is a subvector space of <latex>\RNr[n]</latex>. Therefore,</para>
+			<computation>
+				<left>\dim(\im(P))</left>
+				<center>=</center>
+				<right>\dim(\span(\Vect{e})) = 1</right>
+			</computation>
+			<para>From the dimension formula we get</para>
+			<computation>
+				<left>\dim(\ker(P))</left>
+				<center>=</center>
+				<right>n-\dim(\im(P)) = n-1</right>
+			</computation>
+			<para>This agrees nicely with something we know already: <latex>\ker(P)</latex> consists of all those vectors of <latex>\RNr[n]</latex> for which <latex>\DotPr{ \Vect{x} }{ \Vect{e} }=0</latex>; i.e. <latex>\ker(P)</latex> is the orthogonal complement of <latex>P</latex>, a hyperspace whose dimension is <latex>n-1</latex>.</para>
+			<figure>
+				<img src="ims/ProjectionDimensionFormula.gif"></img>
+				<info><para>Dimension Formula in the Case of a Projection along a Line</para></info>
+			</figure>
+			<para>Summarizing: <latex>P</latex> transforms all of <latex>\RNr[n]</latex> into the line <latex>\RNr\cdot \Vect{e}</latex> on the right. In the process the <latex>(n-1)</latex>-dimensional subspace <latex>\ker(P)=\Vect{e}^{\bot}</latex> of <latex>\RNr[n]</latex> gets crushed into just a single point, namely the origin.</para>
+		</answer>
+	</showme>	
+</showme.pack>

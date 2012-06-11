@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack
+	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_FieldAxioms">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Field Axioms of the Real Number System</title>
+	<exercise>
+		<problem>
+			<para>Prove the following properties of the real number system using axioms and/or consequences of the axioms established earlier.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>for all <latex>a,b\in \RNr</latex>, <latex>-(ab) = (-a)b = a(-b)</latex></para>
+			</problem>
+			<approach>
+				<solution.hint><para>We know that <latex>(-a) = (-1)\cdot a</latex> for all <latex>a\in\RNr</latex>.</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>For all <latex>a,b\in \RNr</latex>, <latex>(-a)(-b) = ab</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>0 = -0</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem><para><latex>-(-x) = x</latex></para></problem>
+		</part>
+	</exercise>
+	
+</exercise.pack>

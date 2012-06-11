@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_BasisColumnSpace"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>A Basis for the Column Space: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find a basis for the column space of the matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A}\ =\ \left[
+\begin{array}{rrrr}
+1 &amp; 3 &amp; 2 &amp; -1 \\
+1 &amp; 4 &amp; 3 &amp; -4 \\
+1 &amp; 2 &amp; 1 &amp; 2 \\
+1 &amp; 5 &amp; 4 &amp; -7
+\end{array}\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The first step is to find the RREF of  <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{cc}
+\text{matrix $A$}\quad &amp;\quad \text{row reduced matrix $B$} \\
+\begin{array}{rrrr}
+1 &amp; 3 &amp; 2 &amp; -1 \\
+1 &amp; 4 &amp; 3 &amp; -4 \\
+1 &amp; 2 &amp; 1 &amp; 2 \\
+1 &amp; 5 &amp; 4 &amp; -7
+\end{array} &amp;
+\begin{array}{rrrr}
+1 &amp; 0 &amp; -1 &amp; 8 \\
+0 &amp; 1 &amp; 1 &amp; -3 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\end{array}
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The row reduced matrix <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> has two leading <math>
+                        <latex>1</latex>
+                     </math>'s, and these leading <math>
+                        <latex>1</latex>
+                     </math>'s occur in columns number <math>
+                        <latex>1</latex>
+                     </math> and <math>
+                        <latex>2</latex>
+                     </math>. Therefore, the first and the second column vectors of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> form a basis <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> for the column space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>:</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Set{ (1,1,1,1) , (3,4,2,5) }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>In particular, <math>
+                        <latex>\ColSp{ \Mtrx{A} }</latex>
+                     </math> is a sub vector space of <math>
+                        <latex>\RNr[4]</latex>
+                     </math> of dimension <math>
+                        <latex>2</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The possible erroneous conclusion is that both <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> have the same column space. This conclusion is, in general false, as the situation at hand shows:</para.body>
+               </para>
+			            <para>
+                  <para.body>The vector <math>
+                        <latex>\Vect{c}:=(1,1,1,1)</latex>
+                     </math> belongs to <math>
+                        <latex>\ColSp{ \Mtrx{A} }</latex>
+                     </math>. However, <math>
+                        <latex>\Vect{c}</latex>
+                     </math> cannot belong to the column space of the RREF <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, because every vector in the span of the column vectors of <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> has the entry ‘<math>
+                        <latex>0</latex>
+                     </math>’ in the 3-rd and 4-th coordinate.</para.body>
+               </para>
+			            <para>
+                  <para.body>Therefore the column spaces of the two matrices are distinct.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

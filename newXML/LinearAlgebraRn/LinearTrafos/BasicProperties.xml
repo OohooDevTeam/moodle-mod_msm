@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_LinearTransformationsBasicProperties"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Basic Properties of Linear Transformations</title>
+      <plain.title>Basic Properties</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we establish two basic properties of linear transformations.</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>A linear transformation <math>
+                           <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                        </math> always maps the zero-vector of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> to the zero-vector of <math>
+                           <latex>\RNr[m]</latex>
+                        </math>. – Whenever a function <math>
+                           <latex>f\from \RNr[n]\to \RNr[m]</latex>
+                        </math> fails to satisfy <math>
+                           <latex>f(\Vect{0})=\Vect{0}</latex>
+                        </math>, <math>
+                           <latex>f</latex>
+                        </math> can not be linear.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>A function <math>
+                           <latex>\RNr[n]\to \RNr[m]</latex>
+                        </math> is linear transformation if and only if it sends each linear motion in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> to a linear motion in <math>
+                           <latex>\RNr[n]</latex>
+                        </math>. – This is a geometric characterization of linear transformation.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="LinearTrafo0to0_Prop.xml"/>
+            <para>
+               <para.body>The condition <math>
+                     <latex>L(\Vect{0})=\Vect{0}</latex>
+                  </math> is necessary for <math>
+                     <latex>L</latex>
+                  </math> to be linear. It is, however, not sufficient because there are functions <math>
+                     <latex>f\from \RNr[n]\to \RNr[m]</latex>
+                  </math> with <math>
+                     <latex>f(\Vect{0})=\Vect{0}</latex>
+                  </math>,  and still they are not linear. So we ask what additional property must be satisfied for a function to be linear? Here is one possible answer to this question:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="LineToLine_Prop.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_LinearTrafosLinearMotions"/>
+   </studymaterials>
+</unit>

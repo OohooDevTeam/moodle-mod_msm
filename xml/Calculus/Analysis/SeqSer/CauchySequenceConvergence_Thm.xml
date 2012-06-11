@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_CauchySequenceConvergence">
+	<caption>Cauchy's criterion for convergence to a number</caption>
+	<statement>
+		<para>For a sequence <latex>(x_n)</latex> there exists a number <latex>c</latex> with <latex magnify="yes">\lim_{n\to \infty} x_n =c</latex> if and only if for every <latex><![CDATA[ \varepsilon > 0 ]]></latex> there exists <latex>n_0\in \NNr</latex> such that
+			<index.glossary>
+				<term>Cauchy criterion</term><term>for convergence of a sequence</term>
+			</index.glossary>
+		</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ x_m - x_n } < \varepsilon ]]></latex>
+		</math.display>
+		<para>for all <latex>m,n\geq n_0</latex>.</para>
+	</statement>
+	<proof>
+		<para>Assume first that <latex>\lim_{n\to \infty} x_n =c</latex>. Given <latex><![CDATA[ \varepsilon > 0 ]]></latex>, we need to show that there exists <latex magnify="yes">n_0 \in \NNr</latex> such that <latex><![CDATA[ \Abs{ x_m - x_n } < \varepsilon ]]></latex> for all <latex magnify="yes">m,n\geq n_0</latex>. Indeed, as <latex>(x_n)</latex> converges to <latex>c</latex>, there exists <latex>n_0\in \NNr</latex> such that</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ x_n - c } < \varepsilon/2]]></latex>
+		</math.display>
+		<para>for all <latex>n\geq n_0</latex>. Now, if <latex magnify="yes">m,n\geq n_0</latex>, the triangle inequality tells us:</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ x_m - x_n } = \Abs{ (x_m - c) - (x_n - c) } \leq \Abs{ x_m-c } + \Abs{ x_n - c } < (\varepsilon/2) + (\varepsilon/2) ]]></latex>
+		</math.display>
+		<para>So <latex magnify="yes">(x_n)</latex> satisfies Cauchy's criterion for convergence.</para>
+		
+		<para>Now for the converse, assume that <latex>(x_n)</latex> satisfies Cauchy's criterion for convergence. We need to show that there exists <latex>c\in \RNr</latex> such that <latex magnify="yes">\lim_{n\to \infty} x_n =c</latex>. To this end we invoke the 
+			<subordinate>
+				<hot>completeness axiom</hot>
+				<crossref>
+					<definition.ref definitionID="Def_CompletenessAxiomForR"/>
+					<para>Look up this axiom.</para>
+				</crossref>
+			</subordinate>
+			of the real number system. This involves the following steps</para>
+		<ol>
+			<li><para>Construct two non empty sets <latex>A\leq B</latex>; the completeness axiom tells us then that there is <latex>c\in \RNr</latex> with <latex>A\leq c\leq B</latex>.</para></li>
+			<li><para>Then show that <latex magnify="yes">(x_n)</latex> converges to <latex>c</latex>.</para></li>
+		</ol>
+		<para><b>Step 1</b> &nbsp; Let <latex>A</latex> be the set of all those <latex>t\in \RNr</latex> such that <latex>t \leq x_n</latex> for <latex>n</latex> sufficiently large, and let <latex>B</latex> be the set of all those <latex>t\in \RNr</latex> such that <latex>x_n\leq t</latex> for <latex>n</latex> sufficiently large. We need to show that these sets are not empty.</para>
+		<para>We know that there exists <latex magnify="yes">n_0\in \NNr</latex> such that <latex><![CDATA[ \Abs{ x_m - x_n } < 1 ]]></latex> for all <latex magnify="yes">m,n\geq n_0</latex>. It follows that <latex>\OCIntrvl{-\infty}{x_{n_0} - 1} \subseteq A</latex> and <latex>\COIntrvl{ x_{n_0}+1 }{+\infty}\subseteq B</latex>. Thus both sets are not empty and satisfy <latex>A\leq B</latex>. By the 
+			<subordinate>
+				<hot>completeness property</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_RCompleteFromInfSup"/>
+					<para>Look up this result.</para>
+				</crossref>
+			</subordinate>
+			there exist <latex>s:=\sup(A)</latex>, and <latex>i:=\inf(B)</latex>.</para>
+		<para><b>Step 2</b> &nbsp; We claim that <latex>s=\lim_{n\to\infty}x_n = i</latex>. We argue by contradiction: If <latex>s\neq i</latex> then <latex><![CDATA[ \varepsilon := (i-s)/4 > 0 ]]></latex>. Now choose <latex magnify="yes">n_0\in \NNr</latex> such that <latex><![CDATA[ \Abs{ x_m - x_n } < \varepsilon]]></latex> for all <latex magnify="yes">m,n\geq n_0</latex>.</para>
+		<para>We will now see that this leads to the absurd situation that there is no place in <latex>\RNr</latex> where <latex>x_{n_0}</latex> could be.</para>
+		<ul>
+			<li><para>Consider the possibility <latex magnify="yes">x_{n_0} \leq s+\varepsilon</latex>. Then </para>
+				<math.display>
+					<latex><![CDATA[ x_n < s + 2\varepsilon < s+ 4\varepsilon = i ]]></latex>
+				</math.display>
+				<para>for all <latex magnify="yes">n\geq n_0</latex>. But this means that <latex>(s+2\varepsilon)\in B</latex>, a contradiction to the fact that <latex>\inf(B) = s+4\varepsilon</latex>.</para>
+			</li>
+			<li><para>Consider the possibility <latex magnify="yes">x_{n_0} \geq i-\varepsilon</latex>. Then </para>
+				<math.display>
+					<latex><![CDATA[ x_n > i - 2\varepsilon > i- 4\varepsilon = s ]]></latex>
+				</math.display>
+				<para>for all <latex magnify="yes">n\geq n_0</latex>. But this means that <latex>(i-2\varepsilon)\in A</latex>, a contradiction to the fact that <latex>\sup(A) = i-4\varepsilon</latex>.</para>
+			</li>
+			<li><para>Consider the possibility <latex magnify="yes"><![CDATA[ s+\varepsilon < x_{n_0} < i - \varepsilon ]]></latex>. Then </para>
+				<math.display>
+					<latex><![CDATA[ s < x_{n_0}-\varepsilon < x_n < x_{n_0}+\varepsilon < i ]]></latex>
+				</math.display>
+				<para>for all <latex magnify="yes">n\geq n_0</latex>. But this means that <latex><![CDATA[ \sup(A) < (x_{n_0} - \varepsilon) \in A]]></latex>, a contradiction.</para>
+			</li>
+		</ul>
+		<para>Thus <latex>s=i</latex>, and it remains to show that <latex>\lim_{n\to \infty} x_n = s</latex>. So let <latex><![CDATA[ \varepsilon > 0]]></latex>. Then</para>
+		<ul>
+			<li><para><latex>a:=(s-\varepsilon)/2 \in A</latex> and so there exists <latex magnify="yes">n_1\in \NNr</latex> with <latex>x_n \geq  a</latex> for all <latex magnify="yes">n\geq n_1</latex>.</para></li>
+			<li><para><latex>b:=(s+\varepsilon)/2 \in B</latex> and so there exists <latex magnify="yes">n_2\in \NNr</latex> with <latex>x_n \leq  b</latex> for all <latex magnify="yes">n\geq n_2</latex>.</para></li>
+		</ul>
+		<para>So, set <latex magnify="yes">n_0 := \max\Set{ n_1,n_2}</latex>, and we have</para>
+		<math.display>
+			<latex><![CDATA[ s-\varepsilon < a \leq x_n < b < s + \varepsilon ]]></latex>
+		</math.display>
+		<para>as required. &ndash; This completes the proof.</para>
+	</proof>
+</theorem>

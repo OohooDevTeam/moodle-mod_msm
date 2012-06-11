@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_MatrixScalarMultiplicationProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <statement.theorem>
+      <para>
+         <para.body>The scalar multiplication of a matrix by a number has the following properties</para.body>
+      </para>
+      <part.theorem partid="DistributesOverMatrixSum">
+         <caption>Distributes over a matrix sum</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>t\cdot (A + B) = t\cdot A\ +\ t\cdot B</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>matrix</term>
+                  <term>scalar multiplication</term>
+                  <term>distributes over matrix sums</term>
+               </index.glossary>
+               <index.glossary>
+                  <term>distributivity</term>
+                  <term>scalar multiplication of matrices</term>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="ScalarSumDistributesOverMatrix">
+         <part.body>
+            <para>
+               <para.body>Scalar sum distributes over matrices: <math>
+                     <latex>(s+t)\cdot A = s\cdot A + t\cdot A</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="ScalarsMultiplyAssociatively">
+         <caption>Product of scalars multiplies associatively</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>(st)\cdot A = s\cdot (tA)</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>matrix</term>
+                  <term>scalar multiplication</term>
+                  <term>is associative</term>
+               </index.glossary>
+               <index.glossary>
+                  <term>associativity</term>
+                  <term>scalar multiplication of matrices</term>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="MatricesMultiplyAssociatively">
+         <caption>Product of matrices multiplies associatively into a scalar</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>t\cdot (AB) = (tA)B</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Commutativity">
+         <caption>Left and right multiplication by a scalar are equal</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>t\cdot A = A \cdot t</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>matrix</term>
+                  <term>scalar multiplication</term>
+                  <term>commutes with matrix multiplication</term>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>DistributesOverMatrixSum</part.ref>
+         </logic>
+         <caption>DistributesOverMatrixSum</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Let us consider the entry in position <math>
+                     <latex>(i,j)</latex>
+                  </math> of the relevant matrix expressions:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

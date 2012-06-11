@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_ContinuousByLimit"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Continuity via limits</caption>
+   <statement.theorem>
+      <para>
+         <para.body>A function <math>
+               <latex>f\from D\to \RNr</latex>
+            </math> is continuous at <math>
+               <latex>x\in D</latex>
+            </math> if and only if for every sequence <math>
+               <latex>(t_n)</latex>
+            </math> in <math>
+               <latex>D</latex>
+            </math>
+         </para.body>
+      </para>
+      <math.display>
+         <latex>f(x)\ =\ \lim_{t\to x} f(t)</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\implies</latex>
+                  </math>   Suppose <math>
+                     <latex>f</latex>
+                  </math> is continuous at <math>
+                     <latex>x</latex>
+                  </math>, and let <math>
+                     <latex>(t_n)</latex>
+                  </math> be a sequence in <math>
+                     <latex>D</latex>
+                  </math> converging to <math>
+                     <latex>x</latex>
+                  </math>. We need to show that <math>
+                     <latex>f(x) = \lim_{t\to x}f(t)</latex>
+                  </math>. So let <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> be given. We need to establish the existence of <math>
+                     <latex>N\in \NNr</latex>
+                  </math> such that</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex> \Abs{ f(t_n) - f(x) } &lt; \varepsilon </latex>
+                  </math>   for all   <math>
+                     <latex>n\geq N</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>We know that there is <math>
+                     <latex> \delta&gt; 0 </latex>
+                  </math> with</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex> \Abs{ f(t) - f(x) } &lt; \varepsilon </latex>
+                  </math>   for all <math>
+                     <latex>t\in D</latex>
+                  </math> with   <math>
+                     <latex> \Abs{ t-x } &lt; \delta </latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>So choose <math>
+                     <latex>N\in \NNr</latex>
+                  </math> such that <math>
+                     <latex> \Abs{ t_n - x } &lt; \delta </latex>
+                  </math> for all <math>
+                     <latex>n\geq N</latex>
+                  </math>. Then, for <math>
+                     <latex>n\geq N</latex>
+                  </math>,</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ t_n - x } &lt; \delta </latex>
+            </math.display>
+            <para>
+               <para.body>and, therefore,</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ f(t_n) - f(x) } &lt; \varepsilon </latex>
+            </math.display>
+            <para>
+               <para.body>as required.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Longleftarrow</latex>
+                  </math>   Suppose <math>
+                     <latex>f</latex>
+                  </math> satisfies the limit condition in the lemma. We need to show that it is continuous. To prepare for the argument, we observe that a sequence with the following properties exists: For <math>
+                     <latex>n\geq 1</latex>
+                  </math>, let</para.body>
+            </para>
+            <math.display>
+               <latex> s_n := \sup\Set{ \Abs{ f(t) - f(x) } \st t\in D,\ \ \Abs{ t-x }&lt; 1/n } </latex>
+            </math.display>
+            <para>
+               <para.body>Then choose <math>
+                     <latex>t_n\in \Intrsctn{D}{ \OOIntrvl{ x-1/n }{ x+1/n } }</latex>
+                  </math> arbitrarily with</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ f(t_n) - f(x) } \geq \min\Set{ 1, s_n/2} </latex>
+            </math.display>
+            <para>
+               <para.body>Then <math>
+                     <latex>\lim_{n\to\infty} t_n = x</latex>
+                  </math> by design and so, by assumption,</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>\lim_{n\to\infty} f(t_n) = f(x)</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Now suppose a deviation tolerance <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> is given. Let <math>
+                     <latex>N\in\NNr</latex>
+                  </math> be such that</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex> \Abs{ f(t_n) - f(x) } &lt; \min \Set{ 1, \varepsilon/2 } </latex>
+                  </math>   for all   <math>
+                     <latex>n\geq N</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>From the construction of the sequence <math>
+                     <latex>(t_n)</latex>
+                  </math> we see that</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ f(t) - f(x) } \leq 2\cdot \Abs{ f(t_N) - f(x) } &lt; 2\cdot (\varepsilon/2) </latex>
+            </math.display>
+            <para>
+               <para.body>for all <math>
+                     <latex>t\in \Intrsctn{D}{ \OOIntrvl{x-1/N}{x+1/N} }</latex>
+                  </math>. Thus <math>
+                     <latex>f</latex>
+                  </math> is continuous as claimed.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

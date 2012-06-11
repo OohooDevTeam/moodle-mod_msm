@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE quiz.pack	SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Quz_InvertibleLinearTrafo">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Quiz on Invertible Linear Transformations</title>
+	
+	
+	<quiz>
+		<question>
+			<para>Is the counterclockwise rotation of the plane about the origin through the angle <latex>\theta</latex> invertible?</para>
+			<figure>
+				<img src="ims/Rotation.png"></img><!-- svg available -->
+			</figure>
+		</question>
+		<choice>
+			<answer><para><latex magnify="yes">R_{\theta}</latex> is invertible</para></answer>
+			<info><para>Correct! &ndash; The inverse of <latex magnify="yes">R_{\theta}</latex> is <latex>R_{-\theta}</latex>; i.e. the rotation of <latex>\RNr[2]</latex> about the origin through the angle <latex>\theta</latex> in the clockwise direction.</para></info>
+		</choice>
+		<choice>
+			<answer><para><latex magnify="yes">R_{\theta}</latex> is not invertible.</para></answer>
+			<info><para>Sorry! &ndash; No. The question here is if the transformation effect of <latex magnify="yes">R_{\theta}</latex> can be reversed. Why do you think this would not be the case?</para></info>
+		</choice>
+	</quiz>
+	
+	<quiz>
+		<question>
+			<para>Is the reflection of <latex>\RNr[3]</latex> about a hyperspace invertible?</para>
+			<figure>
+				<img src="ims/LeftHandMirrorRightHand.jpg"></img>
+			</figure>
+		</question>
+		<choice>
+			<answer><para>Yes! Such a reflection is invertible</para></answer>
+			<info><para>Correct!</para></info>
+		</choice>
+		<choice>
+			<answer><para>No! Such a reflection is not invertible</para></answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+	</quiz>
+	
+	<quiz>
+		<question>
+			<para>Is the projection of <latex>\RNr[3]</latex> onto the <latex>xy</latex>-plane invertible?</para>
+		</question>
+		<hint>
+			<info>
+				<para>Visualize the effect of this projection on an object: Shine a light vertically onto the object. Its shadow in the <latex>xy</latex>-plane is the outcome of the projection. Therefore the question is: can you always recover the original object from its shadow.</para>
+			</info>
+		</hint>
+		
+		<choice>
+			<answer><para>Yes! This projection is invertible.</para></answer>
+			<info><para>Sorry! No. &ndash; To see why such a projection is not invertible, consider the case where the projection of an object is a single point. In this case we do not know if the original is a single point or a vertical stick. Nor do we know how far either of these objects is from the <latex>xy</latex>-plane. Therefore such a projection is not invertible.</para></info>
+		</choice>
+		<choice>
+			<answer><para>No! This projection is not invertible.</para></answer>
+			<info><para>Correct! &ndash; Why is it not invertible?</para></info>
+		</choice>
+	</quiz>
+	
+	
+	<quiz>
+		<question>
+			<para>Is a shear transformation of <latex>\RNr[2]</latex> parallel to the <latex>x</latex>-axis invertible?</para>
+			<figure>
+				<img src="ims/ShearR2_3.png"></img><!-- svg available -->
+			</figure>
+		</question>
+		<choice>
+			<answer>
+				<para>Yes! Such a  shear transformation is invertible.</para>
+			</answer>
+			<info>
+				<para>Correct! &ndash; &ndash; Why is a shear transformation invertible? If the original shear transformation has shear vector <latex>\Vect{s}</latex>, then the shear transformation with shear vector <latex>-\Vect{s}</latex> will restore each point and each object in its original position.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>No! Such a transformation is not invertible.</para>
+			</answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+		
+	</quiz>
+	
+</quiz.pack>

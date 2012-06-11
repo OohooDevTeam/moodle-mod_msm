@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Test_Hyperplanes"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Distance of Point from Hyperplane: Self Test</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below about a point <math>
+                     <latex>P</latex>
+                  </math> and hyperplane <math>
+                     <latex>H</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> indicate if it is true or false</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>P</latex>
+                     </math> always lies on <math>
+                        <latex>H</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This is false. – To see this recall that there is some nonzero vector <math>
+                           <latex>\Vect{n}\neq 0</latex>
+                        </math>, and a number <math>
+                           <latex>c</latex>
+                        </math> such that <math>
+                           <latex>\Vect{x}</latex>
+                        </math> belongs to the hyperplane exactly when</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\DotPr{ \Vect{n} }{ \Vect{x} } = c</latex>
+					             </math.display>
+					             <para>
+                     <para.body>But then <math>
+                           <latex>s := \Abs{ \Vect{n} } \neq 0</latex>
+                        </math>. So the equation</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>t\cdot s</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>c</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>has the unique solution <math>
+                           <latex>t = c/s</latex>
+                        </math>. Therefore, <math>
+                           <latex>t\cdot \Vect{n}</latex>
+                        </math> does not lie on <math>
+                           <latex>H</latex>
+                        </math> so long as <math>
+                           <latex>t\neq c/s</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>P</latex>
+                     </math> always has distance <math>
+                        <latex>0</latex>
+                     </math> from <math>
+                        <latex>H</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This is false. – <math>
+                           <latex>P</latex>
+                        </math> has distance <math>
+                           <latex>0</latex>
+                        </math> from <math>
+                           <latex>H</latex>
+                        </math> exactly when <math>
+                           <latex>P</latex>
+                        </math> lies on <math>
+                           <latex>H</latex>
+                        </math>. However, we just found in the previous problem that not every point in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> lies on <math>
+                           <latex>H</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>The distance from <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>H</latex>
+                     </math> is <math>
+                        <latex>0</latex>
+                     </math> exactly when <math>
+                        <latex>P</latex>
+                     </math> lies on <math>
+                        <latex>H</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is true!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The distance from <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>H</latex>
+                     </math> is only defined if any two points of <math>
+                        <latex>H</latex>
+                     </math> have the same distance from <math>
+                        <latex>P</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This is false. – The distance from <math>
+                           <latex>P</latex>
+                        </math> to <math>
+                           <latex>H</latex>
+                        </math> is always defined.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The distance from <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>H</latex>
+                     </math> is the distance of <math>
+                        <latex>P</latex>
+                     </math> from all points of <math>
+                        <latex>H</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This is false. – There is always exactly one point on <math>
+                           <latex>H</latex>
+                        </math> which is closest to <math>
+                           <latex>P</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The distance from <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>H</latex>
+                     </math> is the distance from <math>
+                        <latex>P</latex>
+                     </math> to the point of <math>
+                        <latex>H</latex>
+                     </math> closest to <math>
+                        <latex>P</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If the distance from <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>H</latex>
+                     </math> is <math>
+                        <latex>d</latex>
+                     </math>, then</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Dstnc{P}{Q}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>\geq</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>d</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>for every <math>
+                        <latex>Q</latex>
+                     </math> on <math>
+                        <latex>H</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If the distance from <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>H</latex>
+                     </math> is negative, then <math>
+                        <latex>P</latex>
+                     </math> lies on the other side of <math>
+                        <latex>H</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>This sentence does not make any sense.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If the distance from <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>H</latex>
+                     </math> is positive, then <math>
+                        <latex>P</latex>
+                     </math> does not lie on <math>
+                        <latex>H</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Correct! – The distance from <math>
+                           <latex>P</latex>
+                        </math> to <math>
+                           <latex>H</latex>
+                        </math> is the distance from <math>
+                           <latex>P</latex>
+                        </math> to the point on <math>
+                           <latex>H</latex>
+                        </math> closest to <math>
+                           <latex>P</latex>
+                        </math>. If this distance is positive, this means that <math>
+                           <latex>P</latex>
+                        </math> does not lie on <math>
+                           <latex>H</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

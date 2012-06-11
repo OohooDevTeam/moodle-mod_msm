@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Eigentheory2">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Eigenvectors and Eigenvalues, Conceptual</title>
+	<exercise>
+		<problem>
+			<para>For each of the statements below decide if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>For a <latex>(4,4)</latex>-matrix <latex>\Mtrx{A}</latex> and a vector <latex>\Vect{x}\neq \Vect{0}</latex> in <latex>\RNr[4]</latex>, if <latex>\Mtrx{A}\Vect{x} = 2\cdot \Vect{x}</latex>, then <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>4</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint>
+					<para>Recall: if <latex>\lambda</latex> is the eigenvalue of an eigenvector <latex>\Vect{x}</latex> of a matrix <latex>\Mtrx{B}</latex>, then</para>
+					<computation>
+						<left>\Mtrx{B}\cdot \Vect{x}</left>
+						<center>=</center>
+						<right>\lambda\cdot \Vect{x}</right>
+					</computation>
+				</solution.hint>
+				<solution>
+					<para>If <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>4</latex>, then</para>
+					<computation>
+						<left>\Mtrx{A}\cdot \Vect{x}</left>
+						<center>=</center>
+						<right>4\cdot \Vect{x}</right>
+					</computation>
+					<para>However, we are given the information that</para>
+					<computation>
+						<left>\Mtrx{A}\cdot \Vect{x}</left>
+						<center>=</center>
+						<right>2\cdot \Vect{x}</right>
+					</computation>
+					<para>As <latex>\Vect{x} \neq \Vect{0}</latex>, <latex>2\cdot \Vect{x} \neq 4\cdot \Vect{x}</latex>. &ndash; Therefore the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>For an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> and a vector <latex>\Vect{x}\neq \Vect{0}</latex> in <latex>\RNr[n]</latex>, if <latex>\Mtrx{A}\Vect{x} = \Vect{0}</latex>, then <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>0</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>We are given the information that <latex>\Vect{x}\neq \Vect{0}</latex>, and</para>
+					<math.display>
+						<latex>\Mtrx{A}\cdot \Vect{x} = \Vect{0} = 0\cdot \Vect{x}</latex>
+					</math.display>
+					<para>By definition, <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>0</latex>. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Given an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>, every <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> with <latex>\Mtrx{A}\cdot \Vect{x} = \lambda \Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>\lambda</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution>
+					<para>This statement is almost the definition of eigenvector <latex>\Vect{x}</latex> and corresponding eigenvalue <latex>\lambda</latex>. However, something is missing: namely the requirement that <latex>\Vect{x}\neq \Vect{0}</latex>. &ndash; Therefore the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The eigenvalues of a matrix <latex>\Mtrx{A}</latex> are the entries on its main diagonal.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint>
+					<para>Consider, for example, matrices which have a <latex>0</latex> on each diagonal entry.</para>
+				</solution.hint>
+				<solution>
+					<para>Consider, for example, the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}\ :=\ 
+\left[
+\begin{array}{rr}
+0 & 1 \\
+1 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Then <latex>0</latex> is a diagonal entry of <latex>\Mtrx{A}</latex>. On the other hand,</para>
+					<computation>
+						<left>\det(\Mtrx{A})</left>
+						<center>=</center>
+						<right>-1 \neq 0</right>
+					</computation>
+					<para>Therefore <latex>\Mtrx{A}</latex> is invertible, and this implies that <latex>\Vect{x} = \Vect{0}</latex> is the only vector with <latex>\Mtrx{A}\cdot \Vect{x} = \Vect{0}</latex>. However, by definition, <latex>\Vect{0}</latex> is never an eigenvector of any matrix <latex>\Mtrx{A}</latex>. -&ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>0</latex> is not an eigenvalue of an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>, then <latex>\Mtrx{A}</latex> is a monomorphism</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>You recognize a monomorphism by the property that if <latex>\Mtrx{A}\cdot \Vect{x} = \Vect{0}</latex>, then <latex>\Vect{x}=\Vect{0}</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>We need to consider two facts:</para>
+					<ol>
+						<li><para><latex>\Mtrx{A}</latex> describes a monomorphism exactly <latex>\Mtrx{A}\cdot \Vect{x} = \Vect{0}</latex> implies <latex>\Vect{x}=\Vect{0}</latex>.</para></li>
+						<li><para><latex>0</latex> is not an eigenvalue of <latex>\Mtrx{A}</latex> exactly when for all <latex>\Vect{x} \neq \Vect{0}</latex>, <latex>\Mtrx{A}\cdot \Vect{x} \neq \Vect{0}</latex>.</para></li>
+					</ol>
+					<para>Fact 2) says that <latex>\Mtrx{A}\cdot \Vect{x} = \Vect{0}</latex> implies <latex>\Vect{x}=\Vect{0}</latex>. Therefore <latex>\Mtrx{A}</latex> describes a monomorphism of <latex>\RNr[n]</latex>. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>0</latex> is not a eigenvalue of an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>, then <latex>\Mtrx{A}</latex> is invertible.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>From the previous part we know that the linear map <latex>L</latex> described by <latex>\Mtrx{A}</latex> a monomorphism of <latex>\RNr[n]</latex>; so <latex>\NllSp{ \Mtrx{A} } = \Set{ \Vect{0} }</latex>. Therefore,</para>
+					<math.display>
+						<latex>\Dim{ \ColSp{ \Mtrx{A} } } = n - \Dim{ \NllSp{ \Mtrx{A} } } = n</latex>
+					</math.display>
+					<para>But then <latex>\ColSp{ \Mtrx{A} } = \RNr[n]</latex>. So <latex>L</latex> is an epimorphism as well. But if <latex>L</latex> is a monomorphism as well as an epimorphism, then <latex>L</latex> is an isomorphism. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\Mtrx{A}</latex> represents the orthogonal projection <latex>\RNr[n] \to H</latex>, where <latex>H</latex> is the hyperspace perpendicular to the unit vector <latex>\Vect{n}</latex>, then <latex>\Vect{n}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>0</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>The effect of the projection <latex>P\from \RNr[n] \to H</latex> on an arbitrary <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> is</para>
+					<computation>
+						<left>P(\Vect{x})</left>
+						<center>=</center>
+						<right>\Vect{x} - (\DotPr{ \Vect{x} }{ \Vect{n} })\cdot \Vect{n}</right>
+					</computation>
+					<para>Therefore, <latex>P(\Vect{n}) = \Vect{0} = 0\cdot \Vect{n}</latex>. But this means exactly that <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>0</latex>. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\Mtrx{A}</latex> represents the orthogonal reflection <latex>\RNr[n] \to \RNr[n]</latex>, where <latex>H</latex> is the hyperspace perpendicular to the unit vector <latex>\Vect{n}</latex>, then <latex>\Vect{n}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>1</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution>
+					<para>The effect of the reflection <latex>R\from \RNr[n] \to \RNr[n]</latex> on an arbitrary <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> is</para>
+					<computation>
+						<left>R(\Vect{x})</left>
+						<center>=</center>
+						<right>\Vect{x} - 2\cdot (\DotPr{ \Vect{x} }{ \Vect{n} })\cdot \Vect{n}</right>
+					</computation>
+					<para>Therefore, <latex>R(\Vect{n}) = -\Vect{n} = (-1)\cdot \Vect{n}</latex>. But this means exactly that <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>-1</latex>, (not <latex>1</latex>). &ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>A <latex>(2,2)</latex>-matrix <latex>\Mtrx{A}</latex> can have at most two distinct eigenvalues.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>What is the degree of the characteristic polynomial of <latex>\Mtrx{A}</latex>?</para></solution.hint>
+				<solution.hint><para>How many <latex>0</latex>'s can a polynomial of degree <latex>d</latex> have at most?</para></solution.hint>
+				<solution>
+					<para>The characteristic polynomial of <latex>\Mtrx{A}</latex> has degree <latex>2</latex>. Therefore, it can have at most <latex>2</latex> places where it assumes the value <latex>0</latex>. Therefore it can have at most <latex>2</latex> eigenvalues. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>1</latex>, then <latex>\Mtrx{A} \cdot \Vect{x} = \Vect{x}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>Compare this statement to the definition of an eigenvector with eigenvalue <latex>1</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>-1</latex>, then <latex>\Vect{x}</latex> and <latex>\Mtrx{A}\cdot \Vect{x}</latex> are linearly independent.</para>
+			</problem>
+			<approach>
+				<answer><para>False.</para></answer>
+				<solution>
+					<para>If <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>-1</latex>, then</para>
+					<computation>
+						<left>\Mtrx{A} \cdot \Vect{x}</left>
+						<center>=</center>
+						<right>(-1)\cdot \Vect{x}</right>
+						<left>\Mtrx{A} \cdot \Vect{x} + 1\cdot \Vect{x}</left>
+						<center>=</center>
+						<right>\Vect{0}</right>
+					</computation>
+					<para>But this means that the general vector equation</para>
+					<computation>
+						<left>s\cdot \Mtrx{A}\cdot \Vect{x} + t\cdot \Vect{x}</left>
+						<center>=</center>
+						<right>\Vect{0}</right>
+					</computation>
+					<para>has a solution other than <latex>s=t=0</latex>. So the vectors <latex>\Mtrx{A}\cdot \Vect{x}</latex> and <latex>\Vect{x}</latex> are linearly dependent; not linearly independent. &ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Show that a <latex>(2,2)</latex>-matrix can have at most 2 distinct eigenvalues.</para>
+		</problem>
+	</exercise>
+	<exercise>
+		<problem>
+			<para>Show that an <latex>(n,n)</latex>-matrix can have at most <latex>n</latex> distinct eigenvalues.</para>
+		</problem>
+	</exercise>
+	<exercise>
+		<problem>
+			<para>Show that a <latex>(3,3)</latex>-matrix has at least one eigenvalue in <latex>\RNr</latex>.</para>
+		</problem>
+	</exercise>
+	<exercise>
+		<problem>
+			<para>If <latex>n</latex> is odd, show that an <latex>(n,n)</latex>-matrix has at least one eigenvalue in <latex>\RNr</latex>.</para>
+		</problem>
+	</exercise>
+	<exercise>
+		<problem>
+			<para>If <latex>\lambda</latex> is an eigenvalue of an invertible matrix <latex>\Mtrx{A}</latex> show the following</para>
+		</problem>
+		<part>
+			<problem><para><latex>\lambda \neq 0</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\dfrac{1}{\lambda}</latex> is an eigenvalue of <latex>\Mtrx{A}^{-1}</latex>.</para></problem>
+		</part>
+	</exercise>
+	<exercise>
+		<problem>
+			<para>For every <latex>(n,n)</latex> matrix <latex>\Mtrx{A}</latex> show <latex>\Mtrx{A}</latex> and <latex>\Mtrx{A}^T</latex> have the same eigenvalues with the same algebraic multiplicities.</para>
+		</problem>
+	</exercise>
+	<exercise>
+		<problem>
+			<para>If <latex>\Mtrx{A}</latex> is an <latex>(n,n)</latex>-matrix with <latex>\Mtrx{A}^2 =0</latex> (zero matrix), show the following</para>
+		</problem>
+		<part>
+			<problem><para><latex>\lambda = 0</latex> is an eigenvalue of <latex>\Mtrx{A}</latex>.</para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\Mtrx{A}</latex> has no eigenvalue other than <latex>0</latex>.</para></problem>
+		</part>
+	</exercise>
+	<exercise>
+		<problem>
+			<para>If <latex>\Mtrx{A}</latex> is an <latex>(n,n)</latex>-matrix with <latex>\Mtrx{A}^r =0</latex> (zero matrix) for some <latex>r\geq 1</latex>, show the following</para>
+		</problem>
+		<part>
+			<problem><para><latex>\lambda = 0</latex> is an eigenvalue of <latex>\Mtrx{A}</latex>.</para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\Mtrx{A}</latex> has no eigenvalue other than <latex>0</latex>.</para></problem>
+		</part>
+	</exercise>
+
+	
+</exercise.pack>

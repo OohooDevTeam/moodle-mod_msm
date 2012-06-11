@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_DoubleInverse">
+	<caption>Double inverse of a linear map</caption>
+	
+	
+	<statement>
+		<para>If the linear transformation <latex>L\from \RNr[n]\to \RNr[n]</latex> is invertible, with inverse <latex>M=L^{-1}</latex>, then <latex>M</latex> is also invertible and</para>
+		<math.display>
+			<latex>L = M^{-1} = \left( L^{-1} \right)^{-1}</latex>
+		</math.display>
+	</statement>
+	
+	<proof>
+		<para>By definition of <latex>L^{-1}</latex>, we write <latex>M=L^{-1}</latex> because there is a linear transformation <latex>M</latex> with</para>
+		<math.display>
+			<latex>M\Comp L = \Id[n] = L\Comp M</latex>
+		</math.display>
+		<para>These two equations, however, also mean that <latex>M</latex> is invertible and that <latex>M^{-1} = L</latex>. But then</para>
+		<computation>
+			<left>L</left>
+			<center>=	<info><para>... as we just said</para></info></center>
+			<right>M^{-1}</right>
+			<left></left>
+			<center>=	<info><para>substitute <latex>L^{-1}</latex> for <latex>M</latex></para></info></center>
+			<right>\left( L^{-1} \right)^{-1}</right>
+		</computation>
+		<para>This was to be shown.</para>
+	</proof>
+</theorem>

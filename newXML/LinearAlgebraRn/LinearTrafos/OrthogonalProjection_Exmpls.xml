@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_OrthogonalProjection"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Example of an Orthogonal Projection of <math xmlns="">
+         <latex>\RNr[3]</latex>
+      </math>
+   </title>
+	  <caption xmlns="">Projection of 3-Space</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the matrix representing the orthogonal projection <math>
+                  <latex>P</latex>
+               </math> of <math>
+                  <latex>\RNr[3]</latex>
+               </math> onto the hyperspace perpendicular to <math>
+                  <latex>\Vect{c}=(1,2,1)</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We know that the matrix <math>
+                        <latex>A</latex>
+                     </math> representing <math>
+                        <latex>P</latex>
+                     </math> is of size <math>
+                        <latex>(3,3)</latex>
+                     </math>, and that its  <math>
+                        <latex>j</latex>
+                     </math>-th column consists of the coordinates of <math>
+                        <latex>P(\StdBss{j})</latex>
+                     </math>, <math>
+                        <latex>1\leq j\leq 3</latex>
+                     </math>. Therefore we compute</para.body>
+               </para>
+			
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>P(\StdBss{1})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1,0,0) - \dfrac{\DotPr{(1,0,0)}{(1,2,1)}}{\DotPr{(1,2,1)}{(1,2,1)}} \cdot (1,2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1,0,0) - \tfrac{1}{6}(1,2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\tfrac{1}{6}(5,-2,-1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>P(\StdBss{2})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,1,0) - \dfrac{\DotPr{(0,1,0)}{(1,2,1)}}{\DotPr{(1,2,1)}{(1,2,1)}} \cdot (1,2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,1,0) - \tfrac{2}{6}(1,2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\tfrac{1}{6}(-2,2,-2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>P(\StdBss{3})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,0,1) - \dfrac{\DotPr{(0,0,1)}{(1,2,1)}}{\DotPr{(1,2,1)}{(1,2,1)}} \cdot (1,2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,0,1) - \tfrac{1}{6}(1,2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\tfrac{1}{6}(-1,-2,5)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			
+			            <para>
+                  <para.body>
+                     <math>
+                        <latex>P(\StdBss{1})</latex>
+                     </math>, <math>
+                        <latex>P(\StdBss{2})</latex>
+                     </math>, and <math>
+                        <latex>P(\StdBss{3})</latex>
+                     </math> form the columns of the matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> representing <math>
+                        <latex>P</latex>
+                     </math>:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+A = \dfrac{1}{6}
+\left[
+\begin{array}{rrr}
+5 &amp; -2 &amp; -1 \\
+-2 &amp; 2 &amp; -2 \\
+-1 &amp; -2 &amp; 5
+\end{array}
+\right]
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

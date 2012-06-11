@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_LinearMapProperties">
+	<title>Preview: Properties of Linear Transformations</title>
+	<sub.page.body>
+		<block>
+			<para>Here are two basic properties which are specific to linear transformations and are not enjoyed by every transformation.</para>
+			
+			<ol type="1">
+				<li><para>A linear transformation <latex>f\from \RNr[n]\to \RNr[m]</latex> sends the <latex>0</latex>-vector of <latex>\RNr[n]</latex> to the <latex>0</latex>-vector of <latex>\RNr[m]</latex>; in symbols: <latex>f(\Vect{0}) = \Vect{0}</latex>.</para></li>
+				<li><para>A linear transformation <latex>f\from \RNr[n]\to \RNr[m]</latex> transforms any linear motion in <latex>\RNr[n]</latex> into a linear motion in <latex>\RNr[m]</latex>.</para></li>
+			</ol>
+			
+			<para>The first property is frequently helpful in detecting non-linear maps. The second property explains the name "linear transformations".</para>
+		</block>
+	</sub.page.body>
+</sub.page>

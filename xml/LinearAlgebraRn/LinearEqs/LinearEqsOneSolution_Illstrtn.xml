@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Illstrtn_LinearEqsOneSolution">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	<title>Linear Equations with Exactly One Solutions</title>
+	<caption>Linear Equations with Exactly One Solutions</caption>
+	<showme>
+		<statement>
+			<para>If a system of linear equations exactly one solution, then the solution hyperplanes of its equations have exactly one point in common.</para>
+			
+			<para align="center"><img src="ims/ThreeEqnsR3Generic.gif"/></para>
+			
+			<para>The RREF of a system of linear equations indicates that the system has exactly one solution as follows: There is no leading <latex>1</latex> in the augmented part of the RREF, and each column of its non-augmented part contains a leading <latex>1</latex>.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{cccccc|c}
+1 & 0 & 0 & \cdots & \cdots & 0 & d_1 \\
+0 & 1 & 0 & \cdots & \cdots & 0 & d_2 \\
+\vdots & \vdots & \vdots &\ddots &        & \vdots & \vdots \\
+\vdots & \vdots & \vdots &       & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & \cdots & \cdots & 1 & d_r \\
+0 & 0 & 0 & \cdots & \cdots & 0 & 0 \\
+\vdots & \vdots & \vdots & & & \vdots  & \vdots \\
+0 & 0 & 0 & \cdots & \cdots & 0 & 0 \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>Indeed, the <latex>j</latex>-th row of this reduced augmented coefficient matrix corresponds to the equation</para>
+			
+			<math.display>
+				<latex magnify="no">x_j = t_j\qquad 1\leq j\leq n</latex>
+			</math.display>
+			
+			<para>So the only solution of the given system is the vector</para>
+			
+			<math.display>
+				<latex>(d_1,d_2,\dots,d_r)</latex>
+			</math.display>
+		</statement>
+	</showme>
+</showme.pack>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_BasicCoordinateVectors"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	  <title>Examples of Basic Coordinate Vectors</title>
+	  <caption xmlns="">Basic Coordinate Vectors - Examples</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>
+				           <math>
+                  <latex>\RNr[3]</latex>
+               </math> has three basic coordinate vectors.</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+				           <media type="image" active="0" inline="0">
+                  <img src="ims/BasicCoordinateVectorsR3.gif"/>
+               </media>
+			         </para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <ul>
+				              <li>
+					                <para>
+                        <para.body>The first basic coordinate vector of <math>
+                              <latex>\RNr[3]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_1:=(1,0,0)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The second basic coordinate vector of <math>
+                              <latex>\RNr[3]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_2:=(0,1,0)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The third basic basic coordinate vector of <math>
+                              <latex>\RNr[3]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_3:=(0,0,1)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+			            </ul>
+			            <para>
+                  <para.body>In the physics literature these are often written as</para.body>
+               </para>
+			            <para align="center">
+                  <para.body>
+				                 <math>
+                        <latex>\mathbf{i}:=\mathbf{e}_1,\qquad \mathbf{j}:=\mathbf{e}_2,\quad \text{and}\quad \mathbf{k}:=\mathbf{e}_3</latex>
+                     </math>
+			               </para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>
+				           <math>
+                  <latex>\RNr[4]</latex>
+               </math> has four basic coordinate vectors</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <ul>
+				              <li>
+					                <para>
+                        <para.body>The first basic coordinate vector of <math>
+                              <latex>\RNr[4]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_1:=(1,0,0,0)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The second basic coordinate vector of <math>
+                              <latex>\RNr[4]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_2:=(0,1,0,0)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The third basic basic coordinate vector of <math>
+                              <latex>\RNr[4]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_3:=(0,0,1,0)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The fourth basic basic coordinate vector of <math>
+                              <latex>\RNr[4]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_4:=(0,0,0,1)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+			            </ul>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

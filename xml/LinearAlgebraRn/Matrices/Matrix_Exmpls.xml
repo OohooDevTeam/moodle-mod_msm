@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_MatrixTypes">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	<title>Examples of Matrices</title>
+	<caption>Matrices</caption>
+	<showme>
+		<statement>
+			<para>Identify the type and the entries of the matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					A = 
+					\left[
+					\begin{array}{rrrr}
+					2 & 0 & -10 & 3 \\
+					1 & 4 & \pi & 6
+					\end{array}
+					\right]
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>
+				This is a matrix with <latex>2</latex> rows and <latex>4</latex> columns. So <latex>A</latex> is of size <latex>(2,4)</latex>. Its entries are
+			</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcrcrcrcrcr}
+a_{11} & = & 2 & \quad & a_{12} & = & 0 & \quad & a_{13} & = & -10 & \quad & a_{14} & = & 3 \\
+a_{21} & = & 1 & \quad & a_{22} & = & 4 & \quad & a_{23} & = & \pi & \quad & a_{24} & = & 6
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Identify the type and the entries of the matrix</para>
+			
+			<math.display>
+				<latex>
+				<![CDATA[
+				B = 
+				\left[
+				\begin{array}{ccc}
+				3 & 0 & x \\
+				4 & 1+y & 0 \\
+				x+y & -1 & 8
+				\end{array}
+				\right]
+				]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Solution">
+			<para>
+				This matrix has <latex>3</latex> rows and <latex>3</latex> columns. So <latex>B</latex> is of type <latex>(3,3)</latex>. Some of its entries are variables. For example we find 
+			</para>
+			
+			<ul>
+				<li><para><latex>b_{11} = 3</latex> &nbsp; and &nbsp; <latex>b_{13} = x</latex>.</para></li>
+				
+				<li><para><latex>b_{22} = 1+y</latex> &nbsp; and &nbsp; <latex>b_{23} = 0</latex>.</para></li>
+				
+				<li><para><latex>b_{31} = x+y</latex> &nbsp; and &nbsp; <latex>b_{32} = -1</latex>.</para></li>
+			</ul>
+		</answer>
+	</showme>	
+</showme.pack>

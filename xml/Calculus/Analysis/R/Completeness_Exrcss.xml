@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack
+	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Completeness">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Completeness of the Real Number System</title>
+	<exercise>
+		<problem>
+			<para>For each of the sets below determine if it is bounded above or below. If so suggest an upper, respectively a lower bound.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>The set <latex>S:=\CCIntrvl{-10}{10}</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para>This set is bounded above by <latex>10</latex> or any <latex>u\in \RNr</latex> with <latex>u\geq 10</latex>. It is bounded below by <latex>-10</latex> or any <latex>l\in \RNr</latex> with <latex>l\leq -10</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The set <latex magnify="yes">T:=\Set{ \tfrac{x}{x+3}\in \RNr \st x\geq 0 }</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para>This set is bounded below by any <latex>l\in \RNr</latex> with <latex>l\leq 0</latex>. It is bounded above by any <latex>u\in \RNr</latex> with <latex>u\geq 1</latex>.</para>
+				</answer>
+				<solution.hint>
+					<para>The elements of <latex>T</latex> are ratios of the form <latex magnify="yes">\tfrac{x}{x+3}</latex> with <latex>x\geq 0</latex>. So compare the size of numerator <latex>x</latex> to the size of the denominator <latex>x+3</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The set <latex>\NNr</latex> of natural numbers.</para>
+			</problem>
+		</part>
+		<part>
+			<problem><para>The set <latex>\ZNr</latex> of integers</para></problem>
+		</part>
+		<part>
+			<problem><para>The set <latex>\QNr</latex> of rational numbers</para></problem>
+		</part>
+		<part>
+			<problem><para>The set <latex>U:=\Set{ t\in \RNr \st t^2\leq 4}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para>The set <latex>V:=\Set{ s\in \RNr \st s^3\leq 8}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para>The set <latex>A:=\Set{ x\in \RNr \st \sin x \geq 0}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para>The set <latex>B:=\Set{ y\in \RNr \st \cos y \geq 2}</latex></para></problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>In each of the problems below use the completeness axiom to show that there is exactly one number with the stated property. Then show that this number is not rational.</para>
+		</problem>
+		<part>
+			<problem><para>a number <latex>x</latex> with <latex>x^2=3</latex></para></problem>
+		</part>
+		<part>
+			<problem><para>a number <latex>s</latex> with <latex>s^2=5</latex></para></problem>
+		</part>
+		<part>
+			<problem><para>If <latex>t\in\NNr</latex> is a prime number, a number <latex>x</latex> with <latex>x^2=t</latex>.</para></problem>
+		</part>
+	</exercise>
+</exercise.pack>

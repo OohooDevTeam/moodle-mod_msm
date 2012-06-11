@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_Basis">
+	<title>Basis - Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>Let&rsquo;s examine a bit what the concept of a basis really means.</para>
+			<para>The first condition: <latex>\EuScript{B}</latex> spans <latex>V</latex> means that every vector <latex>\Vect{x}</latex> in <latex>V</latex> can be expressed in some way as a linear combination of vectors in <latex>\EuScript{B}</latex>:</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>t_1\Vect{b}_1 + \cdots + t_k\Vect{b}_k</right>
+			</computation>
+			<para>with <latex>\Vect{b}_1, \dots ,\Vect{b}_k</latex> in <latex>\EuScript{B}</latex> and <latex>t_1, \dots ,t_k</latex> in <latex>\RNr</latex>. &ndash; Now, if there is one way of expressing <latex>\Vect{x}</latex> as a linear combination of vectors in <latex>\EuScript{B}</latex>, there might be many ways of doing so. This is where the second requirement for a basis comes in:</para>
+			
+			<para><latex>\EuScript{B}</latex> is linearly independent. This means that if <latex>\Vect{x}</latex> can be expressed as a linear combination of vectors in <latex>\EuScript{B}</latex>, then there is exactly one way of doing so.</para>
+			
+			<para>The two conditions combined, then, tell us that every vector in <latex>V</latex> can be expressed in exactly one way as a linear combination of vectors in <latex>\EuScript{B}</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

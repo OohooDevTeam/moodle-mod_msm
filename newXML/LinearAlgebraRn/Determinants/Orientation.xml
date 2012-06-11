@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_Orientation"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Orientation of Space</title>
+      <plain.title>Orientation</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In this section, we introduce the concept of ‘orientation of space’. It is the key to a geometric interpretation of the determinant, developed in the next section.</para.body>
+            </para>
+            <para>
+               <para.body>‘Orientation of space’ is as fundamental as the fact that we have two kinds of hands, ‘left’ and ‘right’. Reflection through a mirror turns the image of one hand into an image of the other hand. But there is no known way of physically turning a right hand into a left hand or vice versa.</para.body>
+            </para>
+            <para>
+               <para.body>Thus we need to find a mathematical way of distinguishing between ‘left hand’ and ‘right hand’ and, more generally, an object from its mirrored sibling. – The concept of orientation of space does exactly that.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_nDimensionalOrientation">
+         <titles>
+            <title>n-Dimensional Orientation</title>
+            <plain.title>n-Dimensional Orientation</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_Orientation">
+                     <caption>Orientation</caption>
+                     <associate type="Comment">
+                        <info>
+                           <para>
+                              <para.body>Thus <math>
+                                    <latex>\omega(\Vect{x}_1,\dots ,\Vect{x}_n)</latex>
+                                 </math> is either <math>
+                                    <latex>+1</latex>
+                                 </math> or <math>
+                                    <latex>-1</latex>
+                                 </math>. More specifically:</para.body>
+                           </para>
+                           <ul>
+                              <li>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\omega(\Vect{x}_1,\dots ,\Vect{x}_n) = +1</latex>
+                                       </math> if <math>
+                                          <latex>\det[\Vect{x}_1,\dots ,\Vect{x}_n]</latex>
+                                       </math> is positive.</para.body>
+                                 </para>
+                              </li>
+                              <li>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\omega(\Vect{x}_1,\dots ,\Vect{x}_n) = -1</latex>
+                                       </math> if <math>
+                                          <latex>\det[\Vect{x}_1,\dots ,\Vect{x}_n]</latex>
+                                       </math> is negative.</para.body>
+                                 </para>
+                              </li>
+                           </ul>
+                        </info>
+                     </associate>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_Orientation"/>
+                        <info>
+                           <info.caption>Example</info.caption>
+                           <para>
+                              <para.body>Examples of finding the orientation given by a tuple of vectors.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>An <math>
+                                 <latex>n</latex>
+                              </math>-tuple of vectors <math>
+                                 <latex>(\Vect{x}_1,\dots ,\Vect{x}_n)</latex>
+                              </math> in <math>
+                                 <latex>\RNr[n]</latex>
+                              </math> with <math>
+                                 <latex>\det[ \Vect{x}_1\ \dots\ \Vect{x}_n]\neq 0</latex>
+                              </math> represents the orientation</para.body>
+                        </para>
+                        <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>\omega(\Vect{x}_1,\dots ,\Vect{x}_n)</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <text>:=</text>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>\dfrac{\det [ \Vect{x}_1\ \dots\ \Vect{x}_n]}{\abs{ \det [ \Vect{x}_1\ \dots\ \Vect{x}_n] } }</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+                     </def.body>
+                  </def>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="OrientationProperties_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_1DimensionalOrientation">
+         <titles>
+            <title>1-Dimensional Orientation</title>
+            <plain.title>1-Dimensional Orientation</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>‘Forward’ and ‘backward’ on a line are 
+				<subordinate>
+                           <hot>mirrored siblings</hot>
+                           <companion>
+                              <unit.ref unitId="Sub_Orientation1"/>
+                              <info>
+                                 <para>
+                                    <para.body>Details on this</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>.
+				An orientation of <math>
+                           <latex>\RNr</latex>
+                        </math> is given by a choice of one of these two directions. We use a nonzero vector <math>
+                           <latex>\Vect{x}=(x)</latex>
+                        </math> to represent these directions. We adopt the convention that
+				</para.body>
+                     <index.glossary>
+                        <term>orientation</term>
+                        <term>1-dimensional</term>
+                     </index.glossary>
+                  </para>
+                  <table align="center"
+                         border="3"
+                         cellpadding="2"
+                         cellspacing="3"
+                         bordercolor="Maroon">
+                     <row>
+                        <cell>
+                           <para>
+                              <para.body>If </para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>we find</para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>and say</para.body>
+                           </para>
+                        </cell>
+                     </row>
+                     <row>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\omega(\Vect{x}) = +1</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex> x&gt;0 </latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> represents the positive orientation of <math>
+                                    <latex>\RNr</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                     </row>
+                     <row>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\omega(\Vect{x}) = -1</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex> x&lt;0 </latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> represents the negative orientation of <math>
+                                    <latex>\RNr</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                     </row>
+                  </table>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_2DimensionalOrientation">
+         <titles>
+            <title>2-Dimensional Orientation</title>
+            <plain.title>2-Dimensional Orientation</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>‘Counterclockwise’ and ‘clockwise’ motions in the plane are 
+				<subordinate>
+                           <hot>mirrored siblings</hot>
+                           <companion>
+                              <unit.ref unitId="Sub_Orientation2"/>
+                              <info>
+                                 <para>
+                                    <para.body>Details on this</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>.
+				An orientation of <math>
+                           <latex>\RNr[2]</latex>
+                        </math> is given by a choice of one of these two directions. We use an ordered pair <math>
+                           <latex>(\Vect{x},\Vect{y})</latex>
+                        </math> of noncolinear vectors to represent these directions. We adopt the convention that
+				</para.body>
+                     <index.glossary>
+                        <term>orientation</term>
+                        <term>2-dimensional</term>
+                     </index.glossary>
+                  </para>
+                  <table align="center"
+                         border="3"
+                         cellpadding="2"
+                         cellspacing="3"
+                         bordercolor="Maroon">
+                     <row>
+                        <cell>
+                           <para>
+                              <para.body>If</para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>we find</para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>and say</para.body>
+                           </para>
+                        </cell>
+                     </row>
+                     <row>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\omega(\Vect{x},\Vect{y}) = +1</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>The lesser of the two angles from <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> to <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math> occurs in the counterclockwise direction</para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>(\Vect{x},\Vect{y})</latex>
+                                 </math> represents the positive orientation of <math>
+                                    <latex>\RNr[2]</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                     </row>
+                     <row>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\omega(\Vect{x},\Vect{y}) = -1</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>The lesser of the two angles from <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> to <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math> occurs in the clockwise direction</para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>(\Vect{x},\Vect{y})</latex>
+                                 </math> represents the negative orientation of <math>
+                                    <latex>\RNr[2]</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                     </row>
+                  </table>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_3DimensionalOrientation">
+         <titles>
+            <title>3-Dimensional Orientation</title>
+            <plain.title>3-Dimensional Orientation</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>‘Right hand’ and ‘left hand’ in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> are 
+				<subordinate>
+                           <hot>mirrored siblings</hot>
+                           <companion>
+                              <unit.ref unitId="Sub_Orientation3"/>
+                              <info>
+                                 <para>
+                                    <para.body>Details on this</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>. 
+				An orientation of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> is given by a choice of one of these two hands. We use an ordered triple <math>
+                           <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                        </math> of noncoplanar vectors to represent such a choice, and adopt the convention that
+				</para.body>
+                     <index.glossary>
+                        <term>orientation</term>
+                        <term>3-dimensional</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>orientation</term>
+                        <term>right hand</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>orientation</term>
+                        <term>left hand</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>right hand</term>
+                        <term>orientation</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>left hand</term>
+                        <term>orientation</term>
+                     </index.glossary>
+                  </para>
+                  <table align="center"
+                         border="3"
+                         cellpadding="2"
+                         cellspacing="3"
+                         bordercolor="Maroon">
+                     <row>
+                        <cell>
+                           <para>
+                              <para.body>If</para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>we find</para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>and say</para.body>
+                           </para>
+                        </cell>
+                     </row>
+                     <row>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = +1</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>It is possible to align your right hand's thumb with <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math>, its index finger with <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math>, and its 
+						<subordinate>
+                                    <hot>middle finger</hot>
+                                    <info>
+                                       <para>
+                                          <para.body>Without harming your hand</para.body>
+                                       </para>
+                                    </info>
+                                 </subordinate>
+						with <math>
+                                    <latex>\Vect{z}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                                 </math> represents the positive orientation of <math>
+                                    <latex>\RNr[3]</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                     </row>
+                     <row>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = -1</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>It is possible to align your left hand's thumb with <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math>, its index finger with <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math>, and its 
+						<subordinate>
+                                    <hot>middle finger</hot>
+                                    <info>
+                                       <para>
+                                          <para.body>Without harming your hand</para.body>
+                                       </para>
+                                    </info>
+                                 </subordinate>
+						with <math>
+                                    <latex>\Vect{z}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </cell>
+                        <cell>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                                 </math> represents the negative orientation of <math>
+                                    <latex>\RNr[3]</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </cell>
+                     </row>
+                  </table>
+                  <comment type="Comment">
+                     <comment.body>
+                        <para>
+                           <para.body>In <math>
+                                 <latex>\RNr[3]</latex>
+                              </math>, orientation and rotation about an oriented axis according to the right/left hand rule are 
+					<subordinate>
+                                 <hot>closely related concepts</hot>
+                                 <companion>
+                                    <unit.ref unitId="Sub_RLHandRule"/>
+                                    <info>
+                                       <para>
+                                          <para.body>Details on this</para.body>
+                                       </para>
+                                    </info>
+                                 </companion>
+                              </subordinate>.
+				</para.body>
+                           <index.glossary>
+                              <term>right hand</term>
+                              <term>rule</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>left hand</term>
+                              <term>rule</term>
+                           </index.glossary>
+                        </para>
+                     </comment.body>
+                  </comment>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_0DimensionalOrientation">
+         <titles>
+            <title>0-Dimensional Orientation</title>
+            <plain.title>0-Dimensional Orientation</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>In addition, it is useful to distinguish two orientations on a 0-dimensional space; i.e. of a point. An orientation of a point <math>
+                           <latex>P</latex>
+                        </math> is given by assigning the value <math>
+                           <latex>+1</latex>
+                        </math> or <math>
+                           <latex>-1</latex>
+                        </math> to <math>
+                           <latex>P</latex>
+                        </math>.</para.body>
+                  </para>
+                  <para>
+                     <para.body>This formal definition has no intuitive content. Still, it is useful, for example, in the formulation of the 
+				<subordinate>
+                           <hot>Fundamental Theorem of Calculus</hot>
+                           <companion>
+                              <unit.ref unitId="Sub_Orientation0"/>
+                              <info>
+                                 <para>
+                                    <para.body>Details on this use of <math>
+                                          <latex>0</latex>
+                                       </math>-dimensional orientation</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>
+				and its generalization to Stokes' Theorem.</para.body>
+                  </para>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_Orientation"/>
+      <exercise.pack.ref exercisePackID="Exe_OrientationTF"/>
+   </studymaterials>
+</unit>

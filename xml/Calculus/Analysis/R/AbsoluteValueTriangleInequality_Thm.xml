@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_AbsoluteValueTriangleInequality">
+	<caption>Triangle inequality of &nbsp; &lsquo;absolute value&rsquo;</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation</caption>
+			<para>The inequality <latex>\Abs{ x+y } \leq \Abs{x} + \Abs{y}</latex> may be interpreted as: the distance of <latex>x+y</latex> from 0 is less than or equal to the distance of <latex>x</latex> from 0 plus the distance of <latex>y</latex> from 0.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>For all <latex>x,y\in \RNr</latex> the following inequalities hold</para>
+<!--		<part partid="Triangle1">
+			<para><latex>\Abs{ x+y } \leq \Abs{x} + \Abs{y}</latex></para>
+		</part>
+		<part partid="Triangle2">
+			<para><latex>\Abs{ x } - \Abs{ y } \leq \Abs{ x-y } \leq \Abs{ x } + \Abs{ y }</latex></para>
+		</part>
+		<part partid="Triangle3">
+			<para><latex>\Abs{ \Abs{x} - \Abs{y} } \leq \Abs{ x-y }</latex></para>
+			</part>-->
+		<math.display>
+			<latex>\Abs{x} - \Abs{y} \leq \Abs{ \Abs{x} - \Abs{y} } \leq \Abs{ x \pm y } \leq \Abs{x} + \Abs{y}</latex>
+		</math.display>
+	</statement>
+	<proof type="Proof">
+		<para>We break the proof down into several steps.</para>
+		<caption>Step 1: <latex>\Abs{x + y} \leq \Abs{x} + \Abs{y}</latex></caption>
+		<para>We use the triangle inequality of the distance operation</para>
+		<computation>
+			<left>\Dstnc{ x+y }{ 0 }</left>
+			<center>\leq	<info><para>By the triangle inequality</para></info></center>
+			<right>\Dstnc{x}{0} + \Dstnc{0}{y}</right>
+			<left>\Abs{ x+y - 0 }</left>
+			<center>\leq	<info><para>By the definition of the distance operation</para></info></center>
+			<right>\Abs{ x-0 } + \Abs{ 0-y }</right>
+			<left>\Abs{ x+y }</left>
+			<center>\leq	<info><para>Because <latex>\Abs{ y } = \Abs{ -y }</latex> for all <latex>y\in \RNr</latex></para></info></center>
+			<right>\Abs{ x } + \Abs{ y }</right>
+		</computation>
+		
+		<caption>Step 2: <latex>\Abs{x-y} \leq \Abs{x} + \Abs{ y }</latex></caption>
+		<para>We invoke the inequality from Step 1:</para>
+		<math.display>
+			<latex>\Abs{ x - y } = \Abs{ x + (-y) } \leq \Abs{ x } + \Abs{ -y } = \Abs{ x } + \Abs{ y }</latex>
+		</math.display>
+		
+		
+		<caption>Step 3: <latex>\Abs{ x } - \Abs{ y } \leq \Abs{ x-y }</latex></caption>
+		<para>To see this, observe</para>
+		<math.display>
+			<latex>\Abs{ x } = \Abs{ (x - y) + y } \leq \Abs{ x-y } + \Abs{ y }</latex>
+		</math.display>
+		<para>Now subtracting <latex>\Abs{y}</latex> on both sides gives</para>
+		<math.display>
+			<latex>\Abs{x-y} \leq \Abs{x} + \Abs{ y }</latex>
+		</math.display>
+		
+		
+		<caption>Step 4: <latex>\Abs{ \Abs{ x } - \Abs{ y } } \leq \Abs{ x - y }</latex></caption>
+		<para>Using Step 3, we see.</para>
+		<math.display>
+			<latex>-(\Abs{x} - \Abs{y}) = \Abs{y} - \Abs{x} \leq \Abs{ y - x } = \Abs{ x-y}</latex>
+		</math.display>
+		<para>Multiplying both sides of this inequality by <latex>(-1)</latex> gives</para>
+		<math.display>
+			<latex>-\Abs{ x-y} \leq \Abs{x} - \Abs{y}</latex>
+		</math.display>
+		<para>Combining this with the inequality in Step 3 gives</para>
+		<math.display>
+			<latex>-\Abs{ x-y } \leq \Abs{x} - \Abs{y} \leq \Abs{x-y}</latex>
+		</math.display>
+		<para>and so</para>
+		<math.display>
+			<latex>\Abs{ \Abs{x} - \Abs{y} } \leq \Abs{ x-y }</latex>
+		</math.display>
+		
+		<caption>Step 5: <latex>\Abs{x} - \Abs{y} \leq \Abs{ \Abs{x} - \Abs{y} }</latex></caption>
+		<para>For arbitrary <latex>t\in \RNr</latex> we have <latex>t\leq \Abs{t}</latex>. Setting <latex>t:=\Abs{x} - \Abs{y}</latex> gives the claim in Step 5. &ndash; The proof of the corollary is complete.</para>
+	</proof>
+</theorem>

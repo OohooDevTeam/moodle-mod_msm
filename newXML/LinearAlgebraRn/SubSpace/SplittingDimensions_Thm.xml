@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_SplittingDimensions"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>U</latex>
+            </math>, <math>
+               <latex>V</latex>
+            </math>, and <math>
+               <latex>W</latex>
+            </math> be sub vector spaces of <math>
+               <latex>\RNr[n]</latex>
+            </math> satisfying</para.body>
+      </para>
+      <ol>
+         <li>
+            <para>
+               <para.body>
+                  <subordinate>
+                     <hot>
+                        <math>
+                           <latex>\span(U\cap V) = \Set{ \Vect{0} }</latex>
+                        </math>
+                     </hot>
+                     <info>
+                        <para>
+                           <para.body>Read this as: ‘U intersection V equals the set consisting of the <math>
+                                 <latex>\Vect{0}</latex>
+                              </math>-vector</para.body>
+                        </para>
+                        <para>
+                           <para.body>Meaning: <math>
+                                 <latex>U</latex>
+                              </math> and <math>
+                                 <latex>V</latex>
+                              </math> have only the zero vector in common.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+               </para.body>
+            </para>
+         </li>
+         <li>
+            <para>
+               <para.body>
+                  <subordinate>
+                     <hot>
+                        <math>
+                           <latex>\span(U\cup V) = W</latex>
+                        </math>
+                     </hot>
+                     <info>
+                        <para>
+                           <para.body>Read this as: ‘U union V equals W</para.body>
+                        </para>
+                        <para>
+                           <para.body>Meaning: the sets <math>
+                                 <latex>U</latex>
+                              </math> and <math>
+                                 <latex>V</latex>
+                              </math> together span <math>
+                                 <latex>W</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+               </para.body>
+            </para>
+         </li>
+      </ol>
+      <para>
+         <para.body>If <math>
+               <latex>\EuScript{A}</latex>
+            </math> is a basis of <math>
+               <latex>U</latex>
+            </math>, and <math>
+               <latex>\EuScript{C}</latex>
+            </math> is a basis of <math>
+               <latex>V</latex>
+            </math>, then <math>
+               <latex>\EuScript{B} := \EuScript{A} \cup \EuScript{C}</latex>
+            </math> is a basis of <math>
+               <latex>W</latex>
+            </math> and, consequently,</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\dim(W)</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\dim(U) + \dim(V)</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>Let <math>
+                     <latex>\Vect{w}\in W</latex>
+                  </math> be arbitrary. We need to show that <math>
+                     <latex>\Vect{w}</latex>
+                  </math> is a linear combination of vectors in <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>Consider an expansion of the zero vector as a linear combination of <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

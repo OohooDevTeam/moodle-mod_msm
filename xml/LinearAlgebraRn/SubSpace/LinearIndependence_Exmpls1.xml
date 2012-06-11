@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearIndependenceFacts">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Linear Independence, Facts: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Show that any collection of two or more vectors in <latex>\RNr</latex> is linearly dependent.</para>
+		</statement>
+		<answer type="Solution">
+			<para>To see that any collection of two or more vectors in <latex>\RNr</latex> is linearly dependent we use that part iii. of the 
+				<subordinate>
+					<hot>lemma</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+						<para>Look up this fact</para>
+					</crossref>
+				</subordinate>. Then we observe that <latex>\RNr</latex> is spanned by a single vector, for example <latex>\StdBss{1} = (1)</latex>. So if any collection of vectors in <latex>\RNr</latex> is to be linearly independent, the number of vectors in the collection must be 0 or 1. Accordingly, a collection of two or more vectors in <latex>\RNr</latex> is linearly dependent.</para>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Show that any collection of three or more vectors in <latex>\RNr[2]</latex> is linearly dependent.</para>
+		</statement>
+		<answer type="Solution">
+			<para>To see that any collection of three or more vectors in <latex>\RNr[2]</latex> is linearly dependent we use that part iii. of the 
+				<subordinate>
+					<hot>lemma</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+						<para>Look up this fact</para>
+					</crossref>
+				</subordinate>. Indeed, we observe that <latex>\RNr[2]</latex> is spanned by a two vectors, for example <latex>\StdBss{1} = (1,0)</latex> and <latex>\StdBss{2}=(0,1)</latex>. This is so because every vector <latex>\Vect{x}=(a,b)</latex> in <latex>\RNr[2]</latex> may be expressed as the linear combination</para>
+			<computation>
+				<left>(a,b)</left>
+				<center>=</center>
+				<right>a\cdot \StdBss{1} + b\cdot \StdBss{2}</right>
+			</computation>
+			<para>So if any collection of vectors in <latex>\RNr[2]</latex> is to be linearly independent, the number of vectors in the collection must be less than or equal to 2. Accordingly, a collection of three or more vectors in <latex>\RNr[2]</latex> is linearly dependent.</para>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Show that any collection of four or more vectors in <latex>\RNr[3]</latex> is linearly dependent.</para>
+		</statement>
+		<answer type="Solution">
+			<para>To see that any collection of four or more vectors in <latex>\RNr[3]</latex> is linearly dependent we use that part iii. of the 
+				<subordinate>
+					<hot>lemma</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+						<para>Look up this fact</para>
+					</crossref>
+				</subordinate>. Indeed, we observe that <latex>\RNr[3]</latex> is spanned by a three vectors, for example <latex>\StdBss{1} = (1,0,0)</latex>, <latex>\StdBss{2}=(0,1,0)</latex> and <latex>\StdBss{3}=(0,0,1)</latex>. This is so because every vector <latex>\Vect{x}=(a,b,c)</latex> in <latex>\RNr[3]</latex> may be expressed as the linear combination</para>
+			<computation>
+				<left>(a,b,c)</left>
+				<center>=</center>
+				<right>a\cdot \StdBss{1} + b\cdot \StdBss{2} + c\cdot \StdBss{3}</right>
+			</computation>
+			<para>So if any collection of vectors in <latex>\RNr[3]</latex> is to be linearly independent, the number of vectors in the collection must be less than or equal to 3. Accordingly, a collection of four or more vectors in <latex>\RNr[3]</latex> is linearly dependent.</para>
+		</answer>
+	</showme>
+</showme.pack>

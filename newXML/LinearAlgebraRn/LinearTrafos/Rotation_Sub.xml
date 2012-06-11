@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_Rotation"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Dilation Transformations</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The counterclockwise rotation of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> about the origin through the angle <math>
+                     <latex>\theta</latex>
+                  </math> is given by </para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+R_{\theta}\from \RNr[2] \longrightarrow \RNr[2],\quad R_{\theta}(x,y) = 
+\left[
+\begin{array}{rr}
+\cos\theta &amp; -\sin\theta \\
+\sin\theta &amp; \cos\theta
+\end{array}
+\right]
+\left[
+\begin{array}{r} x \\ y \end{array}
+\right]
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>To understand where this matrix comes from, consider the picture below</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Rotation.png"/>
+               <extended.caption>The counterclockwise rotation of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> about the origin through the angle <math>
+                     <latex>\theta</latex>
+                  </math>
+               </extended.caption>
+            </media>
+            <para>
+               <para.body>Both <math>
+                     <latex>R(\StdBss{1})</latex>
+                  </math> and <math>
+                     <latex>R(\StdBss{2})</latex>
+                  </math> result from rotating <math>
+                     <latex>\StdBss{1}</latex>
+                  </math> and <math>
+                     <latex>\StdBss{2}</latex>
+                  </math> counterclockwise about the origin through the angle <math>
+                     <latex>\theta</latex>
+                  </math>. So they are vectors of length <math>
+                     <latex>1</latex>
+                  </math>. Therefore the coordinates of these vectors are as indicated.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

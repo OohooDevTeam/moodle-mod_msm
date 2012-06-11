@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_InfSupSequence">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Infimum and Supremum of Sequences: Examples</title>
+	<showme>
+		<statement>
+			<para>Suppose <latex>(a_n)</latex> is a sequence with <latex>\sup(a_n) = \lambda</latex>. Find</para>
+			<math.display>
+				<latex>\sup(a_n +1),\quad \sup(2a_n),\quad \sup(a_{n}^{2})</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution" version="1">
+			<para><b>Very detailed</b> &nbsp; We know that <latex>\lambda</latex> is the least upper bound of the set</para>
+			<math.display>
+				<latex>A := \Set{ a_n \st n\in \NNr}</latex>
+			</math.display>
+			<para>To find <latex>\sup(a_n+1)</latex>, we need to find the least upper bound of the set</para>
+			<math.display>
+				<latex>B:=\Set{a_n + 1\st n\in \NNr}.</latex>
+			</math.display>
+			<para></para>
+			<para>Now a number <latex>x</latex> belongs to <latex>A</latex> if and only if <latex>x+1</latex> belongs to <latex>B</latex>. Thus, if <latex>u</latex> is an upper bound of <latex>A</latex>, then <latex>u+1</latex> is an upper bound of <latex>B</latex>. In particular, <latex>\lambda+1</latex> is an upper bound of <latex>B</latex>.</para>
+			<para>To see that <latex>\lambda+1</latex> is the least upper bound of <latex>B</latex>, consider first an arbitrary upper bound <latex>v</latex> of <latex>B</latex>. It follows that <latex>v-1</latex> is an upper bound of <latex>A</latex> and, therefore,</para>
+			<math.display>
+				<latex>\lambda \leq v-1</latex>
+			</math.display>
+			<para>equivalently, <latex>\lambda+1 \leq v</latex>. Thus <latex>\lambda+1</latex> is the least upper bound of <latex>B</latex>; in other words:</para>
+			<math.display>
+				<latex>\sup(a_n + 1) = \lambda +1</latex>
+			</math.display>
+		</answer>
+		<answer type="Solution" version="2">
+			<para><b>Compact</b> &nbsp; For <latex>u\in \RNrExt</latex><latex>\lambda \leq u</latex> is an upper bound of</para>
+			<math.display>
+				<latex>A := \Set{ a_n \st n\in \NNr}</latex>
+			</math.display>
+			<para>if and only if <latex>\lambda+1 \leq u+1</latex> is an upper bound of</para>
+			<math.display>
+				<latex>B := \Set{ a_n +1 \st n\in \NNr}</latex>
+			</math.display>
+			<para>Therefore, <latex>\sup(a_n +1) = \lambda + 1</latex>.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Suppose <latex>(a_n)</latex> is a sequence with <latex>\sup(a_n) = \lambda</latex>. Find</para>
+			<math.display>
+				<latex>\sup(2a_n),\quad \sup(a_{n}^{2})</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>Arguing similar to the previous example, we see</para>
+			<ul>
+				<li><para><latex>\sup(2a_n) = 2\sup(a_n) = 2 \lambda</latex></para></li>
+				<li><para><latex>\sup(a_{n}^{2}) = (\sup(a_n))^2 = \lambda^2</latex></para></li>
+			</ul>
+			
+		</answer>
+	</showme>
+</showme.pack>

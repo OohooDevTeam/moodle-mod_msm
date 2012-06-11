@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_LinearEquationsNullSpace"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Null space and orthogonal complement</caption>
+   <statement.theorem>
+      <para>
+         <para.body>The null space of an <math>
+               <latex>(m,n)</latex>
+            </math>-matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> is the orthogonal complement of the row vectors of <math>
+               <latex>\Mtrx{A}</latex>
+            </math> in <math>
+               <latex>\RNr[n]</latex>
+            </math>. Therefore <math>
+               <latex>\NllSp{A}</latex>
+            </math> is a subvector space of <math>
+               <latex>\RNr[n]</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>By definition, the null space of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> consists of all solutions of the matrix equation</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{A}\cdot\Vect{x}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{0}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Now express <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> in terms of its row vectors:</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+A = 
+\left[
+\begin{array}{c}
+R_1 \\ \vdots \\ R_m
+\end{array}
+\right]
+
+			</latex>
+            </math.display>
+            <para>
+               <para.body>Then we find:</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\Mtrx{A}\cdot\Vect{x} = 
+\left[
+\begin{array}{c}
+R_1 \\ \vdots \\ R_m
+\end{array}
+\right] \Vect{x} =
+\left[
+\begin{array}{c}
+\DotPr{ R_1 }{ \Vect{x} } \\ \vdots \\ \DotPr{ R_m }{ \Vect{x} }
+\end{array}
+\right]
+
+			</latex>
+            </math.display>
+            <para>
+               <para.body>and so we see that <math>
+                     <latex>\Vect{x}</latex>
+                  </math> is a solution of <math>
+                     <latex>\Mtrx{A}\cdot \Vect{x}=\Vect{0}</latex>
+                  </math> exactly when <math>
+                     <latex>\Vect{x}</latex>
+                  </math> is perpendicular to each of the row vectors <math>
+                     <latex>R_1</latex>
+                  </math>, ... , <math>
+                     <latex>R_m</latex>
+                  </math>. But this happens exactly when <math>
+                     <latex>\Vect{x}</latex>
+                  </math> belongs to the null space of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

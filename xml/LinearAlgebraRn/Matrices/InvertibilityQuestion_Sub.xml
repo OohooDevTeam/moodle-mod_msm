@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Info_InvertibilityQuestion">
+	<title>Not all Non-Zero Matrices are Invertible</title>
+	<sub.page.body>
+		<block>
+			<para>Here we consider the question: is every nonzero matrix invertible? &ndash; Within the system of real numbers, i.e. the <latex>(1,1)</latex>-matrices, this question has an easy answer: every nonzero number <latex>x</latex> in <latex>\RNr</latex> has the inverse <latex>1/x</latex>, hence <latex>x</latex>  is invertible.</para>
+			
+			<para>Unfortunately, in the world of matrices, things are not quite so easy. What get&rsquo;s in the way is that there are (lots of) pairs of matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{Z}</latex> with</para>
+			
+			<para align="center"><latex>\Mtrx{A}\cdot \Mtrx{Z} = \Mtrx{\mathbf{0}}</latex>, &nbsp; while &nbsp; <latex>\Mtrx{A}\neq \Mtrx{\mathbf{0}}</latex> &nbsp; and &nbsp; <latex>\Mtrx{Z}\neq \Mtrx{\mathbf{0}}</latex>.</para>
+			
+			<para>To see why such a situation causes problems, suppose we had the situation where</para>
+			
+			<para align="center"><latex>\Mtrx{A}\Mtrx{B} = \Mtrx{\mathbf{0}}</latex>, and there is a matrix <latex>\Mtrx{Z}</latex> with <latex>\Mtrx{Z}\Mtrx{A} = \IdMtrx[n]</latex>.</para>
+			
+			<para>Then we have</para>
+			
+			<math.display>
+				<latex>\Mtrx{B} = \IdMtrx[n]\Mtrx{B} = (\Mtrx{Z}\Mtrx{A})\Mtrx{B} = \Mtrx{Z}(\Mtrx{A}\Mtrx{B}) = \Mtrx{Z}\Mtrx{\mathbf{0}} = \Mtrx{\mathbf{0}}</latex>
+			</math.display>
+			
+			<para>a contradiction to the assumption that <latex>\Mtrx{B}</latex> is not the <latex>0</latex>-matrix.</para>
+			<para>Matrices such as <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> above are called <latex>0</latex>-divisors, and the argument we gave implies that a <latex>0</latex>-dividing matrix cannot have an inverse.</para>
+		</block>
+		
+		<block>
+			<para><b>Example</b> &nbsp; Here is a concrete example of the kind just discussed: the matrix identity</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\left[
+					\begin{array}{rr}
+					1 & 0 \\
+					0 & 0
+					\end{array}
+					\right]\, 
+					\left[
+					\begin{array}{rr}
+					0 & 0 \\
+					0 & 1
+					\end{array}
+					\right]\ =\ 
+					\left[
+					\begin{array}{rr}
+					0 & 0 \\
+					0 & 0
+					\end{array}
+					\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>implies that both of the matrices</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\left[
+					\begin{array}{rr}
+					1 & 0 \\
+					0 & 0
+					\end{array}
+					\right] \qquad \text{and} \qquad 
+					\left[
+					\begin{array}{rr}
+					0 & 0 \\
+					0 & 1
+					\end{array}
+					\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>are <latex>0</latex>-divisors. Therefore neither of them is invertible.</para>
+		</block>
+		</sub.page.body>
+</sub.page>

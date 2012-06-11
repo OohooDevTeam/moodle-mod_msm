@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_OrthogonalmpliesLinearIndependence"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Orthogonal set is linearly independent</caption>
+   <statement.theorem>
+      <para>
+         <para.body>An orthogonal set of vectors is linearly independent.</para.body>
+      </para>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>Consider a representation of <math>
+                     <latex>\Vect{0}</latex>
+                  </math> as a linear combination of pairwise distinct vectors in an orthogonal set <math>
+                     <latex>S</latex>
+                  </math>:</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1 \Vect{a}_1 + \cdots + t_m \Vect{a}_m</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{0}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>We need to show that <math>
+                     <latex>t_1=\cdots = t_m =0</latex>
+                  </math>. To test the value of <math>
+                     <latex>t_i</latex>
+                  </math>, we take the dot product of both sides of this equation by the vector <math>
+                     <latex>\Vect{a}_i</latex>
+                  </math>, and find</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1(\DotPr{ \Vect{a}_1 }{ \Vect{a}_i }) + \cdots + t_i(\DotPr{ \Vect{a}_i }{ \Vect{a}_i })+ \cdots + t_m(\DotPr{ \Vect{a}_m }{ \Vect{a}_i })</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\DotPr{ \Vect{0} }{ \Vect{a}_i }</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_i(\DotPr{ \Vect{a}_i }{ \Vect{a}_i })</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion>
+                        <info>
+                           <info.caption>
+                              <caption>Why is this so?</caption>
+                           </info.caption>
+                           <para>
+                              <para.body>Here we use that, for <math>
+                                    <latex>j\neq i</latex>
+                                 </math>, <math>
+                                    <latex>\Vect{a}_j</latex>
+                                 </math> is perpendicular to <math>
+                                    <latex>\Vect{a}_i</latex>
+                                 </math>, and so <math>
+                                    <latex>\DotPr{ \Vect{a}_j }{ \Vect{a}_i }=0</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>0</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>We have <math>
+                     <latex>\DotPr{ \Vect{a}_i }{ \Vect{a}_i } \neq 0</latex>
+                  </math> because <math>
+                     <latex>\Vect{a}_i\neq \Vect{0}</latex>
+                  </math> and, therefore, <math>
+                     <latex>t_i=0</latex>
+                  </math>. This implies that <math>
+                     <latex>S</latex>
+                  </math> is linearly independent.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

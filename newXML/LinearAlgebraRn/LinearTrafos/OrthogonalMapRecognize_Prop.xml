@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_OrthogonalMapRecognize"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Recognizing a distance preserving map</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation of <math>
+                  <latex>\DotPr{ A_j }{ A_j } = 1</latex>
+               </math>.</caption>
+         </info.caption>
+         <para>
+            <para.body>The identity <math>
+                  <latex>\DotPr{ A_j }{ A_j } = 1</latex>
+               </math> means that <math>
+                  <latex>A_j</latex>
+               </math> has length <math>
+                  <latex>1</latex>
+               </math>.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation of <math>
+                  <latex>\DotPr{ A_j }{ A_k } = 0</latex>
+               </math>
+            </caption>
+         </info.caption>
+         <para>
+            <para.body>The identity <math>
+                  <latex>\DotPr{ A_j }{ A_k } = 0</latex>
+               </math> for all <math>
+                  <latex>1\leq j\neq k\leq n</latex>
+               </math> means that any two distinct column vectors of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> are perpendicular.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>An <math>
+               <latex>(n,n)</latex>
+            </math>-matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> represents a distance preserving linear transformation <math>
+               <latex>L\from \RNr[n]\to \RNr[n]</latex>
+            </math> if and only if the column vectors of <math>
+               <latex>\Mtrx{A}</latex>
+            </math> satisfy both of the two conditions below:</para.body>
+      </para>
+      <ol>
+         <li>
+            <para>
+               <para.body>Each column vector <math>
+                     <latex>A_j</latex>
+                  </math> of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> satisfies <math>
+                     <latex>\DotPr{ A_j }{A_j} = 1</latex>
+                  </math>.</para.body>
+            </para>
+         </li>
+         <li>
+            <para>
+               <para.body>Whenever <math>
+                     <latex>1\leq j\neq k\leq n</latex>
+                  </math>, <math>
+                     <latex>\DotPr{ A_j }{ A_k } = 0</latex>
+                  </math>.</para.body>
+            </para>
+         </li>
+      </ol>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>L</latex>
+                  </math> preserves all distances, we need to show that the columns of the matrix representing <math>
+                     <latex>L</latex>
+                  </math> have the two properties stated above. Recalling that <math>
+                     <latex>L(\StdBss{j}) = A_j</latex>
+                  </math>, we compute</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> satisfies the conditions of the proposition, we need to show that <math>
+                     <latex>L</latex>
+                  </math> preserves distances; i.e. for all <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, <math>
+                     <latex>\abs{ L(\Vect{x}) } = \abs{ \Vect{x} }</latex>
+                  </math> or, equivalently, <math>
+                     <latex>\abs{ L(\Vect{x}) }^2 = \abs{ \Vect{x} }^2</latex>
+                  </math>. Now, if <math>
+                     <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
+                  </math>, then</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

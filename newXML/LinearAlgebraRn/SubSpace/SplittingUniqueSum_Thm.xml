@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_SplittingUniqueSum"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Splitting gives unique sum expression</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Given a subspace <math>
+               <latex>W</latex>
+            </math> of <math>
+               <latex>\RNr[n]</latex>
+            </math>, together with a splitting <math>
+               <latex>W=U\dotplus V</latex>
+            </math>, each <math>
+               <latex>\Vect{w}\in W</latex>
+            </math> can be expressed in exactly one way as <math>
+               <latex>\Vect{w}=\Vect{u}+\Vect{v}</latex>
+            </math>, with <math>
+               <latex>\Vect{u}\in U</latex>
+            </math> and <math>
+               <latex>\Vect{v}\in V</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>From the property that <math>
+                     <latex>W=\span(U\cup V)</latex>
+                  </math>, we deduce that <math>
+                     <latex>\Vect{w}\in W</latex>
+                  </math> can be expressed in some way as <math>
+                     <latex>\Vect{w}=\Vect{u}+\Vect{v}</latex>
+                  </math> with <math>
+                     <latex>\Vect{u}\in U</latex>
+                  </math> and <math>
+                     <latex>\Vect{v}\in V</latex>
+                  </math>. It remains to show that this is the only way to achieve such an expression. So consider the situation where there are <math>
+                     <latex>\Vect{u},\Vect{u}'\in U</latex>
+                  </math> and <math>
+                     <latex>\Vect{v},\Vect{v}'\in V</latex>
+                  </math> with</para.body>
+            </para>
+            <math.display>
+               <latex>\Vect{u} + \Vect{v} = \Vect{w} = \Vect{u}' + \Vect{v}'</latex>
+            </math.display>
+            <para>
+               <para.body>We then have</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{u} - \Vect{u}'</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{v}' - \Vect{v}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Now <math>
+                     <latex>(\Vect{u}-\Vect{u}')\in U</latex>
+                  </math> because <math>
+                     <latex>U</latex>
+                  </math> is closed under vector addition and scalar multiplication, and <math>
+                     <latex>(\Vect{v}'-\Vect{v})\in V</latex>
+                  </math> because <math>
+                     <latex>V</latex>
+                  </math> is closed under vector addition and scalar multiplication. This means that <math>
+                     <latex>(\Vect{u}-\Vect{u}')</latex>
+                  </math> belongs to both, <math>
+                     <latex>U</latex>
+                  </math> and <math>
+                     <latex>V</latex>
+                  </math> and, therefore,</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{u} - \Vect{u}'</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{0}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{u}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{u}'</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>The identity <math>
+                     <latex>\Vect{v}=\Vect{v}'</latex>
+                  </math> follows with a similar argument. This proves the claim.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

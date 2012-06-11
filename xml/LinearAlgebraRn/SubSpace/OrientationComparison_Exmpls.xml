@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_OrientationComparison">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Orientation Comparison: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Let <latex>V:= (1,1,1)^{\bot}</latex> be the orthogonal complement of the vector <latex>(1,1,1)</latex> in <latex>\RNr[3]</latex>. Check that</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rclrclrcl}
+\EuScript{B} & := & (\Vect{b}_1,\Vect{b}_2) &\quad \Vect{b}_1 & := & (1,0,-1), & \quad \Vect{b}_2 & := & (2,-1,-1) \\
+\EuScript{C} & := & (\Vect{c}_1,\Vect{c}_2) &\quad \Vect{c}_1 & := & (0,-1,1), & \quad \Vect{c}_2 & := & (1,-2,1)
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>are two ordered bases of <latex>V</latex>. Then test whether they determine the same or opposite orientations of <latex>V</latex>.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>First we show that <latex>\EuScript{B}</latex> and <latex>\EuScript{C}</latex> are bases of <latex>V</latex>: We know that</para>
+			<computation>
+				<left>\dim(\span(1,1,1))</left>
+				<center>=</center>
+				<right>1</right>
+			</computation>
+			<para>Therefore</para>
+			<computation>
+				<left>\dim(V)</left>
+				<center>=</center>
+				<right>\dim(\RNr[3]) - \dim(\span(1,1,1)) = 2</right>
+			</computation>
+			<para>This 
+				<subordinate>
+					<hot>means</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
+						<caption>Why is this so?</caption>
+						<para>Two linearly independent vectors in <latex>V</latex> span a <latex>2</latex>-dimensional subspace <latex>W</latex> of <latex>V</latex>. However, <latex>\dim(V) = 2</latex>, and so <latex>V=W</latex>. &ndash; Look up this theorem.</para>
+					</crossref>
+				</subordinate>
+				that any two linearly independent vectors in <latex>V</latex> form a basis of <latex>V</latex>. So we check that</para>
+			<ol>
+				<li><para><latex>\Vect{b}_1</latex>, <latex>\Vect{b}_2</latex>, <latex>\Vect{c}_1</latex>, <latex>\Vect{c}_2</latex> belong to <latex>V</latex> by confirming that the dot product of each of these vectors with <latex>(1,1,1)</latex> is 0, and</para></li>
+				<li><para><latex>\Vect{b}_1, \Vect{b}_2</latex> are linearly independent because</para>
+					<math.display>
+						<latex><![CDATA[
+\det
+\left[
+\begin{array}{rr}
+1 & 2 \\
+0 & -1
+\end{array}
+\right] = -1 \neq 0
+							]]></latex>
+					</math.display>
+				</li>
+				<li><para><latex>\Vect{c}_1, \Vect{c}_2</latex> are linearly independent because</para>
+					<math.display>
+						<latex><![CDATA[
+\det
+\left[
+\begin{array}{rr}
+0 & 1 \\
+-1 & -2
+\end{array}
+\right] = 1 \neq 0
+							]]></latex>
+					</math.display>
+				</li>
+			</ol>
+			<para>To compare the orientations of <latex>V</latex> determined by <latex>\EuScript{B}</latex> and <latex>\EuScript{C}</latex> we look first for the matrix which converts from <latex>\EuScript{C}</latex>-coordinates to <latex>\EuScript{B}</latex>-coordinates. To this end we express the basis vectors of <latex>\EuScript{C}</latex> as linear combinations of those of <latex>\EuScript{B}</latex>.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcccccl}
+\Vect{c}_1 & = & (0,-1,1) & = & -2(1,0,-1) + (2,-1,-1) & = & -2\Vect{b}_1 + 1\Vect{b}_2 \\
+\Vect{c}_2 & = & (1,-2,1) & = & -3(1,0,-1) + 2(2,-1,-1) & = & -3\Vect{b}_1 + 2\Vect{b}_2
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>Therefore,</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+C_{\EuScript{B}}\EuScript{C}} = 
+\left[
+\begin{array}{rr}
+-2 & -3 \\
+1 & 2
+\end{array}
+\right]\quad \text{and}\quad
+\det(C_{\EuScript{B}\EuScript{C}}) = -1 < 0
+]]>
+				</latex>
+			</math.display>
+			<para>Therefore the ordered bases <latex>\EuScript{B}</latex> and <latex>\EuScript{C}</latex> determine opposite orientations of  <latex>V</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

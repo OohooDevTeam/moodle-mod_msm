@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_SubSpace"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Subvector space - Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A subvector space of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> is a collection of vectors <math>
+                     <latex>V</latex>
+                  </math> containing the 0-vector and which is closed under vector addition and scalar multiplication of a vector in <math>
+                     <latex>V</latex>
+                  </math> by a number. Here is a visual interpretation of what this means.</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> are vectors in <math>
+                           <latex>V</latex>
+                        </math>, then <math>
+                           <latex>\Vect{x}+\Vect{y}</latex>
+                        </math> is also in <math>
+                           <latex>V</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is a vector in <math>
+                           <latex>V</latex>
+                        </math>, and <math>
+                           <latex>t</latex>
+                        </math> is a number, then <math>
+                           <latex>t \Vect{x}</latex>
+                        </math> is also in <math>
+                           <latex>V</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SubSpaceClosedAddition.gif"/>
+               <extended.caption>The sum of two vectors in <math>
+                     <latex>V</latex>
+                  </math> is again in <math>
+                     <latex>V</latex>
+                  </math>.</extended.caption>
+            </media>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SubSpaceClosedScalarMultiplication.gif"/>
+               <extended.caption>The scalar multiple of <math>
+                     <latex>\Vect{x}</latex>
+                  </math> by any number is again in <math>
+                     <latex>V</latex>
+                  </math>.</extended.caption>
+            </media>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In contrast, here is a subset <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> which is not a subvector space.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SubSetNotClosedAddition.gif"/>
+            </media>
+            <para>
+               <para.body>Indeed, there are (at least) two vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> whose sum <math>
+                     <latex>\Vect{x} + \Vect{y}</latex>
+                  </math> is not in <math>
+                     <latex>V</latex>
+                  </math>; i.e. this line is not closed under vector addition, hence is not a subvector space.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

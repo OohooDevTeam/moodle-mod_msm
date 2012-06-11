@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_MonotoneBoundedSequenceConverges">
+	<title>Monotone Bounded Sequence Converges: Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>If an increasing sequence <latex>(x_n)</latex> is bounded above, then <latex>(x_n)</latex> converges to a number in <latex>\RNr</latex>. Intuitively this is quite plausible as the graphic below shows.</para>
+			<figure>
+				<img src="ims/MonotoneBounded.png"></img><!-- svg available -->
+			</figure>
+			<para>The sequence is increasing but gets squeezed below an upper bound. So it converges to the infimum of all upper bounds.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_SubSpaceClosedScalarMult">
+	<title>Sub Vector Space is Closed under Scalar Multiplication - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The collection of vectors in a subvector space <latex>V</latex> of <latex>\RNr[n]</latex> is closed under scalar multiplication. Here are some illustrations of what this means.</para>
+			
+			<para>The subset below is closed under vector addition and scalar multiplication. So it is a subspace of <latex>\RNr[n]</latex>.</para>
+			<figure>
+				<img src="ims/SubSpaceClosedScalarMultiplication.gif"></img>
+				<caption>The scalar product <latex>t\cdot \Vect{x}</latex> of a vector in <latex>V</latex> by a number is again in <latex>V</latex>.</caption>
+			</figure>
+		</block>
+		
+		<block>
+			<para>The two lines below form a set <latex>S</latex> which is closed under scalar multiplication: For any vector <latex>\Vect{x}</latex> in <latex>S</latex>, the entire line through the origin in the direction of <latex>\Vect{x}</latex> also belongs to <latex>V</latex>.</para>
+			<figure>
+				<img src="ims/ClosedScalarMultiplication_1.gif"></img>
+			</figure>
+			<para>The set <latex>S</latex> above is, however, not closed under vector addition. Therefore it is not a subvector space of <latex>\RNr[n]</latex>.</para>
+		</block>
+		<block>
+			<para>The blue dots below form a set <latex>S</latex> which is closed under vector addition but not under scalar multiplication. To see that it is not closed under scalar multiplication, consider any vector in <latex>S</latex>: there are points on the line through <latex>\Vect{x}</latex> which do not belong to <latex>S</latex>.</para>
+			<figure>
+				<img src="ims/Lattice2_2.gif"></img>
+				<caption>The scalar multiple of <latex>\Vect{x}</latex> in <latex>S</latex> by a number is not always again in <latex>S</latex>.</caption>
+			</figure>
+			<para>Therefore this set <latex>S</latex> is not a subvector space.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

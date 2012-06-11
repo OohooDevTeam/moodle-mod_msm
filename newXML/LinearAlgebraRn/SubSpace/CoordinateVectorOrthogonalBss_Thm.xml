@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_CoordinateVectorOrthogonalBasis"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Coordinate vector w.r. to an ONB</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_CoordinateVectorONB"/>
+      <info>
+         <para>
+            <para.body>An example of how to find the coordinate vector with respect to an ONB.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_r)</latex>
+            </math> be an ordered orthonormal basis for a subvector space <math>
+               <latex>V</latex>
+            </math> of <math>
+               <latex>\RNr[n]</latex>
+            </math>. If <math>
+               <latex>\Vect{x}</latex>
+            </math> is an arbitrary vector in <math>
+               <latex>V</latex>
+            </math>, then</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Vect{x}</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>=	</text>
+               <companion>
+                  <info>
+                     <para>
+                        <para.body>To interpret this formula advantageously, recall that <math>
+                              <latex>(\DotPr{ \Vect{x} }{ \Vect{b}_j }) \cdot \Vect{b}_j</latex>
+                           </math> is the projection of <math>
+                              <latex>\Vect{x}</latex>
+                           </math> along <math>
+                              <latex>\Vect{b}_j</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </companion>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>(\DotPr{ \Vect{x} }{ \Vect{b}_1 })\cdot \Vect{b}_1 + \cdots + (\DotPr{ \Vect{x} }{ \Vect{e}_r })\cdot \Vect{b}_r</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+      <para>
+         <para.body>and, therefore, <math>
+               <latex>\Vect{x}</latex>
+            </math> has the coordinate vector with respect to <math>
+               <latex>\EuScript{B}</latex>
+            </math>
+         </para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Vect{x}_{\EuScript{B}}</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>( \DotPr{ \Vect{x} }{ \Vect{b}_1 } , \dots , \DotPr{ \Vect{x} }{ \Vect{b}_r } )</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We know that <math>
+                     <latex>\Vect{x}</latex>
+                  </math> can be expressed in a unique way as a linear combination of <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>, say</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1 \Vect{b}_1 + \cdots + t_r \Vect{b}_r</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Taking the dot product of both sides of the equation with <math>
+                     <latex>\Vect{b}_j</latex>
+                  </math> yields.</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\DotPr{ \Vect{x} }{ \Vect{b}_j }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1(\DotPr{ \Vect{b}_1 }{ \Vect{b}_j }) + \cdots + t_j(\DotPr{ \Vect{b}_j }{ \Vect{b}_j }) + \cdots + t_r(\DotPr{ \Vect{b}_r }{ \Vect{b}_j })</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_j</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Therefore</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}_{\EuScript{B}}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(t_1,\dots ,t_r)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>( \DotPr{ \Vect{x} }{ \Vect{b}_1 } , \dots , \DotPr{ \Vect{x} }{ \Vect{b}_1 })</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>as claimed.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

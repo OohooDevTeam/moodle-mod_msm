@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_RowInterchangeMatrix">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of Row Interchange Matrices</title>
+	<caption>Examples of Interchange Matrices</caption>
+	
+	<showme>
+		<statement>
+			<para>In the set of <latex>(3,3)</latex>-matrices the matrix which interchanges rows <latex>1</latex> and <latex>2</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					R_{1,2}\ :=\ \begin{bmatrix}
+						0 & 1 & 0 \\
+						1 & 0 & 0 \\
+						0 & 0 & 1
+						\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>This matrix is invertible with inverse &nbsp; <latex magnify="yes">R_{1,2}^{-1}= R_{1,2}</latex> because</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{bmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix}\ =\
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>In the set of <latex>(4,4)</latex>-matrices the matrix which interchanges rows <latex>2</latex> and <latex>4</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+R_{2,4}\ :=\ \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0
+\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>This matrix is invertible with inverse &nbsp; <latex magnify="yes">R_{2,4}^{-1} = R_{2,4}</latex>.</para>
+		</statement>
+	</showme>	
+</showme.pack>

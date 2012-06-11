@@ -1,0 +1,39 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%
+%%%%%    Commands file for AMSLATEX
+%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	Groups
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\CmmtGrp}[2]{\Gamma^{#1}#2}		% Commutator subroup of order #1 in #2
+\newcommand{\cmmtGrp}[1]{\Gamma^{#1}}			% Commutator subgroup functor of order #1
+\newcommand{\Ablnz}[1]{#1_{\text{\it ab}}}	% Abelianization of group #1
+\newcommand{\Nlptfy}[2]{N^{#1}#2}					% Nilpotification of order #1 applied to #2
+\newcommand{\nlptfy}[1]{N^{#1}}						% Nilpotification functor
+% Group constructs
+\newcommand{\GalGrp}[1]{\text{\em Gal}(#1)}	% Galois group of #1
+\newcommand{\GrGrp}[1]{\text{\em Gr}(#1)}   % Grothendieck group of #1
+\newcommand{\Pic}[1]{\text{em Pic}(#1)}			% Picard Group
+\newcommand{\RepRng}[2][]{\text{Rep}_{#1}(#2)}	% Representation (semi)-ring over ring#1 of group #2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	Algebra
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Fld}[1]{\mathbb{#1}}	% Field symbol set in mathbb
+\newcommand{\Dimnsn}[2]{\text{\it dim}_{#1}(#2)}	% dimension of #1
+%
+\newcommand{\AltAlg}[2][]{A_{#1}(#2)}		% Alternating algebra of the module #2, gradation #1 (opt)
+\newcommand{\AltAlgi}[2][]{\alpha_{#1}(#2)}	% Internal Alternating algebra of the module #2, gradation #1 (opt)
+\newcommand{\TenAlg}[2][]{T_{#1}(#2)}		% Tensor algebra of the module #2, with optional gradation #1
+\newcommand{\DolAlg}[2][]{\Lambda_{#1}(#2)}	% Dolbeaut algebra of C-algebra #2, with grading #1 (opt)
+\DeclareMathOperator{\Altntr}{Alt}			% Alternator on a graded algebra
+\DeclareMathOperator{\AltntrV}{alt}			% Alternator on graded alg of the dual of an inner prod spc
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	Homological Algebra
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\Ext}{Ext}                           % Ext
+\newcommand{\ExtFnctr}[4][]{\text{Ext}_{#1}^{#2}(#3,#4)}	% Ext-functor
+\DeclareMathOperator{\Tor}{Tor}           								% Tor
+\newcommand{\TorFnctr}[4][]{\text{Ext}^{#1}_{#2}(#3,#4)}	% Ext-functor
+\newcommand{\ExctCpl}[1]{\EuFrak{#1}}	                    % Exact Couple

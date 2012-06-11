@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_AlternatingSeriesConverges"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <title>Alternating Series Test: Example.</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine the convergence behavior of the series</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sum_{n=1}^{\infty} \dfrac{\cos(n\pi)}{ \sqrt[4]{n^3} }</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>First we observe that</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\cos(n\pi)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-1)^n</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>for all <math>
+                        <latex>n\in \NNr</latex>
+                     </math>. Next we observe that the numbers <math>
+                        <latex>a_n := 1/\sqrt[4]{n^3}</latex>
+                     </math> are all positive. So the given series is an alternating series. If the sequence <math>
+                        <latex>(a_n)</latex>
+                     </math> is strictly decreasing and converges to <math>
+                        <latex>0</latex>
+                     </math>, we may apply the alternating series test and conclude that the given series converges to a number <math>
+                        <latex>\leq a_0 = 1</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>So we analyze the sequence <math>
+                        <latex>(a_n)</latex>
+                     </math>:</para.body>
+               </para>
+			            <ol>
+				              <li>
+                     <para>
+                        <para.body>The sequence <math>
+                              <latex>(n^3)</latex>
+                           </math> is strictly increasing and converges to <math>
+                              <latex>+\infty</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>So the sequence <math>
+                              <latex>\sqrt[4]{n^3}</latex>
+                           </math> is strictly increasing and converges to <math>
+                              <latex>+\infty</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>So the sequence <math>
+                              <latex>a_n=1/\sqrt[4]{n^3}</latex>
+                           </math> is strictly decreasing and converges to <math>
+                              <latex>0</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+			            </ol>
+			            <para>
+                  <para.body>Thus the alternating series test applies to the given series, and we see that it converges to a number <math>
+                        <latex>\leq a_0=1</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

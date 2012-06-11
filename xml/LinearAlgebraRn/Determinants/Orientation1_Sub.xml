@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_Orientation1">
+	<title>1-Dimensional Orientation</title>
+	<sub.page.body>
+		<block>
+			<para>&lsquo;Forward&rsquo; and &lsquo;backward&rsquo; on a line are mirrored siblings.</para>
+			<figure>
+				<img src="ims/Orientation1.png"></img><!-- svg available -->
+			</figure>
+			<para>An orientation of <latex>\RNr</latex> is given by a choice of one of these two directions. Thus a nonzero vector <latex>\Vect{x}=(x)</latex> represents an orientation <latex>\omega(\Vect{x})</latex> of  <latex>\RNr</latex> as follows:</para>
+			
+			<table align="center" border="3" cellpadding="2" cellspacing="3" bordercolor="Maroon">
+				<row>
+					<cell><para>If </para></cell>
+					<cell><para>we find</para></cell>
+					<cell><para>and say</para></cell>
+				</row>
+				<row>
+					<cell><para><latex>\omega(\Vect{x}) = +1</latex></para></cell>
+					<cell><para><latex><![CDATA[ x>0 ]]></latex></para></cell>
+					<cell><para><latex>\Vect{x}</latex> represents the positive orientation of <latex>\RNr</latex></para></cell>
+				</row>
+				<row>
+					<cell><para><latex>\omega(\Vect{x}) = -1</latex></para></cell>
+					<cell><para><latex><![CDATA[ x<0 ]]></latex></para></cell>
+					<cell><para><latex>\Vect{x}</latex> represents the negative orientation of <latex>\RNr</latex></para></cell>
+				</row>
+			</table>
+		</block>
+		
+		<block>
+			<para>For example, <latex>\Vect{x}=(2)</latex> below represents the positive orientation of <latex>\RNr</latex>. We express this by writing <latex>\omega(\Vect{x}) = +1</latex>.</para>
+			<para>On the other hand, the pair <latex>\Vect{v}=(-3)</latex> represents the negative orientation of <latex>\RNr</latex>. We express this by writing <latex>\omega(\Vect{v}) = -1</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

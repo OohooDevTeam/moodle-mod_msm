@@ -1,0 +1,27 @@
+-----------  In Atoms.xsd
+->  The element <tablabel> in Atoms.xsd should be renamed to <textcaption> (or something similar).
+->  The element <description> might have to be modified to achieve a fit into existing Moodle frameworks like SCORM.
+-----------  In Theorem.xsd
+-> <part.theorem>-attribute "counter". Right now, this is a positive integer. We might need to replace it by something like "previous sibling" or "next sibling", or we might need to both of these attributes.
+-> <logic> in <proof.block>: the type attribute might be better designed with enumerations: (A implies B), (A is implied by B), or (A is equivalent to B).
+-----------  In Example.xsd
+-->  <example.pack> plays the role of a compositor for a collection of examples. It might be more appropriate to replace <example> as a child by a reference to the id of the desired example.
+-->  <showme.pack> same comment as for <example.pack>
+-->  <part.body>  it might be better to rename it to <part.example.body>
+------------ In Unit.xsd
+--> <nesting.unit.ref> needs a different approach; the compositor describes the actual composition. Here it would be better to describe the available choices of children; if there are competing works on the same topic, it would be nice to identify their availability here as well.
+
+
+
+May 9, 2012
+--> removed latex element from index.glossary and index.symbol elements
+
+May 10, 2012
+--> renamed ebook to ecomposition in Compositor.xsd
+	--> also added an attribute called compositionID
+--> in Molecule.xsd, added composition.ref element to external.ref element (under subordinate) which refers to compositionID made above
+
+
+To do:
+Revise schema for <proof.ext>
+Revise schema for <answer.ext>

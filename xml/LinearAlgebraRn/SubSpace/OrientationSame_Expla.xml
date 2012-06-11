@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_OrientationSame">
+	<title>Same Orientation: Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>Wait a minute! If we want to test whether two ordered bases <latex>\EuScript{B}</latex> and <latex>\EuScript{C}</latex> determine the same or opposite orientations of <latex>V</latex>, how do we know whether we need to convert from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{C}</latex>-coordinates or vice versa?</para>
+			<para>Answer: It does not matter! The determinants of both matrices have the same sign. To see this, we just need to recall that </para>
+			<math.display>
+				<latex>C_{\EuScript{B}\EuScript{C}} = \left( C_{\EuScript{C}\EuScript{B}} \right)^{-1}</latex>
+			</math.display>
+			<para>Because then we compute</para>
+			<computation>
+				<left>+1</left>
+				<center>=</center>
+				<right>\det( C_{\EuScript{B}\EuScript{C}}) \cdot \det( C_{\EuScript{B} \EuScript{C}} )^{-1}</right>
+				<left></left>
+				<center>=</center>
+				<right>\det( C_{\EuScript{B}\EuScript{C}}) \cdot \det( C_{\EuScript{C} \EuScript{B}} )</right>
+			</computation>
+			<para>So the two matrices have the same sign.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Inclusion">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Example: Inclusion as a Coordinate Axis</title>
+	<caption>Example: Inclusion as a Coordinate Axis</caption>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Recall: the inclusion of <latex>\RNr</latex> as the <latex>j</latex>-th coordinate axis of <latex>\RNr[n]</latex> is given by the function</para>
+			<math.display>
+				<latex>\Inclsn{j}\from \RNr\longrightarrow \RNr[n],\quad \Inclsn{j}(x):=(0,\dots,0,x,0,\dots ,0)</latex>
+			</math.display>
+			<para>Show that <latex>\Inclsn{j}</latex> is a linear function.</para>
+		</statement>
+		
+		<answer type="Proof">
+			<para>To see why <latex>\Inclsn{j}\from \RNr\to \RNr[m]</latex> is linear, we check that it commutes with vector addition and scalar multiplication:</para>
+			<computation>
+				<left>\Inclsn{j}(x+y)</left>
+				<center>=	<info><para>The number <latex>x+y</latex> on the right appears in position <latex>i</latex>.</para></info></center>
+				<right>(0,\dots ,0,x+y,0,\dots,0)</right>
+				<left></left>
+				<center>=</center>
+				<right>(0,\dots ,0,x,0,\dots ,0) + (0,\dots ,0,y,0,\dots ,0)</right>
+				<left></left>
+				<center>=	<info><para>By definition of the inclusion function.</para></info></center>
+				<right>\Inclsn{j}(x) + \Inclsn{j}(y)</right>
+				<left>\inc_j(tx)</left>
+				<center>=</center>
+				<right>(0,\dots ,0,tx,0,\dots ,0)</right>
+				<left></left>
+				<center>=</center>
+				<right>t\cdot (0,\dots ,0,x,0,\dots ,0)</right>
+				<left></left>
+				<center>=</center>
+				<right>t\cdot \inc_j(0,\dots ,0,x,0,\dots ,0)</right>
+			</computation>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Find all coordinate inclusions of <latex>\RNr</latex> in <latex>\RNr[3]</latex>, and compute their effect on a number <latex>t</latex> in <latex>\RNr</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>There are three inclusions of <latex>\RNr</latex> in <latex>\RNr[3]</latex> as a coordinate axis, namely <latex>\Inclsn{1}</latex>, <latex>\Inclsn{2}</latex>, and <latex>\Inclsn{3}</latex>. The effect of these inclusions on <latex>u</latex> in <latex>\RNr</latex> is given by</para>
+			<computation>
+				<left>\Inclsn{1}(u)</left>
+				<center>=</center>
+				<right>(u,0,0)</right>
+				<left>\Inclsn{2}(u)</left>
+				<center>=</center>
+				<right>(0,u,0)</right>
+				<left>\Inclsn{3}(u)</left>
+				<center>=</center>
+				<right>(0,0,u)</right>
+			</computation>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Find the effect of the three coordinate inclusion functions of <latex>\RNr</latex> in  <latex>\RNr[3]</latex> on the number <latex>-1</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>The effect of the coordinate inclusions of <latex>\RNr[3]</latex> on <latex>-1</latex> in <latex>\RNr</latex> is given by</para>
+			<computation>
+				<left>\Inclsn{1}(-1)</left>
+				<center>=</center>
+				<right>(-1,0,0)</right>
+				<left>\Inclsn{2}(-1)</left>
+				<center>=</center>
+				<right>(0,-1,0)</right>
+				<left>\Inclsn{3}(-1)</left>
+				<center>=</center>
+				<right>(0,0,-1)</right>
+			</computation>
+		</answer>
+	</showme>
+</showme.pack>

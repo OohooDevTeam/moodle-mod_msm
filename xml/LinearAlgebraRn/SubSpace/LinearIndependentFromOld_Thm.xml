@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearIndepentFromOld">
+	<caption>Linear independence / linear combination</caption>
+	<statement>
+		<para>Let <latex>\Vect{a}_1,\dots ,\Vect{a}_p</latex> be linearly independent vectors in <latex>\RNr[k]</latex>, and let <latex>\Vect{x}_1=(x_{11},\dots ,x_{1p})</latex>, ... , <latex>\Vect{x}_n=(x_{n1},\dots ,x_{np})</latex> be linearly independent vectors in <latex>\RNr[p]</latex>. Then</para>
+		<computation>
+			<left>\Vect{y}_1</left>
+			<center>:=</center>
+			<right>x_{11}\Vect{a}_1+ \cdots + x_{1p} \Vect{a}_p</right>
+			<left></left>
+			<center>\vdots</center>
+			<right></right>
+			<left>\Vect{y}_n</left>
+			<center>:=</center>
+			<right>x_{n1} \Vect{a}_1 + \cdots + x_{np} \Vect{a}_p</right>
+		</computation>
+		<para>are linearly independent vectors in <latex>\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p }</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>By design, each <latex>\Vect{y}_i</latex> belongs to <latex>\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p }</latex>. So it remains to show that the vectors are linearly independent. So consider a representation of the zero vector as</para>
+		<computation>
+			<left>t_1 \Vect{y}_1 + \cdots + t_n \Vect{y}_n</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>We need to show that <latex>t_1= \cdots =t_n=0</latex>. Collecting scalar factors of the vectors <latex>\Vect{a}_i</latex>, we find</para>
+		<computation>
+			<left>(t_1 x_{11} + \cdots + t_n x_{n1}) \Vect{a}_1 + \cdots + (t_1 x_{1p} + \cdots + t_n x_{np}) \Vect{a}_p</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>and 
+			<subordinate>
+				<hot>conclude</hot>
+				<info>
+					<caption>How do we conclude this?</caption>
+					<para>We know that the vectors <latex>\Vect{a}_1,\dots ,\Vect{a}_p</latex> are linearly independent. So the scalar factors in the above equation must be 0.</para>
+				</info>
+			</subordinate>
+			that</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{ccccccc}
+x_{11}t_1 & + & \cdots & + & x_{n1}t_n & = & 0 \\
+\vdots & & & & \vdots & \vdots & \vdots \\
+x_{1p}t_1 & + & \cdots & + & x_{np}t_n & = & 0
+\end{array}
+]]>
+			</latex>
+		</math.display>
+		<para>This is a homogeneous system of linear equations in the <latex>n</latex> unknowns <latex>t_1,\dots ,t_n</latex>. The column vectors of the coefficient matrix of this system are linearly independent. Therefore <latex>t_1=\cdots =t_n=0</latex> is its only solution. It follows that the vectors <latex>\Vect{y}_1,\dots ,\Vect{y}_n</latex> are 
+			<subordinate>
+				<hot>linearly independent</hot>
+				<info>
+					<caption>Why are these column vectors linearly independent?</caption>
+					<para>This is what it means: the vectors <latex>\Vect{x}_1,\dots ,\Vect{x}_n</latex> are linearly independent.</para>
+				</info>
+			</subordinate>
+			. &ndash; This completes the proof.</para>
+	</proof>
+</theorem>

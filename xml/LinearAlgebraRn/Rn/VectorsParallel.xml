@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illust_ScalarMultiplicationOfVectors">
+	<title>Scalar Multiplication of Vectors - Illustration</title>
+	<sub.page.body>
+		<para>When we multiply a vector <latex>\mathbf{x}</latex> by a number (a scalar) <latex>t</latex>, we keep the direction of <latex>\mathbf{x}</latex> and multiply its length by <latex>t</latex>. If <latex>t</latex> is positive, this has the effect illustrated below.</para>
+		<para align="center">
+			<img src="ims/VectorScalarMultiply_2.gif"/>
+		</para>
+		<para>If we multiply a vector <latex>\mathbf{x}</latex> by a negative number <latex>t</latex>, we reverse the direction of <latex>\mathbf{x}</latex>, as is illustrated in the picture below.</para>
+		<para align="center">
+			<img src="ims/VectorScalarMultiply_3.gif"/>
+		</para>
+		<para>Here are a number of scalar multiplications performed on one and the same vector. Click <subordinate>
+			<hot>here</hot>
+			<info>
+				<caption>Animation of Scalar Multiplication of a Vector by a Number</caption>
+				<para align="center">
+					<img src="ims/VectorScalarMultiply_Anmt.gif"/>
+				</para>
+			</info>
+		</subordinate> to animate this example.
+		</para>
+		<para align="center">
+			<img src="VectorScalarMultiply_1.gif"/>
+		</para>
+	</sub.page.body>
+</sub.page>

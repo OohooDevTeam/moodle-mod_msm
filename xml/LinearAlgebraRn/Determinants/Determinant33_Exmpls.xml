@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Determinant33">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>(3,3)-Determinants: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Find the determinant of the <latex>(3,3)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+1 & 4 & 3 \\
+-2 & 1 & 2 \\
+5 & 0 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Solution">
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\det(A)\ &=\ 
+\det\, \left[
+\begin{array}{rrr}
+{\color{red} 1} & 4 & 3 \\
+{\color{red} -2} & 1 & 2 \\
+{\color{red} 5} & 0 & 1
+\end{array}
+\right] \\
+	&=\ {\color{red} 1}\cdot
+\left[
+\begin{array}{cc}
+1 & 2 \\
+0 & 1
+\end{array}
+\right]
+- {\color{red} (-2)}\cdot 
+\left[
+\begin{array}{cc}
+4 & 3 \\
+0 & 1
+\end{array}
+\right]
++ {\color{red} 5}\cdot
+\left[
+\begin{array}{rr}
+4 & 3 \\
+1 & 2
+\end{array}
+\right] \\
+	&=\ 1 - (-2)\cdot 4 + 5\cdot (8-3) \\
+	&=\ 34
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Find the determinant of the <latex>(3,3)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+7 & -1 & 9 \\
+3 & 1 & 2 \\
+-2 & -3 & 5
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Solution">
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\det(B)\ &=\ 
+\det\, \left[
+\begin{array}{rrr}
+{\color{red} 7} & -1 & 9 \\
+{\color{red} 3} & 1 & 2 \\
+{\color{red} -2} & -3 & 5
+\end{array}
+\right] \\
+%
+	&=\ {\color{red} 7}\cdot
+\left[
+\begin{array}{rr}
+1 & 2 \\
+-3 & 5
+\end{array}
+\right]
+- {\color{red} 3}\cdot 
+\left[
+\begin{array}{rr}
+-1 & 9 \\
+-3 & 5
+\end{array}
+\right]
++ {\color{red} (-2)}\cdot
+\left[
+\begin{array}{rr}
+-1 & 9 \\
+1 & 2
+\end{array}
+\right] \\
+%
+	&=\ 7\cdot 11 - 3\cdot 22 + (-2)\cdot (-11) \\
+	&=\ 33
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

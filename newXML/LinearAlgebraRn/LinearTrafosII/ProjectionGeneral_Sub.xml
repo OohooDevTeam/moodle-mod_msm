@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_ProjectionGeneral"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>General Projection - Preview</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We encounter projections of objects onto planar surfaces on a daily basis, for example in the form of the shadow of an object.</para.body>
+            </para>
+            <media type="image" active="1" inline="0">
+               <img src="ims/ProjectionParallelToVector.png"/>
+               <extended.caption>
+                  <image.mapping>
+                     <area shape="rect" coord="0,0,200,100"/>
+                  </image.mapping>
+                  <info>
+                     <para>
+                        <para.body>In this picture, <math>
+                              <latex>\text{pr}(\Vect{x})</latex>
+                           </math> is the projection of <math>
+                              <latex>\Vect{x}</latex>
+                           </math> onto <math>
+                              <latex>H</latex>
+                           </math>, parallel to <math>
+                              <latex>\Vect{v}</latex>
+                           </math>. Similarly, <math>
+                              <latex>\text{pr}(\Vect{y})</latex>
+                           </math> is the projection of <math>
+                              <latex>\Vect{y}</latex>
+                           </math> onto <math>
+                              <latex>H</latex>
+                           </math>, parallel to <math>
+                              <latex>\Vect{v}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </extended.caption>
+            </media>
+            <para>
+               <para.body>Here the vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are being projected onto the hyperspace <math>
+                     <latex>H</latex>
+                  </math>, parallel to the vector <math>
+                     <latex>\Vect{v}</latex>
+                  </math>. The result of this projection are the vectors <math>
+                     <latex>\text{pr}(\Vect{x})</latex>
+                  </math> and <math>
+                     <latex>\text{pr}(\Vect{y})</latex>
+                  </math> in <math>
+                     <latex>H</latex>
+                  </math>, respectively.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
+      unitid="Chap_Eigentheory">
+   <titles>
+      <title>Eigentheory</title>
+      <plain.title>Eigentheory</plain.title>
+   </titles>
+   <legitimate.children>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/EigentheoryIntro.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/EigenvectorsEigenvalues.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/Diagonalizable.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/EigenvectorEigenvalue_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/EigenTheoryDiagonlizable_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/AlgebraicMultiplicity_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/Eigenspace_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/EigenvectorValue_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/CharacteristicPolynomial_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/Eigendata_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/Eigentheory1_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/Eigentheory2_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/RotationAxis_Exmpls.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/Diagonalizable_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/Diagonalize_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/MatrixPower_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Eigentheory/Diagonalize_Exrcss.xml"/>
+			</legitimate.children>
+</unit>

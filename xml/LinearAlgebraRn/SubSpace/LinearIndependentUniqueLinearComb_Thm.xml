@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearIndepentGivesUniquesLinearCombination">
+	<caption>Linear independence / linear combination</caption>
+	<statement>
+		<para>Let <latex>S</latex> be a linearly independent subset of <latex>\RNr[n]</latex>. If <latex>\Vect{x} \neq \Vect{0}</latex> belongs to  <latex>\span(S)</latex>, there are unique vectors <latex>\Vect{a}_1,\dots ,\Vect{a}_m</latex> in <latex>S</latex> and unique nonzero numbers <latex>t_1,\dots ,t_m</latex> such that</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>t_1 \Vect{a}_1 + \cdots + t_m \Vect{a}_m</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>Since <latex>\Vect{x}</latex> belongs to <latex>\span(S)</latex>, there exist pairwise distinct vectors <latex>\Vect{a}_1,\dots ,\Vect{a}_m</latex> in <latex>S</latex> and nonzero numbers <latex>t_1,\dots ,t_m</latex> such that</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>t_1 \Vect{a}_1 + \cdots + t_m \Vect{a}_m</right>
+		</computation>
+		<para>It remains to show that these vectors and numbers are unique. We explain the idea, leaving a rigorous proof (induction on <latex>m</latex> and <latex>k</latex>) to the astute reader. So suppose</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>s_1 \Vect{b}_1 + \cdots + s_k \Vect{b}_k</right>
+		</computation>
+		<para>for pairwise distinct vectors <latex>\Vect{b}_1,\dots ,\Vect{b}_k</latex> in <latex>S</latex> and nonzero numbers <latex>s_1,\dots ,s_k</latex>. It follows that</para>
+		<computation>
+			<left>t_1 \Vect{a}_1 + \cdots + t_m \Vect{a}_m\ -\ (s_1 \Vect{b}_1 + \cdots + s_k \Vect{b}_k)</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>We first show that each <latex>\Vect{a}_i</latex> occurs in the list of <latex>\Vect{b}</latex>-vectors. &ndash; Suppose not. Then linear independence of the set <latex>S</latex> forces <latex>t_i=0</latex>, contradicting the assumption that <latex>t_1,\dots ,t_m\neq 0</latex>. The same kind of argument shows that each <latex>\Vect{b}_j</latex> occurs in the list of <latex>\Vect{a}</latex>-vectors. Consequently, <latex>m=k</latex> and we may assume that <latex>\Vect{a}_1=\Vect{b}_1</latex>, ... , <latex>\Vect{a}_m=\Vect{b}_m</latex>. This proves that the vectors needed to express <latex>\Vect{x}</latex> as a linear combination of vectors in <latex>S</latex> are unique. It remains to show that <latex>s_1=t_1</latex>, ... , <latex>s_m=t_m</latex>.</para>
+		<para>The equation above is equivalent to</para>
+		<computation>
+			<left>(t_1-s_1)\Vect{a}_1 + \cdots + (t_m-s_m) \Vect{a}_m</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>Linear independence of <latex>S</latex> implies  <latex>(t_j-s_j)=0</latex>,  for  <latex>1\leq i\leq m</latex>; i.e. <latex>t_i=s_i</latex>, for <latex>1\leq i\leq m</latex>. – This completes the proof.</para>
+	</proof>
+</theorem>

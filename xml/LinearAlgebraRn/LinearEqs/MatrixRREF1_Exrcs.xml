@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MatrixRREF1">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Matrices and RREF - Self Test</title>
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below indicate if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>The rank of a system of linear equations is the number of <latex>1</latex>&rsquo;s in the non-augmented coefficient matrix of the system.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>False!</para>
+				</answer>
+				<solution>
+					<para>The rank of a system of linear equations is the number of leading <latex>1</latex>&rsquo;1 in the RREF of the non-augmented coefficient matrix of the system. This number of leading <latex>1</latex>&rsquo;s is normally unrelated to the number of <latex>1</latex>&rsquo;s in the non-augmented coefficient matrix of the original system.</para>
+					<para>Therefore the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>The rank of a system of linear equations is the number of <latex>1</latex>&rsquo;s in the RREF of the coefficient matrix of the system.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>False.</para>
+				</answer>
+				<solution>
+					<para>The rank of a system of linear equations is the number of leading <latex>1</latex>&rsquo;1 in the RREF of the non-augmented coefficient matrix of the system. This number of leading <latex>1</latex>&rsquo;s is normally less than the number of <latex>1</latex>&rsquo;s in this RREF.</para>
+					<para>Therefore the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>The rank of a system of linear equations is the number of leading <latex>1</latex>&rsquo;s in the RREF of the non-augmented coefficient matrix of the system.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>True!</para>
+				</answer>
+				<solution><para>This statement is exactly the definition of the &lsquo;rank of a system of linear equations&rsquo;. Therefore this statement is true.</para></solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>The rank of a system of linear equations is always equal to the number of variables in the system.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>False!</para>
+				</answer>
+				<solution>
+					<para>The rank of a system of linear equations is the number of leading <latex>1</latex>&rsquo;s in the RREF of the non-augmented coefficient matrix of the system. This number of leading <latex>1</latex>&rsquo;s can be less than the number of variables in the system.</para>
+					<para>Therefore the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The rank of a system of linear equations is always greater than the number of variables in the system.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>False!</para>
+				</answer>
+				<solution>
+					<para>The rank of a system of linear equations is the number of leading <latex>1</latex>&rsquo;s in the RREF of the non-augmented coefficient matrix of the system. This number is always less than or equal to the number of variables in the system.</para>
+					<para>Therefore the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The rank of a system of linear equations is always less than the number of variables in the system.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>False!</para>
+				</answer>
+				<solution>
+					<para>The rank of a system of linear equations is the number of leading <latex>1</latex>&rsquo;s in the RREF of the non-augmented coefficient matrix of the system. This number can be equal to the number of variables in the system.</para>
+					<para>Therefore the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The rank of a system of linear equations is always less than or equal to the number of variables in the system.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>True!</para>
+				</answer>
+				<solution>
+					<para>Indeed, the rank of a system of linear equations is the number of leading <latex>1</latex>&rsquo;s in the RREF of the non-augmented coefficient matrix of the system.</para>
+					<para>Therefore the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The rank of a system of linear equations is always greater than or equal to the number of variables in the system.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>False!</para>
+				</answer>
+				<solution>
+					<para>The rank of a system of linear equations is the number of leading <latex>1</latex>&rsquo;s in the RREF of the non-augmented coefficient matrix of the system. This number can be less than the number of variables in the system.</para>
+					<para>Therefore the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

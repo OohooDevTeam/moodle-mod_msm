@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_SymmetricMatrix"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Examples of (non-)Symmetric Matrices</title>
+	  <caption xmlns="">(Non-)Symmetric Matrices</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The following matrices are symmetric</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+					\left[\begin{array}{rrr}
+					1 &amp; 5 &amp; 7 \\
+					5 &amp; -1 &amp; 4 \\
+					7 &amp; 4 &amp; 9
+					\end{array}\right]\qquad
+					\left[\begin{array}{rrrr}
+					4 &amp; a &amp; -2 &amp; 1 \\
+					a &amp; 6 &amp; 3 &amp; b \\
+					-2 &amp; 3 &amp; c &amp; 1 \\
+					1 &amp; b &amp; 1 &amp; 0
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The following matrices are not symmetric</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+					\left[\begin{array}{rrr}
+					1 &amp; 0 &amp; 0 \\
+					5 &amp; -1 &amp; 0 \\
+					7 &amp; 6 &amp; 9
+					\end{array}\right]\qquad
+					\left[\begin{array}{rrrr}
+					0 &amp; 1 &amp; -2 &amp; 1 \\
+					5 &amp; 6 &amp; 3 &amp; -2 \\
+					b &amp; 3 &amp; 6 &amp; 1 \\
+					1 &amp; b &amp; 5 &amp; 0
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>Note that, while the <math>
+                  <latex>(4,4)</latex>
+               </math>-matrix on the right displays a different kind of symmetry, it is not equal to its transpose, and so it is not symmetric.</para.body>
+         </para>
+		    </statement.showme>
+	  </showme>
+</showme.pack>

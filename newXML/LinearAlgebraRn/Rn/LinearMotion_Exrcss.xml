@@ -1,0 +1,1160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exrcss_LinearMotion"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Linear Motion: Exercises </title>
+	  <caption>Linear Motion: Exercises</caption>
+	
+	  <exercise>
+		    <caption>Finding the location of a moving particle</caption>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>A particle travels in the plane according to the linear motion</para.body>
+            </para>
+			         <math.display>
+				           <latex>\mathbf{l}(t)\ =\ (1,2)\ +\ t\cdot (-1,1)</latex>
+			         </math.display>
+			         <para>
+               <para.body>Find the position of the particle at the specified times.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>t=0</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>The location of the particle at time <math>
+                        <latex>t</latex>
+                     </math> has the position vector <math>
+                        <latex>\mathbf{l}(t)</latex>
+                     </math>; i.e. you need to substitute <math>
+                        <latex>0</latex>
+                     </math> for <math>
+                        <latex>t</latex>
+                     </math> in the equation describing the linear motion</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\mathbf{l}(0) = (1,2)</latex>
+                        </math>; so the particle passes through <math>
+                           <latex>(1,2)</latex>
+                        </math> at time <math>
+                           <latex>0</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>t=1</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>The location of the particle at time <math>
+                        <latex>t</latex>
+                     </math> has the position vector <math>
+                        <latex>\mathbf{l}(t)</latex>
+                     </math>; i.e. you need to substitute <math>
+                        <latex>1</latex>
+                     </math> for <math>
+                        <latex>t</latex>
+                     </math> in the equation describing the linear motion</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\mathbf{l}(1) = (1,2) + (-1,1) = (0,3)</latex>
+                        </math>; so the particle passes through <math>
+                           <latex>(0,3)</latex>
+                        </math> at time <math>
+                           <latex>1</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>t=7</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>If you don't know how to approach answering this problem, please review the earlier parts of this problem.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>The location of the particle at time <math>
+                        <latex>t</latex>
+                     </math> has the position vector <math>
+                        <latex>\mathbf{l}(t)</latex>
+                     </math>; i.e. you need to substitute <math>
+                        <latex>7</latex>
+                     </math> for <math>
+                        <latex>t</latex>
+                     </math> in the equation describing the linear motion</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\mathbf{l}(7) = (1,2) + 7\cdot (-1,1) = (-6,9)</latex>
+                        </math>; so the particle passes through <math>
+                           <latex>(-6,9)</latex>
+                        </math> at time <math>
+                           <latex>7</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>t=-3</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\mathbf{l}(-3) = (1,2) + (-3)\cdot (-1,1)</latex>
+                        </math>; so the particle passes through <math>
+                           <latex>(4,-1)</latex>
+                        </math> at time <math>
+                           <latex>-1</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <caption>When does a linear motion pass through a given point?</caption>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>A particle travels in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> according to the linear motion</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Vect{l}(t) = (2,1,0) + t\cdot (1,0,1)</latex>
+			         </math.display>
+			         <para>
+               <para.body>Determine if and when the particle passes through the specified points.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{a}:=(3,1,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>You need to determine if the vector equation</para.body>
+               </para>
+					          <math.display>
+						            <latex>
+							
+\left[
+\begin{array}{c}
+2 \\ 1 \\ 0
+\end{array}
+\right]\ +\ t\cdot 
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+3 \\ 1 \\ 1
+\end{array}
+\right]
+							
+						</latex>
+					          </math.display>
+					          <para>
+                  <para.body>has a solution.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We test if the vector equation</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{c}
+2 \\ 1 \\ 0
+\end{array}
+\right]\ +\ t\cdot 
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+3 \\ 1 \\ 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>has a solution. We find this equation holds if and only if</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+t\cdot 
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The number <math>
+                           <latex>t:=1</latex>
+                        </math> is the one and only solution of this equation. We conclude that the motion passes through <math>
+                           <latex>(3,1,1)</latex>
+                        </math> at time <math>
+                           <latex>t=1</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{b}:=(0,1,-2)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The motion passes through <math>
+                              <latex>(0,1,-2)</latex>
+                           </math> at time <math>
+                              <latex>t=-2</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution to the previous problem.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x}:= (0,1,0)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The motion does not pass through <math>
+                              <latex>(0,1,0)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution to the previous problem.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We test if the vector equation</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{c}
+2 \\ 1 \\ 0
+\end{array}
+\right]\ +\ t\cdot 
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+0 \\ 1 \\ 0
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>has a solution. We find this equation holds if and only if</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+t\cdot 
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+-2 \\ 0 \\ 0
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Comparing first coordinates requires <math>
+                           <latex>t=-2</latex>
+                        </math>, while comparing third coordinates requires <math>
+                           <latex>t=0</latex>
+                        </math>. Thus there is no number value for <math>
+                           <latex>t</latex>
+                        </math> for which this vector equation is true. We conclude that the motion does not pass through <math>
+                           <latex>(0,1,0)</latex>
+                        </math> at any time.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{u}:=(6,1,4)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The motion passes through <math>
+                              <latex>\Vect{u}</latex>
+                           </math> at time <math>
+                              <latex>t=4</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{z}:=(24,1,-22)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The motion does not pass through <math>
+                              <latex>\Vect{z}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{v}:=(-58,1,-60)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The motion passes through <math>
+                              <latex>\Vect{v}</latex>
+                           </math> at time <math>
+                              <latex>t=-60</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <caption>Describing linear motions</caption>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find the expression which describes the linear motion of a particle which moves as follows</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>It is in position <math>
+                        <latex>(4,1,4)</latex>
+                     </math> at time <math>
+                        <latex>0</latex>
+                     </math>, and in position <math>
+                        <latex>(12,2,-6)</latex>
+                     </math> at time <math>
+                        <latex>1</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>\mathbf{l}(t) = (4,1,4) + t\cdot (8,1,-10)</latex>
+                           </math>, where <math>
+                              <latex>t</latex>
+                           </math> is in <math>
+                              <latex>\RNr</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Try fitting the information given into the equation for a linear motion</para.body>
+               </para>
+					          <math.display>
+						            <latex>\mathbf{l}(t) = \mathbf{a} + t\cdot \mathbf{v}</latex>
+					          </math.display>
+				        </solution.hint>
+				        <solution>
+               <caption>Purely formal approach</caption>
+               <solution.body>
+					
+					             <para>
+                     <para.body>From the statement of the problem we know two facts:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+							\begin{array}{rccclcll}
+							\mathbf{l}(0) &amp; = &amp; \mathbf{a} + 0\cdot \mathbf{v} &amp; = &amp; \mathbf{a} &amp; = &amp; (4,1,4) &amp; (I) \\
+							\mathbf{l}(1) &amp; = &amp; \mathbf{a} + 1\cdot \mathbf{v} &amp; = &amp; \mathbf{a} + \mathbf{v} &amp; = &amp; (12,2,-6) &amp; (II)
+							\end{array}
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>From (I), we know that <math>
+                           <latex>\mathbf{a} = (4,1,4)</latex>
+                        </math>. Substituting this into (II), we find:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\mathbf{v} = (12,2,-6) - (4,1,4) = (8,1,-10)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore, the expression which describes the motion of the particle is</para.body>
+                  </para>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\mathbf{l}(t) = (4,1,4) + t\cdot (8,1,-10)</latex>
+                        </math>, where <math>
+                           <latex>t</latex>
+                        </math> is in <math>
+                           <latex>\RNr</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+			      <approach version="2">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>\mathbf{l}(t) = (4,1,4) + t\cdot (8,1,-10)</latex>
+                           </math>, where <math>
+                              <latex>t</latex>
+                           </math> is in <math>
+                              <latex>\RNr</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <caption>Direct by inspection</caption>
+               <solution.body>
+					
+					             <para>
+                     <para.body>We are given the information that the particle passes through <math>
+                           <latex>(4,1,4)</latex>
+                        </math> at time <math>
+                           <latex>0</latex>
+                        </math>. Therefore <math>
+                           <latex>\mathbf{a}=\mathbf{0}</latex>
+                        </math>. Moreover, the particle travels from <math>
+                           <latex>(4,1,4)</latex>
+                        </math> to <math>
+                           <latex>(12,2,-6)</latex>
+                        </math> in a period of one time unit. Therefore</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							\mathbf{v} = (12,2,-6) - (4,1,4) = (8,1,-10)
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore, the expression which describes the motion of the particle is</para.body>
+                  </para>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\mathbf{l}(t) = (4,1,4) + t\cdot (8,1,-10)</latex>
+                        </math>, where <math>
+                           <latex>t</latex>
+                        </math> is in <math>
+                           <latex>\RNr</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>It is in position <math>
+                        <latex>(1,6)</latex>
+                     </math> at time <math>
+                        <latex>1</latex>
+                     </math>, and in position <math>
+                        <latex>(-2,4)</latex>
+                     </math> at time <math>
+                        <latex>2</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>\mathbf{l}(t) = (4,8) + t\cdot (-3,-2)</latex>
+                           </math>, where <math>
+                              <latex>t</latex>
+                           </math> is in <math>
+                              <latex>\RNr</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Try fitting the information given into the equation for a linear motion</para.body>
+               </para>
+					          <math.display>
+						            <latex>\mathbf{l}(t) = \mathbf{a} + t\cdot \mathbf{v}</latex>
+					          </math.display>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>From the statement of the problem we know two facts:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+							\begin{array}{rcccrl}
+							\mathbf{l}(1) &amp; = &amp; \mathbf{a} + 1\cdot \mathbf{v} &amp; = &amp;  (1,6) &amp; (I) \\
+							\mathbf{l}(2) &amp; = &amp; \mathbf{a} + 2\cdot \mathbf{v} &amp; = &amp;  (-2,4) &amp; (II)
+							\end{array}
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>We are looking for those vectors <math>
+                           <latex>\mathbf{a}</latex>
+                        </math> and <math>
+                           <latex>\mathbf{v}</latex>
+                        </math> which solve both equations simultaneously. By forming <math>
+                           <latex>(II) - (I)</latex>
+                        </math>, we find:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\mathbf{l}(2) - \mathbf{l}(1) = \mathbf{v} = (-2,4) - (1,6) = (-3,-2)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Substituting <math>
+                           <latex>\mathbf{v} = (-3,-2)</latex>
+                        </math> into equation <math>
+                           <latex>(I)</latex>
+                        </math>, we get:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\mathbf{a} = (1,6) - (-3,-2) = (4,8)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore, the expression which describes the motion of the particle is</para.body>
+                  </para>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\mathbf{l}(t) = (4,8) + t\cdot (-3,-2)</latex>
+                        </math>, where <math>
+                           <latex>t</latex>
+                        </math> is in <math>
+                           <latex>\RNr</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>It is in position <math>
+                        <latex>(1,1,1)</latex>
+                     </math> at time <math>
+                        <latex>3</latex>
+                     </math>, and in position <math>
+                        <latex>(17,-3,13)</latex>
+                     </math> at time <math>
+                        <latex>7</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>\mathbf{l}(t) = (-11,4,-8) + t\cdot (4,-1,3)</latex>
+                           </math>, where <math>
+                              <latex>t</latex>
+                           </math> is in <math>
+                              <latex>\RNr</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>From the statement of the problem we know two facts:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+							\begin{array}{rcccrl}
+							\mathbf{l}(3) &amp; = &amp; \mathbf{a} + 3\cdot \mathbf{v} &amp; =  &amp; (1,1,1) &amp; (I) \\
+							\mathbf{l}(7) &amp; = &amp; \mathbf{a} + 7\cdot \mathbf{v} &amp; = &amp;  (17,-3,13) &amp; (II)
+							\end{array}
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>We are looking for those vectors <math>
+                           <latex>\mathbf{a}</latex>
+                        </math> and <math>
+                           <latex>\mathbf{v}</latex>
+                        </math> which solve both equations simultaneously. By forming <math>
+                           <latex>(II) - (I)</latex>
+                        </math>, we find:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\mathbf{l}(7) - \mathbf{l}(3) = 4\cdot \mathbf{v} = (16,-4,12)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore, <math>
+                           <latex>\mathbf{v} = (4,-1,3)</latex>
+                        </math>. Substituting <math>
+                           <latex>\mathbf{v} = (4,-1,3)</latex>
+                        </math> into equation <math>
+                           <latex>(I)</latex>
+                        </math>, we get:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\mathbf{a} = (1,1,1) - 3\cdot (4,-1,3) = (-11,4,-8)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore, the expression which describes the motion of the particle is</para.body>
+                  </para>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\mathbf{l}(t) = (-11,4,-8) + t\cdot (4,-1,3)</latex>
+                        </math>, where <math>
+                           <latex>t</latex>
+                        </math> is in <math>
+                           <latex>\RNr</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Two particles move according to the equations</para.body>
+            </para>
+			         <para align="center">
+               <para.body>
+				              <math>
+                     <latex>\mathbf{l}_1 = (3,1,-1) + t\cdot (4,0,6)</latex>
+                  </math>  and  <math>
+                     <latex>\mathbf{l}_2 = (4,3,1) + t\cdot (2,0,2)</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Determine whether the particles collide or not. If they do, where? and when?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The two paths do not cross. Therefore the particles do not collide.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The two particles collide exactly when there is a time <math>
+                           <latex>t</latex>
+                        </math> for which  <math>
+                           <latex>\mathbf{l}_1(t) = \mathbf{l}_2(t)</latex>
+                        </math>. Accordingly, we look for a solution of the vector equation</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+							\aligned
+							(3,1,-1) + t\cdot (4,0,6) &amp; = &amp; (4,3,1) + t\cdot (2,0,2) \\
+							t\cdot \left( (4,0,6) - (2,0,2)\right) &amp; = &amp; (4,3,1) - (3,1,-1) \\
+							t\cdot (2,0,4) &amp; = &amp; (1,2,2)
+							\endaligned
+							
+							</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Consider the second coordinate of the bottom line: it requires of a number <math>
+                           <latex>t</latex>
+                        </math> that <math>
+                           <latex>t\cdot 0 = 2</latex>
+                        </math>, which is impossible. Therefore the two particles do not collide.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Determine whether the paths of the particles cross each other. If the do, where?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The paths of the two particles cross each other exactly when there is a time <math>
+                           <latex>t</latex>
+                        </math> and a time <math>
+                           <latex>s</latex>
+                        </math>   for which <math>
+                           <latex>\mathbf{l}_1(t) = \mathbf{l}_2(s)</latex>
+                        </math>. Accordingly, we look for a solution of the vector equation</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+							\aligned
+							(3,1,-1) + t\cdot (4,0,6) &amp; =  (4,3,1) + s\cdot (2,0,2) \\
+							-s\cdot (2,0,2) + t\cdot (4,0,6) &amp; = (4,3,1) - (3,1,-1) = (1,2,-1)  
+							\endaligned
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Inspection of the second coordinate shows that a valid solution consists of numbers <math>
+                           <latex>s</latex>
+                        </math> and <math>
+                           <latex>t</latex>
+                        </math> with <math>
+                           <latex>s\cdot 0 + t\cdot 0 = 2</latex>
+                        </math>. No such numbers <math>
+                           <latex>s</latex>
+                        </math> and <math>
+                           <latex>t</latex>
+                        </math> exist. Therefore the paths of the two particles do not cross.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>A particle is traveling according to the equation</para.body>
+            </para>
+			         <math.display>
+				           <latex>\mathbf{l}(t) = (1,0,1) + t\cdot (2,4,-1)</latex>
+			         </math.display>
+			         <para>
+               <para.body>Determine the velocity of a missile that is fired from <math>
+                     <latex>(4,4,4)</latex>
+                  </math> at time <math>
+                     <latex>2</latex>
+                  </math> and travels linearly so that it hits the particle at time <math>
+                     <latex>10</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The velocity vector of the missile is  <math>
+                           <latex>\mathbf{v} = (17,36,-13)/8</latex>
+                        </math>.</para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>First find the location of the particle at the time of the impact.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>Next determine the vector from the starting point of the missile to the impact point. - How is this vector related to the velocity vector of the missile?</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>At the instant of colission the particle is in position</para.body>
+               </para>
+				           <math.display>
+					             <latex>\mathbf{l}(10) = (1,0,1) + 10\cdot (2,4,-1) = (21,40,-9)</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Therefore the vector describing the displacement of the missile between time <math>
+                        <latex>t=2</latex>
+                     </math> and <math>
+                        <latex>t=10</latex>
+                     </math> is</para.body>
+               </para>
+				           <math.display>
+					             <latex>\mathbf{T} = (21,40,-9) - (4,4,4) = (17,36,-13)</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Therefore the velocity vector of the missile is  <math>
+                        <latex>\mathbf{v} = \frac{1}{8}\cdot (17,36,-13)</latex>
+                     </math>. This answers the problem. In addition, we can now write down the equation for the linear motion of the missile:</para.body>
+               </para>
+				           <para align="center">
+                  <para.body>
+					                <subordinate>
+                        <hot>
+							                    <math>
+                              <latex>\mathbf{m}(t) = (4,4,4) + \dfrac{(t-2)}{8}\cdot (17,36,-13)</latex>
+                           </math>
+						                  </hot>
+                        <info>
+							                    <para>
+                              <para.body>We subtract <math>
+                                    <latex>2</latex>
+                                 </math> from <math>
+                                    <latex>t</latex>
+                                 </math>, because the missile starts from <math>
+                                    <latex>(4,4,4)</latex>
+                                 </math> at time <math>
+                                    <latex>t=2</latex>
+                                 </math>. – So <math>
+                                    <latex>\mathbf{m}(2) = (4,4,4)</latex>
+                                 </math>, and this is exactly what this linear motion describes.</para.body>
+                           </para>
+						                  </info>
+                     </subordinate>
+				              </para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider the linear motion in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>
+               </para.body>
+            </para>
+			         <math.display>
+				           <latex>\Vect{l}(t) = \Vect{a}\ +\ t\cdot \Vect{v}</latex>
+			         </math.display>
+			         <para>
+               <para.body>with <math>
+                     <latex>\Vect{v}\neq \Vect{0}</latex>
+                  </math>. Show that the motion passes through the origin if and only if <math>
+                     <latex>\Vect{a}</latex>
+                  </math> is parallel to <math>
+                     <latex>\Vect{v}</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>There are two inferences you need to verify:</para.body>
+            </para>
+				        <ul>
+					          <li>
+						            <para>
+                     <para.body>If the motion passes through the origin, then <math>
+                           <latex>\Vect{a}</latex>
+                        </math> is parallel to <math>
+                           <latex>\Vect{v}</latex>
+                        </math>.</para.body>
+                  </para>
+					          </li>
+					          <li>
+						            <para>
+                     <para.body>If <math>
+                           <latex>\Vect{a}</latex>
+                        </math> is parallel to <math>
+                           <latex>\Vect{v}</latex>
+                        </math>, then the motion passes through the origin.</para.body>
+                  </para>
+					          </li>
+				        </ul>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>The motion passes through the origin if and only if the vector equation</para.body>
+            </para>
+				        <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{a} + t\cdot \Vect{v}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{0}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+				        <para>
+               <para.body>has a solution.</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+</exercise.pack>

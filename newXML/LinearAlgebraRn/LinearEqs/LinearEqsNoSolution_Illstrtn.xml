@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Illstrtn_LinearEqsNoSolution"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+	  <title>Linear Equations with no Solutions</title>
+	  <caption xmlns="">Linear Equations with no Solutions</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>If a system of linear equations has no solution, then the solution hyperplanes of its equations have no point in common.</para.body>
+         </para>
+			
+			      <para xmlns="">
+            <para.body>
+               <media type="image" active="0" inline="0">
+                  <img src="ims/ThreeEqnsR2Overdetermined.gif"/>
+               </media>
+            </para.body>
+         </para>
+			
+			      <para xmlns="">
+            <para.body>There is exactly one way in which the RREF of the system indicates that there is no solution: The RREF contains a leading <math>
+                  <latex>1</latex>
+               </math> in its augmented part.</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{ccccccccccccccc|c}
+0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; 0 \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; 0 \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; 0 \\
+\vdots &amp;   &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp; \vdots &amp; \vdots \\
+\vdots &amp;   &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp; \vdots &amp; \vdots \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; * &amp; ***    &amp; * &amp; 0 \\
+{\color{red}0} &amp; {\color{red}\dots} &amp; {\color{red}0} &amp; {\color{red}0} &amp; {\color{red}0} &amp; {\color{red}\dots} &amp; {\color{red}0} &amp; {\color{red}0} &amp; {\color{red}0} &amp; {\color{red}\dots} &amp; {\color{red}0} &amp; {\color{red}0} &amp; {\color{red}0} &amp; {\color{red}\dots} &amp; {\color{red}0} &amp; {\color{red}1} \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+\end{array}
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>Why does the above system have no solution? – To see this we only need to recall that a row with a leading <math>
+                  <latex>1</latex>
+               </math> in its augmented part corresponds to an equation in the reduced system of the form:</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$0$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}x_n} &amp; = &amp; {\color{red}1} \\
+\end{array}
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>The left hand side is always <math>
+                  <latex>0</latex>
+               </math>, while the right hand side is <math>
+                  <latex>1</latex>
+               </math>. So this particular equation has no solution. Hence the entire system has no simultaneous solutions. </para.body>
+         </para>
+		    </statement.showme>
+	  </showme>
+</showme.pack>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_CharacteristicPolynomial"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Characteristic Polynomial: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Here are some examples of polynomials:</para.body>
+         </para>
+			      <ul xmlns="">
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>p(t) = 3t^2 + t -1</latex>
+                     </math> is a polynomial of degree <math>
+                        <latex>2</latex>
+                     </math> in the variable <math>
+                        <latex>t</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>p(x) = 5x^3 + x^2 + 3x + 4</latex>
+                     </math> is a polynomial of degree <math>
+                        <latex>3</latex>
+                     </math> in the variable <math>
+                        <latex>x</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>q(s) = -2s^5 + s^4 - 2s^3 + s^2 - 5s + 1</latex>
+                     </math> is a polynomial of degree <math>
+                        <latex>5</latex>
+                     </math> in the variable <math>
+                        <latex>s</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+			      </ul>
+		    </statement.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the characteristic polynomial of the matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} =
+\left[
+\begin{array}{cc}
+3 &amp; 1 \\
+1 &amp; 3
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>As <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is a <math>
+                        <latex>(2,2)</latex>
+                     </math>-matrix, its characteristic polynomial has degree <math>
+                        <latex>2</latex>
+                     </math>. To find it, we compute:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\aligned
+p(\lambda)\ &amp;=\ 
+	\det\left(
+	\left[
+\begin{array}{cc}
+3 &amp; 1 \\
+1 &amp; 3
+\end{array}
+\right]\ -\ 
+\lambda\cdot \left[
+\begin{array}{cc}
+1 &amp; 0 \\
+0 &amp; 1
+\end{array}
+\right] \right) \\
+	&amp;=\ \det
+\left[
+\begin{array}{cc}
+3 - \lambda &amp; 1 \\
+1 &amp; 3 - \lambda
+\end{array}
+\right] \\
+	&amp;=\ (3-\lambda)^2 - 1 \\
+	&amp;=\ (\lambda-4)(\lambda -2)
+\endaligned
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>So the characteristic polynomial of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> vanishes at two places, namely:</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lambda_1</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>4</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lambda_2</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>2</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

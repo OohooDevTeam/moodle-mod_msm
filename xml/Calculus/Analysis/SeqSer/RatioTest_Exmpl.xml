@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_RatioTest">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Ratio Test: Examples</title>
+	<showme>
+		<statement>
+			<para>Use the ratio test to determine if the series</para>
+			<math.display>
+				<latex>\sum_{n=0}^{\infty} (-1)^n \dfrac{ 3^n n^2 }{ n! }</latex>
+			</math.display>
+			<para>converges absolutely.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We analyze the quotient</para>
+			<computation>
+				<left>\lim_{n\to \infty} \dfrac{ \Abs{ a_{n+1} } }{ \Abs{ a_n } }</left>
+				<center>=</center>
+				<right>\lim_{n\to \infty} \dfrac{ \dfrac{ 3^{n+1} (n+1)^2 }{ (n+1)! } }{ \dfrac{ 3^nn^2 }{ n! } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\lim_{n\to \infty}\dfrac{ \dfrac{ 3 (1 + 1/n)^2 }{ n+1 } }{ \dfrac{ 1 }{ 1 } }</right>
+				<left></left>
+				<center>=</center>
+				<right><![CDATA[ 0 < 1 ]]></right>
+			</computation>
+			<para>Therefore, the given series converges absolute by the ratio test.</para>
+		</answer>
+	</showme>
+</showme.pack>

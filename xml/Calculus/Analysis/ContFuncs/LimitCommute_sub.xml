@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_LimitCommute">
+	<title>Continuity via Limit Commutation</title>
+	<sub.page.body>
+		<block>
+			<para>Use this page when introducing limit commutation of continuous functions.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

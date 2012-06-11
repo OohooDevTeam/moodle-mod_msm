@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearEqsSolveFromRREF">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Solving from Row Reduced Echelon Form - Example</title>
+	<caption>Solving from RREF - Example</caption>
+	<showme>
+		<statement>
+			<para>Find all solutions of the system of 3 linear equations in 7 variables below.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcr}
+\colorbox{lightgreen}{$1$}{\color{red}x_1}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_2}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_3}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_4}\ -\ \colorbox{lightgreen}{$3$}{\color{red}x_5}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_6}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_7} & = & 4 \\
+%
+\colorbox{lightgreen}{0}{\color{red}x_1}\ +\ \colorbox{lightgreen}{0}{\color{red}x_2}\ +\ \colorbox{lightgreen}{1}{\color{red}x_3}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$4$}{\color{red}x_5} \ +\ \colorbox{lightgreen}{$0$}{\color{red}x_6}\ +\ \colorbox{lightgreen}{$3$}{\color{red}x_7} & = & -2 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}x_1}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_2}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_3}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_5}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_6}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_7} & = & 3 \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>The <b>solutions of the first equation</b> can be found by choosing freely number values for all variables, except for <latex magnify="yes">x_1</latex>, and then defining</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					{\color{red}x_1}\ :=\ 4\ -\ \colorbox{lightgreen}{2}{\color{red}x_2} - \colorbox{lightgreen}{1}{\color{red}x_4} + \colorbox{lightgreen}{$3$}{\color{red}x_5} - \colorbox{lightgreen}{$2$}{\color{red}x_7}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The <b>solutions of the second equation</b> can be found by choosing freely number values for all variables, except for <latex magnify="yes">x_3</latex>, and then defining</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					{\color{red}x_3}\ :=\ -2\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_4} - \colorbox{lightgreen}{$4$}{\color{red}x_5} - \colorbox{lightgreen}{$3$}{\color{red}x_7}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The <b>solutions of the third equation</b> can be found by choosing freely number values for all variables, except for <latex magnify="yes">x_6</latex>, and then defining</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					{\color{red}x_6}\ :=\ 3\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_7}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>Accordingly, we find the <b>simultaneous solutions of the system of equations</b> by choosing freely number values for all variables, except for <latex magnify="yes">x_1,x_3,x_6</latex>, and then defining</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+{\color{red}x_1}\ &:=\phantom{\ -} 4\ -\ \colorbox{lightgreen}{2}{\color{red}x_2} - \colorbox{lightgreen}{$1$}{\color{red}x_4} + \colorbox{lightgreen}{$3$}{\color{red}x_5} - \colorbox{lightgreen}{$2$}{\color{red}x_7} \\
+%
+{\color{red}x_3}\ &:=\ -2\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_4} - \colorbox{lightgreen}{$4$}{\color{red}x_5} - \colorbox{lightgreen}{$3$}{\color{red}x_7} \\
+%
+{\color{red}x_6}\ &:=\phantom{\ -} 3\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_7}
+\endaligned
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>For example, choosing</para>
+			<math.display>
+				<latex>{\color{red}x_2}:=3,\quad {\color{red}x_4}:=-2,\quad {\color{red}x_5}:=-1,\quad {\color{red}x_7}:=5</latex>
+			</math.display>
+			<para>we obtain the specific solution  <latex>(-13,3,-17,-2,-1,13,5)</latex>.</para>
+			<para>In general, arbitrarily chosen number values for each of <latex>r,s,t,u</latex> yields a solution of the given system of linear equations of the form</para>
+			<ol>
+				<li><para><latex>x_1 := 4 - 2r - s + 3t - 2u</latex></para></li>
+				<li><para><latex>x_2 := r</latex></para></li>
+				<li><para><latex>x_3 := -2 + 2s-4t-3u</latex></para></li>
+				<li><para><latex>x_4 := s</latex></para></li>
+				<li><para><latex>x_5 := t</latex></para></li>
+				<li><para><latex>x_6 := 3 + 2u</latex></para></li>
+				<li><para><latex>x_7 := u</latex></para></li>
+			</ol>
+			<para>Thus each solution of the given system determine a vector in <latex>\RNr[7]</latex> of the form</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{l}
+(4-2r-s+3t-2u,r,-2+2s-4t-2u,s,t,3+2u,u)\ = \\
+(4,0,-2,0,0,3,0) + r\cdot (-2,1,0,0,0,0,0) + s\cdot (-1,0,2,1,0,0,0)\ + \\
+\ + t\cdot (3,0,-4,0,1,0,0) + u\cdot (-2,0,-2,0,0,2,1)
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			
+			<para>Once again, here <latex>r,s,t,u</latex> are arbitrary numbers in <latex>\RNr</latex>. These four numbers are completely independent of one another. We say that the solution space of the given system is the space spanned the vectors</para>
+			<ul>
+				<li><para><latex>(-2,1,0,0,0,0,0)</latex></para></li>
+				<li><para><latex>(-1,0,2,1,0,0,0)</latex></para></li>
+				<li><para><latex>(3,0,-4,0,1,0,0)</latex></para></li>
+				<li><para><latex>(-2,0,-2,0,0,2,1)</latex></para></li>
+			</ul>
+			<para>shifted by the vector <latex>(4,0,-2,0,0,3,0)</latex>.</para>
+		</answer>
+	</showme>
+	
+</showme.pack>

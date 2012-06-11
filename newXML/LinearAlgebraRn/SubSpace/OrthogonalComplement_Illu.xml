@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_OrthogonalComplement"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Orthogonal Complement - Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The orthogonal complement of a collection of vectors <math>
+                     <latex>S</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> consists of all those vectors in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> which are perpendicular to every vector in <math>
+                     <latex>S</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>For example, the orthogonal complement of a single nonzero vector <math>
+                     <latex>\Vect{n}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> consists of all those vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math> for which <math>
+                     <latex>\DotPr{ \Vect{x} }{ \Vect{n} } = 0</latex>
+                  </math>. This, we recognize, is the hyperspace of vectors perpendicular to <math>
+                     <latex>\Vect{n}</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>For example, the orthogonal complement of two vectors <math>
+                     <latex>\Vect{u}</latex>
+                  </math> and <math>
+                     <latex>\Vect{v}</latex>
+                  </math> consists of all those vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math> which are perpendicular to both <math>
+                     <latex>\Vect{u}</latex>
+                  </math> and <math>
+                     <latex>\Vect{v}</latex>
+                  </math>; etc. – </para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The picture below shows a vector <math>
+                     <latex>\Vect{s}</latex>
+                  </math> in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>, together with its orthogonal complement <math>
+                     <latex>\Vect{s}^{\bot}</latex>
+                  </math>, the line perpendicular to <math>
+                     <latex>\Vect{s}</latex>
+                  </math>. (The red dot represents the origin.)</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/OrthogonalComplement1.png"/>
+               <extended.caption>The orthogonal complement of <math>
+                     <latex>\Vect{s}</latex>
+                  </math> in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>
+               </extended.caption>
+            </media>
+            <para>
+               <para.body>Note that <math>
+                     <latex>\Vect{s}^{\bot}</latex>
+                  </math> consists of an infinite collection of vectors, namely all those vectors which are perpendicular to <math>
+                     <latex>\Vect{s}</latex>
+                  </math>
+               </para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/OrthogonalComplement3.png"/>
+               <extended.caption>The orthogonal complement of <math>
+                     <latex>\Vect{s}</latex>
+                  </math> in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>
+               </extended.caption>
+            </media>
+            <para>
+               <para.body>The orthogonal complement of a single nonzero vector is always a hyperspace.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The picture below shows two vectors <math>
+                     <latex>\Vect{s}</latex>
+                  </math> and <math>
+                     <latex>\Vect{t}</latex>
+                  </math> in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>, together with their respective orthogonal complements:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>the line perpendicular to <math>
+                           <latex>\Vect{s}</latex>
+                        </math>, and</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>the line perpendicular to <math>
+                           <latex>\Vect{t}</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>The orthogonal complement of the set <math>
+                     <latex>S:=\Set{ \Vect{s},\Vect{t} }</latex>
+                  </math> consists of all vectors in the plane which are perpendicular to both <math>
+                     <latex>\Vect{s}</latex>
+                  </math> and <math>
+                     <latex>\Vect{t}</latex>
+                  </math>. Thus the orthogonal complement of <math>
+                     <latex>S</latex>
+                  </math> is the intersection of the hyperspace perpendicular to <math>
+                     <latex>\Vect{s}</latex>
+                  </math> and the hyperspace perpendicular to <math>
+                     <latex>\Vect{t}</latex>
+                  </math>. In this case <math>
+                     <latex>S^{\bot}</latex>
+                  </math> is just the origin, represented here by a red dot.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/OrthogonalComplement2.png"/>
+            </media>
+         </block.body>
+      </block>
+   </body>
+</unit>

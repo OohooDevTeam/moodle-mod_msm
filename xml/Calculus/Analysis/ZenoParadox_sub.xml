@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page
+	SYSTEM "Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illustr_ZenoParadox">
+	<title>Zeno&rsquo;s Paradox: Achilles and the Tortoise</title>
+	<sub.page.body>
+		<block>
+			<para>Aristotle comments on Zeno&rsquo;s paradox as follows:</para>
+			<para><i>In a race, the quickest runner can never overtake the slowest, since the pursuer must first reach the point whence the pursued started, so that the slower must always hold a lead</i>.</para>
+		</block>
+		
+   		<block>
+   			<para>What exactly does Aristotle mean by his comment? &ndash; Fast Achilles runs a race with slow Tortoise, and allows her a head start of 100m. For simplicity, assume both contestants run at a constant speed. Before being able to catch up to Tortoise, Achilles must cover the head start distance of 100m. However, by the time Achilles covers the head start distance, Tortoise covers a distance of, say 20m. By the time Achilles covers those 20m, Tortoise covers another 4m. By the time Achilles covers those 4m, Tortoise has again moved ahead of Achilles and, no matter how often Achilles covers Tortoise's previous head start, Tortoise is always able to establish a new, albeit shorter, head start. &ndash; Conclusion: Achilles will never catch up to Tortoise let alone overtake her.</para>
+   			<para>What's wrong here? &ndash; Every day experience tells us clearly that Achilles will overtake Tortoise (can you 
+   				<subordinate>
+   					<hot>figure out</hot>
+   					<info>
+   						<caption>After which distance does A. overtake T.?</caption>
+   						<para>It is a completely elementary problem to work out after which distance Achilles overtakes Tortoise: We know that T runs 20m while A runs 100m. Moreover, T has a head start of 100m. Now we wonder if there is a distance <latex>x</latex> run by T at which A overtakes T. Combining the information provided, <latex>x</latex> is characterized by the identity</para>
+   						<computation>
+   							<left>5x</left>
+   							<center>=	<info>
+   								<caption>Explain this identity</caption>
+   								<para>Indeed, by the time T covers distance <latex>x</latex>, A covers distance <latex>5x</latex>. Thus when T has covered distance <latex>x</latex>, she is <latex>x+100m</latex> from A's starting point, while A is <latex>5x</latex> from his starting point.</para>
+   							</info></center>
+   							<right>x + 100m</right>
+   							<left>x</left>
+   							<center>=</center>
+   							<right>25m</right>
+   						</computation>
+   						<para>Thus A overtakes T after T has run 25m.</para>
+   					</info>
+   				</subordinate>
+   				after which distance?) One of the things we learn from the subject of mathematical analysis is how to bring an infinite process, like the one proposed by Zeno, to a correct conclusion and, in doing so, resolve the paradox proposed by Zeno.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

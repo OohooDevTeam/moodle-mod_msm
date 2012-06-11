@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation> ============= This schema provides atomic markup to be included into
+			higher order style schema ====================== </xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation> ============= Begin: Personal Data Atoms ======================
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="name">
+		<xsd:annotation>
+			<xsd:documentation>Name of a person with distinct markup for first, middle, and last
+				name; as well as initials</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element name="first" type="xsd:normalizedString"/>
+				<xsd:element name="middle" type="xsd:normalizedString" minOccurs="0"/>
+				<xsd:element name="last" type="xsd:normalizedString"/>
+				<xsd:element name="initials" minOccurs="0">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:normalizedString"/>
+					</xsd:simpleType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="contactdata">
+		<xsd:annotation>
+			<xsd:documentation>Contactdata of a person</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="e-mail" maxOccurs="unbounded" minOccurs="0"/>
+				<xsd:element name="webpage" type="xsd:anyURI" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Address of web page</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="phone" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="address" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="phone">
+		<xsd:annotation>
+			<xsd:documentation>phone number</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:normalizedString">
+					<xsd:attribute name="where" use="optional" default="home">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:enumeration value="home"/>
+								<xsd:enumeration value="cell"/>
+								<xsd:enumeration value="work"/>
+								<xsd:enumeration value="others"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="address">
+		<xsd:annotation>
+			<xsd:documentation>Address of a person</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element name="organization" type="xsd:normalizedString" minOccurs="0"/>
+				<xsd:element name="street" type="xsd:normalizedString"/>
+				<xsd:element name="city" type="xsd:normalizedString"/>
+				<xsd:element name="code" type="xsd:normalizedString" minOccurs="0"/>
+				<xsd:element name="country" type="xsd:normalizedString"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="e-mail" type="xsd:normalizedString">
+		<xsd:annotation>
+			<xsd:documentation>e-mail address</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:annotation>
+		<xsd:documentation>============ End: Personal Data Atoms =========================</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ Begin: Content Structure Atoms ====================</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="plain.title" type="xsd:normalizedString">
+		<xsd:annotation>
+			<xsd:documentation>Version of title for the browser title bar. Data cannot contain math symbol constructs</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="title">
+		<xsd:annotation>
+			<xsd:documentation>Title of a unit.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="math"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="caption">
+		<xsd:annotation>
+			<xsd:documentation>Caption for material under the present element</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="math"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="textcaption" type="xsd:normalizedString">
+		<xsd:annotation>
+			<xsd:documentation>Straight text version of a caption; no math symbol constructs are allowed here.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="date">
+		<xsd:annotation>
+			<xsd:documentation>Date</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element name="month">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:positiveInteger">
+							<xsd:minInclusive value="1"/>
+							<xsd:maxInclusive value="12"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="day">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:positiveInteger">
+							<xsd:minInclusive value="1"/>
+							<xsd:maxInclusive value="31"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="year" type="xsd:integer"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="object">
+		<xsd:annotation>
+			<xsd:documentation>For insular objects external to WebMath system that should be included into the transformed document.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="xsd:anyType">
+					<xsd:attribute name="source" type="xsd:anyURI" use="optional"/>
+					<xsd:attribute name="contenttype" use="optional" default="HTML">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:enumeration value="HTML"/>
+								<xsd:enumeration value="JavaApplet"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+					<xsd:attribute name="width" type="xsd:positiveInteger" use="optional"/>
+					<xsd:attribute name="height" type="xsd:positiveInteger" use="optional"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:annotation>
+		<xsd:documentation>============ End: Content Structure Atoms
+		==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ Begin: Content Presentation Atoms
+		==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="strong" type="xsd:normalizedString">
+		<xsd:annotation>
+			<xsd:documentation>For rendering in print bold face might be used; For rendering in voice increased loudness might be used.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="emphasis" type="xsd:normalizedString">
+		<xsd:annotation>
+			<xsd:documentation>For rendering in print italics (or underline, highlighting) might be used; For rendering in voice might be used to accent the content (maybed achieved by creating a pause before/after the content).</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:annotation>
+		<xsd:documentation>============ End: Content Organizational Atoms
+		==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============= Begin: Math related atoms ======================
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="math">
+		<xsd:annotation>
+			<xsd:documentation>For inline math content</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:choice>
+				<xsd:element ref="latex" minOccurs="0"/>
+				<xsd:element name="mathml" type="xsd:anyType" minOccurs="0"/>
+				<xsd:element name="imageURI" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>URI of image document presenting rendered latex
+						code</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:anyURI">
+								<xsd:attribute name="position" type="xsd:integer" use="optional"
+									default="0"/>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element minOccurs="0" ref="text.to.speech"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="math.display">
+		<xsd:annotation>
+			<xsd:documentation>For math in centered display mode</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:choice>
+				<xsd:element ref="latex" minOccurs="0"/>
+				<xsd:element name="imageURI" type="xsd:anyURI" minOccurs="0"/>
+				<xsd:element name="mathml" type="xsd:anyType" minOccurs="0"/>
+				<xsd:element minOccurs="0" ref="caption"/>
+				<xsd:element minOccurs="0" ref="text.to.speech"/>
+			</xsd:choice>
+			<xsd:attribute name="id" type="xsd:normalizedString" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="latex">
+		<xsd:annotation>
+			<xsd:documentation>Latex Source Code which is processed according to the basic WMath-AMS-LaTeX configuration or modifications thereof, as specified by the texsupport-element. If your math-code uses ampersand, or left and brackets or right angle brackets, you need to open a CDATA-element inside the latex-element and enclose all of your LaTeX-code with it.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:normalizedString"> </xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="texsupport">
+		<xsd:annotation>
+			<xsd:documentation>The WMath-system provides a basic configuration for AMS-LaTeX. Advanced authors might want to customize this configuration to their needs. Within the texsupport element you can achieve this in two ways: 1) by selecting LaTeX-packages to be used in display math and, 2) by using your own LaTeX-macros.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="href" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="literature.db">
+		<xsd:annotation>
+			<xsd:documentation>A literature DB can be used to provide the data for citations. The WMath system uses a dedicated format for its literature data bases. This format is closely patterned after the BibTeX principles.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="href" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:annotation>
+		<xsd:documentation>============= End: Math related atoms ======================
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ Begin: Linking and Interactivity atoms
+		==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="hot">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Marks data which the user will experience as an interactive trigger to invoke subordinate material.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="strong" minOccurs="1"/>
+				<xsd:element ref="emphasis" minOccurs="1"/>
+				<xsd:element ref="math"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:annotation>
+		<xsd:documentation>============ End: Linking and Interactivity atoms
+		==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ Begin: External Objects Atoms
+		=================</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ End: External Objects Atoms
+		==================</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="Profile">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="name"/>
+				<xsd:element minOccurs="0" ref="contactdata"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="text.to.speech" type="xsd:normalizedString">
+		<xsd:annotation>
+			<xsd:documentation>Write in plain characters how this is supposed to be read.
+(e.g. if your math string is f(x), then you would give the text-to-speech information as "f of x").</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="description" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation>Plain text description of the object. This description should contain relevant keywords to aid robotic searches identify the object.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

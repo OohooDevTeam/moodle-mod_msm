@@ -1,0 +1,1694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_LinearTrafosComposition"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Adding, Scalar Multiplying and Composing Linear Transformations</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If <math>
+                     <latex>S,T\from \RNr[3]\to \RNr[2]</latex>
+                  </math>, respectively, are represented by</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+A = 
+\left[
+\begin{array}{rrr}
+2 &amp; -1 &amp; 7 \\
+4 &amp; 1 &amp; 6
+\end{array}
+\right]\quad \text{and} \quad 
+B = 
+\left[
+\begin{array}{rrr}
+-2 &amp; 6 &amp; 11 \\
+3 &amp; -4 &amp; 1
+\end{array}
+\right]
+					
+				</latex>
+			         </math.display>
+			         <para>
+               <para.body>find the matrix representing <math>
+                     <latex>S+T</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>
+                        <math>
+                           <latex>(S+T)</latex>
+                        </math> is represented by</para.body>
+                  </para>
+				              <math.display>
+					                <latex>
+						
+A + B = 
+\left[
+\begin{array}{rrr}
+0 &amp; 5 &amp; 18 \\
+7 &amp; -3 &amp; 7
+\end{array}
+\right]
+					
+					</latex>
+				              </math.display>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Review the 
+					<subordinate>
+                     <hot>proposition</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_SumLinearTrafos"/>
+                        <info>
+							
+							                    <para>
+                              <para.body>Look up this result</para.body>
+                           </para>
+						                  </info>
+                     </crossref>
+                  </subordinate>
+					which shows that <math>
+                     <latex>S+T</latex>
+                  </math> is linear, and what its representing  matrix is.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We <subordinate>
+                        <hot>know</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_SumLinearTrafos"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up this result</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate> that <math>
+                        <latex>(S+T)</latex>
+                     </math> is linear and that it is represented by the matrix <math>
+                        <latex>\Mtrx{A} + \Mtrx{B}</latex>
+                     </math>. Thus we compute</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\aligned
+A +B\ &amp;=\  
+\left[
+\begin{array}{rrr}
+2 &amp; -1 &amp; 7 \\
+4 &amp; 1 &amp; 6
+\end{array}
+\right]\ + \ 
+\left[
+\begin{array}{rrr}
+-2 &amp; 6 &amp; 11 \\
+3 &amp; -4 &amp; 1
+\end{array}
+\right] \\
+&amp;=\ 
+\left[
+\begin{array}{rrr}
+0 &amp; 5 &amp; 18 \\
+7 &amp; -3 &amp; 7
+\end{array}
+\right]
+\endaligned
+					
+					</latex>
+				           </math.display>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If <math>
+                     <latex>L\from \RNr[3]\to \RNr[4]</latex>
+                  </math> is represented by</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+C = 
+\left[
+\begin{array}{rrr}
+4 &amp; 1 &amp; 6 \\
+2 &amp; -1 &amp; 7 \\
+9 &amp; 3 &amp; -11 \\
+-1 &amp; 2 &amp; 5
+\end{array}
+\right]
+					
+				</latex>
+			         </math.display>
+			         <para>
+               <para.body>find the matrix representing <math>
+                     <latex>4\cdot L</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>
+                        <math>
+                           <latex>(4\cdot L)</latex>
+                        </math> is represented by</para.body>
+                  </para>
+				              <math.display>
+					                <latex>
+						
+4\cdot C = 
+\left[
+\begin{array}{rrr}
+16 &amp; 4 &amp; 24 \\
+8 &amp; -4 &amp; 28 \\
+36 &amp; 12 &amp; -44 \\
+-4 &amp; 8 &amp; 20
+\end{array}
+\right]
+					
+					</latex>
+				              </math.display>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Review the 
+					<subordinate>
+                     <hot>proposition</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_ScalarProductLinearTrafo"/>
+                        <info>
+							
+							                    <para>
+                              <para.body>Look up this result</para.body>
+                           </para>
+						                  </info>
+                     </crossref>
+                  </subordinate>
+					which shows that <math>
+                     <latex>t\cdot L</latex>
+                  </math> is linear for every <math>
+                     <latex>t</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math>, and what its representing  matrix is.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We <subordinate>
+                        <hot>know</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_ScalarProductLinearTrafo"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up this result</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate> that <math>
+                        <latex>(4\cdot L)</latex>
+                     </math> is linear and that it is represented by the matrix <math>
+                        <latex>4\cdot \Mtrx{C}</latex>
+                     </math>. Therefore we compute</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\aligned
+4\cdot C\ &amp;=\ 
+4\cdot \left[
+\begin{array}{rrr}
+4 &amp; 1 &amp; 6 \\
+2 &amp; -1 &amp; 7 \\
+9 &amp; 3 &amp; -11 \\
+-1 &amp; 2 &amp; 5
+\end{array}
+\right] \\
+&amp;=\ 
+\left[
+\begin{array}{rrr}
+16 &amp; 4 &amp; 24 \\
+8 &amp; -4 &amp; 28 \\
+36 &amp; 12 &amp; -44 \\
+-4 &amp; 8 &amp; 20
+\end{array}
+\right]
+\endaligned
+							
+						</latex>
+					          </math.display>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>You are given linear maps <math>
+                     <latex>S\from \RNr\to \RNr[3]</latex>
+                  </math>, <math>
+                     <latex>S(x)=(2x,5x,-x)</latex>
+                  </math> and <math>
+                     <latex>T\from \RNr[3]\to \RNr</latex>
+                  </math>, <math>
+                     <latex>T(x,y,z)=x-y+2z</latex>
+                  </math>. Find the matrix representing <math>
+                     <latex>T\Comp S</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>
+                        <math>
+                           <latex>T\Comp S</latex>
+                        </math> is represented by</para.body>
+                  </para>
+				              <math.display>
+					                <latex>\Mtrx{A} = [-5]</latex>
+				              </math.display>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Review the 
+					<subordinate>
+                     <hot>proposition</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_CompositeLinearTrafos"/>
+                        <info>
+							
+							                    <para>
+                              <para.body>Look up this result</para.body>
+                           </para>
+						                  </info>
+                     </crossref>
+                  </subordinate>
+					which shows that <math>
+                     <latex>T\Comp S</latex>
+                  </math> is linear for every <math>
+                     <latex>t</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math>, and what its representing  matrix is.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We <subordinate>
+                        <hot>know</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_CompositeLinearTrafos"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up this result</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>
+					that <math>
+                        <latex>T\Comp S\from \RNr \to \RNr</latex>
+                     </math> is linear. So we may compute the <math>
+                        <latex>(1,1)</latex>
+                     </math>-matrix representing <math>
+                        <latex>T\Comp S</latex>
+                     </math> as the product of the matrices representing <math>
+                        <latex>T</latex>
+                     </math> and <math>
+                        <latex>S</latex>
+                     </math> individually. The matrix representing <math>
+                        <latex>S</latex>
+                     </math> is</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A}\ :=\ 
+\left[
+\begin{array}{r}
+2 \\ 5 \\ -1
+\end{array}
+\right]
+						
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Moreover, the matrix representing <math>
+                        <latex>T</latex>
+                     </math> is</para.body>
+               </para>
+				           <math.display>
+					             <latex>\Mtrx{B} := [1\ \ -1\ \ 2]</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Therefore <math>
+                        <latex>T\Comp S</latex>
+                     </math> is represented by</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\aligned
+\Mtrx{B}\cdot \Mtrx{A}\ &amp;=\ 
+[1\ \ -1\ \ 2]\cdot
+\left[
+\begin{array}{r}
+2 \\ 5 \\ -1
+\end{array}
+\right] \\
+&amp;=\ 
+[-5]
+\endaligned
+						
+					</latex>
+				           </math.display>
+			         </solution.body>
+         </solution>
+		    </approach>
+		    <approach version="1">
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>Another way of answering this problem is to compute the effect of <math>
+                        <latex>T\Comp S</latex>
+                     </math> on <math>
+                        <latex>x</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> first, and then finding the representing matrix:</para.body>
+               </para>
+				           <math.display>
+					             <latex>T\Comp S(x) = T(2x,5x,-x) = 2x-5x-2x = -5x</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Therefore <math>
+                        <latex>(T\Comp S)</latex>
+                     </math> is represented by the <math>
+                        <latex>(1,1)</latex>
+                     </math>-matrix <math>
+                        <latex>[-5]</latex>
+                     </math>.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the linear transformations <math>
+                     <latex>\RNr[2]\to \RNr[2]</latex>
+                  </math> below find the matrix representing it.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L</latex>
+                     </math> doubles the length of each vector <math>
+                        <latex>\Vect{x}\in \RNr[2]</latex>
+                     </math> and then rotates it about the origin through an angle of 150 degrees in the counterclockwise direction.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>L</latex>
+                           </math> is represented by the matrix</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\left[
+\begin{array}{cc}
+-\sqrt{3} &amp; -1 \\
+1 &amp; -\sqrt{3}
+\end{array}
+\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The columns of the matrix representing <math>
+                           <latex>L</latex>
+                        </math> are given by</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+L(1,0) &amp;= 2(\cos(5\pi/6),\sin(5\pi/6)) &amp;= 2\left( -\sqrt{3}/2 , 1/2 \right) \\
+L(0,1) &amp;= 2(\cos(8\pi/6),\sin(8\pi/6)) &amp;= 2\left( -1/2 , -\sqrt{3}/2 \right)
+\endaligned
+							
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>Here we have used that 150 degrees is <math>
+                           <latex>5\pi/6</latex>
+                        </math> radians. Thus <math>
+                           <latex>L</latex>
+                        </math> is represented by the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{cc}
+-\sqrt{3} &amp; -1 \\
+1 &amp; -\sqrt{3}
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L</latex>
+                     </math> projects each vector  <math>
+                        <latex>\Vect{x}</latex>
+                     </math> of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> orthogonally onto the line <math>
+                        <latex>y=x</latex>
+                     </math> and then quarters its length.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix representing <math>
+                              <latex>L</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\dfrac{1}{8}
+\left[
+\begin{array}{cc}
+1 &amp; 1 \\
+1 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The columns of the matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> representing <math>
+                           <latex>L</latex>
+                        </math> consist of <math>
+                           <latex>L(\StdBss{1})=(1,0)</latex>
+                        </math> and <math>
+                           <latex>L(\StdBss{2})=(0,1)</latex>
+                        </math>. To find these vectors, we first find the projection <math>
+                           <latex>P</latex>
+                        </math> of <math>
+                           <latex>\RNr[2]</latex>
+                        </math> onto the line <math>
+                           <latex>x=y</latex>
+                        </math>.</para.body>
+                  </para>
+					
+					             <para>
+                     <para.body>A normal vector to the line <math>
+                           <latex>x=y</latex>
+                        </math> is <math>
+                           <latex>\Vect{n}:=(-1,1)</latex>
+                        </math>. Therefore</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>P(x,y)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(x,y) - \dfrac{ \DotPr{(x,y)}{(-1,1)} }{ \DotPr{(-1,1)}{(-1,1)} } \cdot (-1,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(x,y) - \dfrac{-x + y}{2}\cdot (-1,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>Therefore</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>P(1,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,0) - \tfrac{-1}{2}(-1,1) = \tfrac{1}{2} (1,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>P(0,1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,1) - \tfrac{1}{2} (-1,1) = \tfrac{1}{2}(1,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					
+						            <img src="ims/Prjctn_Exrcs.png"/>
+					
+					             <para>
+                     <para.body>Now we need to contract these vectors by a factor of <math>
+                           <latex>1/4</latex>
+                        </math>:</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(1,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{1}{8}(1,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(0,1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{1}{8}(1,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>Therefore the matrix representing <math>
+                           <latex>L</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\dfrac{1}{8}
+\left[
+\begin{array}{cc}
+1 &amp; 1 \\
+1 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the linear transformations <math>
+                     <latex>\RNr[3]\to \RNr[3]</latex>
+                  </math> below find the matrix representing it.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L\from \RNr[3] \to \RNr[3]</latex>
+                     </math> dilates each vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math> of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> by a factor of <math>
+                        <latex>3/2</latex>
+                     </math> and then projects it orthogonally onto the <math>
+                        <latex>yz</latex>
+                     </math>-plane. </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>L</latex>
+                           </math> is represented by the matrix</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\dfrac{3}{2}
+\left[
+\begin{array}{ccc}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> representing the dilation <math>
+                           <latex>D</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+A = \dfrac{3}{2}
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The orthogonal projection <math>
+                           <latex>P</latex>
+                        </math> of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> onto the <math>
+                           <latex>yz</latex>
+                        </math>-plane satisfies</para.body>
+                  </para>
+					             <math.display>
+						               <latex>P(x,y,z) = (0,y,z)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Consequently <math>
+                           <latex>P</latex>
+                        </math> is represented by the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+B = 
+\left[
+\begin{array}{ccc}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The transformation <math>
+                           <latex>L = P\Comp D</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+B\cdot A = \left[
+\begin{array}{ccc}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\dfrac{3}{2}
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right] = 
+\dfrac{3}{2}
+\left[
+\begin{array}{ccc}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L</latex>
+                     </math> shears each vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math> of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> parallel to the <math>
+                        <latex>xy</latex>
+                     </math>-plane with shear vector <math>
+                        <latex>\Vect{s}=(-3,-1,0)</latex>
+                     </math> and then reflects <math>
+                        <latex>\RNr[3]</latex>
+                     </math> through the origin.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>L</latex>
+                           </math> is represented by the matrix</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\left[
+\begin{array}{rrr}
+-1 &amp; 0 &amp; 3 \\
+0 &amp; -1 &amp; 1 \\
+0 &amp; 0 &amp; -1
+\end{array}
+\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The shear transformation <math>
+                           <latex>S</latex>
+                        </math> leaves the basic vectors <math>
+                           <latex>\StdBss{1}</latex>
+                        </math> and <math>
+                           <latex>\StdBss{2}</latex>
+                        </math> unchanged, and transforms <math>
+                           <latex>\StdBss{3}</latex>
+                        </math> into <math>
+                           <latex>(-3,-1,1)</latex>
+                        </math>. Therefore it is represented by the matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> below.</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} := \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; -3 \\
+0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>The reflection <math>
+                           <latex>R</latex>
+                        </math> through the origin sends every vector <math>
+                           <latex>\Vect{x}</latex>
+                        </math> to <math>
+                           <latex>-\Vect{x}</latex>
+                        </math>. Therefore it is represented by the matrix <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> below.</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+\Mtrx{B} := \left[
+\begin{array}{rrr}
+-1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; -1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>As <math>
+                           <latex>L=R\Comp S</latex>
+                        </math>, the matrix representing <math>
+                           <latex>L</latex>
+                        </math> is</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+\Mtrx{B}\Mtrx{A} = \left[
+\begin{array}{rrr}
+-1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; -1
+\end{array}
+\right]
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; -3 \\
+0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right] =
+\left[
+\begin{array}{rrr}
+-1 &amp; 0 &amp; 3 \\
+0 &amp; -1 &amp; 1 \\
+0 &amp; 0 &amp; -1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L</latex>
+                     </math>  first rotates , when viewed from the positive <math>
+                        <latex>y</latex>
+                     </math>-direction, through an angle of 60 degrees clockwise about the <math>
+                        <latex>y</latex>
+                     </math>-axis, then reflects <math>
+                        <latex>\RNr[3]</latex>
+                     </math> orthogonally through the <math>
+                        <latex>xy</latex>
+                     </math>-plane.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>L</latex>
+                           </math> is represented by the matrix</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; -\sqrt{3} \\
+0 &amp; 1 &amp; 0 \\
+-\sqrt{3} &amp; 0 &amp; -1
+\end{array}
+\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The angle <math>
+                           <latex>\theta:=\pi/3</latex>
+                        </math> corresponds to 60 degrees. Now the rotation <math>
+                           <latex>R</latex>
+                        </math> has the following effect on the basic vectors</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>R(\StdBss{1})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>To see this, draw a sketch, with the <math>
+                                          <latex>y</latex>
+                                       </math>-axis pointing toward you, the <math>
+                                          <latex>x</latex>
+                                       </math>-axis then points to the left, and the <math>
+                                          <latex>z</latex>
+                                       </math>-axis points upward.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>To see this, draw a sketch, with the <math>
+                                          <latex>y</latex>
+                                       </math>-axis pointing toward you, the <math>
+                                          <latex>x</latex>
+                                       </math>-axis then points to the left, and the <math>
+                                          <latex>z</latex>
+                                       </math>-axis points upward.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\cos\theta , 0 , \sin\theta)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>R(\StdBss{2})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>R(\StdBss{3})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-\sin\theta, 0 , \cos\theta)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>Therefore the matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> representing <math>
+                           <latex>R</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+A := \dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; -\sqrt{3} \\
+0 &amp; 1 &amp; 0 \\
+\sqrt{3} &amp; 0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>The reflection <math>
+                           <latex>T</latex>
+                        </math> through the <math>
+                           <latex>xy</latex>
+                        </math>-plane has</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>T(\StdBss{1})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>T(\StdBss{2})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>T(\StdBss{3})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>Therefore the matrix <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> representing <math>
+                           <latex>T</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+B := \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; -1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>As <math>
+                           <latex>L=T\Comp R</latex>
+                        </math>, it is represented by the matrix</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+BA := \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; -1
+\end{array}
+\right] \dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; -\sqrt{3} \\
+0 &amp; 1 &amp; 0 \\
+\sqrt{3} &amp; 0 &amp; 1
+\end{array}
+\right] =
+\dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; -\sqrt{3} \\
+0 &amp; 1 &amp; 0 \\
+-\sqrt{3} &amp; 0 &amp; -1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given linear transformations</para.body>
+            </para>
+			         <para align="center">
+               <para.body>
+                  <math>
+                     <latex>R\from \RNr[q]\to \RNr[p]</latex>
+                  </math>,   <math>
+                     <latex>S\from \RNr[p]\to \RNr[n]</latex>
+                  </math>,  <math>
+                     <latex>U\from \RNr[p]\to \RNr[n]</latex>
+                  </math>, and <math>
+                     <latex>T\from \RNr[n]\to \RNr[m]</latex>
+                  </math>,</para.body>
+            </para>
+			         <para>
+               <para.body>answer the questions below.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is the difference in the constructions of the linear transformations <math>
+                        <latex>T\Comp (S\Comp R)</latex>
+                     </math> and <math>
+                        <latex>(T\Comp S)\Comp R</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Why is <math>
+                        <latex>T\Comp (S\Comp R) = (T\Comp S)\Comp R</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Why is <math>
+                        <latex>(S+U)\Comp R</latex>
+                     </math> linear?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The function <math>
+                           <latex>(S+U)\Comp R</latex>
+                        </math> is linear because</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>The <math>
+                                 <latex>(S+U)</latex>
+                              </math> is linear being a sum of linear maps, and, therefore,</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body> 
+                              <math>
+                                 <latex>(S+U)\Comp R</latex>
+                              </math> is linear, being a composition of linear maps.</para.body>
+                        </para>
+                     </li>
+					             </ol>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Why is <math>
+                        <latex>(S+U)\Comp R = S\Comp R + U\Comp R</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Why is <math>
+                        <latex>T\Comp (S+U)</latex>
+                     </math> linear?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Why is <math>
+                        <latex>T\Comp (S+U) = T\Comp S + T\Comp U</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>A linear transformation <math>
+                     <latex>T\from \RNr[2]\to \RNr[2]</latex>
+                  </math> satisfies</para.body>
+            </para>
+			         <math.display>
+				           <latex>T(1,2) = (-2,2) \quad \text{and} \quad T(-1,3) = (-1,2)</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>T(0,5)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>T(0,5)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(-3,4)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>One way to solve this problem is by noticing that</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,5)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1,2) + (-1,3)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+					          <para>
+                  <para.body>Now compute, using the information that <math>
+                        <latex>T</latex>
+                     </math> is linear.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Given that <math>
+                        <latex>(0,5) = (1,2) + (-1,3)</latex>
+                     </math>, we know that</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>T(0,5)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>T(1,2) + T(-1,3)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>T\Comp T(0,5)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>T\Comp T(0,5)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(0,2)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Look for numbers <math>
+                        <latex>r</latex>
+                     </math> and <math>
+                        <latex>s</latex>
+                     </math> such that</para.body>
+               </para>
+					          <math.display>
+						            <latex>T(0,5) = (-3,4) = r\cdot (1,2) + s\cdot (-1,3)</latex>
+					          </math.display>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>
+                     <math>
+                        <latex>(0,5) = (-1)\cdot (1,2)\ +\ 2\cdot (-1,3)</latex>
+                     </math>
+                  </para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>From part a) we know that <math>
+                           <latex>T(0,5)=(-3,4)</latex>
+                        </math>. To be able to apply the given information</para.body>
+                  </para>
+					             <math.display>
+						               <latex>T(1,2) = (-2,2) \quad \text{and} \quad T(-1,3) = (-1,2)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>we look for numbers <math>
+                           <latex>r</latex>
+                        </math> and <math>
+                           <latex>s</latex>
+                        </math> such that</para.body>
+                  </para>
+					             <math.display>
+						               <latex>T(0,5) = (-3,4) = r\cdot (1,2) + s\cdot (-1,3)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This is a system of two linear equations with two variables. It has the unique solution</para.body>
+                  </para>
+					             <math.display>
+						               <latex>T(0,5) = (-3,4) = (-1)\cdot (1,2) + 2\cdot (-1,3)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore,</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>T\Comp T(0,5)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>T( (-1)\cdot (1,2) + 2\cdot (-1,3) )</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>- T(1,2) + 2\cdot T(-1,3)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-(-2,2) + 2\cdot (-1,2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_CrossProduct">
+	<headers>
+		<full>The Cross Product</full>
+		<toc>The Cross Product</toc>
+		<short>Cross Product</short>
+	</headers>
+	
+	<intro>
+		<para>The cross product is an operation that is applied to two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex>. It returns a vector <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> in <latex>\RNr[3]</latex>, called the cross product of <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+		<para>The cross product vector <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> is always perpendicular to both <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>. Moreover, its length gives the (unoriented) area of the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>. Because of these properties the cross product is a very useful tool in the natural sciences and in engineering.</para>
+	</intro>
+	
+	<subsection id="SubSec_CrossProduct">
+		<headers>
+			<full>The Definition of the Cross Product</full>
+			<toc>The Definition of the Cross Product</toc>
+			<short>Definition</short>
+		</headers>
+		<subsection.body>
+			<def type="Definition" id="Def_CrossProduct">
+				<caption>Cross product</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_CrossProduct"/>
+					<info>
+						<caption>Example</caption>
+						<para>Example of computing the cross product of two vectors.</para>
+					</info>
+				</associate>
+				<associate Description="Comment">
+					<subpage.ref subpageID="Sub_CrossProductQuaternions"/>
+					<info><para>An alternate description of the cross product formula, and the relationship between the cross product and the quaternion number system.</para></info>
+				</associate>
+				<associate Description="Comment">
+					<subpage.ref subpageID="Sub_CrossProductGeneralized"/>
+					<info><para>Advanced information on the (non-)existence of cross products in dimensions other than 3 and 7.</para></info>
+				</associate>
+				
+				<para>The cross product of two vectors in <latex>\RNr[3]</latex></para>
+				<para align="center"><latex>\Vect{x}=(x_1,x_2,x_3)</latex> &nbsp; and &nbsp; <latex>\Vect{y}=(y_1,y_2,y_3)</latex></para>
+				<para>is the following vector of <latex>\RNr[3]</latex>:
+					<index.glossary>
+						<term>cross product</term>
+						<info><para>definition of the operation</para></info>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex></symbol>
+						<info><para>denotes the cross product of two vectors in <latex>\RNr[3]</latex></para></info>
+					</index.symbol>
+				</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\aligned
+\CrssPr{ \Vect{x} }{ \Vect{y} }\ &:=\ \left(
+\det
+\left[
+\begin{array}{cc}
+x_2 & y_2 \\
+x_3 & y_3
+\end{array}
+\right]\ ,\ 
+- \det \left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_3 & y_3
+\end{array}
+\right]\ ,\ 
+\det
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_2 & y_2
+\end{array}
+\right]
+\right) \\
+	&=\ \left( x_2y_3 - x_3y_2 , -(x_1y_3 - x_3y_1) , x_1y_2 - x_2y_1 \right)
+\endaligned
+]]>
+					</latex>
+				</math.display>
+			</def>
+			<para>Below we develop the algebraic properties and the geometric properties of the cross product operation. The algebraic properties help in computing effectively with cross products. The geometric properties are essential in practical applications of the cross product.</para>
+		</subsection.body>
+	</subsection>
+	
+	
+	
+	<subsection id="SubSec_CrossProductAlgebraicProperties">
+		<headers>
+			<full>Algebraic Properties of the Cross Product</full>
+			<toc>Algebraic Properties of the Cross Product</toc>
+			<short>Algebraic Properties</short>
+		</headers>
+		<subsection.body>
+			<para>In computations with cross products the following algebraic properties are useful.</para>
+			<xi:include href="CrossProductAlgebraicProps_Thm.xml"/>
+		</subsection.body>
+	</subsection>
+	
+	
+	
+	<subsection id="SubSec_CrossProductGeometricProperties">
+		<headers>
+			<full>Geometric Properties of the Cross Product</full>
+			<toc>Geometric Properties of the Cross Product</toc>
+			<short>Geometric Properties</short>
+		</headers>
+		<subsection.body>
+			<para>So what does the cross product tell us? The key to answering this question is the following fundamental relationship between the dot product, the determinant and the cross product.</para>
+			<xi:include href="CrossDotDeterminant_Thm.xml"/>
+			<para>Thus we arrive at the following geometrical properties of the cross product.</para>
+			<xi:include href="CrossProductGeometricProperties_Thm.xml"/>
+		</subsection.body>
+	</subsection>
+	<studymaterials>
+		<example.pack.ref examplePackID="Exa_CrossProductArea"/>
+		<example.pack.ref examplePackID="Exa_CrossProductPlaneInR3"/>
+		<exercise.pack.ref exercisePackID="Exe_CrossProduct"/>
+		<exercise.pack.ref exercisePackID="Exe_CrossProductTheory"/>
+	</studymaterials>
+</section>

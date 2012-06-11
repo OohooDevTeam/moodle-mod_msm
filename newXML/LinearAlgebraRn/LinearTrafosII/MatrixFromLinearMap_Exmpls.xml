@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_MatrixFromLinearMap"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Representing a Linear Map by a Matrix: Example</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Let <math>
+                  <latex>V</latex>
+               </math> be a subspace of <math>
+                  <latex>\RNr[k]</latex>
+               </math> with ordered basis <math>
+                  <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_n)</latex>
+               </math>. Find the matrix which represents the identity map <math>
+                  <latex>\Id\from V\to V</latex>
+               </math> with respect to the basis <math>
+                  <latex>\EuScript{B}</latex>
+               </math> on <math>
+                  <latex>V</latex>
+               </math>, both as the domain and the target of <math>
+                  <latex>\Id</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We need to determine the effect <math>
+                        <latex>\Id</latex>
+                     </math> on the vectors in <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>. If <math>
+                        <latex>1\leq j\leq n</latex>
+                     </math>, we find</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Id(\Vect{b}_i)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{b}_i</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>and, therefore,</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Id(\Vect{b}_i)_{\EuScript{B}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,\dots ,0,1,0,\dots,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>with the ‘<math>
+                        <latex>1</latex>
+                     </math>’ in position <math>
+                        <latex>j</latex>
+                     </math>. This vector forms the <math>
+                        <latex>j</latex>
+                     </math>-th column of the <math>
+                        <latex>(n,n)</latex>
+                     </math>-matrix <math>
+                        <latex>\Mtrx{A}_{\EuScript{B}\EuScript{B}}</latex>
+                     </math> which represents <math>
+                        <latex>\Id</latex>
+                     </math>. So this is the identity matrix:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{A}_{\EuScript{B}\EuScript{B}} = 
+\left[
+\begin{array}{ccc}
+1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Consider the subspaces <math>
+                  <latex>V</latex>
+               </math> and <math>
+                  <latex>W</latex>
+               </math> of <math>
+                  <latex>\RNr[3]</latex>
+               </math>, with ordered bases <math>
+                  <latex>\EuScript{A}</latex>
+               </math> and <math>
+                  <latex>\EuScript{B}</latex>
+               </math>, respectively, where</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\aligned
+\EuScript{A} &amp; := &amp; (\Vect{a}_1,\Vect{a}_2), &amp;\quad \Vect{a}_1 &amp; = &amp; (1,-1,0), &amp;\quad \Vect{a}_2 &amp; = &amp; (1,0,-1) \\
+\EuScript{B} &amp; := &amp; (\Vect{b}_1,\Vect{b}_2), &amp;\quad \Vect{b}_1 &amp; = &amp; (1,1,1), &amp;\quad \Vect{b}_2 &amp; = &amp; (1,1,0)
+\endaligned
+
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>Find the matrix <math>
+                  <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
+               </math> representing the linear transformation <math>
+                  <latex>L\from V\to W</latex>
+               </math> satisfying</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>L(\Vect{a}_1) = -\Vect{b}_2,\qquad L(\Vect{a}_2)=3 \Vect{b}_1 + \Vect{b}_2</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>Then find <math>
+                  <latex>L(\Vect{x})_{\EuScript{B}}</latex>
+               </math> and <math>
+                  <latex>L(\Vect{x})</latex>
+               </math>, if <math>
+                  <latex>\Vect{x}\in V</latex>
+               </math> is given by <math>
+                  <latex>\Vect{x}_{\EuScript{S}_3} = (1,-2,1)</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We know that the linear map <math>
+                        <latex>L</latex>
+                     </math> is 
+				<subordinate>
+                        <hot>uniquely determined</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_LinearMapByBasis"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up this result</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>
+				by the information provided. Moreover, we have that</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\aligned
+L(\Vect{a}_1) = 0\cdot \Vect{b}_1 + (-1)\cdot \Vect{b}_2 &amp;\quad \text{and so}\quad &amp; L(\Vect{a}_1)_{\EuScript{B}} &amp; = &amp; (0,-1) \\
+L(\Vect{a}_2) = 3\cdot \Vect{b}_1 + 1\cdot \Vect{b}_2 &amp;\quad \text{and so}\quad &amp; L(\Vect{a}_2)_{\EuScript{B}} &amp; = &amp; (3,1)
+\endaligned
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{A}_{\EuScript{B}\EuScript{A}} = 
+\left[
+\begin{array}{rr}
+0 &amp; 3 \\
+-1 &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>To find <math>
+                        <latex>L(\Vect{x})</latex>
+                     </math>, we express <math>
+                        <latex>\Vect{x}</latex>
+                     </math> as a linear combination of <math>
+                        <latex>\EuScript{A}</latex>
+                     </math>:</para.body>
+               </para>
+			            <math.display>
+				              <latex>(1,-2,1) = 2\cdot (1,-1,0) + (-1)\cdot (1,0,-1) = 2\cdot \Vect{a}_1 + (-1)\cdot (\Vect{a}_2)</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Consequently, <math>
+                        <latex>\Vect{x}_{\EuScript{A}} = (2,-1)</latex>
+                     </math> and, therefore,</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+L(\Vect{x})_{\EuScript{B}} = \Mtrx{A}_{\EuScript{B}\EuScript{A}} \Vect{x}_{\EuScript{A}} =
+\left[
+\begin{array}{rr}
+0 &amp; 3 \\
+-1 &amp; 1
+\end{array}
+\right] 
+\left[
+\begin{array}{r}
+2 \\ -1
+\end{array}
+\right] = 
+\left[
+\begin{array}{r}
+-3 \\ -3
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>This means that, in standard coordinates of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>,</para.body>
+               </para>
+			            <math.display>
+				              <latex>L(\Vect{x}) = (-3)\cdot \Vect{b}_1 + (-3)\cdot \Vect{b}_2 = (-6,-6,-3)</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>	
+</showme.pack>

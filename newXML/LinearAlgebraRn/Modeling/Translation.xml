@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_Translation"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Vectors Modeling Translations</title>
+      <plain.title>Translations</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>When we 
+			<subordinate>
+                     <hot>shift an object in space</hot>
+                     <companion>
+                        <unit.ref unitId="Prvw_Translation"/>
+                        <info>
+                           <para>
+                              <para.body>A Preview of Vectors Modeling Translations</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>, each of its points gets moved by the same distance in the same direction. If we join the original location of a point to its destination location, we obtain an arrow. All of these arrows have the same length and direction. So they represent the same vector. This vector then describes the shifting operation.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_TranslationVector">
+               <caption>Translation Vector</caption>
+               <associate type="Quiz">
+                  <quiz.pack.ref quizPackID="Exe_TranslationQz"/>
+                  <info>
+                     <info.caption>Concept Comprehension</info.caption>
+                     <para>
+                        <para.body>A simple quiz which tests your understanding of the concept of translation of space.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A translation vector is a vector <math>
+                           <latex>\mathbf{t}</latex>
+                        </math> in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> which is used to describe the shifting operation in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> whose effect on a vector <math>
+                           <latex>\mathbf{x}</latex>
+                        </math> is to send it to <math>
+                           <latex>\mathbf{t} + \mathbf{x}</latex>
+                        </math>.
+				</para.body>
+                     <index.glossary>
+                        <term>translation</term>
+                        <term>vector</term>
+                        <info>
+                           <info.caption>Translation Vector</info.caption>
+                           <para>
+                              <para.body>A translation vector is a vector <math>
+                                    <latex>\mathbf{t}</latex>
+                                 </math> in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> which is used to describe the shifting operation in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> whose effect on a vector <math>
+                                    <latex>\mathbf{x}</latex>
+                                 </math> is to send it to <math>
+                                    <latex>\mathbf{t} + \mathbf{x}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>vector</term>
+                        <term>translation</term>
+                        <info>
+                           <info.caption>Translation Vector</info.caption>
+                           <para>
+                              <para.body>A translation vector is a vector <math>
+                                    <latex>\mathbf{t}</latex>
+                                 </math> in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> which is used to describe the shifting operation in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> whose effect on a vector <math>
+                                    <latex>\mathbf{x}</latex>
+                                 </math> is to send it to <math>
+                                    <latex>\mathbf{t} + \mathbf{x}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>What happens if we translate an object using one translation vector, and then translate it again using another translation vector? This is called concatenation of translations, and it corresponds to addition of translation vectors, as we will see in the following proposition.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="TranslationAlgebra_Prop.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_TranslationOfRn"/>
+   </studymaterials>
+</unit>

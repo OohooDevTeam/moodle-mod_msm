@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Diagonalize">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Diagonalizable Matrix: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Diagonalize the matrix <latex>\Mtrx{A}</latex> below if possible.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} =
+\left[
+\begin{array}{cc}
+3 & 1 \\
+1 & 3
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>We begin by looking for the eigenvalues of <latex>\Mtrx{A}</latex>. First we find its characteristic polynomial:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+p(\lambda)\ &=\ 
+	\det\left(
+	\left[
+\begin{array}{cc}
+3 & 1 \\
+1 & 3
+\end{array}
+\right]\ -\ 
+\lambda\cdot \left[
+\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}
+\right] \right) \\
+	&=\ \det
+\left[
+\begin{array}{cc}
+3 - \lambda & 1 \\
+1 & 3 - \lambda
+\end{array}
+\right] \\
+	&=\ (3-\lambda)^2 - 1 \\
+	&=\ \lambda^2 -6\lambda + 8 \\
+	&=\ (\lambda - 4)(\lambda - 2)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			<para>So <latex>\Mtrx{A}</latex> has two distinct eigenvalues:</para>
+			<ol>
+				<li><para><latex>\lambda_1 = 2</latex> with 
+					<subordinate>
+						<hot>algebraic multiplicity <latex>1</latex></hot>
+						<info><para>because the exponent of the factor <latex>(\lambda - 2)</latex> of <latex>p(\lambda)</latex> is <latex>1</latex></para></info>
+					</subordinate>
+				</para></li>
+				<li><para><latex>\lambda_2 = 4</latex> with 
+					<subordinate>
+						<hot>algebraic multiplicity <latex>1</latex></hot>
+						<info><para>because the exponent of the factor <latex>(\lambda - 4)</latex> of <latex>p(\lambda)</latex> is <latex>1</latex></para></info>
+					</subordinate>
+				</para></li>
+			</ol>
+			<para>The eigenspace of <latex>\Mtrx{A}</latex> associated to <latex>\lambda_1</latex> consists of the solutions of the matrix equation <latex>(\Mtrx{A} - \lambda_1 \IdMtrx[2])\Vect{x} = \Vect{0}</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+1 & 1
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+x \\ y
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+0 \\ 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>The solutions of the corresponding system of linear equations are of the form</para>
+			<computation>
+				<left>(x,y)</left>
+				<center>=</center>
+				<right>s(-1,1)</right>
+			</computation>
+			<para>where <latex>s</latex> in <latex>\RNr</latex> is arbitrary. Therefore the eigenspace of <latex>\lambda_1</latex> is</para>
+			<computation>
+				<left>E_1</left>
+				<center>:=</center>
+				<right>\span(-1,1)</right>
+			</computation>
+			<para>and <latex>\EuScript{B}_1 := (-1,1)</latex> is a basis of <latex>E_1</latex>.</para>
+			<para>The eigenspace of <latex>\Mtrx{A}</latex> associated to <latex>\lambda_2</latex> consists of the solutions of the matrix equation <latex>(\Mtrx{A} - \lambda_2 \IdMtrx[2])\Vect{x} = \Vect{0}</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{rr}
+-1 & 1 \\
+1 & -1
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+x \\ y
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+0 \\ 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>The solutions of the corresponding system of linear equations are of the form</para>
+			<computation>
+				<left>(x,y)</left>
+				<center>=</center>
+				<right>t(1,1)</right>
+			</computation>
+			<para>where <latex>t</latex> in <latex>\RNr</latex> is arbitrary. Therefore the eigenspace of <latex>\lambda_2</latex> is</para>
+			<computation>
+				<left>E_2</left>
+				<center>:=</center>
+				<right>\span(1,1)</right>
+			</computation>
+			<para>and <latex>\EuScript{B}_ {2} := (1,1)</latex> is a basis of <latex>E_2</latex>.</para>
+			<para>Setting <latex>\Vect{b}_1:=(-1,1)</latex> and <latex>\Vect{b}_2:=(1,1)</latex>, we found that <latex>\RNr[2]</latex> has the ordered basis <latex>\EuScript{B}:= (\Vect{b}_1,\Vect{b}_2)</latex> of eigenvectors. Therefore <latex>\Mtrx{A}</latex> is diagonalizable. A diagonalizing matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{C} = \Mtrx{C}_{\EuScript{S}\EuScript{B}} :=
+\left[
+\begin{array}{rr}
+-1 & 1 \\
+1 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>with</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{C}^{-1} = \Mtrx{C}_{\EuScript{B}\EuScript{S}} =
+-\dfrac{1}{2}\, \left[
+\begin{array}{rr}
+1 & -1 \\
+-1 & -1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Consequently,</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{cc}
+2 & 0 \\
+0 & 4
+\end{array}
+\right]\ =\ 
+-\dfrac{1}{2}\, \left[
+\begin{array}{rr}
+1 & -1 \\
+-1 & -1
+\end{array}
+\right]  
+\left[
+\begin{array}{cc}
+3 & 1 \\
+1 & 3
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+-1 & 1 \\
+1 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Diagonalize the matrix <latex>\Mtrx{A}</latex> below if possible.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}\ =\ \dfrac{1}{6}\left[
+\begin{array}{rrr}
+5 & -1 & -2 \\
+-3 & 3 & -6 \\
+-1 & -1 & 4
+\end{array}\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Solution" version="1">
+			<para>We begin by looking for the eigenvalues of  ; i.e. all those values of <latex>\lambda</latex> for which the characteristic polynomial below vanishes.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+p(\lambda)\ &=\ \text{det}
+\begin{bmatrix}
+\tfrac{5}{6} - \lambda & -\tfrac{1}{6} & -\tfrac{1}{3} \\
+-\tfrac{1}{2} & \tfrac{1}{2} - \lambda & -1 \\
+-\tfrac{1}{6} & -\tfrac{1}{6} & \tfrac{2}{3} - \lambda
+\end{bmatrix} \\
+6^3\cdot p(\lambda)\ &=\ \text{det}
+\begin{bmatrix}
+5 - 6\lambda & -1 & -2 \\
+-3 & 3 - 6\lambda & -6 \\
+-1 & -1 & 4 - 6\lambda
+\end{bmatrix} \\
+   &=\ \lambda^3\ -\ 2 \lambda^2\ +\ \lambda \\
+   &=\ (\lambda - 0)^1(\lambda-1)^2
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			<para>Thus <latex>\Mtrx{A}</latex> has two distinct eigenvalues:</para>
+			<ol>
+				<li><para><latex>\lambda_1=0</latex> with <subordinate>
+					<hot>algebraic multiplicity <latex>1</latex></hot>
+					<info><para>Because the exponent of <latex>(\lambda - 0)</latex> in <latex>p(\lambda)</latex> is <latex>1</latex>.</para></info>
+				</subordinate>
+				</para></li>
+				<li><para><latex>\lambda_2=1</latex> with <subordinate>
+					<hot>algebraic multiplicity <latex>2</latex></hot>
+					<info><para>Because the exponent of <latex>(\lambda - 1)</latex> in <latex>p(\lambda)</latex> is <latex>2</latex>.</para></info>
+				</subordinate></para></li>
+			</ol>
+			<para>The eigenspace of <latex>\Mtrx{A}</latex> associated to <latex>\lambda_1</latex> consists of the solutions of the matrix equation</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\dfrac{1}{6}
+\left[\begin{array}{rrr}
+5 & -1 & -2 \\
+-3 & 3 & -6 \\
+-1 & -1 & 4
+\end{array}\right]\,
+\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}\ =\
+\begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix}
+]]>
+				</latex>
+			</math.display>
+			<para>The solutions of the corresponding system of homogeneous linear equations are of the form</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = s
+\left[
+\begin{array}{c}
+1 \\ 3 \\ 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>with <latex>s</latex> an arbitrary number in <latex>\RNr</latex>. Thus <latex>\EuScript{B}_1=(\Vect{b}_1)</latex> with <latex>\Vect{b}_1=(1,3,1)</latex> is a basis for <latex>E_1</latex>, the eigenspace of <latex>\Mtrx{A}</latex> associated to <latex>\lambda_1</latex>. Therefore the geometric multiplicity of <latex>\lambda_1</latex> is 1, and every nonzero vector in <latex>E_1</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue    <latex>0</latex>. This means that <latex>\Mtrx{A}</latex> transforms all of <latex>E_1</latex> into the zerovector.</para>
+			
+			
+			<para>The eigenspace of <latex>\Mtrx{A}</latex> associated to <latex>\lambda_2</latex> consists of the solutions of the matrix equation</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\dfrac{1}{6}
+\left[\begin{array}{rrr}
+-1 & -1 & -2 \\
+-3 & -3 & -6 \\
+-1 & -1 & -2
+\end{array}\right]\,
+\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}\ =\
+\begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix}
+]]>
+				</latex>
+			</math.display>
+			<para>The solutions of the corresponding system of homogeneous linear equations are of the form</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = s_1
+\left[
+\begin{array}{r}
+1 \\ -1 \\ 0
+\end{array}
+\right] + s_2
+\left[
+\begin{array}{r}
+0 \\ -2 \\ 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>with <latex>s_1</latex> and <latex>s_2</latex> arbitrary numbers in <latex>\RNr</latex>. Thus <latex>\EuScript{B}_2=(\Vect{b}_2,\Vect{b}_3)</latex> with</para>
+			<math.display>
+				<latex>\Vect{b}_2 = (1,-1,0) \quad\text{and}\quad \Vect{b}_3=(0,-2,1)</latex>
+			</math.display>
+			<para>form a 
+				<subordinate>
+					<hot>basis</hot>
+					<info>
+						<caption>Why do these vectors form a basis of <latex>E_2</latex>?</caption>
+						<para>Visibly the vectors span <latex>E_2</latex>. Their linear independence can be seen with the determinant test applied to rows <latex>1</latex> and <latex>3</latex>. So they form a basis of <latex>E_2</latex>.</para>
+					</info>
+				</subordinate>
+				of <latex>E_2</latex>, the eigenspace associated to <latex>\lambda_2</latex>. Thus the geometric multiplicity of <latex>\lambda_2</latex> is 2, and every nonzero vector in <latex>E_2</latex> is an eigenvector of <latex>\lambda_2</latex> with eigenvalue   <latex>1</latex>. This means that <latex>\Mtrx{A}</latex> transforms each such vector into itself; i.e. <latex>\Mtrx{A}</latex> acts as the identity transformation on <latex>E_2</latex>.</para>
+			<para>We conclude that <latex>\RNr[3]</latex> has a basis <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2,\Vect{b}_3)</latex> consisting of eigenvectors of <latex>\Mtrx{A}</latex>, and so <latex>\Mtrx{A}</latex> is diagonalizable. A diagonalizing matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{C} = \Mtrx{C}_{\EuScript{S}\EuScript{B}} :=
+\left[
+\begin{array}{rrr}
+1 & 1 & 0 \\
+3 & -1 & -2 \\
+1 & 0 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>The resulting diagonal matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{D} = \Mtrx{A}_{\EuScript{B}\EuScript{B}} = 
+\left[
+\begin{array}{ccc}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>This matrix describes the projection of <latex>\RNr[3]</latex> onto the eigenspace <latex>E_2</latex>. Accordingly, we have</para>
+			<computation>
+				<left>\Mtrx{D}</left>
+				<center>=</center>
+				<right>\Mtrx{C}_{\EuScript{B}\EuScript{S}} \Mtrx{A} \Mtrx{C}_{\EuScript{S}\EuScript{B}}</right>
+			</computation>
+		</answer>
+	</showme>
+</showme.pack>

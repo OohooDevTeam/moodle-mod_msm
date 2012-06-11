@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_LinearIndependence"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Linear Independence - Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We define a set <math>
+                     <latex>S</latex>
+                  </math> to be linearly independent if, for any choice of pairwise distinct vectors <math>
+                     <latex>\Vect{a}_1,\dots , \Vect{a}_r</latex>
+                  </math> from <math>
+                     <latex>S</latex>
+                  </math>, the vector equation</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>0</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>has exactly one solution, namely <math>
+                     <latex>t_1=\cdots = t_r=0</latex>
+                  </math>. – If <math>
+                     <latex>S</latex>
+                  </math> fails to be linearly independent, it is called linearly dependent.</para.body>
+            </para>
+            <para>
+               <para.body>This definition is remarkable efficient as it relates the new concept of linear independence directly to the familiar concept of a system of linear equations having a unique solution. – But let us analyze a bit more what it actually means:</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Using a collection of vectors <math>
+                     <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex>
+                  </math>, it is always possible to express the zero vector as a linear combination:</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{0}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>All we need to do is set <math>
+                     <latex>t_1= \cdots = t_r = 0</latex>
+                  </math>. This is often called the ‘trivial’ linear combination of <math>
+                     <latex>\Vect{0}</latex>
+                  </math>. With the concept of linear independence we distinguish those vector collections <math>
+                     <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex>
+                  </math> for which the trivial combination is the only way of expressing <math>
+                     <latex>\Vect{0}</latex>
+                  </math> as a linear combination of <math>
+                     <latex>\Vect{a}_1, \dots ,\Vect{a}_r</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>In contrast, suppose this linear independence requirement is violated. Then it is possible to express the zero vector as a linear combination</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{0}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>in which at least one of the numbers <math>
+                     <latex>t_1, \dots , t_r</latex>
+                  </math> is not zero. Consider, for example, the case where <math>
+                     <latex>t_1\neq 0</latex>
+                  </math>. We may then compute.</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{0}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1 \Vect{a}_1</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_2\Vect{a}_2 + \cdots + t_r \Vect{a}_r</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{a}_1</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion xmlns="">
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>Notice: here we divide by <math>
+                                    <latex>t_1</latex>
+                                 </math>, and this is only allowed if <math>
+                                    <latex>t_1\neq 0</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\frac{1}{t_1}\left( t_2\Vect{a}_2 + \cdots + t_r \Vect{a}_r \right)</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>This last equation is a linear dependence relation amongst the vectors <math>
+                     <latex>\Vect{a}_1, \dots ,\Vect{a}_r</latex>
+                  </math> as it expresses <math>
+                     <latex>\Vect{a}_1</latex>
+                  </math> as a linear combination of the remaining ones.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

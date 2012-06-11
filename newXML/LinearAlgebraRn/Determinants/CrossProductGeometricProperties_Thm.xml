@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_CrossProductGeometricProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Cross product: geometric properties</caption>
+   <associate type="Illustration">
+      <info>
+         <info.caption>
+            <caption>Illustration</caption>
+         </info.caption>
+         <para>
+            <para.body>An illustration of the geometric properties of the cross product</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For vectors <math>
+               <latex>\Vect{a}</latex>
+            </math>, <math>
+               <latex>\Vect{x}</latex>
+            </math>, and <math>
+               <latex>\Vect{y}</latex>
+            </math> in <math>
+               <latex>\RNr[3]</latex>
+            </math>, the following hold</para.body>
+      </para>
+      <part.theorem partid="Perpendicular">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                  </math> is perpendicular to both <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="RightHandOrientation">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }\neq \Vect{0}</latex>
+                  </math>, then the vector triple <math>
+                     <latex>(\Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+                  </math> represents the right hand orientation of <math>
+                     <latex>\RNr[3]</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="ZeroIfParallel">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>
+                  </math> if and only if <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are parallel.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Length">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                  </math> is the area of the parallelogram spanned by <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="SineFormula">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Vect{x},\Vect{y} \neq \Vect{0}</latex>
+                  </math>, then <math>
+                     <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \abs{ \Vect{x} } \abs{ \Vect{y} } \cdot \sin \sphericalangle(\Vect{x} , \Vect{y} )</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="LagrangeIdentity">
+         <caption>Lagrange's identity</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2 = \abs{ \Vect{x} }^2 \abs{ \Vect{y} }^2 - (\DotPr{ \Vect{x} }{ \Vect{y} })^2</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="DoubleCross">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\CrssPr{ \Vect{a} }{( \CrssPr{ \Vect{x} }{ \Vect{y} } )} = (\DotPr{ \Vect{a} }{ \Vect{y} })\cdot \Vect{x}\ -\ (\DotPr{ \Vect{a} }{ \Vect{x} })\cdot \Vect{y}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>Perpendicular</part.ref>
+         </logic>
+         <caption>Perpendicular</caption>
+         <proof.block.body>
+            <para>
+               <para.body>To see that <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are perpendicular to <math>
+                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                  </math>, we compute</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>RightHandOrientation</part.ref>
+         </logic>
+         <caption>RightHandOrientation</caption>
+         <proof.block.body>
+            <para>
+               <para.body>To see that the vector triple <math>
+                     <latex>( \Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+                  </math> represents the right hand orientation of <math>
+                     <latex>\RNr[3]</latex>
+                  </math>, we compute</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>ZeroIfParallel</part.ref>
+         </logic>
+         <caption>ZeroIfParallel</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Consider first the case where <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are parallel, so that <math>
+                     <latex>\Vect{y} = t \Vect{x}</latex>
+                  </math>, say. We need to show that <math>
+                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>
+                  </math>. Indeed,</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Length</part.ref>
+         </logic>
+         <caption>Length</caption>
+         <proof.block.body>
+            <para>
+               <para.body>To relate <math>
+                     <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                  </math> to the area of the parallelogram spanned by <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math>, we consider first the case where <math>
+                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }= \Vect{0}</latex>
+                  </math>. From (3) we know that <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are parallel. Therefore the parallelogram <math>
+                     <latex>P</latex>
+                  </math> spanned by <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> is just a line segment. So the claimed identity</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>SineFormula</part.ref>
+         </logic>
+         <caption>SineFormula</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The parallelogram spanned by <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> has a base of length <math>
+                     <latex>\abs{ \Vect{x} }</latex>
+                  </math> and a height of <math>
+                     <latex>\sin \sphericalangle( \Vect{x} , \Vect{y} ) \cdot \abs{ \Vect{y} }</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>LagrangeIdentity</part.ref>
+         </logic>
+         <caption>LagrangeIdentity</caption>
+         <proof.block.body>
+            <para>
+               <para.body>This follows now by direct computation</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>DoubleCross</part.ref>
+         </logic>
+         <caption>DoubleCross</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The only argument fully available to us at the moment seems to be to evaluate both sides of the equation and check that they agree. Here is a sketch of an alternate argument which involves the concept of a basis.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

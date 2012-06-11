@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expl_DeterminantMultilinear"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Multilinearity Property of Determinants</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The determinant operation is linear in each column. What exactly does this mean? Let <math>
+                     <latex>1\leq j\leq n</latex>
+                  </math> be an integer. Let's build an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix by placing a fixed column vector in each column position, except for one, say in position <math>
+                     <latex>j</latex>
+                  </math>. The result is an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix which looks like this:</para.body>
+            </para>
+            <math.display>
+               <latex>[A_1\ \dots\ A_{j-1}\ \ -\ \ A_{j+1}\ \dots\ A_n]</latex>
+            </math.display>
+            <para>
+               <para.body>Allowing the still vacant <math>
+                     <latex>j</latex>
+                  </math>-th column to be filled by vectors from <math>
+                     <latex>\RNr[n]</latex>
+                  </math> yields a function <math>
+                     <latex>L\from \RNr[n]\longrightarrow \RNr</latex>
+                  </math>:</para.body>
+            </para>
+            <math.display>
+               <latex>L(X) := \det[A_1\ \dots A_{j-1}\ X\ A_{j+1}\ \dots\ A_n]</latex>
+            </math.display>
+            <para>
+               <para.body>To say that the determinant operation is linear in the <math>
+                     <latex>j</latex>
+                  </math>-th column means that the function <math>
+                     <latex>L</latex>
+                  </math> above is 
+				<subordinate>
+                     <hot>linear</hot>
+                     <crossref>
+                        <definition.ref definitionID="Def_LinearMap"/>
+                        <info>
+                           <para>
+                              <para.body>So <math>
+                                    <latex>L</latex>
+                                 </math> commutes with vector addition and scalar multiplicaiton. Look up the definition of ‘linear transformation’.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>. To say the determinant operation is multilinear means that this happens for each column <math>
+                     <latex>1\leq j\leq n</latex>
+                  </math>. In other words, these two identities hold:</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\det[A_1 \cdots {\color{red}(X+Y)} \cdots  A_n] = \det[A_1 \cdots {\color{red} X} \cdots \ A_n]\ + \det[A_1 \cdots {\color{red} Y} \cdots  A_n]
+
+				</latex>
+            </math.display>
+            <math.display>
+               <latex>
+					
+\det[A_1\ \dots\ ({\color{red} t}\cdot X)\ \dots \ A_n] = {\color{red} t}\cdot \det[A_1\ \dots\ X\ \dots\ A_n]
+
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Warning</strong>   It may be tempting to think that the determinant operation as a whole is linear and, consequently, to assert that the numbers</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>\det(\Mtrx{A} + \Mtrx{B})</latex>
+                  </math>   and   <math>
+                     <latex>(\det(\Mtrx{A}) + \det(\Mtrx{B}))</latex>
+                  </math>
+               </para.body>
+            </para>
+            <para>
+               <para.body>are the same. This is, in general, <strong>not true</strong>.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Warning</strong>   It may be tempting to think that the numbers</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>\det(t\cdot \Mtrx{A})</latex>
+                  </math> and <math>
+                     <latex>t\cdot \det(\Mtrx{A})</latex>
+                  </math>
+               </para.body>
+            </para>
+            <para>
+               <para.body>are the same. This is, in general, <strong>not true</strong>. Instead, if <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> has size <math>
+                     <latex>(n,n)</latex>
+                  </math>, we have the identity</para.body>
+            </para>
+            <math.display>
+               <latex>\det(t\cdot \Mtrx{A}) = t^n\cdot \det(\Mtrx{A})</latex>
+            </math.display>
+         </block.body>
+      </block>
+   </body>
+</unit>

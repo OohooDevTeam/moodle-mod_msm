@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book
+	http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_AbsoluteValueDistance">
+	<headers>
+		<full>Absolute Value and Distance</full>
+		<toc>Absolute Value and Distance</toc>
+		<short>Absolute Value and Distance</short>
+	</headers>
+	<intro>
+		<para>In this section we use the norm operation to introduce the concept of distance between two real numbers. To this end it is helpful to relate the real numbers to points on a line:</para>
+		<figure>
+			<img src="ims/RLine.gif"></img>
+		</figure>
+		<para>Given two points <latex>x</latex> and <latex>y</latex> on such a line, it is natural to ask about &lsquo;the distance&rsquo; <latex>\Dstnc{x}{y}</latex> between them. If <latex>0\leq x\leq y</latex>, we find</para>
+		<computation>
+			<left>\Dstnc{x}{y}</left>
+			<center>=</center>
+			<right>y-x</right>
+		</computation>
+		<para>With this observation, we 
+			<subordinate>
+				<hot>find</hot>
+				<companion>
+					<subpage.ref subpageID="Sub_DistanceR"/>
+					<para>An illustration</para>
+				</companion>
+			</subordinate>
+			for arbitrary <latex>x,y\in \RNr</latex>: <latex>\Dstnc{x}{y} = \Abs{y-x}</latex>.</para>
+		<para>Let us be clear: this result was found by geometric inspection. There is no fundamental reason why it must have any connection to the axiomatically characterized real number system we have been discussing. However, matching real numbers to points on a line has already been used in ancient times and is something that we would dearly like to have available to us as well. We therefore turn this notions of &lsquo;distance by inspection&rsquo; into a formal definition and then establish its properties.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_DistanceByAbsoluteValue">
+			<caption>Distance between two numbers</caption>
+			<associate Description="Example">
+				<info>
+					<caption>Example</caption>
+					<ul>
+						<li><para><latex>\Dstnc{2}{5} = 3</latex></para></li>
+						<li><para><latex>\Dstnc{-1}{1} = 2</latex></para></li>
+						<li><para><latex>\Dstnc{3}{-4} = 7</latex></para></li>
+					</ul>
+				</info>
+			</associate>
+			<para>The distance between numbers <latex>x</latex> and <latex>y</latex> in <latex>\RNr</latex> is
+				<index.glossary>
+					<term>distance</term><term>between two numbers in <latex>\RNr</latex></term>
+					<info>
+						<para>The distance between numbers <latex>x</latex> and <latex>y</latex> in <latex>\RNr</latex> is</para>
+						<computation>
+							<left>\Dstnc{x}{y}</left>
+							<center>:=</center>
+							<right>\Abs{y - x}</right>
+						</computation>
+						<para>Definition of the concept</para>
+					</info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>\Dstnc{x}{y}</latex></symbol>
+					<info>
+						<para>The distance between numbers <latex>x</latex> and <latex>y</latex> in <latex>\RNr</latex> is</para>
+						<computation>
+							<left>\Dstnc{x}{y}</left>
+							<center>:=</center>
+							<right>\Abs{y - x}</right>
+						</computation>
+						<para>Definition of the concept</para>
+					</info>
+				</index.symbol>
+			</para>
+			<computation>
+				<left>\Dstnc{x}{y}</left>
+				<center>:=</center>
+				<right>\Abs{y - x}</right>
+			</computation>
+		</def>
+		<para>Here are the most basic properties of the concept of &lsquo;distance between numbers&rsquo;.</para>
+		<xi:include href="DistanceProperties_Thm.xml"/>
+		<xi:include href="AbsoluteValueTriangleInequality_Thm.xml"/>
+	</section.body>
+</section>

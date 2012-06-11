@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_Contraction">
+	<title>The Contraction Transformations</title>
+	<sub.page.body>
+		<block>
+			<para>The contraction transformations of <latex>\RNr[n]</latex> are given by</para>
+			<math.display>
+				<latex>C\from \RNr[n] \longrightarrow \RNr[n],\quad C(\Vect{x}) := s\cdot\Vect{x}</latex>
+			</math.display>
+			
+			<para>where <latex><![CDATA[ 0 < s < 1 ]]></latex> is a fixed number. &ndash; Why is it called a &lsquo;contraction transformation&rsquo;? &ndash; <latex>C</latex> is called a contraction transformation because it shrinks or contracts each distance and, therefore, each object in <latex>\RNr[n]</latex> by the factor <latex>s</latex>.</para>
+			
+			<figure>
+				<img src="ims/Contraction.png"></img><!-- svg available -->
+				<caption>A contraction of <latex>\RNr[2]</latex> with contraction factor <latex>1/2</latex>.</caption>
+			</figure>
+		</block>
+		
+		<block>
+			<para>To find the matrix representing <latex>C</latex>, we note that <latex>C</latex> transforms the basic vector <latex>\StdBss{j}</latex> into
+				<index.glossary>
+					<term>matrix</term><term>of a contraction</term>
+					<info><para>The matrix representing the contraction of <latex>\RNr[n]</latex> with factor <latex><![CDATA[ 0 < s < 1 ]]></latex> is represented by the matrix <latex>s\cdot \IdMtrx[n]</latex>; i.e. <latex>s</latex> times the identity matrix of size <latex>(n,n)</latex>.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>contraction</term><term>matrix</term>
+					<info><para>The matrix representing the contraction of <latex>\RNr[n]</latex> with factor <latex><![CDATA[ 0 < s < 1 ]]></latex> is represented by the matrix <latex>s\cdot \IdMtrx[n]</latex>; i.e. <latex>s</latex> times the identity matrix of size <latex>(n,n)</latex>.</para></info>
+				</index.glossary>
+			</para>
+			
+			<math.display>
+				<latex>C(\StdBss{j}) = s\cdot \StdBss{j} = (0,\dots ,0,s,0,\dots ,0)</latex>
+			</math.display>
+			
+			<para>Therefore <latex>C</latex> is represented by the matrix of size <latex>(n,n)</latex></para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+s\cdot \IdMtrx[n] = 
+\left[
+\begin{array}{cccc}
+s & 0 & \cdots & 0 \\
+0 & s &             & 0 \\
+\vdots & & \ddots & \vdots \\
+0 & 0 & \cdots & s
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>For example, the dilation of <latex>\RNr[2]</latex> in the picture above is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+D\from \RNr[2] \longrightarrow \RNr[2],\qquad D(x,y)=\tfrac{3}{2}\cdot (x,y) = 
+\left[
+\begin{array}{cc}
+\tfrac{3}{2} & 0 \\
+0 & \tfrac{3}{2}
+\end{array}
+\right] \left[ \begin{array}{c} x \\ y \end{array} \right]
+					]]>
+				</latex>
+			</math.display>
+		</block>
+	</sub.page.body>
+</sub.page>

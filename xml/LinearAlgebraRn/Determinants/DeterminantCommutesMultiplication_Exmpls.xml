@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_DeterminantCommutesMultiplication">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Examples: Determinant of a Product</title>
+	
+	<showme>
+		<statement>
+			<para>Given an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> with <latex>\det(\Mtrx{A}) = 5</latex>, find <latex>\det(\Mtrx{A}^3)</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We apply the fact that matrix multiplication commutes with the determinant operation:</para>
+			<math.display>
+				<latex>\det(\Mtrx{A}\Mtrx{B})=\det(\Mtrx{A})\det(\Mtrx{B})</latex>
+			</math.display>
+			<para>In the case at hand we obtain</para>
+			<math.display>
+				<latex>\det( \Mtrx{A}^3 ) = \left( \det(\Mtrx{A}) \right)^3 = 5^3 = 125</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>For an <latex>(n,n)</latex>-matrix <latex>\Mtrx{C}</latex> and an integer <latex>n\geq 1</latex> prove the formula</para>
+			<math.display>
+				<latex>\det(\Mtrx{C}^n) = \left( \det(\Mtrx{C}) \right)^n</latex>
+			</math.display>
+		</statement>
+		<answer type="Proof">
+			<para>We apply the fact that matrix multiplication commutes with the determinant operation:</para>
+			<math.display>
+				<latex>\det(\Mtrx{A}\Mtrx{B})=\det(\Mtrx{A})\det(\Mtrx{B})</latex>
+			</math.display>
+			<para>In the case at hand we obtain</para>
+			<computation>
+				<left>\det(\Mtrx{C}^n)</left>
+				<center>=	<info><para>on the right: <latex>n</latex> copies of <latex>\Mtrx{C}</latex>.</para></info></center>
+				<right>\det\left( \underset{\leftarrow\hfill \text{$n$ copies of $C$}\hfill\rightarrow}{\Mtrx{C} \cdots \cdots \Mtrx{C}}\right)</right>
+				<left></left>
+				<center>=</center>
+				<right>\underset{\leftarrow\hfill \text{$n$ copies of $\det(C)$}\hfill\rightarrow}{\det(\Mtrx{C}) \cdots \cdots \det(\Mtrx{C})}</right>
+			</computation>
+			<para>Notice: on the left hand side we first go through the labor intensive process of multiplying the matrix <latex>\Mtrx{C}</latex> <latex>n</latex> times by itself; then we compute the determinant of the resulting matrix. On the right hand side, we first evaluate the determinant, and then raise the resulting number to its <latex>n</latex>-th power - a much less labor intensive process.</para>
+		</answer>
+	</showme>
+</showme.pack>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_ScalarProductLinearTrafo"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Scalar product  of a linear map is linear</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment: What does this proposition tell us?</caption>
+         </info.caption>
+         <para>
+            <para.body>This proposition gives us two strong pieces of information:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>The scalar product of a linear transformation by a number is again linear</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>If the linear map <math>
+                        <latex>L</latex>
+                     </math> is represented by <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, then the linear map <math>
+                        <latex>(tL)</latex>
+                     </math> is represented by the scalar product <math>
+                        <latex>(t\cdot \Mtrx{A})</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>In short: the scalar product  of a linear map corresponds to the scalar product of the representing matrix.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>If <math>
+               <latex>L\from \RNr[n] \longrightarrow \RNr[m]</latex>
+            </math> is a linear transformations and <math>
+               <latex>t\in \RNr</latex>
+            </math> is a number, the scalar product of <math>
+               <latex>L</latex>
+            </math> by <math>
+               <latex>t</latex>
+            </math>
+         </para.body>
+         <index.glossary>
+            <term>scalar product</term>
+            <term>of a linear transformation</term>
+            <term>represented by scalar product of matrix</term>
+         </index.glossary>
+      </para>
+      <math.display>
+         <latex>(tL)\from \RNr[n] \longrightarrow \RNr[m],\quad (tL)(\Vect{x}) = t\cdot L(\Vect{x})</latex>
+      </math.display>
+      <para>
+         <para.body>is again linear. Moreover, if <math>
+               <latex>\Mtrx{A}</latex>
+            </math> is the <math>
+               <latex>(m,n)</latex>
+            </math>-matrix representing <math>
+               <latex>L</latex>
+            </math>, then <math>
+               <latex>(t\cdot \Mtrx{A})</latex>
+            </math> represents <math>
+               <latex>(tL)</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We need to show that <math>
+                     <latex>(tL)</latex>
+                  </math> satisfies the properties of a linear transformation. To see that it commutes with vector addition, let <math>
+                     <latex>\Vect{x},\Vect{y}\in \RNr[n]</latex>
+                  </math>. We find</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We know now that <math>
+                     <latex>(tL)</latex>
+                  </math> is linear. Therefore there is a unique <math>
+                     <latex>(m,n)</latex>
+                  </math>-matrix  which represents it. On the other hand, if <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> represents <math>
+                     <latex>L</latex>
+                  </math>, we find for arbitrary <math>
+                     <latex>\Vect{x}\in\RNr[n]</latex>
+                  </math>
+               </para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

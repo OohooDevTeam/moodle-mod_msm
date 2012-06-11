@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearIndependenceRank">
+	<caption>Linear independence test by rank</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_LinearIndependenceRank"/>
+		<info><para>Examples on how to use this proposition</para></info>
+	</associate>
+	
+	<statement>
+		<para>For an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> the following hold</para>
+		<part partid="ColumnRank">
+			<para>The column vectors of <latex>\Mtrx{A}</latex> are linearly independent if and only if <latex>\Mtrx{A}</latex> has 
+				<subordinate>
+					<hot>rank</hot>
+					<info>
+						<para>Recall that the rank of <latex>\Mtrx{A}</latex> is the number of leading 1&rsquo; in the RREF of <latex>\Mtrx{A}</latex>.</para>
+					</info>
+				</subordinate>
+				<latex>n</latex>.</para>
+		</part>
+		<part partid="RowRank">
+			<para>The row vectors of <latex>\Mtrx{A}</latex> are linearly independent if and only if <latex>\Mtrx{A}^T</latex> has 
+				<subordinate>
+					<hot>rank</hot>
+					<info>
+						<para>Recall that the rank of <latex>\Mtrx{A}</latex> is the number of leading 1&rsquo; in the RREF of <latex>\Mtrx{A}</latex>.</para>
+					</info>
+				</subordinate>
+				<latex>m</latex>.</para>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<para>We write <latex>\Mtrx{A}</latex> in terms of its row vectors <latex>R_1,\dots ,R_m</latex>, and its column vectors <latex>C_1,\dots ,C_n</latex>:</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{ccc}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{mn} & \cdots & a_{mn}
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+R_1 \\ \vdots \\ R_m
+\end{array}
+\right] = [ C_1\ \ \dots\ \ C_n]
+]]>
+			</latex>
+		</math.display>
+		<caption><partref>ColumnRank</partref></caption>
+		<para>To see the relationship between the linear independence of the columns of <latex>\Mtrx{A}</latex> and its rank, recall that <latex>C_1,\dots , C_n</latex> are linearly independent if and only if the vector equation</para>
+		<computation>
+			<left>t_1 C_1 + \cdots + t_n C_n</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>has <latex>(t_1,\dots ,t_n)=(0,\dots ,0)</latex> as its only solution. We know that this happens if and only if the reduced row echelon form of <latex>\Mtrx{A}</latex> is</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\left[
+\begin{array}{cccc}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & & \ddots & \vdots \\
+0 & 0 & \cdots & 1 \\
+0 & 0 & \cdots & 0 \\
+\vdots & \vdots & & \vdots \\
+0 & 0 & \cdots & 0
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>This is so if and only if <latex>\Mtrx{A}</latex>has rank <latex>n</latex>.</para>
+		
+		<caption><partref>RowRank</partref></caption>
+		<para>This follows from the previous part: The rows <latex>R_1,\dots ,R_m</latex>are the columns of <latex>\Mtrx{A}^T</latex>, and the claim follows. &ndash; This completes the proof</para>
+	</proof>
+</theorem>

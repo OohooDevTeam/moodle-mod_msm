@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_RowColumnSpace">
+	<title>Row / Column Space - Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>An element of the row space of the <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> is of the form</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>s_1R_1+\cdots + s_mR_m</right>
+			</computation>
+			<para>Each row of <latex>\Mtrx{A}</latex> is a vector in <latex>\RNr[n]</latex>. Therefore the row space of <latex>\Mtrx{A}</latex> is a subvector space of <latex>\RNr[n]</latex>.</para>
+		</block>
+		
+		
+		<block>
+			<para>An element of the column space of <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> is of the form</para>
+			<computation>
+				<left>\Vect{y}</left>
+				<center>=</center>
+				<right>t_1C_1+\cdots + t_nC_n</right>
+			</computation>
+			<para>Each column of <latex>\Mtrx{A}</latex> is a vector in <latex>\RNr[m]</latex>. Therefore the column space of <latex>\Mtrx{A}</latex> is a subvector space of <latex>\RNr[m]</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

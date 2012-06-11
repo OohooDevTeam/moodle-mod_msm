@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_0to0NotLinear"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Functions which Send 0 To 0 but are not Linear</title>
+	  <caption xmlns="">0 To 0 but not linear</caption>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The function <math>
+                  <latex>f\from \RNr\to \RNr</latex>
+               </math>, <math>
+                  <latex>f(x)=x^3</latex>
+               </math>, satisfies <math>
+                  <latex>f(0)=0</latex>
+               </math>. Still <math>
+                  <latex>f</latex>
+               </math> is not linear: the following computation shows that <math>
+                  <latex>f</latex>
+               </math> fails to commute with addition</para.body>
+         </para>
+			
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(1+1)=f(2)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>8</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(1) + f(1) = 1 + 1</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>2</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+			
+			      <para xmlns="">
+            <para.body>If <math>
+                  <latex>f</latex>
+               </math> would commute with addition, we would have <math>
+                  <latex>f(1+1) = f(1) + f(1)</latex>
+               </math>. Visibly, this is not the case. So <math>
+                  <latex>f</latex>
+               </math> is not linear.</para.body>
+         </para>
+		    </statement.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Here is a more complicated function which sends <math>
+                  <latex>\Vect{0}</latex>
+               </math> to <math>
+                  <latex>\Vect{0}</latex>
+               </math> but is not linear. Consider</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+f\from \RNr[2] \longrightarrow \RNr[2],\quad f(x,y) = \left\{
+\aligned
+ 0 &amp;\quad \text{if $x=y=0$} \\
+ \sin \dfrac{\pi\cdot x}{2\sqrt{x^2+y^2}} \cdot (x,y) &amp;\quad \text{else}
+ \endaligned
+ \right.
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>By design, <math>
+                  <latex>f(\Vect{0}) = \Vect{0}</latex>
+               </math>. However, to conclude that <math>
+                  <latex>f</latex>
+               </math> is linear, we must still show that it commutes with vector addition and with scalar multiplication. In the absence of a general strategy of how to go about this, we can only carry out some experiments. For example, we can test for ‘commutes with vector addition’; e.g. with</para.body>
+         </para>
+			
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(3,0) = f((1,0) + (2,0))</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(3,0) = (3,0)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(1,0) + f(2,0) = (1,0) + (2,0)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(3,0)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+			
+			      <para xmlns="">
+            <para.body>In this particular case, the two answers agree; i.e. <math>
+                  <latex>f</latex>
+               </math> commutes with addition in this particular case. Does this mean that <math>
+                  <latex>f</latex>
+               </math> commutes with addition always? – Not necessarily. For example, the following experiment reveals:</para.body>
+         </para>
+			
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f((1,0) + (0,1))</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(1,1) = \sin \tfrac{\pi}{2\sqrt{2}}\cdot (1,1) </latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(1,0) + f(0,1)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(1,0) + (0,0) = (1,0)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+			
+			      <para xmlns="">
+            <para.body>In this case <math>
+                  <latex>f</latex>
+               </math> does not preserve vector addition. Therefore <math>
+                  <latex>f</latex>
+               </math> is not linear.</para.body>
+         </para>
+		    </statement.showme>
+	  </showme>	
+</showme.pack>

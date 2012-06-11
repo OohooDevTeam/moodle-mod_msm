@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_SeriesLimitComparisonTest">
+	<caption>Limit comparison test</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation</caption>
+			<para>What is the idea underlying these limit comparison tests? &ndash;</para>
+			<ul>
+				<li><para>If <latex><![CDATA[ 0 < \lim_{n\to \infty} \tfrac{a_n}{b_n} = c \in \RNr]]></latex>, then <latex>a_n\approx c\dot b_n</latex> for large <latex>n</latex>. This implies that the convergence behavior of <latex>\sum_{n\to \infty}b_n</latex> resembles that of <latex>\sum_{n\to\infty} (ca_n) = c\dot \sum_{n\to\infty}a_n</latex>.</para></li>
+				<li><para>If <latex>\lim_{n\to \infty}\tfrac{a_n}{b_n} = 0</latex>, then <latex><![CDATA[ 0< a_n < b_n ]]></latex> for large <latex>n</latex>. So, convergence of <latex>\sum_{n\to\infty}b_n</latex> to a number implies the convergence of <latex>\sum_{n\to\infty}a_n</latex> to a number.</para></li>
+				<li><para>If <latex>\lim_{n\to \infty}\tfrac{a_n}{b_n} = \infty</latex>, then <latex><![CDATA[ 0< b_n < a_n ]]></latex> for large <latex>n</latex>. So, <latex>\sum_{n\to\infty}b_n=\infty</latex> implies that  <latex>\sum_{n\to\infty}a_n=\infty</latex>.</para></li>
+			</ul>
+		</info>
+	</associate>
+	
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_SeriesLimitComparison"/>
+		<info><para>Examples of how to use the comparison test</para></info>
+	</associate>
+	<statement>
+		<para>For series <latex>\sum_{n=0}^{\infty} a_n</latex> and <latex>\sum_{n=0}^{\infty} b_n</latex>, with <latex><![CDATA[ 0< a_n, b_n ]]></latex> the following hold:</para>
+		<part partid="LimitPositive">
+			<para>If <latex>\lim_{n\to\infty} \tfrac{a_n}{b_n} = c</latex>, and <latex><![CDATA[ 0<c<\infty ]]></latex>, then</para>
+			<ul>
+				<li><para>Both series converge to a number, or</para></li>
+				<li><para>both series converge to a <latex>+\infty</latex>.</para></li>
+			</ul>
+		</part>
+		<part partid="LimitZero">
+			<para>If <latex>\lim_{n\to\infty} \tfrac{a_n}{b_n} = 0</latex>, and <latex>\sum_{n=0}^{\infty}b_n</latex> converges to a number, then so does <latex>\sum_{n=0}^{\infty}a_n</latex>.</para>
+		</part>
+		<part partid="LimitInfinity">
+			<para>If <latex>\lim_{n\to\infty} \tfrac{a_n}{b_n} = \infty</latex>, and <latex>\sum_{n=0}^{\infty}b_n = \infty</latex>, then <latex>\sum_{n=0}^{\infty}a_n = \infty</latex>.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>LimitPositive</partref> &nbsp; the case where <latex><![CDATA[ 0 < \lim_{n\to \infty}\tfrac{a_n}{b_n} \in \RNr ]]></latex>.</caption>
+		<para>By assumption</para>
+		<math.display>
+			<latex><![CDATA[ \lim_{n\to \infty} \dfrac{a_n}{b_n}\ =\ c,\quad 0 < c \in \RNr ]]></latex>
+		</math.display>
+		<para>Therefore, <latex><![CDATA[ \varepsilon := \tfrac{c}{2} > 0 ]]></latex>, and so there exists <latex>N\in \NNr</latex>, such that</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ \dfrac{a_n}{b_n} - c }\ <\ \dfrac{c}{2},\quad \text{for all $n\geq N$} ]]></latex>
+		</math.display>
+		<para>In other words, for <latex>n\geq N</latex>, we have</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{ccccc}
+-\dfrac{c}{2} & < & \dfrac{a_n}{b_n} - c & < & \dfrac{c}{2} \\
+\dfrac{c}{2} & < & \dfrac{a_n}{b_n} & < & \dfrac{3}{2}c \\
+\dfrac{c}{2}b_n & \overset{(*)}{<} & a_n & \overset{(**)}{<} & \dfrac{3}{2}cb_n
+\end{array}
+				]]>
+			</latex>
+		</math.display>
+		<para>From inequality <latex>(*)</latex>: if <latex>\sum_{n=0}^{\infty} b_n = \infty</latex>, then</para>
+		<computation>
+			<left>\sum_{n=0}^{\infty}\dfrac{c}{2} b_n</left>
+			<center>=	<info><para>Here we use the assumption that <latex><![CDATA[ c>0 ]]></latex>.</para></info></center>
+			<right>\dfrac{c}{2}\, \sum_{n=0}^{\infty}\ =\ +\infty</right>
+		</computation>
+		<para>Therefore</para>
+		<computation>
+			<left>\sum_{n=0}^{\infty} a_n</left>
+			<center>=</center>
+			<right>\infty</right>
+		</computation>
+		
+		
+		
+		
+		<caption><partref>LimitZero</partref> &nbsp; the case where <latex>\lim_{n\to \infty} \tfrac{a_n}{b_n} = 0</latex></caption>
+		<para>For <latex><![CDATA[ \varepsilon > 0 ]]></latex> choose <latex>N\in \NNr</latex> such that for <latex>n\geq N</latex></para>
+		<math.display>
+			<latex><![CDATA[
+				-\varepsilon < \dfrac{a_n}{b_n} < \varepsilon
+				]]></latex>
+		</math.display>
+		<para>Since <latex><![CDATA[ a_n,b_n>0 ]]></latex>, this is equivalent to <latex><![CDATA[ a_n < \varepsilon b_n ]]></latex>. Therefore, <latex>\sum_{n=0}^{\infty} a_n</latex> converges to a number by comparison with <latex>\sum_{n=0}^{\infty}(\varepsilon b_n)</latex>.</para>
+		
+		
+		
+		<caption><partref>LimitInfinity</partref> &nbsp; the case where <latex>\lim_{n\to\infty}\tfrac{a_n}{b_n} = \infty</latex></caption>
+		<para>Pick <latex>\varepsilon :=2</latex>, and choose <latex>N\in \NNr</latex> such that</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+				\dfrac{a_n}{b_n}\ >\ 2,\quad \text{for $n\geq N$}
+				]]>
+			</latex>
+		</math.display>
+		<para>This is equivalent to <latex><![CDATA[ a_n > 2b_n ]]></latex>. Comparison then shows</para>
+		<math.display>
+			<latex>\sum_{n=0}^{\infty} a_n \geq \sum_{n=0}^{\infty} (2b_n)\ =\ 2\cdot \sum_{n=0}^{\infty} b_n\ =\ \infty</latex>
+		</math.display>
+		<para>This is what we wanted to show.</para>
+	</proof>
+</theorem>

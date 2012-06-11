@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expl_SeriesRearrange"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Rearranging the Summands of a Series</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>a,b\in\RNr</latex>
+                  </math>, we know that</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>a+b</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>b+a</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>In other words, the order in which we add these numbers does not matter. More generally, if <math>
+                     <latex>a_1,\dots ,a_n\in\RNr</latex>
+                  </math>, then</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>a_1 + \cdots + a_n</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>a_{\sigma_1} + \cdots + a_{\sigma_n}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Here <math>
+                     <latex>\sigma_1,\dots ,\sigma_n</latex>
+                  </math> are the numbers <math>
+                     <latex>1,\dots ,n</latex>
+                  </math> rearranged in arbitrary order. More formally: <math>
+                     <latex>\sigma\from \Set{1,\dots ,n}\to \Set{1,\dots ,n}</latex>
+                  </math> is a bijective function, also called a permutation, and <math>
+                     <latex>\sigma_i:=\sigma(i)</latex>
+                  </math>
+               </para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Now consider an infinite seres <math>
+                     <latex>\sum_{n=0}^{\infty} a_n = L\in\RNr</latex>
+                  </math> which converges to a number <math>
+                     <latex>L</latex>
+                  </math>. What happens if we alter the order in which the summands of this series are to be added? So let <math>
+                     <latex>\sigma\from \NNr\to \NNr</latex>
+                  </math> be a bijective function, and set <math>
+                     <latex>\sigma_i:=\sigma(i)</latex>
+                  </math>. Notice that each summand in the list</para.body>
+            </para>
+            <math.display>
+               <latex>a_0,a_1,a_2,\ \dots\ ,\ a_n\ ,\ \dots </latex>
+            </math.display>
+            <para>
+               <para.body>occurs exactly once in the rearranged list</para.body>
+            </para>
+            <math.display>
+               <latex>a_{\sigma_0}, a_{\sigma_1},a_{\sigma_2},\ \dots\ ,\ a_{\sigma_n},\ \dots</latex>
+            </math.display>
+            <para>
+               <para.body>just potentially in a different position. – For example, interchanging even and odd numbers turns the summands of the harmonic series</para.body>
+            </para>
+            <math.display>
+               <latex>1,\dfrac{1}{2},\dfrac{1}{3},\dfrac{1}{4},\ \dots\ ,\dfrac{1}{2n},\dfrac{1}{2n+1},\ \dots\quad  \text{into}\quad \dfrac{1}{2},1,\dfrac{1}{4},\dfrac{1}{3},\ \dots\ , \dfrac{1}{2n+1},\dfrac{1}{2n}</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Now, given an infinite series <math>
+                     <latex>\sum_{n=0}^{\infty}a_n</latex>
+                  </math>, rearranged via a bijective function <math>
+                     <latex>\sigma\from \NNr\to \NNr</latex>
+                  </math>, we ask: what  is the relationship between</para.body>
+            </para>
+            <math.display>
+               <latex>\sum_{n=0}^{\infty} a_n \quad \text{and}\quad \sum_{n=0}^{\infty} a_{\sigma_n}</latex>
+            </math.display>
+            <para>
+               <para.body>We will develop the answer through the following steps:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>As naively expected: if <math>
+                           <latex>a_0,a_1,\dots ,a_n,\dots \geq 0</latex>
+                        </math> and <math>
+                           <latex>\sum_{n=0}^{\infty} a_n=L\in \RNr</latex>
+                        </math>, then <math>
+                           <latex>\sum_{n=0}^{\infty} a_{\sigma_n} = L</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>More generally, as naively expected: if <math>
+                           <latex>\sum_{n=0}^{\infty} \Abs{a_n}</latex>
+                        </math>
+                        <subordinate>
+                           <hot>converges to a number</hot>
+                           <info>
+                              <para>
+                                 <para.body>So this series converges absolutely.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>,
+						then <math>
+                           <latex>\sum_{n=0}^{\infty}a_n</latex>
+                        </math> also converges to a number, and</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\sum_{n=0}^{\infty} a_n</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Contrary to naive expectation: suppose <math>
+                           <latex>\sum_{n=0}^{\infty}a_n</latex>
+                        </math> converges to a number, while <math>
+                           <latex>\sum_{n=0}^{\infty}\Abs{ a_n } = +\infty</latex>
+                        </math> then, for an arbitrary <math>
+                           <latex>L\in \RNr\union \Set{ \pm \infty}</latex>
+                        </math>, there exists a rearrangement <math>
+                           <latex>\sigma_0,\sigma_1,\dots</latex>
+                        </math> of the numbers  <math>
+                           <latex>0,1,\dots</latex>
+                        </math> such that</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+                  <para>
+                     <para.body>In other words, if a series satisfies the stated hypotheses then the series can be rearranged to make it converge to any choice of a number or <math>
+                           <latex>+\infty</latex>
+                        </math> or <math>
+                           <latex>-\infty</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>The significance of the concept of absolute convergence comes from Properties 1) and 2) above.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

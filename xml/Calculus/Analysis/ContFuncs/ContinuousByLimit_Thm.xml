@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_ContinuousByLimit">
+	<caption>Continuity via limits</caption>
+	
+	<statement>
+		<para>A function <latex>f\from D\to \RNr</latex> is continuous at <latex>x\in D</latex> if and only if for every sequence <latex>(t_n)</latex> in <latex>D</latex></para>
+		<math.display>
+			<latex>f(x)\ =\ \lim_{t\to x} f(t)</latex>
+		</math.display>
+	</statement>
+	<proof>
+		<para><latex>\implies</latex> &nbsp; Suppose <latex>f</latex> is continuous at <latex>x</latex>, and let <latex>(t_n)</latex> be a sequence in <latex>D</latex> converging to <latex>x</latex>. We need to show that <latex>f(x) = \lim_{t\to x}f(t)</latex>. So let <latex><![CDATA[ \varepsilon > 0 ]]></latex> be given. We need to establish the existence of <latex>N\in \NNr</latex> such that</para>
+		<para align="center"><latex><![CDATA[ \Abs{ f(t_n) - f(x) } < \varepsilon ]]></latex> &nbsp; for all &nbsp; <latex>n\geq N</latex>.</para>
+		<para>We know that there is <latex><![CDATA[ \delta> 0 ]]></latex> with</para>
+		<para align="center"><latex><![CDATA[ \Abs{ f(t) - f(x) } < \varepsilon ]]></latex> &nbsp; for all <latex>t\in D</latex> with &nbsp; <latex><![CDATA[ \Abs{ t-x } < \delta ]]></latex>.</para>
+		<para>So choose <latex>N\in \NNr</latex> such that <latex><![CDATA[ \Abs{ t_n - x } < \delta ]]></latex> for all <latex>n\geq N</latex>. Then, for <latex>n\geq N</latex>,</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ t_n - x } < \delta ]]></latex>
+		</math.display>
+		<para>and, therefore,</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ f(t_n) - f(x) } < \varepsilon ]]></latex>
+		</math.display>
+		<para>as required.</para>
+		<para><latex>\Longleftarrow</latex> &nbsp; Suppose <latex>f</latex> satisfies the limit condition in the lemma. We need to show that it is continuous. To prepare for the argument, we observe that a sequence with the following properties exists: For <latex>n\geq 1</latex>, let</para>
+		<math.display>
+			<latex><![CDATA[ s_n := \sup\Set{ \Abs{ f(t) - f(x) } \st t\in D,\ \ \Abs{ t-x }< 1/n } ]]></latex>
+		</math.display>
+		<para>Then choose <latex>t_n\in \Intrsctn{D}{ \OOIntrvl{ x-1/n }{ x+1/n } }</latex> arbitrarily with</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ f(t_n) - f(x) } \geq \min\Set{ 1, s_n/2} ]]></latex>
+		</math.display>
+		<para>Then <latex>\lim_{n\to\infty} t_n = x</latex> by design and so, by assumption,</para>
+		<para align="center"><latex>\lim_{n\to\infty} f(t_n) = f(x)</latex>.</para>
+		<para>Now suppose a deviation tolerance <latex><![CDATA[ \varepsilon > 0 ]]></latex> is given. Let <latex>N\in\NNr</latex> be such that</para>
+		<para align="center"><latex><![CDATA[ \Abs{ f(t_n) - f(x) } < \min \Set{ 1, \varepsilon/2 } ]]></latex> &nbsp; for all &nbsp; <latex>n\geq N</latex>.</para>
+		<para>From the construction of the sequence <latex>(t_n)</latex> we see that</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ f(t) - f(x) } \leq 2\cdot \Abs{ f(t_N) - f(x) } < 2\cdot (\varepsilon/2) ]]></latex>
+		</math.display>
+		<para>for all <latex>t\in \Intrsctn{D}{ \OOIntrvl{x-1/N}{x+1/N} }</latex>. Thus <latex>f</latex> is continuous as claimed.</para>
+	</proof>
+</theorem>

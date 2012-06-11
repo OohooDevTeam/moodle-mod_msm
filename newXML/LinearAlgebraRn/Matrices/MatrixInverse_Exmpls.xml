@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_MatrixInverse"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Examples of Inverting a Matrix</title>
+	  <caption xmlns="">Matrix Inversion</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Is the matrix    below invertible?</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					A\ =\
+					\left[\begin{array}{rrrr}
+					1 &amp; -1 &amp; 3 &amp; 1 \\
+					3 &amp; 1 &amp; 4 &amp; 2 \\
+					-2 &amp; -1 &amp; -3 &amp; -1 \\
+					1 &amp; -1 &amp; 2 &amp; 1
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>To answer this question we row reduce <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and simultaneously apply the same reduction steps to the identity matrix <math>
+                        <latex>\IdMtrx[4]</latex>
+                     </math>. Here is how this goes. </para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rrrr|crrrrl}
+					1 &amp; -1 &amp; 3 &amp; 1 &amp; &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp;  \\
+					3 &amp; 1 &amp; 4 &amp; 2 &amp; &amp; 0 &amp; 1 &amp; 0 &amp; 0  &amp; {\color{red} -3 R_1} \\
+					-2 &amp; -1 &amp; -3 &amp; -1 &amp; &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; {\color{red} +2 R_1} \\
+					1 &amp; -1 &amp; 2 &amp; 1 &amp; &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; {\color{red} - R_1} \\
+					\hline
+					1 &amp; -1 &amp; 3 &amp; 1 &amp; &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; \\
+					0 &amp; 4 &amp; -5 &amp; -1 &amp; &amp; -3 &amp; 1 &amp; 0 &amp; 0 &amp; {\color{red} + R_3} \\
+					0 &amp; -3 &amp; 3 &amp; 1 &amp; &amp; 2 &amp; 0 &amp; 1 &amp; 0 &amp; \\
+					0 &amp; 0 &amp; -1 &amp; 0 &amp; &amp; -1 &amp; 0 &amp; 0 &amp; 1 &amp; \\
+					\hline
+					1 &amp; -1 &amp; 3 &amp; 1 &amp; &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; {\color{red} + R_2} \\
+					0 &amp; 1 &amp; -2 &amp; 0 &amp; &amp; -1 &amp; 1 &amp; 1 &amp; 0 &amp; \\
+					0 &amp; -3 &amp; 3 &amp; 1 &amp; &amp; 2 &amp; 0 &amp; 1 &amp; 0 &amp; {\color{red} +3 R_2} \\
+					0 &amp; 0 &amp; -1 &amp; 0 &amp; &amp; -1 &amp; 0 &amp; 0 &amp; 1 &amp; \\
+					\hline
+					1 &amp; 0 &amp; 1 &amp; 1 &amp; &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; \\
+					0 &amp; 1 &amp; -2 &amp; 0 &amp; &amp; -1 &amp; 1 &amp; 1 &amp; 0 &amp; \\
+					0 &amp; 0 &amp; -3 &amp; 1 &amp; &amp; -1 &amp; 3 &amp; 4 &amp; 0 &amp; {\color{red} \text{replace by}\ (-1) R_4} \\
+					0 &amp; 0 &amp; -1 &amp; 0 &amp; &amp; -1 &amp; 0 &amp; 0 &amp; 1 &amp; {\color{red} \text{replace by}\ R_3} \\
+					\hline
+					1 &amp; 0 &amp; 1 &amp; 1 &amp; &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; {\color{red} - R_3} \\
+					0 &amp; 1 &amp; -2 &amp; 0 &amp; &amp; -1 &amp; 1 &amp; 1 &amp; 0 &amp; {\color{red} +2 R_3} \\
+					0 &amp; 0 &amp; 1 &amp; 0 &amp; &amp; 1 &amp; 0 &amp; 0 &amp; -1 &amp; \\
+					0 &amp; 0 &amp; -3 &amp; 1 &amp; &amp; -1 &amp; 3 &amp; 4 &amp; 0 &amp; {\color{red} +3 R_3} \\
+					\hline
+					1 &amp; 0 &amp; 0 &amp; 1 &amp; &amp; -1 &amp; 1 &amp; 1 &amp; 1 &amp; {\color{red} - R_4} \\
+					0 &amp; 1 &amp; 0 &amp; 0 &amp; &amp; 1 &amp; 1 &amp; 1 &amp; -2 &amp; \\
+					0 &amp; 0 &amp; 1 &amp; 0 &amp; &amp; 1 &amp; 0 &amp; 0 &amp; -1 &amp; \\
+					0 &amp; 0 &amp; 0 &amp; 1 &amp; &amp; 2 &amp; 3 &amp; 4 &amp; -3 &amp; \\
+					\hline
+					1 &amp; 0 &amp; 0 &amp; 0 &amp; &amp; -3 &amp; -2 &amp; -3 &amp; 4 &amp; \\
+					0 &amp; 1 &amp; 0 &amp; 0 &amp; &amp; 1 &amp; 1 &amp; 1 &amp; -2 &amp; \\
+					0 &amp; 0 &amp; 1 &amp; 0 &amp; &amp; 1 &amp; 0 &amp; 0 &amp; -1 &amp; \\
+					0 &amp; 0 &amp; 0 &amp; 1 &amp; &amp; 2 &amp; 3 &amp; 4 &amp; -3 &amp; \\
+					\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>So what does this mean? The row reduced echelon form of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is the identity matrix <math>
+                        <latex>\IdMtrx[4]</latex>
+                     </math>. This tells us that <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is invertible. Moreover, the inverse of <math>
+                        <latex>A</latex>
+                     </math> is </para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					A^{-1}\ =\ 
+					\left[\begin{array}{rrrr}
+					-3 &amp; -2 &amp; -3 &amp; 4 \\
+					1 &amp; 1 &amp; 1 &amp; -2  \\
+					1 &amp; 0 &amp; 0 &amp; -1 \\
+					2 &amp; 3 &amp; 4 &amp; -3
+					\end{array}\right]
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Use the procedure explained above to determine if the matrix <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> below is invertible.</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					B\ =\ 
+					\left[\begin{array}{rrr}
+					-2 &amp; 1 &amp; 6 \\
+					4 &amp; 5 &amp; 2 \\
+					3 &amp; 2 &amp; -2
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We apply the row reduction procedure to <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> and find</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rrr|crrrl}
+					-2 &amp; 1 &amp; 6 &amp; &amp; 1 &amp; 0 &amp; 0 &amp; {\color{red} + R_3} \\
+					4 &amp; 5 &amp; 2 &amp; &amp; 0 &amp; 1 &amp; 0 &amp;  \\
+					3 &amp; 2 &amp; -2 &amp; &amp; 0 &amp; 0 &amp; 1 &amp; \\
+					\hline
+					1 &amp; 3 &amp; 4 &amp; &amp; 1 &amp; 0 &amp; 1 &amp; \\
+					4 &amp; 5 &amp; 2 &amp; &amp; 0 &amp; 1 &amp; 0 &amp; {\color{red} -4 R_1} \\
+					3 &amp; 2 &amp; -2 &amp; &amp; 0 &amp; 0 &amp; 1 &amp; {\color{red} -3 R_1} \\
+					\hline
+					1 &amp; 3 &amp; 4 &amp; &amp; 0 &amp; 0 &amp; 1 &amp; \\
+					0 &amp; -7 &amp; -14 &amp; &amp; -4 &amp; 1 &amp; -4 &amp; \\
+					0 &amp; -7 &amp; -14 &amp; &amp; -3 &amp; 0 &amp; -2 &amp; {\color{red} - R_2} \\
+					\hline
+					1 &amp; 3 &amp; 4 &amp; &amp; 0 &amp; 0 &amp; 1 &amp; \\
+					0 &amp; -7 &amp; -14 &amp; &amp; -4 &amp; 1 &amp; 0 &amp; \\
+					0 &amp; 0 &amp; 0 &amp; &amp; 1 &amp; -1 &amp; 2 &amp; \\
+					\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Already at this stage, we can see that <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> row reduces to a matrix with only two leading 's, and this is not the identity matrix  . So we conclude that <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> is not invertible. </para.body>
+               </para>
+			
+			            <para>
+                  <para.body>
+                     <strong>Note</strong>   The example above shows how we can save ourselves some labor if we don't know in advance that  <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> is invertible: First row reduce <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math>. If the outcome is not the identity matrix, then <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> is not invertible. Therefore no further work is needed. If the outcome is the identity matrix, then <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> is invertible and we can compute <math>
+                        <latex>B^{-1}</latex>
+                     </math> by carrying out the appropriate row operations on the right.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+</showme.pack>

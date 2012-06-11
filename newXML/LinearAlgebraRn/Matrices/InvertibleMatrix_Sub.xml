@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Info_MatrixInversion"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Matrix Multiplication: Exceptional Properties</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Let us recall: So far we have extended the operations of addition and multiplication of numbers to the world of matrices. How about division? i.e. how can we make sense of an expression like this one?
+				</para.body>
+               <index.glossary>
+                  <term>invertible</term>
+                  <term>matrix</term>
+                  <info>
+                     <info.caption>Invertible Matrix</info.caption>
+                     <para>
+                        <para.body>An analysis which motivates the concept of an invertible matrix.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+            <math.display>
+               <latex>
+					
+					\dfrac{
+					\left[
+					\begin{array}{rr}
+					4 &amp; 3 \\
+					1 &amp; 0
+					\end{array}
+					\right] }{
+					\left[
+					\begin{array}{rr}
+					7 &amp; 4 \\
+					5 &amp; 3
+					\end{array}
+					\right]}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>To answer this question, let us analyze division by a number to get an idea of how to extend division to the world of matrices: Dividing a number <math>
+                     <latex>x</latex>
+                  </math> by another, say <math>
+                     <latex>2</latex>
+                  </math>, amounts to multiplying <math>
+                     <latex>x</latex>
+                  </math>  by  <math>
+                     <latex>1/2=2^{-1}</latex>
+                  </math>. Now, the number <math>
+                     <latex>1/2</latex>
+                  </math> is characterized by the property</para.body>
+            </para>
+            <math.display>
+               <latex>2\cdot (1/2)\ =\ 1\ (1/2)\cdot 2</latex>
+            </math.display>
+            <para>
+               <para.body>This is the key: Our goal is to divide an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{X}</latex>
+                  </math> by another <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. So, if we can find a matrix <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> with</para.body>
+            </para>
+            <math.display>
+               <latex>\Mtrx{A}\Mtrx{B}\ =\ \IdMtrx[n]\ =\ \Mtrx{B}\Mtrx{A}</latex>
+            </math.display>
+            <para>
+               <para.body>then it makes sense to define <math>
+                     <latex>\Mtrx{A}^{-1} := B</latex>
+                  </math>. So then we can define</para.body>
+            </para>
+            <math.display>
+               <latex>\dfrac{\Mtrx{X}}{\Mtrx{A}}\ :=\ \Mtrx{X}\cdot \Mtrx{B}</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Alert</strong>   Here is a new point which we must really pay attention to: In the world of matrices there are two ways of multiplying <math>
+                     <latex>\Mtrx{X}</latex>
+                  </math>by <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. Reason:</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>\Mtrx{B}\Mtrx{X}</latex>
+                  </math>   is 
+				<subordinate>
+                     <hot>generally distinct</hot>
+                     <crossref>
+                        <unit.ref unitId="Exa_MatrixOperationsExceptions"/>
+                        <info>
+                           <para>
+                              <para.body>Review an example of this phenomenon.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+				from <math>
+                     <latex>\Mtrx{X}\Mtrx{B}</latex>
+                  </math>.
+			</para.body>
+            </para>
+            <para>
+               <para.body>Accordingly, we must carefully decide whether we want to</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>divide <math>
+                           <latex>\Mtrx{X}</latex>
+                        </math> by <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> on the left; i.e. form the product  <math>
+                           <latex>\Mtrx{B}\Mtrx{X}</latex>
+                        </math>, or</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>divide <math>
+                           <latex>\Mtrx{X}</latex>
+                        </math> by <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> on the right; i.e. form the product  <math>
+                           <latex>\Mtrx{X}\Mtrx{B}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </body>
+</unit>

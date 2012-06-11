@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_LinearEqsNumberSolutions"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Number of Solutions</caption>
+   <associate type="Illustration">
+      <showme.pack.ref showmePackID="Illstrtn_LinearEqsNoSolution"/>
+      <info>
+         <para>
+            <para.body>How to recognize a system of linear equations with no solution.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Illustration">
+      <showme.pack.ref showmePackID="Illstrtn_LinearEqsOneSolution"/>
+      <info>
+         <para>
+            <para.body>How to recognize a system of linear equations with exactly one solution.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Illustration">
+      <showme.pack.ref showmePackID="Illstrtn_LinearEqsManySolutions"/>
+      <info>
+         <para>
+            <para.body>How to recognize a system of linear equations with infinitely many solutions.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Given a system of linear equations, the following apply</para.body>
+      </para>
+      <part.theorem partid="NoSolutions">
+         <part.body>
+            <para>
+               <para.body>The system has no solution exactly when the RREF of the augmented coefficient matrix has a leading <math>
+                     <latex>1</latex>
+                  </math> in its augmented part</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="UniqueSolution">
+         <part.body>
+            <para>
+               <para.body>The system has exactly one solution exactly when the RREF of the augmented coefficient matrix has a leading <math>
+                     <latex>1</latex>
+                  </math> in each column of its non-augmented part and no leading <math>
+                     <latex>1</latex>
+                  </math> in its augmented part</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="InfSolutions">
+         <part.body>
+            <para>
+               <para.body>The system has infinitely many solutions exactly when the RREF of the augmented coefficient matrix has all leading <math>
+                     <latex>1</latex>
+                  </math>’s in the non-augmented part, and there is at least one non-augmented column without a leading <math>
+                     <latex>1</latex>
+                  </math>. In this case the number of free variables describing the collection of all solutions is equal to the number of variables less the number of leading <math>
+                     <latex>1</latex>
+                  </math>’s.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+</theorem>

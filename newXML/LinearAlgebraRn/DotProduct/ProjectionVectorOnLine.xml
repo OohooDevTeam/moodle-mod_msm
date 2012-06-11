@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_ProjectionVectorLine"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Projection of a Vector on a Line</title>
+      <plain.title>Projection: Vector to Line</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we introduce a construction which appears in many contexts: how to project a vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> onto the line through the origin in the direction of another vector <math>
+                     <latex>\Vect{y}</latex>
+                  </math>
+               </para.body>
+            </para>
+            <media type="image" active="1" inline="0">
+               <img src="ims/ProjectionVectorLine.png"/>
+               <extended.caption>
+                  <image.mapping>
+                     <area shape="rect" coord="0,0,200,100"/>
+                  </image.mapping>
+                  <info>
+                     <info.caption>What to look for in this picture</info.caption>
+                     <para>
+                        <para.body>Shine a light perpendicularly onto the line <math>
+                              <latex>L</latex>
+                           </math>. Then you can think of <math>
+                              <latex>\pr_L(\Vect{x})</latex>
+                           </math> as the shadow of the arrow <math>
+                              <latex>\Vect{x}</latex>
+                           </math> on <math>
+                              <latex>L</latex>
+                           </math>. This interpretation of the projection allows us to predict immediately that</para.body>
+                     </para>
+                     <ul>
+                        <li>
+                           <para>
+                              <para.body>if <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> is perpendicular to <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math>, then <math>
+                                    <latex>\pr_{L}(\Vect{x}) = \Vect{0}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+                        <li>
+                           <para>
+                              <para.body>if <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> is parallel to <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math>, then <math>
+                                    <latex>\pr_L(\Vect{x}) = \Vect{x}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+                     </ul>
+                  </info>Projection of a vector on a line</extended.caption>
+            </media>
+            <para>
+               <para.body>The picture above shows how the vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> gets projected orthogonally onto the line <math>
+                     <latex>L</latex>
+                  </math>. The result is the vector <math>
+                     <latex>\pr_L(\Vect{x})</latex>
+                  </math> which is
+   		<subordinate>
+                     <hot>colinear</hot>
+                     <info>
+                        <info.caption>What does ‘colinear’ mean?</info.caption>
+                        <para>
+                           <para.body>‘Colinear’ means ‘has the same direction as’.</para.body>
+                        </para>
+                     </info>
+                  </subordinate> with <math>
+                     <latex>\Vect{y}</latex>
+                  </math>. The following proposition tells us how to compute this projection vector.
+			</para.body>
+               <index.glossary>
+                  <term>colinear</term>
+                  <info>
+                     <info.caption>What does ‘colinear’ mean?</info.caption>
+                     <para>
+                        <para.body>‘Colinear’ means ‘has the same direction as’.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="ProjectionVectorLine_Prop.xml"/>
+            <def type="Notation" id="Notation_OrthogonalProjectionXAlongY">
+               <def.body>
+                  <para>
+                     <para.body>We sometimes write <math>
+                           <latex>\pr_{\Vect{y}}(\Vect{x})</latex>
+                        </math> for <math>
+                           <latex>\pr_{L}(\Vect{x})</latex>
+                        </math>, and call it the orthogonal projection of <math>
+                           <latex>\Vect{x}</latex>
+                        </math> along <math>
+                           <latex>\Vect{y}</latex>
+                        </math>.
+			 The vector <math>
+                           <latex>\Vect{u} = \Vect{x} - \pr_{\Vect{y}} (\Vect{x})</latex>
+                        </math> is called the component of <math>
+                           <latex>\Vect{x}</latex>
+                        </math> orthogonal to <math>
+                           <latex>\Vect{y}</latex>
+                        </math>.
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>\pr_{\Vect{y}}(\Vect{x})</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\pr_{\Vect{y}}(\Vect{x}) := \dfrac{ \Vect{x} \bullet \Vect{y} }{ \Vect{y} \bullet \Vect{y} } \cdot \Vect{y}</latex>
+                                 </math> is the orthogonal projection of the vector <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> along the nonzero vector <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>orthogonal</term>
+                        <term>projection of a vector along another</term>
+                        <info>
+                           <para>
+                              <para.body>The orthogonal projection of a vector <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> along <math>
+                                    <latex>\Vect{y} \neq \Vect{0}</latex>
+                                 </math> is the vector </para.body>
+                           </para>
+                           <math.display>
+                              <latex>\pr_{\Vect{y}}(\Vect{x}) := \dfrac{\Vect{x} \bullet \Vect{y} }{\Vect{y} \bullet \Vect{y} \cdot \Vect{y}</latex>
+                           </math.display>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>component</term>
+                        <term>of a vector orthogonal to another</term>
+                        <info>
+                           <para>
+                              <para.body>The component of a vector <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> orthogonal to another vector <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math> is</para.body>
+                           </para>
+                           <math.display>
+                              <latex>\Vect{u} = \Vect{x} - \pr_{\Vect{y}}(\Vect{x})</latex>
+                           </math.display>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_ProjectionVectorLine"/>
+   </studymaterials>
+</unit>

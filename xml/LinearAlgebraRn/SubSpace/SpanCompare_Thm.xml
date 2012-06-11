@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_SpanCompare">
+	<caption>Comparison of span sets</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation</caption>
+			<para>Read this as: &lsquo;T is defined to be S union v&rsquo;</para>
+			<para>This means: we are forming a new collection <latex>T</latex> of vectors in <latex>\RNr[n]</latex> by including the vector <latex>\Vect{v}</latex> in the set of vectors <latex>S</latex>.</para>
+		</info>
+	</associate>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment</caption>
+			<para>Thus adding new vectors to a subset <latex>S</latex> of <latex>\RNr[n]</latex> does not necessarily increase the span. Adding a new vector <latex>\Vect{v}</latex> to <latex>S</latex> only increases the span if <latex>\Vect{v}</latex> does not belong to <latex>\span(S)</latex>.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>Given a subset <latex>S</latex> and a vector <latex>\Vect{v}</latex> of <latex>\RNr[n]</latex>, put</para>
+		<computation>
+			<left>T</left>
+			<center>:=</center>
+			<right>S\union \Set{ \Vect{v} }</right>
+		</computation>
+		<para>Then <latex>\span(S)=\span(T)</latex> if and only if <latex>\Vect{v}</latex> is in <latex>\span(S)</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>Consider first the case where <latex>\span(S)=\span(T)</latex>. We need to show that <latex>\Vect{v}</latex> is a linear combination of vectors in <latex>S</latex>. But we know that 
+			<subordinate>
+				<hot><latex>\Vect{v}</latex> is in <latex>\span(T)</latex></hot>
+				<info>
+					<caption>Why is <latex>\Vect{v}</latex> in <latex>\span(T)</latex>?</caption>
+					<para>We know that <latex>\Vect{v}</latex> is in <latex>T</latex>. Therefore</para>
+					<computation>
+						<left>\Vect{v}</left>
+						<center>=</center>
+						<right>1\cdot \Vect{v}</right>
+					</computation>
+					<para>is a linear combination of vectors in <latex>T</latex> and, hence, <latex>\Vect{v}</latex> is in <latex>\span(T)</latex>.</para>
+				</info>
+			</subordinate>.
+			As  <latex>\span(S)=\span(T)</latex>, <latex>\Vect{v}</latex> is also a linear combination of  <latex>S</latex>.</para>
+		<para>Consider now that case where <latex>\Vect{v}= a_1 \Vect{s}_1 + \cdots + a_k \Vect{s}_k</latex> is in <latex>\span(S)</latex>. We need to show that <latex>\span(S)=\span(T)</latex>. &ndash; Now every linear combination of vectors in <latex>S</latex> is also a linear combination of vectors in <latex>T</latex>. So it remains to show that every linear combination of vectors in <latex>T</latex> is also a linear combination of vectors in <latex>S</latex>. &ndash; Indeed, if</para>
+		<computation>
+			<left>\Vect{w}</left>
+			<center>=</center>
+			<right>t \Vect{v}\ +\ b_1 \Vect{t}_1 + \cdots + b_r \Vect{t}_r</right>
+		</computation>
+		<para>is a linear combination of <latex>T</latex>,  then <latex>\Vect{t}_1, \dots ,\Vect{t}_r</latex> are in <latex>S</latex>, and we need to show that <latex>\Vect{w}</latex> is in <latex>\span(S)</latex>. But we know also that</para>
+		<computation>
+			<left>\Vect{w}</left>
+			<center>=</center>
+			<right>t(a_1 \Vect{s}_1+\cdots + a_k \Vect{s}_k)\ +\ b_1 \Vect{t}_1+\cdots + b_r \Vect{t}_r</right>
+		</computation>
+		<para>which is a linear combination of vectors from <latex>S</latex>. Therefore <latex>\Vect{w}</latex> is in <latex>\span(S)</latex>. This completes the proof.</para>
+	</proof>
+</theorem>

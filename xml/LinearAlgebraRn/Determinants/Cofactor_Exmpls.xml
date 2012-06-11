@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Cofactor">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Cofactors of a Matrix: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>The matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrr}
+4 & 1 & 6 & 5 \\
+3 & -2 & -3 & 2 \\
+9 & 2 & 4 & 7 \\
+1 & -9 & -3 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			
+			<para>has as its <latex>(4,2)</latex>-minor the <latex>(3,3)</latex>-matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}_{42} = 
+\left[
+\begin{array}{rrrr}
+4 & 6 & 5 \\
+3 & -3 & 2 \\
+9 & 4 & 7 
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			
+			<para>Therefore the <latex>(4,2)</latex>-cofactor of <latex>\Mtrx{A}</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+c_{42}(\Mtrx{A})\ &=\ (-1)^{4+2}\cdot \det(\Mtrx{A}_{42}) \\
+	&=\ (-1)^6\cdot \det\, 
+\left[
+\begin{array}{rrrr}
+4 & 6 & 5 \\
+3 & -3 & 2 \\
+9 & 4 & 7 
+\end{array}
+\right] \\
+	&=\ 4\cdot (-21-8) - 3\cdot (42-20) + 9\cdot (12-(-15)) \\
+	&=\ 61
+\endaligned
+]]>
+				</latex><!-- Result has been checked -->
+			</math.display>
+		</statement>
+	</showme>
+</showme.pack>

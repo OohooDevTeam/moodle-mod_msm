@@ -1,0 +1,23 @@
+<project version="Crimson Editor 3.60">
+	<localfile path="X:\XML\Contents\TeXSupport\AlgebraInXML.tex" />
+	<localfile path="X:\XML\Contents\TeXSupport\CalculusInXML.tex" />
+	<localfile path="X:\XML\Contents\TeXSupport\CategoriesInXML.tex" />
+	<localfile path="X:\XML\Contents\TeXSupport\ColorInXML.tex" />
+	<localfile path="X:\XML\Contents\TeXSupport\LaTeXInXML.tex" />
+	<localfile path="X:\XML\Contents\TeXSupport\LinearAlgebraInXML.tex" />
+	<localfile path="X:\XML\Contents\TeXSupport\RCCalculusInXML.tex" />
+	<localfile path="X:\XML\Contents\TeXSupport\SpacesInXML.tex" />
+	<localfile path="X:\XML\Contents\TeXSupport\XYPicCommands.tex" />
+</project>
+
+<workspace version="Crimson Editor 3.60">
+	<localfile path="X:\XML\Contents\TeXSupport\AlgebraInXML.tex" linenum="1" placement="0:1:-1:-1:-8:-28:23:23:585:528" />
+	<localfile path="X:\XML\Contents\TeXSupport\CalculusInXML.tex" linenum="26" placement="2:3:-1:-1:-8:-28:46:46:608:551" />
+	<localfile path="X:\XML\Contents\TeXSupport\CategoriesInXML.tex" linenum="1" placement="0:1:-1:-1:-8:-28:69:69:631:574" />
+	<localfile path="X:\XML\Contents\TeXSupport\LaTeXInXML.tex" linenum="130" placement="0:1:-1:-1:-8:-28:115:115:677:620" />
+	<localfile path="X:\XML\Contents\TeXSupport\LinearAlgebraInXML.tex" linenum="1" placement="0:1:-1:-1:-8:-28:138:138:700:643" />
+	<localfile path="X:\XML\Contents\TeXSupport\RCCalculusInXML.tex" linenum="1" placement="0:1:-1:-1:-8:-28:161:161:723:666" />
+	<localfile path="X:\XML\Contents\TeXSupport\SpacesInXML.tex" linenum="6" placement="0:1:-1:-1:-8:-28:184:184:746:689" />
+	<localfile path="X:\XML\Contents\TeXSupport\XYPicCommands.tex" linenum="1" placement="0:1:-1:-1:-8:-28:230:230:922:735" />
+</workspace>
+

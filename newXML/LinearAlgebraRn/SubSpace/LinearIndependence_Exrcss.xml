@@ -1,0 +1,1385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_LinearIndependence"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Linear Independence</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Determine whether the following subsets of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> are linearly independent.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{ (0,0) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No! – <math>
+                              <latex>S</latex>
+                           </math> is not linearly independent.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>To test for linear independence of <math>
+                           <latex>S</latex>
+                        </math>, we need to determine if the equation</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>t\cdot (0,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>has <math>
+                           <latex>t=0</latex>
+                        </math> as its one and only solution.</para.body>
+                  </para>
+					             <para>
+                     <para.body>However, we find that this equation is true for every <math>
+                           <latex>t\in \RNr</latex>
+                        </math>. Therefore <math>
+                           <latex>S</latex>
+                        </math> is not linearly independent.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{ (9,9) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! – <math>
+                              <latex>S</latex>
+                           </math> is linearly independent.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Any set consisting of a single nonzero vector is linearly independent.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{ (1,1),(9,9) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No! – <math>
+                              <latex>S</latex>
+                           </math> is not linearly independent.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We have <math>
+                           <latex>(9,9) = 9\cdot (1,1)</latex>
+                        </math>, and so <math>
+                           <latex>(9,9)</latex>
+                        </math> is in <math>
+                           <latex>\span\Set{ (1,1) }</latex>
+                        </math>, implying that <math>
+                           <latex>S</latex>
+                        </math> is not linearly independent.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{ (1,1),(-1,1) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! – <math>
+                              <latex>S</latex>
+                           </math> is linearly independent.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Try the determinant test for linear independence</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{(1,1), (-1,1),(3,-4) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No! – <math>
+                              <latex>S</latex>
+                           </math> is not linearly independent.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Any set consisting of three or more vectors in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> is linearly dependent.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Determine whether the following subsets of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> are linearly independent.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S = \Set{ (1,3,-2),(0,-1,2) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! <math>
+                              <latex>S</latex>
+                           </math> is linearly independent.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Use the determinant test for linear independence.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We can use the determinant test for linear independence: The matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{rr}
+1 &amp; 0 \\
+3 &amp; -1 \\
+-2 &amp; 2
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>has the given vectors as its columns. Its top two rows form the <math>
+                           <latex>(2,2)</latex>
+                        </math>-matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} = \left[
+\begin{array}{rr}
+1 &amp; 0 \\
+3 &amp; -1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>We find <math>
+                           <latex>\det(\Mtrx{A}) = -1\neq 0</latex>
+                        </math>. Thus the given vectors are linearly independent.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S = \Set{ (1,3,-2),(0,-1,2),(0,0,0) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No! <math>
+                              <latex>S</latex>
+                           </math> is not linearly independent.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Use the determinant test for linear independence.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S = \Set{ (1,3,-2),(0,-1,2),(-2,1,1) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! <math>
+                              <latex>S</latex>
+                           </math> is linearly independent.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Use the determinant test for linear independence.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Determine if the following vectors from <math>
+                     <latex>\RNr[4]</latex>
+                  </math> form a linearly independent set:</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{w}_1</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(1,-1,2,5)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{w}_2</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(3,1,4,2)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{w}_3</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(1,1,0,0)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{w}_4</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(5,1,6,7)</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+                  <para>
+                     <para.body>No! – The given vectors are not linearly independent.</para.body>
+                  </para>
+               </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+            <para>
+               <para.body>You can form the <math>
+                     <latex>(4,4)</latex>
+                  </math>-matrix with the given vectors as its column vectors, and then use the row reduction method.</para.body>
+            </para>
+         </solution.hint>
+		    </approach>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the problems below determine if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Any two distinct vectors in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> are linearly independent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Consider any nonzero vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>2\cdot \Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Parallel vectors may be distinct, but will not be linearly independent. For example, choose</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Vect{x} := (1,0)\quad \text{and}\quad \Vect{y} := (2,0)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Visibly, these two vectors are distinct. However,</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2\cdot \Vect{x}\ +\ (-1)\cdot \Vect{y}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore these two vectors are linearly dependent. – The statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Any two non parallel vectors in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> are linearly independent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall what it means for two vectors to be parallel.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Suppose the vectors <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> are not parallel. Then <math>
+                           <latex>\Vect{x},\Vect{y}\neq \Vect{0}</latex>
+                        </math>. Now let us consider <math>
+                           <latex>\Vect{0}</latex>
+                        </math> as a linear combination of <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math>:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{0}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>s\cdot \Vect{x}\ +\ t\cdot \Vect{y}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>We claim that this can only happen if <math>
+                           <latex>s=0=t</latex>
+                        </math>. To see this consider the case where <math>
+                           <latex>s=0</latex>
+                        </math>. Then</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{0}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>t\cdot \Vect{y}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>It follows that <math>
+                           <latex>t=0</latex>
+                        </math> because <math>
+                           <latex>\Vect{y}\neq \Vect{0}</latex>
+                        </math>. So the claim holds.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Next we show that <math>
+                           <latex>s\neq 0</latex>
+                        </math> can not happen. For if we had <math>
+                           <latex>s\neq 0</latex>
+                        </math>, we could solve</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-\dfrac{t}{s}\cdot \Vect{y}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>But this means that <math>
+                           <latex>\Vect{y}</latex>
+                        </math> is parallel to <math>
+                           <latex>\Vect{x}</latex>
+                        </math>, contradicting the assumption that these two vectors are not parallel.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Thus <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> are linearly independent. – The statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Vect{x},\Vect{y},\Vect{z}</latex>
+                     </math> are three unit vectors in <math>
+                        <latex>\RNr[n]</latex>
+                     </math> which are perpendicular, then these vectors are linearly independent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the result on orthogonality and linear independence.</para.body>
+               </para>
+            </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Notice: the three given vectors form an orthonormal set of vectors.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall: any orthogonal set of vectors is linearly independent.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The three given vectors form an orthonormal set of vectors. Now we reason:</para.body>
+                  </para>
+					             <ul>
+						               <li>
+							                 <para>
+                           <para.body>Every orthonormal set of vectors is automatically orthogonal.</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>We know in general: every orthogonal set of vectors is linearly independent.</para.body>
+                        </para>
+						               </li>
+					             </ul>
+					             <para>
+                     <para.body>Therefore the three given vectors are linearly independent.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Vect{x}=(1,0,1)</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}=(1,1,0)</latex>
+                     </math>, then <math>
+                        <latex>S := \Set{ \Vect{x},\Vect{y}, \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                     </math> is linearly independent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Consider using the determinant test for linear independence.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Vect{x},\Vect{y}</latex>
+                     </math> are nonzero vectors in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>, then <math>
+                        <latex>S:= \Set{ \Vect{x},\Vect{y}, \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                     </math> is linearly independent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>What if <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math> are parallel?</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The statement in question is false. To see this consider the case where <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> are parallel; for example: <math>
+                           <latex>\Vect{y}= 2\cdot \Vect{x}</latex>
+                        </math>. Then</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{\Vect{x}}{\Vect{y}}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{0}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>In general, we know: whenever the 0-vector is a member of a collection of vectors <math>
+                           <latex>S</latex>
+                        </math>, the collection is linearly dependent. Therefore the statement in  question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Vect{x},\Vect{y}</latex>
+                     </math> are nonparallel vectors in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>, then <math>
+                        <latex>S:= \Set{ \Vect{x},\Vect{y}, \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                     </math> is linearly independent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Consider using the determinant test for linear independence.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We apply the determinant test for linear independence. We use <math>
+                           <latex>\Vect{x},\Vect{y},\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                        </math> as column vectors. Then</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\det[ \Vect{x}\ \ \Vect{y}\ \ \CrssPr{ \Vect{x} }{ \Vect{y} } ]</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ (\CrssPr{ \Vect{x} }{ \Vect{y} } ) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text> &gt; 	</text>
+                           <companion>
+                              <info>
+                                 <info.caption>
+                                    <caption>Why is this inequality true?</caption>
+                                 </info.caption>
+							
+							                          <para>
+                                    <para.body>We know that the cross product of two vectors vanishes exactly when the vectors are parallel. – Here we know that <math>
+                                          <latex>\Vect{x},\Vect{y}</latex>
+                                       </math> are not parallel. So the cross product vector <math>
+                                          <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } \neq \Vect{0}</latex>
+                                       </math>. So we have</para.body>
+                                 </para>
+							                          <math.display>
+								                            <latex> \DotPr{ \CrssPr{ \Vect{x} }{ \Vect{y} } }{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2 &gt; 0 </latex>
+							                          </math.display>
+						                        </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <info.caption>
+                                    <caption>Why is this inequality true?</caption>
+                                 </info.caption>
+							
+							                          <para>
+                                    <para.body>We know that the cross product of two vectors vanishes exactly when the vectors are parallel. – Here we know that <math>
+                                          <latex>\Vect{x},\Vect{y}</latex>
+                                       </math> are not parallel. So the cross product vector <math>
+                                          <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } \neq \Vect{0}</latex>
+                                       </math>. So we have</para.body>
+                                 </para>
+							                          <math.display>
+								                            <latex> \DotPr{ \CrssPr{ \Vect{x} }{ \Vect{y} } }{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2 &gt; 0 </latex>
+							                          </math.display>
+						                        </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus the determinant test for linear independence tells us that <math>
+                           <latex>S</latex>
+                        </math> is linearly independent. – The statement in question is true!</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>	
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given the vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>, find a vector <math>
+                     <latex>\Vect{y}=(u,v)</latex>
+                  </math> such that <math>
+                     <latex>S:=\Set{ \Vect{x} , \Vect{y} }</latex>
+                  </math> is linearly independent.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (1,0)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>One possible choice is <math>
+                              <latex>\Vect{y} = (0,1)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Look for a vector <math>
+                        <latex>\Vect{y}=(u,v,w)</latex>
+                     </math> which is not parallel to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Geometrically speaking, any vector which is not parallel to the <math>
+                           <latex>x</latex>
+                        </math>-axis is linearly independent from <math>
+                           <latex>\Vect{x}</latex>
+                        </math>. One possible choice is <math>
+                           <latex>\Vect{y} = (0,1)</latex>
+                        </math>. Alternate choices include</para.body>
+                  </para>
+					             <math.display>
+						               <latex>(1,1), (10,-1), (5964743,419622222)</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (3,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>One possible choice is <math>
+                              <latex>\Vect{y}=(1,0)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>An easy way of finding a vector linearly independent to <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is to find a nonzero vector which is perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We can just find such <math>
+                           <latex>\Vect{y}</latex>
+                        </math> by inspection; for example <math>
+                           <latex>\Vect{y}:=(1,0)</latex>
+                        </math> is linearly independent from <math>
+                           <latex>\Vect{x}</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Alternatively, we can look for a nonzero vector which is perpendicular to <math>
+                           <latex>\Vect{x}</latex>
+                        </math>. Such a vector is <math>
+                           <latex>\Vect{y}:=(-1,3)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (2,2)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (3,-5)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (12,7)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (x,y)\neq (0,0)</latex>
+                     </math> is an arbitrary vector.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given the vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>, find a vector <math>
+                     <latex>\Vect{y}=(u,v,w)</latex>
+                  </math> such that <math>
+                     <latex>S:=\Set{ \Vect{x} , \Vect{y} }</latex>
+                  </math> is linearly independent.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (1,0,2)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>One possible choice is <math>
+                              <latex>\Vect{y} = (0,1,0)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Look for a nonzero vector which is perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A nonzero vector perpendicular to <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is <math>
+                           <latex>\Vect{y}:= (2,0,-1)</latex>
+                        </math>. This implies that <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> are linearly independent.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (1,1,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>One possible choice is <math>
+                              <latex>\Vect{y} = (0,1,-1)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (2,-1,3)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>One possible choice is <math>
+                              <latex>\Vect{y} = (1,2,0)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (3,2,-5)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>One possible choice is <math>
+                              <latex>\Vect{y} = (0,5,2)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (5,-1,-4)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>One possible choice is <math>
+                              <latex>\Vect{y} = (4,0,5)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x}=(x,y,z)\neq (0,0,0)</latex>
+                     </math> is arbitrary in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+               <para>
+                  <para.body>Look for a vector <math>
+                        <latex>\Vect{y}=(u,v,w)</latex>
+                     </math> which is not parallel to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Show that, if the subset <math>
+                     <latex>S</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> contains the <math>
+                     <latex>\Vect{0}</latex>
+                  </math>-vector, then <math>
+                     <latex>S</latex>
+                  </math> is linearly dependent. </para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If <math>
+                     <latex>\Vect{x},\Vect{y}</latex>
+                  </math> are nonparallel vectors in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>, show that <math>
+                     <latex>S:= \Set{ \Vect{x},\Vect{y}, \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                  </math> is linearly independent.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Show that any collection of <math>
+                     <latex>(n+1)</latex>
+                  </math> or more vectors in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> is linearly dependent.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+</exercise.pack>

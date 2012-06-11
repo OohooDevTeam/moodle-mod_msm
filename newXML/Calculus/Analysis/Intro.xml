@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para>
+            <para.body>We use the term ‘analysis’ here as short for the mathematical subject of ‘mathematical analysis’. At the heart of this subject lie the concepts</para.body>
+         </para>
+         <ul>
+		          <li>
+               <para>
+                  <para.body>infinite process</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>convergence and limit</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>failure of convergence</para.body>
+               </para>
+            </li>
+	        </ul>
+         <para>
+            <para.body>Applied to functions between sets of real numbers, this leads to the concepts of continuity, derivative, integral.</para.body>
+         </para>
+         <para>
+            <para.body>Historically, we find the earliest use of such limit methods in the work of the ancient Greeks. A famous example is Archimedes’ method of exhaustion to computing the area of a disk.
+		
+		Even earlier, Zeno describes scenarios each of which is based upon some infinite process. The process is manipulated in a skillfully incorrect way to arrive at a 
+		<subordinate>
+                  <hot>paradoxical conclusion</hot>
+                  <companion>
+                     <unit.ref unitId="Illustr_ZenoParadox"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>See details of this paradox</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>.
+	</para.body>
+            <index.author>
+               <name>
+                  <name>
+				                 <first/>
+				                 <last>Archimedes of Syracuse</last>
+			               </name>
+               </name>
+               <info>
+				              <para>
+                     <para.body>Appears here for his approach to computing the area of a disk.</para.body>
+                  </para>
+			            </info>
+            </index.author>
+         </para>
+         <para>
+            <para.body>Systematic, yet informal and intuitive use of infinite process and their limits started in the second half of the 17th century, notably with the invention of differential and integral calculus: Newton, Leibniz. The early development of mathematical analysis was driven significantly by the desire to place such intuitive use of limits on a solid foundation: Cauchy, Weierstraß, etc. Now, apart from being a vast subject in its own right, mathematical analysis has branched of into generalizations: points set topology, measure theory, operator theory, ... which carry their own names.</para.body>
+         </para>
+         <para>
+            <para.body>Here we treat .... (what this online text contains)</para.body>
+         </para>
+         <para>
+            <para.body>The reader can consult 
+		<subordinate>
+                  <hot>background materials</hot>
+                  <external.link href="../SetsNaive/Sets.xml" target="sets" type="xml"/>
+               </subordinate>
+		on the language of sets and basic principles of predicate logic as the need arises.</para.body>
+         </para>
+      </block.body>
+   </block>
+</intro>

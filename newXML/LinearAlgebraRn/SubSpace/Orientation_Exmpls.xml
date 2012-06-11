@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_OrientationGeneral"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Orientation in General: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Describe possible orientations of a 1-dimensional subspace <math>
+                  <latex>V</latex>
+               </math> of <math>
+                  <latex>\RNr[k]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>A 1-dimensional subspace <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\RNr[k]</latex>
+                     </math> is just a line through the origin. Therefore, an ordered basis of <math>
+                        <latex>V</latex>
+                     </math> consists just of a single nonzero vector <math>
+                        <latex>\Vect{b}</latex>
+                     </math> in <math>
+                        <latex>V</latex>
+                     </math>. It determines a direction of `increasing' in <math>
+                        <latex>V</latex>
+                     </math>, together with its opposite: a direction of decreasing.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Describe possible orientations of a 2-dimensional subspace <math>
+                  <latex>V</latex>
+               </math> of <math>
+                  <latex>\RNr[k]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>A 2-dimensional subspace <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\RNr[k]</latex>
+                     </math> is a plane passing through the origin. Therefore, an ordered basis of <math>
+                        <latex>V</latex>
+                     </math> consists of an ordered pair of linearly independent vectors <math>
+                        <latex>\EuScript{B} = (\Vect{a} , \Vect{b} )</latex>
+                     </math> in <math>
+                        <latex>V</latex>
+                     </math>. Such a pair of vectors determines a preferred direction of rotation about a point, namely the shorter of the two possible trips from <math>
+                        <latex>\Vect{a}</latex>
+                     </math> to <math>
+                        <latex>\Vect{b}</latex>
+                     </math>. This direction of rotation is taken to be the ‘positive’ direction of rotation. The opposite direction of rotation is taken to be the negative direction of orientation.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

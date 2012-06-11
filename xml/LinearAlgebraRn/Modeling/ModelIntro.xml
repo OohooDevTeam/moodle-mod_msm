@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro	SYSTEM "../Symbols.dtd">
+<intro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd">
+	
+	<para>As you know, mathematics is very helpful in describing or predicting processes or phenomena in the world around us. Such descriptions or predictions are achieved provided via mathematical models, that is idealized abstracts of the world around us.</para>
+	
+	<para>One extremely versatile tool that may be used in a mathematical model is the concept of a vector. Indeed, vectors are capable of representing anything that is characterized by "direction" and "magnitude". To give an idea of how this works, we discuss three examples:</para>
+	
+	<ul>
+		<li><para><b>Translations</b> &nbsp; When we <subordinate>
+			<hot>translate or shift</hot>
+			<companion>
+				<subpage.ref subpageID="Prvw_Translation"/>
+				<para>An illustration of how a vector describes a translation</para>
+			</companion>
+		</subordinate> an object we move each of its points in the same direction and by the same distance. So we may represent it by a vector whose direction gives the direction of the translation and whose length corresponds to the distance by which objects are being moved.</para></li>
+		
+		<li><para><b>Force</b> &nbsp; When we push or pull an object, we say we act on the object by some 
+			<subordinate>
+				<hot>force</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_Force"/>
+					<para>Illustration of this</para>
+				</companion>
+			</subordinate>. Such a force is characterized by "its direction" and "its strength". So we may represent it by a vector: the direction of the vector gives the direction of the force, and the length of the vector corresponds to the strength or magnitude of the force.</para></li>
+		
+		<li><para><b>Velocity</b> &nbsp; When a particle moves in space, it changes its location at each instant. This change of location is characterized by the direction and the speed of the motion at that instant. Both data combined comprise the
+			<subordinate>
+				<hot>velocity</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_Velocity"/>
+					<para>An illustration of &lsquo;velocity&rsquo;</para>
+				</companion>
+			</subordinate>
+			at that instant. As velocity is characterized by direction and magnitude, we may represent it by a vector. The direction of the vector gives the direction of the motion and the length of the vector corresponds to the speed.</para></li>
+	</ul>
+</intro>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_InfSup"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: On Infimum and Supremum</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose <math>
+                     <latex>x\in\RNr</latex>
+                  </math> satisfies <math>
+                     <latex>x\geq 0</latex>
+                  </math> and <math>
+                     <latex>x\leq 1/10^n</latex>
+                  </math> for all <math>
+                     <latex>n\geq 1</latex>
+                  </math>. Show that <math>
+                     <latex>x=0</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Show that the set <math>
+                     <latex>-\NNr:=\Set{ -n\st n\in \NNr}</latex>
+                  </math> is not bounded below.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Show that a set <math>
+                     <latex>X\subseteq\RNr</latex>
+                  </math> is not bounded above if and only if for every <math>
+                     <latex>n\in\NNr</latex>
+                  </math> there exists <math>
+                     <latex>x\in X</latex>
+                  </math> with <math>
+                     <latex>n\leq x</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+</exercise.pack>

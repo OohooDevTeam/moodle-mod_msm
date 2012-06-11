@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_CrossProductAlgebraicProperties">
+	<caption>Cross product: algebraic properties</caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Expla_CrossProductAlgebraicProperties"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>What do these equations describing algebraic properties of the cross product actually say? &ndash; Find details here.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>The cross product operation has the following properties</para>
+		
+		<part partid="Bilinear">
+			<para>For arbitrary vectors <latex>\Vect{u}</latex>, <latex>\Vect{v}</latex>, <latex>\Vect{x}</latex>, <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex>, and <latex>t</latex> in <latex>\RNr</latex> the following hold</para>
+			<computation>
+				<left>\CrssPr{ (\Vect{u} + \Vect{v}) }{ \Vect{y} }</left>
+				<center>=</center>
+				<right>\CrssPr{ \Vect{u} }{ \Vect{y} }\ +\ \CrssPr{ \Vect{v} }{ \Vect{y} }</right>
+				<left>\CrssPr{ \Vect{u} }{ (\Vect{x} + \Vect{y}) }</left>
+				<center>=</center>
+				<right>\CrssPr{ \Vect{u} }{ \Vect{x} }\ +\ \CrssPr{ \Vect{u} }{ \Vect{y} }</right>
+				<left>\CrssPr{ (t\cdot \Vect{x}) }{ \Vect{y} }</left>
+				<center>=</center>
+				<right>t\cdot (\CrssPr{ \Vect{x} }{ \Vect{y} }) = \CrssPr{ \Vect{x} }{ (t\cdot \Vect{y}) }</right>
+			</computation>
+		</part>
+		<part partid="AntiSymmetric">
+			<para>For arbitrary <latex>\Vect{x}</latex>, <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex>,</para>
+			<computation>
+				<left>\CrssPr{ \Vect{x} }{ \Vect{y} }</left>
+				<center>=</center>
+				<right>-\CrssPr{ \Vect{y} }{ \Vect{x} }</right>
+			</computation>
+		</part>
+	</statement>
+	
+	
+	
+	<proof>
+		<caption><partref>Bilinear</partref> Bilinearity Property</caption>
+		<para>These three identities together assert that the cross product operation is bilinear. To verify these bilinearity properties, we recall that the determinant operation on  <latex>(2,2)</latex>-matrices is 
+			<subordinate>
+				<hot>bilinear</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+					<para>Look up these properties of the determinant operation.</para>
+				</crossref>
+			</subordinate>.
+			So we obtain, for example,</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+\det
+\left[
+\begin{array}{cc}
+u_1 +v_1 & y_1 \\
+u_2 +v_2 & y_2
+\end{array}
+\right]\ &=\
+\det
+\left[
+\begin{array}{cc}
+u_1 & y_1 \\
+u_2 & y_2
+\end{array}
+\right]\ +\ 
+\det
+\left[
+\begin{array}{cc}
+v_1 & y_1 \\
+v_2 & y_2
+\end{array}
+\right] \\
+\det
+\left[
+\begin{array}{cc}
+u_1 & x_1 + y_1 \\
+u_2 & x_2 + y_2
+\end{array}
+\right]\ &=\
+\det
+\left[
+\begin{array}{cc}
+u_1 & x_1 \\
+u_2 & x_2
+\end{array}
+\right]\ +\ 
+\det
+\left[
+\begin{array}{cc}
+u_1 & y_1 \\
+u_2 & y_2
+\end{array}
+\right] \\
+\det
+\left[
+\begin{array}{cc}
+tx_1 & y_1 \\
+tx_2 & y_2
+\end{array}
+\right]\ &=\ 
+t\cdot
+\det
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_2 & y_2
+\end{array}
+\right]\ =\ 
+\det
+\left[
+\begin{array}{cc}
+x_1 & t\cdot y_1 \\
+x_2 & t\cdot y_2
+\end{array}
+\right]
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		<para>This implies the claim.</para>
+		
+		<caption><partref>AntiSymmetric</partref> Antisymmetry Property</caption>
+		<para>The antisymmetry property of the cross product follows directly from the 
+			<subordinate>
+				<hot>alternating property</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+					<para>Look up these properties of the determinant operation.</para>
+				</crossref>
+			</subordinate>
+			of the determinant operation.</para>
+	</proof>
+</theorem>

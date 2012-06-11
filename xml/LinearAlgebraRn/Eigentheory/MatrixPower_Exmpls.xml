@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_MatrixPower">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Diagonalize to Power a Matrix: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Compute <latex>\Mtrx{A}^{10}</latex> if</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} =
+\left[
+\begin{array}{rr}
+-9 & 4 \\
+-33 & 14
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>We begin by trying to diagonalize <latex>\Mtrx{A}</latex>. The characteristic polynomial of <latex>\Mtrx{A}</latex> is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+p(\lambda)\ &=\ 
+	\det
+	\left[
+\begin{array}{cc}
+-9-\lambda & 4 \\
+-33 & 14 -\lambda
+\end{array}
+\right] \\
+	&=\ -(9+\lambda)(14 - \lambda)\ +\ 132 \\
+	&=\ \lambda^2 - 5\lambda + 6 \\
+	&=\ (\lambda - 2)(\lambda-3)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			<para>So <latex>\Mtrx{A}</latex> has two distinct eigenvalues:</para>
+			<ol>
+				<li><para><latex>\lambda_1 = 2</latex> with algebraic multiplicity <latex>1</latex></para></li>
+				<li><para><latex>\lambda_2 = 3</latex> with algebraic multiplicity <latex>1</latex></para></li>
+			</ol>
+			<para>The eigenspace of <latex>\Mtrx{A}</latex> associated to <latex>\lambda_1</latex> consists of the solutions of the matrix equation</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{rr}
+-11 & 4 \\
+-33 & 12
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+x \\ y
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+0 \\ 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Therefore, <latex>E_1 = \span(4,11)</latex></para>
+			<para>The eigenspace of <latex>\Mtrx{A}</latex> associated to <latex>\lambda_2</latex> consists of the solutions of the matrix equation</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{rr}
+-12 & 4 \\
+-33 & 11
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+x \\ y
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+0 \\ 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Therefore, <latex>E_2 = \span(1,3)</latex></para>
+			<para>It follows that <latex>\EuScript{B}:= ((4,11),(1,3))</latex> is an ordered basis of <latex>\RNr[2]</latex> consisting only of eigenvectors of <latex>\Mtrx{A}</latex>. Therefore <latex>\Mtrx{A}</latex> is diagonalizable, and a diagonalizing matrix is given by</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{C} :=
+\left[
+\begin{array}{rr}
+4 & 1 \\
+11 & 3
+\end{array}
+\right] \qquad \text{with}\qquad
+\Mtrx{C}^{-1} =
+\left[
+\begin{array}{rr}
+3 & -1 \\
+-11 & 4
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Accordingly,</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{D} :=
+\left[
+\begin{array}{cc}
+2 & 0 \\
+0 & 3
+\end{array}
+\right] =
+\left[
+\begin{array}{rr}
+3 & -1 \\
+-11 & 4
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+-9 & 4 \\
+-33 & 14
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+4 & 1 \\
+11 & 3
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>We now have the easy computation of <latex>\Mtrx{A}^{10}</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\Mtrx{A}^{10}\ &=\ 
+\left(\left[
+\begin{array}{rr}
+4 & 1 \\
+11 & 3
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+2 & 0 \\
+0 & 3
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+3 & -1 \\
+-11 & 4
+\end{array}
+\right] \right)^{10} \\
+	&=\ 
+\left[
+\begin{array}{rr}
+4 & 1 \\
+11 & 3
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+2 & 0 \\
+0 & 3
+\end{array}
+\right]^{10}
+\left[
+\begin{array}{rr}
+3 & -1 \\
+-11 & 4
+\end{array}
+\right] \\
+	&=\ 
+\left[
+\begin{array}{rr}
+4 & 1 \\
+11 & 3
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+2^{10} & 0 \\
+0 & 3^{10}
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+3 & -1 \\
+-11 & 4
+\end{array}
+\right] \\
+	&=\ 
+\left[
+\begin{array}{rr}
+3\cdot 2^{12} - 11\cdot 3^{10} & 4\cdot 3^{10} - 2^{12} \\
+33\cdot 2^{10} - 11\cdot 3^{11} & 4\cdot 3^{11} - 11\cdot 2^{10}
+\end{array}
+\right]
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

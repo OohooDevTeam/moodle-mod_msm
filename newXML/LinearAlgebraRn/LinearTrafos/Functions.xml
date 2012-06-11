@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_Functions"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Functions - A Rapid Introduction</title>
+      <plain.title>Functions</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>To make this introduction to linear algebra somewhat self contained, we include here a rapid introduction to the notions of
+			<subordinate>
+                     <hot>sets and functions</hot>
+                     <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/SetsNaive/Sets.xml"
+                                    type="html"
+                                    target="sets">
+                        <info xmlns="">
+                           <para xmlns="Unit">
+                              <para.body>Link to an online book on sets and functions.</para.body>
+                           </para>
+                        </info>
+                     </external.link>
+                  </subordinate>.
+		</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Setting up a
+			<subordinate>
+                     <hot>function</hot>
+                     <companion>
+                        <unit.ref unitId="Illu_FunctionRRGraph"/>
+                        <info>
+                           <para>
+                              <para.body>Comment on the concept of a function</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>
+			begins with selecting two 
+			<subordinate>
+                     <hot>sets</hot>
+                     <info>
+                        <info.caption>Quick description of a set</info.caption>
+                        <para>
+                           <para.body>A set is any collection <math>
+                                 <latex>U</latex>
+                              </math> of objects, even objects of your thought or imagination are allowed. The objects in <math>
+                                 <latex>U</latex>
+                              </math> are called the elements of <math>
+                                 <latex>U</latex>
+                              </math>. We write <math>
+                                 <latex>u\in U</latex>
+                              </math> to say that <math>
+                                 <latex>u</latex>
+                              </math> is an element of <math>
+                                 <latex>U</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+               </para.body>
+               <index.glossary>
+                  <term>function</term>
+               </index.glossary>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>A set <math>
+                           <latex>X</latex>
+                        </math>, called the domain of the function
+				</para.body>
+                     <index.glossary>
+                        <term>domain</term>
+                        <term>of a function</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>function</term>
+                        <term>domain</term>
+                     </index.glossary>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>A set <math>
+                           <latex>Y</latex>
+                        </math>, called the target of the function
+				</para.body>
+                     <index.glossary>
+                        <term>function</term>
+                        <term>target</term>
+                     </index.glossary>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>A function <math>
+                     <latex>f</latex>
+                  </math> from <math>
+                     <latex>X</latex>
+                  </math> to <math>
+                     <latex>Y</latex>
+                  </math>, denoted <math>
+                     <latex>f\from X\to Y</latex>
+                  </math>, associates to each element <math>
+                     <latex>x</latex>
+                  </math> in <math>
+                     <latex>X</latex>
+                  </math> some element of <math>
+                     <latex>Y</latex>
+                  </math>. This element must be unique and is denoted <math>
+                     <latex>f(x)</latex>
+                  </math>. Names for it include: the ‘value’ of <math>
+                     <latex>f</latex>
+                  </math> at <math>
+                     <latex>x</latex>
+                  </math>, the ‘function value’ of <math>
+                     <latex>f</latex>
+                  </math> at <math>
+                     <latex>x</latex>
+                  </math>, or the ‘image of <math>
+                     <latex>x</latex>
+                  </math> under <math>
+                     <latex>f</latex>
+                  </math> ’.
+			</para.body>
+               <index.glossary>
+                  <term>function</term>
+                  <term>value</term>
+               </index.glossary>
+               <index.glossary>
+                  <term>image</term>
+                  <term>of element under a function</term>
+               </index.glossary>
+               <index.glossary>
+                  <term>value</term>
+                  <term>of element under a function</term>
+               </index.glossary>
+            </para>
+            <para>
+               <para.body>It is possible that two or more distinct elements of <math>
+                     <latex>X</latex>
+                  </math> get sent to the same element of <math>
+                     <latex>Y</latex>
+                  </math>. In other words, it is possible that, for <math>
+                     <latex>x\neq x'</latex>
+                  </math> in <math>
+                     <latex>X</latex>
+                  </math>, <math>
+                     <latex>f(x) = f(x')</latex>
+                  </math>. - Here are some examples.</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>Transformation of a planar region</hot>
+                           <companion>
+                              <showme.pack.ref showmePackID="Exa_TrafoPlanar"/>
+                              <info>
+                                 <para>
+                                    <para.body>An example of a planar region being transformed, and the transformation sends several points of <math>
+                                          <latex>X</latex>
+                                       </math> to the same point of <math>
+                                          <latex>Y</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>Transformation of a line segment</hot>
+                           <companion>
+                              <showme.pack.ref showmePackID="Exa_TrafoLineSegment"/>
+                              <info>
+                                 <para>
+                                    <para.body>An example of a line segment being transformed into a curve</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>
+                  <strong>Functions and equations</strong>   We just learned that a function <math>
+                     <latex>f\from X\to Y</latex>
+                  </math> can transform several distinct elements of <math>
+                     <latex>X</latex>
+                  </math> into the same element <math>
+                     <latex>y\in Y</latex>
+                  </math>. Therefore it makes sense to ask: What is the total collection of elements of <math>
+                     <latex>X</latex>
+                  </math> which get sent to a given <math>
+                     <latex>y</latex>
+                  </math> in <math>
+                     <latex>Y</latex>
+                  </math>? or, in symbols, what are the solutions of the equation below?
+			</para.body>
+               <index.glossary>
+                  <term>equation</term>
+                  <info>
+                     <para>
+                        <para.body>Description of the relationship between functions and equations</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+            <math.display>
+               <latex>f(x) = y</latex>
+            </math.display>
+            <para>
+               <para.body>Thus functions provide a general tool to formulate equations. The solutions of the equation above form the ‘preimage of <math>
+                     <latex>y</latex>
+                  </math> under <math>
+                     <latex>f</latex>
+                  </math>’. It is denoted <math>
+                     <latex>f^{-1}(y)</latex>
+                  </math> and consists of all those <math>
+                     <latex>x</latex>
+                  </math> in <math>
+                     <latex>X</latex>
+                  </math> which satisfy the equation <math>
+                     <latex>f(x)=y</latex>
+                  </math>.
+			</para.body>
+               <index.symbol>
+                  <symbol>
+                     <math>
+                        <latex>f^{-1}(y)</latex>
+                     </math>
+                  </symbol>
+                  <info>
+                     <para>
+                        <para.body>Preimage of <math>
+                              <latex>y</latex>
+                           </math> under a function <math>
+                              <latex>f</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </info>
+               </index.symbol>
+               <index.glossary>
+                  <term>preimage</term>
+                  <term>under a function</term>
+                  <info>
+                     <para>
+                        <para.body>Given a function <math>
+                              <latex>f\from X\to Y</latex>
+                           </math> and <math>
+                              <latex>y\in Y</latex>
+                           </math>, the preimage of <math>
+                              <latex>y</latex>
+                           </math> under <math>
+                              <latex>f</latex>
+                           </math> consists of all those <math>
+                              <latex>x\in X</latex>
+                           </math> such that <math>
+                              <latex>f(x)=y</latex>
+                           </math>; notation <math>
+                              <latex>f^{-1}(y)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+            <para>
+               <para.body>There remains the question: How do we solve such equations? In general, this task can be quite challenging. At this point we can indicate the following:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>f</latex>
+                        </math> is a linear function, we will see that the equation above is equivalent to a system of linear equations, and so we know how to solve them.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body> If <math>
+                           <latex>f</latex>
+                        </math> is differentiable, we can feed our knowledge of solving linear equations into the framework of differential calculus and obtain qualitative answers. These answers include the ‘inverse function theorem’ or its corollary the ‘implicit function theorem’.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>f</latex>
+                        </math> is a polynomial, i.e. a relatively ‘simple’ function, efforts to describe all of its solutions continue to provide ongoing research challenges, and is the primary goal of the subject of Algebraic Geometry. </para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <example.pack.ref examplePackID="Exa_FunctionPreimage"/>
+      <exercise.pack.ref exercisePackID="Exe_Function"/>
+   </studymaterials>
+</unit>

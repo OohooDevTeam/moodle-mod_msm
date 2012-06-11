@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_SequenceDivergent"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	
+	  <title>Divergent Sequence: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Show that the sequence <math>
+                  <latex>(x_n)</latex>
+               </math> with <math>
+                  <latex>x_n = (-1)^n</latex>
+               </math> diverges.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We need to show that <math>
+                        <latex>(x_n)</latex>
+                     </math> converges neither to a number nor to <math>
+                        <latex>+\infty</latex>
+                     </math> or <math>
+                        <latex>-\infty</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>The sequence elements satisfy <math>
+                        <latex>\Abs{ x_n } \leq 1</latex>
+                     </math> for all <math>
+                        <latex>n\in \NNr</latex>
+                     </math>. Therefore the sequence can not converge to <math>
+                        <latex>+\infty</latex>
+                     </math> nor to <math>
+                        <latex>-\infty</latex>
+                     </math>. – Therefore it remains to show that the sequence does not converge to a number.</para.body>
+               </para>
+			            <para>
+                  <para.body>Intuitively, this is clear because if <math>
+                        <latex>\lim_{n\to \infty} x_n = c</latex>
+                     </math>, then the numbers <math>
+                        <latex>x_n</latex>
+                     </math> stay as close together as we like for large <math>
+                        <latex>n</latex>
+                     </math>. However, <math>
+                        <latex>\Abs{ x_n - x_{n+1} } = 2</latex>
+                     </math> for all <math>
+                        <latex>n</latex>
+                     </math>, which is not less than any number less than <math>
+                        <latex>2</latex>
+                     </math>, a contradiction. We turn this observation into a formal argument as follows.</para.body>
+               </para>
+			            <para>
+                  <para.body>Suppose <math>
+                        <latex>\lim_{n\to \infty} x_n = c</latex>
+                     </math>. Choose <math>
+                        <latex>\varepsilon := 1/2</latex>
+                     </math>. Then there exists <math>
+                        <latex>n_0\in \NNr</latex>
+                     </math> with</para.body>
+               </para>
+			            <math.display>
+				              <latex> \Abs{ x_n - c } &lt; 1/2 </latex>
+			            </math.display>
+			            <para>
+                  <para.body>for all <math>
+                        <latex>n\geq n_0</latex>
+                     </math>. Choose one such <math>
+                        <latex>n</latex>
+                     </math>. Then we know</para.body>
+               </para>
+			            <math.display>
+				              <latex> \Abs{ x_n - c } &lt; 1/2  \quad \text{and} \quad \Abs{ x_{n+1} -c } &lt; 1/2 </latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore,</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					 
+					\aligned
+					1/2 + 1/2\ &amp;\geq\ \Abs{ x_n - c } + \Abs{ x_{n+1} - c } \\
+					&amp;\geq\ \Abs{ (x_n - c) - (x_{n+1} - c) } \\
+					&amp;=\ \Abs{ x_n - x_{n+1} } = 2
+					\endaligned 
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>a contradiction resulting from the assumption that the sequence converges to <math>
+                        <latex>c</latex>
+                     </math>. Therefore this assumption is false: <math>
+                        <latex>(x_n)</latex>
+                     </math> does not converge to a number.</para.body>
+               </para>
+			            <para>
+                  <para.body>In summary we have shown that <math>
+                        <latex>(x_n)</latex>
+                     </math> diverges.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

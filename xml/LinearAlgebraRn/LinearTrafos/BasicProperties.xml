@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_LinearTransformationsBasicProperties">
+	<headers>
+		<full>Basic Properties of Linear Transformations</full>
+		<toc>Basic Properties of Linear Transformations</toc>
+		<short>Basic Properties</short>
+	</headers>
+	
+	<intro>
+		<para>Here we establish two basic properties of linear transformations.</para>
+		<ol>
+			<li><para>A linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex> always maps the zero-vector of <latex>\RNr[n]</latex> to the zero-vector of <latex>\RNr[m]</latex>. &ndash; Whenever a function <latex>f\from \RNr[n]\to \RNr[m]</latex> fails to satisfy <latex>f(\Vect{0})=\Vect{0}</latex>, <latex>f</latex> can not be linear.</para></li>
+			<li>
+				<para>A function <latex>\RNr[n]\to \RNr[m]</latex> is linear transformation if and only if it sends each linear motion in <latex>\RNr[n]</latex> to a linear motion in <latex>\RNr[n]</latex>. &ndash; This is a geometric characterization of linear transformation.</para>
+			</li>
+		</ol>
+	</intro>
+	
+	<section.body>
+		<xi:include href="LinearTrafo0to0_Prop.xml"/>
+		
+		<para>The condition <latex>L(\Vect{0})=\Vect{0}</latex> is necessary for <latex>L</latex> to be linear. It is, however, not sufficient because there are functions <latex>f\from \RNr[n]\to \RNr[m]</latex> with <latex>f(\Vect{0})=\Vect{0}</latex>,  and still they are not linear. So we ask what additional property must be satisfied for a function to be linear? Here is one possible answer to this question:</para>
+		
+		<xi:include href="LineToLine_Prop.xml"/>
+	</section.body>
+	
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_LinearTrafosLinearMotions"/>
+	</studymaterials>
+</section>

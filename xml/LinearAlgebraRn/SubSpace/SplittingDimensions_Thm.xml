@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_SplittingDimensions">
+	<statement>
+		<para>Let <latex>U</latex>, <latex>V</latex>, and <latex>W</latex> be sub vector spaces of <latex>\RNr[n]</latex> satisfying</para>
+		<ol>
+			<li><para>
+				<subordinate>
+					<hot><latex>\span(U\cap V) = \Set{ \Vect{0} }</latex></hot>
+					<info>
+						<para>Read this as: &lsquo;U intersection V equals the set consisting of the <latex>\Vect{0}</latex>-vector</para>
+						<para>Meaning: <latex>U</latex> and <latex>V</latex> have only the zero vector in common.</para>
+					</info>
+				</subordinate>
+			</para></li>
+			<li><para>
+				<subordinate>
+					<hot><latex>\span(U\cup V) = W</latex></hot>
+					<info>
+						<para>Read this as: &lsquo;U union V equals W</para>
+						<para>Meaning: the sets <latex>U</latex> and <latex>V</latex> together span <latex>W</latex>.</para>
+					</info>
+				</subordinate>
+			</para></li>
+		</ol>
+		<para>If <latex>\EuScript{A}</latex> is a basis of <latex>U</latex>, and <latex>\EuScript{C}</latex> is a basis of <latex>V</latex>, then <latex>\EuScript{B} := \EuScript{A} \cup \EuScript{C}</latex> is a basis of <latex>W</latex> and, consequently,</para>
+		<computation>
+			<left>\dim(W)</left>
+			<center>=</center>
+			<right>\dim(U) + \dim(V)</right>
+		</computation>
+	</statement>
+	
+	
+	
+	<proof>
+		<para>If <latex>\EuScript{A} = \Set{ \Vect{a}_1,\dots ,\Vect{a}_p}</latex> and <latex>\EuScript{C} = \Set{ \Vect{c}_1,\dots ,\Vect{c}_q }</latex>, we claim that</para>
+		<math.display>
+			<latex>\EuScript{B} := \EuScript{A} \cup \EuScript{C} = \Set{ \Vect{a}_1,\dots ,\Vect{a}_p, \Vect{c}_1,\dots ,\Vect{c}_q }</latex>
+		</math.display>
+		<para>is a basis of <latex>W</latex>. We verify this claim in two steps:</para>
+		<ol>
+			<li><para><latex>\EuScript{B}</latex> spans <latex>W</latex>.</para></li>
+			<li><para><latex>\EuScript{B}</latex> is linearly independent.</para></li>
+		</ol>
+		<caption><latex>\EuScript{B}</latex> spans <latex>W</latex>.</caption>
+		<para>Let <latex>\Vect{w}\in W</latex> be arbitrary. We need to show that <latex>\Vect{w}</latex> is a linear combination of vectors in <latex>\EuScript{B}</latex>.</para>
+		<para>We know that <latex>\Vect{w}</latex> is a linear combination of vectors from <latex>U</latex> and <latex>V</latex>:</para>
+		<math.display>
+			<latex>\Vect{w} = s_1 \Vect{u}_1+\cdots + s_k \Vect{u}_k\ +\ t_1 \Vect{v}_1+\cdots +t_l \Vect{v}_l =: \Vect{u} + \Vect{v}</latex>
+		</math.display>
+		<para>for vectors <latex>\Vect{u}_1,\dots ,\Vect{u}_k</latex> in <latex>U</latex>, and <latex>\Vect{v}_1,\dots ,\Vect{v}_l</latex> in <latex>V</latex>, and scalar coefficients <latex>s_1,\dots ,s_k</latex>, <latex>t_1,\dots ,t_l</latex> in <latex>\RNr</latex>. Now <latex>\Vect{u}\in \span(\EuScript{A})</latex>, and <latex>\Vect{v} \in \span(\EuScript{C})</latex>. Therefore,</para>
+		<math.display>
+			<latex>\Vect{u} = x_1 \Vect{a}_1 + \cdots + x_p \Vect{a}_p\quad \text{and}\quad \Vect{v} = y_1 \Vect{c}_1+ \cdots + y_q \Vect{c}_q</latex>
+		</math.display>
+		<para>with <latex>x_1,\dots ,x_p</latex>, <latex>y_1,\dots ,y_q</latex> in <latex>\RNr</latex>. Therefore</para>
+		<math.display>
+			<latex>\Vect{w} = \Vect{u} + \Vect{v} = x_1 \Vect{a}_1 + \cdots + x_p \Vect{a}_p\ +\ y_1 \Vect{c}_1 + \cdots + y_q \Vect{c}_q</latex>
+		</math.display>
+		<para>belongs to <latex>\span(\EuScript{C})</latex>.</para>
+		
+		
+		<caption><latex>\EuScript{B}</latex> is linearly independent</caption>
+		<para>Consider an expansion of the zero vector as a linear combination of <latex>\EuScript{B}</latex>:</para>
+		<computation>
+			<left>\Vect{0}</left>
+			<center>=</center>
+			<right>x_1 \Vect{a}_1 + \cdots + x_p \Vect{a}_p\ +\ y_1 \Vect{c}_1 + \cdots + y_q \Vect{c}_q</right>
+		</computation>
+		<para>We need to show that <latex>x_1=\cdots =x_p= 0 = y_1=\cdots = y_q</latex>. To see this, we write the identity above as</para>
+		<math.display>
+			<latex>\Vect{x} := x_1 \Vect{a}_1 + \cdots + x_p \Vect{a}_p = -(y_1 \Vect{c}_1 + \cdots + y_q \Vect{c}_q)</latex>
+		</math.display>
+		<para>This means that <latex>\Vect{x}</latex> belongs to <latex>U</latex> and also to <latex>V</latex>. But by hypothesis, the only such vector is the zero vector; i.e. <latex>\Vect{x} = \Vect{0}</latex>. It follows that</para>
+		<ul>
+			<li><para><latex>x_1=\cdots = x_p=0</latex> because <latex>\EuScript{A}</latex> is linearly independent.</para></li>
+			<li><para><latex>y_1=\cdots = y_q=0</latex> because <latex>\EuScript{C}</latex> is linearly independent.</para></li>
+		</ul>
+		<para>Thus <latex>\EuScript{B}</latex> is linearly independent, and the proof that <latex>\EuScript{B}</latex> is a basis of <latex>W</latex> is complete. In particular,</para>
+		<computation>
+			<left>\dim(W)</left>
+			<center>=</center>
+			<right>p+q</right>
+			<left></left>
+			<center>=	<info>
+				<para>Remember</para>
+				<computation>
+					<left>\EuScript{B}</left>
+					<center>=</center>
+					<right>\Set{ \Vect{a}_1,\dots ,\Vect{a}_p , \Vect{c}_1,\dots ,\Vect{c}_q }</right>
+				</computation>
+			</info></center>
+			<right>\dim(U) + \dim(V)</right>
+		</computation>
+		<para>This completes the proof.</para>
+	</proof>
+</theorem>

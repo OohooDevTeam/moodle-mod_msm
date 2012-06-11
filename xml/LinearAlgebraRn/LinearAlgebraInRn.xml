@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book	SYSTEM "Symbols.dtd">
+<book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Book_LinearAlgebraRn">
+	<texsupport href="LinearAlgebraTeXSupport.xml"/>
+	<literature.db href="../LiteratureDataBase/GePeLiterature.xml"/>
+	<title>Linear Algebra in <latex>\RNr[n]</latex></title>
+	<html.title>Linear Algebra in Euclidean Spaces</html.title>
+	<cover>ims/LinearAlgebra.jpg</cover>
+	<authors>
+		<person>
+			<name>
+				<first>WMath</first>
+				<last>WMath</last>
+			</name>
+		</person>
+<!--		<person>
+      <name>
+        <first>George</first>
+        <last>Peschke</last>
+      </name>
+		</person>-->
+	</authors>
+	<date>
+		<month>9</month>
+		<day>24</day>
+		<year>2011</year>
+	</date>
+	
+	
+	<xi:include href="LinAlgIntro.xml"/>
+	<body>
+		<book.part id="VectorSpaceRn">
+			<headers>
+				<full>The Vector Space <latex>\RNr[n]</latex></full>
+				<toc>The Vector Space <latex>\RNr[n]</latex></toc>
+				<short>n-Space</short>
+			</headers>
+			
+			<chapter id="Chap_HigherDimensionsRn">
+				<headers>
+					<full>Higher Dimensions and the Vector Space <latex>\RNr[n]</latex></full>
+					<toc>Higher Dimensions and the Vector Space <latex>\RNr[n]</latex></toc>
+					<short>Higher Dimensions</short>
+				</headers>
+				<!-- Sections of this chapter -->
+				<xi:include href="Rn/Rn_Intro.xml"/>
+				<xi:include href="Rn/PointsCoordinates.xml"/>
+				<xi:include href="Rn/Products.xml"/>
+				<xi:include href="Rn/DistancePoints.xml"/>
+				<xi:include href="Rn/PointsArrowsVectors.xml"/><!-- To do: add exercises to this section -->
+				<xi:include href="Rn/VectorsAddMultiply.xml"/>
+				<xi:include href="Rn/LinearMotion.xml"/>
+				<!-- Support files for this chapter -->
+				<xi:include href="Rn/RealNumbersExpla_Sub.xml"/>
+				<xi:include href="Rn/HighDimensions_Sub.xml"/>
+				<xi:include href="Rn/DegreesMotion_Illstrt.xml"/>
+				<xi:include href="Rn/VisualizeRn.xml"/>
+				<xi:include href="Rn/nTuples_Exmpl.xml"/>
+				<xi:include href="Rn/nTuples_Qz.xml"/>
+				<xi:include href="Rn/EqualnTuples_Exmpl.xml"/>
+				<xi:include href="Rn/PointsCoordinates_Pack.xml"/>
+				<xi:include href="Rn/PointsCoordinatesEquations_Exrcss.xml"/>
+				<!-- Support files for Cartesian Products -->
+				<xi:include href="Rn/Products_Exmpls.xml"/>
+				<xi:include href="Rn/CartesianProducts_Pack.xml"/>
+				<!-- Support files for Distance Between Points -->
+				<xi:include href="Rn/DistancePoints_Exmpl.xml"/>
+				<xi:include href="Rn/DistancePoints_Sub.xml"/>
+				<xi:include href="Rn/DistancePoints_Exrcss.xml"/>
+				<!-- Support files for Arrows and Vectors -->
+				<xi:include href="Rn/Arrows_illstrtn.xml"/>
+				<xi:include href="Rn/ArrowLength_Exmpl.xml"/>
+				<xi:include href="Rn/ArrowLength_Sub.xml"/>
+				<xi:include href="Rn/VectorCoordinates_Exmpl.xml"/>
+				<xi:include href="Rn/CoordinateVector_Qz.xml"/>
+				<xi:include href="Rn/BasicCoordinateVector_Exmpl.xml"/>
+				<xi:include href="Rn/PositionVector_Exmpl.xml"/>
+				<xi:include href="Rn/VectorsArrows_Exrcss.xml"/>
+				<!-- Support files of Vector Addition and Scalar Multiplication -->
+				<xi:include href="Rn/VectorsAdd_Illstrtn.xml"/>
+				<xi:include href="Rn/VectorsAdd_Exmpl.xml"/>
+				<xi:include href="Rn/VectorScalar_Exmpl.xml"/>
+				<xi:include href="Rn/VectorsParallel.xml"/>
+				<xi:include href="Rn/VectorsAdd_Exrcss.xml"/>
+				<xi:include href="Rn/VectorsScalarMultiply_Exrcss.xml"/>
+				<xi:include href="Rn/VectorsAddScalarMultiply_Exrcss.xml"/>
+				<xi:include href="Rn/LinearMotion_Explntn.xml"/>
+				<xi:include href="Rn/LinearMotion_Exmpl.xml"/>
+				<xi:include href="Rn/LinearMotion_Exrcss.xml"/>
+				<xi:include href="Rn/LinearMotion1_Exrcss.xml"/>
+			</chapter>
+			
+			<chapter id="Chap_DotProduct">
+				<headers>
+					<full>The Dot Product</full>
+					<toc>The Dot Product</toc>
+					<short>Dot Product</short>
+				</headers>
+				<xi:include href="DotProduct/Dot_Intro.xml"/>
+				<!-- Sections of this chapter -->
+				<xi:include href="DotProduct/Norm.xml"/>
+				<xi:include href="DotProduct/DotProduct.xml"/>
+				<xi:include href="DotProduct/ProjectionVectorOnLine.xml"/>
+				<xi:include href="DotProduct/Hyperplanes.xml"/>
+				<xi:include href="DotProduct/DistancePointHyperplane.xml"/>
+				<xi:include href="DotProduct/DirectionAngle.xml"/>
+				<!-- Support files of this chapter -->
+				<xi:include href="DotProduct/Norm_Exrcs.xml"/>
+				<xi:include href="DotProduct/DotProduct_Exmpls.xml"/>
+				<xi:include href="DotProduct/DotProduct_Exrcs.xml"/>
+				<xi:include href="DotProduct/DotProduct1_Exrcs.xml"/>
+				<xi:include href="DotProduct/TriangleInequality_Illstrt.xml"/>
+				<xi:include href="DotProduct/ProjectionVectorLineIllu_Sub.xml"/>
+				<xi:include href="DotProduct/AngleVectors_Sub.xml"/>
+				<xi:include href="DotProduct/ProjectionVectorLine_Exrcs.xml"/>
+				<xi:include href="DotProduct/Hyperspace_Exmpl.xml"/>
+				<xi:include href="DotProduct/Hyperplane_Exmpl.xml"/>
+				<xi:include href="DotProduct/HyperSpace_Illu.xml"/>
+				<xi:include href="DotProduct/Hyperplane_Illstrt.xml"/>
+				<xi:include href="DotProduct/EquivalentHyperplanes_Exmpls.xml"/>
+				<xi:include href="DotProduct/ParallelHyperplanes_Exmpls.xml"/>
+				<xi:include href="DotProduct/Hyperplanes_Exrcs.xml"/>
+				<xi:include href="DotProduct/Hyperplanes_Test.xml"/>
+				<xi:include href="DotProduct/DistancePointHyperplane_Illstrt.xml"/>
+				<xi:include href="DotProduct/DistancePointHyperplane_Sub.xml"/>
+				<xi:include href="DotProduct/DistancePointHyperplane_Exrcs.xml"/>
+				<xi:include href="DotProduct/DirectionAngle_Exmpl.xml"/>
+				<xi:include href="DotProduct/DirectionAngle_Illstrt.xml"/>
+				<xi:include href="DotProduct/DirectionAngleSum_Exmpl.xml"/>
+				<xi:include href="DotProduct/DirectionAngles_Exrcs.xml"/>
+			</chapter>
+			
+			
+			<chapter id="Chap_ModelingUsingVectors">
+				<headers>
+					<full>Modeling with Vectors</full>
+					<toc>Modeling with Vectors</toc>
+					<short>Modeling</short>
+				</headers>
+				<!-- Sections of this chapter -->
+				<xi:include href="Modeling/ModelIntro.xml"/>
+				<xi:include href="Modeling/Translation.xml"/>
+				<xi:include href="Modeling/Velocity.xml"/>
+				<xi:include href="Modeling/Force.xml"/>
+				<!-- Support files of this chapter -->
+				<xi:include href="Modeling/Translation_Qz.xml"/>
+				<xi:include href="Modeling/TranslationAlgebra_Illstrt.xml"/>
+				<xi:include href="Modeling/Translation_Prvw.xml"/>
+				<xi:include href="Modeling/Translation_Exrcs.xml"/>
+				<xi:include href="Modeling/Force_Prvw.xml"/>
+				<xi:include href="Modeling/Velocity_Prvw.xml"/>
+				<xi:include href="Modeling/Velocity_Exrcs.xml"/>
+				<xi:include href="Modeling/Force_Exrcs.xml"/>
+			</chapter>
+			
+			<chapter id="Chap_LinearEquations">
+				<headers>
+					<full>Linear Equations</full>
+					<toc>Linear Equations</toc>
+					<short>Linear Equations</short>
+				</headers>
+				<!-- Sections of this chapter --><!-- Sections of this chapter --><!-- Sections of this chapter -->
+				<xi:include href="LinearEqs/LinearEqsIntro.xml"/>
+				<xi:include href="LinearEqs/LinearEqsSolveGeometrically.xml"/>
+				<xi:include href="LinearEqs/GaussJordanElimination.xml"/>
+				<xi:include href="LinearEqs/CoefficientMatrix.xml"/>
+				<xi:include href="LinearEqs/NumberSolutions.xml"/>
+				<!-- Support files of this chapter --><!-- Support files of this chapter --><!-- Support files of this chapter -->
+				<xi:include href="LinearEqs/LinearEqs_Prvw.xml"/>
+				<xi:include href="LinearEqs/LinearEqsSolveGeometrically_Prvw.xml"/>
+				<xi:include href="LinearEqs/LinearEq1_Exmpls.xml"/>
+				<xi:include href="LinearEqs/LinearEq1_Qz.xml"/>
+				<xi:include href="LinearEqs/TwoEqnsR2NonParallel.xml"/>
+				<xi:include href="LinearEqs/TwoEqnsR3NonParallel.xml"/>
+				<xi:include href="LinearEqs/Overdetermined_Illstrt.xml"/>
+				<xi:include href="LinearEqs/UniqueSolution_Illstrt.xml"/>
+				<xi:include href="LinearEqs/TwoEqnsParallel1.xml"/>
+				<xi:include href="LinearEqs/GeomtricallySolve_Exrcs.xml"/>
+				<xi:include href="LinearEqs/GeomtricallySolve1_Exrcs.xml"/>
+				<xi:include href="LinearEqs/MatrixRREF_Exrcs.xml"/>
+				<xi:include href="LinearEqs/MatrixRREF1_Exrcs.xml"/>
+				<xi:include href="LinearEqs/ReadSolutions_Exa.xml"/>
+				<xi:include href="LinearEqs/ReadSolutions_Exrcs.xml"/>
+				<xi:include href="LinearEqs/DefSolveFromRREF_Exmpl.xml"/>
+				<xi:include href="LinearEqs/ReductionToRREF_Exmpl.xml"/>
+				<xi:include href="LinearEqs/ReductionToRREF1_Exrcs.xml"/>
+				<xi:include href="LinearEqs/RREFSolve_Exrcs.xml"/>
+				<xi:include href="LinearEqs/RREFSolveConcepts_Exrcs.xml"/>
+				<xi:include href="LinearEqs/RREF_Exmpl.xml"/>
+				<!-- Support files for Coefficient Matrix -->
+				<xi:include href="LinearEqs/CoefficientMatrix_Exmpl.xml"/>
+				<xi:include href="LinearEqs/ReductionToRREF1_Exmpl.xml"/>
+				<xi:include href="LinearEqs/LinearEqsRank_Exmpls.xml"/>
+				<xi:include href="LinearEqs/LinearEqsNoSolution_Illstrtn.xml"/>
+				<xi:include href="LinearEqs/LinearEqsOneSolution_Illstrtn.xml"/>
+				<xi:include href="LinearEqs/LinearEqsManySolutions_Illstrtn.xml"/>
+				<xi:include href="LinearEqs/LinearEqsHomo_Exmpls.xml"/>
+				<xi:include href="LinearEqs/NumberSolutions_Exrcs.xml"/>
+			</chapter>
+			
+			<chapter id="Chap_MatrixAlgebra">
+				<headers>
+					<full>Matrix Algebra</full>
+					<toc>Matrix Algebra</toc>
+					<short>Matrices</short>
+				</headers>
+				<!-- Sections of this chapter -->
+				<xi:include href="Matrices/MatrixIntro.xml"/>
+				<xi:include href="Matrices/MatrixConcept.xml"/>
+				<xi:include href="Matrices/MatrixTypes.xml"/>
+				<xi:include href="Matrices/MatrixOperations.xml"/>
+				<xi:include href="Matrices/MatrixOperationsProperties.xml"/>
+				<xi:include href="Matrices/InvertibleMatrices.xml"/>
+				<xi:include href="Matrices/MatrixInversionProperties.xml"/>
+				<xi:include href="Matrices/MatrixEqsLinearEqs.xml"/>
+				<!-- Support files for this chapter --><!-- Support files for this chapter --><!-- Support files for this chapter -->
+				<xi:include href="Matrices/MatrixIllstrtn.xml"/>
+				<xi:include href="Matrices/VectorRCMatrix.xml"/>
+				<xi:include href="Matrices/IdentityMatrices.xml"/>
+				<xi:include href="Matrices/UpperTriangularMatrices.xml"/>
+				<xi:include href="Matrices/Matrix_Exmpls.xml"/>
+				<xi:include href="Matrices/MatrixTypes_Exmpls.xml"/>
+				<xi:include href="Matrices/Matrix_Qz.xml"/>
+				<xi:include href="Matrices/MatrixConcept_Exrcss.xml"/>
+				<xi:include href="Matrices/MatrixShapes_Exrcss.xml"/>
+				<!-- Support files for Matrix Operations -->
+				<xi:include href="Matrices/MatrixSum_Exmpls.xml"/>
+				<xi:include href="Matrices/MatrixScalarMultiplication_Exmpls.xml"/>
+				<xi:include href="Matrices/MatrixProduct_Exmpls.xml"/>
+				<xi:include href="Matrices/MatrixTransposition_Exmpls.xml"/>
+				<xi:include href="Matrices/SymmetricMatrix_Exmpls.xml"/>
+				<xi:include href="Matrices/MatrixOperations_Exrcss.xml"/>
+				<xi:include href="Matrices/MatrixOperationsCompute_Exmpls.xml"/>
+				<!-- Support files for Properties of Matrix Operations -->
+				<xi:include href="Matrices/MatrixOperationsExceptions_Sub.xml"/>
+				<xi:include href="Matrices/TranspositionSymmetrics_Exrcss.xml"/>
+				<xi:include href="Matrices/MatrixOperations_Exrcss1.xml"/>
+				<xi:include href="Matrices/MatrixOperations_Exrcss2.xml"/>
+				<!-- Support files for Invertible Matrices -->
+				<xi:include href="Matrices/InvertibleMatrix_Sub.xml"/>
+				<xi:include href="Matrices/InvertibilityQuestion_Sub.xml"/>
+				<xi:include href="Matrices/MatrixInverse_Exmpls.xml"/>
+				<xi:include href="Matrices/RowRescaling_Exmpls.xml"/>
+				<xi:include href="Matrices/RowRescaling_Exmpls1.xml"/>
+				<xi:include href="Matrices/ElementaryMatrix_Exmpls.xml"/>
+				<xi:include href="Matrices/ElementaryMatrix_Exmpls1.xml"/>
+				<xi:include href="Matrices/RowInterchangeMatrix_Exmpls.xml"/>
+				<xi:include href="Matrices/RowInterchangeMatrix_Exmpls1.xml"/>
+				<xi:include href="Matrices/MatrixInversion_Exrcss.xml"/>
+				<!-- Support files for Matrix Inversion -->
+				<xi:include href="Matrices/InvertibleMatrix_Exrcss.xml"/>
+				<xi:include href="Matrices/MatrixInvertibility_Exrcss.xml"/>
+				<xi:include href="Matrices/MatrixEqsLinearEqs_Sub.xml"/>
+				<xi:include href="Matrices/MatrixEqsLinearEqs_Exmpl.xml"/>
+				<xi:include href="Matrices/MatrixEqsLinearEqs_Exrcss.xml"/>
+			</chapter>
+			<chapter id="Chap_LinearTransformations">
+				<headers>
+					<full>Linear Transformations</full>
+					<toc>Linear Transformations</toc>
+					<short>Linear Transformations</short>
+				</headers>
+				<!-- Sections of this chapter -->
+				<xi:include href="LinearTrafos/LinearTrafoIntro.xml"/>
+				<xi:include href="LinearTrafos/Functions.xml"/>
+				<xi:include href="LinearTrafos/LinearMapMatrix.xml"/>
+				<xi:include href="LinearTrafos/MainTypes.xml"/>
+				<xi:include href="LinearTrafos/BasicProperties.xml"/>
+				<xi:include href="LinearTrafos/NewFromOld.xml"/>
+				<xi:include href="LinearTrafos/InvertibleLinearTrafos.xml"/>
+				<xi:include href="LinearTrafos/DistancePreservingLinearTrafos.xml"/>
+				<xi:include href="LinearTrafos/LinearEquationsLinearTrafos.xml"/>
+				<!-- Support files for this chapter --><!-- Support files for this chapter --><!-- Support files for this chapter -->
+				<!-- Support files for Introduction -->
+				<xi:include href="LinearTrafos/MoebiusStrip_Sub.xml"/>
+				<xi:include href="LinearTrafos/TrafoSquareRectangle_Sub.xml"/>
+				<xi:include href="LinearTrafos/TrafoSquareRotate_Sub.xml"/>
+				<xi:include href="LinearTrafos/TrafoHandReflection_Sub.xml"/>
+				<xi:include href="LinearTrafos/TrafoShear3D_Sub.xml"/>
+				<xi:include href="LinearTrafos/FunctionPrvw_Sub.xml"/>
+				<xi:include href="LinearTrafos/LinearMapPrvw_Sub.xml"/><!-- To do: add illustrations -->
+				<xi:include href="LinearTrafos/LinearMapMatrixPrvw_Sub.xml"/>
+				<xi:include href="LinearTrafos/LinearMapPropertiesPrvw_Sub.xml"/>
+				<xi:include href="LinearTrafos/LinearMapNewFromOldPrvw_Sub.xml"/>
+				<xi:include href="LinearTrafos/InvertibleLinearTrafoPrvw_Sub.xml"/>
+				<xi:include href="LinearTrafos/DistancePreservingLinearTrafoPrvw_Sub.xml"/>
+				<!-- Support files for Functions - A Rapid Introduction -->
+				<xi:include href="LinearTrafos/FunctionRRGraph_Sub.xml"/>
+				<xi:include href="LinearTrafos/TrafoPlanar_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/TrafoLineSegment_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/FunctionPreimage_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/Function_Exrcss.xml"/>
+				<!-- Support files for Linear Transformations and Matrices -->
+				<xi:include href="LinearTrafos/LinearTrafoCommutesAddTimes_Sub.xml"/>
+				<xi:include href="LinearTrafos/ProjectionInclusion_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/Projection_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/Inclusion_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/MatrixGivesLinearMap_Sub.xml"/>
+				<xi:include href="LinearTrafos/MatrixGivesLinearMap_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/LinearMapGivesMatrix_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/LinearMapGivesMatrix1_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/LinearMapFindMatrix_Sub.xml"/>
+				<xi:include href="LinearTrafos/MatrixGivesLinearMap_Exrcss.xml"/>
+				<xi:include href="LinearTrafos/LinearMapEffect_Exrcss.xml"/>
+				<xi:include href="LinearTrafos/LinearMapFindMatrix_Exrcss.xml"/>
+				<!-- Support files for Main Types of Linear Transformations -->
+				<![CDATA[  ]]>
+				<xi:include href="LinearTrafos/IdentityTrafo_Sub.xml"/>
+				<xi:include href="LinearTrafos/Dilation_Sub.xml"/>
+				<xi:include href="LinearTrafos/Contraction_Sub.xml"/>
+				<xi:include href="LinearTrafos/Inversion_Sub.xml"/>
+				<xi:include href="LinearTrafos/Rotation_Sub.xml"/>
+				<xi:include href="LinearTrafos/Rotation_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/OrthogonalProjection_Sub.xml"/>
+				<xi:include href="LinearTrafos/OrthogonalProjection_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/OrthogonalReflection_Sub.xml"/>
+				<xi:include href="LinearTrafos/OrthogonalReflection_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/ShearTransformation_Sub.xml"/>
+				<xi:include href="LinearTrafos/ShearTransformation_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/LinearTrafosTypes1_Exrcss.xml"/>
+				<xi:include href="LinearTrafos/LinearTrafosTypes2_Exrcss.xml"/>
+				<!-- Two more sets of exercises available for this section -->
+				<!-- Support files for Basic Properties of Linear Transformations -->
+				<xi:include href="LinearTrafos/LinearTrafo0to0_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/0to0NotLinear_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/LinearTrafosLinearMotions_Exrcss.xml"/>
+				<!-- Support files for New Linear Trafos from Old -->
+				<xi:include href="LinearTrafos/Composition_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/PrdctMaps_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/Composition_Exrcss.xml"/>
+				<!-- Support files for Invertible Linear Transformations -->
+				<xi:include href="LinearTrafos/InvertibleLinearTrafo_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/InvertibleLinearTransformation_Quz.xml"/>
+				<xi:include href="LinearTrafos/InverseMap_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/InvertibleLinearMapsI_Exrcss.xml"/>
+				<!-- Support files for Distance Preserving Linear Transformations -->
+				<xi:include href="LinearTrafos/RotationOrthogonal_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/OrthogonalMap_Quz.xml"/>
+				<xi:include href="LinearTrafos/DistancePreservingOrthogonal_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/OrthogonalMaps_Exrcss.xml"/>
+				<xi:include href="LinearTrafos/OrthogonalMaps1_Exrcss.xml"/>
+				<!-- Support files for Linear Equations and Linear Transformations -->
+				<xi:include href="LinearTrafos/LevelSet_Exmpls.xml"/>
+				<xi:include href="LinearTrafos/LevelSet_Exrcss.xml"/>
+			</chapter>
+		</book.part>
+		
+		
+		<book.part id="Part_DeterminantsLinearMapsII">
+			<headers>
+				<full>Determinants and a Second Encounter with Spaces and Linear Maps</full>
+				<toc>Determinants and a Second Encounter with Spaces and Linear Maps</toc>
+				<short>Determinants - Spaces - Linear Maps II</short>
+			</headers>
+			<chapter id="Chap_Determinants">
+				<headers>
+					<full>Determinants</full>
+					<toc>Determinants</toc>
+					<short>Determinants</short>
+				</headers>
+				<!-- Sections of this chapter -->
+				<xi:include href="Determinants/DeterminantsIntro.xml"/>
+				<xi:include href="Determinants/DeterminantCompute.xml"/>
+				<xi:include href="Determinants/DeterminantRules.xml"/>
+				<xi:include href="Determinants/AlternatingMultilinearMaps.xml"/>
+				<xi:include href="Determinants/Orientation.xml"/>
+				<xi:include href="Determinants/OrientedVolume.xml"/>
+				<xi:include href="Determinants/CrossProduct.xml"/>
+				<xi:include href="Determinants/CramerRule.xml"/>
+				<!-- Support files for this chapter --><!-- Support files for this chapter --><!-- Support files for this chapter -->
+				<!-- Support files for Introduction -->
+				<xi:include href="Determinants/DeterminantComputePrvw_Sub.xml"/>
+				<xi:include href="Determinants/DeterminantRulesPrvw_Sub.xml"/>
+				<xi:include href="Determinants/OrientationPrvw_Sub.xml"/>
+				<xi:include href="Determinants/OrientedVolumePrvw_Sub.xml"/>
+				<xi:include href="Determinants/CrossProductPrvw_Sub.xml"/>
+				<!-- Support files for Computing Determinants -->
+				<xi:include href="Determinants/Determinant22_Exmpls.xml"/>
+				<xi:include href="Determinants/Determinant33_Exmpls.xml"/>
+				<xi:include href="Determinants/Determinant44_Exmpls.xml"/>
+				<xi:include href="Determinants/Minor_Exmpls.xml"/>
+				<xi:include href="Determinants/Cofactor_Exmpls.xml"/>
+				<xi:include href="Determinants/CofactorLimitations_Sub.xml"/>
+				<xi:include href="Determinants/MinorCofactor_Exrcss.xml"/>
+				<xi:include href="Determinants/DeterminantCofactor_Exrcss.xml"/>
+				<!-- Support files for Rules for Computing with Determinants-->
+				<xi:include href="Determinants/Multilinear_Sub.xml"/>
+				<xi:include href="Determinants/Multilinear_Exmpls.xml"/>
+				<xi:include href="Determinants/DeterminantMultilinear_Quz.xml"/>
+				<xi:include href="Determinants/DeterminantInvertibility_Exmpls.xml"/>
+				<xi:include href="Determinants/DeterminantCommutesMultiplication_Exmpls.xml"/>
+				<xi:include href="Determinants/Alternating_Exmpls.xml"/>
+				<xi:include href="Determinants/DeterminantMoreProperties_Exmpls.xml"/>
+				<xi:include href="Determinants/DeterminantAlternating_Quz.xml"/>
+				<xi:include href="Determinants/DeterminantRowReduction_Exmpl.xml"/>
+				<xi:include href="Determinants/VanderMonde_Exmpls.xml"/>
+				<xi:include href="Determinants/DeterminantProperties_Exrcss.xml"/>
+				<xi:include href="Determinants/DeterminantPropertiesTF_Exrcss.xml"/>
+				<!-- Support files for Orientation-->
+				<xi:include href="Determinants/Orientation_Exmpl.xml"/>
+				<xi:include href="Determinants/Orientation1_Sub.xml"/>
+				<xi:include href="Determinants/Orientation2_Sub.xml"/>
+				<xi:include href="Determinants/Orientation3_Sub.xml"/>
+				<xi:include href="Determinants/Orientation0_Sub.xml"/>
+				<xi:include href="Determinants/RLHandRule_Sub.xml"/>
+				<xi:include href="Determinants/Orientation_Exrcss.xml"/>
+				<xi:include href="Determinants/OrientationTF_Exrcss.xml"/>
+				<!-- Support files for Oriented Volume-->
+				<xi:include href="Determinants/Box2_Sub.xml"/>
+				<xi:include href="Determinants/OrientedVolume_Sub.xml"/>
+				<xi:include href="Determinants/OrientedArea_Exmpls.xml"/>
+				<xi:include href="Determinants/OrientedVolume_Exmpls.xml"/>
+				<xi:include href="Determinants/OrientedVolume_Exrcss.xml"/>
+				<!-- Support files for Cross Product -->
+				<xi:include href="Determinants/CrossProductQuaternions_Sub.xml"/>
+				<xi:include href="Determinants/CrossProductGeneralized_Sub.xml"/>
+				<xi:include href="Determinants/CrossProductAlgProps_Sub.xml"/>
+				<xi:include href="Determinants/CrossProduct_Exmpls.xml"/>
+				<xi:include href="Determinants/CrossProduct_Exrcss.xml"/>
+				<xi:include href="Determinants/CrossProductArea_Exmpls.xml"/>
+				<xi:include href="Determinants/CrossProductPlaneInR3_Exmpls.xml"/>
+				<xi:include href="Determinants/CrossProductTheory_Exrcss.xml"/>
+				<xi:include href="Determinants/Inverse22Matrix_Exmpls.xml"/>
+				<xi:include href="Determinants/MatrixInversion_Exrcss.xml"/>
+				<xi:include href="Determinants/CrossProductGeometric_Sub.xml"/>
+			</chapter>
+			<chapter id="Chap_SubVectorSpaces">
+				<headers>
+					<full>Subvector Spaces</full>
+					<toc>Subvector Spaces</toc>
+					<short>Subvector Spaces</short>
+				</headers>
+				<!-- Sections of this chapter -->
+				<xi:include href="SubSpace/SubSpaceIntro.xml"/>
+				<xi:include href="SubSpace/SubSpace.xml"/>
+				<xi:include href="SubSpace/Span.xml"/>
+				<xi:include href="SubSpace/LinearIndependence.xml"/>
+				<xi:include href="SubSpace/BasisDimension.xml"/>
+				<xi:include href="SubSpace/BasisSelect.xml"/>
+				<xi:include href="SubSpace/CoordinateSystems.xml"/>
+				<xi:include href="SubSpace/OrthogonalSplittings.xml"/>
+				<xi:include href="SubSpace/GramSchmidtOrthonormalization.xml"/>
+				<xi:include href="SubSpace/ChangeCoordinates.xml"/>
+				<xi:include href="SubSpace/Orientation.xml"/>
+				<!-- Support files for this chapter --><!-- Support files for this chapter --><!-- Support files for this chapter -->
+				<!-- Support files for Introduction -->
+				<xi:include href="SubSpace/SubSpace_Prvw.xml"/>
+				<!-- Support files for SubSpace -->
+				<xi:include href="SubSpace/SubSpaceClosedAddition_Illu.xml"/>
+				<xi:include href="SubSpace/SubSpaceClosedScalarMult_Illu.xml"/>
+				<xi:include href="SubSpace/OrthogonalComplement_Illu.xml"/>
+				<xi:include href="SubSpace/NullSpc_Exmpls.xml"/>
+				<xi:include href="SubSpace/SubSpace_Exrcss.xml"/>
+				<xi:include href="SubSpace/OrthogonalComplement_Exrcss.xml"/>
+				<!-- Support files for Span -->
+				<xi:include href="SubSpace/LinearCombination_Exmpls.xml"/>
+				<xi:include href="SubSpace/LinearCombinationGeo_Illu.xml"/>
+				<xi:include href="SubSpace/Span_Exmpls.xml"/>
+				<xi:include href="SubSpace/RowColumnSpace_Expla.xml"/>
+				<xi:include href="SubSpace/Span_Exrcss.xml"/>
+				<!-- Support files for Linear Independence -->
+				<xi:include href="SubSpace/LinearIndependence_sub.xml"/>
+				<xi:include href="SubSpace/LinearIndependence_Exmpls.xml"/>
+				<xi:include href="SubSpace/LinearIndependence_Exmpls1.xml"/>
+				<xi:include href="SubSpace/LinearIndependenceRank_Exmpls.xml"/>
+				<xi:include href="SubSpace/LinearIndependenceDetTest_Exmpls.xml"/>
+				<xi:include href="SubSpace/LinearIndependence_Exrcss.xml"/>
+				<!-- Support files for Basis and Dimension -->
+				<xi:include href="SubSpace/BasisExplanation_sub.xml"/>
+				<xi:include href="SubSpace/BasisDimension_Illu.xml"/>
+				<xi:include href="SubSpace/Basis1_Exrcss.xml"/>
+				<xi:include href="SubSpace/Basis11_Exrcss.xml"/>
+				<!-- Support files for Selecting a Basis -->
+				<xi:include href="SubSpace/BasisRowSpace_Exmpls.xml"/>
+				<xi:include href="SubSpace/BasisColumnSpace_Exmpls.xml"/>
+				<xi:include href="SubSpace/BasisNullSpace_Exmpls.xml"/>
+				<xi:include href="SubSpace/Basis2_Exrcss.xml"/>
+				<!-- Support files for Arbitrary Coordinate Systems -->
+				<xi:include href="SubSpace/CoordinateVector_Illu.xml"/>
+				<xi:include href="SubSpace/CoordinateVector_Expla.xml"/>
+				<xi:include href="SubSpace/CoordinateVector_Exmpls.xml"/>
+				<xi:include href="SubSpace/CoordinateVector1_Exmpls.xml"/>
+				<xi:include href="SubSpace/CoordinateSystems_Exrcss.xml"/>
+				<!-- Support files for Orthogonal Splittings -->
+				<xi:include href="SubSpace/OrthoVectorDecomp_Expla.xml"/>
+				<xi:include href="SubSpace/OrthoSplit_Exmpls.xml"/>
+				<xi:include href="SubSpace/OrthogonalSplittings_Exrcss.xml"/>
+				<!-- Support files for Gram Schmidt Orthonormalization -->
+				<xi:include href="SubSpace/GramSchmidtOrthonormalization_Exmpls.xml"/>
+				<xi:include href="SubSpace/GramSchmidtOrthonormalization_Expla.xml"/>
+				<xi:include href="SubSpace/GramSchmidtOrthonormalization_Exrcss.xml"/>
+				<!-- Support files for Change of Coordinates -->
+				<xi:include href="SubSpace/ChangeBases_Illu.xml"/>
+				<xi:include href="SubSpace/OrthogonalComplement_Expla.xml"/>
+				<xi:include href="SubSpace/ChangeCoordinates_Exmpls.xml"/>
+				<xi:include href="SubSpace/ChangeCoordinatesReversal_Exmpls.xml"/>
+				<xi:include href="SubSpace/ChangeCoordinates_Exrcss.xml"/>
+				<!-- Support files for Orientation -->
+				<xi:include href="SubSpace/Orientation_Exmpls.xml"/>
+				<xi:include href="SubSpace/OrientationSame_Expla.xml"/>
+				<xi:include href="SubSpace/OrientationComparison_Exmpls.xml"/>
+				<xi:include href="SubSpace/OrientationGeneral_Exrcss.xml"/>
+			</chapter>
+			<chapter id="Chap_LinearTrafosII">
+				<headers>
+					<full>Linear Transformations II</full>
+					<toc>Linear Transformations II</toc>
+					<short>Linear Transformations II</short>
+				</headers>
+				<!-- Sections of this chapter -->
+				<xi:include href="LinearTrafosII/LinTrafoIIIntro.xml"/>
+				<xi:include href="LinearTrafosII/LinearMapGeneral.xml"/>
+				<xi:include href="LinearTrafosII/InvertibleLinearTrafos.xml"/>
+				<xi:include href="LinearTrafosII/KernelImage.xml"/>
+				<xi:include href="LinearTrafosII/RotationR3.xml"/>
+				<!-- Support files for Introduction to Linear Transformations II -->
+				<xi:include href="LinearTrafosII/LinearTrafoGeneral_Sub.xml"/>
+				<xi:include href="LinearTrafosII/LinearMapMatrix_Sub.xml"/>
+				<xi:include href="LinearTrafosII/RotationGeneral_Sub.xml"/>
+				<xi:include href="LinearTrafosII/ProjectionGeneral_Sub.xml"/>
+				<xi:include href="LinearTrafosII/ReflectionGeneral_Sub.xml"/>
+				<!-- Support files for General Linear Maps -->
+				<xi:include href="LinearTrafosII/MatrixFromLinearMap_Exmpls.xml"/>
+				<xi:include href="LinearTrafosII/LinearMapGeneral_Exrcss.xml"/>
+				<!-- Support files for Invertible Linear Transformations -->
+				<xi:include href="LinearTrafosII/InvertibleLinearMap_Exmpls.xml"/>
+				<xi:include href="LinearTrafosII/InvertibleLinearMapGeneral_Exrcss.xml"/>
+				<!-- Support files for Kernel Image -->
+				<xi:include href="LinearTrafosII/KernelImageExpla_Sub.xml"/>
+				<xi:include href="LinearTrafosII/MonoEpiIsoExpla_Sub.xml"/>
+				<xi:include href="LinearTrafosII/DimensionFormulaLinearMap_Exmpls.xml"/>
+				<xi:include href="LinearTrafosII/KernelImage_Exrcss.xml"/>
+				<!-- Support files for Rotation R3 -->
+				<xi:include href="LinearTrafosII/RotationR3_Sub.xml"/>
+				<xi:include href="LinearTrafosII/RotationMatrix_Sub.xml"/>
+				<xi:include href="LinearTrafosII/RotationR3_Exmpls.xml"/>
+				<xi:include href="LinearTrafosII/Rotations_Exrcss.xml"/>
+			</chapter>
+			<chapter id="Chap_Eigentheory">
+				<headers>
+					<full>Eigentheory</full>
+					<toc>Eigentheory</toc>
+					<short>Eigentheory</short>
+				</headers>
+				<xi:include href="Eigentheory/EigentheoryIntro.xml"/>
+				<xi:include href="Eigentheory/EigenvectorsEigenvalues.xml"/>
+				<xi:include href="Eigentheory/Diagonalizable.xml"/>
+				<!-- Support files for Eigenvectors and Eigenvalues -->
+				<xi:include href="Eigentheory/EigenvectorEigenvalue_Exmpls.xml"/>
+				<xi:include href="Eigentheory/EigenTheoryDiagonlizable_Exmpls.xml"/>
+				<xi:include href="Eigentheory/AlgebraicMultiplicity_Exmpls.xml"/>
+				<xi:include href="Eigentheory/Eigenspace_Sub.xml"/>
+				<xi:include href="Eigentheory/EigenvectorValue_Sub.xml"/>
+				<xi:include href="Eigentheory/CharacteristicPolynomial_Exmpls.xml"/>
+				<xi:include href="Eigentheory/Eigendata_Exmpls.xml"/>
+				<xi:include href="Eigentheory/Eigentheory1_Exrcss.xml"/>
+				<xi:include href="Eigentheory/Eigentheory2_Exrcss.xml"/>
+				<xi:include href="Eigentheory/RotationAxis_Exmpls.xml"/>
+				<!-- Support files for Diagonalizable Matrices -->
+				<xi:include href="Eigentheory/Diagonalizable_Sub.xml"/>
+				<xi:include href="Eigentheory/Diagonalize_Exmpls.xml"/>
+				<xi:include href="Eigentheory/MatrixPower_Exmpls.xml"/>
+				<xi:include href="Eigentheory/Diagonalize_Exrcss.xml"/>
+			</chapter>
+		</book.part>
+	</body>
+</book>

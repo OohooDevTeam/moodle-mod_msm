@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_KernelNullSpace">
+	<caption>Null space and kernel</caption>
+	<statement>
+		<para>If the matrix <latex>\Mtrx{A}</latex> represents the linear map <latex>L\from \RNr[n]\to \RNr[m]</latex>, then</para>
+		<computation>
+			<left>\ker(L)</left>
+			<center>=</center>
+			<right>\null(A)</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>To see why this is so, we just need to recall the definitions: we have</para>
+		<computation>
+			<left>\Vect{x}\in \ker(L)</left>
+			<center>\longleftrightarrow	<info>
+				<para>Read this as: &lsquo;<latex>\Vect{x}</latex> is in kernel of <latex>L</latex> if and only if <latex>L</latex> of <latex>\Vect{x}</latex> equals zero&rsquo;</para>
+			</info></center>
+			<right>L(\Vect{x}) = 0</right>
+			<left></left>
+			<center>\longleftrightarrow	<info>
+				<para>&lsquo;... if and only if <latex>\Mtrx{A}</latex> times <latex>\Vect{x}</latex> equals zero ...&rsquo;</para>
+			</info></center>
+			<right>\Mtrx{A}\Vect{x} = 0</right>
+			<left></left>
+			<center>\longleftrightarrow	<info>
+				<para>&lsquo;... if and only if <latex>\Vect{x}</latex> is in the null space of <latex>\Mtrx{A}</latex>&rsquo;</para>
+			</info></center>
+			<right>\Vect{x}\in \null(\Mtrx{A})</right>
+		</computation>
+		<para>This is exactly what we wanted to show.</para>
+	</proof>
+</theorem>

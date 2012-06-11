@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_AlternatingSeries"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: Alternating Series</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Which of the following series converges to a number?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>5 - \tfrac{5}{2} + \tfrac{5}{3} - \tfrac{5}{4} + \cdots + (-1)^{n+1}\tfrac{5}{n} + \cdots</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>c - \tfrac{c}{2} + \tfrac{c}{3} - \tfrac{c}{4} + \cdots + (-1)^{n+1}\tfrac{c}{n} + \cdots</latex>
+                     </math>, where <math>
+                        <latex>c\in \RNr</latex>
+                     </math> is arbitrary.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} \tfrac{(-1)^n}{\sqrt{n+1}}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} \tfrac{(-1)^n }{ 2n + 3 }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n+1}{2n+1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n+1}{3n+1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2n+3}{n^2+2}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2n+3}{n^2-\pi^2}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2n^2+3}{5n^2+9}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2n^k+3}{n^{k+1}+2}</latex>
+                     </math>, where <math>
+                        <latex>k\in \NNr</latex>
+                     </math> satisfies <math>
+                        <latex>k\geq 1</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{\sqrt{n+3}}{n+1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2^n}{n^{2} + 1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n^2}{2^n}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \sin(\tfrac{1}{n})</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \cos(\tfrac{1}{n})</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tan(\tfrac{1}{\sqrt{n}})</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n n!</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{1}{n!}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n^2}{n!}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{3^n}{n!}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{10^n}{n!}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n^n}{n!}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>(a_n)</latex>
+                  </math> be a sequence satisfying</para.body>
+            </para>
+			         <ol>
+				           <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex> a_0 &gt; a_1 &gt; \cdots &gt; a_n &gt; \cdots &gt; 0 </latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+				           <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\lim_{n\to \infty} a_n = 0</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+			         </ol>
+			         <para>
+               <para.body>Then we know that the alternating series <math>
+                     <latex>\sum_{n=0}^{\infty} (-1)^n a_n</latex>
+                  </math> converges to a number <math>
+                     <latex>L</latex>
+                  </math>. If <math>
+                     <latex>s_n</latex>
+                  </math> denotes the <math>
+                     <latex>n</latex>
+                  </math>-th partial sum of the series, show that</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Abs{ L - s_n }\ \leq a_{n+1}</latex>
+			         </math.display>
+			         <para>
+               <para.body>for all <math>
+                     <latex>n\in \NNr</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Use the previous exercise to estimate</para.body>
+            </para>
+			         <math.display>
+				           <latex>\sum_{n=0}^{\infty} \dfrac{ (-1)^n }{ n! }</latex>
+			         </math.display>
+			         <para>
+               <para.body>with an accuracy of 3 decimal places.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+</exercise.pack>

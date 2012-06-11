@@ -1,0 +1,1513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_InvertibleLinearMapsI"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	
+	  <title>Exercises: Invertible Linear Maps</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Answer the questions below related to the linear maps:</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\aligned
+L\from \RNr[2] \longrightarrow \RNr[2], &amp;\qquad (x,y) \mapsto (x-3y,y) \\
+T\from \RNr[2] \longrightarrow \RNr[2], &amp;\qquad (x,y) \mapsto (y,-x)
+\endaligned
+
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> representing <math>
+                        <latex>L</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+A = \left[
+\begin{array}{rr}
+1 &amp; -3 \\
+0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We determine the effect of <math>
+                           <latex>L</latex>
+                        </math> on the basic vectors <math>
+                           <latex>\StdBss{1}</latex>
+                        </math> and <math>
+                           <latex>\StdBss{2}</latex>
+                        </math>:</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(1,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(0,1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-3,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>Therefore the matrix representing <math>
+                           <latex>L</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+A = \left[
+\begin{array}{rr}
+1 &amp; -3 \\
+0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>How does <math>
+                        <latex>L</latex>
+                     </math> transform the space <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>L</latex>
+                           </math> shears <math>
+                              <latex>\RNr[2]</latex>
+                           </math> parallel to the <math>
+                              <latex>x</latex>
+                           </math>-axis with shear vector <math>
+                              <latex>\Vect{s}=(-3,0)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Is <math>
+                        <latex>L</latex>
+                     </math> invertible? If if is, what is <math>
+                        <latex>L^{-1}</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Yes, <math>
+                              <latex>L</latex>
+                           </math> is invertible. The inverse is</para.body>
+                     </para>
+					
+					                <math.display>
+						                  <latex>L^{-1}\from \RNr[2] \longrightarrow \RNr[2],\qquad L^{-1}(u,v) = (u+3v,v)</latex>
+					                </math.display>
+					
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>L^{-1}</latex>
+                           </math> is represented by the matrix</para.body>
+                     </para>
+					
+					                <math.display>
+						                  <latex>
+							
+A^{-1} = \left[
+\begin{array}{rr}
+1 &amp; 3 \\
+0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We use the row reduction method to determine if the matrix <math>
+                           <latex>\Mtrx{M}</latex>
+                        </math> representing <math>
+                           <latex>L</latex>
+                        </math> is invertible.</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+\begin{array}{rr|rrr}
+1 &amp; -3 &amp; 1 &amp; 0 &amp; {\color{red} +3\cdot R_2} \\
+0 &amp; 1 &amp; 0 &amp; 1 &amp;  \\ \hline
+%
+1 &amp; 0 &amp; 1 &amp; 3 &amp; \\
+0 &amp; 1 &amp; 0 &amp; 1 &amp;
+\end{array}
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>So we see that <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is invertible, and that <math>
+                           <latex>\Mtrx{A}^{-1}</latex>
+                        </math> is given by</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A}^{-1} = 
+\left[
+\begin{array}{cc}
+1 &amp; 3 \\
+0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>We conclude that <math>
+                           <latex>L</latex>
+                        </math> is invertible, and that <math>
+                           <latex>L^{-1}</latex>
+                        </math> is represented by <math>
+                           <latex>\Mtrx{A}^{-1}</latex>
+                        </math> as found above.</para.body>
+                  </para>
+					
+					             <para>
+                     <para.body>Alternatively, we can argue that <math>
+                           <latex>L</latex>
+                        </math> shears <math>
+                           <latex>\RNr[2]</latex>
+                        </math> with respect to <math>
+                           <latex>\StdBss{2}</latex>
+                        </math> and shear vector <math>
+                           <latex>\Vect{s}=(-3,0)</latex>
+                        </math>. This shear effect is reversed by shearing <math>
+                           <latex>\RNr[2]</latex>
+                        </math> with respect to <math>
+                           <latex>\StdBss{2}</latex>
+                        </math> and shear vector <math>
+                           <latex>\Vect{s}=(3,0)</latex>
+                        </math>. Therefore <math>
+                           <latex>L</latex>
+                        </math> is invertible, and <math>
+                           <latex>L^{-1}</latex>
+                        </math> is represented by the matrix <math>
+                           <latex>\Mtrx{A}^{-1}</latex>
+                        </math> found above.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> representing <math>
+                        <latex>T</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>T</latex>
+                           </math> is represented by the matrix</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+B = 
+\left[
+\begin{array}{rr}
+0 &amp; 1 \\
+-1 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>How does <math>
+                        <latex>T</latex>
+                     </math> transform the space <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>T</latex>
+                           </math> rotates <math>
+                              <latex>\RNr[2]</latex>
+                           </math> clockwise through the angle of <math>
+                              <latex>\pi/2</latex>
+                           </math> about the origin.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The columns of <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> are of the form</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{cc}
+\cos(-\pi/2) &amp; -\sin(-\pi/2) \\
+\sin(-\pi/2) &amp; \cos(\pi/2)
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> represents the counterclockwise rotation of <math>
+                           <latex>\RNr[2]</latex>
+                        </math> about the origin through the angle of <math>
+                           <latex>-\pi/2</latex>
+                        </math>; i.e. the clockwise rotation of <math>
+                           <latex>\RNr[2]</latex>
+                        </math> about the origin through the angle of <math>
+                           <latex>\pi/2</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Is <math>
+                        <latex>T</latex>
+                     </math> invertible? If so, what is <math>
+                        <latex>T^{-1}</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Yes, <math>
+                              <latex>T</latex>
+                           </math> is invertible. <math>
+                              <latex>T^{-1}</latex>
+                           </math> is the counterclockwise rotation of <math>
+                              <latex>\RNr[2]</latex>
+                           </math> about the origin through the angle <math>
+                              <latex>\pi/2</latex>
+                           </math>. The matrix representing <math>
+                              <latex>T^{-1}</latex>
+                           </math> is</para.body>
+                     </para>
+					
+					                <math.display>
+						                  <latex>
+							
+B^{-1} = 
+\left[
+\begin{array}{rr}
+0 &amp; -1 \\
+1 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is <math>
+                        <latex>(L+T)(x,y)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>(L+T)(x,y) = (x-2y , y-x)</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math> representing <math>
+                        <latex>L+T</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix representing <math>
+                              <latex>(L+T)</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+A+B = 
+\left[
+\begin{array}{rr}
+1 &amp; -2 \\
+-1 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>How does <math>
+                        <latex>3T</latex>
+                     </math> transform the space <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>3T = (3\cdot \Id[2])\Comp T</latex>
+                           </math>; i.e. it rotates <math>
+                              <latex>\RNr[2]</latex>
+                           </math> clockwise about the origin through the angle of <math>
+                              <latex>\pi/2</latex>
+                           </math> (action of <math>
+                              <latex>T</latex>
+                           </math>), and then dilates it radially from the origin by a factor of <math>
+                              <latex>3</latex>
+                           </math> (action of <math>
+                              <latex>3\Id[n]</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix representing <math>
+                        <latex>3T</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix representing <math>
+                              <latex>3T</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+3\cdot \Mtrx{B} = \left[
+\begin{array}{rr}
+0 &amp; 3 \\
+-3 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>How does <math>
+                        <latex>-2L</latex>
+                     </math> transform the space <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>-2L</latex>
+                           </math> shears <math>
+                              <latex>\RNr[2]</latex>
+                           </math> parallel to the <math>
+                              <latex>x</latex>
+                           </math>-axis with shear vector <math>
+                              <latex>\Vect{s}=(-3,0)</latex>
+                           </math> (action of <math>
+                              <latex>L</latex>
+                           </math>), then dilates the result by the factor of <math>
+                              <latex>2</latex>
+                           </math> (action of the factor of <math>
+                              <latex>2</latex>
+                           </math>) and, finally, reflects the result over the origin (action of the factor of <math>
+                              <latex>-1</latex>
+                           </math>).</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix representing <math>
+                        <latex>-2L</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix representing <math>
+                              <latex>-2L</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+-2\cdot \Mtrx{A} = 
+\left[
+\begin{array}{rr}
+-2 &amp; 6 \\
+0 &amp; -2
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrices <math>
+                        <latex>\Mtrx{A}\Mtrx{B}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>
+							
+\Mtrx{A}\cdot \Mtrx{B} = 
+\left[
+\begin{array}{rr}
+1 &amp; -3 \\
+0 &amp; 1
+\end{array}
+\right] \cdot
+\left[
+\begin{array}{rr}
+0 &amp; 1 \\
+-1 &amp; 0
+\end{array}
+\right]
+							
+						</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>
+							
+\left[
+\begin{array}{rr}
+3 &amp; 1 \\
+-1 &amp; 0
+\end{array}
+\right]
+							
+						</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>
+							
+\Mtrx{B}\cdot \Mtrx{A} = 
+\left[
+\begin{array}{rr}
+0 &amp; 1 \\
+-1 &amp; 0
+\end{array}
+\right]\cdot
+\left[
+\begin{array}{rr}
+1 &amp; -3 \\
+0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>
+							
+\left[
+\begin{array}{rr}
+0 &amp; 1 \\
+-1 &amp; 3
+\end{array}
+\right]
+							
+						</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is <math>
+                        <latex>(L\Comp T)(x,y)</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>(L\Comp T)(x,y) = L(T(x,y)) = L(y,-x) = (y+3x,-x)</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is the matrix representing <math>
+                        <latex>L\Comp T</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix representing <math>
+                              <latex>L\Comp T</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+A\cdot B =
+\left[
+\begin{array}{rr}
+3 &amp; 1 \\
+-1 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>How does <math>
+                        <latex>L\Comp T</latex>
+                     </math> transform the space <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>(L\Comp T)</latex>
+                           </math> first rotates <math>
+                              <latex>\RNr[2]</latex>
+                           </math> clockwise about the origin through the angle of <math>
+                              <latex>\pi/2</latex>
+                           </math> (action of <math>
+                              <latex>T</latex>
+                           </math>) and then shears the result parallel to the <math>
+                              <latex>x</latex>
+                           </math>-axis with shear vector  <math>
+                              <latex>\Vect{s}=(-3,0)</latex>
+                           </math> (action of <math>
+                              <latex>L</latex>
+                           </math>).</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is <math>
+                        <latex>(T\Comp L)(x,y)</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(T\Comp L)(x,y)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(y,3y-x)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is the matrix representing <math>
+                        <latex>(T\Comp L)</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix representing <math>
+                              <latex>T\Comp L</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+B\cdot A =
+\left[
+\begin{array}{rr}
+0 &amp; 1 \\
+-1 &amp; 3
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>How does <math>
+                        <latex>T\Comp L</latex>
+                     </math> transform the space <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>(T\Comp L)</latex>
+                           </math> shears <math>
+                              <latex>\RNr[2]</latex>
+                           </math> parallel to the <math>
+                              <latex>x</latex>
+                           </math>-axis with shear vector <math>
+                              <latex>\Vect{s}=(-3,0)</latex>
+                           </math> (action of <math>
+                              <latex>L</latex>
+                           </math>) and then rotates the result clockwise about the origin through the angle of <math>
+                              <latex>\pi/2</latex>
+                           </math> (action of <math>
+                              <latex>T</latex>
+                           </math>).</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Is <math>
+                        <latex>(L\Comp T)</latex>
+                     </math> an invertible transformation? If so, find the matrix representing <math>
+                        <latex>(L\Comp T)^{-1}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Yes! <math>
+                              <latex>L\Comp T</latex>
+                           </math> is invertible: <math>
+                              <latex>(L\Comp T)^{-1} = T^{-1}\Comp L^{-1}</latex>
+                           </math>. Moreover, the matrix representing <math>
+                              <latex>(L\Comp T)^{-1}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+(A\cdot B)^{-1} = B^{-1} \cdot A^{-1} = 
+\left[
+\begin{array}{rr}
+0 &amp; -1 \\
+1 &amp; 3
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Answer the questions below about the linear maps</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\aligned
+L\from \RNr[3] \longrightarrow \RNr[3], &amp;\quad L(x,y,z) = (-z,y+z,2z-x) \\
+T\from \RNr[3] \longrightarrow \RNr[3], &amp;\quad T(x,y,z) = (z,x,y)
+\endaligned
+
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Show that <math>
+                        <latex>T</latex>
+                     </math> is invertible and find the matrix representing <math>
+                        <latex>T^{-1}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that the matrix representing <math>
+                           <latex>T</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+B =
+\left[
+\begin{array}{rrr}
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>To determine if <math>
+                           <latex>T</latex>
+                        </math> is invertible, we use the row reduction method:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\begin{array}{ccc|cccr}
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; {\color{red} R_1 \longleftrightarrow R_2} \\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; {\color{red} R_2 \longleftrightarrow R_3} \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; \\ \hline
+%
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 
+\end{array}
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>We conclude: <math>
+                           <latex>T</latex>
+                        </math> is invertible and <math>
+                           <latex>T^{-1}</latex>
+                        </math> is represented by the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+B^{-1} = 
+\left[
+\begin{array}{ccc}
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Show that <math>
+                        <latex>T^2</latex>
+                     </math> is invertible, and find the matrix representing <math>
+                        <latex>(T^2)^{-1}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall: <math>
+                        <latex>T^2 = T\Comp T</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall the 
+						<subordinate>
+                        <hot>proposition</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_InvertibleMapsComposition"/>
+                           <info>
+								
+								                      <para>
+                                 <para.body>Look up this result.</para.body>
+                              </para>
+							                    </info>
+                        </crossref>
+                     </subordinate>
+						on the inverse of a composite of linear functions.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>If <math>
+                        <latex>U</latex>
+                     </math> and <math>
+                        <latex>V</latex>
+                     </math> are invertible, then <math>
+                        <latex>(V\Comp U)</latex>
+                     </math> is invertible, and <math>
+                        <latex>(V\Comp U)^{-1} = U^{-1}\Comp V^{-1}</latex>
+                     </math>. – Apply this general fact here in the case where</para.body>
+               </para>
+					          <math.display>
+						            <latex>U=T=V</latex>
+					          </math.display>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Show that <math>
+                        <latex>T^3</latex>
+                     </math> is invertible, and find the matrix representing <math>
+                        <latex>(T^3)^{-1}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Is <math>
+                        <latex>4T</latex>
+                     </math> an invertible transformation? If so, find the matrix representing its inverse.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Yes! <math>
+                              <latex>4T = (4\cdot \Id[3])\Comp T</latex>
+                           </math> is the composite of two invertible transformations, hence is invertible, hence is invertible. The matrix representing <math>
+                              <latex>(4T)^{-1}</latex>
+                           </math> is</para.body>
+                     </para>
+					
+					                <math.display>
+						                  <latex>
+							
+T^{-1}\Comp (4\Id[3])^{-1} = \tfrac{1}{4} B^{-1} = 
+\dfrac{1}{4}\cdot 
+\left[
+\begin{array}{ccc}
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is <math>
+                        <latex>(T^{-1}\Comp L\Comp T)(x,y,z)</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We have <math>
+                           <latex>T^{-1}(u,v,w)=(v,w,u)</latex>
+                        </math>. Now we compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(T^{-1}\Comp L\Comp T)(x,y,z)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(T^{-1}\Comp L)(z,x,y)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(T^{-1}\Comp L)(z,x,y)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>T^{-1}(-y,x+y,2y-z)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(x+y,2y-z,-y)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix representing <math>
+                        <latex>(T^{-1}\Comp L\Comp T)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The columns of the required matrix can be found using the previous problem: If <math>
+                           <latex>U=(T^{-1}\Comp L\Comp T)</latex>
+                        </math>, these columns are given by <math>
+                           <latex>U(\StdBss{1})</latex>
+                        </math>, <math>
+                           <latex>U(\StdBss{2})</latex>
+                        </math>, and <math>
+                           <latex>U(\StdBss{3})</latex>
+                        </math>. Alternatively the matrix can be computed as</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+B^{-1} A B = 
+\left[
+\begin{array}{rrr}
+1 &amp; 1 &amp; 0 \\
+0 &amp; 2 &amp; -1 \\
+0 &amp; -1 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Is <math>
+                        <latex>T^{-1}\Comp L\Comp T</latex>
+                     </math> invertible? If so, find the matrix representing its inverse.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Yes, <math>
+                              <latex>T^{-1}\Comp L\Comp T</latex>
+                           </math> is invertible, being a composite of invertible maps. The matrix representing <math>
+                              <latex>T^{-1}\Comp L\Comp T</latex>
+                           </math> is</para.body>
+                     </para>
+					
+					                <math.display>
+						                  <latex>
+							
+(\Mtrx{B}^{-1}\Mtrx{A}\Mtrx{B})^{-1} = \Mtrx{B}^{-1} \Mtrx{A}^{-1} \Mtrx{B} =
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; -1 \\
+0 &amp; -1 &amp; -2
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For invertible linear transformations</para.body>
+            </para>
+			         <math.display>
+				           <latex>R,S,T\from \RNr[n] \longrightarrow \RNr[n]</latex>
+			         </math.display>
+			         <para>
+               <para.body>prove the following:</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>For <math>
+                        <latex>n\geq 1</latex>
+                     </math>, <math>
+                        <latex>S^n</latex>
+                     </math> is invertible, and <math>
+                        <latex>(S^n)^{-1} = (S^{-1})^n</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(R\Comp S\Comp T)^{-1} = T^{-1}\Comp S^{-1} \Comp R^{-1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>R^{-1}\Comp S^{-1} = S^{-1}\Comp R^{-1}</latex>
+                     </math> if and only if <math>
+                        <latex>R\Comp S = S\Comp R</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For a natural number <math>
+                        <latex>k\geq 1</latex>
+                     </math>, <math>
+                        <latex>(R\Comp S\Comp R^{-1})^k = R\Comp S^k\Comp R^{-1}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

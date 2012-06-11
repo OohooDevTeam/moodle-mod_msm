@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Theo_DotProductNormGeometricProperties">
+	<caption>Geometric Properties of Norm and Dot Product</caption>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="Illstr_TriangleInequality"/>
+		<info>
+			<caption>Illustration of the Triangle Inequality</caption>
+			<para>Why the name triangle inequality? &ndash; An illustration motivates this name easily.</para>
+		</info>
+	</associate>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="Illu_AngleVectors"/>
+		<info>
+			<caption>Illustration of the Angle Between Vectors</caption>
+			<para>An illustration of the angle between two vectors.</para>
+		</info>
+	</associate>
+	
+	
+	<statement>
+		<para>For vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[n]</latex>, the following hold:</para>
+		<part partid="Prop_DotProductNorm">
+			<caption>Relationship between dot product and norm</caption>
+			<para>
+				<latex>\DotPr{ \Vect{x} }{ \Vect{x} } = | \Vect{x} |^2</latex>
+				
+				<index.glossary>
+					<term>norm</term>
+					<term>relationship to dot product</term>
+					<info>
+						<para>The norm and dot product operations are related by the identity</para>
+						<math.display>
+							<latex>\DotPr{\Vect{x}}{\Vect{x}} = | \Vect{x} |^2</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				
+				<index.glossary>
+					<term>dot product</term>
+					<term>relationship to norm</term>
+					<info>
+						<para>The norm and dot product operations are related by the identity</para>
+						<math.display>
+							<latex>\DotPr{\Vect{x}}{\Vect{x}} = | \Vect{x} |^2</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+		
+		<part partid="Prop_OrthogonalityCriterion">
+			<caption>Orthogonality criterion</caption>
+			<para>
+				<latex>\DotPr{\Vect{x}}{\Vect{y}} = 0</latex> if and only if <latex>\Vect{x}</latex> is perpendicular to <latex>\Vect{y}</latex>.
+				<index.glossary>
+					<term>dot product</term>
+					<term>orthogonality criterion</term>
+				</index.glossary>
+			</para>
+		</part>
+		
+		<part partid="Prop_AngleVectors">
+			<caption>Angle between two vectors</caption>
+			<para>
+				<subordinate>
+					<hot>
+						<latex>\DotPr{\Vect{x}}{\Vect{y}} = \Abs{ \Vect{x} } \Abs{ \Vect{y} }\cdot \cos \sphericalangle(\Vect{x},\Vect{y})</latex>
+					</hot>
+					<info>
+						<para>
+							<latex>\sphericalangle(\Vect{x},\Vect{y})</latex> denotes the angle between the vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+					</info>
+				</subordinate>, provided <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> have positive length.
+				<index.glossary>
+					<term>angle between two vectors</term>
+					<info>
+						<para>The angle between two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> is denoted <latex>\sphericalangle(\Vect{x},\Vect{y})</latex>. Its cosine can be determined using the norm and dot product operations by</para>
+						<math.display>
+							<latex>\cos\sphericalangle(\Vect{x},\Vect{y}) = \frac{\DotPr{ \Vect{x} }{ \Vect{y} }}{| \Vect{x} | | \Vect{y} |}</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				
+				<index.symbol>
+					<symbol>
+						<latex>\sphericalangle(\Vect{x},\Vect{y})</latex>
+					</symbol>
+					<info>
+						<para>denotes the angles between two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+					</info>
+				</index.symbol>
+			</para>
+		</part>
+		
+		
+		<part partid="Prop_TriangleInequality">
+			<caption>Triangle inequality</caption>
+			<para><latex>\Abs{\Vect{x} + \Vect{y}} \leq \Abs{\Vect{x}} + \Abs{\Vect{y}}</latex>
+					<index.glossary>
+						<term>triangle inequality</term>
+						<info>
+							<para>The triangle inequality asserts that, for any two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+						</info>
+					</index.glossary>
+				</para>
+		</part>
+		
+		
+		<part partid="Prop_CauchySchwarzInequality">
+			<caption>Cauchy-Schwarz inequality</caption>
+			<para><latex>| \DotPr{\Vect{x}}{\Vect{y}} | \leq | \Vect{x} | | \Vect{y} |</latex>. <index.glossary>
+					<term>Cauchy-Schwarz inequality</term>
+					<info>
+						<para>The Cauchy-Schwarz inequality asserts that</para>
+						<math.display>
+							<latex>| \DotPr{\Vect{x}}{\Vect{y}} | \leq | \Vect{x} | | \Vect{y} |</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				
+				<index.author>
+					<name>
+						<first>Augustin</first>
+						<middle>Louis</middle>
+						<last>Cauchy</last>
+					</name>
+					<info>
+						<para>Credited with a contribution to the Cauchy-Schwarz inequality.</para>
+					</info>
+				</index.author>
+				
+				<index.author>
+					<name>
+						<first>Karl</first>
+						<middle>Herman Amandus</middle>
+						<last>Schwarz</last>
+					</name>
+					<info>
+						<para>Credited with a contribution to the Cauchy-Schwarz inequality.</para>
+					</info>
+				</index.author>
+			</para>
+		</part>
+	</statement>
+	
+	
+	
+	
+	
+	<proof type="Proof">
+		<caption>
+			<partref>Prop_DotProductNorm</partref>
+			Dot product and norm
+		</caption>
+		<para>To establish the relationship between the dot product and the norm, let <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>. Then we find</para>
+		<math.display>
+			<latex>\DotPr{\Vect{x}}{\Vect{x}} = x_{1}^{2} + \cdots + x_{n}^{2} = | \Vect{x} |^2</latex>
+		</math.display>
+		
+		
+		<caption>
+			<partref>Prop_OrthogonalityCriterion</partref>
+			Orthogonality criterion
+		</caption>
+		<para>To see what the identity <latex>\DotPr{\Vect{x}}{\Vect{x}} = 0</latex> means, consider the vector triangle</para>
+		<figure>
+			<img src="ims/TriangleInequality.png"></img>
+		</figure>
+		<para>We know that</para>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para>
+						<latex>| \Vect{x} + \Vect{y} |^2</latex>
+					</para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>From property (i) we already know that <latex>\DotPr{\Vect{u}}{\Vect{u}} = | \Vect{u} |^2</latex> for every vector <latex>\Vect{u}</latex>.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell>
+					<para>
+						<latex>\DotPr{(\Vect{x} + \Vect{y})}{( \Vect{x} + \Vect{y})}</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>Here we use a binomial identity for dot products.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell>
+					<para>
+						<latex>\DotPr{\Vect{x}}{\Vect{x}} + 2(\DotPr{\Vect{x}}{\Vect{y}}) + \DotPr{\Vect{y}}{\Vect{y}}</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>From property (i) we already know that <latex>\DotPr{\Vect{u}}{\Vect{u}} = | \Vect{u} |^2</latex> for every vector <latex>\Vect{u}</latex>.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell>
+					<para>
+						<latex>|\Vect{x}|^2 + 2(\DotPr{\Vect{x}}{\Vect{y}}) + |\Vect{y}|^2</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		<para>Now the theorem of Pythagoras (actually its inverse) says that the identity below</para>
+		<math.display>
+			<latex>|\Vect{x} + \Vect{y}|^2 = | \Vect{x} |^2 + | \Vect{y} |^2</latex>
+		</math.display>
+		<para>holds if and only if  <latex>\Vect{x}</latex>  is perpendicular to <latex>\Vect{y}</latex>. Comparing the two equations shows that this happens exactly when  <latex>\DotPr{\Vect{x}}{\Vect{y}} = 0</latex>.</para>
+		
+		
+		
+		<caption>
+			<partref>Prop_AngleVectors</partref>
+			Angle between two vectors
+		</caption>
+		<para>To see the relationship between the dot product of two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> and the angle between the two vectors, consider first the case where both vectors have length <latex>1</latex>; i.e. <latex>| \Vect{x} | = 1 = | \Vect{y} |</latex>. Then we are in the situation illustrated below:</para>
+		
+		<para align="center"><img src="ims/DotProductAngle_Prf1.png" width="480"/></para>
+		
+		<para>So we may write <latex>\Vect{y} = (\cos\theta)\cdot \Vect{x}\ +\ (\Vect{y} - (\cos \theta)\cdot \Vect{x})</latex>. Taking the dot product on both sides with <latex>\Vect{x}</latex> we obtain</para>
+		
+		<computation>
+			<left>\DotPr{\Vect{x}}{\Vect{y}}</left>
+			<center><info>
+				<para>Substitute the expression we found for <latex>\Vect{y}</latex>.</para>
+			</info>=</center>
+			<right>\DotPr{\Vect{x}}{\left( (\cos\theta)\cdot \Vect{x}\ +(\Vect{y} - (\cos\theta)\cdot \Vect{x})\right)}</right>
+			<left></left>
+			<center>=<info>
+				<para>Here we use the distributivity property of the dot product operation.</para>
+			</info></center>
+			<right>\DotPr{\Vect{x}}{ (\cos\theta)\cdot \Vect{x}) }\ + \DotPr{\Vect{x}}{ (\Vect{y} - (\cos\theta)\cdot \Vect{x})}</right>
+			<left></left>
+			<center>=
+				<info>
+				<para>This is the essential step in the argument. By design <latex>\Vect{x}</latex> is perpendicular to <latex>\Vect{y} - (\cos\theta)\cdot \Vect{x}</latex>. So the dot product of these two vectors is <latex>0</latex>.</para>
+			</info></center>
+			<right>\Vect{x} \bullet  (\cos\theta)\cdot \Vect{x})</right>
+			<left></left>
+			<center>=
+				<info>
+				<para>Here we use the linearity property of the dot product in the second factor.</para>
+				</info>
+			</center>
+			<right>\cos\theta \cdot (\DotPr{\Vect{x}}{\Vect{x}})</right>
+			<left></left>
+			<center>=
+				<info>
+					<para>Here we use that <latex>| \Vect{x} | = 1</latex>, and so <latex>\DotPr{\Vect{x}}{\Vect{x}} = | \Vect{x} | = 1</latex>.</para>
+				</info>
+			</center>
+			<right>\cos\theta</right>
+		</computation>
+		
+		
+		<para>Next consider the case where <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are arbitrary but of positive length. Then we find that</para>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para>
+						<latex>\DotPr{\Vect{x}}{\Vect{y}}</latex>
+					</para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>We can write</para>
+								<para align="center">
+									<latex>\Vect{x} = | \Vect{x} | \cdot ( \Vect{x} / | \Vect{x} |)</latex>   and   <latex>\Vect{y} = | \Vect{y} | \cdot ( \Vect{y} / | \Vect{y} |)</latex>
+								</para>
+								<para>because <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> have positive length.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\left( | \Vect{x} | \cdot \dfrac{ \Vect{x} }{ | \Vect{x} | } \right) \bullet \left( | \Vect{y} | \bullet \dfrac{ \Vect{y} }{ | \Vect{y} | } \right)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>Here we use the bilinearity property of the dot product</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>| \Vect{x} | | \Vect{y} | \cdot \left( \dfrac{ \Vect{x} }{ | \Vect{x} | } \right) \bullet \left(\dfrac{ \Vect{y} }{ | \Vect{y} | } \right)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>By design, <latex>\Vect{x} / | \Vect{x} |</latex> and <latex>\Vect{y} / | \Vect{y} |</latex> have length <latex>1</latex>. So we can use the previous result.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>| \Vect{x} | | \Vect{y} | \cos \sphericalangle( \Vect{x} , \Vect{y} )</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		
+		<caption>
+			<partref>Prop_TriangleInequality</partref>
+			Triangle Inequality
+		</caption>
+		
+		<para>Here we rely heavily on the relationship between norm and dot product. The triangle inequality is true if and only if</para>
+		
+		<computation>
+			<left>| \Vect{x} + \Vect{y} |^2</left>
+			<center>\leq</center>
+			<right>\left( | \Vect{x} | + | \Vect{y} | \right)^2</right>
+			<left>(\Vect{x} + \Vect{y}) \bullet (\Vect{x} + \Vect{y})</left>
+			<center>\leq</center>
+			<right>| \Vect{x} |^2 + 2 | \Vect{x} | | \Vect{y} | +  | \Vect{y} |^2</right>
+			<left>| \Vect{x} |^2 + 2 \Vect{x} \bullet \Vect{y} + | \Vect{y} |^2</left>
+			<center>\leq</center>
+			<right>| \Vect{x} |^2 + 2 | \Vect{x} | | \Vect{y} | +  | \Vect{y} |^2</right>
+			<left>| \Vect{x} | | \Vect{y} | \cos \sphericalangle ( \Vect{x} , \Vect{y} )</left>
+			<center>\leq</center>
+			<right>| \Vect{x} | | \Vect{y} |</right>
+		</computation>
+		
+		
+		<para>The latter inequality is true because <latex>\cos \sphericalangle( \Vect{x} , \Vect{y} ) \leq 1</latex>. This implies the triangle inequality.</para>
+		
+		
+		<caption>
+			<partref>Prop_CauchySchwarzInequality</partref>
+			Cauchy Schwarz Inequality
+		</caption>
+		<para>If both <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> have positive length, we have the calculation</para>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para>
+						<latex>| \Vect{x} \bullet \Vect{y} |</latex>
+					</para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\left| | \Vect{x}|\, |\Vect{y}| \cdot \cos \sphericalangle( \Vect{x}, \Vect{y} ) \right|</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>| \Vect{x}|\, |\Vect{y}|\, | \cos \sphericalangle( \Vect{x}, \Vect{y} ) |</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>\leq</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>| \Vect{x}|\, |\Vect{y}| \cdot 1</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>| \Vect{x}|\, |\Vect{y}|</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		<para>The previous calculation does not apply If <latex>\Vect{x} = \Vect{0}</latex> or if <latex>\Vect{y} = \Vect{0}</latex>. However, in this case we compute directly as follows:</para>
+		<para align="center">
+			<latex>| \Vect{x} \bullet \Vect{y} | = 0 = | \Vect{x} | | \Vect{y} |</latex>.</para>
+		<para>So the Cauchy-Schwarz inequality holds for all vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[n]</latex>.</para>
+	</proof>
+</theorem>

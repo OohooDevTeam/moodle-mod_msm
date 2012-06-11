@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_Velocity">
+	<title>Velocity - Preview</title>
+	<sub.page.body>
+		<para>Let us begin with an illustration of a motion of a particle: the example below shows a particle moving along a parabola.</para>
+		
+		<object contenttype="JavaApplet" source="parabolic.class" height="535" width="400"></object>
+		
+		<para>During its trip,  the particle changes its location at each instant. This change of location is characterized by the direction and the speed of the motion at that instant. Both data combined comprise the velocity at that instant. As velocity is characterized by direction and magnitude, we may represent it by a vector. Below you can see an illustration of the velocity vectors at two instants of this motion</para>
+		<figure>
+			<img src="ims/VelocityVector01.gif"></img>
+		</figure>
+	</sub.page.body>
+</sub.page>

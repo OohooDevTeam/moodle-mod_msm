@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_EigenvectorEigenvalue">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Eigenvector / Eigenvalue: Example</title>
+	<showme>
+		<statement>
+			<para>With respect to standard coordinates of <latex>\RNr[3]</latex>, the <latex>(3,3)</latex>-matrix <latex>\Mtrx{A}</latex> below describes the orthogonal projection of <latex>\RNr[3]</latex> onto the <latex>xy</latex>-plane.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{array}
+\right]\quad \text{gives projection}\quad
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+x \\ y \\ 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Relate its transformation properties to its eigenvectors and eigenvalues.</para>
+		</statement>
+		<answer type="Discussion">
+			<para>To visualize this projection, imagine light shining vertically onto the <latex>xy</latex>-plane. Then the projection sends each object in <latex>\RNr[3]</latex> to its shadow in the <latex>xy</latex>-planae.</para>
+			<para>Therefore every vector in the <latex>xy</latex>-plane gets transformed into itself, that is a vector of the form <latex>\Vect{v} = (x,y,0)</latex> gets transformed into</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}\cdot \Vect{v} = 
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{array}
+\right]\, 
+\left[
+\begin{array}{c}
+x \\ y \\ 0
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+x \\ y \\ 0
+\end{array}
+\right] = 1\cdot \Vect{v}
+]]>
+				</latex>
+			</math.display>
+			
+			<para>This means that every nonzero vector of the form <latex>\Vect{v}=(x,y,0)</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>\lambda_1 = 1</latex>.</para>
+			
+			<para>On the other hand, this projection sends the entire <latex>z</latex>-axis to the <latex>\Vect{0}</latex>-vector, that is a vector of the form <latex>\Vect{w}=(0,0,z)</latex> gets transformed into</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}\cdot \Vect{w} = 
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{array}
+\right]\, 
+\left[
+\begin{array}{c}
+0 \\ 0 \\ z
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+0 \\ 0 \\ 0
+\end{array}
+\right] = 0\cdot \Vect{w}
+]]>
+				</latex>
+			</math.display>
+			
+			<para>This means that every nonzero vector of the form <latex>\Vect{w} = (0,0,z)</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>\lambda_2=0</latex>.</para>
+		</answer>
+	</showme>	
+</showme.pack>

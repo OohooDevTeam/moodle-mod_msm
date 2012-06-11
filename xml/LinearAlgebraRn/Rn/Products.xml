@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="sec_CartesianProductsInRn">
+	<headers>
+		<full>Cartesian Products of Subsets of n-Space</full>
+		<toc>Cartesian Products of Subsets of n-Space</toc>
+		<short>Products</short>
+	</headers>
+	<intro>
+		<para>An <latex>m</latex>-tuple <latex>(x_1,\dots ,x_m)</latex> in <latex>\RNr[m]</latex> can be concatenated with an <latex>n</latex>-tuple <latex>(y_1,\dots ,y_n)</latex> in <latex>\RNr[n]</latex> so as to 
+			<subordinate>
+				<hot>form</hot>
+				<info>
+					<para>For example, applying this process to</para>
+					<ul>
+						<li>
+							<para>
+								<latex>(2,1)</latex> in <latex>\RNr[2]</latex> and <latex>(3,7,4)</latex> in <latex>\RNr[3]</latex> yields the <latex>5</latex>-tuple <latex>(2,1,3,7,4)</latex> in <latex>\RNr[5]</latex>.</para>
+						</li>
+						<li>
+							<para>
+								<latex>5</latex> in <latex>\RNr</latex> and <latex>(2,3)</latex> in <latex>\RNr[2]</latex> yields the <latex>3</latex>-tuple <latex>(5,2,3)</latex> in <latex>\RNr[3]</latex>.</para>
+						</li>
+						<li>
+							<para>
+								<latex>(5,2)</latex> in <latex>\RNr[2]</latex> and <latex>3</latex> in <latex>\RNr</latex> yields the <latex>3</latex>-tuple <latex>(5,2,3)</latex> in <latex>\RNr[3]</latex>.</para>
+						</li>
+					</ul>
+				</info>
+			</subordinate>
+			the  <latex>(m+n)</latex>-tuple</para>
+		<math.display>
+			<latex>(x_1,\dots ,x_m,y_1,\dots ,y_n)\quad \text{in}\quad \RNr[m+n]</latex>
+		</math.display>
+		<para>Two spaces <latex>\RNr[m]</latex>  and  <latex>\RNr[n]</latex>  can be ‘multiplied’ by applying this concatenation process to all possible combinations of an <latex>m</latex>-tuple from <latex>\RNr[m]</latex> and an <latex>n</latex>-tuple from <latex>\RNr[n]</latex>.</para>
+	</intro>
+	
+	
+	<section.body>
+		<def type="Definition" id="Def_RmProductRn">
+			<caption>Product of &nbsp; <latex>\RNr[m]</latex> and <latex>\RNr[n]</latex></caption>
+			<associate Description="Explanation">
+				<info>
+					<caption>We think about this product operation as follows</caption>
+					<para>If we form all possible combinations of concatenations using</para>
+					<ol>
+						<li>
+							<para>an <latex>m</latex>-tuple <latex>(x_1,\dots ,x_m)</latex> from <latex>\RNr[m]</latex>
+							</para>
+						</li>
+						<li>
+							<para>an <latex>n</latex>-tuple <latex>(y_1,\dots ,y_n)</latex> from <latex>\RNr[n]</latex>,</para>
+						</li>
+					</ol>
+					<para>we obtain all possible <latex>(m+n)</latex>-tuples <latex>(x_1,\dots ,x_m,y_1,\dots ,y_m)</latex> in <latex>\RNr[m+n]</latex>
+					</para>
+				</info>
+			</associate>
+			
+			<associate Description="Example">
+				<info>
+					<caption>Examples of Cartesian Products</caption>
+					<ul>
+						<li>
+							<para>
+								<latex>\RNr[1]\times\RNr[1]=\RNr[2]</latex>
+							</para>
+						</li>
+						<li>
+							<para>
+								<latex>\RNr[2]\times\RNr[1]=\RNr[3]</latex>
+							</para>
+						</li>
+						<li>
+							<para>
+								<latex>\RNr[9]\times\RNr[6]=\RNr[15]</latex>
+							</para>
+						</li>
+						<li>
+							<para>
+								<latex>\RNr[4]\times\RNr[3]\times\RNr[2]=\RNr[9]</latex>
+							</para>
+						</li>
+					</ul>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+	\RNr[m]\times\RNr[n]\ &=\ \underset{\leftarrow\hfill m\hfill\rightarrow}{(\RNr\times \RNr\times \dots \times \RNr)}\ \times\ \underset{\leftarrow\hfill n\hfill\rightarrow}{(\RNr\times\RNr\times \dots \times \RNr)} \\
+	&=\ \underset{\leftarrow\hfill m+n\hfill \rightarrow}{\RNr\times \RNr\times \dots \times \RNr} \\
+	&=\ \RNr[m+n]
+\endaligned
+								]]>
+						</latex>
+					</math.display>
+				</info>
+			</associate>
+			
+			<para>The cartesian product of <latex>\RNr[m]</latex> and <latex>\RNr[n]</latex> is
+				<index.glossary>
+					<term>cartesian product</term>
+					<info>
+						<para>of <latex>\RNr[m]</latex> and <latex>\RNr[n]</latex> is <latex>\RNr[m+n]</latex>.</para>
+					</info>
+				</index.glossary>
+			</para>
+			
+			<math.display>
+				<latex>\RNr[m]\times \RNr[n]\ :=\ \RNr[m+n],</latex>
+			</math.display>
+			
+			<para>i.e. the space of  all <latex>(m+n)</latex>-tuples.</para>
+		</def>
+		
+		<para>Let us now turn to Cartesian products of more general subsets of <latex>\RNr[n]</latex>. For example, it provides a convenient tool to describe any ‘box-shaped’ object in <latex>\RNr[k]</latex>.</para>
+		
+		<def type="Definition" id="Def_SetsProduct">
+			<caption>Product of Sets</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_ProductsSubsetsRn"/>
+				<info>
+					<para>Click for some examples of such products</para>
+				</info>
+			</associate>
+			<para>The product of a subset <latex>S</latex> of <latex>\RNr[m]</latex> by a subset <latex>T</latex> of <latex>\RNr[n]</latex> is the subset <latex>S\times T</latex> of <latex>\RNr[m+n]</latex> consisting of all those <latex>(m+n)</latex>-tuples <latex>(x_1,\dots ,x_m\, ,\, y_1,\dots ,y_n)</latex> with <latex>(x_1,\dots ,x_m)</latex> in <latex>S</latex> and <latex>(y_1,\dots ,y_n)</latex> in <latex>T</latex>.<index.glossary>
+				<term>product</term>
+				<term>of subsets of <latex>\RNr[n]</latex>
+				</term>
+				<info>
+					<para>Click to jump to the definition of ‘product of subsets of <latex>\RNr[n]</latex>’.</para>
+				</info>
+			</index.glossary>
+				
+			</para>
+		</def>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_CartesianProducts"/>
+	</studymaterials>
+</section>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_MonoEpiIso">
+	<title>Mono-, Epi-, Isomorphism: Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>Let us analyze what the concepts of monomorphism, epimorphism, and isomorphism actually mean.</para>
+		</block>
+		<block>
+			<para><b>Epimorphism</b> &nbsp; Suppose <latex>L</latex> is an epimorphism. Now, if <latex>\Vect{y}\in W</latex> is arbitrary, there is at least one <latex>\Vect{x}\in V</latex> with <latex>L(\Vect{x}) = \Vect{y}</latex>.</para>
+			<para>In other words, the transform of <latex>V</latex> inside <latex>W</latex> fills all of <latex>W</latex>. &ndash; Note, however, that while <latex>L</latex> transforms <latex>V</latex> to cover <latex>W</latex>, it is possible that <latex>L</latex> collapses parts of <latex>V</latex> to single points.</para>
+		</block>
+		
+		<block>
+			<para><b>Monomorphism</b> &nbsp; If <latex>L\from V\to W</latex> is a monomorphism, it can not collapse distinct parts of <latex>V</latex>. To see this, consider vectors <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> in <latex>V</latex>, and suppose</para>
+			<computation>
+				<left>L(\Vect{u})</left>
+				<center>=</center>
+				<right>L(\Vect{v})</right>
+			</computation>
+			<para>Then we compute</para>
+			<computation>
+				<left>\Vect{0}</left>
+				<center>=</center>
+				<right>L(\Vect{v}) - L(\Vect{u})</right>
+				<left></left>
+				<center>=	<info><para>Here we use that <latex>L</latex> is linear.</para></info></center>
+				<right>L(\Vect{v} - \Vect{u})</right>
+			</computation>
+			<para>Now the only vector which gets transformed into <latex>\Vect{0}</latex> by the monomorphic <latex>L</latex> is the 0-vector. So</para>
+			<computation>
+				<left>\Vect{u}</left>
+				<center>=</center>
+				<right>\Vect{v}</right>
+			</computation>
+			<para>We conclude that a monomorphic <latex>L</latex> transforms distinct points of <latex>V</latex> into distinct points of <latex>W</latex>. In  other words, a monomorphic linear transformation does no collapsing. &ndash; Note, however, that there might be vectors <latex>\Vect{w}</latex> in <latex>W</latex> for which there is no <latex>\Vect{v}</latex> in <latex>V</latex> with <latex>L(\Vect{v}) = \Vect{w}</latex>: the transform of <latex>V</latex> via <latex>L</latex> need not cover <latex>W</latex>.</para>
+		</block>
+		
+		<block>
+			<para><b>Isomorphism</b> &nbsp; An isomorphism <latex>L\from V\to W</latex> combines both properties of a epimorphism and an monomorphism: it transforms <latex>V</latex> to cover all of <latex>W</latex> without collapsing any parts of <latex>V</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

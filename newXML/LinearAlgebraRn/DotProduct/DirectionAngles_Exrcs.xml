@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_DirectionAngles"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Direction Angles: Exercises</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find all approximate direction angles of the vector <math>
+                     <latex>\Vect{u} = (4,-2,-4)</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The approximate direction angles of <math>
+                           <latex>\Vect{u}</latex>
+                        </math> are</para.body>
+                  </para>
+				
+				              <math.display>
+					                <latex>\omega_1 \approx 48.2\qquad \omega_2 \approx 109.5\qquad \omega_3 \approx 146.5\qquad \text{degrees}</latex>
+				              </math.display>	
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>To determine the required direction angles we need <math>
+                        <latex>\Abs{ \Vect{u} } = 6</latex>
+                     </math>. Therefore</para.body>
+               </para>
+				
+				           <math.display>
+					             <latex>\cos\, \omega_1 = \frac{4}{6} \qquad \cos\, \omega_3 = -\frac{2}{6}\qquad \cos\, \omega_3 \approx -\frac{4}{6}</latex>
+				           </math.display>
+				
+				           <para>
+                  <para.body>Consequently the approximate values of the direction angles of <math>
+                        <latex>\Vect{u}</latex>
+                     </math> are</para.body>
+               </para>
+				
+				           <math.display>
+					             <latex>\omega_1 \approx 48.2\qquad \omega_2 \approx 109.5\qquad \omega_3 \approx 131.8\qquad \text{degrees}</latex>
+				           </math.display>	
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Let <math>
+                  <latex>\Vect{x} = (x,y)</latex>
+               </math> be a vector in <math>
+                  <latex>\RNr[2]</latex>
+               </math>. What values of the direction angles  <math>
+                  <latex>\omega_1</latex>
+               </math> and <math>
+                  <latex>\omega_2</latex>
+               </math> are possible if</para.body>
+         </para>
+		    </question>
+		    <part>
+			      <question>
+				        <para>
+               <para.body>
+                  <math>
+                     <latex>\Vect{x}</latex>
+                  </math> is a first quadrant vector; i.e. if <math>
+                     <latex> x,y &gt; 0 </latex>
+                  </math>?</para.body>
+            </para>
+			      </question>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>
+                     <math>
+                        <latex>\omega_1 = \omega_2 = 90</latex>
+                     </math> degrees</para.body>
+               </para>
+				        </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on: <math>
+                        <latex>\omega_1 = \omega_2 = 90</latex>
+                     </math> degrees</caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>Sorry, no! - A vector with this property would have to lie simultaneously on the <math>
+                        <latex>\Vect{e}_1</latex>
+                     </math>-axis and on the <math>
+                        <latex>\Vect{e}_2</latex>
+                     </math>-axis. Only the <math>
+                        <latex>\Vect{0}</latex>
+                     </math>-vector has this property. But for the <math>
+                        <latex>\Vect{0}</latex>
+                     </math>-vector direction angles are not defined.</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>
+                     <math>
+                        <latex> 0 &lt; \omega_1,\omega_2 &lt; \pi/2 </latex>
+                     </math>
+                  </para.body>
+               </para>
+				        </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on: <math>
+                        <latex> 0 &lt; \omega_1,\omega_2 &lt; \pi/2 </latex>
+                     </math>
+                  </caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>Correct!</para.body>
+               </para>
+				        </info>
+			      </choice>
+		    </part>
+		
+		    <part>
+			      <question>
+				        <para>
+               <para.body>
+                  <math>
+                     <latex>\Vect{x}</latex>
+                  </math> is a second quadrant vector; i.e. if <math>
+                     <latex> x &lt; 0 </latex>
+                  </math> and <math>
+                     <latex> y &gt; 0 </latex>
+                  </math>?</para.body>
+            </para>
+			      </question>
+			      <choice>
+				        <answer>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> \pi/2 &lt; \omega_1 &lt; \pi </latex>
+                     </math> and <math>
+                        <latex>  0 &lt; \omega_2 &lt; \pi/2 </latex>
+                     </math>
+                  </para.body>
+               </para>
+            </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on <math>
+                        <latex> \pi/2 &lt; \omega_1 &lt; \pi </latex>
+                     </math> and <math>
+                        <latex>  0 &lt; \omega_2 &lt; \pi/2 </latex>
+                     </math>
+                  </caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>Correct!</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> \pi &lt; \omega_1 &lt; 3\pi/2 </latex>
+                     </math> and <math>
+                        <latex>  0 &lt; \omega_2 &lt; \pi/2 </latex>
+                     </math>
+                  </para.body>
+               </para>
+            </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on <math>
+                        <latex> \pi &lt; \omega_1 &lt; 3\pi/2 </latex>
+                     </math> and <math>
+                        <latex>  0 &lt; \omega_2 &lt; \pi/2 </latex>
+                     </math>
+                  </caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>Sorry, no! - By definition, direction angles are between <math>
+                        <latex>0</latex>
+                     </math> and <math>
+                        <latex>\pi</latex>
+                     </math>. So this answer cannot be correct.</para.body>
+               </para>
+				        </info>
+			      </choice>
+		    </part>
+	  </quiz>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find the angles of the triangle in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> with corners</para.body>
+            </para>
+			         <math.display>
+				           <latex>P(1,1,1)\qquad Q(4,3,2)\qquad R(2,3,4)</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <ul>
+					                <li>
+                        <para>
+                           <para.body>The angle at <math>
+                                 <latex>P</latex>
+                              </math> is approximately 44.4 degrees</para.body>
+                        </para>
+                     </li>
+					                <li>
+                        <para>
+                           <para.body>The angle at <math>
+                                 <latex>Q</latex>
+                              </math> is approximately 61.8 degrees</para.body>
+                        </para>
+                     </li>
+					                <li>
+                        <para>
+                           <para.body>The angle at <math>
+                                 <latex>R</latex>
+                              </math> is approximately 73.8 degrees</para.body>
+                        </para>
+                     </li>
+				              </ul>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Say, we want to find the angle of the triangle at the corner <math>
+                     <latex>P</latex>
+                  </math>. Find vectors which point from <math>
+                     <latex>P</latex>
+                  </math> towards the other two corners. The angle at <math>
+                     <latex>P</latex>
+                  </math> is the angle between these vectors.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>The angle of the triangle at <math>
+                        <latex>P</latex>
+                     </math> is the angle between the vectors <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math> represented by the arrows <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>Q</latex>
+                     </math> and <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>R</latex>
+                     </math>, respectively. We find</para.body>
+               </para>
+				
+				           <para align="center">
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x} = (3,2,1)</latex>
+                     </math> and <math>
+                        <latex>\Vect{y} = (1,2,3)</latex>
+                     </math>.</para.body>
+               </para>
+				
+				           <para>
+                  <para.body>Now the formula <math>
+                        <latex>\DotPr{ \Vect{x} }{ \Vect{y} } = | \Vect{x} | | \Vect{y} | \cos \sphericalangle(\Vect{x} , \Vect{y})</latex>
+                     </math> yields for the angle at <math>
+                        <latex>P</latex>
+                     </math>
+                  </para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\cos \sphericalangle(\Vect{x} , \Vect{y} )</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ | \Vect{x} | | \Vect{y} |} = \dfrac{10}{14}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sphericalangle( \Vect{x} , \Vect{y} )</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>\approx</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>44.4\quad \text{degree}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				
+				           <para>
+                  <para.body>Similarly, we find that the angle at <math>
+                        <latex>Q</latex>
+                     </math> is approximately <math>
+                        <latex>61.8</latex>
+                     </math> degrees. Consequently, the angle at <math>
+                        <latex>R</latex>
+                     </math> is approximately</para.body>
+               </para>
+				
+				           <para align="center">
+                  <para.body>
+                     <math>
+                        <latex>180\ -\ (44.4 + 61.8)\ =\ 73.8</latex>
+                     </math> degrees.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+</exercise.pack>

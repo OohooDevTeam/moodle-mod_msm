@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_InvertibleLinearTransformations">
+	<headers>
+		<full>Invertible Linear Transformations</full>
+		<toc>Invertible Linear Transformations</toc>
+		<short>Invertible Transformations</short>
+	</headers>
+	
+	<intro>
+		<para>Here we discuss linear maps <latex>S\from \RNr[n]\to \RNr[n]</latex> whose transformation effect on space can be reversed. For example, rotating <latex>\RNr[2]</latex> through the angle <latex>\pi/2</latex> counter clockwise is a transformation which can be reversed: by the clockwise rotation through the angle <latex>\pi/2</latex>. In general, the transformation effect of  <latex>S\from \RNr[n]\to \RNr[n]</latex> can be reversed if there is a <latex>T\from \RNr[n]\to \RNr[n]</latex> such that <latex>T\Comp S(\Vect{x})=\Vect{x}</latex> for each <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>.</para>
+		<para>We will see that a linear <latex>L\from \RNr[n]\to \RNr[n]</latex> is invertible exactly when its representing matrix <latex>\Mtrx{A}</latex> is invertible. In this case the inverse of <latex>L</latex> is represented by <latex>\Mtrx{A}^{-1}</latex>.</para>
+	</intro>
+	
+	<subsection id="SubSec_InvertibilityOfLinearTransformations">
+		<headers>
+			<full>Invertibility of Linear Transformations</full>
+			<toc>Invertibility of Linear Transformations</toc>
+			<short>Invertibility of Linear Transformations</short>
+		</headers>
+		<subsection.body>
+			<def type="Definition" id="Def_InvertibleLinearTransformation">
+				<caption>Invertible linear transformation</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_InvertibleLinearTrafo"/>
+					<info><para>An example of an invertible linear transformation</para></info>
+				</associate>
+				<associate Description="Quiz">
+					<quiz.pack.ref quizPackID="Quz_InvertibleLinearTrafo"/>
+					<info><para>A quiz so you can test your understanding of the concept of &lsquo;invertible linear transformation&rsquo;.</para></info>
+				</associate>
+				<associate Description="Comment">
+					<info>
+						<caption>Comment on: Invertible linear transformation</caption>
+						<para>Notice how nicely this definition captures the idea of reversing the effect of the transformation <latex>L</latex>: The identity transformation <latex>\Id[n]</latex> on <latex>\RNr[n]</latex> leaves every point where it is. Thus to require that <latex>M\Comp L=\Id[n]</latex> forces <latex>\Mtrx{M}</latex> to reverse the effect of <latex>L</latex>. Likewise, to require that <latex>L\Comp M=\Id[n]</latex> forces <latex>\Mtrx{L}</latex> to reverse the effect of <latex>\Mtrx{M}</latex> as well:</para>
+					</info>
+				</associate>
+				
+				<para>A linear transformation <latex>L\from \RNr[n]\to \RNr[n]</latex> is called invertible if there exists a linear transformation <latex>M\from \RNr[n]\to \RNr[n]</latex> such that</para>
+				<math.display>
+					<latex>M\Comp L = \Id[n] = L\Comp M</latex>
+				</math.display>
+				<para>In this case we call <latex>M</latex> the inverse of <latex>L</latex> and write <latex>M=L^{-1}</latex>.
+					<index.glossary>
+						<term>invertible</term><term>linear transformation</term>
+						<info><para>The definition of the concept</para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>linear transformation</term><term>invertible</term>
+						<info><para>The definition of the concept</para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>linear transformation</term><term>invertible</term>
+						<info><para>The definition of the concept</para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>inverse</term><term>of a linear transformation</term>
+						<info><para>The definition of the concept</para></info>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex magnify="yes">\Id[n]</latex></symbol>
+						<info><para>Identity map <latex>\RNr[n]\to \RNr[n]</latex>, <latex>\Id[n](\Vect{x}) = \Vect{x}</latex>.</para></info>
+					</index.symbol>
+				</para>
+			</def>
+			
+			<xi:include href="DoubleInverse_Prop.xml"/>
+		</subsection.body>
+	</subsection>
+	
+	
+	
+	<subsection id="SubSec_InverseLinearMapInverseMatrix">
+		<headers>
+			<full>Inverse Transformation and Inverse Matrix</full>
+			<toc>Inverse Transformation and Inverse Matrix</toc>
+			<short>Inverse Map, Inverse Matrix</short>
+		</headers>
+		<intro>
+			<para>We 
+				<subordinate>
+					<hot>know</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_LinearMapGivesMatrix"/>
+						<para>Look up how a linear map determines a matrix</para>
+					</crossref>
+				</subordinate>
+				that each linear map <latex>L\from \RNr[n]\to \RNr[n]</latex> is represented by exactly one <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>. Now consider the special case where <latex>L</latex> is invertible. How can we find the matrix representing the inverse of <latex>L</latex>?</para>
+		</intro>
+		<subsection.body>
+			<xi:include href="InverseMapInverseMatrix_Prop.xml"/>
+			
+			<para>We conclude this section by clarifying how invertibility and the computation of inverses relates to composites of linear transformations.</para>
+			
+			<xi:include href="InvertibleMapsComposition_Prop.xml"/>
+			
+		</subsection.body>
+	</subsection>
+	
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_InvertibleLinearMapsI"/>
+	</studymaterials>
+</section>

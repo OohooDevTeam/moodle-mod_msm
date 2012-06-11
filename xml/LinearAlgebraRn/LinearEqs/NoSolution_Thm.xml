@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_NoSolution">
+	<caption>No solution</caption>
+	<associate Description="Illustration">
+		<showme.pack.ref showmePackID="Illstrtn_LinearEqsNoSolution"/>
+		<info><para>How to recognize a system of linear equations with no solution.</para></info>
+	</associate>
+	<statement>
+		<para>Suppose a system of linear equations is equivalent to an RREF-matrix with a leading 1 in its augmentation column.</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{ccccccccccccccc|c}
+0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & 0 & * & \cdots & * & {\color{blue} 0 } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & {\color{blue} 0 } \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & {\color{blue} \vdots } \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & {\color{blue} \vdots } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & {\color{blue} 0 } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & {\color{blue} 1 } \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & {\color{blue} \vdots } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & {\color{blue} 0 }
+\end{array}
+					]]>
+			</latex>
+		</math.display>
+		<para>Then the system has no solution.</para>
+	</statement>
+	<proof type="Proof">
+		<para>We know that the RREF-matrix in question corresponds to a system of linear equations whose solutions agree with the original system. Now if the RREF-matrix contains a leading one in its augmentation column, the row containing this leading 1 reads:</para>
+		<math.display>
+			<latex>0 \ \cdots\ 0\ |\  1</latex>
+		</math.display>
+		<para>The corresponding linear equation reads</para>
+		<math.display>
+			<latex>0\cdot x_1 + \cdots + 0\cdot x_n= 1</latex>
+		</math.display>
+		<para>Regardless of the number values substituted for the variables <latex magnify="yes">x_1,\dots ,x_n</latex>, the left hand side of this equation is always <latex>0\neq 1</latex>. Therefore this equation has no solution. So the entire system has no solution either.</para>
+	</proof>
+</theorem>

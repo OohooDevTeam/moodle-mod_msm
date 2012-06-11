@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<example.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_RotationAxis">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Examples: Finding the Axis of a Rotation in 3-Space</title>
+	<caption>Examples: Finding Rotational Axis</caption>
+	
+	
+	
+	<example>
+		<statement>
+			<para>Given the information that the matrix <latex>\Mtrx{A}</latex> below describes a rotation in <latex>\RNr[3]</latex> in standard coordinates, find its axis of rotation
+				<index.glossary>
+					<term>rotation</term><term>finding axis of rotation</term>
+					<info>
+						<para>An application of the theory of eigenvectors and eigenvalues: given a rotation of <latex>\RNr[3]</latex>, find its axis of rotation.</para>
+					</info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}\ =\ 
+\dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 & \sqrt{2} & -1 \\
+-\sqrt{2} & 0 & -\sqrt{2} \\
+-1 & \sqrt{2} & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Solution">
+			<para>The key to solving this problem is to observe that a vector <latex>\Vect{x}</latex> on the axis or rotation of <latex>\Mtrx{A}</latex> remain unchanged by the rotation; in symbols</para>
+			<computation>
+				<left>\Mtrx{A}\Vect{x}</left>
+				<center>=</center>
+				<right>\Vect{x}</right>
+				<left>(\Mtrx{A} - \IdMtrx[3])\Vect{x}</left>
+				<center>=</center>
+				<right>\Vect{0}</right>
+			</computation>
+			<para>In other words, <latex>\Vect{x}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>1</latex>. So we can solve this problem by finding the solutions of the equation</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left( \dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 & \sqrt{2} & -1 \\
+-\sqrt{2} & 0 & -\sqrt{2} \\
+-1 & \sqrt{2} & 1
+\end{array}
+\right] - 
+\left[
+\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right] \right)
+\left[ \begin{array}{c} x \\ y \\ z \end{array} \right]\ =\
+\left[ \begin{array}{c} 0 \\ 0 \\ 0 \end{array} \right]
+]]>
+				</latex>
+			</math.display>
+			<para>Thus we look for the null space of the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{rrr}
+-1 & \sqrt{2} & -1 \\
+-\sqrt{2} & -2 & -\sqrt{2} \\
+-1 & \sqrt{2} & -1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>The RREF of this matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{rrr}
+1 & 0 & 1 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Thus <latex>y=0</latex> and <latex>z=-x</latex>, which means that the eigenspace of <latex>\Mtrx{A}</latex> with eigenvector <latex>\lambda = 1</latex> is spanned by <latex>\Vect{n} = (1,0,-1)</latex>.</para>
+			<para>Therefore the axis of the rotation described by <latex>\Mtrx{A}</latex> is the line through the origin in the direction of the vector <latex>\Vect{n}=(1,0,-1)</latex>.</para>
+		</answer>
+	</example>
+</example.pack>

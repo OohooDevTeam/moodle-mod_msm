@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_NumberScalarMultiplicationMatrix">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of Multiplying a Matrix by a Number</title>
+	<caption>Multiplying a Matrix by a Number</caption>
+	<showme>
+		<statement>
+			<para>The (scalar) product of the matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					{\color{blue}A}\ =\ 
+					\left[\begin{array}{rrr}
+					{\color{blue}4} & {\color{blue}-2} & {\color{blue}0} \\
+					{\color{blue}6} & {\color{blue}0} & {\color{blue}-4}
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>by the number <latex>t={\color{red}3}</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+					{\color{red}3}\cdot {\color{blue}A} \ &=\ 
+					{\color{red}3}\cdot
+					\left[\begin{array}{rrr}
+					{\color{blue}4} & {\color{blue}-2} & {\color{blue}0} \\
+					{\color{blue}6} & {\color{blue}0} & {\color{blue}-4}
+					\end{array}\right] \\
+					&=\ \left[\begin{array}{rrr}
+					{\color{red}3}\cdot{\color{blue}4} & {\color{red}3}\cdot({\color{blue}-2}) & {\color{red}3}\cdot{\color{blue}0} \\
+					{\color{red}3}\cdot{\color{blue}6} & {\color{red}3}\cdot{\color{blue}0} & {\color{red}3}\cdot{\color{blue}-4}
+					\end{array}\right] \\
+					&=\ 
+					\left[\begin{array}{rrr}
+					12 & -6 & 0 \\
+					18 & 0 & -12
+					\end{array}\right] \\
+					\endaligned
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>In general, the product of a matrix <latex>{\color{blue}A}</latex> of size <latex>(m,n)</latex> by a number <latex>{\color{red}t}</latex> with</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					{\color{blue}A}\ =\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}a_{11}} & \cdots & {\color{blue}a_{1n}} \\
+					\vdots & \ddots & \vdots \\
+					{\color{blue}a_{m1}} & \cdots & {\color{blue}a_{mn}}
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			<para>is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+					{\color{red}t}\cdot {\color{blue}A} &=\ 
+					{\color{red}t}\cdot \left[\begin{array}{ccc}
+					{\color{blue}a_{11}} & \cdots & {\color{blue}a_{1n}} \\
+					\vdots & \ddots & \vdots \\
+					{\color{blue}a_{m1}} & \cdots & {\color{blue}a_{mn}}
+					\end{array}\right] \\
+					&=\ 
+					\left[\begin{array}{ccc}
+					{\color{red}t}\cdot {\color{blue}a_{11}} & \cdots & {\color{red}t}\cdot {\color{blue}a_{1n}} \\
+					\vdots & \ddots & \vdots \\
+					{\color{red}t}\cdot {\color{blue}a_{m1}} & \cdots & {\color{red}t}\cdot {\color{blue}a_{mn}}
+					\end{array}\right]
+					\endaligned
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+</showme.pack>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_GeometricallySolve">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Solving Linear Equations Geometrically - Exercises</title>
+	
+	<exercise>
+		<problem>
+			<para>In each of the problems below, describe the relationship between the solution sets of the two linear equations given. Then draw conclusions about the simultaneous solutions of both equations</para>
+		</problem>
+		<part>
+			<problem>
+				<computation>
+					<left>3x - 21y</left>
+					<center>=</center>
+					<right>12</right>
+					<left>12x - 28y</left>
+					<center>=</center>
+					<right>16</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solution set of each equation is a line in <latex>\RNr[2]</latex>. The two lines are equal. So one equation can be omitted from the system without changing the solution set of the system.</para>
+				</answer>
+				<solution.hint>
+					<para>The solutions of each of these equations form a line in <latex>\RNr[2]</latex>. Find the normal vectors of these lines and check if they are parallel.</para>
+				</solution.hint>
+				<solution>
+					<para>Each of the given linear equations represents a hyperplane in <latex>\RNr[2]</latex>; i.e. a line. So our task is to determine how these lines are related to each other.</para>
+					<para>To determine if these 
+						<subordinate>
+							<hot>lines are parallel</hot>
+							<info>
+								<para>Remember: Given two linear equations in <latex>n</latex> variables, the solution set of each of them forms a hyperplane in <latex>\RNr[n]</latex>. These two hyperplanes are parallel exactly when their normal vectors are parallel.</para>
+							</info>
+						</subordinate>, we check if the normal vectors to these lines are parallel. We find:</para>
+					<computation>
+						<left>\Vect{n}_1</left>
+						<center>=</center>
+						<right>(9,-21) = 3\cdot (3,-7)</right>
+						<left>\Vect{n}_2</left>
+						<center>=</center>
+						<right>(12,-28) = 4\cdot (3,-7)</right>
+					</computation>
+					<para>So <latex magnify="yes">\Vect{n}_2 = \tfrac{4}{3}\cdot \Vect{n}_1</latex>, implying that the two normal vectors are parallel. So the two lines of solutions of the given equations are parallel.</para>
+					
+					<para>This prompts the question as whether these lines are distinct, i.e. they have no point in common, or if they are equal. We offer two approaches to answer this question.</para>
+					<para><i>Approach 1</i> &nbsp; We pick a random solution of one equation and check if it is also a solution of the other. If yes, the two parallel lines are equal. If not, they are distinct.</para>
+					<para>A solution of the first equation is <latex>(-1,-1)</latex>. We see immediately that this is also a solution of the second equation. Therefore the two lines are equal.</para>
+					<para><i>Approach 2</i> &nbsp; We compare the augmented normal vectors of the two equations</para>
+					<computation>
+						<left>\Vect{a}_1</left>
+						<center>=</center>
+						<right>(9,-21,12) = 3\cdot (3,-7,4)</right>
+						<left>\Vect{a}_2</left>
+						<center>=</center>
+						<right>(12,-28,16) = 4\cdot (3,-7,4)</right>
+					</computation>
+					<para>So <latex magnify="yes">\Vect{a}_2 = \tfrac{4}{3} \Vect{a}_1</latex>, implying that the two lines are equal.</para>
+					<para>Either way, we conclude that the collection of pairs <latex>(x,y)</latex> solving both equations simultaneously, is the same as the collection of pairs which solve just one the equations.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<computation>
+					<left>5x-4y</left>
+					<center>=</center>
+					<right>1</right>
+					<left>x + 2y</left>
+					<center>=</center>
+					<right>3</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solution set of each equation is a line in <latex>\RNr[2]</latex>. The two lines are not parallel. So their intersection is a single point. This means that the two equations have exactly one common solution.</para>
+				</answer>
+				<solution>
+					<para>The solutions of each of the two equations form a line in . To determine if these lines are parallel, we check if their normal vectors are parallel. We find:</para>
+					<computation>
+						<left>\Vect{n}_1</left>
+						<center>=</center>
+						<right>(5,-4)</right>
+						<left>\Vect{n}_2</left>
+						<center>=</center>
+						<right>(1,2)</right>
+					</computation>
+					<para>There is 
+						<subordinate>
+							<hot>no number</hot>
+							<info>
+								<caption>Why is there no such number</caption>
+								<para>Suppose <latex>t</latex> is such a number. Consider the first coordinates of <latex>\Vect{n}_1</latex> and <latex>\Vect{n}_2</latex>. We find</para>
+								<computation>
+									<left>5</left>
+									<center>=</center>
+									<right>t\cdot 1</right>
+								</computation>
+								<para>and, therefore, <latex>t=5</latex>. Now consider the second coordinates of <latex>\Vect{n}_1</latex> and <latex>\Vect{n}_2</latex>. We find</para>
+								<computation>
+									<left>4</left>
+									<center>=</center>
+									<right>t\cdot 2</right>
+								</computation>
+								<para>and, therefore, <latex>t=2</latex>. Thus <latex>t=5</latex> and, simultaneously, <latex>t=2</latex>. This is impossible.</para>
+							</info>
+						</subordinate>
+						<latex>t</latex> in <latex>\RNr</latex> with <latex>\Vect{n}_1 = t\cdot \Vect{n}_2</latex>. Hence, the two lines which form the solutions of the two given equations are not parallel. Therefore, the lines intersect in exactly one point. Therefore the two equations have exactly one common solution.</para>
+				</solution>	
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<computation>
+					<left>8x + 12y</left>
+					<center>=</center>
+					<right>7</right>
+					<left>10x + 15y</left>
+					<center>=</center>
+					<right>10</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solutions of the two equations form two distinct parallel lines in <latex>\RNr[2]</latex>. As these lines have no point in common, the equations have no common solutions. Alternate ways of expressing the same conclusion are: &lsquo;The two equations are inconsistent&raquo; or &lsquo;the set of solutions of the given system of linear equations is empty&rsquo;.</para>
+				</answer>
+				<solution>
+					<para>The solutions of each of the given linear equations form a line in <latex>\RNr[2]</latex>. To determine if these lines are parallel we compare their normal vectors. We find:</para>
+					<computation>
+						<left>\Vect{n}_1</left>
+						<center>=</center>
+						<right>(8,12) = 4\cdot (2,3)</right>
+						<left>\Vect{n}_2</left>
+						<center>=</center>
+						<right>(10,15) = 5\cdot (2,3)</right>
+					</computation>
+					<para>So <latex magnify="yes">\Vect{n}_2 = \tfrac{5}{4}\cdot \Vect{n}_1</latex>, implying that the two lines are parallel. To determine if the two lines are the same or have no point in common, we consider the augmented normal vectors. We find</para>
+					<computation>
+						<left>\Vect{a}_1</left>
+						<center>=</center>
+						<right>(8,12,7)</right>
+						<left>\Vect{a}_2</left>
+						<center>=</center>
+						<right>(10,15,10)</right>
+					</computation>
+					<para>Now <latex>(5/4)\Vect{a}_1 = (10,15,\tfrac{35}{4} \neq \Vect{a}_2</latex>. Therefore the extended normal vectors are not parallel, implying that the two lines have no point in common. This means that the two equations have no common solution. We also say: &lsquo;the set of solutions of the given system of linear equations is empty&rsquo;, or &lsquo;the two equations are inconsistent&rsquo;.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>In each of the problems below, describe the relationship between the solution sets of the two linear equations given. Then draw conclusions about the simultaneous solutions of both equations</para>
+		</problem>
+		<part>
+			<problem>
+				<computation>
+					<left>10x+6y+14z</left>
+					<center>=</center>
+					<right>-12</right>
+					<left>-5x-3y-7z</left>
+					<center>=</center>
+					<right>-6</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solution set of each equation is a plane in <latex>\RNr[3]</latex>. The two planes are parallel and distinct. As these planes have no point in common, the equations have no common solution. In other words, the set of solutions of the given system of linear equations is empty, or &lsquo;the equations are inconsistent&rsquo;.</para>
+				</answer>
+				<solution>
+					<para>Each of the given linear equations represents a hyperplane in <latex>\RNr[3]</latex>; i.e. a plane in the conversational use of the word. So our task is to determine how these planes are related to each other.</para>
+					<para>To determine if these 
+						<subordinate>
+							<hot>planes are parallel</hot>
+							<info>
+								<para>Remember: Given two linear equations in <latex>n</latex> variables, the solution set of each of them forms a hyperplane in <latex>\RNr[n]</latex>. These two hyperplanes are parallel exactly when their normal vectors are parallel.</para>
+							</info>
+						</subordinate>, we check if the normal vectors to these lines are parallel. We find:</para>
+					<computation>
+						<left>\Vect{n}_1</left>
+						<center>=</center>
+						<right>(10,6,14) = 2\cdot (5,3,7)</right>
+						<left>\Vect{n}_2</left>
+						<center>=</center>
+						<right>(-5,-3,-7) = (-1)\cdot (5,3,7)</right>
+					</computation>
+					<para>So the two normal vectors are parallel. So the two planes of solutions of the given equations are parallel. We need to determine whether these solution planes are distinct or equal. To this end we consider the augmented normal vectors.</para>
+					<computation>
+						<left>\Vect{a}_1</left>
+						<center>=</center>
+						<right>(10,6,14,-12) = 2\cdot (5,3,7,-6)</right>
+						<left>\Vect{a}_2</left>
+						<center>=</center>
+						<right>(-5,-3,-7,-6) = (-1)\cdot (5,3,7,6)</right>
+					</computation>
+					<para>The vectors <latex>(5,3,7,–6)</latex> and <latex>(5,3,7,6)</latex> are  
+						<subordinate>
+							<hot>not parallel</hot>
+							<info>
+								<caption>Why are these vectors not parallel?</caption>
+								<para>Suppose <latex>\Vect{a}_1</latex> were parallel to <latex>\Vect{a}_2</latex>. Then we would have <latex>\Vect{a}_1 = t\cdot \Vect{a}_2</latex> for some number <latex>t</latex>. Comparing the first three coordinates of these vectors requires <latex>t=-2</latex>. But comparing the fourth coordinates forces <latex>t=2\neq -2</latex>. Therefore no such <latex>t</latex> exists. The two vectors are not parallel.</para>
+							</info>
+						</subordinate>
+						. Therefore the two planes of solutions are distinct and parallel, hence have no point in common. Consequently the given system of linear equations has no common solution. – The set of solutions of the system is empty.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<computation>
+					<left>w-2x + 3y+z</left>
+					<center>=</center>
+					<right>3</right>
+					<left>2w+y-z</left>
+					<center>=</center>
+					<right>-1</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solution set of each equation is a hyperplane in <latex>\RNr[4]</latex>. These hyperplanes are not parallel. Therefore the two equations have infinitely many common solutions.</para>
+				</answer>
+				<solution>
+					<para>The solution set of each equation is a hyperplane in <latex>\RNr[4]</latex>. To determine if these hyperplanes are parallel we consider their normal vectors. We find:</para>
+					<computation>
+						<left>\Vect{n}_1</left>
+						<center>=</center>
+						<right>(1,-2,3,1)</right>
+						<left>\Vect{n}_2</left>
+						<center>=</center>
+						<right>(2,0,1,-1)</right>
+					</computation>
+					<para>These normal vectors are not parallel. Therefore the corresponding hyperplanes are not parallel. We conclude that the two hyperplanes have infinitely many points in common. Each of these common points corresponds to a common solution of both equations. Consequently, the given system of linear equations has infinitely many solutions.</para>
+				</solution>	
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<computation>
+					<left>39x + 52y -26z</left>
+					<center>=</center>
+					<right>13</right>
+					<left>21x + 28y - 14z</left>
+					<center>=</center>
+					<right>7</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solutions of each of the two linear equations form a plane in <latex>\RNr[3]</latex>. These two planes are equal. Therefore the solutions of one of the equations are at the same time solutions of the other. Consequently, the given system of linear equations has infinitely many solutions.</para>
+				</answer>
+				<solution>
+					<para>The solutions of each of the given linear equations form a line in <latex>\RNr[3]</latex>. To determine if these planes are parallel we compare their normal vectors. We find:</para>
+					<computation>
+						<left>\Vect{n}_1</left>
+						<center>=</center>
+						<right>(39,52,-26) = 13\cdot (3,4,-2)</right>
+						<left>\Vect{n}_2</left>
+						<center>=</center>
+						<right>(21,28,-14) = 7\cdot (3,4,-2)</right>
+					</computation>
+					<para>So <latex>\Vect{n}_1</latex> is parallel to <latex>\Vect{n}_2</latex>, implying that the two planes are parallel. To determine if the two planes are the same or have no point in common, we consider the augmented normal vectors. We find</para>
+					<computation>
+						<left>\Vect{a}_1</left>
+						<center>=</center>
+						<right>(39,52,-26,13) = 13\cdot (3,4,-2,1)</right>
+						<left>\Vect{a}_2</left>
+						<center>=</center>
+						<right>(21,28,-14,7) = 7\cdot (3,4,-2,1)</right>
+					</computation>
+					<para>So <latex>\Vect{a}_1</latex> and <latex>\Vect{a}_2</latex> are parallel. This means that the two planes of solutions of the given equations coincide. Therefore every solution of one of the equations is, at the same time, a solution of the entire system. In particular, there are infinitely many solutions.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<computation>
+					<left>39x + 52y -26z</left>
+					<center>=</center>
+					<right>13</right>
+					<left>21x + 28y - 14z</left>
+					<center>=</center>
+					<right>0</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solutions of each of the two linear equations form a plane in <latex>\RNr[3]</latex>. These two planes are distinct. So they have no point in common. Therefore the solutions of common solutions is empty.</para>
+				</answer>
+				<solution>
+					<para>From the previous problem we know already that the solution planes of the two equations are parallel. We see immediately that</para>
+					<math.display>
+						<latex>x=0,\quad y=0,\quad z=0</latex>
+					</math.display>
+					<para>is a solution of the second equation, but not of the first. Therefore the solution planes are distinct. Consequently they have no point in common, implying that the given system of linear equations has no common solution. The set of solutions of the given system of linear equations is empty.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

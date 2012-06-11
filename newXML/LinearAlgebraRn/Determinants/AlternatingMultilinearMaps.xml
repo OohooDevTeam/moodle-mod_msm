@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_AlternatingMultilinearMpas"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Alternating Multilinear Functions</title>
+      <plain.title>Alternating Multilinear Functions</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>This section is more theoretical. It develops the determinant operation as a special case of functions 
+			<subordinate>
+                     <hot>
+                        <math>
+                           <latex>F\from M_{nn} \to \RNr</latex>
+                        </math>
+                     </hot>
+                     <info>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>M_{nn}</latex>
+                              </math> denotes the set of all matrices of size <math>
+                                 <latex>(n,n)</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+			which are 
+			<subordinate>
+                     <hot>linear in each column</hot>
+                     <companion>
+                        <unit.ref unitId="Expl_DeterminantMultilinear"/>
+                        <info>
+                           <para>
+                              <para.body>See details of this property</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>
+			 and have the 
+			 <subordinate>
+                     <hot>alternating property</hot>
+                     <info>
+                        <info.caption>What does ‘alternating’ mean?</info.caption>
+                        <para>
+                           <para.body>If <math>
+                                 <latex>\Mtrx{A} = [A_1\ \dots\ A_j\ \dots\ A_k\ \dots\ A_n]</latex>
+                              </math> is a <math>
+                                 <latex>(n,n)</latex>
+                              </math>-matrix with columns <math>
+                                 <latex>A_1,\dots ,A_n</latex>
+                              </math>, the alternating property of the determinant operation means that</para.body>
+                        </para>
+                        <math.display>
+                           <latex>\det [A_1\ \dots\ A_j\ \dots\ A_k\ \dots\ A_n] = -\det[A_1\ \dots\ A_k\ \dots\ A_j\ \dots\ A_n]</latex>
+                        </math.display>
+                        <para>
+                           <para.body>Here we have interchanged the columns numbered <math>
+                                 <latex>j</latex>
+                              </math> and <math>
+                                 <latex>k</latex>
+                              </math>. All other columns remain in their positions. The effect on the determinant is: it changes its sign. Consequently, if we interchange columns of a matrix repeatedly, say <math>
+                                 <latex>r</latex>
+                              </math> times, then the determinant of the original matrix and the determinant of the final matrix differ by the sign <math>
+                                 <latex>(-1)^r</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>.</para.body>
+            </para>
+            <para>
+               <para.body>We know that the determinant function <math>
+                     <latex>\det\from M_{nn}\to \RNr</latex>
+                  </math> has both of these properties. We will see that these two properties ‘multilinear’ and ‘alternating’ alone characterize the determinant operation in the following sense: if <math>
+                     <latex>F\from M_{nn}\to \RNr</latex>
+                  </math> is alternating and multilinear then there exists a unique number <math>
+                     <latex>c</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math> such that <math>
+                     <latex>F=c\cdot \det</latex>
+                  </math>.
+		</para.body>
+               <index.glossary>
+                  <term>alternating</term>
+                  <term>multilinear function</term>
+               </index.glossary>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+</unit>

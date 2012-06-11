@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_OrientationComparison"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Orientation Comparison: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Let <math>
+                  <latex>V:= (1,1,1)^{\bot}</latex>
+               </math> be the orthogonal complement of the vector <math>
+                  <latex>(1,1,1)</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math>. Check that</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{rclrclrcl}
+\EuScript{B} &amp; := &amp; (\Vect{b}_1,\Vect{b}_2) &amp;\quad \Vect{b}_1 &amp; := &amp; (1,0,-1), &amp; \quad \Vect{b}_2 &amp; := &amp; (2,-1,-1) \\
+\EuScript{C} &amp; := &amp; (\Vect{c}_1,\Vect{c}_2) &amp;\quad \Vect{c}_1 &amp; := &amp; (0,-1,1), &amp; \quad \Vect{c}_2 &amp; := &amp; (1,-2,1)
+\end{array}
+
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>are two ordered bases of <math>
+                  <latex>V</latex>
+               </math>. Then test whether they determine the same or opposite orientations of <math>
+                  <latex>V</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>First we show that <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> and <math>
+                        <latex>\EuScript{C}</latex>
+                     </math> are bases of <math>
+                        <latex>V</latex>
+                     </math>: We know that</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dim(\span(1,1,1))</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>1</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dim(V)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dim(\RNr[3]) - \dim(\span(1,1,1)) = 2</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>This 
+				<subordinate>
+                        <hot>means</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
+                           <info>
+                              <info.caption>
+                                 <caption>Why is this so?</caption>
+                              </info.caption>
+						
+						
+						                        <para>
+                                 <para.body>Two linearly independent vectors in <math>
+                                       <latex>V</latex>
+                                    </math> span a <math>
+                                       <latex>2</latex>
+                                    </math>-dimensional subspace <math>
+                                       <latex>W</latex>
+                                    </math> of <math>
+                                       <latex>V</latex>
+                                    </math>. However, <math>
+                                       <latex>\dim(V) = 2</latex>
+                                    </math>, and so <math>
+                                       <latex>V=W</latex>
+                                    </math>. – Look up this theorem.</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>
+				that any two linearly independent vectors in <math>
+                        <latex>V</latex>
+                     </math> form a basis of <math>
+                        <latex>V</latex>
+                     </math>. So we check that</para.body>
+               </para>
+			            <ol>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{b}_1</latex>
+                           </math>, <math>
+                              <latex>\Vect{b}_2</latex>
+                           </math>, <math>
+                              <latex>\Vect{c}_1</latex>
+                           </math>, <math>
+                              <latex>\Vect{c}_2</latex>
+                           </math> belong to <math>
+                              <latex>V</latex>
+                           </math> by confirming that the dot product of each of these vectors with <math>
+                              <latex>(1,1,1)</latex>
+                           </math> is 0, and</para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{b}_1, \Vect{b}_2</latex>
+                           </math> are linearly independent because</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+\det
+\left[
+\begin{array}{rr}
+1 &amp; 2 \\
+0 &amp; -1
+\end{array}
+\right] = -1 \neq 0
+							</latex>
+					                </math.display>
+				              </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{c}_1, \Vect{c}_2</latex>
+                           </math> are linearly independent because</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+\det
+\left[
+\begin{array}{rr}
+0 &amp; 1 \\
+-1 &amp; -2
+\end{array}
+\right] = 1 \neq 0
+							</latex>
+					                </math.display>
+				              </li>
+			            </ol>
+			            <para>
+                  <para.body>To compare the orientations of <math>
+                        <latex>V</latex>
+                     </math> determined by <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> and <math>
+                        <latex>\EuScript{C}</latex>
+                     </math> we look first for the matrix which converts from <math>
+                        <latex>\EuScript{C}</latex>
+                     </math>-coordinates to <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>-coordinates. To this end we express the basis vectors of <math>
+                        <latex>\EuScript{C}</latex>
+                     </math> as linear combinations of those of <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>.</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rcccccl}
+\Vect{c}_1 &amp; = &amp; (0,-1,1) &amp; = &amp; -2(1,0,-1) + (2,-1,-1) &amp; = &amp; -2\Vect{b}_1 + 1\Vect{b}_2 \\
+\Vect{c}_2 &amp; = &amp; (1,-2,1) &amp; = &amp; -3(1,0,-1) + 2(2,-1,-1) &amp; = &amp; -3\Vect{b}_1 + 2\Vect{b}_2
+\end{array}
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore,</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+C_{\EuScript{B}}\EuScript{C}} = 
+\left[
+\begin{array}{rr}
+-2 &amp; -3 \\
+1 &amp; 2
+\end{array}
+\right]\quad \text{and}\quad
+\det(C_{\EuScript{B}\EuScript{C}}) = -1 &lt; 0
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore the ordered bases <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> and <math>
+                        <latex>\EuScript{C}</latex>
+                     </math> determine opposite orientations of  <math>
+                        <latex>V</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

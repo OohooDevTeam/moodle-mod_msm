@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book
+	http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_NewContinuousFromOld">
+	<headers>
+		<full>New Continuous Functions from Old</full>
+		<toc>New Continuous Functions from Old</toc>
+		<short>New Continuous from Old</short>
+	</headers>
+	<intro>
+		<para>Here we present a number of operations which produce new continuous functions from continuous given ones. Specifically:</para>
+		<ul>
+			<li><para>The sum of two continuous function <latex>f,g\from D\to \RNr</latex> is continuous.</para></li>
+			<li><para>The product of two continuous function <latex>f,g\from D\to \RNr</latex> is continuous.</para></li>
+			<li><para>The composite of two continuous functions is continuous.</para></li>
+		</ul>
+		<para>Combining these results with the fact that the identity function on <latex>\RNr</latex> is continuous, we see that</para>
+		<ul>
+			<li><para>Polynomial functions are continuous, and</para></li>
+			<li><para>rational functions are continuous away from the <latex>0</latex>&rsquo;s of the denominator.</para></li>
+		</ul>
+		<para>We close this section with the &lsquo;pasting lemma&rsquo;. It says that two continuous functions</para>
+		<para align="center"><latex>f\from \OCIntrvl{a}{b}\to \RNr</latex> &nbsp; and &nbsp; <latex>g\from \COIntrvl{b}{c}\to \RNr</latex></para>
+		<para>may be &lsquo;pasted&rsquo; together so as to obtain a continuous <latex>\OOIntrvl{a}{c}\to \RNr</latex> whenever <latex>f(b)=g(b)</latex>.</para>
+	</intro>
+	<section.body>
+		<xi:include href="SumProdCompContinuous_Thm.xml"/>
+		<xi:include href="QuotientContinuous_Thm.xml"/>
+		<xi:include href="RationalFunctionContinuous_Thm.xml"/>
+		<xi:include href="PastingLemma_Thm.xml"/>
+		<para></para>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_ContinuousFunctionsNewFromOld"/>
+<!--		<exercise.pack.ref exercisePackID="Exe_SequenceConvergence"/> -->
+	</studymaterials>
+</section>

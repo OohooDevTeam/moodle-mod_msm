@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_Diagonalizable">
+	<headers>
+		<full>Diagonalizable Matrices</full>
+		<toc>Diagonalizable Matrices</toc>
+		<short>Diagonalizable Matrices</short>
+	</headers>
+	<intro>
+		<para>Here we consider the situation where a given <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> has a basis <latex>\EuScript{B}</latex> of eigenvectors for <latex>\RNr[n]</latex>. This happens if each eigenvalue <latex>\lambda</latex> has algebraic multiplicity equal to the dimension of its eigenspace. Changing from standard coordinates to <latex>\EuScript{B}</latex>-coordinates, results in a diagonal matrix <latex>\Mtrx{D}</latex> with</para>
+		<computation>
+			<left>\Mtrx{D}</left>
+			<center>=</center>
+			<right>\Mtrx{C}_{\EuScript{B}\EuScript{S}} \Mtrx{A} \Mtrx{C}_{\EuScript{S}\EuScript{B}}</right>
+		</computation>
+		<para>Therefore we call such a matrix <latex>\Mtrx{A}</latex> diagonalizable.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_DiagonalizableMatrix">
+			<caption>Diagonalizable matrix</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Diagonalizable_Sub"/>
+				<info>
+					<caption>Explanation</caption>
+					<para>An explanation of the concept of a diagonalizable matrix.</para>
+				</info>
+			</associate>
+			
+			<para>An <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> is called diagonalizable if there exists and invertible matrix <latex>\Mtrx{C}</latex> such that
+				<index.glossary>
+					<term>diagonalizable matrix</term>
+					<info>
+						<caption>Diagonalizable matrix</caption>
+						<para>An <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> is called diagonalizable if there exists and invertible matrix <latex>\Mtrx{C}</latex> such that</para>
+						<computation>
+							<left>\Mtrx{D}</left>
+							<center>=</center>
+							<right>\Mtrx{C}^{-1}\cdot \Mtrx{A} \Mtrx{C}</right>
+						</computation>
+						<para>is a diagonal matrix.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>diagonalizable</term>
+					<info>
+						<caption>Diagonalizable matrix</caption>
+						<para>An <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> is called diagonalizable if there exists and invertible matrix <latex>\Mtrx{C}</latex> such that</para>
+						<computation>
+							<left>\Mtrx{D}</left>
+							<center>=</center>
+							<right>\Mtrx{C}^{-1}\cdot \Mtrx{A} \Mtrx{C}</right>
+						</computation>
+						<para>is a diagonal matrix.</para>
+					</info>
+				</index.glossary>
+			</para>
+			<computation>
+				<left>\Mtrx{D}</left>
+				<center>=</center>
+				<right>\Mtrx{C}^{-1}\cdot \Mtrx{A} \Mtrx{C}</right>
+			</computation>
+			<para>is a diagonal matrix.</para>
+		</def>
+		
+		<para>We use the following theorem to detect diagonalizable matrices. Further, if a matrix <latex>\Mtrx{A}</latex> is diagonalizable, it provides a method to find a matrix <latex>\Mtrx{C}</latex> such that <latex>\Mtrx{C}^{-1} \Mtrx{A} \Mtrx{C}</latex> is diagonal.</para>
+		<xi:include href="DiagonalizabilityTest_Thm.xml"/>
+		<para>Some diagonalizable matrices are easy to recognize:</para>
+		<xi:include href="SymmetricDiagonalizable_Thm.xml"/>
+		<para>We have seen that diagonalizing a matrix helps us in determining the transformation properties of a given matrix. But there are other reasons why one might want to diagonalize a matrix <latex>\Mtrx{A}</latex>. For example, the task of computing a (high) power <latex>\Mtrx{A}^r</latex> can be quite labor intensive, especially if <latex>r</latex> is large. The following result tells us, however, that this task can be simplified hugely if <latex>\Mtrx{A}</latex> is diagonalizable.</para>
+		<xi:include href="MatrixExponentiation_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_Diagonalize"/>
+	</studymaterials>
+</section>

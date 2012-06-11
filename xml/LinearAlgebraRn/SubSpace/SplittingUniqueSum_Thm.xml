@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_SplittingUniqueSum">
+	<caption>Splitting gives unique sum expression</caption>
+	<statement>
+		<para>Given a subspace <latex>W</latex> of <latex>\RNr[n]</latex>, together with a splitting <latex>W=U\dotplus V</latex>, each <latex>\Vect{w}\in W</latex> can be expressed in exactly one way as <latex>\Vect{w}=\Vect{u}+\Vect{v}</latex>, with <latex>\Vect{u}\in U</latex> and <latex>\Vect{v}\in V</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>From the property that <latex>W=\span(U\cup V)</latex>, we deduce that <latex>\Vect{w}\in W</latex> can be expressed in some way as <latex>\Vect{w}=\Vect{u}+\Vect{v}</latex> with <latex>\Vect{u}\in U</latex> and <latex>\Vect{v}\in V</latex>. It remains to show that this is the only way to achieve such an expression. So consider the situation where there are <latex>\Vect{u},\Vect{u}'\in U</latex> and <latex>\Vect{v},\Vect{v}'\in V</latex> with</para>
+		<math.display>
+			<latex>\Vect{u} + \Vect{v} = \Vect{w} = \Vect{u}' + \Vect{v}'</latex>
+		</math.display>
+		<para>We then have</para>
+		<computation>
+			<left>\Vect{u} - \Vect{u}'</left>
+			<center>=</center>
+			<right>\Vect{v}' - \Vect{v}</right>
+		</computation>
+		<para>Now <latex>(\Vect{u}-\Vect{u}')\in U</latex> because <latex>U</latex> is closed under vector addition and scalar multiplication, and <latex>(\Vect{v}'-\Vect{v})\in V</latex> because <latex>V</latex> is closed under vector addition and scalar multiplication. This means that <latex>(\Vect{u}-\Vect{u}')</latex> belongs to both, <latex>U</latex> and <latex>V</latex> and, therefore,</para>
+		<computation>
+			<left>\Vect{u} - \Vect{u}'</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+			<left>\Vect{u}</left>
+			<center>=</center>
+			<right>\Vect{u}'</right>
+		</computation>
+		<para>The identity <latex>\Vect{v}=\Vect{v}'</latex> follows with a similar argument. This proves the claim.</para>
+	</proof>
+</theorem>

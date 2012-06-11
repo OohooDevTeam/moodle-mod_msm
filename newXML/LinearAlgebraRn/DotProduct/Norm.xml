@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_NormOfVector"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Norm of a Vector</title>
+      <plain.title>Norm</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The length of a vector is just the length of any arrow <subordinate>
+                     <hot>representing</hot>
+                     <info>
+                        <info.caption>arrow representing a vector</info.caption>
+                        <para>
+                           <para.body>Recall that a vector consists of all those arrows of a given direction and length. Any one of these arrows is said to represent the vector.</para.body>
+                        </para>
+                     </info>
+                  </subordinate> it. In this section we present the basic properties of the norm operation on vectors.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_NormOfVector">
+               <caption>Norm of a Vector</caption>
+               <associate type="Example">
+                  <info>
+                     <info.caption>Example of a Norm Computation</info.caption>
+                     <para>
+                        <para.body>The norm of the vector <math>
+                              <latex>\Vect{x} = (1,2,2)</latex>
+                           </math> in <math>
+                              <latex>\RNr[3]</latex>
+                           </math> is</para.body>
+                     </para>
+                     <math.display>
+                        <latex>\abs{\Vect{x}} = \sqrt{ 1^2 + 2^2 + 2^2 } = 3</latex>
+                     </math.display>
+                  </info>
+               </associate>
+               <associate type="Comment">
+                  <info>
+                     <info.caption>Comment</info.caption>
+                     <para>
+                        <para.body>Thus the length of <math>
+                              <latex>\Vect{x}</latex>
+                           </math> is obtained by summing up the squares of the components of <math>
+                              <latex>\Vect{x}</latex>
+                           </math>, and then taking the square root.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>The length or norm of a vector <math>
+                           <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
+                        </math> in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> is given by </para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>|\Vect{x}|</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>|\Vect{x}|</latex>
+                                 </math> denotes the norm or length of a vector.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>length</term>
+                        <term>of a vector</term>
+                        <info>
+                           <para>
+                              <para.body>The length of a vector <math>
+                                    <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
+                                 </math> in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> is given by</para.body>
+                           </para>
+                           <math.display>
+                              <latex>|\Vect{x}| := \sqrt{x_{1}^{2} + \cdots + x_{n}^{2}}</latex>
+                           </math.display>
+                           <para>
+                              <para.body>Click to jump to the section where it is defined.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>vector</term>
+                        <term>length</term>
+                        <info>
+                           <para>
+                              <para.body>The length of a vector <math>
+                                    <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
+                                 </math> in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> is given by</para.body>
+                           </para>
+                           <math.display>
+                              <latex>|\Vect{x}| := \sqrt{x_{1}^{2} + \cdots + x_{n}^{2}}</latex>
+                           </math.display>
+                           <para>
+                              <para.body>Click to jump to the section where it is defined.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>norm</term>
+                        <term>of a vector</term>
+                        <info>
+                           <para>
+                              <para.body>The norm or length of a vector <math>
+                                    <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
+                                 </math> in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> is given by</para.body>
+                           </para>
+                           <math.display>
+                              <latex>|\Vect{x}| := \sqrt{x_{1}^{2} + \cdots + x_{n}^{2}}</latex>
+                           </math.display>
+                           <para>
+                              <para.body>Click to jump to the section where it is defined.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>vector</term>
+                        <term>norm</term>
+                        <info>
+                           <para>
+                              <para.body>The norm of a vector <math>
+                                    <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
+                                 </math> in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> its length. It is given by</para.body>
+                           </para>
+                           <math.display>
+                              <latex>|\Vect{x}| := \sqrt{x_{1}^{2} + \cdots + x_{n}^{2}}</latex>
+                           </math.display>
+                           <para>
+                              <para.body>Click to jump to the section where it is defined.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>|\Vect{x}| := \sqrt{x_{1}^{2} + \cdots + x_{n}^{2}}</latex>
+                  </math.display>
+               </def.body>
+            </def>
+            <para>
+               <para.body>By design, <math>
+                     <latex>|\Vect{x}|</latex>
+                  </math> is a non-negative number which gives the 
+			<subordinate>
+                     <hot>length of any arrow</hot>
+                     <companion>
+                        <showme.pack.ref showmePackID="Exa_ArrowLength"/>
+                        <info>
+                           <para>
+                              <para.body>An example of computing the length of an arrow.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate> representing <math>
+                     <latex>\Vect{x}</latex>
+                  </math>. Next we formulate the basic properties of the norm operation.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Norm_Prop.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_Norm"/>
+   </studymaterials>
+</unit>

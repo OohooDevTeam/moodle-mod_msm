@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Hyperspaces">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+   <title>Examples of Hyperspaces</title>
+	<caption>Hyperspaces - Examples</caption>
+	<showme>
+		<statement>
+			<para>The set of solutions of the equation</para>
+			<math.display>
+				<latex>{\color{red} 2}x + {\color{blue} 3}y = 0</latex>
+			</math.display>
+			<para>forms the line through the origin of <latex>\RNr[2]</latex> which is <subordinate>
+				<hot>perpendicular</hot>
+				<info>
+					<caption>Why is this line perpendicular to c?</caption>
+					<para>Because <latex>{\color{red} 2}x+{\color{blue} 3}y = \DotPr{ ({\color{red} 2},{\color{blue} 3}) }{ (x,y) }</latex>
+					</para>
+				</info>
+			</subordinate> to the vector <latex>\Vect{c} = ({\color{red} 2},{\color{blue} 3})</latex>. This line is an example of a hyperspace in <latex>\RNr[2]</latex>.</para>
+			<para align="center">
+				<img src="ims/HyperSpace2D_Exmpl.gif"/>
+			</para>
+			<para>Notice that a linear equation of the form</para>
+			<math.display>
+				<latex>{\color{red} 2}x + {\color{blue} 3}y = 0</latex>
+			</math.display>
+			<para>always reveals a normal vector to the hyperspace of its solutions, namely the vector <latex>({\color{red} 2},{\color{blue} 3})</latex> of its coefficients.</para>
+		</statement>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>The set of solutions of the equation</para>
+			<math.display>
+				<latex>{\color{red} 2}x + {\color{red} 9}y {\color{red} - 3}z = 0</latex>
+			</math.display>
+			<para>forms the plane through the origin of <latex>\RNr[3]</latex> which is <subordinate>
+				<hot>perpendicular</hot>
+				<info>
+					<caption>Why is this plane perpendicular to n?</caption>
+					<para>A point <latex>(x,y,z)</latex> belongs to the given plane exactly when its position vector <latex>\Vect{x} = (x,y,z)</latex> is perpendicular to <latex>\Vect{n} = ({\color{red} 2},{\color{red} 9},{\color{red} -3})</latex>. This happens exactly when</para>
+					<math.display>
+						<latex>0 = \DotPr{ \Vect{n} }{ \Vect{x} } =  \DotPr{ ({\color{red} 2},{\color{red} 9},{\color{red} -3}) }{ (x,y,z) } = {\color{red} 2}x + {\color{red} 9}y {\color{red} -3}z</latex>
+					</math.display>
+				</info>
+			</subordinate> to the vector <latex>\Vect{n} = ({\color{red} 2},{\color{red} 9},{\color{red} -3})</latex>. This plane is an example of a hyperspace in <latex>\RNr[3]</latex>.</para>
+		</statement>
+	</showme>
+</showme.pack>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_EigenvectorEigenvalue"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Eigenvector / Eigenvalue: Example</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>With respect to standard coordinates of <math>
+                  <latex>\RNr[3]</latex>
+               </math>, the <math>
+                  <latex>(3,3)</latex>
+               </math>-matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> below describes the orthogonal projection of <math>
+                  <latex>\RNr[3]</latex>
+               </math> onto the <math>
+                  <latex>xy</latex>
+               </math>-plane.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{array}
+\right]\quad \text{gives projection}\quad
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+x \\ y \\ 0
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>Relate its transformation properties to its eigenvectors and eigenvalues.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>To visualize this projection, imagine light shining vertically onto the <math>
+                        <latex>xy</latex>
+                     </math>-plane. Then the projection sends each object in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> to its shadow in the <math>
+                        <latex>xy</latex>
+                     </math>-planae.</para.body>
+               </para>
+			            <para>
+                  <para.body>Therefore every vector in the <math>
+                        <latex>xy</latex>
+                     </math>-plane gets transformed into itself, that is a vector of the form <math>
+                        <latex>\Vect{v} = (x,y,0)</latex>
+                     </math> gets transformed into</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{A}\cdot \Vect{v} = 
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{array}
+\right]\, 
+\left[
+\begin{array}{c}
+x \\ y \\ 0
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+x \\ y \\ 0
+\end{array}
+\right] = 1\cdot \Vect{v}
+
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>This means that every nonzero vector of the form <math>
+                        <latex>\Vect{v}=(x,y,0)</latex>
+                     </math> is an eigenvector of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> with eigenvalue <math>
+                        <latex>\lambda_1 = 1</latex>
+                     </math>.</para.body>
+               </para>
+			
+			            <para>
+                  <para.body>On the other hand, this projection sends the entire <math>
+                        <latex>z</latex>
+                     </math>-axis to the <math>
+                        <latex>\Vect{0}</latex>
+                     </math>-vector, that is a vector of the form <math>
+                        <latex>\Vect{w}=(0,0,z)</latex>
+                     </math> gets transformed into</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+\Mtrx{A}\cdot \Vect{w} = 
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{array}
+\right]\, 
+\left[
+\begin{array}{c}
+0 \\ 0 \\ z
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+0 \\ 0 \\ 0
+\end{array}
+\right] = 0\cdot \Vect{w}
+
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>This means that every nonzero vector of the form <math>
+                        <latex>\Vect{w} = (0,0,z)</latex>
+                     </math> is an eigenvector of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> with eigenvalue <math>
+                        <latex>\lambda_2=0</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>	
+</showme.pack>

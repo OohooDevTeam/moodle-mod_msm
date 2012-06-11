@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_BasisDimension">
+	<title>Basis and Dimension - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The dimension of a sub vector space <latex>V</latex> of <latex>\RNr[n]</latex> is defined to be the number of vectors in any basis of <latex>V</latex>. In the series of pictures below, we illustrate the definition in the case where <latex>V=\RNr[3]</latex>.</para>
+		</block>
+		<block>
+			<para>A single nonzero vector in <latex>\RNr[3]</latex> determines one coordinate axis.</para>
+			<figure>
+				<img src="ims/BasisDimension_1.gif"></img>
+			</figure>
+		</block>
+		<block>
+			<para>A second vector, not parallel to the first, determines a second coordinate axis. These two vectors span a plane, and every vector in this plane can be expressed in exactly one way as a linear combination of the chosen vectors.</para>
+			<para align="center">
+				<img src="ims/BasisDimension_2.gif"></img> &nbsp; <img src="ims/BasisDimension_3.gif"></img>
+			</para>
+		</block>
+		<block>
+			<para>A third vector pointing outside the plane spanned by the first two vectors determines a third coordinate axis. Every vector in <latex>\RNr[3]</latex> can be expressed in exactly one way as a linear combination of the chosen vectors. These three vectors form a basis of <latex>\RNr[3]</latex>.</para>
+			<figure>
+				<img src="ims/BasisDimension_4.gif"></img>
+			</figure>
+		</block>
+		<block>
+			<para>In <latex>V=\RNr[3]</latex> the process of selecting basis vectors stops after three selections, because there is no more room for independent vectors.</para>
+			<para>In an arbitrary vector space <latex>V</latex>, we keep adding independent vectors until we cannot find any more. The vectors we have thus chosen form a basis of <latex>V</latex>, and the number of them is the dimension of <latex>V</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

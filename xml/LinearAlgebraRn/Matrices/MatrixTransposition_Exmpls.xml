@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_MatrixTransposition">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of Matrix Transposition</title>
+	<caption>Matrix Transposition</caption>
+	<showme>
+		<statement>
+			<para>The transpose of the <latex>(3,2)</latex>-matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					A\ =\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} & {\color{red}3} \\
+					{\color{blue}1} & {\color{red}4} \\
+					{\color{blue}6} & {\color{red}4}
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>is the <latex>(2,3)</latex>-matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					A^T\ =\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}7} & {\color{blue}1} & {\color{blue}6} \\
+					{\color{red}3} & {\color{red}4} & {\color{red}4}
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In general, the transpose of an <latex>(m,n)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					A\ =\ 
+					\left[\begin{array}{rrr}
+					a_{11} & \cdots & a_{1n} \\
+					\vdots & \ddots & \vdots \\
+					a_{m1} & \cdots & a_{mn}
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			<para>is the <latex>(m,n)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+					A^T\ &=\  
+					\left[\begin{array}{rrrrr}
+					a_{11} & \cdots & {\color{red}a_{1j}} & \cdots & a_{1n} \\
+					\vdots  &             & {\color{red}\vdots} &             & \vdots \\
+					a_{m1} & \cdots & {\color{red}a_{mj}} & \cdots & a_{mn}
+					\end{array}\right]^T \\
+					&=\ \left[\begin{array}{rrr}
+					a_{11} & \cdots & a_{m1} \\
+					\vdots &               & \vdots \\
+					{\color{red}a_{1j}} & \cdots & {\color{red}a_{mj}} \\
+					\vdots &               & \vdots \\
+					a_{1n} & \cdots & a_{mn}
+					\end{array}
+					\right]
+					\endaligned
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+</showme.pack>

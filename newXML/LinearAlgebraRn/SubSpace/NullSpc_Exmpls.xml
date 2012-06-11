@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_NullSpace"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Null Space: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the null space of the matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+3 &amp; 1 &amp; 7 \\
+-2 &amp; 1 &amp; 4 \\
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We are looking for the solutions of the vector equation</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					 
+\left[
+\begin{array}{rrr}
+3 &amp; 1 &amp; 7 \\
+-2 &amp; 1 &amp; 4 \\
+\end{array}
+\right]\cdot 
+\left[
+\begin{array}{r}
+x \\ y \\ z
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{cc}
+0 \\ 0
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>We see that the solutions of this vector equation correspond to the simultaneous solutions of the system of two homogeneous linear equations</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rcrcrcl}
+3x &amp; + &amp; y &amp; + &amp; 7z &amp; = &amp; 0 \\
+-2x&amp; + &amp; y &amp; + &amp; 4z &amp; = &amp; 0
+\end{array}
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The augmented coefficient matrix of this system of linear equations is</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rrr|r}
+3 &amp; 1 &amp; 7 &amp; 0 \\
+-2&amp; 1 &amp; 4 &amp; 0
+\end{array}
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The RREF of this matrix is</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rrr|r}
+1 &amp; 0 &amp; \tfrac{3}{5} &amp; 0 \\
+0 &amp; 1 &amp; \tfrac{26}{5}&amp; 0
+\end{array}
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>This means that <math>
+                        <latex>(x,y,z)</latex>
+                     </math> solves the system exactly when, for arbitrary <math>
+                        <latex>z</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math>,</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-\tfrac{3}{5}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>y</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-\tfrac{26}{5}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>In other words,</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(x,y,z)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>z\cdot (-\tfrac{3}{5},-\tfrac{26}{5},1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore, the null space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> consists of all vectors of the form <math>
+                        <latex>z\cdot (-\tfrac{3}{5},-\tfrac{26}{5},1)</latex>
+                     </math>, with <math>
+                        <latex>z</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> arbitrary. This is the line in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> through the origin in the direction of the vector <math>
+                        <latex>(-3,-26,5)</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

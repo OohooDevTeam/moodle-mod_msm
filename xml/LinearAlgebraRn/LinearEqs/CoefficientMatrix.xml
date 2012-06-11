@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_CoefficientMatrix">
+	<headers>
+	      <full>The Coefficient Matrix of a System of Linear Equations</full>
+		<toc>The Coefficient Matrix of a System of Linear Equations</toc>
+		<short>Coefficient Matrix</short>
+	</headers>
+	<intro>
+		<para>We are now going to learn how to work with systems of linear equations more economically. Observe that, when reducing a system of linear equations to 
+			<subordinate>
+				<hot>RREF</hot>
+				<info><para>RREF = <b>R</b>ow <b>R</b>educed <b>E</b>chelon <b>Form</b></para></info>
+			</subordinate>,
+			we really only manipulate its coefficients, not its variables. So, by carrying the variables along all the time we just do a lot of unnecessary work. &ndash; How can we do better?</para>
+		<para>We save ourselves a lot of work by extracting from the system its coefficients and writing them in a rectangle whose rows and columns resemble the original system. Thus we obtain the (augmented) coefficient matrix of the given system of linear equations. Now the operations on equations in a system translate into operations on rows in the associated augmented coefficient matrix. The details follow.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_CoefficientMatrix">
+			<caption>Coefficient Matrix</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_CoefficientMatrix"/>
+				<info><para>An example of a coefficient matrix</para></info>
+			</associate>
+			
+			<para>Given a system of linear equations</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{11}$} {\color{red} x_1} & + & \colorbox{lightgreen}{$a_{12}$} {\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{1n}$} {\color{red} x_n} & = & {\color{blue} c_1 } \\
+\colorbox{lightgreen}{$a_{21}$} {\color{red} x_1} & + & \colorbox{lightgreen}{$a_{22}$} {\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{2n}$} {\color{red} x_n} & = & {\color{blue} c_2 } \\
+%
+\vdots &  & \vdots &  & \ddots & & & \vdots & & {\color{blue} \vdots } \\
+\vdots &  & \vdots &  &  & \ddots & &  \vdots & & {\color{blue} \vdots } \\
+\colorbox{lightgreen}{$a_{m1}$} {\color{red} x_1} & + & \colorbox{lightgreen}{$a_{m2}$} {\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{mn}$} {\color{red} x_n} & = & {\color{blue} c_m} \\
+\end{array}
+						]]>
+				</latex>
+			</math.display>
+			
+			<para>its augmented coefficient matrix, and its coefficient matrix are the rectangular arrangements of numbers below</para>
+			
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="1" cellspacing="1">
+				<row>
+					<cell align="center"><para>Augmented Coefficient Matrix</para></cell>
+					<cell><para>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</para></cell>
+					<cell align="center"><para>Coefficient Matrix</para></cell>
+				</row>
+				<row>
+					<cell>
+						<math.display>
+							<latex>
+								<![CDATA[
+\begin{array}{cccccc}
+\colorbox{lightgreen}{$a_{11} $} & \colorbox{lightgreen}{$a_{12}$} & \cdots & \cdots & \colorbox{lightgreen}{$a_{1n}$} & {\color{blue} c_1 } \\
+\colorbox{lightgreen}{$a_{21} $} & \colorbox{lightgreen}{$a_{22}$} & \cdots & \cdots & \colorbox{lightgreen}{$a_{2n}$} & {\color{blue} c_2 } \\
+\vdots & \vdots & \ddots & & \vdots & {\color{blue} \vdots } \\
+\vdots & \vdots & & \ddots & \vdots & {\color{blue} \vdots } \\
+\colorbox{lightgreen}{$a_{m1} $} & \colorbox{lightgreen}{$a_{m2}$} & \cdots & \cdots & \colorbox{lightgreen}{$a_{mn}$} & {\color{blue} c_m }
+\end{array}
+						]]>
+							</latex>
+						</math.display>
+					</cell>
+					<cell><para>&nbsp;&nbsp;</para></cell>
+					<cell>
+						<math.display>
+							<latex>
+								<![CDATA[
+\begin{array}{ccccc}
+\colorbox{lightgreen}{$a_{11} $} & \colorbox{lightgreen}{$a_{12}$} & \cdots & \cdots & \colorbox{lightgreen}{$a_{1n}$} \\
+\colorbox{lightgreen}{$a_{21} $} & \colorbox{lightgreen}{$a_{22}$} & \cdots & \cdots & \colorbox{lightgreen}{$a_{2n}$} \\
+\vdots & \vdots & \ddots & & \vdots \\
+\vdots & \vdots & & \ddots & \vdots \\
+\colorbox{lightgreen}{$a_{m1} $} & \colorbox{lightgreen}{$a_{m2}$} & \cdots & \cdots & \colorbox{lightgreen}{$a_{mn}$} 
+\end{array}
+						]]>
+							</latex>
+						</math.display>
+						
+					</cell>
+				</row>
+			</table>
+		</def>
+		
+		<para>To find the solutions of a system of linear equations, we turn its augmented coefficient matrix into a matrix in RREF. To this end we apply row operations to the augmented coefficient matrix which correspond to operations on the rows of a system of linear equations. Here is the dictionary which translates between these two settings.</para>
+		
+		<table align="center" border="2" bordercolor="Maroon" cellpadding="0" cellspacing="2">
+			<row>
+				<cell align="center"><para><b>System Operation</b></para></cell>
+				<cell align="center"><para><b>Matrix Operation</b></para></cell>
+			</row>
+			<row>
+				<cell align="center"><para>Interchanging of two equations</para></cell>
+				<cell align="center"><para>Interchanging of two rows</para></cell>
+			</row>
+			<row>
+				<cell align="center"><para>Multiplying an equation by a nonzero number</para></cell>
+				<cell align="center"><para>Multiplying a row by a nonzero number</para></cell>
+			</row>
+			<row>
+				<cell align="center"><para>Adding a multiple of one equation to another</para></cell>
+				<cell align="center"><para>Adding a multiple of one row to another</para></cell>
+			</row>
+		</table>
+		
+		<para>Thus we can save ourselves quite a bit of 
+			<subordinate>
+				<hot>writing effort</hot>
+				<companion>
+					<showme.pack.ref showmePackID="Exa_ReductionRREF1"/>
+					<para>An example to illustrate how this works</para>
+				</companion>
+			</subordinate>
+			by working with the augmented coefficient matrix instead of the full system of linear equations.<!-- &ndash; With either approach, it’s easy to make silly little errors in the arithmetic while carrying out row operations. To make life easier, try using our 
+			<subordinate>
+				<hot>row reduction calculator</hot>
+				<link href="../../LearningObjects/RowReduction/RReduction.htm" type="html" target="RowReduction"></link>
+			</subordinate>.-->
+		</para>
+		
+		<xi:include href="RREFMatrix_Thm.xml"/>
+		
+		<def type="Definition" id="Def_RankSystemLinearEquations">
+			<caption>Rank</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_LinearEqsRank"/>
+				<info><caption>Example</caption>
+					<para>Examples of the rank of a system of linear equations</para>
+				</info>
+			</associate>
+			<para>The rank of a system of linear equations is the number of leading <latex>1</latex>&rsquo;s in the RREF of its non-augmented coefficient matrix.</para>
+		</def>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_MatrixRREF"/>
+		<exercise.pack.ref exercisePackID="Exe_MatrixRREF1"/>
+	</studymaterials>
+</section>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_Root2NotRational"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Square Root of 2 is not a Rational Number</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>According to the Theorem of Pythagoras the lengths of the sides of a  right triangle are related by the identity</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>c^2</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion xmlns="">
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>Here <math>
+                                    <latex>c</latex>
+                                 </math> denotes the hypothenuse, i.e. the side opposite to the right angle, of the right triangle. </para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>a^2 + b^2</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Therefore, in a square of edge length 1, we find for the length of the diagonal</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>c^2</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>1^2 + 1^2 = 2</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>which implies that <math>
+                     <latex>c=\sqrt{2}</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Square.png"/>
+            </media>
+            <para>
+               <para.body>Thus, from a geometric point of view, the number <math>
+                     <latex>\sqrt{2}</latex>
+                  </math> has a natural place in the number system. Yet, it is not the ratio of any two integers. One way to see this is by the following proof by contradiction:</para.body>
+            </para>
+            <para>
+               <para.body>The following argument will show that if there were integers <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math> such that <math>
+                     <latex>a/b = \sqrt{2}</latex>
+                  </math>, with no common divisor in <math>
+                     <latex>a,b</latex>
+                  </math>, then <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math> would have to be both even. But then <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math> have the common divisor <math>
+                     <latex>2</latex>
+                  </math>, a contradiction, and so the assumption that <math>
+                     <latex>\sqrt{2}</latex>
+                  </math> is a ratio of two integers must be false.</para.body>
+            </para>
+            <para>
+               <para.body>To see this argument, let's analyze what happens if there were integers <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math> satisfying <math>
+                     <latex>a/b = \sqrt{2}</latex>
+                  </math>. Through cancellation, we can then achieve that <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math> have no common divisor. Now we would then have the following observations:</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\sqrt{2}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\dfrac{a}{b}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>2</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\dfrac{a^2}{b^2}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>2b^2</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>a^2</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Now if <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math> are integers, this means that <math>
+                     <latex>a^2</latex>
+                  </math> and, hence, <math>
+                     <latex>a</latex>
+                  </math> is even. So we know that <math>
+                     <latex>a=2k</latex>
+                  </math> and, hence, <math>
+                     <latex>a^2=4k^2</latex>
+                  </math>. Substituting in the last identity above, we find,</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>2b^2</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>4k^2</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>b^2</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>2k^2</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Thus <math>
+                     <latex>b^2</latex>
+                  </math> and, hence, <math>
+                     <latex>b</latex>
+                  </math> are even. So we see that <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math> have the common divisor <math>
+                     <latex>2</latex>
+                  </math>, a contradiction to the assumption that <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math> have no common divisor.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Thus we have evidence that there are points on the number line which do not correspond to any ratio of integers. We call such numbers ‘irrational’ for short.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Some reports about the discovery of irrational numbers paint quite a dramatic picture: among historians there is wide agreement that, within the school of Pythagorean philosophers, Hippasus of Metapontum discovered that <math>
+                     <latex>\sqrt{2}</latex>
+                  </math> was irrational. Up to that point, however, the Pythagoreans believed that every number was a ratio of integers. Hippasus' discovery contradicted this belief, and according to some reports he was punished by being drowned at sea.
+				</para.body>
+               <index.author>
+                  <name>
+                     <name>
+                        <first> </first>
+                        <last>Pythagoras</last>
+                     </name>
+                  </name>
+                  <info>
+                     <info.caption>Pythagoras</info.caption>
+                     <para>
+                        <para.body>Appears here as the leader of Greek philosophers who believed that every number was a ratio of integers.</para.body>
+                     </para>
+                  </info>
+               </index.author>
+               <index.author>
+                  <name>
+                     <name>
+                        <first> </first>
+                        <last>Hippasus of Metapontum</last>
+                     </name>
+                  </name>
+                  <info>
+                     <info.caption>Hippasus of Metapontum</info.caption>
+                     <para>
+                        <para.body>Appears here as a member of Greek philosophers, the Pythagoreans, who believed that every number was a ratio of integers. Hippasus shattered this belief by showing that <math>
+                              <latex>\sqrt{2}</latex>
+                           </math> is not a rational number.</para.body>
+                     </para>
+                  </info>
+               </index.author>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

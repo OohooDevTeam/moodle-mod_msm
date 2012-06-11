@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_ChangeCoordinates">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Change Coordinates: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Converting from general coordinates to standard coordinates:  Consider these two ordered bases of <latex>\RNr[3]</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{ccclcclccl}
+\EuScript{S} & \StdBss{1} & = & (1,0,0) & \StdBss{2} & = & (0,1,0) & \StdBss{3} & = & (0,0,1) \\
+\EuScript{B} & \Vect{b}_1 & = & (2,-3,7) & \Vect{b}_2 & = & (-1,9,2) & \Vect{b}_3 & = & (4,2,-6)
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>Find the matrix <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex> which converts from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{S}</latex>-coordinates. Then find <latex>\Vect{x}_{\EuScript{S}}</latex> if <latex>\Vect{x}_{\EuScript{B}} = (2,0,3)</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>The column vectors of <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex> consist of the coordinate vectors of <latex>\Vect{b}_1</latex>, <latex>\Vect{b}_2</latex>, and <latex>\Vect{b}_3</latex> with respect to <latex>\EuScript{S}</latex>. As <latex>\EuScript{S}</latex> is the standard basis of <latex>\RNr[3]</latex>, we have</para>
+			<computation>
+				<left>(\Vect{b}_1)_{\EuScript{S}}</left>
+				<center>=</center>
+				<right>\Vect{b}_1 = (2,-3,7)</right>
+				<left>(\Vect{b}_2)_{\EuScript{S}}</left>
+				<center>=</center>
+				<right>\Vect{b}_2 = (-1,9,2)</right>
+				<left>(\Vect{b}_3)_{\EuScript{S}}</left>
+				<center>=</center>
+				<right>\Vect{b}_3 = (4,2,-6)</right>
+			</computation>
+			<para>Using these coordinate vectors as the column vectors of the coordinate conversion matrix <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>, we obtain</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{C}_{\EuScript{SB}}\ =\ 
+\left[\begin{array}{rrr}
+2 & -1 & 4 \\
+-3 & 9 & 2 \\
+7 & 2 & -6
+\end{array}\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Consequently,</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Vect{x}_{\EuScript{S}}\ =\ 
+\left[\begin{array}{rrr}
+2 & -1 & 4 \\
+-3 & 9 & 2 \\
+7 & 2 & -6
+\end{array}\right] \begin{bmatrix} 2 \\ 0 \\ 3 \end{bmatrix}\ =\ 
+\left[\begin{array}{r} 16 \\ 0 \\ -4 \end{array}\right]
+]]>
+				</latex>
+			</math.display>
+			<para>That is <latex>\Vect{x}_{\EuScript{S}} = (16,0,-4)</latex>.</para>
+		</answer>
+	</showme>	
+</showme.pack>

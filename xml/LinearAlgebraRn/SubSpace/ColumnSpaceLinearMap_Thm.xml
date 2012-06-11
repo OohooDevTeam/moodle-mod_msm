@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ColumnSpaceLinearMap">
+	<caption>Column space and image of linear map</caption>
+		
+	<statement>
+		<para>Let the <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> represent the linear map <latex>L\from \RNr[n]\to \RNr[m]</latex>. Then <latex>\Vect{y}\in \RNr[m]</latex> belongs to the image of <latex>L</latex> if and only if it belongs to the column space of <latex>\Mtrx{A}</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>We begin by recalling the definitions</para>
+		<ul>
+			<li><para>The image of <latex>L</latex> consists of all those <latex>\Vect{y}</latex> in <latex>\RNr[m]</latex> for which the equation <latex>L(\Vect{x} ) = \Vect{y}</latex> has a solution.</para></li>
+			<li><para>We know that, for each <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>, <latex>L(\Vect{x}) = A\cdot \Vect{x}</latex>.</para></li>
+			<li><para>Thus the image of <latex>L</latex> consists of all those <latex>\Vect{y} \in \RNr[m]</latex> for which the matrix equation <latex>\Mtrx{A}\Vect{x} = \Vect{y}</latex> has a solution. Now, we 
+				<subordinate>
+					<hot>know</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_ColumnSpaceLinearEq"/>
+						<para>Look up this fact.</para>
+					</crossref>
+				</subordinate>
+				that this matrix equation has a solution if and only if <latex>\Vect{y}</latex> is in the column space of <latex>\Mtrx{A}</latex>.</para></li>
+		</ul>
+		<para>This is what we wanted to show.</para>
+	</proof>
+</theorem>

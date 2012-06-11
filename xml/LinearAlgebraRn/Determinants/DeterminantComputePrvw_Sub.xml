@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_DeterminantCompute">
+	<title>Preview: Computing Determinants</title>
+	<sub.page.body>
+		<block>
+			<para>Determinants of square matrices are defined 
+				<subordinate>
+					<hot>recursively</hot>
+					<info>
+						<caption>How does a recursive definition work?</caption>
+						<para>To define a quantity <latex>Q</latex> depending on a number <latex>n</latex> of inputs recursively means:</para>
+						<ol>
+							<li><para>First define <latex>Q</latex> for a single input.</para></li>
+							<li><para>Using this information, define <latex>Q</latex> for two inputs.</para></li>
+							<li><para>Using knowledge of <latex>Q</latex> for two inputs, define <latex>Q</latex> for three inputs.</para></li>
+							<li><para>etc.</para></li>
+						</ol>
+					</info>
+				</subordinate>
+				as follows:</para>
+		</block>
+		
+		<block>
+			<para>The determinant of  a <latex>(1,1)</latex>-matrix <latex>\Mtrx{A} = [x]</latex> is</para>
+			<math.display>
+				<latex>\det(\Mtrx{A}) = \det [x] := x</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para>The determinant of a <latex>(2,2)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A = 
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_2 & y_2
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>is given by</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det(\Mtrx{A}) = \det
+\left[
+\begin{array}{cc}
+{\color{red} x_1} & y_1 \\
+{\color{red} x_2} & y_2
+\end{array}
+\right] := {\color{red} x_1}y_2 - {\color{red} x_2}y_1
+]]>
+				</latex>
+			</math.display>
+			<para>The recursive nature of this definition becomes more explicit if we write</para>
+			<math.display>
+				<latex>{\color{red} x_1}y_2 - {\color{red} x_2}y_1 = {\color{red} x_1}\cdot \det[ y_2 ] - {\color{red} x_2}\cdot \det [y_1]</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para>The determinant of a <latex>(3,3)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A = 
+\left[
+\begin{array}{ccc}
+{\color{red} x_1} & y_1 & z_1 \\
+{\color{red} x_2} & y_2 & z_2 \\
+{\color{red} x_3} & y_3 & z_3
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>is given by</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\det(\Mtrx{A}) &= \det
+\left[
+\begin{array}{ccc}
+{\color{red} x_1} & y_1 & z_1 \\
+{\color{red} x_2} & y_2 & z_2 \\
+{\color{red} x_3} & y_3 & z_3
+\end{array}
+\right] \\
+%
+&:= {\color{red} x_1}\cdot 
+\det\left[
+\begin{array}{cc}
+y_2 & z_2 \\
+y_3 & z_3
+\end{array}
+\right]\ -\ 
+{\color{red} x_2}\cdot 
+\det\left[
+\begin{array}{cc}
+y_1 & z_1 \\
+y_3 & z_3
+\end{array}
+\right]\ +\ {\color{red} x_3}\cdot 
+\det\left[
+\begin{array}{cc}
+y_1 & z_1 \\
+y_2 & z_2
+\end{array}
+\right]
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para>Now suppose the determinant of matrices of size <latex>(n,n)</latex> has been defined. Then the determinant of an <latex>(n+1,n+1)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A = 
+\left[
+\begin{array}{cccc}
+{\color{red} a_{1,1}} & a_{1,2} & \cdots & a_{1,n+1} \\
+{\color{red} a_{2,1}} & a_{2,2} & \cdots & a_{2,n+1} \\
+\vdots & \vdots & \ddots & \vdots \\
+{\color{red} a_{n+1,1}} & a_{n+1,2} & \cdots & a_{n+1,n+1} \\
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>is given by</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\det(\Mtrx{A}) &:= {\color{red} a_{1,1}}\cdot \det(A_{1,1}) - {\color{red} a_{2,1}}\cdot \det(A_{2,1}) + - \cdots \\
+	&\qquad \cdots + (-1)^{(n+1)+1} {\color{red} a_{n+1,1}}\cdot \det(A_{n+1,1})
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			
+			<para>In this formula <latex>A_{i,1}</latex> is the <latex>(n,n)</latex>-matrix which results from <latex>\Mtrx{A}</latex> by removing the <latex>i</latex>-th row and the first column.</para>
+		</block>
+		
+		<block>
+			<para>As you can see, this recursive formula for computing a determinant is not difficult in principle. However, the number of computational steps involved increases rapidly with the size of <latex>\Mtrx{A}</latex>.</para>
+			<para>Question: how many summands occur in the determinant of a <latex>(3,3)</latex>-matrix, respectively in the determinant of a <latex>(4,4)</latex>-matrix, respectively in the determinant of an <latex>(n,n)</latex>-matrix?</para>
+		</block>
+	</sub.page.body>
+</sub.page>

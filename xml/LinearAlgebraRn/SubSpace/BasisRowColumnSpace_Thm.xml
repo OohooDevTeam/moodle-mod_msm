@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_BasisRowColumnSpace">
+	<caption>Basis for row / column space</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_BasisRowSpace"/>
+		<info><para>An example of finding a basis for the row space of a matrix</para></info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_BasisColumnSpace"/>
+		<info><para>An example of finding a basis for the column space of a matrix</para></info>
+	</associate>
+	<statement>
+		<para>For an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> with row reduced echelon form <latex>\Mtrx{B}</latex> the following hold:</para>
+		<part partid="BasisRowSpace">
+			<para>A basis for the row space <latex>V</latex> of <latex>\Mtrx{A}</latex> is given by the nonzero rows of <latex>\Mtrx{B}</latex>; therefore <latex>\Dim{ V }=\Rnk{ \Mtrx{A} }</latex>.</para>
+		</part>
+		<part partid="BasisColumnSpace">
+			<para>A basis for the column space <latex>W</latex> of <latex>\Mtrx{A}</latex> is given by selecting from <latex>\Mtrx{A}</latex> the column vectors in those positions in which <latex>\Mtrx{B}</latex> has a leading <latex>1</latex>. Therefore, <latex>\Dim{ W }=\Rnk{ \Mtrx{A} }</latex>.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>BasisRowSpace</partref> Finding a basis for the row space of <latex>\Mtrx{A}</latex></caption>
+		<para>The argument consists of two parts. In the first part we show that <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> have the same row space. This is accomplished by showing that a row operation leaves the row space unchanged. In the second part of the argument we show that the nonzero row vectors of <latex>\Mtrx{B}</latex> are linearly independent. – Here are the details.</para>
+		<para><latex>\Mtrx{A}</latex> <i>and </i> <latex>\Mtrx{B}</latex> <i>have the same row space</i> &nbsp; We show that each of the three types of row operations used to reduce a matrix to RREF leaves its row space unchanged.</para>
+		<ul>
+			<li><para><b>Interchanging two rows</b> &nbsp; leaves the collection of row vectors unaltered, hence leaves the span of the row vectors unaltered.</para></li>
+			<li><para><b>Multiplying a row by a nonzero number</b> &nbsp; Suppose <latex>\Vect{a}_1,\dots ,\Vect{a}_m</latex> are the row vectors of a matrix. Now we alter this collection of vectors by replacing <latex>\Vect{a}_i</latex> by <latex>\Vect{b}_i:= s \Vect{a}_i</latex> with <latex>s\neq 0</latex>. The identity</para>
+				<computation>
+					<left>t_1 \Vect{a}_1 + \cdots + t_i \Vect{a}_i + \cdots + t_m \Vect{a}_m</left>
+					<center>=</center>
+					<right>t_1 \Vect{a}_1 + \cdots t_i(1/s)\Vect{b}_i + \cdots + t_m \Vect{a}_m</right>
+				</computation>
+				<para>is the key to showing that both collection of vectors span the same sub vector space of <latex>\RNr[n]</latex>.</para>
+			</li>
+			<li><para><b>Adding a multiple of one row to another</b> &nbsp; Suppose <latex>\Vect{a}_1,\dots ,\Vect{a}_m</latex> are the row vectors of a matrix. Now we alter this collection of vectors by replacing <latex>\Vect{a}_i</latex> by <latex>\Vect{b}_i := \Vect{a}_i + u \Vect{a}_j</latex>, <latex>i\neq j</latex>. Now if a linear combination of the original set of vectors is given by</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>t_1 \Vect{a}_1 + \cdots + t_i \Vect{a}_i + \cdots + t_j \Vect{a}_j + \cdots + t_m \Vect{a}_m</right>
+			</computation>
+				<para>then <latex>\Vect{x}</latex> is also a linear combination of the altered set of vectors:</para>
+				<computation>
+					<left>\Vect{x}</left>
+					<center>=</center>
+					<right>t_1 \Vect{a}_1 + \cdots + t_i \Vect{b}_i + \cdots + (t_j - t_i u) \Vect{a}_j + \cdots + t_m \Vect{a}_m</right>
+				</computation>
+				<para>Conversely, if a linear combination of the altered set of vectors is given by</para>
+				<computation>
+					<left>\Vect{y}</left>
+					<center>=</center>
+					<right>s_1 \Vect{a}_1 + \cdots + s_i \Vect{b}_i + \cdots + s_j \Vect{a}_j + \cdots + s_m \Vect{a}_m</right>
+				</computation>
+				<para>then <latex>\Vect{y}</latex> is also a linear combination of the original set of vectors:</para>
+				<computation>
+					<left>\Vect{y}</left>
+					<center>=</center>
+					<right>s_1 \Vect{a}_1 + \cdots + s_i \Vect{a}_i + \cdots + (s_i u + s_j) \Vect{a}_j + \cdots + s_m \Vect{a}_m</right>
+				</computation>
+				<para>Therefore both sets of vectors have the same span.</para>
+			</li>
+		</ul>
+		<para><b>Proof that the nonzero rows of a matrix in reduced row echelon form are linearly independent </b> &nbsp; We need to recall that a matrix in RREF has the following appearance.</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{cccccccccccccc}
+0 & \cdots & 1 & {*} & \cdots & {*} & 0 & {*} & \cdots & {*} & 0 & {*} & \cdots & {*} \\
+%
+0 & \cdots & 0 & 0 & \cdots & 0 & 1 & {*} & \cdots & {*} & 0 & {*} & \cdots & {*} \\
+%
+\vdots & \cdots & \vdots & & & & \vdots & & & & \vdots & & & \vdots \\
+%
+\vdots & \cdots & \vdots &  &  &  & \vdots & & & & \vdots & & & \vdots \\
+%
+0 & \cdots & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & {*} & \cdots & {*} \\
+%
+0 & \cdots & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 \\
+%
+\vdots & \cdots & \vdots &  &  &  & \vdots & & & & \vdots & & & \vdots \\
+%
+0 & \cdots & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 \\
+\end{array}
+]]>
+			</latex>
+		</math.display>
+		<para>From the nonzero rows, select the columns containing a leading <latex>1</latex>. The resulting matrix is the identity matrix of size <latex>(r,r)</latex>, where <latex>r</latex> denotes the rank. Its determinant is <latex>1\neq 0</latex>. Therefore the nonzero row vectors are linearly independent. The <latex>0</latex>-row vectors don't contribute to the row span. So the nonzero row vectors of <latex>\Mtrx{B}</latex> form a basis for the row space of <latex>\Mtrx{A}</latex>.</para>
+		
+		
+		
+		<caption><partref>BasisColumnSpace</partref> &nbsp; A basis for the column space of <latex>\Mtrx{A}</latex></caption>
+		<para>The matrix <latex>\Mtrx{B}</latex> has rank <latex>r</latex> and is of the form</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{cccccccccccccc}
+0 & \cdots & 1 & {*} & \cdots & {*} & 0 & {*} & \cdots & {*} & 0 & {*} & \cdots & {*} \\
+%
+0 & \cdots & 0 & 0 & \cdots & 0 & 1 & {*} & \cdots & {*} & 0 & {*} & \cdots & {*} \\
+%
+\vdots & \cdots & \vdots & & & & \vdots & & & & \vdots & & & \vdots \\
+%
+\vdots & \cdots & \vdots &  &  &  & \vdots & & & & \vdots & & & \vdots \\
+%
+0 & \cdots & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & {*} & \cdots & {*} \\
+%
+0 & \cdots & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 \\
+%
+\vdots & \cdots & \vdots &  &  &  & \vdots & & & & \vdots & & & \vdots \\
+%
+0 & \cdots & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 \\
+\end{array}
+]]>
+			</latex>
+		</math.display>
+		<para>The column vectors of <latex>\Mtrx{B}</latex> containing a leading <latex>1</latex> are given by</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+E_1\ =\ \left[\begin{array}{c}1 \\ 0 \\ 0 \\ \vdots \\ \vdots \\ \vdots \\ 0 \end{array}\right]\ ,\quad 
+E_2\ =\ \left[\begin{array}{c}0 \\ 1 \\ 0 \\ \vdots \\ \vdots \\ \vdots \\ 0 \end{array}\right]\ ,\ \cdots ,
+E_r\ =\ \left[\begin{array}{c}0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{array}\right]\ .
+]]>
+			</latex>
+		</math.display>
+		<para>These column vectors are linearly independent and span the column space of <latex>\Mtrx{B}</latex>. Therefore they form a basis for the column space of <latex>\Mtrx{B}</latex>. Let <latex>\EuScript{B}:= \Set{ C_1,\dots ,C_r }</latex> be the set of column vectors of <latex>\Mtrx{A}</latex> taken from those positions in which <latex>\Mtrx{B}</latex> has a leading <latex>1</latex>. While, in general, the column space of <latex>\Mtrx{A}</latex> is different from the column space of <latex>\Mtrx{B}</latex>, we will see that the column vectors of both matrices satisfy the same linear dependency relations and, as a consequence, that <latex>\EuScript{B}</latex> is a basis of <latex>\ColSp{\Mtrx{A} }</latex>. We begin by expressing <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> in terms of their column vectors.</para>
+		<math.display>
+			<latex>A=[A_1\ \ \cdots\ \ A_n]\quad \text{and}\quad B=[B_1\ \ \dots\ \ B_n]</latex>
+		</math.display>
+		<para>We know that, for every <latex>\Vect{x} = (x_1,\dots ,x_n)\in \RNr[n]</latex>,</para>
+		<math.display>
+			<latex>A \Vect{x} = \Vect{0}\quad \text{if and only if}\quad B \Vect{x} = \Vect{0}</latex>
+		</math.display>
+		<para>Explicity,</para>
+		<math.display>
+			<latex>x_1A_1 + \cdots + x_n A_n = \Vect{0}\quad \text{if and only if}\quad x_1B_1 + \cdots + x_nB_n = \Vect{0}</latex>
+		</math.display>
+		<para>After these preparations let us show that <latex>\EuScript{B}</latex> is linearly independent. Suppose</para>
+		<computation>
+			<left>t_1C_1 + \cdots + t_r C_r</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>We need to show that <latex>t_1=\cdots = t_r = 0</latex>. Form the vector</para>
+		<math.display>
+			<latex>\Vect{x} := (0,\dots ,0,t_1,0,\dots ,t_2, \dots\ \dots,t_r,0,\dots ,0)\in \RNr[n]</latex>
+		</math.display>
+		<para>where <latex>t_k</latex> occurs exactly in the position in which <latex>\Mtrx{B}</latex> has its  <latex>k</latex>-th leading <latex>1</latex>. It follows that</para>
+		<math.display>
+			<latex>A \Vect{x} = \Vect{0} = B \Vect{x} = t_1 E_1 + \cdots + t_r E_r</latex>
+		</math.display>
+		<para>We deduce that <latex>t_1=\cdots = t_r = 0</latex> because the vectors <latex>E_1,\dots ,E_r</latex> are linearly independent. It remains to show:</para>
+		<para><latex>\ColSp{ \Mtrx{A} } = \span(\EuScript{B})</latex> &nbsp; To this end, it suffices to show that, for <latex>1\leq j\leq n</latex>, <latex>A_j</latex> is in <latex>\span\Set{ C_1,\dots ,C_r}</latex>. We argue by contradiction. Suppose <latex>A_j</latex> is not in <latex>\span\Set{ C_1,\dots ,C_r}</latex>. Then the set <latex>\Set{ A_j,C_1,\dots ,C_r}</latex> is linearly independent. On the other hand, the  <latex>j</latex>-th column of  <latex>\Mtrx{B}</latex> can be written as</para>
+		<computation>
+			<left>B_j</left>
+			<center>=</center>
+			<right>b_1E_1  + \cdots + b_rE_r</right>
+		</computation>
+		<para>Form the vector</para>
+		<math.display>
+			<latex>\Vect{x} := -\StdBss{j}\ +\ (0,\dots ,0,b_1,0,\dots\ \dots,b_r,0,\dots ,0)</latex>
+		</math.display>
+		<para>Then</para>
+		<math.display>
+			<latex>\Vect{0} = B \Vect{x} = A \Vect{x} = (-1)A_j + b_1 C_1 + \cdots + b_r C_r</latex>
+		</math.display>
+		<para>But this contradicts the assumption that <latex>\Set{ A_j,C_1,\dots ,C_r}</latex> is linearly independent. Thus <latex>A_j\in \ColSp{ \EuScript{B} }</latex>, which completes the proof that <latex>\EuScript{B}</latex> is a basis of <latex>\ColSp{ \Mtrx{A} }</latex>. The proof of the proposition is complete.</para>
+	</proof>
+</theorem>

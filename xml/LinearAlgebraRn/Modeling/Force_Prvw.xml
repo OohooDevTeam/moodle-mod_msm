@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_Force">
+	<title>Force - Preview</title>
+	<sub.page.body>
+		<para>When a force acts on an object, it does so in a certain direction and with a certain strength. As is illustrated below, we can model a force using a vector.</para>
+		
+		<para align="center"><img src="ims/Force.gif" width="247" height="191"/></para>
+		
+		<para>Here an object is suspended on a rope. We model the downward force of 1000N, corresponding to the weight of the object, by a downward arrow whose length corresponds to the magnitude of the force of 1000N. Accordingly, the vector representing a downward force of 2000N would be twice as long. The vector representing a downward force of 500N half as long; etc.</para>
+		
+		<para>To hold the object in suspense, the downward force must be compensated by an upward force of equal magnitude. This upward force results from two forces, denoted <latex>F_1</latex> and <latex>F_2</latex>, sidewards upward in the rope. The magnitude of these forces can be computed with elementary geometric methods.</para>
+	</sub.page.body>
+</sub.page>

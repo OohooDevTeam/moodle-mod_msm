@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illust_ScalarMultiplicationOfVectors"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Scalar Multiplication of Vectors - Illustration</title>
+   </titles>
+   <body>
+      <para>
+         <para.body>When we multiply a vector <math>
+               <latex>\mathbf{x}</latex>
+            </math> by a number (a scalar) <math>
+               <latex>t</latex>
+            </math>, we keep the direction of <math>
+               <latex>\mathbf{x}</latex>
+            </math> and multiply its length by <math>
+               <latex>t</latex>
+            </math>. If <math>
+               <latex>t</latex>
+            </math> is positive, this has the effect illustrated below.</para.body>
+      </para>
+      <para align="center">
+         <para.body>
+            <media type="image" active="0" inline="0">
+               <img src="ims/VectorScalarMultiply_2.gif"/>
+            </media>
+         </para.body>
+      </para>
+      <para>
+         <para.body>If we multiply a vector <math>
+               <latex>\mathbf{x}</latex>
+            </math> by a negative number <math>
+               <latex>t</latex>
+            </math>, we reverse the direction of <math>
+               <latex>\mathbf{x}</latex>
+            </math>, as is illustrated in the picture below.</para.body>
+      </para>
+      <para align="center">
+         <para.body>
+            <media type="image" active="0" inline="0">
+               <img src="ims/VectorScalarMultiply_3.gif"/>
+            </media>
+         </para.body>
+      </para>
+      <para>
+         <para.body>Here are a number of scalar multiplications performed on one and the same vector. Click <subordinate>
+               <hot>here</hot>
+               <info>
+                  <info.caption>Animation of Scalar Multiplication of a Vector by a Number</info.caption>
+                  <para align="center">
+                     <para.body>
+                        <media type="image" active="0" inline="0">
+                           <img src="ims/VectorScalarMultiply_Anmt.gif"/>
+                        </media>
+                     </para.body>
+                  </para>
+               </info>
+            </subordinate> to animate this example.
+		</para.body>
+      </para>
+      <para align="center">
+         <para.body>
+            <media type="image" active="0" inline="0">
+               <img src="VectorScalarMultiply_1.gif"/>
+            </media>
+         </para.body>
+      </para>
+   </body>
+</unit>

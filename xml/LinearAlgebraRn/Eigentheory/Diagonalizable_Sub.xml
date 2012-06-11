@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Diagonalizable_Sub">
+	<title>Diagonalizable Matrix - Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>To see the meaning of the concept of &lsquo;diagonalizable matrix&rsquo;, let's do the following:</para>
+			<ol>
+				<li>
+					<para>use the column vectors of <latex>\Mtrx{C}</latex> to form an ordered basis <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_n)</latex> of <latex>\RNr[n]</latex>.</para>
+				</li>
+				<li>
+					<para>Then <latex>\Mtrx{C}=\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex> converts from <latex>\EuScript{B}</latex>-coordinates to standard coordinates.</para>
+				</li>
+				<li>
+					<para>Both matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{D}</latex> represent the same linear transformation of <latex>\RNr[n]</latex>. The difference is: <latex>\Mtrx{A}</latex> describes it in standard coordinates, while <latex>\Mtrx{D}</latex> describes it in <latex>\EuScript{B}</latex>-coordinates.</para>
+				</li>
+			</ol>
+			<para>Now, denote the diagonal entries of <latex>\Mtrx{D}</latex> by <latex>d_1,\dots ,d_n</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{D} = 
+\left[
+\begin{array}{cccc}
+d_1 & 0 & \cdots & 0 \\
+0 & d_2 & & \vdots \\
+\vdots & & \ddots & 0 \\
+0 & \cdots & 0 & d_n
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Then</para>
+			<computation>
+				<left>\Mtrx{D}\cdot (\Vect{b}_i)_{\EuScript{B}}</left>
+				<center>=</center>
+				<right>d_i\cdot \Vect{b}_i</right>
+			</computation>
+			<para>In other words, <latex>\Vect{b}_i</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>d_i</latex>.</para>
+			<para>Conclusion: Given <latex>\Mtrx{A}</latex> we may try to diagonalize it by looking for a basis of <latex>\RNr[n]</latex> consisting of eigenvectors of <latex>\Mtrx{A}</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

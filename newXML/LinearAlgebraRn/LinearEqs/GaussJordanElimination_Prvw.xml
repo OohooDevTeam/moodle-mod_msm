@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Preview_LinearEqsGeometry"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Solving a System of Linear Equations Geometrically - Preview</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The elimination method of Gauß and Jordan transforms a given system of linear equations in one which has the same solutions as the original one but which is so simple that one can read off its solutions right away. – For example, Gauß–Jordan elimination transforms the system</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{array}{rcrcrcl}
+{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{3}{\color{red}y} &amp; - &amp; \color{red}z &amp; = &amp; 5 \\
+\colorbox{lightgreen}{2}{\color{red}x} &amp; + &amp; {\color{red}y} &amp; + &amp; \colorbox{lightgreen}{3}{\color{red}z} &amp; = &amp; 5 \\
+\colorbox{lightgreen}{-1}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{7}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{-9}{\color{red}z} &amp; = &amp; 5
+\end{array}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>of 3 equations with 3 unknowns into the system</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{array}{rcrcrcl}
+{\color{red}x} &amp; + &amp; {\color{red}} &amp; + &amp; \colorbox{lightgreen}{2}{\color{red}z} &amp; = &amp; 2 \\
+ &amp; + &amp; {\color{red}y} &amp; - &amp; {\color{red}1} &amp; = &amp; 1
+\end{array}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>of 2 equations with 3 unknowns. The 
+				<subordinate>
+                     <hot>steps taken in this process</hot>
+                     <info>
+                        <info.caption>What are the steps in the Gauß-Jordan elimination</info.caption>
+                        <para>
+                           <para.body>You can learn details about the steps in the Gauß-Jordan elimination in the so named section. Here our goal is merely to explain that the system of linear equations which result from the Gauß_jordan elimination process can be significantly simpler than the original system of linear equations.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+				are designed to ensure that both systems have exactly the same solutions.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>So, what’s the difference between the first system and second system above? – In the first system it is not easy to see what the solutions are. However, solutions of the second system are easy to read off: For every choice of  <math>
+                     <latex>z</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math>, setting</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>z:= 1+z</latex>
+                  </math>   <math>
+                     <latex>x := 2-2z</latex>
+                  </math>
+               </para.body>
+            </para>
+            <para>
+               <para.body>yields a triple of simultaneous solutions of the system. For example.</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>z:= 0</latex>
+                        </math> yields <math>
+                           <latex>y=1</latex>
+                        </math> and <math>
+                           <latex>x=2</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>z:= 1</latex>
+                        </math> yields <math>
+                           <latex>y=2</latex>
+                        </math> and <math>
+                           <latex>x=0</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>z:= -2</latex>
+                        </math> yields <math>
+                           <latex>y=-1</latex>
+                        </math> and <math>
+                           <latex>x=6</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>As the two systems of linear equations above are equivalent, each of the number triples <math>
+                     <latex>(2,1,0)</latex>
+                  </math>, <math>
+                     <latex>(0,2,1)</latex>
+                  </math>, and <math>
+                     <latex>(6,-1,-2)</latex>
+                  </math> is also a simultaneous solution of the three equations of the first system.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

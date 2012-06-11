@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_LinearMapMatrix"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Matrix Representation of a Linear Map - Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Let's take a careful look at how to work with this proposition.</para.body>
+            </para>
+            <para>
+               <para.body>First of all, recall that <math>
+                     <latex>\Vect{x}_{\EuScript{A}} = (x_1,\dots ,x_n)</latex>
+                  </math> is an <math>
+                     <latex>n</latex>
+                  </math>-tuple of numbers which is defined by the identity</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>x_1 \Vect{a}_1 + \cdots + x_n \Vect{a}_n</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Matrix gives linear map</strong>   If <math>
+                     <latex>\Mtrx{A}=[a_{ij}]</latex>
+                  </math> is a matrix of size <math>
+                     <latex>(m,n)</latex>
+                  </math>, then the matrix product</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\left[
+\begin{array}{ccc}
+a_{11} &amp; \cdots &amp; a_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; \cdots &amp; a_{mn}
+\end{array}
+\right]\, 
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+y_1 \\ \vdots \\ y_m
+\end{array}
+\right]
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>is defined, and the resulting vector <math>
+                     <latex>\Vect{y}=(y_1,\dots ,y_m)</latex>
+                  </math> is the coordinate vector of <math>
+                     <latex>L(\Vect{x})</latex>
+                  </math> with respect to the basis <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>. In symbols:</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{x})_{\EuScript{B}}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>y_1\cdot \Vect{b}_1 + \cdots y_m\Vect{b}_m</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>So this is how an <math>
+                     <latex>(m,n)</latex>
+                  </math>-matrix determines a linear map <math>
+                     <latex>V\to W</latex>
+                  </math> with respect to the bases <math>
+                     <latex>\EuScript{A}</latex>
+                  </math> and <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>. – Keeping the same matrix, but using different bases for <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>W</latex>
+                  </math> will, in general, produce a different linear map.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Linear map gives matrix</strong>   Now let's start with a given linear map <math>
+                     <latex>L\from V\to W</latex>
+                  </math>. We know that <math>
+                     <latex>L</latex>
+                  </math> is completely determined by the vectors <math>
+                     <latex>L(\Vect{a}_1),\ \dots\ ,L(\Vect{a}_n)</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math>. Now, each of these vectors can be expressed uniquely as a linear combination of <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>. So, if</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{a}_1)</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>a_{11}\Vect{b}_1 + \cdots + a_{1m} \Vect{b}_m</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>then  <math>
+                     <latex>L(\Vect{a}_1)_{\EuScript{B}} = (a_{11},\dots ,a_{1m})</latex>
+                  </math> is a vector with <math>
+                     <latex>m</latex>
+                  </math> entries. It forms the first column of the matrix <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
+                  </math> which represents <math>
+                     <latex>L</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Similarly, if</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{a}_2)</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>a_{21}\Vect{b}_1 + \cdots + a_{2m} \Vect{b}_m</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>then <math>
+                     <latex>L(\Vect{a}_2)_{\EuScript{B}} = (a_{21},\dots ,a_{2m})</latex>
+                  </math> is a vector with <math>
+                     <latex>m</latex>
+                  </math> entries. It forms the second column of the matrix <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
+                  </math> which represents <math>
+                     <latex>L</latex>
+                  </math>; etc.</para.body>
+            </para>
+            <para>
+               <para.body>Note that keeping the same linear map <math>
+                     <latex>L</latex>
+                  </math>, but using different bases for <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>W</latex>
+                  </math> will, in general, yield a different representing matrix for <math>
+                     <latex>L</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Emphasis</strong>   Note that both constructions which translate between linear maps and matrices depend crucially on the choice of an ordered basis <math>
+                     <latex>\EuScript{A}</latex>
+                  </math> for <math>
+                     <latex>V</latex>
+                  </math> and an ordered basis <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> for <math>
+                     <latex>W</latex>
+                  </math>. The subscripts in <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
+                  </math> are to remind us that this particular matrix represents the given linear map with respect to the bases <math>
+                     <latex>\EuScript{A}</latex>
+                  </math> of <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> of <math>
+                     <latex>W</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

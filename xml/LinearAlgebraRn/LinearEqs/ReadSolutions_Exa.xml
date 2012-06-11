@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_ReadSolutions">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Linear Equations with Infinitely Many Solutions - Examples</title>
+	<caption>Linear Equations with Infinitely Many Solutions</caption>
+	<showme>
+		<statement>
+			<para>Find the solutions of the system of linear equations which leads to the RREF</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{cccc|r}
+1 & 3 & 0 & 1 & {\color{blue} 2 } \\
+0 & 0 & 1 & 2 & {\color{blue} -2 }
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution" version="1">
+			<para>We can read off the solutions of this system of linear equations in four variables <latex>w</latex>, <latex>x</latex>, <latex>y</latex>, and <latex>z</latex> directly by observing:</para>
+			<ol>
+				<li>
+					<para>There is no leading <latex>1</latex> in the augmentation column. Therefore this system has at least one solution.</para>
+				</li>
+				<li>
+					<para>The variables <latex>x</latex> and <latex>z</latex> occur in columns without a leading <latex>1</latex>. Therefore number values for these variables can be chosen freely.</para>
+				</li>
+				<li>
+					<para>For each arbitrary choice of number values for <latex>x</latex> and <latex>z</latex>, a solution of the system results from setting</para>
+				</li>
+			</ol>
+			<computation>
+				<left>w</left>
+				<center>:=</center>
+				<right>2 - 3x - z</right>
+				<left>y</left>
+				<center>:=</center>
+				<right>-2 - 2z</right>
+			</computation>
+			<para>In other words, an arbitrary solution of the system is given by a vector of the form</para>
+			<computation>
+				<left>(w,x,y,z)</left>
+				<center>=</center>
+				<right>(2-3x-z,x,-2-2z,z)</right>
+				<left></left>
+				<center>=</center>
+				<right>(2,0,-2,0) + x(-3,1,0,0) + z(-1,0,-2,1)</right>
+			</computation>
+			<para>with <latex>x</latex> and <latex>y</latex> arbitrary in <latex>\RNr</latex>. Thus, the set of solutions of this system of linear equations fits the general format if we set</para>
+			<computation>
+				<left>\Vect{d}</left>
+				<center>:=</center>
+				<right>(2,0,-2,0)</right>
+				<left>\Vect{b}_1</left>
+				<center>:=</center>
+				<right>(-3,1,0,0)</right>
+				<left>\Vect{b}_2</left>
+				<center>:=</center>
+				<right>(-1,0,-2,1)</right>
+			</computation>
+		</answer>
+		<answer type="Solution" version="2">
+			<para>This system of linear equations has infinitely many solutions: We obtain a distinguished solution</para>
+			<computation>
+				<left>\Vect{d}</left>
+				<center>:=</center>
+				<right>(2,0,-2,0)</right>
+			</computation>
+			<para>by inserting the augmentation column into the positions of leading <latex>1</latex>&rsquo;s, and placing <latex>0</latex>&rsquo;s everywhere else.</para>
+			<para>So an arbitrary solution is of the form</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>\Vect{d} + x_2\cdot \Vect{b}_1 + x_4\cdot \Vect{b}_2</right>
+			</computation>
+			<para>The vectors <latex>\Vect{b}_1</latex> and <latex>\Vect{b}_2</latex> are built as follows:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{cccc|r}
+u_1 & {\color{green} j_1} & u_2 & {\color{red} j_2} & \\ \hline
+1 & {\color{green} 3} & 0 & {\color{red} 1} & {\color{blue} 2 } \\
+0 & {\color{green} 0} & 1 & {\color{red} 2} & {\color{blue} -2 }
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			<para>The vector <latex>\Vect{b}_1</latex> has a <latex>1</latex> in position <latex>j_1=2</latex>, and the negative of column <latex>j_1</latex> in positions <latex>u_1</latex> and <latex>u_2</latex>. Thus</para>
+			<math.display>
+				<latex>\Vect{b}_1:= ({\color{green} -3},1,{\color{green} 0},0)</latex>
+			</math.display>
+			<para>Similarly, <latex>\Vect{b}_2</latex> has a <latex>1</latex> in position <latex>j_2=4</latex>, and the negative of column <latex>j_2</latex> in positions <latex>u_1</latex> and <latex>u_2</latex>. Thus</para>
+			<math.display>
+				<latex>\Vect{b}_2:= ({\color{red} -1},0,{\color{red} -2},1)</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Find the solutions of the system of linear equations which leads to the RREF</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rrrrrr|r}
+0 & 0 & 1 & 0 & 6 & -3 & {\color{blue} 9 } \\
+0 & 0 & 0 & 1 & -1 & 5 & {\color{blue} 7 }
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>This system of linear equations has infinitely many solutions. It has the distinguished solution</para>
+			<computation>
+				<left>\Vect{d}</left>
+				<center>:=</center>
+				<right>(0,0,9,7,0,0,0)</right>
+			</computation>
+			<para>It has been obtained by inserting the augmentation column into the positions of leading <latex>1</latex>&rsquo;s, and placing <latex>0</latex>&rsquo;s everywhere else.</para>
+			<para>So an arbitrary solution is of the form</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>\Vect{d} + x_1\cdot \Vect{b}_1 + x_2\cdot \Vect{b}_2 + x_5\cdot \Vect{b}_3 + x_6\cdot \Vect{b}_4</right>
+			</computation>
+			<para>The vectors <latex>\Vect{b}_1,\dots, \Vect{b}_4</latex> are built as follows:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rrrrrr|r}
+j_1 & j_2 & u_1 & u_2 & j_3 & j_4 & \\ \hline
+0 & 0 & 1 & 0 & 6 & -3 & {\color{blue} 9 } \\
+0 & 0 & 0 & 1 & -1 & 5 & {\color{blue} 7 }
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			<para>The vector <latex>\Vect{b}_1</latex> has a <latex>1</latex> in position <latex>j_1=1</latex>, and the negative of column <latex>j_1</latex> in positions <latex>u_1=3</latex> and <latex>u_2=4</latex>. Thus</para>
+			<math.display>
+				<latex>\Vect{b}_1:= (1,0,0,0,0,0)</latex>
+			</math.display>
+			<para>The vector <latex>\Vect{b}_2</latex> has a <latex>1</latex> in position <latex>j_2=2</latex>, and the negative of column <latex>j_2</latex> in positions <latex>u_1=3</latex> and <latex>u_2=4</latex>. Thus</para>
+			<math.display>
+				<latex>\Vect{b}_2:= (0,1,0,0,0,0)</latex>
+			</math.display>
+			<para>The vector <latex>\Vect{b}_3</latex> has a <latex>1</latex> in position <latex>j_3=5</latex>, and the negative of column <latex>j_3</latex> in positions <latex>u_1=3</latex> and <latex>u_2=4</latex>. Thus</para>
+			<math.display>
+				<latex>\Vect{b}_3:= (0,0,-6,1,1,0)</latex>
+			</math.display>
+			<para>The vector <latex>\Vect{b}_4</latex> has a <latex>1</latex> in position <latex>j_4=6</latex>, and the negative of column <latex>j_4</latex> in positions <latex>u_1=3</latex> and <latex>u_2=4</latex>. Thus</para>
+			<math.display>
+				<latex>\Vect{b}_4:= (0,0,3,-5,0,1)</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

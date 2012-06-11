@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LineToLine">
+	<caption>Linear maps transform lines to lines</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Meaning of condition 2) in the proposition</caption>
+			<para>Condition 2) above means that <latex>f</latex> transforms the linear motion <latex>\Vect{a} + t \Vect{v}</latex> into the linear motion <latex>f(\Vect{a}) + tf(\Vect{v})</latex>; i.e.</para>
+			<ul>
+				<li><para>The place <latex>\Vect{a}</latex> through which the original motion passes at time <latex>0</latex> gets transformed into the place <latex>f(\Vect{a})</latex> through which the transformed motion passes at time <latex>0</latex>.</para></li>
+				<li><para>The velocity vector <latex>\Vect{v}</latex> of the original motion gets transformed into the velocity vector <latex>f(\Vect{v})</latex> of the transformed motion.</para></li>
+			</ul>
+			
+		</info>
+	</associate>
+	
+	
+	<statement>
+		<para>A function <latex>f\from \RNr[n]\to \RNr[m]</latex> is linear if and only if it satisfies the following two conditions</para>
+		<ol>
+			<li><para><latex>f(\Vect{0}) = \Vect{0}</latex></para></li>
+			<li><para>Whenever <latex>\Vect{a}</latex> and <latex>\Vect{v}</latex> in <latex>\RNr[n]</latex> are fixed, then <latex>f(\Vect{a} + t\cdot \Vect{v}) = f(\Vect{a}) + t\cdot f(\Vect{v})</latex> for all numbers <latex>t</latex>.</para></li>
+		</ol>
+	</statement>
+	
+	<proof>
+		<caption>Suppose first that <latex>f</latex> is linear</caption>
+		<para>We need to show that <latex>f</latex> is has properties 1) and 2) above. Indeed, <latex>f</latex> enjoys 
+			<subordinate>
+				<hot>property 1)</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_LinearTrafo0To0"/>
+					<para>Look up the proof of why this is so</para>
+				</crossref>
+			</subordinate>. Moreover, <latex>f</latex> enjoys property 2) because
+		</para>
+		
+		<computation>
+			<left>f(\Vect{a} + t \Vect{v})</left>
+			<center>=	<info><para><latex>f</latex> is linear, hence satisfies <latex>f(\Vect{x} + \Vect{y}) = f(\Vect{x}) + f(\Vect{y})</latex>.</para></info></center>
+			<right>f(\Vect{a}) + f(t \Vect{v})</right>
+			<left></left>
+			<center>=	<info><para><latex>f</latex>is linear, hence satisfies <latex>f(t \Vect{x}) = t f(\Vect{x})</latex></para></info></center>
+			<right>f(\Vect{a}) + t\cdot f(\Vect{v})</right>
+		</computation>
+		
+		<para>as required.</para>
+		
+		<caption>Suppose <latex>f</latex> satisfies properties 1) and 2) above</caption>
+		<para>We need to show that <latex>f</latex> is linear. Now if <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are arbitrary in <latex>\RNr[n]</latex>, they determine the linear motion <latex>\Vect{a}(t) = \Vect{x} + t \Vect{y}</latex>  in <latex>\RNr[n]</latex>. Therefore, setting <latex>t:=1</latex>, we obtain</para>
+		
+		<computation>
+			<left>f(\Vect{x} + \Vect{y})</left>
+			<center>=</center>
+			<right>f(\Vect{x} + 1\cdot \Vect{y})</right>
+			<left></left>
+			<center>=</center>
+			<right>f(\Vect{x}) + 1\cdot f(\Vect{y})</right>
+			<left></left>
+			<center>=</center>
+			<right>f(\Vect{x}) + f(\Vect{y})</right>
+		</computation>
+		
+		<para>So <latex>f</latex> commutes with vector addition. To see that <latex>f</latex> commutes with scalar multiplication, let  <latex>t\in\RNr</latex> and <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> be arbitrary. Then</para>
+		
+		<computation>
+			<left>f(t\cdot \Vect{x})</left>
+			<center>=</center>
+			<right>f(\Vect{0} + t\cdot \Vect{x})</right>
+			<left></left>
+			<center>=	<info><para>Because of assmumption 2. in the proposition: with <latex>\Vect{a}:=\Vect{0}</latex> and <latex>\Vect{v}:=\Vect{x}</latex>.</para></info></center>
+			<right>f(\Vect{0}) + t\cdot f(\Vect{x})</right>
+			<left></left>
+			<center>=	<info><para>Remember: we assume that <latex>f(\Vect{0}) = \Vect{0}</latex></para></info></center>
+			<right>t\cdot f(\Vect{x})</right>
+		</computation>
+		
+		<para>So <latex>f</latex> is linear. &ndash; The proof is complete.</para>
+	</proof>
+</theorem>

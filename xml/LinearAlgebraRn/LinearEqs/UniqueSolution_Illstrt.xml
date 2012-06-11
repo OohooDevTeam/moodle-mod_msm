@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illustr_UniqueSolution">
+	<title>A System with Unique Solution – Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The picture below shows the planes of solutions in <latex>\RNr[3]</latex> of three linear equations in three variables.</para>
+			
+			<para align="center"><img src="ims/ThreeEqnsR3Generic.gif" width="390" height="333"/></para>
+			
+			<para>Each of these 3 planes is the solution plane of a linear equation in three unknowns. There is exactly on point which lies on all three planes. Therefore this point is the unique simultaneous solution of the given system of linear equations.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

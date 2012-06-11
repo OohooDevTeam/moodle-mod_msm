@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X5 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="800px" height="600px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 800 600"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <font id="FontID1" horiz-adv-x="667" font-variant="normal" class="str1" style="fill-rule:nonzero" font-style="normal" font-weight="400">
+	<font-face 
+		font-family="Arial">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="1" horiz-adv-x="556"><path d="M372.495 0l-87.8264 0 0 560.006c-21.1653,-20.1731 -48.8384,-40.3345 -83.1729,-60.5076 -34.4999,-20.1613 -65.3265,-35.3266 -92.6571,-45.3305l0 84.8382c49.1573,23.1613 92.1611,51.1652 128.999,83.9997 36.6613,32.9999 62.8344,64.8305 78.165,95.8225l56.4919 0 0 -718.828z"/></glyph>
+  </font>
+  <font id="FontID0" horiz-adv-x="644" font-variant="normal" class="str1" style="fill-rule:nonzero" font-style="normal" font-weight="400">
+	<font-face 
+		font-family="Ebrima">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode=")" horiz-adv-x="301"><path d="M11.6692 -159.165c101.669,121.334 152.326,263.834 152.326,427.168 0,164.491 -50.9998,308.503 -153.33,432.164l72.3304 0c101.504,-119.161 152.338,-263.503 152.338,-433.002 0,-169.003 -50.8344,-311.16 -152.338,-426.329l-71.3265 0z"/></glyph>
+   <glyph unicode="," horiz-adv-x="216"><path d="M154.334 111.33l-78.165 -240.164 -57.1651 0 57.1651 240.164 78.165 0z"/></glyph>
+   <glyph unicode="(" horiz-adv-x="301"><path d="M219.672 -159.165c-100.842,114.826 -151.334,256.995 -151.334,426.329 0,169.83 50.4919,314.172 151.334,433.002l72.3304 0c-102.165,-123.661 -153.342,-267.672 -153.342,-432.164 0,-163.334 50.8344,-305.833 152.338,-427.168l-71.3265 0z"/></glyph>
+   <glyph unicode="1" horiz-adv-x="539"><path d="M481.994 0l-395.998 0 0 70.3344 158.173 0 0 544.002 -162.165 -48.3305 0 76.1572 242.16 73.6651 0 -645.494 157.83 0 0 -70.3344z"/></glyph>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Arial";src:url("#FontID1") format(svg)}
+    @font-face { font-family:"Ebrima";src:url("#FontID0") format(svg)}
+    .str2 {stroke:#00A859;stroke-width:0.3005}
+    .str4 {stroke:#3E4095;stroke-width:0.3005}
+    .str0 {stroke:#ED3237;stroke-width:1.39129}
+    .str1 {stroke-width:9.00002}
+    .str5 {stroke:#3E4095;stroke-width:1.39129;stroke-dasharray:2.782584 4.173876}
+    .str3 {stroke:#585570;stroke-width:1.39129;stroke-dasharray:2.782584 4.173876}
+    .fil1 {fill:none}
+    .fil3 {fill:#00A859}
+    .fil4 {fill:#3E4095}
+    .fil2 {fill:#00A859;fill-rule:nonzero}
+    .fil0 {fill:#3E4095;fill-rule:nonzero}
+    .fnt1 {font-weight:normal;font-size:33.389;font-family:'Arial'}
+    .fnt0 {font-weight:normal;font-size:33.389;font-family:'Ebrima'}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g>
+   <path class="fil0" d="M696 299l-593 0 0 -1 593 0 0 1zm-1 -4l7 4 -7 4 0 -7z"/>
+  </g>
+  <g>
+   <path class="fil0" d="M403 103l0 385 -1 0 0 -385 1 0zm-4 1l4 -7 4 7 -7 0z"/>
+  </g>
+  <line class="fil1 str0" x1="255" y1="445" x2="573" y2= "128" />
+  <g>
+   <path class="fil2" d="M496 207l-92 92 -2 -2 92 -92 2 2zm-7 -5l14 -4 -4 14 -10 -10z"/>
+  </g>
+  <text x="530" y="226"  class="fil3 str2 fnt0">(1,1)</text>
+  <line class="fil1 str3" x1="504" y1="298" x2="504" y2= "197" />
+  <text x="497" y="330"  class="fil4 str4 fnt1">1</text>
+  <line class="fil1 str5" x1="403" y1="197" x2="504" y2= "197" />
+  <text x="377" y="209"  class="fil4 str4 fnt1">1</text>
+ </g>
+</svg>

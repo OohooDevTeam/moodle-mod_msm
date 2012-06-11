@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exrcss_LinearMotion1"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Linear Motion: Self Test</title>
+	  <caption>Linear Motion: Self Test</caption>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider the linear motion of a particle in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> described by</para.body>
+            </para>
+				        <math.display>
+					          <latex>\ell(t) = (1,2,-1) + t(4,-1,2)</latex>
+				        </math.display>
+			         <para>
+               <para.body>For each of the statements below decide if it is true or false?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>At time <math>
+                        <latex>2</latex>
+                     </math> the particle's location is the point <math>
+                        <latex>(1,2,-1)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Substitute <math>
+                        <latex>2</latex>
+                     </math> for <math>
+                        <latex>t</latex>
+                     </math> to obtain the location of the particle at time <math>
+                        <latex>2</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>At time <math>
+                        <latex>2</latex>
+                     </math> the particle's location is the point <math>
+                        <latex>(9,0,3)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The velocity vector of the motion is <math>
+                        <latex>\mathbf{v}=(4,-1,2)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The velocity vector of the motion is <math>
+                        <latex>\mathbf{v}=(1,2,-1)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose a linear motion travels 10m during the time interval <math>
+                     <latex>[4,5]</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>How far will it travel during the time interval <math>
+                        <latex>[8,9]</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A linear motion is a constant speed motion. So this particular motion will travel a distance of 10m during any time interval of length 1. In particular, in the time interval <math>
+                           <latex>[8,9]</latex>
+                        </math> it will travel a distance of 10m.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>How far will it travel in the time interval <math>
+                        <latex>[0,15]</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The time interval <math>
+                           <latex>[0,15]</latex>
+                        </math> has length 15. So, in this time space, the particle will travel 15 times the distance it travels in a time interval of length 1.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Therefore the particle will travel 150m in the time interval <math>
+                           <latex>[0,15]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>How far will the particle travel in the time interval <math>
+                        <latex>[-10,20]</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>A will travel a distance of 300m.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

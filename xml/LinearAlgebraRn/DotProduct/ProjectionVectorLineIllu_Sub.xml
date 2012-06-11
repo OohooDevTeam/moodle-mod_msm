@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_ProjectionVectorLine">
+	<title>Projection of a Vector onto a Line – Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The projection of a vector <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> onto the line through the origin in the direction of a nonzero vector <latex>\Vect{y}</latex> is defined as</para>
+			<math.display>
+				<latex>\pr_L(\Vect{x}) = \dfrac{ \DotPr{\Vect{x}}{\Vect{y}} }{ \DotPr{\Vect{y}}{\Vect{y}} } \cdot \Vect{y}</latex>
+			</math.display>
+			<para>The effect of this projection may be visualized as follows</para>
+			<figure>
+				<img src="ims/ProjectionVectorLine.png"></img>
+				<caption>Projection of a vector on a line</caption>
+			</figure>
+			<para>Shine a light vertically onto the line <latex>L</latex>. The shadow of <latex>\Vect{x}</latex> is the projection of <latex>\Vect{x}</latex> onto <latex>L</latex>. Crucial properties of this projection are:</para>
+			<ul>
+				<li><para><latex>\pr_{L}(\Vect{x})</latex> is parallel to the direction vector <latex>\Vect{y}</latex> of <latex>L</latex>.</para></li>
+				<li><para>The difference vector <latex>\Vect{u}:= \Vect{x} - \pr_L(\Vect{x})</latex> is perpendicular to <latex>L</latex> and to <latex>\Vect{y}</latex>.</para></li>
+			</ul>
+		</block>
+	</sub.page.body>
+</sub.page>

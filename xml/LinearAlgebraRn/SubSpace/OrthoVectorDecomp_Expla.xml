@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_OrthogonalVectorDecomposition">
+	<title>Orthogonal Vector Decomposition - Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>The proposition on orthogonal vector decomposition says that given subspaces <latex>V\subseteq W</latex> of <latex>\RNr[n]</latex>, every <latex>\Vect{x}</latex> in <latex>W</latex> has a unique sum expression</para>
+				<computation>
+					<left>\Vect{x}</left>
+					<center>=</center>
+					<right>\Vect{x}_V + \Vect{x}_{\bot}</right>
+				</computation>
+				<para>where <latex>\Vect{x}_V=\pr_V(\Vect{x})</latex> is in <latex>V</latex> and <latex>\Vect{x}_{\bot}:= \Vect{x}- \pr_V(\Vect{x})</latex> is in <latex>V^{\bot}</latex>.</para>
+				
+			<para>Let us express in words what this proposition says: given an arbitrary <latex>\Vect{x}</latex> in <latex>W</latex>, there are two uniquely determined vectors <latex>\Vect{x}_V</latex> and <latex>\Vect{x}_{\bot}</latex> satisfying the following two conditions</para>
+			<ol>
+				<li><para><latex>\Vect{x}_V</latex> is in <latex>V</latex> and is computed as the orthogonal projection <latex>\Vect{x}_V := \pr_V(\Vect{x})</latex> of <latex>\Vect{x}</latex> onto <latex>V</latex>.</para></li>
+				<li><para><latex>\Vect{x}_{\bot}</latex> belongs to the orthogonal complement of <latex>V</latex> in <latex>W</latex>. It is computed as</para>
+					<computation>
+						<left>\Vect{x}_{\bot}</left>
+						<center>=</center>
+						<right>\Vect{x} - \pr_V(\Vect{x})</right>
+					</computation>
+				</li>
+			</ol>
+			<para>As a consequence, <latex>\Vect{x} = \Vect{x}_V + \Vect{x}_{\bot}</latex> has been &lsquo;split&rsquo; into the sum of <latex>\Vect{x}_V</latex> in <latex>V</latex>, and <latex>\Vect{x}_{\bot}</latex> in <latex>V^{\bot}</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

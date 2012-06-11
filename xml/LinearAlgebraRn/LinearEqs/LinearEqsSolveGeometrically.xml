@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_LinearEqsGeometry">
+	<headers>
+	      <full>Solving a System of Linear Equations Geometrically</full>
+		<toc>Solving a System of Linear Equations Geometrically</toc>
+		<short>Linear Equations: Geometry</short>
+	</headers>
+	<intro>
+		<para>Here we aim for qualitative understanding of  what can possibly happen if we look for all simultaneous solutions of a system of linear equations in <latex>n</latex> unknowns. We build this analysis up, starting from a single linear equation in <latex>n</latex> unknowns.</para>
+	</intro>
+	
+	<subsection id="Subsec_SolutionsSingleLinearEquation">
+		<headers>
+			<full>Solutions of a Single Linear Equation</full>
+			<toc>Solutions of a Single Linear Equation</toc>
+			<short>One Equation</short>
+		</headers>
+		<subsection.body>
+			<para>A single linear equation in <latex>n</latex> unknowns is of the form</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} & = & {\color{blue} c}
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>Its 
+				<subordinate>
+					<hot>solutions form a hyperplane</hot>
+					<crossref>
+						<subsection.ref subsectionID="SubSec_Hyperplanes"></subsection.ref>
+						<caption>Hyperplanes</caption>
+						<para>Look up relevant background material on hyperplanes.</para>
+					</crossref>
+				</subordinate>
+				in <latex>\RNr[n]</latex> which is perpendicular to the coefficient vector  <latex>\mathbf{n}_1 := (a_1,\dots ,a_n)</latex>.</para>
+		</subsection.body>
+	</subsection>
+	
+	<subsection id="SubSec_LinearEqs_IntersectionHyperplanes">
+		<headers>
+			<full>Solutions of Several Linear Equations</full>
+			<toc>Solutions of Several Linear Equations</toc>
+			<short>Several Equations</short>
+		</headers>
+		<subsection.body>
+			
+			<xi:include href="LinearEquationsSolveGeometrically_Thm.xml"/>
+			
+			<para>So we know now that finding simultaneous solutions of linear equations corresponds geometrically to forming the intersection of hyperplanes associated to the individual equations. Let us discuss what can happen when forming the intersection of two such equations. We will then illustrate our findings in <latex>\RNr[2]</latex> and <latex>\RNr[3]</latex>.</para>
+			
+			<xi:include href="TwoLinearEqusSolveGeometrically_Thm.xml"/>
+			
+			<para>Let us now interpret in detail what this proposition says in dimensions 2 and 3. We begin with the situation where the coefficient vectors are not parallel.</para>
+			
+			<xi:include href="TwoLinearEqus2NonParallelCoefficients_Thm.xml"/>
+			<xi:include href="TwoLinearEqus3NonParallelCoefficients_Thm.xml"/>
+			
+			<para>Let us now turn to the situation where the coefficient vectors of the equations are parallel.</para>
+			
+			<xi:include href="TwoLinearEqus2ParallelCoefficients_Thm.xml"/>
+			<xi:include href="TwoLinearEqus3ParallelCoefficients_Thm.xml"/>
+			
+			<para>If the solution set of the given system of equations is empty, we say that the system of equations is inconsistent
+					<index.glossary>
+						<term>inconsistent</term><term>system of linear equations</term>
+						<info>
+							<caption>What is an inconsistent system of linear equations</caption>
+							<para>An inconsistent system of linear equations is one which has no solution.</para>
+						</info>
+					</index.glossary>
+					or overdetermined.
+					<index.glossary>
+						<term>overdetermined</term><term>system of linear equations</term>
+						<info>
+							<caption>What is an overdetermined system of linear equations</caption>
+							<para>An overdetermined system of linear equations is one which has no solution.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>system of linear equations</term><term>inconsistent</term>
+						<info>
+							<caption>What is an inconsistent system of linear equations</caption>
+							<para>An inconsistent system of linear equations is one which has no solution.</para>
+						</info>
+					</index.glossary>
+					or overdetermined.
+					<index.glossary>
+						<term>system of linear equations</term><term>overdetermined</term>
+						<info>
+							<caption>What is an overdetermined system of linear equations</caption>
+							<para>An overdetermined system of linear equations is one which has no solution.</para>
+						</info>
+					</index.glossary>
+				</para>
+		</subsection.body>
+	</subsection>
+	
+	<subsection id="SubSec_SolutionsThreePlusLinearEquations">
+		<headers>
+			<full>Three or more equations</full>
+			<toc>Three or more equations</toc>
+			<short>Many equations</short>
+		</headers>
+		<subsection.body>
+			<para>No matter how many equations there are in a given system of linear equations, each of the equations will have a corresponding hyperplane of solutions. Therefore, the set of simultaneous solutions of the system consists of the intersection of the solution hyperplanes of the individual equations. For example:</para>
+			
+			<ul>
+				<li><para>Three linear equations in <latex>2</latex> two variables will often times have 
+					<subordinate>
+						<hot>no solution</hot>
+						<companion>
+							<subpage.ref subpageID="Illustr_Overdetermined"/>
+							<para>Illustration of an overdetermined system of linear equations</para>
+						</companion>
+					</subordinate>. In this case we say the system is overdetermined.
+					<index.glossary>
+						<term>overdetermined</term><term>system of linear equations</term>
+						<info>
+							<caption>When is a system of linear equations overdetermined?</caption>
+							<para>A system of linear equations is called overdetermined if the number of equations exceeds the number of variables and the system has no solution.</para>
+						</info>
+					</index.glossary>
+				</para></li>
+				<li><para>Three linear equations in <latex>3</latex> variables will often times have 
+					<subordinate>
+						<hot>exactly one solution</hot>
+						<companion>
+							<subpage.ref subpageID="Illustr_UniqueSolution"/>
+							<para>Illustration of the solutions of a certain system of 3 linear equations in three unknowns</para>
+						</companion>
+					</subordinate>.
+				</para></li>
+			</ul>
+		</subsection.body>
+	</subsection>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_GeometricallySolve"/>
+		<exercise.pack.ref exercisePackID="Exe_GeometricallySolve1"/>
+	</studymaterials>
+</section>

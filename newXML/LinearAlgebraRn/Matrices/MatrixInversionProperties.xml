@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_MatrixInversionProperties"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Properties of Matrix Inversion</title>
+      <plain.title>Properties of Matrix Inversion</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Like any algebraic operation, matrix inversion has certain properties and satisfies certain rules. We develop the most important ones of these rules below. Among other things this will enable us to explain why the row reduction method for the computation of the inverse matrix works.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_InverseMatrixProperties">
+         <titles>
+            <title>Basic Properties of Inverse Matrices</title>
+            <plain.title>Basic Properties of Inverse Matrices</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="MatrixInversion_Props.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_ProofOfMatrixInversionProcedure">
+         <titles>
+            <title>Justification of the Inversion Procedure</title>
+            <plain.title>Justification of Inversion Procedure</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>We are now in a position where we can explain ‘why does the reduction to RREF-method compute the inverse of an invertible matrix?’ The key is that a row operation on a matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> can be accomplished by a matrix product <math>
+                           <latex>\Mtrx{R}\cdot \Mtrx{A}</latex>
+                        </math>, where <math>
+                           <latex>\Mtrx{R}</latex>
+                        </math> is an invertible matrix of a special kind. Here come the details:</para.body>
+                  </para>
+                  <def type="Terminology" id="Term_RowRescalingMatrix">
+                     <caption>Row Rescaling Matrices</caption>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_RowRescaling"/>
+                        <info>
+                           <para>
+                              <para.body>Examples of row rescaling matrices</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Explanation">
+                        <showme.pack.ref showmePackID="Exa_RowRescalingExplanation"/>
+                        <info>
+                           <para>
+                              <para.body>An explanation for the name ‘row rescaling matrix’</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>The <math>
+                                 <latex>u</latex>
+                              </math>-th row rescaling matrix of size <math>
+                                 <latex>(n,n)</latex>
+                              </math> is
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>D_{u}(s)</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the row rescaling matrices</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>matrix</term>
+                              <term>row rescaling</term>
+                              <info>
+                                 <info.caption>matrix - row rescaling</info.caption>
+                                 <para>
+                                    <para.body>The row rescaling matrix of size <math>
+                                          <latex>(n,n)</latex>
+                                       </math>, which multiplies the <math>
+                                          <latex>u</latex>
+                                       </math>-th row by the number <math>
+                                          <latex>s</latex>
+                                       </math> is</para.body>
+                                 </para>
+                                 <math.display>
+                                    <latex>
+									
+						D_u(s)\ :=\ \begin{bmatrix}
+						1 &amp; \cdots &amp; 0 &amp; \cdots &amp; 0 \\
+						\vdots &amp; \ddots &amp; \vdots &amp; &amp; \vdots \\
+						0 &amp; \cdots &amp; s &amp; \cdots &amp; 0 \\
+						\vdots &amp; &amp; \vdots &amp; \ddots &amp; \vdots \\
+						0 &amp; \cdots &amp; 0 &amp; \cdots &amp; 1
+						\end{bmatrix}\qquad \text{$s$ in row $u$}
+						
+								</latex>
+                                 </math.display>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>row rescaling matrix</term>
+                              <info>
+                                 <info.caption>matrix - row rescaling</info.caption>
+                                 <para>
+                                    <para.body>The row rescaling matrix of size <math>
+                                          <latex>(n,n)</latex>
+                                       </math>, which multiplies the <math>
+                                          <latex>u</latex>
+                                       </math>-th row by the number <math>
+                                          <latex>s</latex>
+                                       </math> is</para.body>
+                                 </para>
+                                 <math.display>
+                                    <latex>
+									
+						D_u(s)\ :=\ \begin{bmatrix}
+						1 &amp; \cdots &amp; 0 &amp; \cdots &amp; 0 \\
+						\vdots &amp; \ddots &amp; \vdots &amp; &amp; \vdots \\
+						0 &amp; \cdots &amp; s &amp; \cdots &amp; 0 \\
+						\vdots &amp; &amp; \vdots &amp; \ddots &amp; \vdots \\
+						0 &amp; \cdots &amp; 0 &amp; \cdots &amp; 1
+						\end{bmatrix}\qquad \text{$s$ in row $u$}
+						
+								</latex>
+                                 </math.display>
+                              </info>
+                           </index.glossary>
+                        </para>
+                        <math.display>
+                           <latex>
+						
+						D_u(s)\ :=\ \begin{bmatrix}
+						1 &amp; \cdots &amp; 0 &amp; \cdots &amp; 0 \\
+						\vdots &amp; \ddots &amp; \vdots &amp; &amp; \vdots \\
+						0 &amp; \cdots &amp; s &amp; \cdots &amp; 0 \\
+						\vdots &amp; &amp; \vdots &amp; \ddots &amp; \vdots \\
+						0 &amp; \cdots &amp; 0 &amp; \cdots &amp; 1
+						\end{bmatrix}\qquad \text{$s$ in row $u$}
+						
+					</latex>
+                        </math.display>
+                        <para>
+                           <para.body>If <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math> is of size <math>
+                                 <latex>(n,p)</latex>
+                              </math>, then the matrix product <math>
+                                 <latex>D_{u}(s)\cdot \Mtrx{B}</latex>
+                              </math> has the effect of multiplying the <math>
+                                 <latex>u</latex>
+                              </math>-th row of <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math> by <math>
+                                 <latex>s</latex>
+                              </math>. If <math>
+                                 <latex>s\neq 0</latex>
+                              </math>, then <math>
+                                 <latex>D_{u}(s)</latex>
+                              </math> is invertible and   <math>
+                                 <latex>D_{u}(s)^{-1} = D_{u}(1/s)</latex>
+                              </math>.</para.body>
+                        </para>
+                     </def.body>
+                  </def>
+                  <def type="Terminology" id="Term_ElementaryMatrix">
+                     <caption>Elementary Matrix</caption>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_ElementaryMatrix"/>
+                        <info>
+                           <para>
+                              <para.body>Examples of elementary matrices</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Explanation">
+                        <showme.pack.ref showmePackID="Exa_ElementaryMatrixExplanation"/>
+                        <info>
+                           <para>
+                              <para.body>An explanation for the role of elementary matrices in the context of elementary row operations.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>An elementary matrix of size <math>
+                                 <latex>(n,n)</latex>
+                              </math> of type <math>
+                                 <latex>(i,j)</latex>
+                              </math>, <math>
+                                 <latex>1\leq i\neq j\leq n</latex>
+                              </math> is of the form
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>E_{ij}(t)</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of elementary matrices</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>elementary</term>
+                              <term>matrix</term>
+                              <info>
+                                 <info.caption>elementary matrix</info.caption>
+                                 <para>
+                                    <para.body>An elementary matrix of size <math>
+                                          <latex>(n,n)</latex>
+                                       </math> of type <math>
+                                          <latex>(i,j)</latex>
+                                       </math>, <math>
+                                          <latex>1\leq i\neq j\leq n</latex>
+                                       </math> is of the form</para.body>
+                                 </para>
+                                 <math.display>
+                                    <latex>
+									
+						E_{ij}(t)\ :=\ \begin{bmatrix}
+						1 &amp; \cdots &amp; 0 &amp; \cdots &amp; 0 \\
+						\vdots &amp; \ddots &amp; \vdots &amp; t &amp; \vdots \\
+						0 &amp; \cdots &amp; 1 &amp; \cdots &amp; 0 \\
+						\vdots &amp; &amp; \vdots &amp; \ddots &amp; \vdots \\
+						0 &amp; \cdots &amp; 0 &amp; \cdots &amp; 1
+						\end{bmatrix}\qquad \text{$t$ in position $(i,j)$}
+						
+								</latex>
+                                 </math.display>
+                              </info>
+                           </index.glossary>
+                        </para>
+                        <math.display>
+                           <latex>
+						
+						E_{ij}(t)\ :=\ \begin{bmatrix}
+						1 &amp; \cdots &amp; 0 &amp; \cdots &amp; 0 \\
+						\vdots &amp; \ddots &amp; \vdots &amp; t &amp; \vdots \\
+						0 &amp; \cdots &amp; 1 &amp; \cdots &amp; 0 \\
+						\vdots &amp; &amp; \vdots &amp; \ddots &amp; \vdots \\
+						0 &amp; \cdots &amp; 0 &amp; \cdots &amp; 1
+						\end{bmatrix}\qquad \text{$t$ in position $(i,j)$}
+						
+					</latex>
+                        </math.display>
+                        <para>
+                           <para.body>If <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math> is a matrix of size <math>
+                                 <latex>(n,p)</latex>
+                              </math>, then forming the matrix product <math>
+                                 <latex>E_{ij}(t)\cdot \Mtrx{B}</latex>
+                              </math> has the effect of adding <math>
+                                 <latex>t</latex>
+                              </math> times the <math>
+                                 <latex>j</latex>
+                              </math>-th row of <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math> to the <math>
+                                 <latex>i</latex>
+                              </math>-th row of <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math>. Moreover, for each <math>
+                                 <latex>t</latex>
+                              </math> in <math>
+                                 <latex>\RNr</latex>
+                              </math>, <math>
+                                 <latex>E_{ij}(t)</latex>
+                              </math> is invertible and   <math>
+                                 <latex>E_{ij}(t)^{-1} = E_{ij}(-t)</latex>
+                              </math>.</para.body>
+                        </para>
+                     </def.body>
+                  </def>
+                  <def type="Terminology" id="Term_RowInterchangingMatrix">
+                     <caption>Row Interchanging Matrix</caption>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_RowInterchangeMatrix"/>
+                        <info>
+                           <para>
+                              <para.body>Examples of row interchange matrices.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Explanation">
+                        <showme.pack.ref showmePackID="Exa_RowInterchangeMatrixExplanation"/>
+                        <info>
+                           <para>
+                              <para.body>An explanation of the row interchange matrices</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>Given integers <math>
+                                 <latex>1\leq i &lt; j \leq n</latex>
+                              </math> the <math>
+                                 <latex>i,j</latex>
+                              </math>-row interchange matrix is</para.body>
+                        </para>
+                        <math.display>
+                           <latex>
+						
+\begin{array}{lr}
+R_{ij}\ :=\
+\begin{array}{c}
+ i \qquad\qquad j  \\
+\left[\begin{array}{ccccc}
+1 &amp; \cdots &amp; \cdots &amp; \cdots &amp; 0 \\
+\vdots &amp; 0 &amp; \vdots &amp; 1 &amp; \vdots \\
+0 &amp; \cdots &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; 1 &amp; \vdots &amp; 0 &amp; \vdots \\
+0 &amp; \cdots &amp; \cdots &amp; \cdots &amp; 1
+\end{array}\right]
+\end{array} &amp; \quad 
+\aligned
+&amp;\text{To obtain $R_{ij}$, interchange} \\
+&amp;\text{$i$-th row and $j$-th row of $\IdMtrx[n]$}
+\endaligned
+\end{array}
+						
+					</latex>
+                        </math.display>
+                        <para>
+                           <para.body>If <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math> is a matrix of size <math>
+                                 <latex>(n,p)</latex>
+                              </math>, then forming the matrix product <math>
+                                 <latex>R_{ij}\cdot \Mtrx{B}</latex>
+                              </math> has the effect of interchanging the <math>
+                                 <latex>i</latex>
+                              </math>-th and the <math>
+                                 <latex>j</latex>
+                              </math>-th row of <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math>. Moreover, <math>
+                                 <latex>R_{ij}</latex>
+                              </math> is invertible and is equal to its own inverse; i.e. <math>
+                                 <latex>R_{ij}^{-1}=R_{ij}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </def.body>
+                  </def>
+                  <para>
+                     <para.body>We are now ready to show why the inversion procedure for matrices works:</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="MatrixInversionRREF_Thm.xml"/>
+                  <para>
+                     <para.body>The definition of invertibility of a square matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> requires of us to find a matrix <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> with </para.body>
+                  </para>
+                  <math.display>
+                     <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n] = \Mtrx{B}\Mtrx{A}</latex>
+                  </math.display>
+                  <para>
+                     <para.body>We will see now that if for <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> we can find a <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> satisfying one of these two identities, it automatically satisfies the other:</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="InvertibilitySimplify_Lem.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_MatrixInvertibility"/>
+      <exercise.pack.ref exercisePackID="Exe_InvertibleMatrix"/>
+   </studymaterials>
+</unit>

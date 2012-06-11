@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_RowRescaling"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Examples of Row Rescaling Matrices</title>
+	  <caption xmlns="">Row Rescaling Matrices</caption>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the world of <math>
+                  <latex>(2,2)</latex>
+               </math>-matrices, the matrix which multiplies the second row by <math>
+                  <latex>3</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					D_{2}(3) \ =\ 
+					\begin{bmatrix}
+					1 &amp; 0 \\
+					0 &amp; 3
+					\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the world of <math>
+                  <latex>(3,3)</latex>
+               </math>-matrices, the matrix which multiplies the second row by <math>
+                  <latex>3</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					D_{2}(3) \ =\ 
+					\begin{bmatrix}
+					1 &amp; 0 &amp; 0 \\
+					0 &amp; 3 &amp; 0 \\
+					0 &amp; 0 &amp; 1
+					\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the world of <math>
+                  <latex>(3,3)</latex>
+               </math>-matrices, the matrix which multiplies the third row by <math>
+                  <latex>5</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					D_{3}(5) \ =\ 
+					\begin{bmatrix}
+					1 &amp; 0 &amp; 0 \\
+					0 &amp; 1 &amp; 0 \\
+					0 &amp; 0 &amp; 5
+					\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the world of <math>
+                  <latex>(4,4)</latex>
+               </math>-matrices, the matrix which multiplies the <math>
+                  <latex>1</latex>
+               </math>-st row by <math>
+                  <latex>6</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					D_{1}(6) \ =\ 
+					\begin{bmatrix}
+					6 &amp; 0 &amp; 0 &amp; 0 \\
+					0 &amp; 1 &amp; 0 &amp; 0 \\
+					0 &amp; 0 &amp; 1 &amp; 0 \\
+					0 &amp; 0 &amp; 0 &amp; 1
+					\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the world of <math>
+                  <latex>(4,4)</latex>
+               </math>-matrices, the matrix which multiplies the <math>
+                  <latex>1</latex>
+               </math>-st row by <math>
+                  <latex>6</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					D_{1}(6) \ =\ 
+					\begin{bmatrix}
+					6 &amp; 0 &amp; 0 &amp; 0 \\
+					0 &amp; 1 &amp; 0 &amp; 0 \\
+					0 &amp; 0 &amp; 1 &amp; 0 \\
+					0 &amp; 0 &amp; 0 &amp; 1
+					\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the world of <math>
+                  <latex>(4,4)</latex>
+               </math>-matrices, the matrix which multiplies the <math>
+                  <latex>3</latex>
+               </math>-rd row by <math>
+                  <latex>2</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					D_{3}(2) \ =\ 
+					\begin{bmatrix}
+					1 &amp; 0 &amp; 0 &amp; 0 \\
+					0 &amp; 1 &amp; 0 &amp; 0 \\
+					0 &amp; 0 &amp; 2 &amp; 0 \\
+					0 &amp; 0 &amp; 0 &amp; 1
+					\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+</showme.pack>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_DeterminantMultilinear">
+	<caption>Determinant: Multilinearity properties</caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Expl_DeterminantMultilinear"/>
+		<info>
+			<caption>Explanation: Multilinear</caption>
+			<para>What exactly does it mean: &lsquo;the determinant operation is linear in each column&rsquo;? Here you can find a detailed explanation.</para>
+		</info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_DeterminantMultilinear"/>
+		<info>
+			<para>Examples of how to use the multilinearity property of the determinant.</para>
+		</info>
+	</associate>
+	<associate Description="Quiz">
+		<quiz.pack.ref quizPackID="Qz_DeterminantMultilinear"/>
+		<info><para>A quiz so you can test your understanding of the concept of multilinearity</para></info>
+	</associate>
+	
+	
+	
+	<statement>
+		<para>The determinant operation on <latex>(n,n)</latex>-matrices has the following properties.
+			<index.glossary>
+				<term>multilinear</term><term>property of the determinant operation</term>
+				<info><para>Statement and proof of the multilinearity property</para></info>
+			</index.glossary>
+			<index.glossary>
+				<term>determinant</term><term>multilinear</term>
+				<info><para>Statement and proof of the multilinearity property</para></info>
+			</index.glossary>
+		</para>
+		<part partid="MultiAdditive">
+			<caption>Additivity in each column</caption>
+			<para>If <latex>A_1,\dots ,A_n</latex>, <latex>X,Y</latex> denote column vectors, then</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det[A_1 \cdots {\color{red}(X+Y)} \cdots  A_n] = \det[A_1 \cdots {\color{red} X} \cdots \ A_n]\ + \det[A_1 \cdots {\color{red} Y} \cdots  A_n]
+]]>
+				</latex>
+			</math.display>
+			<para>Here all of <latex>X</latex>, <latex>Y</latex>, and <latex>(X+Y)</latex> appear in the same column.</para>
+		</part>
+		<part partid="Multiscalar">
+			<caption>Commutes with scalars in each column</caption>
+			<para>For <latex>t</latex> in <latex>\RNr</latex>,</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det[A_1\ \dots\ ({\color{red} t}\cdot X)\ \dots \ A_n] = {\color{red} t}\cdot \det[A_1\ \dots\ X\ \dots\ A_n]
+]]>
+				</latex>
+			</math.display>
+			<para>for <latex>1\leq j\leq n</latex>.</para>
+		</part>
+	</statement>
+	
+	<proof>
+		<para>For <latex>1\leq j\leq n</latex> and column vectors <latex>A_1,\dots, A_{j-1},X,Y,A_{j+1},\dots ,A_n</latex> in <latex>\RNr[n]</latex>, set</para>
+		
+		<computation>
+			<left>\Mtrx{R}</left>
+			<center>:=</center>
+			<right>[A_1\ \dots\ A_{j-1}\ \ X+Y\ \ A_{j+1}\ \dots\ A_n]</right>
+			<left>\Mtrx{U}</left>
+			<center>:=</center>
+			<right>[A_1\ \dots\ A_{j-1}\ \ X\ \ A_{j+1}\ \dots\ A_n]</right>
+			<left>\Mtrx{V}</left>
+			<center>:=</center>
+			<right>[A_1\ \dots\ A_{j-1}\ \ Y\ \ A_{j+1}\ \dots\ A_n]</right>
+			<left>\Mtrx{W}</left>
+			<center>:=</center>
+			<right>[A_1\ \dots\ A_{j-1}\ \ t\cdot X\ \ A_{j+1}\ \dots\ A_n]</right>
+		</computation>
+		
+		<para>Then we need to verify the following two identities</para>
+		
+		<computation>
+			<left>\det(\Mtrx{R})</left>
+			<center>=</center>
+			<right>\det(\Mtrx{U}) + \det(\Mtrx{V})</right>
+			<left>\det(\Mtrx{W})</left>
+			<center>=</center>
+			<right>t\cdot \det(\Mtrx{V})</right>
+		</computation>
+		
+		<para>For both statements we argue by induction on <latex>n</latex>.</para>
+		<para><b>Anchoring the induction</b> &nbsp; If <latex>n=1</latex>, <latex>\Mtrx{A}</latex> consists just of a single number. Necessarily, <latex>j=1</latex>, and</para>
+		
+		<computation>
+			<left>\det[x+y]</left>
+			<center>=</center>
+			<right>x+y = \det[x] + \det[y]</right>
+			<left>\det[t\cdot x]</left>
+			<center>=</center>
+			<right>t\cdot x = t\cdot \det[x]</right>
+		</computation>
+		
+		<para>So the claim holds for <latex>n=1</latex>.</para>
+		
+		
+		<para><b>Induction hypothesis</b> &nbsp; Now let <latex>n\geq 1</latex>, and suppose that the determinant operation has the stated properties for matrices of size <latex>(n,n)</latex>.</para>
+		<para><b>The induction step</b> &nbsp; We need to infer that the determinant operation has the stated properties for matrices of size  <latex>(n+1,n+1)</latex>. We begin with the additivity property in the first column; i.e. <latex>j=1</latex>. So</para>
+		
+		<computation>
+			<left>\Mtrx{R}</left>
+			<center>=</center>
+			<right>[X+Y\ \ A_2\ \dots \ A_{n+1}]</right>
+		</computation>
+		
+		<para>with <latex>\Mtrx{X}=[x_1\ \dots\ x_{n+1}]^T</latex> and <latex>\Mtrx{Y}= [y_1\ \dots\ y_{n+1}]^T</latex>. Now the cofactor expansion of <latex>\det(\Mtrx{R})</latex> along the first column yields</para>
+		
+		<computation>
+			<left>\det(\Mtrx{R})</left>
+			<center>=</center>
+			<right>\sum_{i=1}^{n+1} (-1)^{i+1}(x_i+y_i)\det(\Mtrx{R}_{i1})</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{i=1}^{n+1} (-1)^{i+1}x_i\det(\Mtrx{R}_{i1})\ +\ \sum_{i=1}^{n+1} (-1)^{i+1}y_i\det(\Mtrx{R}_{i1})</right>
+			<left></left>
+			<center>=</center>
+			<right>\det[X\ \ A_2\ \dots\ A_{n+1}]\ +\ \det[Y\ \ A_2\ \dots\ A_{n+1}]</right>
+		</computation>
+		
+		<para>This shows that the determinant operation commutes with addition in the first column. To see that it commutes with scalar multiplication as well, consider <latex>\Mtrx{W}= [tX\ \ A_2\ \dots\ A_{n+1}]</latex>, for some  in <latex>t\in\RNr</latex>. We find</para>
+		
+		<computation>
+			<left>\det(\Mtrx{W})</left>
+			<center>=</center>
+			<right>\sum_{i=1}^{n+1} (-1)^{i+1}(tx_i)\det(\Mtrx{W}_{i1})</right>
+			<left></left>
+			<center>=</center>
+			<right>t\cdot \sum_{i=1}^{n+1} (-1)^{i+1} x_i\det(\Mtrx{W}_{i1})</right>
+			<left></left>
+			<center>=</center>
+			<right>t\cdot \det(U)</right>
+		</computation>
+		
+		<para>This shows that the determinant operation commutes with scalar multiplication in the first column. We have shown that the determinant operation on  <latex>(n+1,n+1)</latex>-matrices is linear in the first column. Now consider columns <latex>j</latex> with <latex>j\geq 2</latex>. We find:</para>
+		
+		<computation>
+			<left>\det(\Mtrx{R})</left>
+			<center>=</center>
+			<right>\sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}\det(R_{i1})</right>
+			<left></left>
+			<center>=	<info><para>Here we apply the induction hypothesis to the <latex>(n,n)</latex>-matrix <latex>R_{i1}</latex>.</para></info></center>
+			<right>\sum_{i=1}^{n+1} a_{i1}\cdot (-1)^{i+1}( \det(U_{i1}) + \det(V_{i1}) )</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{i=1}^{n+1}\left( a_{i1}\cdot (-1)^{i+1} \det(U_{i1})\right)\ +\ \sum_{i=1}^{n+1}\left( a_{i1}\cdot (-1)^{i+1} \det(V_{i1}) \right)</right>
+			<left></left>
+			<center>=</center>
+			<right>\det(\Mtrx{U}) + \det(\Mtrx{V})</right>
+		</computation>
+		
+		<para>This completes the induction which establishes that the determinant operation commutes with addition in each column. To see that it commutes with scalar multiplication in each column as well, we compute:</para>
+		
+		<computation>
+			<left>\det(\Mtrx{W})</left>
+			<center>=</center>
+			<right>\sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}\det(\Mtrx{W}_{i1})</right>
+			<left></left>
+			<center>=	<info><para>Here we use the induction hypothesis</para></info></center>
+			<right>\sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}t\cdot \det(\Mtrx{U}_{i1})</right>
+			<left></left>
+			<center>=</center>
+			<right>t\cdot \sum_{i=1}^{n+1} a_{i1}(-1)^{i+1}\det(\Mtrx{U}_{i1})</right>
+			<left></left>
+			<center>=</center>
+			<right>t\cdot \det(U)</right>
+		</computation>
+		<para>This completes the induction step which shows that the determinant operation commutes with scalar multiplication in each column. &ndash; The proof of the multilinearity property of the determinant operation is complete.</para>
+	</proof>
+</theorem>

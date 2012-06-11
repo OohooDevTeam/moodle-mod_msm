@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_LinearMapFindMatrix"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Linear Map Comes from a Matrix: Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Every linear transformation <math>
+                     <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                  </math> may be represented by a matrix, ... which matrix? – Here we explain first how the representing matrix is built. Then we explain which fundamental property of a linear map which makes this result possible.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>How to build the matrix representing a linear map</strong>   Here we explain the procedure by which we build the matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> representing a linear transformation <math>
+                     <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                  </math>:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>First apply <math>
+                           <latex>L</latex>
+                        </math> to the vector <math>
+                           <latex>\StdBss{1}=(1,0,\dots ,0)</latex>
+                        </math>; then use the resulting vector of <math>
+                           <latex>\RNr[m]</latex>
+                        </math> as the first column of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Next apply <math>
+                           <latex>L</latex>
+                        </math> to the vector <math>
+                           <latex>\StdBss{2}=(0,1,0,\dots ,0)</latex>
+                        </math>, then use the resulting vector of <math>
+                           <latex>\RNr[m]</latex>
+                        </math> as the second column of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>etc. until</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Finally apply <math>
+                           <latex>L</latex>
+                        </math> to the vector <math>
+                           <latex>\StdBss{n}=(0,\dots ,0,1)</latex>
+                        </math>, then use the resulting vector of <math>
+                           <latex>\RNr[m]</latex>
+                        </math> as the <math>
+                           <latex>n</latex>
+                        </math>-th and last column of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Why does the representing matrix exist?</strong>   Recall that for <math>
+                     <latex>n\geq 1</latex>
+                  </math>, <math>
+                     <latex>\RNr[n]</latex>
+                  </math> contains infinitely many points. Therefore the function <math>
+                     <latex>L</latex>
+                  </math> must make infinitely many assignments, one assignment of a point <math>
+                     <latex>L(\Vect{x})</latex>
+                  </math> in <math>
+                     <latex>\RNr[m]</latex>
+                  </math> for each <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>What we learn here is that, because <math>
+                     <latex>L</latex>
+                  </math> is linear, all of these infinitely many assignments are determined by the finite collection of assignments</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L</latex>
+                        </math> sends <math>
+                           <latex>\StdBss{1}</latex>
+                        </math> to <math>
+                           <latex>L(\StdBss{1})</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L</latex>
+                        </math> sends <math>
+                           <latex>\StdBss{2}</latex>
+                        </math> to <math>
+                           <latex>L(\StdBss{2})</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>etc.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L</latex>
+                        </math> sends <math>
+                           <latex>\StdBss{n}</latex>
+                        </math> to <math>
+                           <latex>L(\StdBss{n})</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>So this is it: finite base information implies information about infinitely many transformation situations. – What we describe here is a generalization of familiar linear functions like</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>Info: A particle moves at the constant speed of <math>
+                           <latex>100km/h</latex>
+                        </math>. This is a single bit of information. Yet it enables us to recover the distance traveled by the particle within any interval of time of length <math>
+                           <latex>t</latex>
+                        </math>: <math>
+                           <latex>t \cdot 100</latex>
+                        </math>[km].</para.body>
+                  </para>
+                  <para>
+                     <para.body>In this example, the fact that the particle travels at constant speed means that the distance traveled function <math>
+                           <latex>d\from \RNr\to \RNr</latex>
+                        </math> is a linear function of time. – Without the information that the particle travels at constant speed, we have no way of telling how far it has traveled after 2 hours or 3 hours, etc.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Info: Henry earns 20 dollars per hour. This is a single bit of information. Yet it enables us to tell how much Henry earns after any number of hours at work. His earnings are a linear function of time. If Henry’s income is by commission only, his earnings are a nonlinear function of time; we have no way of telling how much he will earn after the first two hours if we only know what he earned after one hour.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </body>
+</unit>

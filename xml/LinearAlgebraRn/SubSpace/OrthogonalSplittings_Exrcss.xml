@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_OrthogonalSplittings">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Orthogonal Splittings</title>
+	<exercise>
+		<problem>
+			<para>Let <latex>W</latex> be the subspace of <latex>\RNr[3]</latex> spanned by the ordered set of vectors <latex>\EuScript{B} := ( \Vect{w}_1, \Vect{w}_2 )</latex>, where</para>
+			<math.display>
+				<latex>\Vect{w}_1 = (1,0,-1) \quad\text{and}\quad \Vect{w}_2 = (1,1,0)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that <latex>\EuScript{B}</latex> is an ordered basis of <latex>W</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We already know that <latex>\EuScript{B}</latex> spans <latex>W</latex>. So, to show that <latex>\EuScript{B}</latex> is a basis of <latex>W</latex>, it suffices to show that it is linearly independent.</para>
+					<para>One way of showing that the vectors in <latex>\EuScript{B}</latex> are linearly independent is to show directly that they are not parallel; i.e. the vector equation</para>
+					<computation>
+						<left>\Vect{w}_2</left>
+						<center>=</center>
+						<right>t\cdot \Vect{w}_1</right>
+					</computation>
+					<para>has no solution.</para>
+					
+					<para>Alternatively, we may use the determinant test to show that the vectors are linearly independent:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+[\Vect{w}_1\ \ \Vect{w}_2]\ =\ 
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1 \\
+-1 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>The top two rows satisfy</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\det \left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right] = 1 \neq 0
+]]>
+						</latex>
+					</math.display>
+					<para>Therefore the vectors are linearly independent, and so <latex>\EuScript{B}</latex> is an ordered basis of <latex>W</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find an ONB for <latex>W</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>An ONB of <latex>W</latex> is given by</para>
+					<computation>
+						<left>\Vect{u}_1</left>
+						<center>:=</center>
+						<right>\tfrac{1}{\sqrt{2}} (1,0,-1)</right>
+						<left>\Vect{u}_2</left>
+						<center>:=</center>
+						<right>\tfrac{\sqrt{2}}{2\sqrt{3}} (1,2,1)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We are told that the two vectors <latex>\Vect{w}_1</latex> and <latex>\Vect{w}_2</latex> are linearly independent. Therefore we can obtain an orthonormal basis of <latex>W</latex> by orthonormalizing them using the Gram-Schmidt process:</para>
+					<computation>
+						<left>\Vect{u}_1</left>
+						<center>=</center>
+						<right>\dfrac{ \Vect{w}_1 }{ \abs{ \Vect{w}_1 } }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{(1,0,-1)}{ \abs{ (1,0,-1) } }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{1}{\sqrt{2}} (1,0,-1)</right>
+					</computation>
+					<para>and</para>
+					<computation>
+						<left>\Vect{u}_2</left>
+						<center>=</center>
+						<right>\dfrac{ \Vect{w}_2 - (\DotPr{ \Vect{w}_2 }{ \Vect{u}_1 }) \Vect{u}_1}{ \abs{ \Vect{w}_2 - (\DotPr{ \Vect{w}_2 }{ \Vect{u}_1 }) \Vect{u}_1 } }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{ (1,1,0) - \tfrac{1}{2}(1,0,-1) }{ \abs{ \Vect{w}_2 - (\DotPr{ \Vect{w}_2 }{ \Vect{u}_1 }) \Vect{u}_1 } }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{ \tfrac{1}{2} (1,2,1) }{ \abs{ \tfrac{1}{2} (1,2,1) } }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{1}{\sqrt{6}} (1,2,1)</right>
+					</computation>
+					<para>Therefore <latex>\EuScript{B}:= (\Vect{u}_1,\Vect{u}_2)</latex> form an orthonormal basis of <latex>W</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		
+		<part>
+			<problem><para>Express the vector <latex>\Vect{x} := (\sqrt{2},1,-\sqrt{2})</latex> as the sum of its component in <latex>W</latex> and its component in <latex>W^{\bot}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcccc}
+\Vect{x} & = & \left( \sqrt{2}+1/3 , 2/3 , -\sqrt{2}+1/3 \right) & + & \left( - 1/3 , 1/3 , -1/3 \right) \\
+              &    &  \in W & & \in W^{\bot}
+\end{array}
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We already know that <latex>\EuScript{B}=\left( \tfrac{1}{\sqrt{2}}(1,0,-1) , \tfrac{1}{\sqrt{6}}(1,2,1) \right) =: (\Vect{u}_1,\Vect{u}_2)</latex> is an ONB of <latex>W</latex>. Using <latex>\EuScript{B}</latex> we find the component of <latex>\Vect{x}</latex> in <latex>W</latex> as follows.</para>
+					<computation>
+						<left>\pr_{W}(\Vect{x})</left>
+						<center>=</center>
+						<right>(\DotPr{ \Vect{x} }{ \Vect{u}_1 }) \Vect{u}_1 + (\DotPr{ \Vect{x} }{ \Vect{u}_2 }) \Vect{u}_2</right>
+						<left></left>
+						<center>=</center>
+						<right>2 \Vect{u}_1 + \tfrac{\sqrt{2}}{\sqrt{3}} \Vect{u}_2</right>
+						<left></left>
+						<center>=</center>
+						<right>\sqrt{2}(1,0,-1) + \tfrac{1}{3}(1,2,1)</right>
+						<left></left>
+						<center>=</center>
+						<right>\left( \sqrt{2} + \tfrac{1}{3} , \tfrac{2}{3} , -\sqrt{2} + \tfrac{1}{3} \right) \text{in}\ W</right>
+					</computation>
+					<para>The component of <latex>\Vect{x}</latex> orthogonal to <latex>W</latex> is</para>
+					<computation>
+						<left>\Vect{x}_{\bot}</left>
+						<center>=</center>
+						<right>\Vect{x} - \pr_{W}(\Vect{x})</right>
+						<left></left>
+						<center>=</center>
+						<right>\left( \sqrt{2} , 1 , -\sqrt{2} \right)\ -\ \left( \sqrt{2} + \tfrac{1}{3} , \tfrac{2}{3} , -\sqrt{2} + \tfrac{1}{3} \right)</right>
+						<left></left>
+						<center>=</center>
+						<right>\tfrac{1}{3}(-1,1,-1)</right>
+					</computation>
+					<para>Therefore the required splitting of <latex>\Vect{x}</latex> is given by</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcccc}
+\Vect{x} & = & \left( \sqrt{2}+ \tfrac{1}{3} , \tfrac{2}{3} , -\sqrt{2}+ \tfrac{1}{3} \right) & + & \left( - \tfrac{1}{3} , \tfrac{1}{3} , -\tfrac{1}{3} \right) \\
+              &    &  \text{in}\ W & & \text{in}\ W^{\bot}
+\end{array}
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Verify that <latex>\Vect{x}_{\bot}</latex> found above belongs to <latex>W^{\bot}</latex></para>
+			</problem>
+			<approach>
+				<solution.hint><para>Show that <latex>\Vect{x}_{\bot}</latex> is perpendicular to the vectors in a basis of <latex>W</latex>.</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Expand the ONB of <latex>W</latex> found earlier to an ONB of  <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>\EuScript{C}=(\Vect{u}_1,\Vect{u}_2,\Vect{u}_3)</latex> with</para>
+					<computation>
+						<left>\Vect{u}_1</left>
+						<center>=</center>
+						<right>\tfrac{1}{\sqrt{2}}(1,0,-1)</right>
+						<left>\Vect{u}_2</left>
+						<center>=</center>
+						<right>\tfrac{1}{\sqrt{6}}(1,2,1)</right>
+						<left>\Vect{u}_3</left>
+						<center>=</center>
+						<right>\tfrac{1}{\sqrt{3}}(-1,1,-1)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We already know that <latex>\EuScript{B}=\left( \tfrac{1}{\sqrt{2}}(1,0,-1) , \tfrac{1}{\sqrt{6}}(1,2,1) \right) =: (\Vect{u}_1,\Vect{u}_2)</latex> is an ONB of <latex>W</latex>. Any unit vector orthogonal to <latex>\Vect{u}_1</latex> and <latex>\Vect{u}_2</latex> is linearly independent to both of these vectors, hence provides a complement of <latex>\EuScript{B}</latex> to an orthonormal basis <latex>\EuScript{C}</latex> of <latex>\RNr[3]</latex>. We can use <latex>\Vect{u}_3:=\CrssPr{ \Vect{u}_1 }{ \Vect{u}_2}</latex> or, alternatively, use the vector <latex>\Vect{x}_{\bot}</latex> found earlier and normalize it.</para>
+					<computation>
+						<left>\Vect{u}_3</left>
+						<center>:=</center>
+						<right>\dfrac{ \Vect{x}_{\bot} }{ \abs{ \Vect{x}_{\bot} } }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{ (-1,1,-1) }{ \abs{ (-1,1,-1) } }</right>
+						<left></left>
+						<center>=</center>
+						<right>\tfrac{1}{ \sqrt{3} } (-1,1,-1)</right>
+					</computation>
+					<para>So <latex>\EuScript{C}:= (\Vect{u}_1,\Vect{u}_2,\Vect{u}_3)</latex> is an ONB or <latex>\RNr[3]</latex> of the required kind.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below determine if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>The orthogonal complement of <latex>(1,1,2,1,1)</latex> in <latex>\RNr[5]</latex> has a basis of four vectors.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Review the dimension formula for a subspace and its orthogonal complement.</para></solution.hint>
+				<solution>
+					<para>Let <latex>V:=\span\Set{ (1,1,2,1,1) }</latex>, and let <latex>W:=V^{\bot}</latex>. Then <latex>V</latex> and <latex>W</latex> form an orthogonal splitting of <latex>\RNr[5]</latex>, and the dimension formula gives</para>
+					<computation>
+						<left>5=\dim(\RNr[5])</left>
+						<center>=</center>
+						<right>\dim(V) + \dim(W)</right>
+					</computation>
+					<para>Now <latex>\dim(V)=1</latex> as <latex>V</latex> is spanned by the single nonzero vector <latex>(1,1,2,1,1)</latex>. Therefore, <latex>\dim(W) = 4</latex>. &ndash; The statement in question is correct.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Any four linearly independent vectors in the orthogonal complement <latex>W</latex> of <latex>(1,1,2,1,1)</latex> in <latex>\RNr[5]</latex> form a basis of <latex>W</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Review the solution of the previous problem.</para></solution.hint>
+				<solution>
+					<para>We know that <latex>\dim(W)=4</latex>. Therefore any collection of four linearly independent vectors in <latex>W</latex> 
+						<subordinate>
+							<hot>forms a basis of <latex>W</latex></hot>
+							<crossref>
+								<theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
+							</crossref>
+						</subordinate>. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Any four linearly independent vectors in <latex>\RNr[5]</latex> form a basis of the orthogonal complement <latex>W</latex> of <latex>(1,1,2,1,1)</latex> in <latex>\RNr[5]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>If <latex>\Vect{a}</latex> is a basis vector of <latex>W</latex>, then <latex>\Vect{a}</latex> must lie in <latex>W</latex>. &ndash; Is the condition satisfied for each of any four linearly vectors picked randomly in <latex>\RNr[5]</latex>?</para></solution.hint>
+				<solution>
+					<para>Start with <latex>\Vect{a}:=(1,1,2,1,1)</latex>, and let <latex>\Vect{b}, \Vect{c}, \Vect{d}</latex> be any three vectors in <latex>\RNr[5]</latex> such that <latex>\Set{\Vect{a}, \Vect{b}, \Vect{c}, \Vect{d} }</latex> are linearly independent. Then this is certainly not a basis of <latex>W</latex> because <latex>\Vect{a}</latex> does not belong to <latex>W</latex>. &ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>U</latex> and <latex>V</latex> are subspaces of <latex>\RNr[k]</latex> such that <latex>U</latex> is contained in the orthogonal complement of <latex>V</latex> in <latex>\RNr[k]</latex>, then <latex>U</latex> and <latex>V</latex> have only the 0-vector in common.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Review properties of an orthogonal splitting of <latex>\RNr[k]</latex> into <latex>U</latex> and <latex>U^{\bot}</latex>.</para></solution.hint>
+				<solution>
+					<para>We know that <latex>U</latex> and <latex>U^{\bot}</latex> have only the 0-vector in common. Therefore</para>
+					<ol>
+						<li><para><latex>U</latex> and <latex>W</latex> have at most the 0-vector in common, because that <latex>V</latex> is contained in <latex>U^{\bot}</latex>.</para></li>
+						<li><para><latex>U</latex> and <latex>W</latex> have at least the 0-vector in common, because both spaces contain the 0-vector</para></li>
+					</ol>
+					<para>Both conclusions combined, we see that the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Let <latex>U</latex> and <latex>V</latex> be subspaces of <latex>\RNr[k]</latex> of dimension <latex>p</latex> and <latex>q</latex>, respectively. If <latex>V</latex> is contained in <latex>U^{\bot}</latex>, then <latex>q\leq k-p</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>How are <latex>\dim(V)</latex> and <latex>\dim(U^{\bot})</latex> related?</para></solution.hint>
+				<solution>
+					<para>We need to draw conclusions from two pieces of information:</para>
+					<ol>
+						<li>
+							<para><latex>\dim(U^{\bot}) = k - p</latex> by the dimension formula for orthogonal splittings.</para>
+						</li>
+						<li>
+							<para><latex>q=\dim(V) \leq \dim(U^{\bot})</latex>, as <latex>V</latex> is a subspace of <latex>U^{\bot}</latex>.</para>
+						</li>
+					</ol>
+					<para>It follows that <latex>q\leq k-p</latex>. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Let <latex>U</latex> and <latex>V</latex> be subspaces of <latex>\RNr[k]</latex> of dimension <latex>p</latex> and <latex>q</latex>, respectively. If <latex>V</latex> is contained in <latex>U^{\bot}</latex>, then <latex>q = k-p</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>Not always!</para></answer>
+				<solution.hint><para>Review the solution of the previous problem.</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Let <latex>U</latex> and <latex>V</latex> be subspaces of <latex>\RNr[k]</latex> of dimension <latex>p</latex> and <latex>q</latex>, respectively. If <latex>V</latex> is contained in <latex>U^{\bot}</latex>, then <latex>q \geq k-p</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>Not always!</para></answer>
+				<solution.hint><para>Review the solution of the previous two problems.</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The orthogonal complement of the vectors <latex>\Vect{a} = (1,0,0,0)</latex> and <latex>\Vect{b}=(0,0,1,0)</latex> in <latex>\RNr[4]</latex> consists of all vectors of the form <latex>\Vect{x} = (0,a,0,b)</latex> with <latex>a,b</latex> in <latex>\RNr</latex> arbitrary.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Do the vectors of the given form belong to <latex>\Set{ \Vect{a}, \Vect{b} }^{\bot}</latex>?</para></solution.hint>
+				<solution.hint>
+					<para>What is the dimension of the subspace of <latex>\RNr[4]</latex> that consists of the vectors <latex>\Vect{x}</latex>?</para>
+				</solution.hint>
+				<solution.hint>
+					<para>What is the dimension of <latex>\Set{ \Vect{a}, \Vect{b} }</latex>?</para>
+				</solution.hint>
+				<solution>
+					<para>We collect the following facts:</para>
+					<ol>
+						<li>
+							<para>The vectors <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> are linearly independent. So they span a subspace <latex>U</latex> of <latex>\RNr[4]</latex> of dimension <latex>2</latex>.</para>
+						</li>
+						<li>
+							<para>Therefore <latex>\dim(U^{\bot}) = 4- 2 = 2</latex>.</para>
+						</li>
+						<li>
+							<para>The vectors of the form <latex>\Vect{x} = (0,a,0,b) = a\cdot (0,1,0,0) + b\cdot (0,0,0,1)</latex> form the subspace <latex>V</latex> of <latex>\RNr[4]</latex> spanned by <latex>\StdBss{2}=(0,1,0,0)</latex> and <latex>\StdBss{4}=(0,0,0,1)</latex>. So <latex>\dim(V) = 2</latex>.</para>
+						</li>
+						<li>
+							<para><latex>\StdBss{2}</latex> and <latex>\StdBss{4}</latex> are perpendicular to <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>. So they belong to <latex>U^{\bot}</latex>.</para>
+						</li>
+						<li>
+							<para>So <latex>V</latex> is a subspace of dimension <latex>2</latex> of <latex>U^{\bot}</latex>.</para>
+						</li>
+						<li>
+							<para>So <latex>V=U^{\bot}</latex>.</para>
+						</li>
+					</ol>
+					<para>This means that the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The orthogonal complement of the vectors <latex>\Vect{a} = (1,0,0,0)</latex> and <latex>\Vect{b}=(0,0,1,0)</latex> in <latex>\RNr[4]</latex> consists of the vectors <latex>\StdBss{2} = (0,1,0,0)</latex> and <latex>\StdBss{3} = (0,0,0,1)</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>Do these vectors form a subspace of <latex>\RNr[4]</latex>?</para></solution.hint>
+				<solution>
+					<para>Let <latex>U</latex> denote the subspace spanned by <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>. Then <latex>\StdBss{2}</latex> and <latex>\StdBss{4}</latex> belong to <latex>U^{\bot}</latex>. However, <latex>U^{\bot}</latex> has dimension <latex>2</latex>, hence contains infinitely many vectors. In other words, <latex>U^{\bot}</latex> consists of more than just the given vectors. &ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+</exercise.pack>

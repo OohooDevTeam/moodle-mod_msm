@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearMapGivesMatrix1">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Example: The Matrix which Describes a Given Linear Map</title>
+	<caption>Example: The Matrix which Describes a Given Linear Map</caption>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Find the matrix representing the linear transformation</para>
+			
+			<math.display>
+				<latex>L\from \RNr[2] \longrightarrow \RNr[2],\quad L(x,y) = (3x+y,x+2y)</latex>
+			</math.display>
+			
+			<para>and analyze the transformation properties of <latex>L</latex>.</para>
+		</statement>
+		
+		<answer type="Proof">
+			<para>We begin by finding the effect of <latex>L</latex> on the unit vectors <latex>\StdBss{1}=(1,0)</latex> and <latex>\StdBss{2}=(0,2)</latex> in the direction of the coordinate axes.</para>
+			
+			<computation>
+				<left>L(\StdBss{1})</left>
+				<center>=	<info><para>This vector will form the first column of the matrix representing <latex>L</latex>.</para></info></center>
+				<right>L(1,0) = (3,1)</right>
+				<left>L(\StdBss{2})</left>
+				<center>=	<info><para>This vector will form the second column of the matrix representing <latex>L</latex>.</para></info></center>
+				<right>L(0,1) = (1,2)</right>
+			</computation>
+			
+			<para>Therefore the matrix representing <latex>L</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+A := \left[\begin{array}{cc}
+3 & 1 \\
+1 & 2
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>This tells us that the unit square spanned by the vectors <latex>\StdBss{1}</latex> and <latex>\StdBss{2}</latex> gets transformed into the parallelogram spanned by the vectors <latex>(3,1)</latex> and <latex>(1,2)</latex>.
+				<index.glossary>
+					<term>unit</term><term>square of <latex>\RNr[2]</latex></term>
+				</index.glossary>
+				
+			</para>
+			
+			<figure>
+				<img src="ims/Trafo2To2_1.png"></img><!-- svg available -->
+				<caption>The effect of <latex>L</latex> on the unit square (left) of <latex>\RNr[2]</latex></caption>
+			</figure>
+			
+			<para>Thus we see that <latex>L</latex> transforms the unit lattice of <latex>\RNr[2]</latex> into the &lsquo;slanted&rsquo; below.
+				<index.glossary>
+					<term>unit</term><term>lattice of <latex>\RNr[2]</latex></term>
+				</index.glossary>
+			</para>
+			
+			<figure>
+				<img src="ims/Trafo2To2_2.png"></img><!-- svg available -->
+				<caption>The effect of <latex>L</latex> on the unit lattice (left) of <latex>\RNr[2]</latex></caption>
+			</figure>
+			
+			<para>We now have two methods to compute how <latex>L</latex> transforms a specific point, say <latex>\Vect{x}=(2,5)</latex>. We can either use the original definition of <latex>L</latex> and find </para>
+			
+			<math.display>
+				<latex>L(2,5) = (3\cdot 2 + 5 , 2 + 2\cdot 5) = (11,12)</latex>
+			</math.display>
+			
+			<para>Alternatively, we can use the matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex> to obtain</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+L(2,5) = \left[\begin{array}{cc}
+3 & 1 \\
+1 & 2
+\end{array}\right]
+\left[\begin{array}{c}
+2 \\ 5
+\end{array}\right] = 
+\left[\begin{array}{c}
+3\cdot 2 + 5 \\ 2 + 2\cdot 5
+\end{array}\right] =
+\left[\begin{array}{c}
+11 \\ 12
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

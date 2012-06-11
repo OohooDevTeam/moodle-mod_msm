@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_CartesianProducts"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Cartesian Products: Exercises</title>
+	  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="ProductIntervalsR2_Exrcs.xml"/>
+	  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="ProductIntervalsR3_Exrcs.xml"/>
+	  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="BoxExpress_Exrcs.xml"/>
+</exercise.pack>

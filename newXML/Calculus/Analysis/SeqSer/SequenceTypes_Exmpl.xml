@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_SequenceTypes"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	
+	  <title>Types: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>For the sequence below decide if it is constant, bounded above / below, (strictly) increasing / decreasing, or alternating.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>a_n := n</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence constant?</strong>   We have <math>
+                        <latex>a_0=0</latex>
+                     </math>, <math>
+                        <latex>a_1=1\neq 0</latex>
+                     </math>, etc. Therefore it is not true that there is a number <math>
+                        <latex>c</latex>
+                     </math> with <math>
+                        <latex>a_n=c</latex>
+                     </math> for all <math>
+                        <latex>n\in \NNr</latex>
+                     </math>. – The sequence is not constant.</para.body>
+               </para>
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence bounded below?</strong>   We have</para.body>
+               </para>
+			            <math.display>
+				              <latex>a_n = n \geq 0</latex>
+			            </math.display>
+			            <para>
+                  <para.body>for all <math>
+                        <latex>n\in \NNr</latex>
+                     </math>. Therefore the sequence is bounded below by any <math>
+                        <latex>l\in \RNr</latex>
+                     </math> with <math>
+                        <latex>l\leq 0</latex>
+                     </math>. – Note that supplying a lower bound for a sequence does not oblige us to find the best possible lower bound. All we need to supply is any number <math>
+                        <latex>l</latex>
+                     </math> with <math>
+                        <latex>l\leq a_n</latex>
+                     </math> for all <math>
+                        <latex>n\in \NNr</latex>
+                     </math>. Thus <math>
+                        <latex>0</latex>
+                     </math>, <math>
+                        <latex>-\pi</latex>
+                     </math>, <math>
+                        <latex>-999</latex>
+                     </math>, ... are examples of lower bounds for this sequence.</para.body>
+               </para>
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence bounded above?</strong>   The answer is ‘no’ because every number in <math>
+                        <latex>\NNr</latex>
+                     </math> occurs as a sequence element, and <math>
+                        <latex>\NNr</latex>
+                     </math> is 
+				<subordinate>
+                        <hot>not bounded above</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up this fact</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>.</para.body>
+               </para>
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence increasing?</strong>   For each <math>
+                        <latex>n\in \NNr</latex>
+                     </math> we have</para.body>
+               </para>
+			            <math.display>
+				              <latex> 
+					a_n = n &lt; n+1 = a_{n+1}
+					</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore the sequence is strictly increasing.</para.body>
+               </para>
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence alternating?</strong>   For <math>
+                        <latex>n\geq 1</latex>
+                     </math>, we have <math>
+                        <latex> a_n &gt; 0 </latex>
+                     </math>. Therefore it is not true that two successive sequence elements have opposite signs. The sequence is not alternating.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>For the sequence below decide if it is constant, bounded above / below, (strictly) increasing / decreasing, or alternating.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>a_n := (-1)^n\cdot n^2</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence constant?</strong>   The sequence is not constant because more than one number occurs as a sequence element; for example</para.body>
+               </para>
+			            <math.display>
+				              <latex>a_5=-25 \neq 100 = a_{10}</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence bounded below?</strong>   We have</para.body>
+               </para>
+			            <math.display>
+				              <latex> a_{2n+1} = -(2n+1)^2 &lt; -n </latex>
+			            </math.display>
+			            <para>
+                  <para.body>for all <math>
+                        <latex>n\in \NNr</latex>
+                     </math>. We know that the set <math>
+                        <latex>-\NNr</latex>
+                     </math> is not bounded below. Therefore the given sequence is not bounded below.</para.body>
+               </para>
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence bounded above?</strong>   The answer is ‘no’ because, for every <math>
+                        <latex>n\in\NNr</latex>
+                     </math>,</para.body>
+               </para>
+			            <math.display>
+				              <latex>a_{2n} = 4n^2 \geq n</latex>
+			            </math.display>
+			            <para>
+                  <para.body>and, we know that <math>
+                        <latex>\NNr</latex>
+                     </math> is
+				<subordinate>
+                        <hot>not bounded above</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up this fact</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>.</para.body>
+               </para>
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence increasing?</strong>   For each <math>
+                        <latex>n\in \NNr</latex>
+                     </math> we have</para.body>
+               </para>
+			            <math.display>
+				              <latex> 
+					a_{2n} = n^2 &gt; -(2n+1)^2 = a_{n+1}
+					</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore the sequence is not increasing. With similar reasoning we see that <math>
+                        <latex>a_n</latex>
+                     </math> is not decreasing.</para.body>
+               </para>
+			            <para>
+                  <para.body>
+                     <strong>Is the sequence alternating?</strong>   For each <math>
+                        <latex>n\in \NNr</latex>
+                     </math> we have</para.body>
+               </para>
+			            <math.display>
+				              <latex>\sign(a_n) = (-1)^n = - (-1)^{n+1} = -\sign(a_{n+1})</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore this sequence is alternating.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_SeriesLimitComparisonTest"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Limit comparison test</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
+         <para>
+            <para.body>What is the idea underlying these limit comparison tests? –</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>If <math>
+                        <latex> 0 &lt; \lim_{n\to \infty} \tfrac{a_n}{b_n} = c \in \RNr</latex>
+                     </math>, then <math>
+                        <latex>a_n\approx c\dot b_n</latex>
+                     </math> for large <math>
+                        <latex>n</latex>
+                     </math>. This implies that the convergence behavior of <math>
+                        <latex>\sum_{n\to \infty}b_n</latex>
+                     </math> resembles that of <math>
+                        <latex>\sum_{n\to\infty} (ca_n) = c\dot \sum_{n\to\infty}a_n</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>If <math>
+                        <latex>\lim_{n\to \infty}\tfrac{a_n}{b_n} = 0</latex>
+                     </math>, then <math>
+                        <latex> 0&lt; a_n &lt; b_n </latex>
+                     </math> for large <math>
+                        <latex>n</latex>
+                     </math>. So, convergence of <math>
+                        <latex>\sum_{n\to\infty}b_n</latex>
+                     </math> to a number implies the convergence of <math>
+                        <latex>\sum_{n\to\infty}a_n</latex>
+                     </math> to a number.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>If <math>
+                        <latex>\lim_{n\to \infty}\tfrac{a_n}{b_n} = \infty</latex>
+                     </math>, then <math>
+                        <latex> 0&lt; b_n &lt; a_n </latex>
+                     </math> for large <math>
+                        <latex>n</latex>
+                     </math>. So, <math>
+                        <latex>\sum_{n\to\infty}b_n=\infty</latex>
+                     </math> implies that  <math>
+                        <latex>\sum_{n\to\infty}a_n=\infty</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ul>
+      </info>
+   </associate>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_SeriesLimitComparison"/>
+      <info>
+         <para>
+            <para.body>Examples of how to use the comparison test</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For series <math>
+               <latex>\sum_{n=0}^{\infty} a_n</latex>
+            </math> and <math>
+               <latex>\sum_{n=0}^{\infty} b_n</latex>
+            </math>, with <math>
+               <latex> 0&lt; a_n, b_n </latex>
+            </math> the following hold:</para.body>
+      </para>
+      <part.theorem partid="LimitPositive">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\lim_{n\to\infty} \tfrac{a_n}{b_n} = c</latex>
+                  </math>, and <math>
+                     <latex> 0&lt;c&lt;\infty </latex>
+                  </math>, then</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>Both series converge to a number, or</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>both series converge to a <math>
+                           <latex>+\infty</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="LimitZero">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\lim_{n\to\infty} \tfrac{a_n}{b_n} = 0</latex>
+                  </math>, and <math>
+                     <latex>\sum_{n=0}^{\infty}b_n</latex>
+                  </math> converges to a number, then so does <math>
+                     <latex>\sum_{n=0}^{\infty}a_n</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="LimitInfinity">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\lim_{n\to\infty} \tfrac{a_n}{b_n} = \infty</latex>
+                  </math>, and <math>
+                     <latex>\sum_{n=0}^{\infty}b_n = \infty</latex>
+                  </math>, then <math>
+                     <latex>\sum_{n=0}^{\infty}a_n = \infty</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>LimitPositive</part.ref>
+         </logic>
+         <caption>LimitPositive</caption>
+         <proof.block.body>
+            <para>
+               <para.body>By assumption</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>LimitZero</part.ref>
+         </logic>
+         <caption>LimitZero</caption>
+         <proof.block.body>
+            <para>
+               <para.body>For <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> choose <math>
+                     <latex>N\in \NNr</latex>
+                  </math> such that for <math>
+                     <latex>n\geq N</latex>
+                  </math>
+               </para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>LimitInfinity</part.ref>
+         </logic>
+         <caption>LimitInfinity</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Pick <math>
+                     <latex>\varepsilon :=2</latex>
+                  </math>, and choose <math>
+                     <latex>N\in \NNr</latex>
+                  </math> such that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

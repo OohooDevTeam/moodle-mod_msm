@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illustr_Overdetermined"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>An Overdetermined System of Equations – Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The picture below shows the lines of solution of three linear equations in two variables.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/ThreeEqnsR2Overdetermined.gif" height="318" width="434"/>
+                  </media>
+               </para.body>
+            </para>
+            <para>
+               <para.body>Each of these 3 lines is the solution set of a linear equation in two unknowns. These three lines have no point in common. Therefore the set of simultaneous solutions of the three equations is empty.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>When dealing with 3 equations in 2 variables, how ‘often’ does this happen? – Observe: shifting or rotating any of these solution lines a little will not qualitative change the picture  in the sense there is still no point common to all three lines.</para.body>
+            </para>
+            <para>
+               <para.body>On the other hand, start from a situation where all three lines pass through a common point. It is then possible to displace two of these lines by a suitable tiny amount so that they have no point in common. (Try this!) So this situation where three lines in the plane have a point in common is a ‘rare’ and special case.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_LinearIndependenceRank"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Linear Independence by Rank: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the vectors</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{a}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(1,2,3,0)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{b}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(1,1,2,2)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{c}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(3,1,4,1)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{d}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(2,1,3,0)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+			      <para xmlns="">
+            <para.body>of <math>
+                  <latex>\RNr[4]</latex>
+               </math> are linearly independent.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We form the matrix</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{A} = \left[
+\begin{array}{cccc}
+1 &amp; 1 &amp; 3 &amp; 2 \\
+2 &amp; 1 &amp; 1 &amp; 1 \\
+3 &amp; 2 &amp; 4 &amp; 3 \\
+0 &amp; 2 &amp; 1 &amp; 0
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>which has the given vectors as its column vectors. The RREF of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rrrr}
+1 &amp; 0 &amp; 0 &amp; 1/3 \\
+0 &amp; 1 &amp; 0 &amp; -1/3 \\
+0 &amp; 0 &amp; 1 &amp; 2/3 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>So <math>
+                        <latex> \rk(\Mtrx{A}) = 3 &lt; 4 </latex>
+                     </math>. Therefore, the vectors are linearly dependent.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the vectors</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{w}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(3,1,1,-1,2,6,1,1)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{x}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(0,4,9,6,2,6,3,-2)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{y}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(2,0,0,2,3,1,-1,0)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{z}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(1,1,-2,-1,3,1,1,4)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+			      <para xmlns="">
+            <para.body>of <math>
+                  <latex>\RNr[8]</latex>
+               </math> are linearly independent.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>If we use the given vectors as the column vectors of a matrix and determine its RREF, we find</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{A} = \left[
+\begin{array}{rrrr}
+3 &amp; 0 &amp; 2 &amp; 1 \\
+1 &amp; 4 &amp; 0 &amp; 1 \\
+1 &amp; 9 &amp; 0 &amp; -2 \\
+-1 &amp; 6 &amp; 2 &amp; -1 \\
+2 &amp; 2 &amp; 3 &amp; 3 \\
+6 &amp; 6 &amp; 1 &amp; 1 \\
+1 &amp; 3 &amp; -1 &amp; 1 \\
+1 &amp; -2 &amp; 0 &amp; 4
+\end{array}
+\right]\qquad
+\begin{array}{cccc}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Thus <math>
+                        <latex>\rk(\Mtrx{A}) = 4</latex>
+                     </math>, implying that its columns are linearly independent. So <math>
+                        <latex>\Vect{w},\Vect{x},\Vect{y},\Vect{z}</latex>
+                     </math> are linearly independent.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

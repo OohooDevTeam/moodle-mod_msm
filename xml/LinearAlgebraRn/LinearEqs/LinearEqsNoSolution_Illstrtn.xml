@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Illstrtn_LinearEqsNoSolution">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+	<title>Linear Equations with no Solutions</title>
+	<caption>Linear Equations with no Solutions</caption>
+	<showme>
+		<statement>
+			<para>If a system of linear equations has no solution, then the solution hyperplanes of its equations have no point in common.</para>
+			
+			<para><img src="ims/ThreeEqnsR2Overdetermined.gif"/></para>
+			
+			<para>There is exactly one way in which the RREF of the system indicates that there is no solution: The RREF contains a leading <latex>1</latex> in its augmented part.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{ccccccccccccccc|c}
+0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & 0 & * & \cdots & * & 0 \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & 0 \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & 0 \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & \vdots \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & \vdots \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & * & ***    & * & 0 \\
+{\color{red}0} & {\color{red}\dots} & {\color{red}0} & {\color{red}0} & {\color{red}0} & {\color{red}\dots} & {\color{red}0} & {\color{red}0} & {\color{red}0} & {\color{red}\dots} & {\color{red}0} & {\color{red}0} & {\color{red}0} & {\color{red}\dots} & {\color{red}0} & {\color{red}1} \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>Why does the above system have no solution? – To see this we only need to recall that a row with a leading <latex>1</latex> in its augmented part corresponds to an equation in the reduced system of the form:</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$0$}{\color{red}x_1} & + & \colorbox{lightgreen}{$0$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$0$}{\color{red}x_n} & = & {\color{red}1} \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The left hand side is always <latex>0</latex>, while the right hand side is <latex>1</latex>. So this particular equation has no solution. Hence the entire system has no simultaneous solutions. </para>
+		</statement>
+	</showme>
+</showme.pack>

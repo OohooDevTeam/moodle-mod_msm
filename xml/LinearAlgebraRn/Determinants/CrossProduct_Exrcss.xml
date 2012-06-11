@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_CrossProduct">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Cross Product</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>Given vectors <latex>\Vect{v}=(-3,-2,1)</latex> and <latex>\Vect{w}=(1,-2,4)</latex> in <latex>\RNr[3]</latex>, do the following</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para>Find a vector perpendicular to both <latex>\Vect{v}</latex> and <latex>\Vect{w}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>(-6,13,8)</latex> is perpendicular to <latex>\Vect{v}</latex> and <latex>\Vect{w}</latex>.</para>
+				</answer>
+				<solution>
+					<para>A vector perpendicular to both <latex>\Vect{v}</latex>and <latex>\Vect{w}</latex> is the cross product of these two vectors:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+\CrssPr{ \Vect{v} }{ \Vect{w} }\ &=\ 
+\det
+\left[
+\begin{array}{rrr}
+\Vect{i} & -3 & 1 \\
+\Vect{j} & -2 & -2 \\
+\Vect{k} & 1 & 4
+\end{array}
+\right] \\
+	&=\ \det
+\left[
+\begin{array}{rr}
+-2 & -2 \\
+1 & 4
+\end{array}
+\right] \Vect{i} -
+\det
+\left[
+\begin{array}{rr}
+-3 & 1 \\
+1 & 4
+\end{array}
+\right] \Vect{j} +
+\det
+\left[
+\begin{array}{rr}
+-3 & 1 \\
+-2 & -2
+\end{array}
+\right] \Vect{k} \\
+	&=\ (-6) \Vect{i}- (-13)\Vect{j} + 8\Vect{k} \\
+	&=\ (-6,13,8)
+\endaligned
+]]>
+						</latex>
+					</math.display>
+					<para>Observe that any nonzero multiple of <latex>\CrssPr{ \Vect{v} }{ \Vect{w} }</latex> is also perpendicular to both <latex>\Vect{v}</latex> and <latex>\Vect{w}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the area of the parallelogram spanned by <latex>\Vect{v}</latex> and <latex>\Vect{w}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The area of the specified parallelogram is <latex>\sqrt{ 269}</latex> [square units]</para>
+				</answer>
+				<solution>
+					<para>The area of the parallelogram spanned by <latex>\Vect{v}</latex>and <latex>\Vect{w}</latex> is</para>
+					<math.display>
+						<latex>
+							\abs{ \CrssPr{ \Vect{v} }{ \Vect{w} } } = \sqrt{ (-6)^2 + 13^2 + 8^2} = \sqrt{ 269 }
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Suppose for vectors <latex>\Vect{x}</latex>, <latex>\Vect{y}</latex>, <latex>\Vect{u}</latex>, and <latex>\Vect{v}</latex> in <latex>\RNr[3]</latex> the following are true</para>
+			<computation>
+				<left>\CrssPr{ \Vect{x} }{ \Vect{y} }</left>
+				<center>=</center>
+				<right>(4,-3,2)</right>
+				<left>\CrssPr{ \Vect{u} }{ \Vect{v} }</left>
+				<center>=</center>
+				<right>(1,1,-5)</right>
+				<left>\CrssPr{ \Vect{v} }{ \Vect{y} }</left>
+				<center>=</center>
+				<right>(-2,1.5, -1)</right>
+			</computation>
+			
+		</problem>
+		<part>
+			<problem><para>Find <latex>\CrssPr{ (7 \Vect{x} ) }{ \Vect{y} }</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>\CrssPr{ (7 \Vect{x} ) }{ \Vect{y} }</left>
+						<center>=</center>
+						<right>(28,-21,14)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>The cross product is linear in the first factor. Therefore</para>
+					<computation>
+						<left>\CrssPr{ (7 \Vect{x} ) }{ \Vect{y} }</left>
+						<center>=</center>
+						<right>7\cdot (\CrssPr{ \Vect{x} }{ \Vect{y} })</right>
+						<left></left>
+						<center>=</center>
+						<right>(28,-21,14)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find <latex>\CrssPr{ \Vect{y} }{ (\Vect{u} + \Vect{v}) }</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>\CrssPr{ \Vect{y} }{ (\Vect{u} + \Vect{v}) }</left>
+						<center>=</center>
+						<right>(1,-2.5,6)</right>
+					</computation>
+				</answer>
+				<solution>
+					<computation>
+						<left>\CrssPr{ \Vect{y} }{ (\Vect{u} + \Vect{v}) }</left>
+						<center>=</center>
+						<right>(\CrssPr{ \Vect{y} }{ \Vect{y} }) + (\CrssPr{ \Vect{y} }{ \Vect{v} }</right>
+						<left></left>
+						<center>=</center>
+						<right>-(\CrssPr{ \Vect{u} }{ \Vect{y} }) - (\CrssPr{ \Vect{v} }{ \Vect{y} })</right>
+						<left></left>
+						<center>=</center>
+						<right>-(1,1,-5) - (-2,1.5,-1)</right>
+						<left></left>
+						<center>=</center>
+						<right>(1,-2.5,6)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find <latex>\CrssPr{ \Vect{x} }{ (-3 \Vect{y} ) }</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>\CrssPr{ \Vect{x} }{ (-3 \Vect{y} ) }</left>
+						<center>=</center>
+						<right>(-12,9,-6)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\CrssPr{ \Vect{x} }{ (-3 \Vect{y} ) }</left>
+						<center>=</center>
+						<right>-3( \CrssPr{ \Vect{x} }{ \Vect{y} })</right>
+						<left></left>
+						<center>=</center>
+						<right>-3( 4,-3,2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(-12,9,-6)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Are the vectors <latex>( \Vect{x} + \Vect{v} )</latex> and <latex>\Vect{y}</latex> parallel?</para>
+			</problem>
+			<approach>
+				<answer><para>No! &ndash; The vectors are not parallel.</para></answer>
+				<solution>
+					<para>We use the following feature of the cross product operation to answer this question: Two vectors in <latex>\RNr[3]</latex> are parallel if and only if their cross product is <latex>\Vect{0}=(0,0,0)</latex>. However, we find:</para>
+					<computation>
+						<left>\CrssPr{ (\Vect{x} + \Vect{v}) }{ \Vect{y} }</left>
+						<center>=</center>
+						<right>(\CrssPr{ \Vect{x} }{ \Vect{y} }) + (\CrssPr{ \Vect{v} }{ \Vect{y} })</right>
+						<left></left>
+						<center>=</center>
+						<right>(4,-3,2) + (-2,1.5,-1)</right>
+						<left></left>
+						<center>=</center>
+						<right>(2,-1.5,1)</right>
+					</computation>
+					<para>Since the cross product of the two vectors is not zero, the two vectors are not parallel.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Is <latex>(\Vect{x} + 2 \Vect{v})</latex> parallel to <latex>\Vect{y}</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>Yes! &ndash; The two vectors are parallel.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>For <latex>\Vect{a} := (-1,0,2)</latex> find <latex>\det[\Vect{a}\ \ \Vect{y}\ \ \Vect{x}]</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>\det[\Vect{a}\ \ \Vect{y}\ \ \Vect{x}]</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\det[\Vect{a}\ \ \Vect{y}\ \ \Vect{x}]</left>
+						<center>=</center>
+						<right>-\det[\Vect{a}\ \ \Vect{x}\ \ \Vect{y}]</right>
+						<left></left>
+						<center>=</center>
+						<right>\DotPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }</right>
+						<left></left>
+						<center>=</center>
+						<right>- \DotPr{ (-1,0,2) }{ (4,-3,2) }</right>
+						<left></left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What does the previous problem tell you about the vector triple <latex>(\Vect{a} , \Vect{x} , \Vect{y})</latex>?</para></problem>
+			<approach>
+				<answer><para>The three vectors lie all in one plane.</para></answer>
+				<solution>
+					<para>We know from the previous part that <latex>\det[\Vect{a}\ \ \Vect{x}\ \ \Vect{y}]=0</latex>. Therefore the parallelepiped determined by the three column vectors has oriented volume 0. This means that the three vectors lie all in one plane.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For the points in <latex>\RNr[3]</latex> below solve the following problems.</para>
+			<para><latex>A(-1,0,2)</latex>, &nbsp; <latex>B(1,2,3)</latex>, &nbsp; C(-2,1,2)</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Find a linear equation whose solutions form the plane which passes through <latex>A</latex>, <latex>B</latex>, and <latex>C</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>An equation for the specified plane is</para>
+					<computation>
+						<left>x+y-4z</left>
+						<center>=</center>
+						<right>-9</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We try to find the equation of the plane by using the point-normal formula</para>
+					<computation>
+						<left>\DotPr{ (\Vect{x} - \Vect{a}) }{ \Vect{n} }</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>As input, it requires a point on the plane and a vector perpendicular to the plane. For the point, we can use any one of the given three points, say <latex>A</latex>. For a normal vector we use <latex>\Vect{n} := \CrssPr{ \Vect{u} }{ \Vect{v} }</latex>, where</para>
+					<computation>
+						<left>\Vect{u}</left>
+						<center>:=	<info><para>The vector represented by <latex>\Arrw{AB}</latex></para></info></center>
+						<right>(1,2,3) - (-1,0,2) = (2,2,1)</right>
+						<left>\Vect{v}</left>
+						<center>:=	<info><para>The vector represented by <latex>\Arrw{AC}</latex></para></info></center>
+						<right>(-2,1,2) - (-1,0,2) = (-1,1,0)</right>
+					</computation>
+					<para>Thus we obtain</para>
+					<computation>
+						<left>\Vect{n}</left>
+						<center>=</center>
+						<right>(-1,-1,4)</right>
+					</computation>
+					<para>An equation for the specified plane is, therefore,</para>
+					<computation>
+						<left>\DotPr{ ( (x,y,z) - (-1,0,2) )}{ (-1,-1,4) }</left>
+						<center>=</center>
+						<right>0</right>
+						<left>x+y-4z</left>
+						<center>=</center>
+						<right>-9</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the area of the triangle <latex>ABC</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>The area of the triangle is <latex magnify="yes">\tfrac{3}{2} \sqrt{2}</latex> [square units].</para></answer>
+				<solution>
+					<para>The area of the given triangle is half the area of the parallelogram spanned by the vectors joining any one of the three points to its two neighbors. In part a. we already computed two such vectors, namely</para>
+					<para align="center"><latex>\Vect{u} = (2,2,1)</latex> &nbsp; and &nbsp; <latex>\Vect{v}=(-1,1,0)</latex>.</para>
+					<para>Therefore the area of the parallelogram spanned by <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> is</para>
+					<computation>
+						<left>\abs{ \CrssPr{ \Vect{u} }{ \Vect{v} } }</left>
+						<center>=</center>
+						<right>\abs{ (-1,-1,4) }</right>
+						<left></left>
+						<center>=</center>
+						<right>\sqrt{ 18 }</right>
+					</computation>
+					<para>Consequently, the area of the triangle <latex>ABC</latex> is</para>
+					<computation>
+						<left>\tfrac{1}{2} \abs{ \CrssPr{ \Vect{u} }{ \Vect{v} } }</left>
+						<center>=</center>
+						<right>\tfrac{ 1 }{ 2 } \sqrt{ 18 }</right>
+						<left></left>
+						<center>=</center>
+						<right>\tfrac{ 3 }{ 2 } \sqrt{ 2 }</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\Vect{x}:=(2,-1,2)</latex> and <latex>\Vect{z} := (3,4,-1)</latex>.</para>
+		</problem>
+		<part>
+			<problem><para>Find a vector <latex>\Vect{y}</latex> such that <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{z}</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>\Vect{y} = (1,-1,-1)</latex></para></answer>
+				<solution>
+					<para>An arbitrary vector <latex>\Vect{y} = (a,b,c)</latex> satisfies <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{z}</latex> exactly when</para>
+					<computation>
+						<left>\CrssPr{ \Vect{x} }{ \Vect{y} }</left>
+						<center>=</center>
+						<right>(-2b-c,2a-2c,a+2b) = (3,4,-1)</right>
+					</computation>
+					<para>This vector equation is equivalent to the system of linear equations</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcrcrcr}
+& - & 2b & - & c & = 3 \\
+2a & & & - & 2c & = & 4 \\
+a & + & 2b & & & = & -1
+\end{array}
+]]>
+						</latex>
+					</math.display>
+					<para>Solving the system, for example with the row reduction method, yields</para>
+					<computation>
+						<left>a</left>
+						<center>=</center>
+						<right>-2b-1</right>
+						<left>c</left>
+						<center>=</center>
+						<right>-2b-3</right>
+					</computation>
+					<para>where <latex>b</latex> is arbitrary. For every choice of a real number for <latex>b</latex>, the vector  <latex>\Vect{y} := (-2b-1 , b , -2b-3)</latex> satisfies the requirement of the problem. For example, with <latex>b=1</latex>, we obtain  <latex>\Vect{y} = (1,-1,-1)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Can there be more than one such vector?</para></problem>
+			<approach>
+				<answer><para>Yes! &ndash; There are many such vectors.</para></answer>
+				<solution>
+					<para>There are several vectors satisfying the given requirements. Indeed, we have seen in part a) that every vector of the form</para>
+					<computation>
+						<left>\Vect{y}</left>
+						<center>=</center>
+						<right>(-2b-1,b,-2b-3)</right>
+					</computation>
+					<para>with <latex>b</latex> arbitrary in <latex>\RNr</latex> satisfies the identity <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{z}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider the two lines in <latex>\RNr[3]</latex></para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+L_1: &\quad (2,-3,0) + t(1,2,-1) &\quad t\in \RNr \\
+L_2: &\quad (1,0,0) + s(-1,3,0) &\quad s\in \RNr
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Determine if <latex>L_1</latex> and <latex>L_2</latex> intersect.</para>
+			</problem>
+			<approach>
+				<answer><para>Yes! &ndash; The two lines intersect.</para></answer>
+				<solution>
+					<para>If there is a point <latex>Q(x,y,z)</latex> on both lines, then there exist numbers <latex>s</latex> and <latex>t</latex> such that:</para>
+					<computation>
+						<left>(2,-3,0) + t(1,2,-1)</left>
+						<center>= (x,y,z) =</center>
+						<right>(1,0,0) + s(-1,3,0)</right>
+					</computation>
+					<para>This vector equation holds exactly when the numbers in matching coordinates are equal. So we obtain the following system of linear equations:</para>
+					<para align="center"><latex>t+s=-1</latex>, &nbsp; <latex>2t-3s=3</latex>, &nbsp; <latex>-t=0</latex>.</para>
+					<para>This system has the unique solution <latex>t=0</latex> and <latex>s=-1</latex>.</para>
+					<para>Thus <latex>L_1</latex> and <latex>L_2</latex> intersect in the point <latex>Q(2,-3,0)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If they do intersect, find an equation of the plane <latex>P</latex> in <latex>\RNr[3]</latex> which contains the lines. </para>
+			</problem>
+			<approach>
+				<answer>
+					<para>An equation of the plane <latex>P</latex> is</para>
+					<computation>
+						<left>3x+y+5z</left>
+						<center>=</center>
+						<right>3</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>From the previous part, <latex>L_1</latex> and <latex>L_2</latex> intersect in the point <latex>Q(2,-3,0)</latex>, and, therefore, the point <latex>(2,3,0)</latex> lies on the plane  passing through both the lines.</para>
+					<para>Now a  vector <latex>\Vect{n}</latex> is perpendicular to <latex>P</latex> if and only if  it is perpendicular to both <latex>L_1</latex> and <latex>L_2</latex>. We may, therefore, choose <latex>\Vect{n} = \CrssPr{ \Vect{u} }{ \Vect{v} }</latex>, where <latex>\Vect{u} := (1,2,-1)</latex> is the direction vector of <latex>L_1</latex> and <latex>\Vect{v} := (-1,3,0)</latex> is the direction vector of <latex>L_2</latex>. We compute <latex>\Vect{n}</latex> as follows:</para>
+					<computation>
+						<left>\Vect{n}</left>
+						<center>= \CrssPr{ \Vect{u} }{ \Vect{v} } =</center>
+						<right>(3,1,5)</right>
+					</computation>
+					<para>An equation of <latex>P</latex> is, therefore,</para>
+					<computation>
+						<left>\DotPr{ ((x,y,z)-(2,-3,0) ) }{ (3,1,5) }</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>or</para>
+					<computation>
+						<left>3x+y+5z</left>
+						<center>=</center>
+						<right>3</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find vectors <latex>\Vect{x}</latex>, <latex>\Vect{y}</latex>, and <latex>\Vect{z}</latex> for which</para>
+			<computation>
+				<left>\CrssPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \Vect{z} }</left>
+				<center>\neq</center>
+				<right>\CrssPr{ \Vect{x} }{ (\CrssPr{ \Vect{y} }{ \Vect{z} } ) }</right>
+			</computation>
+			<para>i.e. show, using a counterexample, that the cross product operation is not associative. </para>
+		</problem>
+		<approach>
+			<solution>
+				<para>One possible solution is</para>
+				<para align="center"><latex>\Vect{x}:=\Vect{i} = (1,0,0)</latex>, &nbsp; <latex>\Vect{y} := \Vect{j} = (0,1,0)</latex>, &nbsp; <latex>\Vect{z} := \Vect{k} = (0,0,1)</latex>.</para>
+				<para>and observe that the two cross products in question are distinct.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below decide if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>For all numbers <latex>a</latex> and <latex>b</latex>, <latex>\CrssPr{ (a,a,a) }{ (b,b,b) } = 0</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\CrssPr{ (a,a,a) }{ (b,b,b) }</left>
+						<center>=</center>
+						<right>ab\cdot \CrssPr{ (1,1,1) }{ (1,1,1) }</right>
+						<left></left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>Therefore the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>For all vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex>, <latex>(\Vect{x},\Vect{y},\CrssPr{ \Vect{x} }{ \Vect{y} })</latex> represents the positive orientation of <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>Consider the situation where <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel.</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>For all vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex>, <latex>\DotPr{ \Vect{x} }{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = 0</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>Recall that <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> is always perpendicular to both <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

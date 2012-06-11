@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_DefSolveFromRREF"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Row Reduced Echelon Form - Quiz</title>
+	  <caption xmlns="">RREF - Quiz</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the display below, identify each leading <math>
+                  <latex>1</latex>
+               </math> by placing your mouse over it.</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+				           <media type="image" active="1" inline="0">
+                  <img src="ims/RREF_qz.gif" height="64" width="476"/>
+                  <image.mapping>
+                     <area shape="rect" coords="0,1,17,20"/>
+						               <info>
+                        <para>
+                           <para.body>The leading <math>
+                                 <latex>1</latex>
+                              </math> of the first row</para.body>
+                        </para>
+                     </info>
+					                <area shape="rect" coords="125,21,145,40"/>
+						               <info>
+                        <para>
+                           <para.body>The leading <math>
+                                 <latex>1</latex>
+                              </math> of the second row</para.body>
+                        </para>
+                     </info>
+					                <area shape="rect" coords="316,42,333,61"/>
+						               <info>
+                        <para>
+                           <para.body>The leading <math>
+                                 <latex>1</latex>
+                              </math> of the third row</para.body>
+                        </para>
+                     </info>
+					             </image.mapping>
+               </media>
+			         </para.body>
+         </para>
+		    </statement.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the display below, identify each number that must be <math>
+                  <latex>0</latex>
+               </math> given the position of a leading <math>
+                  <latex>1</latex>
+               </math>. Place your mouse over it to find out.</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+				           <media type="image" active="1" inline="0">
+                  <img src="ims/RREF_qz.gif" height="64" width="476"/>
+                  <image.mapping>
+                     <area shape="rect" coords="128,2,146,22"/>
+						               <info>
+                        <para>
+                           <para.body>In RREF this coefficient must be <math>
+                                 <latex>0</latex>
+                              </math> because it occurs above a leading <math>
+                                 <latex>1</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+					                <area shape="rect" coords="317,1,334,22"/>
+						               <info>
+                        <para>
+                           <para.body>In RREF this coefficient must be <math>
+                                 <latex>0</latex>
+                              </math> because it occurs above a leading <math>
+                                 <latex>1</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+					                <area shape="rect" coords="316,41,336,22"/>
+						               <info>
+                        <para>
+                           <para.body>In RREF this coefficient must be <math>
+                                 <latex>0</latex>
+                              </math> because it occurs above a leading <math>
+                                 <latex>1</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+					                <area shape="rect" coords="128,44,145,62"/>
+						               <info>
+                        <para>
+                           <para.body>In RREF this coefficient must be <math>
+                                 <latex>0</latex>
+                              </math> because it occurs below a leading <math>
+                                 <latex>1</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+					                <area shape="rect" coords="1,22,18,62"/>
+						               <info>
+                        <para>
+                           <para.body>In RREF this coefficient must be <math>
+                                 <latex>0</latex>
+                              </math> because it occurs below a leading <math>
+                                 <latex>1</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+					                <area shape="rect" coords="65,43,82,62"/>
+						               <info>
+                        <para>
+                           <para.body>In RREF this coefficient must be <math>
+                                 <latex>0</latex>
+                              </math> because it occurs to the left of a leading <math>
+                                 <latex>1</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+					                <area shape="rect" coords="250,44,274,64"/>
+						               <info>
+                        <para>
+                           <para.body>In RREF this coefficient must be <math>
+                                 <latex>0</latex>
+                              </math> because it occurs to the left of a leading <math>
+                                 <latex>1</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+					                <area shape="rect" coords="60,24,86,64"/>
+						               <info>
+                        <para>
+                           <para.body>In RREF this coefficient must be <math>
+                                 <latex>0</latex>
+                              </math> because it occurs to the left of a leading <math>
+                                 <latex>1</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+					             </image.mapping>
+               </media>
+			         </para.body>
+         </para>
+		    </statement.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the rank of the system of linear equations below:</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <media type="image" active="0" inline="0">
+                  <img src="ims/RREF_qz.gif" height="64" width="476"/>
+               </media>
+            </para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The rank of this system of linear equations is <math>
+                        <latex>3</latex>
+                     </math>. This is so because</para.body>
+               </para>
+			            <ol>
+				              <li>
+                     <para>
+                        <para.body>This system is in RREF, and</para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>this system has <math>
+                              <latex>3</latex>
+                           </math> leading <math>
+                              <latex>1</latex>
+                           </math>’s.</para.body>
+                     </para>
+                  </li>
+			            </ol>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

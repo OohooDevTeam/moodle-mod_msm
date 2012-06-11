@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_IdentityTransformation">
+	<title>The Identity Transformation</title>
+	<sub.page.body>
+		<block>
+			<para>The identity transformation on <latex>\RNr[n]</latex> is given by</para>
+			<math.display>
+				<latex>\IdTrafo{n}\from \RNr[n] \longrightarrow \RNr[n],\quad \IdTrafo{n}(\Vect{x}) := \Vect{x}</latex>
+			</math.display>
+			
+			<para>Why is it called the &lsquo;identity transformation&rsquo;? In general a linear transformation of <latex>\RNr[n]</latex> changes location, size or shape of objects contained in it. However, there is one transformation which does not cause any change at all. This is the identity transformation. It sends every <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> to itself: </para>
+			
+			<para>To find the matrix representing <latex>\IdTrafo{n}</latex>, we note that each basic vector <latex>\StdBss{j}</latex> gets transformed into itself. </para>
+			
+			<math.display>
+				<latex>\IdTrafo{n}(\StdBss{j}) = 1\cdot \StdBss{j} = (0,\dots ,0,1,0,\dots ,0)</latex>
+			</math.display>
+			<para>the &lsquo;<latex>1</latex>&rsquo; appearing in position <latex>j</latex>. Therefore <latex>\IdTrafo{n}</latex> is represented by the identity matrix of size <latex>(n,n)</latex>.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\IdMtrx[n]= 
+\left[
+\begin{array}{cccc}
+1 & 0 & \cdots & 0 \\
+0 & 1 &             & 0 \\
+\vdots & & \ddots & \vdots \\
+0 & 0 & \cdots & 1
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			
+		</block>
+	</sub.page.body>
+</sub.page>

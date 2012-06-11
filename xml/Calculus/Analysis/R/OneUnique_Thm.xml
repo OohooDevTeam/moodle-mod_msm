@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_OneUnique">
+	<caption>Uniqueness of the number 1</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment of the proof of this lemma</caption>
+			<para>This lemma can be proven by adapting the proof of uniqueness of the neutral element with respect to addition to the multiplicative setting.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>There is only one element in <latex>\RNr</latex> which is neutral with respect to multiplication.</para>
+	</statement>
+</theorem>

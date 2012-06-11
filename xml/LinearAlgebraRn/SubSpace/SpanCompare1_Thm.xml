@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_SpanCompare1">
+	<caption>Related spans</caption>
+	<statement>
+		<para>Let <latex>\Vect{a}_1,\dots ,\Vect{a}_p</latex> be vectors in <latex>\RNr[q]</latex>, and let</para>
+		<computation>
+			<left>\Vect{x}_1</left>
+			<center>:=</center>
+			<right>(x_{11},\dots , x_{1p})</right>
+			<left></left>
+			<center>\vdots</center>
+			<right></right>
+			<left>\Vect{x}_n</left>
+			<center>:=</center>
+			<right>(x_{n1},\dots , x_{np})</right>
+		</computation>
+		<para>be vectors in <latex>\RNr[p]</latex>. If <latex>\Vect{y} = (y_1,\dots ,y_p)</latex> is in the span of <latex>\Set{ \Vect{x}_1,\dots ,\Vect{x}_n }</latex>, then <latex>y_1 \Vect{a}_1+\cdots + y_p \Vect{a}_p</latex> is in the span of the vectors</para>
+		<math.display>
+			<latex>x_{11}\Vect{a}_1+\cdots+ x_{1p}\Vect{a}_p,\ \dots\ , x_{n1}\Vect{a}_1+\cdots + x_{np}\Vect{a}_p</latex>
+		</math.display>
+	</statement>
+	<proof type="Proof">
+		<para>We know that <latex>\Vect{y} = t_1 \Vect{x}_1 + \cdots + t_n \Vect{x}_n</latex>, for some <latex>t_1,\dots ,t_n</latex> in <latex>\RNr</latex>. Therefore, <latex>\Vect{a}:=y_1 \Vect{a}_1+\cdots + y_p \Vect{a}_p</latex> gives</para>
+		<computation>
+			<left>\Vect{a}</left>
+			<center>=</center>
+			<right>y_1 \Vect{a}_1+\cdots + y_p \Vect{a}_p</right>
+			<left></left>
+			<center>=</center>
+			<right>(t_1x_{11}+\cdots t_n x_{n1})\Vect{a}_1 +\cdots + (t_1x_{1p}+\cdots + t_nx_{np})\Vect{a}_p</right>
+			<left></left>
+			<center>=</center>
+			<right>t_1(x_{11}\Vect{a}_1+\cdots+ x_{1p}\Vect{a}_p)+\ \cdots\ + t_n(x_{n1}\Vect{a}_1+\cdots + x_{np}\Vect{a}_p)</right>
+		</computation>
+		<para>as was to be shown.</para>
+	</proof>
+</theorem>

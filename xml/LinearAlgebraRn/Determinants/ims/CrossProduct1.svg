@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X5 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="4800px" height="3600px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 4800 3600"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <font id="FontID1" font-variant="normal" class="str3" style="fill-rule:nonzero" font-weight="400">
+	<font-face 
+		font-family="Symbol">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="´" horiz-adv-x="548"><path d="M93.3314 470.661l181.501 -180.663 181.667 180.663 33.6617 -33.1656 -180.994 -182.163 180.994 -180.663 -33.6617 -34.1696 -181.667 181.171 -181.501 -181.171 -34.1696 34.1696 181.501 181.159 -181.501 180.675 34.1696 34.1577z"/></glyph>
+  </font>
+  <font id="FontID0" font-variant="normal" class="str0" style="fill-rule:nonzero" font-style="normal" font-weight="900">
+	<font-face 
+		font-family="Arial Black">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="y" horiz-adv-x="610"><path d="M2.50394 518.504l209.827 0 107 -345.173 99.1732 345.173 195.827 0 -205.661 -554.173c-23.3386,-63.1654 -47.3386,-105.835 -71.8346,-127.835 -34.5039,-31.3307 -87,-47 -157.669,-47 -28.6614,0 -72.8346,4 -132.835,11.8346l-15.4961 138.669c28.4961,-9.16535 60.4961,-13.6693 95.6693,-13.6693 23.3307,0 42.3307,5.33858 56.8268,16 14.5039,10.8346 26.8346,30 36.8346,57.6693l-217.661 518.504z"/></glyph>
+   <glyph unicode="x" horiz-adv-x="667"><path d="M15.1654 518.504l235.835 0 82.5039 -144.504 95.6614 144.504 219.339 0 -176.835 -247 189.496 -271.504 -232 0 -95.6614 167 -112.835 -167 -215.339 0 188.504 271.504 -178.669 247z"/></glyph>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Symbol";src:url("#FontID1") format(svg)}
+    @font-face { font-family:"Arial Black";src:url("#FontID0") format(svg)}
+    .str4 {stroke:blue;stroke-width:1.803}
+    .str2 {stroke:#339966;stroke-width:1.803}
+    .str1 {stroke:red;stroke-width:1.803}
+    .str0 {stroke-width:6.00054}
+    .str6 {stroke:#9900CC;stroke-width:8.34775}
+    .str5 {stroke:fuchsia;stroke-width:8.34775}
+    .str3 {stroke-width:9.00081}
+    .fil6 {fill:none}
+    .fil5 {fill:blue}
+    .fil3 {fill:#339966}
+    .fil2 {fill:red}
+    .fil4 {fill:blue;fill-rule:nonzero}
+    .fil1 {fill:#339966;fill-rule:nonzero}
+    .fil0 {fill:red;fill-rule:nonzero}
+    .fnt1 {font-weight:normal;font-size:200.332;font-family:'Symbol'}
+    .fnt0 {font-weight:900;font-size:300.5;font-family:'Arial Black'}
+    .fnt2 {font-weight:900;font-size:300.5;font-family:'Arial Black'}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g>
+   <path class="fil0" d="M3421.68 3035.69l-2473.02 -495.676 2.46079 -12.2755 2473.02 495.676 -2.46079 12.2755zm72.4489 8.1348l-82.6825 22.5233 15.0629 -75.1463 67.6196 52.623z"/>
+  </g>
+  <g>
+   <path class="fil1" d="M2071.03 1680.33l-1117.34 858.51 -7.62844 -9.92834 1117.34 -858.51 7.62844 9.92834zm53.7943 -49.2276l-37.4253 77.1079 -46.7053 -60.7862 84.1306 -16.3217z"/>
+  </g>
+  <text x="3210" y="2889.49"  class="fil2 str1 fnt0">x</text>
+  <text x="2051.24" y="1956.27"  class="fil3 str2 fnt0">y</text>
+  <g>
+   <path class="fil4" d="M273.457 908.036l682.197 1623.42 -11.542 4.85059 -682.197 -1623.42 11.542 -4.85059zm-33.9092 -64.5389l65.0334 55.8078 -70.6578 29.6904 5.62432 -85.4982z"/>
+  </g>
+  <text x="415.35" y="1086.49"  class="fil2 str1 fnt0">x</text>
+  <text x="645.834" y="1068.46"  class="fil5 str4 fnt1">´</text>
+  <text x="794.849" y="1086.49"  class="fil3 str2 fnt2">y</text>
+  <path class="fil6 str5" d="M1305.18 2261.6c-64.6738,-155.233 -276.171,-159.17 -472.398,-8.79495"/>
+  <path class="fil6 str6" d="M1291.13 2602.27c-70.4093,-169.662 -269.189,-312.023 -458.353,-349.467"/>
+ </g>
+</svg>

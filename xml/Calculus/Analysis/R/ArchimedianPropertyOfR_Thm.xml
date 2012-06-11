@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_ArchimedianPropertyR">
+	<caption>Archimedian property of <latex>\RNr</latex></caption>
+	<statement>
+		<para>The following hold</para>
+		<part partid="ArchimedianPrin">
+			<para><latex>\inf\Set{ 1/n \st n\in \NNr,\ \ n\geq 1} = 0</latex></para>
+		</part>
+		<part partid="QBetweenRs">
+			<para>For arbitrary <latex><![CDATA[ a<b \in \RNr ]]></latex>, <latex>\QNr\intrsctn \OOIntrvl{a}{b}\neq \emptyset</latex>.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>ArchimedianPrin</partref> &nbsp; <latex>\inf\Set{ 1/n \st n\in \NNr,\ \ n\geq 1} = 0</latex></caption>
+		<para>It is clear that <latex>0</latex> is a lower bound of <latex>A:=\Set{1,1/2,1/3,\dots}</latex>. By the 
+			<subordinate>
+				<hot>recognition criterion for inf</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_InfSupRecognize"/>
+					<para>Look up this recognition criterion</para>
+				</crossref>
+			</subordinate>,
+			it only remains to show that, whenever <latex><![CDATA[ t>0 ]]></latex>, <latex>t</latex> is not a lower bound of <latex>A</latex>. To see this, note that <latex><![CDATA[ 1/t > 0 ]]></latex> as well and 
+			<subordinate>
+				<hot>so</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+					<para>Here we use that <latex>\NNr</latex> is not bounded above; look up this fact.</para>
+				</crossref>
+			</subordinate>
+			there is <latex>n\in\NNr</latex> with <latex><![CDATA[ n> 1/t ]]></latex>. But
+				<subordinate>
+					<hot>then</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_ROrderingProperties"/>
+						<para>Look up this fact</para>
+					</crossref>
+				</subordinate>
+			<latex><![CDATA[ 1/n < 1/(1/t) = t ]]></latex>. So <latex>t</latex> is not a lower bound of <latex>A</latex>.</para>
+		
+		<caption><partref>QBetweenRs</partref> &nbsp; For arbitrary <latex><![CDATA[ a<b \in \RNr ]]></latex>, <latex>\QNr\intrsctn \OOIntrvl{a}{b}\neq \emptyset</latex>.</caption>
+		<para><b>Case 1</b> <latex><![CDATA[ 0 \leq a < b ]]></latex>. It follows that <latex><![CDATA[ 0<b-a ]]></latex>, and so there exists <latex><![CDATA[ n>0 ]]></latex> in <latex>\NNr</latex> with <latex><![CDATA[ 1/n < b-a ]]></latex>. This implies <latex><![CDATA[ 1 < n(b-a) ]]></latex>; i.e. <latex><![CDATA[ \Dstnc{na}{nb} > 1 ]]></latex>. Therefore we expect to find a natural number <latex>k\in \OOIntrvl{na}{nb}</latex>. Indeed, the set</para>
+		<math.display>
+			<latex><![CDATA[ A := \Set{ u\in\NNr \st na < u } \neq \emptyset ]]></latex>
+		</math.display>
+		<para>because 
+			<subordinate>
+				<hot><latex>\NNr</latex> is not bounded above</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+					<para>Look up this fact.</para>
+				</crossref>
+			</subordinate>.
+			Our candidate for <latex>k</latex> is <latex>k:=\inf(A)\in A</latex>. By design, <latex><![CDATA[ na < k ]]></latex>, and we claim that <latex><![CDATA[ k < nb ]]></latex>. Indeed, if this were not the case, then <latex>k\geq nb</latex> and so</para>
+		<math.display>
+			<latex><![CDATA[ na < nb -1 \leq k-1 ]]></latex>
+		</math.display>
+		<para>a contradiction to the fact that <latex>k</latex> is the least element of <latex>\NNr</latex> with is greater than <latex>na</latex>.</para>
+		<para>Summarizing, we have found <latex>k\in \NNr</latex> with <latex><![CDATA[ na < k < nb ]]></latex>. But then <latex>k/n\in \QNr</latex> and</para>
+		<math.display>
+			<latex><![CDATA[ a < k/n < b ]]></latex>
+		</math.display>
+		
+		<para><b>Case 2</b> <latex><![CDATA[ x < 0 < y ]]></latex>. In this case <latex>0\in \StIntrsctn{\QNr}{\OOIntrvl{a}{b}}</latex>.</para>
+		
+		<para><b>Case 3</b> <latex><![CDATA[ a<b\leq 0 ]]></latex>. Then <latex><![CDATA[ 0\leq -b < -a ]]></latex> and, by case 1, there exists <latex>q\in \QNr</latex> with <latex><![CDATA[ -b < q < -a ]]></latex>. But then <latex>-q\in \QNr</latex> satisfies <latex><![CDATA[ a < -q < b ]]></latex>. &ndash; The proof is complete</para>
+	</proof>
+</theorem>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_SolutionsExist">
+	<caption>Infinitely many solutions - existence version</caption>
+	<statement>
+		<para>Suppose a system of linear equations with <latex>n</latex> variables has 
+			<subordinate>
+				<hot>rank</hot>
+				<info><para>Recall: the rank of a system of linear equations is the number of leading <latex>1</latex>'s in the non-augmented part of its RREF-matrix</para></info>
+			</subordinate>
+			<latex><![CDATA[ r<n ]]></latex>. If its RREF-matrix has no leading 1 in the augmentation column, then this system has infinitely many solutions. Moreover, number values for all variables whose associated columns do not contain a leading <latex>1</latex> may be chosen freely, and each such set of choices determines unique values for the remaining variables which solve the system.</para>
+	</statement>
+</theorem>

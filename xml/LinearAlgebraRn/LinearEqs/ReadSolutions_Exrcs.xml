@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_ReadSolutions">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Reading off Solutions - Exercises</title>
+	<exercise>
+		<problem>
+			<para>Each of the matrices below is the RREF of the augmented coefficient matrix of a system of linear equations. Determine the rank of the augmented and the unaugmented coefficient matrix, then say how many solutions the associated system of linear equations has. If it has solutions, find a distinguished solution, and describe all solutions.</para>
+		</problem>
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rrr|r}
+1 & 0 & 1 & 2 \\
+0 & 1 & 3 & 6 \\
+0 & 0 & 0 & 0
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>The ranks are <latex>R=r=2</latex>. A particular solution is</para>
+					<computation>
+						<left>\Vect{d}</left>
+						<center>:=</center>
+						<right>(2,6,0)</right>
+					</computation>
+					<para>An arbitrary solution is of the form</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>(2,6,0) + z\cdot (-1,-3,1)</right>
+					</computation>
+				</answer>
+				<solution>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rrr|r}
+1 & 0 & {\color{red} 1} & {\color{blue} 2} \\
+0 & 1 & {\color{red} 3} & {\color{blue} 6} \\
+0 & 0 & 0 & 0
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>Both the augmented and the unaugmented coefficient matrix have two leading <latex>1</latex>&rsquo;s. Therefore,</para>
+					<ul>
+						<li><para>The rank of the augmented coefficient matrix is <latex>R=2</latex></para></li>
+						<li><para>The rank of the unaugmented coefficient matrix is <latex>r=2</latex></para></li>
+					</ul>
+					<para>As <latex>r=R</latex>, the system is consistent. It has exactly one free variable in position <latex>3</latex>. Therefore the system has infinitely many solutions. We obtain a distinguished solution</para>
+					<computation>
+						<left>\Vect{d}</left>
+						<center>=</center>
+						<right>(2,6,0)</right>
+					</computation>
+					<para>by inserting the entries of the augmentation column into those positions of a 3D-vector in which the coefficient matrix has a leading <latex>1</latex>. To this distinguished solution we may add any multiple of</para>
+					<computation>
+						<left>\Vect{b}:=\Vect{b}_1</left>
+						<center>:=</center>
+						<right>({\color{red} -1},{\color{red} -3},1)</right>
+					</computation>
+					<para>obtained by</para>
+					<ol>
+						<li>
+							<para>inserting a <latex>1</latex> into the position of the free variable, and</para>
+						</li>
+						<li>
+							<para>inserting the negative of the RREF-column without a leading <latex>1</latex> into the positions in which the RREF has a leading <latex>1</latex>.</para>
+						</li>
+					</ol>
+					<para>Therefore, an arbitrary solution of the given system of linear equations is a vector of the form</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>(2,6,0) + z\cdot (-1,-3,1)</right>
+					</computation>
+					<para>with <latex>z</latex> arbitrary in <latex>\RNr</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rrrr|r}
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This matrix has ranks <latex>R=3</latex> and <latex>r=2</latex>. The associated system of linear equations has no solutions.</para>
+				</answer>
+				<solution>
+					<para>The augmented matrix has a leading <latex>1</latex> in the augmentation column. Thereforer the associated system of linear equations is inconsistent, hence has no solution.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rrrrr|r}
+0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 2 \\
+0 & 0 & 0 & 0 & 1 & -3
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This matrix has ranks <latex>R=r=3</latex>. The associated system of linear equations has infinitely many solutions.</para>
+				</answer>
+				<solution.hint>
+					<para>Does the matrix have a leading <latex>1</latex> in its augmentation column?</para>
+				</solution.hint>
+				<solution.hint>
+					<para>The matrix has <latex>3</latex> leading <latex>1</latex>&rsquo;s, and they all lie in the non-augmented part. &ndash; What do you conclude?</para>
+				</solution.hint>
+				<solution.hint>
+					<para>The matrix has <latex>R=r=3</latex>. So the associated system of linear equations is consistent and has <latex>2</latex> free variables.</para>
+				</solution.hint>
+				<solution>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rrrrr|r}
+{\color{green} 0} & 1 & {\color{red} 0} & 0 & 0 & {\color{blue} 0} \\
+{\color{green} 0} & 0 & {\color{red} 0} & 1 & 0 & {\color{blue} 2} \\
+{\color{green} 0} & 0 & {\color{red} 0} & 0 & 1 & {\color{blue} -3}
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>Both the augmented and the unaugmented RREF-matrix have <latex>3</latex> leading <latex>1</latex>&rsquo;s. Therefore,</para>
+					<ul>
+						<li>
+							<para>The rank of the augmented matrix is <latex>R=3</latex>.</para>
+						</li>
+						<li>
+							<para>The rank of the unaugmented matrix is <latex>r=3</latex>.</para>
+						</li>
+					</ul>
+					<para>As <latex>r=R</latex>, the associated system of linear equations is consistent. It has <latex>2</latex> free variables in positions <latex>1</latex> and <latex>3</latex>. Therefore the system has infinitely many solutions. We obtain a distinguished solution</para>
+					<computation>
+						<left>\Vect{d}</left>
+						<center>:=</center>
+						<right>(0,{\color{blue} 0},0,{\color{blue} 2},{\color{blue} -3})</right>
+					</computation>
+					<para>by inserting the entries of the augmentation column into those positions of a 5D-vector in which the coefficient matrix has a leading <latex>1</latex>. To this distinguished solution we may add any multiples of</para>
+					<computation>
+						<left>\Vect{b}_1</left>
+						<center>:=</center>
+						<right>(1,{\color{green} -0},0,{\color{green} -0},{\color{green} -0})</right>
+						<left>\Vect{b}_1</left>
+						<center>:=</center>
+						<right>(0,{\color{red} -0},1,{\color{red} -0},{\color{red} -0})</right>
+					</computation>
+					<para>Therefore, an arbitrary solution of the associated system of linear equations is a 5D-vector of the form</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>\Vect{d} + s\cdot \Vect{b}_1 + t\cdot \Vect{b}_2</right>
+					</computation>
+					<para>with <latex>s,t</latex> arbitrary in <latex>\RNr</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rrr|r}
+1 & 0 & 0 & 6 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & -2
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This matrix has ranks <latex>R=r=3</latex>. The associated system of linear equations has exactly one solution, namely</para>
+					<computation>
+						<left>(x,y,z)</left>
+						<center>=</center>
+						<right>(6,0,-2)</right>
+					</computation>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rrrrrr|r}
+0 & 1 & 0 & -3 & 0 &  2 & 1 \\
+0 & 0 & 1 &  4 & 0 & -1 & 3 \\
+0 & 0 & 0 &  0 & 1 & -2 & 5
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For which values of <latex>r</latex> does the system of linear equations below have no solution, exactly one solution, respectively infinitely many solutions?</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcrcrcr}
+2x & - & y & + & z & = & 1 \\
+x & + & 3y & - & 2z & = & 3 \\
+3x & + & 2y & - & z & = & r
+\end{array}
+						]]>
+				</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<answer>
+				<para>The system has no solution for <latex>r\neq 4</latex>. It has infinitely many solutions for <latex>r=4</latex>. Therefore, there is no value of <latex>r</latex> for which this system has exactly one solution.</para>
+			</answer>
+			<solution>
+				<para>We interchange the first and the second equation of the given system of linear equations and extract the augmented coefficient matrix.</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rrr|rl}
+1 & 3 & -2 & 3 & \\
+2 & -1 & 1 & 1 & {\color{blue} -2R_1} \\
+3 & 2 & -1 & r & {\color{blue} -3R_1}\\ \hline
+1 & 3 & -2 & 3 & \\
+0 & -7 & 5 & -5 & \\
+0 & -7 & 5 & r-9 &
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+				<para>The two rows at the bottom correspond to the equations</para>
+				<computation>
+					<left>-7y + 5z</left>
+					<center>=</center>
+					<right>-5</right>
+					<left>-7y + 5z</left>
+					<center>=</center>
+					<right>r-9</right>
+				</computation>
+				<para>These two equations have a common solution exactly when</para>
+				<computation>
+					<left>r-9</left>
+					<center>=</center>
+					<right>-5</right>
+					<left>r</left>
+					<center>=</center>
+					<right>4</right>
+				</computation>
+				<para>Therefore,</para>
+				<ul>
+					<li><para>The system has no solution if <latex>r\neq 4</latex>.</para></li>
+					<li><para>If <latex>r=4</latex>, the bottom row of the transformed system is redundant, and so the RREF of the system has the form</para>
+						<math.display>
+							<latex>
+								<![CDATA[
+\begin{array}{rrrr}
+1 & 0 & * & * \\
+0 & 1 & * & * \\
+0 & 0 & 0 & 0
+\end{array}
+						]]>
+							</latex>
+						</math.display>
+						<para>Therefore the system has infinitely many solutions in this case.</para>
+					</li>
+					<li><para>There is no value of <latex>r</latex> for which the system has exactly one solution.</para></li>
+				</ul>
+			</solution>
+		</approach>
+	</exercise>
+	
+</exercise.pack>

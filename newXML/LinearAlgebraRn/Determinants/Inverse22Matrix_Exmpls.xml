@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Inverse22Matrix"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Inverse of a (2,2)-Matrix</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the inverse of the <math>
+                  <latex>(2,2)</latex>
+               </math>-matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{rr}
+3 &amp; 4 \\
+1 &amp; 7
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>provided it exists.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>To test whether <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is invertible, we compute:</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\det(\Mtrx{A})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>17 \neq 0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is invertible. According to the formula for the inverse of an invertible  (2,2)-matrix, we find</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\aligned
+A^{-1}\ &amp;=\ \frac{1}{\text{det}(A)}\,
+\left[
+\begin{array}{rr}
+7 &amp; -4 \\
+-1 &amp; 3
+\end{array}\right] \\
+   &amp;=\ \frac{1}{17}\,
+   \left[
+\begin{array}{rr}
+7 &amp; -4 \\
+-1 &amp; 3
+\end{array}\right]
+\endaligned
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

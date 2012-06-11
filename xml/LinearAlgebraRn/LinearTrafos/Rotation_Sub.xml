@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_Rotation">
+	<title>The Dilation Transformations</title>
+	<sub.page.body>
+		<block>
+			<para>The counterclockwise rotation of <latex>\RNr[2]</latex> about the origin through the angle <latex>\theta</latex> is given by </para>
+			<math.display>
+				<latex>
+					<![CDATA[
+R_{\theta}\from \RNr[2] \longrightarrow \RNr[2],\quad R_{\theta}(x,y) = 
+\left[
+\begin{array}{rr}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{array}
+\right]
+\left[
+\begin{array}{r} x \\ y \end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>To understand where this matrix comes from, consider the picture below</para>
+			
+			<figure>
+				<img src="ims/Rotation.png"></img><!-- svg available -->
+				<caption>The counterclockwise rotation of <latex>\RNr[2]</latex> about the origin through the angle <latex>\theta</latex></caption>
+			</figure>
+			
+			<para>Both <latex>R(\StdBss{1})</latex> and <latex>R(\StdBss{2})</latex> result from rotating <latex>\StdBss{1}</latex> and <latex>\StdBss{2}</latex> counterclockwise about the origin through the angle <latex>\theta</latex>. So they are vectors of length <latex>1</latex>. Therefore the coordinates of these vectors are as indicated.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_DistanceRProperties">
+	<caption>Properties of &lsquo;distance between numbers&rsquo;</caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Sub_TriangleInequalityInR"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>Where does the term &lsquo;triangle inequality&rsquo; come from? See an explanation and illustration.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>For all <latex>x,y,z\in \RNr</latex> the following hold:
+			<index.glossary>
+				<term>distance</term><term>between numbers</term>
+				<info><para>A proposition providing the basic properties of the distance operation.</para></info>
+			</index.glossary>
+		</para>
+		<part partid="Positivity">
+			<para><latex>\Dstnc{x}{y} \geq 0</latex>, the positivity property
+				<index.glossary>
+					<term>distance</term><term>positivity</term>
+					<info>
+						<para>The positivity property of &lsquo;distance&rsquo; states that <latex>\Dstnc{x}{y} \geq 0</latex>.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>positivity</term><term>of distance between numbers</term>
+					<info>
+						<para>The positivity property of &lsquo;distance&rsquo; states that <latex>\Dstnc{x}{y} \geq 0</latex>.</para>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="DistanceSymmetric">
+			<para><latex>\Dstnc{x}{y} = \Dstnc{y}{x}</latex>, the symmetry property of distance
+				<index.glossary>
+					<term>distance</term><term>symmetry</term>
+					<info>
+						<para>The symmetry property of &lsquo;distance&rsquo; states that <latex>\Dstnc{x}{y} = \Dstnc{y}{x}</latex>.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>symmetry</term><term>of distance between numbers</term>
+					<info>
+						<para>The symmetry property of &lsquo;distance&rsquo; states that <latex>\Dstnc{x}{y} = \Dstnc{y}{x}</latex>.</para>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="TriangleInequality">
+			<para><latex>\Dstnc{x}{z} \leq \Dstnc{x}{y} + \Dstnc{y}{z}</latex>, the triangle inequality
+				<index.glossary>
+					<term>distance</term><term>triangle inequality</term>
+					<info>
+						<para>The triangle inequality property of &lsquo;distance&rsquo; states that <latex>\Dstnc{x}{z} \geq \Dstnc{x}{y} + \Dstnc{y}{z}</latex>.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>triangle inequality</term><term>of distance between numbers</term>
+					<info>
+						<para>The triangle inequality property of &lsquo;distance&rsquo; states that <latex>\Dstnc{x}{z} \geq \Dstnc{x}{y} + \Dstnc{y}{z}</latex>.</para>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="Nondegeneracy">
+			<para><latex>\Dstnc{x}{y} = 0</latex> if and only if <latex>x=y</latex>, the non degeneracy property.
+				<index.glossary>
+					<term>distance</term><term>non degenerate</term>
+					<info>
+						<para>The non degeneracy property of &lsquo;distance&rsquo; states that <latex>\Dstnc{x}{y} = 0</latex> if and only if <latex>x=y</latex>.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>non degeneracy</term><term>distance</term>
+					<info>
+						<para>The non degeneracy property of &lsquo;distance&rsquo; states that <latex>\Dstnc{x}{y} = 0</latex> if and only if <latex>x=y</latex>.</para>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<caption><partref>Positivity</partref> the positivity property</caption>
+		<para>By definition, <latex>\Dstnc{x}{y} = \Abs{ y-x }\geq 0</latex> by a 
+			<subordinate>
+				<hot>basic property of the absolute value operation</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_NormRProperties"/>
+					<para>Look up this fact.</para>
+				</crossref>
+			</subordinate>.</para>
+		<caption><partref>DistanceSymmetric</partref> the symmetry property</caption>
+		<para>We compute</para>
+		<computation>
+			<left>\Dstnc{x}{y}</left>
+			<center>=</center>
+			<right>\Abs{ y-x }</right>
+			<left></left>
+			<center>=</center>
+			<right>\Abs{ -(x-y) }</right>
+			<left></left>
+			<center>=	<info><para>because <latex>\Abs{t} = \Abs{ -t }</latex> for all <latex>t\in \RNr</latex></para></info></center>
+			<right>\Abs{ x-y }</right>
+			<left></left>
+			<center>=</center>
+			<right>\Dstnc{y}{x}</right>
+		</computation>
+		<caption><partref>TriangleInequality</partref> the triangle inequality</caption>
+		<para>For <latex>r,s\in\RNr</latex> we show first that <latex>\Abs{s+t} \leq \Abs{s} + \Abs{t}</latex> 
+			<subordinate>
+				<hot>know</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_NormRProperties"/>
+					<para>Look up this fact.</para>
+				</crossref>
+			</subordinate>
+			that</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+-\Abs{s}\ &\leq\ s\ &\leq\ \Abs{s} \\
+-\Abs{t}\ &\leq\ t\ &\leq\ \Abs{t} \\
+-(\Abs{s} + \Abs{t})\ &\leq\ s+t\ &\leq\ \Abs{s} + \Abs{t}
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		<para>If <latex>s+t=\Abs{s+t}</latex>, this gives <latex>\Abs{s+t} \leq \Abs{s}+\Abs{t}</latex>. On the other hand, if <latex>s+t=-\Abs{s+t}</latex>, then</para>
+		<computation>
+			<left>-(\Abs{s}+\Abs{t})</left>
+			<center>\leq</center>
+			<right>-Abs{s+t}</right>
+			<left>\Abs{s}+\Abs{t}</left>
+			<center>\geq</center>
+			<right>\Abs{s+t}</right>
+		</computation>
+		<para>Now the triangle inequality follows because</para>
+		<computation>
+			<left>\Dstnc{x}{z}</left>
+			<center>=</center>
+			<right>\Abs{z-x}</right>
+			<left></left>
+			<center>=</center>
+			<right>\Abs{z-y + (y-x)}</right>
+			<left></left>
+			<center>\leq	<info><para>In the previous discussion, choose <latex>s:=z-y</latex> and <latex>t:=y-x</latex>.</para></info></center>
+			<right>\Abs{z-y} + \Abs{y-x}</right>
+			<left></left>
+			<center>=</center>
+			<right>\Dstnc{y}{z} + \Dstnc{x}{y}</right>
+		</computation>
+		<para>as was to be shown.</para>
+		<caption><partref>Nondegeneracy</partref> <latex>\Dstnc{x}{y} = 0</latex> if and only if <latex>x=y</latex></caption>
+		<para>If <latex>x=y</latex>, then</para>
+		<math.display>
+			<latex>\Dstnc{x}{y} = \Abs{y-x} = \Abs{0} = 0</latex>
+		</math.display>
+		<para>For the converse, suppose <latex>x</latex> and <latex>y</latex> are numbers for which <latex>\Dstnc{x}{y}=0</latex>. Then <latex>\Abs{ y-x } = 0</latex>. We know that this means that <latex>y-x=0</latex> or <latex>-(y-x)=0</latex>. Either way it follows that <latex>x=y</latex>, as was to be shown.</para>
+	</proof>
+</theorem>

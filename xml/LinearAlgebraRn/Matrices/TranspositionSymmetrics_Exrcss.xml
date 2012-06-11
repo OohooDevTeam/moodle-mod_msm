@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MatrixTransposition-Symmetry">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Matrix Transposition: Exercises</title>
+	
+	<exercise>
+		<problem><para>Suppose <latex>\Mtrx{A}</latex> is a matrix of size <latex>(m,n)</latex>.</para></problem>
+		<part>
+			<problem><para>What does the notation <latex>\Mtrx{A}^T</latex> mean?</para></problem>
+			<approach>
+				<answer>
+					<para><latex>\Mtrx{A}^T</latex> denotes the transpose of the matrix <latex>\Mtrx{A}</latex>. The transpose results from turning the rows of <latex>\Mtrx{A}</latex> into columns and vice versa.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the size of <latex>\Mtrx{A}^T</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>\Mtrx{A}^T</latex> has size <latex>(n,m)</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Is the product <latex>\Mtrx{A}\cdot \Mtrx{A}^T</latex> defined? &ndash; Explain!</para></problem>
+			<approach>
+				<answer><para>Yes! - This product is defined.</para></answer>
+				<solution.hint><para>Recall that the number of columns of <latex>\Mtrx{A}</latex> must equal the number of rows of <latex>\Mtrx{A}^T</latex> for this product to be defined.</para></solution.hint>
+				<solution>
+					<para><latex>\Mtrx{A}</latex> has <latex>n</latex> columns and, therefore, <latex>\Mtrx{A}^T</latex> has <latex>n</latex> rows. Therefore, the product <latex>\Mtrx{A}\Mtrx{A}^T</latex> is defined.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Is the product <latex>\Mtrx{A}^T\cdot \Mtrx{A}</latex> defined? &ndash; Explain!</para></problem>
+			<approach>
+				<answer><para>Yes! - This product is defined.</para></answer>
+				<solution.hint><para>Recall that the number of columns of <latex>\Mtrx{A}</latex> must equal the number of rows of <latex>\Mtrx{A}^T</latex> for this product to be defined.</para></solution.hint>
+				<solution>
+					<para><latex>\Mtrx{A}^T</latex> has <latex>m</latex> columns and, therefore, <latex>\Mtrx{A}</latex> has <latex>m</latex> rows. Therefore, the product <latex>\Mtrx{A}^T\Mtrx{A}</latex> is defined.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Given the matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> below, answer the following questions:</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					A\ =\ 
+					\left[\begin{array}{rrrr}
+					1 & 1 & 0 & 1 \\
+					1 & 0 & 1 & 0 \\
+					0 & 0 & 0 &  1 \\
+					1 & 0 & 1 & 0
+					\end{array}\right] \qquad
+					B\ =\ 
+					\left[\begin{array}{rr}
+					9 & -3 \\
+					5 & -4 \\
+					2 & 0 \\
+					-8 & -3
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem><para>Is <latex>\Mtrx{A}</latex> a symmetric matrix?</para></problem>
+			<approach>
+				<answer>
+					<para>No! &ndash; <latex>\Mtrx{A}</latex> is not symmetric.</para>
+				</answer>
+				
+				<solution>
+					<para>The entries in positions <latex>(2,3)</latex> and <latex>(3,2)</latex> should be equal. However, these entries are <latex>1</latex> and <latex>0</latex>, respectively. So <latex>\Mtrx{A}</latex> is not symmetric.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Is <latex>\Mtrx{B}</latex> symmetric?</para></problem>
+			<approach>
+				<answer>
+					<para><latex>\Mtrx{B}</latex> is not symmetric.</para>
+				</answer>
+				
+				<solution>
+					<para>A symmetric matrix is always square shaped. However, <latex>B</latex> is not square shaped. So it cannot be symmetric.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find &nbsp; <latex>(2\Mtrx{A}\Mtrx{B})^T</latex>.</para></problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+							(2\Mtrx{A}\Mtrx{B})^T\ =\ 
+							\left[\begin{array}{rrrr}
+							12 & 22 & -16 & 22 \\
+							-20 & -6 & -6 & -6
+							\end{array}\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>(2\Mtrx{A}\Mtrx{B})^T</left>
+						<center>=</center>
+						<right>2\cdot \Mtrx{B}^T \Mtrx{A}^T
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+							2\cdot
+							\left[\begin{array}{rr}
+							9 & -3 \\
+							5 & -4 \\
+							2 & 0 \\
+							-8 & -3
+							\end{array}\right]^T \cdot
+							\left[\begin{array}{rrrr}
+							1 & 1 & 0 & 1 \\
+							1 & 0 & 1 & 0 \\
+							0 & 0 & 0 &  1 \\
+							1 & 0 & 1 & 0
+							\end{array}\right]^T
+							]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+							2\cdot
+							\left[\begin{array}{rrrr}
+							9 & 5 & 2 & -8 \\
+							-3 & -4 & 0 & -3
+							\end{array}\right] \cdot
+							\left[\begin{array}{rrrr}
+							1 & 1 & 0 & 1 \\
+							1 & 0 & 0 & 0 \\
+							0 & 1 & 0 & 1 \\ 
+							1 & 0 & 1 & 0 
+							\end{array}\right]
+							]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+							\left[\begin{array}{rrrr}
+							12 & 22 & -16 & 22 \\
+							-20 & -6 & -6 & -6
+							\end{array}\right]
+							]]>
+						</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_CharacteristicPolynomial">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Characteristic Polynomial: Examples</title>
+	<showme>
+		<statement>
+			<para>Here are some examples of polynomials:</para>
+			<ul>
+				<li><para><latex>p(t) = 3t^2 + t -1</latex> is a polynomial of degree <latex>2</latex> in the variable <latex>t</latex>.</para></li>
+				<li><para><latex>p(x) = 5x^3 + x^2 + 3x + 4</latex> is a polynomial of degree <latex>3</latex> in the variable <latex>x</latex>.</para></li>
+				<li><para><latex>q(s) = -2s^5 + s^4 - 2s^3 + s^2 - 5s + 1</latex> is a polynomial of degree <latex>5</latex> in the variable <latex>s</latex>.</para></li>
+			</ul>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Find the characteristic polynomial of the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} =
+\left[
+\begin{array}{cc}
+3 & 1 \\
+1 & 3
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>As <latex>\Mtrx{A}</latex> is a <latex>(2,2)</latex>-matrix, its characteristic polynomial has degree <latex>2</latex>. To find it, we compute:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+p(\lambda)\ &=\ 
+	\det\left(
+	\left[
+\begin{array}{cc}
+3 & 1 \\
+1 & 3
+\end{array}
+\right]\ -\ 
+\lambda\cdot \left[
+\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}
+\right] \right) \\
+	&=\ \det
+\left[
+\begin{array}{cc}
+3 - \lambda & 1 \\
+1 & 3 - \lambda
+\end{array}
+\right] \\
+	&=\ (3-\lambda)^2 - 1 \\
+	&=\ (\lambda-4)(\lambda -2)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			<para>So the characteristic polynomial of <latex>\Mtrx{A}</latex> vanishes at two places, namely:</para>
+			<computation>
+				<left>\lambda_1</left>
+				<center>:=</center>
+				<right>4</right>
+				<left>\lambda_2</left>
+				<center>:=</center>
+				<right>2</right>
+			</computation>
+		</answer>
+	</showme>
+</showme.pack>

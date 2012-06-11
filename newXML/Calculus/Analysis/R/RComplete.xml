@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_RComplete"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Completeness Axiom</title>
+      <plain.title>The Completeness Axiom</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>After all the algebraic and geometric properties of <math>
+                     <latex>\RNr</latex>
+                  </math>, the completeness property will probably appear elusive on a first encounter. Yet, it is exactly this completeness property which distinguishes the real number system from a purely algebraic object, and is of primary interest to analysis. So let us explain completeness in some more detail.</para.body>
+            </para>
+            <para>
+               <para.body>Let us begin by observing that between any two distinct ratios <math>
+                     <latex>a/b</latex>
+                  </math> and <math>
+                     <latex>x/y</latex>
+                  </math> of integers there are 
+			<subordinate>
+                     <hot>infinitely many ratios</hot>
+                     <info>
+                        <info.caption>Why is this so?</info.caption>
+                        <para>
+                           <para.body>To see that between any two distinct ratios <math>
+                                 <latex>a/b</latex>
+                              </math> and <math>
+                                 <latex>x/y</latex>
+                              </math> there are infinitely many others, we can just observe that the average <math>
+                                 <latex>\tfrac{u}{v} := \tfrac{ay +xb}{2by}</latex>
+                              </math> is again a ratio which satisfies</para.body>
+                        </para>
+                        <math.display>
+                           <latex> \tfrac{a}{b} &lt; \tfrac{ay + xb}{2by} &lt; \tfrac{x}{y} </latex>
+                        </math.display>
+                        <para>
+                           <para.body>Now we can take the average of <math>
+                                 <latex>a/b</latex>
+                              </math> and <math>
+                                 <latex>u/v</latex>
+                              </math> to obtain another ratio which lies strictly between <math>
+                                 <latex>a/b</latex>
+                              </math> and <math>
+                                 <latex>u/v</latex>
+                              </math>. This process of taking averages can be continued indefinitely, and so we obtain infinitely many numbers between any two rational numbers, regardless of how close these two numbers already are.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>.
+			So we might come to the impression that, if we represent rational numbers by points on a line, those number-points fill the line. It came as a considerable surprise, when around 500BCE a Greek geometer observed that this is not so, and that there are lots of points on a number line which 
+			<subordinate>
+                     <hot>do not correspond to rational numbers</hot>
+                     <companion>
+                        <unit.ref unitId="Sub_Root2NotRational"/>
+                        <info>
+                           <para>
+                              <para.body>The first example of such a non-rational number point is the length of the diagonal in a square of edge length <math>
+                                    <latex>1</latex>
+                                 </math>. – See details of this discovery.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>.</para.body>
+            </para>
+            <para>
+               <para.body>The purpose of the completeness axiom is to ensure that each point on a number line corresponds to a real number.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>To formulate the completeness axiom efficiently we introduce some notation.</para.body>
+            </para>
+            <def type="Notation" id="Def_PositionComparisonSets">
+               <associate type="Example">
+                  <info>
+                     <info.caption>Examples</info.caption>
+                     <para>
+                        <para.body>The following hold</para.body>
+                     </para>
+                     <math.display>
+                        <latex>\CCIntrvl{0}{2} \leq 5,\qquad \CCIntrvl{0}{2}\leq 2,\qquad \OOIntrvl{0}{2}\leq 2</latex>
+                     </math.display>
+                     <math.display>
+                        <latex>\CCIntrvl{0}{2}\leq \CCIntrvl{2}{10},\qquad, \CCIntrvl{0}{2} \leq \CCIntrvl{5}{100},\qquad  \OOIntrvl{0}{2}\leq \OOIntrvl{2}{10}</latex>
+                     </math.display>
+                     <para>
+                        <para.body>The following are <emphasis>false</emphasis>
+                        </para.body>
+                     </para>
+                     <math.display>
+                        <latex>\CCIntrvl{0}{10}\leq 9,\qquad \OOIntrvl{0}{10}\leq \OOIntrvl{9}{100}</latex>
+                     </math.display>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>If <math>
+                           <latex>A\subseteq \RNr</latex>
+                        </math> and <math>
+                           <latex>x\in \RNr</latex>
+                        </math>, we write <math>
+                           <latex>A\leq x</latex>
+                        </math>, or <math>
+                           <latex>x\geq A</latex>
+                        </math>, if <math>
+                           <latex>a\leq x</latex>
+                        </math> for all <math>
+                           <latex>a\in A</latex>
+                        </math>. If <math>
+                           <latex>A</latex>
+                        </math> and <math>
+                           <latex>B</latex>
+                        </math> are subsets of <math>
+                           <latex>\RNr</latex>
+                        </math> we write <math>
+                           <latex>A \leq B</latex>
+                        </math>, or <math>
+                           <latex>B\geq A</latex>
+                        </math>, if <math>
+                           <latex>a\leq b</latex>
+                        </math> for all <math>
+                           <latex>a\in A</latex>
+                        </math> and all <math>
+                           <latex>b\in B</latex>
+                        </math>. The notation <math>
+                           <latex>x\leq A</latex>
+                        </math> is defined analogously.
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>A\leq x</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <info.caption>Notation</info.caption>
+                           <para>
+                              <para.body>If <math>
+                                    <latex>A\subseteq \RNr</latex>
+                                 </math> we write <math>
+                                    <latex>A\leq x</latex>
+                                 </math> if <math>
+                                    <latex>a\leq x</latex>
+                                 </math> for all <math>
+                                    <latex>a\in A</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>x\geq A</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <info.caption>Notation</info.caption>
+                           <para>
+                              <para.body>If <math>
+                                    <latex>A\subseteq \RNr</latex>
+                                 </math> we write <math>
+                                    <latex>x\geq A</latex>
+                                 </math>, or <math>
+                                    <latex>x\geq A</latex>
+                                 </math>, if <math>
+                                    <latex>x\geq a</latex>
+                                 </math> for all <math>
+                                    <latex>a\in A</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>A\geq B</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <info.caption>Notation</info.caption>
+                           <para>
+                              <para.body>If <math>
+                                    <latex>A</latex>
+                                 </math> and <math>
+                                    <latex>B</latex>
+                                 </math> are subsets of <math>
+                                    <latex>\RNr</latex>
+                                 </math> we write <math>
+                                    <latex>A \leq B</latex>
+                                 </math> if <math>
+                                    <latex>a\leq b</latex>
+                                 </math> for all <math>
+                                    <latex>a\in A</latex>
+                                 </math> and all <math>
+                                    <latex>b\in B</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                  </para>
+               </def.body>
+            </def>
+            <def type="Definition" id="Def_UpperLowerBound">
+               <caption>Upper / lower bound</caption>
+               <associate type="Example">
+                  <info>
+                     <info.caption>Example</info.caption>
+                     <para>
+                        <para.body>Each of the following is an upper bound for <math>
+                              <latex>\OOIntrvl{0}{10}</latex>
+                           </math>: 10, 15, 16, <math>
+                              <latex>\sqrt{200}</latex>
+                           </math>, 10000000, etc.</para.body>
+                     </para>
+                     <para>
+                        <para.body>5 is <emphasis>not</emphasis> an upper bound for <math>
+                              <latex>\OOIntrvl{0}{10}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>An upper bound for <math>
+                           <latex>A\subseteq \RNr</latex>
+                        </math> is any <math>
+                           <latex>u\in \RNr</latex>
+                        </math> satisfying <math>
+                           <latex>A\leq u</latex>
+                        </math>. Similarly, a lower bound for <math>
+                           <latex>A</latex>
+                        </math> is any <math>
+                           <latex>l\in \RNr</latex>
+                        </math> satisfying <math>
+                           <latex>l\leq A</latex>
+                        </math>.
+				</para.body>
+                     <index.glossary>
+                        <term>upper</term>
+                        <term>bound</term>
+                        <info>
+                           <info.caption>Glossary: upper bound</info.caption>
+                           <para>
+                              <para.body>An upper bound for <math>
+                                    <latex>A\subseteq \RNr</latex>
+                                 </math> is any <math>
+                                    <latex>u\in \RNr</latex>
+                                 </math> satisfying <math>
+                                    <latex>A\leq u</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>lower</term>
+                        <term>bound</term>
+                        <info>
+                           <info.caption>Glossary: lower bound</info.caption>
+                           <para>
+                              <para.body>A lower bound for <math>
+                                    <latex>A\subseteq \RNr</latex>
+                                 </math> is any <math>
+                                    <latex>l\in \RNr</latex>
+                                 </math> satisfying <math>
+                                    <latex>l\leq A</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <para>
+                     <para.body>We say that <math>
+                           <latex>A</latex>
+                        </math> is bounded above if it has an upper bound; analogously, we say that <math>
+                           <latex>A</latex>
+                        </math> is bounded below if it has a lower bound. We call <math>
+                           <latex>A</latex>
+                        </math> bounded if it has both and upper and a lower bound.
+				</para.body>
+                     <index.glossary>
+                        <term>bounded</term>
+                        <term>set</term>
+                        <info>
+                           <para>
+                              <para.body>A subset of <math>
+                                    <latex>\RNr</latex>
+                                 </math> is called bounded if it has an upper and a lower bound. – Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>bounded</term>
+                        <term>above</term>
+                        <info>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>A\subseteq \RNr</latex>
+                                 </math> is called bounded above it there exists <math>
+                                    <latex>x\in \RNr</latex>
+                                 </math> with <math>
+                                    <latex>a\leq x</latex>
+                                 </math> for all <math>
+                                    <latex>a\in A</latex>
+                                 </math>. – Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>bounded</term>
+                        <term>below</term>
+                        <info>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>A\subseteq \RNr</latex>
+                                 </math> is called bounded below it there exists <math>
+                                    <latex>x\in \RNr</latex>
+                                 </math> with <math>
+                                    <latex>x\leq a</latex>
+                                 </math> for all <math>
+                                    <latex>a\in A</latex>
+                                 </math>. – Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>We are now ready to formulate the completeness axiom for the real number system:</para.body>
+            </para>
+            <def type="Axiom" id="Def_CompletenessAxiomForR">
+               <caption>Completeness axiom for <math>
+                     <latex>\RNr</latex>
+                  </math>
+               </caption>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>Recall: the purpose of the completeness axiom is to ensure that each point on a number line corresponds to a real number. How does what we say here accomplish this objective? – Consider a <emphasis>point</emphasis>
+                           <math>
+                              <latex>p</latex>
+                           </math> on the number line. Now we can make two nonempty sets:</para.body>
+                     </para>
+                     <math.display>
+                        <latex>
+							
+\aligned
+A\ &amp;:=\ \Set{ a\in \QNr \st \text{$a$ is to the left of $p$} } \\
+B\ &amp;:=\ \Set{ b\in \QNr \st \text{$b$ is to the right of $p$} }
+\endaligned
+							
+						</latex>
+                     </math.display>
+                     <para>
+                        <para.body>By design, <math>
+                              <latex>A\leq B</latex>
+                           </math> and so the completeness axiom gives the existence of a <emphasis>number</emphasis>
+                           <math>
+                              <latex>x\in \RNr</latex>
+                           </math> with <math>
+                              <latex>A\leq x\leq B</latex>
+                           </math>. We can then show that there is exactly one such <math>
+                              <latex>x</latex>
+                           </math>, and it follows that <math>
+                              <latex>p</latex>
+                           </math> represents <math>
+                              <latex>x</latex>
+                           </math>. Intuitively, this is why we expect that <math>
+                              <latex>\RNr</latex>
+                           </math> has no gaps.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Comment">
+                  <info>
+                     <info.caption>Comment</info.caption>
+                     <para>
+                        <para.body>Amongst all of the structural axioms we have encountered so far, the completeness axiom is the only one which is not satisfied by the rational numbers <math>
+                              <latex>\QNr</latex>
+                           </math>. In fact, a professional would say: <math>
+                              <latex>\QNr</latex>
+                           </math> is an ordered field, while <math>
+                              <latex>\RNr</latex>
+                           </math> is a complete ordered field. In this sense, the completeness property is the only property which distinguishes the rational numbers <math>
+                              <latex>\QNr</latex>
+                           </math> from the real numbers <math>
+                              <latex>\RNr</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>For nonempty subsets <math>
+                           <latex>A</latex>
+                        </math> and <math>
+                           <latex>B</latex>
+                        </math> of <math>
+                           <latex>\RNr</latex>
+                        </math>, if <math>
+                           <latex>A\leq B</latex>
+                        </math> then there exists <math>
+                           <latex>x\in \RNr</latex>
+                        </math> with <math>
+                           <latex>A\leq x\leq B</latex>
+                        </math>.</para.body>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>As a sample application of the completeness axiom, let us prove that every nonnegative real number has a square root.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SquareRootsExist_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_Completeness"/>
+   </studymaterials>
+</unit>

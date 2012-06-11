@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_RankFormulaMatrix"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Rank formula</caption>
+   <statement.theorem>
+      <para>
+         <para.body>For a matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> of size <math>
+               <latex>(m,n)</latex>
+            </math>,
+			</para.body>
+         <index.glossary>
+            <term>rank</term>
+            <term>formula for matrices</term>
+            <info>
+               <info.caption>
+                  <caption>Rank formula for matrices</caption>
+               </info.caption>
+               <math.display>
+                  <latex>
+							
+\begin{array}{rcl}
+n &amp; = &amp; \Rnk{ \Mtrx{ A } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
+  &amp; = &amp; \Dim{ \RowSp{ \Mtrx{ A } } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
+  &amp; = &amp; \Dim{ \ColSp{ \Mtrx{ A } } } + \Dim{ \NllSp{ \Mtrx{ A } } }
+\end{array}
+
+						</latex>
+               </math.display>
+            </info>
+         </index.glossary>
+      </para>
+      <math.display>
+         <latex>
+				
+\begin{array}{rcl}
+n &amp; = &amp; \Rnk{ \Mtrx{ A } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
+  &amp; = &amp; \Dim{ \RowSp{ \Mtrx{ A } } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
+  &amp; = &amp; \Dim{ \ColSp{ \Mtrx{ A } } } + \Dim{ \NllSp{ \Mtrx{ A } } }
+\end{array}
+
+			</latex>
+      </math.display>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We proved the first identity when we found a 
+			<subordinate>
+                     <hot>basis for the null space of a matrix</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_BasisNullSpace"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_BasisNullSpace"/>
+                           <para>
+                              <para.body>Look up this theorem.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>. Then we 
+			<subordinate>
+                     <hot>proved</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_BasisRowColumnSpace"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_BasisRowColumnSpace"/>
+                           <para>
+                              <para.body>Look up this theorem.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate> that <math>
+                     <latex>\Rnk{ \Mtrx{A} } = \Dim{ \RowSp{ \Mtrx{A} } } = \Dim{ \ColSp{ \Mtrx{ A } } }</latex>
+                  </math>, which implies the second and the third identity.
+		</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

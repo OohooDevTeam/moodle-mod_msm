@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_AbsoluteConvergentImpliesInvariantRearrangements">
+	<caption>Rearrangements of absolutely convergent series</caption>
+	
+	<statement>
+		<para>Suppose <latex>\sum_{n=0}^{\infty}a_n</latex> converges absolutely. If <latex>\sigma\from \NNr\to \NNr</latex> is a bijection, then</para>
+		<math.display>
+			<latex>\sum_{n=0}^{\infty} a_n\ =\ \sum_{n=0}^{\infty} a_{\sigma_n}</latex>
+		</math.display>
+	</statement>
+	<proof>
+		<para>We know that <latex>\sum_{n=0}^{\infty}a_n = L\in\RNr</latex>, and we need to show that the sequence of partial sums</para>
+		<math.display>
+			<latex>A_n\ :=\ a_{\sigma_0}+a_{\sigma_1}+\ \cdots\ a_{\sigma_n}</latex>
+		</math.display>
+		<para>converges to <latex>L</latex> as well. To see this, suppose <latex><![CDATA[ \varepsilon > 0 ]]></latex> is given. Choose <latex>N\in\NNr</latex> such that</para>
+		<math.display>
+			<latex><![CDATA[
+				\Abs{ \sum_{n=0}^{\infty}\Abs{ a_n } \ -\ \sum_{n=0}^{N} \Abs{ a_n } }\ =\ \sum_{n=N+1}\Abs{ a_n }\ <\ \dfrac{\varepsilon}{2}
+				]]></latex>
+		</math.display>
+		<para>Then set <latex>K:=\max\Set{ \sigma(0),\dots ,\sigma(N) } \geq N</latex>. For arbitrary <latex>k\geq 0</latex>, we then find</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{rcl}
+\Abs{ {\color{red} L}\ -\ A_{K+k} } & = &
+	\Abs{ {\color{red} \left(\sum_{n=0}^{N} a_n\ +\ \sum_{n=N+1}^{\infty} a_n\right)}\ -\ {\color{blue} \sum_{n=0}^{K+k}a_{\sigma_n} } } \\
+	& = & \Abs{ {\color{red} \left(\sum_{n=0}^{N} a_n\ +\ \sum_{n=N+1}^{\infty} a_n\right)}\ -\ {\color{blue} \left( \sum_{n=0}^{N} a_n\ +\ \sum_{n=N+1}^{K+k} a_{t_n} \right) } } \\
+	& = & \Abs{ \sum_{n=N+1} a_n\ -\ \sum_{n=N+1}^{K+k} a_{t_n} } \\
+	& \leq & \underset{\leftarrow\hfill <\ \varepsilon/2 \hfill \to}{ \sum_{n=N+1}^{\infty} \Abs{a_n} }\ +\ \underset{\leftarrow\hfill <\ \varepsilon/2\ \hfill \to }{ \sum_{n=N+1}^{K+k} \Abs{a_{t_n}} } \\
+	& < & \varepsilon
+\end{array}
+				]]>
+			</latex>
+		</math.display>
+		<para>In the computation above, <latex>t_n \geq N+1</latex> for <latex>n\geq N+1</latex>. This was to be shown.</para>
+	</proof>
+</theorem>

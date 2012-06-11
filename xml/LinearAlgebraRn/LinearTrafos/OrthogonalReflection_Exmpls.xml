@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_OrthogonalReflection">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Example of an Orthogonal Reflection of <latex>\RNr[3]</latex></title>
+	<caption>Reflection of 3-Space</caption>
+	<showme>
+		<statement>
+			<para>Find the matrix representing the orthogonal reflection <latex>M</latex> of <latex>\RNr[3]</latex> about the hyperspace perpendicular to <latex>\Vect{c}=(1,2,1)</latex>.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>We know that the matrix <latex>B</latex> representing <latex>M</latex> is of size <latex>(3,3)</latex>, and that its  <latex>j</latex>-th column consists of the coordinates of <latex>M(\StdBss{j})</latex>, <latex>1\leq j\leq 3</latex>. Therefore we compute</para>
+			
+			<computation>
+				<left>M(\StdBss{1})</left>
+				<center>=</center>
+				<right>(1,0,0) - 2\cdot \dfrac{\DotPr{(1,0,0)}{(1,2,1)}}{\DotPr{(1,2,1)}{(1,2,1)}} \cdot (1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>(1,0,0) - \tfrac{2}{6}(1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>\tfrac{1}{6}(4,-4,-2)</right>
+				<left>M(\StdBss{2})</left>
+				<center>=</center>
+				<right>(0,1,0) - 2\cdot \dfrac{\DotPr{(0,1,0)}{(1,2,1)}}{\DotPr{(1,2,1)}{(1,2,1)}} \cdot (1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>(0,1,0) - \tfrac{4}{6}(1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>\tfrac{1}{6}(-4,-2,-4)</right>
+				<left>M(\StdBss{3})</left>
+				<center>=</center>
+				<right>(0,0,1) - 2\cdot \dfrac{\DotPr{(0,0,1)}{(1,2,1)}}{\DotPr{(1,2,1)}{(1,2,1)}} \cdot (1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>(0,0,1) - \tfrac{2}{6}(1,2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>\tfrac{1}{6}(-2,-4,4)</right>
+			</computation>
+			
+			<para>The vectors <latex>M(\StdBss{1})</latex>, <latex>M(\StdBss{2})</latex>, <latex>M(\StdBss{3})</latex> form the columns of the matrix <latex>\Mtrx{B}</latex>representing <latex>M</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+B = \dfrac{1}{6}
+\left[
+\begin{array}{rrr}
+4 & -4 & -2 \\
+-4 & -2 & -4 \\
+-2 & -4 & 4
+\end{array}
+\right]\ =\
+\dfrac{1}{3}
+\left[
+\begin{array}{rrr}
+2 & -2 & -1 \\
+-2 & -1 & -2 \\
+-1 & -2 & 2
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Here is another view of an orthogonal projection. It displays its effect on a box in 3-space.</para>
+			<figure>
+				<img src="ims/ReflectionHyperplaneBox.jpg"></img>
+			</figure>
+		</statement>
+	</showme>
+	
+</showme.pack>

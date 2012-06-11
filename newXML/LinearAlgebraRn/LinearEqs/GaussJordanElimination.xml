@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_GaussJordanElimination"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Solving a System of Linear Equations by Gauß-Jordan Elimination</title>
+      <plain.title>Gauß-Jordan Elimination</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Let us now turn to a method to compute explicitly the solutions of a system of linear equations. Amongst the first who used this method effectively were C.F. Gauß 
+		
+			and W. Jordan
+. This method combines the following basic fact and basic principle.</para.body>
+               <index.author>
+                  <name>
+                     <name>
+                        <first>Carl</first>
+                        <middle>Friedrich</middle>
+                        <last>Gauß</last>
+                     </name>
+                  </name>
+                  <info>
+                     <info.caption>Carl Friedrich Gauß</info.caption>
+                     <para>
+                        <para.body>... and solving systems of linear equations.</para.body>
+                     </para>
+                  </info>
+               </index.author>
+               <index.author>
+                  <name>
+                     <name>
+                        <first>Wilhelm</first>
+                        <last>Jordan</last>
+                     </name>
+                  </name>
+                  <info>
+                     <info.caption>Wilhelm Jordan</info.caption>
+                     <para>
+                        <para.body>... and solving systems of linear equations.</para.body>
+                     </para>
+                  </info>
+               </index.author>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>Basic fact</strong>   If a system of linear equations appears in a certain ‘simple’ form, called <strong>R</strong>ow <strong>R</strong>educed <strong>E</strong>chelon <strong>F</strong>orm (RREF), it is 
+				<subordinate>
+                           <hot>quite easy</hot>
+                           <companion>
+                              <showme.pack.ref showmePackID="Exa_LinearEqsSolveFromRREF"/>
+                              <info>
+                                 <para>
+                                    <para.body>An example of how this works</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>
+				to determine all of its solutions.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>Basic principle</strong>   If a system of linear equations is not in RREF, there is a procedure, called row reduction, which turns it into a new system which is in RREF and has exactly the same solutions as the original system.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>Accordingly, if we want to find the solutions of a system of linear equations, we first reduce it to RREF with the row reduction method, then we read the solutions off of the RREF-system.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_SolvingFromRREF">
+         <titles>
+            <title>Solutions of a System of Linear Equations in Reduced Row Echelon Form</title>
+            <plain.title>RREF</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>Let us just use an example to demonstrate how easy it is to 
+				<subordinate>
+                           <hot>read</hot>
+                           <companion>
+                              <showme.pack.ref showmePackID="Exa_LinearEqsSolveFromRREF"/>
+                              <info>
+                                 <para>
+                                    <para.body>See details on how to read the solutions off of the system of linear equations below.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>
+				the solutions off of a system of linear equations that is in <strong>R</strong>educed <strong>Row</strong>
+                        <strong>E</strong>chelon <strong>F</strong>orm.</para.body>
+                  </para>
+                  <math.display>
+                     <latex>
+					
+					\begin{array}{rcr}
+\colorbox{lightgreen}{$1$}{\color{red}x_1}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_2}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_3}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_4}\ -\ \colorbox{lightgreen}{$3$}{\color{red}x_5}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_6}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_7} &amp; = &amp; 4 \\
+%
+\colorbox{lightgreen}{0}{\color{red}x_1}\ +\ \colorbox{lightgreen}{0}{\color{red}x_2}\ +\ \colorbox{lightgreen}{1}{\color{red}x_3}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$4$}{\color{red}x_5} \ +\ \colorbox{lightgreen}{$0$}{\color{red}x_6}\ +\ \colorbox{lightgreen}{$3$}{\color{red}x_7} &amp; = &amp; -2 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}x_1}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_2}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_3}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_5}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_6}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_7} &amp; = &amp; 3 \\
+\end{array}
+					
+				</latex>
+                  </math.display>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_DefiningRREF">
+         <titles>
+            <title>Defining Row Reduced Echelon Form</title>
+            <plain.title>Defining RREF</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>So how do we recognize, when a system of linear equations is in reduced row echelon form? - Answer: The coefficients of the system must meet the criteria formulated in the definition below.</para.body>
+                  </para>
+                  <def type="Definition" id="Def_RREF">
+                     <caption>Reduced Row Echelon Form / Rank</caption>
+                     <associate type="Quiz">
+                        <showme.pack.ref showmePackID="Exa_DefSolveFromRREF"/>
+                        <info>
+                           <info.caption>Quiz</info.caption>
+                           <para>
+                              <para.body>A quiz on the concepts of leading 1, reduced row echelon form, and rank.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>A system of linear equations</para.body>
+                        </para>
+                        <math.display>
+                           <latex>
+						
+							\begin{array}{rcccccccccc}
+							(E_1)\qquad &amp; \colorbox{lightgreen}{$a_{11}$}{\color{red} x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{12}$}{\color{red} x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{1n}$}{\color{red} x_n} &amp; = &amp; {\color{blue} c_1} \\
+							(E_2)\qquad &amp; \colorbox{lightgreen}{$a_{21}$}{\color{red} x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{22}$}{\color{red} x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{2n}$}{\color{red} x_n} &amp; = &amp; {\color{blue} c_2} \\
+							\vdots\qquad &amp; \vdots &amp; + &amp; \vdots &amp; + &amp; \ddots &amp; &amp; + &amp; \vdots &amp; &amp; \vdots \\
+							\vdots\qquad &amp; \vdots &amp; + &amp; \vdots &amp; + &amp; &amp; \ddots &amp; + &amp; \vdots &amp; &amp; \vdots \\
+							(E_m)\qquad &amp; \colorbox{lightgreen}{$a_{m1}$}{\color{red} x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{m2}$}{\color{red} x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{mn}$}{\color{red} x_n} &amp; = &amp; {\color{blue} c_m} \\
+\end{array}
+						
+					</latex>
+                        </math.display>
+                        <para>
+                           <para.body>is in <strong>R</strong>ow <strong>R</strong>educed <strong>E</strong>chelon <strong>F</strong>orm (RREF) if the coefficients <math>
+                                 <latex>a_{ij}</latex>
+                              </math> satisfy the following four conditions.
+					</para.body>
+                           <index.glossary>
+                              <term>row</term>
+                              <term>reduced echelon form</term>
+                              <info>
+                                 <info.caption>What is row reduced echelon form?</info.caption>
+                                 <para>
+                                    <para.body>
+                                       <strong>R</strong>ow <strong>R</strong>educed <strong>E</strong>chelon <strong>F</strong>orm is defined here.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>RREF</term>
+                              <info>
+                                 <info.caption>What does RREF mean?</info.caption>
+                                 <para>
+                                    <para.body>RREF is the acronym for <strong>R</strong>ow <strong>R</strong>educed <strong>E</strong>chelon <strong>F</strong>orm. Its definition is given here.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                        <ol>
+                           <li>
+                              <para>
+                                 <para.body>For a given row, either all coefficients are <math>
+                                       <latex>0</latex>
+                                    </math>, or the first non-zero coefficient from the left is a ‘<math>
+                                       <latex>1</latex>
+                                    </math>’, called the leading <math>
+                                       <latex>1</latex>
+                                    </math> of the row.
+						</para.body>
+                                 <index.glossary>
+                                    <term>leading <math>
+                                          <latex>1</latex>
+                                       </math>
+                                    </term>
+                                    <info>
+                                       <info.caption>What is a leading <math>
+                                             <latex>1</latex>
+                                          </math>?</info.caption>
+                                       <para>
+                                          <para.body>The concept of ‘leading 1’ occurs within the context of linear equations in row reduced echelon form.</para.body>
+                                       </para>
+                                    </info>
+                                 </index.glossary>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>The leading <math>
+                                       <latex>1</latex>
+                                    </math> of any row occurs further to the right than the leading <math>
+                                       <latex>1</latex>
+                                    </math>’s of higher rows.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>Above and below any leading <math>
+                                       <latex>1</latex>
+                                    </math>, all coefficients are <math>
+                                       <latex>0</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>If all coefficients in a row are <math>
+                                       <latex>0</latex>
+                                    </math>, then this row is below any row containing a leading <math>
+                                       <latex>1</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </li>
+                        </ol>
+                        <para>
+                           <para.body>The rank of a system of linear equations in RREF is the number of its leading <math>
+                                 <latex>1</latex>
+                              </math>’s among the numbers <math>
+                                 <latex>a_{ij}</latex>
+                              </math>.
+					</para.body>
+                           <index.glossary>
+                              <term>rank</term>
+                              <term>of a system of linear equations</term>
+                              <info>
+                                 <para>
+                                    <para.body>the definition of the rank of a system of linear equations</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </def.body>
+                  </def>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_TransformingToRREF">
+         <titles>
+            <title>Transforming a System of Linear Equations into RREF</title>
+            <plain.title>Transformation into RREF</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>Here comes the good news: If a system of linear equations is not in RREF, we can always transform it into one which is in RREF and has the same solutions as the original system.</para.body>
+                  </para>
+                  <def type="Definition" id="Def_EquivalentSystemLinearEquations">
+                     <caption>Equivalent systems of linear equations</caption>
+                     <def.body>
+                        <para>
+                           <para.body>Two systems of equations are called equivalent if they have the same solutions; i.e. each solution of one system is also a solution of the other system.
+					</para.body>
+                           <index.glossary>
+                              <term>equivalent</term>
+                              <term>systems of equations</term>
+                              <info>
+                                 <info.caption>When are two systems of linear equations equivalent?</info.caption>
+                                 <para>
+                                    <para.body>Two systems of linear equations are equivalent if they have the same solutions; i.e. each solution of one system is also a solution of the other system.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </def.body>
+                  </def>
+                  <para>
+                     <para.body>Let us now provide the tools to transform an arbitrary system of linear equations into an equivalent one which is in RREF.</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="RREFExists_Thm.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_SolveLinearEqsRREF"/>
+      <exercise.pack.ref exercisePackID="Exe_SolveLinearEqsRREF1_Concepts"/>
+   </studymaterials>
+</unit>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_DotProduct">
+	<headers>
+		<full>The Dot Product</full>
+		<toc>The Dot Product</toc>
+		<short>Dot Product</short>
+	</headers>
+	<intro>
+		<para>The dot product is an operation which receives as input two vectors in <latex>\RNr[n]</latex>, and which delivers as output a number. With the aid of the algebraic and geometric properties of the dot product, this number can lead to the norm of a vector, the angle between two vectors and, in particular, it helps us determine whether two given vectors are perpendicular.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_DotProduct">
+			<caption>Dot Product</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_DotProductsCompute"/>
+				<info>
+					<caption>Example</caption>
+					<para>How do I compute a dot product? &ndash; Here are some examples.</para></info>
+			</associate>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment</caption>
+					<para>Thus the dot product of <latex>(x_1,\dots ,x_n)</latex> and <latex>(y_1,\dots ,y_n)</latex> is the sum of the products of components in matching positions.</para>
+					<para>Notice that this is only possible if both vectors have the same number of components.</para>
+				</info>
+			</associate>
+			
+			<para>The dot product of two vectors in <latex>\RNr[n]</latex>,<index.glossary>
+				<term>dot product</term>
+				<info>
+					<para>The dot product of <latex>\Vect{x} = (x_1,\dots ,x_n)</latex> and <latex>\Vect{y} = (y_1,\dots ,y_n)</latex> is </para>
+					<math.display>
+						<latex>\DotPr{ \Vect{x} }{ \Vect{y} } := x_1y_1 + \cdots + x_ny_n</latex>
+					</math.display>
+				</info>
+			</index.glossary>
+				
+				<index.symbol>
+					<symbol><latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex></symbol>
+					<info>
+						<para>Definition of the dot product</para>
+					</info>
+				</index.symbol>
+				
+				
+			</para>
+			<para align="center">
+				<latex>\Vect{x} = (x_1,\dots ,x_n)</latex> &nbsp; and &nbsp; <latex>\Vect{y} = (y_1,\dots ,y_n)</latex>
+			</para>
+			<para>is the number   <latex>\DotPr{ \Vect{x} }{ \Vect{y} } := x_1y_1 + \cdots + x_ny_n</latex></para>
+		</def>
+		
+		
+		
+		<para>Computations involving dot products can often be helped a lot by using the following algebraic properties.</para>
+		
+		<xi:include href="DotProduct_AlgebraicProps.xml"/>
+		
+		<para>The bilinearity and symmetry properties of the dot product yield its binomial identities.</para>
+		
+		<xi:include href="DotProduct_BinomialIdentities.xml"/>
+		
+		<para>Let us now turn to the reason why we are interested in the dot product in the first place: the number which it associates to two given vectors has a geometric interpretation which is very useful. In particular, it provides us with a simple test to determine if two vectors are perpendicular.</para>
+		<xi:include href="DotProductNorm_GeometricProperties.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_DotProduct"/>
+		<exercise.pack.ref exercisePackID="Exe_DotProduct1"/>
+	</studymaterials>
+</section>

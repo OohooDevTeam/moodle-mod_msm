@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_RExtended">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: On the Extended Real Number Line</title>
+	<exercise>
+		<problem>
+			<para>According to the conventions of computing with infinities, decide whether the following operations are defined; if yes, what is the answer?</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>3 + \infty</latex></para>
+			</problem>
+			<approach>
+				<answer><para><latex>3+\infty = \infty</latex></para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>(4-\infty)\cdot (-\infty)</latex></para>
+			</problem>
+			<approach>
+				<answer><para><latex>(4-\infty)\cdot (-\infty) = (-\infty)\cdot (-\infty) = +\infty</latex></para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>(10 - \infty) + ( -(10^{100}) + \infty)</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This operation is not defined</para></answer>
+				<solution.hint><para>The operation in each bracket is defined. What is the answer for each bracket?</para></solution.hint>
+				<solution>
+					<para>We have the computations</para>
+					<computation>
+						<left>10 - \infty</left>
+						<center>=</center>
+						<right>-\infty</right>
+						<left>-(10^{100}) + \infty</left>
+						<center>=</center>
+						<right>+\infty</right>
+					</computation>
+					<para>According to the conventions of computing with infinities, <latex>(-\infty) + \infty</latex> is not defined.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\SqBr{(-(10^{100} + \infty) + (37 + \infty)}\cdot (\infty)</latex></para></problem>
+			<approach>
+				<answer><para><latex>\SqBr{(-(10^{100} + \infty) + (37 + \infty)}\cdot (+\infty) = \SqBr{ (+\infty) + (+\infty) } \cdot (+\infty) = +\infty</latex></para></answer>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

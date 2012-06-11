@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_GeometricSeries"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: Geometric Series</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the following series determine if it converges diverges. If it converges, find its limit.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>1 + \frac{1}{3} + \frac{1}{9} + \frac{1}{27} + \cdots</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This series is geometric with <math>
+                           <latex>r=1/3</latex>
+                        </math>. Therefore it converges to the number</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\sum_{n=0}^{\infty} \dfrac{1}{3^n}\ =\ \dfrac{1}{1-(1/3)}\ =\ \dfrac{3}{2}</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>4+8+16+32+\cdots</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This series converges to <math>
+                              <latex>+\infty</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>1 - \frac{1}{3} + \frac{1}{9} - \frac{1}{27} \pm \cdots</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\frac{4}{5} + \frac{16}{25} + \frac{64}{125} + \cdots</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This series is geometric with <math>
+                           <latex>r=4/5</latex>
+                        </math>, except that the first summand <math>
+                           <latex>1</latex>
+                        </math> is missing. Therefore, it converges to the number</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\sum_{n=1}^{\infty} \left( \dfrac{4}{5}\right)^n\ =\ -1 + \sum_{n=0}^{\infty} \left( \dfrac{4}{5}\right)^n\ =\ -1 + \dfrac{1}{1-(4/5)} = 4</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>-100 + 1000-10000\pm \cdots</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This is a geometric series of the form</para.body>
+                  </para>
+					             <math.display>
+						               <latex>-100\cdot (1-10+100-1000) = -100\cdot \left( \sum_{n=0}^{\infty} (-10)^n\right)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The series <math>
+                           <latex>\sum (-10)^n</latex>
+                        </math> diverges. So the original series diverges.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For <math>
+                     <latex>2\leq k\in \NNr</latex>
+                  </math> fixed, compare the limits of the series</para.body>
+            </para>
+			         <math.display>
+				           <latex>\sum_{n=0}^{\infty} \dfrac{1}{k^n}\quad \text{and}\quad \sum_{n=0}^{\infty} \dfrac{(-1)^n}{k^n}</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Express the following periodic decimal numbers as fractions.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>2.\overline{13}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>-1.1\overline{036}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>5.209\overline{2014}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find the limit of the series</para.body>
+            </para>
+			         <math.display>
+				           <latex>\sum_{n=1}^{\infty}\left( \left( \dfrac{1}{2}\right)^n - \left( \dfrac{1}{3}\right)^{n+1} \right)</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We relate the given series to a sum of two geometric series:</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sum_{n=1}^{\infty}\left( \dfrac{1}{2}\right)^n</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+						                        <para>
+                                 <para.body>Notice: we have added the summand <math>
+                                       <latex>(\tfrac{1}{2})^0 = 1</latex>
+                                    </math> to the infinite sum on the right by letting the summation index start from <math>
+                                       <latex>0</latex>
+                                    </math>, instead of from <math>
+                                       <latex>1</latex>
+                                    </math>, as in the left hand expression. Therefore we subtract <math>
+                                       <latex>1</latex>
+                                    </math> from the resulting geometric series.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                        <companion>
+                           <info>
+						                        <para>
+                                 <para.body>Notice: we have added the summand <math>
+                                       <latex>(\tfrac{1}{2})^0 = 1</latex>
+                                    </math> to the infinite sum on the right by letting the summation index start from <math>
+                                       <latex>0</latex>
+                                    </math>, instead of from <math>
+                                       <latex>1</latex>
+                                    </math>, as in the left hand expression. Therefore we subtract <math>
+                                       <latex>1</latex>
+                                    </math> from the resulting geometric series.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-1\ +\ \sum_{n=0}^{\infty}\left( \dfrac{1}{2}\right)^n</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we use the formula for the sum of a geometric series.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we use the formula for the sum of a geometric series.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-1\ +\ \dfrac{1}{1- \tfrac{1}{2}}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>1</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Moreover,</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sum_{n=1}^{\infty}\left( \dfrac{1}{3}\right)^{n+1}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+						                        <para>
+                                 <para.body>Notice: we have added the summands <math>
+                                       <latex>(\tfrac{1}{3})^0 = 1</latex>
+                                    </math> and <math>
+                                       <latex>(\tfrac{1}{3})^1</latex>
+                                    </math> to the infinite sum on the right by letting the summation index start from <math>
+                                       <latex>0</latex>
+                                    </math>, instead of from <math>
+                                       <latex>1+1=2</latex>
+                                    </math>, as in the left hand expression. Therefore we subtract these two numbers from the resulting geometric series.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                        <companion>
+                           <info>
+						                        <para>
+                                 <para.body>Notice: we have added the summands <math>
+                                       <latex>(\tfrac{1}{3})^0 = 1</latex>
+                                    </math> and <math>
+                                       <latex>(\tfrac{1}{3})^1</latex>
+                                    </math> to the infinite sum on the right by letting the summation index start from <math>
+                                       <latex>0</latex>
+                                    </math>, instead of from <math>
+                                       <latex>1+1=2</latex>
+                                    </math>, as in the left hand expression. Therefore we subtract these two numbers from the resulting geometric series.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-1 - \dfrac{1}{3} \ +\ \sum_{n=0}^{\infty}\left( \dfrac{1}{3}\right)^n</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we use the formula for the sum of a geometric series.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we use the formula for the sum of a geometric series.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-1 - \dfrac{1}{3}\ +\ \dfrac{1}{1- \tfrac{1}{3}}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>1/6</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Therefore the two series we considered converge individually, and so:</para.body>
+               </para>
+				           <math.display>
+					             <latex>\sum_{n=1}^{\infty}\left( \left( \dfrac{1}{2}\right)^n - \left( \dfrac{1}{3}\right)^{n+1} \right)\ =\ 1-\dfrac{1}{6} = \dfrac{5}{6}</latex>
+				           </math.display>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Determine if the series <math>
+                     <latex>\sum_{n=0}^{\infty} \arctan n</latex>
+                  </math> converges to a number.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+</exercise.pack>

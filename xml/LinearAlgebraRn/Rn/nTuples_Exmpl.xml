@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_nTuples">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Examples of <latex>n</latex>-tuples.</title>
+	<caption>Examples of <latex>n</latex>-tuples.</caption>
+	<showme>
+		<statement>
+			<para>Here are some examples of <latex>n</latex>-tuples:</para>
+			
+			<ul>
+				<li>
+					<para><latex>(5)</latex> is a 1-tuple. Its one and only coordinate is the number <latex>5</latex>. <latex>(-3)</latex> is another 1-tuple, and an arbitrary 1-tuple is of the form <latex>(s)</latex>, with <latex>s</latex> a number in the system of real numbers <latex>\RNr</latex>.</para>
+				</li>
+				<li>
+					<para><latex>(2,3)</latex> is a 2-tuple, or a pair of numbers. The first coordinate of this 2-tuple is 2. The second coordinate is 3. Another 2-tuple is <latex>(-1,6)</latex>. In this case the first coordinate of this 2-tuple is <latex>-1</latex>, the second coordinate is <latex>6</latex>.</para>
+					<para>An arbitrary 2-tuple, or pair of numbers, is of the form <latex>(s,t)</latex> with <latex>s</latex> and <latex>t</latex> numbers. In this case the first coordinate is <latex>s</latex>, while the second coordinate is <latex>t</latex>.</para>
+				</li>
+				<li>
+					<para><latex>(\tfrac{3}{2},0,-1)</latex> is a 3-tuple, or a triple of numbers. Its first coordinate is <latex>\tfrac{3}{2}</latex>. Its second coordinate is <latex>0</latex>. Its third coordinate is <latex>-1</latex>. Another 3-tuple is <latex>(-16,3,4)</latex>. In this case the first coordinate is <latex>-16</latex>, the second coordinate is <latex>3</latex>, the third coordinate is <latex>4</latex>.</para>
+					<para>An arbitrary 3-tuple, or triple of numbers, is of the form <latex>(x,y,z)</latex> with <latex>x</latex>, <latex>y</latex>, and <latex>z</latex> numbers. In this case the first coordinate is <latex>x</latex>, the second coordinate is <latex>y</latex>, and the third coordinate is <latex>z</latex>.</para>
+				</li>
+				<li>
+					<para><latex>(4,1,0,3)</latex> is a 4-tuple. Its first coordinate is <latex>4</latex>. Its second coordinate is <latex>1</latex>. Its third coordinate is <latex>0</latex>. Its fourth coordinate is <latex>3</latex>; etc.</para>
+				</li>
+			</ul>
+		</statement>
+	</showme>
+</showme.pack>

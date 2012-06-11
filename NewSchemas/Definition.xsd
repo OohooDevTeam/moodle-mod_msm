@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="Molecules.xsd"/>
+	<xsd:element name="def">
+		<xsd:annotation>
+			<xsd:documentation>To mark a definition, notation, convention, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element ref="associate" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element minOccurs="0" ref="description"/>
+				<xsd:element name="def.body">
+					<xsd:annotation>
+						<xsd:documentation>The mathematical substance of the "Definition".</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:group ref="content_block" maxOccurs="unbounded" minOccurs="1"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="type" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>To identify "Definition", "Notation", "Convention", "Agreement", "Axiom", "Terminology"</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="Definition"/>
+						<xsd:enumeration value="Notation"/>
+						<xsd:enumeration value="Convention"/>
+						<xsd:enumeration value="Agreement"/>
+						<xsd:enumeration value="Axiom"/>
+						<xsd:enumeration value="Terminology"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="id" type="xsd:NCName" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

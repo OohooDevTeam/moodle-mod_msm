@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_CrossProduct">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Examples: Computing Cross Products</title>
+	<caption>Examples: Computing Cross Products</caption>
+	
+	<showme>
+		<statement>
+			<para>Find the cross product of the vectors</para>
+			<para align="center"><latex>\Vect{a}=(1,0,0)</latex> &nbsp; and &nbsp; <latex>\Vect{b}=(0,1,0)</latex></para>
+		</statement>
+		<answer type="Solution">
+			<para>According to the general formula for the cross product we obtain for <latex>\Vect{a}=(1,0,0)</latex> and <latex>\Vect{b}=(0,1,0)</latex></para>
+			<computation>
+				<left>\CrssPr{ \Vect{a} }{ \Vect{b} }</left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+\left( \det
+\left[
+\begin{array}{rr}
+0 & 1 \\
+0 & 0
+\end{array}
+\right]\, ,\, 
+-\det
+\left[
+\begin{array}{rr}
+1 & 0 \\
+0 & 0
+\end{array}
+\right]\, ,\, 
+\det
+\left[
+\begin{array}{rr}
+1 & 0 \\
+0 & 1
+\end{array}
+\right] \right)
+					]]>
+				</right>
+				<left></left>
+				<center>=</center>
+				<right>(0 - 0, - (0-0) , 1-0)</right>
+				<left></left>
+				<center>=</center>
+				<right>(0,0,1)</right>
+			</computation>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Find the cross product of the vectors</para>
+			<para align="center"><latex>\Vect{x}=(2,1,1)</latex> &nbsp; and &nbsp; <latex>\Vect{y}=(3,0,-1)</latex></para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>According to the general formula for the cross product we obtain for <latex>\Vect{x}=(2,1,1)</latex> and <latex>\Vect{y}=(3,0,-1)</latex></para>
+			<computation>
+				<left>\CrssPr{ \Vect{x} }{ \Vect{y} }</left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+\left( \det
+\left[
+\begin{array}{rr}
+1 & 0 \\
+1 & -1
+\end{array}
+\right]\, ,\, 
+-\det
+\left[
+\begin{array}{rr}
+2 & 3 \\
+1 & -1
+\end{array}
+\right]\, ,\, 
+\det
+\left[
+\begin{array}{rr}
+2 & 3 \\
+1 & 0
+\end{array}
+\right] \right)
+					]]>
+				</right>
+				<left></left>
+				<center>=</center>
+				<right>(-1 - 0, - (-2-3) , 0-3)</right>
+				<left></left>
+				<center>=</center>
+				<right>(-1,5,-3)</right>
+			</computation>
+		</answer>
+	</showme>
+	
+</showme.pack>

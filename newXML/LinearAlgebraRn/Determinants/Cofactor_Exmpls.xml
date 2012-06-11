@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Cofactor"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Cofactors of a Matrix: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrr}
+4 &amp; 1 &amp; 6 &amp; 5 \\
+3 &amp; -2 &amp; -3 &amp; 2 \\
+9 &amp; 2 &amp; 4 &amp; 7 \\
+1 &amp; -9 &amp; -3 &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>has as its <math>
+                  <latex>(4,2)</latex>
+               </math>-minor the <math>
+                  <latex>(3,3)</latex>
+               </math>-matrix</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A}_{42} = 
+\left[
+\begin{array}{rrrr}
+4 &amp; 6 &amp; 5 \\
+3 &amp; -3 &amp; 2 \\
+9 &amp; 4 &amp; 7 
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>Therefore the <math>
+                  <latex>(4,2)</latex>
+               </math>-cofactor of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\aligned
+c_{42}(\Mtrx{A})\ &amp;=\ (-1)^{4+2}\cdot \det(\Mtrx{A}_{42}) \\
+	&amp;=\ (-1)^6\cdot \det\, 
+\left[
+\begin{array}{rrrr}
+4 &amp; 6 &amp; 5 \\
+3 &amp; -3 &amp; 2 \\
+9 &amp; 4 &amp; 7 
+\end{array}
+\right] \\
+	&amp;=\ 4\cdot (-21-8) - 3\cdot (42-20) + 9\cdot (12-(-15)) \\
+	&amp;=\ 61
+\endaligned
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+</showme.pack>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_FieldAxioms">
+	<headers>
+		<full>The Additive and Multiplicative Structure of the Real Numbers System</full>
+		<toc>The Additive and Multiplicative Structure of the Real Numbers System</toc>
+		<short>Addition and Multiplication</short>
+	</headers>
+	
+	<intro>
+		<para>In this section we discuss structural axioms describing addition and multiplication of real numbers: these are the structural axioms of a field. We then derive some consequences of these axioms.</para>
+	</intro>
+	
+	<section.body>
+		<def type="Axiom" id="Axi_Field">
+			<caption>Field structure of real numbers</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment on the field axioms of <latex>\RNr</latex></caption>
+					<para>For simplicity we have permitted some redundancy in the axioms stated below. For example, it is enough to require of the number <latex>0</latex> that <latex>a+0 = a</latex> for all <latex>a\in \RNr</latex>.  The identity <latex>0 + a = 0</latex> follows then with the commutativity axiom.</para>
+				</info>
+			</associate>
+			<para><latex>\RNr</latex> is a set, whose elements are called real numbers, with two distinguished elements <latex>0</latex> and <latex>1</latex>, <latex>0\neq 1</latex>. On <latex>\RNr</latex> we have two operations
+				<index.symbol>
+					<symbol><latex>\RNr</latex></symbol>
+					<info><para>The set of real numbers; here introduced axiomatically with its operations of addition and multiplication</para></info>
+				</index.symbol>
+				<index.glossary>
+					<term>real number system</term><term>field structure</term>
+					<info><para>Axiomatic description of the operations of addition and multiplication in <latex>\RNr</latex>.</para></info>
+				</index.glossary>
+			</para>
+			<ul>
+				<li><para>Addition given by a function <latex>\StPrdct{\RNr}{\RNr} \longrightarrow \RNr</latex>, whose value on a pair <latex>(x,y)</latex> is denoted <latex>x+y</latex>.
+					<index.glossary>
+						<term>addition</term><term>in <latex>\RNr</latex></term>
+					</index.glossary>
+				</para></li>
+				<li><para>Multiplication given by a function <latex>\StPrdct{\RNr}{\RNr} \longrightarrow \RNr</latex>, whose value on a pair <latex>(x,y)</latex> is denoted <latex>x\cdot y</latex> or just <latex>xy</latex>.
+					<index.glossary>
+						<term>multiplication</term><term>in <latex>\RNr</latex></term>
+					</index.glossary>
+				</para></li>
+			</ul>
+			<para>These operations satisfy the following 
+				<subordinate>
+					<hot>structural axioms</hot>
+					<info><para>These axioms say that <latex>\RNr</latex> is a field.</para></info>
+				</subordinate>.
+			</para>
+			<ol>
+				<li><para>Associativity of addition: <latex>a+(b+c) = (a+b)+c</latex> for all <latex>a,b,c\in \RNr</latex>.
+					<index.glossary>
+						<term>addition</term><term>associativity property</term>
+						<info><para>Axiomatic description of the associativity property of addition of real numbers</para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>associativity property</term><term>addition in <latex>\RNr</latex></term>
+						<info><para>Axiomatic description of the associativity property of addition of real numbers</para></info>
+					</index.glossary>
+				</para></li>
+				<li><para>Commutativity of addition: <latex>a+b = b+a</latex> for all <latex>a,b\in \RNr</latex>.
+					<index.glossary>
+						<term>addition</term><term>commutativity property</term>
+						<info><para>Axiomatic description of the commutativity property of addition of real numbers</para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>commutativity property</term><term>addition in <latex>\RNr</latex></term>
+						<info><para>Axiomatic description of the commutativity property of addition of real numbers</para></info>
+					</index.glossary>
+				</para></li>
+				<li><para>Neutrality of <latex>0</latex> with respect to addition: <latex>a+0=a=0+a</latex> for all <latex>a\in \RNr</latex>.
+					<index.glossary>
+						<term>neutrality</term><term>of <latex>0</latex> with respect to addition in <latex>\RNr</latex></term>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex>0</latex></symbol>
+						<info><para>Axiomatic introduction of the number zero in <latex>\RNr</latex></para></info>
+					</index.symbol>
+				</para></li>
+				<li><para>Existence of additive inverses: For all <latex>a\in \RNr</latex>, there exists <latex>b\in \RNr</latex> such that <latex>a+b=0=b+a</latex>.
+					<index.glossary>
+						<term>addition</term><term>inverse operation</term>
+						<info><para>The axiom which says that, for each <latex>a\in \RNr</latex>, there exists <latex>b\in \RNr</latex> with <latex>a+b = 0</latex>.</para></info>
+					</index.glossary>
+				</para></li>
+				<li><para>Associativity of multiplication: <latex>a\cdot (b\cdot c) = (a\cdot b)\cdot c</latex> for all <latex>a,b,c\in \RNr</latex>.
+					<index.glossary>
+						<term>multiplication</term><term>associativity property</term>
+						<info><para>Axiomatic description of the associativity property of multiplication of real numbers</para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>associativity property</term><term>multiplication in <latex>\RNr</latex></term>
+						<info><para>Axiomatic description of the associativity property of multiplication of real numbers</para></info>
+					</index.glossary>
+				</para></li>
+				<li><para>Commutativity of multiplication: <latex>a\cdot b = b\cdot a</latex> for all <latex>a,b\in \RNr</latex>.
+					<index.glossary>
+						<term>multiplication</term><term>commutativity property</term>
+						<info><para>Axiomatic description of the commutativity property of multiplication of real numbers</para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>commutativity property</term><term>multiplication in <latex>\RNr</latex></term>
+						<info><para>Axiomatic description of the commutativity property of multiplication of real numbers</para></info>
+					</index.glossary>
+				</para></li>
+				<li><para>Neutrality of <latex>1</latex> with respect to addition: <latex>a\cdot 1=a=1\cdot a</latex> for all <latex>a\in \RNr</latex>.
+					<index.glossary>
+						<term>neutrality</term><term>of <latex>1</latex> with respect to multiplication in <latex>\RNr</latex></term>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex>1</latex></symbol>
+						<info><para>Axiomatic introduction of the number one in <latex>\RNr</latex></para></info>
+					</index.symbol>
+				</para></li>
+				<li><para>Existence of multiplicative inverses: For all <latex>0\neq a\in \RNr</latex>, there exists <latex>b\in \RNr</latex> such that <latex>a\cdot b=1=b\cdot a</latex>.
+					<index.glossary>
+						<term>multiplication</term><term>inverse operation</term>
+						<info><para>The axiom which says that, for each <latex>0\neq a\in \RNr</latex>, there exists <latex>b\in \RNr</latex> with <latex>a\cdot b = 0</latex>.</para></info>
+					</index.glossary>
+				</para></li>
+				<li><para>Distributivity: <latex>a\cdot (b+c) = ab\ +\ ac</latex>, for all <latex>a,b,c\in \RNr</latex>.
+					<index.glossary>
+						<term>distributivity</term><term>of multiplication of addition in <latex>\RNr</latex></term>
+						<info>
+							<para>The distributivity axiom asserts that <latex>a\cdot (b+c) = ab\ +\ ac</latex>, for all <latex>a,b,c\in \RNr</latex>.</para>
+						</info>
+					</index.glossary>
+				</para></li>
+			</ol>
+		</def>
+		<para>We will now derive some consequences of these axioms. One immediate concern arises from the existence axiom for an element which is neutral with respect to addition, from the existence axiom for additive inverses and, similarly, from their multiplicative inverses. In each case, if there is one such element, there could be many. The following lemmas assert that these elements are unique.</para>
+		<xi:include href="ZeroUnique_Thm.xml"/>
+		<xi:include href="AdditiveInverseUnique_Thm.xml"/>
+		<xi:include href="OneUnique_Thm.xml"/>
+		<xi:include href="MultiplicativeInverseUnique_Thm.xml"/>
+		<def type="Convention">
+			<para>If <latex>a\in \RNr</latex>, we write <latex>(-a)</latex> for the unique number satisfying <latex>a+(-a)=0</latex>.
+				<index.symbol>
+					<symbol><latex>(-a)</latex></symbol>
+					<info><para>If <latex>a\in \RNr</latex>, we write <latex>(-a)</latex> for the unique number satisfying <latex>a+(-a)=0</latex></para></info>
+				</index.symbol>
+				If <latex>0\neq x\in \RNr</latex>, we write <latex>x^{-1}</latex> or <latex magnify="yes">\tfrac{1}{x}</latex> for the unique number satisfying <latex>x\cdot x^{-1} = 1</latex>.
+				<index.symbol>
+					<symbol><latex>x^{-1}</latex></symbol>
+					<info><para>If <latex>0\neq x\in \RNr</latex>, we write <latex>x^{-1}</latex> or <latex magnify="yes">\tfrac{1}{x}</latex> for the unique number satisfying <latex>x\cdot x^{-1} = 1</latex>.</para></info>
+				</index.symbol>
+				<index.symbol>
+					<symbol><latex>\tfrac{1}{x}</latex></symbol>
+					<info><para>If <latex>0\neq x\in \RNr</latex>, we write <latex>x^{-1}</latex> or <latex magnify="yes">\tfrac{1}{x}</latex> for the unique number satisfying <latex>x\cdot x^{-1} = 1</latex>.</para></info>
+				</index.symbol>
+				If <latex><![CDATA[ n>0 ]]></latex> we define <latex>a^n:= \underset{\leftarrow\hfill n\hfill \to}{a \cdots a}</latex>, and <latex>a^{-n}:=(a^{-1})^n</latex>, provided <latex>a\neq 0</latex>.
+				<index.symbol>
+					<symbol><latex>a^n</latex></symbol>
+					<info><para>If <latex><![CDATA[ n>0 ]]></latex> we define <latex>a^n:= \underset{\leftarrow\hfill n\hfill \to}{a \cdots a}</latex>.</para></info>
+				</index.symbol>
+			</para>
+		</def>
+		<para>We proceed to derive further consequences of these basic properties of the number system <latex>\RNr</latex>.</para>
+		<xi:include href="RFieldAxms1_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_FieldAxioms"/>
+	</studymaterials>
+</section>

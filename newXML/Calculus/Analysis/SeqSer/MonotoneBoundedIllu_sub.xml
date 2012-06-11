@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_MonotoneBoundedSequenceConverges"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Monotone Bounded Sequence Converges: Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>If an increasing sequence <math>
+                     <latex>(x_n)</latex>
+                  </math> is bounded above, then <math>
+                     <latex>(x_n)</latex>
+                  </math> converges to a number in <math>
+                     <latex>\RNr</latex>
+                  </math>. Intuitively this is quite plausible as the graphic below shows.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/MonotoneBounded.png"/>
+            </media>
+            <para>
+               <para.body>The sequence is increasing but gets squeezed below an upper bound. So it converges to the infimum of all upper bounds.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_DeterminantInvertibilityTest">
+	<caption>Determinant tests invertibility of a matrix</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_DeterminantInvertibility"/>
+		<info>
+			<caption>Example</caption>
+			<para>Some examples to show how to use a determinant to test a matrix for invertibility.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>A square matrix <latex>\Mtrx{A}</latex> is invertible exactly when <latex>\det(\Mtrx{A}) \neq 0</latex>.</para>
+	</statement>
+	<proof>
+		<para>We
+			<subordinate>
+				<hot>know</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_DeterminantRowReduction"/>
+					<para>Look up how to compute the determinant of a matrix by reducing it to upper triangular form.</para>
+				</crossref>
+			</subordinate>
+			that <latex>\det(\Mtrx{A})\neq 0</latex> if and only if any upper triangular reduction matrix <latex>\Mtrx{U}</latex> of <latex>\Mtrx{A}</latex> has only nonzero elements <latex>d_1,\dots ,d_n</latex> on the diagonal. This happens if and only if the RREF of <latex>\Mtrx{U}</latex> and, hence, of <latex>\Mtrx{A}</latex> is the identity matrix. This in turn is 
+			<subordinate>
+				<hot>equivalent</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_MatrixInversionRREF"/>
+					<para>Look up this theorem.</para>
+				</crossref>
+			</subordinate>
+			to the invertibility of <latex>\Mtrx{A}</latex>.  
+		</para>
+	</proof>
+</theorem>

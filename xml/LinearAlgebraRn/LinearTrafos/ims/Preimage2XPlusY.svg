@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X5 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="800px" height="600px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 800 600"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <font id="FontID1" horiz-adv-x="667" font-variant="normal" class="str0" style="fill-rule:nonzero" font-style="normal" font-weight="400">
+	<font-face 
+		font-family="Arial">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="-" horiz-adv-x="332"><path d="M31.6652 214.83l0 88.3343 270.164 0 0 -88.3343 -270.164 0z"/></glyph>
+   <glyph unicode=")" horiz-adv-x="332"><path d="M123.496 -210.495l-62.9998 0c97.3343,156.33 146.007,312.66 146.007,469.333 0,61.1572 -7.00391,121.83 -20.9999,182.161 -11.0078,48.673 -26.5038,95.6689 -46.3345,140.503 -12.6732,29.3267 -38.8345,78.165 -78.6729,146.503l62.9998 0c61.1691,-81.6729 106.5,-163.677 135.838,-246.011 25.0038,-70.9958 37.4999,-145.157 37.4999,-222.661 0,-88.0036 -16.8306,-172.83 -50.5037,-254.999 -33.6613,-82.0036 -74.6572,-153.673 -122.834,-214.83z"/></glyph>
+   <glyph unicode="," horiz-adv-x="277"><path d="M88.8304 0l0 100.169 100.169 0 0 -100.169c0,-36.8384 -6.49604,-66.4958 -19.4999,-89.1611 -13.1692,-22.4999 -33.8384,-40.0038 -61.9958,-52.4998l-24.5078 37.6652c18.5078,8.16139 32.1731,20.1613 41.0077,35.8345 8.83461,15.8267 13.6653,38.492 14.6574,68.1611l-49.8305 0z"/></glyph>
+   <glyph unicode="(" horiz-adv-x="332"><path d="M233.834 -210.495c-48.4959,61.1572 -89.5036,132.826 -123,214.83 -33.4959,82.169 -50.3384,166.995 -50.3384,254.999 0,77.5036 12.5078,151.665 37.6652,222.661 29.3385,82.3343 74.5036,164.338 135.673,246.011l62.9998 0c-39.3306,-67.6769 -65.3383,-116.007 -77.9997,-145.003 -19.996,-44.8345 -35.5038,-91.8303 -46.9959,-140.669 -14.0078,-60.8383 -20.9999,-121.996 -20.9999,-183.495 0,-156.673 48.6612,-313.003 145.995,-469.333l-62.9998 0z"/></glyph>
+   <glyph unicode=" " horiz-adv-x="277"></glyph>
+   <glyph unicode="1" horiz-adv-x="556"><path d="M372.495 0l-87.8264 0 0 560.006c-21.1653,-20.1731 -48.8384,-40.3345 -83.1729,-60.5076 -34.4999,-20.1613 -65.3265,-35.3266 -92.6571,-45.3305l0 84.8382c49.1573,23.1613 92.1611,51.1652 128.999,83.9997 36.6613,32.9999 62.8344,64.8305 78.165,95.8225l56.4919 0 0 -718.828z"/></glyph>
+   <glyph unicode="2" horiz-adv-x="556"><path d="M503.502 84.4957l0 -84.4957 -473.171 0c-0.661415,21.1653 2.66928,41.5038 10.1693,61.0037 12,32.3266 31.3345,63.9919 57.8384,95.3264 26.6574,31.1692 64.9958,67.3344 114.992,108.342 77.8343,63.8265 130.499,114.33 157.842,151.665 27.3306,37.1573 40.9959,72.4958 40.9959,105.661 0,34.8306 -12.496,64.169 -37.3345,88.1689 -25.0038,23.8346 -57.4958,35.8345 -97.4996,35.8345 -42.3305,0 -76.169,-12.6732 -101.504,-38.1731 -25.4999,-25.3227 -38.3266,-60.4958 -38.6691,-105.33l-90.3304 9.16532c6.16533,67.4997 29.5038,118.842 69.8383,154.169 40.3345,35.3384 94.665,52.9959 162.661,52.9959 68.669,0 123,-19.1574 163.003,-57.1651 40.1691,-38.1613 60.1651,-85.3343 60.1651,-141.661 0,-28.6652 -5.83462,-56.8344 -17.6692,-84.5075 -11.6574,-27.6613 -31.1574,-56.8226 -58.3344,-87.3304 -27.1652,-30.6613 -72.3304,-72.6611 -135.496,-126 -52.6651,-44.3266 -86.5036,-74.3265 -101.504,-90.165 -14.9999,-15.6614 -27.3306,-31.4999 -37.1573,-47.5037l351.164 0z"/></glyph>
+   <glyph unicode="=" horiz-adv-x="584"><path d="M528.329 420.837l-472.663 0 0 82.169 472.663 0 0 -82.169zm0 -217.168l-472.663 0 0 82.0036 472.663 0 0 -82.0036z"/></glyph>
+  </font>
+  <font id="FontID0" horiz-adv-x="777" font-variant="normal" class="str0" style="fill-rule:nonzero" font-weight="900">
+	<font-face 
+		font-family="Arial Black">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="n" horiz-adv-x="667"><path d="M59.9998 518.502l185.172 0 0 -84.3304c27.6613,34.4999 55.6651,58.9958 83.9997,73.8304 28.3227,14.8346 62.8226,22.3346 103.5,22.3346 54.9919,0 97.9957,-16.4999 129.165,-49.1691 30.992,-32.6692 46.4998,-83.1729 46.4998,-151.499l0 -329.668 -199.665 0 0 285.164c0,32.5038 -5.99998,55.4998 -17.9999,68.9997 -12.1771,13.6653 -29.0078,20.3385 -50.8344,20.3385 -23.9999,0 -43.6652,-9.16532 -58.4998,-27.3306 -14.9999,-18.1771 -22.4999,-50.9998 -22.4999,-98.1728l0 -248.999 -198.838 0 0 518.502z"/></glyph>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Arial";src:url("#FontID1") format(svg)}
+    @font-face { font-family:"Arial Black";src:url("#FontID0") format(svg)}
+    .str3 {stroke:#699392;stroke-width:0.3005}
+    .str5 {stroke:#3E4095;stroke-width:0.3005}
+    .str1 {stroke:#48887B;stroke-width:0.3005}
+    .str4 {stroke:#57A695;stroke-width:0.3005}
+    .str2 {stroke:#699392;stroke-width:1.39129}
+    .str7 {stroke:#3E4095;stroke-width:1.39129}
+    .str6 {stroke:red;stroke-width:1.39129}
+    .str0 {stroke-width:9.00002}
+    .fil2 {fill:none}
+    .fil4 {fill:#699392}
+    .fil6 {fill:#3E4095}
+    .fil1 {fill:#48887B}
+    .fil5 {fill:#57A695}
+    .fil3 {fill:#ED3237}
+    .fil0 {fill:#48887B;fill-rule:nonzero}
+    .fnt1 {font-weight:normal;font-size:33.389;font-family:'Arial'}
+    .fnt0 {font-weight:900;font-size:33.389;font-family:'Arial Black'}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g>
+   <path class="fil0" d="M404 233l-6 -13 15 1 -9 12zm-201 91l198 -99 1 2 -198 99 -1 -2z"/>
+  </g>
+  <text x="458" y="231"  class="fil1 str1 fnt0">n</text>
+  <text x="480" y="231"  class="fil1 str1 fnt1"> = (2,1)</text>
+  <line class="fil2 str2" x1="12" y1="325" x2="444" y2= "325" />
+  <line class="fil2 str2" x1="203" y1="567" x2="203" y2= "25" />
+  <circle class="fil3 str3" cx="306" cy="325" r="3"/>
+  <text x="177" y="233"  class="fil4 str3 fnt1">1</text>
+  <circle class="fil3 str3" cx="412" cy="325" r="3"/>
+  <circle class="fil3 str3" cx="203" cy="221" r="3"/>
+  <circle class="fil3 str3" cx="204" cy="120" r="3"/>
+  <circle class="fil3 str3" cx="203" cy="433" r="3"/>
+  <circle class="fil3 str3" cx="203" cy="537" r="3"/>
+  <text x="177" y="128"  class="fil4 str3 fnt1">2</text>
+  <text x="167" y="445"  class="fil4 str3 fnt1">-1</text>
+  <text x="167" y="549"  class="fil4 str3 fnt1">-2</text>
+  <text x="728" y="233"  class="fil4 str3 fnt1">1</text>
+  <circle class="fil5 str4" cx="754" cy="221" r="3"/>
+  <circle class="fil5 str4" cx="754" cy="433" r="3"/>
+  <text x="728" y="128"  class="fil4 str3 fnt1">2</text>
+  <text x="718" y="445"  class="fil4 str3 fnt1">-1</text>
+  <text x="718" y="549"  class="fil4 str3 fnt1">-2</text>
+  <line class="fil2 str2" x1="754" y1="567" x2="754" y2= "25" />
+  <circle class="fil3 str3" cx="754" cy="120" r="3"/>
+  <circle class="fil6 str5" cx="754" cy="537" r="3"/>
+  <line class="fil2 str6" x1="173" y1="59" x2="416" y2= "545" />
+  <line class="fil2 str7" x1="39" y1="208" x2="213" y2= "557" />
+ </g>
+</svg>

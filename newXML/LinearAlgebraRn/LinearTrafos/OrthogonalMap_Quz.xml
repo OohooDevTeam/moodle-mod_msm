@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE quiz.pack
+  SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns="Compositor"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           id="Quz_OrthogonalMap"
+           xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Quiz on Distance Preserving Linear Transformations</title>
+	
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Does a shear transformation of the plane preserve distances?</para.body>
+         </para>
+			
+				     <img src="ims/ShearR2_3.png"/>
+			
+		    </question>
+		    <hint>
+			      <info>
+            <para>
+               <para.body>In the picture above, consider the effect of shearing on the vector <math>
+                     <latex>\StdBss{2}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </info>
+		    </hint>
+		
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>A shear transformation is distance preserving.</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No.</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>A shear transformation is not distance preserving.</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Correct! - To see why a shear map <math>
+                     <latex>S\from \RNr[2]\to \RNr[2]</latex>
+                  </math> is, in general, not distance preserving, consider the vector <math>
+                     <latex>\Vect{n}</latex>
+                  </math> with respect to which we are shearing (in the picture above, this is <math>
+                     <latex>\StdBss{2}</latex>
+                  </math>). It has length <math>
+                     <latex>1</latex>
+                  </math>, and gets transformed into the vector <math>
+                     <latex>\Vect{n}+\Vect{s}</latex>
+                  </math>, where <math>
+                     <latex>\Vect{s}</latex>
+                  </math> is the shear vector. So, unless <math>
+                     <latex>\Vect{s}=\Vect{0}</latex>
+                  </math>, the shear transformation increases the length of some vectors. Therefore it is not distance preserving.</para.body>
+            </para>
+         </info>
+		    </choice>
+	  </quiz>
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Does the dilation transformation below preserve distances?</para.body>
+         </para>
+			      <math.display>
+				        <latex>D\from \RNr[2] \longrightarrow \RNr[2],\quad D(\Vect{x}) = 3\cdots \Vect{x}</latex>
+			      </math.display>
+		    </question>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>Yes! <math>
+                     <latex>D</latex>
+                  </math> preserves distances</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>No! <math>
+                     <latex>D</latex>
+                  </math> does not preserve distances</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Correct! – <math>
+                     <latex>D</latex>
+                  </math> increases the distance between any two points by a factor of <math>
+                     <latex>3</latex>
+                  </math>. Therefore <math>
+                     <latex>D</latex>
+                  </math> does not preserve distances.</para.body>
+            </para>
+         </info>
+		    </choice>
+	  </quiz>
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Does a reflection of <math>
+                  <latex>\RNr[3]</latex>
+               </math> about a plane passing through the origin preserve distances?</para.body>
+         </para>
+			
+			
+				     <img src="ims/LeftHandMirrorRightHand.jpg"/>
+			
+		    </question>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>Yes! This reflection preserves distances.</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Correct!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>No! This reflection does not preserve distances.</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+	  </quiz>
+	
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Does a projection of the plane <math>
+                  <latex>\RNr[2]</latex>
+               </math> onto a line through the origin preserve distances?</para.body>
+         </para>
+			
+			
+				     <img src="ims/OrthogonalProjection"/>
+			
+		    </question>
+		    <choice>
+			      <answer>
+				        <para>
+               <para.body>Yes, such a projection preserves distances</para.body>
+            </para>
+			      </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>No, such a projection does not preserve distances</para.body>
+            </para>
+         </answer>
+			      <info>
+				        <para>
+               <para.body>Correct! – A projection can reduce certain distances. For example: in the picture above, consider the vector <math>
+                     <latex>\Vect{c}</latex>
+                  </math>. Its length is positive. But it projects to the zero vector. Therefore the projection does not preserve all distances.</para.body>
+            </para>
+			      </info>
+		    </choice>
+	  </quiz>
+	
+</quiz.pack>

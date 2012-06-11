@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Span"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Span: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the span of the vector <math>
+                  <latex>\Vect{u} = (1,1,0)</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The span of <math>
+                        <latex>\Vect{u}</latex>
+                     </math> is the collection of all vectors of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>t\cdot (1,1,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>This is the line in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> passing through the origin and in the direction of <math>
+                        <latex>\Vect{u}</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the span of a single vector <math>
+                  <latex>\Vect{s}</latex>
+               </math> in <math>
+                  <latex>\RNr[n]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The span of <math>
+                        <latex>\Vect{s}</latex>
+                     </math> is the collection of all vectors of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>t\cdot \Vect{s}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>To describe the outcome of this operation we distinguish two cases:</para.body>
+               </para>
+			            <ol type="1">
+				              <li>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{s} = \Vect{0}</latex>
+                           </math>: in this case <math>
+                              <latex>t\cdot \Vect{s} = \Vect{0}</latex>
+                           </math> and, therefore, <math>
+                              <latex>\span(\Vect{s})</latex>
+                           </math> is just the <math>
+                              <latex>\Vect{0}</latex>
+                           </math>-vector.</para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{s}\neq \Vect{0}</latex>
+                           </math>: in this case <math>
+                              <latex>\span(\Vect{s})</latex>
+                           </math> is the line through the origin in the direction of <math>
+                              <latex>\Vect{s}</latex>
+                           </math>.</para.body>
+                     </para>
+				              </li>
+			            </ol>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the span of the vectors <math>
+                  <latex>\Vect{u}=(2,0)</latex>
+               </math> and <math>
+                  <latex>\Vect{v}=(0,3)</latex>
+               </math> in <math>
+                  <latex>\RNr[2]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The span of <math>
+                        <latex>\Vect{u}</latex>
+                     </math> and <math>
+                        <latex>\Vect{v}</latex>
+                     </math> consists of all vectors of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>s\cdot \Vect{u} + t\cdot \Vect{v}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>s\cdot (2,0)\ +\ t\cdot (0,3)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2s,3t)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>We conclude that <math>
+                        <latex>\span(\Vect{u},\Vect{v})</latex>
+                     </math> is all of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> because an arbitrary vector <math>
+                        <latex>(a,b)</latex>
+                     </math> in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> is of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(a,b)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2\cdot\tfrac{a}{2},3\cdot\tfrac{b}{3})</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>So it is in the span of <math>
+                        <latex>\Vect{u}</latex>
+                     </math> and <math>
+                        <latex>\Vect{v}</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

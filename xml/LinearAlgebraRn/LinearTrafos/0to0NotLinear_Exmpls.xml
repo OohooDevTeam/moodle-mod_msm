@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_0to0NotLinear">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Functions which Send 0 To 0 but are not Linear</title>
+	<caption>0 To 0 but not linear</caption>
+	
+	<showme>
+		<statement>
+			<para>The function <latex>f\from \RNr\to \RNr</latex>, <latex>f(x)=x^3</latex>, satisfies <latex>f(0)=0</latex>. Still <latex>f</latex> is not linear: the following computation shows that <latex>f</latex> fails to commute with addition</para>
+			
+			<computation>
+				<left>f(1+1)=f(2)</left>
+				<center>=</center>
+				<right>8</right>
+				<left>f(1) + f(1) = 1 + 1</left>
+				<center>=</center>
+				<right>2</right>
+			</computation>
+			
+			<para>If <latex>f</latex> would commute with addition, we would have <latex>f(1+1) = f(1) + f(1)</latex>. Visibly, this is not the case. So <latex>f</latex> is not linear.</para>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Here is a more complicated function which sends <latex>\Vect{0}</latex> to <latex>\Vect{0}</latex> but is not linear. Consider</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+f\from \RNr[2] \longrightarrow \RNr[2],\quad f(x,y) = \left\{
+\aligned
+ 0 &\quad \text{if $x=y=0$} \\
+ \sin \dfrac{\pi\cdot x}{2\sqrt{x^2+y^2}} \cdot (x,y) &\quad \text{else}
+ \endaligned
+ \right.
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>By design, <latex>f(\Vect{0}) = \Vect{0}</latex>. However, to conclude that <latex>f</latex> is linear, we must still show that it commutes with vector addition and with scalar multiplication. In the absence of a general strategy of how to go about this, we can only carry out some experiments. For example, we can test for &lsquo;commutes with vector addition&rsquo;; e.g. with</para>
+			
+			<computation>
+				<left>f(3,0) = f((1,0) + (2,0))</left>
+				<center>=</center>
+				<right>f(3,0) = (3,0)</right>
+				<left>f(1,0) + f(2,0) = (1,0) + (2,0)</left>
+				<center>=</center>
+				<right>(3,0)</right>
+			</computation>
+			
+			<para>In this particular case, the two answers agree; i.e. <latex>f</latex> commutes with addition in this particular case. Does this mean that <latex>f</latex> commutes with addition always? &ndash; Not necessarily. For example, the following experiment reveals:</para>
+			
+			<computation>
+				<left>f((1,0) + (0,1))</left>
+				<center>=</center>
+				<right>f(1,1) = \sin \tfrac{\pi}{2\sqrt{2}}\cdot (1,1) </right>
+				<left>f(1,0) + f(0,1)</left>
+				<center>=</center>
+				<right>(1,0) + (0,0) = (1,0)</right>
+			</computation>
+			
+			<para>In this case <latex>f</latex> does not preserve vector addition. Therefore <latex>f</latex> is not linear.</para>
+		</statement>
+	</showme>	
+</showme.pack>

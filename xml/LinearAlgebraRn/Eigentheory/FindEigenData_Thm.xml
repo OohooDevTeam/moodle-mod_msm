@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_FindingEigenvectorsEigenvalues">
+	<caption>Finding eigenvectors and eigenvalues</caption>
+	<statement>
+		<para>The <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> has an eigenvector with eigenvalue <latex>\lambda</latex> if and only if </para>
+		<computation>
+			<left>\det(A-\lambda \IdMtrx[n])</left>
+			<center>=</center>
+			<right>0</right>
+		</computation>
+	</statement>
+	<proof>
+		<para>To explain why this proposition is true, consider the case where <latex>\Vect{v}\neq \Vect{0}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>\lambda</latex>. Then</para>
+		<math.display>
+			<latex>\Mtrx{A}\Vect{v} = \lambda \Vect{v}\quad \text{or}\quad (\Mtrx{A} - \lambda\IdMtrx[n])\Vect{v} = \Vect{0}</latex>
+		</math.display>
+		<para>So the matrix <latex>(\Mtrx{A} - \lambda\IdMtrx[n])</latex> cannot be invertible, hence must have determinant <latex>0</latex>, as claimed.</para>
+		<para>For the converse, suppose <latex>\lambda</latex> represents a number for which  <latex>\det(\Mtrx{A}-\lambda\IdMtrx[n])=0</latex>. This means that <latex>(\Mtrx{A}-\lambda\IdMtrx[n])</latex> is not invertible, hence has a null space of positive dimension. Any vector <latex>\Vect{v}\neq \Vect{0}</latex> from <latex>\NllSp{\Mtrx{A}}</latex> satisfies</para>
+		<computation>
+			<left>(\Mtrx{A} - \lambda\IdMtrx[n])\Vect{v}</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>and, therefore,</para>
+		<computation>
+			<left>\Mtrx{A} \Vect{v}</left>
+			<center>=</center>
+			<right>\lambda \Vect{v}</right>
+		</computation>
+		<para>But this means exactly that <latex>\Vect{v}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>\lambda</latex>.</para>
+	</proof>
+</theorem>

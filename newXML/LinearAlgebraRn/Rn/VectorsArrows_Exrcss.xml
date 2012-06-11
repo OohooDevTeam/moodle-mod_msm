@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_VectorsArrows"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Vectors Arrows: Exercises </title>
+	  <caption>Vectors Arrows: Exercises</caption>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the following pairs of points <math>
+                     <latex>A</latex>
+                  </math> and <math>
+                     <latex>B</latex>
+                  </math> find the vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> represented by the arrow <math>
+                     <latex>\Arrw{AB}</latex>
+                  </math>
+               </para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A(6,1)</latex>
+                     </math> and <math>
+                        <latex>B(9,4)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x} = (3,3)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Remember: ‘Tip coordinates minus tail coordinates’</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The vector representing <math>
+                           <latex>\Arrw{AB}</latex>
+                        </math> has coordinates which can be found by ‘Tip coordinates minus tail coordinates’. Therefore,</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Vect{x} = (9-6,4-1) = (3,3)</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A(2,-3,5))</latex>
+                     </math> and <math>
+                        <latex>B(7,-4,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+            <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x} = (5,-1,-4)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+         </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A(1,3,-2))</latex>
+                     </math> and <math>
+                        <latex>B(6,2,-2)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+            <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x} = (5,-1,0)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+         </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A(-2,0,6,-4)</latex>
+                     </math> and <math>
+                        <latex>B(2,-2,-6,2)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A(9,12,17,-15,-3)</latex>
+                     </math> and <math>
+                        <latex>B(-9,21,-16,4,-1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For the given vector and tail point <math>
+                     <latex>A</latex>
+                  </math>, find the tip <math>
+                     <latex>B</latex>
+                  </math> of the arrow representing the vector.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x}=(4,1)</latex>
+                     </math> and <math>
+                        <latex>A(4,6)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>T(8,7)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The coordinates of <math>
+                        <latex>B</latex>
+                     </math> are found by</para.body>
+               </para>
+					          <ol>
+						            <li>
+                     <para>
+                        <para.body>Starting from <math>
+                              <latex>A(4,6)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+						            <li>
+                     <para>
+                        <para.body>from there, going <math>
+                              <latex>4</latex>
+                           </math> units in the first coordinate direction</para.body>
+                     </para>
+                  </li>
+						            <li>
+                     <para>
+                        <para.body>from there, going <math>
+                              <latex>1</latex>
+                           </math> unit in the second coordinate direction</para.body>
+                     </para>
+                  </li>
+					          </ol>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The coordinates of <math>
+                           <latex>B</latex>
+                        </math> are found by</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>Starting from <math>
+                                 <latex>A(4,6)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>from there, going <math>
+                                 <latex>4</latex>
+                              </math> units in the first coordinate direction</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>from there, going <math>
+                                 <latex>1</latex>
+                              </math> unit in the second coordinate direction</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>Therefore, <math>
+                           <latex>T(4+4,6+1) = T(8,7)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{y} = (1,-3,2)</latex>
+                     </math> and <math>
+                        <latex>A(1,1,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>B(2,-2,3)</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{z} = (6,-2,4,-1)</latex>
+                     </math> and <math>
+                        <latex>A(2,1,2,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{a} = (-7,2,0,1,-3))</latex>
+                     </math> and <math>
+                        <latex>A(6,4,1,0,-3)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{b} = (15,-12,20,9,7,3)</latex>
+                     </math> and <math>
+                        <latex>A(23,18,-18,6,14,4)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For the given vector and tip point <math>
+                     <latex>B</latex>
+                  </math>, find the tail <math>
+                     <latex>A</latex>
+                  </math> of the arrow representing the vector.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x}=(1,1)</latex>
+                     </math> and <math>
+                        <latex>B(3,4)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>A(2,3)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The coordinates of <math>
+                        <latex>A</latex>
+                     </math> are found by</para.body>
+               </para>
+					          <ol>
+						            <li>
+                     <para>
+                        <para.body>Starting from <math>
+                              <latex>B(3,4)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+						            <li>
+                     <para>
+                        <para.body>from there, going <math>
+                              <latex>1</latex>
+                           </math> unit backward in the first coordinate direction</para.body>
+                     </para>
+                  </li>
+						            <li>
+                     <para>
+                        <para.body>from there, going <math>
+                              <latex>1</latex>
+                           </math> unit backward in the second coordinate direction</para.body>
+                     </para>
+                  </li>
+					          </ol>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The coordinates of <math>
+                           <latex>A</latex>
+                        </math> are found by</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>Starting from <math>
+                                 <latex>B(3,4)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>from there, going <math>
+                                 <latex>1</latex>
+                              </math> unit backward in the first coordinate direction</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>from there, going <math>
+                                 <latex>1</latex>
+                              </math> unit backward in the second coordinate direction</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>Therefore, <math>
+                           <latex>A(3-1,4-1) = (2,3)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{y} = (6,-3,1)</latex>
+                     </math> and <math>
+                        <latex>B(3,3,3)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>A(-3,6,2)</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{z} = (1,-1,4,-2)</latex>
+                     </math> and <math>
+                        <latex>B(0,1,-2,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{a} = (6,-6,3,1,-5)</latex>
+                     </math> and <math>
+                        <latex>B(1,2,-1,0,6)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{b} = (-6,15,,-22,6,5,3)</latex>
+                     </math> and <math>
+                        <latex>B(41,12,21,-36,9,-4)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

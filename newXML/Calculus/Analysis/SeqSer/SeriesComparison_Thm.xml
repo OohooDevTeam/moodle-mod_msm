@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_SeriesComparisonTest"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Comparison test</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_SeriesComparison"/>
+      <info>
+         <para>
+            <para.body>Examples of how to use the comparison test</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For series <math>
+               <latex>\sum_{n=0}^{\infty} a_n</latex>
+            </math> and <math>
+               <latex>\sum_{n=0}^{\infty} b_n</latex>
+            </math>, with <math>
+               <latex>0\leq a_n \leq b_n</latex>
+            </math> for <math>
+               <latex>n</latex>
+            </math> sufficiently large, the following hold:</para.body>
+      </para>
+      <part.theorem partid="NumberConvergence">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\sum_{n=0}^{\infty} b_n</latex>
+                  </math> converges to a number then <math>
+                     <latex>\sum_{n=0}^{\infty} a_n</latex>
+                  </math> converges to a number.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="InfinityConvergence">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\sum_{n=0}^{\infty} a_n = +\infty</latex>
+                  </math>, then <math>
+                     <latex>\sum_{n=0}^{\infty} b_n = +\infty</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>NumberConvergence</part.ref>
+         </logic>
+         <caption>NumberConvergence</caption>
+         <proof.block.body>
+            <para>
+               <para.body>According to the definition of convergence of a series, we consider the sequences of partial sums</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>InfinityConvergence</part.ref>
+         </logic>
+         <caption>InfinityConvergence</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The essence of the argument is that the sequence of partial sums</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

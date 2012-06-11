@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_DegreesFreedomMotion">
+	<title>Degrees of Freedom of Motion – Illustration</title>
+	<sub.page.body>
+		<para>
+			<b>A curve is 1-dimensional</b> At each of its points there is exactly one direction of motion, call it ‘forward-backward’.</para>
+		<figure>
+			<img src="ims/Curve.gif"></img>
+		</figure>
+		<para>
+			<b>A surface is 2-dimensional</b> At each of its points there are exactly two independent directions of motion, call them ‘forward-backward’ and ‘left-right’.</para>
+		<figure>
+			<img src="ims/Surface.jpg"></img>
+		</figure>
+	</sub.page.body>
+</sub.page>

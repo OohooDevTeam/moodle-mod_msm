@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MatrixConcept">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Matrix Concept: Exercises</title>
+	
+	<exercise>
+		<problem>
+			<para>For each of the following pairs of matrices decide if they are equal? &ndash; Justify your answer!</para>
+		</problem>
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\left[
+						\begin{array}{rr}
+						1 & 2 \\
+						0 & 1
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{rr}
+						0 & 1 \\
+						1 & 2
+						\end{array}
+						\right]
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>No! - These matrices are not equal.</para>
+				</answer>
+				<solution>
+					<para>The two matrices</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\left[
+						\begin{array}{rr}
+						1 & 2 \\
+						0 & 1
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{rr}
+						0 & 1 \\
+						1 & 2
+						\end{array}
+						\right]
+						]]>
+						</latex>
+					</math.display>
+
+					<para>are not equal. To see this recall that two matrices are equal if they satisfy these two conditions:</para>
+					<ol>
+						<li><para>they are of equal size;</para></li>
+						<li><para>their entries in matching positions are equal.</para></li>
+					</ol>
+					<para>In this case the size condition is satisfied. However, for example, the entries in position <latex>(1,1)</latex> are distinct. So the matrices are not equal.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\left[
+						\begin{array}{cccc}
+						2 & 4 & 7 & 3 \\
+						1 & 2 & 7 & 4
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{cc}
+						2 & 1 \\
+						4 & 2 \\
+						7 & 7 \\
+						3 & 4
+						\end{array}
+						\right]
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>These matrices are not equal, as they fail to be of the same size.</para>
+				</answer>
+				<solution.hint>
+					<para>Recall the two conditions under which two matrices are equal.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Try to answer this problem by using the solution to part a. as a template.</para>
+				</solution.hint>
+				<solution>
+					<para>The matrices in question are not equal. Reason: For matrices to be equal, they must be of the same size, and the entries in corresponding positions must be equal. In this case, the matrix on the left has size <latex>(2,4)</latex>, while the matrix on the right has size <latex>(4,2)</latex>. Consequently, the size condition is not satisfied. So the matrices are not equal.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\left[
+						\begin{array}{ccc}
+						4 & 3 & 0 \\
+						1 & 1 & 4 \\
+						2 & 3 & 5
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{ccc}
+						4 & 3 & 0 \\
+						1 & 1 & 4 \\
+						2 & 3 & 5
+						\end{array}
+						\right]
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>These two matrices are equal: they are of equal size, and the entries in matching positions are equal.</para>
+				</answer>
+				
+				<solution>
+					<para>These two matrices are equal: For matrices to be equal, they must be of the same size, and the entries in corresponding positions must be equal. In this case, both matrices are of size <latex>(3,3)</latex>. So the size-condition is satisfied. Moreover, for each position <latex>(i,j)</latex>, the entries in both matrices are the same. So the matrices are equal.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\left[
+						\begin{array}{cccc}
+						2 & 4 & 7 & 3 \\
+						1 & 2 & 7 & 4
+						\end{array}
+						\right]\qquad
+						\left[
+						\begin{array}{cccc}
+						1 & 2 & 7 & 4 \\
+						2 & 4 & 7 & 3
+						\end{array}
+						\right]
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>These two matrices are not equal; one criterion for equality that is not satisfied is that the entries in position <latex>(1,1)</latex> are not equal</para>
+				</answer>
+				<solution>
+					<para>These two matrices are not equal; reason: For matrices to be equal, they must be of the same size, and the entries in corresponding positions must be equal. In this case, both matrices are of size <latex>(2,4)</latex>. So the size-condition is satisfied. However, there are positions, such as <latex>(1,1)</latex>, <latex>(1,2)</latex>, <latex>(1,4)</latex>, <latex>(2,1)</latex>, <latex>(2,2)</latex>, <latex>(2,4)</latex>, where both matrices have distinct entries. So the matrices are not equal.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>How many entries does a matrix of size <latex>(5,3)</latex> have?</para>
+		</problem>
+		<approach>
+			<answer><para>A matrix of size <latex>(5,3)</latex> has <latex>15</latex> entries.</para></answer>
+		</approach>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>How many entries does a matrix of size <latex>(m,n)</latex> have?</para>
+		</problem>
+		<approach>
+			<answer><para>A matrix of size <latex>(m,n)</latex> has <latex>m\cdot n</latex> entries.</para></answer>
+			<solution>
+				<para>A matrix of size <latex>(m,n)</latex> has <latex>m</latex> rows, each of which has <latex>n</latex> entries. So there are a total of <latex>m\cdot n</latex> entries.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Find all numbers <latex>w,x,y,z</latex> for which the matrices below are equal.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{cc}
+x-w & z \\
+y-w & x
+\end{array}
+\right] \qquad\qquad
+\left[
+\begin{array}{cc}
+w & x \\
+y & z
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<answer>
+				<para>The two matrices are equal exactly when</para>
+				<ol>
+					<li><para><latex>w=x=z=0</latex></para></li>
+					<li><para><latex>y</latex> is arbitrary.</para></li>
+				</ol>
+			</answer>
+			<solution>
+				<para>These given matrices are equal exactly when their entries in matching positions are equal, that is when the four equations below are satisfied.</para>
+				<computation>
+					<left>x-w</left>
+					<center>=</center>
+					<right>w</right>
+					<left>z</left>
+					<center>=</center>
+					<right>x</right>
+					<left>y-w</left>
+					<center>=</center>
+					<right>y</right>
+					<left>x</left>
+					<center>=</center>
+					<right>z</right>
+				</computation>
+				<para>So we are looking for all simultaneous solutions of these four equations. Each of these equations is linear. Arranging them in standard form yields the system of four linear equations in four variables</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rcrcrcrcr}
+-2w & + & x & &&&& = & 0 \\
+    &   & x & && - & z & = & 0 \\
+  w &   &   & &&&& = & 0 \\
+    &   & x & && - & z & = & 0
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+				<para>We extract the augmented coefficient matrix of this system of linear equations and transform it into RREF:</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rrrr|r}
+-2 & 1 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & -1 & 0 \\
+ 1 & 0 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & -1 & 0 \\ \hline
+ 1 & 0 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & -1 & 0 \\
+ 0 & 0 & 0 & 0 & 0
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+				<para>Thus we find that the two matrices are equal exactly when</para>
+				<ol>
+					<li><para><latex>w=x=z=0</latex></para></li>
+					<li><para><latex>y</latex> is arbitrary.</para></li>
+				</ol>
+			</solution>
+		</approach>
+	</exercise>
+</exercise.pack>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book
+	http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_RExtended">
+	<headers>
+		<full>The Extended Number Line (*)</full>
+		<toc>The Extended Number Line (*)</toc>
+		<short>R Extended</short>
+	</headers>
+	<intro>
+		<para>Here we introduce the quantities <latex>+\infty</latex> and <latex>-\infty</latex>, called (plus) infinity and minus infinity, to close off the number line. <latex>-\infty</latex> is to be less than every number, and <latex>+\infty</latex> is to be greater than every number.</para>
+		<para>We emphasize that the quantities <latex>-\infty,+\infty</latex> are not elements of <latex>\RNr</latex>, hence are not real numbers. Rather, we introduce these objects here for convenience and efficiency of thought and communication. &ndash; This section can be skipped on a first reading.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_Infinity">
+			<caption>Infinity</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment</caption>
+					<para>We emphasize that the quantities <latex>-\infty,+infty</latex> are not elements of <latex>\RNr</latex>, hence are not real numbers. Rather, we introduce these objects here for convenience and efficiency of thought and communication.</para>
+				</info>
+			</associate>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment on computing with plus/minus infinity</caption>
+					<para>Note that the following operations involving plus or minus infinity are not defined:</para>
+					<ul>
+						<li><para><latex>\infty - \infty</latex> and <latex>-\infty + \infty</latex></para></li>
+						<li><para><latex>0\cdot (\pm\infty)</latex> and <latex>(\pm\infty)\cdot 0</latex></para></li>
+						<li><para><latex>\frac{\pm \infty}{\mp \infty}</latex></para></li>
+					</ul>
+				</info>
+			</associate>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation: Reason for these Rules</caption>
+					<para>A more advanced reader will recognize that these rules for computing with <latex>\pm\infty</latex> provide the maximal continuous extension of addition and multiplication in <latex>\StPrdct{\RNr}{\RNr}</latex> over subsets of <latex>\StPrdct{\bar{\RNr}}{\bar{\RNr}}</latex>.</para>
+				</info>
+			</associate>
+			<para>We assume the existence of quantities <latex>-\infty</latex> and <latex>+\infty</latex> such that, for all <latex>x\in \RNr</latex>,
+				<index.glossary>
+					<term>infinity</term>
+					<info><para>The concept of infinity is introduced here to close off <latex>\RNr</latex>.</para></info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>+\infty,-\infty</latex></symbol>
+					<info><para>Plus infinity, minus infinity are introduced here to close off <latex>\RNr</latex></para></info>
+				</index.symbol>
+			</para>
+			<math.display>
+				<latex><![CDATA[ -\infty < x < +\infty ]]></latex>
+			</math.display>
+			<para>Moreover, we extend addition and multiplication in <latex>\RNr</latex> to the following situations involving plus or minus infinity:</para>
+			<ul>
+				<li><para><latex>x+\infty = \infty = \infty+x</latex> for all <latex>x\in\RNr</latex></para></li>
+				<li><para><latex>x-\infty = -\infty = -\infty +x</latex> for all <latex>x\in \RNr</latex></para></li>
+				<li><para><latex>\infty + \infty = \infty</latex> and <latex>-\infty - \infty = -\infty</latex></para></li>
+				<li><para><latex>x\cdot (\pm\infty) = \pm\infty = (\pm \infty) \cdot x</latex> for all <latex>x\in \RNr</latex> with <latex><![CDATA[ x > 0]]></latex></para></li>
+				<li><para><latex>x\cdot (\pm\infty) = \mp\infty = (\pm \infty) \cdot x</latex> for all <latex>x\in \RNr</latex> with <latex><![CDATA[ x < 0]]></latex></para></li>
+				<li><para><latex>\infty \cdot \infty = \infty = (-\infty)\cdot (-\infty)</latex> and <latex>\infty \cdot (-\infty) = -\infty = (-\infty)\cdot \infty</latex></para></li>
+			</ul>
+			<para>We write <latex>\bar{\RNr}</latex> for the set <latex>\RNr \union \Set{ -\infty, +\infty }</latex>, together with the computational operations just defined.</para>
+		</def>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_RExtended"/>
+	</studymaterials>
+</section>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Intro_NaturaNonFacitSaltus"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Natura Non Facit Saltus</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Nature does not make jumps</strong>   in other words: processes and changes in nature are ‘transitional’ ... if an object/system assumes two states <math>
+                     <latex>A</latex>
+                  </math> and <math>
+                     <latex>B</latex>
+                  </math> at two moments in time <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math>, then the system must have transitioned from state <math>
+                     <latex>A</latex>
+                  </math> to state <math>
+                     <latex>B</latex>
+                  </math> through intermediate states. – Here are some examples:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>Record the temperature at a certain location: in the morning <math>
+                           <latex>10</latex>
+                        </math> degrees; at noon time <math>
+                           <latex>25</latex>
+                        </math> degrees. Then, at some point in time between morning and noon, this location must have experienced each temperature between <math>
+                           <latex>10</latex>
+                        </math> and <math>
+                           <latex>25</latex>
+                        </math> degrees.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>A tree of current height <math>
+                           <latex>50</latex>
+                        </math>m must, at some point in time, have been of any height between 0m and 50m.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>A bee, observed at one moment on a flower and, at a later moment, entering its hive, must have moved from the flower to the hive on some path without any gaps.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>‘Nature does not make jumps’ now known to not hold a (sub-)atomic scales</strong>   We should point out that the perception of ‘Nature does not make jumps’ very much depends on the scale at which one makes observations. In particular, humanity’s efforts to describe nature at a subatomic scale has led Werner Heisenberg to the conception of quantum mechanics; here nature is described as making jumps, albeit at an extremely small scale.
+				</para.body>
+               <index.author>
+                  <name>
+                     <name>
+                        <first>Werner</first>
+                        <last>Heisenberg</last>
+                     </name>
+                  </name>
+                  <info>
+                     <para>
+                        <para.body>appears here because his theory of quantum mechanics contradicts the ancient principle of natural philosophy that ‘Nature does not make jumps’.</para.body>
+                     </para>
+                  </info>
+               </index.author>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

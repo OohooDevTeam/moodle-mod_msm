@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_SequenceSumProduct">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Sums and Products of Sequences: Examples</title>
+	<showme>
+		<statement>
+			<para>Write out the first 5 sequence elements of the sum and product of</para>
+			<para align="center"><latex>(a_n=n+1)</latex> and <latex>b_n = \frac{1}{n+1}</latex></para>
+		</statement>
+		<answer type="Solution">
+			<para>We have</para>
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+				<row>
+					<cell align="center"><para><latex>n | i</latex></para></cell>
+					<cell align="center"><para>0</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>3</para></cell>
+					<cell align="center"><para>4</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">a_n</latex></para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>3</para></cell>
+					<cell align="center"><para>4</para></cell>
+					<cell align="center"><para>5</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">b_n</latex></para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>1/2</para></cell>
+					<cell align="center"><para>1/3</para></cell>
+					<cell align="center"><para>1/4</para></cell>
+					<cell align="center"><para>1/5</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">a_n+b_n</latex></para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>5/2</para></cell>
+					<cell align="center"><para>10/3</para></cell>
+					<cell align="center"><para>17/4</para></cell>
+					<cell align="center"><para>26/5</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">a_n\cdot b_n</latex></para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+			</table>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Write out the first 5 terms of the sequence <latex magnify="yes">t\cdot(a_n)</latex> if <latex>t=-3</latex> and <latex>a_n = \frac{1}{n+3}</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We have</para>
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+				<row>
+					<cell align="center"><para><latex>n | i</latex></para></cell>
+					<cell align="center"><para>0</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>3</para></cell>
+					<cell align="center"><para>4</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">a_n</latex></para></cell>
+					<cell  align="center"><para>1/3</para></cell>
+					<cell align="center"><para>1/4</para></cell>
+					<cell align="center"><para>1/5</para></cell>
+					<cell align="center"><para>1/6</para></cell>
+					<cell align="center"><para>1/7</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">(-3)\cdot a_n</latex></para></cell>
+					<cell  align="center"><para>-1</para></cell>
+					<cell align="center"><para>-3/4</para></cell>
+					<cell align="center"><para>-3/5</para></cell>
+					<cell align="center"><para>-3/6</para></cell>
+					<cell align="center"><para>-3/7</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+			</table>
+		</answer>
+	</showme>
+</showme.pack>

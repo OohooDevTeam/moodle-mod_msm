@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_FieldAxioms"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: Field Axioms of the Real Number System</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Prove the following properties of the real number system using axioms and/or consequences of the axioms established earlier.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>for all <math>
+                        <latex>a,b\in \RNr</latex>
+                     </math>, <math>
+                        <latex>-(ab) = (-a)b = a(-b)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+               <para>
+                  <para.body>We know that <math>
+                        <latex>(-a) = (-1)\cdot a</latex>
+                     </math> for all <math>
+                        <latex>a\in\RNr</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all <math>
+                        <latex>a,b\in \RNr</latex>
+                     </math>, <math>
+                        <latex>(-a)(-b) = ab</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>0 = -0</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>-(-x) = x</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+</exercise.pack>

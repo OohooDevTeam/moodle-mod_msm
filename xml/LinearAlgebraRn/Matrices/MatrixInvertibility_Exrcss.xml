@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MatrixInvertibility">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Matrix Invertibility: Exercises</title>
+	
+	<exercise>
+		<problem>
+			<para>For invertible <latex>(3,3)</latex>-matrices <latex>\Mtrx{A}</latex>, <latex>\Mtrx{B}</latex>, and <latex>\Mtrx{C}</latex>, indicate whether the following statements are always true. If a statement is always true, prove it. If not give a 
+				<subordinate>
+					<hot>counterexample</hot>
+					<info><para>i.e. provide an example for which this statement is false.</para></info>
+				</subordinate>.
+			</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para><latex>\Mtrx{A}\Mtrx{B}\Mtrx{A} = \Mtrx{A}^2\Mtrx{B}</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This identity does not hold for all <latex>(3,3)</latex>-matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex>.</para></answer>
+				<solution.hint>
+					<para>This formula would be valid if, for all <latex>(3,3)</latex>-matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex>, we had <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>. This, however, is not the case; i.e. there are matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> for which multiplication is not commutative. Therefore it makes sense to look for a counterexample.</para>
+				</solution.hint>
+				<solution>
+					<para>The matrix equation <latex>\Mtrx{A}\Mtrx{B}\Mtrx{A} = \Mtrx{A}^2\Mtrx{B}</latex> is not true in general. Here is a counterexample. Let</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+1 & -1 & -1 \\
+1 & 1 & -1 \\
+0 & 0 & 1
+\end{array}
+\right] \qquad \text{and} \qquad
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+2 & 0 & 1 \\
+0  & -1 & 0 \\
+1 & 1 & 2
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					<para>Then</para>
+					
+					<computation>
+						<left>\Mtrx{A}\Mtrx{B}\Mtrx{A}</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[
+\begin{array}{rrr}
+1 & -1 & -1 \\
+1 & 1 & -1 \\
+0 & 0 & 1
+\end{array}
+\right] 
+\left[
+\begin{array}{rrr}
+2 & 0 & 1 \\
+0  & -1 & 0 \\
+1 & 1 & 2
+\end{array}
+\right]
+\left[
+\begin{array}{rrr}
+1 & -1 & -1 \\
+1 & 1 & -1 \\
+0 & 0 & 1
+\end{array}
+\right]
+							]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[
+\begin{array}{rrr}
+1 & 0 & -1 \\
+1 & -2 & -1 \\
+1 & 1 & 2
+\end{array}
+\right] 
+\left[
+\begin{array}{rrr}
+1 & -1 & -1 \\
+1 & 1 & -1 \\
+0 & 0 & 1
+\end{array}
+\right] 
+							]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[
+\begin{array}{rrr}
+1 & -1 & -2 \\
+-1 & 03 & 0 \\
+2 & 0 & 0
+\end{array}
+\right] 
+							]]>
+						</right>
+					</computation>
+					
+					<para>While</para>
+					
+					<computation>
+						<left>\Mtrx{A}^2\Mtrx{B}</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[
+\begin{array}{rrr}
+0 & -2 & -1 \\
+2 & 0 & -3 \\
+0 & 0 & 1
+\end{array}
+\right] \left[
+\begin{array}{rrr}
+2 & 0 & 1 \\
+0 & -1 & 0 \\
+1 & 1 & 2
+\end{array}
+\right] 
+							]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[
+\begin{array}{rrr}
+-1 & 1 & -2 \\
+1 & -3 & -4 \\
+1 & 1 & 2
+\end{array}
+\right] 
+							]]>
+						</right>
+					</computation>
+					
+					<para>This is an example of matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> where <latex>\Mtrx{A}\Mtrx{B}\Mtrx{A}</latex> is distinct from <latex>\Mtrx{A}^2\Mtrx{B}</latex>. Therefore the given matrix identity is not always true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(\Mtrx{A}\Mtrx{C})^{-1} = \Mtrx{A}^{-1}\Mtrx{C}^{-1}</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para>This identity does not hold for all invertible matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{C}</latex>.</para>
+				</answer>
+				<solution.hint>
+					<para>We have the valid formula <latex>(\Mtrx{A}\Mtrx{C})^{-1} = \Mtrx{C}^{-1} \Mtrx{A}^{-1}</latex>. Therefore the identity in question holds if multiplication of <latex>\Mtrx{A}</latex> and <latex>\Mtrx{C}</latex> commutes. This, however, is not the case.</para>
+				</solution.hint>
+				<solution>
+					<para>Consider the row interchanging matrices</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{array}
+\right] \qquad \text{and} \qquad
+\Mtrx{C} = 
+\left[
+\begin{array}{rrr}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>We know that <latex>\Mtrx{A}=\Mtrx{A}^{-1}</latex>, and that <latex>\Mtrx{C}=\Mtrx{C}^{-1}</latex>. Now compute <latex>\Mtrx{A}\Mtrx{C}</latex> and <latex>\Mtrx{C}\Mtrx{A}</latex> to confirm that <latex>\Mtrx{A}\Mtrx{C} \neq \Mtrx{C}\Mtrx{A}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para><latex>(\Mtrx{A} + \Mtrx{A}^{-1})^2 - (\Mtrx{A} - \Mtrx{A}^{_1})^2 = 4 \IdMtrx[3]</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This identity is always true.</para></answer>
+				<solution.hint>
+					<para>Evaluate the brackets on the left, using the identities</para>
+					<math.display>
+						<latex>\Mtrx{A}\Mtrx{A}^{-1} = \IdMtrx[3] = \Mtrx{A}^{-1} \Mtrx{A}</latex>
+					</math.display>
+				</solution.hint>
+				<solution>
+					<para>We evaluate the individual brackets:</para>
+					
+					<computation>
+						<left>(\Mtrx{A} + \Mtrx{A}^{-1})^2</left>
+						<center>=</center>
+						<right>\Mtrx{A}^2 + \Mtrx{A}\Mtrx{A}^{-1} + \Mtrx{A}^{-1}\Mtrx{A} + (\Mtrx{A}^{-1})^2</right>
+						<left></left>
+						<center>=</center>
+						<right>\Mtrx{A}^{2} + 2\IdMtrx[3] + (\Mtrx{A}^{-1})^2</right>
+						<left>(\Mtrx{A} - \Mtrx{A}^{-1})^2</left>
+						<center>=</center>
+						<right>\Mtrx{A}^2 - \Mtrx{A}\Mtrx{A}^{-1} - \Mtrx{A}^{-1} \Mtrx{A} + (\Mtrx{A}^{-1})^2</right>
+						<left></left>
+						<center>=</center>
+						<right>\Mtrx{A}^2 - 2\IdMtrx[3] + (\Mtrx{A}^{-1})^2</right>
+					</computation>
+					
+					<para>From this the proposed equation follows.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para><latex>(\Mtrx{A}\Mtrx{B}\Mtrx{A})^{10} = \Mtrx{A} \Mtrx{B}^{10} \Mtrx{A}^{-1}</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This identity is always true.</para></answer>
+				<solution.hint>
+					<para>Use the observation</para>
+					<math.display>
+						<latex>(\Mtrx{A}\Mtrx{B}\Mtrx{A}^{-1}) (\Mtrx{A}\Mtrx{B}\Mtrx{A}^{-1}) = \Mtrx{A}\Mtrx{B}(\Mtrx{A}\Mtrx{A}^{-1}) \Mtrx{B}\Mtrx{A}^{-1} = \Mtrx{A}\Mtrx{B}^2\Mtrx{A}^{-1}</latex>
+					</math.display>
+					<para>repeatedly.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>If <latex>\Mtrx{A}\Mtrx{C} = \Mtrx{B}\Mtrx{C}</latex>, then  <latex>\Mtrx{A} = \Mtrx{B}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>Under the assumption that <latex>\Mtrx{A}</latex>, <latex>\Mtrx{B}</latex>, and <latex>\Mtrx{C}</latex> are invertible this conclusion is always true.</para></answer>
+				<solution.hint>
+					<para>Multiply the identity <latex>\Mtrx{A}\Mtrx{C} = \Mtrx{B}\Mtrx{C}</latex> by <latex>\Mtrx{C}^{-1}</latex> on the right.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>If <latex>(\Mtrx{A} + \Mtrx{B})(\Mtrx{A}^{-1} + \Mtrx{B}^{-1}) = 2\IdMtrx[3]</latex>, then <latex>\Mtrx{A}\Mtrx{B}^{-1} = - \Mtrx{B}\Mtrx{A}^{-1}</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This conclusion is always true.</para></answer>
+				<solution.hint>
+					<para>Just evaluate the product <latex>(\Mtrx{A} + \Mtrx{B})(\Mtrx{A}^{-1} + \Mtrx{B}^{-1})</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem><para>Prove the following statements.</para></problem>
+		<part>
+			<problem>
+				<para>Suppose <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> are invertible <latex>(n,n)</latex>-matrices satisfying <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>. Show that <latex>\Mtrx{A}^{-1}\Mtrx{B}^{-1} = \Mtrx{B}^{-1} \Mtrx{A}^{-1}</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para>Using the general identity <latex>(\Mtrx{X}\Mtrx{Y})^{-1} = \Mtrx{Y}^{-1}\Mtrx{X}^{-1}</latex>, we compute</para>
+					
+					<computation>
+						<left>\Mtrx{B}^{-1}\Mtrx{A}^{-1}</left>
+						<center>=</center>
+						<right>(\Mtrx{A}\Mtrx{B})^{-1}</right>
+						<left></left>
+						<center>=	<info><para>Here we use the hypothesis that multiplication of <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> commutes.</para></info></center>
+						<right>(\Mtrx{B}\Mtrx{A})^{-1}</right>
+						<left></left>
+						<center>=	<info><para>Using the formula for the inverse of a product again</para></info></center>
+						<right>\Mtrx{A}^{-1}\Mtrx{B}^{-1}</right>
+					</computation>
+					
+					<para>This was to be shown.</para>
+					
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>For an invertible matrix <latex>\Mtrx{A}</latex> prove &nbsp; <latex>(\Mtrx{A}^T)^{-1} = (\Mtrx{A}^{-1})^T</latex>.</para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Use the identities</para>
+					<computation>
+						<left>(\Mtrx{A}\Mtrx{B})^T</left>
+						<center>=</center>
+						<right>\Mtrx{B}^T \Mtrx{A}^T</right>
+						<left>(\Mtrx{A}\Mtrx{B})^{-1}</left>
+						<center>=</center>
+						<right>\Mtrx{B}^{-1}\Mtrx{A}^{-1}</right>
+					</computation>
+					<para>and compute &nbsp; <latex>(\Mtrx{A}^{-1})^T \Mtrx{A}^T</latex></para>
+				</solution.hint>
+				<solution>
+					<para>We use the identities</para>
+					<computation>
+						<left>(\Mtrx{A}\Mtrx{B})^T</left>
+						<center>=</center>
+						<right>\Mtrx{B}^T \Mtrx{A}^T</right>
+						<left>(\Mtrx{A}\Mtrx{B})^{-1}</left>
+						<center>=</center>
+						<right>\Mtrx{B}^{-1}\Mtrx{A}^{-1}</right>
+					</computation>
+					<para>and compute.</para>
+					<computation>
+						<left>(\Mtrx{A}^{-1})^T \Mtrx{A}^T</left>
+						<center>=</center>
+						<right>(\Mtrx{A}\Mtrx{A}^{-1})^T</right>
+						<left></left>
+						<center>=</center>
+						<right>\IdMtrx[n]^T</right>
+						<left></left>
+						<center>=</center>
+						<right>\IdMtrx[n]</right>
+					</computation>
+					
+					<para>This means that <latex>\Mtrx{A}^T</latex> is the inverse of <latex>(\Mtrx{A}^{-1})^T</latex>; in symbols</para>
+					<math.display>
+						<latex>(\Mtrx{A}^T)^{-1} = (\Mtrx{A}^{-1})^T</latex>
+					</math.display>
+					
+					<para>as claimed.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		
+		<part>
+			<problem>
+				<para>Suppose <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> are <latex>(n,n)</latex>-matrices satisfying <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>. If <latex>\Mtrx{B}</latex> is invertible, show that &nbsp; <latex>\Mtrx{A}\Mtrx{B}^{-1} = \Mtrx{B}^{-1}\Mtrx{A}</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>Starting from the given identity <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>, we compute</para>
+					<computation>
+						<left>\Mtrx{A}\Mtrx{B}</left>
+						<center>=</center>
+						<right>\Mtrx{B}\Mtrx{A}</right>
+						<left>\Mtrx{B}^{-1}\Mtrx{A}\Mtrx{B}</left>
+						<center>=</center>
+						<right>\Mtrx{B}^{-1}\Mtrx{B}\Mtrx{A}</right>
+						<left></left>
+						<center>=</center>
+						<right>\Mtrx{A}</right>
+						<left>\Mtrx{B}^{-1}\Mtrx{A}\Mtrx{B}\Mtrx{B}^{-1}</left>
+						<center>=</center>
+						<right>\Mtrx{A}\Mtrx{B}^{-1}</right>
+						<left>\Mtrx{B}\Mtrx{A}^{-1}</left>
+						<center>=</center>
+						<right>\Mtrx{A}\Mtrx{B}^{-1}</right>
+					</computation>
+					<para>This was to be shown.</para>
+					
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem><para>Prove the following claims.</para></problem>
+		<part>
+			<problem>
+				<para>Suppose the invertible <latex>(n,n)</latex>-matrix <latex>\Mtrx{D}</latex> is a solution of the matrix equation</para>
+				<math.display>
+					<latex>\Mtrx{D}^7 - 3\Mtrx{D} + \IdMtrx[n] = \ZMtrx[n]</latex>
+				</math.display>
+				<para>Show that &nbsp; <latex>\Mtrx{D}^{-1} = 3\IdMtrx[n] - \Mtrx{D}^6</latex></para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Mutliply both sides of the given equation by <latex>\Mtrx{D}^{-1}</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>Suppose the invertible <latex>(n,n)</latex>-matrix <latex>\Mtrx{C}</latex> satisfies the matirx equation</para>
+				<math.display>
+					<latex>3\Mtrx{C}^2 - 4\Mtrx{C} + \IdMtrx[n] = \ZMtrx[n]</latex>
+				</math.display>
+				<para>Show that <latex>\Mtrx{C}^{-1} = 4\IdMtrx[n] - 3\Mtrx{C}</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Suppose the <latex>(n,n)</latex>-matrix <latex>\Mtrx{P}</latex> satisfies <latex>\Mtrx{P}^T = \Mtrx{P}^{-1}</latex>; such a matrix is called &lsquo;orthogonal&rsquo;. If <latex>t</latex> is in <latex>\RNr</latex>, and <latex>t\cdot \Mtrx{P}</latex> is also orthogonal, show that <latex>t=\pm 1</latex>.</para>
+		</problem>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For <latex>1\leq i\neq j\leq n</latex>, let <latex>E_{ij}(t)</latex> denote the <latex>(n,n)</latex>-matrix which has a <latex>1</latex> in each diagonal position, the number <latex>t</latex> in <latex>\RNr</latex> in position <latex>(i,j)</latex>, and a <latex>0</latex> in each of the remaining positions. Show that <latex>E_{ij}(t)</latex> is invertible, and compute its inverse.</para>
+		</problem>
+	</exercise>
+	
+</exercise.pack>

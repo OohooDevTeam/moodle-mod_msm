@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_ProjectionInclusion"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Example: Projection onto a Coordinate Axis</title>
+	  <caption xmlns="">Example: Projection onto a Coordinate Axis</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Recall: the projection of <math>
+                  <latex>\RNr[m]</latex>
+               </math> onto the <math>
+                  <latex>i</latex>
+               </math>-th coordinate is the function</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\Prjctn{i}\from \RNr[m] \longrightarrow \RNr,\qquad \Prjctn{i}(x_1,\dots ,x_m)=x_i</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>Show that <math>
+                  <latex>\Prjctn{i}</latex>
+               </math> is a linear function.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>To see why <math>
+                        <latex>\Prjctn{i}\from \RNr[m]\to \RNr</latex>
+                     </math> is linear, we check that it commutes with vector addition and with scalar multiplication</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{i}\left( (x_1,\dots ,x_m)+(y_1,\dots ,y_m) \right)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we just add the two vectors.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we just add the two vectors.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{i}(x_1+y_1,\dots ,x_m+y_m)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we apply the definition of the <math>
+                                       <latex>i</latex>
+                                    </math>-th coordinate projection: from the <math>
+                                       <latex>n</latex>
+                                    </math>-tuple it picks the entry in the <math>
+                                       <latex>i</latex>
+                                    </math>-th position.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we apply the definition of the <math>
+                                       <latex>i</latex>
+                                    </math>-th coordinate projection: from the <math>
+                                       <latex>n</latex>
+                                    </math>-tuple it picks the entry in the <math>
+                                       <latex>i</latex>
+                                    </math>-th position.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x_i+y_i</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Now we just observe that <math>
+                                       <latex>x_i=\Prjctn{i}(x_1,\dots ,x_i,\dots ,x_n)</latex>
+                                    </math> and <math>
+                                       <latex>y_i=\Prjctn{i}(y_1,\dots ,y_i,\dots ,y_n)</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Now we just observe that <math>
+                                       <latex>x_i=\Prjctn{i}(x_1,\dots ,x_i,\dots ,x_n)</latex>
+                                    </math> and <math>
+                                       <latex>y_i=\Prjctn{i}(y_1,\dots ,y_i,\dots ,y_n)</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{i}(x_1,\dots ,x_m) + \Prjctn{i}(y_1,\dots ,y_m)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{i}\left( t\cdot (x_1,\dots ,x_m) \right)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{i}(tx_1,\dots ,tx_m)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>tx_i</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>t\cdot \Prjctn{i}(x_1,\dots ,x_m)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>List all coordinate projections of <math>
+                  <latex>\RNr[3]</latex>
+               </math>, and find their effect on a vector <math>
+                  <latex>(x,y,z)</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+                     <math>
+                        <latex>\RNr[3]</latex>
+                     </math> has three projection functions, namely <math>
+                        <latex>\Prjctn{1}</latex>
+                     </math>, <math>
+                        <latex>\Prjctn{2}</latex>
+                     </math>, and <math>
+                        <latex>\Prjctn{3}</latex>
+                     </math>. The effect of these projections on <math>
+                        <latex>\Vect{x}=(x,y,z)</latex>
+                     </math> is given by</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{1}(x,y,z)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{2}(x,y,z)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>y</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{3}(x,y,z)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>z</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the effect of the three coordinate projections of <math>
+                  <latex>\RNr[3]</latex>
+               </math> on the vector <math>
+                  <latex>\Vect{x}=(2,5,7)</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>From the previous problem we know that <math>
+                        <latex>\RNr[3]</latex>
+                     </math> has three coordinate projections, namely</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{1}(x,y,z)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{2}(x,y,z)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>y</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{3}(x,y,z)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>z</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore,</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{1}(2,5,7)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>2</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{2}(2,5,7)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>5</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{3}(2,5,7)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>7</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

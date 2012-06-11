@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Cor_DeterminantInverseMatrix">
+	<caption>Determinant of an inverse matrix</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment</caption>
+			<para>This corollary says that the determinant of the inverse of a matrix is one over the determinant of the matrix.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>If the matrix <latex>\Mtrx{A}</latex> is invertible then</para>
+		<math.display>
+			<latex>\det(\Mtrx{A}^{-1}) = \dfrac{1}{\det(\Mtrx{A})}</latex>
+		</math.display>
+	</statement>
+	<proof type="Proof">
+		<para>The matrix <latex>\Mtrx{A}</latex> and its inverse <latex>\Mtrx{A}^{-1}</latex> satisfy the identity</para>
+		<math.display>
+			<latex>\Mtrx{A}\cdot \Mtrx{A}^{-1} = \IdMtrx[n]</latex>
+		</math.display>
+		<para>Now we have the string of identities</para>
+		<math.display>
+			<latex>\det(\Mtrx{A})\cdot \det(\Mtrx{A}^{-1}) = \det(\Mtrx{A}\Mtrx{A}^{-1}) = \det(\IdMtrx[n]) = 1</latex>
+		</math.display>
+		<para>Therefore</para>
+		<math.display>
+			<latex>\det(\Mtrx{A}^{-1}) = \dfrac{1}{\det(\Mtrx{A})}</latex>
+		</math.display>
+		<para>as claimed.</para>
+	</proof>
+</theorem>

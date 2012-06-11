@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_Box2">
+	<title>2-Dimensional Slanted Box</title>
+	<sub.page.body>
+		<block>
+			<para>In <latex>\RNr[2]</latex> the slanted box construction is applied to two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>. Visually this is the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+			<figure>
+				<img src="ims/Box2_1.png"></img><!-- svg available -->
+			</figure>
+			<para>Let us explain how this results from the definition of</para>
+			<math.display>
+				<latex>\SltdBox{\Vect{x},\Vect{y}} = \Set{ r \Vect{x} + s \Vect{y} \st 0\leq s,t\leq 1 }</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para><b>Picture of</b>&nbsp; <latex>\SltdBox{\Vect{x},\Vect{y}}</latex> &nbsp; Let <latex>X</latex> denote the point in <latex>\RNr[2]</latex> whose position vector is <latex>\Vect{x}</latex>. Then the vectors <latex>r \Vect{x}</latex> with <latex>0\leq r\leq 1</latex> are the position vectors for points on the line segment <latex>[\Vect{0},X]</latex> joining the origin to <latex>X</latex>.</para>
+			<figure>
+				<img src="ims/ParallelogramSpan.png"></img><!-- svg available -->
+			</figure>
+			<para>Now a vector sum of the form <latex>r \Vect{x} + s \Vect{y}</latex> with <latex>0\leq r\leq 1</latex> parallel translates the line segment <latex>[0,X]</latex> by the vector <latex>s \Vect{y}</latex>. As <latex>0\leq s\leq 1</latex>, these parallel translated line segments fill the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> as shown.</para>
+			<para>Here is another example of such a parallelogram, the slanted box spanned by vectors <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex>.</para>
+			<figure>
+				<img src="ims/Box2_2.png"></img><!-- svg available -->
+			</figure>
+		</block>
+	</sub.page.body>
+</sub.page>

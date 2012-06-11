@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MatrixScalarMultiplicationProperties">
+	<statement>
+		<para>The scalar multiplication of a matrix by a number has the following properties</para>
+		<part partid="DistributesOverMatrixSum">
+			<caption>Distributes over a matrix sum</caption>
+			<para><latex>t\cdot (A + B) = t\cdot A\ +\ t\cdot B</latex>
+				<index.glossary>
+					<term>matrix</term><term>scalar multiplication</term><term>distributes over matrix sums</term>
+				</index.glossary>
+				<index.glossary>
+					<term>distributivity</term><term>scalar multiplication of matrices</term>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="ScalarSumDistributesOverMatrix">
+			<para>Scalar sum distributes over matrices: <latex>(s+t)\cdot A = s\cdot A + t\cdot A</latex></para>
+		</part>
+		<part partid="ScalarsMultiplyAssociatively">
+			<caption>Product of scalars multiplies associatively</caption>
+			<para><latex>(st)\cdot A = s\cdot (tA)</latex>
+				<index.glossary>
+					<term>matrix</term><term>scalar multiplication</term><term>is associative</term>
+				</index.glossary>
+				<index.glossary>
+					<term>associativity</term><term>scalar multiplication of matrices</term>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="MatricesMultiplyAssociatively">
+			<caption>Product of matrices multiplies associatively into a scalar</caption>
+			<para><latex>t\cdot (AB) = (tA)B</latex></para>
+		</part>
+		<part partid="Commutativity">
+			<caption>Left and right multiplication by a scalar are equal</caption>
+			<para><latex>t\cdot A = A \cdot t</latex>
+				<index.glossary>
+					<term>matrix</term><term>scalar multiplication</term><term>commutes with matrix multiplication</term>
+				</index.glossary>
+			</para>
+		</part>
+	</statement>
+	
+	<proof>
+		<para>We verify the first distributivity property. The other two properties can be proved with the same method. So let <latex>A</latex> and <latex>B</latex> be two matrices of size <latex>(m,n)</latex>, and let <latex>t\in\RNr</latex>. We focus our attention on the matrix entries in position <latex>(i,j)</latex>, for some fixed <latex>1\leq i\leq m</latex> and <latex>1\leq j\leq n</latex>. Suppose</para>
+			
+		<ul>
+			<li><para><latex>A</latex> has the number <latex magnify="yes">a_{ij}</latex> in position <latex>(i,j)</latex></para></li>
+			<li><para><latex>B</latex> has the number <latex magnify="yes">b_{ij}</latex> in position <latex>(i,j)</latex></para></li>
+		</ul>
+		
+		<caption>
+			<partref>DistributesOverMatrixSum</partref>
+			Distributes over a matrix sum
+		</caption>
+		
+		<para>Let us consider the entry in position <latex>(i,j)</latex> of the relevant matrix expressions:</para>
+		
+		<ul>
+			<li><para><latex>t\cdot (A+B)</latex> has the number <latex magnify="yes">t\cdot (a_{ij}+b_{ij})</latex> in position <latex>(i,j)</latex>.</para></li>
+			<li><para><latex>tA +tB</latex> has the number <latex magnify="yes">ta_{ij} + tb_{ij}</latex> in position <latex>(i,j)</latex>.</para></li>
+		</ul>
+		
+		<para>These numbers are equal because of the distributivity law for multiplication and addition of real numbers.</para>
+		
+		<para>Thus <latex>t(A+B)</latex> and <latex>tA+tB</latex> both have the same number in position <latex>(i,j)</latex>. This computation applies to each position. So the two matrices are equal and, therefore, the distributivity identity for scalar multiplication of matrices holds.</para>
+		
+		<para>You should try proving the remaining properties of scalar multiplication by adapting the above method.</para>
+	</proof>
+</theorem>

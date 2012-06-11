@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para>
+            <para.body>We know that an <math>
+                  <latex>(n,n)</latex>
+               </math>-matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> 
+		             <subordinate>
+                  <hot>represents uniquely a linear transformation</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_MatrixGivesLinearMap"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>We assume standard coordinates of <math>
+                                 <latex>\RNr[n]</latex>
+                              </math> here. – Lookup this fact.</para.body>
+                        </para>
+			                  </info>
+                  </crossref>
+               </subordinate>
+		             <math>
+                  <latex>T\from \RNr[n]\to \RNr[n]</latex>
+               </math> via <math>
+                  <latex>T(\Vect{x}) := \Mtrx{A}\Vect{x}</latex>
+               </math>. So the question arises: is there a way of extracting from <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> how it transforms <math>
+                  <latex>\RNr[n]</latex>
+               </math> in terms of the 
+		<subordinate>
+                  <hot>main types of linear transformations</hot>
+                  <crossref>
+                     <info>
+				
+				                    <para>
+                           <para.body>Look up the main types of linear transformations</para.body>
+                        </para>
+			                  </info>
+                  </crossref>
+               </subordinate>
+		we studied earlier: scalings, rotations, shear transformations?</para.body>
+         </para>
+         <para>
+            <para.body>The answer to this questions is ‘yes’, and eigentheory is a the tool we use to express <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> in terms of these main transformation types.</para.body>
+         </para>
+         <para>
+            <para.body>Eigentheory tells us to search for lines in <math>
+                  <latex>\RNr[n]</latex>
+               </math> which <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> 
+			            <subordinate>
+                  <hot>transforms into themselves</hot>
+                  <companion>
+                     <unit.ref unitId="EigenvectorValue_Sub"/>
+                     <info>
+                        <info.caption>Explanation / Illustration of terminology</info.caption>
+					
+					
+					                   <para>
+                           <para.body>‘Eigen’ is a German word for ‘self’. It is used here to refer to the property of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> of transforming a line into itself.</para.body>
+                        </para>
+				                 </info>
+                  </companion>
+               </subordinate>.
+			The only way <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> can transform a line <math>
+                  <latex>L</latex>
+               </math> into itself is by scaling it by a constant factor, call it <math>
+                  <latex>\lambda</latex>
+               </math>. This means that, for every vector <math>
+                  <latex>\Vect{x}</latex>
+               </math> in <math>
+                  <latex>L</latex>
+               </math>, <math>
+                  <latex>\Mtrx{A}\Vect{x} = \lambda \Vect{x}</latex>
+               </math>. If <math>
+                  <latex>\Vect{x}\neq \Vect{0}</latex>
+               </math>, we call <math>
+                  <latex>\Vect{x}</latex>
+               </math> an eigenvector of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>, and <math>
+                  <latex>\lambda</latex>
+               </math> its eigenvalue. We now distinguish three situations:</para.body>
+         </para>
+         <ol>
+		          <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\RNr[n]</latex>
+                     </math> has a basis <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> 
+			                  <subordinate>
+                        <hot>consisting of eigenvectors</hot>
+                        <companion>
+                           <showme.pack.ref showmePackID="Exa_EigenTheoryDiagonalizable1"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>An illustration of this situation</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate>
+			of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>. – It follows that <math>
+                        <latex>\RNr[n]</latex>
+                     </math> splits into subspaces <math>
+                        <latex>V_1</latex>
+                     </math>, ... , <math>
+                        <latex>V_k</latex>
+                     </math> which get scaled by eigenvalues <math>
+                        <latex>\lambda_1</latex>
+                     </math>, ... , <math>
+                        <latex>\lambda_k</latex>
+                     </math> of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, respectively. Now if we represent the given linear map by a matrix <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> with respect to the basis <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>, then <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> is a diagonal matrix. Accordingly, <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is called diagonalizable.</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> has complex eigenvalues. – If there is a 2-dimensional subspace in <math>
+                        <latex>\RNr[n]</latex>
+                     </math> on which <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> executes scaling followed by a rotation, then <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> has an eigenvalue in the complex number system <math>
+                        <latex>\CNr</latex>
+                     </math>. Granting the relevant background from the complex number system, the discussion of such transformations is completely analogous to the discussion of diagonalizable transformations above.</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> involves shearing transformations. – In this case the search for eigenvalues proceeds as in case 1. However, the search for eigenvectors needs to be extended so as to include so called generalized eigenvectors.</para.body>
+               </para>
+            </li>
+	        </ol>
+         <para>
+            <para.body>Thus the main question that remains is: how do we find subspaces of <math>
+                  <latex>\RNr[n]</latex>
+               </math> on which <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> acts in one of the way described above? – To answer this question we use the determinant operation:</para.body>
+         </para>
+         <ol>
+		          <li>
+			            <para>
+                  <para.body>The eigenvalues of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> are exactly those numbers for which the characteristic polynomial</para.body>
+               </para>
+			            <math.display>
+				              <latex>p(\lambda) := \det( \Mtrx{A} - \lambda\cdot \IdMtrx )</latex>
+			            </math.display>
+			            <para>
+                  <para.body>assumes the value <math>
+                        <latex>0</latex>
+                     </math>.</para.body>
+               </para>
+		          </li>
+		          <li>
+			            <para>
+                  <para.body>Given an eigenvector <math>
+                        <latex>\lambda</latex>
+                     </math> of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, we find (generalized) eigenvectors of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> as the nonzero vectors in the null space of <math>
+                        <latex>(\Mtrx{A} - \lambda\cdot \Mtrx{A})^r</latex>
+                     </math>.</para.body>
+               </para>
+		          </li>
+	        </ol>
+         <para>
+            <para.body>The deeper issues of eigentheory will only be stated and explained as far as possible with the elementary tools available to us now. Some proofs will be omitted as an elegant treatment of eigentheory is most easily developed within the more advanced theory of rings and modules.</para.body>
+         </para>
+      </block.body>
+   </block>
+</intro>

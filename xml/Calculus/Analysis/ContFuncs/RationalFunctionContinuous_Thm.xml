@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_RationalFunctionContinuous">
+	<caption>Rational functions are continuous</caption>
+	
+	
+	<statement>
+		<para>For polynomials <latex>p(x)=a_nx^n+\cdots +a_1x+a_0</latex> and <latex>q(x)=b_mx^m+\cdots + b_1x+b_0</latex> the following hold.</para>
+		<part partid="PolynomialCont">
+			<para>The function <latex>p\from \RNr\to \RNr</latex>, <latex>p(t):=a_nt^n+\cdots +a_0</latex> is continuous.
+				<index.glossary>
+					<term>polynomial</term><term>continuous</term>
+					<info><para>Here we prove that a polynomial function <latex>\RNr\to \RNr</latex> is continuous.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>continuous</term><term>polynomial</term>
+					<info><para>Here we prove that a polynomial function <latex>\RNr\to \RNr</latex> is continuous.</para></info>
+				</index.glossary>
+			</para>
+		</part>
+		
+		<part partid="RationalFuncCont">
+			<para>If <latex>Z:=\Set{t\in \RNr \st q(t) =0}</latex>, then the rational function</para>
+			<math.display>
+				<latex>p/q\from (\StDffrnc{\RNr}{Z}) \longrightarrow \RNr,\quad (p/q)(t):=\dfrac{ a_nt^n + \cdots +  a_1t+a_0}{ b_mt^m+\cdots + b_1t + b_0}</latex>
+			</math.display>
+			<para>is continuous.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>PolynomialCont</partref> Polynomial functions are continuous</caption>
+		<para><b>Step 1, Claim</b> &nbsp; For <latex>k\geq 1</latex>, the function</para>
+		<math.display>
+			<latex>\mu_k\from \RNr \longrightarrow \RNr,\quad \mu_k(t):= t^k</latex>
+		</math.display>
+		<para>is continuous. To see this we argue by induction. For <latex>k=1</latex> we find <latex>\mu_1 = \IdMap{\RNr}</latex> 
+			<subordinate>
+				<hot>which is continuous</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_ConstantIdContinuous"/>
+					<para>The identity function is a special case of an inclusion function, and inclusion functions are continuous by the result you may look up here.</para>
+				</crossref>
+			</subordinate>.</para>
+		<para>So suppose <latex>k\geq 1</latex> is arbitrary, and <latex>\mu_k</latex> is continuous. We need to infer the continuity of <latex>\mu_{k+1}</latex>. However,</para>
+		<math.display>
+			<latex>\mu_{k+1}(t) = t^{k+1} = t^k\cdot t = \mu_k(t)\cdot \mu_1(t)</latex>
+		</math.display>
+		<para>So it is continuous as the 
+			<subordinate>
+				<hot>product of two continuous functions is continuous</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_SumProdCompContinuous"/>
+					<para>Look up this proposition.</para>
+				</crossref>
+			</subordinate>.</para>
+		<para><b>Step 2, Claim</b> &nbsp; polynomial functions are continuous. To see this we argue by induction on the degree of the polynomial. If <latex>p=a_0</latex>, then <latex>p(t) = a_0</latex>, for all <latex>t</latex> in <latex>\RNr</latex>. So <latex>p</latex> is a 
+			<subordinate>
+				<hot>constant function</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_ConstantIdContinuous"/>
+					<para>Look up the proposition which says that constant functions are continuous.</para>
+				</crossref>
+			</subordinate>
+			and, hence, continuous.</para>
+		<para>Now let <latex>n\geq 0</latex> and suppose polynomial functions of degree <latex>n</latex> are continuous. Let <latex>p</latex> be an arbitrary polynomial function of degree <latex>(n+1)</latex>. Then</para>
+		<math.display>
+			<latex>p(t) = a_{n+1}t^{n+1} + \left( a_nt^n + \cdots + a_0\right) = a_{n+1}t^{n+1} + q(t)</latex>
+		</math.display>
+		<para>where <latex>q</latex> has degree <latex>n</latex>, hence is continuous. Now</para>
+		<math.display>
+			<latex>r\from \RNr \longrightarrow \RNr,\quad r(t) := a_{n+1}t^{n+1} = a_{n+1}\cdot \mu_{n+1}(t)</latex>
+		</math.display>
+		<para>is a product of two continuous functions, hence is continuous. Thus <latex>p</latex> is the sum of two continuous functions, 
+			<subordinate>
+				<hot>hence</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_SumProdCompContinuous"/>
+					<para>Look up the proposition which says that the sum of two continuous functions is continuous.</para>
+				</crossref>
+			</subordinate> is continuous.</para>
+		
+		<caption><partref>RationalFuncCont</partref> Rational functions are continuous</caption>
+		<para>From the first part of the corollary we know that <latex>p</latex> and <latex>q</latex> are continuous on all of <latex>\RNr</latex>. Removing the set <latex>Z</latex> from the domain of both functions gives two functions satisfying the hypotheses of the corollary on the 
+			<subordinate>
+				<hot>quotient of continuous maps</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_QuotientContinuous"/>
+					<para>Look up this result.</para>
+				</crossref>
+			</subordinate>. So <latex>p/q</latex> is continuous on <latex>(\StDffrnc{\RNr}{Z})</latex>.</para>
+	</proof>
+</theorem>

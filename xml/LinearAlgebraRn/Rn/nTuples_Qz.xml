@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE quiz.pack	SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_QuizzesnTuples">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Quizzes on <math>
+		<latex>n</latex>
+	</math>-tuples</title>
+	<caption>Quiz on <latex>n</latex>-Tuples</caption>
+	<quiz>
+		<question>
+			<para>What is <latex>n</latex> for the <latex>n</latex>-tuples listed below?</para>
+		</question>
+		<part>
+			<question>
+				<para>
+					<latex>(3,0,1,0)</latex>
+				</para>
+			</question>
+			<choice>
+				<answer><para>This is a <latex>2</latex>-tuple</para></answer>
+				<info>
+					<para>Sorry, no!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>This is a <latex>3</latex>-tuple</para></answer>
+				<info>
+					<para>Sorry, no!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>This is a <latex>4</latex>-tuple</para></answer>
+				<info>
+					<para>Yes! - This construct has 4 slots separated by commas. Therefore it is a 4-tuple</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>This is a <latex>5</latex>-tuple</para></answer>
+				<info>
+					<para>Sorry, no!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>This is a <latex>n</latex>-tuple</para></answer>
+				<info>
+					<para>Yes! - But the question is: ‘Which number does <latex>n</latex> represent here?’</para>
+				</info>
+			</choice>
+		</part>
+		
+		<part>
+			<question>
+				<para>
+					<latex>(x-3,y+3)</latex>
+				</para>
+			</question>
+			<choice>
+				<answer><para>This is a <latex>2</latex>-tuple</para></answer>
+				<info>
+					<para>Yes!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>This is a <latex>3</latex>-tuple</para></answer>
+				<info>
+					<para>Sorry, no!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>This is a <latex>4</latex>-tuple</para></answer>
+				<info>
+					<para>Sorry, no!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>This is an <latex>n</latex>-tuple</para></answer>
+				<info>
+					<para>Sorry, no!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>This is a <latex>n</latex>-tuple</para></answer>
+				<info>
+					<para>Yes! - But the question is: ‘Which number does <latex>n</latex> represent here?’</para>
+				</info>
+			</choice>
+		</part>
+	</quiz>
+	
+	<quiz>
+		<question>
+			<para>
+				<b>Question</b> What is the <latex>5</latex>-tuple whose first coordinate is <latex>1</latex>, whose second coordinate is <latex>3</latex>, whose third coordinate is <latex>-2</latex>, whose fourth coordinate is <latex>5</latex>, and whose fifth coordinate is <latex>0</latex>?</para>
+		</question>
+		<choice>
+			<answer>
+				<para>
+					<latex>(1,3,2,5,0)</latex>
+				</para>
+			</answer>
+			<info>
+				<para>Correct!</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>
+					<latex>(3,1,2,0,5)</latex>
+				</para>
+			</answer>
+			<info>
+				<para>No! - You are using the correct numbers, but not in the correct positions. The first coordinate is the first number from the left in the tuple. So this number must be a ‘1’.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>
+					<latex>(5,0,2,1,3)</latex>
+				</para>
+			</answer>
+			<info>
+				<para>No! - You are using the correct numbers, but in reverse order.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>
+					<latex>(1,3,2,5)</latex>
+				</para>
+			</answer>
+			<info>
+				<para>No! - You are missing one coordinate.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>
+					<latex>(3,3,3,9,1)</latex>
+				</para>
+			</answer>
+			<info>
+				<para>No! - You need to review the definition of an <latex>n</latex>-tuple.</para>
+			</info>
+		</choice>
+	</quiz>
+	
+	
+	
+	<quiz>
+		<question>
+			<para>In each of the situations below, which is the specified coordinate?</para>
+		</question>
+		<part>
+			<question>
+				<para>Third coordinate of <latex>(3,1,2,1,3)</latex></para>
+			</question>
+			<choice>
+				<answer><para>2</para></answer>
+				<info>
+					<para>Correct!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para><latex>1</latex></para></answer>
+				<info><para>No! - The number <latex>1</latex> appears as the value of the second and the fourth coordinate, not as the third.</para></info>
+			</choice>
+		</part>
+
+		<part>
+			<question><para>Second coordinate of <latex>(u,y,x,z,)</latex>?</para></question>
+			<choice>
+				<answer><para><latex>y</latex></para></answer>
+				<info>
+					<para>Correct!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para><latex>z</latex></para></answer>
+				<info><para>No! - <latex>z</latex> appears in the fourth coordinate, not in the second.</para></info>
+			</choice>
+		</part>
+	</quiz>
+</quiz.pack>

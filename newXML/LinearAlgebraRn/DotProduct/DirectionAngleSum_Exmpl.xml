@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_DirectionAnglesSum"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	  <title>Direction Angles Sum: Example</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the cosines of the direction angles of the vector <math>
+                  <latex>\Vect{x} = (-1,1,1)</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We have <math>
+                        <latex>| \Vect{x} | = \sqrt{3}</latex>
+                     </math>, and so
+			</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>\cos \omega_1 = - \dfrac{1}{\sqrt{3}} \qquad \cos \omega_2 = \dfrac{1}{\sqrt{3}} \qquad \cos \omega_3 = \dfrac{1}{\sqrt{3}}</latex>
+			            </math.display>
+
+			            <para>
+                  <para.body>We get some corroboration for the validity of these computations from the ‘sum of cosines formula’:</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>\cos^2 \omega_1 + \cos^2 \omega_2 + \cos^2 \omega_3\ =\ \left( - \dfrac{1}{3}\right)^2 + \left(  \dfrac{1}{3}\right)^2 + \left(  \dfrac{1}{3}\right)^2 \ =\ 1</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>as expected.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>In this particular case we can use a lucky short cut to solve this problem: Inspection of the diagram below</para.body>
+               </para>
+			
+			            <para align="center">
+                  <para.body>
+                     <media type="image" active="0" inline="0">
+                        <img src="DirectionAngle02.gif" height="181" width="237"/>
+                     </media>
+                  </para.body>
+               </para>
+			
+			            <para>
+                  <para.body>tells us that, up to a sign, all direction angles are equal. Therefore</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>\cos^2 \omega_1 = \cos^2 \omega_2 = \cos^2 \omega_3</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>and, therefore, <math>
+                        <latex>3\cdot \cos^2 \omega_i =1</latex>
+                     </math>; i.e. <math>
+                        <latex>| \cos \omega_i | = \frac{1}{\sqrt{3}}</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

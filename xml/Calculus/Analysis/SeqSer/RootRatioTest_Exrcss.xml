@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_RootRatioTest">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Root and Ratio Tests</title>
+	<exercise>
+		<problem>
+			<para>In each of the settings below, what are your conclusions about convergence of the series <latex>\sum_{n=0}^{\infty} a_n</latex> if its summands satisfy</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>\lim_{n\to\infty} \sqrt[n]{ \Abs{ a_n } } = 5</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>This series does not converge to a number.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>\lim_{n\to\infty} \frac{ \Abs{ a_{n+1} } }{ \Abs{ a_n } } = 1/3</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para>This series converges absolutely</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\lim_{n\to\infty} \sqrt[n]{ a_n } = 1/2</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para>For large enough values of <latex>n</latex>, the summands <latex>a_n</latex> are positive, and the series converges to a number.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\lim_{n\to\infty} \frac{ \Abs{ a_{n+1} } }{ \Abs{a_n} } = 1</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The ratio test is inconclusive in this case.</para>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Test each of the series below for convergence/divergence</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} \dfrac{n}{2^n}</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This series converges absolutely</para></answer>
+				<solution>
+					<para>We use the ratio test</para>
+					<computation>
+						<left>\lim_{n\to\infty} \dfrac{ \Abs{ \dfrac{ n+1 }{ 2^{n+1} } } }{ \Abs{ \dfrac{ n }{ 2^n } } }</left>
+						<center>=</center>
+						<right>\lim_{n\to\infty} \dfrac{ (n+1)\cdot 2^n }{ n\cdot 2^{n+1} }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{1}{2}</right>
+					</computation>
+					<para>So the series converges absolutely by the ratio test.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} \dfrac{n^2}{2^n}</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This series converges absolutely</para></answer>
+				<solution>
+					<para>We use the ratio test</para>
+					<computation>
+						<left>\lim_{n\to\infty} \dfrac{ \Abs{ \dfrac{ (n+1)^2 }{ 2^{n+1} } } }{ \Abs{ \dfrac{ n^2 }{ 2^n } } }</left>
+						<center>=</center>
+						<right>\lim_{n\to\infty} \dfrac{ (n+1)^2 }{ n^2 } \cdot \dfrac{ 2^n }{ 2^{n+1} }</right>
+						<left></left>
+						<center>=</center>
+						<right>\lim_{n\to\infty} \left( \dfrac{ n+1 }{ n } \right)^2 \cdot \lim_{n\to\infty} \dfrac{ 2^n }{ 2^{n+1} }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{1}{2}</right>
+					</computation>
+					<para>So the series converges absolutely by the ratio test.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>For an integer <latex>k\geq 1</latex>, &nbsp; <latex>\sum_{n=0}^{\infty} \dfrac{n^k}{2^n}</latex> </para>
+			</problem>
+			<approach>
+				<answer><para>This series converges absolutely</para></answer>
+				<solution.hint><para>Review the solution of the previous problem.</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} \dfrac{ (-1)^{n+1} }{ \sqrt{n+1} }</latex></para>
+			</problem>
+			<approach>
+				<answer><para>The series converges conditionally</para></answer>
+				<solution>
+					<para>This series is alternating, and</para>
+					<computation>
+						<left>\lim_{n\to\infty}\Abs{ \dfrac{ (-1)^{n+1} }{ \sqrt{n+1} } }</left>
+						<center>=</center>
+						<right>\lim_{n\to\infty} \dfrac{ 1 }{ \sqrt{n+1} }</right>
+						<left></left>
+						<center></center>
+						<right>0</right>
+					</computation>
+					<para>So the alternating series test tells us that this series converges to a number. &ndash; There remains the question: Does it converge absolutely?</para>
+					<para>The answer is &lsquo;no&rsquo;. Reason:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Abs{ \dfrac{ (-1)^{n+1} }{ \sqrt{n+1} } } = \dfrac{ 1 }{ \sqrt{n+1} } \geq \dfrac{1}{n+1}
+							]]>
+						</latex>
+					</math.display>
+					<para>So the series of absolute values converges to <latex>+\infty</latex> by comparison with the harmonic series <latex>\sum_{n=0}^{\infty}\frac{1}{n+1}</latex>.</para>
+					<para>You may also abserve that both the root and the ratio test are inconclusive for this series.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} \dfrac{1}{n!}</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This series converges absolutely</para></answer>
+				<solution.hint><para>Try the ratio test.</para></solution.hint>
+				<solution>
+					<para>We use the ratio test:</para>
+					<computation>
+						<left>\lim_{n\to\infty} \dfrac{ \dfrac{1}{(n+1)!} }{ \dfrac{1}{n!} }</left>
+						<center>=</center>
+						<right>\lim_{n\to\infty} \dfrac{ 1 }{ n+1}</right>
+						<left></left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>So the series converges absolutely by the ratio test.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} \dfrac{ (2n - 1)^n }{ (3n+1)^n }</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} \dfrac{ (2n - 1)^n }{ (3n+1)^{n+1} }</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sum_{n=0}^{\infty} \dfrac{ (2n - 1)^n }{ (3n+1)^{n+2} }</latex></para>
+			</problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Show that for each <latex>x\in \RNr</latex>, the sum <latex>\sum_{n=0}^{\infty} \frac{x^n}{n!}</latex> converges absolutely.</para>
+		</problem>
+	</exercise>
+</exercise.pack>

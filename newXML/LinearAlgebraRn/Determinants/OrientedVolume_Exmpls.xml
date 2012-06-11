@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack
+  SYSTEM "Symbols.dtd">
+<example.pack xmlns="Compositor"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              id="Exa_OrientedVolume"
+              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Examples of Oriented Volume</title>
+	  <caption xmlns="">Oriented Volume</caption>
+	
+	
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Assume that the box spanned by <math>
+                  <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+               </math> below has edges of length</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\abs{ \Vect{x} } = 5</latex>
+               </math>,   <math>
+                  <latex>\abs{ \Vect{y} } = 2</latex>
+               </math>,   and   <math>
+                  <latex>\abs{ \Vect{z} } = 3</latex>
+               </math>.</para.body>
+         </para>
+			
+				     <img xmlns="" src="ims/RightHandBox.gif"/>
+			
+			
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\OriVol(\Vect{x},\Vect{y},\Vect{z})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\omega(\Vect{x},\Vect{y},\Vect{z})\cdot 5\cdot 2\cdot 3</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex/>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(+1)\cdot 30</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+			      <para xmlns="">
+            <para.body>because <math>
+                  <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+               </math> represents the right hand or positive orientation of <math>
+                  <latex>\RNr[3]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+	  </example>
+	
+	
+	
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Assume that the box spanned by <math>
+                  <latex>(\Vect{u},\Vect{v},\Vect{w})</latex>
+               </math> below has edges of length</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\abs{ \Vect{u} } = 3</latex>
+               </math>,   <math>
+                  <latex>\abs{ \Vect{v} } = 4</latex>
+               </math>,   and   <math>
+                  <latex>\abs{ \Vect{w} } = 7</latex>
+               </math>.</para.body>
+         </para>
+			
+				     <img xmlns="" src="ims/LeftHandBox.gif"/>
+			
+			
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\OriVol(\Vect{u},\Vect{v},\Vect{w})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\omega(\Vect{u},\Vect{v},\Vect{w})\cdot 3\cdot 4\cdot 7</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex/>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(-1)\cdot 84</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+			      <para xmlns="">
+            <para.body>because <math>
+                  <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+               </math> represents the left hand or negative orientation of <math>
+                  <latex>\RNr[3]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+	  </example>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the oriented volume of the box in <math>
+                  <latex>\RNr[3]</latex>
+               </math> spanned by the vector triple <math>
+                  <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+               </math> with</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{x}= (5,0,0)</latex>
+               </math>,   <math>
+                  <latex>\Vect{y}=(0,2,0)</latex>
+               </math>, and   <math>
+                  <latex>\Vect{z} = (0,0,3)</latex>
+               </math>
+            </para.body>
+         </para>
+			
+				     <img xmlns="" src="ims/OrientedVolumeBox1.jpg"/>
+			
+			
+		    </statement.example>
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>The oriented volume of this box is given by <math>
+                        <latex>\det[ \Vect{x}\ \Vect{y}\ \Vect{z}]</latex>
+                     </math>. Therefore</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\OriVol(\Vect{x},\Vect{y},\Vect{z})\ =\ 
+\det
+\left[
+\begin{array}{rrr}
+5 &amp; 0 &amp; 0 \\
+0 &amp; 2 &amp; 0 \\
+0 &amp; 0 &amp; 3
+\end{array}
+\right] = +30
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>This agrees with what the theorem on oriented volume has us expect: the vectors <math>
+                        <latex>\Vect{x}</latex>
+                     </math>, <math>
+                        <latex>\Vect{y}</latex>
+                     </math>, and <math>
+                        <latex>\Vect{z}</latex>
+                     </math> span a rectangular box with edges of length 5,2, and 3. So its unoriented volume is 30. Moreover the triple of vectors <math>
+                        <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                     </math> determine the right hand or positive orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>. Therefore <math>
+                        <latex>\omega(\Vect{x},\Vect{y},\Vect{z})=+1</latex>
+                     </math>, and so the determinant is positive.</para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	
+	
+	
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the oriented volume of the box in <math>
+                  <latex>\RNr[3]</latex>
+               </math> spanned by the vector triple <math>
+                  <latex>(\Vect{u},\Vect{v},\Vect{w})</latex>
+               </math> with</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{u}= (3,0,0)</latex>
+               </math>,   <math>
+                  <latex>\Vect{v}=(0,4,0)</latex>
+               </math>, and   <math>
+                  <latex>\Vect{w} = (0,0,-7)</latex>
+               </math>
+            </para.body>
+         </para>
+			
+				     <img xmlns="" src="ims/OrientedVolumeBox2.jpg"/>
+			
+			
+		    </statement.example>
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>The oriented volume of this box is given by <math>
+                        <latex>\det[ \Vect{u}\ \Vect{v}\ \Vect{w}]</latex>
+                     </math>. Therefore</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\OriVol(\Vect{u},\Vect{v},\Vect{w})\ =\ 
+\det
+\left[
+\begin{array}{rrr}
+3 &amp; 0 &amp; 0 \\
+0 &amp; 4 &amp; 0 \\
+0 &amp; 0 &amp; -7
+\end{array}
+\right] = -84
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>This agrees with what the theorem on oriented volume has us expect: the vectors <math>
+                        <latex>\Vect{u}</latex>
+                     </math>, <math>
+                        <latex>\Vect{v}</latex>
+                     </math>, and <math>
+                        <latex>\Vect{w}</latex>
+                     </math> span a rectangular box with edges of length 3, 4, and 7. So its unoriented volume is 84. Moreover the triple of vectors <math>
+                        <latex>(\Vect{u},\Vect{v},\Vect{w})</latex>
+                     </math> determine the left hand or negative orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>. Therefore <math>
+                        <latex>\omega(\Vect{u},\Vect{v},\Vect{w})=-1</latex>
+                     </math>, and so the determinant is negative.</para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	
+	
+	
+	
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the orientation of <math>
+                  <latex>\RNr[3]</latex>
+               </math> given by the triple of vectors <math>
+                  <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+               </math> with <math>
+                  <latex>\Vect{x}=(3,-2,1)</latex>
+               </math> and <math>
+                  <latex>\Vect{y}=(7,4,0)</latex>
+               </math>, and <math>
+                  <latex>\Vect{z}=(-1,3,6)</latex>
+               </math>. </para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>The orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> given by <math>
+                        <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                     </math> is</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\omega(\Vect{x},\Vect{y},\Vect{z}) = \dfrac{
+\det
+\left[
+\begin{array}{rrr}
+3 &amp; 7 &amp; -1 \\
+-2 &amp; 4 &amp; 3 \\
+1 &amp; 0 &amp; 6
+\end{array}
+\right] }{
+\abs{
+\det
+\left[
+\begin{array}{rrr}
+3 &amp; 7 &amp; -1 \\
+-2 &amp; 4 &amp; 3 \\
+1 &amp; 0 &amp; 6
+\end{array}
+\right]
+} } = \dfrac{ 181 }{\abs{ 181 } } = +1
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>So the given triple of vectors determines the positive or right hand orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>. – Notice that, contrary to the previous two examples, it is not so easy to arrive at this conclusion by ‘inspection’.</para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+</example.pack>

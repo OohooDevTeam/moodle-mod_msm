@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_PastingLemma">
+	<caption>Pasting Lemma</caption>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="Illu_PastingLemma"/>
+		<info>
+			<caption>Illustration</caption>
+			<para>An illustration of the Pasting Lemma.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Let <latex>f\from \OCIntrvl{a}{b}\to \RNr</latex> and <latex>g\from \COIntrvl{b}{c}\to \RNr</latex> be functions. If <latex>f(b)=g(b)</latex> then the pasted function</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+h\from \OOIntrvl{a}{c} \longrightarrow \RNr,\quad h(x) := \left\{
+\begin{array}{rcl}
+f(x) & \text{if} & x\leq b \\
+g(x) & \text{if} & x\geq b
+\end{array}\right.
+				]]>
+			</latex>
+		</math.display>
+		<para>is continuous at all points <latex>x\neq b</latex> at which either <latex>f</latex> or <latex>g</latex> is continuous. Moreover, if both <latex>f</latex> and <latex>g</latex> are continuous at <latex>b</latex> then so is <latex>h</latex>.</para>
+	</statement>
+	<proof>
+		<para><b>Step 1</b> &nbsp; The condition <latex>f(b)=g(b)</latex> ensures that <latex>h</latex> is a well defined function.</para>
+		
+		<para><b>Step 2</b> &nbsp; If <latex>f</latex> is continuous at <latex><![CDATA[ x < b ]]></latex>, we need to show that <latex>h</latex> is continuous at <latex>x</latex> as well. So let there be given a deviation tolerance <latex><![CDATA[ \varepsilon > 0 ]]></latex>, then we know there is <latex><![CDATA[ \delta_1 > 0 ]]></latex> such that <latex><![CDATA[ \Abs{ f(t) - f(x) } < \varepsilon ]]></latex> whenever <latex>t\in \OCIntrvl{a}{b}</latex> and <latex><![CDATA[ \Abs{ t-x } < \delta_1 ]]></latex>.</para>
+		<para>Now set <latex>\delta := \min\Set{ (b-x),\delta_1}</latex>. Then, for <latex>t\in \OOIntrvl{a}{c}</latex> and <latex><![CDATA[ \Abs{ t-x } < \delta ]]></latex>,</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ h(t) - h(x) } = \Abs{ f(t) - f(x) } < \delta\leq \delta_1 ]]></latex>
+		</math.display>
+		<para>Thus <latex>h</latex> is continuous at <latex>x</latex>.</para>
+		
+		<para>So it remains to check that it is continuous at <latex>b</latex>. So let a deviation tolerance <latex><![CDATA[ \varepsilon > 0 ]]></latex> be given. We need to find <latex><![CDATA[ \delta>0 ]]></latex> such that <latex><![CDATA[ \Abs{ h(t) - h(b) } < \varepsilon ]]></latex> for all <latex><![CDATA[ t\in \OOIntrvl{a}{c} ]]></latex> with <latex><![CDATA[ \Abs{ t-b } < \delta]]></latex>.</para>
+		
+		<para><b>Step 3</b> &nbsp; If <latex>g</latex> is continuous at <latex><![CDATA[ x > b ]]></latex>, we need to show that <latex>h</latex> is continuous at <latex>x</latex> as well. So let there be given a deviation tolerance <latex><![CDATA[ \varepsilon > 0 ]]></latex>, then we know there is <latex><![CDATA[ \delta_1 > 0 ]]></latex> such that <latex><![CDATA[ \Abs{ g(t) - g(x) } < \varepsilon ]]></latex> whenever <latex>t\in \COIntrvl{b}{c}</latex> and <latex><![CDATA[ \Abs{ t-x } < \delta_1 ]]></latex>.</para>
+		<para>Now set <latex>\delta := \min\Set{ (x-b),\delta_1}</latex>. Then, for <latex>t\in \OOIntrvl{a}{c}</latex> and <latex><![CDATA[ \Abs{ t-x } < \delta ]]></latex>,</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ h(t) - h(x) } = \Abs{ g(t) - g(x) } < \delta\leq \delta_1 ]]></latex>
+		</math.display>
+		<para>Thus <latex>h</latex> is continuous at <latex>x</latex>.</para>
+		
+		<para><b>Step 4</b> &nbsp; So it remains to check that it is continuous at <latex>b</latex> if both <latex>f</latex> and <latex>g</latex> are. So let a deviation tolerance <latex><![CDATA[ \varepsilon > 0 ]]></latex> be given. We need to find <latex><![CDATA[ \delta>0 ]]></latex> such that <latex><![CDATA[ \Abs{ h(t) - h(b) } < \varepsilon ]]></latex> for all <latex><![CDATA[ t\in \OOIntrvl{a}{c} ]]></latex> with <latex><![CDATA[ \Abs{ t-b } < \delta]]></latex>.</para>
+		
+		<para>We know that <latex>f</latex> is continuous at <latex>b</latex>. So there exists <latex><![CDATA[ \delta_1 > 0 ]]></latex> such that</para>
+		<para align="center"><latex><![CDATA[ \Abs{ f(t) - f(b) } < \delta_1 ]]></latex> for all <latex>t\in \OCIntrvl{a}{b}</latex> with <latex><![CDATA[ \Abs{ f(t) - f(b) } < \delta_1 ]]></latex>.</para>
+		
+		<para><b>Step 5</b> &nbsp; We know that <latex>g</latex> is continuous at <latex>b</latex>. So there exists <latex><![CDATA[ \delta_2 > 0 ]]></latex> such that</para>
+		<para align="center"><latex><![CDATA[ \Abs{ g(t) - g(b) } < \delta_2 ]]></latex> for all <latex>t\in \COIntrvl{b}{c}</latex> with <latex><![CDATA[ \Abs{ g(t) - g(b) } < \delta_2 ]]></latex>.</para>
+		
+		<para><b>Step 6</b> &nbsp; Choose <latex>\delta:=\min\Set{ \delta_1,\delta_2 }</latex>. Then</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Abs{ h(t) - h(b) }\ =\ \left\{
+\begin{array}{rcl}
+\Abs{ f(t) - f(b) } < \delta_1\leq \delta & \text{if} & t\leq b \\
+\Abs{ g(t) - g(b) } < \delta_2\leq \delta & \text{if} & t\geq b
+\end{array}
+\right.
+				]]>
+			</latex>
+		</math.display>
+		<para>So <latex>h</latex> is continuous at <latex>b</latex>, and the proof of the Pasting Lemma is complete.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_OrthogonalVectorDecomposition"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Orthogonal Vector Decomposition - Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The proposition on orthogonal vector decomposition says that given subspaces <math>
+                     <latex>V\subseteq W</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, every <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>W</latex>
+                  </math> has a unique sum expression</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}_V + \Vect{x}_{\bot}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>where <math>
+                     <latex>\Vect{x}_V=\pr_V(\Vect{x})</latex>
+                  </math> is in <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>\Vect{x}_{\bot}:= \Vect{x}- \pr_V(\Vect{x})</latex>
+                  </math> is in <math>
+                     <latex>V^{\bot}</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Let us express in words what this proposition says: given an arbitrary <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>W</latex>
+                  </math>, there are two uniquely determined vectors <math>
+                     <latex>\Vect{x}_V</latex>
+                  </math> and <math>
+                     <latex>\Vect{x}_{\bot}</latex>
+                  </math> satisfying the following two conditions</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\Vect{x}_V</latex>
+                        </math> is in <math>
+                           <latex>V</latex>
+                        </math> and is computed as the orthogonal projection <math>
+                           <latex>\Vect{x}_V := \pr_V(\Vect{x})</latex>
+                        </math> of <math>
+                           <latex>\Vect{x}</latex>
+                        </math> onto <math>
+                           <latex>V</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\Vect{x}_{\bot}</latex>
+                        </math> belongs to the orthogonal complement of <math>
+                           <latex>V</latex>
+                        </math> in <math>
+                           <latex>W</latex>
+                        </math>. It is computed as</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}_{\bot}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x} - \pr_V(\Vect{x})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+               </li>
+            </ol>
+            <para>
+               <para.body>As a consequence, <math>
+                     <latex>\Vect{x} = \Vect{x}_V + \Vect{x}_{\bot}</latex>
+                  </math> has been ‘split’ into the sum of <math>
+                     <latex>\Vect{x}_V</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math>, and <math>
+                     <latex>\Vect{x}_{\bot}</latex>
+                  </math> in <math>
+                     <latex>V^{\bot}</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MatrixInversionProperties">
+	<caption>Properties of matrix inversion</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment and Warning</caption>
+			<para>Property iv. is something we must be particularly mindful of, as it is different from the analogous property for numbers: Indeed, if <latex>a</latex>, <latex>b</latex> are numbers, then</para>
+			<computation>
+				<left>(ab)^{-1}</left>
+				<center>=</center>
+				<right>a^{-1}\cdot b^{-1}</right>
+			</computation>
+			<para>For invertible matrices, the order in which we multiply <latex>\Mtrx{A}^{-1}</latex> and <latex>\Mtrx{B}^{-1}</latex> reverses the order in which we multiply <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex>.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>The inverse operation on matrices has the following properties</para>
+		<part partid="InverseSize">
+			<caption>Size of the Inverse</caption>
+			<para>If the <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> is invertible, then an inverse of <latex>\Mtrx{A}</latex> has size <latex>(n,n)</latex>.</para>
+		</part>
+		<part partid="InverseUnique">
+			<caption>Uniqueness of the inverse</caption>
+			<para>If a matrix is invertible, then it has exactly one inverse.</para>
+		</part>
+		<part partid="DoubleInverse">
+			<para>If <latex>\Mtrx{A}</latex> is invertible, then <latex>A^{-1}</latex> is also invertible, and &nbsp; <latex>(\Mtrx{A}^{-1})^{-1} = \Mtrx{A}</latex>.</para>
+		</part>
+		<part partid="InverseProduct">
+			<caption>Invertibility of a product</caption>
+			<para>If <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> are invertible matrices, then <latex>\Mtrx{A}\Mtrx{B}</latex> is also invertible, and &nbsp; <latex>(\Mtrx{A}\Mtrx{B})^{-1} = \Mtrx{B}^{-1}  \Mtrx{A}^{-1}</latex>.</para>
+		</part>
+	</statement>
+	
+	<proof>
+		<caption>
+			<partref>InverseSize</partref>
+			Size of the inverse
+		</caption>
+		<para>Suppose <latex>\Mtrx{B}</latex> is an inverse of <latex>\Mtrx{A}</latex>. Then the identity <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex> implies that the product <latex>\Mtrx{A}\Mtrx{B}</latex> is defined, and so <latex>\Mtrx{B}</latex> has <latex>n</latex> rows. Moreover, <latex>\Mtrx{B}</latex> has <latex>n</latex> columns because <latex>\IdMtrx[n]</latex> has <latex>n</latex> columns.</para>
+		
+		
+		
+		<caption>
+			<partref>InverseUnique</partref>
+			Uniqueness of the inverse
+		</caption>
+		<para>Suppose the square matrix <latex>\Mtrx{A}</latex> is invertible, and that we have two inverses <latex>\Mtrx{B}</latex> and <latex>\Mtrx{C}</latex>. We need to show that <latex>\Mtrx{B} = \Mtrx{C}</latex>. - Indeed, we know that</para>
+		
+		<computation>
+			<left>\Mtrx{A} \Mtrx{B}</left>
+			<center>= \IdMtrx[n] =</center>
+			<right>\Mtrx{B} \Mtrx{A}</right>
+			<left>\Mtrx{A} \Mtrx{C}</left>
+			<center>= \IdMtrx[n] =</center>
+			<right>\Mtrx{C} \Mtrx{A}</right>
+		</computation>
+		
+		<para>But then we have the following computation</para>
+		
+		<computation>
+			<left>\Mtrx{A}\Mtrx{B}</left>
+			<center>=</center>
+			<right>\Mtrx{A}\Mtrx{C}</right>
+			<left>\Mtrx{B}(\Mtrx{A}\Mtrx{B})</left>
+			<center>=</center>
+			<right>\Mtrx{B}(\Mtrx{A}\Mtrx{C})</right>
+			<left>(\Mtrx{B}\Mtrx{A})\Mtrx{B}</left>
+			<center>=</center>
+			<right>(\Mtrx{B}\Mtrx{A})\Mtrx{C}</right>
+			<left>\IdMtrx[n]\Mtrx{B}</left>
+			<center>=</center>
+			<right>\IdMtrx[n]\Mtrx{C}</right>
+			<left>\Mtrx{B}</left>
+			<center>=</center>
+			<right>\Mtrx{C}</right>
+		</computation>
+		<para>and this is exactly what we wanted to show.</para>
+		
+		
+		
+		
+		<caption>
+			<partref>DoubleInverse</partref>
+		</caption>
+		<para>Since <latex>\Mtrx{A}</latex> is invertible, we know that there is a matrix <latex>\Mtrx{B}</latex> with</para>
+		<math.display>
+			<latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n] = \Mtrx{B}\Mtrx{A}</latex>
+		</math.display>
+		<para>Further, we know that this <latex>\Mtrx{B}</latex> is unique. So we set <latex>\Mtrx{A}^{-1} := \Mtrx{B}</latex>. Now the identity above can also be interpreted as saying that <latex>\Mtrx{B}</latex> is invertible and that its unique inverse is <latex>\Mtrx{A}</latex>. Therefore</para>
+		<math.display>
+			<latex>\Mtrx{A} = \Mtrx{B}^{-1} = (\Mtrx{A}^{-1})^{-1},</latex>
+		</math.display>
+		<para>which is exactly what we wanted to show.</para>
+		
+		
+		
+		<caption>
+			<partref>InverseProduct</partref>
+			Inverse of a product
+		</caption>
+		<para>If <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> are invertible matrices, we need to show that</para>
+		
+		<math.display>
+			<latex>(\Mtrx{A}\Mtrx{B})(\Mtrx{B}^{-1}\Mtrx{A}^{-1}) = \IdMtrx[n] = (\Mtrx{B}^{-1}\Mtrx{A}^{-1})(\Mtrx{A}\Mtrx{B})</latex>
+		</math.display>
+		
+		<para>To see that the left hand side identity is true, we compute</para>
+		
+		<computation>
+			<left>(\Mtrx{A}\Mtrx{B})(\Mtrx{B}^{-1}\Mtrx{A}^{-1})</left>
+			<center>=	<info><caption>Why is this identity true?</caption>
+						<para>This identity follows from the associativity law of matrix multiplication.</para></info></center>
+			<right>\Mtrx{A} (\Mtrx{B}\Mtrx{B}^{-1}) \Mtrx{A}^{-1}</right>
+			<left></left>
+			<center>=	<info><caption>Why is this identity true?</caption><para>Using that <latex>\Mtrx{B}\Mtrx{B}^{-1} = \IdMtrx[n]</latex>[</para></info></center>
+			<right>\Mtrx{A} \IdMtrx[n] \Mtrx{A}^{-1}</right>
+			<left></left>
+			<center>=	<info><caption>Why is this identity true?</caption><para>Using that <latex>\IdMtrx[n]</latex> is neutral with respect to multiplication.</para></info></center>
+			<right>\Mtrx{A} \Mtrx{A}^{-1}</right>
+			<left></left>
+			<center>=</center>
+			<right>\IdMtrx[n]</right>
+		</computation>
+		
+		<para>The identity on the right follows from a similar argument.</para>
+		
+		
+		
+		
+	</proof>
+</theorem>

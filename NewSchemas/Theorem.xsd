@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	targetNamespace="Theorem"
+	xmlns="Theorem"
+	xmlns:thm="Theorem">
+	<xsd:include schemaLocation="Molecules.xsd"/>
+	<xsd:include schemaLocation="CyberTutor.xsd"/>
+	<xsd:import schemaLocation="http://www.w3.org/2004/10/xml.xsd"
+		namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xsd:annotation>
+		<xsd:documentation> =============   The Theorem schema describes the formulation of a mathematical theorem, proposition, lemma, or corollary, together with one or several proofs.
+		To display an XML-document consistent with this schema, we assume that a browser has been split into two frames. The left hand frame presents the theorem-like module together with its parts. The right hand frame presents progressively proof steps, the progression being triggered by action.
+		Two versions of markup for a proof of a "theorem". Standard exposition of a proof uses the "proof"-element. More sophisticated markup of a proof is provided by the "proof.ext"-element. It offers markup for a "solution-pilot" and some additional interactive features.
+		An instance of the proof pilot can possibly be presented in a sticky hint window whose appearance is triggered by user action. Alternatively it can be loaded into a slide-in window (the kind we will need lateron to present the topic tree of an FCM-book) - whichever works best.
+		This schema will be used as a component in other schemas, for example a book-like structure, etc.
+		  ======================
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="theorem">
+		<xsd:annotation>
+			<xsd:documentation>Root element of a theorem-like structure. The attribute "type" is to distinguish between theorem, proposition, lemma, corollary, example.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element ref="textcaption" minOccurs="0"/>
+				<xsd:element minOccurs="0" ref="description"/>
+				<xsd:element ref="associate" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="statement.theorem"/>
+				<xsd:element ref="proof" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="proof.ext" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="type" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>The type of the theorem is one of: Theorem, Proposition, Lemma, Corollary</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="Theorem"/>
+						<xsd:enumeration value="Proposition"/>
+						<xsd:enumeration value="Lemma"/>
+						<xsd:enumeration value="Corollary"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="id" type="xsd:NCName" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>The id of the Theorem</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute ref="xml:base"/>
+		</xsd:complexType>
+		<xsd:key name="statementPart">
+			<xsd:selector xpath=".//thm:part"/>
+			<xsd:field xpath="@partid"/>
+		</xsd:key>
+		<xsd:keyref name="partReference" refer="statementPart">
+			<xsd:selector xpath=".//thm:partref"/>
+			<xsd:field xpath="."/>
+		</xsd:keyref>
+	</xsd:element>
+	<xsd:element name="statement.theorem">
+		<xsd:annotation>
+			<xsd:documentation>For the statement of the theorem or part</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence maxOccurs="1" minOccurs="1">
+				<xsd:choice maxOccurs="unbounded" minOccurs="1">
+					<xsd:group ref="content_block" maxOccurs="unbounded" minOccurs="1"/>
+					<xsd:sequence>
+						<xsd:element ref="part.theorem" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:choice>
+				<xsd:group maxOccurs="unbounded" minOccurs="0" ref="index"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="part.theorem">
+		<xsd:annotation>
+			<xsd:documentation>In case a theorem contains  several parts. The attribute enumerates the parts. The enumeration can eventually be automated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element name="part.body">
+					<xsd:annotation>
+						<xsd:documentation>The actual mathematical content which makes up this part of the the theorem</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:group ref="content_block" maxOccurs="unbounded" minOccurs="1"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:group maxOccurs="unbounded" minOccurs="0" ref="index"/>
+			</xsd:sequence>
+			<xsd:attribute name="partid" type="xsd:NCName" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>An identifier for the statement part. To be used if the part is the target of a cross reference, or to refer to it in the proof of the theorem.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="counter" type="xsd:positiveInteger" use="optional"/>
+			<xsd:attribute name="equivalence.mark" type="xsd:positiveInteger" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>Give equivalent parts the same equivalence marker: a number like 1, or 2, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="proof">
+		<xsd:annotation>
+			<xsd:documentation>Marks one of several possible proofs</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence maxOccurs="unbounded">
+				<xsd:element name="proof.block">
+					<xsd:annotation>
+						<xsd:documentation>For an architectural block of the proof of a theorem</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="0" name="logic">
+								<xsd:annotation>
+									<xsd:documentation>To describe one of the following three proof scenarios (A implies B), (B implies A), or (A is equivalent to B)</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="2" name="part.ref"
+											type="xsd:normalizedString"/>
+									</xsd:sequence>
+									<xsd:attribute name="type">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:enumeration value="A implies B"/>
+												<xsd:enumeration value="A implied by B"/>
+												<xsd:enumeration value="A equivalent to B"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element minOccurs="0" ref="caption"/>
+							<xsd:element name="proof.block.body" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:documentation>The actual math data of the proof bloack</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:group ref="content_block" maxOccurs="unbounded"
+										minOccurs="1"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="proofid" type="xsd:positiveInteger" use="optional" default="1">
+				<xsd:annotation>
+					<xsd:documentation>If more than one proof is given, distinguish them by using an optional identifier, such as 1, 2, 3, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="type" use="optional" default="Proof">
+				<xsd:annotation>
+					<xsd:documentation>Describe the type of the proof given by choosing one of "Explanation", "Justification", "Proof", "Proof Idea", "Proof Sketch".</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="Explanation"/>
+						<xsd:enumeration value="Proof"/>
+						<xsd:enumeration value="Justification"/>
+						<xsd:enumeration value="Proof Sketch"/>
+						<xsd:enumeration value="Proof Idea"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="proof.ext">
+		<xsd:annotation>
+			<xsd:documentation>Proof of statement made in theorem. If several different proofs are available, the `version'-attribute should be used to make a distinction.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>Choose between marking up a proof step, while invoking the proof pilot, or just providing a paragraph-like chunk of the proof.</xsd:documentation>
+					</xsd:annotation>
+					<xsd:element name="step">
+						<xsd:annotation>
+							<xsd:documentation>Everything associated to a particular proof step. Where appropriate, the optional attribute "partref" refers to the enumerator of the statement.part that is being proved in this step.</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="caption" minOccurs="0" type="stepCaption"/>
+								<xsd:element name="pilot" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>Proof pilot material for this particular proof step.</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType mixed="false">
+										<xsd:sequence>
+											<xsd:element name="pilot.step">
+												<xsd:annotation>
+												<xsd:documentation>Statement / question in proof pilot corresponding to proof step in question.</xsd:documentation>
+												</xsd:annotation>
+												<xsd:complexType>
+												<xsd:choice maxOccurs="unbounded">
+												<xsd:element ref="para"/>
+												<xsd:element ref="math.display"/>
+												</xsd:choice>
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="step.body">
+									<xsd:complexType>
+										<xsd:group ref="content_block" maxOccurs="unbounded"
+											minOccurs="1"/>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+							<xsd:attribute name="partref" type="xsd:positiveInteger" use="optional"
+								default="1">
+								<xsd:annotation>
+									<xsd:documentation>Refers to the part of the theorem whose proof begins with this step.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:attribute>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="proof.ext.body">
+						<xsd:complexType>
+							<xsd:group ref="content_block" minOccurs="0"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="xsd:nonNegativeInteger" use="optional" default="1"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType mixed="true" name="stepCaption">
+		<xsd:sequence>
+			<xsd:element name="partref" type="xsd:NCName" minOccurs="0"/>
+			<xsd:element ref="math" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

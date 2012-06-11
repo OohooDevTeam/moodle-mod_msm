@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_DistancePreservingLinearTransformations"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Distance Preserving Linear Transformations</title>
+      <plain.title>Distance Preserving Transformations</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Of particular importance for practical purposes are those linear transformations which preserve all distances. This ensures that size and shape of any object remain unaltered by the transformation. Only its position can change.</para.body>
+            </para>
+            <para>
+               <para.body>Given an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> how do we recognize if it represents a distance preserving linear transformation? The answer is pleasantly simple: the column vectors of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> must have length <math>
+                     <latex>1</latex>
+                  </math> and must be pairwise orthogonal.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_DistancePreservingLinearTransformation">
+               <caption>Distance preserving linear transformation</caption>
+               <associate type="Explanation">
+                  <info>
+                     <para>
+                        <para.body>The identity <math>
+                              <latex>\abs{ L(\Vect{x}) } = \abs{ \Vect{x} }</latex>
+                           </math> says exactly that the length of <math>
+                              <latex>\Vect{x}</latex>
+                           </math> equals the length of (<math>
+                              <latex>\Vect{x}</latex>
+                           </math> transformed by <math>
+                              <latex>L</latex>
+                           </math>). If this happens for all <math>
+                              <latex>\Vect{x}</latex>
+                           </math> in <math>
+                              <latex>\RNr[n]</latex>
+                           </math>, then <math>
+                              <latex>L</latex>
+                           </math> preserves the length of all vectors and, hence, the distance between any pair of points in <math>
+                              <latex>\RNr[n]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_RotationOrthogonal"/>
+                  <info>
+                     <para>
+                        <para.body>A rotation is an example of a distance preserving linear transformation.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Quiz">
+                  <quiz.pack.ref quizPackID="Quz_OrthogonalMap"/>
+                  <info>
+                     <para>
+                        <para.body>A quiz that helps you develop your understanding of the concept of ‘distance preserving linear map’</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A linear transformation <math>
+                           <latex>L\from \RNr[n] \to \RNr[n]</latex>
+                        </math> is said to preserve distances if, for all <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>\RNr[n]</latex>
+                        </math>,
+				</para.body>
+                     <index.glossary>
+                        <term>distance</term>
+                        <term>preserving linear transformation</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the term</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>linear transformation</term>
+                        <term>distance preserving</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the term</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>\abs{L(\Vect{x})} = \abs{\Vect{x}}</latex>
+                  </math.display>
+                  <para>
+                     <para.body>Other terms in use for ‘distance preserving linear transformation’ include ‘orthogonal transformation’ or ‘unitary transformation’
+				</para.body>
+                     <index.glossary>
+                        <term>orthogonal</term>
+                        <term>linear transformation</term>
+                        <info>
+                           <para>
+                              <para.body>is an alternate term for ‘distance preserving linear transformation’</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>unitary</term>
+                        <term>linear transformation</term>
+                        <info>
+                           <para>
+                              <para.body>is an alternate term for ‘distance preserving linear transformation’</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>linear transformation</term>
+                        <term>orthogonal</term>
+                        <info>
+                           <para>
+                              <para.body>is an alternate term for ‘distance preserving linear transformation’</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>A distance preserving linear transformation is easy to recognize by inspecting the matrix representing it:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="OrthogonalMapRecognize_Prop.xml"/>
+            <para>
+               <para.body>An alternate way of formulating this recognition criterion for distance preserving linear maps is the following:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="DistancePreservingOrthogonal_Cor.xml"/>
+            <para>
+               <para.body>The previous corollary motivates the following terminology</para.body>
+            </para>
+            <def type="Terminology" id="Term_OrthogonalMatrix">
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>In view of the previous corollary: a matrix is orthogonal exactly when it represents a distance preserving linear map.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Comment">
+                  <info>
+                     <info.caption>Comment</info.caption>
+                     <para>
+                        <para.body>The terminology ‘orthogonal matrix’ is historically entrenched. It is, however, not optimally descriptive because ‘orthogonal’ only suggests that the column vectors of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> must be mutually perpendicular.</para.body>
+                     </para>
+                     <para>
+                        <para.body>A bit more descriptive would be something like ‘orthonormal matrix’. This would truly mean that the columns of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> are normed, i.e. have length <math>
+                              <latex>1</latex>
+                           </math>, and must be mutually perpendicular. These are exactly the properties <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> needs to represent a distance preserving linear map.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is called orthogonal if its column vectors have length <math>
+                           <latex>1</latex>
+                        </math> and are mutually orthogonal.
+				</para.body>
+                     <index.glossary>
+                        <term>orthogonal</term>
+                        <term>matrix</term>
+                        <info>
+                           <info.caption>What is an orthogonal matrix?</info.caption>
+                           <para>
+                              <para.body>A matrix <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is called orthogonal if <math>
+                                    <latex>\Mtrx{A}\Mtrx{A}^T = \IdMtrx</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>matrix</term>
+                        <term>orthogonal</term>
+                        <info>
+                           <info.caption>What is an orthogonal matrix?</info.caption>
+                           <para>
+                              <para.body>A matrix <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is called orthogonal if <math>
+                                    <latex>\Mtrx{A}\Mtrx{A}^T = \IdMtrx</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_OrthogonalMaps"/>
+      <exercise.pack.ref exercisePackID="Exe_OrthogonalMaps1"/>
+   </studymaterials>
+</unit>

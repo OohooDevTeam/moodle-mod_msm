@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_PointsArrowsVectors">
+	<headers>
+		<full>Points, Arrows, and Vectors</full>
+		<toc>Points, Arrows, and Vectors</toc>
+		<short>Points, Arrows, Vectors</short>
+	</headers>
+	<intro>
+		<para>An <subordinate>
+			<hot>arrow</hot>
+			<companion>
+				<subpage.ref subpageID="Sub_ArrowsIllustration"/>
+				<caption>Illustration</caption>
+				<para>Pictures of arrows.</para>
+			</companion>
+		</subordinate> is a convenient tool to express the location of one point in relation to another. The location of an arrow in space is completely determined by the location of its tail, its length and its direction. If we allow the arrow to move in space while keeping its length and its direction, we obtain a vector.</para>
+		<para>We will see that this feature renders vectors an extremely versatile tool in our efforts to describe the world around us.</para>
+	</intro>
+	<subsection id="SubSec_Arrows">
+		<headers>
+			<full>Arrows</full>
+			<toc>Arrows</toc>
+			<short>Arrows</short>
+		</headers>
+		
+		<subsection.body>
+			<def type="Definition" id="Def_Arrow">
+				<caption>Arrow</caption>
+				<associate Description="Illustration">
+					<subpage.ref subpageID="Sub_ArrowsIllustration"/>
+					<info>
+						<para>An illustration of arrows</para>
+					</info>
+				</associate>
+				
+				<para>An arrow <index.glossary>
+					<term>arrow</term>
+					<info>
+						<para>in <latex>\RNr[n]</latex>, joining point <latex>P</latex> to point <latex>Q</latex>.</para>
+						<para align="center">Click to see the definition of arrow.</para>
+					</info>
+				</index.glossary>
+					in <latex>\RNr[n]</latex> is given by listing two points <latex>P</latex> and <latex>Q</latex> of <latex>\RNr[n]</latex> in order. The first point <latex>P</latex> is called the tail of the arrow. The second point <latex>Q</latex> is called the tip of the arrow. We write <latex>\Arrw{PQ}</latex> 
+					
+					<index.symbol>
+						<symbol>
+							<latex>\Arrw{PQ}</latex>
+						</symbol>
+						<info>
+							<para>The arrow in <latex>\RNr[n]</latex> joining point <latex>P</latex> to point <latex>Q</latex>.</para>
+						</info>
+					</index.symbol>
+					to denote the arrow joining <latex>P</latex> to <latex>Q</latex>.</para>
+			</def>
+			<para>The length of an arrow is the distance between its end points:</para>
+			
+			
+			<def id="Def_ArrowLength">
+				<caption>Length of an Arrow</caption>
+				<associate Description="Illustration">
+					<subpage.ref subpageID="Illu_ArrowLength"/>
+					<info><para>Illustration of Length of an Arrow</para></info>
+				</associate>
+				
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_ArrowLength"/>
+					<info>
+						<caption>Example</caption>
+						<para>Examples of computing the length of an arrow</para>
+					</info>
+				</associate>
+				<para>Given points <latex>P(x_1,\dots ,x_n)</latex> and <latex>Q(y_1,\dots ,y_n)</latex> in <latex>\RNr[n]</latex>, the length of the arrow
+					<index.glossary>
+						<term>length</term>
+						<term>of an arrow</term>
+						<info>
+							<para>The length of an arrow is the distance between its end points. - Definition of the concept.</para>
+						</info>
+					</index.glossary>
+					
+					<index.glossary>
+						<term>arrow</term>
+						<term>length</term>
+						<info>
+							<para>The length of an arrow is the distance between its end points. - Definition of the concept.</para>
+						</info>
+					</index.glossary> 
+					<latex>\Arrow{P}{Q}</latex> from <latex>P</latex> to <latex>Q</latex> is
+					<index.symbol>
+						<symbol>
+							<latex>\Length{\Arrow{P}{Q} }</latex>
+						</symbol>
+						<info>
+							<para>length of the arrow joining <latex>P</latex> to <latex>Q</latex>.</para>
+						</info>
+					</index.symbol>
+				</para>
+				<math.display>
+					<latex>\Length{\Arrow{P}{Q} }\ :=\ \Dstnc{P}{Q}\ =\ \sqrt{(y_1-x_1)^2+\cdots +(y_n-x_n)^2}.</latex>
+				</math.display>
+			</def>
+		</subsection.body>
+	</subsection>
+	<subsection id="SubSec_Vectors">
+		<headers>
+			<full>Vectors</full>
+			<toc>Vectors</toc>
+			<short>Vectors</short>
+		</headers>
+		<subsection.body>
+			<para>An intuitive description of a &lsquo;vector&rsquo; is given by an arrow that is allowed to float freely in space while keeping its length and its direction. &ndash; More rigorously, we approach the notion of a vector as follows:</para> 
+			<def type="Definition" id="Def_EquivalentArrows">
+				<caption>Equivalent arrows</caption>
+				<associate Description="Explanation">
+					<info>
+						<caption>Meaning of &lsquo;Equivalent Arrows&rsquo;</caption>
+						<para>These two arrows are equivalent exactly when the instructions of moving from tip to tail are the same. As a consequence, equivalent arrows have the same length and direction.</para>
+					</info>
+				</associate>
+				<para>Two arrows <latex>\Arrw{AB}</latex> and <latex>\Arrw{XY}</latex>, joining</para>
+				<table align="center" border="0" cellspacing="3">
+					<row>
+						<cell><para><latex>A(a_1,\dots ,a_n)</latex></para></cell>
+						<cell><para>to</para></cell>
+						<cell><para><latex>B(b_1,\dots ,b_n)</latex></para></cell>
+					</row>
+					<row>
+						<cell><para><latex>X(x_1,\dots ,x_n)</latex></para></cell>
+						<cell><para>to</para></cell>
+						<cell><para><latex>Y(y_1,\dots ,y_n)</latex></para></cell>
+					</row>
+				</table>
+				<para>are called equivalent if</para>
+				<computation>
+					<left>(b_1-a_1,\dots ,b_n-a_n)</left>
+					<center>=</center>
+					<right>(y_1-x_n,\dots ,y_n-x_n)</right>
+				</computation>
+			</def>
+			<def type="Definition" id="Def_Vector">
+				<caption>Vector</caption>
+				<associate Description="Explanation">
+					<info>
+						<caption>What do the vector coordinates mean?</caption>
+						<para>Given a vector <latex>\Vect{x} = (x_1,\dots ,x_n)</latex> and a point <latex>P</latex>, you can find the tip of the arrow whose tail is <latex>P</latex> by</para>
+						<ol>
+							<li><para>going from <latex>P</latex>, <latex>x_1</latex> units in the first coordinate direction</para></li>
+							<li><para>from there <latex>x_2</latex> units in the second coordinate direction,</para></li>
+							<li><para>etc. .... until</para></li>
+							<li><para>from the last found position <latex>x_n</latex> units in the <latex>n</latex>-th coordinate direction.</para></li>
+						</ol>
+					</info>
+				</associate>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_VectorCoordinates"/>
+					<info><para>An example</para></info>
+				</associate>
+<!--				<associate Description="Quiz">
+					<quiz.pack.ref quizPackID="Qz_CoordinateVector"/>
+					<info><para>A quiz on coordinate vectors</para></info>
+				</associate>-->
+				
+				<para>The vector represented by an arrow <latex>\Arrw{AB}</latex> is the collection of all those arrows in <latex>\RNr[n]</latex> which are equivalent to <latex>\Arrw{AB}</latex>. We write <latex>\Vect{x} = (x_1,\dots ,x_n)</latex> if, for any of these arrows
+					<index.glossary>
+						<term>vector</term>
+						<info><para>definition of &lsquo;vector&rsquo;</para></info>
+					</index.glossary>
+					<index.symbol>
+						<symbol>
+							<latex>\Vect{x}</latex>
+						</symbol>
+						<info>
+							<para>denotes a vector</para>
+						</info>
+					</index.symbol>
+				</para>
+				<computation>
+					<left>\text{(tip coordinates)} - \text{tail coordinates}</left>
+					<center>=</center>
+					<right>(x_1,\dots ,x_n)</right>
+				</computation>
+			</def>
+			
+			<para>Particular examples of such coordinate vectors are the ... </para>
+			
+			<def type="Definition" id="Def_BasicCoordinateVectors">
+				<caption>Basic coordinate vectors</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_BasicCoordinateVectors"/>
+					<info>
+						<para align="center">Examples of coordinate vectors.</para>
+					</info>
+				</associate>
+				
+				<para>For <latex>1\leq i\leq n</latex>, the <latex>i</latex>-th basic coordinate vector of <latex>\RNr[n]</latex> is
+					<index.glossary>
+						<term>basic coordinate vector</term>
+						<info>
+							<math.display>
+								<latex>\Vect{e}_i\ :=\ (\overset{i}{\underset{\leftarrow\hfill n\hfill \rightarrow}{0,\dots ,0,1,0,\dots ,0}})</latex>
+							</math.display>
+							<para>is the <latex>i</latex>-th basic coordinate vector of <latex>\RNr[n]</latex>
+							</para>
+						</info>
+					</index.glossary>
+					
+					<index.glossary>
+						<term>coordinate vector</term>
+						<term>basic</term>
+						<info>
+							<math.display>
+								<latex>\Vect{e}_i\ :=\ (\overset{i}{\underset{\leftarrow\hfill n\hfill \rightarrow}{0,\dots ,0,1,0,\dots ,0}})</latex>
+							</math.display>
+							<para>is the <latex>i</latex>-th basic coordinate vector of <latex>\RNr[n]</latex>
+							</para>
+						</info>
+					</index.glossary>
+					
+					<index.symbol>
+						<symbol>
+							<latex>\Vect{e}_i</latex>
+						</symbol>
+						<info>
+							<math.display>
+								<latex>\Vect{e}_i\ :=\ (\overset{i}{ \underset{\leftarrow\hfill n\hfill \rightarrow}{0,\dots ,0,1,0,\dots ,0} })</latex>
+							</math.display>
+							<para>denotes the <latex>i</latex>-th basic coordinate vector of <latex>\RNr[n]</latex>.</para>
+						</info>
+					</index.symbol>
+				</para>
+				
+				<math.display>
+					<latex>\Vect{e}_i\ :=\ (\overset{i}{ \underset{\leftarrow\hfill n\hfill \rightarrow}{0,\dots ,0,1,0,\dots ,0} })</latex>
+				</math.display>
+			</def>
+		</subsection.body>
+	</subsection>
+	<subsection id="SubSec_nTuplesForPointsVectors">
+		<headers>
+			<full>
+				<latex>n</latex>-Tuples for Points and Vectors</full>
+			<toc>
+				<latex>n</latex>-Tuples for Points and Vectors</toc>
+			<short>Tuples for Points and Vectors</short>
+		</headers>
+		<subsection.body>
+			<para>Consider these two expressions</para>
+			<para align="center">
+				<latex>X(x_1,\dots ,x_n)</latex>   and  <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>.</para>
+			<para>In the first expression the <latex>n</latex>-tuple  <latex>(x_1,\dots ,x_n)</latex> characterizes the location of a point. In the second expression the same <latex>n</latex>-tuple forms a coordinate vector. This ambiguity in notation is firmly entrenched in the literature. Fortunately, we can untangle it nicely if we keep in mind the following dictionary for translating between points and vectors.<index.glossary>
+				<term>position vector</term>
+				<info>
+					<para>The position vector of a <latex>X</latex> point in <latex>\RNr[n]</latex> is represented by the arrow <latex>\Arrow{\Vect{0}}{X}</latex> joining the origin to <latex>X</latex>.</para>
+				</info>
+			</index.glossary>
+			</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+            				\xymatrix@C=15pt{
+				*+[F-,]{ \txt{A given point\\$X(x_1,\dots ,x_n)$} } \ar[rr] & &
+				*+[F-,]{\txt{yields the vector $\Vect{x}=(x_1,\dots ,x_n)$.\\It is represented by the arrow $\Arrow{\Vect{0}}{X}$.\\We call it the {\bf position vector}\index{position vector} of $X$.}} \\
+				*+[F-,]{ \txt{A given vector\\$\Vect{x}=(x_1,\dots ,x_n)$} } \ar[rr] & &
+				*+[F-,]{ \txt{yields the point $X(x_1,\dots ,x_n)$.\\It is the tip of the arrow with tail at $\Vect{0}$\\and representing $\Vect{x}$.} }
+				}
+            	]]>
+				</latex>
+			</math.display>
+		</subsection.body>
+		<studymaterials>
+			<example.pack.ref examplePackID="Exa_PositionVectors"/>
+			<exercise.pack.ref exercisePackID="Exe_VectorsArrows"/>
+		</studymaterials>
+	</subsection>
+</section>

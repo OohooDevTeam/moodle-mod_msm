@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_RulesForLimits">
+	<caption>Rules for computing with limits</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment</caption>
+			<para>When using this theorem for computing with limits, it is important to verify that <latex>\lim_{n\to\infty}x_n</latex> and <latex>\lim_{n\to \infty}y_n</latex> exist before making further computations.</para>
+		</info>
+	</associate>
+	
+	<associate Description="Comment">
+		<info>
+			<caption>Comment</caption>
+			<para>These operations hold also when <latex>a,b=\pm \infty</latex>, provided the operation on the right is defined.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>For sequences <latex>(x_n)</latex> and <latex>(y_n)</latex> with</para>
+		<math.display>
+			<latex>\lim_{n\to\infty}x_n = a \quad \text{and}\quad \lim_{n\to\infty} y_n = b</latex>
+		</math.display>
+		<para>and <latex>t\in\RNr</latex> the following hold.</para>
+		<part partid="Scalar">
+			<para><latex>\lim_{n\to \infty}( t\cdot x_n) = t\cdot a</latex>, provided: if <latex>t=0</latex>, then <latex>a\neq \pm\infty</latex>.</para>
+		</part>
+		<part partid="Sum">
+			<para><latex>\lim_{n\to\infty}(x_n \pm y_n) = a \pm b</latex>, provided: if <latex>a=\pm\infty</latex>, then <latex>b\neq \mp\infty</latex></para>
+		</part>
+		<part partid="Product">
+			<para><latex>\lim_{n\to\infty}(x_n \cdot y_n) = a\cdot b</latex>, provided: if <latex>a=0</latex>, then <latex>b\neq \pm\infty</latex> and, if <latex>b=0</latex>, then <latex>a\neq \pm\infty</latex>.</para>
+		</part>
+		<part partid="Division">
+			<para>If <latex>b_n\neq 0</latex> for all <latex>n</latex>, and <latex>b\neq 0</latex>, then <latex magnify="yes">\lim_{n\to\infty}\frac{x_n}{y_n} = \frac{a}{b}</latex>, provided <latex>a</latex> and <latex>b</latex> are not simultaneously in <latex>\Set{\pm\infty}</latex>.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>Scalar</partref> &nbsp; <latex>\lim_{n\to \infty}( t\cdot x_n) = t\cdot a</latex></caption>
+		<para>If <latex>t=0</latex>, then</para>
+		<math.display>
+			<latex>\lim_{n\to\infty}(tx_n)\ =\ \lim_{n\to\infty} 0\ =\ 0</latex>
+		</math.display>
+		<para>Now assume that <latex>t\neq 0</latex>. We consider first the case where <latex>\lim_{n\to\infty}x_n \in \RNr</latex>. If <latex><![CDATA[ \varepsilon > 0 ]]></latex> is given, choose <latex magnify="yes">n_0\in \NNr</latex> such that</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ x_n - a } < \dfrac{\varepsilon}{\Abs{t}},\quad n\geq n_0]]></latex>
+		</math.display>
+		<para>Therefore, if <latex>n\geq n_0</latex></para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ tx_n - ta } = \Abs{t}\cdot \Abs{x_n - a} < \Abs{t}\cdot \dfrac{\varepsilon}{\Abs{t}} = \varepsilon ]]></latex>
+		</math.display>
+		<para>This means exactly that <latex>\lim_{n\to\infty}(t\cdot x_n) = t\cdot \lim_{n\to \infty} x_n</latex>.</para>
+		<para>Let us now consider the case where <latex>a=+\infty</latex> and <latex><![CDATA[ c>0 ]]></latex>. Then, given <latex>u \geq 0</latex> in <latex>\RNr</latex> arbitrary, <latex>x_n\geq u/c</latex> for <latex>n</latex> sufficiently large, and so</para>
+		<math.display>
+			<latex><![CDATA[ cx_n \geq c(u/c) = u ]]></latex>
+		</math.display>
+		<para>for all <latex>n</latex> sufficiently large. This, however, means exactly that.</para>
+		<math.display>
+			<latex>\lim_{n\to\infty} cx_n = +\infty = c\cdot(+\infty)</latex>
+		</math.display>
+		<para>The case where <latex><![CDATA[ c<0 ]]></latex> follows with a similar argument. With the same method we verify the claim when <latex>\lim_{n\to\infty}x_n = -\infty</latex>.</para>
+		
+		<caption><partref>Sum</partref> &nbsp; <latex>\lim_{n\to\infty}(x_n \pm y_n) = a+b</latex></caption>
+		<para>Given <latex><![CDATA[ \varepsilon > 0 ]]></latex>, we need to show that there exists <latex>n_0\in\NNr</latex> such that</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ (x_n+y_n) - (a+b) } < \varepsilon,\quad \text{for all $n\geq n_0$} ]]></latex>
+		</math.display>
+		<para>As <latex>\lim_{n\to\infty} x_n =a</latex>, there exists <latex magnify="yes">n_1\in\NNr</latex> such that</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ x_n -a } < \varepsilon/2,\quad \text{for $n\geq n_1$} ]]></latex>
+		</math.display>
+		<para>Further, as <latex>\lim_{n\to\infty} y_n =b</latex>, there exists <latex magnify="yes">n_2\in\NNr</latex> such that</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ y_n - b } < \varepsilon/2,\quad \text{for $n\geq n_2$} ]]></latex>
+		</math.display>
+		<para>Now, if we set <latex>n_0 := \max\Set{ n_1 , n_2 }</latex>, we find</para>
+		<computation>
+			<left>\Abs{ (x_n+y_n) - (a + b) }</left>
+			<center>=</center>
+			<right>\Abs{ (x_n - a) + (y_n - b) }</right>
+			<left></left>
+			<center>\leq	<info><para>By the triangle inequality</para></info></center>
+			<right>\Abs{ x_n - a } + \Abs{ y_n - b }</right>
+			<left></left>
+			<center><![CDATA[ < ]]></center>
+			<right>\varepsilon/2\ +\ \varepsilon/2 = \varepsilon</right>
+		</computation>
+		<para>whenever <latex>n\geq n_0</latex>. This proves the claim.</para>
+		
+		<caption><partref>Product</partref> <latex>\lim_{n\to\infty}(x_n \cdot y_n) = a\cdot b</latex></caption>
+		<para>Given <latex><![CDATA[ \varepsilon > 0 ]]></latex>, we need to find <latex><![CDATA[ n_0 \in \NNr ]]></latex> such that</para>
+		<math.display>
+			<latex>
+				<![CDATA[ \Abs{ x_ny_n - ab } < \varepsilon\quad \text{for all $n\geq n_0$} ]]>
+			</latex>
+		</math.display>
+		<para>To find such <latex>n_0</latex> we make the following estimate: Given <latex><![CDATA[ \delta_x > 0 ]]></latex>, we have</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ x_n - a } < \delta_x\quad \text{for $n$ sufficiently large} ]]></latex>
+		</math.display>
+		<para>Given <latex><![CDATA[ \delta_y > 0 ]]></latex>, we have</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ y_n - b } < \delta_y \quad \text{for $n$ sufficiently large} ]]></latex>
+		</math.display>
+		<para>Thus, for <latex>n</latex> sufficiently large,</para>
+		<computation>
+			<left>\Abs{ x_n - a } \Abs{ y_n - b }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\delta_x\cdot \delta_y</right>
+			<left>\Abs{ (x_n - a)(y_n - b) }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\delta_x\cdot \delta_y</right>
+			<left>\Abs{ (x_ny_n - ab) + (2ab - x_nb - cy_n) }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\delta_x\cdot \delta_y</right>
+			<left>\Abs{ (x_ny_n - ab) + (ab - x_nb) + (ab - cy_n) }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\delta_x\cdot \delta_y</right>
+			<left>\Abs{ (x_ny_n - ab) } - \Abs{(ab - x_nb) + (ab - cy_n) }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\delta_x\cdot \delta_y</right>
+			<left>\Abs{ x_ny_n - ab }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\delta_x\cdot \delta_y + \Abs{a - x_n}\Abs{b} + \Abs{a}\Abs{b - y_n }</right>
+			<left>\Abs{ x_ny_n - ab }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\delta_x\cdot \delta_y + \delta_x\Abs{b} + \Abs{a}\delta_y</right>
+		</computation>
+		<para>It suffices to choose <latex>\delta_x</latex> and <latex>\delta_y</latex> such that the right hand side is less than <latex>\varepsilon</latex>. So:</para>
+		<math.display>
+			<latex>\delta_x := \min\Set{ \dfrac{ \varepsilon }{3} , \dfrac{ \varepsilon }{3\Abs{b} } },\qquad \delta_y := \min\Set{ \dfrac{ \varepsilon }{3} , \dfrac{ \varepsilon }{3\Abs{a}} }</latex>
+		</math.display>
+		<para>Here, we agree that <latex>\delta_x = \varepsilon/3</latex> if <latex>b=0</latex>, and that <latex>\delta_y= \varepsilon/3</latex> if <latex>a=0</latex>. Now choose <latex>n_0\in \NNr</latex> such that</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ x_n - a } < \delta_x\quad\text{and}\quad \Abs{ y_n - b } < \delta_y ]]></latex>
+		</math.display>
+		<para>for all <latex>n\geq n_0</latex>. For such <latex>n</latex> we find</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ x_ny_n - ab } < \dfrac{ \varepsilon }{3}\cdot \dfrac{ \varepsilon }{3} + \dfrac{ \varepsilon }{3} + \dfrac{ \varepsilon }{3} < \varepsilon ]]></latex>
+		</math.display>
+		<para>Therefore <latex>(x_ny_n)</latex> converges to <latex>ab</latex>, as claimed.</para>
+		
+		<caption><partref>Division</partref> <latex magnify="yes">\lim_{n\to\infty}\frac{x_n}{y_n} = \frac{a}{b}</latex></caption>
+		<para>We suggest to prove this in two steps:</para>
+		<ol>
+			<li><para>Under the stated hypotheses, show that <latex>\lim_{n\to \infty} 1/y_n = 1/b</latex>.</para></li>
+			<li><para>Then use part (iii) to show that</para>
+				<math.display>
+					<latex>\lim_{n\to \infty} \dfrac{x_n}{y_n} = \lim_{n\to \infty} \left( x_n \cdot \dfrac{1}{y_n}\right) = a\cdot \dfrac{1}{b}.</latex>
+				</math.display>
+				<para>The details are left to the reader.</para>
+			</li>
+		</ol>
+	</proof>
+</theorem>

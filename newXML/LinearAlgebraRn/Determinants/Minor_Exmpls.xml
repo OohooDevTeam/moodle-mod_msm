@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Minor"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Minors of a Matrix: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrr}
+4 &amp; 1 &amp; 6 &amp; 5 \\
+3 &amp; -2 &amp; -3 &amp; 2 \\
+9 &amp; 2 &amp; 4 &amp; 7 \\
+1 &amp; -9 &amp; -3 &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>has as its <math>
+                  <latex>(1,3)</latex>
+               </math>-minor the matrix <math>
+                  <latex>\Mtrx{A}_{13}</latex>
+               </math> below. The <math>
+                  <latex>1</latex>
+               </math>st row and the <math>
+                  <latex>3</latex>
+               </math>rd column of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> have been omitted.</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A}_{13} = 
+\left[
+\begin{array}{rrr}
+3 &amp; -2  &amp; 2 \\
+9 &amp; 2 &amp; 7 \\
+1 &amp; -9 &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>For another example, the <math>
+                  <latex>(4,2)</latex>
+               </math>-minor of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A}_{42} = 
+\left[
+\begin{array}{rrrr}
+4 &amp; 6 &amp; 5 \\
+3 &amp; -3 &amp; 2 \\
+9 &amp; 4 &amp; 7 
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>The <math>
+                  <latex>4</latex>
+               </math>th row and the <math>
+                  <latex>2</latex>
+               </math>nd column of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> have been omitted.</para.body>
+         </para>
+		    </statement.showme>
+	  </showme>
+</showme.pack>

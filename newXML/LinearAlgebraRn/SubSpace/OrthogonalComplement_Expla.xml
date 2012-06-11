@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_OrthogonalComplementProperties"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Orthogonal Complement Properties: Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Let's analyze what the properties of the orthogonal complement operation mean.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The property ‘If <math>
+                     <latex>S\subseteq T\subseteq W</latex>
+                  </math>, then <math>
+                     <latex>T^{\bot}\subseteq S^{\bot}</latex>
+                  </math>’. We read this as:</para.body>
+            </para>
+            <para>
+               <para.body>If S is a subset of T or equal to T, and T is a subset of W or equal to W, then the orthogonal complement of T is a subset of the orthogonal complement of S or is equal to the orthogonal complement of S.</para.body>
+            </para>
+            <para>
+               <para.body>Let’s think this through:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>T^{\bot}</latex>
+                        </math> consists of all those vectors of <math>
+                           <latex>W</latex>
+                        </math> which are orthogonal to every vector in <math>
+                           <latex>T</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If every vector in <math>
+                           <latex>S</latex>
+                        </math> is also in <math>
+                           <latex>T</latex>
+                        </math>, this means that a vector in the orthogonal complement of <math>
+                           <latex>T</latex>
+                        </math> is also in the orthogonal complement of <math>
+                           <latex>S</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The property <math>
+                     <latex>S^{\bot} = \span(S)^{\bot}</latex>
+                  </math>.   We read this as:</para.body>
+            </para>
+            <para>
+               <para.body>The orthogonal complement of S is equal to the orthogonal complement of the span of S.</para.body>
+            </para>
+            <para>
+               <para.body>We know that <math>
+                     <latex>S</latex>
+                  </math> is contained in <math>
+                     <latex>\span(S)</latex>
+                  </math>. So we see that <math>
+                     <latex>\span(S)^{\bot}</latex>
+                  </math> is contained in <math>
+                     <latex>S^{\bot}</latex>
+                  </math> from the previous property. That <math>
+                     <latex>S^{\bot}</latex>
+                  </math> is also contained in <math>
+                     <latex>\span(S)^{\bot}</latex>
+                  </math> requires proof by computation.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

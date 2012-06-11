@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_LinearMapGeneral">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: General Linear Transformations</title>
+	<exercise>
+		<problem>
+			<para>Let <latex>T\from W\to W</latex> be a linear transformation. If <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> are vectors in <latex>W</latex> for which</para>
+			<math.display>
+				<latex>T(\Vect{a} + \Vect{b}) = 2\Vect{a} - \Vect{b}\quad \text{and}\quad T(\Vect{a}-\Vect{b}) = \Vect{a} + 2 \Vect{b}</latex>
+			</math.display>
+			<para>Find <latex>T(\Vect{a})</latex> and <latex>T(\Vect{b})</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<computation>
+					<left>T(\Vect{a})</left>
+					<center>=</center>
+					<right>\tfrac{1}{2}\cdot (3 \Vect{a} + \Vect{b})</right>
+					<left>T(\Vect{b})</left>
+					<center>=</center>
+					<right>\tfrac{1}{2}\cdot (\Vect{a} - 3 \Vect{b})</right>
+				</computation>
+			</answer>
+			<solution.hint>
+				<para>Recall that <latex>T</latex> commutes with vector addition and scalar multiplication.</para>
+			</solution.hint>
+			<solution>
+				<para>We know that <latex>T</latex> is linear. Therefore it commutes with vector addition, and we obtain:</para>
+				<computation>
+					<left>T(\Vect{a} + \Vect{b})</left>
+					<center>=</center>
+					<right>T(\Vect{a}) + T(\Vect{b}) = 2 \Vect{a} - \Vect{b}</right>
+					<left>T(\Vect{a} - \Vect{b})</left>
+					<center>=</center>
+					<right>T(\Vect{a}) - T(\Vect{b}) = \Vect{a} + 2 \Vect{b}</right>
+				</computation>
+				<para>This is a system of linear equations with the unknowns <latex>T(\Vect{a})</latex> and <latex>T(\Vect{b})</latex>, and we can solve it with the methods we have. However, this particular system is so simple, that we abandon the general row reduction algorithm and solve directly:</para>
+				<computation>
+					<left>2 T(\Vect{a})</left>
+					<center>=</center>
+					<right>3 \Vect{a} + \Vect{b}</right>
+					<left>T(\Vect{a})</left>
+					<center>=</center>
+					<right>\tfrac{1}{2}\cdot (3 \Vect{a} + \Vect{b})</right>
+				</computation>
+				<para>Substituting this result gives</para>
+				<computation>
+					<left>T(\Vect{b})</left>
+					<center>=</center>
+					<right>2 \Vect{a} - \Vect{b} - \tfrac{1}{2}\cdot (\Vect{3}\Vect{a} + \Vect{b})</right>
+					<left></left>
+					<center>=</center>
+					<right>\tfrac{1}{2} \cdot ( \Vect{a} - 3 \Vect{b} )</right>
+				</computation>
+				
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Given the linear maps below, answer the subsequent questions</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+L\from \RNr[2] \longrightarrow \RNr[2], &\quad L(x,y) = (-2x-3y,4y) \\
+T\from \RNr[2] \longrightarrow \RNr[2], &\quad T(x,y) = (y-3x,2y-x)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex> with respect to standard coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rr}
+-2 & -3 \\
+0 & 4
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The columns of <latex>\Mtrx{A}</latex> are given by <latex>L(\StdBss{1})</latex> and <latex>L(\StdBss{2})</latex>. Therefore we compute</para>
+					<computation>
+						<left>L(\StdBss{1})</left>
+						<center>=</center>
+						<right>L(1,0) =(-2,0)</right>
+						<left>L(\StdBss{2})</left>
+						<center>=</center>
+						<right>L(0,1) = (-3,4)</right>
+					</computation>
+					<para>Accordingly we obtain</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rr}
+-2 & -3 \\
+0 & 4
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{B}</latex> representing <latex>T</latex> with respect to standard coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B} = 
+\left[
+\begin{array}{rr}
+-3 & 1 \\
+-1 & 2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution.hint>
+					<para>Adapt the method used in part a.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>The first column of <latex>\Mtrx{B}</latex> is <latex>T(\StdBss{1}) =  T(1,0)</latex></para>
+				</solution.hint>
+				<solution.hint>
+					<para>The second column of <latex>\Mtrx{B}</latex> is <latex>T(\StdBss{2}) =  T(0,1)</latex></para>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is <latex>(L+T)(x,y)</latex>?</para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>(L+T)(x,y)</left>
+						<center>=</center>
+						<right>(-5x-2y,-x+6y)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>(L+T)(x,y)</left>
+						<center>=</center>
+						<right>L(x,y) + T(x,y)</right>
+						<left></left>
+						<center>=</center>
+						<right>(-2x-3y,4y) + (y-3x,2y-x)</right>
+						<left></left>
+						<center>=</center>
+						<right>(-5x-2y,-x+6y)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{C}</latex> representing <latex>L+T</latex> with respect to standard coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C} = 
+\left[
+\begin{array}{rr}
+-5 & -2 \\
+-1 & 6
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We have two ways of answering this problem:</para>
+					<ul>
+						<li><para>We can compute the vectors <latex>(L+T)(\StdBss{1})</latex> and <latex>(L+T)(\StdBss{2})</latex> and use them as the columns of <latex>\Mtrx{C}</latex>.</para></li>
+						<li><para>Alternatively, we know that</para>
+						<math.display>
+							<latex>
+								<![CDATA[
+\Mtrx{C} = \Mtrx{A} + \Mtrx{B} = \left[
+\begin{array}{rr}
+-2 & -3 \\
+0 & 4
+\end{array}
+\right] + \left[
+\begin{array}{rr}
+-3 & 1 \\
+-1 & 2
+\end{array}
+\right] =
+\left[
+\begin{array}{rr}
+-5 & -2 \\
+-1 & 6
+\end{array}
+\right]
+]]>
+							</latex>
+						</math.display>
+						</li>
+					</ul>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is <latex>(3T)(x,y)</latex>?</para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>(3t)(x,y)</left>
+						<center>=</center>
+						<right>(J-9x+3y,-3x+6y)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We compute:</para>
+					<computation>
+						<left>(3T)(x,y)</left>
+						<center>=</center>
+						<right>3\cdot T(x,y)</right>
+						<left></left>
+						<center>=</center>
+						<right>(-3x+3y,-3x+6y)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{D}</latex> representing <latex>3T</latex> with respect to standard coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{D} =
+\left[
+\begin{array}{rr}
+-9 & 3 \\
+-3 & 6
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We have two ways of solving this problem:</para>
+					<ul>
+						<li>
+							<para>Using the previous part, we compute <latex>(3T)(\StdBss{1})</latex> and <latex>(3T)(\StdBss{2})</latex>, and use the resulting vectors as the columns of the desired matrix <latex>\Mtrx{D}</latex>.</para>
+						</li>
+						<li>
+							<para>We know that <latex>\Mtrx{B}</latex> represents <latex>T</latex>. Therefore the matrix representing <latex>3\cdot T</latex> is</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+D: = 3\cdot \Mtrx{B} = 3\cdot 
+\left[
+\begin{array}{rr}
+-3 & 1 \\
+1 & 2
+\end{array}
+\right] = 
+\left[
+\begin{array}{rr}
+-9 & 3 \\
+3 & 6
+\end{array}
+\right]
+									]]>
+								</latex>
+							</math.display>
+						</li>
+					</ul>
+					
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{E}</latex> representing <latex>(T-2L)</latex> with respect to standard coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{E} = 
+\left[
+\begin{array}{rr}
+1 & 7 \\
+-1 & -6
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution.hint>
+					<para><latex>\Mtrx{E} = \Mtrx{B} - 2\cdot \Mtrx{A}</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the image of <latex>(\pi,\pi^2)</latex> under <latex>(T-2L)</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>(T-2L)(-\pi,\pi^2)</left>
+						<center>=</center>
+						<right>(-\pi + y\pi^2 , \pi -6\pi^2)</right>
+					</computation>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{F}</latex> representing the composite <latex>L\circ T</latex> with respect to the standard basis.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{F} = 
+\left[
+\begin{array}{rr}
+9 & -8 \\
+-4 & 8
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The matrix representing <latex>L\circ T</latex> is the matrix product</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{D} = \Mtrx{A}\cdot \Mtrx{B} = 
+\left[
+\begin{array}{rr}
+-2 & -2 \\
+0 & 4
+\end{array}
+\right] \cdot
+\left[
+\begin{array}{rr}
+-3 & 1 \\
+-1 & 2
+\end{array}
+\right] = 
+\left[
+\begin{array}{rr}
+9 & -8 \\
+-4 & 8
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>For arbitrary <latex>\Vect{x}=(x,y)</latex> in <latex>\RNr[2]</latex>, find <latex>L\circ T(x,y)</latex> in two different ways.</para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>L\circ T(x,y)</left>
+						<center>=</center>
+						<right>(9x-8y,-4x+8y)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We first use the definition of composition of linear transformations</para>
+					<computation>
+						<left>(L\circ T)(x,y)</left>
+						<center>=</center>
+						<right>L(T(x,y))</right>
+						<left></left>
+						<center>=</center>
+						<right>L(y-3x,2y-x)</right>
+						<left></left>
+						<center>=</center>
+						<right>(9x-8y,-4x+8y)</right>
+					</computation>
+					<para>As an alternative, we already know that <latex>L\circ T</latex> is represented by <latex>\Mtrx{D}</latex>. Therefore</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+(L\circ T)(x,y) = 
+\left[
+\begin{array}{rr}
+9 & -8 \\
+-4 & 8
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+x \\ y
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+9x-8y \\ -4x + 8y
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{G}</latex> representing <latex>T\circ L</latex> with respect to the standard basis.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{G} = 
+\left[
+\begin{array}{rr}
+6 & 13 \\
+2 & 11
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the image of <latex>(x,y)</latex> under <latex>(T\circ L)</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>(T\circ L)(x,y)</left>
+						<center>=</center>
+						<right>6x + 13y, 2x+11y)</right>
+					</computation>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Are the linear maps <latex>T\circ L</latex> and <latex>L\circ T</latex> equal?</para>
+			</problem>
+			<approach>
+				<answer><para>No!</para></answer>
+				<solution.hint>
+					<para>Two linear functions are equal exactly when the have the same representing matrices.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Compare the matrix representing <latex>T\Comp L</latex> with the matrix representing <latex>L\Comp T</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear maps below answer the subsequent questions.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+L\from \RNr[4] \longrightarrow \RNr[3] &\quad L(x,y,z,t) = (-t+x,-3z+t,4y) \\
+T\from \RNr[3] \longrightarrow \RNr[2] &\quad T(x,y,z) = (5y+z-3x,-2x+4z)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex> with respect to standard coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} =
+\left[
+\begin{array}{rrrr}
+1 & 0 & 0 & -1 \\
+0 & 0 & -3 & 1 \\
+0 & 4 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{B}</latex> representing <latex>T</latex> with respect to standard coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B} =
+\left[
+\begin{array}{rrrr}
+-3 & 5 & 1 \\
+-2 & 0 & 4
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Determine if the linear transformation <latex>(L+T)</latex> is defined. It it is, find the matrix representing it with respect to standard coordinates. If not, explain why.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>(L+T)</latex> is not defined because <latex>L</latex> and <latex>T</latex> have different domains and targets.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Determine if the composite <latex>L\circ T</latex> is defined. It it is find the matrix representing it with respect to standard coordinates. If not, explain why.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>(L\circ T)</latex> is not defined because the target <latex>\RNr[2]</latex> of <latex>T</latex> is distinct from the domain <latex>\RNr[4]</latex> of <latex>L</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Determine if the composite <latex>T\circ L</latex> is defined. If it is, find the matrix <latex>\Mtrx{C}</latex> representing it with respect to standard coordinates. If not, explain why.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The composite <latex>T\circ L</latex> is defined because the target <latex>\RNr[3]</latex> of <latex>L</latex> equals the domain of <latex>T</latex>. The matrix representing it with respect to standard coordinates is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C} = \Mtrx{B}\cdot \Mtrx{A} =
+\left[
+\begin{array}{rrrr}
+-3 & 4 & -15 & 8 \\
+-2 & 16 & 0 & 2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If defined, find the image of <latex>(-1,1,-4)</latex> under <latex>(T\circ L)</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>(T\circ L)(-1,1,-4)</latex> is not defined, as <latex>(-1,1,-4)\in \RNr</latex>, while the domain of <latex>(T\circ L)</latex> is <latex>\RNr[4]</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If defined, find the image of <latex>(-1,1,0,-4)</latex> under <latex>(T\circ L)</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>(T\circ L)(-1,1,0,-4)</left>
+						<center>=</center>
+						<right>(-25,10)</right>
+					</computation>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Is the linear map <latex>(T^2\circ L)</latex> is defined? – Justify your answer!</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>T^2=T\circ T</latex> is not defined, and so <latex>(T^2\circ L)</latex> is not defined.</para>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let us use the standard ordered basis <latex>\EuScript{S}</latex> for <latex>\RNr[2]</latex>, the basis <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2,\Vect{b}_3)</latex> for <latex>\RNr[3]</latex>, and the basis <latex>\EuScript{C}=(\Vect{c}_1,\Vect{c}_2,\Vect{c}_3,\Vect{c}_4)</latex> for <latex>\RNr[4]</latex>, where</para>
+			<math.display>
+				<latex>\Vect{b}_1 = (1,0,1),\quad \Vect{b}_2 = (-1,-1,0),\quad \Vect{b}_3 = (0,0,2)</latex>
+			</math.display>
+			<para>and</para>
+			<math.display>
+				<latex>\Vect{c}_1=(1,1,1,1),\quad \Vect{c}_2 = (0,-1,0,1),\quad \Vect{c}_3 = (-1,0,-1,0),\quad \Vect{c}_4 = (0,0,1,-1)</latex>
+			</math.display>
+			<para>Let <latex>L\from \RNr[3] \to \RNr[3]</latex> be the linear map that is represented by</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A_{\EuScript{B}\EuScript{B}} = 
+\left[
+\begin{array}{rrr}
+0 & -1 & 1 \\
+2 & 0 & -1 \\
+0 & -2 & 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem><para>Find <latex>L(\Vect{b}_1)_{\EuScript{B}}</latex>, <latex>L(\Vect{b}_2)_{\EuScript{B}}</latex>, and <latex>L(\Vect{b}_3)_{\EuScript{B}}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>L(\Vect{b}_1)_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(0,2,0)</right>
+						<left>L(\Vect{b}_2)_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(-1,0,-2)</right>
+						<left>L(\Vect{b}_3)_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(1,-1,0)</right>
+					</computation>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find <latex>L(3 \Vect{b}_1 - 4 \Vect{b}_2 + \Vect{b}_3)</latex></para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>L(3 \Vect{b}_1 - 4 \Vect{b}_2 + \Vect{b}_3)</left>
+						<center>=</center>
+						<right>5 \Vect{b}_1 + 5 \Vect{b}_2 + 8 \Vect{b}_3</right>
+					</computation>
+				</answer>
+				<solution>
+					<para><latex>3 \Vect{b}_1 - 4 \Vect{b}_2 + \Vect{b}_3</latex> is the vector <latex>\Vect{x}</latex> with <latex>\Vect{x}_{\EuScript{B}} = (3,-4,1)</latex>. Therefore</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+L(\Vect{x})_{\EuScript{B}} = \Mtrx{A}_{\EuScript{B}\EuScript{B}}
+\left[
+\begin{array}{r}
+3 \\ -4 \\ 1
+\end{array}
+\right] = 
+\left[
+\begin{array}{r}
+5 \\ 5 \\ 8
+\end{array}
+\right]
+\endaligned
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find <latex>L(a \Vect{b}_1 + b \Vect{b}_2 + c\Vect{b}_3)</latex></para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>L(a \Vect{b}_1 + b \Vect{b}_2 + c\Vect{b}_3)</left>
+						<center>=</center>
+						<right>(-b+c) \Vect{b}_1 + (2a-c) \Vect{b}_2 + (-2b) \Vect{b}_3</right>
+					</computation>
+				</answer>
+				<solution>
+					<para><latex>a \Vect{b}_1 + b \Vect{b}_2 + c\Vect{b}_3</latex> is the vector <latex>\Vect{y}</latex> with <latex>\Vect{y}_{\EuScript{B}} = (a,b,c)</latex>. Therefore</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+L(\Vect{y})_{\EuScript{B}} = \Mtrx{A}_{\EuScript{B}\EuScript{B}}
+\left[
+\begin{array}{r}
+a \\ b \\ c
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+-b + c \\ 2a-c \\ -2b
+\end{array}
+\right]
+\endaligned
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix representing <latex>L</latex> with respect to standard coordinates of <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{\EuScript{S}\EuScript{S}} = \dfrac{1}{2}\,
+\left[
+\begin{array}{rrr}
+-6 & 8 & 2 \\
+-5 & 5 & 1 \\
+-1 & 11 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We know that the matrix converting from <latex>\EuScript{B}</latex>-coordinates to standard coordinates has as its columns the vectors <latex>\Vect{b}_1</latex>, <latex>\Vect{b}_2</latex>, <latex>\Vect{b}_3</latex>; i.e.</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+C_{\EuScript{S}\EuScript{B}} = 
+\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+0 & -1 & 0 \\
+1 & 0 & 2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Further,</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C}_{\EuScript{B}\EuScript{S}} = \left( \Mtrx{C}_{\EuScript{S}\EuScript{B}}\right)^{-1} =
+\dfrac{1}{2}\, \left[
+\begin{array}{rrr}
+2 & -2 & 0 \\
+0 & -2 & 0 \\
+-1 & 1 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Finally, the matrix representing <latex>L</latex> with respect to standard coordinates is given by the matrix identity</para>
+					<computation>
+						<left>\Mtrx{A}_{\EuScript{S}\EuScript{S}}</left>
+						<center>=</center>
+						<right>\Mtrx{C}_{\EuScript{S}\EuScript{B}} \Mtrx{A}_{\EuScript{B}\EuScript{B}} \Mtrx{C}_{\EuScript{B}\EuScript{S}}</right>
+					</computation>
+					<para>With this formula, we find</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{\EuScript{S}\EuScript{S}} = 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+-6 & 8 & 2 \\
+-5 & 5 & 1 \\
+-1 & 11 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>An ordered basis for <latex>\RNr[4]</latex> is <latex>\EuScript{C}=(\Vect{c}_1,\Vect{c}_2,\Vect{c}_3,\Vect{c}_4)</latex>, where</para>
+			<math.display>
+				<latex>\Vect{c}_1=(1,1,1,1),\quad \Vect{c}_2=(0,-1,0,1),\quad \Vect{c}_3=(-1,0,-1,0),\quad \Vect{c}_4=(0,0,1,-1)</latex>
+			</math.display>
+			<para>Let <latex>L\from \RNr[4]\to \RNr[2]</latex> be the linear map with</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}_{\EuScript{S}\EuScript{C}} = 
+\left[
+\begin{array}{rrrr}
+-2 & 0 & 1 & -3 \\
+1 & 1 & 3 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Find the matrix representing <latex>L</latex> with respect to the standard bases of <latex>\RNr[4]</latex> and <latex>\RNr[2]</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A}_{\EuScript{S}\EuScript{S}} = -\dfrac{1}{2}\cdot
+\left[
+\begin{array}{rrrr}
+-5 & 1 & 7 & 1 \\
+13 & -3 & -7 & -5
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+			</answer>
+			<solution>
+				<para>The matrix representing <latex>L</latex> with respect to the standard basis of <latex>\RNr[4]</latex> is of the form</para>
+				<math.display>
+					<latex>\Mtrx{A}_{\EuScript{S}\EuScript{S}} = \Mtrx{A}_{\EuScript{S}\EuScript{C}}\cdot \Mtrx{C}_{\EuScript{C}\EuScript{S}}
+					</latex>
+				</math.display>
+				<para>where <latex>\Mtrx{C}_{\EuScript{C}\EuScript{S}}</latex> converts from standard coordinates to <latex>\EuScript{C}</latex>-coordinates in <latex>\RNr[4]</latex>. We also know that</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{C}_{\EuScript{C}\EuScript{S}} = \Mtrx{C}_{\EuScript{S}\EuScript{C}}^{-1} = 
+\left[
+\begin{array}{rrrr}
+1 & 0 & -1 & 0 \\
+1 & -1 & 0 & 0 \\
+1 & 0 & -1 & 1 \\
+1 & 1 & 0 & -1
+\end{array}
+\right]^{-1}
+]]>
+					</latex>
+				</math.display>
+				<para>With the row reduction method we find</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\left[
+\begin{array}{rrrr}
+1 & 0 & -1 & 0 \\
+1 & -1 & 0 & 0 \\
+1 & 0 & -1 & 1 \\
+1 & 1 & 0 & -1
+\end{array}
+\right]^{-1}\ =\ -\dfrac{1}{2}\cdot
+\left[
+\begin{array}{rrrr}
+1 & -1 & -1 & -1 \\
+1 & 1 & -1 & -1 \\
+3 & -1 & -1 & -1 \\
+2 & 0 & -2 & 0
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>Consequently, we obtain</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rcl}
+\Mtrx{A}_{\EuScript{S}\EuScript{S}} & = & 
+\left[
+\begin{array}{rrrr}
+-2 & 0 & 1 & -3 \\
+1 & 1 & 3 & 1
+\end{array}
+\right]\cdot \left(-\dfrac{1}{2}\right)\cdot
+\left[
+\begin{array}{rrrr}
+1 & -1 & -1 & -1 \\
+1 & 1 & -1 & -1 \\
+3 & -1 & -1 & -1 \\
+2 & 0 & -2 & 0
+\end{array} 
+\right] \\
+	&= & 
+-\dfrac{1}{2} \left[
+\begin{array}{rrrr}
+-5 & 1 & 7 & 1 \\
+13 & -3 & -7 & -5
+\end{array}
+\right]
+\end{array}
+]]>
+					</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>In terms of standard coordinates of <latex>\RNr[2]</latex>, let</para>
+			<math.display>
+				<latex>L\from \RNr[2] \longrightarrow \RNr[2],\quad L(x,y)=(-x+y,y).</latex>
+			</math.display>
+			<para>Let <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2)</latex> denote the basis of <latex>\RNr[2]</latex> with</para>
+			<math.display>
+				<latex>\Vect{b}_1 = (1,1),\qquad \Vect{b}_2 = (-2,-1)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem><para>Find <latex>L(\Vect{b}_1)_{\EuScript{B}}</latex></para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>L(\Vect{b}_1)_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(2,1)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We first compute <latex>L(\Vect{b}_1)</latex> in standard coordinates:</para>
+					<computation>
+						<left>L(\Vect{b}_1)</left>
+						<center>=</center>
+						<right>L(1,1)</right>
+						<left></left>
+						<center>=</center>
+						<right>(0,1)</right>
+					</computation>
+					<para>To find the <latex>\EuScript{B}</latex>-coordinates of <latex>(0,1)</latex>, we need to solve the vector equation</para>
+					<computation>
+						<left>(0,1)</left>
+						<center>=</center>
+						<right>s\cdot \Vect{b}_1\ +\ t\cdot \Vect{b}_2</right>
+						<left></left>
+						<center>=</center>
+						<right>s\cdot (1,1)\ +\ t\cdot (-2,-1)</right>
+					</computation>
+					<para>We find that <latex>s:=2</latex> and <latex>t:=1</latex> is the unique solution and, therefore,</para>
+					<computation>
+						<left>L(\Vect{b}_1)_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(2,1)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find <latex>L(\Vect{b}_2)_{\EuScript{B}}</latex></para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>L(\Vect{b}_2)_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(-3,-2)</right>
+					</computation>
+				</answer>
+				<solution.hint>
+					<para>You can use the solution of part a. as a template.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{A}_{\EuScript{B}\EuScript{B}}</latex> representing <latex>L</latex> with respect to <latex>\EuScript{B}</latex>-coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{\EuScript{B}\EuScript{B}} = 
+\left[
+\begin{array}{rr}
+2 & -3 \\
+1 & -2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The matrix <latex>\Mtrx{A}_{\EuScript{B}\EuScript{B}}</latex> has as its columns the vectors <latex>L(\Vect{b}_1)_{\EuScript{B}}</latex> and <latex>L(\Vect{b}_2)_{\EuScript{B}}</latex>. Using the answers to parts a. and b. of this problem, we obtain:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{\EuScript{B}\EuScript{B}} = 
+\left[
+\begin{array}{rr}
+2 & -3 \\
+1 & -2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x}_{\EuScript{B}} = (a,b)</latex>, find <latex>L(\Vect{x})_{\EuScript{B}}</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>L(\Vect{x})_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(2a-3b,a-2b)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We know that</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcl}
+L(\Vect{x})_{\EuScript{B}} & = &
+	\Mtrx{A}_{\EuScript{B}\EuScript{B}}\cdot \Vect{x}_{\EuScript{B}} \\
+& = & \left[
+\begin{array}{rr}
+2 & -3 \\
+1 & -2
+\end{array}
+\right]
+\left[
+\begin{array}{cc}
+a \\ b
+\end{array}
+\right] \\
+& = &
+\left[
+\begin{array}{c}
+2a-3b \\ a - 2b
+\end{array}
+\right]
+\end{array}
+]]>
+						</latex>
+					</math.display>
+					<para>Consequently, <latex>L(\Vect{x})_{\EuScript{B}} = (2a-3b,a-2b)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>In terms of standard bases consider the linear map</para>
+			<math.display>
+				<latex>T\from \RNr[2] \longrightarrow \RNr[4],\quad T(x,y) = (2y,-x,x+y,y)</latex>
+			</math.display>
+			<para>With the basis <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2)</latex> of <latex>\RNr[2]</latex> satisfying</para>
+			<math.display>
+				<latex>\Vect{b}_1 = (1,1),\qquad \Vect{b}_2 = (-2,-1)</latex>
+			</math.display>
+			<para>and the basis <latex>\EuScript{C}=(\Vect{c}_1,\Vect{c}_2,\Vect{c}_3,\Vect{c}_4)</latex> of <latex>\RNr[4]</latex> with</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\Vect{c}_1=(1,1,1,1) &\qquad \Vect{c}_2=(0,-1,0,1) \\
+\Vect{c}_3=(-1,0,-1,0) &\qquad \Vect{c}_4=(0,0,1,-1)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			<para>find the matrix <latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}}</latex> representing <latex>T</latex> with respect to <latex>\EuScript{B}</latex>-coordinates for <latex>\RNr[2]</latex> and <latex>\EuScript{C}</latex>-coordinates for <latex>\RNr[4]</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A}_{\EuScript{C}\EuScript{B}} = 
+\left[
+\begin{array}{rr}
+0 & 0 \\
+1 & -2 \\
+-2 & 2 \\
+0 & -1
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+			</answer>
+			<solution>
+				<para>From the information given, we see immediately,</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A}_{\EuScript{S}\EuScript{S}} = 
+\left[
+\begin{array}{rr}
+0 & 2 \\
+-1 & 0 \\
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>Further we have the formula</para>
+				<computation>
+					<left>\Mtrx{A}_{\EuScript{C}\EuScript{B}}</left>
+					<center>=</center>
+					<right>\Mtrx{D}_{\EuScript{C}\EuScript{S}} \Mtrx{A}_{\EuScript{S}\EuScript{S}} \Mtrx{C}_{\EuScript{S}\EuScript{B}}</right>
+				</computation>
+				<para>in which <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex> converts from <latex>\EuScript{B}</latex>-coordinates to standard coordinates in <latex>\RNr[2]</latex>, and <latex>\Mtrx{D}_{\EuScript{C}\EuScript{S}}</latex> converts from standard coordinates to <latex>\EuScript{C}</latex>-coordinates in <latex>\RNr[4]</latex>. Now, using <latex>\Vect{b}_1</latex> and <latex>\Vect{b}_2</latex> as column vectors we obtain</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{C}_{\EuScript{S}\EuScript{B}}\ =\
+\left[
+\begin{array}{rr}
+1 & -2 \\
+1 & -1
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>Further, using the vectors <latex>\Vect{c}_j</latex> as columns of a <latex>(4,4)</latex>-matrix we obtain</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{D}_{\EuScript{S}\EuScript{C}}\ =\ 
+\left[
+\begin{array}{rrrr}
+1 & 0 & -1 & 0 \\
+1 & -1 & 0 & 0 \\
+1 & 0 & -1 & 1 \\
+1 & 1 & 0 &-1
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				
+				<para>We also know that <latex>\Mtrx{D}_{\EuScript{C}\EuScript{S}} = \Mtrx{D}_{\EuScript{S}\EuScript{C}}^{-1}</latex>. With the row reduction method we obtain</para>
+				<math.display>
+					<latex>
+						<![CDATA[ 
+\left[
+\begin{array}{rrrr}
+1 & 0 & -1 & 0 \\
+1 & -1 & 0 & 0 \\
+1 & 0 & -1 & 1 \\
+1 & 1 & 0 &-1
+\end{array}
+\right]^{-1}\ =\ 
+\left(-\dfrac{1}{2}\right)
+\left[
+\begin{array}{rrrr}
+1 & -1 & -1 & -1 \\
+1 & 1 & -1 & -1 \\
+3 & -1 & -1 & -1 \\
+2 & 0 & -2 & 0
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>Therefore we compute the required matrix product <latex>\Mtrx{D}_{\EuScript{C}\EuScript{S}} \Mtrx{A}_{\EuScript{S}\EuScript{S}} \Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex> as</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\aligned
+\Mtrx{A}_{\EuScript{C}\EuScript{B}}\ &=\ 
+\left(-\dfrac{1}{2}\right)
+\left[
+\begin{array}{rrrr}
+1 & -1 & -1 & -1 \\
+1 & 1 & -1 & -1 \\
+3 & -1 & -1 & -1 \\
+2 & 0 & -2 & 0
+\end{array}
+\right]\ 
+\left[
+\begin{array}{rr}
+0 & 2 \\
+-1 & 0 \\
+1 & 1 \\
+0 & 1
+\end{array}
+\right]\ 
+\left[
+\begin{array}{rr}
+1 & -2 \\
+1 & -1
+\end{array}
+\right] \\
+&=\ 
+\left[
+\begin{array}{rr}
+0 & 0 \\
+1 & -2 \\
+-2 & 2 \\
+0 & -1
+\end{array}
+\right]
+\endaligned
+]]>
+					</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>A linear transformation <latex>T\from \RNr[2]\to \RNr[2]</latex> satisfies</para>
+			<math.display>
+				<latex>T(1,2) = (-2,2) \quad \text{and} \quad T(-1,3) = (-1,2)</latex>
+			</math.display>
+			<para>Find <latex>T\Comp T(0,5)</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<computation>
+					<left>T\Comp T(0,5)</left>
+					<center>=</center>
+					<right>(0,4)</right>
+				</computation>
+			</answer>
+			<solution.hint>
+				<para>One way to solve this problem is by noticing that</para>
+				<computation>
+					<left>(0,5)</left>
+					<center>=</center>
+					<right>(1,2) + (-1,3)</right>
+				</computation>
+				<para>Now compute, using the information that <latex>T</latex> is linear.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>A more systematic way to solve this problem is the find the matrix which represents <latex>T</latex> with respect to the standard coordinates of <latex>\RNr[2]</latex>.</para>
+			</solution.hint>
+		</approach>
+	</exercise>
+</exercise.pack>

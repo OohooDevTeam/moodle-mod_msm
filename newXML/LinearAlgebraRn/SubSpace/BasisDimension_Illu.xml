@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_BasisDimension"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Basis and Dimension - Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The dimension of a sub vector space <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> is defined to be the number of vectors in any basis of <math>
+                     <latex>V</latex>
+                  </math>. In the series of pictures below, we illustrate the definition in the case where <math>
+                     <latex>V=\RNr[3]</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A single nonzero vector in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> determines one coordinate axis.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/BasisDimension_1.gif"/>
+            </media>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A second vector, not parallel to the first, determines a second coordinate axis. These two vectors span a plane, and every vector in this plane can be expressed in exactly one way as a linear combination of the chosen vectors.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/BasisDimension_2.gif"/>
+                  </media>   <media type="image" active="0" inline="0">
+                     <img src="ims/BasisDimension_3.gif"/>
+                  </media>
+               </para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A third vector pointing outside the plane spanned by the first two vectors determines a third coordinate axis. Every vector in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> can be expressed in exactly one way as a linear combination of the chosen vectors. These three vectors form a basis of <math>
+                     <latex>\RNr[3]</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/BasisDimension_4.gif"/>
+            </media>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In <math>
+                     <latex>V=\RNr[3]</latex>
+                  </math> the process of selecting basis vectors stops after three selections, because there is no more room for independent vectors.</para.body>
+            </para>
+            <para>
+               <para.body>In an arbitrary vector space <math>
+                     <latex>V</latex>
+                  </math>, we keep adding independent vectors until we cannot find any more. The vectors we have thus chosen form a basis of <math>
+                     <latex>V</latex>
+                  </math>, and the number of them is the dimension of <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

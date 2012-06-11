@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_PastingLemma"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Pasting Lemma: Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The essence of the Pasting Lemma is illustrated in the graphic below.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/PastingLemma.png"/>
+            </media>
+            <para>
+               <para.body>We start with two functions:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>{\color{red} f\from \OCIntrvl{a}{b}\to \RNr}</latex>
+                        </math>, and</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>{\color{blue} g\from \COIntrvl{b}{c}\to \RNr}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>Now there is a two-step process which gives new information:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>{\color{red} f(b)} = {\color{blue} g(b)}</latex>
+                        </math>, then <math>
+                           <latex>f</latex>
+                        </math> and <math>
+                           <latex>g</latex>
+                        </math> can be pasted together to form a new function</para.body>
+                  </para>
+                  <math.display>
+                     <latex>h\from \OOIntrvl{a}{c} \longrightarrow \RNr</latex>
+                  </math.display>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>f</latex>
+                        </math> and <math>
+                           <latex>g</latex>
+                        </math> are both continuous at <math>
+                           <latex>b</latex>
+                        </math>, so is <math>
+                           <latex>h</latex>
+                        </math>. – Visibly: under this condition the pasted function does not make a jump at <math>
+                           <latex>b</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_EigenvectorsEigenvalues">
+	<headers>
+		<full>Eigenvectors and Eigenvalues</full>
+		<toc>Eigenvectors and Eigenvalues</toc>
+		<short>Eigenvectors and Eigenvalues</short>
+	</headers>
+	<intro>
+		<para>In this section we introduce the concepts of eigenvector and eigenvalue. Given an <latex>(n,n)</latex>-matrix we learn how to find its eigenvalues and corresponding eigenvectors.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_EigenvectorEigenvalue">
+			<caption>Eigenvector / Eigenvalue</caption>
+			<associate Description="Illustration">
+				<subpage.ref subpageID="EigenvectorValue_Sub"/>
+				<info><para>An illustration of the concept &lsquo;eigenvector&rsquo;.</para></info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_EigenvectorEigenvalue"/>
+				<info>
+					<caption>Example</caption>
+					<para>Examples of eigenvectors and eigenvalues.</para>
+				</info>
+			</associate>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation</caption>
+					<para>The symbol <latex>\lambda</latex> is a Greek letter. It is pronounced `lambda'</para>
+				</info>
+			</associate>
+			
+			<para>An eigenvector of an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> is a nonzero vector <latex>\Vect{v}</latex> in <latex>\RNr[n]</latex> such that</para>
+			<computation>
+				<left>A \Vect{v}</left>
+				<center>=	<info>
+					<caption>What does this equation mean?</caption>
+					<para>This equation asserts that <latex>\Mtrx{A}</latex> transforms <latex>\Vect{v}</latex> by rescaling it by the factor <latex>\lambda</latex>. Thus the vectors <latex>\Vect{v}</latex> and <latex>\Mtrx{A}\Vect{v}</latex> lie on the same line.</para>
+				</info></center>
+				<right>\lambda \Vect{v}\quad \text{for some $\lambda$ in $\RNr$}</right>
+			</computation>
+			<para>The number <latex>\lambda</latex> is called the eigenvalue of <latex>\Mtrx{A}</latex> corresponding to <latex>\Vect{v}</latex>.
+				<index.glossary>
+					<term>eigenvector</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>eigenvalue</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+			</para>
+		</def>
+		<para>We turn to the question of finding eigenvectors and eigenvectors of a given <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>.</para>
+		<xi:include href="FindEigenData_Thm.xml"/>
+		
+		
+		<def type="Terminology" id="Terminology_CharacteristicPolynomial">
+			<caption>Characteristic polynomial</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_CharacteristicPolynomial"/>
+				<info><para>Examples of characteristic polynomials</para></info>
+			</associate>
+			
+			<para>The determinant of the <latex>(n,n)</latex>-matrix <latex>(\Mtrx{A}-\lambda \IdMtrx[n])</latex> is a polynomial of degree <latex>n</latex> in the variable <latex>\lambda</latex>, called the characteristic polynomial of <latex>\Mtrx{A}</latex>.
+				<index.glossary>
+					<term>characteristic</term><term>polynomial of a matrix</term>
+				</index.glossary>
+				It is of the form
+			</para>
+			<computation>
+				<left>p(\lambda)</left>
+				<center>=</center>
+				<right>a_n \lambda^n + \cdots a_1\lambda + a_0</right>
+			</computation>
+		</def>
+		<para>Next we introduce concepts which help us extract information about <latex>\Mtrx{A}</latex> from its characteristic polynomial.</para>
+		
+		<def type="Definition" id="Def_AlgebraicMultiplicity">
+			<caption>Algebraic multiplicity of an eigenvalue</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_AlgebraicMultiplicity"/>
+				<info>
+					<caption>Example</caption>
+					<para>How to find the algebraic multiplicities of roots of a polynomial:</para>
+				</info>
+			</associate>
+			<para>An eigenvalue <latex>t</latex> of a matrix <latex>\Mtrx{A}</latex> is said to have algebraic multiplicity <latex>a</latex> if the characteristic polynomial <latex>p(\lambda)</latex> can be written as
+				<index.glossary>
+					<term>algebraic multiplicity</term>
+					<info><para>... of an eigenvalue. Definition of the concept.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>multiplicity</term><term>algebraic</term>
+					<info><para>... of an eigenvalue. Definition of the concept.</para></info>
+				</index.glossary>
+			</para>
+			<computation>
+				<left>p(\lambda)</left>
+				<center>=</center>
+				<right>(\lambda-t)^a \cdot q(\lambda)</right>
+			</computation>
+			<para>and <latex>q(t)\neq 0</latex>.</para>
+		</def>
+		<para>Suppose we know all of the roots of the characteristic polynomial of a matrix <latex>\Mtrx{A}</latex>. We then face the task of distilling from this information the transformation properties of <latex>\Mtrx{A}</latex>. For this purpose we need the following concept:</para>
+		<def type="Definition" id="Def_Eigenspace">
+			<caption>Eigenspace</caption>
+			<associate Description="Comment">
+				<subpage.ref subpageID="EigenvectorSpace_Sub"/>
+				<info>
+					<caption>Comment</caption>
+					<para>Some comments on the concept of  on &lsquo;Eigenspace&rsquo;.</para>
+				</info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_Eigendata1"/>
+				<info><para>An example of finding eigenvalues and associated eigenspaces</para></info>
+			</associate>
+
+			<para>Let <latex>\Mtrx{A}</latex> be an <latex>(n,n)</latex>-matrix with eigenvalue <latex>\lambda_k</latex>. The eigenspace of <latex>\Mtrx{A}</latex> corresponding to <latex>\lambda_k</latex> is the nullspace of the matrix <latex>(\Mtrx{A}-\lambda_k\IdMtrx[n])</latex>. The geometric multiplicity of <latex>\lambda_k</latex> is the dimension of <latex>\NllSp{\Mtrx{A}-\lambda_k\IdMtrx[n]}</latex>.
+				<index.glossary>
+					<term>geometric multiplicity</term>
+					<info><para>... of an eigenvalue. Definition of the concept.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>multiplicity</term><term>geometric</term>
+					<info><para>... of an eigenvalue. Definition of the concept.</para></info>
+				</index.glossary>
+			</para>
+		</def>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_Eigentheory1"/>
+		<exercise.pack.ref exercisePackID="Exe_Eigentheory2"/>
+		<example.pack.ref examplePackID="Exa_RotationAxis"/>
+	</studymaterials>
+</section>

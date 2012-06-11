@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Exmpl_PartialSum">
+	<title>Partial Sums of a Series: Examples</title>
+	<sub.page.body>
+		<block>
+			<para><b>Partial sums of a constant series</b> &nbsp; The first five partial sums of the constant series with summands equal to <latex>3</latex> are</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcl}
+s_0 & = & 3 \\
+s_1 & = & 3 + 3 = 6 \\
+s_2 & = & 3 + 3 + 3 = 9 \\
+s_3 & = & 3 + 3 + 3 + 3 = 12 \\
+s_4 & = & 3 + 3 + 3 + 3 + 3 = 15 \\
+s_n & = & (n+1)\cdot 3
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para><b>Partial sums of the harmonic series</b> &nbsp; The first five partial sums of the harmonic series are</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcl}
+s_1 & = & 1 \\
+s_2 & = & 1 + \dfrac{1}{2} = \dfrac{3}{2} \\
+s_3 & = & 1 + \dfrac{1}{2} + \dfrac{1}{3} = \dfrac{11}{6} \\
+s_4 & = & 1 + \dfrac{1}{2} + \dfrac{1}{3} + \dfrac{1}{4} = \dfrac{25}{12} \\
+s_5 & = & 1 + \dfrac{1}{2} + \dfrac{1}{3} + \dfrac{1}{4} + \dfrac{1}{5} = \dfrac{137}{60}
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para><b>Partial sums of a geometric series</b> &nbsp; The first five partial sums of the geometric series associated to <latex>r\neq 1/2</latex> are</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcl}
+s_0 & = & 1 \\
+s_1 & = & 1+ \dfrac{1}{2} = \dfrac{3}{2} \\
+s_2 & = & 1 + \dfrac{1}{2} + \dfrac{1}{4} = \dfrac{7}{4} \\
+s_3 & = & 1 + \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} = \dfrac{15}{8} \\
+s_4 & = & 1 + \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \dfrac{1}{16} =  \dfrac{31}{16}
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			<para>For a geometric series with <latex>r\neq 1</latex>, we are lucky: it is possible to write out the <latex>n</latex>-th partial sum using a simple formula:
+				<index.glossary>
+					<term>geometric</term><term>series</term><term>partial sum</term>
+					<info>
+						<para>The <latex>n</latex>-th partial sum of the geometric series is</para>
+						<math.display>
+							<latex>s_n = \sum_{k=0}^{n} r^k = \dfrac{1-r^{k+1}}{1-r}</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+			</para>
+			<computation>
+				<left>s_n</left>
+				<center>=</center>
+				<right>1 + r+ r^2 + r^3 + \cdots + r^n</right>
+				<left></left>
+				<center>=</center>
+				<right>(1 + r+ r^2 + r^3 + \cdots + r^n)\cdot \dfrac{1-r}{1-r}</right>
+				<left></left>
+				<center>=</center>
+				<right>\dfrac{1-r^{n+1}}{1-r}</right>
+			</computation>
+		</block>
+	</sub.page.body>
+</sub.page>

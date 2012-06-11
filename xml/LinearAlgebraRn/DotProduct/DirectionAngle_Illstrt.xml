@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illstr_DirectionAngles">
+	<title>Direction Angles – Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>Here we illustrate the direction angles of a vector <latex>\Vect{x}</latex> in <latex>\RNr[2]</latex> and the two coordinate axes:</para>
+		</block>
+		
+		<block>
+			<para align="center"><image src="ims/DirectionAnglesR2.gif" width="343" height="237">
+				<area shape="rect" coords="39,209,101,233">
+					<info>
+						<para><latex>\Vect{e}_1 = (1,0)</latex> is the standard vector in the first coordinate direction.</para>
+					</info>
+				</area>
+				<area shape="rect" coords="3,142,29,191">
+					<info>
+						<para><latex>\Vect{e}_2 = (0,1)</latex> is the standard vector in the second coordinate direction.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="35,195,199,112,35,21">
+					<info>
+						<para><latex>\omega_2 := \sphericalangle(\Vect{e}_2,\Vect{x})</latex> is the second direction angle of the vector <latex>\Vect{x}</latex>.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="242,104,48,201,288,201">
+					<info>
+						<para><latex>\omega_1 := \sphericalangle(\Vect{e}_1,\Vect{x})</latex> is the first direction angle of the vector <latex>\Vect{x}</latex>.</para>
+					</info>
+				</area>
+			</image>
+			</para>
+			
+			<para>A vector <latex>\Vect{x}</latex> in <latex>\RNr[2]</latex> has two direction angles: the vector <latex>\omega_1</latex> from the first coordinate axis, and the angle <latex>\omega_2</latex> from the second coordinate axis.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

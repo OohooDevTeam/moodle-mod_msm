@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_SolveLinearEqsRREF1_Concepts">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	<title>Solving Systems of Linear Equations in RREF - Concept Test</title>
+	<exercise>
+		<problem>
+			<para>Which of the following statements about equivalent systems of equations is true? &ndash; Justify your answer!</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para>Multiplying an equation by a number yields an equivalent equation.</para>
+			</problem>
+			<approach>
+				<answer><para>This statement if false.</para></answer>
+				<solution.hint>
+					<para>Consider what happens if you multiply the equation <latex>x=4</latex> by <latex>0</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Interchanging equations within a given system of equations always yields an equivalent system.</para>
+			</problem>
+			<approach>
+				<answer><para>This statement is true.</para></answer>
+				<solution>
+					<para>Suppose the system of equations we start with consists of <latex>n</latex> equations <latex>E_1</latex>, ... , <latex>E_m</latex>. Now consider the effect of interchanging some of them:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{cc||cc}
+E_1 & \quad & \quad & F_1 \\
+\vdots &    &       & \vdots \\
+E_m &       &       & F_m
+\end{array}
+							]]>
+						</latex>
+					</math.display>
+					<para>So, for each <latex>1\leq j\leq m</latex> there exists <latex>1\leq i\leq n</latex> such that <latex>F_j = E_i</latex>, and for each <latex>1\leq i\leq m</latex> there exists <latex>1\leq j\leq n</latex> such that  <latex>E_i = F_j</latex>.</para>
+					<para>We claim that the two systems are equivalent. To see this let <latex>n</latex> be the number of variables of the two systems. Then observe:</para>
+					<ol>
+						<li>
+							<para>If an <latex>n</latex>-tuple of numbers <latex>(t_1,\dots ,t_n)</latex> is a common solution of all the equations in the left system, then it is also a common solution of the equations in the right system: each <latex>F_j</latex> occurs in the left system. So <latex>(t_1,\dots ,t_n)</latex> is a solution of <latex>F_j</latex>.</para>
+						</li>
+						<li>
+							<para>If an <latex>n</latex>-tuple of numbers <latex>(t_1,\dots ,t_n)</latex> is a common solution of all the equations in the right system, then it is also a common solution of the equations in the left system: each <latex>E_i</latex> occurs in the right system. So <latex>(t_1,\dots ,t_n)</latex> is a solution of <latex>E_i</latex>.</para>
+						</li>
+					</ol>
+					<para>We have shown that each solution of all the equations in one system is also a solution of each of the equations in the other system. Therefore the two systems of equations are equivalent. &ndash; The statement in questions is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>If two systems of equations are equivalent, one can interchange equations between the systems at will to obtain a new system which is equivalent to either of the two original ones.</para>
+			</problem>
+			<approach>
+				<answer><para>This statement is false because there are counterexamples.</para></answer>
+				<solution>
+					<para>We claim that this statement is false. To see this, we need to remember that a mathematical statement if proven false as soon as one can exhibit a counterexample: consider these two systems of (very simple) equations</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{lcccc|clccc}
+\text{(I)}\quad & x & = & 4 \quad & &\quad & \text{(III)} & x & = & 4 \\
+\text{(II)}\quad & y & = & 6 \quad & & \quad & \text{(IV)} & y & = & 6
+\end{array}
+							]]>
+						</latex>
+					</math.display>
+					<para>The system on the left, consisting of equations (I) and (II), is identical to the system on the right, consisting of equations (III) and (IV). So the two systems are certainly equivalent. Further, <latex>(x,y)=(4,6)</latex> is the only solution. Now interchange equations (II) and (III). To obtain new systems:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{lcccc|clccc}
+\text{(I)}\quad & x & = & 4 \quad & &\quad & \text{(II)} & y & = & 6 \\
+\text{(III)}\quad & x & = & 4 \quad & & \quad & \text{(IV)} & y & = & 6
+\end{array}
+							]]>
+						</latex>
+					</math.display>
+					<para>Now the system on the left consists of equations (I) and (III). Every pair of numbers <latex>(x,y)=(4,t)</latex> with <latex>t</latex> in <latex>\RNr</latex> arbitrary is a solution.</para>
+					<para>The system on the right consists of equations (II) and (IV). Every pair of numbers <latex>(x,y)=(s,6)</latex> with <latex>s</latex> in <latex>\RNr</latex> arbitrary is a solution.</para>
+					<para>In particular, <latex>(x,y) = (4,0)</latex> is a solution of the left hand system, but not a solution of the right hand system. Therefore the two systems which result from an interchange of equations are not equivalent. &ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>A system of two equations is never equivalent to a system of three equations.</para>
+			</problem>
+			<approach>
+				<answer><para>This statement is false.</para></answer>
+				<solution.hint>
+					<para>Consider what happens if you start with a system of two equations, say <latex>E_1</latex> and <latex>E_2</latex>. Now put <latex>E_3 := 2\cdot E_2</latex>, and compare the systems consisting of</para>
+					<ol>
+						<li><para><latex>E_1</latex> and <latex>E_2</latex></para></li>
+						<li><para><latex>E_1</latex>, <latex>E_2</latex>, and <latex>E_3</latex></para></li>
+					</ol>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Multiplying an equation by a nonzero number yields an equivalent equation.</para>
+			</problem>
+			<approach>
+				<answer><para>This statement is true.</para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Adding a number to both sides of an equation yields an equivalent equation.</para></problem>
+			<approach>
+				<answer><para>This statement is true.</para></answer>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_ProductMaps"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Product of Linear Maps: Examples</title>
+	  <caption xmlns="">Product of Linears Maps</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the product <math>
+                  <latex>\Prdct{S}{T}</latex>
+               </math> of the linear maps</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>S\from \RNr[2] \longrightarrow \RNr[3]</latex>
+               </math>   and   <math>
+                  <latex>T\from \RNr[3] \longrightarrow \RNr[2]</latex>
+               </math>
+            </para.body>
+         </para>
+			      <para xmlns="">
+            <para.body>if <math>
+                  <latex>S</latex>
+               </math> is represented by</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{rr}
+6 &amp; 1 \\
+2 &amp; 3 \\
+-1 &amp; 4
+\end{array}
+\right]
+					
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>and <math>
+                  <latex>T</latex>
+               </math> is represented by</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					 
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+2 &amp; 5 &amp; 1 \\
+7 &amp; 9 &amp; 6
+\end{array}
+\right]
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+                     <math>
+                        <latex>\Prdct{S}{T}\from \RNr[5]\to \RNr[5]</latex>
+                     </math> is represented by the <math>
+                        <latex>(5,5)</latex>
+                     </math>-matrix</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\left[
+\begin{array}{cc}
+{\color{blue} A} &amp; 0 \\
+0 &amp; {\color{red} B}
+\end{array} 
+\right]\ :=\ 
+\left[
+\begin{array}{rrrrr}
+{\color{blue} 6} &amp; {\color{blue} 1} &amp; 0 &amp; 0 &amp; 0 \\
+{\color{blue} 2} &amp; {\color{blue} 3} &amp; 0 &amp; 0 &amp; 0 \\
+{\color{blue} -1} &amp; {\color{blue} 4} &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; {\color{red} 2} &amp; {\color{red} 5} &amp; {\color{red} 1} \\
+0 &amp; 0 &amp; {\color{red} 7} &amp; {\color{red} 9} &amp; {\color{red} 6}
+\end{array} 
+\right]
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

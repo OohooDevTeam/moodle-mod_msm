@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_SeriesAbsoluteConvergenceImpliesConvergence">
+	<caption>Absolute convergence implies convergence</caption>
+	<statement>
+		<para>If <latex>\sum_{n=0}^{\infty} a_n</latex> converges absolutely, then it converges to a number.</para>
+	</statement>
+	<proof>
+		<para>We know that there is a number <latex>L</latex> with</para>
+		<math.display>
+			<latex>{\color{red}\sum_{n=0}^{\infty} \Abs{a_n} = L}</latex>
+		</math.display>
+		<para>From this we will deduce that the series <latex>\sum_{n=0}^{\infty} \left( a_n+\Abs{a_n}\right)</latex> converges to a number. Indeed, we 
+			<subordinate>
+				<hot>have</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_NormRProperties"/>
+					<para>Look up this result.</para>
+				</crossref>
+			</subordinate>
+		</para>
+		<math.display>
+			<latex>-\Abs{a_n} \leq a_n\leq \Abs{a_n}</latex>
+		</math.display>
+		<para>or, equivalently,</para>
+		<math.display>
+			<latex>0\leq a_n + \Abs{a_n} \leq 2\Abs{a_n}</latex>
+		</math.display>
+		<para>Now, the comparison criterion for convergence of a series shows that</para>
+		<math.display>
+			<latex>0 \leq {\color{blue} K := \sum_{n=0}^{\infty} \left(a_n + \Abs{a_n}\right)} \leq \sum_{n=0}^{\infty} 2\Abs{a_n} = 2L</latex>
+		</math.display>
+		<para>It follows that</para>
+		<computation>
+			<left>\sum_{n=0}^{\infty} a_n</left>
+			<center>=</center>
+			<right>\sum_{n=0}^{\infty} \left( (a_n+\Abs{a_n}) - \Abs{a_n}\right)</right>
+			<left></left>
+			<center>=	<crossref>
+				<theorem.ref theoremID="Thm_RulesForConvergentSeries"/>
+				<para>Look up the theorem which says that this computational step is valid.</para>
+			</crossref></center>
+			<right>{\color{blue} \sum_{n=0}^{\infty}\left( a_n + \Abs{a_n}\right) }\ -\ {\color{red} \sum_{n=0}^{\infty} \Abs{a_n} }</right>
+			<left></left>
+			<center>=</center>
+			<right>{\color{blue} K} - {\color{red} L}</right>
+		</computation>
+		<para>So <latex>\sum_{n=0}^{\infty} a_n</latex> converges to the number <latex>{\color{blue} K} - {\color{red} L}</latex>, and this shows what we claimed.</para>
+	</proof>
+</theorem>

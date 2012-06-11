@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_EpsilonDeltaContinuous">
+	<title>(<latex>\varepsilon</latex>-<latex>\delta</latex>)-Definition of Continuity: Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>By definition, a function <latex>f\from D\to \RNr</latex>, <latex>D\subseteq \RNr</latex>, is continuous at <latex>x\in D</latex> if, for every <latex><![CDATA[ \varepsilon > 0 ]]></latex>, there exists <latex><![CDATA[ \delta > 0 ]]></latex>, such that for all <latex>t\in D</latex>,</para>
+			<math.display>
+				<latex><![CDATA[ \Abs{ x-t } < \delta\quad \implies\quad \Abs{ f(x) - f(t) } < \varepsilon ]]></latex>
+			</math.display>
+			<para>How can we interpret this definition so that we see that it characterizes a function which does not make jumps?</para>
+		</block>
+		
+		<block>
+			<para>We know that <latex>f</latex> sends <latex>x</latex> to some number <latex>f(x)\in \RNr</latex>. Let us interpret the positive number <latex>\varepsilon</latex> as a &lsquo;deviation tolerance&rsquo; from <latex>f(x)</latex>.</para>
+			<figure>
+				<img src="ims/EpsilonDelta1.png"></img>
+			</figure>
+			<para>Those parts of the graph of <latex>f</latex> which lie on the horizontal strip between <latex>f(x)-\varepsilon</latex> and <latex>f(x)+\varepsilon</latex> stay within the deviation tolerance of <latex>\varepsilon</latex> of <latex>f(x)</latex>. Then the definition requires the existence of an interval <latex>\OOIntrvl{x-\delta}{x+\delta}</latex> such that whenever <latex>t</latex> belongs to this interval and to <latex>D</latex>, then <latex>f(t)</latex> stays within the given deviation tolerance <latex>\varepsilon</latex> of <latex>f(x)</latex>.</para>
+			<figure>
+				<img src="ims/EpsilonDelta3.png"></img>
+			</figure>
+			<para>In more pictorial terms: The part of the graph of <latex>f</latex> which lies in the vertical strip between <latex>x-\delta</latex> and <latex>x+\delta</latex> must also lie in the horizontal strip between <latex>f(x)-\varepsilon</latex> and <latex>f(x)+\varepsilon</latex>.</para>
+			<figure>
+				<img src="ims/EpsilonDelta2.png"></img>
+			</figure>
+			<para>Note that we do not need to find a largest possible number <latex>\delta</latex> so that</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					x-\delta < t < x+\delta\quad \text{implies}\quad f(x)-\varepsilon < f(t) < f(x) + \varepsilon .
+					]]>
+				</latex>
+			</math.display>
+			<para>Some positive number <latex>\varepsilon</latex> with this property suffices.</para>
+			<para>Thus the intuitive interpretation of this definition says: no matter how small a deviation tolerance <latex>\varepsilon</latex> we prescribe, there is always a (possibly very small) neighborhood <latex>\OOIntrvl{x-\delta}{x+\delta}</latex> of <latex>x</latex> such that for points <latex>t</latex> from <latex>D</latex> within this neighborhood <latex>f(t)</latex> strays no further than <latex>\varepsilon</latex> from <latex>f(x)</latex>; in this way we prevent the numbers <latex>f(t)</latex> from making a jump at <latex>f(x)</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

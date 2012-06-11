@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_DeterminantCompute"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: Computing Determinants</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Determinants of square matrices are defined 
+				<subordinate>
+                     <hot>recursively</hot>
+                     <info>
+                        <info.caption>How does a recursive definition work?</info.caption>
+                        <para>
+                           <para.body>To define a quantity <math>
+                                 <latex>Q</latex>
+                              </math> depending on a number <math>
+                                 <latex>n</latex>
+                              </math> of inputs recursively means:</para.body>
+                        </para>
+                        <ol>
+                           <li>
+                              <para>
+                                 <para.body>First define <math>
+                                       <latex>Q</latex>
+                                    </math> for a single input.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>Using this information, define <math>
+                                       <latex>Q</latex>
+                                    </math> for two inputs.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>Using knowledge of <math>
+                                       <latex>Q</latex>
+                                    </math> for two inputs, define <math>
+                                       <latex>Q</latex>
+                                    </math> for three inputs.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>etc.</para.body>
+                              </para>
+                           </li>
+                        </ol>
+                     </info>
+                  </subordinate>
+				as follows:</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The determinant of  a <math>
+                     <latex>(1,1)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A} = [x]</latex>
+                  </math> is</para.body>
+            </para>
+            <math.display>
+               <latex>\det(\Mtrx{A}) = \det [x] := x</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The determinant of a <math>
+                     <latex>(2,2)</latex>
+                  </math>-matrix</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+A = 
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2
+\end{array}
+\right]
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>is given by</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\det(\Mtrx{A}) = \det
+\left[
+\begin{array}{cc}
+{\color{red} x_1} &amp; y_1 \\
+{\color{red} x_2} &amp; y_2
+\end{array}
+\right] := {\color{red} x_1}y_2 - {\color{red} x_2}y_1
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>The recursive nature of this definition becomes more explicit if we write</para.body>
+            </para>
+            <math.display>
+               <latex>{\color{red} x_1}y_2 - {\color{red} x_2}y_1 = {\color{red} x_1}\cdot \det[ y_2 ] - {\color{red} x_2}\cdot \det [y_1]</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The determinant of a <math>
+                     <latex>(3,3)</latex>
+                  </math>-matrix</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+A = 
+\left[
+\begin{array}{ccc}
+{\color{red} x_1} &amp; y_1 &amp; z_1 \\
+{\color{red} x_2} &amp; y_2 &amp; z_2 \\
+{\color{red} x_3} &amp; y_3 &amp; z_3
+\end{array}
+\right]
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>is given by</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\aligned
+\det(\Mtrx{A}) &amp;= \det
+\left[
+\begin{array}{ccc}
+{\color{red} x_1} &amp; y_1 &amp; z_1 \\
+{\color{red} x_2} &amp; y_2 &amp; z_2 \\
+{\color{red} x_3} &amp; y_3 &amp; z_3
+\end{array}
+\right] \\
+%
+&amp;:= {\color{red} x_1}\cdot 
+\det\left[
+\begin{array}{cc}
+y_2 &amp; z_2 \\
+y_3 &amp; z_3
+\end{array}
+\right]\ -\ 
+{\color{red} x_2}\cdot 
+\det\left[
+\begin{array}{cc}
+y_1 &amp; z_1 \\
+y_3 &amp; z_3
+\end{array}
+\right]\ +\ {\color{red} x_3}\cdot 
+\det\left[
+\begin{array}{cc}
+y_1 &amp; z_1 \\
+y_2 &amp; z_2
+\end{array}
+\right]
+\endaligned
+
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Now suppose the determinant of matrices of size <math>
+                     <latex>(n,n)</latex>
+                  </math> has been defined. Then the determinant of an <math>
+                     <latex>(n+1,n+1)</latex>
+                  </math>-matrix</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+A = 
+\left[
+\begin{array}{cccc}
+{\color{red} a_{1,1}} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n+1} \\
+{\color{red} a_{2,1}} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n+1} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+{\color{red} a_{n+1,1}} &amp; a_{n+1,2} &amp; \cdots &amp; a_{n+1,n+1} \\
+\end{array}
+\right]
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>is given by</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\aligned
+\det(\Mtrx{A}) &amp;:= {\color{red} a_{1,1}}\cdot \det(A_{1,1}) - {\color{red} a_{2,1}}\cdot \det(A_{2,1}) + - \cdots \\
+	&amp;\qquad \cdots + (-1)^{(n+1)+1} {\color{red} a_{n+1,1}}\cdot \det(A_{n+1,1})
+\endaligned
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>In this formula <math>
+                     <latex>A_{i,1}</latex>
+                  </math> is the <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix which results from <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> by removing the <math>
+                     <latex>i</latex>
+                  </math>-th row and the first column.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>As you can see, this recursive formula for computing a determinant is not difficult in principle. However, the number of computational steps involved increases rapidly with the size of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Question: how many summands occur in the determinant of a <math>
+                     <latex>(3,3)</latex>
+                  </math>-matrix, respectively in the determinant of a <math>
+                     <latex>(4,4)</latex>
+                  </math>-matrix, respectively in the determinant of an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix?</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_RAxiomsSummary"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Structural Axioms of the Real Number System</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here is a plain listing of the structural axioms of the real number system <math>
+                     <latex>\RNr</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Algebraic Structure</strong> of <math>
+                     <latex>\RNr</latex>
+                  </math>   <math>
+                     <latex>\RNr</latex>
+                  </math> is a set, whose elements are called real numbers, with two distinguished elements <math>
+                     <latex>0</latex>
+                  </math> and <math>
+                     <latex>1</latex>
+                  </math>, <math>
+                     <latex>0\neq 1</latex>
+                  </math>. On <math>
+                     <latex>\RNr</latex>
+                  </math> we have two operations</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>Addition given by a function <math>
+                           <latex>\StPrdct{\RNr}{\RNr} \longrightarrow \RNr</latex>
+                        </math>, whose value on a pair <math>
+                           <latex>(x,y)</latex>
+                        </math> is denoted <math>
+                           <latex>x+y</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Multiplication given by a function <math>
+                           <latex>\StPrdct{\RNr}{\RNr} \longrightarrow \RNr</latex>
+                        </math>, whose value on a pair <math>
+                           <latex>(x,y)</latex>
+                        </math> is denoted <math>
+                           <latex>x\cdot y</latex>
+                        </math> or just <math>
+                           <latex>xy</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>These operations satisfy the following 
+				<subordinate>
+                     <hot>structural axioms</hot>
+                     <info>
+                        <para>
+                           <para.body>These axioms say that <math>
+                                 <latex>\RNr</latex>
+                              </math> is a field.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>.
+			</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Associativity of addition: <math>
+                           <latex>a+(b+c) = (a+b)+c</latex>
+                        </math> for all <math>
+                           <latex>a,b,c\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Commutativity of addition: <math>
+                           <latex>a+b = b+a</latex>
+                        </math> for all <math>
+                           <latex>a,b\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Neutrality of <math>
+                           <latex>0</latex>
+                        </math> with respect to addition: <math>
+                           <latex>a+0=a=0+a</latex>
+                        </math> for all <math>
+                           <latex>a\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Existence of additive inverses: For all <math>
+                           <latex>a\in \RNr</latex>
+                        </math>, there exists <math>
+                           <latex>b\in \RNr</latex>
+                        </math> such that <math>
+                           <latex>a+b=0=b+a</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Associativity of multiplication: <math>
+                           <latex>a\cdot (b\cdot c) = (a\cdot b)\cdot c</latex>
+                        </math> for all <math>
+                           <latex>a,b,c\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Commutativity of multiplication: <math>
+                           <latex>a\cdot b = b\cdot a</latex>
+                        </math> for all <math>
+                           <latex>a,b\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Neutrality of <math>
+                           <latex>1</latex>
+                        </math> with respect to multiplication: <math>
+                           <latex>a\cdot 1=a=1\cdot a</latex>
+                        </math> for all <math>
+                           <latex>a\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Existence of multiplicative inverses: For all <math>
+                           <latex>0\neq a\in \RNr</latex>
+                        </math>, there exists <math>
+                           <latex>b\in \RNr</latex>
+                        </math> such that <math>
+                           <latex>a\cdot b=1=b\cdot a</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Distributivity: <math>
+                           <latex>a\cdot (b+c) = ab\ +\ ac</latex>
+                        </math>, for all <math>
+                           <latex>a,b,c\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Ordering structure</strong> of <math>
+                     <latex>\RNr</latex>
+                  </math>   Certain pairs <math>
+                     <latex>x,y\in\RNr</latex>
+                  </math> satisfy the relationship 
+				<subordinate>
+                     <hot>
+                        <math>
+                           <latex>x\leq y</latex>
+                        </math>
+                     </hot>
+                     <info>
+                        <para>
+                           <para.body>Read: ‘x is less than or equal to y.’</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+				or, equivalently, 
+				<subordinate>
+                     <hot>
+                        <math>
+                           <latex>y\geq x</latex>
+                        </math>
+                     </hot>
+                     <info>
+                        <para>
+                           <para.body>Read: ‘y is greater than or equal to x.’</para.body>
+                        </para>
+                     </info>
+                  </subordinate>. We also say <math>
+                     <latex> x &lt; y </latex>
+                  </math>, read: ‘x is less than y’ or, equivalently, <math>
+                     <latex> y &gt; x </latex>
+                  </math>, if <math>
+                     <latex>x\leq y</latex>
+                  </math> and <math>
+                     <latex>x\neq y</latex>
+                  </math>. This relationship has the following 
+				<subordinate>
+                     <hot>properties</hot>
+                     <info>
+                        <para>
+                           <para.body>These properties say that <math>
+                                 <latex>\RNr</latex>
+                              </math> is a totally ordered set.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>.
+			</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Reflexivity: <math>
+                           <latex>x\leq x</latex>
+                        </math> for all <math>
+                           <latex>x\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Transitivity: if <math>
+                           <latex>x\leq y</latex>
+                        </math> and <math>
+                           <latex>y\leq z</latex>
+                        </math>, then <math>
+                           <latex>x\leq z</latex>
+                        </math>, for all <math>
+                           <latex>x,y,z\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Antisymmetry: if <math>
+                           <latex>x\leq y</latex>
+                        </math> and <math>
+                           <latex>y\leq x</latex>
+                        </math>, then <math>
+                           <latex>x=y</latex>
+                        </math>, for all <math>
+                           <latex>x,y\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Totality: for all <math>
+                           <latex>x,y\in \RNr</latex>
+                        </math>, <math>
+                           <latex>x\leq y</latex>
+                        </math> or <math>
+                           <latex>y\leq x</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>Moreover, addition and multiplication in <math>
+                     <latex>\RNr</latex>
+                  </math> are required to be compatible with the ordering structure by the properties below.</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>x\leq y</latex>
+                        </math>, then <math>
+                           <latex>x+z\leq y+z</latex>
+                        </math> for all <math>
+                           <latex>x,y,z\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>0\leq x,y</latex>
+                        </math>, then <math>
+                           <latex>0\leq x\cdot y</latex>
+                        </math> for all <math>
+                           <latex>x,y\in \RNr</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>We say that <math>
+                     <latex>x\in \RNr</latex>
+                  </math> is positive if <math>
+                     <latex> 0 &lt; x </latex>
+                  </math>, respectively negative if <math>
+                     <latex> x &lt; 0 </latex>
+                  </math>. The norm operation on <math>
+                     <latex>\RNr</latex>
+                  </math> is the function</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\Abs{-}\from \RNr \longrightarrow \RNr,\quad \Abs{x} := \left\{
+\begin{array}{rl}
+x &amp; \text{if \ $0 \leq x$} \\
+-x &amp; \text{if \ $x \leq 0$}
+\end{array}\right.
+
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Completeness</strong> of <math>
+                     <latex>\RNr</latex>
+                  </math>   Informally speaking, this axiom asserts that the real number system does not have any ‘gaps’ between numbers. In rigorous language: whenever <math>
+                     <latex>A,B</latex>
+                  </math> are nonempty subsets of <math>
+                     <latex>\RNr</latex>
+                  </math> with <math>
+                     <latex>a\leq b</latex>
+                  </math> for all <math>
+                     <latex>a\in A</latex>
+                  </math> and all <math>
+                     <latex>b\in B</latex>
+                  </math>, then there exists <math>
+                     <latex>x\in \RNr</latex>
+                  </math> with</para.body>
+            </para>
+            <math.display>
+               <latex>a \leq x\leq b,\quad \text{for all}\quad a\in A,\ \ b\in B.</latex>
+            </math.display>
+         </block.body>
+      </block>
+   </body>
+</unit>

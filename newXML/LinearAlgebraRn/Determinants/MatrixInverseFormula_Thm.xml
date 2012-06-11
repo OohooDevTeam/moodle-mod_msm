@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_MatrixInversionFormula"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Inverting a matrix using Cramer’s rule</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>What is <math>
+                  <latex>\Mtrx{A}_{ji}</latex>
+               </math>?</caption>
+         </info.caption>
+         <para>
+            <para.body>
+               <math>
+                  <latex>\Mtrx{A}_{ji}</latex>
+               </math> is the <math>
+                  <latex>(n-1,n-1)</latex>
+               </math>-matrix which results from <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> by removing the <math>
+                  <latex>j</latex>
+               </math>-th row and the <math>
+                  <latex>i</latex>
+               </math>-th column.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>\Mtrx{A}</latex>
+            </math> be an invertible matrix with inverse <math>
+               <latex>\Mtrx{X} = [x_{ij}]</latex>
+            </math>. Then</para.body>
+      </para>
+      <math.display>
+         <latex>x_{ij}\ =\ \dfrac{ (-1)^{i+j} \Mtrx{A}_{ji} }{ \det(\Mtrx{A}) }</latex>
+      </math.display>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>From the matrix equation <math>
+                     <latex>\Mtrx{A} \Mtrx{X} = \IdMtrx[n]</latex>
+                  </math>, we deduce in particular that the  <math>
+                     <latex>j</latex>
+                  </math>-th column of <math>
+                     <latex>\Mtrx{X}</latex>
+                  </math> solves the system of linear equations</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\begin{bmatrix}
+a_{11} &amp; \dots &amp; a_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; \dots &amp; a_{nn}
+\end{bmatrix}\,
+\begin{bmatrix}
+x_{1j} \\ \vdots \\ x_{nj}
+\end{bmatrix}\ =\
+\begin{bmatrix}
+0 \\ \vdots \\ 1 \\ \vdots \\ 0
+\end{bmatrix}
+
+			</latex>
+            </math.display>
+            <para>
+               <para.body>From Cramer’s rule we obtain</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\aligned
+x_{ij}\ &amp;=\ \dfrac{\text{det}\,
+\begin{bmatrix}
+a_{11} &amp; \dots &amp; a_{1i-1} &amp; 0 &amp; a_{1i+1} &amp; \dots &amp; a_{1n} \\
+\vdots &amp;       &amp; \vdots   &amp; 1 &amp; \vdots   &amp;       &amp; \vdots \\
+a_{n1} &amp; \dots &amp; a_{ni-1} &amp; 0 &amp; a_{ni+1} &amp; \dots &amp; a_{nn}
+\end{bmatrix} }{\text{det}\,
+\begin{bmatrix}
+a_{11} &amp; \dots &amp; a_{1i-1} &amp; a_{1i} &amp; a_{1i+1} &amp; \dots &amp; a_{1n} \\
+\vdots &amp;       &amp; \vdots   &amp; \vdots &amp; \vdots   &amp;       &amp; \vdots \\
+a_{n1} &amp; \dots &amp; a_{ni-1} &amp; a_{ni} &amp; a_{ni+1} &amp; \dots &amp; a_{nn}
+\end{bmatrix} } \\
+   &amp;=\ (-1)^{i+j}\, \frac{\text{det}(A_{ji})}{\text{det}(A)}
+\endaligned
+
+
+			</latex>
+            </math.display>
+            <para>
+               <para.body>This is exactly the claim.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

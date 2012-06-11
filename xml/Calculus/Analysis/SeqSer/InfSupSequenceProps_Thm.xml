@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_InfSupSequenceProps">
+	<caption>Properties of supremum and infimum</caption>
+	<statement>
+		<para>For sequences <latex>(a_n)</latex> and <latex>(b_n)</latex> in <latex>\RNr</latex> the following hold</para>
+		<part partid="SupNegativea"><para><latex>\sup(-a_n) = -\inf(a_n)</latex> and <latex>\inf(-a_n) = \sup(a_n)</latex></para></part>
+		<part partid="SupScalara"><para>If <latex>c\in \RNr</latex> satisfies <latex><![CDATA[ c>0 ]]></latex>, then <latex>\sup(ca_n) = c\cdot\sup(a_n)</latex> and <latex>\inf(ca_n) = c\cdot \inf(a_n)</latex>.</para></part>
+		<part partid="Supaplusb"><para><latex>\sup(a_n + b_n) \leq \sup(a_n) + \sup(b_n)</latex> and <latex>\inf(a_n + b_n) \geq \inf(a_n) + \inf(b_n)</latex>.</para></part>
+		<part partid="SupSubsequence"><para>If <latex>(a_n)</latex> is a subsequence of <latex>(b_n)</latex> then <latex>\sup(a_n) \leq \sup(b_n)</latex> and <latex>\inf(a_n) \geq \sup(b_n)</latex>.</para></part>
+	</statement>
+	<proof>
+		<para>We rely here on properties of 
+			<subordinate>
+				<hot>inf and sup of a set</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_InfSupProps"/>
+					<para>Review the properties of inf and sup of a set.</para>
+				</crossref>
+			</subordinate>.</para>
+		<caption><partref>SupNegativea</partref> &nbsp; <latex>\sup(-a_n) = -\inf(a_n)</latex></caption>
+		<para>We unravel the relevant definitions</para>
+		<computation>
+			<left>\sup(-a_n)</left>
+			<center>=</center>
+			<right>\sup\Set{ -a_n \st n\in \RNr }</right>
+			<left></left>
+			<center>=</center>
+			<right>\sup (-\Set{ a_n \st n\in \RNr } )</right>
+			<left></left>
+			<center>=	<info><para>This is so because, for a set <latex>A\subseteq\RNr</latex>,</para>
+				<math.display>
+					<latex>\sup(-A) = -\inf(A)</latex>
+				</math.display>
+			</info></center>
+			<right>-\inf \Set{ a_n \st n\in \RNr }</right>
+			<left></left>
+			<center>=</center>
+			<right>-\inf(a_n)</right>
+		</computation>
+		<para>The identity <latex>\inf(-a_n) = \sup(a_n)</latex> follows with a similar argument. Alternatively, we can use what we just proved:</para>
+		<computation>
+			<left>\inf(-a_n)</left>
+			<center>=</center>
+			<right>-\sup(-(-a_n)) = -\sup(a_n)</right>
+		</computation>
+		
+		
+		<caption><partref>SupScalara</partref> &nbsp; If <latex>c\in \RNr</latex> satisfies <latex><![CDATA[ c>0 ]]></latex>, then <latex>\sup(ca_n) = c\cdot\sup(a_n)</latex></caption>
+		<para>Adapt the method used to prove the previous part.</para>
+		
+		<caption><partref>Supaplusb</partref> &nbsp; <latex>\sup(a_n+b_n) \leq \sup(a_n) + \sup(b_n)</latex></caption> 
+		<para>For every <latex>n\in \NNr</latex> we know</para>
+		<math.display>
+			<latex>a_n \leq \sup(a_n)\quad \text{and}\quad b_n\leq \sup(b_n)</latex>
+		</math.display>
+		<para>Therefore, for all <latex>n\in \NNr</latex>,</para>
+		<math.display>
+			<latex>a_n + b_n \leq \sup(a_n) + \sup(b_n)</latex>
+		</math.display>
+		<para>This means exactly that <latex>\sup(a_n+b_n) \leq \sup(a_n) + \sup(b_n)</latex>, as claimed. &ndash; The inf-inequality is proved similarly.</para>
+		
+		<caption><partref>SupSubsequence</partref>If <latex>(a_n)</latex> is a subsequence of <latex>(b_n)</latex> then <latex>\sup(a_n) \leq \sup(b_n)</latex></caption>
+		<para>This is so because each upper bound of <latex>(b_n)</latex> is also an upper bound of <latex>(a_n)</latex>. Therefore,</para>
+		<math.display>
+			<latex>\sup(a_n) = \text{(least upper bound of $(a_n)$)}\ \leq\ \text{(least upper bound of $(b_n)$)} = \sup(b_n)</latex>
+		</math.display>
+	</proof>
+</theorem>

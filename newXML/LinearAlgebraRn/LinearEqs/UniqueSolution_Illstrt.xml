@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illustr_UniqueSolution"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>A System with Unique Solution – Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The picture below shows the planes of solutions in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> of three linear equations in three variables.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/ThreeEqnsR3Generic.gif" height="333" width="390"/>
+                  </media>
+               </para.body>
+            </para>
+            <para>
+               <para.body>Each of these 3 planes is the solution plane of a linear equation in three unknowns. There is exactly on point which lies on all three planes. Therefore this point is the unique simultaneous solution of the given system of linear equations.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

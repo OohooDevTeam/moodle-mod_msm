@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Span">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Linear Combination and Span</title>
+	<exercise>
+		<problem>
+			<para>You are given the vectors <latex>\Vect{a} = (2,-1)</latex> and <latex>\Vect{b}= (0,-3)</latex> in <latex>\RNr[2]</latex>.</para>
+		</problem>
+		<part>
+			<problem><para>What is the definition of <latex>\span\Set{\Vect{b}}</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>\span\Set{\Vect{b}}</latex> is the collection of all vectors of the form <latex>t\cdot \Vect{b}</latex>, with <latex>t\in \RNr</latex></para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is <latex>\span\Set{ \Vect{b} }</latex> in geometrical terms?</para></problem>
+			<approach>
+				<answer><para><latex>\span\Set{ \Vect{b} }</latex> is the <latex>y</latex>-axis.</para></answer>
+				<solution>
+					<para>The vectors of <latex>\span\Set{ \Vect{b} }</latex> are of the form <latex>t\cdot (0,-3)</latex>, with <latex>t\in\RNr</latex> arbitrary. Therefore all of these vectors will have <latex>0</latex> in their first coordinate. Further, if <latex>y\in\RNr</latex> is arbitrary, choosing <latex>t:=-y/3</latex> gives <latex>(0,y) = t\cdot \Vect{b}</latex>. Therefore <latex>\span\Set{ \Vect{b} }</latex> is the <latex>y</latex>-axis of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Determine if <latex>(-4,-2)</latex> is in <latex>\span\Set{ \Vect{a} }</latex>.</para></problem>
+			<approach>
+				<answer><para>No! &ndash; <latex>(-4,-2)</latex> is not in <latex>\span\Set{ \Vect{a} }</latex>.</para></answer>
+				<solution>
+					<para>We have that <latex>(-4,-2)</latex> is in <latex>\span\Set{ \Vect{a} }</latex> if and only if there exists <latex>t\in\RNr</latex> such that</para>
+					<computation>
+						<left>t(2,-1)</left>
+						<center>=</center>
+						<right>(-4,-2)</right>
+					</computation>
+					<para>This happens exactly when <latex>t</latex> solves the two simultaneous equations</para>
+					<math.display>
+						<latex>2t=-4\quad \text{and} \quad -t=-2</latex>
+					</math.display>
+					<para>The first equation requires <latex>t=-2</latex>, while the second equation requires <latex>t=2</latex>. This is impossible, and so <latex>(-4,-2)</latex> is not in <latex>\span\Set{ \Vect{a} }</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Determine if <latex>(10,4)</latex> is in <latex>\span\Set{ \Vect{a},\Vect{b} }</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>(10,4)</latex> is in <latex>\span\Set{ \Vect{a},\Vect{b} }</latex>.</para></answer>
+				<solution>
+					<para>For <latex>(10,4)</latex> to be in <latex>\span\Set{ \Vect{a}, \Vect{b} }</latex>, there must exist real numbers <latex>t</latex> and <latex>s</latex> such that</para>
+					<math.display>
+						<latex>(10,4) = t \Vect{a} + s \Vect{b} = t(2,-1) + s(0,-3)</latex>
+					</math.display>
+					<para>Equating coordinates, we obtain a nonhomogeneous system of linear equations in <latex>t</latex> and <latex>s</latex>. Solving yields <latex>t=5</latex> and <latex>s=-3</latex>. Therefore</para>
+					<computation>
+						<left>(10,4)</left>
+						<center>=</center>
+						<right>5 \Vect{a} - 3 \Vect{b}</right>
+					</computation>
+					<para>is in <latex>\span\Set{ \Vect{a} , \Vect{b} }</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Describe <latex>\span\Set{ a,b }</latex> geometrically.</para></problem>
+			<approach>
+				<answer><para><latex>\span\Set{ \Vect{a} , \Vect{b} } = \RNr[2]</latex>.</para></answer>
+				<solution>
+					<para>We claim that <latex>\span\Set{ \Vect{a} , \Vect{b} } = \RNr[2]</latex>. To see this, we must show that any vector <latex>(u,v)</latex> of <latex>\RNr[2]</latex> can be written as a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>; i.e. we must show that the vector equation below has a solution.</para>
+					<computation>
+						<left>(u,v)</left>
+						<center>=</center>
+						<right>t(2,-1) + s(0,-3)</right>
+					</computation>
+					<para>Equivalent to this vector equation is the system of linear equations</para>
+					<math.display>
+						<latex>
+						<![CDATA[
+\begin{array}{rcrcc}
+2t & + & 0s & = & u \\
+-t & - & 3s & = & v
+\end{array}
+					]]>
+						</latex>
+					</math.display>
+					<para>The unaugmented coefficient matrix of this system has determinant <latex>-6</latex>. Therefore, the system has a solution, implying that <latex>(u,v)</latex> belongs to <latex>\span\Set{ \Vect{a} , \Vect{b} }</latex>. This implies the claim.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Compare the spans of the following subsets of <latex>\RNr[3]</latex>:</para>
+			<math.display>
+				<latex>S:=\Set{ (1,1,1) }\quad \text{and} \quad T:= \Set{ (1,1,1),(-5,-5,-5) }</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<answer><para><latex>\span(S) = \span(T)</latex></para></answer>
+			<solution.hint><para>Review the lemma on the comparison of span sets.</para></solution.hint>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem><para>Consider the vectors <latex>\Vect{a} = (1,0,-1)</latex> and <latex>\Vect{b} = (3,-1,2)</latex> in <latex>\RNr[3]</latex>.</para></problem>
+		<part>
+			<problem>
+				<para>Determine if the vector <latex>\Vect{w} = (-1,-2,11)</latex> is a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>\Vect{w}</latex> is a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>.</para></answer>
+				<solution>
+					<para><latex>\Vect{w}= (-1,-2,11)</latex> is a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> exactly when there exist numbers <latex>t</latex> and <latex>s</latex> such that</para>
+					<math.display>
+						<latex>(-1,-2,11) = t \Vect{a} + s \Vect{b} = (t(1,0,-1) + s(3,-1,2)</latex>
+					</math.display>
+					<para>This vector equation corresponds to the following inhomogeneous system of linear equations</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcrcc}
+t & + & 3s & = & -1 \\
+  &  - &  s & = & -2 \\
+-t & + & 2s & = & 11
+\end{array}
+					]]>
+						</latex>
+					</math.display>
+					<para>The second equation yields <latex>s=2</latex>. Substituting into the first and the third, we get <latex>t=-7</latex> in both cases. Therefore, <latex>\Vect{w} = -7 (1,0,1) + 2 (3,1,2)</latex>, implying that <latex>\Vect{w}</latex> is a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Does <latex>\Vect{w}=(-1,-2,11)</latex> belong to <latex>\span\Set{ \Vect{a} , \Vect{b} }</latex>?</para></problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>\Vect{w}</latex> is in <latex>\span\Set{ \Vect{a} , \Vect{b} }</latex>.</para></answer>
+				<solution>
+					<para><latex>\Vect{w}</latex> is in <latex>\span\Set{ \Vect{a} , \Vect{b} }</latex> if and only if <latex>\Vect{w}</latex> is a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>. The latter is the case by the previous part.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Determine if the vector <latex>\Vect{u} = (1,-2,11)</latex> is a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>No! &ndash; <latex>\Vect{u}</latex> is not a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>.</para></answer>
+				<solution>
+					<para><latex>\Vect{u}= (1,-2,11)</latex> is a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> exactly when there exist numbers <latex>t</latex> and <latex>s</latex> such that</para>
+					<math.display>
+						<latex>(1,-2,11) = t \Vect{a} + s \Vect{b} = (t(1,0,-1) + s(3,-1,2)</latex>
+					</math.display>
+					<para>This vector equation corresponds to the following inhomogeneous system of linear equations</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcrcc}
+t & + & 3s & = & 1 \\
+  &  - &  s & = & -2 \\
+-t & + & 2s & = & 11
+\end{array}
+					]]>
+						</latex>
+					</math.display>
+					<para>The second equation yields <latex>s=2</latex>. Substituting into the first, we get <latex>t=-5</latex>, while substituting <latex>t=-5</latex> into the third yields we get <latex>t=-7</latex>. Therefore this system is inconsistent; implying that <latex>\Vect{u} = (1,-2,11)</latex> is not a linear combination of <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider the matrix <latex>\Mtrx{A}</latex> below.</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+A = 
+\left[
+\begin{array}{rrr}
+4 & -1 & 2 \\
+-2 & 3 & 5 \\
+6 & 1 & 9
+\end{array}
+\right]
+					]]>
+								</latex>
+							</math.display>
+		</problem>
+		<part>
+			<problem><para>Describe an arbitrary vector in the row space of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>Any vector <latex>\Vect{v}</latex> in the row space of <latex>\Mtrx{A}</latex> can be written as a linear combination of its row vectors. Thus</para>
+					<computation>
+						<left>\Vect{v}</left>
+						<center>=</center>
+						<right>x(4,-1,2) + y(-2,3,5) + z(6,1,9)</right>
+					</computation>
+					<para>where <latex>x,y,z</latex> are real numbers.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Determine if the vector <latex>(2,2,-3)</latex> belongs to the row space of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>(2,2,-3)</latex> is not in the row space of <latex>\Mtrx{A}</latex>.</para></answer>
+				<solution>
+					<para><latex>(2,2,-3)</latex> belongs to the row space of <latex>\Mtrx{A}</latex> if there exist numbers <latex>x,y,z</latex> such that</para>
+					<computation>
+						<left>(2,2,-3)</left>
+						<center>=</center>
+						<right>x(4,-1,2) + y(-2,3,5) + z(6,1,9)</right>
+					</computation>
+					<para>We solve the corresponding system of linear equations.</para>
+									<math.display>
+										<latex>
+											<![CDATA[
+\begin{array}{rcrcrcr}
+4x & - & 2y & + & 6z & = & 2 \\
+-x & + & 3y & + & z & = & 2 \\
+2x & + & 5y & + & 9z & = & -3
+\end{array}
+					]]>
+										</latex>
+									</math.display>
+					<para>and find that it is inconsistent. Therefore <latex>(2,2,-3)</latex> is not in the row space of <latex>\Mtrx{A}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider the matrix <latex>\Mtrx{A}</latex> below.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A = 
+\left[
+\begin{array}{rrrr}
+2 & -4 & 1 & -3 \\
+7 & -1 & -1 & 2 \\
+3 & 7 & -3 & 8
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem><para>Determine if the vector <latex>\Vect{u} = (1,11,-4,11)</latex> belongs to the row space of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>\Vect{u}</latex> is in <latex>\RowSp{ \Mtrx{A} }</latex>.</para></answer>
+				<solution>
+					<para><latex>\Vect{u}</latex> belongs to the row space of <latex>\Mtrx{A}</latex> if there exist numbers <latex>x,y,z</latex> such that</para>
+					<computation>
+						<left>(1,11,-4,11)</left>
+						<center>=</center>
+						<right>x(2,-4,1,-3) + y(7,-1,-1,2) + z(3,7,-3,8)</right>
+					</computation>
+					<para>We solve the corresponding system of linear equations.</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcrcrcr}
+2x & + & 7y & + & 3z & = & 1 \\
+-4x & - & y & + & 7z & = & 11 \\
+x & - & y & - & 3z & = & -4 \\
+-3x & + & 2y & + & 7z & = & 11
+\end{array}
+					]]>
+						</latex>
+					</math.display>
+					<para>Using the row reduction method to solve this system of linear equations, we find</para>
+					<math.display>
+						<latex>x = 2z-3\quad \text{and}\quad y=-z+1</latex>
+					</math.display>
+					<para>where <latex>z</latex> is arbitrary. – So, this system has infinitely many solutions. Any one of these solutions can be used to express <latex>\Vect{u}</latex> as a linear combination of the row vectors of <latex>\Mtrx{A}</latex>. For example, if we let <latex>z=-1</latex>, then  <latex>x=5</latex> and <latex>y=2</latex>, and, therefore</para>
+					<computation>
+						<left>(1,11,-4,11)</left>
+						<center>=</center>
+						<right>-5(2,-4,1,-3) + 2(7,-1,-1,2) - (3,7,-3,8)</right>
+					</computation>
+					<para>So <latex>\Vect{u}</latex> is in <latex>\RowSp{ \Mtrx{A} }</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Describe an arbitrary vector in the column space of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>Any vector <latex>\Vect{w}</latex> in the column space of <latex>\Mtrx{A}</latex> can be written as a linear combination of its column vectors. Thus</para>
+					<computation>
+						<left>\Vect{w}</left>
+						<center>=</center>
+						<right>x(2,7,3) + y(-4,-1,7) + z(1,-1,-3) + t(-3,2,8)</right>
+					</computation>
+					<para>where <latex>x,y,z,t</latex> are real numbers.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Determine if the vector <latex>\Vect{y} = (1,1,1)</latex> belongs to the column space of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer><para>No! <latex>\Vect{y}</latex> is not in <latex>\ColSp{ \Vect{A} }</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Consider the system of linear equations <latex>\Mtrx{A}\Vect{x} = \Vect{y}</latex>, where <latex>\Vect{y} = (1,1,1)</latex>. With minimal work determine if this system has a solution.</para>
+			</problem>
+			<approach>
+				<answer><para>This matrix equation has no solution.</para></answer>
+				<solution.hint><para>Use the previous part.</para></solution.hint>
+				<solution>
+					<para>In the previous part we found that <latex>\Vect{y}</latex> does not belong to the column space of <latex>\Mtrx{A}</latex>. This is equivalent to saying that the matrix equation <latex>\Mtrx{A} \Vect{x} = \Vect{y}</latex> has no solution.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\Mtrx{A}</latex> be the matrix representing the linear transformation</para>
+			<math.display>
+				<latex>L\from \RNr[3] \longrightarrow \RNr[4],\quad L(x,y,z) = (x+y-2z,y-z,z-x,y-x)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem><para>How is the image of <latex>L</latex> related to <latex>\Mtrx{A}</latex>?</para></problem>
+			<approach>
+				<answer>
+					<para>A vector <latex>\Vect{v}</latex> is in the image of <latex>L</latex> if and only if  it can be expressed as a linear combination of the column vectors of <latex>\Mtrx{A}</latex>. In short, the image of <latex>L</latex> equals the column space of <latex>\Mtrx{A}</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Determine if <latex>\Vect{y} = (0,-1,-1,-2)</latex> belongs to the image of <latex>L</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>\Vect{y}</latex> is in the image of <latex>L</latex>.</para></answer>
+				<solution>
+					<para><latex>\Vect{y} = (0,-1,-1,-2)</latex> is in the image of <latex>L</latex> if and only if it is in the column space of <latex>\Mtrx{A}</latex> which represents <latex>L</latex>; i.e. if and only if the matrix equation <latex>\Mtrx{A} \Vect{x} = \Vect{y}</latex> is consistent.</para>
+					<para>The columns <latex>j</latex>-th column of <latex>\Mtrx{A}</latex> is <latex>L(\StdBss{j}</latex>; i.e.</para>
+									<math.display>
+										<latex>
+											<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+1 & 1 & -2 \\
+0 & 1 & -1 \\
+-1 & 0 & 1 \\
+-1 & 1 & 0
+\end{array}
+\right]
+					]]>
+										</latex>
+									</math.display>
+					<para>We use row reduction to look for solutions of this system of linear equations and find that it reduces to</para>
+									<math.display>
+										<latex>
+											<![CDATA[
+\begin{array}{rrr|r}
+1 & 0 & -1 & 1 \\
+0 & 1 & -1 & -1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}
+					]]>
+										</latex>
+									</math.display>
+					<para>Thus the given matrix equation as infinitely many solutions, and each solution is of the form</para>
+					<math.display>
+						<latex>(1,-1,0) + z(1,1,1),\quad \text{$z$ arbitrary}</latex>
+					</math.display>
+					<para>This means that <latex>L^{-1}(\Vect{y})</latex> consists of the line <latex>(1,-1,) + z(1,1,1)</latex> and, in particular, <latex>\Vect{y}</latex> belongs to the image of <latex>L</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For a matrix <latex>\Mtrx{A}</latex> of size <latex>(5,3)</latex></para>
+		</problem>
+		<part>
+			<problem>
+				<para>Which space is <latex>\RowSp{ \Mtrx{A} }</latex> part of?</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>The rows of <latex>\Mtrx{A}</latex> are vectors in <latex>\RNr[3]</latex>. So <latex>\RowSp{ \Mtrx{A} }</latex> is a subspace of <latex>\RNr[3]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Which space is <latex>\ColSp{ \Mtrx{A} }</latex> part of?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>\ColSp{ \Mtrx{A} }</latex> is a subspace of <latex>\RNr[5]</latex>.</para></answer>
+				<solution.hint>
+					<para>To which <latex>\RNr[?]</latex> do the column vectors belong?</para>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the following statements determine if it is true or false. If it is true, prove it. If it is false provide an example which contradicts it.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>For every <latex>(n,n)</latex>-matrix, <latex>n\geq 2</latex>, <latex>\RowSp{ \Mtrx{A} } = \ColSp{ \Mtrx{A} }</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>There is no <latex>(n,n)</latex>-matrix, <latex>n\geq 2</latex>, for which <latex>\RowSp{ \Mtrx{ A } } = \ColSp{ \Mtrx{A} }</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>S</latex> and <latex>T</latex> be subsets of <latex>\RNr[n]</latex>, and assume that <latex>S</latex> is contained in <latex>T</latex>.</para>
+		</problem>
+		<part>
+			<problem><para>Show that <latex>\span(S)</latex> is contained in <latex>\span(T)</latex>; in symbols: <latex>\span(S)\subseteq \span(T)</latex>.</para></problem>
+		</part>
+		<part>
+			<problem><para>Give an example sets <latex>S, T</latex> in <latex>\RNr[n]</latex> for which <latex>\span(T)</latex> is bigger than <latex>\span(S)</latex>.</para></problem>
+		</part>
+		<part>
+			<problem><para>Give an example of distinct sets <latex>S</latex> and <latex>T</latex> such that <latex>\span(S)=\span(T)</latex>.</para></problem>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below decide if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>The vectors <latex>(2,0)</latex> and <latex>(0,2)</latex> span <latex>\RNr[2]</latex></para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>The question is whether an arbitrary vector <latex>(x,y)</latex> in <latex>\RNr[2]</latex> can be expressed as</para>
+					<computation>
+						<left>(x,y)</left>
+						<center>=</center>
+						<right>s\cdot (2,0) + t\cdot (0,2)</right>
+					</computation>
+					<para>for suitable numbers <latex>s</latex> and <latex>t</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>An arbitrary vector <latex>(x,y)</latex> in <latex>\RNr[2]</latex> can be expressed as</para>
+					<computation>
+						<left>(x,y)</left>
+						<center>=</center>
+						<right>\tfrac{x}{2}\cdot (2,0)\ +\ \tfrac{y}{2}\cdot (0,2)</right>
+					</computation>
+					<para>This means that the given vectors span all of <latex>\RNr[2]</latex>. &ndash; So the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The vector <latex>(1,-1)</latex> is a linear combination of the vectors <latex>(2,0)</latex> and <latex>(0,2)</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>In the previous problem you saw that every vector in <latex>\RNr[2]</latex> can be expressed as a linear combination of the vectors <latex>(2,0)</latex> and <latex>(0,2)</latex>.</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Every vector in <latex>\RNr[3]</latex> of the form <latex>(a,b,0)</latex>, with <latex>a,b</latex> in <latex>\RNr</latex> arbitrary, belongs to the span of the vectors <latex>(2,0,0)</latex> and <latex>(0,2,0)</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Review the solution of the first question in this set.</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The vectors <latex>(1,1)</latex> and <latex>(0,1)</latex> span <latex>\RNr[2]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>The given vectors span the vector <latex>(1,0)</latex> because</para>
+					<computation>
+						<left>(1,0)</left>
+						<center>=</center>
+						<right>1\cdot (1,1)\ +\ (-1)\cdot (0,1)</right>
+					</computation>
+					<para>Therefore</para>
+					<math.display>
+						<latex>\span\Set{(1,1),(0,1)}\ =\ \span\Set{ (1,1),(1,0),(0,1) }\ =\ \RNr[2]</latex>
+					</math.display>
+					<para>So the statement in question in  true.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\Mtrx{A}</latex> be a matrix of size <latex>(m,n)</latex>, and let <latex>\Mtrx{B}</latex> be a matrix of size <latex>(n,p)</latex>. If <latex>\Mtrx{A}\cdot \Mtrx{B} = \Mtrx{0}</latex>, show that every vector in the column space of <latex>\Mtrx{B}</latex> belongs to the null space of <latex>\Mtrx{A}</latex>.</para>
+		</problem>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>V</latex> be the subspace of <latex>\RNr[3]</latex> spanned by the vectors</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{r}
+3 \\ 0 \\ 2
+\end{array}
+\right],\quad 
+\left[
+\begin{array}{r}
+1 \\ 0 \\ 1 
+\end{array}
+\right],\quad 
+\left[
+\begin{array}{r}
+1 \\ 0 \\ -1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find a matrix <latex>\Mtrx{A}</latex> with <latex>\RowSp{ \Mtrx{A} } = V</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>Find a matrix <latex>\Mtrx{B}</latex> with <latex>\NllSp{ \Mtrx{B} } = V</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+</exercise.pack>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_LinearIndependence"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Linear Independence</title>
+      <plain.title>Linear Independence</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>If we use a subset <math>
+                     <latex>S</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> to span a subvector space <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, we know that every <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math> can be expressed in some way as a linear combination of vectors in <math>
+                     <latex>S</latex>
+                  </math>. However, there might be many ways of doing so. With the concept of ‘linear independence’ we single out those sets <math>
+                     <latex>S</latex>
+                  </math> for which each <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\span(S)</latex>
+                  </math> can be expressed in exactly one way as a linear combination of vectors in <math>
+                     <latex>S</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_LinearIndependence">
+               <caption>Linearly independent set</caption>
+               <associate type="Explanation">
+                  <unit.ref unitId="Expla_LinearIndependence"/>
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>Paraphrasing ‘Linear Independence’</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_LinearIndependence"/>
+                  <info>
+                     <para>
+                        <para.body>Some examples of testing for linear independence</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A set of vectors <math>
+                           <latex>S</latex>
+                        </math> in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> is called linearly independent if, for any choice of pairwise distinct vectors <math>
+                           <latex>\Vect{a}_1,\dots , \Vect{a}_r</latex>
+                        </math> from <math>
+                           <latex>S</latex>
+                        </math>, the vector equation</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+                  <para>
+                     <para.body>has exactly one solution, namely <math>
+                           <latex>t_1=\cdots = t_r=0</latex>
+                        </math>. – If <math>
+                           <latex>S</latex>
+                        </math> fails to be linearly independent, it is called linearly dependent.
+				</para.body>
+                     <index.glossary>
+                        <term>linearly independent set</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>linearly dependent set</term>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Here are some basic facts about linear independence:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="LinearIndependenceFacts_Thm.xml"/>
+            <para>
+               <para.body>The following result confirms our reason for introducing the concept of linear independence: If a collection of vectors <math>
+                     <latex>S</latex>
+                  </math> is linearly independent, every vector in <math>
+                     <latex>\span(S)</latex>
+                  </math> can be expressed in exactly one way as a linear combination of vectors in <math>
+                     <latex>S</latex>
+                  </math>.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="LinearIndependentUniqueLinearComb_Thm.xml"/>
+            <para>
+               <para.body>Now, if we are given some set of vectors, how can we tell if the vectors are linearly independent? – Here are two methods which are often easy to apply:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="LinearIndependenceByRowReduction_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="LinearIndependenceDeterminant_Thm.xml"/>
+            <para>
+               <para.body>As we have seen, the task of determining whether a given set of vectors <math>
+                     <latex>S</latex>
+                  </math> is linearly independent or not can be quite laborious. However, this task simplifies considerably if the vectors in <math>
+                     <latex>S</latex>
+                  </math> are pairwise perpendicular. This leads to the following concept:</para.body>
+            </para>
+            <def type="Definition" id="Def_OrthogonalOrthonormalVectors">
+               <caption>Orthogonal / Orthonormal Vectors</caption>
+               <def.body>
+                  <para>
+                     <para.body>A set <math>
+                           <latex>S</latex>
+                        </math> of nonzero vectors is called orthgonal if</para.body>
+                  </para>
+                  <math.display>
+                     <latex>\DotPr{ \Vect{x} }{ \Vect{y} } = 0\quad \text{for all}\quad \Vect{x}\neq \Vect{y}\in S</latex>
+                  </math.display>
+                  <para>
+                     <para.body>The set <math>
+                           <latex>S</latex>
+                        </math> is called orthonormal if it is orthogonal and, in addition, <math>
+                           <latex>\abs{ \Vect{x} } = 1</latex>
+                        </math>, for each <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>S</latex>
+                        </math>.
+				</para.body>
+                     <index.glossary>
+                        <term>orthogonal</term>
+                        <term>set of vectors</term>
+                        <info>
+                           <para>
+                              <para.body>definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>orthonormal</term>
+                        <term>set of vectors</term>
+                        <info>
+                           <para>
+                              <para.body>definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>... and the nice thing here is: A set of orthogonal vectors is linearly independent.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="OrthogonalLinearIndependent_Thm.xml"/>
+            <para>
+               <para.body>We conclude this section with a result which tells us how to generate a new set of linearly independent vectors from a given one.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="LinearIndependentFromOld_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_LinearIndependence"/>
+   </studymaterials>
+</unit>

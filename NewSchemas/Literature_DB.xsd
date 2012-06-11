@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited by gepe 20060929 11:03 -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="Literature_DB"
+	xmlns="Literature_DB" attributeFormDefault="unqualified"
+	elementFormDefault="qualified">
+
+	<xsd:annotation>
+		<xsd:documentation>============ Literature module of the FCM-Schema: begin ==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="refs">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">References: Marks an XML database of references to literature or other reference items external to the FCM-repository. This schema is patterned after the structure of bibtex.
+			A reference can be an article, a book, a thesis, ... 
+			Alternatively, a reference can be a URL.
+			In addition, we envision an evolving set of tags which allow each instance of "bib" to have user customizable annotations.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:sequence maxOccurs="unbounded">
+				<xsd:element name="bib">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">Marks a reference record (e.g. an article, a book, etc.)</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType mixed="true">
+						<xsd:choice>
+							<xsd:element name="article">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Article from a journal or magazine</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author" maxOccurs="unbounded"/>
+										<xsd:element ref="title"/>
+										<xsd:element ref="journal"/>
+										<xsd:element ref="volume"/>
+										<xsd:element ref="number" minOccurs="0"/>
+										<xsd:element ref="year"/>
+										<xsd:element ref="pages"/>
+										<xsd:element ref="month" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="book">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">A book</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:choice>
+											<xsd:element ref="author" maxOccurs="unbounded"/>
+											<xsd:element ref="editor" minOccurs="0"
+												maxOccurs="unbounded"/>
+										</xsd:choice>
+										<xsd:element ref="title"/>
+										<xsd:element ref="edition" minOccurs="0"/>
+										<xsd:element ref="publisher"/>
+										<xsd:element ref="series" minOccurs="0"/>
+										<xsd:element ref="volume" minOccurs="0"/>
+										<xsd:element ref="number" minOccurs="0"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="year"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="booklet">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">A work that's printed and bound, no publisher</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author" maxOccurs="unbounded"/>
+										<xsd:element ref="title"/>
+										<xsd:element ref="howpublished" minOccurs="0"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="year" minOccurs="0"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="inbook">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Part of a book</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:sequence>
+											<xsd:element ref="author" maxOccurs="unbounded"/>
+											<xsd:element ref="editor" maxOccurs="unbounded"
+												minOccurs="0"/>
+										</xsd:sequence>
+										<xsd:element ref="title"/>
+										<xsd:element ref="publisher"/>
+										<xsd:element ref="series" minOccurs="0"/>
+										<xsd:element ref="volume" minOccurs="0"/>
+										<xsd:element ref="number" minOccurs="0"/>
+										<xsd:element ref="edition" minOccurs="0"/>
+										<xsd:element ref="type" minOccurs="0"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="year"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="pages"/>
+										<xsd:element ref="chapter" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="incollection">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Part of a book having its own title</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author" maxOccurs="unbounded"/>
+										<xsd:element ref="title"/>
+										<xsd:element ref="inwork"/>
+										<xsd:element ref="edition" minOccurs="0"/>
+										<xsd:element ref="editor" minOccurs="0"
+											maxOccurs="unbounded"/>
+										<xsd:element ref="publisher"/>
+										<xsd:element ref="series" minOccurs="0"/>
+										<xsd:element ref="volume" minOccurs="0"/>
+										<xsd:element ref="number" minOccurs="0"/>
+										<xsd:element ref="type" minOccurs="0"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="year"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="pages" minOccurs="0"/>
+										<xsd:element ref="chapter" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="inproceedings">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Article in a conference proceedings</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author" maxOccurs="unbounded"/>
+										<xsd:element ref="title"/>
+										<xsd:element ref="inwork"/>
+										<xsd:element ref="editor" minOccurs="0"
+											maxOccurs="unbounded"/>
+										<xsd:element ref="publisher"/>
+										<xsd:element ref="series" minOccurs="0"/>
+										<xsd:element ref="volume" minOccurs="0"/>
+										<xsd:element ref="number" minOccurs="0"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="organization" minOccurs="0"/>
+										<xsd:element ref="year"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="pages" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="manual">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Technical documentation</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author" minOccurs="0"
+											maxOccurs="unbounded"/>
+										<xsd:element ref="title"/>
+										<xsd:element ref="organization" minOccurs="0"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="year" minOccurs="0"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="mastersthesis">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Masters Thesis</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author"/>
+										<xsd:element ref="title"/>
+										<xsd:element ref="type" minOccurs="0"/>
+										<xsd:element ref="school"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="year"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="misc">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">When nothing else fits</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author" minOccurs="0"
+											maxOccurs="unbounded"/>
+										<xsd:element ref="title" minOccurs="0"/>
+										<xsd:element ref="howpublished" minOccurs="0"/>
+										<xsd:element ref="year" minOccurs="0"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="phdthesis">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">PhD Thesis</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author"/>
+										<xsd:element ref="title"/>
+										<xsd:element ref="type" minOccurs="0"/>
+										<xsd:element ref="school"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="year"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="proceedings">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Conference proceedings</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="title"/>
+										<xsd:element ref="editor" minOccurs="0"
+											maxOccurs="unbounded"/>
+										<xsd:element ref="publisher" minOccurs="0"/>
+										<xsd:element ref="series" minOccurs="0"/>
+										<xsd:element ref="volume" minOccurs="0"/>
+										<xsd:element ref="number" minOccurs="0"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="organization" minOccurs="0"/>
+										<xsd:element ref="year"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="techreport">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Report published by school or organization</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author" maxOccurs="unbounded"/>
+										<xsd:element ref="title"/>
+										<xsd:element ref="number" minOccurs="0"/>
+										<xsd:element ref="type" minOccurs="0"/>
+										<xsd:element ref="institution"/>
+										<xsd:element ref="address" minOccurs="0"/>
+										<xsd:element ref="year"/>
+										<xsd:element ref="month" minOccurs="0"/>
+										<xsd:element ref="note" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="unpublished">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">When nothing else fits</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="author" maxOccurs="unbounded"/>
+										<xsd:element ref="title"/>
+										<xsd:element ref="note"/>
+										<xsd:element ref="year" minOccurs="0"/>
+										<xsd:element ref="month" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:choice>
+						<xsd:attribute name="gepeid" type="xsd:NCName" use="required"/>
+						<xsd:attribute name="amsid" type="xsd:string" use="optional"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+		<xsd:key name="bibEntries">
+			<xsd:selector xpath="bib"/>
+			<xsd:field xpath="@gepeid"/>
+		</xsd:key>
+		<xsd:unique name="IDs">
+			<xsd:selector xpath=".//*"/>
+			<xsd:field xpath="@gepeid"/>
+		</xsd:unique>
+		<xsd:unique name="bibs">
+			<xsd:selector xpath="bib"/>
+			<xsd:field xpath="@gepeid"/>
+		</xsd:unique>
+	</xsd:element>
+	<xsd:element name="address" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Usually the address of the publisher or other institution. For major publishers: the city; for small publishers: the complete address can be offered.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="author">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Author of a reference item. One instance of "author" for each author of the item. -- Its attribute order is a positive integer which marks the order of a specific author.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:group ref="name"/>
+			<xsd:attribute name="order" type="xsd:positiveInteger" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="chapter" type="xsd:positiveInteger">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">The chapter number.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="edition" type="xsd:positiveInteger">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">The edition of a book: a positive integer.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="editor">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">An editor of a work. Use analogous to "author".</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:group ref="name"/>
+			<xsd:attribute name="order" type="xsd:positiveInteger" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="howpublished" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">How something strange has been published.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="institution">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Institution sponsoring a technical report.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="inwork">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Must be used with "incollection", or "inproceedings".
+				This element replaces bibtex's "booktitle" whose use is intuitively consistent with "inwork" but not with its use in bibtex.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="math"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="journal" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">The journal element must be used if the type of the given bib instance is "article".
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="month" type="xsd:positiveInteger">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Month in which the work was published or, for unpublished work, in which it was written. -- An integer between 1 and 12.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:group name="name">
+		<xsd:annotation>
+			<xsd:documentation>Tags for the name of an author</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="first" type="xsd:string"/>
+			<xsd:element name="middle" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="last" type="xsd:string"/>
+			<xsd:element name="initials" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:element name="text.to.speech" type="xsd:normalizedString">
+		<xsd:annotation>
+			<xsd:documentation>Write in plain characters how this is supposed to be read.
+				(e.g. if your math string is f(x), then you would give the text-to-speech information as "f of x").</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="math">
+		<xsd:annotation>
+			<xsd:documentation>For inline math content</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:choice>
+				<xsd:element name="latex" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Latex Source Code which is processed according to the basic WMath-AMS-LaTeX configuration or modifications thereof, as specified by the texsupport-element. If your math-code uses ampersand, or left and brackets or right angle brackets, you need to open a CDATA-element inside the latex-element and enclose all of your LaTeX-code with it.</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:normalizedString"> </xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="mathml" type="xsd:anyType" minOccurs="0"/>
+				<xsd:element name="imageURI" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>URI of image document presenting rendered latex
+							code</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:anyURI">
+								<xsd:attribute name="position" type="xsd:integer" use="optional"
+									default="0"/>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element minOccurs="0" ref="text.to.speech"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="note">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Any additional information that can help the reader.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="math"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="number" type="xsd:positiveInteger">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Number of a journal, magazine, technical report, or work in a series.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="organization" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Organization that sponsors a conference or that publishes a manual.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="pages">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Specific pages in a work</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="from" type="xsd:positiveInteger"/>
+				<xsd:element name="to" type="xsd:positiveInteger"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="publisher" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">The publisher's name</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="school" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">For a work is of thesis kind.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="series" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Name of a series or set of books</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="title">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Title of the referenced work.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="math"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="type" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">e.g. dissertation, tech report</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="volume" type="xsd:string">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Volume of a journal or multivolume book.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="year" type="xsd:int">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Year of publication or, for an unpublished work, the year it was written. Use positive, resp. negative, integers as needed.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:annotation>
+		<xsd:documentation>============ Literature module of the FCM-Schema: end ==============</xsd:documentation>
+	</xsd:annotation>
+</xsd:schema>

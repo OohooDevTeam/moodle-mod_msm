@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_TriangleInequalityInR"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Triangle Inequality for Numbers: Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>x,y,z\in\RNr</latex>
+                  </math>, we have the identity</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Dstnc{x}{z}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Dstnc{x}{y} + \Dstnc{y}{z}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>called the triangle inequality. This terminology is motivated by the situation in the plane depicted below:</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/TriangleInequalityR2.png"/>
+            </media>
+            <para>
+               <para.body>Here we see three points <math>
+                     <latex>P,Q,R</latex>
+                  </math> in the plane and, in agreement with everyday experience, the distance from <math>
+                     <latex>P</latex>
+                  </math> to <math>
+                     <latex>R</latex>
+                  </math> is less than or equal to the length of the ‘detour’ from <math>
+                     <latex>P</latex>
+                  </math> to <math>
+                     <latex>R</latex>
+                  </math> via <math>
+                     <latex>Q</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_RREFMatrix"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Shape of an RREF cofficient matrix</caption>
+   <statement.theorem>
+      <para>
+         <para.body>An augmented coefficient matrix in RREF has the following form</para.body>
+      </para>
+      <math.display>
+         <latex>
+				
+\begin{array}{ccccccccccccccc|c}
+0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; {\color{blue} d_1 } \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; {\color{blue} d_2 } \\
+\vdots &amp;   &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp; \vdots &amp; {\color{blue} \vdots } \\
+\vdots &amp;   &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp; \vdots &amp; {\color{blue} \vdots } \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; {\color{blue} d_r } \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; {\color{blue} * } \\
+\vdots &amp;   &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp; \vdots &amp; {\color{blue} \vdots } \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; {\color{blue} 0 }
+\end{array}
+				
+			</latex>
+      </math.display>
+      <para>
+         <para.body>The <math>
+               <latex>{*}</latex>
+            </math> in the augmentation column of the <math>
+               <latex>(r+1)</latex>
+            </math>-st row is either a <math>
+               <latex>0</latex>
+            </math> or a <math>
+               <latex>1</latex>
+            </math>. If it is a <math>
+               <latex>1</latex>
+            </math>, then <math>
+               <latex>d_1=\cdots =d_r=0</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+</theorem>

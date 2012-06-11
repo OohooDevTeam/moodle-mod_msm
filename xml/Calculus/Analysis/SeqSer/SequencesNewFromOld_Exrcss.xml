@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_SequencesNewFromOld">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: On New Sequences from Given Ones</title>
+	<exercise>
+		<problem>
+			<para>About sequences <latex>(a_n)</latex> and <latex>(b_n)</latex> answer the following questions. If your answer is &lsquo;yes&rsquo;, prove it; if your answer is &lsquo;no&rsquo; give examples of sequences for which the question has a negative answer.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>If both <latex>(a_n)</latex> and <latex>(b_n)</latex> are increasing, is their sum <latex>(a_n + b_n)</latex> increasing?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If both <latex>(a_n)</latex> and <latex>(b_n)</latex> are increasing, is their product <latex>(a_n \cdot b_n)</latex> increasing?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If both <latex>(a_n)</latex> and <latex>(b_n)</latex> are monotone, is their sum <latex>(a_n + b_n)</latex> monotone?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If both <latex>(a_n)</latex> and <latex>(b_n)</latex> are monotone, is their product <latex>(a_n \cdot b_n)</latex> monotone?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>(a_n)</latex> is monotone, is every subsequence <latex>(a_{n_i})</latex> monotone?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>(a_n)</latex> is alternating, is every subsequence <latex>(a_{n_i})</latex> alternating?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>(a_n)</latex> is bounded below, is every subsequence <latex>(a_{n_i})</latex> bounded below?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>(a_n)</latex> is monotone, is every rearrangement of <latex>(a_{n})</latex> monotone?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>(a_n)</latex> is bounded above, is every rearrangement of <latex>(a_{n})</latex> bounded above?</para>
+			</problem>
+		</part>
+	</exercise>
+	
+</exercise.pack>

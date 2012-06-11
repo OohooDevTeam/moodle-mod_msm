@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd">
+	
+	<caption>Plotting Exercises Using Coordinates</caption>
+	
+	<problem>
+		<para>Find the corner points of the cube in <latex>\RNr[3]</latex> with the following properties:</para>
+		<ul>
+			<li>
+				<para>sides are parallel to the coordinate axes and have length 2</para>
+			</li>
+			<li>
+				<para>the center is at <latex>(1,1,1)</latex>. </para>
+			</li>
+		</ul>
+	</problem>
+	<approach>
+		<answer>
+			<para>The corner points of the cube are</para>
+			<ul>
+				<li>
+					<para>bottom face: <latex>(0,0,0), (2,0,0),(0,2,0), (2,2,0)</latex>
+					</para>
+				</li>
+				<li>
+					<para>top face: <latex>(0,0,2), (2,0,2),(0,2,2), (2,2,2)</latex>
+					</para>
+				</li>
+			</ul>
+		</answer>
+		<solution.hint>
+			<para>The bottom face of the cube lies in the <latex>xy</latex>-plane.</para>
+		</solution.hint>
+		<solution.hint>
+			<para>One corner of the cube is at the origin.</para>
+		</solution.hint>
+	</approach>
+</exercise>

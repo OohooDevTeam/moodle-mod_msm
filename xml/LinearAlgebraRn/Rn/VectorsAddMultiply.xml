@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_AdditionScalarMultiplicationVectors">
+	<headers>
+		<full>Addition and Scalar Multiplication of Vectors</full>
+		<toc>Addition and Scalar Multiplication of Vectors</toc>
+		<short>Addition, Scalar Multiplication</short>
+	</headers>
+	<intro>
+		<para>Vectors can be added and they can be multiplied by a number. Vector addition corresponds to concatenating representing arrows, and multiplying a vector by a number corresponds to rescaling the length of a representing arrow. In this section we introduce both of these operations, how to compute effectively with these operations, and how to apply these operations in practical problems.</para>
+	</intro>
+	<subsection id="Subsec_AdditionVectors">
+		<headers>
+			<full>Addition of Vectors</full>
+			<toc>Addition of Vectors</toc>
+			<short>Addition</short>
+		</headers>
+		
+		<subsection.body>
+			<def type="Definition" id="Def_VectorAddition">
+				<caption>Addition of Vectors</caption>
+				<associate Description="Illustration">
+					<showme.pack.ref showmePackID="Exa_VectorAddition"/>
+					<info>
+						<caption>Illustration of vector addition</caption>
+						<para>The addition of vectors has a useful geometric interpretation: it corresponds to the concatenation of representing arrows.</para>
+					</info>
+				</associate>
+				
+				<para>The sum of vectors <latex>\Vect{x}=(x_1,\dots ,x_n)</latex> and <latex>\Vect{y}=(y_1,\dots ,y_n)</latex> in <latex>\RNr[n]</latex> is <index.glossary>
+					<term>vector</term>
+					<term>addition</term>
+					<info>
+						<math.display>
+							<latex>(x_1,\dots ,x_n)\ +\ (y_1,\dots ,y_n)\ :=\ (x_1+y_1,\, \dots\, ,x_n+y_n)</latex>
+						</math.display>
+						<para>Click to jump to the definition</para>
+					</info>
+				</index.glossary>
+					
+					<index.glossary>
+						<term>vector</term>
+						<term>sum</term>
+						<info>
+							<math.display>
+								<latex>(x_1,\dots ,x_n)\ +\ (y_1,\dots ,y_n)\ :=\ (x_1+y_1,\, \dots\, ,x_n+y_n)</latex>
+							</math.display>
+							<para>Click to jump to the definition</para>
+						</info>
+					</index.glossary>
+					
+					<index.glossary>
+						<term>addition</term>
+						<term>of vectors</term>
+						<info>
+							<math.display>
+								<latex>(x_1,\dots ,x_n)\ +\ (y_1,\dots ,y_n)\ :=\ (x_1+y_1,\, \dots\, ,x_n+y_n)</latex>
+							</math.display>
+							<para>Click to jump to the definition</para>
+						</info>
+					</index.glossary>
+					
+				</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\aligned
+						\Vect{x}\ +\ \Vect{y}\ =\ (x_1,\dots ,x_n)\ +\ (y_1,\dots ,y_n) \\
+						:=\ (x_1+y_1,\, \dots\, ,x_n+y_n)
+						\endaligned
+						]]>
+					</latex>
+				</math.display>
+			</def>
+		</subsection.body>
+		<studymaterials>
+			<example.pack.ref examplePackID="Exa_AddingVectors"/>
+			<para>When adding vectors, we just add coordinates in matching positions. – Here are some examples.</para>
+		</studymaterials>
+	</subsection>
+	<subsection id="SubSec_ScalarMultiplicationVector">
+		<headers>
+			<full>Multiplication of a Vector by a Scalar</full>
+			<toc>Multiplication of a Vector by a Scalar</toc>
+			<short>Scalar Multiplication</short>
+		</headers>
+		
+		<subsection.body>
+			<def type="Definition" id="Def_ScalarMultiplicationVector">
+				<caption>Multiplication of a Vector by a Scalar</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_MultiplyVectorByScalar"/>
+					<info>
+						<caption>Examples of multiplying a vector by a scalar</caption>
+						<para>Thus, when multiplying a vector by a number <latex>t</latex>, we just multiply each coordinate by <latex>t</latex>. – View some examples of this.</para>
+					</info>
+				</associate>
+				
+				<para>The scalar product of a vector <latex>\Vect{x}=(x_1,\dots ,x_n)</latex> in <latex>\RNr[n]</latex> by a number <latex>t</latex> in <latex>\RNr</latex> is
+					<index.glossary>
+						<term>multiplication</term>
+						<term>of a vector by a number</term>
+						<info>
+							<math.display>
+								<latex>t\cdot \Vect{x}\ =\ t\cdot (x_1,\dots ,x_n)\ :=\ (tx_1,\dots ,tx_n)</latex>
+							</math.display>
+							<para>Click to jump to the definition</para>
+						</info>
+					</index.glossary>
+					
+				</para>
+				<math.display>
+					<latex>t\cdot \Vect{x}\ =\ t\cdot (x_1,\dots ,x_n)\ :=\ (tx_1,\dots ,tx_n).</latex>
+				</math.display>
+			</def>
+			<para>The multiplication of a vector <latex>\Vect{x}</latex> by a scalar <latex>t</latex> has a useful geometric interpretation: it corresponds to <subordinate>
+				<hot>multiplying the length</hot>
+				<info>
+					<caption>Geometric Interpretation of Scalar Multiplication</caption>
+					<para>When we multiply a vector <latex>\Vect{x}</latex> by a number (a scalar) <latex>t</latex>, we keep the direction of <latex>\Vect{x}</latex> and multiply its length by <latex>t</latex>. The reason for this is the law of similar triangles:</para>
+					<para align="center">
+						<img src="ims/VectorScalarMultiply_4.gif"/>
+					</para>
+				</info>
+			</subordinate> of <latex>\Vect{x}</latex> by <latex>t</latex>, while keeping the direction of <latex>\Vect{x}</latex> unchanged. Om other words, the vectors <latex>\Vect{x}</latex> and <latex>t\Vect{x}</latex> are parallel.</para>
+			
+			<def type="Definition" id="Def_ParallelVectors">
+				<caption>Parallel Vectors</caption>
+				<associate Description="Illustration">
+					<subpage.ref subpageID="Illust_ScalarMultiplicationOfVectors"/>
+					<info>
+						<para>Click for an illustration of parallel vectors.</para>
+					</info>
+				</associate>
+				
+				<para>A vector <latex>\Vect{y}</latex> is parallel to a nonzero vector <latex>\Vect{x}</latex> if
+					<index.glossary>
+						<term>parallel</term><term>vectors</term>
+						<info><para>Definition of the concept</para></info>
+					</index.glossary>
+					
+					<index.glossary>
+						<term>vectors</term><term>parallel</term>
+						<info><para>Definition of the concept</para></info>
+					</index.glossary>
+					
+				</para>
+				<para align="center">there exists a number <latex>t</latex> with <latex>\Vect{y} = t\cdot \Vect{x}</latex>.</para>
+			</def>
+		</subsection.body>
+	</subsection>
+	<subsection id="SubSec_VectorAdditionScalarMultiplicationProperties">
+		<headers>
+			<full>Properties of Vector Addition and Scalar Multiplication</full>
+			<toc>Properties of Vector Addition and Scalar Multiplication</toc>
+			<short>Properties</short>
+		</headers>
+		<subsection.body>
+			<para>The properties of adding and multiplying numbers extend directly to properties of vector addition and scalar multiplication. This leads to the following rules:</para>
+			<xi:include href="VectorsAdditionMultiply_Prprts.xml"/>
+		</subsection.body>
+		<studymaterials>
+			<exercise.pack.ref exercisePackID="Exe_VectorAddition"/>
+			<exercise.pack.ref exercisePackID="Exe_VectorsScalarMultiply"/>
+			<exercise.pack.ref exercisePackID="Exe_VectorsAddScalarMultiply"/>
+		</studymaterials>
+	</subsection>
+</section>

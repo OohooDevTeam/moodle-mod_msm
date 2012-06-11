@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_SumLinearTrafos"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Sum of linear maps is linear</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment: What does this proposition tell us?</caption>
+         </info.caption>
+         <para>
+            <para.body>This proposition gives us two strong pieces of information:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>The sum of two linear transformations is again linear</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>If the linear map <math>
+                        <latex>L</latex>
+                     </math> is represented by <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>T</latex>
+                     </math> is represented by <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math>, then the linear map <math>
+                        <latex>(L+T)</latex>
+                     </math> is represented by the sum of the matrices <math>
+                        <latex>\Mtrx{A} + \Mtrx{B}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>In short: the sum of two linear maps corresponds to the sum of their representing matrices.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>If <math>
+               <latex>L,T\from \RNr[n] \longrightarrow \RNr[m]</latex>
+            </math> are two linear transformations, then their sum
+			</para.body>
+         <index.glossary>
+            <term>sum</term>
+            <term>of linear transformations</term>
+            <term>represented by sum of matrices</term>
+         </index.glossary>
+      </para>
+      <math.display>
+         <latex>(L+T)\from \RNr[n] \longrightarrow \RNr[m],\quad (L+T)(\Vect{x}) = L(\Vect{x}) + T(\Vect{x})</latex>
+      </math.display>
+      <para>
+         <para.body>is again linear. Further, if <math>
+               <latex>\Mtrx{A}</latex>
+            </math> and <math>
+               <latex>\Mtrx{B}</latex>
+            </math> are the <math>
+               <latex>(m,n)</latex>
+            </math>-matrices representing <math>
+               <latex>L</latex>
+            </math> and <math>
+               <latex>T</latex>
+            </math> respectively, then <math>
+               <latex>\Mtrx{A} + \Mtrx{B}</latex>
+            </math> represents <math>
+               <latex>L+T</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We need to show that <math>
+                     <latex>(L+T)</latex>
+                  </math> satisfies the properties of a linear transformation. To see that it commutes with vector addition, let <math>
+                     <latex>\Vect{x},\Vect{y}\in \RNr[n]</latex>
+                  </math>. We find</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We know now that <math>
+                     <latex>(L+T)</latex>
+                  </math> is linear. Therefore there is a unique <math>
+                     <latex>(m,n)</latex>
+                  </math>-matrix  which represents it. On the other hand, if <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> represents <math>
+                     <latex>L</latex>
+                  </math>, and if <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> represents <math>
+                     <latex>T</latex>
+                  </math>, we find for arbitrary <math>
+                     <latex>\Vect{x}\in\RNr[n]</latex>
+                  </math>
+               </para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

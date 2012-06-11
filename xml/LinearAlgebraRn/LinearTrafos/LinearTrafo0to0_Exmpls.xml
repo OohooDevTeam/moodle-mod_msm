@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearTrafo0To0">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Linear Functions Send 0 To 0</title>
+	<caption>Linear Functions Send 0 To 0</caption>
+	
+	<showme>
+		<statement>
+			<para>The cosine function <latex>\cos\from \RNr\to \RNr</latex> is not linear because</para>
+			<math.display>
+				<latex>\cos 0 = 1 \neq 0</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>The exponential function <latex>\exp\from \RNr\to \RNr</latex>, <latex>\exp(x)=e^x</latex>, is not linear because</para>
+			<math.display>
+				<latex>e^0 = 1 \neq 0</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>The polynomial function <latex>p\from \RNr\to \RNr</latex>, <latex>p(x)=2x^3 - x + 3</latex>, is not linear because</para>
+			<math.display>
+				<latex>p(0) = 2\cdot 0^3 - 0 + 3 = 3 \neq 0</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>The function <latex>f\from \RNr[3]\to \RNr</latex>, <latex>f(x,y,z) = x + y + z -2</latex> is not linear because</para>
+			<math.display>
+				<latex>f(\Vect{0}) = f(0,0,0) = 0+0+0 -2 = -2 \neq 0</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+</showme.pack>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_CramerRule">
+	<caption>Cramer&rsquo; rule</caption>
+		
+	<statement>
+		<para>Given the system of <latex>n</latex> linear equations in <latex>n</latex> variables below,</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{11}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{12}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{1n}$}{\color{red}x_n} & = & c_1 \\
+\colorbox{lightgreen}{$a_{21}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{22}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{2n}$}{\color{red}x_n} & = & c_2 \\
+\vdots & + & \vdots & + & \ddots & & + & \vdots & & \vdots \\
+\vdots & + & \vdots & + & & \ddots & + & \vdots & & \vdots \\
+\colorbox{lightgreen}{$a_{n1}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{n2}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{nn}$}{\color{red}x_n} & = & c_n \\
+\end{array}
+]]>
+			</latex>
+		</math.display>
+		<para>assume that its coefficient matrix <latex magnify="yes">\Mtrx{A} = [a_{ij}]</latex> satisfies <latex>\det(\Mtrx{A})\neq 0</latex>. Then, for <latex>1\leq j\leq n</latex>,
+			<index.glossary>
+				<term>Cramer&rsquo;s rule</term>
+				<info>
+					<caption>Cramer&rsquo; rule</caption>
+					<para>is a formula for finding the solution of  a system of <latex>n</latex> linear equations in <latex>n</latex> variables.</para>
+				</info>
+			</index.glossary>
+		</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+{\color{red} x_j}\ =\ \frac{\text{det}\begin{bmatrix}
+a_{11} & \dots & a_{1j-1} & \colorbox{lightgreen}{$c_1$} & a_{1j+1} & \dots & a_{1n} \\
+\vdots &       & \vdots   & \colorbox{lightgreen}{$\ \vdots\ $} & \vdots &      & \vdots \\
+a_{n1} & \dots & a_{nj-1} & \colorbox{lightgreen}{$c_n$} & a_{nj+1} & \dots & a_{nn}
+\end{bmatrix}}{\text{det}\begin{bmatrix}
+a_{11} & \dots & a_{1j-1} & a_{1j} & a_{1j+1} & \dots & a_{1n} \\
+\vdots &       & \vdots   & \vdots & \vdots &      & \vdots \\
+a_{n1} & \dots & a_{nj-1} & a_{nj} & a_{nj+1} & \dots & a_{nn}
+\end{bmatrix}}
+]]>
+			</latex>
+		</math.display>
+		<para>The matrix in the denominator matrix is <latex>\Mtrx{A}</latex>, and the matrix in the numerator is formed from <latex>\Mtrx{A}</latex> by replacing its <latex>j</latex>-th column by the augmentation column of the system, <latex>[c_1\ \dots\ c_n]^T</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>We 
+			<subordinate>
+				<hot>know</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_MatrixEqsLinearEqs"/>
+					<para>Look this theorem up</para>
+				</crossref>
+			</subordinate>
+			that the given system has exactly one solution <latex>(x_1,\dots ,x_n)</latex>. With this solution we compute</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+&\text{det}\begin{bmatrix}
+a_{11} & \dots & a_{1j-1} & \colorbox{lightgreen}{$c_1$} & a_{1j+1} & \dots & a_{1n} \\
+\vdots &       & \vdots   & \colorbox{lightgreen}{$\ \vdots\ $} & \vdots &      & \vdots \\
+a_{n1} & \dots & a_{nj-1} & \colorbox{lightgreen}{$c_n$} & a_{nj+1} & \dots & a_{nn}
+\end{bmatrix} \\
+    &\quad=\ \begin{bmatrix}
+a_{11} & \dots & a_{1j-1} & \colorbox{lightgreen}{$a_{11}x_1+\dots +a_{n1}x_n$} & a_{1j+1} & \dots & a_{1n} \\
+\vdots &       & \vdots   & \colorbox{lightgreen}{$\ \vdots\ $} & \vdots &      & \vdots \\
+a_{n1} & \dots & a_{nj-1} & \colorbox{lightgreen}{$a_{n1}x_1+\dots +a_{nn}x_n$} & a_{nj+1} & \dots & a_{nn}
+\end{bmatrix} \\
+    &\quad=\ \sum_{t=1}^{n}x_t\cdot\text{det}\begin{bmatrix}
+a_{11} & \dots & a_{1j-1} & \colorbox{lightgreen}{$a_{1t}$} & a_{1j+1} & \dots & a_{1n} \\
+\vdots &       & \vdots   & \colorbox{lightgreen}{$\ \vdots\ $} & \vdots &      & \vdots \\
+a_{n1} & \dots & a_{nj-1} & \colorbox{lightgreen}{$a_{nt}$} & a_{nj+1} & \dots & a_{nn}
+\end{bmatrix} \\
+    &\quad=\ x_j\cdot\text{det}\begin{bmatrix}
+a_{11} & \dots & a_{1j-1} & \colorbox{lightgreen}{$a_{1j}$} & a_{1j+1} & \dots & a_{1n} \\
+\vdots &       & \vdots   & \colorbox{lightgreen}{$\ \vdots\ $} & \vdots &      & \vdots \\
+a_{n1} & \dots & a_{nj-1} & \colorbox{lightgreen}{$a_{nj}$} & a_{nj+1} & \dots & a_{nn}
+\end{bmatrix} \\
+    &\quad=\ x_j\cdot\text{det}(A)
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		<para>By hypothesis, <latex>\det(\Mtrx{A})\neq 0</latex>. So we can divide both sides of this identity by <latex>\det(\Mtrx{A})</latex> to establish the claim.</para>
+	</proof>
+</theorem>

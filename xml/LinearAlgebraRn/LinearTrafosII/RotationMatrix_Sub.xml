@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_GeneralRotationMatrix">
+	<title>General Matrix - Explanation</title>
+	<sub.page.body>
+		
+		<block>
+			<para>Let us analyze how the formula below describes a rotation in <latex>\RNr[3]</latex>.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{R}_{\EuScript{B}\EuScript{B}}\ =\ 
+\left[
+\begin{array}{rrr}
+\cos \alpha & -\sin\alpha & 0 \\
+\sin\alpha & \cos \alpha & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</block>
+		<block>
+			<para>In the picture below we wish to rotate about the axis which runs through the center of the wheel. The axis is oriented from the bottom right toward the top left; let <latex>\Vect{r}</latex> be the unit vector which is parallel to the axis in points toward the upper left.</para>
+			<para>The rotation is to be according to the Right Hand Rule, that is in the direction of the curled fingers of the right hand, with its thumb aligned with the oriented axis of rotation.</para>
+			<figure>
+				<img src="ims/RotationGeneral.jpg"></img>
+				<info>
+					<para>In this picture, take <latex>\Vect{r}</latex> to be the unit vector pointing upward, take <latex>\Vect{a}</latex> to be any unit vector perpendicular to <latex>\Vect{r}</latex>, for example the one point toward you. Finally take <latex>\Vect{b}</latex> to be the cross product <latex>\CrssPr{ \Vect{r} }{ \Vect{a} }</latex>. This is the third vector in the picture.</para>
+				</info>
+			</figure>
+			<para>To describe the rotation we introduce a suitable ordered ONB for <latex>\RNr[3]</latex>:</para>
+			<ol>
+				<li><para>Let <latex>\Vect{a}</latex> be any unit vector perpendicular to <latex>\Vect{r}</latex>.</para></li>
+				<li><para>Set <latex>\Vect{b}:=\CrssPr{ \Vect{r} }{ \Vect{a} }</latex>.</para></li>
+				<li><para>Then <latex>\EuScript{B}:=(\Vect{a},\Vect{b},\Vect{r})</latex> is an ordered ONB of <latex>\RNr[3]</latex> representing the RHO. Now the rotation <latex>R</latex> of <latex>\RNr[3]</latex> about the <latex>\Vect{r}</latex>-oriented axis through the angle <latex>\alpha</latex> according to the RHR has the following effect</para></li>
+				<li><para><latex>\Vect{a}</latex> gets transformed into <latex>\cos\alpha \, \Vect{a} + \sin\alpha \, \Vect{b}</latex>.</para></li>
+				<li><para><latex>\Vect{b}</latex> gets transformed into <latex>-\sin\alpha\, \Vect{a} +\cos\alpha \, \Vect{b}</latex>.</para></li>
+				<li><para><latex>\Vect{r}</latex> gets transformed into <latex>\Vect{r}</latex>.</para></li>
+				<li>
+					<para>Therefore, the matrix representing <latex>R</latex> in <latex>\EuScript{B}</latex>-coordinates is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{R}_{\EuScript{B}\EuScript{B}}\ =\ 
+\left[
+\begin{array}{rrr}
+\cos \alpha & -\sin\alpha & 0 \\
+\sin\alpha & \cos \alpha & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</li>
+				<li><para>We know that <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}:=[ \Vect{a}\ \Vect{b}\  \Vect{r}]</latex> converts from <latex>\EuScript{B}</latex>-coordinates to standard coordinates. Then the matrix describing the given rotation in standard coordinates is</para>
+					<computation>
+						<left>\Mtrx{R}_{\EuScript{S}\EuScript{S}}</left>
+						<center>=</center>
+						<right>\Mtrx{C}_{\EuScript{S}\EuScript{B}} \Mtrx{R}_{\EuScript{B}\EuScript{B}} \Mtrx{C}_{\EuScript{B} \EuScript{S}}</right>
+					</computation>
+					<para>With <latex>\Mtrx{C}_{\EuScript{B}\EuScript{S}} = \Mtrx{C}^{-1}_{\EuScript{S},\EuScript{B}}</latex>.</para>
+				</li>
+			</ol>
+		</block>
+	</sub.page.body>
+</sub.page>

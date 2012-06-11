@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_QuotientContinuous"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Quotient of continuous maps</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>f,g\from D\to \RNr</latex>
+            </math> be functions, and let <math>
+               <latex>Z:=\Set{ t\in \RNr\st g(t) = 0}</latex>
+            </math>. If <math>
+               <latex>f</latex>
+            </math> and <math>
+               <latex>g</latex>
+            </math> are continuous at <math>
+               <latex>x\in \StDffrnc{ D }{ Z}</latex>
+            </math>, then the quotient function</para.body>
+      </para>
+      <math.display>
+         <latex>(f/g)\from (\StDffrnc{D}{Z}) \longrightarrow \RNr,\quad (f/g)(t):=\dfrac{f(t)}{g(t)}</latex>
+      </math.display>
+      <para>
+         <para.body>is continuous at <math>
+               <latex>x</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>Using the inverse function <math>
+                     <latex>p\from (\StDffrnc{\RNr}{0})\to (\StDffrnc{ \RNr }{ 0 })</latex>
+                  </math>, we express the function <math>
+                     <latex>(f/g)</latex>
+                  </math> as a composite of functions as follows:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(1/g) = p\Comp g</latex>
+                        </math>, which is continuous at <math>
+                           <latex>x</latex>
+                        </math>, as <math>
+                           <latex>g</latex>
+                        </math> is continuous at <math>
+                           <latex>x</latex>
+                        </math> and <math>
+                           <latex>p</latex>
+                        </math> is continuous at <math>
+                           <latex>g(x)</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Thus <math>
+                           <latex>f\cdot (1/g)</latex>
+                        </math> is continuous at <math>
+                           <latex>x</latex>
+                        </math>, as both functions <math>
+                           <latex>f</latex>
+                        </math> and <math>
+                           <latex>(1/g)</latex>
+                        </math> are continuous at <math>
+                           <latex>x</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>This was to be shown.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

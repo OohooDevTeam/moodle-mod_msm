@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_InfSupProps">
+	<caption>Properties of supremum and infimum</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation</caption>
+			<para>For <latex>c\in \RNr</latex> and <latex>A\subseteq \RNr</latex>,</para>
+			<math.display>
+				<latex>cA\ :=\ \Set{ ca\in \RNr \st a\in A}</latex>
+			</math.display>
+		</info>
+	</associate>
+	<statement>
+		<para>For <latex>A,B\subseteq\RNr</latex> the following hold</para>
+		<part partid="SupNegativeA"><para><latex>\sup(-A) = -\inf(A)</latex> and <latex>\inf(-A) = -\sup(A)</latex>.</para></part>
+		<part partid="SupScalarA"><para>If <latex>c\in \RNr</latex> satisfies <latex><![CDATA[ c>0 ]]></latex>, then <latex>\sup(cA) = c\cdot\sup(A)</latex> and <latex>\inf(cA) = c\cdot \inf(A)</latex>.</para></part>
+		<part partid="SupASubSetB"><para>If <latex>A\subseteq B</latex> then <latex>\sup(A) \leq \sup(B)</latex> and <latex>\inf(A)\geq \inf(B)</latex>.</para></part>
+	</statement>
+	<proof>
+		<caption><partref>SupNegativeA</partref> &nbsp; <latex>\sup(-A) = \inf(A)</latex></caption>
+		<para>Let <latex>i\in \bar{\RNr}</latex> denote the infimum of <latex>A</latex>. Then we know</para>
+		<ol>
+			<li><para><latex>i\leq A</latex>, and</para></li>
+			<li><para><latex>u\leq i</latex> for all <latex>u\in \bar{\RNr}</latex> with <latex>u\leq A</latex>.</para></li>
+		</ol>
+		<para>Using
+			<subordinate>
+				<hot>properties</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_ROrderingProperties"/>
+					<para>Look up this theorem</para>
+				</crossref>
+			</subordinate>
+			of multiplying an inequality by a constant, this implies</para>
+		<ol>
+			<li><para><latex>-i\geq -A</latex>, and</para></li>
+			<li><para><latex>-u\geq -i</latex> for all <latex>u\in \bar{\RNr}</latex> with <latex>u\leq A</latex>;
+				i.e <latex>v\geq -i</latex> for <latex>v\in \bar{\RNr}</latex> with <latex>v\geq -A</latex>.</para></li>
+		</ol>
+		<para>This means exactly that <latex>-i=\sup(-A)</latex>. &ndash; The identity <latex>\inf(-A) = -\sup(A)</latex> can be proven by adapting the argument we just gave. Alternatively, we can use the fact we just proved like so:</para>
+		<computation>
+			<left>\inf(-A)</left>
+			<center>=</center>
+			<right>-\sup(-(-A))</right>
+			<left></left>
+			<center>=	<info><para>Here we use that <latex>-(-A) = A</latex>.</para></info></center>
+			<right>-\sup(A)</right>
+		</computation>
+		
+		
+		<caption><partref>SupScalarA</partref> &nbsp; If <latex>c\in \RNr</latex> satisfies <latex><![CDATA[ c>0 ]]></latex>, then <latex>\sup(cA) = c\cdot\sup(A)</latex></caption>
+		<para><subordinate>
+			<hot>Let</hot>
+			<info>
+				<caption>Try to prove this one yourself!</caption>
+				<para>If you understand the argument just given you should have no difficulty proving this part.</para>
+			</info>
+		</subordinate>
+			<latex>s\in \bar{\RNr}</latex> denote the supremum of <latex>A</latex>. Then we know</para>
+		<ol>
+			<li><para><latex>A\leq s</latex>, and</para></li>
+			<li><para><latex>s\leq u</latex> for all <latex>u\in \bar{\RNr}</latex> with <latex>A\leq u</latex>.</para></li>
+		</ol>
+		<para>This implies</para>
+		<ol>
+			<li><para><latex>cA\leq cs</latex>, and</para></li>
+			<li><para><latex>cs\leq v</latex> for all <latex>v\in \bar{\RNr}</latex> with <latex>cA\leq v</latex>.</para></li>
+		</ol>
+		<para>Therefore <latex>\sup(cA) = cs = c\sup(A)</latex>, as claimed. &ndash; The identity <latex>\inf(cA) = c\cdot \inf(A)</latex> follows with a similar argument.</para>
+		
+		<caption><partref>SupASubSetB</partref> &nbsp; If <latex>A\subseteq B</latex> then <latex>\sup(A) \leq \sup(B)</latex></caption>
+		<para>This is so because each upper bound of <latex>B</latex> is also an upper bound of <latex>A</latex>. Therefore,</para>
+		<math.display>
+			<latex>\sup(A) = \text{(least upper bound of $A$)}\ \leq\ \text{(least upper bound of $B$)}</latex>
+		</math.display>
+		<para>The inequality <latex>\inf(A) \geq \inf(B)</latex> is proved similarly.</para>
+	</proof>
+</theorem>

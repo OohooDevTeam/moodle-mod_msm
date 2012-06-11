@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_SeriesConvergenceTests"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Convergence Tests for Series</title>
+      <plain.title>Convergence Tests</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we develop a collection of basic tests to determine if a given series converges. If two series <math>
+                     <latex>\sum a_n</latex>
+                  </math> and <math>
+                     <latex>\sum b_n</latex>
+                  </math> have non-negative summands <math>
+                     <latex>0\leq a_n,b_n</latex>
+                  </math>, we look for conditions under which the known convergence properties of one of the series yields convergence information of the other.</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>Comparison</strong>: this very intuitive test says that if <math>
+                           <latex>a_n\leq b_n</latex>
+                        </math> for large <math>
+                           <latex>n</latex>
+                        </math> and <math>
+                           <latex>\sum b_n</latex>
+                        </math> converges to a number, then <math>
+                           <latex>\sum a_n</latex>
+                        </math> converges to a number. On the other hand, if <math>
+                           <latex>a_n\leq b_n</latex>
+                        </math> for large <math>
+                           <latex>n</latex>
+                        </math> and <math>
+                           <latex>\sum a_n=+\infty</latex>
+                        </math>, then <math>
+                           <latex>\sum a_n=+\infty</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>Limit comparison</strong>: This set of tests takes the comparison tests above a step deeper by drawing convergence conclusions from a limit analysis of the ratios <math>
+                           <latex>a_n/b_n</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>Alternating series test</strong>: it says that <math>
+                           <latex>\sum_{n=0}^{\infty} (-1)^na_n</latex>
+                        </math> converges to a number whenever the sequence <math>
+                           <latex>(a_n)</latex>
+                        </math> is strictly decreasing and converges to <math>
+                           <latex>0</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeriesComparison_Thm.xml"/>
+            <para>
+               <para.body>In the setting of the comparison test, convergence of a series to a number implies the convergence of a series with lesser summands, and convergence of a series to infinity implies the convergence to infinity of any series with greater summands. – In contrast the limit comparison test below works by ‘size similarity‘ of the summands of two series. More precisely:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="SeriesLimitComparison_Thm.xml"/>
+            <para>
+               <para.body>We turn to a particularly elegant test for the convergence of certain series. The underlying principle is a generalization of this 
+			<subordinate>
+                     <hot>fundamental example</hot>
+                     <companion>
+                        <showme.pack.ref showmePackID="Exa_AlternatingHarmonicConverges"/>
+                        <info>
+                           <para>
+                              <para.body>Take a look at this example.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>. To formulate this generalization we introduce the concept of an alternating series.</para.body>
+            </para>
+            <def type="Definition" id="Def_AlternatingSeries">
+               <caption>Alternating series</caption>
+               <def.body>
+                  <para>
+                     <para.body>A series <math>
+                           <latex>\sum_{n=0}^{\infty} a_n</latex>
+                        </math> is alternating if <math>
+                           <latex>\sign(a_{n+1}) = (-1)\cdot \sign(a_n)</latex>
+                        </math> for all <math>
+                           <latex>n</latex>
+                        </math> in <math>
+                           <latex>\NNr</latex>
+                        </math>.
+				</para.body>
+                     <index.glossary>
+                        <term>alternating</term>
+                        <term>series</term>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="AlternatingSeriesTest_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_SeriesLimitComparison"/>
+      <exercise.pack.ref exercisePackID="Exe_AlternatingSeries"/>
+   </studymaterials>
+</unit>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_VectorCoordinates">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Vectors and Coordinates: Examples</title>
+	<showme>
+		<caption>Arrows representing <latex>\Vect{x} = (3,-1)</latex>
+		</caption>
+		<statement>
+			<para>The vector <latex>\Vect{x} = (3,-1)</latex> is represented by any of the arrows in the picture below.</para>
+			<para align="center"><img src="ims/VectorCoordinates_Exmpl1.gif"/></para>
+		</statement>
+		<answer type="Explanation">
+			<para>Indeed, consider any of these arrows. Starting from its tail, we find its tip by</para>
+			<ol>
+				<li>
+					<para>moving <latex>3</latex> units in the first coordinate direction, and</para>
+				</li>
+				<li>
+					<para>from there moving <latex>-1</latex> unit in the second coordinate direction.</para>
+				</li>
+			</ol>
+			<para>For example, if we choose</para>
+			<ul>
+				<li>
+					<para>
+						<latex>R(2,2)</latex> as the tail point of an arrow representing <latex>\Vect{x}</latex>, the tip of this arrow will be at <latex>S(2+3,2+(-1))=S(5,1)</latex>
+					</para>
+				</li>
+				<li>
+					<para>
+						<latex>A(14,-6)</latex> as the tail point of an arrow representing <latex>\Vect{x}</latex>, the tip of this arrow will be at <latex>B(17,-7)</latex>
+					</para>
+				</li>
+				<li>
+					<para>
+						<latex>U(0,0)</latex> as the tail point of an arrow representing <latex>\Vect{x}</latex>, the tip of this arrow will be at <latex>V(3,-1)</latex>
+					</para>
+				</li>
+			</ul>
+		</answer>
+	</showme>
+</showme.pack>

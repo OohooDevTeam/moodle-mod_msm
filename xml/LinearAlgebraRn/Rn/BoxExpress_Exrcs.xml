@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise	SYSTEM "../Symbols.dtd">
+<exercise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise
+	http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_BoxesAsProductsIntervals">
+	<caption>Expressing Boxes as a Product of Intervals</caption>
+	<problem>
+		<para>Express each of the following objects as a product of intervals.</para>
+	</problem>
+	<part>
+		<problem>
+			<para>The rectangle in <latex>\RNr[2]</latex> with corner points <latex>(-2,-2), (2,-2), (-2,2), (2,2)</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>The given rectangle consists of all points in the product <latex>[-2,2]\times [-2,2]</latex>.</para>
+			</answer>
+			<solution.hint>
+				<para>Answer first the following aspects of this problem:</para>
+				<ol>
+					<li>
+						<para>What is the interval of numbers <latex>x</latex> which appear as the first coordinate of a point inside the given box?</para>
+					</li>
+					<li>
+						<para>What is the interval of numbers <latex>y</latex>  which appear as the second coordinate of a point inside the given box?</para>
+					</li>
+				</ol>
+				<para>If you have answers to these two questions and still do not now how to proceed, you need to review the material on how to concatenate tuples of numbers to form a product of spaces of tuples.</para>
+			</solution.hint>
+		</approach>
+	</part>
+	
+	<part>
+		<problem>
+			<para>The box in <latex>\RNr[3]</latex> with corner points</para>
+			<math.display>
+				<latex>(0,0,0), (3,0,0), (0,5,0), (3,5,0), (0,0,7), (3,0,7), (0,5,7), (3,5,7)</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<answer>
+				<para>The given box consists of all points in the product <latex>[0,3]\times [0,5]\times [0,7]</latex>.</para>
+			</answer>
+			<solution.hint>
+				<para>Answer first the following aspects of this problem:</para>
+				<ol>
+					<li>
+						<para>What is the interval of numbers <latex>x</latex> which appear as the first coordinate of a point inside the given box?</para>
+					</li>
+					<li>
+						<para>What is the interval of numbers <latex>y</latex>  which appear as the second coordinate of a point inside the given box?</para>
+					</li>
+					<li>
+						<para>What is the interval of numbers <latex>z</latex>  which appear as the third coordinate of a point inside the given box?</para>
+					</li>
+				</ol>
+				<para>If you have answers to these two questions and still do not now how to proceed, you need to review the material on how to concatenate tuples of numbers to form a tuple in a product of spaces.</para>
+			</solution.hint>
+			<solution>
+				<para>Let <latex>(x,y,z)</latex> denote a point in the box with the specified corners.</para>
+				<ol>
+					<li><para>The first coordinates of the corner points are <latex>0</latex> and <latex>3</latex>. Therefore <latex>0\leq x\leq 3</latex>.</para></li>
+					<li><para>The second coordinates of the corner points are <latex>0</latex> and <latex>5</latex>. Therefore <latex>0\leq y\leq 5</latex>.</para></li>
+					<li><para>The third coordinates of the corner points are <latex>0</latex> and <latex>7</latex>. Therefore <latex>0\leq z\leq 7</latex>.</para></li>
+				</ol>
+				<para>Therefore the given box consists of all points in the product of intervals</para>
+				<math.display>
+					<latex>[0,3]\times [0,5]\times [0,7]</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</part>
+</exercise>

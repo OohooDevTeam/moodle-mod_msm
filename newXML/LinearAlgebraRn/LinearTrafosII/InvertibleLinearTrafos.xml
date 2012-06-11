@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_InvertibleLinearTrafos"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Invertible Linear Transformations</title>
+      <plain.title>Invertible Linear Maps</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Recall: a linear function <math>
+                     <latex>L\from \RNr[n] \to \RNr[n]</latex>
+                  </math> is invertible if its transformation effect can be reversed. Now let <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>W</latex>
+                  </math> are subvector spaces of <math>
+                     <latex>\RNr[k]</latex>
+                  </math>. Nicely enough, a linear function <math>
+                     <latex>L\from V\to W</latex>
+                  </math> is invertible exactly when there exists a linear map <math>
+                     <latex>M\from W\to V</latex>
+                  </math> such that <math>
+                     <latex>L</latex>
+                  </math> and <math>
+                     <latex>M</latex>
+                  </math> reverse each other's transformation effect.</para.body>
+            </para>
+            <para>
+               <para.body>Next we look for criteria to identify invertible linear maps. In this section we show: <math>
+                     <latex>L</latex>
+                  </math> is invertible if and only if the matrix representing <math>
+                     <latex>L</latex>
+                  </math> with respect to any choice of ordered bases of <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>W</latex>
+                  </math> is invertible. We will develop additional criteria in subsequent sections.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_InvertibleLinearMapGeneral">
+               <caption>Invertible linear transformation</caption>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>The relationship between <math>
+                              <latex>L</latex>
+                           </math> and its inverse <math>
+                              <latex>M</latex>
+                           </math> is the following:</para.body>
+                     </para>
+                     <ol>
+                        <li>
+                           <para>
+                              <para.body>The identity <math>
+                                    <latex>M\Comp L = \Id[V]</latex>
+                                 </math> asserts that <math>
+                                    <latex>M</latex>
+                                 </math> reverses the transformation effect of <math>
+                                    <latex>L</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+                        <li>
+                           <para>
+                              <para.body>The identity <math>
+                                    <latex>L\Comp M = \Id[W]</latex>
+                                 </math> asserts that <math>
+                                    <latex>L</latex>
+                                 </math> reverses the transformation effect of <math>
+                                    <latex>M</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+                     </ol>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A linear map <math>
+                           <latex>L\from V\to W</latex>
+                        </math> of subvector spaces of <math>
+                           <latex>\RNr[k]</latex>
+                        </math> is called invertible if there exists a linear map <math>
+                           <latex>M\from W\to V</latex>
+                        </math> such that
+				</para.body>
+                     <index.glossary>
+                        <term>invertible</term>
+                        <term>linear transformation</term>
+                        <info>
+                           <info.caption>Invertible linear transformation</info.caption>
+                           <para>
+                              <para.body>Definition of the concept: A linear map <math>
+                                    <latex>L\from V\to W</latex>
+                                 </math> of subvector spaces of <math>
+                                    <latex>\RNr[k]</latex>
+                                 </math> is invertible, if there exists a linear map <math>
+                                    <latex>M\from W\to V</latex>
+                                 </math> such that</para.body>
+                           </para>
+                           <math.display>
+                              <latex>M\Comp L = \Id[V] \quad\text{and}\quad L\Comp M = \Id[W]</latex>
+                           </math.display>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>M\Comp L = \Id[V] \quad\text{and}\quad L\Comp M = \Id[W]</latex>
+                  </math.display>
+                  <para>
+                     <para.body>In this case we call <math>
+                           <latex>M</latex>
+                        </math> the inverse of <math>
+                           <latex>L</latex>
+                        </math> and write <math>
+                           <latex>M=L^{-1}</latex>
+                        </math>.</para.body>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Now to the question: How do we test whether a given linear transformation <math>
+                     <latex>L\from V\to W</latex>
+                  </math> is invertible?</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="InvertibleLinearMapMatrix_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_InvertibleLinearMapGeneral"/>
+   </studymaterials>
+</unit>

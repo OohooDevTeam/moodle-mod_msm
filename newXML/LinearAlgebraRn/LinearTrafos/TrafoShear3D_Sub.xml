@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illstrt_TrafoShear3D"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Transformation Given by Reflection</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The picture below shows a cube being transformed by applying a shear transformation.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Trafo_Shear3D.jpg"/>
+            </media>
+            <para>
+               <para.body>We will see that shear transformations are linear.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_SubSpaceClosedAddition">
+	<title>Sub Vector Space is Closed under Addition - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The collection of vectors in a subvector space <latex>V</latex> of <latex>\RNr[n]</latex> is closed under vector addition. Here are some illustrations of what this means.</para>
+			
+			<para>The subset below is closed under vector addition and scalar multiplication. So it is a subspace of <latex>\RNr[n]</latex>.</para>
+			<figure>
+				<img src="ims/SubSpaceClosedAddition.gif"></img>
+				<caption>The sum of two vectors in <latex>V</latex> is again in <latex>V</latex>.</caption>
+			</figure>
+			<para>In contrast, here is a subset <latex>V</latex> of <latex>\RNr[2]</latex> which fails to be closed under vector addition. It is, therefore, not a subvector space.</para>
+			<figure>
+				<img src="ims/SubSetNotClosedAddition.gif"></img>
+			</figure>
+			<para>Indeed, there are (at least) two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex> whose sum <latex>\Vect{x} + \Vect{y}</latex> is not in <latex>V</latex>. This means that this line is not closed under vector addition, hence is not a subvector space.</para>
+			
+			<para>The green half plane below is closed under vector addition, but not under scalar multiplication. For example, the vector <latex>-\Vect{x}</latex> is not in <latex>S</latex>. Therefore <latex>S</latex> is not a subvector space.</para>
+			<figure>
+				<img src="ims/SubSetClosedAdditionNotScalarMult.gif"></img>
+				<caption>The scalar multiple of <latex>\Vect{x}</latex> by a negative number is not in <latex>V</latex>.</caption>
+			</figure>
+		</block>
+	</sub.page.body>
+</sub.page>

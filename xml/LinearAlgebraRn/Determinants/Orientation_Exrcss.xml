@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Orientation">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Orientation of Space</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the vectors in <latex>\RNr[1]</latex> below find the orientation of <latex>\RNr[1]</latex> that it represents, and state what this information means.</para>
+		</problem>
+		
+		<part>
+			<problem><para><latex>\Vect{x}=(5)</latex></para></problem>
+			<approach>
+				<answer>
+					<para><latex>\omega(\Vect{x})=+1</latex> which means that <latex>\Vect{x}</latex> represents the positive orientation of <latex>\RNr[1]</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para><latex>\Vect{x}=(0)</latex></para></problem>
+			<approach>
+				<answer>
+					<para><latex>\omega(\Vect{x})</latex> is not define as <latex>\Vect{x}</latex> is not a nonzero vector.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem><para><latex>\Vect{x}=(-3)</latex></para></problem>
+			<approach>
+				<answer>
+					<para><latex>\omega(\Vect{x})=-1</latex> which means that <latex>\Vect{x}</latex> represents the negative orientation of <latex>\RNr[1]</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>For the vectors <latex>\Vect{x}=(1,3)</latex> and <latex>\Vect{y}=(2,4)</latex> in <latex>\RNr[2]</latex> find the orientation of <latex>\RNr[2]</latex> represented by the specified vector pair. Then state what this information means.</para>
+		</problem>
+		
+		<part>
+			<problem><para><latex>(\Vect{y},\Vect{x})</latex></para></problem>
+			<approach>
+				<answer>
+					<para><latex>\omega(\Vect{y},\Vect{x}) = -1</latex>, which means that the pair <latex>(\Vect{y},\Vect{x})</latex> represents the negative or clockwise orientation of <latex>\RNr[2]</latex>.</para>
+				</answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\omega(\Vect{y},\Vect{x})</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\dfrac{
+\det \left[
+\begin{array}{rr}
+1 & 2 \\
+3 & 4
+\end{array}
+\right] }{
+\Abs{ \det
+\left[
+\begin{array}{rr}
+1 & 2 \\
+3 & 4
+\end{array}
+\right] } }
+							]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{ -2 }{ \Abs{ -2 } }</right>
+						<left></left>
+						<center>=</center>
+						<right>-1</right>
+					</computation>
+					<para>This means that the pair <latex>(\Vect{y},\Vect{x})</latex> represents the negative or clockwise orientation of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para><latex>(\Vect{x},\Vect{y})</latex></para></problem>
+			<approach>
+				<answer>
+					<para><latex>\omega(\Vect{x},\Vect{y}) = -\omega(\Vect{y},\Vect{x}) = +1</latex>, which means that the pair <latex>(\Vect{x},\Vect{y})</latex> represents the positive or counterclockwise orientation of <latex>\RNr[2]</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>What is <latex>\omega((-3,2),(2,4))</latex>? What does your answer mean?</para>
+		</problem>
+		<approach>
+			<answer>
+				<para><latex>\omega( (-3,2),(2,4) )=-1</latex> which means that this ordered pair of vectors represents the clockwise orientation of <latex>\RNr[2]</latex>.</para>
+			</answer>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>What is <latex>\omega( (-2,-3),(3,9/2))</latex>? What does your answer mean?</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>The vectors in this pair are parallel. Therefore the given pair does not represent any orientation of <latex>\RNr[2]</latex>.</para>
+			</answer>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>You are given the information that the ordered triple of vectors <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> with</para>
+			<para align="center"><latex>\Vect{x}=(1,1,2)</latex>, &nbsp; <latex>\Vect{y}=(0,3,1)</latex>, and &nbsp; <latex>\Vect{z}=(-1,-2,-1)</latex></para>
+			<para>in <latex>\RNr[3]</latex> represents the right hand or the positive orientation.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Find <latex>\omega(\Vect{y},\Vect{z},\Vect{x})</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para><latex>\omega(\Vect{y},\Vect{z},\Vect{x})=+1</latex></para></answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\omega(\Vect{y},\Vect{z},\Vect{x})</left>
+						<center>=</center>
+						<right>-\omega(\Vect{y},\Vect{x},\Vect{z})</right>
+						<left></left>
+						<center>=</center>
+						<right>\omega(\Vect{x},\Vect{y},\Vect{z})</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find <latex>\omega(\Vect{z},\Vect{x},\Vect{y})</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para><latex>\omega(\Vect{z},\Vect{x},\Vect{y})=+1</latex></para></answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\omega(\Vect{z},\Vect{x},\Vect{y})</left>
+						<center>=</center>
+						<right>-\omega(\Vect{x},\Vect{z},\Vect{y})</right>
+						<left></left>
+						<center>=</center>
+						<right>\omega(\Vect{x},\Vect{y},\Vect{z})</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find <latex>\omega(\Vect{y},\Vect{x},\Vect{z})</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para><latex>\omega(\Vect{y},\Vect{x},\Vect{z})=-1</latex></para></answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\omega(\Vect{y},\Vect{x},\Vect{z})</left>
+						<center>=</center>
+						<right>-\omega(\Vect{x},\Vect{y},\Vect{z})</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Investigate whether the ordered triple <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> of vectors below determine an orientation of  <latex>\RNr[3]</latex>.</para>
+			<para align="center"><latex>\Vect{x}=(3,0,0)</latex>, &nbsp; <latex>\Vect{y}=(2,-1,1)</latex>, and &nbsp; <latex>\Vect{z}=(-1,-1,1)</latex></para>
+			<para>If they do, which orientation?</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>The vectors lie in a plane through the origin. Therefore they do not represent an orientation of <latex>\RNr[3]</latex>.</para>
+			</answer>
+			<solution.hint>
+				<para>The question here is whether the three vectors lie in a plane through the origin. For, in this case, they form a degenerate triple which does not represent an orientation of <latex>\RNr[3]</latex>. Only if they do not lie in a plane through the origin do they represent an orientation of <latex>\RNr[3]</latex>.</para>
+			</solution.hint>
+			<solution>
+				<para>Observe that <latex>\Vect{z}=\Vect{y} - \Vect{x}</latex>. Therefore the vectors lie in a plane through the origin and, therefore, do not represent an orientation of <latex>\RNr[3]</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below determine if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>If <latex>(\Vect{u},\Vect{v},\Vect{w})</latex> represents the RHO of <latex>\RNr[3]</latex>, then <latex>(\Vect{v},\Vect{w},\Vect{u})</latex> also represents the RHO of <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\omega(\Vect{u},\Vect{v},\Vect{w})</left>
+						<center>= <info><para>Interchanging the first and second vectors reverses the sign.</para></info></center>
+						<right>-(\Vect{v},\Vect{u},\Vect{w})</right>
+						<left></left>
+						<center>=	<info><para>Interchanging the second and third vectors reverses the sign.</para></info></center>
+						<right>\omega(\Vect{v},\Vect{w},\Vect{u})</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>(\Vect{u},\Vect{v},\Vect{w})</latex> represents the RHO of <latex>\RNr[3]</latex>, then <latex>(\Vect{v},\Vect{u},\Vect{w})</latex> represents the LHO of <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+			</approach>
+		</part>
+	</exercise>
+	
+</exercise.pack>

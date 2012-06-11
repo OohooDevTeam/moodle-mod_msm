@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_AlternatingMultilinearProps">
+	<caption>Properties of alternating multilinear functions</caption>
+	
+	
+	
+	<statement>
+		<para>Let <latex>F\from M_{nn}\to \RNr</latex> be any function which is linear in each column and alternating. Then <latex>F</latex> has the following properties:</para>
+		<part partid="ZeroOnTwoEqualColumns">
+			<para>If <latex>\Mtrx{A}=[A_1\ \dots\ X\ \dots\ X\ \dots\ A_n]</latex>, then <latex>F(\Mtrx{A}) =0</latex>.</para>
+		</part>
+		<part partid="AddMultipleOfColumn">
+			<para><latex>F[A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n] = F[A_1\ \dots\ (X+tY)\ \dots\ Y\ \dots\ A_n]</latex></para>
+		</part>
+		<part partid="SumFormula">
+			<para>If <latex>\Mtrx{A}= [a_{ij}]</latex>, 
+				<subordinate>
+					<hot>then</hot>
+					<info>
+						<caption>Explanation of the symbols in this formula</caption>
+						<para><latex>\SymGrp{n}</latex> denotes the group of all invertible functions from <latex>\Set{ 1,\dots ,n}</latex> to itself. <latex>E_{j}</latex> denotes the <latex>(n,1)</latex>-column matrix which has a &lsquo;<latex>1</latex>&rsquo; in position <latex>j</latex> and <latex>0</latex>&rsquo;s everywhere else.</para>
+					</info>
+				</subordinate>
+			</para>
+			<math.display>
+				<latex>F(\Mtrx{A}) = \sum_{r\in \SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} F[E_{r(1)}\ \dots\ E_{r(n)}]</latex>
+			</math.display>
+		</part>
+		<part partid="RelationToDet">
+			<para>There exists a unique number <latex>c</latex> in <latex>\RNr</latex> such that, for each invertible  <latex>r\from \Set{1,\dots ,n} \to \Set{1,\dots ,n}</latex>,</para>
+			<math.display>
+				<latex>F[E(r(1))\dots E(r(n))] = c\cdot \det [E(r(1))\dots E(r(n))] = c\cdot \sign(r)</latex>
+			</math.display>
+		</part>
+		<part partid="TranspositionInvariant">
+			<para>For each <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>, <latex>F(\Mtrx{A}) = F(\Mtrx{A}^T)</latex>.</para>
+		</part>
+	</statement>
+	
+	<proof type="Proof">
+		<caption><partref>ZeroOnTwoEqualColumns</partref></caption>
+		<para>Interchanging the two columns containing <latex>X</latex> leaves the matrix <latex>\Mtrx{A}</latex> unchanged, but the alternating property of <latex>F</latex> reverses the sign. Therefore</para>
+		<math.display>
+			<latex>F(\Mtrx{A}) = - F(\Mtrx{A})</latex>
+		</math.display>
+		<para>implying that <latex>F(\Mtrx{A}) = 0</latex>, as claimed.</para>
+		
+		<caption><partref>AddMultipleOfColumn</partref></caption>
+		<para>With <latex>M:=F[A_1\ \dots\ (X+tY)\ \dots\ Y\ \dots\ A_n]</latex>, we compute the expression on the right:</para>
+		<computation>
+			<left>M</left>
+			<center>=	<info><para>Using linearity of <latex>F</latex> in the column containing <latex>(X+tY)</latex>.</para></info></center>
+			<right>F[A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n] + F[A_1\ \dots\ (tY)\ \dots\ Y\ \dots\ A_n]</right>
+			<left></left>
+			<center>=	<info><para>Using linearity of <latex>F</latex> in the column containing <latex>(tY)</latex>.</para></info></center>
+			<right>F[A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n] + tF[A_1\ \dots\ Y\ \dots\ Y\ \dots\ A_n]</right>
+			<left></left>
+			<center>=	<info><para>Using the first part of this theorem.</para></info></center>
+			<right>F[A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]</right>
+		</computation>
+		
+		<caption><partref>SumFormula</partref></caption>
+		<para>For <latex>1\leq j\leq n</latex>, the <latex>j</latex>-th column of <latex>\Mtrx{A}</latex> is given by</para>
+		<math.display>
+			<latex>A_j = a_{1j}E_1 + \cdots a_{nj}E_n</latex>
+		</math.display>
+		<para>Using the multilinearity property of <latex>F</latex> repeatedly, we see</para>
+		<computation>
+			<left>F(\Mtrx{A})</left>
+			<center>=</center>
+			<right>\sum_{i_1=1}^{n} a_{i_1,1} F[E_{i_1}\ A_2\ \dots\ A_n]</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{i_1=1}^{n}\sum_{i_2=1}^{n} F[E_{i_1}\ E_{i_2}\ \dots\ A_n]</right>
+			<left></left>
+			<center>=	<info><para><latex>R_n</latex> denotes the set of all functions <latex>r\from \Set{1,\dots ,n}\to \Set{1,\dots ,n}</latex>.</para></info></center>
+			<right>\sum_{r\in R_n} a_{r(1)1}\cdots a_{r(n)n} F[E_{r(1)}\ \dots\ E_{r(n)}]</right>
+			<left></left>
+			<center>=	<info><para>If <latex>r</latex> is not injective, then <latex>[E_{r(1)}\ \dots\ E_{r(n)}]</latex> has two equal columns, and <latex>F</latex> of such a matrix is <latex>0</latex>.</para></info></center>
+			<right>\sum_{r\in \SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} F[E_{r(1)}\ \dots\ E_{r(n)}]</right>
+		</computation>
+		<para>This was to be shown.</para>
+		
+		<caption><partref>RelationToDet</partref></caption>
+		<para>Let us shorten notation further with <latex>E(r):= [E_{r(1)}\ \dots\ E_{r(n)}]</latex>, for any <latex>r\in \SymGrp{n}</latex>. Thus <latex>E(r)</latex> is the <latex>(n,n)</latex>-matrix whose column number <latex>j</latex> has a single <latex>1</latex> in row number <latex>r(j)</latex> and <latex>0</latex>&rsquo;s everywhere else. Now the key to verifying the proposed formula is the fact that  <latex>E(r)</latex> can be converted into the identity matrix <latex>\IdMtrx[n]</latex> through a suitable sequence of column interchanges. While there are many possible such sequences of column interchanges, any two such sequences require either <i>both</i> an even number of interchanges or <i>both</i> an odd number of interchanges.</para>
+		<para>Therefore, we may define</para>
+		<ul>
+			<li><para><latex>\sign(r):=+1</latex> if turning <latex>\Mtrx{E}(r)</latex> into <latex>\IdMtrx[n]</latex> uses an even number of column interchanges</para></li>
+			<li><para><latex>\sign(r):=-1</latex> if turning <latex>\Mtrx{E}(r)</latex> into <latex>\IdMtrx[n]</latex> uses an odd number of column interchanges</para></li>
+		</ul>
+		<para>With this setup, we have </para>
+		<math.display>
+			<latex>F(\Mtrx{E}(r)) = \sign(r)\cdot F(\IdMtrx[n])</latex>
+		</math.display>
+		<para>So <latex>c:=F(\IdMtrx[n])</latex> gives <latex>F(\IdMtrx[n]) = c\cdot \det(\IdMtrx[n])</latex>, and the proposition follows.</para>
+		
+		<caption><partref>TranspositionInvariant</partref></caption>
+		<para>If <latex>\Mtrx{A}=[a_{ij}]</latex>, we know that</para>
+		<math.display>
+			<latex>F(\Mtrx{A}) = c\cdot \sum_{r\in\SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} \sign(r)</latex>
+		</math.display>
+		<para>On the other hand, if <latex>\Mtrx{B}:=[b_{ij}]:=\Mtrx{A}^T</latex>, then</para>
+		<math.display>
+			<latex>F(\Mtrx{B}) = c\cdot \sum_{r\in\SymGrp{n}} b_{r(1)1}\cdots b_{r(n)n} \sign(r)</latex>
+		</math.display>
+		<para>We need to show that the two sums are equal. To this end, we observe that, for each invertible  <latex>r\in\SymGrp{n}</latex>, the sets below are equal:</para>
+		<math.display>
+			<latex>\Set{(r(1),1),\dots (r(n),n) } = \Set{ (1,r^{-1}(1)),\dots ,(n,r^{-1}(n))}</latex>
+		</math.display>
+		<para>As a consequence,</para>
+		<computation>
+			<left>b_{r(1)1}\cdots b_{r(n)n}</left>
+			<center>=</center>
+			<right>a_{1r(1)}\cdots a_{nr(n)}</right>
+			<left></left>
+			<center>=</center>
+			<right>a_{r^{-1}1} \cdots a_{r^{-1}(n)n}</right>
+		</computation>
+		<para>Therefore, we compute</para>
+		<computation>
+			<left>F(\Mtrx{A})</left>
+			<center>=</center>
+			<right>c\cdot \sum_{r\in \SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n}\sign(r)</right>
+			<left></left>
+			<center>=</center>
+			<right>c\cdot \sum_{r\in\SymGrp{n}} a_{r^{-1}1}\cdots a_{r^{-1}(n)n} \sign(r^{-1})</right>
+			<left></left>
+			<center>=</center>
+			<right>c\cdot \sum_{r\in\SymGrp{n}} b_{r(1)1}\cdots b_{r(n)n}\sign(r^{-1})</right>
+			<left></left>
+			<center>=	<info><caption>Why is this true?</caption>
+				<para>If a certain sequence of column interchanges turns <latex>\Mtrx{E}(r)</latex> into <latex>\IdMtrx[n]</latex>, then the same column interchanges, in reverse order, <latex>\Mtrx{E}(r^{-1})</latex> into <latex>\IdMtrx[n]</latex>. It follows that <latex>\sign(r)=\sign(r^{-1})</latex>.</para>
+			</info></center>
+			<right>c\cdot \sum_{r\in\SymGrp{n}} b_{r(1)1}\cdots b_{r(n)n}\sign(r)</right>
+			<left></left>
+			<center>=</center>
+			<right>\det(\Mtrx{B})</right>
+		</computation>
+		<para>This was to be shown.</para>
+	</proof>
+</theorem>

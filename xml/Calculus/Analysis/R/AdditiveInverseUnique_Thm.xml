@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_AdditiveInverseUnique">
+	<caption>Additive inverse is unique</caption>
+	<statement>
+		<para>Given <latex>a\in \RNr</latex>, there is exactly one element <latex>b\in \RNr</latex> with <latex>a+b=0</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>The existence of at least one <latex>b\in \RNr</latex> with <latex>a+b=0</latex> is guaranteed by the appropriate axiom. Now consider an arbitrary element <latex>c\in \RNr</latex> with <latex>a + c = 0</latex>. Then</para>
+		<computation>
+			<left>b</left>
+			<center>=	<info><para>Here we use that <latex>(a+c) = 0</latex> is the neutral element with respect to addition.</para></info></center>
+			<right>b + (a + c)</right>
+			<left></left>
+			<center>=	<info><para>by the associativity property of addition</para></info></center>
+			<right>(b+a) + c</right>
+			<left></left>
+			<center>=	<info><para>because <latex>b+a=a+b=0</latex> is the neutral element of addition.</para></info></center>
+			<right>c</right>
+		</computation>
+		<para>This says exactly that <latex>b</latex> is the only additive inverse of <latex>a</latex>.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_InvertibleLinearTransformations"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Invertible Linear Transformations</title>
+      <plain.title>Invertible Transformations</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we discuss linear maps <math>
+                     <latex>S\from \RNr[n]\to \RNr[n]</latex>
+                  </math> whose transformation effect on space can be reversed. For example, rotating <math>
+                     <latex>\RNr[2]</latex>
+                  </math> through the angle <math>
+                     <latex>\pi/2</latex>
+                  </math> counter clockwise is a transformation which can be reversed: by the clockwise rotation through the angle <math>
+                     <latex>\pi/2</latex>
+                  </math>. In general, the transformation effect of  <math>
+                     <latex>S\from \RNr[n]\to \RNr[n]</latex>
+                  </math> can be reversed if there is a <math>
+                     <latex>T\from \RNr[n]\to \RNr[n]</latex>
+                  </math> such that <math>
+                     <latex>T\Comp S(\Vect{x})=\Vect{x}</latex>
+                  </math> for each <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>We will see that a linear <math>
+                     <latex>L\from \RNr[n]\to \RNr[n]</latex>
+                  </math> is invertible exactly when its representing matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible. In this case the inverse of <math>
+                     <latex>L</latex>
+                  </math> is represented by <math>
+                     <latex>\Mtrx{A}^{-1}</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_InvertibilityOfLinearTransformations">
+         <titles>
+            <title>Invertibility of Linear Transformations</title>
+            <plain.title>Invertibility of Linear Transformations</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_InvertibleLinearTransformation">
+                     <caption>Invertible linear transformation</caption>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_InvertibleLinearTrafo"/>
+                        <info>
+                           <para>
+                              <para.body>An example of an invertible linear transformation</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Quiz">
+                        <quiz.pack.ref quizPackID="Quz_InvertibleLinearTrafo"/>
+                        <info>
+                           <para>
+                              <para.body>A quiz so you can test your understanding of the concept of ‘invertible linear transformation’.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Comment">
+                        <info>
+                           <info.caption>Comment on: Invertible linear transformation</info.caption>
+                           <para>
+                              <para.body>Notice how nicely this definition captures the idea of reversing the effect of the transformation <math>
+                                    <latex>L</latex>
+                                 </math>: The identity transformation <math>
+                                    <latex>\Id[n]</latex>
+                                 </math> on <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> leaves every point where it is. Thus to require that <math>
+                                    <latex>M\Comp L=\Id[n]</latex>
+                                 </math> forces <math>
+                                    <latex>\Mtrx{M}</latex>
+                                 </math> to reverse the effect of <math>
+                                    <latex>L</latex>
+                                 </math>. Likewise, to require that <math>
+                                    <latex>L\Comp M=\Id[n]</latex>
+                                 </math> forces <math>
+                                    <latex>\Mtrx{L}</latex>
+                                 </math> to reverse the effect of <math>
+                                    <latex>\Mtrx{M}</latex>
+                                 </math> as well:</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>A linear transformation <math>
+                                 <latex>L\from \RNr[n]\to \RNr[n]</latex>
+                              </math> is called invertible if there exists a linear transformation <math>
+                                 <latex>M\from \RNr[n]\to \RNr[n]</latex>
+                              </math> such that</para.body>
+                        </para>
+                        <math.display>
+                           <latex>M\Comp L = \Id[n] = L\Comp M</latex>
+                        </math.display>
+                        <para>
+                           <para.body>In this case we call <math>
+                                 <latex>M</latex>
+                              </math> the inverse of <math>
+                                 <latex>L</latex>
+                              </math> and write <math>
+                                 <latex>M=L^{-1}</latex>
+                              </math>.
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>\Id[n]</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>Identity map <math>
+                                          <latex>\RNr[n]\to \RNr[n]</latex>
+                                       </math>, <math>
+                                          <latex>\Id[n](\Vect{x}) = \Vect{x}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>invertible</term>
+                              <term>linear transformation</term>
+                              <info>
+                                 <para>
+                                    <para.body>The definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>linear transformation</term>
+                              <term>invertible</term>
+                              <info>
+                                 <para>
+                                    <para.body>The definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>linear transformation</term>
+                              <term>invertible</term>
+                              <info>
+                                 <para>
+                                    <para.body>The definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>inverse</term>
+                              <term>of a linear transformation</term>
+                              <info>
+                                 <para>
+                                    <para.body>The definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </def.body>
+                  </def>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="DoubleInverse_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_InverseLinearMapInverseMatrix">
+         <titles>
+            <title>Inverse Transformation and Inverse Matrix</title>
+            <plain.title>Inverse Map, Inverse Matrix</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="InverseMapInverseMatrix_Prop.xml"/>
+                  <para>
+                     <para.body>We conclude this section by clarifying how invertibility and the computation of inverses relates to composites of linear transformations.</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="InvertibleMapsComposition_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_InvertibleLinearMapsI"/>
+   </studymaterials>
+</unit>

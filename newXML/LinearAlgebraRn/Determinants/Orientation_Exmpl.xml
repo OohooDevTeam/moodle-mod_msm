@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Orientation"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Examples: Orientation</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the orientation of <math>
+                  <latex>\RNr[2]</latex>
+               </math> given by the pair of vectors <math>
+                  <latex>(\Vect{a},\Vect{b})</latex>
+               </math> with</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{a}=(4,1)</latex>
+               </math>   and   <math>
+                  <latex>\Vect{b}=(-2,3)</latex>
+               </math>
+            </para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We form the <math>
+                        <latex>(2,2)</latex>
+                     </math>-matrix with column vectors <math>
+                        <latex>\Vect{a}</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}</latex>
+                     </math> and compute its determinant:</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\det [\Vect{a}\ \ \Vect{b}]</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					
+\det
+\left[
+\begin{array}{rr}
+4 &amp; -2 \\
+1 &amp; 3
+\end{array}
+\right]
+					
+				</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					12 - (-2)
+				</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex> 14 &gt; 0 </latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\omega(\Vect{a},\Vect{b})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>+1</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>In other words: the pair of vectors <math>
+                        <latex>(\Vect{a},\Vect{b})</latex>
+                     </math> represents the positive orientation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the orientation of <math>
+                  <latex>\RNr[3]</latex>
+               </math> represented by the triple of vectors <math>
+                  <latex>(\Vect{a},\Vect{b},\Vect{c})</latex>
+               </math> with</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{a} = (1,0,-1)</latex>
+               </math>, <math>
+                  <latex>\Vect{b}=(4,-1,2)</latex>
+               </math>, and <math>
+                  <latex>\Vect{c}=(3,2,1)</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We form the <math>
+                        <latex>(3,3)</latex>
+                     </math>-matrix with column vectors <math>
+                        <latex>\Vect{a}</latex>
+                     </math>, <math>
+                        <latex>\Vect{b}</latex>
+                     </math>, and <math>
+                        <latex>\Vect{c}</latex>
+                     </math>; then we compute its determinant:</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\det [\Vect{a}\ \ \Vect{b}\ \ \Vect{c}]</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					
+\det
+\left[
+\begin{array}{rrr}
+1 &amp; 4  &amp; 3 \\
+0 &amp; -1 &amp; 2 \\
+-1 &amp; 2  &amp; 1
+\end{array}
+\right]
+					
+				</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					1\cdot (-1 - 4)\ -\ 1\cdot (8 + 3)
+				</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex> -16 &lt; 0 </latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\omega(\Vect{a},\Vect{b},\Vect{c})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-1</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>In other words: the triple of vectors <math>
+                        <latex>(\Vect{a},\Vect{b},\Vect{c})</latex>
+                     </math> represents the negative orientation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

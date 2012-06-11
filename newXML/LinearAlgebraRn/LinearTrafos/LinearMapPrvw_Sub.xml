@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_LinearMap"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: Linear Function</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A function <math>
+                     <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                  </math> is linear if it satisfies the two properties below</para.body>
+            </para>
+            <ol type="1">
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex>
+                        </math> for all <math>
+                           <latex>\Vect{x},\Vect{y}\in\RNr[n]</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex>
+                        </math> for all <math>
+                           <latex>t\in \RNr</latex>
+                        </math>, and <math>
+                           <latex>\Vect{x}\in \RNr[n]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>Thus <math>
+                     <latex>L</latex>
+                  </math> transforms points of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> into points of <math>
+                     <latex>\RNr[m]</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>The first identity asserts that <math>
+                     <latex>L</latex>
+                  </math> transforms the vector sum <math>
+                     <latex>\Vect{x} + \Vect{y}</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> into the vector of <math>
+                     <latex>\RNr[m]</latex>
+                  </math> obtained by</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>first transforming <math>
+                           <latex>\Vect{x}</latex>
+                        </math> so as to obtain <math>
+                           <latex>L(\Vect{x})</latex>
+                        </math>,</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>then transforming <math>
+                           <latex>\Vect{y}</latex>
+                        </math> so as to obtain <math>
+                           <latex>L(\Vect{y})</latex>
+                        </math>,</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>finally adding up the transformed vectors <math>
+                           <latex>L(\Vect{x})</latex>
+                        </math> and <math>
+                           <latex>L(\Vect{y})</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>The second identity implies that <math>
+                     <latex>L</latex>
+                  </math> transforms the line of vectors <math>
+                     <latex>t\cdot \Vect{x}</latex>
+                  </math> through the origin of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> into the line of vectors <math>
+                     <latex>t\cdot L(\Vect{x})</latex>
+                  </math> of <math>
+                     <latex>\RNr[m]</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_OrientationGeneral">
+	<headers>
+		<full>Orientation of Arbitrary Subspaces</full>
+		<toc>Orientation of Arbitrary Subspaces</toc>
+		<short>Orientation</short>
+	</headers>
+	<intro>
+		<para>We already discussed 
+			<subordinate>
+				<hot>orientation of <latex>\RNr[n]</latex></hot>
+				<crossref>
+					<definition.ref definitionID="Def_Orientation"/>
+					<para>Look up this definition</para>
+				</crossref>
+			</subordinate>. In essence we declared that the standard ordered basis <latex>\EuScript{S}</latex> represents to positive orientation of <latex>\RNr[n]</latex>. If then an arbitrary ordered basis <latex>\EuScript{X} = ( \Vect{x}_1, \dots , \Vect{x}_n)</latex> of <latex>\RNr[n]</latex> is given we declared that <latex>\EuScript{X}</latex> represents the positive orientation of <latex>\RNr[n]</latex> if <latex><![CDATA[ \det[ \Vect{x}_1\ \dots \ \Vect{x}_n] > 0 ]]></latex>. Similarly, <latex>\EuScript{X}</latex> represents the negative orientation of <latex>\RNr[n]</latex> if <latex><![CDATA[ \det[ \Vect{x}_1\ \dots \ \Vect{x}_n] < 0 ]]></latex>.</para>
+		<para>Now we extend the concept of orientation to arbitrary subspaces of <latex>\RNr[k]</latex>: Given a subspace <latex>V</latex> of <latex>\RNr[k]</latex>, we 
+			<subordinate>
+				<hot>choose</hot>
+				<info>
+					<caption>Choose?</caption>
+					<para>Yes, choose! &ndash; Consider a plane <latex>V</latex> in <latex>\RNr[3]</latex>. An orientation of <latex>V</latex> amounts to declaring a notion of clockwise versus counter clockwise. However, the perception of these two notions depends upon from which side of the plane you look at it. In general, there is just no universal orientation of <latex>V</latex>. The best we can do then is choose one.</para>
+				</info>
+			</subordinate>
+			an ordered basis <latex>\EuScript{B} = ( \Vect{b}_1 , \dots , \Vect{b}_n )</latex> to represent the positive orientation of <latex>V</latex>. If then <latex>\EuScript{X} = ( \Vect{x}_1 , \dots ,\Vect{x}_n)</latex> is an arbitrary ordered basis of <latex>V</latex>, we say that</para>
+		<ol>
+			<li>
+				<para><latex>\EuScript{X}</latex> represents the positive orientation of <latex>V</latex> if the coordinate conversion matrix <latex>\Mtrx{C}_{\EuScript{X} \EuScript{B}}</latex> satisfies <latex><![CDATA[ \det( \Mtrx{C}_{\EuScript{X} \EuScript{B}} ) > 0 ]]></latex>;</para>
+			</li>
+			<li>
+				<para><latex>\EuScript{X}</latex> represents the negative orientation of <latex>V</latex> if  <latex><![CDATA[ \det( \Mtrx{C}_{\EuScript{X} \EuScript{B}} ) < 0 ]]></latex>.</para>
+			</li>
+		</ol>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_OrientationSubspace">
+			<caption>Orientation of a subspace</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_OrientationGeneral"/>
+				<info>
+					<caption>Examples</caption>
+					<para>Some examples of orientation in a general subvector space of <latex>\RNr[n]</latex>.</para>
+				</info>
+			</associate>
+			<para>An orientation of an <latex>n</latex>-dimensional subspace <latex>V</latex> of <latex>\RNr[k]</latex> is given by a choice of an ordered basis <latex>\EuScript{B} = (\Vect{b}_1 , \dots , \Vect{b}_n )</latex> of <latex>V</latex>.
+				<index.glossary>
+					<term>orientation</term><term>of a subspace of <latex>\RNr[k]</latex></term>
+					<info>
+						<para>is given by the choice of an ordered <latex>n</latex>-tuple <latex>\EuScript{B} = (\Vect{b}_1, \dots , \Vect{b}_n)</latex> of <latex>V</latex>. &ndash; Definition of the concept.</para>
+					</info>
+				</index.glossary>
+			</para>
+		</def>
+		<para>In an arbitrary <latex>n</latex>-dimensional subspace <latex>V</latex> of <latex>\RNr[k]</latex> we do not have a canonical orientation. However, given two ordered bases of <latex>V</latex>, we have the means to decide whether they determine the same or opposite orientations of <latex>V</latex>.</para>
+		<def type="Definition" id="Def_SameOrientation">
+			<caption>Same orientation</caption>
+			<associate Description="Comment">
+				<subpage.ref subpageID="Expla_OrientationSame"/>
+				<info>
+					<caption>Comment</caption>
+					<para>Details on &lsquo;Same Orientation&rsquo;</para>
+				</info>
+			</associate>
+			
+			<para>Two ordered bases <latex>\EuScript{B} = ( \Vect{b}_1 , \dots , \Vect{b}_n )</latex> and <latex>\EuScript{C} = ( \Vect{c}_1 , \dots , \Vect{c}_n)</latex> of a subspace <latex>V</latex> of <latex>\RNr[k]</latex> determine the same orientation of <latex>V</latex> if the coordinate conversion matrix <latex>C_{\EuScript{B}\EuScript{C}}</latex> satisfies <latex><![CDATA[ \det( C_{\EuScript{B} \EuScript{C}} ) > 0 ]]></latex>. Else <latex>\EuScript{B}</latex> and <latex>\EuScript{C}</latex> are said to represent opposite orientations of <latex>V</latex>.</para> 
+		</def>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_OrientationGeneral"/>
+	</studymaterials>
+</section>

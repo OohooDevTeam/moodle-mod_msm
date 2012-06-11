@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para>
+            <para.body>Roughly speaking, a subvector space of <math>
+                  <latex>\RNr[n]</latex>
+               </math> is a copy of <math>
+                  <latex>\RNr[k]</latex>
+               </math>, <math>
+                  <latex>k\leq n</latex>
+               </math> sitting inside <math>
+                  <latex>\RNr[n]</latex>
+               </math>. We approach subvector spaces from two points of view:</para.body>
+         </para>
+         <ul>
+		          <li>
+               <para>
+                  <para.body>
+                     <strong>Geometrically</strong>, a subvector space of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> appears as line, or a plane, or a copy of <math>
+                        <latex>\RNr[k]</latex>
+                     </math>, <math>
+                        <latex>k\leq n</latex>
+                     </math>, 
+			<subordinate>
+                        <hot>passing through the origin</hot>
+                        <info>
+                           <info.caption>Example</info.caption>
+					
+					                      <para>
+                              <para.body>So, in particular, a hyperspace of <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> is a subvector space of <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math>, while a general hyperplane is not a subvector space of <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math>.</para.body>
+                           </para>
+				                    </info>
+                     </subordinate>.</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <strong>Algebraically</strong>, a subvector space of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> appears as a collection of vectors <math>
+                        <latex>V</latex>
+                     </math> which is 
+			<subordinate>
+                        <hot>closed under the operations of addition and scalar multiplication</hot>
+                        <companion>
+                           <unit.ref unitId="Prvw_SubSpace"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>See an illustration of this</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate>. This means that the sum of any two vectors from <math>
+                        <latex>V</latex>
+                     </math> is again in <math>
+                        <latex>V</latex>
+                     </math>, and an arbitrary scalar multiple of a vector in <math>
+                        <latex>V</latex>
+                     </math> by a numbers is again in <math>
+                        <latex>V</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+	        </ul>
+         <para>
+            <para.body>What leads us to consider subvector spaces of <math>
+                  <latex>\RNr[n]</latex>
+               </math>? We encounter two primary sources of them. The first source is the ‘<subordinate>
+                  <hot>span construction</hot>
+                  <info>
+                     <info.caption>What is ‘span’?</info.caption>
+			
+			                  <para>
+                        <para.body>The span of a collection <math>
+                              <latex>S</latex>
+                           </math> of vectors in <math>
+                              <latex>\RNr[n]</latex>
+                           </math> is the smallest subvector space of <math>
+                              <latex>\RNr[n]</latex>
+                           </math> containing <math>
+                              <latex>S</latex>
+                           </math>. – For example, the span of two vectors <math>
+                              <latex>\Vect{u}</latex>
+                           </math> and <math>
+                              <latex>\Vect{v}</latex>
+                           </math> is the collection of all vectors of the form</para.body>
+                     </para>
+			                  <math.display>
+				                    <latex>s\cdot \Vect{u} + t\cdot \Vect{v}</latex>
+			                  </math.display>
+			                  <para>
+                        <para.body>where <math>
+                              <latex>s</latex>
+                           </math> and <math>
+                              <latex>t</latex>
+                           </math> are arbitrary numbers in <math>
+                              <latex>\RNr</latex>
+                           </math>.</para.body>
+                     </para>
+		                </info>
+               </subordinate>’. Examples of span spaces include</para.body>
+         </para>
+         <ul>
+		          <li>
+			            <para>
+                  <para.body>the column space of an <math>
+                        <latex>(m,n)</latex>
+                     </math>-matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>: the smallest subvector space of <math>
+                        <latex>\RNr[m]</latex>
+                     </math> containing all column vectors of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, and</para.body>
+               </para>
+            </li>
+		          <li>
+			            <para>
+                  <para.body>the row space of an <math>
+                        <latex>(m,n)</latex>
+                     </math>-matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>: the smallest subvector space of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> containing all row vectors of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+		          </li>
+	        </ul>
+         <para>
+            <para.body>A second source of subspaces of <math>
+                  <latex>\RNr[n]</latex>
+               </math> is the 
+		<subordinate>
+                  <hot>orthogonal complement operation</hot>
+                  <companion>
+                     <unit.ref unitId="Illu_OrthogonalComplement"/>
+                     <info>
+                        <info.caption>What is an ‘orthogonal complement’?</info.caption>
+				
+				
+				                    <para>
+                           <para.body>An illustration of the orthogonal complement.</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>.</para.body>
+         </para>
+         <para>
+            <para.body>When given a subvector space <math>
+                  <latex>V</latex>
+               </math> of <math>
+                  <latex>\RNr[n]</latex>
+               </math>, one of the first things we want to know about it is its ‘size’; in other words, is it a line, a plane, a copy of <math>
+                  <latex>\RNr[3]</latex>
+               </math>, and so on? The ‘dimension’ of <math>
+                  <latex>V</latex>
+               </math> provides such size information, that is the number of coordinate axes needed to describe the location of a point in <math>
+                  <latex>V</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>How do we set up a coordinate system in a subspace <math>
+                  <latex>V</latex>
+               </math> of <math>
+                  <latex>\RNr[n]</latex>
+               </math>? – For each coordinate axis we choose one nonzero vector in the direction of the axis. The resulting collection of vectors is called a basis for <math>
+                  <latex>V</latex>
+               </math>. Consequently, the number of vectors in a basis of <math>
+                  <latex>V</latex>
+               </math> equals the dimension of <math>
+                  <latex>V</latex>
+               </math>. – Let us describe this process in some more detail:</para.body>
+         </para>
+         <ol>
+		          <li>
+               <para>
+                  <para.body>We start with a nonzero vector <math>
+                        <latex>\Vect{b}_1</latex>
+                     </math> in <math>
+                        <latex>V</latex>
+                     </math>. Its span is the line of vectors <math>
+                        <latex>t_1 \Vect{b}_1</latex>
+                     </math>, where <math>
+                        <latex>t_1</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> is arbitrary. We take this line as the first coordinate axis. If this line is all of <math>
+                        <latex>V</latex>
+                     </math>, we are done. In this case <math>
+                        <latex>V</latex>
+                     </math> has dimension 1.</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>If the line found in step 1 is not all of <math>
+                        <latex>V</latex>
+                     </math>, there is a vector <math>
+                        <latex>\Vect{b}_2</latex>
+                     </math> in <math>
+                        <latex>V</latex>
+                     </math> which does not lie on the line spanned by <math>
+                        <latex>\Vect{b}_1</latex>
+                     </math>. We take its span, that is all vectors of the form <math>
+                        <latex>t_2 \Vect{b}_2</latex>
+                     </math> with <math>
+                        <latex>t_2</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> arbitrary, as the second coordinate axis.</para.body>
+               </para>
+			            <para>
+                  <para.body>Now the span of <math>
+                        <latex>\Vect{b}_1</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}_2</latex>
+                     </math> is the plane in <math>
+                        <latex>V</latex>
+                     </math> consisting of all vectors of the form <math>
+                        <latex>t_1 \Vect{b}_1 + t_2 \Vect{b}_2</latex>
+                     </math> with <math>
+                        <latex>t_1, t_2</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> arbitrary. If this plane is all of <math>
+                        <latex>V</latex>
+                     </math>, we are done. In this case <math>
+                        <latex>V</latex>
+                     </math> has dimension 2.</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>If the plane found in step 2) is not all of <math>
+                        <latex>V</latex>
+                     </math>, there is a vector <math>
+                        <latex>\Vect{b}_3</latex>
+                     </math> in <math>
+                        <latex>V</latex>
+                     </math> which does not lie on the plane spanned by <math>
+                        <latex>\Vect{b}_1,\Vect{b}_2</latex>
+                     </math>. We take its span <math>
+                        <latex>t_3 \Vect{b}_3</latex>
+                     </math> as the third coordinate axis.</para.body>
+               </para>
+			            <para>
+                  <para.body>Now the span of <math>
+                        <latex>\Vect{b}_1,\Vect{b}_2,\Vect{b}_3</latex>
+                     </math> consists of all vectors of the form <math>
+                        <latex>t_1 \Vect{b}_1 + t_2 \Vect{b}_2 + t_3 \Vect{b}_3</latex>
+                     </math> with <math>
+                        <latex>t_1,t_2,t_3</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> arbitrary. It is a three dimensional subspace of <math>
+                        <latex>V</latex>
+                     </math>. If this three dimensional subspace is all of <math>
+                        <latex>V</latex>
+                     </math>, we are done.</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>etc.</para.body>
+               </para>
+            </li>
+	        </ol>
+         <para>
+            <para.body>The key point is that, for every subspace <math>
+                  <latex>V</latex>
+               </math> of <math>
+                  <latex>\RNr[n]</latex>
+               </math>, this process stops after at most <math>
+                  <latex>n</latex>
+               </math> steps, and we have a coordinate system for <math>
+                  <latex>V</latex>
+               </math> whose number of coordinate axes is the dimension of <math>
+                  <latex>V</latex>
+               </math>. – For this to make sense, we must prove somewhere that any two coordinate systems for <math>
+                  <latex>V</latex>
+               </math> has the same number of coordinate axes.</para.body>
+         </para>
+         <para>
+            <para.body>We will learn how to express the vectors of <math>
+                  <latex>V</latex>
+               </math> in terms of the vectors of a given basis of <math>
+                  <latex>V</latex>
+               </math>.</para.body>
+         </para>
+      </block.body>
+   </block>
+</intro>

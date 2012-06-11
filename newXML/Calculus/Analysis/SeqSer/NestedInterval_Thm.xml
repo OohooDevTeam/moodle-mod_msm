@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_NestedInverval"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Nested Interval Theorem</caption>
+   <statement.theorem>
+      <para>
+         <para.body>For <math>
+               <latex>n\geq 0</latex>
+            </math> let <math>
+               <latex>I_n := \CCIntrvl{a_n}{b_n}\subset \RNr</latex>
+            </math> be a closed interval in <math>
+               <latex>\RNr</latex>
+            </math> with <math>
+               <latex>a_n\leq b_n</latex>
+            </math>. If <math>
+               <latex>I_{n+1}\subseteq I_n</latex>
+            </math> for each <math>
+               <latex>n\geq 0</latex>
+            </math>, then the intersection <math>
+               <latex>I := \intrsctn_n I_n</latex>
+            </math> is not empty.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>From the given intervals we have two sequences of numbers, namely <math>
+                     <latex>(a_n)</latex>
+                  </math> and <math>
+                     <latex>(b_n)</latex>
+                  </math>. We have <math>
+                     <latex>a_{n+1}\geq a_n</latex>
+                  </math> and <math>
+                     <latex>b_{n+1}\leq b_n</latex>
+                  </math> because <math>
+                     <latex>I_{n+1} \subseteq I_n</latex>
+                  </math>. So <math>
+                     <latex>(a_n)</latex>
+                  </math> is increasing, and <math>
+                     <latex>(b_n)</latex>
+                  </math> is decreasing.</para.body>
+            </para>
+            <para>
+               <para.body>Moreover, every <math>
+                     <latex>b_n</latex>
+                  </math> is an upper bound of the sequence <math>
+                     <latex>(a_n)</latex>
+                  </math>, and every <math>
+                     <latex>a_n</latex>
+                  </math> is a lower bound of the sequence <math>
+                     <latex>(b_n)</latex>
+                  </math>. So both sequence converge. Let</para.body>
+            </para>
+            <math.display>
+               <latex>a := \lim_{n\to\infty} a_n \quad\text{and}\quad b:= \lim_{n\to\infty} b_n</latex>
+            </math.display>
+            <para>
+               <para.body>Then we know that</para.body>
+            </para>
+            <math.display>
+               <latex>a = \sup(a_n) \leq \inf(b_n) = b</latex>
+            </math.display>
+            <para>
+               <para.body>Thus <math>
+                     <latex>\CCIntrvl{a}{b}\subseteq \CCIntrvl{a_n}{b_n}</latex>
+                  </math> for all <math>
+                     <latex>n\in \NNr</latex>
+                  </math>. So <math>
+                     <latex>\emptyset \neq \CCIntrvl{a}{b} \subseteq \intrsctn_n \CCIntrvl{a_n}{b_n}</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

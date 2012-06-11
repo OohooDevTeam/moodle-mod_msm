@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_DeterminantAlgebraicProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Determinant: alternating and normalizing</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_Alternating"/>
+      <info>
+         <para>
+            <para.body>Examples of the alternating property of the determinant operation.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Quiz">
+      <quiz.pack.ref quizPackID="Qz_DeterminantAlternating"/>
+      <info>
+         <para>
+            <para.body>A quiz so you can test your understanding of the concept of the alternating property of determinants.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>The determinant operation on <math>
+               <latex>(n,n)</latex>
+            </math>-matrices has the following properties.</para.body>
+      </para>
+      <part.theorem partid="Alternating">
+         <caption>alternating</caption>
+         <part.body>
+            <para>
+               <para.body>interchanging two distinct columns reverses the sign of the determinant.
+				</para.body>
+               <index.glossary>
+                  <term>alternating</term>
+                  <term>property of the determinant operation</term>
+                  <info>
+                     <para>
+                        <para.body>Statement and proof of the alternating property</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>determinant</term>
+                  <term>alternating</term>
+                  <info>
+                     <para>
+                        <para.body>Statement and proof of the alternating property</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+            <math.display>
+               <latex>\det [A_1\ \dots\ {\color{blue} A_j}\ \dots\ {\color{red} A_k}\ \dots\ A_n] = -\det[A_1\ \dots\ {\color{red} A_k}\ \dots\ {\color{blue} A_j}\ \dots\ A_n]</latex>
+            </math.display>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Normalized">
+         <caption>normalizing property</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\det(\IdMtrx[n]) = 1</latex>
+                  </math>.
+				</para.body>
+               <index.glossary>
+                  <term>norm</term>
+                  <term>property of the determinant operation</term>
+                  <info>
+                     <para>
+                        <para.body>The norm property of the determinant says that <math>
+                              <latex>\det(\IdMtrx[n])=1</latex>
+                           </math>. This is stated and proved here</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>determinant</term>
+                  <term>norm property</term>
+                  <info>
+                     <para>
+                        <para.body>The norm property of the determinant says that <math>
+                              <latex>\det(\IdMtrx[n])=1</latex>
+                           </math>. This is stated and proved here.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>Alternating</part.ref>
+         </logic>
+         <caption>Alternating</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Given an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}=[A_1\ \dots\ A_n]</latex>
+                  </math> and <math>
+                     <latex> 1\leq k &lt; j\leq n</latex>
+                  </math>, we need to show that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Normalized</part.ref>
+         </logic>
+         <caption>Normalized</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The identity matrix is an upper triangular matrix, hence its determinant is the product of its diagonal elements:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

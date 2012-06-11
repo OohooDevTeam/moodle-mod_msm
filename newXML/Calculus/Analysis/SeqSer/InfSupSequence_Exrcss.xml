@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_InfSupSequence"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: Infimum, Supremum of a Sequence</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the sequences below, find its infimum and its supremum</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(a_n)</latex>
+                     </math> with <math>
+                        <latex>a_n = (-1)^n</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(b_n)</latex>
+                     </math> with <math>
+                        <latex>b_n =  n-3</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(c_n)</latex>
+                     </math> with <math>
+                        <latex>c_n =  \tfrac{1}{1 + n^2}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(d_n)</latex>
+                     </math>with <math>
+                        <latex>d_n = - \dfrac{n}{n+1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If <math>
+                     <latex>(x_n)</latex>
+                  </math> is a 
+				<subordinate>
+                     <hot>positive sequence</hot>
+                     <info>
+                        <para>
+                           <para.body>That is <math>
+                                 <latex> x_n &gt; 0 </latex>
+                              </math> for all <math>
+                                 <latex>n\in \NNr</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+				show the following:
+			</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\sup(x_n) = u</latex>
+                     </math> for some <math>
+                        <latex>u\in \RNr</latex>
+                     </math>, then <math>
+                        <latex> u&gt;0 </latex>
+                     </math> and <math>
+                        <latex>\inf(1/x_n) = 1/u</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\sup(x_n) = +\infty</latex>
+                     </math> if and only if <math>
+                        <latex>\inf(1/x_n) = 0</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

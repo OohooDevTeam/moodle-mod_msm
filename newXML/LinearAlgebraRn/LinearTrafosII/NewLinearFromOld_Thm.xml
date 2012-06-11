@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_NewLinearFromOld"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>New linear maps from old</caption>
+   <statement.theorem>
+      <para>
+         <para.body>The following hold:</para.body>
+      </para>
+      <part.theorem partid="SumLinearMaps">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>S,T\from V\to W</latex>
+                  </math> are linear maps, so is <math>
+                     <latex>(S+T)\from V\to W</latex>
+                  </math>, defined by <math>
+                     <latex>(S+T)(\Vect{x}):= S(\Vect{x}) + T(\Vect{x})</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="ScalarProductLinearMaps">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>t</latex>
+                  </math> is in <math>
+                     <latex>\RNr</latex>
+                  </math> and <math>
+                     <latex>L\from V\to W</latex>
+                  </math> is linear,  then so is <math>
+                     <latex>(tL)\from V\to W</latex>
+                  </math>, defined by <math>
+                     <latex>(tL)(\Vect{x}) := t\cdot (L(\Vect{x}))</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="CompositionLinearMaps">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>S\from U\to V</latex>
+                  </math> and <math>
+                     <latex>T\from V\to W</latex>
+                  </math> are linear maps, so is the composite <math>
+                     <latex>(T\Comp S)\from U\to W</latex>
+                  </math>, defined by <math>
+                     <latex>T\Comp S(\Vect{u}):= T(S(\Vect{u}))</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof Idea">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>These statements may be proved directly from the definition. The details are left as a exercises.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

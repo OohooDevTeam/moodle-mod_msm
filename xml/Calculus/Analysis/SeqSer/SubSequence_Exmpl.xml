@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_SubSequence">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Subsequences: Examples</title>
+	<showme>
+		<statement>
+			<para>Given the sequence <latex magnify="yes">(a_n := \tfrac{1}{n+1})</latex>, write out the subsequence of even indexed sequence elements.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We have</para>
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+				<row>
+					<cell align="center"><para><latex>n</latex></para></cell>
+					<cell align="center"><para>0</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>3</para></cell>
+					<cell align="center"><para>4</para></cell>
+					<cell align="center"><para>5</para></cell>
+					<cell align="center"><para>6</para></cell>
+					<cell align="center"><para>7</para></cell>
+					<cell align="center"><para>8</para></cell>
+					<cell align="center"><para>9</para></cell>
+					<cell align="center"><para>10</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">a_n</latex></para></cell>
+					<cell  align="center"><para>1</para></cell>
+					<cell  align="center"><para>1/2</para></cell>
+					<cell align="center"><para>1/3</para></cell>
+					<cell align="center"><para>1/4</para></cell>
+					<cell align="center"><para>1/5</para></cell>
+					<cell align="center"><para>1/6</para></cell>
+					<cell align="center"><para>1/7</para></cell>
+					<cell align="center"><para>1/8</para></cell>
+					<cell align="center"><para>1/9</para></cell>
+					<cell align="center"><para>1/10</para></cell>
+					<cell align="center"><para>1/11</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+			</table>
+			<para>Therefore the subsequence of even indexed sequence elements is</para>
+			<math.display>
+				<latex>b_i = a_{n_i} = a_{2i}</latex>
+			</math.display>
+			<para>in tabular form:</para>
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+				<row>
+					<cell align="center"><para><latex>i</latex></para></cell>
+					<cell align="center"><para>0</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>3</para></cell>
+					<cell align="center"><para>4</para></cell>
+					<cell align="center"><para>5</para></cell>
+					<cell align="center"><para>6</para></cell>
+					<cell align="center"><para>7</para></cell>
+					<cell align="center"><para>8</para></cell>
+					<cell align="center"><para>9</para></cell>
+					<cell align="center"><para>10</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">b_i=a_{2i}</latex></para></cell>
+					<cell  align="center"><para>1</para></cell>
+					<cell align="center"><para>1/3</para></cell>
+					<cell align="center"><para>1/5</para></cell>
+					<cell align="center"><para>1/7</para></cell>
+					<cell align="center"><para>1/9</para></cell>
+					<cell align="center"><para>1/11</para></cell>
+					<cell align="center"><para>1/13</para></cell>
+					<cell align="center"><para>1/15</para></cell>
+					<cell align="center"><para>1/17</para></cell>
+					<cell align="center"><para>1/19</para></cell>
+					<cell align="center"><para>1/21</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+			</table>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Given the sequence <latex magnify="yes">(a_n = n)</latex>, find the subsequence corresponding to the function</para>
+			<math.display>
+				<latex>n\from \NNr \longrightarrow \NNr,\quad n(i):= i^2</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>The required subsequence is</para>
+			<math.display>
+				<latex magnify="yes">(b_i) = (a_{n(i)}) = (a_{i^2} = i^2)</latex>
+			</math.display>
+			<para>In tabular form:</para>
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+				<row>
+					<cell align="center"><para><latex>i</latex></para></cell>
+					<cell align="center"><para>0</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>3</para></cell>
+					<cell align="center"><para>4</para></cell>
+					<cell align="center"><para>5</para></cell>
+					<cell align="center"><para>6</para></cell>
+					<cell align="center"><para>7</para></cell>
+					<cell align="center"><para>8</para></cell>
+					<cell align="center"><para>9</para></cell>
+					<cell align="center"><para>10</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">b_i=a_{i^2}</latex></para></cell>
+					<cell  align="center"><para>0</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>4</para></cell>
+					<cell align="center"><para>9</para></cell>
+					<cell align="center"><para>16</para></cell>
+					<cell align="center"><para>25</para></cell>
+					<cell align="center"><para>36</para></cell>
+					<cell align="center"><para>49</para></cell>
+					<cell align="center"><para>64</para></cell>
+					<cell align="center"><para>81</para></cell>
+					<cell align="center"><para>100</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+			</table>
+		</answer>
+	</showme>
+</showme.pack>

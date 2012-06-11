@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_LevelSet">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	
+	<title>Exercises: Linear Equations and Linear Transformations</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear map <latex>T\from \RNr \to \RNr[2]</latex>, <latex>T(x) = (4x,-x)</latex> find the specified level sets.</para>
+		</problem>
+		
+		<part>
+			<problem><para>Find the preimage of <latex>\Vect{y} = (20,-5)</latex> under <latex>T</latex>.</para></problem>
+			<approach>
+				<answer><para>The required preimage consists of the number <latex>5</latex>.</para></answer>
+				<solution>
+					<para>The preimage of <latex>(20,-5)</latex> under <latex>T</latex> is the set of all those <latex>x</latex> in <latex>\RNr</latex> with</para>
+					<math.display>
+						<latex>T(x) = (4x,-x) = (20,-5)</latex>
+					</math.display>
+					<para>This vector equation is equivalent to the system of linear equations</para>
+					<para align="center"><latex>4x = 20</latex> &nbsp; and &nbsp; -x = -5</para>
+					<para>This system has the unique solution <latex>x=5</latex>. Therefore the required preimage consists of the number <latex>5</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find the level set of <latex>(-2,1/2)</latex> under <latex>T</latex>.</para></problem>
+			<approach>
+				<answer><para>The level set of <latex>(-2,1/2)</latex> under <latex>T</latex> consists of the single point <latex>x=-1/2</latex>.</para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find <latex>T^{-1}(-4,-1)</latex></para></problem>
+			<approach>
+				<answer><para>The preimage of <latex>(-4,-1)</latex> under <latex>T</latex> is the empty set.</para></answer>
+				<solution>
+					<para><latex>T^{-1}(-4,-1)</latex> is the collection of all <latex>\Vect{x}=(x)</latex> in <latex>\RNr</latex> for which</para>
+					<para align="center"><latex>4x=-4</latex> &nbsp; and &nbsp; <latex>-x=-1</latex></para>
+					
+					<para>The first equation requires <latex>x=-1</latex>. The second equation requires <latex>x=1</latex>. But <latex>x</latex> cannot simultaneously assume the values <latex>+1</latex> and <latex>-1</latex>. Therefore there is no number in the preimage of <latex>(-4,-1)</latex> under <latex>T</latex>. This means that the required preimage is empty.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear function &nbsp; <latex>T\from \RNr[2] \longrightarrow \RNr[1]</latex>, <latex>T(x,y)=2x+y</latex> do the following</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para>Find the 
+					<subordinate>
+						<hot>kernel</hot>
+						<info>
+							<caption>Recall the definition of `kernel'</caption>
+							<para>The kernel of a linear map <latex>L\from \RNr[n] \to \RNr[m]</latex> is the collection of all those <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> with <latex>L(\Vect{x})=\Vect{0}</latex>.</para>
+						</info>
+					</subordinate>
+					of <latex>T</latex>.
+				</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The kernel of <latex>T</latex> is the same as <latex>T^{-1}(\Vect{0})</latex>, which is the line in <latex>\RNr[2]</latex> passing through <latex>\Vect{0}</latex> and perpendicular to <latex>(2,1)</latex>.</para>
+				</answer>
+				<solution>
+					<para>By definition, the kernel of <latex>T</latex> is the same as <latex>T^{-1}(\Vect{0})</latex>, i.e. it is the collection of all those <latex>\Vect{x}=(x,y)</latex> in <latex>\RNr[2]</latex> for which</para>
+					<math.display>
+						<latex>T(x,y) = 2x+y = 0</latex>
+					</math.display>
+					<para>This is the line in the plane passing through the origin and perpendicular to the vector <latex>(2,1)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the preimages under <latex>T</latex> of <latex>\Vect{y}=(2)</latex> and of <latex>\Vect{z}= (-2)</latex>. Describe the preimages geometrically as point sets of <latex>\RNr[2]</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>T^{-1}(2)</latex> is the set of all those <latex>(x,y)</latex> in <latex>\RNr[2]</latex> on the line <latex>2x+y=2</latex>, while <latex>T^{-1}(-2)</latex> is the set of all those <latex>(x,y)</latex> in <latex>\RNr[2]</latex> on the line <latex>2x+y=-2</latex>. Both lines are perpendicular to the vector <latex>(2,1)</latex>. So they are parallel.</para>
+				</answer>
+				<solution>
+					<para>To find the preimage of <latex>\Vect{y}=2</latex> under <latex>T</latex>, we need to look for the solutions of the equation</para>
+					<computation>
+						<left>2x+y</left>
+						<center>=</center>
+						<right>2</right>
+					</computation>
+					<para>We recognize that this is the line perpendicular to <latex>\Vect{n}=(2,1)</latex> passing through <latex>(0,2)</latex>; red in the image below. Similarly, to find the preimage of <latex>\Vect{z}=-2</latex> under <latex>T</latex>, we need to look for the solutions of the equation</para>
+					<computation>
+						<left>2x+y</left>
+						<center>=</center>
+						<right>-2</right>
+					</computation>
+					<para>This is the line perpendicular to <latex>\Vect{n}=(2,1)</latex> passing through <latex>(0,-2)</latex>; blue in the image below.</para>
+					<figure>
+						<img src="ims/Preimage2XPlusY.png"></img><!-- svg available -->
+					</figure>
+					<para>Thus while <latex>T</latex> transforms <latex>\RNr[2]</latex> into <latex>\RNr</latex>, it crunches each line perpendicular to <latex>\Vect{n}</latex> into a single point; e.g. the red line into the point <latex>2</latex> and the blue line into the point <latex>-2</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>P\from \RNr[3] \to \RNr[3]</latex> be the 
+				<subordinate>
+					<hot>orthogonal projection</hot>
+					<crossref>
+						<definition.ref definitionID="Def_OrthogonalProjection"/>
+						<para>Review the concept of &lsquo;orthogonal projection&rsquo;.</para>
+					</crossref>
+				</subordinate>
+				onto a hyperspace <latex>H</latex>.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>What is the preimage of a point <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex> if <latex>\Vect{y}</latex> belongs to <latex>H</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The required preimage consists of the line perpendicular to <latex>H</latex> and passing through <latex>\Vect{y}</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>What is the preimage of a point <latex>\Vect{z}</latex> in <latex>\RNr[3]</latex> if <latex>\Vect{z}</latex> does not belong to <latex>H</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>The preimage of <latex>\Vect{z}</latex> is empty.</para></answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>R\from \RNr[2]\to \RNr[2]</latex> be a rotation.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Does every <latex>\Vect{y}</latex> in <latex>\RNr[2]</latex> have a nonempty preimage under <latex>R</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>Yes!</para></answer>
+				<solution>
+					<para>To answer this question, recall that every rotation is invertible: If <latex>R</latex> rotates through the angle <latex>\theta</latex> about the origin, the inverse of <latex>R</latex> is the rotation <latex>S</latex> which rotates through the the angle <latex>-\theta</latex>.</para>
+					<para>Therefore the preimage of <latex>\Vect{y}</latex> under <latex>R</latex> is given by <latex>R^{-1}(\Vect{y}) = S(\Vect{y})</latex>. Therefore <latex>R^{-1}(\Vect{y})</latex> consists of a single point. In particular it is not empty.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>How many points can there be in the preimage of <latex>\Vect{y}</latex>?</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>There is exactly one point in the preimage of <latex>\Vect{y}</latex> under <latex>R</latex>, namely the point <latex>R^{-1}(\Vect{y})</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+	</exercise>
+	
+</exercise.pack>

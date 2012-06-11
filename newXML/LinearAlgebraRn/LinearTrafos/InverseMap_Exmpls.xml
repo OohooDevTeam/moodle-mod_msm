@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_InverseMapInverseMatrix"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Matrix Representing an Inverse Map: Examples</title>
+	  <caption xmlns="">Matrix of Inverse Map</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the linear transformation <math>
+                  <latex>L\from \RNr[2]\to \RNr[2]</latex>
+               </math> represented by the matrix</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+A = 
+\dfrac{1}{2}\, \left[
+\begin{array}{cc}
+1 &amp; -\sqrt{3} \\
+\sqrt{3} &amp; 1
+\end{array}
+\right]
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>is invertible. If it is, find the matrix representing the inverse <math>
+                  <latex>L^{-1}</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>There is a quick way of solving the problem <emphasis>if</emphasis> we happen to remember that</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\cos \tfrac{\pi}{3}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\tfrac{1}{2}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sin \tfrac{\pi}{3}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\tfrac{1}{2}\cdot \sqrt{3}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>This enables us to see that</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+A = 
+\dfrac{1}{2}\, \left[
+\begin{array}{cc}
+1 &amp; -\sqrt{3} \\
+\sqrt{3} &amp; 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{rr}
+\cos \tfrac{\pi}{3} &amp; -\sin \tfrac{\pi}{3} \\
+\sin \tfrac{\pi}{3} &amp; \cos \tfrac{\pi}{3}
+\end{array}
+\right]
+					
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>This means that <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> describes the rotation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> counterclockwise about the origin through the angle <math>
+                        <latex>\theta=\pi/3</latex>
+                     </math>. Thus <math>
+                        <latex>L</latex>
+                     </math> is invertible, and <math>
+                        <latex>L^{-1}</latex>
+                     </math> is the clockwise rotation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> about the origin through the angle <math>
+                        <latex>-\pi/3</latex>
+                     </math>. It is represented by the matrix</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+A^{-1} = 
+\dfrac{1}{2}\, \left[
+\begin{array}{cc}
+1 &amp; \sqrt{3} \\
+-\sqrt{3} &amp; 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{cc}
+\cos -\tfrac{\pi}{3} &amp; -\sin -\tfrac{\pi}{3} \\
+\sin -\tfrac{\pi}{3} &amp; \cos -\tfrac{\pi}{3}
+\end{array}
+\right]
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The first solution given to this problem was a lucky one. It relies on being able to ‘eyeball’ the transformation effect of the given linear map. But what do we do if ‘eyeballing’ doesn't work?</para.body>
+               </para>
+			            <para>
+                  <para.body>This is where the fact comes in that a linear map is invertible exactly when its representing matrix is invertible ... and we do know how to test whether a matrix is invertible! Indeed, the 
+				<subordinate>
+                        <hot>row reduction method</hot>
+                        <crossref>
+                           <example.pack.ref examplePackID="Exa_MatrixInverse"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Review the row reduction method to test whether a matrix is invertible.</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>
+				for finding the inverse of a matrix yields:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{cc|cc}
+\tfrac{1}{2} &amp; -\tfrac{1}{2} \sqrt{3} &amp; 1 &amp; 0 \\
+\tfrac{1}{2}\sqrt{3} &amp; \tfrac{1}{2}   &amp; 0 &amp; 1 \\ \hline
+%
+1 &amp; -\sqrt{3} &amp; 2 &amp; 0 \\
+\sqrt{3} &amp; 1 &amp;  0 &amp; 2 \\ \hline
+%
+1 &amp; -\sqrt{3} &amp; 2 &amp; 0 \\
+0 &amp; 4 &amp; -2\sqrt{3} &amp; 2 \\ \hline
+%
+1 &amp; -\sqrt{3} &amp; 2 &amp; 0 \\
+0 &amp; 1 &amp; -\tfrac{1}{2}\sqrt{3} &amp; \tfrac{1}{2} \\ \hline
+%
+1 &amp; 0 &amp; \tfrac{1}{2} &amp; \tfrac{1}{2}\sqrt{3} \\
+0 &amp; 1 &amp;  -\tfrac{1}{2}\sqrt{3} &amp; \tfrac{1}{2}
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Thus we see that <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> row reduces to the identity matrix. Further, the row reduction method computes <math>
+                        <latex>\Mtrx{A}^{-1}</latex>
+                     </math> (the same <math>
+                        <latex>\Mtrx{A}^{-1}</latex>
+                     </math> found in Solution 1). Therefore <math>
+                        <latex>L</latex>
+                     </math> is invertible and <math>
+                        <latex>L^{-1}</latex>
+                     </math> is represented by <math>
+                        <latex>\Mtrx{A}^{-1}</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the linear transformation <math>
+                  <latex>L\from \RNr[3]\to \RNr[3]</latex>
+               </math> represented by the matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is invertible.</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+1 &amp; -2 &amp; 5 \\
+0 &amp; 4 &amp; -3 \\
+2 &amp; 0 &amp; 7
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>If it is, find the matrix representing  <math>
+                  <latex>L^{-1}</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>To test if <math>
+                        <latex>L</latex>
+                     </math> is invertible we may equivalently test if the matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> representing <math>
+                        <latex>L</latex>
+                     </math> is invertible. The row reduction method shows:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rrr|rrr}
+1 &amp; -2 &amp; 5 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 4 &amp; -3 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; 0 &amp;  7 &amp; 0 &amp; 0 &amp; 1 \\ \hline
+1 &amp; -2 &amp; 5 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 4 &amp; -3 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 4 &amp; -3 &amp;-2 &amp; 0 &amp; 1 \\ \hline
+1 &amp; -2 &amp; 5 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 4 &amp; -3 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp;  0 &amp;-2 &amp;-1 &amp; 1
+\end{array}
+					
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Already at this stage of the row reduction procedure, we see that <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> has rank <math>
+                        <latex> 2&lt;3 </latex>
+                     </math>. So the reduced row echelon form of  <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> cannot be the identity matrix. Therefore <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is not invertible, and so <math>
+                        <latex>L</latex>
+                     </math> is not invertible.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

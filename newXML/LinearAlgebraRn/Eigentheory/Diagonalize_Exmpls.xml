@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Diagonalize"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Diagonalizable Matrix: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Diagonalize the matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> below if possible.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} =
+\left[
+\begin{array}{cc}
+3 &amp; 1 \\
+1 &amp; 3
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We begin by looking for the eigenvalues of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>. First we find its characteristic polynomial:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\aligned
+p(\lambda)\ &amp;=\ 
+	\det\left(
+	\left[
+\begin{array}{cc}
+3 &amp; 1 \\
+1 &amp; 3
+\end{array}
+\right]\ -\ 
+\lambda\cdot \left[
+\begin{array}{cc}
+1 &amp; 0 \\
+0 &amp; 1
+\end{array}
+\right] \right) \\
+	&amp;=\ \det
+\left[
+\begin{array}{cc}
+3 - \lambda &amp; 1 \\
+1 &amp; 3 - \lambda
+\end{array}
+\right] \\
+	&amp;=\ (3-\lambda)^2 - 1 \\
+	&amp;=\ \lambda^2 -6\lambda + 8 \\
+	&amp;=\ (\lambda - 4)(\lambda - 2)
+\endaligned
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>So <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> has two distinct eigenvalues:</para.body>
+               </para>
+			            <ol>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\lambda_1 = 2</latex>
+                           </math> with 
+					<subordinate>
+                              <hot>algebraic multiplicity <math>
+                                    <latex>1</latex>
+                                 </math>
+                              </hot>
+                              <info>
+                                 <para>
+                                    <para.body>because the exponent of the factor <math>
+                                          <latex>(\lambda - 2)</latex>
+                                       </math> of <math>
+                                          <latex>p(\lambda)</latex>
+                                       </math> is <math>
+                                          <latex>1</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </info>
+                           </subordinate>
+				                    </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\lambda_2 = 4</latex>
+                           </math> with 
+					<subordinate>
+                              <hot>algebraic multiplicity <math>
+                                    <latex>1</latex>
+                                 </math>
+                              </hot>
+                              <info>
+                                 <para>
+                                    <para.body>because the exponent of the factor <math>
+                                          <latex>(\lambda - 4)</latex>
+                                       </math> of <math>
+                                          <latex>p(\lambda)</latex>
+                                       </math> is <math>
+                                          <latex>1</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </info>
+                           </subordinate>
+				                    </para.body>
+                     </para>
+                  </li>
+			            </ol>
+			            <para>
+                  <para.body>The eigenspace of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> associated to <math>
+                        <latex>\lambda_1</latex>
+                     </math> consists of the solutions of the matrix equation <math>
+                        <latex>(\Mtrx{A} - \lambda_1 \IdMtrx[2])\Vect{x} = \Vect{0}</latex>
+                     </math>:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\left[
+\begin{array}{rr}
+1 &amp; 1 \\
+1 &amp; 1
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+x \\ y
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+0 \\ 0
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The solutions of the corresponding system of linear equations are of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(x,y)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>s(-1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>where <math>
+                        <latex>s</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> is arbitrary. Therefore the eigenspace of <math>
+                        <latex>\lambda_1</latex>
+                     </math> is</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>E_1</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\span(-1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>and <math>
+                        <latex>\EuScript{B}_1 := (-1,1)</latex>
+                     </math> is a basis of <math>
+                        <latex>E_1</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>The eigenspace of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> associated to <math>
+                        <latex>\lambda_2</latex>
+                     </math> consists of the solutions of the matrix equation <math>
+                        <latex>(\Mtrx{A} - \lambda_2 \IdMtrx[2])\Vect{x} = \Vect{0}</latex>
+                     </math>:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\left[
+\begin{array}{rr}
+-1 &amp; 1 \\
+1 &amp; -1
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+x \\ y
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+0 \\ 0
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The solutions of the corresponding system of linear equations are of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(x,y)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>t(1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>where <math>
+                        <latex>t</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> is arbitrary. Therefore the eigenspace of <math>
+                        <latex>\lambda_2</latex>
+                     </math> is</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>E_2</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\span(1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>and <math>
+                        <latex>\EuScript{B}_ {2} := (1,1)</latex>
+                     </math> is a basis of <math>
+                        <latex>E_2</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>Setting <math>
+                        <latex>\Vect{b}_1:=(-1,1)</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}_2:=(1,1)</latex>
+                     </math>, we found that <math>
+                        <latex>\RNr[2]</latex>
+                     </math> has the ordered basis <math>
+                        <latex>\EuScript{B}:= (\Vect{b}_1,\Vect{b}_2)</latex>
+                     </math> of eigenvectors. Therefore <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is diagonalizable. A diagonalizing matrix is</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{C} = \Mtrx{C}_{\EuScript{S}\EuScript{B}} :=
+\left[
+\begin{array}{rr}
+-1 &amp; 1 \\
+1 &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>with</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{C}^{-1} = \Mtrx{C}_{\EuScript{B}\EuScript{S}} =
+-\dfrac{1}{2}\, \left[
+\begin{array}{rr}
+1 &amp; -1 \\
+-1 &amp; -1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Consequently,</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\left[
+\begin{array}{cc}
+2 &amp; 0 \\
+0 &amp; 4
+\end{array}
+\right]\ =\ 
+-\dfrac{1}{2}\, \left[
+\begin{array}{rr}
+1 &amp; -1 \\
+-1 &amp; -1
+\end{array}
+\right]  
+\left[
+\begin{array}{cc}
+3 &amp; 1 \\
+1 &amp; 3
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+-1 &amp; 1 \\
+1 &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Diagonalize the matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> below if possible.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A}\ =\ \dfrac{1}{6}\left[
+\begin{array}{rrr}
+5 &amp; -1 &amp; -2 \\
+-3 &amp; 3 &amp; -6 \\
+-1 &amp; -1 &amp; 4
+\end{array}\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We begin by looking for the eigenvalues of  ; i.e. all those values of <math>
+                        <latex>\lambda</latex>
+                     </math> for which the characteristic polynomial below vanishes.</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\aligned
+p(\lambda)\ &amp;=\ \text{det}
+\begin{bmatrix}
+\tfrac{5}{6} - \lambda &amp; -\tfrac{1}{6} &amp; -\tfrac{1}{3} \\
+-\tfrac{1}{2} &amp; \tfrac{1}{2} - \lambda &amp; -1 \\
+-\tfrac{1}{6} &amp; -\tfrac{1}{6} &amp; \tfrac{2}{3} - \lambda
+\end{bmatrix} \\
+6^3\cdot p(\lambda)\ &amp;=\ \text{det}
+\begin{bmatrix}
+5 - 6\lambda &amp; -1 &amp; -2 \\
+-3 &amp; 3 - 6\lambda &amp; -6 \\
+-1 &amp; -1 &amp; 4 - 6\lambda
+\end{bmatrix} \\
+   &amp;=\ \lambda^3\ -\ 2 \lambda^2\ +\ \lambda \\
+   &amp;=\ (\lambda - 0)^1(\lambda-1)^2
+\endaligned
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Thus <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> has two distinct eigenvalues:</para.body>
+               </para>
+			            <ol>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\lambda_1=0</latex>
+                           </math> with <subordinate>
+                              <hot>algebraic multiplicity <math>
+                                    <latex>1</latex>
+                                 </math>
+                              </hot>
+                              <info>
+                                 <para>
+                                    <para.body>Because the exponent of <math>
+                                          <latex>(\lambda - 0)</latex>
+                                       </math> in <math>
+                                          <latex>p(\lambda)</latex>
+                                       </math> is <math>
+                                          <latex>1</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </subordinate>
+				                    </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\lambda_2=1</latex>
+                           </math> with <subordinate>
+                              <hot>algebraic multiplicity <math>
+                                    <latex>2</latex>
+                                 </math>
+                              </hot>
+                              <info>
+                                 <para>
+                                    <para.body>Because the exponent of <math>
+                                          <latex>(\lambda - 1)</latex>
+                                       </math> in <math>
+                                          <latex>p(\lambda)</latex>
+                                       </math> is <math>
+                                          <latex>2</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </subordinate>
+                        </para.body>
+                     </para>
+                  </li>
+			            </ol>
+			            <para>
+                  <para.body>The eigenspace of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> associated to <math>
+                        <latex>\lambda_1</latex>
+                     </math> consists of the solutions of the matrix equation</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\dfrac{1}{6}
+\left[\begin{array}{rrr}
+5 &amp; -1 &amp; -2 \\
+-3 &amp; 3 &amp; -6 \\
+-1 &amp; -1 &amp; 4
+\end{array}\right]\,
+\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}\ =\
+\begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix}
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The solutions of the corresponding system of homogeneous linear equations are of the form</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = s
+\left[
+\begin{array}{c}
+1 \\ 3 \\ 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>with <math>
+                        <latex>s</latex>
+                     </math> an arbitrary number in <math>
+                        <latex>\RNr</latex>
+                     </math>. Thus <math>
+                        <latex>\EuScript{B}_1=(\Vect{b}_1)</latex>
+                     </math> with <math>
+                        <latex>\Vect{b}_1=(1,3,1)</latex>
+                     </math> is a basis for <math>
+                        <latex>E_1</latex>
+                     </math>, the eigenspace of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> associated to <math>
+                        <latex>\lambda_1</latex>
+                     </math>. Therefore the geometric multiplicity of <math>
+                        <latex>\lambda_1</latex>
+                     </math> is 1, and every nonzero vector in <math>
+                        <latex>E_1</latex>
+                     </math> is an eigenvector of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> with eigenvalue    <math>
+                        <latex>0</latex>
+                     </math>. This means that <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> transforms all of <math>
+                        <latex>E_1</latex>
+                     </math> into the zerovector.</para.body>
+               </para>
+			
+			
+			            <para>
+                  <para.body>The eigenspace of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> associated to <math>
+                        <latex>\lambda_2</latex>
+                     </math> consists of the solutions of the matrix equation</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\dfrac{1}{6}
+\left[\begin{array}{rrr}
+-1 &amp; -1 &amp; -2 \\
+-3 &amp; -3 &amp; -6 \\
+-1 &amp; -1 &amp; -2
+\end{array}\right]\,
+\begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix}\ =\
+\begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix}
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The solutions of the corresponding system of homogeneous linear equations are of the form</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = s_1
+\left[
+\begin{array}{r}
+1 \\ -1 \\ 0
+\end{array}
+\right] + s_2
+\left[
+\begin{array}{r}
+0 \\ -2 \\ 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>with <math>
+                        <latex>s_1</latex>
+                     </math> and <math>
+                        <latex>s_2</latex>
+                     </math> arbitrary numbers in <math>
+                        <latex>\RNr</latex>
+                     </math>. Thus <math>
+                        <latex>\EuScript{B}_2=(\Vect{b}_2,\Vect{b}_3)</latex>
+                     </math> with</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{b}_2 = (1,-1,0) \quad\text{and}\quad \Vect{b}_3=(0,-2,1)</latex>
+			            </math.display>
+			            <para>
+                  <para.body>form a 
+				<subordinate>
+                        <hot>basis</hot>
+                        <info>
+                           <info.caption>
+                              <caption>Why do these vectors form a basis of <math>
+                                    <latex>E_2</latex>
+                                 </math>?</caption>
+                           </info.caption>
+						
+						                     <para>
+                              <para.body>Visibly the vectors span <math>
+                                    <latex>E_2</latex>
+                                 </math>. Their linear independence can be seen with the determinant test applied to rows <math>
+                                    <latex>1</latex>
+                                 </math> and <math>
+                                    <latex>3</latex>
+                                 </math>. So they form a basis of <math>
+                                    <latex>E_2</latex>
+                                 </math>.</para.body>
+                           </para>
+					                   </info>
+                     </subordinate>
+				of <math>
+                        <latex>E_2</latex>
+                     </math>, the eigenspace associated to <math>
+                        <latex>\lambda_2</latex>
+                     </math>. Thus the geometric multiplicity of <math>
+                        <latex>\lambda_2</latex>
+                     </math> is 2, and every nonzero vector in <math>
+                        <latex>E_2</latex>
+                     </math> is an eigenvector of <math>
+                        <latex>\lambda_2</latex>
+                     </math> with eigenvalue   <math>
+                        <latex>1</latex>
+                     </math>. This means that <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> transforms each such vector into itself; i.e. <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> acts as the identity transformation on <math>
+                        <latex>E_2</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>We conclude that <math>
+                        <latex>\RNr[3]</latex>
+                     </math> has a basis <math>
+                        <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2,\Vect{b}_3)</latex>
+                     </math> consisting of eigenvectors of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, and so <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is diagonalizable. A diagonalizing matrix is</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{C} = \Mtrx{C}_{\EuScript{S}\EuScript{B}} :=
+\left[
+\begin{array}{rrr}
+1 &amp; 1 &amp; 0 \\
+3 &amp; -1 &amp; -2 \\
+1 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The resulting diagonal matrix is</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{D} = \Mtrx{A}_{\EuScript{B}\EuScript{B}} = 
+\left[
+\begin{array}{ccc}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>This matrix describes the projection of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> onto the eigenspace <math>
+                        <latex>E_2</latex>
+                     </math>. Accordingly, we have</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Mtrx{D}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Mtrx{C}_{\EuScript{B}\EuScript{S}} \Mtrx{A} \Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

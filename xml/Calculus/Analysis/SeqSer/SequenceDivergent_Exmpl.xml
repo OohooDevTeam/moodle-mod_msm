@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_SequenceDivergent">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Divergent Sequence: Examples</title>
+	<showme>
+		<statement>
+			<para>Show that the sequence <latex magnify="yes">(x_n)</latex> with <latex magnify="yes">x_n = (-1)^n</latex> diverges.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We need to show that <latex>(x_n)</latex> converges neither to a number nor to <latex>+\infty</latex> or <latex>-\infty</latex>.</para>
+			<para>The sequence elements satisfy <latex>\Abs{ x_n } \leq 1</latex> for all <latex>n\in \NNr</latex>. Therefore the sequence can not converge to <latex>+\infty</latex> nor to <latex>-\infty</latex>. &ndash; Therefore it remains to show that the sequence does not converge to a number.</para>
+			<para>Intuitively, this is clear because if <latex>\lim_{n\to \infty} x_n = c</latex>, then the numbers <latex>x_n</latex> stay as close together as we like for large <latex>n</latex>. However, <latex>\Abs{ x_n - x_{n+1} } = 2</latex> for all <latex>n</latex>, which is not less than any number less than <latex>2</latex>, a contradiction. We turn this observation into a formal argument as follows.</para>
+			<para>Suppose <latex>\lim_{n\to \infty} x_n = c</latex>. Choose <latex>\varepsilon := 1/2</latex>. Then there exists <latex>n_0\in \NNr</latex> with</para>
+			<math.display>
+				<latex><![CDATA[ \Abs{ x_n - c } < 1/2 ]]></latex>
+			</math.display>
+			<para>for all <latex>n\geq n_0</latex>. Choose one such <latex>n</latex>. Then we know</para>
+			<math.display>
+				<latex><![CDATA[ \Abs{ x_n - c } < 1/2  \quad \text{and} \quad \Abs{ x_{n+1} -c } < 1/2 ]]></latex>
+			</math.display>
+			<para>Therefore,</para>
+			<math.display>
+				<latex>
+					<![CDATA[ 
+					\aligned
+					1/2 + 1/2\ &\geq\ \Abs{ x_n - c } + \Abs{ x_{n+1} - c } \\
+					&\geq\ \Abs{ (x_n - c) - (x_{n+1} - c) } \\
+					&=\ \Abs{ x_n - x_{n+1} } = 2
+					\endaligned ]]>
+				</latex>
+			</math.display>
+			<para>a contradiction resulting from the assumption that the sequence converges to <latex>c</latex>. Therefore this assumption is false: <latex>(x_n)</latex> does not converge to a number.</para>
+			<para>In summary we have shown that <latex>(x_n)</latex> diverges.</para>
+		</answer>
+	</showme>
+</showme.pack>

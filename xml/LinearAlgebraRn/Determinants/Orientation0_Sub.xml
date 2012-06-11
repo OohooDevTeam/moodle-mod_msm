@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_Orientation0">
+	<title>0-Dimensional Orientation</title>
+	<sub.page.body>
+		<block>
+			<para>We may regard a point <latex>P</latex> as a copy of <latex>\RNr[0]</latex>. An orientation on <latex>P</latex> has no intuitive content. It is given by formally assigning the value <latex>+1</latex> or <latex>-1</latex> to <latex>P</latex>.</para>
+			
+			<table align="center" border="3" cellpadding="2" cellspacing="3">
+				<row>
+					<cell><para><img src="ims/BlueDot.gif"></img></para></cell>
+					<cell><para>positive orientation</para></cell>
+					<cell><para><latex>\omega(P)=+1</latex></para></cell>
+				</row>
+				<row>
+					<cell><para><img src="ims/RedDot.gif"></img></para></cell>
+					<cell><para>negative orientation</para></cell>
+					<cell><para><latex>\omega(P)=-1</latex></para></cell>
+				</row>
+			</table>
+		</block>
+		
+		<block>
+			<para>While the notion of orientation of a point might seem a bit artificial, it is still quite useful. For example in calculus: pick numbers <latex><![CDATA[ a<b ]]></latex> in <latex>\RNr</latex>, and assign orientations as follows:</para>
+			<table align="center" border="3" cellspacing="3" cellpadding="2">
+				<row>
+					<cell><para>To the interval <latex>[a,b]</latex></para></cell>
+					<cell><para>Positive orientation</para></cell>
+				</row>
+				<row>
+					<cell><para>To the boundary point <latex>a</latex></para></cell>
+					<cell><para>Negative orientation</para></cell>
+				</row>
+				<row>
+					<cell><para>To the boundary point <latex>b</latex></para></cell>
+					<cell><para>Positive orientation</para></cell>
+				</row>
+			</table>
+			<para>Then the Fundamental Theorem of Calculus for a function <latex>f\from [a,b]\to \RNr</latex> with antiderivative <latex>F</latex> may be formulated as follows</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\int_{a}^{b} f(x)\, dx\ &=\ F(b) - F(a) \\
+	&=\ \omega(b)F(b) + \omega(a)F(a)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			<para>This means that the integral is a quantity which is sensitive to orientation, an observation which is a prerequisite for a full understanding of Stokes Theorem; i.e. the extension of the Fundamental Theorem of Calculus to higher dimensions.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

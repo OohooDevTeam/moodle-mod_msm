@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para>
+            <para.body>In this chapter we introduce two fundamental operations on vectors, and learn how to use them:</para.body>
+         </para>
+         <ol>
+		          <li>
+			            <para>
+                  <para.body>The first operation is quite intuitive: the length or norm of a vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is just the length of any arrow representing <math>
+                        <latex>\Vect{x}</latex>
+                     </math>. If <math>
+                        <latex>\Vect{x}= (x_1,\dots, x_n)</latex>
+                     </math>, then the norm of <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{\Vect{x}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt{ x_{1}^{2} + \cdots + x_{n}^{2} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>The norm operation has 
+				<subordinate>
+                        <hot>algebraic properties</hot>
+                        <companion>
+                           <theorem.ref theoremID="theo_NormAlgebraicProperties"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>See the statement of the algebraic properties of the norm operation.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>
+				which match what one would expect of ‘length of a vector’.</para.body>
+               </para>
+		          </li>
+		          <li>
+			            <para>
+                  <para.body>The second operation is the ‘dot product’. It receives as input two vectors <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math>. It delivers a 
+				<subordinate>
+                        <hot>number, denoted <math>
+                              <latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex>
+                           </math>
+                        </hot>
+                        <companion>
+                           <definition.ref definitionID="Def_DotProduct"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>See how the dot product is computed.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>. The way the dot product is 
+				<subordinate>
+                        <hot>computed</hot>
+                        <companion>
+                           <definition.ref definitionID="Def_DotProduct"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>See how the dot product is computed.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate> conveys nothing of its meaning. It is, therefore, perhaps a bit surprising, that the dot product is a very useful and versatile operation.</para.body>
+               </para>
+			            <para>
+                  <para.body>This usefulness and versatility comes from its
+				<subordinate>
+                        <hot>geometric properties</hot>
+                        <companion>
+                           <theorem.ref theoremID="Theo_DotProductNormGeometricProperties"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Preview the geometric properties of the dot product.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>. They tell us about the relationship between norm and dot product: <math>
+                        <latex>\Abs{ \Vect{x} }^2 = \DotPr{ \Vect{x} }{ \Vect{x} }</latex>
+                     </math>, and the angle between two vectors. In particular, we obtain a very convenient test for when two vectors are perpendicular.</para.body>
+               </para>
+		          </li>
+		          <li>
+			            <para>
+                  <para.body>We use the dot product to construct the 
+				<subordinate>
+                        <hot>orthogonal projection of a vector onto a line</hot>
+                        <companion>
+                           <unit.ref unitId="Illu_ProjectionVectorLine"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>An illustration of the orthogonal projection of a vector onto a line</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>.</para.body>
+               </para>
+		          </li>
+		          <li>
+			            <para>
+                  <para.body>We use the dot product to describe 
+				<subordinate>
+                        <hot>hyperspaces</hot>
+                        <companion>
+                           <unit.ref unitId="Illu_HyperSpace"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>An illustration of a hyperspace in <math>
+                                       <latex>\RNr[2]</latex>
+                                    </math> and in <math>
+                                       <latex>\RNr[3]</latex>
+                                    </math>.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>
+				and 
+				<subordinate>
+                        <hot>hyperplanes</hot>
+                        <companion>
+                           <unit.ref unitId="Illustr_Hyperplane"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>An illustration of a hyperplane in <math>
+                                       <latex>\RNr[2]</latex>
+                                    </math> and in <math>
+                                       <latex>\RNr[3]</latex>
+                                    </math>.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>
+				in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>. It enables us further to compute the
+				<subordinate>
+                        <hot>distance</hot>
+                        <companion>
+                           <theorem.ref theoremID="Thm_DistancePointHyperplane"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>See the formula to compute the distance of a point from a hyperplane.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>
+				of an arbitrary point in <math>
+                        <latex>\RNr[n]</latex>
+                     </math> from a given hyperplane.</para.body>
+               </para>
+		          </li>
+	        </ol>
+      </block.body>
+   </block>
+</intro>

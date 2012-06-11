@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_InfSupExists"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Existence of unique least upper / greatest lower bound</caption>
+   <statement.theorem>
+      <para>
+         <para.body>For <math>
+               <latex>A\subseteq \RNr</latex>
+            </math> the following hold:</para.body>
+      </para>
+      <part.theorem partid="SupExists">
+         <part.body>
+            <para>
+               <para.body>There exists a unique <math>
+                     <latex>s\in \bar{\RNr}</latex>
+                  </math> satisfying <math>
+                     <latex>s\leq u</latex>
+                  </math> for all <math>
+                     <latex>u\in \bar{\RNr}</latex>
+                  </math> with <math>
+                     <latex>A\leq u</latex>
+                  </math>. Moreover, <math>
+                     <latex>s\in \RNr</latex>
+                  </math> if and only if <math>
+                     <latex>A</latex>
+                  </math> has an upper bound in <math>
+                     <latex>\RNr</latex>
+                  </math> and <math>
+                     <latex>A\neq \emptyset</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="InfExists">
+         <part.body>
+            <para>
+               <para.body>There exists a unique <math>
+                     <latex>i\in\RNr</latex>
+                  </math> satisfying <math>
+                     <latex>l\leq i</latex>
+                  </math> for all <math>
+                     <latex>l\in\bar{\RNr}</latex>
+                  </math> with <math>
+                     <latex>l\leq A</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>SupExists</part.ref>
+         </logic>
+         <caption>SupExists</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Consider the set</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>InfExists</part.ref>
+         </logic>
+         <caption>InfExists</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The argument given above for the existence of a unique least upper bound of a nonempty set that is bounded above can be adapted word for word to establish the existence of a unique greatest lower bound of a nonempty set that is bounded below. As an alternative, we can argue as follows:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

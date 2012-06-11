@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_OrthogonalMaps"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	
+	  <title>Exercises: Distance Preserving Linear Maps</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the matrices <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> below, determine if it represents a distance preserving linear transformation.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+A = \left[\begin{array}{rr}
+0 &amp; 1 \\
+1 &amp; 0
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Yes, <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is an orthogonal matrix, hence represents a distance preserving linear transformation.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute <math>
+                           <latex>\Mtrx{A}\Mtrx{A}^T = \IdMtrx[2]</latex>
+                        </math>. Therefore <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is an orthogonal matrix and such a matrix represents a distance preserving linear transformation.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+A = \left[\begin{array}{rrr}
+1 &amp; -1 &amp; 3 \\
+1 &amp; -1 &amp; -3 \\
+2 &amp; 1 &amp; 0
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No! <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> does not represent a distance preserving linear transformation.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> has columns whose length are distinct from <math>
+                           <latex>1</latex>
+                        </math>. 
+						<subordinate>
+                           <hot>Therefore</hot>
+                           <crossref>
+                              <theorem.ref theoremID="Thm_OrthogonalMapRecognize"/>
+                              <info>
+								
+								                         <para>
+                                    <para.body>Look up why this is so</para.body>
+                                 </para>
+							                       </info>
+                           </crossref>
+                        </subordinate>
+						                  <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> does not represent a distance preserving linear transformation.
+					</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+A = \dfrac{1}{2}\cdot 
+\left[\begin{array}{rrrr}
+1 &amp; 1 &amp; -\sqrt{2} &amp; 0 \\
+1 &amp; -1 &amp; 0 &amp; \sqrt{2} \\
+1 &amp; 1 &amp; \sqrt{2} &amp; 0 \\
+1 &amp; -1 &amp; 0 &amp; -1\sqrt{2}
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes, this matrix represents a distance preserving linear transformation.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Check if <math>
+                        <latex>\Mtrx{A}\cdot \Mtrx{A}^{T}</latex>
+                     </math> is equal to the <math>
+                        <latex>(4,4)</latex>
+                     </math>-identity matrix.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Show that the composite of any two distance preserving linear transformations <math>
+                     <latex>R,S\from \RNr[n]\to \RNr[n]</latex>
+                  </math> is also distance preserving.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>You need to show that for every <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>
+               </para.body>
+            </para>
+				        <math.display>
+					          <latex>\Abs{R\Comp S(\Vect{x})} = \Abs{ \Vect{x} }</latex>
+				        </math.display>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>Continuing from the previous hint, notice that</para.body>
+            </para>
+				        <math.display>
+					          <latex>\Abs{ R\Comp S(\Vect{x}) } = \Abs{ R\left( S(\Vect{x}) \right) }</latex>
+				        </math.display>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>Continuing from the previous hint, notice that</para.body>
+            </para>
+				        <math.display>
+					          <latex>\Abs{ R\Comp S(\Vect{x}) } = \Abs{ R\left( S(\Vect{x}) \right) } = \Abs{ S(\Vect{x} ) }</latex>
+				        </math.display>
+				        <para>
+               <para.body>because <math>
+                     <latex>R</latex>
+                  </math> is distance preserving.</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If <math>
+                     <latex>R\from \RNr[n]\to \RNr[n]</latex>
+                  </math> is distance preserving, then <math>
+                     <latex>R</latex>
+                  </math> is invertible and <math>
+                     <latex>R^{-1}</latex>
+                  </math> is also distance preserving.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>Work with the matrix representing <math>
+                     <latex>R</latex>
+                  </math>.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>Given that <math>
+                     <latex>R</latex>
+                  </math> is distance preserving, what do you know about the matrix representing <math>
+                     <latex>R</latex>
+                  </math>?</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>Recall also that <math>
+                     <latex>R</latex>
+                  </math> is invertible if and only if the matrix representing it is invertible.</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Prove the following about a linear map <math>
+                     <latex>L\from \RNr[n]\to \RNr[n]</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L</latex>
+                     </math> preserves all distances if and only if </para.body>
+               </para>
+				           <math.display>
+					             <latex>\DotPr{ \Vect{x} }{ \Vect{x} } = \DotPr{ L( \Vect{x} ) }{ L(\Vect{x}) }</latex>
+				           </math.display>
+				           <para>
+                  <para.body>for every vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+               <para>
+                  <para.body>Recall this property of the dot product: <math>
+                        <latex>\Abs{ \Vect{x} }^2 = \DotPr{ \Vect{x} }{ \Vect{x} }</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L</latex>
+                     </math> preserves all distances if and only if </para.body>
+               </para>
+				           <math.display>
+					             <latex>\DotPr{ \Vect{x} }{ \Vect{y} } = \DotPr{ L( \Vect{x} ) }{ L(\Vect{y}) }</latex>
+				           </math.display>
+				           <para>
+                  <para.body>for every pair of vectors <math>
+                        <latex>\Vect{x},\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>There are two statements which you need to prove:</para.body>
+               </para>
+					          <ul>
+						            <li>
+                     <para>
+                        <para.body>If <math>
+                              <latex>L</latex>
+                           </math> satisfies <math>
+                              <latex>\DotPr{\Vect{x}}{ \Vect{y} } = \DotPr{ L(\Vect{x} )}{ L(\Vect{y}) }</latex>
+                           </math> for every pair of vectors <math>
+                              <latex>\Vect{x},\Vect{y}</latex>
+                           </math> in <math>
+                              <latex>\RNr[n]</latex>
+                           </math>, then <math>
+                              <latex>L</latex>
+                           </math> preserves all distances. – This statement is the easier one; review part a. of this problem.</para.body>
+                     </para>
+                  </li>
+						            <li>
+                     <para>
+                        <para.body>If <math>
+                              <latex>L</latex>
+                           </math> preserves all distances then <math>
+                              <latex>\DotPr{\Vect{x}}{ \Vect{y} } = \DotPr{ L(\Vect{x} )}{ L(\Vect{y}) }</latex>
+                           </math> for every pair of vectors <math>
+                              <latex>\Vect{x},\Vect{y}</latex>
+                           </math> in <math>
+                              <latex>\RNr[n]</latex>
+                           </math>. – This statement is the harder one to prove; consult further hints if you want.</para.body>
+                     </para>
+                  </li>
+					          </ul>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>To show: <math>
+                        <latex>L</latex>
+                     </math> distance preserving implies <math>
+                        <latex>\DotPr{\Vect{x}}{ \Vect{y} } = \DotPr{ L(\Vect{x} )}{ L(\Vect{y}) }</latex>
+                     </math> for every pair of vectors <math>
+                        <latex>\Vect{x},\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, compute</para.body>
+               </para>
+					          <math.display>
+						            <latex>\DotPr{ L(\Vect{x} + \Vect{y}) }{ L(\Vect{x} + \Vect{y}) }</latex>
+					          </math.display>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>To show: <math>
+                        <latex>L</latex>
+                     </math> distance preserving implies <math>
+                        <latex>\DotPr{\Vect{x}}{ \Vect{y} } = \DotPr{ L(\Vect{x} )}{ L(\Vect{y}) }</latex>
+                     </math> for every pair of vectors <math>
+                        <latex>\Vect{x},\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, compute</para.body>
+               </para>
+					          <math.display>
+						            <latex>\DotPr{ L(\Vect{x} + \Vect{y}) }{ L(\Vect{x} + \Vect{y}) }</latex>
+					          </math.display>
+					          <para>
+                  <para.body>and recall that <math>
+                        <latex>\DotPr{ L(\Vect{x} + \Vect{y}) }{ L(\Vect{x} + \Vect{y}) } = \DotPr{ (\Vect{x} + \Vect{y})}{( \Vect{x} + \Vect{y} )}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>To show: <math>
+                        <latex>L</latex>
+                     </math> distance preserving implies <math>
+                        <latex>\DotPr{\Vect{x}}{ \Vect{y} } = \DotPr{ L(\Vect{x} )}{ L(\Vect{y}) }</latex>
+                     </math> for every pair of vectors <math>
+                        <latex>\Vect{x},\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, compute</para.body>
+               </para>
+					          <math.display>
+						            <latex>\DotPr{ L(\Vect{x} + \Vect{y}) }{ L(\Vect{x} + \Vect{y}) }</latex>
+					          </math.display>
+					          <para>
+                  <para.body>and recall that <math>
+                        <latex>\DotPr{ L(\Vect{x} + \Vect{y}) }{ L(\Vect{x} + \Vect{y}) } = \DotPr{ (\Vect{x} + \Vect{y})}{( \Vect{x} + \Vect{y} )}</latex>
+                     </math>, as well as</para.body>
+               </para>
+					          <math.display>
+						            <latex>\DotPr{ L(\Vect{x}) }{ L(\Vect{x}) } = \DotPr{ \Vect{x} }{ \Vect{x} }\quad \text{and} \quad \DotPr{ L(\Vect{y}) }{ L(\Vect{y}) } = \DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+					          </math.display>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+	  </exercise>
+</exercise.pack>

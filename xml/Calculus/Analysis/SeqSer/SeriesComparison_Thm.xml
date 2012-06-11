@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_SeriesComparisonTest">
+	<caption>Comparison test</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_SeriesComparison"/>
+		<info><para>Examples of how to use the comparison test</para></info>
+	</associate>
+	<statement>
+		<para>For series <latex>\sum_{n=0}^{\infty} a_n</latex> and <latex>\sum_{n=0}^{\infty} b_n</latex>, with <latex>0\leq a_n \leq b_n</latex> for <latex>n</latex> sufficiently large, the following hold:</para>
+		<part partid="NumberConvergence">
+			<para>If <latex>\sum_{n=0}^{\infty} b_n</latex> converges to a number then <latex>\sum_{n=0}^{\infty} a_n</latex> converges to a number.</para>
+		</part>
+		<part partid="InfinityConvergence">
+			<para>If <latex>\sum_{n=0}^{\infty} a_n = +\infty</latex>, then <latex>\sum_{n=0}^{\infty} b_n = +\infty</latex>.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>NumberConvergence</partref> &nbsp; <latex>\left(\sum_{n=0}^{\infty} a_n\ \ \in \RNr\right) \implies \left( \sum_{n=0}^{\infty} b_n\ \ \in \RNr\right)</latex></caption>
+		<para>According to the definition of convergence of a series, we consider the sequences of partial sums</para>
+		<computation>
+			<left>s_n</left>
+			<center>:=</center>
+			<right>a_0 + \cdots + a_n</right>
+			<left>t_n</left>
+			<center>:=</center>
+			<right>b_0 + \cdots + b_n</right>
+		</computation>
+		<para>The idea of the argument is to show that the sequence <latex>(t_n)</latex> is increasing and bounded above, <subordinate>
+			<hot>hence</hot>
+			<crossref>
+				<theorem.ref theoremID="Thm_MonotoneBoundedSequenceConverges"/>
+				<para>Look up background on monotone bounded convergence of a sequence.</para>
+			</crossref>
+		</subordinate> converges to a number. By assumption, there exists <latex>N\in \NNr</latex> such that <latex>a_n\leq b_n</latex> for all <latex>n\geq N</latex>. It 
+			<subordinate>
+				<hot>follows</hot>
+				<info>
+					<caption>How does this follow?</caption>
+					<para>To see that <latex>s_n\leq t_n</latex> for all <latex>n\geq 0</latex>, we argue by induction:</para>
+					<ol>
+						<li><para><latex>s_0=a_0\leq b_0=t_0</latex> by assumption.</para></li>
+						<li>
+							<para>As an induction hypothesis, assume that <latex>n\geq 0</latex> and <latex>s_n\leq t_n</latex>. Then</para>
+							<math.display>
+								<latex>s_{n+1} = s_n+a_{n+1} \leq t_n+b_{n+1} = t_{n+1}</latex>
+							</math.display>
+						</li>
+					</ol>
+				</info>
+			</subordinate>
+			that <latex>s_n\leq s_N + t_n </latex> for all <latex>n\geq N</latex>. Now, <latex>(t_n)</latex> is an increasing sequence with upper bound</para>
+		<math.display>
+			<latex>\sum_{n=0}^{\infty} b_n\ =\ \lim_{n\to \infty} t_n\ =: L\in \RNr</latex>
+		</math.display>
+		<para>Therefore, the increasing sequence <latex>(s_n)</latex> has <latex>L+s_N</latex> as an upper bound, and so
+			</para>
+		<math.display>
+			<latex>L+s_N\ \geq\ \left(\lim_{n\to\infty} t_n\right)\ +\ s_N\ \geq\ \lim_{n\to\infty} s_n\ =\ \sum_{n=0}^{\infty} a_n</latex>
+		</math.display>
+		<para>and this was to be shown.</para>
+		
+		
+		<caption><partref>InfinityConvergence</partref> &nbsp; <latex>\left(\sum_{n=0}^{\infty} a_n = +\infty\right) \implies \left( \sum_{n=0}^{\infty} b_n = +\infty \right)</latex></caption>
+		<para>The essence of the argument is that the sequence of partial sums</para>
+		<computation>
+			<left>t_n</left>
+			<center>:=</center>
+			<right>b_0 + \cdots + b_n</right>
+		</computation>
+		<para>is increasing, and exceeds any bound. So <latex>\sum_{n=0}^{\infty}b_n = +\infty</latex>.</para>
+	</proof>
+</theorem>

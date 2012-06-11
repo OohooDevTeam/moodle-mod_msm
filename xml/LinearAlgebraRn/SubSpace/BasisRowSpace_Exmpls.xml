@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_BasisRowSpace">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>A Basis for the Row Space: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Find a basis for the row space of the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}\ =\ \left[
+\begin{array}{rrrr}
+1 & 3 & 2 & -1 \\
+1 & 4 & 3 & -4 \\
+1 & 2 & 1 & 2 \\
+1 & 5 & 4 & -7
+\end{array}\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Solution">
+			<para>The first step is to find the RREF of  <latex>\Mtrx{A}</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{cc}
+\text{matrix $A$}\quad &\quad \text{row reduced matrix $B$} \\
+\begin{array}{rrrr}
+1 & 3 & 2 & -1 \\
+1 & 4 & 3 & -4 \\
+1 & 2 & 1 & 2 \\
+1 & 5 & 4 & -7
+\end{array} &
+\begin{array}{rrrr}
+1 & 0 & -1 & 8 \\
+0 & 1 & 1 & -3 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>The row reduced matrix <latex>\Mtrx{B}</latex> has two nonzero row vectors, and these vectors form a basis</para>
+			<computation>
+				<left>\EuScript{B}</left>
+				<center>:=</center>
+				<right>\Set{ (1,0,-1,8) , (0,1,1,-3) }</right>
+			</computation>
+			<para>for the row space of <latex>\Mtrx{A}</latex>. Since <latex>\EuScript{B}</latex> contains two vectors, we conclude that the row space of <latex>\Mtrx{A}</latex> has dimension 2. In symbols:</para>
+			<computation>
+				<left>\dim \RowSp{ \Mtrx{A} }</left>
+				<center>=</center>
+				<right>2</right>
+			</computation>
+		</answer>
+	</showme>
+</showme.pack>

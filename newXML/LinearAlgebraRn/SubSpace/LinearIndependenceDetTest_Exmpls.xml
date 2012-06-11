@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_LinearIndependenceDeterminantTest"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Linear Independence Test Using Determinants: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Show that the rows of the matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> below are linearly independent.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = \left[
+\begin{array}{rrrr}
+5 &amp; 2 &amp; 0 &amp; 1 \\
+4 &amp; -1 &amp; 3 &amp; 0
+\end{array}
+\right]
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>According to the determinant test for linear independence it is enough if we find two columns in <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> such that the determinant of the resulting <math>
+                        <latex>(2,2)</latex>
+                     </math>-matrix is not 0. – A convenient choice are the 3rd and 4th columns:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\det\, \left[
+\begin{array}{rr}
+0 &amp; 1 \\
+3 &amp; 0
+\end{array}
+\right] = -3 \neq 0
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore the rows of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> are linearly independent.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Show that the rows of the matrix <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> below are linearly independent.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = \left[
+\begin{array}{rrrrrr}
+1 &amp; 4 &amp; -5 &amp; 2  &amp; 9 &amp; 1 \\
+2 &amp; 3 &amp;  2 &amp; 3 &amp; 4 &amp; 2 \\
+21&amp; -2&amp; -9 &amp; -4&amp; 14 &amp; 7 \\
+\end{array}
+\right]
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>According to the determinant test for linear independence it is enough if we find three columns in <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> such that the determinant of the resulting <math>
+                        <latex>(3,3)</latex>
+                     </math>-matrix is not 0. – The first column has a large number in it. when computing determinants this may result in a higher computational effort. So let us try the 2nd, 3rd, and 4th columns:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\det\, \left[
+\begin{array}{rrr}
+4  &amp; -5 &amp; 2 \\
+3  &amp;  2 &amp; 3 \\
+-2 &amp; -9 &amp; -4
+\end{array}
+\right] = 4\cdot(-8+27) -3\cdot(20 +18) -2\cdot(-15 -4) = 0
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Ooops! – This is not what we were hoping to find. Unfortunately, we can not conclude anything from this result: the fact that <emphasis>some columns</emphasis> produce a matrix whose determinant is 0 does not mean that <emphasis>all columns</emphasis> produce a matrix with 0-determinant. Let use try columns 1, 2, 3:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\det\, \left[
+\begin{array}{rrr}
+1 &amp; 4 &amp; -5 \\
+2 &amp; 3 &amp; 2 \\
+21 &amp; -2 &amp; -9
+\end{array}
+\right] = 1\cdot(-27 +4) -2\cdot(-36-10) + 21\cdot(8+15) = 342 \neq 0
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

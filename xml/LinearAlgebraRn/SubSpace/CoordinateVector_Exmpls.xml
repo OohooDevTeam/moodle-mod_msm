@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_CoordinateVector">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Coordinate Vector: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>You are given the ordered basis <latex>\EuScript{B} = (\Vect{a},\Vect{b})</latex> of <latex>\RNr[2]</latex> with</para>
+			<para align="center"><latex>\Vect{a} = (2,1)</latex> and <latex>\Vect{b} = (-3,4)</latex>.</para>
+			<para>Find <latex>\Vect{x}_{\EuScript{S}}</latex> if <latex>\Vect{x}_{\EuScript{B}} = (6,5)</latex></para>
+		</statement>
+		<answer type="Solution">
+			<para>We recall that <latex>\Vect{x}_{\EuScript{B}} = (6,5)</latex> means that</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>6\cdot \Vect{a} + 5\cdot \Vect{b}</right>
+				<left></left>
+				<center>=</center>
+				<right>6\cdot (2,1) + 5\cdot (-3,4)</right>
+				<left></left>
+				<center>=</center>
+				<right>(12,6) + (-15,20)</right>
+				<left></left>
+				<center>=</center>
+				<right>(-3,26)</right>
+			</computation>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Let <latex>V</latex> be the subspace of <latex>\RNr[3]</latex> spanned by the linearly independent vectors <latex>\Vect{a} = (1,-1,2)</latex> and <latex>\Vect{b}= (3,2,-3)</latex>. You are given the information that <latex>\Vect{x}= (0,-5,9)</latex> is in <latex>V</latex>. Find its coordinate vector with respect to the ordered basis <latex>\EuScript{B}:= ( \Vect{a} , \Vect{b} )</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We have <latex>\Vect{x}_{\EuScript{B}} = (s,t)</latex> for the two uniquely determined numbers <latex>s</latex> and <latex>t</latex> satisfying</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>s \Vect{a} + t \Vect{b}</right>
+			</computation>
+			<para>Therefore we need to solve the vector equation</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+s
+\left[
+\begin{array}{r}
+1 \\ -1 \\ 2
+\end{array}
+\right]\ +\ t
+\left[
+\begin{array}{r}
+3 \\ 2 \\ -3
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{r}
+0 \\ -5 \\ 9
+\end{array}
+\right]
+					]]>
+								</latex>
+							</math.display>
+			<para>This vector equation is equivalent to the system of linear equations</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+\begin{array}{rcccr}
+s & + & 3t & = & 0 \\
+-s & + & 2t & = & -5 \\
+2s & - & 3t & = & 9
+\end{array}
+					]]>
+								</latex>
+							</math.display>
+			<para>The row reduction method applied to the augmented coefficient matrix of this system yields</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+\begin{array}{rr|r}
+1 & 3 & 0 \\
+-1 & 2 & -5 \\
+2 & -3 & 9
+\end{array} \qquad\qquad
+\begin{array}{rr|r}
+1 & 0 & 3 \\
+0 & 1 & -1 \\
+0 & 0 & 0
+\end{array}
+					]]>
+								</latex>
+							</math.display>
+			<para>Thus <latex>s=3</latex> and <latex>t=-1</latex> are the only solution of the given vector equation, and so we conclude:</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>3 \Vect{a} + (-1) \Vect{b}</right>
+				<left>\Vect{x}_{\EuScript{B}}</left>
+				<center>=</center>
+				<right>(3,-1)</right>
+			</computation>
+			<para>is the coordinate vector of <latex>\Vect{x}</latex>.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Suppose <latex>\EuScript{B}=(\Vect{a},\Vect{b},\Vect{c})</latex> is an ordered basis of a subvector space <latex>V</latex> of <latex>\RNr[n]</latex>. Find <latex>\Vect{x}_{\EuScript{B}}</latex> if</para>
+			<ol>
+				<li><para><latex>\Vect{x} = \Vect{a}</latex></para></li>
+				<li><para><latex>\Vect{x} = \Vect{b}</latex></para></li>
+				<li><para><latex>\Vect{x} = \Vect{c}</latex></para></li>
+				<li><para><latex>\Vect{x} = 3\cdot\Vect{a}-\Vect{b} - 2\cdot \Vect{c}</latex></para></li>
+			</ol>
+		</statement>
+		<answer type="Solution">
+			<para>The required coordinate vectors are</para>
+			<ol>
+				<li><para><latex>\Vect{x}_{\EuScript{B}}=({\color{red} 1},{\color{blue} 0},{\color{green} 0})</latex> as <latex>\Vect{x} = {\color{red} 1}\cdot \Vect{a} + {\color{blue} 0}\cdot \Vect{b} + {\color{green} 0}\cdot \Vect{c}</latex></para></li>
+				<li><para><latex>\Vect{x}_{\EuScript{B}}=({\color{red} 0},{\color{blue} 1},{\color{green} 0})</latex> as <latex>\Vect{x} = {\color{red} 0}\cdot \Vect{a} + {\color{blue} 1}\cdot \Vect{b} + {\color{green} 0}\cdot \Vect{c}</latex></para></li>
+				<li><para><latex>\Vect{x}_{\EuScript{B}}=({\color{red} 0},{\color{blue} 0},{\color{green} 1})</latex> as <latex>\Vect{x} = {\color{red} 0}\cdot \Vect{a} + {\color{blue} 0}\cdot \Vect{b} + {\color{green} 1}\cdot \Vect{c}</latex></para></li>
+				<li><para><latex>\Vect{x}_{\EuScript{B}}=({\color{red} 3},{\color{blue} -1},{\color{green} -2})</latex> as <latex>\Vect{x} = {\color{red} 3}\cdot \Vect{a} + {\color{blue} (-1)}\cdot \Vect{b} + {\color{green} (-2)}\cdot \Vect{c}</latex></para></li>
+			</ol>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Suppose <latex>\EuScript{B}=(\Vect{a},\Vect{b},\Vect{c})</latex> is an ordered basis of a subvector space <latex>V</latex> of <latex>\RNr[n]</latex>. Then <latex>\EuScript{C}=(\Vect{b},\Vect{c},\Vect{a})</latex> is another ordererd basis of <latex>V</latex>. If <latex>\Vect{x}_{\EuScript{B}} = (-2,6,-5)</latex>, find <latex>\Vect{x}_{\EuScript{C}}</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We know that</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>(-2)\cdot \Vect{a} + 6\cdot \Vect{b} + (-5)\cdot \Vect{c}</right>
+				<left></left>
+				<center>=</center>
+				<right>6\cdot \Vect{b} + (-5)\cdot \Vect{c} + (-2)\cdot \Vect{a}</right>
+			</computation>
+			<para>Therefore</para>
+			<computation>
+				<left>\Vect{x}_{\EuScript{C}}</left>
+				<center>=</center>
+				<right>(6,-5,-2)</right>
+			</computation>
+		</answer>
+	</showme>
+</showme.pack>

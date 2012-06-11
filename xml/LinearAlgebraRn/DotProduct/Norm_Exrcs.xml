@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Norm">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	<title>The Norm Operation: Exercises</title>
+	<quiz>
+		<question>
+			<para>Answer the following questions:</para>
+		</question>
+		<part>
+			<question>
+				<para>What is the norm of a vector?</para>
+			</question>
+			<choice>
+				<answer>
+					<para>Same as the distance between two points</para>
+				</answer>
+				<info>
+					<para>Not quite! While the formula for the distance between two points and the formula with which we compute the norm of a vector appear to be the same, the concepts of ‘distance between two points’ and ‘vector’ are very distinct. So the norm of a vector is not the same as the distance between two points.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>Same as the length of an arrow</para>
+				</answer>
+				<info>
+					<para>Almost right! - You need to specify which arrow you are taking the length of!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>The norm of a vector <latex>\Vect{x}</latex> is the length of any arrow representing <latex>\Vect{x}</latex>.</para>
+				</answer>
+				<info>
+					<para>Correct!</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>The norm of a vector is ... – What kind of information is required to complete this sentence?</para>
+			</question>
+			<choice>
+				<answer>
+					<para>A point in 3-dimensional space</para>
+				</answer>
+				<info>
+					<para>Sorry, no!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>Some number</para>
+				</answer>
+				<info>
+					<para>Correct!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>Some number which is greater than or equal to <latex>0</latex>.</para>
+				</answer>
+				<info>
+					<para>Correct! – Notice that, while the previous answer was correct as well, it was less accurate than the answer given here.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>What is a unit vector?</para>
+			</question>
+			<choice>
+				<answer>
+					<para>Any vector in <latex>\RNr[1]</latex>
+					</para>
+				</answer>
+				<info>
+					<para>If this is what you think, please review the definition of a ‘unit vector’</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>A vector pointing in the direction of the first coordinate axis.</para>
+				</answer>
+				<info>
+					<para>Not necessarily! - The truth is: there are exactly two unit vectors which point in the direction of the first coordinate axis. – Which?</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>A unit vector is a vector of length <latex>1</latex>
+					</para>
+				</answer>
+				<info>
+					<para>Correct!</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>How many unit vectors are there which are parallel to the third coordinate vector in <latex>\RNr[3]</latex>?</para>
+			</question>
+			<choice>
+				<answer>
+					<para>One unit vector, namely <latex>\Vect{u} = (0,0,1) = \Vect{e}_3</latex>
+					</para>
+				</answer>
+				<info>
+					<para>The vector <latex>\Vect{u}</latex> is a unit vector which is indeed parallel to the third coordinate axis. However, it is not the only unit vector.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>There are infinitely many such unit vectors.</para>
+				</answer>
+				<info>
+					<para>Sorry, no! – Let's think this through carefully now: The third coordinate axis in <latex>\RNr[3]</latex> is a line. Now how many vectors of length <latex>1</latex> are there which are parallel to a given line?</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>There are two such unit vectors, namely <latex>\Vect{e}_3 = (0,0,1)</latex> and <latex>-\Vect{e}_3 = (0,0,-1)</latex>.</para>
+				</answer>
+			</choice>
+		</part>
+	</quiz>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>
+				<subordinate>
+					<hot>Normalize</hot>
+					<info>
+						<caption>Recall: Normalize</caption>
+						<para>This means, for each of the given vectors <latex>\Vect{x}</latex> you need to find one of length <latex>1</latex> and in the same direction as <latex>\Vect{x}</latex> 
+						</para>
+					</info>
+				</subordinate> each of the vectors below</para>
+		</problem>
+		<part>
+			<problem>
+				<para>
+					<latex>(3,4)</latex>
+				</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The normalizion of <latex>\Vect{x} = (3,4)</latex> is</para>
+					<math.display>
+						<latex>\Vect{u} = \frac{1}{5}\cdot (3,4)</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>
+					<latex>(2,1,2)</latex>
+				</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The normalizion of <latex>\Vect{y} = (2,1,2)</latex> is</para>
+					<math.display>
+						<latex>\Vect{v} = \frac{1}{3}\cdot (2,1,2)</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>
+					<latex>(3,1,6,1,1,1)</latex>
+				</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The normalizion of <latex>\Vect{z} = (3,1,6,1,1,1)</latex> is</para>
+					<math.display>
+						<latex>\Vect{w} = \frac{1}{7}\cdot (3,1,6,1,1,1)</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Which of the following identities is true?</para>
+		</problem>
+		<part>
+			<problem><para><latex>\Abs{ (4,-6,10) } = 2\cdot \Abs{ (2,-3,5) }</latex></para></problem>
+			<approach>
+				<solution.hint><para>Review the algebraic properties of the norm operation.</para></solution.hint>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\Abs{ (4,-6,10) }</left>
+						<center>=</center>
+						<right>\Abs{ 2\cdot (2,-3,5) }</right>
+						<left></left>
+						<center>=</center>
+						<right>\Abs{2}\cdot \Abs{ (2,-3,5) }</right>
+						<left></left>
+						<center>=</center>
+						<right>2\cdot \Abs{ (2,-3,5) }</right>
+					</computation>
+					<para>Thus the identity in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para><latex>\Abs{ (-15,-6,9) } = -3\cdot \Abs{ (5,2,-3) }</latex></para></problem>
+			<approach>
+				<answer><para>The proposed identity is false.</para></answer>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>\Abs{ (-15,-6,9) }</left>
+						<center>=</center>
+						<right>\Abs{ (-3)\cdot (5,2,-3) }</right>
+						<left></left>
+						<center>=</center>
+						<right>\Abs{-3}\cdot \Abs{ (5,2,-3) }</right>
+						<left></left>
+						<center>=</center>
+						<right>3\cdot \Abs{ (5,2,-3) }</right>
+						<left></left>
+						<center>=</center>
+						<right>(-3)\cdot \Abs{ (5,2,-3) }</right>
+					</computation>
+					<para>Thus the identity in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para><latex>\Abs{ ( -1, 4, 3, -4) } = 12</latex></para></problem>
+			<approach>
+				<answer><para>The proposed identity is false.</para></answer>
+				<solution.hint><para>Recall the formula for the norm operation.</para></solution.hint>
+				<solution.hint>
+					<para>If you believe this identity should be correct, you may have computed.</para>
+					<computation>
+						<left>\Abs{ ( -1, 4, 3, -4) }</left>
+						<center>\overset{?}{=}</center>
+						<right>\Abs{-1} + \Abs{4} + \Abs{3} + \Abs{-4}</right>
+						<left></left>
+						<center>=</center>
+						<right>1 + 4 + 3 + 4</right>
+						<left></left>
+						<center>=</center>
+						<right>12</right>
+					</computation>
+					<para>However, this is not a correct application of the formula for the norm operation, and so you can <b>not conclude</b> from this that the proposed identity is correct.</para>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find all unit vectors in <latex>\RNr[2]</latex> which are parallel to the line bisecting the first and third quadrant.</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>The vectors <latex>\pm (1/\sqrt{2})\cdot (1,1)</latex> are the two unit vectors which are parallel to the given bisector.</para>
+			</answer>
+			<solution.hint>
+				<para>Find first a non-zero vector which is parallel to the bisector.</para>
+			</solution.hint>
+			<solution>
+				<para>A nonzero vector which is parallel to the bisector of the first and third quadrant in <latex>\RNr[2]</latex> is <latex>\Vect{x} := (1,1)</latex>.</para>
+				<figure>
+					<img src="ims/Bisector.png"></img>
+				</figure>
+				<para>The length of <latex>\Vect{x}</latex> is</para>
+				<computation>
+					<left>\Abs{\Vect{x}}</left>
+					<center>=</center>
+					<right>\sqrt{ 1^2 + 1^2 }</right>
+					<left></left>
+					<center>=</center>
+					<right>\sqrt{2}</right>
+				</computation>
+				<para>Therefore the two required unit vectors are</para>
+				<para align="center">
+					<latex>\Vect{u} = \frac{1}{\sqrt{2})}\cdot (1,1)</latex> &nbsp; and &nbsp; <latex>-\Vect{u} = -\tfrac{1}{\sqrt{2}}\cdot (1,1)</latex>.</para>
+			</solution>
+		</approach>
+		<approach>
+			<solution.hint>
+				<para>Alternatively, you might want to work abstractly: An arbitrary nonzero vector parallel to the given line is</para>
+				<math.display>
+					<latex>\Vect{y} = (t,t),\quad t\neq 0</latex>
+				</math.display>
+				<para>Can you find the required unit vectors starting with <latex>\Vect{y}</latex>?</para>
+			</solution.hint>
+			<solution>
+				<para>Instead of starting with the vector <latex>\Vect{x}</latex> as a vector parallel to the given line, we could have chosen any nonzero vector</para>
+				<math.display>
+					<latex>\Vect{y} = (t,t),\quad t\neq 0</latex>
+				</math.display>
+				<para>that is parallel to the line. We still obtain the same unit vectors parallel to the line: The length of <latex>\Vect{y}</latex> is</para>
+				<computation>
+					<left>\Abs{(t,t)}</left>
+					<center>=</center>
+					<right>\sqrt{ t^2 + t^2 }</right>
+					<left></left>
+					<center>=</center>
+					<right>\Abs{t}\cdot \sqrt{ 2 }</right>
+				</computation>
+				<para>Therefore we obtain for the unit vectors</para>
+				<computation>
+					<left>\Vect{u}</left>
+					<center>=</center>
+					<right>\pm\dfrac{(t,t)}{ \Abs{t}\cdot \sqrt{2} }</right>
+					<left></left>
+					<center>=</center>
+					<right>\pm\dfrac{t}{\Abs{t}\cdot \sqrt{2} }\cdot (1,1)</right>
+					<left></left>
+					<center>=</center>
+					<right>\pm \tfrac{1}{\sqrt{2}}\cdot (1,1)</right>
+				</computation>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>In <latex>\RNr[3]</latex>, find all unit vectors which are parallel to the line through the origin and the point <latex>P(2,-1,-2)</latex>.</para>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>There are exactly two unit vectors which fit this description.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>The unit vector in the direction of <latex>\Vect{a}:=(2,-1,-2)</latex> is one unit vector which fits this description.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>If <latex>\Vect{n}</latex> is one of the unit vectors in question, then <latex>-\Vect{n}</latex> is the other.</para>
+			</solution.hint>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Prove that, for every vector <latex>\Vect{x}</latex>, <latex>| \Vect{x} | = | -\Vect{x} |</latex>.</para>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>Review the algebraic properties of the norm operation.</para>
+			</solution.hint>
+		</approach>
+	</exercise>
+</exercise.pack>

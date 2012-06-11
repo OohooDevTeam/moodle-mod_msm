@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_OrthogonalProjection">
+	<title>The Orthogonal Projections</title>
+	<sub.page.body>
+		<block>
+			<para>Here we explain how to compute the orthogonal projection of <latex>\RNr[n]</latex> onto the 
+				<subordinate>
+					<hot>hyperspace</hot>
+					<crossref>
+						<definition.ref definitionID="Def_Hyperspace"/>
+						<para>Look up the definition of a hyperspace</para>
+					</crossref>
+				</subordinate>
+				<latex>H</latex> which is perpendicular to a nonzero vector <latex>\Vect{c}</latex>. We know that <latex>H</latex> consists of all those vectors <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> with <latex>\DotPr{\Vect{x}}{\Vect{c}}=0</latex>. The orthogonal projection <latex>P</latex> of <latex>\RNr[n]</latex> onto <latex>H</latex> transforms a point <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> into the point on <latex>H</latex> which is closest to <latex>\Vect{x}</latex>.</para>
+			
+			<figure>
+				<img src="ims/OrthogonalProjection.png"></img><!-- svg available -->
+			</figure>
+			
+			<para>Thus we find <latex>P(\Vect{x})</latex> by subtracting from <latex>\Vect{x}</latex> the 
+				<subordinate>
+					<hot>projection</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_ProjectionVectorOnLine"/>
+						<para>Review this projection construction</para>
+					</crossref>
+				</subordinate>
+				of <latex>\Vect{x}</latex> along <latex>\Vect{c}</latex>.
+			</para>
+			
+			<math.display>
+				<latex>P\from \RNr[n] \longrightarrow \RNr[n],\quad P(\Vect{x}) = \Vect{x}\ -\ \dfrac{\DotPr{\Vect{x}}{\Vect{c}}}{\DotPr{\Vect{c}}{\Vect{c}}} \cdot \Vect{c}</latex>
+			</math.display>
+		</block>
+	</sub.page.body>
+</sub.page>

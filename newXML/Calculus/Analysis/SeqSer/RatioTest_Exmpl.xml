@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_RatioTest"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	
+	  <title>Ratio Test: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Use the ratio test to determine if the series</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sum_{n=0}^{\infty} (-1)^n \dfrac{ 3^n n^2 }{ n! }</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>converges absolutely.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We analyze the quotient</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lim_{n\to \infty} \dfrac{ \Abs{ a_{n+1} } }{ \Abs{ a_n } }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lim_{n\to \infty} \dfrac{ \dfrac{ 3^{n+1} (n+1)^2 }{ (n+1)! } }{ \dfrac{ 3^nn^2 }{ n! } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lim_{n\to \infty}\dfrac{ \dfrac{ 3 (1 + 1/n)^2 }{ n+1 } }{ \dfrac{ 1 }{ 1 } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex> 0 &lt; 1 </latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore, the given series converges absolute by the ratio test.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

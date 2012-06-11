@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_AlternatingSeries">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Alternating Series</title>
+	
+	<exercise>
+		<problem>
+			<para>Which of the following series converges to a number?</para>
+		</problem>
+		<part>
+			<problem><para><latex>5 - \tfrac{5}{2} + \tfrac{5}{3} - \tfrac{5}{4} + \cdots + (-1)^{n+1}\tfrac{5}{n} + \cdots</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>c - \tfrac{c}{2} + \tfrac{c}{3} - \tfrac{c}{4} + \cdots + (-1)^{n+1}\tfrac{c}{n} + \cdots</latex>, where <latex>c\in \RNr</latex> is arbitrary.</para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} \tfrac{(-1)^n}{\sqrt{n+1}}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} \tfrac{(-1)^n }{ 2n + 3 }</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n+1}{2n+1}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n+1}{3n+1}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2n+3}{n^2+2}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2n+3}{n^2-\pi^2}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2n^2+3}{5n^2+9}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2n^k+3}{n^{k+1}+2}</latex>, where <latex>k\in \NNr</latex> satisfies <latex>k\geq 1</latex>.</para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{\sqrt{n+3}}{n+1}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{2^n}{n^{2} + 1}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n^2}{2^n}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \sin(\tfrac{1}{n})</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \cos(\tfrac{1}{n})</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tan(\tfrac{1}{\sqrt{n}})</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n n!</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{1}{n!}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n^2}{n!}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{3^n}{n!}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{10^n}{n!}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sum_{n=0}^{\infty} (-1)^n \tfrac{n^n}{n!}</latex></para></problem>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>(a_n)</latex> be a sequence satisfying</para>
+			<ol>
+				<li><para><latex><![CDATA[ a_0 > a_1 > \cdots > a_n > \cdots > 0 ]]></latex></para></li>
+				<li><para><latex>\lim_{n\to \infty} a_n = 0</latex>.</para></li>
+			</ol>
+			<para>Then we know that the alternating series <latex>\sum_{n=0}^{\infty} (-1)^n a_n</latex> converges to a number <latex>L</latex>. If <latex>s_n</latex> denotes the <latex>n</latex>-th partial sum of the series, show that</para>
+			<math.display>
+				<latex>\Abs{ L - s_n }\ \leq a_{n+1}</latex>
+			</math.display>
+			<para>for all <latex>n\in \NNr</latex>.</para>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Use the previous exercise to estimate</para>
+			<math.display>
+				<latex>\sum_{n=0}^{\infty} \dfrac{ (-1)^n }{ n! }</latex>
+			</math.display>
+			<para>with an accuracy of 3 decimal places.</para>
+		</problem>
+	</exercise>
+	
+</exercise.pack>

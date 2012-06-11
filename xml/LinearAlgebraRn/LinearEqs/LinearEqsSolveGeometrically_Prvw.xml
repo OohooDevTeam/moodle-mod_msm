@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Preview_LinearEqsGeometry">
+	<title>Solving a System of Linear Equations Geometrically - Preview</title>
+	<sub.page.body>
+		<block>	
+			<para>Here we express, in geometrical terms, the structure of the simultaneous solutions of a system of linear equations. We recall that the solutions of a single linear equation</para>
+			
+			<math.display>
+				<latex magnify="yes">
+					<![CDATA[
+					\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} & = & c \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>form a hyperplane which is perpendicular to the vector <latex magnify="yes">\mathbf{n}:= (a_1,\dots ,a_n)</latex>.</para>
+			
+			<para align="center"><subordinate>
+				<hot><img src="ims/LinearEqSingle.gif" width="359" height="255"/></hot>
+				<info>
+					<caption>Illustration</caption>
+					<para>Of the solution set of the linear equation</para>
+					<math.display>
+						<latex magnify="yes">
+							<![CDATA[
+					\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} & = & c \\
+\end{array}
+					]]>
+						</latex>
+					</math.display>
+					<para>Here we assume tacitly that the normal vector <latex>\mathbf{n}:= (a_1,\dots ,a_n)</latex> is not the 0-vector.</para>
+				</info>
+			</subordinate>
+			</para>
+		</block>
+		
+		<block>
+			<para>The simultaneous solutions of two linear equations</para>
+			<math.display>
+				<latex magnify="yes">
+					<![CDATA[
+					\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} & = & c \\
+					\colorbox{lightgreen}{$b_{1}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$b_{2}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$b_{n}$}{\color{red}x_n} & = & d
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>form the intersection of two hyperplanes. When forming such an intersection of hyperplanes, one of several distinct situations can occur. Let's illustrate this for equations in 3 unknowns.</para>
+			
+			<para><b>First case</b> the normal vectors <latex>\mathbf{n}_1:= (a_1,a_2 ,a_3)</latex> and <latex>\mathbf{n}_2 := (b_1,b_2,b_3)</latex> are not parallel. Therefore, the associated hyperplanes are not parallel and, as a consequence, the simultaneous solutions of the two equations form the intersection of the two planes. It always is a line.</para>
+			
+			<para align="center"><img src="ims/LinearEqsTwo.gif" width="333" height="281"/></para>
+			
+			<para><b>Second case</b> the two hyperplanes are parallel and distinct. There is no point that belongs to both hyperplanes. Therefore there is no simultaneous solution of the given system of two linear equations.</para>
+			
+			<para align="center"><img src="ims/LinearEqsTwoParallel.gif" width="377" height="350"/></para>
+			
+			<para><b>Third case</b> the two hyperplanes are identical. This situation is a sibling of the second case. Only this time, the solutions of one equation also solve the other. So the simultaneous solutions of the given equations form a plane.</para>
+		</block>
+		
+		<block>
+			<para>In a system of <latex>m</latex> linear equations in <latex>n</latex> unknowns, the solutions of each one of them form a hyperplane in <latex>\RNr[n]</latex>. Therefore the simultaneous solutions of the system form exactly the intersection of all of these hyperplanes.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

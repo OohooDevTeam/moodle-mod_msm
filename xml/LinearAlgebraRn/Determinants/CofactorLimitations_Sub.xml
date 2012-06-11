@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="CofactorLimitations_Sub">
+	<title>Practical Limitations of the Cofactor Method</title>
+	<sub.page.body>
+		<block>
+			<para>The computational effort of evaluating determinants using the cofactor method grows enormously with the size of the matrix. To see this, let us analyze just what it takes to expand a matrix of size <latex>(n,n)</latex> along the first column.</para>
+			
+			<ol>
+				<li><para>First we get <latex>n</latex> summands each of which is a product with one factor being the determinant of a matrix of size <latex>(n-1,n-1)</latex>.</para></li>
+				<li><para>Next we need to expand each of these <latex>n</latex> determinants as a sum of its <latex>(n-1)</latex> cofactors. The result are <latex>n(n-1)</latex> summands each of which is a product with a determinant of size <latex>(n-2,n-2)</latex>.</para></li>
+				<li><para>... and so on, and so on.</para></li>
+			</ol>
+			
+			<para>By the time we are done, we have added</para>
+			<math.display>
+				<latex>n\cdot (n-1)\cdot (n-2) \cdots 2\cdot 1 = n!</latex>
+			</math.display>
+			<para>numbers, each of which is a product of <latex>n</latex> numbers. In all, there are <latex>n\cdot (n!)</latex> operations to perform.</para>
+		</block>
+		<block>
+			<para>To get an idea of how large the <latex>n\cdot (n!)</latex> is, let us work out the case <latex>n=25</latex>: computing the determinant of a matrix of size <latex>(25,25)</latex> by expansion along columns requires approximately</para>
+			<math.display>
+				<latex>25\cdot (25!) \approx 387,780,251,100,000,000,000,000,000</latex>
+			</math.display>
+			
+			<para>arithmetical operations. A computer that is able to perform <latex>10^{19}</latex> arithmetical operations per second would take more than a full year to complete such a task. The fastest computer that exists today would take much longer than that.</para>
+			
+		</block>
+		<block>
+			<para>In comparison, computing the determinant of an upper triangular matrix of size <latex>(n,n)</latex> requires only <latex>n</latex> multiplications. So this is a significant improvement over <latex>n\cdot (n!)</latex> arithmetical operations.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_InfSupLimSequence"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: Limit of a Sequence</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>(x_n)</latex>
+                  </math> be a sequence in <math>
+                     <latex>\RNr</latex>
+                  </math> with <math>
+                     <latex>\lim_{n\to \infty} x_n = c</latex>
+                  </math>. If <math>
+                     <latex>(x_{n_i})</latex>
+                  </math> is a subsequence of <math>
+                     <latex>(x_n)</latex>
+                  </math>, show that</para.body>
+            </para>
+			         <math.display>
+				           <latex>\lim_{i\to \infty} x_{n_i}\ =\ c</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	
+</exercise.pack>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_Diagonalizable"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Diagonalizable Matrices</title>
+      <plain.title>Diagonalizable Matrices</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we consider the situation where a given <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> has a basis <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> of eigenvectors for <math>
+                     <latex>\RNr[n]</latex>
+                  </math>. This happens if each eigenvalue <math>
+                     <latex>\lambda</latex>
+                  </math> has algebraic multiplicity equal to the dimension of its eigenspace. Changing from standard coordinates to <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>-coordinates, results in a diagonal matrix <math>
+                     <latex>\Mtrx{D}</latex>
+                  </math> with</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{D}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{C}_{\EuScript{B}\EuScript{S}} \Mtrx{A} \Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Therefore we call such a matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> diagonalizable.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_DiagonalizableMatrix">
+               <caption>Diagonalizable matrix</caption>
+               <associate type="Explanation">
+                  <unit.ref unitId="Diagonalizable_Sub"/>
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>An explanation of the concept of a diagonalizable matrix.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>An <math>
+                           <latex>(n,n)</latex>
+                        </math>-matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is called diagonalizable if there exists and invertible matrix <math>
+                           <latex>\Mtrx{C}</latex>
+                        </math> such that
+				</para.body>
+                     <index.glossary>
+                        <term>diagonalizable matrix</term>
+                        <info>
+                           <info.caption>Diagonalizable matrix</info.caption>
+                           <para>
+                              <para.body>An <math>
+                                    <latex>(n,n)</latex>
+                                 </math>-matrix <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is called diagonalizable if there exists and invertible matrix <math>
+                                    <latex>\Mtrx{C}</latex>
+                                 </math> such that</para.body>
+                           </para>
+                           <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Mtrx{D}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Mtrx{C}^{-1}\cdot \Mtrx{A} \Mtrx{C}</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+                           <para>
+                              <para.body>is a diagonal matrix.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>matrix</term>
+                        <term>diagonalizable</term>
+                        <info>
+                           <info.caption>Diagonalizable matrix</info.caption>
+                           <para>
+                              <para.body>An <math>
+                                    <latex>(n,n)</latex>
+                                 </math>-matrix <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is called diagonalizable if there exists and invertible matrix <math>
+                                    <latex>\Mtrx{C}</latex>
+                                 </math> such that</para.body>
+                           </para>
+                           <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Mtrx{D}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Mtrx{C}^{-1}\cdot \Mtrx{A} \Mtrx{C}</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+                           <para>
+                              <para.body>is a diagonal matrix.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{D}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{C}^{-1}\cdot \Mtrx{A} \Mtrx{C}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+                  <para>
+                     <para.body>is a diagonal matrix.</para.body>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>We use the following theorem to detect diagonalizable matrices. Further, if a matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is diagonalizable, it provides a method to find a matrix <math>
+                     <latex>\Mtrx{C}</latex>
+                  </math> such that <math>
+                     <latex>\Mtrx{C}^{-1} \Mtrx{A} \Mtrx{C}</latex>
+                  </math> is diagonal.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="DiagonalizabilityTest_Thm.xml"/>
+            <para>
+               <para.body>Some diagonalizable matrices are easy to recognize:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="SymmetricDiagonalizable_Thm.xml"/>
+            <para>
+               <para.body>We have seen that diagonalizing a matrix helps us in determining the transformation properties of a given matrix. But there are other reasons why one might want to diagonalize a matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. For example, the task of computing a (high) power <math>
+                     <latex>\Mtrx{A}^r</latex>
+                  </math> can be quite labor intensive, especially if <math>
+                     <latex>r</latex>
+                  </math> is large. The following result tells us, however, that this task can be simplified hugely if <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is diagonalizable.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="MatrixExponentiation_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_Diagonalize"/>
+   </studymaterials>
+</unit>

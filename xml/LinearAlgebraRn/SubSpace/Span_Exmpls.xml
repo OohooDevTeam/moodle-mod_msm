@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Span">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Span: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Find the span of the vector <latex>\Vect{u} = (1,1,0)</latex> in <latex>\RNr[3]</latex>.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>The span of <latex>\Vect{u}</latex> is the collection of all vectors of the form</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>t\cdot (1,1,0)</right>
+			</computation>
+			<para>This is the line in <latex>\RNr[3]</latex> passing through the origin and in the direction of <latex>\Vect{u}</latex>.</para>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Find the span of a single vector <latex>\Vect{s}</latex> in <latex>\RNr[n]</latex>.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>The span of <latex>\Vect{s}</latex> is the collection of all vectors of the form</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>t\cdot \Vect{s}</right>
+			</computation>
+			<para>To describe the outcome of this operation we distinguish two cases:</para>
+			<ol type="1">
+				<li>
+					<para><latex>\Vect{s} = \Vect{0}</latex>: in this case <latex>t\cdot \Vect{s} = \Vect{0}</latex> and, therefore, <latex>\span(\Vect{s})</latex> is just the <latex>\Vect{0}</latex>-vector.</para>
+				</li>
+				<li>
+					<para><latex>\Vect{s}\neq \Vect{0}</latex>: in this case <latex>\span(\Vect{s})</latex> is the line through the origin in the direction of <latex>\Vect{s}</latex>.</para>
+				</li>
+			</ol>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Find the span of the vectors <latex>\Vect{u}=(2,0)</latex> and <latex>\Vect{v}=(0,3)</latex> in <latex>\RNr[2]</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>The span of <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> consists of all vectors of the form</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>s\cdot \Vect{u} + t\cdot \Vect{v}</right>
+				<left></left>
+				<center>=</center>
+				<right>s\cdot (2,0)\ +\ t\cdot (0,3)</right>
+				<left></left>
+				<center>=</center>
+				<right>(2s,3t)</right>
+			</computation>
+			<para>We conclude that <latex>\span(\Vect{u},\Vect{v})</latex> is all of <latex>\RNr[2]</latex> because an arbitrary vector <latex>(a,b)</latex> in <latex>\RNr[2]</latex> is of the form</para>
+			<computation>
+				<left>(a,b)</left>
+				<center>=</center>
+				<right>(2\cdot\tfrac{a}{2},3\cdot\tfrac{b}{3})</right>
+			</computation>
+			<para>So it is in the span of <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

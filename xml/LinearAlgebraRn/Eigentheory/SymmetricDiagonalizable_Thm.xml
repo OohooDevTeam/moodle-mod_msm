@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_SymmetricDiagonalizable">
+	<caption>Matrix exponentiation</caption>
+	<statement>
+		<para>Every 
+			<subordinate>
+				<hot>symmetric</hot>
+				<info>
+					<para>Remember: a matrix <latex>\Mtrx{A}</latex> is symmetric if</para>
+					<computation>
+						<left>\Mtrx{A}</left>
+						<center>=</center>
+						<right>\Mtrx{A}^T</right>
+					</computation>
+				</info>
+			</subordinate>
+			matrix is diagonalizable
+			<index.glossary>
+				<term>matrix</term><term>symmetric</term>
+				<info><para>Appears here in the context of: a symmetric matrix is diagonalizable.</para></info>
+			</index.glossary>
+		</para>
+	</statement>
+</theorem>

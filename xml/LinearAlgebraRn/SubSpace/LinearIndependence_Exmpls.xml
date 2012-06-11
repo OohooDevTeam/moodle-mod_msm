@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearIndependence">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Linear Independence: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Determine if the vectors</para>
+			<math.display>
+				<latex>\Vect{a}_1=(1,2,5)\quad \text{and} \quad \Vect{a}_2=(2,-1,4)</latex>
+			</math.display>
+			<para>of <latex>\RNr[3]</latex> are linearly independent.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>We need to examine the possible solutions of the vector equation</para>
+			<computation>
+				<left>t_1 \Vect{a}_1 + t_2 \Vect{a}_2</left>
+				<center>=</center>
+				<right>\Vect{0}</right>
+			</computation>
+							<math.display>
+								<latex>
+									<![CDATA[
+t_1
+\left[
+\begin{array}{c}
+1 \\ 2 \\ 5
+\end{array}
+\right]\ +\ t_2
+\left[
+\begin{array}{r}
+2 \\ -1 \\ 4
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+0 \\ 0 \\ 0
+\end{array}
+\right]
+					]]>
+								</latex>
+							</math.display>
+			<para>This homogeneous system of linear equations has as its reduced row echelon form</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+\left[
+\begin{array}{cc|c}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{array}
+\right]
+					]]>
+								</latex>
+							</math.display>
+			<para>This says that <latex>t_1=t_2=0</latex> is the only solution of the given vector equation. We conclude that the set of vectors <latex>\Set{ \Vect{a}_1 , \Vect{a}_2 }</latex>  is linearly independent.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Determine if the vectors</para>
+			<math.display>
+				<latex>\Vect{a}_1=(1,2,5), \quad \Vect{a}_2=(2,-1,4),\quad \text{and}\quad \Vect{a}_3=(0,5,6)</latex>
+			</math.display>
+			<para>of <latex>\RNr[3]</latex> are linearly independent. If they are not, express one vector as a linear combination of the others.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>We need to examine the possible solutions of the vector equation</para>
+			<computation>
+				<left>t_1 \Vect{a}_1 + t_2 \Vect{a}_2 + t_3 \Vect{a}_3</left>
+				<center>=</center>
+				<right>\Vect{0}</right>
+			</computation>
+			<math.display>
+				<latex>
+					<![CDATA[
+t_1
+\left[
+\begin{array}{c}
+1 \\ 2 \\ 5
+\end{array}
+\right]\ +\ t_2
+\left[
+\begin{array}{r}
+2 \\ -1 \\ 4
+\end{array}
+\right]\ +\ t_3
+\left[
+\begin{array}{r}
+0 \\ 5 \\ 6
+\end{array}
+\right]
+=\ 
+\left[
+\begin{array}{c}
+0 \\ 0 \\ 0
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			<para>This homogeneous system of linear equations has as its reduced row echelon form</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rrr|r}
+1 & 0 & 2 & 0 \\
+0 & 1 & -1 & 0 \\
+0 & 0 & 0 & 0
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			<para>Now we see that this system of linear equation has infinitely many solutions, as <latex>t_3</latex> can be chosen arbitrarily. We conclude that the vectors <latex>\Set{ \Vect{a}_1 , \Vect{a}_2 , \Vect{a}_3 }</latex> fail to be linearly independent: they are linearly dependent.</para>
+			
+			<para>To express one vector as a linear combination of the others, we may use any of the solutions of the above system of linear equations. For example, <latex>t_3 = 4</latex> yields</para>
+			<computation>
+				<left>t_1</left>
+				<center>=</center>
+				<right>-2\cdot 4 = -8</right>
+				<left>t_2</left>
+				<center>=</center>
+				<right>4</right>
+			</computation>
+			<para>This means that</para>
+			<computation>
+				<left>-8\cdot \Vect{a}_1 + 4\cdot \Vect{a}_2 + 4\cdot \Vect{a}_3</left>
+				<center>=</center>
+				<right>\Vect{0}</right>
+				<left>\Vect{a}_2</left>
+				<center>=</center>
+				<right>2\cdot \Vect{a}_1 - \Vect{a}_3</right>
+			</computation>
+			<para>Notice that we could just as well have expressed <latex>\Vect{a}_1</latex> as a linear combination of <latex>\Vect{a}_2</latex> and <latex>\Vect{a}_3</latex>:</para>
+			<computation>
+				<left>\Vect{a}_1</left>
+				<center>=</center>
+				<right>\dfrac{1}{2}\cdot (\Vect{a}_2 +\Vect{a}_3)</right>
+			</computation>
+			<para>Similarly, <latex>\Vect{a}_3</latex> is a linear combination of <latex>\Vect{a}_1</latex> and <latex>\Vect{a}_2</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

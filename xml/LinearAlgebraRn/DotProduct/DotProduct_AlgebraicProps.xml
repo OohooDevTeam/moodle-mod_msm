@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Theo_DotProductAlgebraicProperties">
+	<caption>Algebraic Properties of the Dot Product</caption>
+	<statement>
+      <para>For vectors <latex>\Vect{x},\Vect{y},\Vect{a},\Vect{b}</latex> in <latex>\RNr[n]</latex> and any number <latex>t</latex> in <latex>\RNr</latex>, the following hold:
+      	<index.glossary>
+      		<term>dot product</term>
+      		<term>algebraic properties</term>
+      		<info>
+      			<para>Click for the proposition formulating the algebraic properties of the dot product operation</para>
+      		</info>
+      	</index.glossary>
+      </para>
+		
+		<part partid="theopart_Bilinearity">
+			<caption>Bilinearity</caption>
+			<para>
+				<index.glossary>
+					<term>bilinearity</term>
+					<term>of dot product</term>
+					<info>
+						<para>The bilinearity property of the dot product asserts that</para>
+						<table>
+							<row>
+								<cell align="right"><para><latex>\DotPr{ (\Vect{a} + \Vect{b})}{\Vect{y} }</latex></para></cell>
+								<cell align="center"><para><latex>=</latex></para></cell>
+								<cell align="left"><para><latex>\DotPr{\Vect{a} }{ \Vect{y}}\ +\ \DotPr{\Vect{b} }{ \Vect{y} }</latex></para></cell>
+							</row>
+							
+							<row>
+								<cell align="right"><para><latex>\DotPr{ \Vect{a} }{(\Vect{x} + \Vect{y}) }</latex></para></cell>
+								<cell align="center"><para><latex>=</latex></para></cell>
+								<cell align="left"><para><latex>\DotPr{ \Vect{a} }{ \Vect{x} }\ +\ \DotPr{\Vect{a} }{ \Vect{y} }</latex></para></cell>
+							</row>
+							<row>
+								<cell align="right"><para><latex>\DotPr{ (t\cdot \Vect{a}) }{ \Vect{y} }</latex></para></cell>
+								<cell align="center"><para><latex>= t\cdot (\DotPr{\Vect{a} }{ \Vect{y} }) =</latex></para></cell>
+								<cell align="left"><para><latex>\DotPr{ \Vect{a} }{ (t \cdot \Vect{y}) }</latex></para></cell>
+							</row>
+						</table>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>dot product</term>
+					<term>is bilinear</term>
+					<info>
+						<para>That the dot product is bilinear means</para>
+						<table>
+							<row>
+								<cell align="right"><para><latex>\DotPr{(\Vect{a} + \Vect{b})}{ \Vect{y} }</latex></para></cell>
+								<cell align="center"><para><latex>=</latex></para></cell>
+								<cell align="left"><para><latex>\DotPr{ \Vect{a} }{ \Vect{y} }\ +\ \DotPr{\Vect{b} }{ \Vect{y} }</latex></para></cell>
+							</row>
+							<row>
+								<cell align="right"><para><latex>\DotPr{ \Vect{a} }{ (\Vect{x} + \Vect{y}) }</latex></para></cell>
+								<cell align="center"><para><latex>=</latex></para></cell>
+								<cell align="left"><para><latex>\DotPr{ \Vect{a} }{ \Vect{x} }\ +\ \DotPr{ \Vect{a} }{ \Vect{y} }</latex></para></cell>
+							</row>
+							<row>
+								<cell align="right"><para><latex>\DotPr{ (t\cdot \Vect{a}) }{ \Vect{y} }</latex></para></cell>
+								<cell align="center"><para><latex>= t\cdot (\DotPr{ \Vect{a} }{ \Vect{y} }) =</latex></para></cell>
+								<cell align="left"><para><latex>\DotPr{ \Vect{a} }{ (t \cdot \Vect{y}) }</latex></para></cell>
+							</row>
+						</table>
+					</info>
+				</index.glossary>
+			</para>
+			
+			<table>
+				<row>
+					<cell align="right"><para><latex>\DotPr{(\Vect{a} + \Vect{b})}{ \Vect{y} }</latex></para></cell>
+					<cell align="center"><para><latex>=</latex></para></cell>
+					<cell align="left"><para><latex>\DotPr{ \Vect{a} }{ \Vect{y} }\ +\ \DotPr{ \Vect{b} }{ \Vect{y} }</latex></para></cell>
+				</row>
+				<row>
+					<cell align="right"><para><latex>\DotPr{ \Vect{a} }{ (\Vect{x} + \Vect{y}) }</latex></para></cell>
+					<cell align="center"><para><latex>=</latex></para></cell>
+					<cell align="left"><para><latex>\DotPr{ \Vect{a} }{ \Vect{x} }\ +\ \DotPr{ \Vect{a} }{ \Vect{y} }</latex></para></cell>
+				</row>
+				<row>
+					<cell align="right"><para><latex>\DotPr{ (t\cdot \Vect{a}) }{ \Vect{y} }</latex></para></cell>
+					<cell align="center"><para><latex>= t\cdot (\DotPr{ \Vect{a} }{ \Vect{y} }) =</latex></para></cell>
+					<cell align="left"><para><latex>\DotPr{ \Vect{a} }{ (t\cdot \Vect{y}) }</latex></para></cell>
+				</row>
+			</table>
+		</part>
+		
+		
+		<part partid="theopart_Symmetry">
+			<caption>Symmetry</caption>
+			<para>
+				<latex>\DotPr{ \Vect{a} }{ \Vect{x} } = \DotPr{ \Vect{x} }{ \Vect{a} }</latex>
+				
+				<index.glossary>
+					<term>symmetry</term>
+					<term>of dot product</term>
+					<info>
+						<para>The symmetry property of the dot product asserts that</para>
+						<math.display>
+							<latex>\DotPr{ \Vect{a} }{ \Vect{x} } = \DotPr{ \Vect{x} }{ \Vect{a} }</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				
+				<index.glossary>
+					<term>dot product</term>
+					<term>is symmetry</term>
+					<info>
+						<para>To say that the dot product is symmetry means that</para>
+						<math.display>
+							<latex>\DotPr{ \Vect{a} }{ \Vect{x} } = \DotPr{ \Vect{x} }{ \Vect{a} }</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+		
+		
+		<part partid="theopart_DotProductPositiveDefinite">
+			<caption>Positive definite</caption>
+			<para>
+				<latex>\DotPr{ \Vect{x} }{ \Vect{x} } \geq 0</latex> for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>
+				
+				<index.glossary>
+					<term>positive definite</term>
+					<term>dot product</term>
+					<info>
+						<para>The positive definiteness property of the dot product asserts that <latex>\DotPr{ \Vect{x} }{ \Vect{x} } \geq 0</latex> for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>.</para>
+					</info>
+				</index.glossary>
+				
+				<index.glossary>
+					<term>dot product</term>
+					<term>positive definite</term>
+					<info>
+						<para>To say that the dot product is positive definite means that <latex>\DotPr{ \Vect{x} }{ \Vect{x} } \geq 0</latex> for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>.</para>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+		
+		
+		<part partid="theopart_DotProductNonDegenerate">
+			<caption>Non-degeneracy</caption>
+			<para>
+				<latex>\DotPr{ \Vect{x} }{ \Vect{x} }</latex> if and only if <latex>\Vect{x} = \Vect{0}</latex>
+				
+				<index.glossary>
+					<term>non-degeneracy</term>
+					<term>dot product</term>
+					<info>
+						<para>The non-degeneracy property of the dot product asserts that </para>
+						<para align="center">
+							<latex>\DotPr{ \Vect{x} }{ \Vect{x} } = 0</latex> if and only if <latex>\Vect{x} = \Vect{0}</latex>
+						</para>
+					</info>
+				</index.glossary>
+				
+				<index.glossary>
+					<term>dot product</term>
+					<term>non-degenerate</term>
+					<info>
+						<para>To say that the dot product is non-degenerate means that</para>
+						<para align="center">
+							<latex>\DotPr{ \Vect{x} }{ \Vect{x} } = 0</latex> if and only if <latex>\Vect{x} = \Vect{0}</latex>
+						</para>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+	</statement>
+	
+	<proof type="Proof">
+		<para>Each of these identities follows by computing both sides of the given equation, and checking that the results are equal. So suppose we are given vectors</para>
+		
+		<computation>
+			<left>\Vect{a}</left>
+			<center>=</center>
+			<right>(a_1,\dots ,a_n)</right>
+			<left>\Vect{b}</left>
+			<center>=</center>
+			<right>(b_1,\dots ,b_n)</right>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>(x_1,\dots ,x_n)</right>
+			<left>\Vect{y}</left>
+			<center>=</center>
+			<right>(y_1,\dots ,y_n)</right>
+		</computation>
+		
+		<para>Then we compute:</para>
+		
+		<caption>
+			<partref>theopart_Bilinearity</partref>
+			Bilinearity
+		</caption>
+		<para>The bilinearity property holds because</para>
+		<table align="center">
+			<row>
+				<cell align="right"><para><latex>\DotPr{ (\Vect{a} + \Vect{b}) }{ \Vect{x} }</latex></para></cell>
+				<cell align="center"><para><latex>=</latex></para></cell>
+				<cell align="left"><para><latex>\DotPr{ ((a_1,\dots ,a_n) + (b_1,\dots ,b_n)) }{ (x_1,\dots ,x_n) }</latex></para></cell>
+			</row>
+			
+			<row>
+				<cell align="right"><para> </para></cell>
+				<cell align="center"><para>
+					<subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>This computational step holds because</caption>
+							<para>... by the definition of vector addition</para>
+						</info>
+					</subordinate>
+				</para>
+				</cell>
+				<cell align="left">
+					<para><latex>(a_1+b_1,\dots ,a_n+b_n)) \bullet (x_1,\dots ,x_n)</latex></para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right"><para> </para></cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot><latex>=</latex></hot>
+							<info>
+								<caption>This computational step holds because</caption>
+								<para>... by the definition of the dot product</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left"><para><latex>(a_1+b_1)x_1 + \cdots + (a_n+b_n) x_n)</latex></para></cell>
+			</row>
+			
+			<row>
+				<cell align="right"><para> </para></cell>
+				<cell align="center">
+					<para>
+						<subordinate><hot><latex>=</latex></hot>
+							<info>
+								<caption>This computational step holds because</caption>
+								<para>... by the distributivity law for real numbers; i.e.</para>
+								<para align="center">
+									<latex>(a+b)\cdot c = ac + bc</latex>   for arbitrary numbers <latex>a,b,c</latex>
+								</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para><latex>a_1x_1+b_1x_1 + \cdots + a_nx_n+b_n x_n</latex></para></cell>
+			</row>
+			<row>
+				<cell align="right"><para> </para></cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot><latex>=</latex></hot>
+							<info>
+								<caption>This computational step holds because</caption>
+								<para>... by the commutativity law for the addition of real numbers; i.e.</para>
+								<para align="center">
+									<latex>s + t = t + s</latex>   for arbitrary numbers <latex>s,t</latex>
+								</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para><latex>a_1x_1+ \cdots + a_nx_n\ +\ b_1x_1 + \cdots + b_n x_n</latex></para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because</caption>
+								<para>... by the definition of the dot product.</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{a} }{ \Vect{x} } + \DotPr{ \Vect{b} }{ \Vect{x} }</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		<para>as was to be shown. – The remaining bilinearity properties are proved similarly.</para>
+		
+		
+		<caption>
+			<partref>theopart_Symmetry</partref>
+			Symmetry
+		</caption>
+		<para>The symmetry property holds because</para>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para>
+						<latex>\DotPr{ \Vect{a} }{ \Vect{x} }</latex>
+					</para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ (a_1,\dots ,a_n) }{ (x_1,\dots ,x_n) }</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because ...</caption>
+								<para>... of the definition of the dot product</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>a_1x_1 + \cdots + a_nx_n</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because ...</caption>
+								<para>... of the commutativity property of multiplication of numbers: <latex>st = ts</latex>
+								</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>x_1a_1 + \cdots + x_na_n</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because ...</caption>
+								<para>... of the definition of the dot product</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{x} }{ \Vect{a} }</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		
+		
+		<caption>
+			<partref>theopart_DotProductPositiveDefinite</partref>
+			Positive Definite
+		</caption>
+		<para>The dot product is positive definite because</para>
+		<math.display>
+			<latex>\DotPr{ \Vect{x} }{ \Vect{x} } = \DotPr{ (x_1,\dots ,x_n) }{ (x_1,\dots ,x_n) } = x_{1}^{2} + \cdots + x_{n}^{2} \geq 0</latex>
+		</math.display>
+		
+		
+		<caption>
+			<partref>theopart_DotProductNonDegenerate</partref>
+			Non Degenerate
+		</caption>
+		<para>The dot product operation is non-degenerate because <latex>\DotPr{ \Vect{x} }{ \Vect{x} } = 0</latex> if and only if</para>
+		<math.display>
+			<latex>x_{1}^{2} + \cdots + x_{n}^{2} = 0</latex>
+		</math.display>
+		<para>Now this sum of squares is zero if and only if <latex>x_{i}^{2} = 0</latex> for each <latex>1\leq i\leq n</latex>. Now <latex>x_{i}^{2} = 0</latex> if and only if <latex>x_i=0</latex>, and this is equivalent to</para>
+		<para align="center">
+			<latex>(x_1,\dots ,x_n) = \Vect{x} = \Vect{0}</latex>.</para>
+	</proof>
+</theorem>

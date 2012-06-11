@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearMapMatrixGeneral">
+	<caption>Matrix representation of a linear map</caption>
+	<associate Description="Comment">
+		<subpage.ref subpageID="Expla_LinearMapMatrix"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>An explanation on how to work with this proposition.</para>
+		</info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_MatrixFromLinearMap"/>
+		<info><para>An example of representing a linear map by a matrix.</para></info>
+	</associate>
+	<statement>
+		<para>For subvector spaces <latex>V</latex> and <latex>W</latex> of <latex>\RNr[k]</latex> with ordered bases <latex>\EuScript{A}=(\Vect{a}_1,\dots ,\Vect{a}_n)</latex> of <latex>V</latex> and <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_m)</latex> of <latex>W</latex>, the following hold:</para>
+		<part partid="MatrixGivesLinearMap">
+			<para>An <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> determines a linear map</para>
+			<math.display>
+				<latex>L\from V \longrightarrow W,\qquad L(\Vect{x})_{\EuScript{B}} := A\cdot \Vect{x}_{\EuScript{A}}</latex>
+			</math.display>
+		</part>
+		<part partid="LinearMapFromMatrix">
+			<para>If <latex>L\from V\to W</latex> is linear, then the <latex>(m,n)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A_{\EuScript{B}\EuScript{A}} :=
+\left[
+\begin{array}{cccc}
+\uparrow & \uparrow & & \uparrow \\
+L(\Vect{a}_1)_{\EuScript{B}} & L(\Vect{a}_2)_{\EuScript{B}} & \cdots & L(\Vect{a}_n)_{\EuScript{B}} \\
+\downarrow & \downarrow & & \downarrow
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>represents <latex>L</latex> in the sense that, for every <latex>\Vect{x}</latex> in <latex>V</latex>,</para>
+			<computation>
+				<left>L(\Vect{x})_{\EuScript{B}}</left>
+				<center>=</center>
+				<right>A_{\EuScript{B}\EuScript{A}}\cdot \Vect{x}_{\EuScript{A}}</right>
+			</computation>
+			<para>Moreover, the matrix <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex> is the only matrix with this property.
+				<index.symbol>
+					<symbol><latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex></symbol>
+					<info>
+						<para>Given a linear map <latex>L\from V\to W</latex>, a basis <latex>\EuScript{A}</latex> of <latex>V</latex>, and a basis <latex>\EuScript{B}</latex> of <latex>W</latex>, <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex> is the unique matrix which satisfies</para>
+						<computation>
+							<left>L(\Vect{x})_{\EuScript{B}}</left>
+							<center>=</center>
+							<right>A_{\EuScript{B}\EuScript{A}}\cdot \Vect{x}_{\EuScript{A}}</right>
+						</computation>
+					</info>
+				</index.symbol>
+			</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>MatrixGivesLinearMap</partref> Linear map from matrix</caption>
+		<para>For <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>V</latex>, we have <latex>(\Vect{x}+\Vect{y})_{\EuScript{A}} = \Vect{x}_{\EuScript{A}} + \Vect{y}_{\EuScript{A}}</latex>. Therefore,</para>
+		<computation>
+			<left>L(\Vect{x}+\Vect{y})_{\EuScript{B}}</left>
+			<center>=</center>
+			<right>A_{\EuScript{B}\EuScript{A}}\cdot (\Vect{x} + \Vect{y})_{\EuScript{A}}</right>
+			<left></left>
+			<center>=</center>
+			<right>A_{\EuScript{B}\EuScript{A}}\cdot (\Vect{x}_{\EuScript{A}} + \Vect{y}_{\EuScript{A}})</right>
+			<left></left>
+			<center>=	<info><para>Here we use the distributivity law of matrix multiplication</para></info></center>
+			<right>\Mtrx{A}_{\EuScript{B}\EuScript{A}} \Vect{x}_{\EuScript{A}}\ +\ \Mtrx{A}_{\EuScript{B}\EuScript{A}} \Vect{y}_{\EuScript{A}}</right>
+			<left></left>
+			<center>=</center>
+			<right>L(\Vect{x})_{\EuScript{B}} + L(\Vect{y})_{\EuScript{B}}</right>
+		</computation>
+		<para>Therefore <latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y}))</latex></para>
+		<para>Next we show that <latex>L</latex> commutes with scalar multiplication:</para>
+		<computation>
+			<left>L(t \Vect{x})_{\EuScript{B}}</left>
+			<center>=</center>
+			<right>A_{\EuScript{B}\EuScript{A}} (t \Vect{x})_{\EuScript{A}}</right>
+			<left></left>
+			<center>=	<info><para>This is so because <latex>t(x_1 \Vect{a}_1 +\cdots + x_n \Vect{a}_n) = (tx_1)\Vect{a}_1 + \cdots + (tx_n) \Vect{a}_n</latex>.</para></info></center>
+			<right>\Mtrx{A}_{\EuScript{B}\EuScript{A}}\cdot \left( t(\Vect{x}_{\EuScript{A}})\right)</right>
+			<left></left>
+			<center>=	<info><para>... because scalar multiplication commutes with matrix multiplication.</para></info></center>
+			<right>t\left( \Mtrx{A}_{\EuScript{B}\EuScript{A}} \Vect{x}_{\EuScript{A}} \right)</right>
+			<left></left>
+			<center>=</center>
+			<right>t\left( L(\Vect{x})_{\EuScript{B}}\right)</right>
+			<left></left>
+			<center>=</center>
+			<right>\left( t L(\Vect{x}) \right)_{\EuScript{B}}</right>
+		</computation>
+		<para>This means that <latex>L(t \Vect{x}) = t L(\Vect{x})</latex>, as required.</para>
+		<caption><partref>LinearMapFromMatrix</partref>	Representing a linear map by a matrix</caption>
+		<para>From the first part of the theorem we know already that the matrix <latex>A_{\EuScript{B}\EuScript{A}}</latex> determines a linear transformation <latex>M\from V\to W</latex>. Moreover,</para>
+		<computation>
+			<left>M(\Vect{a}_j)_{\EuScript{B}}</left>
+			<center>=</center>
+			<right>\Mtrx{A}_{\EuScript{B}\EuScript{A}} \Vect{a}_j = L(\Vect{a}_j)_{\EuScript{B}}</right>
+		</computation>
+		<para>Consequently, <latex>M=L</latex>, implying that <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex> represents <latex>L</latex>. It remains to show that <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex> is the only matrix with this property. So suppose <latex>\Mtrx{S}</latex> is an <latex>(m,n)</latex>-matrix which also satisfies</para>
+		<computation>
+			<left>L(\Vect{x})_{\EuScript{B}}</left>
+			<center>=</center>
+			<right>S\cdot \Vect{x}_{\EuScript{A}}</right>
+		</computation>
+		<para>for every vector <latex>\Vect{x}\in V</latex>. Then we find</para>
+		<math.display>
+			<latex>\left( \Vect{A}_{\EuScript{B}\EuScript{A}} - S\right) \Vect{x}_{\EuScript{A}} = \Mtrx{A}_{\EuScript{B}\EuScript{A}}\Vect{x}_{\EuScript{A}} - S \Vect{x}_{\EuScript{A}} = \Vect{0}_{\EuScript{B}}</latex>
+		</math.display>
+		<para>Now <latex>(\Vect{a}_j)_{\EuScript{A}} = (0,\dots , 0,1,0, \dots ,0)</latex>, the "1" sitting in position <latex>j</latex>. Further, multiplying any matrix <latex>\Mtrx{U}</latex> by <latex>(0,...,0,1,0,...,0)^T</latex> on the right yields precisely the <latex>j</latex>-th column vector of  <latex>\Mtrx{U}</latex>. This implies that each column of <latex>\left( \Mtrx{A}_{\EuScript{B}\EuScript{A}} - S \right)</latex> is <latex>\Vect{0}</latex> and, therefore, the two matrices are equal. So <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex> is the only matrix which represents <latex>L</latex>, and the proof of the theorem is complete.</para>
+	</proof>
+</theorem>

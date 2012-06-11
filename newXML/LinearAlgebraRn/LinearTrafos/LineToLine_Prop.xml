@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_LineToLine"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Linear maps transform lines to lines</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Meaning of condition 2) in the proposition</caption>
+         </info.caption>
+         <para>
+            <para.body>Condition 2) above means that <math>
+                  <latex>f</latex>
+               </math> transforms the linear motion <math>
+                  <latex>\Vect{a} + t \Vect{v}</latex>
+               </math> into the linear motion <math>
+                  <latex>f(\Vect{a}) + tf(\Vect{v})</latex>
+               </math>; i.e.</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>The place <math>
+                        <latex>\Vect{a}</latex>
+                     </math> through which the original motion passes at time <math>
+                        <latex>0</latex>
+                     </math> gets transformed into the place <math>
+                        <latex>f(\Vect{a})</latex>
+                     </math> through which the transformed motion passes at time <math>
+                        <latex>0</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>The velocity vector <math>
+                        <latex>\Vect{v}</latex>
+                     </math> of the original motion gets transformed into the velocity vector <math>
+                        <latex>f(\Vect{v})</latex>
+                     </math> of the transformed motion.</para.body>
+               </para>
+            </li>
+         </ul>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>A function <math>
+               <latex>f\from \RNr[n]\to \RNr[m]</latex>
+            </math> is linear if and only if it satisfies the following two conditions</para.body>
+      </para>
+      <ol>
+         <li>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>f(\Vect{0}) = \Vect{0}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </li>
+         <li>
+            <para>
+               <para.body>Whenever <math>
+                     <latex>\Vect{a}</latex>
+                  </math> and <math>
+                     <latex>\Vect{v}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> are fixed, then <math>
+                     <latex>f(\Vect{a} + t\cdot \Vect{v}) = f(\Vect{a}) + t\cdot f(\Vect{v})</latex>
+                  </math> for all numbers <math>
+                     <latex>t</latex>
+                  </math>.</para.body>
+            </para>
+         </li>
+      </ol>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We need to show that <math>
+                     <latex>f</latex>
+                  </math> is has properties 1) and 2) above. Indeed, <math>
+                     <latex>f</latex>
+                  </math> enjoys 
+			<subordinate>
+                     <hot>property 1)</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_LinearTrafo0To0"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_LinearTrafo0To0"/>
+                           <para>
+                              <para.body>Look up the proof of why this is so</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>. Moreover, <math>
+                     <latex>f</latex>
+                  </math> enjoys property 2) because
+		</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We need to show that <math>
+                     <latex>f</latex>
+                  </math> is linear. Now if <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are arbitrary in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, they determine the linear motion <math>
+                     <latex>\Vect{a}(t) = \Vect{x} + t \Vect{y}</latex>
+                  </math>  in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>. Therefore, setting <math>
+                     <latex>t:=1</latex>
+                  </math>, we obtain</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

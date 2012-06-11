@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_EqualDimEqualSpace"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <statement.theorem>
+      <para>
+         <para.body>Given subvector spaces <math>
+               <latex>V\subseteq W</latex>
+            </math> of <math>
+               <latex>\RNr[n]</latex>
+            </math>, suppose <math>
+               <latex>\dim(V)=\dim(W)</latex>
+            </math>. Then <math>
+               <latex>V=W</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\dim(V)=0=\dim(W)</latex>
+                  </math>, then <math>
+                     <latex>V=\Set{ \Vect{0} } = W</latex>
+                  </math>, and so the claim holds in this case.</para.body>
+            </para>
+            <para>
+               <para.body>Consider now the case where <math>
+                     <latex> \dim(V) = k=\dim(W)&gt;0 </latex>
+                  </math>. Then <math>
+                     <latex>V</latex>
+                  </math> has a basis <math>
+                     <latex>\EuScript{A}</latex>
+                  </math> consisting of <math>
+                     <latex>k</latex>
+                  </math> vectors. If <math>
+                     <latex>V\neq W</latex>
+                  </math>, then there are vectors in <math>
+                     <latex>W</latex>
+                  </math> which are not in <math>
+                     <latex>V</latex>
+                  </math>. We can then 
+			<subordinate>
+                     <hot>choose linearly independent vectors</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                           <para>
+                              <para.body>Look up this fact.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+                  <math>
+                     <latex>\EuScript{C}</latex>
+                  </math> from <math>
+                     <latex>W</latex>
+                  </math> such that such that <math>
+                     <latex>\EuScript{B}:=\EuScript{A} \cup \EuScript{C}</latex>
+                  </math> is a basis of <math>
+                     <latex>W</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Now <math>
+                     <latex>\dim(W)=k</latex>
+                  </math>. Therefore <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> contains exactly <math>
+                     <latex>k</latex>
+                  </math> vectors, implying that <math>
+                     <latex>\EuScript{C}</latex>
+                  </math> must be empty. Consequently, <math>
+                     <latex>\EuScript{B}=\EuScript{A}</latex>
+                  </math>, implying that</para.body>
+            </para>
+            <math.display>
+               <latex>V = \span(\EuScript{A}) = \span(\EuScript{B}) = W</latex>
+            </math.display>
+            <para>
+               <para.body>as was to be shown.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

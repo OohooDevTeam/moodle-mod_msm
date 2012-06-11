@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para>
+            <para.body>
+               <strong>Our work environment</strong>   In this chapter we will introduce our work environment, a ‘straight’ and ‘endless’ <math>
+                  <latex>n</latex>
+               </math>-dimensional space <math>
+                  <latex>\RNr[n]</latex>
+               </math> for each natural number <math>
+                  <latex>n</latex>
+               </math>. A point in <math>
+                  <latex>\RNr[n]</latex>
+               </math> is given by <math>
+                  <latex>n</latex>
+               </math> numbers <math>
+                  <latex>x_1,\dots ,x_n</latex>
+               </math> 
+		             <subordinate>
+                  <hot>written in order as <math>
+                        <latex>(x_1,\dots ,x_n)</latex>
+                     </math>
+                  </hot>
+                  <companion>
+                     <showme.pack.ref showmePackID="Exa_nTuples"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>Such a string of <math>
+                                 <latex>n</latex>
+                              </math> numbers is called an <math>
+                                 <latex>n</latex>
+                              </math>-tuple. – See some examples.</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>. We will study in detail how to use such points to describe objects like lines and planes in <math>
+                  <latex>\RNr[n]</latex>
+               </math>. We will learn how to move such objects around and how to change their shape. We will learn general rules on how to compute with such points. Beyond this, the space <math>
+                  <latex>\RNr[n]</latex>
+               </math> has a dimension, namely <math>
+                  <latex>n</latex>
+               </math>, a concept which can be explained at an intuitive level:</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>On the dimension concept</strong>   For a natural number <math>
+                  <latex>n</latex>
+               </math>, a space is called <math>
+                  <latex>n</latex>
+               </math>-dimensional if, at each of its points, it permits exactly <math>
+                  <latex>n</latex>
+               </math> independent directions of motion which can be combined to reach any nearby point. For example,</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>A single point is a <math>
+                        <latex>0</latex>
+                     </math>-dimensional space, as it permits no motion inside of it at all.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>A line or a curve are <math>
+                        <latex>1</latex>
+                     </math>-dimensional spaces: inside of it, at each of its points, there is exactly one direction of motion. It could be called <subordinate>
+                        <hot>forward-backward</hot>
+                        <companion>
+                           <unit.ref unitId="Illu_DegreesFreedomMotion"/>
+                           <info>
+               	
+               	              <para>
+                                 <para.body>An illustration of a 1-dimensional space</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </subordinate>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>A plane or a surface are <math>
+                        <latex>2</latex>
+                     </math>-dimensional spaces: inside of it, at each of its points, there are exactly two independent directions of motion. These could be called <subordinate>
+                        <hot>forward-backward and left-right</hot>
+                        <companion>
+                           <unit.ref unitId="Illu_DegreesFreedomMotion"/>
+                           <info>
+         		
+         		                   <para>
+                                 <para.body>An illustration of a 2-dimensional space</para.body>
+                              </para>
+         	                 </info>
+                        </companion>
+                     </subordinate>. Every other direction of motion can be combined from these two.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>The space surrounding us is <math>
+                        <latex>3</latex>
+                     </math>-dimensional: inside of it, at each of its points, there are exactly three independent directions of motion. These could be called forward-backward, left-right, and up-down. Every other direction of motion can be combined from these three.</para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>In popular literature some mystery surrounds the concept of <math>
+                  <latex>4</latex>
+               </math>-dimensional and even higher dimensional spaces. Let us say for now: such spaces exist. Once we learn how to identify them, we find them all around us, and we use them all the time. – So why are they mysterious? They are pushed into mystery because they are
+   	<subordinate>
+                  <hot>not accessible to our visual sense</hot>
+                  <companion>
+                     <unit.ref unitId="HighDimensions_Explntn"/>
+                     <info>
+   			
+   			                  <para>
+                           <para.body>See details on this.</para.body>
+                        </para>
+   		                </info>
+                  </companion>
+               </subordinate>!</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>Chapter summary</strong>   Let us now summarize the essence of this introductory chapter to the vector space <math>
+                  <latex>\RNr[n]</latex>
+               </math>.</para.body>
+         </para>
+         <ol>
+		          <li>
+			            <para>
+                  <para.body>We begin by introducing the concept of 
+				<subordinate>
+                        <hot>
+                           <math>
+                              <latex>n</latex>
+                           </math>-tuple of numbers</hot>
+                        <companion>
+                           <showme.pack.ref showmePackID="Exa_nTuples"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>See some examples of <math>
+                                       <latex>n</latex>
+                                    </math>-tuples</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>. The collection of all <math>
+                        <latex>n</latex>
+                     </math>-tuples is the 
+				<subordinate>
+                        <hot>space <math>
+                              <latex>\RNr[n]</latex>
+                           </math>
+                        </hot>
+                        <companion>
+                           <unit.ref unitId="Illu_VisualizeRn"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>See illustrations of <math>
+                                       <latex>\RNr[1]</latex>
+                                    </math>, <math>
+                                       <latex>\RNr[2]</latex>
+                                    </math>, and <math>
+                                       <latex>\RNr[3]</latex>
+                                    </math>.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>. We then use the product operation on sets to see that <math>
+                        <latex>\StPrdct{ \RNr[m] }{ \RNr[n] } = \RNr[m+n]</latex>
+                     </math>.</para.body>
+               </para>
+		          </li>
+		          <li>
+			            <para>
+                  <para.body>We introduce a notion of distance between two points <math>
+                        <latex>P</latex>
+                     </math> and <math>
+                        <latex>Q</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>. 
+				<subordinate>
+                        <hot>It is based on the Theorem of Pythagoras</hot>
+                        <companion>
+                           <unit.ref unitId="Expl_DistancePoints"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>An illustration of the formula for the distance between two points</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>.
+			</para.body>
+               </para>
+		          </li>
+		          <li>
+			            <para>
+                  <para.body>To be able to make a transition from one point <math>
+                        <latex>P</latex>
+                     </math> to another <math>
+                        <latex>Q</latex>
+                     </math>, we introduce the arrow <math>
+                        <latex>\Arrw{PQ}</latex>
+                     </math> from <math>
+                        <latex>P</latex>
+                     </math>, its tail, to <math>
+                        <latex>Q</latex>
+                     </math> its tip. The length of <math>
+                        <latex>\Arrw{PQ}</latex>
+                     </math> is the distance between <math>
+                        <latex>P</latex>
+                     </math> and <math>
+                        <latex>Q</latex>
+                     </math>. An arrow is determined by its tail point, its direction, and its length. A vector consists of all arrows of given direction and length. We may 
+				<subordinate>
+                        <hot>describe it</hot>
+                        <companion>
+                           <showme.pack.ref showmePackID="Exa_VectorCoordinates"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>See a detailed example.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>
+				using a coordinate <math>
+                        <latex>n</latex>
+                     </math>-tuple. Thus a coordinate <math>
+                        <latex>n</latex>
+                     </math>-tuple now serves two purposes: locate a point, describe a vector. We explain how these two purposes are related.</para.body>
+               </para>
+		          </li>
+		          <li>
+			            <para>
+                  <para.body>Next we explain how two vectors can be 
+				<subordinate>
+                        <hot>added</hot>
+                        <companion>
+                           <showme.pack.ref showmePackID="Exa_VectorAddition"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>See an illustration</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>, and how a 
+				<subordinate>
+                        <hot>vector is multiplied by a number</hot>
+                        <companion>
+                           <showme.pack.ref showmePackID="Exa_MultiplyVectorByScalar"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Some examples of multiplying a vector by a number.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </subordinate>. Each of these operations has a useful geometric interpretation. Moreover, they satisfy rules which resemble the rules for adding and multiplying numbers.</para.body>
+               </para>
+		          </li>
+		          <li>
+			            <para>
+                  <para.body>Using these vector operations we learn about linear motions in space: the motion of a particle along a straight line and with constant speed.</para.body>
+               </para>
+		          </li>
+	        </ol>
+      </block.body>
+   </block>
+</intro>

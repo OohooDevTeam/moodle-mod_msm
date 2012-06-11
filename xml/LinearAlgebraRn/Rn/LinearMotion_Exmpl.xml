@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack	SYSTEM "../Symbols.dtd">
+<example.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="LinearMotion_Exmpl">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Linear Motion: Examples</title>
+	<example>
+		<statement>
+			<para>Find the parametric equation which describes the motion of a particle in <latex>\RNr[2]</latex> which moves through <latex>P(0,.5)</latex> at time <latex>0</latex> and has velocity vector <latex>\Vect{v}=(1,-.5)</latex>. Then find the location of the particle at times <latex>-2,1,5</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>The position vector of the particle at time <latex>0</latex> is <latex>\Vect{a}=(0,.5)</latex>. Therefore the required parametric equation is</para>
+			<math.display>
+				<latex>\Vect{l}(t)\ =\ (0,.5)\ +\ t\cdot (1,-.5)</latex>
+			</math.display>
+			<para>This gives the location of the particle at an arbitrary time <latex>t</latex>. So we obtain, in particular, the locations of the particle at the specified times</para>
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+				<row>
+					<cell align="center">
+						<para>
+							<b>time</b>
+						</para>
+					</cell>
+					<cell align="center">
+						<para>
+							<b>position vector at specified time</b>
+						</para>
+					</cell>
+				</row>
+				<row>
+					<cell align="center">
+						<para>
+							<latex>-2</latex>
+						</para>
+					</cell>
+					<cell align="center">
+						<para><latex>(0,1/2)+(-2)\cdot (1,-1/2) = (-2,3/2)</latex></para>
+					</cell>
+				</row>
+				<row>
+					<cell align="center">
+						<para>
+							<latex>1</latex>
+						</para>
+					</cell>
+					<cell align="center">
+						<para><latex>(0,.5)+(1)\cdot (1,-.5) = (1,0)</latex></para>
+					</cell>
+				</row>
+				<row>
+					<cell align="center">
+						<para>
+							<latex>5</latex>
+						</para>
+					</cell>
+					<cell align="center">
+						<para><latex>(0,1/2)+(5)\cdot (1,-1/2) = (5,-2)</latex></para>
+					</cell>
+				</row>
+			</table>
+		</answer>
+	</example>
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>Find the parametric equation of the linear motion in <latex>\RNr[3]</latex> which passes through  <latex>A(1,1,1)</latex> at time <latex>1</latex>, and passes through <latex>B(2,1,0)</latex> at  time <latex>4</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We know that the equation of the motion is of the form <latex>\Vect{l}(t)=\Vect{a}+t\cdot \Vect{v}</latex>, and we need to find the vectors <latex>\Vect{a}</latex> and <latex>\Vect{v}</latex>. The information provided yields</para>
+			<table align="center">
+				<row>
+					<cell align="right">
+						<para>
+							<latex>\Vect{l}(1) = (1,1,1) = \Vect{a} + 1\cdot \Vect{v}</latex>
+						</para>
+					</cell>
+					<cell align="left">
+						<para>(I)</para>
+					</cell>
+				</row>
+				<row>
+					<cell align="right">
+						<para>
+							<latex>\Vect{l}(4) = (2,1,0) = \Vect{a} + 4\cdot \Vect{v}</latex>
+						</para>
+					</cell>
+					<cell align="left">
+						<para>(II)</para>
+					</cell>
+				</row>
+			</table>
+			<para>(II) – (I):  <latex>(2,1,0)-(1,1,1)\ =\ \Vect{a} + 4\cdot \Vect{v}\ -\ (\Vect{a} + \Vect{v})\ =\ 3\Vect{v}</latex>  yields</para>
+			<para align="center">
+				<latex>\Vect{v}\ =\ \tfrac{1}{3}\cdot (2-1,1-1,0-1)\ =\ \tfrac{1}{3}\cdot (1,0,-1)</latex>.  (III)</para>
+			<para>(III) in (I) yields</para>
+			<computation>
+				<left>\Vect{a}</left>
+				<center>=</center>
+				<right>(1,1,1)-\Vect{v}</right>
+				<left></left>
+				<center>=</center>
+				<right>(1,1,1) - (\tfrac{1}{3},0, -\tfrac{1}{3})</right>
+				<left></left>
+				<center>=</center>
+				<right>(\tfrac{2}{3} , 1 , \tfrac{4}{3}) = \tfrac{1}{3}\cdot (2,3,4)</right>
+			</computation>
+			<para>Therefore the required equation is</para>
+			<math.display>
+				<latex>\Vect{l}(t)\ =\ \frac{1}{3}\cdot (2,3,4)\ +\ t\cdot \tfrac{1}{3}\cdot (1,0,-1)</latex>
+			</math.display>
+		</answer>
+	</example>
+</example.pack>

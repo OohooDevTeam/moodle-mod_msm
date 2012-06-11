@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_DeterminantMultilinear"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Multilinearity Property of the Determinant: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The following computation is valid:</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\det\, 
+\left[
+\begin{array}{cc}
+a &amp; 1 \\
+b &amp; 3
+\end{array}
+\right] = 
+\det\, 
+\left[
+\begin{array}{cc}
+a &amp; 1 \\
+0 &amp; 3
+\end{array}
+\right]\ +\ 
+\det\, 
+\left[
+\begin{array}{cc}
+0 &amp; 1 \\
+b &amp; 3
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Here <math>
+                        <latex>j=1</latex>
+                     </math>, and we have fixed the one and only remaining column, namely the second. To say that the  <math>
+                        <latex>(2,2)</latex>
+                     </math>-determinant is linear in the first column means, in particular, that the function</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+L\from \RNr[2] \longrightarrow \RNr,\quad L(x,y):=
+\det\, 
+\left[
+\begin{array}{cc}
+x &amp; 1 \\
+y &amp; 3
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>satisfies</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>L(a,b) = L\left( (a,0) + (0,b)\right) = L(a,0) + L(0,b)</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>and this is exactly the identity of determinants above.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The following computation is valid.</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\det\, 
+\left[
+\begin{array}{cc}
+10 &amp; 27 \\
+25 &amp; 18
+\end{array}
+\right]\ =\ 
+5\cdot \det\, 
+\left[
+\begin{array}{cc}
+2 &amp; 27 \\
+5 &amp; 18
+\end{array}
+\right]\ =\ 5\cdot 9\cdot \det\, 
+\left[
+\begin{array}{cc}
+2 &amp; 3 \\
+5 &amp; 2
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Here we have first applied linearity of the <math>
+                        <latex>(2,2)</latex>
+                     </math>-determinant in the first column and then linearity in the second column. In detail: First choose <math>
+                        <latex>j=1</latex>
+                     </math>, and fix the second column as <math>
+                        <latex>C_2:= [ 27\ \ 18]^T</latex>
+                     </math>. Then we obtain a linear function <math>
+                        <latex>L_1\from \RNr[2] \longrightarrow \RNr</latex>
+                     </math> which satisfies</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>L_1(10,25) = L_1(5\cdot (2,5)) = 5\cdot L_1(2,5)</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>and this is the first equation of determinants above. Next choose <math>
+                        <latex>j=2</latex>
+                     </math>, and fix the first column as <math>
+                        <latex>C_2:= [2\ \ 5]^T</latex>
+                     </math>. Then we obtain a linear function <math>
+                        <latex>L_2\from \RNr[2] \longrightarrow \RNr</latex>
+                     </math> which satisfies</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>L_2(27,18) = L_2(9\cdot (3,2)) = 9\cdot L_2(3,2)</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>and this is exactly the second equation of determinants above.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The following computation is valid.</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\aligned
+\det\, 
+\left[
+\begin{array}{ccc}
+4 &amp; 1+a &amp; 3 \\
+1 &amp; 2+a &amp; 1 \\
+5 &amp; 3+a &amp; 2
+\end{array}
+\right]\ &amp;=\ 
+\det\, 
+\left[
+\begin{array}{ccc}
+4 &amp; 1 &amp; 3 \\
+1 &amp; 2 &amp; 1 \\
+5 &amp; 3 &amp; 2
+\end{array}
+\right]\ +\ \det\, 
+\left[
+\begin{array}{ccc}
+4 &amp; a &amp; 3 \\
+1 &amp; a &amp; 1 \\
+5 &amp; a &amp; 2
+\end{array}
+\right] \\
+	&amp;=\ \det\, 
+\left[
+\begin{array}{ccc}
+4 &amp; 1 &amp; 3 \\
+1 &amp; 2 &amp; 1 \\
+5 &amp; 3 &amp; 2
+\end{array}
+\right]\ +\ a\cdot \det\, 
+\left[
+\begin{array}{ccc}
+4 &amp; 1 &amp; 3 \\
+1 &amp; 1 &amp; 1 \\
+5 &amp; 1 &amp; 2
+\end{array}
+\right] 
+\endaligned
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Here we have applied linearity in the second column twice; first in the additive sense, then in the multiplicative sense. In detail: choose <math>
+                        <latex>j=2</latex>
+                     </math>, and fix the remaining columns as</para.body>
+               </para>
+			
+			            <para align="center">
+                  <para.body>
+                     <math>
+                        <latex>C_1:=[4\ 1\ 5]^T</latex>
+                     </math> and <math>
+                        <latex>C_3:=[3\ 1\ 2]^T</latex>
+                     </math>.</para.body>
+               </para>
+			
+			            <para>
+                  <para.body>Then we obtain a linear function <math>
+                        <latex>L\from \RNr[3] \longrightarrow \RNr</latex>
+                     </math> which satisfies</para.body>
+               </para>
+			
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(1+a,2+a,3+a)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(1,2,3) + L(a,a,a)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(1,2,3) + a\cdot L(1,1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			
+			            <para>
+                  <para.body>and this is exactly the computation above.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

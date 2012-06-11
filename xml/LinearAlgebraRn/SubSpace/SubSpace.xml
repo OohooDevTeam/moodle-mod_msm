@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_SubSpace">
+	<headers>
+		<full>Subvector Spaces</full>
+		<toc>Subvector Spaces</toc>
+		<short>Subvector Spaces</short>
+	</headers>
+	
+	<section.body>
+		<def type="Definition" id="Def_SubVectorSpace">
+			<caption>Subvector space</caption>
+			<associate Description="Illustration">
+				<subpage.ref subpageID="Illu_SubSpaceClosedAddition"/>
+				<info><para>Illustration of closedness under vector addition</para></info>
+			</associate>
+			<associate Description="Illustration">
+				<subpage.ref subpageID="Illu_SubSpaceClosedScalarMult"/>
+				<info><para>Illustration of closedness under scalar multiplication</para></info>
+			</associate>
+			<associate Description="Example">
+				<info>
+					<caption>Examples</caption>
+					<ol>
+						<li><para><latex>\RNr[n]</latex> is a subvector space of itself.</para></li>
+						<li><para>The set <latex>\Set{ \Vect{0} }</latex> consisting only of the zero vector is a sub vector space of <latex>\RNr[n]</latex>.</para></li>
+					</ol>
+				</info>
+			</associate>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment on <latex>\Vect{0}</latex> is in <latex>V</latex></caption>
+					<para>The requirement that <latex>V</latex> contain the <latex>\Vect{0}</latex>-vector can be dropped if, instead, we require that the set <latex>V</latex> is not empty.</para>
+				</info>
+			</associate>
+			<para>A subvector space, or subspace, of <latex>\RNr[n]</latex> is a subset <latex>V</latex> of <latex>\RNr[n]</latex> with the following properties
+				<index.glossary>
+					<term>subvector space</term>
+					<info><para>Definition of the concept.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>subspace</term>
+					<info><para>Subspace = subvector space; &nbsp; Definition of the concept.</para></info>
+				</index.glossary>
+			</para>
+			<ol>
+				<li><para>The <latex>\Vect{0}</latex>-vector belongs to <latex>V</latex>.</para></li>
+				<li><para><latex>V</latex> is closed under vector addition; that is, if <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are in <latex>V</latex>, then <latex>\Vect{x}+\Vect{y}</latex> is also in <latex>V</latex>.</para></li>
+				<li><para><latex>V</latex> is closed under scalar multiplication; that is, if <latex>\Vect{x}</latex> is in <latex>V</latex> and <latex>t</latex> is a number in <latex>\RNr</latex>, then <latex>t \Vect{x}</latex> is in <latex>V</latex>.</para></li>
+			</ol>
+			<para>If <latex>V,W</latex> are subvector spaces of <latex>\RNr[n]</latex>, we say that <latex>V</latex> is a subvector space of <latex>W</latex> if <latex>V</latex> is contained in <latex>W</latex>.</para>
+		</def>
+		<para>Below we will consider three constructions each of which leads to a sub vector space of <latex>\RNr[n]</latex>.</para>
+		<ul>
+			<li><para>The intersection of any two subvector spaces is a subvector space.</para></li>
+			<li><para>The &lsquo;orthogonal complement construction&rsquo;</para></li>
+			<li><para>Linear combinations and the &lsquo;span construction&rsquo;</para></li>
+		</ul>
+		
+		
+		<para>If we are given two subvector spaces, we can always generate a new one via their intersection:</para>
+		<def type="Definition" id="Def_SubSpaceIntersection">
+			<caption>Intersection of subspaces</caption>
+			<para>The intersection of subspaces <latex>V</latex> and <latex>W</latex> of <latex>\RNr[n]</latex> is denoted <latex>V\cap W</latex> and consists of all those vectors in <latex>\RNr[n]</latex> which belong to both <latex>V</latex> and <latex>W</latex>.</para>
+		</def>
+		<xi:include href="IntersectionSubSpace_Thm.xml"/>
+		
+		
+		<para>One way of generating subvector spaces is the orthogonal complement operation:</para>
+		<def type="Definition" id="Def_OrthogonalComplement">
+			<caption>Orthogonal complement</caption>
+			<associate Description="Illustration">
+				<subpage.ref subpageID="Illu_OrthogonalComplement"/>
+				<info>
+					<para>Illustration of orthogonal complement</para>
+				</info>
+			</associate>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation</caption>
+					<para>Read this as: &lsquo;S perp is defined to be the set of all those x in V such that the dot product of x by s is 0 for all s in S&rsquo;.</para>
+				</info>
+			</associate>
+			<para>The orthogonal complement of a subset <latex>S</latex> in a subvector space <latex>V</latex> of <latex>\RNr[n]</latex> is
+				<index.glossary>
+					<term>orthogonal</term><term>complement</term>
+					<info>
+						<caption>Orthogonal complement</caption>
+						<para>The orthogonal complement of a subset <latex>S</latex> in a sub vector space <latex>V</latex> of <latex>\RNr[n]</latex> is the set of those <latex>\Vect{x}</latex> in <latex>V</latex> which are perpendicular to every <latex>\Vect{s}</latex> in <latex>S</latex>. &nbsp; Definition of the concept.</para>
+					</info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>S^{\bot}</latex></symbol>
+					<info><para>Orthogonal complement of a set <latex>S</latex> in a subspace <latex>V</latex> of <latex>\RNr[n]</latex>.</para></info>
+				</index.symbol>
+			</para>
+			<computation>
+				<left>S^{\bot}</left>
+				<center>:=	<info>
+					<caption>How do you read this?</caption>
+					<para>Read this as: &lsquo;S perp is defined to be the set of all those <latex>\Vect{x}</latex> in <latex>V</latex> such that <latex>\Vect{x}</latex> dot <latex>\Vect{s}</latex> equals 0, for all <latex>\Vect{s}</latex> in S&rsquo;</para>
+				</info></center>
+				<right>\Set{ \Vect{x}\in V \st \DotPr{ \Vect{x} }{ \Vect{s} }=0,\ \ \text{for all $\Vect{s}\in S$} }</right>
+			</computation>
+		</def>
+		<para>The following proposition confirms that the orthogonal complement of <latex>S</latex> is indeed a subspace.</para>
+		<xi:include href="OrthogonalComplementSubSpace_Thm.xml"/>
+		
+		
+		<para>An example of the orthogonal complement operation is the null space of a matrix:</para>
+		
+		
+		<def type="Definition" id="Def_NullSpace">
+			<caption>Null space</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_NullSpace"/>
+				<info>
+					<caption>Examples</caption>
+					<para>Examples of the null space of a matrix.</para>
+				</info>
+			</associate>
+			<para>The null space of an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> is the collection of all those <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> with <latex>\Mtrx{A}\cdot \Vect{x} = \Vect{0}</latex>. We denote it by <latex>\NllSp{ \Mtrx{A} }</latex>
+				<index.glossary>
+					<term>null space</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>\NllSp{ \Mtrx{A} }</latex></symbol>
+					<info><para>Null space of a matrix <latex>\Mtrx{A}</latex>; solutions of the vector equation <latex>\Mtrx{A}\Vect{x} = \Vect{0}</latex>.</para></info>
+				</index.symbol>
+			</para>
+		</def>
+		<para>In the following proposition we identify the null space of a matrix <latex>\Mtrx{A}</latex> as the orthogonal complement of the row vectors of <latex>\Mtrx{A}</latex>.</para>
+		<xi:include href="LinearEqsNullSpace_Thm.xml"/>
+		<def type="Definition" id="Def_Kernel">
+			<caption>Kernel of a linear map</caption>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation</caption>
+					<para>Read this as: &lsquo;kernel of L is defined to be the set of all those x in V with L of x = 0&rsquo;.</para>
+					<para>In words: <latex>\Ker{L}</latex> is the collection of all those <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> for which <latex>L(\Vect{x}) = \Vect{0}</latex>.</para>
+				</info>
+			</associate>
+			<para>Let <latex>V</latex> and <latex>W</latex> be subspaces of <latex>\RNr[n]</latex>. The kernel of a linear transformation <latex>L\from V\to W</latex> is
+				<index.glossary>
+					<term>kernel of a linear transformation</term>
+					<info>
+						<caption>Kernel</caption>
+						<para>The kernel of <latex>L\from V\to W</latex> is the set of all <latex>\Vect{x}\in V</latex> with <latex>L(\Vect{x} )=\Vect{0}</latex>. &ndash; Definition of the concept.</para>
+					</info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>\Ker{L}</latex></symbol>
+					<info><para>Kernel of the linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex></para></info>
+				</index.symbol>
+			</para>
+			<computation>
+				<left>\Ker{L}</left>
+				<center>:=	<info>
+					<caption>How do I read this?</caption>
+					<para>Read this as: &nbsp;kernel of <latex>L</latex> is by definition the set of all those <latex>\Vect{x}</latex> in V such that <latex>L</latex> of <latex>\Vect{x}</latex> equals  zero.</para>
+				</info></center>
+				<right>\Set{ \Vect{x}\in V \st L(\Vect{x}) = \Vect{0} }</right>
+			</computation>
+		</def>
+		<xi:include href="KernelSubSpace_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_SubSpace"/>
+		<exercise.pack.ref exercisePackID="Exe_OrthogonalComplement"/>
+	</studymaterials>
+</section>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MinorsCofactor">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Minors and Cofactors</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\Mtrx{A}</latex> be the <latex>(3,3)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = \left[\begin{array}{rrr}
+5 & -7 & 8 \\
+6 & 2 & 3 \\
+1 & -4 & 9
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</problem>
+		
+		<part>
+			<problem>
+				<para>How many minors does <latex>\Mtrx{A}</latex> have</para>
+			</problem>
+			<approach>
+				<answer><para><latex>\Mtrx{A}</latex> has <latex>9</latex> minors.</para></answer>
+				<solution>
+					<para>Each position of a square matrix gives rise to a minor. <latex>\Mtrx{A}</latex> has <latex>3^2=9</latex> positions. So <latex>\Mtrx{A}</latex> has <latex>9</latex> minors.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the <latex>(1,1)</latex>-minor of <latex>\Mtrx{A}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The <latex>(1,1)</latex>-minor of <latex>\Mtrx{A}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{11} = \left[\begin{array}{rr}
+2 & 3 \\
+-4 & 9
+\end{array}\right]
+					]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The <latex>(1,1)</latex>-minor of <latex>\Mtrx{A}</latex> results from <latex>\Mtrx{A}</latex> by omitting the 1st row and the 1st column. Therefore</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{11} = \left[\begin{array}{rr}
+2 & 3 \\
+-4 & 9
+\end{array}\right]
+					]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find the <latex>(3,1)</latex>-minor of <latex>\Mtrx{A}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The <latex>(3,1)</latex>-minor of <latex>\Mtrx{A}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{31} = \left[\begin{array}{rr}
+-7 & 8 \\
+ 2 & 3
+\end{array}\right]
+					]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The <latex>(3,1)</latex>-minor of <latex>\Mtrx{A}</latex> results from <latex>\Mtrx{A}</latex> by omitting the 3rd row and the 1st column. Therefore</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{31} = \left[\begin{array}{rr}
+-7 & 8 \\
+ 2 & 3
+\end{array}\right]
+					]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the <latex>(2,2)</latex>-minor of <latex>\Mtrx{A}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The <latex>(2,2)</latex>-minor of <latex>\Mtrx{A}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{31} = \left[\begin{array}{rrr}
+5 & 8 \\
+1 & 9
+\end{array}\right]
+					]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the <latex>(3,3)</latex>-minor of <latex>\Mtrx{A}</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\Mtrx{X}</latex> be the <latex>(5,5)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{X} = \left[\begin{array}{rrrrr}
+4 & 1 & -11 & 0 & 6 \\
+2 & 5 & 7 & 4 & -5 \\
+1 & 0 & 0 & 6 & 4 \\
+-4 & -19 & 6 & 2 & -3 \\
+0 & 6 & 3 & 7 & 8
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find the <latex>(1,4)</latex>-minor of <latex>\Mtrx{X}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The <latex>(1,4)</latex>-minor of <latex>\Mtrx{X}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{X}_{14} = \left[\begin{array}{rrrr}
+2 & 5 & 7 & -5 \\
+1 & 0 & 0 & 4 \\
+-4 & -19 & 6 & -3 \\
+0 & 6 & 3 & 8
+\end{array}\right]
+					]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The <latex>(1,4)</latex>-minor of <latex>\Mtrx{X}</latex> results from <latex>\Mtrx{X}</latex> by omitting the 1st row and the 4th column. Therefore</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{X}_{14} = \left[\begin{array}{rrrrr}
+2 & 5 & 7 & -5 \\
+1 & 0 & 0 & 4 \\
+-4 & -19 & 6 & -3 \\
+0 & 6 & 3 & 8
+\end{array}\right]
+					]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the <latex>(3,1)</latex>-minor of <latex>\Mtrx{X}</latex>.</para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the <latex>(4,4)</latex>-minor of <latex>\Mtrx{X}</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\Mtrx{C}</latex> be the <latex>(3,3)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{C} = \left[
+\begin{array}{rrr}
+3 & 4 & -1 \\
+0 & 2 & -5 \\
+7 & 9 & 7
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find the <latex>(1,2)</latex>-cofactor of <latex>\Mtrx{C}</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>By definition, the <latex>(1,2)</latex>-cofactor of <latex>\Mtrx{C}</latex> is</para>
+					<computation>
+						<left>c_{1,2}(\Mtrx{C})</left>
+						<center>=</center>
+						<right>(-1)^{1+2} \det\, C_{12}</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+(-1)\cdot \det\, \left[\begin{array}{rr}
+0 & -5 \\
+7 & 7
+\end{array}\right]
+]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>(-1)\cdot 35</right>
+						<left></left>
+						<center>=</center>
+						<right>-35</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find the <latex>(2,3)</latex>-cofactor of <latex>\Mtrx{C}</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>By definition, the <latex>(2,3)</latex>-cofactor of <latex>\Mtrx{C}</latex> is</para>
+					<computation>
+						<left>c_{2,3}(\Mtrx{C})</left>
+						<center>=</center>
+						<right>(-1)^{2+3} \det\, C_{23}</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+(-1)\cdot \det\, \left[\begin{array}{rr}
+3 & 4 \\
+7 & 9
+\end{array}\right]
+]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>(-1)\cdot (27 - 28)</right>
+						<left></left>
+						<center>=</center>
+						<right>1</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find the <latex>(3,3)</latex>-cofactor of <latex>\Mtrx{C}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The <latex>(3,3)</latex>-cofactor of <latex>\Mtrx{C}</latex> is</para>
+					<math.display>
+						<latex>c_{3,3}(\Mtrx{C}) = 6</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the <latex>(3,1)</latex>-cofactor of <latex>\Mtrx{C}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The <latex>(3,1)</latex>-cofactor of <latex>\Mtrx{C}</latex> is</para>
+					<math.display>
+						<latex>c_{3,1}(\Mtrx{C}) = -18</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	<!-- To do: Add more exercises here. -->
+</exercise.pack>

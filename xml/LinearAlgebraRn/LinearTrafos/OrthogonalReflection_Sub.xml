@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_OrthogonalReflection">
+	<title>The Orthogonal Reflections</title>
+	<sub.page.body>
+		<block>
+			<para>An orthogonal reflection works like a mirror: The mirror is represented by a hyperspace <latex>H</latex> in <latex>\RNr[n]</latex>. Now the reflection operations about <latex>H</latex> transforms a point <latex>\Vect{x}</latex> into its mirrored image with respect to <latex>H</latex>. </para>
+			
+			<figure>
+				<img src="ims/LeftHandMirrorRightHand.jpg"></img>
+				<info>
+					<para>Here we apply an orthogonal reflection to a right hand. The result is a left hand.</para>
+				</info>
+				<caption>Action of an orthogonal reflection on a hand</caption>
+			</figure>
+			
+			<para>To describe such an orthogonal reflectiion <latex>M</latex> mathematically, we consider the following schematic sketch.</para>
+			
+			<figure>
+				<img src="ims/OrthogonalReflection.png"></img><!-- svg available -->
+			</figure>
+			
+			<para>In the picture above, we reflect <latex>\RNr[2]</latex> over the hyperspace <latex>H</latex>:</para>
+			
+			<ul>
+				<li><para><latex>\Vect{c}</latex> is a nonzero vector perpendicular to <latex>H</latex> &ndash; there are many vectors with this property</para></li>
+				<li><para><latex>\Vect{x}</latex> is the position vector of a point before being reflected</para></li>
+				<li><para><latex>\pr_{\Vect{c}}(\Vect{x})</latex> is the orthogonal projection of <latex>\Vect{x}</latex> along <latex>\Vect{c}</latex>. It is computed as</para>
+					<math.display>
+						<latex>\pr_{\Vect{c}}(\Vect{x}) = \dfrac{ \DotPr{ \Vect{x} }{ \Vect{c} } }{ \DotPr{ \Vect{c} }{ \Vect{c} } }\, \cdot\, \Vect{c}</latex>
+					</math.display>
+				</li>
+				<li><para>Subtracting <latex>2\cdot \pr_{\Vect{c}}(\Vect{x})</latex> from <latex>\Vect{x}</latex> gives <latex>M(\Vect{x})</latex>, the position vector of the point <latex>\Vect{x}</latex> over <latex>H</latex>.</para></li>
+			</ul>
+			
+			<para>Therefore the orthogonal reflection of <latex>M</latex> about the hyperspace <latex>H</latex> perpendicular to <latex>\Vect{c}</latex> is given by</para>
+			
+			<math.display>
+				<latex>M\from \RNr[n] \longrightarrow \RNr[n],\quad M(\Vect{x}) = \Vect{x}\ -\ 2\cdot \dfrac{\DotPr{\Vect{x}}{\Vect{c}}}{\DotPr{\Vect{c}}{\Vect{c}}} \cdot \Vect{c}</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para>We remark that nature does not normally carry out such reflections  in a bodily way: there is no known mechanism which turns a person into one whose heart is on the right hand side and whose right and left hands are interchanged. To the eye a mirror merely creates the impression of such a thing happening.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

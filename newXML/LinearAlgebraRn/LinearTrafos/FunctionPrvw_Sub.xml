@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illstrt_FunctionTransforms"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: Function Describes Transformation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The concept of a function is properly introduced within the context of set theory. Here we describe in pictorial terms how it may be interpreted as transforming objects.</para.body>
+            </para>
+            <para>
+               <para.body>In the graphic below the blob <math>
+                     <latex>B</latex>
+                  </math> on the left gets transformed into the object <math>
+                     <latex>Z</latex>
+                  </math> on the right. In the process, each point of <math>
+                     <latex>B</latex>
+                  </math> gets relocated to some point of <math>
+                     <latex>Z</latex>
+                  </math>. It is this act of relocating points of <math>
+                     <latex>B</latex>
+                  </math> to points of <math>
+                     <latex>Z</latex>
+                  </math> which is described by a function.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Trafo_NonLinear.png"/>
+            </media>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Let's now analyze how a function transforms an object. A function <math>
+                     <latex>f</latex>
+                  </math> from <math>
+                     <latex>B</latex>
+                  </math> to <math>
+                     <latex>Z</latex>
+                  </math>, denoted <math>
+                     <latex>f\from B\to Z</latex>
+                  </math> sends each <math>
+                     <latex>x</latex>
+                  </math> of <math>
+                     <latex>B</latex>
+                  </math> to some <math>
+                     <latex>z</latex>
+                  </math> in <math>
+                     <latex>Z</latex>
+                  </math>. Note that there must be exactly one <math>
+                     <latex>z</latex>
+                  </math> to which <math>
+                     <latex>x</latex>
+                  </math> gets transformed. We write</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>z</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion xmlns="">
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>Read: ‘z equals f of x’</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>f(x)</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>to express that <math>
+                     <latex>f</latex>
+                  </math> transforms <math>
+                     <latex>x</latex>
+                  </math> into <math>
+                     <latex>z</latex>
+                  </math>. Thus <math>
+                     <latex>f</latex>
+                  </math> ‘knows’ for each <math>
+                     <latex>x</latex>
+                  </math> in <math>
+                     <latex>B</latex>
+                  </math> to which point in <math>
+                     <latex>Z</latex>
+                  </math> it must be relocated. Accordingly, we think of <math>
+                     <latex>f</latex>
+                  </math> as executing the given transformation.</para.body>
+            </para>
+            <para>
+               <para.body>It is allowed that two or more distinct points of <math>
+                     <latex>B</latex>
+                  </math> get transformed into the same point of <math>
+                     <latex>Z</latex>
+                  </math>. In the graphic above this applies to the points labeled <math>
+                     <latex>u_1</latex>
+                  </math> and <math>
+                     <latex>u_2</latex>
+                  </math>. We therefore have the equation</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>f(u_1)</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion xmlns="">
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>To see why we have this equation, recall that <math>
+                                    <latex>f(u_1)</latex>
+                                 </math> is the point of <math>
+                                    <latex>Z</latex>
+                                 </math> into which <math>
+                                    <latex>u_1</latex>
+                                 </math> gets transformed. Similarly, <math>
+                                    <latex>f(u_2)</latex>
+                                 </math> is the point of <math>
+                                    <latex>Z</latex>
+                                 </math> into which <math>
+                                    <latex>u_2</latex>
+                                 </math> gets transformed.</para.body>
+                           </para>
+                           <para>
+                              <para.body>Here both of <math>
+                                    <latex>u_1</latex>
+                                 </math> and <math>
+                                    <latex>u_2</latex>
+                                 </math> get transformed into the same point of <math>
+                                    <latex>Z</latex>
+                                 </math>. Therefore we have the stated equation.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>f(u_2)</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" targetNamespace="Example"
+	xmlns="Example">
+	<xsd:include schemaLocation="Molecules.xsd"/>
+	<xsd:import schemaLocation="http://www.w3.org/2004/10/xml.xsd"
+		namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xsd:annotation>
+		<xsd:documentation> =============   The Example schema describes the formulation of an example which illustrates the use of a definition, a computational procedure, or the application of a theorem, followed by one or several solutions. We distinguish between two solution styles:
+		1. The vanilla style "solution": It provides markup for the linear exposition of a solution of a problem.
+		2. The extended style "solution.ext". It provides markup for one solution-pilot guided solution of a problem.
+		To display an XML-document consistent with this schema, we assume that the problem, together with its solution is loaded into a single browser window / browser frame. The solution pilot can be presented in the form of a sticky hint window.
+ ======================
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="example">
+		<xsd:annotation>
+			<xsd:documentation>Example and solution, vanilla-style</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element ref="textcaption" minOccurs="0"/>
+				<xsd:element ref="description"/>
+				<xsd:element ref="statement.example"/>
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="answer"/>
+					<xsd:element ref="answer.ext"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:NCName" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType mixed="false" name="exampleStatement">
+		<xsd:annotation>
+			<xsd:documentation>Statement of the problem</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="content_block" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="answer">
+		<xsd:annotation>
+			<xsd:documentation>Answer to the situation described in the statement of an example. If several different answers exist, the `version'-attribute should be used to make a distinction.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element name="answer.block">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="caption" minOccurs="0"/>
+							<xsd:element minOccurs="0" name="logic">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="2" name="part.ref"
+											type="xsd:normalizedString"/>
+									</xsd:sequence>
+									<xsd:attribute name="type">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:integer">
+												<xsd:minInclusive value="0"/>
+												<xsd:maxInclusive value="2"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="answer.block.body" maxOccurs="unbounded">
+								<xsd:complexType>
+									<xsd:group ref="content_block" maxOccurs="unbounded"
+										minOccurs="1"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="type" use="optional" default="Solution">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="Solution"/>
+						<xsd:enumeration value="Proof"/>
+						<xsd:enumeration value="Explanation"/>
+						<xsd:enumeration value="Justification"/>
+						<xsd:enumeration value="Discussion"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="version" type="xsd:nonNegativeInteger" use="optional" default="1"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="answer.ext">
+		<xsd:annotation>
+			<xsd:documentation>Answer to example.ext. Offers markup for use of answer pilot</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element name="step" maxOccurs="unbounded">
+					<xsd:complexType mixed="false">
+						<xsd:sequence>
+							<xsd:element name="pilot">
+								<xsd:annotation>
+									<xsd:documentation>Solution pilot material for this particular solution step.</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType mixed="false">
+									<xsd:sequence>
+										<xsd:element name="pilot.step">
+											<xsd:annotation>
+												<xsd:documentation>Entry in solution pilot corresponding to this particular solution step.</xsd:documentation>
+											</xsd:annotation>
+											<xsd:complexType mixed="false">
+												<xsd:choice maxOccurs="unbounded">
+												<xsd:element ref="para"/>
+												<xsd:element ref="math.display"/>
+												</xsd:choice>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="step.body">
+								<xsd:complexType>
+									<xsd:group ref="content_block" maxOccurs="unbounded"
+										minOccurs="1"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="partref" type="xsd:positiveInteger" use="optional">
+							<xsd:annotation>
+								<xsd:documentation>Refers to the part of the exercise whose solution begins with this step.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="type" use="optional" default="solution">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="solution"/>
+						<xsd:enumeration value="explanation"/>
+						<xsd:enumeration value="proof"/>
+						<xsd:enumeration value="justification"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="version" type="xsd:positiveInteger" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>An integer which marks the version of the solution</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="showme">
+		<xsd:annotation>
+			<xsd:documentation>A "showme" is a adequate to mark up simple kinds of examples. Its solution should be straight forward; extended solutions are not available.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element ref="textcaption" minOccurs="0"/>
+				<xsd:element name="statement.showme" type="exampleStatement"/>
+				<xsd:element name="answer.showme">
+					<xsd:annotation>
+						<xsd:documentation>For the solution, discussion of solution, etc. of a showme</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" name="answer.showme.block">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element minOccurs="0" ref="caption"/>
+										<xsd:element name="answer.showme.block.body">
+											<xsd:complexType>
+												<xsd:group ref="content_block"/>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="statement.example">
+		<xsd:annotation>
+			<xsd:documentation>For the statement of the example or part of the example.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:group ref="content_block"/>
+				<xsd:element minOccurs="1" ref="part.example"/>
+				<xsd:group maxOccurs="unbounded" minOccurs="0" ref="index"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="part.example">
+		<xsd:annotation>
+			<xsd:documentation>In case an example contains  several parts. The attribute enumerates the parts. The enumeration can eventually be automated.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="caption"/>
+				<xsd:element name="part.example.body">
+					<xsd:complexType>
+						<xsd:group maxOccurs="unbounded" minOccurs="1" ref="content_block"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:group maxOccurs="unbounded" minOccurs="0" ref="index"/>
+			</xsd:sequence>
+			<xsd:attribute name="partid" type="xsd:NCName" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>An identifier for the statement part.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="counter" type="xsd:positiveInteger" use="optional"/>
+			<xsd:attribute name="equivalence.mark" type="xsd:positiveInteger" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>Give equivalent parts the same equivalence marker: a number like 1, or 2, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

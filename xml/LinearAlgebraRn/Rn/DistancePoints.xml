@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="sec_DistanceBetweenPoints">
+	<headers>
+		<full>Distance between Points</full>
+		<toc>Distance between Points</toc>
+		<short>Distance between Points</short>
+	</headers>
+	<section.body>
+		<para>The proposition below tells us how to compute the distance between two points in <latex>\RNr[n]</latex>.</para>
+		
+		<xi:include href="DistancePoints_Prop.xml"/>
+		
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_DistancePoints"/>
+	</studymaterials>
+</section>

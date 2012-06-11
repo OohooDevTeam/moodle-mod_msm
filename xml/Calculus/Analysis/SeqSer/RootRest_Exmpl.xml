@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_RootTest">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Root Test: Examples</title>
+	<showme>
+		<statement>
+			<para>Use the root test to determine if the series</para>
+			<math.display>
+				<latex>\sum_{n=0}^{\infty} \left( \dfrac{ 2 - 6n }{ 9 + 7n }\right)^n</latex>
+			</math.display>
+			<para>converges absolutely.</para>
+		</statement>
+		<answer type="Solution">
+			<para>The <latex>n</latex>-th summand of the given series is</para>
+			<math.display>
+				<latex>a_n := \left( \dfrac{ 2 - 6n }{ 9 + 7n }\right)^n</latex>
+			</math.display>
+			<para>So,</para>
+			<computation>
+				<left>\sqrt[n]{\Abs{ a_n } }</left>
+				<center>=</center>
+				<right>\sqrt[n]{ \Abs{ \left( \dfrac{ 2 - 6n }{ 9 + 7n }\right)^n } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\sqrt[n]{  \Abs{ \dfrac{ 2 - 6n }{ 9 + 7n } }^n }</right>
+				<left></left>
+				<center>=</center>
+				<right>\Abs{ \dfrac{ 2 - 6n }{ 9 + 7n } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\Abs{ \dfrac{ 2/n - 6 }{ 9/n + 7} }</right>
+			</computation>
+			<para>Therefore</para>
+			<math.display>
+				<latex><![CDATA[ \lim_{n\to \infty} \sqrt[n]{ \Abs{ a_n }} = \lim_{n\to\infty} \Abs{ \dfrac{ 2/n - 6 }{ 9/n + 7} } = \dfrac{6}{7} < 1 ]]></latex>
+			</math.display>
+			<para>So the given series converges absolutely by the root test.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Use the root test to determine if the series</para>
+			<math.display>
+				<latex>\sum_{n=0}^{\infty} \dfrac{ n \cdot 3^{2n} }{ (n+1)\cdot 5^n }</latex>
+			</math.display>
+			<para>converges absolutely.</para>
+		</statement>
+		<answer type="Solution">
+			<para>The <latex>n</latex>-th summand of the given series is</para>
+			<math.display>
+				<latex>a_n := \dfrac{ n \cdot 3^{2n} }{ (n+1) 5^n }</latex>
+			</math.display>
+			<para>So,</para>
+			<computation>
+				<left>\sqrt[n]{\Abs{ a_n } }</left>
+				<center>=</center>
+				<right>\sqrt[n]{ \Abs{ \dfrac{ n \cdot 3^{2n} }{ (n+1) 5^n } } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\sqrt[n]{ \dfrac{ n \cdot 3^{2n} }{ (n+1) 5^n } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\dfrac{ \sqrt[n]{ n\cdot 3^{2n} } }{ \sqrt[n]{ (n+1) 5^n } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\dfrac{ 9\cdot \sqrt[n]{n} }{ 5\cdot \sqrt[n]{n+1} }</right>
+			</computation>
+			<para>Therefore</para>
+			<math.display>
+				<latex><![CDATA[ \lim_{n\to \infty} \sqrt[n]{ \Abs{ a_n }} = \lim_{n\to\infty} \dfrac{ 9\cdot \sqrt[n]{n} }{ 5\cdot \sqrt[n]{n+1} } = \dfrac{9}{5} > 1 ]]></latex>
+			</math.display>
+			<para>So the root test says that the given series does not converge to a number.</para>
+		</answer>
+	</showme>
+</showme.pack>

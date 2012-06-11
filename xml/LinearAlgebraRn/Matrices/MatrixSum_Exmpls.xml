@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_MatrixAddition">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of Matrix Addition</title>
+	<caption>Matrix Addition</caption>
+	<showme>
+		<statement>
+			<para>The sum of the two matrices</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					{\color{blue}A}\ =\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} & {\color{blue}3} \\
+					{\color{blue}1} & {\color{blue}4} \\
+					{\color{blue}6} & {\color{blue}4}
+					\end{array}\right] \qquad \text{and}\qquad
+					{\color{red}B}\ =\ 
+					\left[\begin{array}{cc}
+					{\color{red}-3} & {\color{red}-3} \\
+					{\color{red}1} & {\color{red}2} \\
+					{\color{red}6} & {\color{red}1}
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>is defined because both matrices are of the same size <latex>(3,2)</latex>. Their sum is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					{\color{blue}A} + {\color{red}B}\ =\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} - {\color{red}3} & {\color{blue}3} -{\color{red}3} \\
+					{\color{blue}1} + {\color{red}1} & {\color{blue}4} +{\color{red}2} \\
+					{\color{blue}6} + {\color{red}6} & {\color{blue}4} + {\color{red}1}
+					\end{array}\right] \ =\ 
+					\left[\begin{array}{cc}
+					4 & 0 \\
+					2 & 6 \\
+					12 & 5
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>In general, the sum of two matrices of size <latex>(m,n)</latex></para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					{\color{blue}A}\ =\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}a_{11}} & \cdots & {\color{blue}a_{1n}} \\
+					\vdots & \ddots & \vdots \\
+					{\color{blue}a_{m1}} & \cdots & {\color{blue}a_{mn}}
+					\end{array}\right]\qquad \text{and}\qquad
+					{\color{red}B}\ =\ 
+					\left[\begin{array}{ccc}
+					{\color{red}b_{11}} & \cdots & {\color{red}b_{1n}} \\
+					\vdots & \ddots & \vdots \\
+					{\color{red}b_{m1}} & \cdots & {\color{red}b_{mn}}
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			<para>is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+					{\color{blue}A}\ +\ {\color{red}B}\ &=\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}a_{11}} & \cdots & {\color{blue}a_{1n}} \\
+					\vdots & \ddots & \vdots \\
+					{\color{blue}a_{m1}} & \cdots & {\color{blue}a_{mn}}
+					\end{array}\right]\ +\
+					\left[\begin{array}{ccc}
+					{\color{red}b_{11}} & \cdots & {\color{red}b_{1n}} \\
+					\vdots & \ddots & \vdots \\
+					{\color{red}b_{m1}} & \cdots & {\color{red}b_{mn}}
+					\end{array}\right] \\
+					&=\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}a_{11}} + {\color{red}b_{11}} & \cdots & {\color{blue}a_{1n}} + {\color{red}b_{1n}} \\
+					\vdots & \ddots & \vdots \\
+					{\color{blue}a_{m1}} + {\color{red}b_{m1}} & \cdots & {\color{blue}a_{mn}} + {\color{red}b_{mn}}
+					\end{array}\right]
+					\endaligned
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+</showme.pack>

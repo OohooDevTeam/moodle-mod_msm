@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_SequenceConverge1"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	
+	  <title>Convergent Sequences: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Show that the sequence <math>
+                  <latex>(x_n)</latex>
+               </math> with <math>
+                  <latex>x_n = 1/n</latex>
+               </math> converges to <math>
+                  <latex>0</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Let <math>
+                        <latex> \varepsilon &gt; 0 </latex>
+                     </math> be given. We need to find some <math>
+                        <latex> n_0 &gt; 0 </latex>
+                     </math> such that</para.body>
+               </para>
+			            <math.display>
+				              <latex> \Abs{ \frac{1}{n} - 0 } &lt; \varepsilon</latex>
+			            </math.display>
+			            <para>
+                  <para.body>for all <math>
+                        <latex>n\geq n_0</latex>
+                     </math>. To establish the existence of such <math>
+                        <latex>n_0</latex>
+                     </math> recall that 
+				<subordinate>
+                        <hot>
+                           <math>
+                              <latex>\NNr</latex>
+                           </math> is not bounded above</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up this fact.</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>. Therefore there exists <math>
+                        <latex>n_0\in \NNr</latex>
+                     </math> with <math>
+                        <latex> 0 &lt; 1/\varepsilon &lt; n_0 </latex>
+                     </math>. Now, if <math>
+                        <latex>n\geq n_0</latex>
+                     </math>, we 
+				<subordinate>
+                        <hot>find</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_ROrderingProperties"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up this fact.</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>
+			               </para.body>
+               </para>
+			            <math.display>
+				              <latex> 0 &lt; \dfrac{1}{n} \leq \dfrac{1}{n_0} &lt; \dfrac{1}{1/\varepsilon} = \varepsilon </latex>
+			            </math.display>
+			            <para>
+                  <para.body>This means that <math>
+                        <latex> -\varepsilon &lt; 1/x_n - 0 &lt; \varepsilon </latex>
+                     </math> or, equivalently, <math>
+                        <latex> \Abs{ 1/n - 0 } &lt; \varepsilon </latex>
+                     </math> whenever <math>
+                        <latex>n\geq n_0</latex>
+                     </math>. Therefore <math>
+                        <latex>(1/n)</latex>
+                     </math> converges to <math>
+                        <latex>0</latex>
+                     </math> or, in symbols,</para.body>
+               </para>
+			            <math.display>
+				              <latex>\lim_{n\to\infty} \dfrac{1}{n}\ =\ 0.</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

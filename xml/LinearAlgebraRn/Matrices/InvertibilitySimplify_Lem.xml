@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Lem_InvertibilitySimplify">
+	<statement>
+		<para>Given <latex>(n,n)</latex>-matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex>, then</para>
+		<para align="center"><latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex> &nbsp; if and only if &nbsp; <latex>\Mtrx{B}\Mtrx{A} = \IdMtrx[n]</latex>.</para>
+	</statement>
+	
+	<proof>
+		<caption>The case where <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex></caption>
+		<para>We need to show that <latex>\Mtrx{B}\Mtrx{A}=\IdMtrx[n]</latex>. &ndash; We first show that <latex>\Mtrx{A}</latex> is invertible: Using row operations and the corresponding row transformation matrices, we obtain</para>
+		
+		<math.display>
+			<latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \Mtrx{A}\ =\ \Mtrx{T}</latex>
+		</math.display>
+		
+		<para>where <latex>\Mtrx{T}</latex> is the RREF of <latex>\Mtrx{A}</latex>. Consequently,</para>
+		
+		<computation>
+			<left>\Mtrx{T}\Mtrx{B}</left>
+			<center>=</center>
+			<right>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \Mtrx{A}\Mtrx{B}</right>
+			<left></left>
+			<center>=	<info><para>recalling that <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex></para></info></center>
+			<right>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \IdMtrx[n]</right>
+			<left></left>
+			<center>=</center>
+			<right>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1</right>
+		</computation>
+		
+		<para>This shows that <latex>\Mtrx{T}\Mtrx{B}</latex> is 
+			<subordinate>
+				<hot>invertible</hot>
+				<info>
+					<caption>Reason</caption>
+					<para>Each of the <latex>\Mtrx{R}_i</latex> is invertible, and so the product <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1</latex> is invertible.</para>
+				</info>
+			</subordinate>. Now if <latex>\Mtrx{T}</latex> is not the identity matrix, then its bottom row consists of  <latex>0</latex>’s  only. So the bottom row of <latex>\Mtrx{T}\Mtrx{B}</latex> consists of  <latex>0</latex>’s  only, 
+			<subordinate>
+				<hot>hence is not invertible</hot>
+				<info>
+					<caption>Reason</caption>
+					<para>If <latex>\Mtrx{C}</latex> is a matrix whose last row consists of <latex>0</latex>'s only, then for any matrix <latex>\Mtrx{X}</latex>, <latex>\Mtrx{C}\Mtrx{X}</latex> has a bottom row of <latex>0</latex>'s. So it cannot be the identity matrix.</para>
+				</info>
+			</subordinate>. This contradiction collapses only if <latex>\Mtrx{T}</latex> is the identity matrix, implying that <latex>\Mtrx{A}</latex> is invertible.</para>
+		
+		<para>But then we can compute</para>
+		
+		<computation>
+			<left>\Mtrx{A}\Mtrx{B}</left>
+			<center>=</center>
+			<right>\IdMtrx[n]</right>
+			<left>\Mtrx{A}^{-1}\Mtrx{A}\Mtrx{B}</left>
+			<center>=</center>
+			<right>\Mtrx{A}^{-1}\IdMtrx[n]</right>
+			<left>\Mtrx{B}</left>
+			<center>=</center>
+			<right>\Mtrx{A}^{-1}</right>
+			<left>\Mtrx{B}\Mtrx{A}</left>
+			<center>=</center>
+			<right>\Mtrx{A}^{-1}\Mtrx{A} = \IdMtrx[n]</right>
+		</computation>
+		
+		<para>Therefore <latex>\Mtrx{B}\Mtrx{A} = \IdMtrx[n]</latex>, as claimed.</para>
+		
+		<caption>The case where <latex>\Mtrx{B}\Mtrx{A} = \IdMtrx[n]</latex></caption>
+		<para>This follows with the previous argument by interchanging the roles of <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex>.</para>
+	</proof>
+</theorem>

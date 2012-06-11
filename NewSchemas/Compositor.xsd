@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns:ns1="Example" xmlns:ns2="Exercise" targetNamespace="Compositor"
+    xmlns:compositor="Compositor">
+
+    <xs:include schemaLocation="Atoms.xsd"/>
+    <xs:import namespace="Unit" schemaLocation="Unit.xsd"/>
+    <xs:element name="example.pack">
+        <xs:annotation>
+            <xs:documentation>For a pack of examples</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="compositor:texsupport"/>
+                <xs:element minOccurs="0" ref="compositor:literature.db"/>
+                <xs:element ref="compositor:title"/>
+                <xs:element minOccurs="0" ref="compositor:caption"/>
+                <xs:element name="example.ref" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Reference to the ID of an example</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="example.choice">
+                                <xs:annotation>
+                                    <xs:documentation>In case an author regards several examples as equivalent, these examples can be recorded here as possible choices.  Use the attribute "select" in the example.ref to indicate the preference for a particular composition.</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="exampleID" type="xs:NCName"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="select" type="xs:nonNegativeInteger"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:NCName" use="required"/>
+        </xs:complexType>
+        <xs:unique name="examples">
+            <xs:selector xpath="example"/>
+            <xs:field xpath="@id"/>
+        </xs:unique>
+    </xs:element>
+    <xs:element name="showme.pack">
+        <xs:annotation>
+            <xs:documentation>Pack of "showme's".</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="compositor:texsupport"/>
+                <xs:element ref="compositor:title"/>
+                <xs:element minOccurs="0" ref="compositor:caption"/>
+                <xs:element maxOccurs="unbounded" name="showme.ref">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="showme.choice">
+                                <xs:complexType>
+                                    <xs:attribute name="showmeID" type="xs:NCName"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="select" type="xs:nonNegativeInteger"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:NCName" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="exercise.pack">
+        <xs:annotation>
+            <xs:documentation>Markup for an exercise collection</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="compositor:texsupport"/>
+                <xs:element minOccurs="0" ref="compositor:literature.db"/>
+                <xs:element name="title">
+                    <xs:annotation>
+                        <xs:documentation>Title of the package of exercises</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType mixed="true">
+                        <xs:choice maxOccurs="unbounded" minOccurs="0">
+                            <xs:element ref="compositor:math"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" ref="compositor:caption"/>
+                <xs:element minOccurs="0" name="doclabel">
+                    <xs:annotation>
+                        <xs:documentation>For use with tabbed browsing</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="exercise.ref">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="exercise.choice">
+                                <xs:complexType>
+                                    <xs:attribute name="exerciseID" type="xs:NCName"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="select" type="xs:nonNegativeInteger"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:NCName" use="optional">
+                <xs:annotation>
+                    <xs:documentation>Generate an identifier if you want to use this Exercise Pack as an internal part of a book.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+        <xs:unique name="exercises">
+            <xs:selector xpath="exercise"/>
+            <xs:field xpath="@id"/>
+        </xs:unique>
+    </xs:element>
+    <xs:element name="quiz.pack">
+        <xs:annotation>
+            <xs:documentation>For a pack of quizes; can be used in an associate, or companion</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="compositor:texsupport"/>
+                <xs:element name="title">
+                    <xs:annotation>
+                        <xs:documentation>Title of the package of exercises</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType mixed="true">
+                        <xs:choice maxOccurs="unbounded" minOccurs="0">
+                            <xs:element ref="compositor:math"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" ref="compositor:caption"/>
+                <xs:element minOccurs="0" name="doclabel">
+                    <xs:annotation>
+                        <xs:documentation>For use with tabbed browsing</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="quiz.ref">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="quiz.choice">
+                                <xs:complexType>
+                                    <xs:attribute name="quizID" type="xs:NCName"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="select" type="xs:nonNegativeInteger"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:NCName" use="required"/>
+        </xs:complexType>
+        <xs:unique name="quizzes">
+            <xs:selector xpath="quiz"/>
+            <xs:field xpath="@id"/>
+        </xs:unique>
+    </xs:element>
+    <xs:element name="ecomposition">
+        <xs:annotation>
+            <xs:documentation>For the electronic equivalent of a book.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="compositor:unit.ref">
+                    <xs:annotation>
+                        <xs:documentation/>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="0" name="accessories">
+                    <xs:annotation>
+                        <xs:documentation>Accessories in support of the present unit. These include example.pack, exercise.pack, quiz.pack, showme.pack, tools to carry out computations, settings for exploration, etc.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:group maxOccurs="unbounded" ref="compositor:engagement"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="compositionID"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="engagement">
+        <xs:annotation>
+            <xs:documentation>Links to WMath resources: example.pack, exercise.pack, quiz.pack and showme.pack.</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element name="quiz.pack.ref">
+                <xs:complexType>
+                    <xs:attribute name="quizpackID" type="xs:NCName"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="showme.pack.ref">
+                <xs:complexType>
+                    <xs:attribute name="showmepackID" type="xs:NCName"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="exercise.pack.ref">
+                <xs:complexType>
+                    <xs:attribute name="exercisepackID" type="xs:NCName"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="example.pack.ref">
+                <xs:complexType>
+                    <xs:attribute name="examplepackID" type="xs:NCName"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:group>
+    <xs:element name="unit.ref">
+        <xs:annotation>
+            <xs:documentation>Use the WMath unit with the specified ID in the present table of contents location in the ebook.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:element name="subunits">
+                    <xs:annotation>
+                        <xs:documentation>If desired, list subunits, in order, under the present unit.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" ref="compositor:unit.ref"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="src" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

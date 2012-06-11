@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ChangeCoordinatesMatrix">
+	<caption>Change coordinates matrix</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_ChangeCoordinates"/>
+		<info><para>An example of a coordinate conversion</para></info>
+	</associate>
+	<statement>
+		<para>Given ordered bases <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_r)</latex> and <latex>\EuScript{C}=(\Vect{c}_1,\dots ,\Vect{c}_r)</latex> of a vector space <latex>W</latex>, let</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{C}_{\EuScript CB}\ =\ 
+\left[\begin{array}{cccc}
+\uparrow & \uparrow &  & \uparrow \\
+(\Vect{b}_1)_{\EuScript{C}} & (\Vect{b}_2)_{\EuScript{C}} & \cdots & (\Vect{b}_r)_{\EuScript{C}} \\
+\downarrow & \downarrow &  & \downarrow
+\end{array}\right]
+
+]]>
+			</latex>
+		</math.display>
+		<para>Then, for every <latex>\Vect{x}</latex> in <latex>W</latex>,</para>
+		<computation>
+			<left>\Vect{x}_{\EuScript{C}}</left>
+			<center>=</center>
+			<right>\Mtrx{C}_{\EuScript{C}\EuScript{B}} \Vect{x}_{\EuScript{B}}</right>
+		</computation>
+		<para>Moreover, the matrix <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex> with this property is unique.</para>
+	</statement>
+	<proof type="Proof">
+		<para>Given <latex>\Vect{x}\in W</latex>, we need to express it as a linear combination of <latex>\EuScript{C}</latex>. So suppose</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{rcclrcc}
+\Vect{x}_{\EuScript{B}} & = & (x_1,\dots ,x_r) & \quad \text{i.e.} & \Vect{x} & = & x_1 \Vect{b}_1 + \cdots + x_r \Vect{b}_r \\
+(\Vect{b}_1)_{\EuScript{C}} & = & (a_{11},\dots ,a_{r1}) & \quad \text{i.e.} & \Vect{b}_1 & = & a_{11}\Vect{c}_1 + \cdots + a_{r1}\Vect{c}_r \\
+\vdots & & \vdots\quad\vdots & & \vdots & & \vdots \qquad \vdots \\
+(\Vect{b}_r)_{\EuScript{C}} & = & (a_{1r},\dots ,a_{rr}) & \quad \text{i.e.} & \Vect{b}_r & = & a_{1r}\Vect{c}_1 + \cdots + a_{rr}\Vect{c}_r \\
+\end{array}
+]]>
+			</latex>
+		</math.display>
+		<para>This implies</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>x_1 \Vect{b}_1 + \cdots + x_r \Vect{b}_r</right>
+			<left></left>
+			<center>=</center>
+			<right>x_1\left( a_{11}\Vect{c}_1 + \cdots + a_{r1}\Vect{c}_r\right)\ + \cdots +\ x_r\left( a_{1r}\Vect{c}_1 + \cdots + a_{rr}\Vect{c}_r\right)</right>
+			<left></left>
+			<center>=</center>
+			<right>\left(a_{11}x_1 + \cdots + a_{1r}x_r\right)\Vect{c}_1\ + \cdots +\ \left( a_{r1}x_1+\cdots + a_{rr}x_r\right)\Vect{c}_r</right>
+		</computation>
+		<para>Writing <latex>\Vect{x}_{\EuScript{B}}</latex> and <latex>\Vect{x}_{\EuScript{C}}</latex> as column vectors we find</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+\Vect{x}_{\EuScript{C}}\ 
+   &=\ 
+\begin{bmatrix}
+a_{11}x_1\ +\ \dots\ +\ a_{1r}x_r \\
+\vdots\qquad\qquad\qquad\quad\vdots \\
+a_{r1}x_1\ +\ \dots\ +\ a_{rr}x_r
+\end{bmatrix}\ =\ 
+\begin{bmatrix}
+a_{11} & \dots & a_{1r} \\
+\vdots &       & \vdots \\
+a_{r1} & \dots & a_{rr}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ \vdots \\ x_r
+\end{bmatrix} \\
+   &=\ \Mtrx{C}_{\EuScript{CB}}\, \Vect{x}_{\EuScript{B}}
+\endaligned
+
+]]>
+			</latex>
+		</math.display>
+		<para>It remains to show that <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex> is the only matrix performing conversion from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{C}</latex>-coordinates. So suppose</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{D}\ =\ 
+\begin{bmatrix}
+d_{11} & \dots & d_{1r} \\
+\vdots &       & \vdots \\
+d_{r1} & \dots & d_{rr}
+\end{bmatrix}
+]]>
+			</latex>
+		</math.display>
+		<para>also satisfies <latex>\Vect{x}_{\EuScript{C}} = D \Vect{x}_{\EuScript{B}}</latex> for all vectors <latex>\Vect{x}\in W</latex>. Now, if <latex>1\leq j\leq r</latex>, we find</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{bmatrix}a_{1j} \\ \vdots \\ a_{rj} \end{bmatrix}\ =\ 
+(\mathbf{b}_j)_{\EuScript{C}}\ =\ 
+\begin{bmatrix}
+d_{11} & \dots & d_{1r} \\
+\vdots &       & \vdots \\
+d_{r1} & \dots & d_{rr}
+\end{bmatrix} \begin{bmatrix}0 \\ \vdots \\ 1 \\ \vdots \\ 0 \end{bmatrix}\ =\ 
+\begin{bmatrix}d_{1j} \\ \vdots \\ d_{rj} \end{bmatrix}
+]]>
+			</latex>
+		</math.display>
+		<para>This means exactly that <latex>\Mtrx{D}=\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex> as required. &ndash; The proof is complete.</para>
+	</proof>
+</theorem>

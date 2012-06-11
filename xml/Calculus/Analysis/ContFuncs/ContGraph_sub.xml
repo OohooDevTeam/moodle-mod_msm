@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_DisContinuousContinuousViaGraph">
+	<title>The Graph of a Dis-Continuous Function</title>
+	<sub.page.body>
+		<block>
+			<para>Whenever the domain of a function <latex>f\from J\to \RNr</latex> is a interval, jumps in the graph of <latex>f</latex> correspond to places of discontinuity of <latex>f</latex>.</para>
+			<figure>
+				<img src="ims/ContDisContGraph.png"></img>
+			</figure>
+		<para>On the left, a continuous function: its graph makes no jumps. On the right, a function with a discontinuity: its graph makes a vertical jump.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

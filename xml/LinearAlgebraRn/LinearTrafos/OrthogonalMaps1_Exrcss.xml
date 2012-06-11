@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_OrthogonalMaps1">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Self Test: Distance Preserving Linear Maps</title>
+	<exercise>
+		<problem>
+			<para>For each of the statements below indicate whether it is true or false</para>
+		</problem>
+		<part>
+			<problem>
+				<para>If <latex>L\from \RNr[n]\to \RNr[n]</latex> is invertible, then <latex>\Abs{ L(\Vect{x}) } = \Abs{ \Vect{x} }</latex> for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False</para></answer>
+				<solution.hint>
+					<para>Can you imagine a linear map whose transformation can be reversed, but which fails to preserve all distances?</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Consider a dilation of <latex>\RNr[n]</latex> by the factor of <latex>2</latex>.</para>
+					<ol>
+						<li><para>Is such a dilation invertible?</para></li>
+						<li><para>Is such a dilation length preserving?</para></li>
+					</ol>
+				</solution.hint>
+				<solution>
+					<para>We claim that this statement is false. For example, the dilation of <latex>\RNr[n]</latex> by the factor <latex>2</latex> is invertible. It's inverse is the contraction with factor <latex>1/2</latex>. By its nature, a dilation with factor two magnifies all distances to twice their original length. But this means that such a dilation is not length preserving.</para>
+					<para>Therefore the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>T\from \RNr[n]\to \RNr[n]</latex> is distance preserving, then <latex>\Abs{ T(\Vect{x}) } = \Abs{ \Vect{x} }</latex> for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>Review the definition of a distance preserving linear map.</para>
+				</solution.hint>
+				<solution>
+					<para>This statement is verbatim the definition of a distance preserving linear map. So this statement is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>T\from \RNr[n]\to \RNr[n]</latex> is distance preserving, then <latex>\Abs{ T(\Vect{y}) - T(\Vect{x}) } = \Abs{ \Vect{y} - \Vect{x} }</latex> for all <latex>\Vect{x},\Vect{y}</latex> in <latex>\RNr[n]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>Recall that <latex>\Abs{ \Vect{y} - \Vect{x} }</latex> is the distance from <latex>\Vect{x}</latex> to <latex>\Vect{y}</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>We give a conceptual and then a computational answer to this problem.</para>
+					<para>For the conceptual approach, recall that</para>
+					<ol>
+						<li>
+							<para><latex>\Abs{ \Vect{y} - \Vect{x} }</latex> is the distance from <latex>\Vect{x}</latex> to <latex>\Vect{y}</latex>, and</para>
+						</li>
+						<li>
+							<para><latex>\Abs{ T(\Vect{y})- T(\Vect{x}) }</latex> is the distance from <latex>T(\Vect{x})</latex> to <latex>T(\Vect{y})</latex>.</para>
+						</li>
+					</ol>
+					<para>If <latex>T</latex> is distance preserving, this means exactly that these two distances are equal. So the statement in question is true.</para>
+					
+					<para>For the computational approach we argue as follows</para>
+					<computation>
+						<left>\Abs{ T(\Vect{y}) - T(\Vect{x}) }</left>
+						<center>=	<info><para>because <latex>T</latex> is linear</para></info></center>
+						<right>\Abs{ T( \Vect{y}-\Vect{x}) }</right>
+						<left></left>
+						<center>=	<info><para>Because <latex>T</latex> is distance preserving.</para></info></center>
+						<right>\Abs{ \Vect{y} - \Vect{x} }</right>
+					</computation>
+					<para>Therefore the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>For every distance preserving <latex>U\from \RNr[3]\to \RNr[3]</latex>, it is true that <latex>\Abs{ U(1,1,1) } = \sqrt{3}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Compare the length of <latex>\Vect{x}=(1,1,1)</latex> to the length of <latex>U(\Vect{x}) = U(1,1,1)</latex>.</para></solution.hint>
+				<solution>
+					<para>The vector <latex>\Vect{x}:=(1,1,1)</latex> has length <latex magnify="yes">\Abs{ \Vect{x} } = \sqrt{3}</latex>. A distance preserving linear map preserves this length. Therefore the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>U\from \RNr[3]\to \RNr[3]</latex> is distance preserving, it is true that <latex>\Abs{ U(1,1,1) } = 3</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>Review the previous problem and its solution.</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>For every linear <latex>L\from \RNr[3]\to \RNr[3]</latex> it is true that <latex>\Abs{ L(2,1,-2) }=3</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>Consider the zero map <latex>L\from \RNr[3] \to \RNr[3]</latex>, <latex>L(\Vect{x}) = \Vect{0}</latex>.</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>For every invertible linear <latex>K\from \RNr[3]\to \RNr[3]</latex> it is true that <latex>\Abs{ K(2,1,-2) }=3</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint>
+					<para>Consider the dilation <latex>K\from \RNr[3] \to \RNr[3]</latex>, <latex>K(\Vect{x}) = 2\cdot \Vect{x}</latex>. &ndash; What is <latex>\Abs{ K(2,1,-2) }</latex>?</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>For every distance preserving <latex>R\from \RNr[3]\to \RNr[3]</latex> it is true that <latex>\Abs{ R(2,1,-2) }=3</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>What is the length of <latex>(2,1,-2)</latex>?</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Continuing from the previous hint, we find <latex>\Abs{ (2,1,-2) } = 3</latex>. If <latex>R</latex> is distance preserving, what is <latex>\Abs{ R(2,1,-2) }</latex>?</para>
+				</solution.hint>
+				<solution>
+					<para>We find <latex>\Abs{ (2,1,-2) } = 3</latex>. If <latex>R</latex> is distance preserving, then</para>
+					<math.display>
+						<latex>\Abs{ R(2,1,-2) } = \Abs{ (2,1,-2) } = 3</latex>
+					</math.display>
+					<para>So, the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>S\from \RNr[3]\to \RNr[3]</latex> is a shear map with respect to the unit vector <latex>\Vect{n}</latex>, then <latex>S(\Vect{x})=\Vect{x}</latex> for every <latex>\Vect{x}\bot \Vect{n}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Review the construction of a shear map.</para></solution.hint>
+				<solution>
+					<para>The shear map <latex>S</latex> transforms an arbitrary vector <latex>\Vect{x}</latex> of <latex>\RNr[3]</latex> into</para>
+					<computation>
+						<left>S(\Vect{x})</left>
+						<center>=</center>
+						<right>\Vect{x} + (\DotPr{ \Vect{x} }{ \Vect{n} })\cdot \Vect{n}</right>
+					</computation>
+					<para>If <latex>\Vect{x}</latex> is perpendicular to <latex>\Vect{n}</latex>, and <latex>\DotPr{ \Vect{x} }{ \Vect{n} } = 0</latex>. So <latex>S(\Vect{x}) = \Vect{x}</latex> in this case. &ndash; Therefore the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>S\from \RNr[3]\to \RNr[3]</latex> is a shear map with respect to the unit vector <latex>\Vect{n}</latex>, then <latex>\Abs{ S(\Vect{x}) } = \Abs{ \Vect{x} }</latex> for every <latex>\Vect{x}\bot \Vect{n}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Review the previous problem.</para></solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below indicate whether it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>The projection of <latex>\RNr[3]</latex> onto the hyperspace perpendicular to <latex>(1,2,-1)</latex> is invertible.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint>
+					<para>This is like saying: &lsquo;If you know that shadow of an object, you can tell all about the shape of the object&rsquo;. &ndash; Is this true?</para>
+				</solution.hint>
+				<solution>
+					<para>This projection sends every vector of the form <latex>t\cdot (1,2,-1)</latex> to the <latex>0</latex>-vector. So it can not be invertible. &ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>For <latex>1\leq i\leq n</latex> and <latex>n\geq 2</latex>, the coordinate projection <latex>\Prjctn{i}\from \RNr[n]\to \RNr</latex> is invertible.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint>
+					<para>Just consider the projection <latex>\Prjctn{1}\from \RNr[2] \to \RNr</latex>, <latex>\Prjctn{1}(x,y)=x</latex>.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Continuing from the previous hint, we have</para>
+					<computation>
+						<left>\Prjctn{1}(1,0)</left>
+						<center>=</center>
+						<right>1</right>
+						<left></left>
+						<center>=</center>
+						<right>\Prjctn{1}(1,1)</right>
+					</computation>
+					<para>So if you know that the projection of some point in <latex>\RNr[2]</latex> is equal to <latex>1</latex>, can you tell what the point was?</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The shear map of <latex>\RNr[3]</latex> with respect to the vector <latex magnify="yes">\Vect{n}=\frac{1}{\sqrt{3}}(1,1,1)</latex> with shear vector <latex>\Vect{s}=(1,1,-2)</latex> is invertible.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>Consider the shear map of <latex>\RNr[3]</latex> with respect to the vector <latex magnify="yes">\Vect{n} = \frac{1}{\sqrt{3}}(1,1,1)</latex> and shear vector <latex>\Vect{t} = (-1,-1,2)</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The shear map of <latex>\RNr[3]</latex> with respect to the vector <latex magnify="yes">\Vect{n}=\frac{1}{\sqrt{3}}(1,1,1)</latex> with shear vector <latex>\Vect{s}=(1,1,-2)</latex> is distance preserving.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint>
+					<para>Apply <latex>S</latex> to the vector <latex>\Vect{s}</latex>, and observe how length is affected.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>L\from \RNr[n]\to \RNr[n]</latex> is a distance preserving linear map, so is <latex>-L</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>We determine the effect of <latex>-L</latex> on the length of an arbitrary vector <latex>\Vect{x}</latex>:</para>
+					<computation>
+						<left>\Abs{ -L(\Vect{x}) }</left>
+						<center>=</center>
+						<right>\Abs{(-1)}\cdot \Abs{ L(\Vect{x} }</right>
+						<left></left>
+						<center>=	<info>
+							<caption>Why is this true?</caption>
+							<para>Given that <latex>L</latex> is orthogonal, we know that</para>
+							<computation>
+								<left>\Abs{ L(\Vect{x}) }</left>
+								<center>=</center>
+								<right>\Abs{ \Vect{x} }</right>
+							</computation>
+							<para>for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>.</para>
+						</info></center>
+						<right>1\cdot \Abs{ \Vect{x} }</right>
+					</computation>
+					<para>This means that <latex>-L</latex> preserves the length of <latex>\Vect{x}</latex>. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The sum of two distance preserving linear maps is again distance preserving.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint>
+					<para>Recall from the previous problem: if <latex>L</latex> is orthogonal, so is <latex>-L</latex>.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Start with an orthogonal map <latex>L</latex> and add to it <latex>-L</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The composite of two distance preserving linear maps is again distance preserving.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Every shear map of <latex>\RNr[n]</latex> is invertible.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_MatrixConcept">
+	<headers>
+	  <full>The Concept of a Matrix</full>
+		<toc>The Concept of a Matrix</toc>
+		<short>Matrix Concept</short>
+	</headers>
+	
+	<intro>
+		<para>Here we explain what a matrix is.</para>
+	</intro>
+	
+	<section.body>
+		<def type="Definition" id="Def_Matrix">
+			<caption>Matrix</caption>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_MatrixTypes"/>
+				<info>
+					<para>View some examples of matrices.</para>
+				</info>
+			</associate>
+			<associate Description="Quiz">
+				<quiz.pack.ref quizPackID="Quz_MatrixTypes"/>
+				<info>
+					<para>A little comprehension quiz on the concept of a matrix.</para>
+				</info>
+			</associate>
+			<associate Description="Comment">
+				<info>
+					<para>In strict set theoretic terms, a matrix of size <latex>(m,n)</latex> can be defined as a function</para>
+					
+					<math.display>
+						<latex>A\from \Set{ 1,\dots ,m }\imes \Set{ 1,\dots ,n } \longrightarrow \RNr</latex>
+					</math.display>
+					
+					<para>The entry <latex magnify="yes">a_{ij}</latex> in the <latex>i</latex>-th row and <latex>j</latex>-th column is then the function value <latex>A(i,j)</latex>.</para>
+				</info>
+			</associate>
+			
+			
+			<para>
+				Let <latex>m,n\geq 1</latex> be integers. A 
+				<subordinate>
+					<hot>matrix</hot>
+					<info><para>The plural of matrix is &lsquo;matrices&rsquo;.</para></info>
+				</subordinate>
+				<index.glossary>
+					<term>matrix</term>
+					<info>
+						<para>Definition of a matrix</para>
+					</info>
+				</index.glossary>
+				of size 
+				<subordinate>
+					<hot><latex>(m,n)</latex></hot>
+					<info>
+						<para>
+							Thus <latex>m</latex> counts the number of  in the matrix, while <latex>n</latex> counts the number of columns in the matrix.
+						</para>
+					</info>
+				</subordinate>
+				or an <latex>(m,n)</latex>-matrix is a rectangular arrangement of numbers
+			</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\left[
+					\begin{array}{cccccc}
+					a_{11} & a_{12} & a_{13} & \cdots & \cdots & a_{1n} \\
+					a_{21} & a_{22} & a_{23} & \cdots & \cdots & a_{2n} \\
+					\vdots  & \vdots  & \vdots  & \ddots &              & \vdots \\
+					\vdots  & \vdots  & \vdots  &             & \ddots  & \vdots \\
+					a_{m1} & a_{m2} & a_{m3} & \cdots & \cdots & a_{mn}
+					\end{array}
+					\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>We write <latex>a_{ij}</latex> for the entry in 
+				<subordinate>
+					<hot>row</hot>
+					<info><para>A row in a matrix is a horizontal line of its entries</para></info>
+				</subordinate>
+				<latex>i</latex> and 
+				<subordinate>
+					<hot>column</hot>
+					<info><para>A column in a matrix is a vertical line of its entries.</para></info>
+				</subordinate>
+				
+				<latex>j</latex>. This is a number in <latex>\RNr</latex>. In more compact notation, the matrix above may be written as <latex>A = [a_{ij}]</latex>, <latex>1\leq i\leq m</latex> and <latex>1 \leq j \leq n</latex>.
+			</para>
+		</def>
+		
+		<para>We know when two numbers are equal. But each matrix may contain a whole bunch of numbers. So when are two matrices equal?</para>
+		
+		<def type="Definition" id="Def_EqualMatrices">
+			<caption>Equal Matrices</caption>
+			<associate Description="Example">
+				<info>
+					<para>The two matrices below are equal</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+							\left[
+							\begin{array}{cccccc}
+							1 & 6 & 3 & 9 & 2 & 0 \\
+							3 & 3 & 2 & 5 & 5 & 4 \\
+							8 & 6 & 7 & 4 & 2 & 0
+							\end{array}
+							\right]\qquad
+							\left[
+							\begin{array}{cccccc}
+							1 & 6 & 3 & 9 & 2 & 0 \\
+							3 & 3 & 2 & 5 & 5 & 4 \\
+							8 & 6 & 7 & 4 & 2 & 0
+							\end{array}
+							\right]
+							]]>
+						</latex>
+					</math.display>
+				</info>
+			</associate>
+			
+			<associate Description="Example">
+				<info>
+					<para>No two of the following matrices are equal.</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+							\left[
+					\begin{array}{rrr}
+					2 & 10 & 7 \\
+					6 & -1 & 1
+					\end{array}
+					\right] \qquad
+					\left[
+					\begin{array}{rrr}
+					6 & -1 & 1 \\
+					2 & 10 & 7
+					\end{array}
+					\right] \qquad
+					\left[
+					\begin{array}{rr}
+					6 & 2 \\
+					-1 & 10 \\
+					1 & 7
+					\end{array}
+					\right]
+							]]>
+						</latex>
+					</math.display>
+				</info>
+			</associate>
+			
+			<para>Two matrices</para>
+			
+			<math.display>
+				<latex>A = [a_{ij}],\quad 1\leq i\leq m,\quad 1\leq j\leq n</latex>
+			</math.display>
+			<math.display>
+				<latex>B = [b_{kl}],\quad 1\leq k\leq r,\quad 1\leq l\leq s</latex>
+			</math.display>
+			
+			<para>are equal if both of the following two conditions are satisfied</para>
+			
+			<ul>
+				<li><para><latex>A</latex> and <latex>B</latex> are of the same size; i.e. <latex>m=r</latex> and <latex>n=s</latex></para></li>
+				<li><para>The entries in corresponding positions are equal; i.e. the number <latex>a_{ij}</latex> in position <latex>(i,j)</latex> of <latex>A</latex> is equal to the number <latex>b_{ij}</latex> in position <latex>(i,j)</latex> of <latex>B</latex>.</para></li>
+			</ul>
+		</def>
+	</section.body>
+	
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_MatrixConcept"/>
+	</studymaterials>
+</section>

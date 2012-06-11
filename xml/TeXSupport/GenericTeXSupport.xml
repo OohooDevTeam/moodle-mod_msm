@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<texsupport xmlns="http://webmath.math.ualberta.ca/v1/TeXSupport"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/TeXSupport http://webmath.math.ualberta.ca/Schemas/v1/TeXSupport.xsd">
+	<inline>
+		<inlinepackages>
+			<amsmath/>
+			<color/>
+			<amssymb/>
+			<eufrak/>
+			<euscript/>
+			<yfonts/>
+		</inlinepackages>
+		<commands>
+			<xi:include href="LaTeXInXML.tex" parse="text"/>
+		</commands>
+	</inline>
+	<displaymath>
+		<packages>
+			\usepackage[all]{xypic}
+		</packages>
+		<commands>
+			<xi:include href="XYPicCommands.tex" parse="text"/>
+		</commands>
+	</displaymath>
+</texsupport> 

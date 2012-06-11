@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_SquareRootExists">
+	<caption>Positive square roots exist uniquely</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment</caption>
+			<para>The proof of this proposition requires a certain amount of work. Does this mean we have to work like or even harder to establish the existence of cube roots, 4-th roots, etc? &ndash; Fortunately not, we will later find powerful tools which will enable us to obtain results of this kind quite easily.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>Given <latex>y\geq 0</latex> in <latex>\RNr</latex> arbitrary, there exists a unique <latex>x\geq 0</latex> in <latex>\RNr</latex> with <latex>x^2 = y</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>To show the existence of <latex>x\in \RNr</latex> with <latex>x^2=y</latex>, we invoke the completeness axiom: define</para>
+		<math.display>
+			<latex>A:=\Set{ a\in \RNr\st a\geq 0,\ \ a^2\leq y}\quad \text{and}\quad B:=\Set{ b\in \RNr \st b\geq 0,\ \ y\leq b^2}</latex>
+		</math.display>
+		<para>By 
+			<subordinate>
+				<hot>design</hot>
+				<info>
+					<caption>Why is <latex>A\leq B</latex>?</caption>
+					<para>Consider arbitrary elements <latex>a\in A</latex> and <latex>b\in B</latex>. Then we know that</para>
+					<math.display>
+						<latex>a^2\leq x\quad \text{and}\quad x\leq b^2</latex>
+					</math.display>
+					<para>On the other hand, we 
+						<subordinate>
+							<hot>know</hot>
+							<crossref>
+								<theorem.ref theoremID="Thm_ROrderingProperties"/>
+								<para>Look up this result.</para>
+							</crossref>
+						</subordinate>
+						that <latex>a\leq b</latex> if and only if <latex>a^2\leq b^2</latex>, and so <latex>A\leq B</latex>.</para>
+				</info>
+			</subordinate>
+			, <latex>A\leq B</latex>, and we claim that <latex>A,B\neq \emptyset</latex>. Indeed, <latex>A \neq \emptyset</latex> 
+			<subordinate>
+				<hot>because</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_ROrderingProperties"/>
+					<para>We proved earlier that <latex><![CDATA[  u^2 > 0 ]]></latex> for all <latex>0\neq u\in \RNr</latex>. &ndash; Look up this result.</para>
+				</crossref>
+			</subordinate>
+			<latex>0\in A</latex>.</para>
+		<para>To see that <latex>B\neq \emptyset</latex>, we treat the two cases <latex>y\leq 1</latex> and <latex>y\geq 1</latex> separately: if <latex>y\leq 1</latex>, then <latex>y\leq y^2\leq 1^2</latex>, and so <latex>1\in B</latex>. If <latex>1\leq y</latex>, we have <latex>y\leq y^2</latex>, and so <latex>y^2\in B</latex>. Either way, we find <latex>B\neq \emptyset</latex>.</para>
+		<para>Now the completeness axiom implies the existence of <latex>x\in \RNr</latex> with <latex>A\leq x\leq B</latex>. We claim that <latex>x^2 = y</latex>. To this end we show that neither of the inequalities <latex><![CDATA[ x^2<y ]]></latex> or <latex><![CDATA[ x^2> y ]]></latex> can occur. &ndash; If <latex><![CDATA[ x^2 < y ]]></latex> then <latex>x\in A</latex>. Now consider the number</para>
+		<math.display>
+			<latex>s\ :=\ \dfrac{2xy}{x^2 + y}</latex>
+		</math.display>
+		<para>On the one hand we have <latex><![CDATA[ x^2 +y < 2y ]]></latex> because <latex><![CDATA[ x^2 < y ]]></latex>, and so</para>
+		<math.display>
+			<latex><![CDATA[ s\ >\ \dfrac{2xy}{2y}\ =\ x ]]></latex>
+		</math.display>
+		<para>On the other hand,</para>
+		<computation>
+			<left>y-s^2</left>
+			<center>=</center>
+			<right>y - \left( \dfrac{2xy}{x^2+y} \right)^2</right>
+			<left></left>
+			<center>=</center>
+			<right>y\left( 1\ -\ \dfrac{4y}{x^2 +2y + y^2/x^2} \right)</right>
+			<left></left>
+			<center>=</center>
+			<right>y\, \dfrac{x^4 - 2x^2y + y^2}{x^4 +2x^2y + y^2}</right>
+			<left></left>
+			<center>=</center>
+			<right><![CDATA[ y\, \dfrac{(x^2 -y)^2}{ (x^2 + y)^2}\ >\ 0]]></right>
+		</computation>
+		<para>This means that <latex><![CDATA[ s^2 < y ]]></latex> and, hence, <latex>s\in A</latex>. But then <latex>s\leq x</latex>, a contradiction to <latex><![CDATA[ s > x ]]></latex>. Thus <latex><![CDATA[ x^2 < y ]]></latex> is impossible.</para>
+		<para>Next we show that <latex><![CDATA[ x^2 > y ]]></latex> can not happen: if we had <latex><![CDATA[ x^2>y ]]></latex>, then <latex>x\in B</latex>. Consider the number</para>
+		<math.display>
+			<latex>t\ :=\ \dfrac{x}{2}\, \left( 1 + \dfrac{y}{x^2}\right)\ =\ \dfrac{1}{2}\, ( x+y/x)</latex>
+		</math.display>
+		<para>Since <latex><![CDATA[ x^2>y ]]></latex>, we have also <latex><![CDATA[ y/x^2 < 1]]></latex>, and so</para>
+		<math.display>
+			<latex><![CDATA[ t\ <\ \dfrac{x}{2} (1 + 1)\ =\ x]]></latex>
+		</math.display>
+		<para>On the other hand</para>
+		<computation>
+			<left>t^2-y</left>
+			<center>=</center>
+			<right>\dfrac{1}{4}(x^2 + 2y + (y/x)^2)\ -\ y</right>
+			<left></left>
+			<center>=</center>
+			<right>\dfrac{1}{4x^2}\, (x^4 - 2yx^2 + y^2)</right>
+			<left></left>
+			<center>=</center>
+			<right><![CDATA[ \dfrac{1}{4x^2}\, (x-y)^2\ >\ 0]]></right>
+		</computation>
+		<para>This means that <latex><![CDATA[ t^2 > y ]]></latex> and, hence, <latex>t\in B</latex>. But <latex>x\leq B</latex> implies <latex>x\leq t</latex>, a contradiction to the inequality <latex><![CDATA[ t < x ]]></latex> we found earlier.</para>
+		<para>Thus the only remaining possibility is: <latex>x^2 = y</latex>, as claimed.</para>
+		<para>It remains to show that <latex>x</latex> is the only number with <latex>0\leq x</latex> and <latex>x^2=y</latex>. So consider any number <latex>s</latex> with <latex>0\leq s</latex> and <latex>s^2 = y</latex>. We want to show that <latex>x=s</latex>. To see  this, we observe first that <latex>x^2 = s^2</latex> and so</para>
+		<math.display>
+			<latex>0 = x^2 - s^2 = (x+s)(x-s)</latex>
+		</math.display>
+		<para>If <latex>(x+s)=0</latex>, we conclude <latex>x=0=y</latex> from the assumption that <latex>x,y\geq 0</latex>. So we are done. If <latex>(x+s)\neq 0</latex>, we conclude <latex>0=(x-s)</latex> and, hence, <latex>x=s</latex>. &ndash; Either way, <latex>x=s</latex>, as claimed. &ndash; This completes the proof of the existence and uniqueness of positive square roots.</para>
+	</proof>
+</theorem>

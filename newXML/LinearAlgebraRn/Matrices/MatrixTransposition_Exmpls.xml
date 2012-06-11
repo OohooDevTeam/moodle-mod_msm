@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_MatrixTransposition"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Examples of Matrix Transposition</title>
+	  <caption xmlns="">Matrix Transposition</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The transpose of the <math>
+                  <latex>(3,2)</latex>
+               </math>-matrix</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					A\ =\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} &amp; {\color{red}3} \\
+					{\color{blue}1} &amp; {\color{red}4} \\
+					{\color{blue}6} &amp; {\color{red}4}
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>is the <math>
+                  <latex>(2,3)</latex>
+               </math>-matrix</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					A^T\ =\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}7} &amp; {\color{blue}1} &amp; {\color{blue}6} \\
+					{\color{red}3} &amp; {\color{red}4} &amp; {\color{red}4}
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In general, the transpose of an <math>
+                  <latex>(m,n)</latex>
+               </math>-matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+					A\ =\ 
+					\left[\begin{array}{rrr}
+					a_{11} &amp; \cdots &amp; a_{1n} \\
+					\vdots &amp; \ddots &amp; \vdots \\
+					a_{m1} &amp; \cdots &amp; a_{mn}
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>is the <math>
+                  <latex>(m,n)</latex>
+               </math>-matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+					\aligned
+					A^T\ &amp;=\  
+					\left[\begin{array}{rrrrr}
+					a_{11} &amp; \cdots &amp; {\color{red}a_{1j}} &amp; \cdots &amp; a_{1n} \\
+					\vdots  &amp;             &amp; {\color{red}\vdots} &amp;             &amp; \vdots \\
+					a_{m1} &amp; \cdots &amp; {\color{red}a_{mj}} &amp; \cdots &amp; a_{mn}
+					\end{array}\right]^T \\
+					&amp;=\ \left[\begin{array}{rrr}
+					a_{11} &amp; \cdots &amp; a_{m1} \\
+					\vdots &amp;               &amp; \vdots \\
+					{\color{red}a_{1j}} &amp; \cdots &amp; {\color{red}a_{mj}} \\
+					\vdots &amp;               &amp; \vdots \\
+					a_{1n} &amp; \cdots &amp; a_{mn}
+					\end{array}
+					\right]
+					\endaligned
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+</showme.pack>

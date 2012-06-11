@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_InvertibleMatrices">
+	<headers>
+		<full>Invertible Matrices</full>
+		<toc>Invertible Matrices</toc>
+		<short>Invertible Matrices</short>
+	</headers>
+	
+	<intro>
+		<para>Here we learn that, in certain situations, we can 
+			<subordinate>
+				<hot>divide one matrix by another</hot>
+				<companion>
+					<subpage.ref subpageID="Info_MatrixInversion"/>
+					<para>Division of one matrix by another is a new concept to us. See a discussion of the underlying ideas.</para>
+				</companion>
+			</subordinate>.
+			The key to this process is the concept of an invertible matrix:</para>
+	</intro>
+	
+	<section.body>
+		<def type="Definition" id="Def_InvertibleMatrix">
+			<caption>Invertible Matrix</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Size of the inverse matrix</caption>
+					<para>If <latex>\Mtrx{A}</latex> is invertible, and <latex>\Mtrx{B}</latex> is its inverse, then <latex>\Mtrx{B}</latex> is automatically of size <latex>(n,n)</latex>.</para>
+				</info>
+			</associate>
+			
+			<para>A matrix <latex>\Mtrx{A}</latex> of size <latex>(n,n)</latex> is invertible if there is a matrix <latex>\Mtrx{B}</latex> such that</para>
+			<math.display>
+				<latex>\Mtrx{A}\Mtrx{B}\ =\ \IdMtrx[n]\ =\ \Mtrx{B}\Mtrx{A}</latex>
+			</math.display>
+			
+			<para>In this case, <latex>\Mtrx{B}</latex> is called the inverse of <latex>\Mtrx{A}</latex>, and is denoted <latex>\Mtrx{A}^{-1}</latex>.
+				<index.glossary>
+					<term>invertible</term><term>matrix</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>invertible</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>\Mtrx{A}^{-1}</latex></symbol>
+					<info><para><latex>\Mtrx{A}^{-1}</latex> denotes the inverse of a matrix <latex>\Mtrx{A}</latex>.</para></info>
+				</index.symbol>
+			</para>
+		</def>
+		
+		<para>Now we face two questions:</para>
+		
+		<ol>
+			<li><para><b>Question 1</b> &nbsp; How do we know whether a given square matrix <latex>\Mtrx{A}</latex> is 
+				<subordinate>
+					<hot>invertible or not</hot>
+					<companion>
+						<subpage.ref subpageID="Info_InvertibilityQuestion"/>
+						<para>A nonzero number <latex>x</latex> has the inverse <latex>1/x</latex>. Therefore it is invertible. However, not every nonzero matrix has an inverse. See why this is so.</para>
+					</companion>
+				</subordinate>?</para></li>
+			<li><para><b>Question 2</b> &nbsp; and if <latex>\Mtrx{A}</latex> is invertible, how do we find its inverse?</para></li>
+		</ol>
+		
+		<para>The good news is that the already familiar process of row reducing a matrix to RREF also provides a method to answer both of these questions.</para>
+		
+		<xi:include href="MatrixInversion_Thm.xml"/>
+	</section.body>
+	
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_MatrixInversion"/>
+	</studymaterials>
+</section>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="IdentityMatrices"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Illustration of Identity Matrices</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The <math>
+                     <latex>(1,1)</latex>
+                  </math>-identity matrix is</para.body>
+            </para>
+            <math.display>
+               <latex>\IdMtrx[1]\ =\ [1]</latex>
+            </math.display>
+            <para>
+               <para.body>The <math>
+                     <latex>(2,2)</latex>
+                  </math>-identity matrix is</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\IdMtrx[2]\ =\ 
+					\begin{bmatrix}
+					1 &amp; 0 \\
+					0 &amp; 1
+					\end{bmatrix}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>The <math>
+                     <latex>(3,3)</latex>
+                  </math>-identity matrix is</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\IdMtrx[3]\ =\ 
+					\begin{bmatrix}
+					1 &amp; 0 &amp; 0 \\
+					0 &amp; 1 &amp; 0 \\
+					0 &amp; 0 &amp; 1
+					\end{bmatrix}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>The <math>
+                     <latex>(4,4)</latex>
+                  </math>-identity matrix is</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\IdMtrx[4]\ =\ 
+					\begin{bmatrix}
+					1 &amp; 0 &amp; 0 &amp; 0  \\
+					0 &amp; 1 &amp; 0 &amp; 0 \\
+					0 &amp; 0 &amp; 1 &amp; 0 \\
+					0 &amp; 0 &amp; 0 &amp; 1
+					\end{bmatrix}
+					
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+   </body>
+</unit>

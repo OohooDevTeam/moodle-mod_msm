@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+	SYSTEM "Symbols.dtd">
+<intro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd">
+	<para>We use the term &lsquo;analysis&rsquo; here as short for the mathematical subject of &lsquo;mathematical analysis&rsquo;. At the heart of this subject lie the concepts</para>
+	<ul>
+		<li><para>infinite process</para></li>
+		<li><para>convergence and limit</para></li>
+		<li><para>failure of convergence</para></li>
+	</ul>
+	<para>Applied to functions between sets of real numbers, this leads to the concepts of continuity, derivative, integral.</para>
+	<para>Historically, we find the earliest use of such limit methods in the work of the ancient Greeks. A famous example is Archimedes&rsquo; method of exhaustion to computing the area of a disk.
+		<index.author>
+			<name>
+				<first></first>
+				<last>Archimedes of Syracuse</last>
+			</name>
+			<info>
+				<para>Appears here for his approach to computing the area of a disk.</para>
+			</info>
+		</index.author>
+		Even earlier, Zeno describes scenarios each of which is based upon some infinite process. The process is manipulated in a skillfully incorrect way to arrive at a 
+		<subordinate>
+			<hot>paradoxical conclusion</hot>
+			<companion>
+				<subpage.ref subpageID="Illustr_ZenoParadox"/>
+				<para>See details of this paradox</para>
+			</companion>
+		</subordinate>.
+	</para>
+	<para>Systematic, yet informal and intuitive use of infinite process and their limits started in the second half of the 17th century, notably with the invention of differential and integral calculus: Newton, Leibniz. The early development of mathematical analysis was driven significantly by the desire to place such intuitive use of limits on a solid foundation: Cauchy, Weierstra&szlig;, etc. Now, apart from being a vast subject in its own right, mathematical analysis has branched of into generalizations: points set topology, measure theory, operator theory, ... which carry their own names.</para>
+	<para>Here we treat .... (what this online text contains)</para>
+	<para>The reader can consult 
+		<subordinate>
+			<hot>background materials</hot>
+			<link href="../SetsNaive/Sets.xml" target="sets" type="xml"></link>
+		</subordinate>
+		on the language of sets and basic principles of predicate logic as the need arises.</para>
+</intro>

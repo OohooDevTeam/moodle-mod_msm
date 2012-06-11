@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_InvertibleLinearMapMatrix">
+	<caption>Invertible linear map has invertible matrix</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_InvertibleLinearMap"/>
+		<info><para>An example of how to use this proposition.</para></info>
+	</associate>
+	
+	<statement>
+		<para>Let <latex>V</latex> and <latex>W</latex> be subspaces of <latex>\RNr[k]</latex> with ordered bases <latex>\EuScript{A}</latex> and <latex>\EuScript{B}</latex>, respectively. Then for a linear map <latex>L\from V\to W</latex> the following hold:</para>
+		<part partid="MatrixInvertible">
+			<para><latex>L</latex> is invertible if and only if the representing matrix <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex> is invertible.</para>
+		</part>
+		<part partid="MatrixOfInverse">
+			<para>If <latex>L</latex> is invertible, then the matrix <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(L^{-1})</latex> representing <latex>L^{-1}</latex> satisfies</para>
+			<computation>
+				<left>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(L^{-1})</left>
+				<center>=</center>
+				<right>( \Mtrx{A}_{\EuScript{B}\EuScript{A}}(L) )^{-1}</right>
+			</computation>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<para>Consider first the case where <latex>L</latex> is invertible; i.e. there is a linear map <latex>M\from W\to V</latex> with</para>
+		<math.display>
+			<latex>M\Comp L = \Id[V] \quad\text{and}\quad L\Comp M = \Id[W]</latex>
+		</math.display>
+		<para>Let <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex> and <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)</latex> denote the representing matrices. Then</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</left>
+			<center>=</center>
+			<right>\Mtrx{A}_{\EuScript{A}\EuScript{A}}(M\Comp L) = \IdMtrx</right>
+			<left>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)\cdot \Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)</left>
+			<center>=</center>
+			<right>\Mtrx{A}_{\EuScript{B}\EuScript{B}}(L\Comp M) = \IdMtrx</right>
+		</computation>
+		<para>This implies that both <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex> and <latex>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(M)</latex> are square shaped of the same size, and are inverse to each other; i.e.</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{A}\EuScript{B}}(L^{-1})</left>
+			<center>=</center>
+			<right>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)^{-1}</right>
+		</computation>
+		<para>Next consider the case where <latex>\Mtrx{A}:=\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex> is invertible. Then <latex>\Mtrx{B}:=\Mtrx{A}^{-1}</latex> represents a linear function <latex>M\from W\to V</latex>. To see that <latex>M</latex> does, indeed, reverse the transformation effect of <latex>L</latex>, we compute:</para>
+		<computation>
+			<left>(M\Comp L)(\Vect{x})_{\EuScript{A}}</left>
+			<center>=</center>
+			<right>\Mtrx{B}\Mtrx{A} \Vect{x}_{\EuScript{A}} = \Vect{x}_{\EuScript{A}}</right>
+			<left>(L\Comp M)(\Vect{y})_{\EuScript{B}}</left>
+			<center>=</center>
+			<right>\Mtrx{A}\Mtrx{B} \Vect{y}_{\EuScript{B}} = \Vect{y}_{\EuScript{B}}</right>
+		</computation>
+		<para>Thus <latex>L</latex> is invertible, with inverse <latex>M</latex>. &ndash; This completes the proof.</para>
+	</proof>
+</theorem>

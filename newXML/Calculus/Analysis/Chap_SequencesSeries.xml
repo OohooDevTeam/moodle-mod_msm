@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      unitid="Chap_SequencesSeries">
+   <titles>
+      <title>Sequences and Series</title>
+      <plain.title>Sequences and Series</plain.title>
+   </titles>
+   <legitimate.children>
+			
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeqSer/Intro.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeqSer/Sequences.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequencesNewFromOld.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeqSer/InfSupLim.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/ConvergenceCriteria.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeqSer/SeriesInR.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SeriesConvergenceTests.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/AbsoluteConvergence.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeqSer/RootRatioTest.xml"/>
+			
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequenceIllu_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequenceTypes_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SubSequenceIllu_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SubSequence_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequenceTail_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/Sequences_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequenceSumProduct_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequencesNewFromOld_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeqSer/InfSup_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/InfSupSequence_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/InfSupLimSequence_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequenceConvergence_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequenceConverge1_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequenceConvergeInfty_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequenceDivergent_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/MonotoneBoundedIllu_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SqueezeTheoremIllu_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/MonotoneBoundedConv_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SequenceConv_Exrcss.xml"/>
+			
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SeriesExmpls_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/PartialSumExmpls_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/GeometricSeries_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/HarmonicSeries_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/GeometricSeries_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SeriesComparison_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SeriesLimitComparison_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SeriesLimitComparison_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/AlternatingHarmonic_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/AlternatingSeries_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/AlternatingSeries_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SeriesRearrange_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/AbsoluteConditionalConvergence_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/SeriesAbsoluteConv_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeqSer/RootRest_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/RatioTest_Exmpl.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SeqSer/RootRatioTest_Exrcss.xml"/>
+		</legitimate.children>
+</unit>

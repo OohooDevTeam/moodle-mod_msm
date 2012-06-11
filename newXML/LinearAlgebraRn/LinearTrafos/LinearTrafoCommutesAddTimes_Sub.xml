@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_LinearTrafoCommutesPlusTimes"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Explanation: Meaning of the Linear Transformation Properties</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A linear transformation <math>
+                     <latex>L\from \RNr[n] \to \RNr[m]</latex>
+                  </math> satisfies the identities</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex>
+                        </math> for all <math>
+                           <latex>\Vect{x},\Vect{y}\in\RNr[n]</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex>
+                        </math> for all <math>
+                           <latex>t\in\RNr</latex>
+                        </math>, and all <math>
+                           <latex>\Vect{x}\in\RNr[n]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>What do these identities mean? – The short answer is that a linear <math>
+                     <latex>L</latex>
+                  </math> commutes with the operations ‘vector addition’ and ‘scalar multiplication’. For a more detailed description, read on:</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>What does the identity <math>
+                     <latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex>
+                  </math> mean?</para.body>
+            </para>
+            <para>
+               <para.body>This identity begins with two vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, and then demands the following:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>Form the sum in <math>
+                           <latex>\RNr[n]</latex>
+                        </math>: <math>
+                           <latex>\Vect{x} + \Vect{y}</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Transform the resulting vector <math>
+                           <latex>(\Vect{x} +\Vect{y})</latex>
+                        </math> of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> with <math>
+                           <latex>L</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The result is the vector <math>
+                           <latex>L(\Vect{x}+\Vect{y})</latex>
+                        </math> of <math>
+                           <latex>\RNr[m]</latex>
+                        </math>. It must be equal to the outcome of the process:</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Using <math>
+                           <latex>L</latex>
+                        </math>, transform <math>
+                           <latex>\Vect{x}</latex>
+                        </math> into the vector <math>
+                           <latex>L(\Vect{x})</latex>
+                        </math> of <math>
+                           <latex>\RNr[m]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Using <math>
+                           <latex>L</latex>
+                        </math>, transform <math>
+                           <latex>\Vect{y}</latex>
+                        </math> into the vector <math>
+                           <latex>L(\Vect{y})</latex>
+                        </math> of <math>
+                           <latex>\RNr[m]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>In <math>
+                           <latex>\RNr[m]</latex>
+                        </math>, form the sum <math>
+                           <latex>L(\Vect{x}) + L(\Vect{y})</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>In other words, we get the same result along each of these two computational paths:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>First add <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> in <math>
+                           <latex>\RNr[n]</latex>
+                        </math>, then transform the sum vector <math>
+                           <latex>\Vect{x}+\Vect{y}</latex>
+                        </math> using <math>
+                           <latex>L</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>First transform <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> individually, and then add the transformed vectors <math>
+                           <latex>L(\Vect{x})</latex>
+                        </math> and <math>
+                           <latex>L(\Vect{y})</latex>
+                        </math> in <math>
+                           <latex>\RNr[m]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>So, it doesn’t matter if we first add and then transform or if we first transform and then add. This is what it means when we say: <math>
+                     <latex>L</latex>
+                  </math> commutes with vector addition.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>What does the identity <math>
+                     <latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex>
+                  </math> mean?</para.body>
+            </para>
+            <para>
+               <para.body>This identity begins with a number <math>
+                     <latex>t</latex>
+                  </math> and a vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, and then demands the following:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>Form the scalar product in <math>
+                           <latex>\RNr[n]</latex>
+                        </math>: <math>
+                           <latex>t\cdot \Vect{x}</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Transform the resulting vector <math>
+                           <latex>t\cdot \Vect{x}</latex>
+                        </math> of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> with <math>
+                           <latex>L</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The result must be equal to the outcome of the process:</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Using <math>
+                           <latex>L</latex>
+                        </math>, transform <math>
+                           <latex>\Vect{x}</latex>
+                        </math> into the vector <math>
+                           <latex>L(\Vect{x})</latex>
+                        </math> of <math>
+                           <latex>\RNr[m]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>In <math>
+                           <latex>\RNr[m]</latex>
+                        </math>, form the scalar product <math>
+                           <latex>t\cdot L(\Vect{x})</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>In other words, we get the same result along each of these two computational paths:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>First scalar multiply <math>
+                           <latex>\Vect{x}</latex>
+                        </math> by the scalar <math>
+                           <latex>t</latex>
+                        </math>, then transform the resulting vector <math>
+                           <latex>t\cdot \Vect{x}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>First transform <math>
+                           <latex>\Vect{x}</latex>
+                        </math> using <math>
+                           <latex>L</latex>
+                        </math>, and then scalar multiply the transformed vector by <math>
+                           <latex>t</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>So, it doesn’t matter if we first scalar multiply and then transform or if we first transform and then scalar multiply. This is what it means when we say: <math>
+                     <latex>L</latex>
+                  </math> commutes with scalar multiplication.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Examples of two processes which do not commute include</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>Putting socks and shoes on.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Washing the salad and eating it (a cynical recommendation offered by a computing scientist to a fellow worker who just refused to pay attention to the order in which he invoked certain functions in his code).</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </body>
+</unit>

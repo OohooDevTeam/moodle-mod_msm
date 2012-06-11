@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MatrixScalarProductOfLinearMap">
+	<caption>Matrix: scalar product of linear map</caption>
+	<statement>
+		<para>Let <latex>V</latex> <latex>W</latex> be subvector spaces of <latex>\RNr[k]</latex> with ordered bases <latex>\EuScript{A}</latex> and <latex>\EuScript{B}</latex>, respectively. Given a linear map <latex>L\from V\to W</latex>, denote by</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</left>
+			<center>\text{the matrix representing}</center>
+			<right>L</right>
+			<left>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(tL)</left>
+			<center>\text{the matrix representing}</center>
+			<right>tL</right>
+		</computation>
+		<para>Then</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(tL)</left>
+			<center>=</center>
+			<right>t\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>We know that the <latex>j</latex>-th column of <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(tL)</latex> is given by</para>
+		<computation>
+			<left>(tL)(\Vect{a}_j)_{\EuScript{B}}</left>
+			<center>=	<info><para>Here we use the definition of <latex>(tL)</latex>.</para></info></center>
+			<right>\left( tL(\Vect{a}_j)\right)_{\EuScript{B}}</right>
+			<left></left>
+			<center>=</center>
+			<right>t\cdot L(\Vect{a}_j)_{\EuScript{B}}</right>
+		</computation>
+		<para>This is the scalar product of the <latex>j</latex>-th column of <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex> by <latex>t</latex>. This implies the claim.</para>
+	</proof>
+</theorem>

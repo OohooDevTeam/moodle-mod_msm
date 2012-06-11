@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="HighDimensions_Explntn">
+	
+	<title>High Dimensions Don&rsquo;t Exist?</title>
+	<sub.page.body>
+		<block>
+			<para>Occasionally one encounters statements of the kind: &lsquo;dimensions above 3 don&rsquo;t exist&rsquo; or &lsquo;we can only think in <latex>3</latex> dimensions&rsquo; or &lsquo;We cannot think in higher than <latex>3</latex> dimensions&rsquo;.</para>
+			
+			<para>These statements have validity only if we restrict ourselves to some form of visualization. In general, however, they are decidedly untrue. Let&rsquo;s just look at some examples, and you will see that higher dimensional spaces are, indeed, all around us and that we quite comfortably &lsquo;think&rsquo; in them, just not in conventional visual terms.</para>
+		</block>
+		
+		<block>
+			<para>For example, the <b>configuration space of the human arm</b> is (at least) <latex>27</latex>-dimensional. The &lsquo;simple&rsquo; act of grasping an object requires the brain to coordinate the corresponding motion. Now coordinating a motion is also a form of thinking, and it takes place in a <latex>27</latex>-dimensional space. Let&rsquo;s look at this in more detail:</para>
+			<para>The configuration space of the human arm has 
+				<subordinate>
+					<hot>one point</hot>
+					<info>
+						<para>this configuration space has exactly one point for each <i>position</i> in which we can hold the arm</para>
+					</info>
+				</subordinate>
+				for each position that the arm can assume. For example, holding the arm straight out to the side is one position of the arm, hence accounts for one point in the configuration space of the arm.</para>
+			<figure>
+				<img src="ims/ConfigSpaceArm1.jpg"></img>
+			</figure>
+			<para>Moving the arm up and down corresponds to one degree of freedom of motion in the configuration space of the arm.</para>
+			<figure>
+				<img src="ims/ConfigSpaceArm2.jpg"></img>
+			</figure>
+			<para>We find a second degree of freedom of motion by moving the arm forward and backward</para>
+			<figure>
+				<img src="ims/ConfigSpaceArm3.jpg"></img>
+			</figure>
+			<figure>
+				<img src="ims/ConfigSpaceArm4.jpg"></img>
+			</figure>
+			<para>Notice that we can combine &lsquo;up-down&rsquo; and &lsquo;forward-backward&rsquo; freely. So the configuration space of the arm has at least dimension 2. Its true dimension is, however, higher! Indeed, we find a third degree of freedom of motion in by bending the elbow:</para>
+			<figure>
+				<img src="ims/ConfigSpaceArm5.jpg"></img>
+			</figure>
+			<para>Again: the motions &lsquo;up-down&rsquo;, &lsquo;forward-backward&rsquo;, and &lsquo;elbow-bend&rsquo; are independent from one another. So the configuration space of the arm has at least dimension 3. However, we find a fourth degree of free of motion in rotating the humerus in the shoulder joint.</para>
+			<para align="center"><img src="ims/ConfigSpaceArm6.jpg"></img> &nbsp; <img src="ims/ConfigSpaceArm7.jpg"></img> &nbsp; <img src="ims/ConfigSpaceArm8.jpg"></img></para>
+			<para>All the motions we have encountered so far are independent from one another. So the configuration space of the arm has at least dimension 4. We find a fifth degree of freedom of motion in &lsquo;supination-pronation&rsquo; of the forearm.</para>
+			<para align="center"><img src="ims/ConfigSpaceArm9.jpg"></img> &nbsp; <img src="ims/ConfigSpaceArm10.jpg"></img></para>
+			<para>Now we have seen that the configuration space of the arm has dimension greater than or equal to 5.</para>
+			<para>We find dimensions 6 and 7 by using the motions of the wrist.</para>
+			<para>Then consider the motions of the fingers in their various joints, and we find degrees of freedom of motion from 8 to 27.</para>
+		</block>
+		<block>
+			<para>We have two arms, and we can move each arm independently from the other. This means that the configuration space of our two arms together has dimension 54.</para>
+			<para>The configuration space of the human body contains the configuration space of the two arms and has, in addition, the configurations of both legs, the head, the neck, the torso, ..... . Its dimension is greater than 100.</para>
+			<para>When our brain coordinates body motion, we actually "think" within this high dimensional configuration space of the human body. Intuitively, it is immediately clear the coordinating a motion with precision is more difficult if it involves the simultaneous use of many joints: the brain needs to &lsquo;think&rsquo; in very high dimensions. Now, gymnasts lock elbow and knee joints for esthetic reasons. But their is also a practical aspect: locking a joint reduces the dimension of the configuration space in which the brain needs to &lsquo;think&rsquo;. Some motions just become easier this way!</para>
+		</block>
+	</sub.page.body>
+</sub.page>

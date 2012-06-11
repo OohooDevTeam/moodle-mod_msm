@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_LinearMapMatrix"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: Linear Maps and Matrices</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Linear functions and matrices are intimately related via the following two facts. The first says that every matrix yields a linear function; the second says that every linear function arises in this way.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Theorem</strong>    Every matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> of size <math>
+                     <latex>(m,n)</latex>
+                  </math> yields a linear transformation <math>
+                     <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                  </math> via the identity</para.body>
+            </para>
+            <math.display>
+               <latex>L(\Vect{x}) = A\cdot \Vect{x}</latex>
+            </math.display>
+            <para>
+               <para.body>On the right of this equation we multiply <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> by the column vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Theorem</strong>   Given an arbitrary linear transformation <math>
+                     <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                  </math>, form the matrix</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+A\ :=\
+\left[\begin{array}{cccc}
+\uparrow &amp; \uparrow &amp; \cdots &amp; \uparrow \\
+L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
+\downarrow &amp; \downarrow &amp; \cdots &amp; \downarrow
+\end{array}\right]
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>i.e. the <math>
+                     <latex>j</latex>
+                  </math>-th column of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is the column vector obtained by transforming the <math>
+                     <latex>j</latex>
+                  </math>-th coordinate vector of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> with <math>
+                     <latex>L</latex>
+                  </math>. Then <math>
+                     <latex>L(\Vect{x})=\Mtrx{A}\cdot \Vect{x}</latex>
+                  </math>,  for all <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>. Moreover, <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>,  as defined above, is the only matrix with this property.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

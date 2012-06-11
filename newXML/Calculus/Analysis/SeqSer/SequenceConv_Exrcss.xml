@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_SequenceConvergence"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: Finding Limits of Sequences</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find the limit of the following sequences</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>a_n = \dfrac{n-1}{n+1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>b_n = \dfrac{2n^2 -1}{3n^3 + 2}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>c_n = \dfrac{ -n^3 - 4}{5n^2 + 3}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>d_n = \dfrac{ 6n^3 + 2x^2 + 1}{ 3n^3 -2n^2 + 3n + 3 }</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>x_n = \dfrac{ a_rn^r + \cdots + a_1 n + a_0 }{ b_s n^s + \cdots + b_1 n + b_0}</latex>
+                     </math>, defined for all <math>
+                        <latex>n</latex>
+                     </math> for which the denominator does not vanish.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Show that <math>
+                     <latex>\lim_{n\to \infty} \sqrt[n]{n} = 1</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the sequences below, write out the first five sequence elements. Then find its limit.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>a_0 := \sqrt{2}</latex>
+                     </math>, and <math>
+                        <latex>a_{n+1} := \sqrt{2}\cdot \sqrt{a_n}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>b_0 := \sqrt{3}</latex>
+                     </math>, and <math>
+                        <latex>b_{n+1} := \sqrt{3}\cdot \sqrt{b_n}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For a positive integer <math>
+                        <latex>k</latex>
+                     </math>, <math>
+                        <latex>c_0 := \sqrt{k}</latex>
+                     </math>, and <math>
+                        <latex>c_{n+1} := \sqrt{k}\cdot \sqrt{c_n}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>s</latex>
+                  </math> be a sum of money that is being invested and bears 5% interest, compounded annually.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the sequence <math>
+                        <latex>(s_n)</latex>
+                     </math> such that <math>
+                        <latex>s_n</latex>
+                     </math> is the value of the investment after <math>
+                        <latex>n</latex>
+                     </math> years.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Determine if the sequence is converges or diverges.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For <math>
+                     <latex>x\in \RNr</latex>
+                  </math> fixed, let <math>
+                     <latex>a_n := nx^n</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For which values of <math>
+                        <latex>x</latex>
+                     </math> does this sequence converge to a number?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For which values of <math>
+                        <latex>x</latex>
+                     </math> does this sequence converge to <math>
+                        <latex>\pm \infty</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For which values of <math>
+                        <latex>x</latex>
+                     </math> does this sequence diverge?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>You are given the information that the sequence <math>
+                     <latex>(x_n)</latex>
+                  </math> is increasing and has sequence elements satisfying <math>
+                     <latex>-1 \leq x_n \leq 4</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Show that <math>
+                        <latex>(x_n)</latex>
+                     </math> converges to a number <math>
+                        <latex>c</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What are the possible values for <math>
+                        <latex>c</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+</exercise.pack>

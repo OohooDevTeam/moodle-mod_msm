@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_RotationR3Inverse">
+	<caption>Inverse of rotation in <latex>\RNr[3]</latex></caption>
+	
+	
+	
+	<statement>
+		<para>A rotation about an axis oriented by the unit vector <latex>\Vect{n}</latex> through the angle <latex>\alpha</latex> by the RHR is an isomorphism of <latex>\RNr[3]</latex>. Its inverse is the rotation about the same axis through the angle <latex>\alpha</latex> by the LHR. It is represented by the matrix</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{R}_{\EuScript{B}\EuScript{B}}\ :=\ 
+\left[
+\begin{array}{rrr}
+\cos \alpha & \sin \alpha & 0 \\
+-\sin \alpha & \cos \alpha & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+	</statement>
+</theorem>

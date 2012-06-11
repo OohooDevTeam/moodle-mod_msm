@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_MatrixGivesLinearMap"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Matrix Gives Linear Map: Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>How does a matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> of size <math>
+                     <latex>(m,n)</latex>
+                  </math> determine a linear transformation <math>
+                     <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                  </math>?</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> has <math>
+                     <latex>n</latex>
+                  </math> columns. So we may multiply it on the right by a column vector <math>
+                     <latex>\Vect{x}=(x_1,\dots ,x_n)</latex>
+                  </math> with <math>
+                     <latex>n</latex>
+                  </math> entries:</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{ccc}
+a_{11} &amp; \cdots &amp; a_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; \cdots &amp; a_{mn}
+\end{array}
+\right]\qquad \text{and}\qquad
+\Vect{x} =
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right]
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>The result is the matrix product below.</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+L(\Vect{x}) := 
+\left[
+\begin{array}{ccc}
+a_{11} &amp; \cdots &amp; a_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; \cdots &amp; a_{mn}
+\end{array}
+\right] \cdot 
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right] = \left[
+\begin{array}{c}
+a_{11}x_1 + \cdots + a_{1n}x_n \\
+\vdots \qquad\quad\qquad \vdots\\
+a_{m1}x_1 + \cdots + a_{mn}x_n
+\end{array}
+\right]
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>As <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> has <math>
+                     <latex>m</latex>
+                  </math> columns, the resulting matrix product is a vector in <math>
+                     <latex>\RNr[m]</latex>
+                  </math>. We take it as <math>
+                     <latex>L(\Vect{x})</latex>
+                  </math>, that is the vector into which <math>
+                     <latex>L</latex>
+                  </math> transforms <math>
+                     <latex>\Vect{x}</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_LinearMapGivesMatrix1"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Example: The Matrix which Describes a Given Linear Map</title>
+	  <caption xmlns="">Example: The Matrix which Describes a Given Linear Map</caption>
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the matrix representing the linear transformation</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>L\from \RNr[2] \longrightarrow \RNr[2],\quad L(x,y) = (3x+y,x+2y)</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>and analyze the transformation properties of <math>
+                  <latex>L</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We begin by finding the effect of <math>
+                        <latex>L</latex>
+                     </math> on the unit vectors <math>
+                        <latex>\StdBss{1}=(1,0)</latex>
+                     </math> and <math>
+                        <latex>\StdBss{2}=(0,2)</latex>
+                     </math> in the direction of the coordinate axes.</para.body>
+               </para>
+			
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(\StdBss{1})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>This vector will form the first column of the matrix representing <math>
+                                       <latex>L</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>This vector will form the first column of the matrix representing <math>
+                                       <latex>L</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(1,0) = (3,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(\StdBss{2})</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>This vector will form the second column of the matrix representing <math>
+                                       <latex>L</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>This vector will form the second column of the matrix representing <math>
+                                       <latex>L</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>L(0,1) = (1,2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			
+			            <para>
+                  <para.body>Therefore the matrix representing <math>
+                        <latex>L</latex>
+                     </math> is</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+A := \left[\begin{array}{cc}
+3 &amp; 1 \\
+1 &amp; 2
+\end{array}\right]
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>This tells us that the unit square spanned by the vectors <math>
+                        <latex>\StdBss{1}</latex>
+                     </math> and <math>
+                        <latex>\StdBss{2}</latex>
+                     </math> gets transformed into the parallelogram spanned by the vectors <math>
+                        <latex>(3,1)</latex>
+                     </math> and <math>
+                        <latex>(1,2)</latex>
+                     </math>.
+				
+				
+			</para.body>
+                  <index.glossary>
+                     <term>unit</term>
+                     <term>square of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>
+                     </term>
+                  </index.glossary>
+               </para>
+			
+			
+				           <img src="ims/Trafo2To2_1.png"/>
+				           <caption>The effect of <math>
+                     <latex>L</latex>
+                  </math> on the unit square (left) of <math>
+                     <latex>\RNr[2]</latex>
+                  </math>
+               </caption>
+			
+			
+			            <para>
+                  <para.body>Thus we see that <math>
+                        <latex>L</latex>
+                     </math> transforms the unit lattice of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> into the ‘slanted’ below.
+				
+			</para.body>
+                  <index.glossary>
+                     <term>unit</term>
+                     <term>lattice of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>
+                     </term>
+                  </index.glossary>
+               </para>
+			
+			
+				           <img src="ims/Trafo2To2_2.png"/>
+				           <caption>The effect of <math>
+                     <latex>L</latex>
+                  </math> on the unit lattice (left) of <math>
+                     <latex>\RNr[2]</latex>
+                  </math>
+               </caption>
+			
+			
+			            <para>
+                  <para.body>We now have two methods to compute how <math>
+                        <latex>L</latex>
+                     </math> transforms a specific point, say <math>
+                        <latex>\Vect{x}=(2,5)</latex>
+                     </math>. We can either use the original definition of <math>
+                        <latex>L</latex>
+                     </math> and find </para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>L(2,5) = (3\cdot 2 + 5 , 2 + 2\cdot 5) = (11,12)</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Alternatively, we can use the matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> representing <math>
+                        <latex>L</latex>
+                     </math> to obtain</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+L(2,5) = \left[\begin{array}{cc}
+3 &amp; 1 \\
+1 &amp; 2
+\end{array}\right]
+\left[\begin{array}{c}
+2 \\ 5
+\end{array}\right] = 
+\left[\begin{array}{c}
+3\cdot 2 + 5 \\ 2 + 2\cdot 5
+\end{array}\right] =
+\left[\begin{array}{c}
+11 \\ 12
+\end{array}\right]
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

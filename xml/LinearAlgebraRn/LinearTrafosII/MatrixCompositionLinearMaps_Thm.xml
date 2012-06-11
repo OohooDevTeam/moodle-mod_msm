@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MatrixCompositionLinearMaps">
+	<caption>Matrix: composite of linear maps</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>What does this proposition say?</caption>
+			<para>This proposition says that, with respect to the appropriate bases, the matrix representing the composite <latex>T\Comp S</latex> is the product of the matrices representing <latex>T</latex> and <latex>S</latex> respectively.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>Let <latex>U</latex>, <latex>V</latex> and <latex>W</latex> be subvector spaces of <latex>\RNr[k]</latex> with ordered bases <latex>\EuScript{A}</latex>, <latex>\EuScript{B}</latex>, and <latex>\EuScript{C}</latex>, respectively. Given linear maps <latex>S\from U\to V</latex> and <latex>T\from V\to W</latex>, denote by</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S)</left>
+			<center>\text{the matrix representing}</center>
+			<right>S</right>
+			<left>\Mtrx{A}_{\EuScript{C}\EuScript{B}}(T)</left>
+			<center>\text{the matrix representing}</center>
+			<right>T</right>
+			<left>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</left>
+			<center>\text{the matrix representing}</center>
+			<right>T\circ S</right>
+		</computation>
+		<para>Then</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</left>
+			<center>=</center>
+			<right>\Mtrx{A}_{\EuScript{C}\EuScript{B}}(T)\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(S)</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>We know that the <latex>j</latex>-th column of <latex>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</latex> is given by</para>
+		<computation>
+			<left>(T\circ S)(\Vect{a}_j)_{\EuScript{C}}</left>
+			<center>=	<info><para>Here we use the definition of <latex>(T\circ S)</latex>.</para></info></center>
+			<right>\Mtrx{A}_{\EuScript{C}\EuScript{B}} \cdot \left( \Mtrx{A}_{\EuScript{B}\EuScript{A}} \Vect{x}_{\EuScript{A}} \right)</right>
+			<left></left>
+			<center>=	<info><para>Here we use the associativity property of matrix multiplication.</para></info></center>
+			<right>\left( \Mtrx{A}_{\EuScript{C}\EuScript{B}} \cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}\right) \cdot \Vect{x}_{\EuScript{A}}</right>
+		</computation>
+		<para>Therefore <latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}} \cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex> is a matrix representing <latex>T\circ S</latex> with respect to the ordered bases <latex>\EuScript{A}</latex> of <latex>U</latex> and <latex>\EuScript{C}</latex> of <latex>W</latex>. But we also know that there is exactly one such matrix, namely <latex>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</latex>. Therefore we must have the claimed identity</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{C}\EuScript{A}}(T\circ S)</left>
+			<center>=</center>
+			<right>\Mtrx{A}_{\EuScript{C}\EuScript{B}}(T)\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(S)</right>
+		</computation>
+	</proof>
+</theorem>

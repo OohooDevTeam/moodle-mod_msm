@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Explana_SequenceConvergence"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Convergence of a Sequence: Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Recall: A sequence <math>
+                     <latex>(x_n)</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math> converges to a number <math>
+                     <latex>c</latex>
+                  </math> if, for every <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> there exists <math>
+                     <latex>n_0\in \NNr</latex>
+                  </math> such that</para.body>
+            </para>
+            <math.display>
+               <latex> x_n\in \OOIntrvl{c-\varepsilon}{c+\varepsilon}\quad \text{for all $n\geq n_0$} </latex>
+            </math.display>
+            <para>
+               <para.body>
+                  <strong>Intuitively speaking</strong>, the number <math>
+                     <latex>x_n</latex>
+                  </math> get ever closer to or equal to <math>
+                     <latex>c</latex>
+                  </math> as <math>
+                     <latex>n</latex>
+                  </math> tends to infinity. What we need to understand here is how this definition expresses this intuitively described behavior of the sequence.</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Interpret the positive number <math>
+                           <latex>\varepsilon</latex>
+                        </math> as a ‘deviation tolerance’</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Given <math>
+                           <latex>n_0\in \NNr</latex>
+                        </math>, interpret the subsequence <math>
+                           <latex>(x_n)</latex>
+                        </math>, <math>
+                           <latex>n\geq n_0</latex>
+                        </math> as a tail end of the original sequence.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Then the definition of convergence of <math>
+                           <latex>(x_n)</latex>
+                        </math> to <math>
+                           <latex>c</latex>
+                        </math> asserts: Given any positive deviation tolerance, there exists a tail end of the sequence which stays within the prescribed deviation tolerance of <math>
+                           <latex>c</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>It is important here that <math>
+                     <latex>\varepsilon</latex>
+                  </math> is allowed to range over all positive numbers. For each choice of <math>
+                     <latex>\varepsilon</latex>
+                  </math> some tail end of the sequence must exist which stays within the <math>
+                     <latex>\varepsilon</latex>
+                  </math>-prescribed deviation tolerance of <math>
+                     <latex>c</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SequenceConverge.png"/>
+            </media>
+            <para>
+               <para.body>Let us address some possible questions about the definition of convergence:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>We are <emphasis>not</emphasis> required to find a ‘longest possible’ tail end which stays within the <math>
+                           <latex>\varepsilon</latex>
+                        </math>-prescribed deviation tolerance.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>We do <emphasis>not</emphasis> need to find a tail end which works simultaneously for all <math>
+                           <latex> \varepsilon &gt; 0</latex>
+                        </math>. To the contrary, the smaller we choose <math>
+                           <latex>\varepsilon</latex>
+                        </math>, the larger we will in general have to choose the number which marks the beginning of the tail end of sequence elements which stays within the <math>
+                           <latex>\varepsilon</latex>
+                        </math>-prescribed deviation tolerance.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>If you are willing to use the quantifiers</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\forall</latex>
+                        </math>   ‘for all’</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\exists</latex>
+                        </math>   ‘exists’</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>we can express the definition of <math>
+                     <latex>(x_n)</latex>
+                  </math> converges to <math>
+                     <latex>c</latex>
+                  </math> as</para.body>
+            </para>
+            <math.display>
+               <latex> \forall_{\varepsilon&gt;0}\ \exists_{n_0\in \NNr}\ \forall_{n \geq n_0}\quad \Abs{ x_n-c } &lt; \varepsilon</latex>
+            </math.display>
+            <para>
+               <para.body>Read this as: ‘For all epsilon greater than 0, there exists n-zero in N such that for all n greater than or equal to n-zero the absolute value of <math>
+                     <latex>x_n -c</latex>
+                  </math> is less than epsilon.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

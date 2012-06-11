@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_DimensionFormulaLinearMap"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Dimension Formula for a Linear Map - Example</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Given a unit vector <math>
+                  <latex>\Vect{e}</latex>
+               </math> in <math>
+                  <latex>\RNr[n]</latex>
+               </math>, <math>
+                  <latex>n\geq 1</latex>
+               </math>, let</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>P\from \RNr[n] \longrightarrow \RNr[n],\quad P(\Vect{x}) = (\DotPr{ \Vect{x} }{ \Vect{e} })\cdot \Vect{e}</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>be the linear map which sends a vector <math>
+                  <latex>\Vect{x}</latex>
+               </math> to its projection along <math>
+                  <latex>\Vect{e}</latex>
+               </math>. Find the kernel and image of <math>
+                  <latex>P</latex>
+               </math> and their dimensions.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The image of <math>
+                        <latex>P</latex>
+                     </math> is just the span of <math>
+                        <latex>\Vect{e}</latex>
+                     </math>: indeed, <math>
+                        <latex>P(\Vect{x})</latex>
+                     </math> is a scalar multiple of <math>
+                        <latex>\Vect{e}</latex>
+                     </math>, hence belongs to the span of <math>
+                        <latex>\Vect{e}</latex>
+                     </math>. On the other hand, <math>
+                        <latex>\span(\Vect{e})</latex>
+                     </math> is contained in the image of <math>
+                        <latex>P</latex>
+                     </math> because we know that <math>
+                        <latex>\im(P)</latex>
+                     </math> is a subvector space of <math>
+                        <latex>\RNr[n]</latex>
+                     </math>. Therefore,</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dim(\im(P))</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dim(\span(\Vect{e})) = 1</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>From the dimension formula we get</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dim(\ker(P))</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>n-\dim(\im(P)) = n-1</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>This agrees nicely with something we know already: <math>
+                        <latex>\ker(P)</latex>
+                     </math> consists of all those vectors of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> for which <math>
+                        <latex>\DotPr{ \Vect{x} }{ \Vect{e} }=0</latex>
+                     </math>; i.e. <math>
+                        <latex>\ker(P)</latex>
+                     </math> is the orthogonal complement of <math>
+                        <latex>P</latex>
+                     </math>, a hyperspace whose dimension is <math>
+                        <latex>n-1</latex>
+                     </math>.</para.body>
+               </para>
+			
+				           <img src="ims/ProjectionDimensionFormula.gif"/>
+				           <info>
+                  <para>
+                     <para.body>Dimension Formula in the Case of a Projection along a Line</para.body>
+                  </para>
+               </info>
+			
+			            <para>
+                  <para.body>Summarizing: <math>
+                        <latex>P</latex>
+                     </math> transforms all of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> into the line <math>
+                        <latex>\RNr\cdot \Vect{e}</latex>
+                     </math> on the right. In the process the <math>
+                        <latex>(n-1)</latex>
+                     </math>-dimensional subspace <math>
+                        <latex>\ker(P)=\Vect{e}^{\bot}</latex>
+                     </math> of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> gets crushed into just a single point, namely the origin.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>	
+</showme.pack>

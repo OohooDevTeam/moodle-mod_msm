@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_ArchimedianPropertyR"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Archimedian property of <math>
+         <latex>\RNr</latex>
+      </math>
+   </caption>
+   <statement.theorem>
+      <para>
+         <para.body>The following hold</para.body>
+      </para>
+      <part.theorem partid="ArchimedianPrin">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\inf\Set{ 1/n \st n\in \NNr,\ \ n\geq 1} = 0</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="QBetweenRs">
+         <part.body>
+            <para>
+               <para.body>For arbitrary <math>
+                     <latex> a&lt;b \in \RNr </latex>
+                  </math>, <math>
+                     <latex>\QNr\intrsctn \OOIntrvl{a}{b}\neq \emptyset</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>ArchimedianPrin</part.ref>
+         </logic>
+         <caption>ArchimedianPrin</caption>
+         <proof.block.body>
+            <para>
+               <para.body>It is clear that <math>
+                     <latex>0</latex>
+                  </math> is a lower bound of <math>
+                     <latex>A:=\Set{1,1/2,1/3,\dots}</latex>
+                  </math>. By the 
+			<subordinate>
+                     <hot>recognition criterion for inf</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_InfSupRecognize"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_InfSupRecognize"/>
+                           <para>
+                              <para.body>Look up this recognition criterion</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>,
+			it only remains to show that, whenever <math>
+                     <latex> t&gt;0 </latex>
+                  </math>, <math>
+                     <latex>t</latex>
+                  </math> is not a lower bound of <math>
+                     <latex>A</latex>
+                  </math>. To see this, note that <math>
+                     <latex> 1/t &gt; 0 </latex>
+                  </math> as well and 
+			<subordinate>
+                     <hot>so</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+                           <para>
+                              <para.body>Here we use that <math>
+                                    <latex>\NNr</latex>
+                                 </math> is not bounded above; look up this fact.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			there is <math>
+                     <latex>n\in\NNr</latex>
+                  </math> with <math>
+                     <latex> n&gt; 1/t </latex>
+                  </math>. But
+				<subordinate>
+                     <hot>then</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_ROrderingProperties"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_ROrderingProperties"/>
+                           <para>
+                              <para.body>Look up this fact</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+                  <math>
+                     <latex> 1/n &lt; 1/(1/t) = t </latex>
+                  </math>. So <math>
+                     <latex>t</latex>
+                  </math> is not a lower bound of <math>
+                     <latex>A</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>QBetweenRs</part.ref>
+         </logic>
+         <caption>QBetweenRs</caption>
+         <proof.block.body>
+            <para>
+               <para.body>
+                  <strong>Case 1</strong>
+                  <math>
+                     <latex> 0 \leq a &lt; b </latex>
+                  </math>. It follows that <math>
+                     <latex> 0&lt;b-a </latex>
+                  </math>, and so there exists <math>
+                     <latex> n&gt;0 </latex>
+                  </math> in <math>
+                     <latex>\NNr</latex>
+                  </math> with <math>
+                     <latex> 1/n &lt; b-a </latex>
+                  </math>. This implies <math>
+                     <latex> 1 &lt; n(b-a) </latex>
+                  </math>; i.e. <math>
+                     <latex> \Dstnc{na}{nb} &gt; 1 </latex>
+                  </math>. Therefore we expect to find a natural number <math>
+                     <latex>k\in \OOIntrvl{na}{nb}</latex>
+                  </math>. Indeed, the set</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

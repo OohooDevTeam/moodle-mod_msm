@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_SequenceConvergeInfty">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Sequences Converging to Infinity: Examples</title>
+	<showme>
+		<statement>
+			<para>Show that the sequence <latex magnify="yes">(x_n)</latex> with <latex magnify="yes">x_n = n</latex> converges to <latex>+\infty</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>Let <latex>u\in \RNr</latex> be given. We need to find some <latex><![CDATA[ n_0 > 0 ]]></latex> such that</para>
+			<math.display>
+				<latex><![CDATA[ x_n \geq u ]]></latex>
+			</math.display>
+			<para>for all <latex>n\geq n_0</latex>. To establish the existence of such <latex>n_0</latex> recall that 
+				<subordinate>
+					<hot><latex>\NNr</latex> is not bounded above</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+						<para>Look up this fact.</para>
+					</crossref>
+				</subordinate>. Therefore there exists <latex>n_0\in \NNr</latex> with <latex><![CDATA[ n_0 \geq u ]]></latex>. Now, if <latex>n\geq n_0</latex>, we find</para>
+			<math.display>
+				<latex><![CDATA[ x_n = n \geq n_0 \geq u ]]></latex>
+			</math.display>
+			<para>This means that</para>
+			<math.display>
+				<latex>\lim_{n\to\infty} n \ =\ +\infty .</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

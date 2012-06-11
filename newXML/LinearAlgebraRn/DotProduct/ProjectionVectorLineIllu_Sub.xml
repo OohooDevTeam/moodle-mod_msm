@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_ProjectionVectorLine"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Projection of a Vector onto a Line – Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The projection of a vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> onto the line through the origin in the direction of a nonzero vector <math>
+                     <latex>\Vect{y}</latex>
+                  </math> is defined as</para.body>
+            </para>
+            <math.display>
+               <latex>\pr_L(\Vect{x}) = \dfrac{ \DotPr{\Vect{x}}{\Vect{y}} }{ \DotPr{\Vect{y}}{\Vect{y}} } \cdot \Vect{y}</latex>
+            </math.display>
+            <para>
+               <para.body>The effect of this projection may be visualized as follows</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/ProjectionVectorLine.png"/>
+               <extended.caption>Projection of a vector on a line</extended.caption>
+            </media>
+            <para>
+               <para.body>Shine a light vertically onto the line <math>
+                     <latex>L</latex>
+                  </math>. The shadow of <math>
+                     <latex>\Vect{x}</latex>
+                  </math> is the projection of <math>
+                     <latex>\Vect{x}</latex>
+                  </math> onto <math>
+                     <latex>L</latex>
+                  </math>. Crucial properties of this projection are:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\pr_{L}(\Vect{x})</latex>
+                        </math> is parallel to the direction vector <math>
+                           <latex>\Vect{y}</latex>
+                        </math> of <math>
+                           <latex>L</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The difference vector <math>
+                           <latex>\Vect{u}:= \Vect{x} - \pr_L(\Vect{x})</latex>
+                        </math> is perpendicular to <math>
+                           <latex>L</latex>
+                        </math> and to <math>
+                           <latex>\Vect{y}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </body>
+</unit>

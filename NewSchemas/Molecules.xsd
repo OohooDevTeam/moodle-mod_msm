@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="Atoms.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation> ============= This schema provides atomic markup to be included into
+			higher order style schema ====================== </xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ Begin: Content Presentation Atoms ==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="para">
+		<xsd:annotation>
+			<xsd:documentation>Paragraph structure</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element ref="description" minOccurs="0"/>
+				<xsd:element name="para.body">
+					<xsd:complexType mixed="true">
+						<xsd:group maxOccurs="unbounded" minOccurs="0" ref="content_sub"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:group maxOccurs="unbounded" minOccurs="0" ref="index"/>
+			</xsd:sequence>
+			<xsd:attribute name="align" use="optional" default="justify">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:NCName">
+						<xsd:enumeration value="left"/>
+						<xsd:enumeration value="right"/>
+						<xsd:enumeration value="center"/>
+						<xsd:enumeration value="justify"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="id" type="xsd:NCName" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ul">
+		<xsd:annotation>
+			<xsd:documentation>Unordered list (as in XHTML)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence maxOccurs="unbounded">
+				<xsd:element ref="li"/>
+			</xsd:sequence>
+			<xsd:attribute name="bullet" use="optional" default="disk">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="disk"/>
+						<xsd:enumeration value="square"/>
+						<xsd:enumeration value="lozenge"/>
+						<xsd:enumeration value="rightarrow"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ol">
+		<xsd:annotation>
+			<xsd:documentation>Ordered list (as in XHTML); attribute "type" has values 1,i,I,a,A;
+				attribute "caption" for a short token in front of "type"</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence maxOccurs="unbounded">
+				<xsd:element ref="li"/>
+			</xsd:sequence>
+			<xsd:attribute name="type" use="optional" default="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="1"/>
+						<xsd:enumeration value="i"/>
+						<xsd:enumeration value="I"/>
+						<xsd:enumeration value="a"/>
+						<xsd:enumeration value="A"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="li">
+		<xsd:annotation>
+			<xsd:documentation>An item in a list (as in XHTML)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:group ref="content_block" maxOccurs="unbounded"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="table">
+		<xsd:annotation>
+			<xsd:documentation>Table (as in XHTML)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element name="row" maxOccurs="unbounded">
+					<xsd:complexType mixed="false">
+						<xsd:sequence>
+							<xsd:element name="cell" maxOccurs="unbounded">
+								<xsd:complexType mixed="false">
+									<xsd:group ref="content_block" maxOccurs="unbounded"/>
+									<xsd:attribute name="colspan" type="xsd:positiveInteger" use="optional"
+										default="1"/>
+									<xsd:attribute name="rowspan" type="xsd:positiveInteger" use="optional"
+										default="1"/>
+									<xsd:attribute name="align" use="optional" default="center">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:enumeration value="left"/>
+												<xsd:enumeration value="center"/>
+												<xsd:enumeration value="right"/>
+												<xsd:enumeration value="justify"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+									<xsd:attribute name="valign" use="optional" default="middle">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:enumeration value="top"/>
+												<xsd:enumeration value="middle"/>
+												<xsd:enumeration value="bottom"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="align" use="optional" default="center">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:NCName">
+						<xsd:enumeration value="center"/>
+						<xsd:enumeration value="left"/>
+						<xsd:enumeration value="right"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="bgcolor" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="border" type="xsd:nonNegativeInteger" use="optional"/>
+			<xsd:attribute name="bordercolor" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="bordercolordark" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="bordercolorlight" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="cellpadding" type="xsd:nonNegativeInteger" use="optional" default="0"/>
+			<xsd:attribute name="cellspacing" type="xsd:nonNegativeInteger" use="optional" default="0"/>
+			<xsd:attribute name="class" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="cols" type="xsd:positiveInteger" use="optional" default="1"/>
+			<xsd:attribute name="datapagesize" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="dir" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="frame" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="height" type="xsd:positiveInteger" use="optional"/>
+			<xsd:attribute name="id" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="rules" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="style" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="summary" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="title" type="xsd:normalizedString" use="optional"/>
+			<xsd:attribute name="width" type="xsd:positiveInteger" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:group name="index">
+		<xsd:choice>
+			<xsd:element ref="index.author"/>
+			<xsd:element ref="index.glossary"/>
+			<xsd:element ref="index.symbol"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="content_block">
+		<xsd:annotation>
+			<xsd:documentation>A choice of either of the available content atoms.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element ref="para"/>
+			<xsd:element ref="math.display"/>
+			<xsd:element ref="math.array"/>
+			<xsd:element ref="table"/>
+			<xsd:element ref="ol"/>
+			<xsd:element ref="ul"/>
+			<!--			<xsd:element ref="object"/> -->
+			<xsd:element ref="object"/>
+			<xsd:element ref="media"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="content_sub">
+		<xsd:annotation>
+			<xsd:documentation>Substructure of a an element of the content block</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element ref="strong"/>
+			<xsd:element ref="emphasis"/>
+			<xsd:element ref="subordinate"/>
+			<xsd:element ref="math"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:annotation>
+		<xsd:documentation>============ End: Content Organizational Atoms ==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============= Begin: Math related atoms ======================
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============= End: Math related atoms ======================
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ Begin: Linking and Interactivity atoms ==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="subordinate">
+		<xsd:annotation>
+			<xsd:documentation>Subordinate information associated to the current data</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="hot"/>
+				<xsd:group ref="subordinate.types"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="external.link">
+		<xsd:annotation>
+			<xsd:documentation>link to an external document.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="info"/>
+			</xsd:sequence>
+			<xsd:attribute name="href" type="xsd:anyURI" use="required">
+				<xsd:annotation>
+					<xsd:documentation>Path to the document in question. Use one of the following:
+						(1) path relative to this XML-document; (2) absolute path on the server; (3)
+						http://URL</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="type" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>Optional information to identify the document type</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="html"/>
+						<xsd:enumeration value="image"/>
+						<xsd:enumeration value="sound"/>
+						<xsd:enumeration value="animation"/>
+						<xsd:enumeration value="movie"/>
+						<xsd:enumeration value="xml"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="target" type="xsd:NCName" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="info">
+		<xsd:annotation>
+			<xsd:documentation>For companion information displayed on MouseOver</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element name="info.caption" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Caption associated to an subordinate chunk of information.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:group ref="content_block" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="crossref">
+		<xsd:annotation>
+			<xsd:documentation>A cross reference to another object within the repository</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:group ref="crossref_types"/>
+				<xsd:element minOccurs="0" ref="info"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:group name="crossref_types">
+		<xsd:choice>
+			<xsd:element ref="comment.ref"/>
+			<xsd:element ref="definition.ref"/>
+			<xsd:element ref="theorem.ref"/>
+			<xsd:element ref="scientist.ref"/>
+			<xsd:element ref="exercise.pack.ref"/>
+			<xsd:element ref="example.pack.ref"/>
+			<xsd:element ref="unit.ref"/>
+			<xsd:element name="composition.ref">
+				<xsd:complexType>
+					<xsd:attribute name="compositionID" type="xsd:NCName"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:element name="companion">
+		<xsd:annotation>
+			<xsd:documentation>Companion information, internal to the book, and often specifically composed for the current context</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:choice>
+					<xsd:element ref="comment.ref"/>
+					<xsd:element ref="definition.ref"/>
+					<xsd:element ref="theorem.ref"/>
+					<xsd:element ref="showme.pack.ref"/>
+					<xsd:element ref="quiz.pack.ref"/>
+					<xsd:element ref="scientist.ref"/>
+					<xsd:element ref="unit.ref"/>
+				</xsd:choice>
+				<xsd:element minOccurs="0" ref="info"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="associate">
+		<xsd:annotation>
+			<xsd:documentation>To associate a WMath-object to the present object in order to provide detail, exploration, engagement, example, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:choice minOccurs="0">
+					<xsd:element ref="comment.ref"/>
+					<xsd:element ref="showme.pack.ref"/>
+					<xsd:element ref="quiz.pack.ref"/>
+					<xsd:element ref="definition.ref"/>
+					<xsd:element ref="theorem.ref"/>
+					<xsd:element ref="unit.ref"/>
+				</xsd:choice>
+				<xsd:element ref="info"/>
+			</xsd:sequence>
+			<xsd:attribute name="type" use="required">
+				<xsd:annotation>
+					<xsd:documentation>Select one of the types: Comment, Quiz, Info, Example,
+						Explanation, Illustration. This type appears next to the theorem or
+						definition etc. to which this object is associated.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="Illustration"/>
+						<xsd:enumeration value="Explanation"/>
+						<xsd:enumeration value="Comment"/>
+						<xsd:enumeration value="Example"/>
+						<xsd:enumeration value="Quiz"/>
+						<xsd:enumeration value="Theorem Lookup"/>
+						<xsd:enumeration value="Definition Lookup"/>
+						<xsd:enumeration value="Remark"/>
+						<xsd:enumeration value="Exploration"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:group name="subordinate.types">
+		<xsd:choice>
+			<xsd:element ref="info"/>
+			<xsd:element ref="companion"/>
+			<xsd:element name="external.ref">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:group ref="crossref_types"/>
+						<xsd:element ref="info"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="crossref"/>
+			<xsd:element ref="cite"/>
+			<xsd:element ref="external.link"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:annotation>
+		<xsd:documentation>============ End: Linking and Interactivity atoms ==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ Begin: External Objects Atoms =================</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ End: External Objects Atoms ==================</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>============ Begin: Indexing and Reference Atoms ==========</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="index.symbol">
+		<xsd:annotation>
+			<xsd:documentation>Symbol construct to be included in the symbol index; not transformed in
+				stand-alone Simplepage, Exercise, and Theorem documents. "info" is to be presented
+				in the backlink from the symbol index to the site where the symbolism is being
+				mentioned</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element name="symbol">
+					<xsd:annotation>
+						<xsd:documentation>the symbol construct to be indexed; use attribute "type" build categories of symbol constructs</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType mixed="true">
+						<xsd:choice minOccurs="0" maxOccurs="unbounded">
+							<xsd:element ref="math"/>
+						</xsd:choice>
+						<xsd:attribute name="type" use="optional" default="other">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:normalizedString">
+									<xsd:enumeration value="set object"/>
+									<xsd:enumeration value="operator"/>
+									<xsd:enumeration value="other"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element ref="info"/>
+				<xsd:element name="sortstring" type="xsd:normalizedString" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>a plain text string to aid the sorting of symbol constructs in a symbol index</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="index.glossary">
+		<xsd:annotation>
+			<xsd:documentation>Term to be included into the glossary; not transformed in stand-alone Simplepage, Exercise, and Theorem documents. "info" is to be presented in the backlink brom the glossary to the site where the term in question is being mentioned.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="term" maxOccurs="unbounded">
+					<xsd:complexType mixed="true">
+						<xsd:choice minOccurs="0" maxOccurs="unbounded">
+							<xsd:element ref="math"/>
+						</xsd:choice>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element ref="info" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="index.author">
+		<xsd:annotation>
+			<xsd:documentation>Author data to be included in index; not transformed in stand-alone SimplePage, Exercise, Theorem documents. "info" is to be presented in the backlink from the author index to the site where the author is being mentioned</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="name"/>
+				<xsd:element ref="info"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="cite">
+		<xsd:annotation>
+			<xsd:documentation>Citation of a literature reference</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element name="caption" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>Caption associated to a single citation or a cluster of citations</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="item" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="label" type="xsd:NCName" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="item">
+		<xsd:annotation>
+			<xsd:documentation>One literature reference. Structure: companion info - citekey - companion info</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:group ref="content_block" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="citekey" type="xsd:normalizedString">
+					<xsd:annotation>
+						<xsd:documentation>A key of a citation item.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:group ref="content_block" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:annotation>
+		<xsd:documentation>============ End: Indexing and Reference Atoms ==============</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="comment.ref">
+		<xsd:annotation>
+			<xsd:documentation>To reference a comment contained in a WMath repository: Provide the ID of the comment in the attribute commentID.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="commentID" type="xsd:NCName" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="definition.ref">
+		<xsd:annotation>
+			<xsd:documentation>To reference a definition contained in a WMath repository: Provide the ID of the definition in the attribute definitionID.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="definitionID" type="xsd:NCName" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="theorem.ref">
+		<xsd:annotation>
+			<xsd:documentation>To reference a theorem contained in a WMath repository: Provide the ID of the theorem in the attribute theoremID. Use the additional attribute theorempartID reference a part of a theorem.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="theoremID" type="xsd:NCName" use="required"/>
+			<xsd:attribute name="theorempartID" type="xsd:NCName" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="scientist.ref">
+		<xsd:annotation>
+			<xsd:documentation>To reference a historic/biographcial information about a scientist in a WMath DB: Provide the ID of the scientist in the attribute scientistID.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="scientistID" type="xsd:NCName" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="example.ref">
+		<xsd:annotation>
+			<xsd:documentation>To reference an example contained in a WMath repository: Provide the ID of the example in the attribute exampleID.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="exampleID" type="xsd:NCName" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="exercise.pack.ref">
+		<xsd:annotation>
+			<xsd:documentation>To reference an exercise pack contained in a WMath repository: Provide the ID of the exercise pack in the attribute exercisePackID.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="exercisePackID" type="xsd:NCName" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="example.pack.ref">
+		<xsd:annotation>
+			<xsd:documentation>To reference an example pack contained in a WMath repository: Provide the ID of the example pack in the attribute examplePackID.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="examplePackID" type="xsd:NCName" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="quiz.pack.ref">
+		<xsd:annotation>
+			<xsd:documentation>To reference a quiz pack contained in a WMath repository: Provide the ID of the quiz pack in the attribute quizPackID.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="quizPackID" type="xsd:NCName" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="showme.pack.ref">
+		<xsd:annotation>
+			<xsd:documentation>To reference a showme pack contained in a WMath repository: Provide the ID of the showme pack in the attribute showmePackID.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="showmePackID" type="xsd:NCName" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="media">
+		<xsd:annotation>
+			<xsd:documentation>Identifies media objects; Media object can be static or active.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="img"/>
+			</xsd:choice>
+			<xsd:attribute default="0" name="active">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:boolean"/>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="type">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string"/>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute default="0" name="inline">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:boolean"/>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="id" type="xsd:NCName"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="img">
+		<xsd:annotation>
+			<xsd:documentation>Image (as in XHTML) without image mapping</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element name="image.mapping">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="area" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:documentation>Use attributes to specify shape and position of mapped region. Use a child of area to provide subordinate information</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:group ref="subordinate.types"/>
+									<xsd:attribute name="shape" use="optional" default="rect">
+										<xsd:annotation>
+											<xsd:documentation>Choose shape of mapped region: one of rectangular, circle, or polygon</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:NCName">
+												<xsd:enumeration value="circle"/>
+												<xsd:enumeration value="poly"/>
+												<xsd:enumeration value="rect"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+									<xsd:attribute name="coords" type="xsd:normalizedString" use="required"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element minOccurs="0" ref="extended.caption"/>
+				<xsd:element minOccurs="0" ref="description"/>
+			</xsd:sequence>
+			<xsd:attribute name="src" use="required">
+				<xsd:annotation>
+					<xsd:documentation>Use one of the following:
+						(1) path relative to this XML-document; (2) absolute path on the server; (3)
+						http://URL, or ftp://URL, or https://URL
+						In a database environment, it is probably more appropriate to use the ID attribute to locate the image rather than the src attribute.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:anyURI"/>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="height" type="xsd:nonNegativeInteger" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>This attribute (along with width) match the HTML attributes of the img element.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="width" type="xsd:nonNegativeInteger" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>This attributes match the HTML attributes of the img element.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="id" type="xsd:NCName">
+				<xsd:annotation>
+					<xsd:documentation>This is a tentative attribute. Its purpose is to locate the picture resource in a database environment.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="extended.caption">
+		<xsd:complexType mixed="true">
+			<xsd:group ref="content_sub" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="unit.ref">
+		<xsd:complexType>
+			<xsd:attribute name="unitId" type="xsd:NCName"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="math.array">
+		<xsd:annotation>
+			<xsd:documentation>Use an array to format your display math. You can specify the number of columns, position format each cell, and specify the background-color and font-color for each cell.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="unbounded">
+				<xsd:element name="row">
+					<xsd:complexType>
+						<xsd:sequence maxOccurs="unbounded">
+							<xsd:element name="cell">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:choice>
+											<xsd:element ref="math"/>
+											<xsd:element name="text"/>
+										</xsd:choice>
+										<xsd:element minOccurs="0" ref="companion"/>
+									</xsd:sequence>
+									<xsd:attribute default="1" name="colspan" type="xsd:nonNegativeInteger"/>
+									<xsd:attribute default="center" name="halign">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:enumeration value="left"/>
+												<xsd:enumeration value="center"/>
+												<xsd:enumeration value="right"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+									<xsd:attribute default="middle" name="valign">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:enumeration value="top"/>
+												<xsd:enumeration value="middle"/>
+												<xsd:enumeration value="bottom"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+									<xsd:attribute name="bgcolor" type="xsd:hexBinary"/>
+									<xsd:attribute name="fontcolor" type="xsd:hexBinary"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute default="1" name="rowspan" type="xsd:nonNegativeInteger"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:NCName"/>
+			<xsd:attribute default="1" name="column" type="xsd:nonNegativeInteger"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

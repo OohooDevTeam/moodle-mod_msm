@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearCombination">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Linear Combination: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>The linear combinations of a single vector <latex>\Vect{x}</latex> consist of all vectors of the form <latex>t\cdot \Vect{x}</latex>, where <latex>t</latex> in <latex>\RNr</latex> is arbitrary. – The graphic below shows some linear combinations of <latex>\Vect{x} = (2,1)</latex>.</para>
+			<figure>
+				<img src="ims/LinearCombination1_Anim.gif"></img>
+			</figure>
+		</statement>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>We say that a vector <latex>\Vect{x}</latex> is a linear combination of two vectors <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> if there are numbers <latex>s</latex> and <latex>t</latex> in <latex>\RNr</latex> such that</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>s \Vect{u} + t \Vect{v}</right>
+			</computation>
+			<para>Now if <latex>\Vect{x}</latex>, <latex>\Vect{u}</latex>, and <latex>\Vect{v}</latex> are given, The question arises: Are there numbers <latex>s</latex> and <latex>t</latex> so that <latex>\Vect{x} = s \Vect{u} + t \Vect{v}</latex>? and, if so, what are the possible choices of <latex>s</latex> and <latex>t</latex>? – In general, this question leads to a system of linear equations. The animation below illustrates this issue for the vectors</para>
+			<math.display>
+				<latex>\Vect{u} = (-1,-1),\quad \Vect{v} = (2,1), \quad \text{and}\quad \Vect{x} = (1,-1)</latex>
+			</math.display>
+			<figure>
+				<img src="ims/LinearCombination2_Anim.gif"></img>
+			</figure>
+		</statement>
+		<answer type="Explanation">
+			<para>The animation goes through this progression:</para>
+			<ol>
+				<li><para>The line parallel to <latex>\Vect{u}</latex> through <latex>(1,-1)</latex> intersects the line <latex>t \Vect{v}</latex> at <latex>2 \Vect{v}</latex>.</para></li>
+				<li><para>The line parallel to <latex>\Vect{v}</latex> through <latex>(1,-1)</latex> intersects the line <latex>s \Vect{u}</latex> at <latex>3 \Vect{u}</latex>.</para></li>
+				<li><para>Therefore <latex>\Vect{x} = 3 \Vect{u} + 2 \Vect{v}</latex>.</para></li>
+			</ol>
+			<para>This expression of <latex>\Vect{x}</latex> as a linear combination of <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> can be found formally as the unique solution of the system of linear equations</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcrcr}
+-s & + & 2t & = & 1 \\
+-s & + & t & = & -1
+\end{array}
+]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>For another example of the previous type, let</para>
+			<math.display>
+				<latex>\Vect{u} = (-1,-1),\quad \Vect{v} = (2,1), \quad \text{and}\quad \Vect{x} = (3,2)</latex>
+			</math.display>
+			<figure>
+				<img src="ims/LinearCombination3_Anim.gif"></img>
+			</figure>
+		</statement>
+		<answer type="Explanation">
+			<para>The animation goes through this progression:</para>
+			<ol>
+				<li><para>The line parallel to <latex>\Vect{u}</latex> through <latex>(3,2)</latex> intersects the line <latex>t \Vect{v}</latex> at <latex>1 \Vect{v}</latex>.</para></li>
+				<li><para>The line parallel to <latex>\Vect{v}</latex> through <latex>(3,2)</latex> intersects the line <latex>s \Vect{u}</latex> at <latex>(-1) \Vect{u}</latex>.</para></li>
+				<li><para>Therefore <latex>\Vect{x} = (-1) \Vect{u} + \Vect{v}</latex>.</para></li>
+			</ol>
+			<para>This expression of <latex>\Vect{x}</latex> as a linear combination of <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> can be found formally as the unique solution of the system of linear equations</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcrcr}
+-s & + & 2t & = & 3 \\
+-s & + & t & = & 2
+\end{array}
+]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Any vector <latex>\Vect{x}=(x,y)</latex> in <latex>\RNr[2]</latex> can be expressed uniquely as a linear combination of the vectors</para>
+			<math.display>
+				<latex>\Vect{u} = (-1,-1)\quad \text{and} \quad \Vect{v} = (2,1)</latex>
+			</math.display>
+		</statement>
+		<answer type="Proof">
+			<para>To express <latex>\Vect{x}</latex> as a linear combination of <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex>, we need to solve the system of linear equations</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcrcr}
+-s & + & 2t & = & x \\
+-s & + & t & = & y
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>The coefficient matrix of the system if</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A = 
+\left[
+\begin{array}{rr}
+-1 & 2 \\
+-1 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>which has <latex>\det(\Mtrx{A}) = 1\neq 0</latex>. Therefore this system has a unique solution.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>The animation below illustrates how to express the vector <latex>\Vect{x} = (2,1,2)</latex> of <latex>\RNr[3]</latex> as a linear combination of the vectors.</para>
+			<math.display>
+				<latex>\Vect{u} = (1,0,1/2)\quad \text{and} \quad \Vect{v} = (0,1,1).</latex>
+			</math.display>
+			<figure>
+				<img src="ims/"></img>
+			</figure>
+		</statement>
+		<answer type="Explanation">
+			<para>The animation goes through this progression:</para>
+			<ol>
+				<li><para>The line parallel to <latex>\Vect{u}</latex> through <latex>(2,1,2)</latex> intersects the line <latex>t \Vect{v}</latex> at <latex>1 \cdot \Vect{v}</latex>.</para></li>
+				<li><para>The line parallel to <latex>\Vect{v}</latex> through <latex>(2,1,2)</latex> intersects the line <latex>s \Vect{u}</latex> at <latex>2 \cdot \Vect{u}</latex>.</para></li>
+				<li><para>Therefore <latex>\Vect{x} = 2 \Vect{u} + \Vect{v}</latex>.</para></li>
+			</ol>
+			
+		</answer>
+	</showme>
+	
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>With your mouse point to vectors which are linear combinations of <latex>\Vect{x}</latex>.</para>
+			<para align="center">
+				<image src="ims/LinearCombination2.gif">
+					<area shape="poly" coords="146,210,148,218,259,205,256,191">
+						<info>
+							<caption>Comment on vector <latex>\Vect{x}</latex></caption>
+							<para><latex>\Vect{x}</latex> itself is a linear combination of <latex>\Vect{x}</latex> because</para>
+							<computation>
+								<left>\Vect{x}</left>
+								<center>=</center>
+								<right>1\cdot \Vect{x}</right>
+							</computation>
+						</info>
+					</area>
+					<area shape="poly" coords="261,191,264,205,320,198,316,182">
+						<info>
+							<para>This vector is a linear combination of <latex>\Vect{x}</latex> as it can be expressed as (approximately) <latex>(3/2)\cdot \Vect{x}</latex>.</para>
+						</info>
+					</area>
+					<area shape="poly" coords="322,182,324,194,446,180,445,162">
+						<info>
+							<para>This vector is a linear combination of <latex>\Vect{x}</latex> as it can be expressed as (approximately) <latex>(5/2)\cdot \Vect{x}</latex>.</para>
+						</info>
+					</area>
+					<area shape="poly" coords="115,220,119,215,1,225,1,243">
+						<info>
+							<para>This vector is a linear combination of <latex>\Vect{x}</latex> as it can be expressed as (approximately) <latex>(-1)\cdot \Vect{x}</latex>.</para>
+						</info>
+					</area>
+					<area shape="poly" coords="63,119,115,214,129,206,75,109">
+						<info>
+							<para>This vector is not parallel to <latex>\Vect{x}</latex>. Therefore it cannot be expressed in the form <latex>t\cdot \Vect{x}</latex>; i.e. it is not a linear combination of <latex>\Vect{x}</latex>.</para>
+						</info>
+					</area>
+					<area shape="poly" coords="139,205,251,26,236,22,130,208">
+						<info>
+							<para>This vector is not parallel to <latex>\Vect{x}</latex>. Therefore it cannot be expressed in the form <latex>t\cdot \Vect{x}</latex>; i.e. it is not a linear combination of <latex>\Vect{x}</latex>.</para>
+						</info>
+					</area>
+					<area shape="poly" coords="145,201,150,204,443,2,417,2">
+						<info>
+							<para>This vector is not parallel to <latex>\Vect{x}</latex>. Therefore it cannot be expressed in the form <latex>t\cdot \Vect{x}</latex>; i.e. it is not a linear combination of <latex>\Vect{x}</latex>.</para>
+						</info>
+					</area>
+					<area shape="poly" coords="117,221,58,245,62,257,124,222">
+						<info>
+							<para>This vector is not parallel to <latex>\Vect{x}</latex>. Therefore it cannot be expressed in the form <latex>t\cdot \Vect{x}</latex>; i.e. it is not a linear combination of <latex>\Vect{x}</latex>.</para>
+						</info>
+					</area>
+					<area shape="poly" coords="134,222,307,266,321,261,144,218">
+						<info>
+							<para>This vector is not parallel to <latex>\Vect{x}</latex>. Therefore it cannot be expressed in the form <latex>t\cdot \Vect{x}</latex>; i.e. it is not a linear combination of <latex>\Vect{x}</latex>.</para>
+						</info>
+					</area>
+				</image>
+			</para>
+		</statement>
+		<answer type="Explanation">
+			<para>A linear combination of <latex>\Vect{x}</latex> is a vector of the form <latex>t\cdot \Vect{x}</latex>, where <latex>t</latex> is in <latex>\RNr</latex>. This means that a linear combination of <latex>\Vect{x}</latex> is any vector which is parallel to <latex>\Vect{x}</latex> or, in other words, which lies on the line in the direction of <latex>\Vect{x}</latex>.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Express the position vector of each of the yellow dots as a linear combination of <latex>\mathbf{x}</latex>, <latex>\mathbf{y}</latex>, and <latex>\mathbf{z}</latex> in a least three distinct ways. &ndash; Place your mouse over top the point in question to find answers.</para>
+			<para align="center">
+				<image src="ims/LinearCombination3.gif">
+					<area shape="circle" coords="60,57,8">
+						<info>
+							<para>Ways in which the position vector for this point can be written include</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+								\begin{array}{rcrcr}
+								-\mathbf{x} & & & & \mathbf{z} \\ 
+								-2\mathbf{x} & & \mathbf{y} & & \\
+								& - & \mathbf{y} & + & 2\mathbf{z} \\ 
+								\end{array}
+								]]>
+								</latex>
+							</math.display>
+						</info>
+					</area>
+					<area shape="circle" coords="251,104,8">
+						<info>
+							<para>Ways in which the position vector for this point can be written include</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+								\begin{array}{rcrcr}
+								\mathbf{x} & & & & \tfrac{1}{2}\mathbf{z} \\ 
+								& & \mathbf{y} & - & \tfrac{1}{2}\mathbf{z} \\
+								\tfrac{1}{2}\mathbf{x} & + & \tfrac{1}{2}\mathbf{y} & & \\ 
+								\end{array}
+								]]>
+								</latex>
+							</math.display>
+						</info>
+					</area>
+					<area shape="circle" coords="298,105,8">
+						<info>
+							<para>Ways in which the position vector for this point can be written include</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+								\begin{array}{rcrcr}
+								\mathbf{x} & + & \tfrac{1}{2}\mathbf{y} & & \\ 
+								\tfrac{3}{2}\mathbf{x} & & & + & \tfrac{1}{2}\mathbf{z} \\
+								& & \tfrac{3}{2}\mathbf{y} & - & \mathbf{z} \\ 
+								\end{array}
+								]]>
+								</latex>
+							</math.display>
+						</info>
+					</area>
+					<area shape="circle" coords="59,153,8">
+						<info>
+							<para>Ways in which the position vector for this point can be written include</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+								\begin{array}{rcrcr}
+								- \mathbf{x} & & & & \\ 
+								& - & \mathbf{y} & + & \mathbf{z} \\
+								-2\mathbf{x} & + & \mathbf{y} & - & \mathbf{z} \\ 
+								\end{array}
+								]]>
+								</latex>
+							</math.display>
+						</info>
+					</area>
+					<area shape="circle" coords="203,200,8">
+						<info>
+							<para>Ways in which the position vector for this point can be written include</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+								\begin{array}{rcrcr}
+								\tfrac{1}{2} \mathbf{x} & & & - & \tfrac{1}{2}\mathbf{z} \\ 
+								\mathbf{x} & - & \tfrac{1}{2}\mathbf{y} & & \\
+								& & \tfrac{1}{2}\mathbf{y} & - & \mathbf{z} \\ 
+								\end{array}
+								]]>
+								</latex>
+							</math.display>
+						</info>
+					</area>
+				</image>
+			</para>
+			
+		</statement>
+	</showme>
+	
+</showme.pack>

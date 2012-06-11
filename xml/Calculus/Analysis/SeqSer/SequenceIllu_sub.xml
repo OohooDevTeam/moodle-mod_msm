@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_Sequence">
+	<title>Sequence: Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>A sequence <latex>(a_n)</latex> of real numbers associates to each <latex>n\in \NNr</latex> a number in <latex>\RNr</latex>. The graphic below illustrates this process for the first 9 sequence elements.</para>
+			<figure>
+				<img src="ims/Sequence.png"></img><!-- svg available -->
+			</figure>
+			<para>Here we have approximately</para>
+			<ol>
+				<li><para><latex>a_0 \approx 3.6</latex></para></li>
+				<li><para><latex>a_1 \approx 0.5</latex></para></li>
+				<li><para><latex>a_2 \approx -0.3</latex></para></li>
+				<li><para><latex>a_3 \approx 3.8</latex></para></li>
+				<li><para><latex>a_4 = -2</latex></para></li>
+				<li><para><latex>a_5 \approx -4.8</latex></para></li>
+				<li><para><latex>a_6 \approx -2.4</latex></para></li>
+				<li><para><latex>a_7 \approx 0.3</latex></para></li>
+				<li><para><latex>a_8 \approx 4.5</latex></para></li>
+				<li><para><latex>a_9 \approx 4.4</latex></para></li>
+			</ol>
+		</block>
+		<block>
+			<para>Note that a sequence might, but need not, display any regularity.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MatrixShapes">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Matrix Shapes: Exercises</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>How many nonzero entries can an <latex>(n,n)</latex> diagonal matrix have?</para>
+		</problem>
+		<approach>
+			<answer><para>An <latex>(n,n)</latex>-diagonal matrix can have at most <latex>n</latex> entries which are not <latex>0</latex>.</para></answer>
+			<solution>
+				<para>A diagonal matrix is square shaped, and only entries in positions <latex>(i,i)</latex>, <latex>1\leq i\leq n</latex>, can be nonzero. There are precisely <latex>n</latex> such diagonal positions. Therefore such matrix can have at most <latex>n</latex> entries which are not <latex>0</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>How many nonzero entries can these upper triangular matrices have?</para>
+		</problem>
+		<part>
+			<problem><para><latex>(2,2)</latex> upper triangular matrices</para></problem>
+			<approach>
+				<answer><para>Such a matrix can have up to <latex>3</latex> nonzero entries</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>(3,3)</latex> upper triangular matrices</para></problem>
+			<approach>
+				<answer><para>Such a matrix can have up to <latex>6</latex> nonzero entries</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>(4,4)</latex> upper triangular matrices</para></problem>
+			<approach>
+				<answer><para>Such a matrix can have up to <latex>10</latex> nonzero entries</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>(n,n)</latex> upper triangular matrices</para></problem>
+			<approach>
+				<answer><para>Such a matrix can have up to <latex>\frac{1}{2}\cdot n\cdot (n+1)</latex> nonzero entries</para></answer>
+				<solution>
+					<para>Look at the columns of an upper triangular matrix of size <latex>(n,n)</latex>. The first column can contain <latex>1</latex> nonzero entry. The second column can contain up to <latex>2</latex> nonzero entries. The third column can contain up to <latex>3</latex> nonzero entries, and so on until, finally, the <latex>n</latex>-th column can contain up to <latex>n</latex> nonzero entries.</para>
+					
+					<para>Therefore, an <latex>(n,n)</latex>-matrix can contain up to</para>
+					
+					<math.display>
+						<latex>1+2+3+\cdots+n\ =\ \dfrac{n\cdot (n+1)}{2}</latex>
+					</math.display>
+					
+					<para>nonzero entries.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

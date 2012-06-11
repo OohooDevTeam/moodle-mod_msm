@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_MultiplyVectorByScalar"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Multiplying a Vector by a Scalar: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>To multiply a vector <math>
+                  <latex>\Vect{x}</latex>
+               </math> by a scalar <math>
+                  <latex>t</latex>
+               </math>, we multiply each coordinate of <math>
+                  <latex>\Vect{x}</latex>
+               </math> by <math>
+                  <latex>t</latex>
+               </math>. For example, we find the scalar product of <math>
+                  <latex>\Vect{x}=(-2,1)</latex>
+               </math> by <math>
+                  <latex>t=2</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <math.display>
+				              <latex>t\cdot \Vect{x}\ =\ 2\cdot (-2,1)\ =\ (-4,2).</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In <math>
+                  <latex>\RNr[3]</latex>
+               </math> find the scalar product of <math>
+                  <latex>\Vect{x}=(3,2,-1)</latex>
+               </math> by <math>
+                  <latex>t=-\frac{3}{2}</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <math.display>
+				              <latex>t\cdot \Vect{x}\ =\ -\frac{3}{2}\cdot (3,2,-1)\ =\ \left(-\frac{9}{2},-3,\frac{3}{2}\right).</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In <math>
+                  <latex>\RNr[3]</latex>
+               </math> find the scalar product of <math>
+                  <latex>\Vect{x}=(-1,3,0,4)</latex>
+               </math> and <math>
+                  <latex>t=6</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <math.display>
+				              <latex>t\cdot \Vect{x}\ =\ 6\cdot (-1,3,0,4)\ =\ (-6,18,0,24).</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

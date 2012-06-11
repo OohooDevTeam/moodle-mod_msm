@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_InvertibilityByDimension">
+	<statement>
+		<para>For a linear map <latex>L\from V\to W</latex> with <latex>\Dim{V} = \Dim{W}</latex> the following are equivalent</para>
+		<part equivalence.mark="1" partid="MonoProperty">
+			<para><latex>L</latex> is a monomorphism.</para>
+		</part>
+		<part equivalence.mark="1" partid="EpiProperty">
+			<para><latex>L</latex> is an epimorphism.</para>
+		</part>
+		<part equivalence.mark="1" partid="IsoProperty">
+			<para><latex>L</latex> is an isomorphism.</para>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<para>An isomorphism is both a monomorphism and an epimorphism. So it only remains to prove that, under the condition <latex>\Dim{V}=\Dim{W}</latex>, a monomorphism is an isomorphism, and an epimorphism is an isomorphism.</para>
+		<para>The key to proving both of these claims is the 
+			<subordinate>
+				<hot>dimension formula</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_DimensionFormula"/>
+					<para>Look up this formula</para>
+				</crossref>
+			</subordinate>
+			for linear maps.</para>
+		<caption><partref>MonoProperty</partref> Monomorphism implies Isomorphism</caption>
+		<para>If <latex>L</latex> is a monomorphism, we have <latex>\Dim{ \Ker{ L }} = 0</latex>, and so</para>
+		<computation>
+			<left>\Dim{ W } = \Dim{ V }</left>
+			<center>=</center>
+			<right>\Dim{ \Ker{ L }} + \Dim{ \Img{ L }} = \Dim{ \Img{ L }}</right>
+		</computation>
+		<para>As <latex>\Img{L}</latex> is contained in <latex>W</latex>, this gives <latex>\Img{L} = W</latex>, meaning that <latex>L</latex> is an epimorphism. Thus <latex>L</latex> is an epimorphism and a monomorphism, hence an isomorphism as claimed.</para>
+		<caption>
+			<partref>EpiProperty</partref> Epimorphism implies Isomorphism
+		</caption>
+		<para>If <latex>L</latex> is an epimorphism, we have <latex>\Img{L} = W</latex>, and so <latex>\Dim{ \Img{ L }} = \Dim{ W }</latex>. By the dimension formula,</para>
+		<computation>
+			<left>\Dim{ \Ker{ L }}</left>
+			<center>=</center>
+			<right>\Dim{ V } - \Dim{ \Img{ L }}</right>
+			<left></left>
+			<center>=</center>
+			<right>\Dim{ V } - \Dim{ W } = 0</right>
+		</computation>
+		<para>This means that <latex>L</latex> is a monomorphism. By assumption <latex>L</latex> is an epimorphism. So it is an isomorphism.</para>
+	</proof>
+</theorem>

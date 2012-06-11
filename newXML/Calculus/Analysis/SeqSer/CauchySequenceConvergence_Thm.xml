@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_CauchySequenceConvergence"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Cauchy's criterion for convergence to a number</caption>
+   <statement.theorem>
+      <para>
+         <para.body>For a sequence <math>
+               <latex>(x_n)</latex>
+            </math> there exists a number <math>
+               <latex>c</latex>
+            </math> with <math>
+               <latex>\lim_{n\to \infty} x_n =c</latex>
+            </math> if and only if for every <math>
+               <latex> \varepsilon &gt; 0 </latex>
+            </math> there exists <math>
+               <latex>n_0\in \NNr</latex>
+            </math> such that
+			</para.body>
+         <index.glossary>
+            <term>Cauchy criterion</term>
+            <term>for convergence of a sequence</term>
+         </index.glossary>
+      </para>
+      <math.display>
+         <latex> \Abs{ x_m - x_n } &lt; \varepsilon </latex>
+      </math.display>
+      <para>
+         <para.body>for all <math>
+               <latex>m,n\geq n_0</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>Assume first that <math>
+                     <latex>\lim_{n\to \infty} x_n =c</latex>
+                  </math>. Given <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math>, we need to show that there exists <math>
+                     <latex>n_0 \in \NNr</latex>
+                  </math> such that <math>
+                     <latex> \Abs{ x_m - x_n } &lt; \varepsilon </latex>
+                  </math> for all <math>
+                     <latex>m,n\geq n_0</latex>
+                  </math>. Indeed, as <math>
+                     <latex>(x_n)</latex>
+                  </math> converges to <math>
+                     <latex>c</latex>
+                  </math>, there exists <math>
+                     <latex>n_0\in \NNr</latex>
+                  </math> such that</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ x_n - c } &lt; \varepsilon/2</latex>
+            </math.display>
+            <para>
+               <para.body>for all <math>
+                     <latex>n\geq n_0</latex>
+                  </math>. Now, if <math>
+                     <latex>m,n\geq n_0</latex>
+                  </math>, the triangle inequality tells us:</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ x_m - x_n } = \Abs{ (x_m - c) - (x_n - c) } \leq \Abs{ x_m-c } + \Abs{ x_n - c } &lt; (\varepsilon/2) + (\varepsilon/2) </latex>
+            </math.display>
+            <para>
+               <para.body>So <math>
+                     <latex>(x_n)</latex>
+                  </math> satisfies Cauchy's criterion for convergence.</para.body>
+            </para>
+            <para>
+               <para.body>Now for the converse, assume that <math>
+                     <latex>(x_n)</latex>
+                  </math> satisfies Cauchy's criterion for convergence. We need to show that there exists <math>
+                     <latex>c\in \RNr</latex>
+                  </math> such that <math>
+                     <latex>\lim_{n\to \infty} x_n =c</latex>
+                  </math>. To this end we invoke the 
+			<subordinate>
+                     <hot>completeness axiom</hot>
+                     <crossref>
+                        <definition.ref definitionID="Def_CompletenessAxiomForR"/>
+                        <info>
+                           <definition.ref definitionID="Def_CompletenessAxiomForR"/>
+                           <para>
+                              <para.body>Look up this axiom.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			of the real number system. This involves the following steps</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Construct two non empty sets <math>
+                           <latex>A\leq B</latex>
+                        </math>; the completeness axiom tells us then that there is <math>
+                           <latex>c\in \RNr</latex>
+                        </math> with <math>
+                           <latex>A\leq c\leq B</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Then show that <math>
+                           <latex>(x_n)</latex>
+                        </math> converges to <math>
+                           <latex>c</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>
+                  <strong>Step 1</strong>   Let <math>
+                     <latex>A</latex>
+                  </math> be the set of all those <math>
+                     <latex>t\in \RNr</latex>
+                  </math> such that <math>
+                     <latex>t \leq x_n</latex>
+                  </math> for <math>
+                     <latex>n</latex>
+                  </math> sufficiently large, and let <math>
+                     <latex>B</latex>
+                  </math> be the set of all those <math>
+                     <latex>t\in \RNr</latex>
+                  </math> such that <math>
+                     <latex>x_n\leq t</latex>
+                  </math> for <math>
+                     <latex>n</latex>
+                  </math> sufficiently large. We need to show that these sets are not empty.</para.body>
+            </para>
+            <para>
+               <para.body>We know that there exists <math>
+                     <latex>n_0\in \NNr</latex>
+                  </math> such that <math>
+                     <latex> \Abs{ x_m - x_n } &lt; 1 </latex>
+                  </math> for all <math>
+                     <latex>m,n\geq n_0</latex>
+                  </math>. It follows that <math>
+                     <latex>\OCIntrvl{-\infty}{x_{n_0} - 1} \subseteq A</latex>
+                  </math> and <math>
+                     <latex>\COIntrvl{ x_{n_0}+1 }{+\infty}\subseteq B</latex>
+                  </math>. Thus both sets are not empty and satisfy <math>
+                     <latex>A\leq B</latex>
+                  </math>. By the 
+			<subordinate>
+                     <hot>completeness property</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_RCompleteFromInfSup"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_RCompleteFromInfSup"/>
+                           <para>
+                              <para.body>Look up this result.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			there exist <math>
+                     <latex>s:=\sup(A)</latex>
+                  </math>, and <math>
+                     <latex>i:=\inf(B)</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Step 2</strong>   We claim that <math>
+                     <latex>s=\lim_{n\to\infty}x_n = i</latex>
+                  </math>. We argue by contradiction: If <math>
+                     <latex>s\neq i</latex>
+                  </math> then <math>
+                     <latex> \varepsilon := (i-s)/4 &gt; 0 </latex>
+                  </math>. Now choose <math>
+                     <latex>n_0\in \NNr</latex>
+                  </math> such that <math>
+                     <latex> \Abs{ x_m - x_n } &lt; \varepsilon</latex>
+                  </math> for all <math>
+                     <latex>m,n\geq n_0</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>We will now see that this leads to the absurd situation that there is no place in <math>
+                     <latex>\RNr</latex>
+                  </math> where <math>
+                     <latex>x_{n_0}</latex>
+                  </math> could be.</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>Consider the possibility <math>
+                           <latex>x_{n_0} \leq s+\varepsilon</latex>
+                        </math>. Then </para.body>
+                  </para>
+                  <math.display>
+                     <latex> x_n &lt; s + 2\varepsilon &lt; s+ 4\varepsilon = i </latex>
+                  </math.display>
+                  <para>
+                     <para.body>for all <math>
+                           <latex>n\geq n_0</latex>
+                        </math>. But this means that <math>
+                           <latex>(s+2\varepsilon)\in B</latex>
+                        </math>, a contradiction to the fact that <math>
+                           <latex>\inf(B) = s+4\varepsilon</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Consider the possibility <math>
+                           <latex>x_{n_0} \geq i-\varepsilon</latex>
+                        </math>. Then </para.body>
+                  </para>
+                  <math.display>
+                     <latex> x_n &gt; i - 2\varepsilon &gt; i- 4\varepsilon = s </latex>
+                  </math.display>
+                  <para>
+                     <para.body>for all <math>
+                           <latex>n\geq n_0</latex>
+                        </math>. But this means that <math>
+                           <latex>(i-2\varepsilon)\in A</latex>
+                        </math>, a contradiction to the fact that <math>
+                           <latex>\sup(A) = i-4\varepsilon</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Consider the possibility <math>
+                           <latex> s+\varepsilon &lt; x_{n_0} &lt; i - \varepsilon </latex>
+                        </math>. Then </para.body>
+                  </para>
+                  <math.display>
+                     <latex> s &lt; x_{n_0}-\varepsilon &lt; x_n &lt; x_{n_0}+\varepsilon &lt; i </latex>
+                  </math.display>
+                  <para>
+                     <para.body>for all <math>
+                           <latex>n\geq n_0</latex>
+                        </math>. But this means that <math>
+                           <latex> \sup(A) &lt; (x_{n_0} - \varepsilon) \in A</latex>
+                        </math>, a contradiction.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>Thus <math>
+                     <latex>s=i</latex>
+                  </math>, and it remains to show that <math>
+                     <latex>\lim_{n\to \infty} x_n = s</latex>
+                  </math>. So let <math>
+                     <latex> \varepsilon &gt; 0</latex>
+                  </math>. Then</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a:=(s-\varepsilon)/2 \in A</latex>
+                        </math> and so there exists <math>
+                           <latex>n_1\in \NNr</latex>
+                        </math> with <math>
+                           <latex>x_n \geq  a</latex>
+                        </math> for all <math>
+                           <latex>n\geq n_1</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>b:=(s+\varepsilon)/2 \in B</latex>
+                        </math> and so there exists <math>
+                           <latex>n_2\in \NNr</latex>
+                        </math> with <math>
+                           <latex>x_n \leq  b</latex>
+                        </math> for all <math>
+                           <latex>n\geq n_2</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>So, set <math>
+                     <latex>n_0 := \max\Set{ n_1,n_2}</latex>
+                  </math>, and we have</para.body>
+            </para>
+            <math.display>
+               <latex> s-\varepsilon &lt; a \leq x_n &lt; b &lt; s + \varepsilon </latex>
+            </math.display>
+            <para>
+               <para.body>as required. – This completes the proof.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

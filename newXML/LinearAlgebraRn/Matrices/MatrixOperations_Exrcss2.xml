@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixOperations-MiniProofs"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Matrix Operations: Mini Proofs</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+            <para>
+               <para.body>Proof the following statements</para.body>
+            </para>
+         </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Suppose <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> are two <math>
+                        <latex>(n,n)</latex>
+                     </math>-matrices satisfying</para.body>
+               </para>
+			            <math.display>
+				              <latex>(\Mtrx{A} + \Mtrx{B})(\Mtrx{A} - \Mtrx{B}) = \Mtrx{A}^2 - \Mtrx{B}^2</latex>
+			            </math.display>
+				           <para>
+                  <para.body>Show that   <math>
+                        <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>Expand the given expression using the distributivity law of matrix multiplication.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Using the distributivity law of matrix multiplication, we compute:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A}+\Mtrx{B})(\Mtrx{A}-\Mtrx{B})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^2 -\Mtrx{A}\Mtrx{B} +\Mtrx{B}\Mtrx{A} -\Mtrx{B}^2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>By assumption</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>By assumption</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^2 - \Mtrx{B}^2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>So   <math>
+                           <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>
+                        </math>, as claimed.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>If <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> are two symmetric <math>
+                        <latex>(n,n)</latex>
+                     </math>-matrices, show that the following matrices are symmetric as well.</para.body>
+               </para>
+			            <ul>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A} + \Mtrx{B}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A} - \Mtrx{B}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}^T - \Mtrx{B}^T</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+			            </ul>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+               <para>
+                  <para.body>In each case show that the given matrix expression is equal to its transpose; use the properties of transposition to achieve this.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>If <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> are 
+				<subordinate>
+                        <hot>anti-symmetric</hot>
+                        <info>
+                           <info.caption>
+                              <caption>Definition of anti-symmetric</caption>
+                           </info.caption>
+						
+						                     <para>
+                              <para.body>A matrix <math>
+                                    <latex>\Mtrx{X}</latex>
+                                 </math> is called anti-symmetric if   <math>
+                                    <latex>\Mtrx{X}^T = -\Mtrx{X}</latex>
+                                 </math>.</para.body>
+                           </para>
+					                   </info>
+                     </subordinate>
+				matrices of size <math>
+                        <latex>(n,n)</latex>
+                     </math>, show that <math>
+                        <latex>\Mtrx{A} + \Mtrx{B}</latex>
+                     </math> is anti-symmetric.
+			</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+            <para>
+               <para.body>Given an arbitrary <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>, show the following</para.body>
+            </para>
+         </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A} + \Mtrx{A}^T</latex>
+                     </math> is symmetric</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A} - \Mtrx{A}^T</latex>
+                     </math> is anti-symmetric.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For arbitrary natural numbers <math>
+                     <latex>k,n\geq 1</latex>
+                  </math>, show that <math>
+                     <latex>(\IdMtrx[n])^k = \IdMtrx[n]</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>A square matrix <math>
+                     <latex>\Mtrx{U}</latex>
+                  </math> is idempotent if it satisfies <math>
+                     <latex>\Mtrx{U}^2 = \Mtrx{U}</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Show that, for each <math>
+                        <latex>n\geq 1</latex>
+                     </math> the identity matrix <math>
+                        <latex>\IdMtrx[n]</latex>
+                     </math> is idempotent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+               <para>
+                  <para.body>You need to recall what the statement means ‘a matrix is idempotent’.</para.body>
+               </para>
+            </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>By definition, <math>
+                        <latex>\Mtrx{U}</latex>
+                     </math> is idempotent if <math>
+                        <latex>\Mtrx{U}^2=\Mtrx{U}</latex>
+                     </math>. Now, in this case, the role of <math>
+                        <latex>\Mtrx{U}</latex>
+                     </math> is played by the identity matrix <math>
+                        <latex>\IdMtrx[n]</latex>
+                     </math>. So, what do you need to do?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>You need to show that <math>
+                        <latex>\IdMtrx[n]^{2} = \IdMtrx[n]</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Show that, for each <math>
+                        <latex>n\geq 1</latex>
+                     </math> the <math>
+                        <latex>(n,n)</latex>
+                     </math>-zero-matrix is idempotent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Give an example of a <math>
+                        <latex>(2,2)</latex>
+                     </math>-matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, distinct from 0-matrix and identity matrix, which is idempotent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Give an example of a <math>
+                        <latex>(3,3)</latex>
+                     </math>-matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, distinct from 0-matrix and identity matrix, which is idempotent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If the <math>
+                        <latex>(n,n)</latex>
+                     </math>-matrix <math>
+                        <latex>\Mtrx{T}</latex>
+                     </math> is idempotent, show that the <math>
+                        <latex>(n+1,n+1)</latex>
+                     </math>-matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+V := 
+\left[
+\begin{array}{cc}
+T &amp; 0 \\
+0 &amp; 1
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>is idempotent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> is idempotent, show that <math>
+                        <latex>\Mtrx{B}^3 = \Mtrx{B}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is idempotent, show that <math>
+                        <latex>\Mtrx{A}^T</latex>
+                     </math> is idempotent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> is idempotent, show that <math>
+                        <latex>\Mtrx{C} := \IdMtrx[n] - \Mtrx{B}</latex>
+                     </math> is also idempotent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Mtrx{Q}</latex>
+                     </math> is idempotent, show that   <math>
+                        <latex>\Mtrx{C}^3 = \Mtrx{C}</latex>
+                     </math>, where <math>
+                        <latex>\Mtrx{C}:= \IdMtrx[n] - \Mtrx{Q}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+	  </exercise>
+	
+
+
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> satisfies the matrix equation</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Mtrx{A}^3 + 4\Mtrx{A} - 2\IdMtrx[n] = \Mtrx{0}_n</latex>
+			         </math.display>
+			         <para>
+               <para.body>Show that <math>
+                     <latex>\Mtrx{A}^T</latex>
+                  </math> satisfies this matrix equation as well.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+</exercise.pack>

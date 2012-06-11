@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_LinearTrafosTypes1">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Exercises: Types of Linear Transformations 1</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear transformation <latex>L</latex> below answer the following questions</para>
+			<math.display>
+				<latex>L\from \RNr[2] \longrightarrow \RNr[2],\quad L(x,y) = (2x,2y)</latex>
+			</math.display>
+		</problem>
+		
+		<part>
+			<problem>
+				<para>Does <latex>L</latex> transform the zero vector of <latex>\RNr[2]</latex> into itself?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>Yes! - <latex>L(0,0) = (2\cdot 0,2\cdot 0) = (0,0)</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>L</latex> transform the unit vector <latex>\StdBss{1}</latex> of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L(1,0) = (2,0)</latex>; i.e. <latex>L</latex> stretches <latex>\StdBss{1}</latex> by a factor of <latex>2</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>L</latex> transform the unit vector <latex>\StdBss{2}</latex> of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L(0,1) = (0,2)</latex>; i.e. <latex>L</latex> stretches <latex>\StdBss{2}</latex> by a factor of <latex>2</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>How does <latex>L</latex> transform the top right corner of the unit square of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L(1,1) = (2,2)</latex>; i.e. <latex>L</latex> stretches the position vector of <latex>(1,1)</latex> by a factor of <latex>2</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What is the image under <latex>L</latex> of the unit square of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The unit square of <latex>\RNr[2]</latex> gets magnified by a factor of two. The new vertices are</para>
+					<math.display>
+						<latex>(0,0) \quad (2,0) \quad (0,2) \quad (2,2)</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The corners of the unit square are <latex>(0,0)</latex>, <latex>(1,0)</latex>, <latex>(0,1)</latex>, and <latex>(1,1)</latex>. <latex>L</latex> transforms them into the points <latex>(0,0)</latex>, <latex>(2,0)</latex>, <latex>(0,2)</latex>, and <latex>(2,2)</latex>. Therefore the image under <latex>L</latex> of the unit square in <latex>\RNr[2]</latex> is the square of side length <latex>2</latex> as shown below.</para>
+					<figure>
+						<img src="ims/Dilation2.png"></img><!-- svg available -->
+					</figure>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>How does <latex>L</latex> transform the space <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> dilates all of <latex>\RNr[2]</latex> by a factor of <latex>2</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find the matrix representing <latex>L</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+2 & 0 \\
+0 & 2
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We found that</para>
+					<math.display>
+						<latex>L(\StdBss{1}) = (2,0)\quad \text{and}\quad L(\StdBss{2}) = (0,2)</latex>
+					</math.display>
+					<para>These vectors form the columns of the matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex>:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+2 & 0 \\
+0 & 2
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear transformation <latex>L</latex> below answer the following questions</para>
+			<math.display>
+				<latex>L\from \RNr[2] \longrightarrow \RNr[2],\quad L(x,y) = (.75x,.75y)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Which type of linear transformation is <latex>L</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> is a contraction with contraction factor <latex>3/4</latex>.</para>
+				</answer>
+				<solution.hint>
+					<para><latex>L(x,y) = \frac{3}{4}\cdot (x,y)</latex>; do you now recognize the type of linear transformation?</para>
+				</solution.hint>
+				<solution>
+					<para><latex>L(x,y) = \frac{3}{4}\cdot (x,y)</latex>. Writing <latex>\Vect{x}:=(x,y)</latex>, we see that <latex>L</latex> is of the form</para>
+					<math.display>
+						<latex>L(\Vect{x}) = s\cdot \Vect{x}</latex>
+					</math.display>
+					<para>with <latex>s=3/4</latex>. Therefore, <latex>L</latex> is a scaling transformation with scaling factor <latex>3/4</latex>; i.e. it is a contraction.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>L</latex> transform the unit square of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<solution>
+					<para><latex>L</latex> contracts the unit square of <latex>\RNr[2]</latex> by a factor of <latex>3/4</latex> as shown below.</para>
+					<figure>
+						<img src="ims/Contraction075.png"></img><!-- svg available -->
+					</figure>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the matrix representing <latex>L</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+.75 & 0 \\
+0 & .75
+\end{array}
+\right] = \dfrac{3}{4}\,
+\left[
+\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We know that <latex>L</latex> transforms the standard basis vectors of <latex>\RNr[2]</latex> as follows</para>
+					<math.display>
+						<latex>L(\StdBss{1}) = L(1,0) = (3/4,0)\quad \text{and}\quad L(\StdBss{2}) = L(0,1) = (0,3/4)</latex>
+					</math.display>
+					<para>These vectors form the columns of the matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex>; i.e.</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+.75 & 0 \\
+0 & .75
+\end{array}
+\right] = \dfrac{3}{4}\,
+\left[
+\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear transformation <latex>T</latex> below answer the following questions</para>
+			<math.display>
+				<latex>T\from \RNr[2] \longrightarrow \RNr[2],\quad T(x,y) = (-x,-y)</latex>
+			</math.display>
+		</problem>
+		
+		<part>
+			<problem>
+				<para>Does <latex>T</latex> transform the zero vector of <latex>\RNr[2]</latex> into itself?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>Yes! - <latex>T(0,0) = (-0,-0) = (0,0)</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>T</latex> transform the unit vector <latex>\StdBss{1}</latex> of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>T(1,0) = (-1,0)</latex>; i.e. <latex>T</latex> reverses <latex>\StdBss{1}</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>T</latex> transform the unit vector <latex>\StdBss{2}</latex> of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>T(0,1) = (0,-1)</latex>; i.e. <latex>T</latex> reverses <latex>\StdBss{2}</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What is <latex>T(3,0)</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>T(3,0) = (-3,0)=-(3,0)</latex></para></answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What is <latex>T(-3,0)</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>T(-3,0) = (-(-3),0)=(3,0)=-(-3,0)</latex></para></answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What is <latex>T(4,5)</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>T(4,5) = (-4,-5)=-(4,5)</latex></para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>T</latex> transform the <latex>x</latex>-axis?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>T</latex> reflects the <latex>x</latex>-axis through the origin.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>T</latex> transform the <latex>y</latex>-axis?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>T</latex> reflects the <latex>y</latex>-axis through the origin.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>How does <latex>T</latex> transform the space <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<solution>
+					<para><latex>T</latex> inverts every vector of <latex>\RNr[2]</latex>; i.e. it is the inversion of <latex>\RNr[2]</latex>.</para>
+					<figure>
+						<img src="ims/Inversion.png"></img><!-- svg available -->
+					</figure>
+					
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find the matrix representing <latex>T</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>The matrix representing <latex>T</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rr}
+-1 & 0 \\
+0 & -1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear transformation <latex>S</latex> below answer the following questions</para>
+			<math.display>
+				<latex>S\from \RNr[2] \longrightarrow \RNr[2],\quad S(x,y) = (x+\tfrac{1}{2}y , y)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find the matrix representing <latex>S</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>S</latex> is</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rr}
+1 & \tfrac{1}{2} \\
+0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>To find the matrix representing <latex>S</latex> we determine its effect on the vectors <latex>\StdBss{1}</latex> and <latex>\StdBss{2}</latex>:</para>
+					
+					<computation>
+						<left>S(1,0)</left>
+						<center>=</center>
+						<right>(1,0)</right>
+						<left>S(0,1)</left>
+						<center>=</center>
+						<right>(\tfrac{1}{2},1)</right>
+					</computation>
+					
+					<para>Therefore the matrix representing <latex>S</latex> is</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rr}
+1 & \tfrac{1}{2} \\
+0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>How does <latex>S</latex> transform the <latex>x</latex>-axis?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>S</latex> leaves every point on the <latex>x</latex>-axis unchanged.</para></answer>
+				<solution>
+					<para>We need to determine the effect of <latex>S</latex> on points of the form <latex>(x,0)</latex>:</para>
+					<computation>
+						<left>S(x,0)</left>
+						<center>=</center>
+						<right>(x,0)</right>
+					</computation>
+					<para>This means that <latex>S</latex> leaves every point on the <latex>x</latex>-axis unchanged.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>How does <latex>S</latex> transform the <latex>y</latex>-axis?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>S</latex> the <latex>y</latex>-axis into the line through the origin with direction vector <latex>(\tfrac{1}{2},1)</latex>.</para></answer>
+				<solution>
+					<para>We need to determine the effect of <latex>S</latex> on points of the form <latex>(0,y)</latex>:</para>
+					<computation>
+						<left>S(0,y)</left>
+						<center>=</center>
+						<right>(\tfrac{1}{2}y,y) = y\cdot (\tfrac{1}{2},1)</right>
+					</computation>
+					<para>This means that <latex>S</latex> the <latex>y</latex>-axis into the line through the origin with direction vector <latex>(\tfrac{1}{2},1)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>How does <latex>S</latex> transform the corners of the unit square of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>S</latex> transforms the corners of the unit square of <latex>\RNr[2]</latex> as follows</para>
+				<math.display>
+					<latex>S(0,0)=(0,0)\quad S(1,0)=(1,0)\quad S(0,1)=(\tfrac{1}{2},1)\quad S(1,1)=(\tfrac{3}{2},1)</latex>
+				</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What type of transformation is <latex>S</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>S</latex> shears <latex>\RNr[2]</latex> parallel to the <latex>x</latex>-axis with shear vector <latex>\Vect{s} = (\tfrac{1}{2},0)</latex>.</para></answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear transformation <latex>L</latex> below answer the following questions</para>
+			<math.display>
+				<latex magnify="yes">L\from \RNr[2] \longrightarrow \RNr[2],\quad L(x,y) = \left(\tfrac{1}{2}x - \tfrac{\sqrt{3}}{2}y , \tfrac{\sqrt{3}}{2}x + \tfrac{1}{2}y\right)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem><para>How does <latex>L</latex> transform the unit vector <latex>\StdBss{1}</latex>?</para></problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex magnify="yes">L(1,0) = \left( \tfrac{1}{2} , \tfrac{\sqrt{3}}{2} \right) = (\cos \tfrac{\pi}{3},\sin \tfrac{\pi}{3} )</latex>
+					</math.display>
+					<para>So <latex>L</latex> rotates <latex>\StdBss{1}</latex> counterclockwise through the angle of <latex>\pi/3</latex>, or <latex>60</latex> degrees, about the origin</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>How does <latex>L</latex> transform the unit vector <latex>\StdBss{2}</latex>?</para></problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex magnify="yes">L(0,1) = \left( -\tfrac{\sqrt{3}}{2} , \tfrac{1}{2} \right) = (-\sin \tfrac{\pi}{3} , \cos \tfrac{\pi}{3} )</latex>
+					</math.display>
+					<para>So <latex>L</latex> rotates <latex>\StdBss{2}</latex> counterclockwise through the angle of <latex>\pi/3</latex>, or <latex>60</latex> degrees, about the origin</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find the matrix representing <latex>L</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rr}
+\tfrac{1}{2} & -\tfrac{\sqrt{3}}{2} \\
+\tfrac{\sqrt{3}}{2} & \tfrac{1}{2}
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>What type of linear transformation is <latex>L</latex>?</para></problem>
+			<approach>
+				<solution>
+					<para><latex>L</latex> rotates the plane <latex>\RNr[2]</latex> counterclockwise about the origin through the angle of <latex>\pi/3</latex>.</para>
+					<figure>
+						<img src="ims/RotatePlane60.gif"></img>
+					</figure>
+					
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear transformation below answer the following questions</para>
+			<math.display>
+				<latex>L\from \RNr[2] \longrightarrow \RNr[2],\quad L(x,y) = (3x-y,x+2y)</latex>
+			</math.display>
+		</problem>
+		
+		<part>
+			<problem><para>How does <latex>L</latex> transform the unit vector <latex>\StdBss{1}</latex> of <latex>\RNr[2]</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>L(\StdBss{1}) = L(1,0) = (3,1)</latex></para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>How does <latex>L</latex> transform the unit vector <latex>\StdBss{2}</latex> of <latex>\RNr[2]</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>L(\StdBss{2}) = L(0,1) = (-1,2)</latex></para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find the matrix representing <latex>L</latex>.</para></problem>
+			<approach>
+				<solution>
+					<para>We found earlier that</para>
+					<computation>
+						<left>L(\StdBss{1})</left>
+						<center>=</center>
+						<right>(3,1)</right>
+						<left>L(\StdBss{2})</left>
+						<center>=</center>
+						<right>(-1,2)</right>
+					</computation>
+					<para>Therefore the matrix <latex>\Mtrx{B}</latex> representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B} = 
+\left[
+\begin{array}{rr}
+3 & -1 \\
+1 & 2
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>What are the coordinates of the vertices of the unit square after it has been transformed under <latex>L</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> transforms the four vertices of the unit square into</para>
+					<math.display>
+						<latex>L(0,0) = (0,0) \quad L(1,0) = (3,1) \quad L(0,1) = (-1,2) \quad L(1,1) = (2,3)</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>How does <latex>L</latex> transform the unit square of <latex>\RNr[2]</latex>?</para></problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> transforms the unit square into the parallelogram with vertices</para>
+					<math.display>
+						<latex>L(0,0) = (0,0) \quad L(1,0) = (3,1) \quad L(0,1) = (-1,2) \quad L(1,1) = (2,3)</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>How does <latex>L</latex> transform the line segment of <latex>\RNr[2]</latex> joining the points <latex>(-2,-3)</latex> and <latex>(1,4)</latex>?</para></problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> transforms the line segment joining <latex>(-2,-3)</latex> to <latex>(1,4)</latex> into the line segment joining</para>
+					<math.display>
+						<latex>L(-2,-3) = (-3,-8)\quad \text{to} \quad L(1,4) = (-1,9)</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear transformation below answer the following questions</para>
+			<math.display>
+				<latex>L\from \RNr[3] \longrightarrow \RNr[3],\quad L(x,y,z) = (-x,y,z)</latex>
+			</math.display>
+		</problem>
+		
+		<part>
+			<problem><para>How does <latex>L</latex> transform the unit vectors <latex>\StdBss{1}</latex>, <latex>\StdBss{2}</latex>, and <latex>\StdBss{3}</latex> of <latex>\RNr[3]</latex>?</para></problem>
+			<approach>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>L(\StdBss{1})</left>
+						<center>=</center>
+						<right>L(1,0,0) = (-1,0,0) = -\StdBss{1}</right>
+						<left>L(\StdBss{2})</left>
+						<center>=</center>
+						<right>L(0,1,0) = (0,1,0) = \StdBss{2}</right>
+						<left>L(\StdBss{3})</left>
+						<center>=</center>
+						<right>L(0,0,1) = (0,0,1) = \StdBss{3}</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find the matrix representing <latex>L</latex>?</para></problem>
+			<approach>
+				<solution>
+					<para>The matrix representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rrr}
+-1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>How does <latex>L</latex> transform the unit cube of <latex>\RNr[3]</latex>?</para></problem>
+			<approach>
+				<solution>
+					<para><latex>L</latex> reflects the unit cube through the <latex>yz</latex>-plane as is illustrated below.</para>
+					<para align="center">
+						<img src="ims/UnitCubeR3Smll.gif"></img> &nbsp; <img src="ims/UnitCubeR3ReflectedxySmll.gif"></img>
+					</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>What type of transformation is <latex>L</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>L</latex> is the reflection of <latex>\RNr[3]</latex> through the <latex>yz</latex>-plane</para></answer>
+				<solution>
+					<para>Inspection of the effect of <latex>L</latex> on the unit cube of <latex>\RNr[3]</latex> suggests that <latex>L</latex> is the reflection of <latex>\RNr[3]</latex> through the <latex>yz</latex>-plane. This reflection is given by</para>
+					
+					<math.display>
+						<latex>R(\Vect{x}) = \Vect{x} - 2\cdot (\DotPr{ \Vect{x} }{ \Vect{n} })\cdot \Vect{n}</latex>
+					</math.display>
+					<para>where <latex>\Vect{n} := \StdBss{1} = (1,0,0)</latex> is the unit vector perpendicular to the <latex>yz</latex>-plane. To confirm what we suspect by inspection, we compare the effect of <latex>L</latex> to the effect of <latex>R</latex> on an arbitrary vector <latex>\Vect{x} = (x,y,z)</latex>.</para>
+					
+					<computation>
+						<left>R(x,y,z)</left>
+						<center>=</center>
+						<right>(x,y,z) - 2\cdot \left( \DotPr{(x,y,z)}{(1,0,0)} \right)\cdot (1,0,0)</right>
+						<left></left>
+						<center>=</center>
+						<right>(x,y,z) - 2x(1,0,0)</right>
+						<left></left>
+						<center>=</center>
+						<right>(-x,y,z)</right>
+						<left></left>
+						<center>=</center>
+						<right>L(x,y,z)</right>
+					</computation>
+					
+					<para>So <latex>L=R</latex> is the reflection of <latex>\RNr[3]</latex> through the <latex>yz</latex>-plane.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For the linear transformation below answer the following questions</para>
+			<math.display>
+				<latex>L\from \RNr[3] \longrightarrow \RNr[3],\quad L(x,y,z) = (x,0,z)</latex>
+			</math.display>
+		</problem>
+		
+		<part>
+			<problem><para>How does <latex>L</latex> transform the unit vectors <latex>\StdBss{1}</latex>, <latex>\StdBss{2}</latex>, and <latex>\StdBss{3}</latex> of <latex>\RNr[3]</latex>?</para></problem>
+			<approach>
+				<solution>
+					<para>We compute</para>
+					<computation>
+						<left>L(\StdBss{1})</left>
+						<center>=</center>
+						<right>L(1,0,0) = (1,0,0) = -\StdBss{1}</right>
+						<left>L(\StdBss{2})</left>
+						<center>=</center>
+						<right>L(0,1,0) = (0,0,0)</right>
+						<left>L(\StdBss{3})</left>
+						<center>=</center>
+						<right>L(0,0,1) = (0,0,1) = \StdBss{3}</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find the matrix representing <latex>L</latex>?</para></problem>
+			<approach>
+				<solution>
+					<para>The matrix representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>How does <latex>L</latex> transform the unit cube of <latex>\RNr[3]</latex>?</para></problem>
+			<approach>
+				<solution>
+					<para><latex>L</latex> projects onto the unit square in the <latex>xz</latex>-plane as is illustrated below.</para>
+					<para align="center">
+						<img src="ims/UnitCubeR3Smll.gif"></img> &nbsp; <img src="ims/UnitCubeR3ProjectxzSmll.gif"></img>
+					</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>What type of transformation is <latex>L</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>L</latex> is the orthogonal projection of <latex>\RNr[3]</latex> onto the <latex>xz</latex>-plane</para></answer>
+				<solution>
+					<para>Inspection of the effect of <latex>L</latex> on the unit cube of <latex>\RNr[3]</latex> suggests that <latex>L</latex> is the orthogonal projection of <latex>\RNr[3]</latex> onto the <latex>xz</latex>-plane. This projection is given by</para>
+					
+					<math.display>
+						<latex>P(\Vect{x}) = \Vect{x} - \cdot (\DotPr{ \Vect{x} }{ \Vect{n} })\cdot \Vect{n}</latex>
+					</math.display>
+					<para>where <latex>\Vect{n} := \StdBss{2} = (0,1,0)</latex> is the unit vector perpendicular to the <latex>xz</latex>-plane. To confirm what we suspect by inspection, we compare the effect of <latex>L</latex> to the effect of <latex>P</latex> on an arbitrary vector <latex>\Vect{x} = (x,y,z)</latex>.</para>
+					
+					<computation>
+						<left>P(x,y,z)</left>
+						<center>=</center>
+						<right>(x,y,z) - \left( \DotPr{(x,y,z)}{(0,1,0)} \right)\cdot (0,1,0)</right>
+						<left></left>
+						<center>=</center>
+						<right>(x,y,z) - y(0,1,0)</right>
+						<left></left>
+						<center>=</center>
+						<right>(x,0,z)</right>
+						<left></left>
+						<center>=</center>
+						<right>L(x,y,z)</right>
+					</computation>
+					
+					<para>So <latex>L=P</latex> is the projection of <latex>\RNr[3]</latex> onto the <latex>xz</latex>-plane.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem><para>Let <latex>S\from \RNr[2] \to \RNr[2]</latex> denote the shear transformation with respect to <latex>\Vect{n}:=\StdBss{1}</latex> with shear vector <latex>\Vect{s}=(0,-2)</latex>.</para></problem>
+		<part>
+			<problem><para>Determine the effect of <latex>S</latex> on an arbitrary vector <latex>\Vect{x} = (x,y)</latex>.</para></problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>S(x,y) = (x,-2x + y)</latex>
+					</math.display>
+					
+				</answer>
+				<solution>
+					<para>We 
+						<subordinate>
+							<hot>know</hot>
+							<crossref>
+								<definition.ref definitionID="Def_ShearTransformation"/>
+								<para>Look up the description of a shear transformation</para>
+							</crossref>
+						</subordinate>
+						that <latex>S</latex> is of the form</para>
+					<math.display>
+						<latex>S(\Vect{x}) = \Vect{x} + \left( \DotPr{ \Vect{x} }{ \Vect{n} } \right) \cdot \Vect{s}</latex>
+					</math.display>
+					
+					<para>Inputting the given values for <latex>\Vect{n}</latex> and <latex>\Vect{s}</latex> we obtain</para>
+					
+					<computation>
+						<left>S(x,y)</left>
+						<center>=</center>
+						<right>(x,y) + \left( \DotPr{ (x,y) }{ (1,0) } \right) \cdot (0,-2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(x,y) + x\cdot (0,-2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(x,-2x + y)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find the matrix which represents <latex>S</latex>.</para></problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+A =
+\left[
+\begin{array}{rr}
+1 & 0 \\
+-2 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We know that the columns of the matrix which represents <latex>S</latex> consist of the vectors</para>
+					<computation>
+						<left>S(\StdBss{1})</left>
+						<center>=</center>
+						<right>\StdBss{1} + \left( \DotPr{ \StdBss{1} }{ \Vect{n} } \right) \cdot \Vect{s}</right>
+						<left></left>
+						<center>=</center>
+						<right>(1,0) + 1\cdot (0,-2) = (1,-2)</right>
+						<left>S(\StdBss{2})</left>
+						<center>=</center>
+						<right>\StdBss{2} + \left( \DotPr{ \StdBss{2} }{ \Vect{n} } \right) \cdot \Vect{s}</right>
+						<left></left>
+						<center>=</center>
+						<right>(0,1) + 0\cdot (0,-2) = (0,1)</right>
+					</computation>
+					
+					<para>Therefore the matrix representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A =
+\left[
+\begin{array}{rr}
+1 & 0 \\
+-2 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Apply <latex>S</latex> to the equilateral triangle</para>
+				<figure>
+					<img src="ims/Triangle.png"></img><!-- svg available -->
+				</figure>
+				<para>and find the location of the vertices of the sheared triangle.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The location of the vertices of the sheared triangle are</para>
+					<math.display>
+						<latex>(0,1) \quad (0,-1) \quad ( \sqrt{3} , -2\sqrt{3} )</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We first determine the location of the third corner of the given triangle: Pythagoras&rsquo; theorem tells us that the <latex>x</latex>-coordinate of this corner is</para>
+					<math.display>
+						<latex>\sqrt{2^2 - 1^2} = \sqrt{3}</latex>
+					</math.display>
+					<para>The vertices <latex>(0,1)</latex> and <latex>(0,-1)</latex> lie on the shear axis. So <latex>S</latex> leaves them unmoved.  As for the third corner <latex>(0,\sqrt{3})</latex>,</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+S(0,\sqrt{3}) =
+\left[
+\begin{array}{rr}
+1 & 0 \\
+-2 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+\sqrt{3} \\ 0
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+\sqrt{3} \\ -2\sqrt{3}
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<figure>
+						<img src="ims/TriangleShear.png"></img><!-- svg available -->
+					</figure>
+					<para>&nbsp;</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Start from the letter ‘I’, as drawn below, then italicize it by shearing it parallel to the <latex>x</latex>-axis with shear vector <latex>\Vect{s} = (1,0)</latex>.</para>
+			<figure>
+				<img src="ims/LetterI.gif"></img>
+			</figure>
+		</problem>
+		<approach>
+			<answer>
+				<figure>
+					<img src="ims/LetterISheared.gif"></img>
+				</figure>
+			</answer>
+			<solution>
+				<para>The shear transformation to be applied is a linear map</para>
+				<math.display>
+					<latex>S\from \RNr[2] \longrightarrow \RNr[2]</latex>
+				</math.display>
+				<para>The matrix representing it has as its columns the vectors</para>
+				<computation>
+					<left>S(\StdBss{1}</left>
+					<center>=</center>
+					<right>\StdBss{1} = (1,0)</right>
+					<left>S(\StdBss{2})</left>
+					<center>=</center>
+					<right>\StdBss{2} + \Vect{s} = (1,1)</right>
+				</computation>
+				<para>Therefore the matrix representing <latex>S</latex> is</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+A = 
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+		]]>
+					</latex>
+				</math.display>
+				<para>It transforms the vertices of &lsquo;I&rsquo; as follows:</para>
+				<computation>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+3 \\ 4
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} 7 \\ 4 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+3 \\ 3
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} 6 \\ 3 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+3 \\ -3
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} 0 \\ -3 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+3 \\ -4
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} -1 \\ -4 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+-3 \\ 4
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} 1 \\ 4 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+-3 \\ 3
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} 0 \\ 3 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+-3 \\ -3
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} -6 \\ -3 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+-3 \\ -4
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} -7 -4 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+1 \\ 3
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} 4 \\ 3 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+1 \\ -3
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} -2 \\ -3 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+-1 \\ 3
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} 2 \\ 3 \end{array}\right]</right>
+					<left>
+						<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+-1 \\ -3
+\end{array}
+\right]
+						]]>
+					</left>
+					<center>=</center>
+					<right>\left[\begin{array}{r} -4 \\ -3 \end{array}\right]</right>
+				</computation>
+				
+				<para>Here is a picture of this transformation</para>
+				<figure>
+					<img src="ims/LetterIShearTrafo.gif"></img>
+				</figure>
+			</solution>
+		</approach>
+	</exercise>
+</exercise.pack>

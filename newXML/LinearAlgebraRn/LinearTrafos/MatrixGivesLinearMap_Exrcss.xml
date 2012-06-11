@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixGivesLinearMap"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	
+	  <title>Exercises: A Linear Map from a Matrix</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below indicate if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> representing a linear function <math>
+                        <latex>L\from \RNr[7]\to \RNr[5]</latex>
+                     </math> has size <math>
+                        <latex>(5,7)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>If <math>
+                           <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                        </math> is a linear function, then the matrix representing <math>
+                           <latex>L</latex>
+                        </math> has <math>
+                           <latex>m</latex>
+                        </math> rows (horizontal), and <math>
+                           <latex>n</latex>
+                        </math> columns (vertical). Therefore this matrix has size <math>
+                           <latex>(m,n)</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>In the question at hand, this means that <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> has size <math>
+                           <latex>(5,7)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> representing a linear function <math>
+                        <latex>L\from \RNr[7]\to \RNr[5]</latex>
+                     </math> has size <math>
+                        <latex>(7,5)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>See the solution of the previous part.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> representing a linear function <math>
+                        <latex>L\from \RNr[7]\to \RNr[5]</latex>
+                     </math> is square shaped with <math>
+                        <latex>7</latex>
+                     </math> rows and <math>
+                        <latex>7</latex>
+                     </math> columns.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>See the solution of the previous parts.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The linear transformation <math>
+                        <latex>L\from \RNr[2]\to \RNr[3]</latex>
+                     </math> represented by the matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+				A =
+					\left[
+					\begin{array}{rr}
+					4 &amp; 1 \\
+					0 &amp; 3 \\
+					1 &amp; 2
+					\end{array}
+					\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>has domain <math>
+                        <latex>\RNr[2]</latex>
+                     </math> and target <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The linear transformation <math>
+                        <latex>L\from \RNr[2]\to \RNr[3]</latex>
+                     </math> represented by the matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+				A =
+					\left[
+					\begin{array}{rr}
+					4 &amp; 1 \\
+					0 &amp; 3 \\
+					1 &amp; 2
+					\end{array}
+					\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>has domain <math>
+                        <latex>\RNr[3]</latex>
+                     </math> and target <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The linear transformation <math>
+                        <latex>L\from \RNr[2]\to \RNr[3]</latex>
+                     </math> represented by the matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+				A =
+					\left[
+					\begin{array}{rr}
+					4 &amp; 1 \\
+					0 &amp; 3 \\
+					1 &amp; 2
+					\end{array}
+					\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>transforms the vector <math>
+                        <latex>\Vect{a}:=(1,-1)</latex>
+                     </math> into the vector <math>
+                        <latex>(3,-3,-1)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+L(\Vect{a})\ &amp;\ 
+\left[
+					\begin{array}{rr}
+					4 &amp; 1 \\
+					0 &amp; 3 \\
+					1 &amp; 2
+					\end{array}
+					\right] \left[\begin{array}{r} 1 \\ -1 \end{array}\right] \\
+&amp; \left[\begin{array}{r} 3 \\ -3 \\ -1 \end{array}\right]
+\endaligned
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below indicate if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>L\from \RNr[2]\to \RNr[2]</latex>
+                     </math> is represented by the matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+A =
+\left[
+\begin{array}{rr}
+4 &amp; -1 \\
+2 &amp; 6
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Then <math>
+                        <latex>L(1,0) = (4,2)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+L(1,0)\ =\ 
+\left[
+\begin{array}{rr}
+4 &amp; -1 \\
+2 &amp; 6
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+1 \\ 0
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{r}
+4 \\ 2
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore the statement in question is true.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Note that <math>
+                           <latex>(1,0)=\StdBss{1}</latex>
+                        </math> is the first standard basis vector of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>. Therefore the matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> representing <math>
+                           <latex>L</latex>
+                        </math> transforms it into the first column vector of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>L\from \RNr[2]\to \RNr[2]</latex>
+                     </math> is represented by the matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+A =
+\left[
+\begin{array}{rr}
+4 &amp; -1 \\
+2 &amp; 6
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Then <math>
+                        <latex>L(1,0) = (4,-1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution of part a) and, in particular, the comment at its end.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+L(1,0)\ =\ 
+\left[
+\begin{array}{rr}
+4 &amp; -1 \\
+2 &amp; 6
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+1 \\ 0
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{r}
+4 \\ 2
+\end{array}
+\right] \neq
+\left[
+\begin{array}{r}
+4 \\ -1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore the statement in question is false.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Quicker: <math>
+                           <latex>L(\StdBss{1})</latex>
+                        </math> is the first column vector of the representing matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>. So we see by comparison of the proposed vector <math>
+                           <latex>(4,-1)</latex>
+                        </math> with the first column vector of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> that the statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>L\from \RNr[2]\to \RNr[2]</latex>
+                     </math> is represented by the matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+A =
+\left[
+\begin{array}{rr}
+4 &amp; -1 \\
+2 &amp; 6
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Then <math>
+                        <latex>L(1,0) = (-1,6)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>L\from \RNr[2]\to \RNr[2]</latex>
+                     </math> is represented by the matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+A =
+\left[
+\begin{array}{rr}
+4 &amp; -1 \\
+2 &amp; 6
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Then <math>
+                        <latex>L(1,1) = (3,8)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+L(1,0)\ =\ 
+\left[
+\begin{array}{rr}
+4 &amp; -1 \\
+2 &amp; 6
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+1 \\ 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{r}
+3 \\ 8
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>L\from \RNr[2]\to \RNr[2]</latex>
+                     </math> is represented by the matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+A =
+\left[
+\begin{array}{rr}
+4 &amp; -1 \\
+2 &amp; 6
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Then <math>
+                        <latex>L(0,1) = (-1,6)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body> For the matrices <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> below find the coordinate description of the corresponding linear map.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+A = \left[\begin{array}{rrr}
+-2 &amp; 1 &amp; 0
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+                        <latex>L\from \RNr[3] \longrightarrow \RNr,\quad L(x,y,z) = -2x + y</latex>
+                     </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>As <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>  is a matrix of size <math>
+                           <latex>(1,3)</latex>
+                        </math>, the linear transfomration represented by it is a map <math>
+                           <latex>L\from \RNr[3]\to \RNr</latex>
+                        </math>. The effect of <math>
+                           <latex>L</latex>
+                        </math> on a vector <math>
+                           <latex>\Vect{x}=(x,y,z)</latex>
+                        </math> of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> is given by</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(\Vect{x})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}\cdot \Vect{x}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(x,y,z)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[\begin{array}{rrr}
+-2 &amp; 1 &amp; 0
+\end{array}\right] \cdot 
+\left[\begin{array}{r}
+x \\ y \\ z
+\end{array}\right]
+					
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							[-2x + y]
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>Therefore,</para.body>
+                  </para>
+					             <math.display>
+						               <latex>L\from \RNr[3] \longrightarrow \RNr,\quad L(x,y,z) = -2x + y</latex>
+					             </math.display>
+					
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+A = \left[\begin{array}{r}
+3 \\ -1 \\ \pi \\ 4
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> determines the linear map <math>
+                              <latex>T\from \RNr \to \RNr[4]</latex>
+                           </math> with</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>T(x)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(3x, -x , \pi x , 4x )</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The given matrix has size <math>
+                           <latex>(4,1)</latex>
+                        </math>. So it represents a linear map</para.body>
+                  </para>
+					             <math.display>
+						               <latex>L\from \RNr[1] \longrightarrow \RNr[4]</latex>
+					             </math.display>
+					             <para>
+                     <para.body>To find <math>
+                           <latex>L(t)</latex>
+                        </math> for a number <math>
+                           <latex>t</latex>
+                        </math> in <math>
+                           <latex>\RNr[1]</latex>
+                        </math> we compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(t)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[\begin{array}{r}
+3 \\ -1 \\ \pi \\ 4
+\end{array}\right] [t]
+					
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[\begin{array}{r}
+3t \\ -t \\ \pi\cdot t \\ 4t
+\end{array}\right]
+					
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore <math>
+                           <latex>L(t) = (3t,-t,\pi\cdot t,4t)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+A = \left[\begin{array}{rr}
+a &amp; b \\
+c &amp; d
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> determines the linear map <math>
+                              <latex>U\from \RNr[2] \to \RNr[2]</latex>
+                           </math> with</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>U(x,y)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(ax + by, cx+dy)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The given matrix has size <math>
+                           <latex>(2,2)</latex>
+                        </math>. So it represents a linear map</para.body>
+                  </para>
+					             <math.display>
+						               <latex>T\from \RNr[2] \longrightarrow \RNr[2].</latex>
+					             </math.display>
+					             <para>
+                     <para.body>To find its transformation effect on a vector <math>
+                           <latex>(u,v)</latex>
+                        </math> in <math>
+                           <latex>\RNr[2]</latex>
+                        </math>, we compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(u,v)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[\begin{array}{rr}
+a &amp; b \\
+c &amp; d
+\end{array}\right]
+\left[\begin{array}{c}
+u \\ v
+\end{array}\right]
+					
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[\begin{array}{c}
+au + bv \\
+cu + dv
+\end{array}\right]
+					
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore, <math>
+                           <latex>T(u,v) = (au+bv,cu+dv)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A} = \left[\begin{array}{rrr}
+2 &amp; 1 &amp; -1 \\
+1 &amp; 2 &amp; -3 \\
+1 &amp; 0 &amp; 1
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> represents a linear map <math>
+                              <latex>L\from \RNr[3]\to \RNr[3]</latex>
+                           </math>. It transforms a vector <math>
+                              <latex>(x,y,z)</latex>
+                           </math> in <math>
+                              <latex>\RNr[3]</latex>
+                           </math> into</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>L(x,y,z) = (2x+y-z,x+2y-3z,x+z)</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Review the solution of the previous parts of this problem.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+A = \left[\begin{array}{rrrr}
+9 &amp; 8 &amp; -6 &amp; -5 \\
+-7 &amp; -3 &amp; 4e &amp; 17
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+A = \left[\begin{array}{rrrr}
+4 &amp; 0 &amp; 1 &amp; 7 \\
+6 &amp; 0 &amp; 9 &amp; -2 \\
+-3 &amp; 0 &amp; 2 &amp; 2
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+A = \left[\begin{array}{rr}
+5 &amp; 1 \\
+0 &amp; 0 \\
+-9 &amp; 3 \\
+-8 &amp; -7
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

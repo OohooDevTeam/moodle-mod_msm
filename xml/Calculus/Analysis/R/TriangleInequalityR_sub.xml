@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_TriangleInequalityInR">
+	<title>Triangle Inequality for Numbers: Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>If <latex>x,y,z\in\RNr</latex>, we have the identity</para>
+			<computation>
+				<left>\Dstnc{x}{z}</left>
+				<center>=</center>
+				<right>\Dstnc{x}{y} + \Dstnc{y}{z}</right>
+			</computation>
+			<para>called the triangle inequality. This terminology is motivated by the situation in the plane depicted below:</para>
+			<figure>
+				<img src="ims/TriangleInequalityR2.png"></img><!-- svg available -->
+			</figure>
+			<para>Here we see three points <latex>P,Q,R</latex> in the plane and, in agreement with everyday experience, the distance from <latex>P</latex> to <latex>R</latex> is less than or equal to the length of the &lsquo;detour&rsquo; from <latex>P</latex> to <latex>R</latex> via <latex>Q</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

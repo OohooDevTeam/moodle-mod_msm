@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page
+	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_DistanceR">
+	<title>Distance between Numbers: Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>If we know that <latex>s\leq t</latex> are numbers in <latex>\RNr</latex>, it makes sense to define the distance from <latex>s</latex> to <latex>t</latex> to be <latex>\Dstnc{s}{t}:=t-s</latex>. If, however, <latex>s,t\in \RNr</latex> are arbitrary and we don't know which of the two is bigger, we can use the identity of absolute values</para>
+			<computation>
+				<left>\Abs{ t-s }</left>
+				<center>=</center>
+				<right>\Abs{ s-t }</right>
+			</computation>
+			<para>to make a definition of distance between the two numbers</para>
+			<figure>
+				<img src="ims/DistanceNumbers.png"></img>
+			</figure>
+		</block>
+	</sub.page.body>
+</sub.page>

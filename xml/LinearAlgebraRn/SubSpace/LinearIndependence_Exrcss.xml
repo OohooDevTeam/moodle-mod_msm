@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_LinearIndependence">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Linear Independence</title>
+	<exercise>
+		<problem>
+			<para>Determine whether the following subsets of <latex>\RNr[2]</latex> are linearly independent.</para>
+		</problem>
+		<part>
+			<problem><para><latex>S=\Set{ (0,0) }</latex></para></problem>
+			<approach>
+				<answer><para>No! &ndash; <latex>S</latex> is not linearly independent.</para></answer>
+				<solution>
+					<para>To test for linear independence of <latex>S</latex>, we need to determine if the equation</para>
+					<computation>
+						<left>t\cdot (0,0)</left>
+						<center>=</center>
+						<right>(0,0)</right>
+					</computation>
+					<para>has <latex>t=0</latex> as its one and only solution.</para>
+					<para>However, we find that this equation is true for every <latex>t\in \RNr</latex>. Therefore <latex>S</latex> is not linearly independent.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S=\Set{ (9,9) }</latex></para></problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>S</latex> is linearly independent.</para></answer>
+				<solution>
+					<para>Any set consisting of a single nonzero vector is linearly independent.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S=\Set{ (1,1),(9,9) }</latex></para></problem>
+			<approach>
+				<answer><para>No! &ndash; <latex>S</latex> is not linearly independent.</para></answer>
+				<solution>
+					<para>We have <latex>(9,9) = 9\cdot (1,1)</latex>, and so <latex>(9,9)</latex> is in <latex>\span\Set{ (1,1) }</latex>, implying that <latex>S</latex> is not linearly independent.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S=\Set{ (1,1),(-1,1) }</latex></para></problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>S</latex> is linearly independent.</para></answer>
+				<solution.hint><para>Try the determinant test for linear independence</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S=\Set{(1,1), (-1,1),(3,-4) }</latex></para></problem>
+			<approach>
+				<answer><para>No! &ndash; <latex>S</latex> is not linearly independent.</para></answer>
+				<solution>
+					<para>Any set consisting of three or more vectors in <latex>\RNr[2]</latex> is linearly dependent.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Determine whether the following subsets of <latex>\RNr[3]</latex> are linearly independent.</para>
+		</problem>
+		<part>
+			<problem><para><latex>S = \Set{ (1,3,-2),(0,-1,2) }</latex></para></problem>
+			<approach>
+				<answer><para>Yes! <latex>S</latex> is linearly independent.</para></answer>
+				<solution.hint><para>Use the determinant test for linear independence.</para></solution.hint>
+				<solution>
+					<para>We can use the determinant test for linear independence: The matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 0 \\
+3 & -1 \\
+-2 & 2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>has the given vectors as its columns. Its top two rows form the <latex>(2,2)</latex>-matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = \left[
+\begin{array}{rr}
+1 & 0 \\
+3 & -1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>We find <latex>\det(\Mtrx{A}) = -1\neq 0</latex>. Thus the given vectors are linearly independent.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S = \Set{ (1,3,-2),(0,-1,2),(0,0,0) }</latex></para></problem>
+			<approach>
+				<answer><para>No! <latex>S</latex> is not linearly independent.</para></answer>
+				<solution.hint><para>Use the determinant test for linear independence.</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S = \Set{ (1,3,-2),(0,-1,2),(-2,1,1) }</latex></para></problem>
+			<approach>
+				<answer><para>Yes! <latex>S</latex> is linearly independent.</para></answer>
+				<solution.hint><para>Use the determinant test for linear independence.</para></solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Determine if the following vectors from <latex>\RNr[4]</latex> form a linearly independent set:</para>
+			<computation>
+				<left>\Vect{w}_1</left>
+				<center>:=</center>
+				<right>(1,-1,2,5)</right>
+				<left>\Vect{w}_2</left>
+				<center>:=</center>
+				<right>(3,1,4,2)</right>
+				<left>\Vect{w}_3</left>
+				<center>:=</center>
+				<right>(1,1,0,0)</right>
+				<left>\Vect{w}_4</left>
+				<center>:=</center>
+				<right>(5,1,6,7)</right>
+			</computation>
+		</problem>
+		<approach>
+			<answer><para>No! &ndash; The given vectors are not linearly independent.</para></answer>
+			<solution.hint><para>You can form the <latex>(4,4)</latex>-matrix with the given vectors as its column vectors, and then use the row reduction method.</para></solution.hint>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the problems below determine if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Any two distinct vectors in <latex>\RNr[2]</latex> are linearly independent.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>Consider any nonzero vector <latex>\Vect{x}</latex> and <latex>2\cdot \Vect{x}</latex>.</para></solution.hint>
+				<solution>
+					<para>Parallel vectors may be distinct, but will not be linearly independent. For example, choose</para>
+					<math.display>
+						<latex>\Vect{x} := (1,0)\quad \text{and}\quad \Vect{y} := (2,0)</latex>
+					</math.display>
+					<para>Visibly, these two vectors are distinct. However,</para>
+					<computation>
+						<left>(0,0)</left>
+						<center>=</center>
+						<right>2\cdot \Vect{x}\ +\ (-1)\cdot \Vect{y}</right>
+					</computation>
+					<para>Therefore these two vectors are linearly dependent. &ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Any two non parallel vectors in <latex>\RNr[3]</latex> are linearly independent.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>Recall what it means for two vectors to be parallel.</para>
+				</solution.hint>
+				<solution>
+					<para>Suppose the vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex> are not parallel. Then <latex>\Vect{x},\Vect{y}\neq \Vect{0}</latex>. Now let us consider <latex>\Vect{0}</latex> as a linear combination of <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>:</para>
+					<computation>
+						<left>\Vect{0}</left>
+						<center>=</center>
+						<right>s\cdot \Vect{x}\ +\ t\cdot \Vect{y}</right>
+					</computation>
+					<para>We claim that this can only happen if <latex>s=0=t</latex>. To see this consider the case where <latex>s=0</latex>. Then</para>
+					<computation>
+						<left>\Vect{0}</left>
+						<center>=</center>
+						<right>t\cdot \Vect{y}</right>
+					</computation>
+					<para>It follows that <latex>t=0</latex> because <latex>\Vect{y}\neq \Vect{0}</latex>. So the claim holds.</para>
+					<para>Next we show that <latex>s\neq 0</latex> can not happen. For if we had <latex>s\neq 0</latex>, we could solve</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>-\dfrac{t}{s}\cdot \Vect{y}</right>
+					</computation>
+					<para>But this means that <latex>\Vect{y}</latex> is parallel to <latex>\Vect{x}</latex>, contradicting the assumption that these two vectors are not parallel.</para>
+					<para>Thus <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are linearly independent. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x},\Vect{y},\Vect{z}</latex> are three unit vectors in <latex>\RNr[n]</latex> which are perpendicular, then these vectors are linearly independent.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Review the result on orthogonality and linear independence.</para></solution.hint>
+				<solution.hint>
+					<para>Notice: the three given vectors form an orthonormal set of vectors.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Recall: any orthogonal set of vectors is linearly independent.</para>
+				</solution.hint>
+				<solution>
+					<para>The three given vectors form an orthonormal set of vectors. Now we reason:</para>
+					<ul>
+						<li>
+							<para>Every orthonormal set of vectors is automatically orthogonal.</para>
+						</li>
+						<li>
+							<para>We know in general: every orthogonal set of vectors is linearly independent.</para>
+						</li>
+					</ul>
+					<para>Therefore the three given vectors are linearly independent.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x}=(1,0,1)</latex> and <latex>\Vect{y}=(1,1,0)</latex>, then <latex>S := \Set{ \Vect{x},\Vect{y}, \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex> is linearly independent.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Consider using the determinant test for linear independence.</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x},\Vect{y}</latex> are nonzero vectors in <latex>\RNr[3]</latex>, then <latex>S:= \Set{ \Vect{x},\Vect{y}, \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex> is linearly independent.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>What if <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel?</para></solution.hint>
+				<solution>
+					<para>The statement in question is false. To see this consider the case where <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel; for example: <latex>\Vect{y}= 2\cdot \Vect{x}</latex>. Then</para>
+					<computation>
+						<left>\CrssPr{\Vect{x}}{\Vect{y}}</left>
+						<center>=</center>
+						<right>\Vect{0}</right>
+					</computation>
+					<para>In general, we know: whenever the 0-vector is a member of a collection of vectors <latex>S</latex>, the collection is linearly dependent. Therefore the statement in  question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x},\Vect{y}</latex> are nonparallel vectors in <latex>\RNr[3]</latex>, then <latex>S:= \Set{ \Vect{x},\Vect{y}, \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex> is linearly independent.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Consider using the determinant test for linear independence.</para></solution.hint>
+				<solution>
+					<para>We apply the determinant test for linear independence. We use <latex>\Vect{x},\Vect{y},\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> as column vectors. Then</para>
+					<computation>
+						<left>\det[ \Vect{x}\ \ \Vect{y}\ \ \CrssPr{ \Vect{x} }{ \Vect{y} } ]</left>
+						<center>=</center>
+						<right>\DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ (\CrssPr{ \Vect{x} }{ \Vect{y} } ) }</right>
+						<left></left>
+						<center><![CDATA[ > ]]>	<info>
+							<caption>Why is this inequality true?</caption>
+							<para>We know that the cross product of two vectors vanishes exactly when the vectors are parallel. &ndash; Here we know that <latex>\Vect{x},\Vect{y}</latex> are not parallel. So the cross product vector <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } \neq \Vect{0}</latex>. So we have</para>
+							<math.display>
+								<latex><![CDATA[ \DotPr{ \CrssPr{ \Vect{x} }{ \Vect{y} } }{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2 > 0 ]]></latex>
+							</math.display>
+						</info></center>
+						<right>0</right>
+					</computation>
+					<para>Thus the determinant test for linear independence tells us that <latex>S</latex> is linearly independent. &ndash; The statement in question is true!</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>	
+		<problem>
+			<para>Given the vector <latex>\Vect{x}</latex> in <latex>\RNr[2]</latex>, find a vector <latex>\Vect{y}=(u,v)</latex> such that <latex>S:=\Set{ \Vect{x} , \Vect{y} }</latex> is linearly independent.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>\Vect{x} = (1,0)</latex></para>
+			</problem>
+			<approach>
+				<answer><para>One possible choice is <latex>\Vect{y} = (0,1)</latex>.</para></answer>
+				<solution.hint><para>Look for a vector <latex>\Vect{y}=(u,v,w)</latex> which is not parallel to <latex>\Vect{x}</latex>.</para></solution.hint>
+				<solution>
+					<para>Geometrically speaking, any vector which is not parallel to the <latex>x</latex>-axis is linearly independent from <latex>\Vect{x}</latex>. One possible choice is <latex>\Vect{y} = (0,1)</latex>. Alternate choices include</para>
+					<math.display>
+						<latex>(1,1), (10,-1), (5964743,419622222)</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>\Vect{x} = (3,1)</latex></para>
+			</problem>
+			<approach>
+				<answer><para>One possible choice is <latex>\Vect{y}=(1,0)</latex>.</para></answer>
+				<solution.hint><para>An easy way of finding a vector linearly independent to <latex>\Vect{x}</latex> is to find a nonzero vector which is perpendicular to <latex>\Vect{x}</latex>.</para></solution.hint>
+				<solution>
+					<para>We can just find such <latex>\Vect{y}</latex> by inspection; for example <latex>\Vect{y}:=(1,0)</latex> is linearly independent from <latex>\Vect{x}</latex>.</para>
+					<para>Alternatively, we can look for a nonzero vector which is perpendicular to <latex>\Vect{x}</latex>. Such a vector is <latex>\Vect{y}:=(-1,3)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>\Vect{x} = (2,2)</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>\Vect{x} = (3,-5)</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>\Vect{x} = (12,7)</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>\Vect{x} = (x,y)\neq (0,0)</latex> is an arbitrary vector.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Given the vector <latex>\Vect{x}</latex> in <latex>\RNr[3]</latex>, find a vector <latex>\Vect{y}=(u,v,w)</latex> such that <latex>S:=\Set{ \Vect{x} , \Vect{y} }</latex> is linearly independent.</para>
+		</problem>
+		
+		<part>
+			<problem><para><latex>\Vect{x} = (1,0,2)</latex></para></problem>
+			<approach>
+				<answer><para>One possible choice is <latex>\Vect{y} = (0,1,0)</latex>.</para></answer>
+				<solution.hint><para>Look for a nonzero vector which is perpendicular to <latex>\Vect{x}</latex>.</para></solution.hint>
+				<solution>
+					<para>A nonzero vector perpendicular to <latex>\Vect{x}</latex> is <latex>\Vect{y}:= (2,0,-1)</latex>. This implies that <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are linearly independent.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para><latex>\Vect{x} = (1,1,1)</latex></para></problem>
+			<approach>
+				<answer><para>One possible choice is <latex>\Vect{y} = (0,1,-1)</latex>.</para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para><latex>\Vect{x} = (2,-1,3)</latex></para></problem>
+			<approach>
+				<answer><para>One possible choice is <latex>\Vect{y} = (1,2,0)</latex>.</para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para><latex>\Vect{x} = (3,2,-5)</latex></para></problem>
+			<approach>
+				<answer><para>One possible choice is <latex>\Vect{y} = (0,5,2)</latex>.</para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para><latex>\Vect{x} = (5,-1,-4)</latex></para></problem>
+			<approach>
+				<answer><para>One possible choice is <latex>\Vect{y} = (4,0,5)</latex>.</para></answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\Vect{x}=(x,y,z)\neq (0,0,0)</latex> is arbitrary in <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<solution.hint><para>Look for a vector <latex>\Vect{y}=(u,v,w)</latex> which is not parallel to <latex>\Vect{x}</latex>.</para></solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Show that, if the subset <latex>S</latex> of <latex>\RNr[n]</latex> contains the <latex>\Vect{0}</latex>-vector, then <latex>S</latex> is linearly dependent. </para>
+		</problem>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>If <latex>\Vect{x},\Vect{y}</latex> are nonparallel vectors in <latex>\RNr[3]</latex>, show that <latex>S:= \Set{ \Vect{x},\Vect{y}, \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex> is linearly independent.</para>
+		</problem>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Show that any collection of <latex>(n+1)</latex> or more vectors in <latex>\RNr[n]</latex> is linearly dependent.</para>
+		</problem>
+	</exercise>
+</exercise.pack>

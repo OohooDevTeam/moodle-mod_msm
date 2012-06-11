@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_GramSchmidtOrthonormalization"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Gram-Schmidt Orthonormalization</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Which of the following sets of vectors <math>
+                     <latex>\Vect{v}_1,\Vect{v}_2</latex>
+                  </math> are orthogonal, orthonormal or neither? </para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{v}_1=(1,-2)</latex>
+                     </math> and <math>
+                        <latex>\Vect{v}_2=(4,2)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>These vectors are orthogonal but not orthonormal</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The vectors are orthogonal because</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (1,-2) }{ (4,2) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>However, the vectors are not normal as <math>
+                           <latex>\abs{ \Vect{v}_1 } = \sqrt{5}\neq 1</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{v}_1=(1,0)</latex>
+                     </math> and <math>
+                        <latex>\Vect{v}_2=(-1/\sqrt{2} , 1/\sqrt{2})</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The vectors are normal but not orthonormal.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{v}_1=(-1/\sqrt{5},2/\sqrt{5})</latex>
+                     </math> and <math>
+                        <latex>\Vect{v}_2=(2/\sqrt{5} , 1/\sqrt{5})</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The vectors are orthonormal.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{v}_1=(3/5,0,-4/5)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This vector is orthonormal.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This vector is a unit vector as</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\abs{ (3/5,0,-4/5) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>A single unit vector always forms an orthonormal set. So, in particular, <math>
+                           <latex>\Set{ \Vect{v}_1 }</latex>
+                        </math> is an orthonormal set.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{v}_1=(\sqrt{3},1,0)</latex>
+                     </math>, <math>
+                        <latex>\Vect{v}_2=(-1,\sqrt{3} , 1)</latex>
+                     </math>, and <math>
+                        <latex>\Vect{v}_3=(1,0,0)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The vectors are not orthogonal, nor are the all unit vectors.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{v}_1=(2,-3,1,2)</latex>
+                     </math>, <math>
+                        <latex>\Vect{v}_2=(-1,2,8,0)</latex>
+                     </math>, and <math>
+                        <latex>\Vect{v}_3=(6,-1,1,-8)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The vectors are orthogonal, but not orthonormal.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Determine if the set of vectors <math>
+                     <latex>\Set{ \Vect{v}_1,\Vect{v}_2 }</latex>
+                  </math> forms a basis, an orthogonal basis, or an orthonormal basis of <math>
+                     <latex>\RNr[2]</latex>
+                  </math>, where</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Vect{v}_1 = (\sqrt{3},1) \quad\text{and}\quad \Vect{v}_2=(-1,\sqrt{3})</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+                  <para>
+                     <para.body>The vectors form an orthogonal basis of <math>
+                           <latex>\RNr[2]</latex>
+                        </math> but not an orthonormal basis.</para.body>
+                  </para>
+               </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>The dot product of the two vectors is 0. So they are orthogonal and, hence, linearly independent. Any set of two linearly independent vectors in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> forms a basis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>. So the given vectors form an orthogonal basis.</para.body>
+               </para>
+				           <para>
+                  <para.body>The vectors have length <math>
+                        <latex>2</latex>
+                     </math>. So they do not form an orthonormal basis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>You are given the set of vectors <math>
+                     <latex>\Set{ \Vect{v}_1,\Vect{v}_2 ,\Vect{v}_3 }</latex>
+                  </math> with</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{v}_1</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(1/3,2/3,2/3)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{v}_2</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(2/3,1/3,-2/3)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{v}_3</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(2/3,-2/3,1/3)</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Determine if these vectors form a basis, an orthogonal basis, or an orthonormal basis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The vectors form an orthonormal basis of <math>
+                              <latex>\RNr[3]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>You need to check if these vectors are pairwise orthogonal, and if each vector has length <math>
+                        <latex>1</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find the coordinates of <math>
+                        <latex>\Vect{x}=(1,1,1)</latex>
+                     </math> with respect to the ordered basis <math>
+                        <latex>\EuScript{B}:=(\Vect{v}_1,\Vect{v}_2,\Vect{v}_3)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x}_{\EuScript{B}} = (5/3,1/3,1/3)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We just found that <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> is an orthonormal basis of <math>
+                           <latex>\RNr[3]</latex>
+                        </math>. Therefore, the coordinate vector of <math>
+                           <latex>\Vect{x}</latex>
+                        </math> with respect to <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}_{\EuScript{B}}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\DotPr{ \Vect{x} }{ \Vect{v}_1 } , \DotPr{ \Vect{x} }{ \Vect{v}_2 } , \DotPr{ \Vect{x} }{ \Vect{v}_3 })</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (1,1,1) }{ (1/3 , 2/3 , 2/3) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>5/3</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (1,1,1) }{ (2/3,1/3,-2/3) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1/3</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (1,1,1) }{ (2/3,-2/3,1/3) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1/3</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>and conclude that <math>
+                           <latex>\Vect{x}_{\EuScript{B}} = (5/3,1/3,1/3)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find an ONB of the subspace <math>
+                     <latex>W</latex>
+                  </math> of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> spanned by the linearly independent set of vectors <math>
+                     <latex>\Set{ \Vect{w}_1, \Vect{w}_2 }</latex>
+                  </math>, where</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Vect{w}_1 = (1,0,-1) \quad\text{and}\quad \Vect{w}_2 = (1,1,0)</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>An ONB of <math>
+                           <latex>W</latex>
+                        </math> is given by</para.body>
+                  </para>
+				              <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{1}{\sqrt{2}} (1,0,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{\sqrt{2}}{2\sqrt{3}} (1,2,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We are told that the two vectors <math>
+                        <latex>\Vect{w}_1</latex>
+                     </math> and <math>
+                        <latex>\Vect{w}_2</latex>
+                     </math> are linearly independent. Therefore we can obtain an orthonormal basis of <math>
+                        <latex>W</latex>
+                     </math> by orthonormalizing them using the Gram-Schmidt process:</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}_1</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \Vect{w}_1 }{ \abs{ \Vect{w}_1 } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{(1,0,-1)}{ \abs{ (1,0,-1) } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{1}{\sqrt{2}} (1,0,-1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>and</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}_2</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \Vect{w}_2 - (\DotPr{ \Vect{w}_2 }{ \Vect{u}_1 }) \Vect{u}_1}{ \abs{ \Vect{w}_2 - (\DotPr{ \Vect{w}_2 }{ \Vect{u}_1 }) \Vect{u}_1 } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ (1,1,0) - \tfrac{1}{2}(1,0,-1) }{ \abs{ \Vect{w}_2 - (\DotPr{ \Vect{w}_2 }{ \Vect{u}_1 }) \Vect{u}_1 } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \tfrac{1}{2} (1,2,1) }{ \abs{ \tfrac{1}{2} (1,2,1) } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{1}{\sqrt{6}} (1,2,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Therefore <math>
+                        <latex>\EuScript{B}:= (\Vect{u}_1,\Vect{u}_2)</latex>
+                     </math> form an orthonormal basis of <math>
+                        <latex>W</latex>
+                     </math>.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find an ONB of the subspace <math>
+                     <latex>W</latex>
+                  </math> of <math>
+                     <latex>\RNr[4]</latex>
+                  </math> spanned by the linearly independent set of vectors <math>
+                     <latex>\EuScript{A}=(\Vect{w}_1,\Vect{w}_2,\Vect{w}_3)</latex>
+                  </math> where</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Vect{w}_1:=(1,0,1,2)\qquad \Vect{w}_2:=(2,1,0,2)\qquad \Vect{w}_3:=(1,-1,0,1)</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{1}{\sqrt{6}}(1,0,1,2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{1}{\sqrt{3}}(1,1,-1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}_3</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{1}{\sqrt{6}}(1,-2,-1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>Since we are informed that the vectors <math>
+                        <latex>\Vect{w}_1</latex>
+                     </math>, <math>
+                        <latex>\Vect{w}_2</latex>
+                     </math>, and <math>
+                        <latex>\Vect{w}_3</latex>
+                     </math> are linearly independent, we can obtain an ONB of their span <math>
+                        <latex>W</latex>
+                     </math> by applying the Gram-Schmidt process to them:</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}_1</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{\Vect{w}_1}{ \abs{ \Vect{w}_1 } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{1}{\sqrt{6}}(1,0,1,2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}_2</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \Vect{w}_2 - (\DotPr{ \Vect{w}_1 }{ \Vect{u}_1 })\Vect{u}_1 }{ \abs{ \Vect{w}_2 - (\DotPr{ \Vect{w}_1 }{ \Vect{u}_1 })\Vect{u}_1 } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{1}{\sqrt{3}} (1,1,-1,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}_3</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \Vect{w}_3 - (\DotPr{ \Vect{w}_3 }{ \Vect{u}_1 })\Vect{u}_1 - (\DotPr{ \Vect{w}_3 }{ \Vect{u}_2 })\Vect{u}_2 }{ \abs{ \Vect{w}_3 - (\DotPr{ \Vect{w}_3 }{ \Vect{u}_1 })\Vect{u}_1 - (\DotPr{ \Vect{w}_3 }{ \Vect{u}_2 })\Vect{u}_2 } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{1}{ \sqrt{6} } (1,-2,-1,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Therefore, an ONB of the 3-dimensional subspace <math>
+                        <latex>W</latex>
+                     </math> of <math>
+                        <latex>\RNr[4]</latex>
+                     </math> is</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}_1</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\tfrac{1}{\sqrt{6}}(1,0,1,2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}_2</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\tfrac{1}{\sqrt{3}}(1,1,-1,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}_3</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\tfrac{1}{\sqrt{6}}(1,-2,-1,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>You are given an orthogonal set of vectors <math>
+                     <latex>B:=\Set{ \Vect{v}_1,\dots ,\Vect{v}_k }</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>c_1,\dots ,c_k</latex>
+                     </math> are nonzero numbers, show that <math>
+                        <latex>C:= \Set{ c_1 \Vect{v}_1,\dots , c_k \Vect{v}_k }</latex>
+                     </math> is also an orthogonal set of vectors.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>In the statement above replace ‘orthogonal’ by ‘orthonormal’. Is this then true?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+</exercise.pack>

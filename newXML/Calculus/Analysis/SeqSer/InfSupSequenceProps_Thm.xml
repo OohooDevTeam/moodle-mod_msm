@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_InfSupSequenceProps"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Properties of supremum and infimum</caption>
+   <statement.theorem>
+      <para>
+         <para.body>For sequences <math>
+               <latex>(a_n)</latex>
+            </math> and <math>
+               <latex>(b_n)</latex>
+            </math> in <math>
+               <latex>\RNr</latex>
+            </math> the following hold</para.body>
+      </para>
+      <part.theorem partid="SupNegativea">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\sup(-a_n) = -\inf(a_n)</latex>
+                  </math> and <math>
+                     <latex>\inf(-a_n) = \sup(a_n)</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="SupScalara">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>c\in \RNr</latex>
+                  </math> satisfies <math>
+                     <latex> c&gt;0 </latex>
+                  </math>, then <math>
+                     <latex>\sup(ca_n) = c\cdot\sup(a_n)</latex>
+                  </math> and <math>
+                     <latex>\inf(ca_n) = c\cdot \inf(a_n)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Supaplusb">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\sup(a_n + b_n) \leq \sup(a_n) + \sup(b_n)</latex>
+                  </math> and <math>
+                     <latex>\inf(a_n + b_n) \geq \inf(a_n) + \inf(b_n)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="SupSubsequence">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>(a_n)</latex>
+                  </math> is a subsequence of <math>
+                     <latex>(b_n)</latex>
+                  </math> then <math>
+                     <latex>\sup(a_n) \leq \sup(b_n)</latex>
+                  </math> and <math>
+                     <latex>\inf(a_n) \geq \sup(b_n)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>SupNegativea</part.ref>
+         </logic>
+         <caption>SupNegativea</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We unravel the relevant definitions</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>SupScalara</part.ref>
+         </logic>
+         <caption>SupScalara</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Adapt the method used to prove the previous part.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Supaplusb</part.ref>
+         </logic>
+         <caption>Supaplusb</caption>
+         <proof.block.body>
+            <para>
+               <para.body>For every <math>
+                     <latex>n\in \NNr</latex>
+                  </math> we know</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>SupSubsequence</part.ref>
+         </logic>
+         <caption>SupSubsequence</caption>
+         <proof.block.body>
+            <para>
+               <para.body>This is so because each upper bound of <math>
+                     <latex>(b_n)</latex>
+                  </math> is also an upper bound of <math>
+                     <latex>(a_n)</latex>
+                  </math>. Therefore,</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

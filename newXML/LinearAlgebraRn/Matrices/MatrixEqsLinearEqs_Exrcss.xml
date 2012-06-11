@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixEqsLinearEqs"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	  <title>Matrix Equations and Linear Equations: Exercises</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Express the following system of linear equations as a matrix equation.</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\begin{array}{rcrcrcrcr}
+4u &amp; + &amp; x &amp; - &amp; 2y &amp; + &amp; 10z &amp; = &amp; 4 \\
+-2u &amp; + &amp; 3x &amp; -&amp; 4y &amp; + &amp; 5z &amp; = &amp; 1 \\
+u &amp; - &amp; x &amp; + &amp; 3y &amp; - &amp; 5z &amp; = &amp; -6
+\end{array}
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <math.display>
+					                <latex>
+						
+\left[\begin{array}{rrrr}
+4 &amp; 1 &amp; -2 &amp; 10 \\
+-2 &amp; 3 &amp; -4 &amp; 5 \\
+1 &amp; -1 &amp; 3 &amp; -5
+\end{array}\right]\ \begin{bmatrix} u \\ x \\ y \\ z \end{bmatrix}\ =\
+\left[ \begin{array}{r}
+4 \\ 1 \\ -6
+\end{array}\right]
+						
+					</latex>
+				              </math.display>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+		    </approach>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Express the systems of linear equations below as matrix equations. Then find the solutions by using the inverse of the coefficient matrix.</para.body>
+            </para>
+			
+			         <math.display>
+				           <latex>
+					
+\begin{array}{rcrcrcr}
+x &amp; - &amp; 2y &amp; + &amp; 2z &amp; = &amp; 1 \\
+2x &amp; - &amp; 3y &amp; + &amp; 6z &amp; = &amp; 4 \\
+x &amp; + &amp; y &amp; + &amp; 7z &amp; = &amp; -2
+\end{array} \quad \text{and} \quad
+\begin{array}{rcrcrcr}
+x &amp; - &amp; 2y &amp; + &amp; 2z &amp; = &amp; 3 \\
+2x &amp; - &amp; 3y &amp; + &amp; 6z &amp; = &amp; 1 \\
+x &amp; + &amp; y &amp; + &amp; 7z &amp; = &amp; 1
+\end{array}
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		
+		    <approach version="1">
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>The matrix equations correspondig to the given system of linear equations are</para.body>
+               </para>
+				
+				           <math.display>
+					             <latex>
+						
+\left[
+\begin{array}{rrr}
+1 &amp; -2 &amp; 2 \\
+2 &amp; -3 &amp; 6 \\
+1 &amp; 1 &amp; 7
+\end{array}\right]\ \begin{bmatrix} x \\ y \\ z \end{bmatrix}\ =\
+\left[
+\begin{array}{r} 1 \\ 4 \\ -2 \end{array}\right] \qquad
+\left[
+\begin{array}{rrr}
+1 &amp; -2 &amp; 2 \\
+2 &amp; -3 &amp; 6 \\
+1 &amp; 1 &amp; 7
+\end{array}\right]\ \begin{bmatrix} x \\ y \\ z \end{bmatrix}\ =\
+\left[
+\begin{array}{r} 3 \\ 1 \\ 1 \end{array}\right]
+						
+					</latex>
+				           </math.display>
+				
+				           <para>
+                  <para.body>The inverse of the common coefficient matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+				
+				           <math.display>
+					             <latex>
+						
+A^{-1}\ =\
+\left[
+\begin{array}{rrr}
+27 &amp; -16 &amp; 6 \\
+8 &amp; -5 &amp; 2 \\
+-5 &amp; 3 &amp; -1
+\end{array}\right]
+						
+					</latex>
+				           </math.display>
+				
+				           <para>
+                  <para.body>Consequently, the unique solution of first system is linear equations is given by</para.body>
+               </para>
+				
+				           <math.display>
+					             <latex>
+						
+\begin{bmatrix} x \\ y \\ z \end{bmatrix}\ =\ \left[
+\begin{array}{rrr}
+27 &amp; -16 &amp; 6 \\
+8 &amp; -5 &amp; 2 \\
+-5 &amp; 3 &amp; -1
+\end{array}\right]\, \left[\begin{array}{r} 1 \\ 4 \\ -2 \end{array}\right]\ =\
+\left[\begin{array}{r} -49 \\ -16 \\ 9 \end{array}\right]
+						
+					</latex>
+				           </math.display>
+				
+				           <para>
+                  <para.body>While the unique solution of the second system of linear equations is given by</para.body>
+               </para>
+				
+				           <math.display>
+					             <latex>
+						
+\begin{bmatrix} x \\ y \\ z \end{bmatrix}\ =\ \left[
+\begin{array}{rrr}
+27 &amp; -16 &amp; 6 \\
+8 &amp; -5 &amp; 2 \\
+-5 &amp; 3 &amp; -1
+\end{array}\right]\, \left[
+\begin{array}{r} 3 \\ 1 \\ 1 \end{array}\right]\ =\
+\left[
+\begin{array}{r} 71 \\ 21 \\ -13 \end{array}\right]
+						
+					</latex>
+				           </math.display>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Solve the matrix equation <math>
+                     <latex>\Mtrx{A}\Mtrx{X} = \Mtrx{B}</latex>
+                  </math> if</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+A = 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 3 \\
+2 &amp; -1 &amp; 4 \\
+-1 &amp; 2 &amp; 2
+\end{array}\right], \quad
+B =
+\left[
+\begin{array}{r}
+1 \\ -2 \\ 1
+\end{array}\right], \quad 
+X = 
+\left[
+\begin{array}{r}
+x \\ y \\ z
+\end{array}\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The matrix equation has the unique solution</para.body>
+                  </para>
+				              <math.display>
+					                <latex>
+						
+X = 
+\left[
+\begin{array}{r}
+19 \\ 16 \\ -6
+\end{array}\right]
+						
+					</latex>
+				              </math.display>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Check that <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible; find its inverse; then find the uniqe solution of the matrix equation by computing</para.body>
+            </para>
+				        <math.display>
+					          <latex>\Mtrx{X} = \Mtrx{A}^{-1}\Mtrx{B}</latex>
+				        </math.display>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+</exercise.pack>

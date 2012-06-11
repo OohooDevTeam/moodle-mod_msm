@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Orientation">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Examples: Orientation</title>
+	
+	<showme>
+		<statement>
+			<para>Find the orientation of <latex>\RNr[2]</latex> given by the pair of vectors <latex>(\Vect{a},\Vect{b})</latex> with</para>
+			<para align="center"><latex>\Vect{a}=(4,1)</latex> &nbsp; and &nbsp; <latex>\Vect{b}=(-2,3)</latex></para>
+		</statement>
+		<answer type="Solution">
+			<para>We form the <latex>(2,2)</latex>-matrix with column vectors <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> and compute its determinant:</para>
+			<computation>
+				<left>\det [\Vect{a}\ \ \Vect{b}]</left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+\det
+\left[
+\begin{array}{rr}
+4 & -2 \\
+1 & 3
+\end{array}
+\right]
+					]]>
+				</right>
+				<left></left>
+				<center>=</center>
+				<right>
+					12 - (-2)
+				</right>
+				<left></left>
+				<center>=</center>
+				<right><![CDATA[ 14 > 0 ]]></right>
+			</computation>
+			<para>Therefore</para>
+			<computation>
+				<left>\omega(\Vect{a},\Vect{b})</left>
+				<center>=</center>
+				<right>+1</right>
+			</computation>
+			<para>In other words: the pair of vectors <latex>(\Vect{a},\Vect{b})</latex> represents the positive orientation of <latex>\RNr[2]</latex>.</para>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Find the orientation of <latex>\RNr[3]</latex> represented by the triple of vectors <latex>(\Vect{a},\Vect{b},\Vect{c})</latex> with</para>
+			<para align="center"><latex>\Vect{a} = (1,0,-1)</latex>, <latex>\Vect{b}=(4,-1,2)</latex>, and <latex>\Vect{c}=(3,2,1)</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We form the <latex>(3,3)</latex>-matrix with column vectors <latex>\Vect{a}</latex>, <latex>\Vect{b}</latex>, and <latex>\Vect{c}</latex>; then we compute its determinant:</para>
+			<computation>
+				<left>\det [\Vect{a}\ \ \Vect{b}\ \ \Vect{c}]</left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+\det
+\left[
+\begin{array}{rrr}
+1 & 4  & 3 \\
+0 & -1 & 2 \\
+-1 & 2  & 1
+\end{array}
+\right]
+					]]>
+				</right>
+				<left></left>
+				<center>=</center>
+				<right>
+					1\cdot (-1 - 4)\ -\ 1\cdot (8 + 3)
+				</right>
+				<left></left>
+				<center>=</center>
+				<right><![CDATA[ -16 < 0 ]]></right>
+			</computation>
+			<para>Therefore</para>
+			<computation>
+				<left>\omega(\Vect{a},\Vect{b},\Vect{c})</left>
+				<center>=</center>
+				<right>-1</right>
+			</computation>
+			<para>In other words: the triple of vectors <latex>(\Vect{a},\Vect{b},\Vect{c})</latex> represents the negative orientation of <latex>\RNr[2]</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

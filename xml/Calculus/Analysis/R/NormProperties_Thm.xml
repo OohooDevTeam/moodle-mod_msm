@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_NormRProperties">
+	<caption>Algebraic properties of &nbsp; &lsquo;absolute value&rsquo;</caption>
+	<statement>
+		<para>For all <latex>x,y\in \RNr</latex> the following hold:</para>
+		<part partid="NormNonNegative">
+			<para><latex>\Abs{x} \geq 0</latex></para>
+		</part>
+		<part partid="Norm0">
+			<para><latex>\Abs{x} = 0</latex> if and only if <latex>x=0</latex></para>
+		</part>
+		<part partid="NormxNormNegx">
+			<para><latex>\Abs{-x} = \Abs{x}</latex></para>
+		</part>
+		<part partid="NormDifference">
+			<para><latex>\Abs{ x-y } = \Abs{ y-x }</latex></para>
+		</part>
+		<part partid="NormProduct">
+			<para><latex>\Abs{xy} = \Abs{x} \Abs{y}</latex></para>
+		</part>
+		<part partid="NormRatio"><para>If <latex>y\neq 0</latex>, then <latex magnify="yes">\Abs{\tfrac{x}{y} } = \tfrac{ \Abs{x} }{ \Abs{y} }</latex>.</para></part>
+		<part partid="Comparison"><para><latex>x=-\Abs{x}</latex> or <latex>x = \Abs{x}</latex> and so <latex>-\Abs{x}\leq x\leq \Abs{x}</latex>.</para></part>
+	</statement>
+	<proof type="Proof">
+		<caption><partref>NormNonNegative</partref> <latex>\Abs{x} \geq 0</latex></caption>
+		<para>If <latex>x\geq 0</latex>, then <latex>\Abs{x} = x \geq 0</latex>. So it only remains to consider the case where <latex><![CDATA[ x < 0 ]]></latex>. But then <latex><![CDATA[ \Abs{x} = -x > 0 ]]></latex>, as was to be shown.</para>
+		<caption><partref>Norm0</partref> <latex>\Abs{x} \geq 0</latex> if and only if <latex>x=0</latex></caption>
+		<para>If <latex>x=0</latex>, then <latex>\Abs{x} = 0</latex> by definition. For the converse, if <latex>\Abs{x} = 0</latex>, then</para>
+		<math.display>
+			<latex>x=0 \quad \text{or} \quad -x = 0</latex>
+		</math.display>
+		<para>In the former case there is nothing left to show. If <latex>-x=0</latex>, then</para>
+		<computation>
+			<left>(-1)(-x)</left>
+			<center>=</center>
+			<right>(-1)0</right>
+			<left>x</left>
+			<center>=	<info>
+				<para>On the left, we compute: <latex>(-1)(-x) = (-1)(-1)x=x</latex></para>
+				<para>On the right: we know that <latex>x0=0</latex> for all <latex>x\in \RNr</latex>.</para>
+			</info></center>
+			<right>0</right>
+		</computation>
+		<caption><partref>NormxNormNegx</partref> <latex>\Abs{-x} = \Abs{x}</latex></caption>
+		<para>If <latex>x\geq 0</latex>, then <latex>-x\leq 0</latex>, and so</para>
+		<math.display>
+			<latex>\Abs{x} = x = (-1)\cdot (-1) x = \Abs{-x}</latex>
+		</math.display>
+		<para>as claimed. If <latex>x\leq 0</latex>, then <latex>-x\geq 0</latex>, and so</para>
+		<math.display>
+			<latex>\Abs{x} = -x = \Abs{-x}</latex>
+		</math.display>
+		<para>as claimed.</para>
+		<caption><partref>NormDifference</partref> <latex>\Abs{ x-y } = \Abs{ y-x }</latex></caption>
+		<para>This follows from the previous part by observing that <latex>x-y = (-1)(y-x)</latex>, and so</para>
+		<math.display>
+			<latex>\Abs{y-x} = \Abs{(-1)(y-x)} = \Abs{y-x}</latex>
+		</math.display>
+		<caption><partref>NormProduct</partref> <latex>\Abs{xy} = \Abs{x} \Abs{y}</latex></caption>
+		<para>The key is to treat the case where <latex>0\leq x,y</latex>. We then have <latex>\Abs{x} = x</latex> and <latex>\Abs{y}=y</latex> and, further,</para>
+		<math.display>
+			<latex>0\leq x\quad \text{and so}\quad 0=0\cdot y \leq xy</latex>
+		</math.display>
+		<para>This implies <latex>\Abs{xy}=xy</latex>, and the identity <latex>\Abs{xy}=\Abs{x}\Abs{y}</latex> follows in this case.</para>
+		<para>Now, if <latex>x</latex> or <latex>y</latex> are negative, we can reduce to the previous case by using the identity <latex>\Abs{t} = \Abs{ -t }</latex>, repeatedly if necessary.</para>
+		<caption><partref>NormRatio</partref> If <latex>y\neq 0</latex>, then <latex magnify="yes">\Abs{\tfrac{x}{y} } = \tfrac{ \Abs{x} }{ \Abs{y} }</latex></caption>
+		<para>This follows from the previous part by recalling the definition <latex>\frac{x}{y} = x\cdot y^{-1}</latex>.</para>
+		<caption><partref>Comparison</partref> <latex>-\Abs{x} = x</latex> or <latex>x = \Abs{x}</latex></caption>
+		<para>If <latex>0\leq x</latex>, then <latex>x=\Abs{x}</latex>. On the other hand, if <latex>x\leq 0</latex>, then <latex>0\leq -x=\Abs{x}</latex> and so</para>
+		<math.display>
+			<latex>-\Abs{x} = -(-x) = x \leq 0\leq -x = \Abs{x}</latex>
+		</math.display>
+		<para>So the claim holds for all <latex>x\in \RNr</latex>.</para>
+	</proof>
+</theorem>

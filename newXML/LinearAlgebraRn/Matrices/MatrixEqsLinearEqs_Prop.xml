@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_MatrixEqsLinearEqs"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment on the usefulness of this proposition</caption>
+         </info.caption>
+         <para>
+            <para.body>This method is particularly effective if we have to solve several systems of linear equations each of which has the same coefficient matrix: We only need to invert the coefficient matrix once. If afterward a new augmentation vector is given, we can find the unique solution of the resulting system of linear equations with a simple matrix multiplication.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_MatrixEqsLinearEqs"/>
+      <info>
+         <para>
+            <para.body>An example which shows how to use this proposition.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Suppose the coefficient matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> of the system of <math>
+               <latex>n</latex>
+            </math> linear equations in <math>
+               <latex>n</latex>
+            </math> variables
+			</para.body>
+         <index.glossary>
+            <term>matrix</term>
+            <term>equation</term>
+            <info>
+               <info.caption>
+                  <caption>matrix equation</caption>
+               </info.caption>
+               <para>
+                  <para.body>On the relationship between matrix equations and linear equations</para.body>
+               </para>
+            </info>
+         </index.glossary>
+         <index.glossary>
+            <term>linear</term>
+            <term>equation</term>
+            <info>
+               <info.caption>
+                  <caption>linear equation</caption>
+               </info.caption>
+               <para>
+                  <para.body>On the relationship between matrix equations and linear equations</para.body>
+               </para>
+            </info>
+         </index.glossary>
+      </para>
+      <math.display>
+         <latex>
+				
+\begin{array}{rcccrcr}
+\colorbox{lightgreen}{$a_{11}$} {\color{red} x_1} &amp; + &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{1n}$} {\color{red} x_n} &amp; = &amp; c_1 \\
+\vdots\ \ \ &amp; &amp; &amp; &amp; \vdots\ \ \ &amp; &amp; \vdots\ \ \\
+\colorbox{lightgreen}{$a_{n1}$} {\color{red} x_1} &amp; + &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{nn}$} {\color{red} x_n} &amp; = &amp; c_n
+\end{array}
+				
+			</latex>
+      </math.display>
+      <para>
+         <para.body>is invertible. Then this system has the unique solution</para.body>
+      </para>
+      <math.display>
+         <latex>
+				
+{\color{red}\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}}\ =\
+A^{-1} \begin{bmatrix} c_1 \\ \vdots \\ c_n \end{bmatrix}
+				
+			</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We 
+			<subordinate>
+                     <hot>know</hot>
+                     <companion>
+                        <unit.ref unitId="Info_MatrixEqsLinearEqs"/>
+                        <info>
+                           <para>
+                              <para.body>Review this equivalence.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>
+			 that the given system of linear equations is equivalent to the matrix equation.</para.body>
+            </para>
+            <math.display>
+               <latex>\Mtrx{A}{\color{red} \Mtrx{X}} = \Mtrx{C}</latex>
+            </math.display>
+            <para>
+               <para.body>Now we can use properties of matrix multiplication to find that this matrix equation is equalent to</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\aligned
+\Mtrx{A}{\color{red} \Mtrx{X}}\ &amp;=\ \Mtrx{C} \\
+\Mtrx{A}^{-1}(\Mtrx{A}{\color{red} \Mtrx{X}})\ &amp;=\ \Mtrx{A}^{-1}\Mtrx{C} \\
+(\Mtrx{A}^{-1}\Mtrx{A}){\color{red} \Mtrx{X}}\ &amp;=\ \Mtrx{A}^{-1}\Mtrx{C} \\
+\IdMtrx[n]{\color{red} \Mtrx{X}}\ &amp;=\ \Mtrx{A}^{-1}\Mtrx{C} \\
+{\color{red} \Mtrx{X}}\ &amp;=\ \Mtrx{A}^{-1}\Mtrx{C}
+\endaligned
+				
+			</latex>
+            </math.display>
+            <para>
+               <para.body>The last identity means that the given system of linear equations has a unique solution, and this solution is given by the matrix product on the right as claimed.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

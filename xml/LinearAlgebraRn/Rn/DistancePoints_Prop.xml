@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition" id="thm_DistanceBetweenPoints">
+	<caption>Distance between Points</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_DistancePoints"/>
+		<info><para>Examples on computing the distance between points.</para></info>
+	</associate>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Expl_DistancePoints"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>This formula is a consequence of the Theorem of Pythagoras. &ndash; See details of this</para>
+		</info>
+	</associate>
+	<statement>
+		<para>The distance between two points in <latex>P(x_1,\dots ,x_n)</latex> and <latex>Q(y_1,\dots
+			,y_n)</latex> in <latex>\RNr[n]</latex> is given by</para>
+		<math.display>
+			<latex>\Dstnc{P}{Q}\ =\ \sqrt{(y_1-x_1)^2+\cdots + (y_n-x_n)^2}\ \ .</latex>
+		</math.display>
+	</statement>
+	
+<!--	<proof.ext>
+		<caption>Using ordinary induction</caption>
+		<para>We use induction on the dimension <latex>n</latex> of <latex>\RNr[n]</latex></para>
+		<step>
+			<caption>Anchoring the induction</caption>
+			<pilot>
+				<step>
+					<para>To start the induction, we anchor it by verifying the claim for <latex>P</latex> and
+						<latex>Q</latex> in <latex>RNr[1]</latex>
+					</para>
+				</step>
+			</pilot>
+			<para>We begin with the case where <latex>n=1</latex>; i.e. we want to determine the distance
+				between two points <latex>P</latex> and <latex>Q</latex> given by numbers <latex>s</latex>
+				and <latex>t</latex> on a line. If <latex>t\geq s</latex>, we are in the situation depicted
+				below.</para>
+			
+			<para align="justify"><img src="ims/DistancePoints_Prop_R.gif"/></para>
+			
+			<para>Note that <latex>|t-s|=|s-t|</latex>. So, actually, we don't need to worry which of the two numbers is bigger. The claim follows for <latex>n=1</latex> because</para>
+			<math.display>
+				<latex>\text{dist}(P,Q)\ =\ |t-s|\ =\ \sqrt{(t-s)^2}.</latex>
+			</math.display>
+		</step>
+		<step>
+			<caption>Carrying out the induction step</caption>
+			<pilot>
+				<step>
+					<para>Next we need to carry out the induction step.</para>
+				</step>
+			</pilot>
+			<para>Assume now that the distance formula is valid in <latex>\RNr[n-1]</latex>, for <latex>n-1\geq 1</latex>. We need to infer that the distance formula is valid in <latex>\RNr[n]</latex>. With the following setup we can use the Theorem of Pythagoras to accomplish this task. Let us write</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rclclrcl}
+					P & = & (x_1,\dots ,x_{n-1},x_n) & = & (R,x_n) & \qquad R & = & (x_1,\dots ,x_{n-1}) \\
+					Q & = & (y_1,\dots ,y_{n-1},y_n) & = & (S,y_n) & \qquad S & = & (y_1,\dots ,y_{n-1})
+					\end{array}
+					]]>
+				</latex>
+			</math.display>
+			<para>By induction hypothesis,</para>
+			<math.display>
+				<latex>\text{dist}(R,S)\ =\ \sqrt{(y_1-x_1)^2+\cdots +(y_{n-1}-x_{n-1})^2}</latex>
+			</math.display>
+			<para>The following schematic picture tells us how this setup relates the problem of finding <latex>\text{dist}(P,Q)</latex> to the Theorem of Pythagoras</para>
+			
+			<para align="center">
+				<img src="DistancePoints_Prop_Rn.gif"/>
+			</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+					\text{dist}^2(P,Q)\ &=\ \text{dist}^2(R,S)\ +\ \text{dist}^2(x_n,y_n) \\
+					&=\ (y_1-x_1)^2\ +\ \cdots\ +\ (y_{n-1}-x_{n-1})^2\ +\ (y_n-x_n)^2
+					\endaligned
+					]]>
+				</latex>
+			</math.display>
+			<para>Consequently,</para>
+			<math.display>
+				<latex>\text{dist}(P,Q)\ =\ \sqrt{(y_1-x_1)^2\ +\ \cdots\ +\ (y_{n-1}-x_{n-1})^2\ +\ (y_n-x_n)^2}</latex>
+			</math.display>
+			<para>as claimed. In this computation we used that</para>
+			<math.display>
+				<latex>\sqrt{\text{dist}^2(P,Q)}\ =\ |\text{dist}(P,Q)|\ =\ \text{dist}(P,Q).</latex>
+			</math.display>
+		</step>
+	</proof.ext>-->
+</theorem>

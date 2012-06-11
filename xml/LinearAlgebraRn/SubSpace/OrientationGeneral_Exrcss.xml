@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_OrientationGeneral">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Orientation of Subspaces</title>
+	<exercise>
+		<problem>
+			<para>Discuss possible orientations of the subspace <latex>V</latex> of <latex>\RNr[2]</latex> consisting of all <latex>(x,y)</latex> with</para>
+			<computation>
+				<left>3x+2y</left>
+				<center>=</center>
+				<right>0</right>
+			</computation>
+		</problem>
+		<approach>
+			<solution>
+				<para>We first note that <latex>V</latex> is the hyperspace of <latex>\RNr[2]</latex> perpendicular to the vector <latex>\Vect{n}=(3,2)</latex>. So it is a line.</para>
+				<para>An orientation of <latex>V</latex> is given by any nonzero vector in <latex>V</latex>. One such vector is</para>
+				<computation>
+					<left>\Vect{a}</left>
+					<center>:=</center>
+					<right>(-2,3)</right>
+				</computation>
+				<para>For <latex><![CDATA[ t>0 ]]></latex>, <latex>t\cdot \Vect{a}</latex> and <latex>\Vect{a}</latex> determine the same orientation of <latex>V</latex>. On the other hand, if <latex><![CDATA[ t<0 ]]></latex>, then <latex>t\cdot \Vect{a}</latex> and <latex>\Vect{a}</latex> determine opposite orientations of <latex>V</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Discuss possible orientations of the subspace <latex>V</latex> of <latex>\RNr[3]</latex> consisting of all <latex>(x,y,z)</latex> with</para>
+			<computation>
+				<left>2x - y + 3z</left>
+				<center>=</center>
+				<right>0</right>
+				<left>x + y + z</left>
+				<center>=</center>
+				<right>0</right>
+			</computation>
+		</problem>
+		<approach version="1">
+			<solution.hint>
+				<para>Begin by finding all those <latex>(x,y,z)</latex> in <latex>\RNr[3]</latex> which solve the given system of two linear equations.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>The points solving the two equations form a line through the origin in <latex>\RNr[3]</latex>.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>The solutions form a 1-dimensional subspace of <latex>\RNr[3]</latex>.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>A basis for the solution space is <latex>\Vect{a}:=(-4,1,3)</latex>.</para>
+			</solution.hint>
+			<solution>
+				<para>We first determine the solution space <latex>V</latex> of the given system of two linear equations. Its augmented coefficient matrix is</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rrr|r}
+2 & -1 & 3 & 0 \\
+1 &  1 & 1 & 0
+\end{array}\quad \overset{\text{RREF}}{\longrightarrow}\quad 
+\begin{array}{rrr|r}
+1 & 0 & \tfrac{4}{3} & 0 \\
+0 & 1 & -\tfrac{1}{3} & 0
+\end{array}
+]]>
+					</latex>
+				</math.display>
+				<para>Therefore <latex>(x,y,z)</latex> solves the equations if and only if for an arbitrary number <latex>z</latex>,</para>
+				<para align="center"><latex>x = -\tfrac{4}{3}z</latex> &nbsp; and &nbsp; <latex>y = \tfrac{1}{3}</latex>.</para>
+				<para>This happens exactly when</para>
+				<math.display>
+					<latex>(x,y,z) = \left( -\frac{4}{3}\cdot z , \frac{1}{3}\cdot z, z \right) = z\cdot \left( -\frac{4}{3} , \frac{1}{3}, 1 \right)</latex>
+				</math.display>
+				<para>Consequently, vectors of the form <latex>t\cdot (-4,1,3)</latex>, with <latex><![CDATA[ t>0 ]]></latex>, determine one orientation of <latex>V</latex>. If <latex><![CDATA[ t<0 ]]></latex> they determine the opposite orientation of <latex>V</latex>.</para>
+			</solution>
+		</approach>
+		<approach version="2">
+			<solution>
+				<para>Alternatively, we may argue as follows: The solutions of the first equation form the hyperspace of <latex>\RNr[3]</latex> perpendicular to <latex>\Vect{a}:=(2,-1,3)</latex>, and the solutions of the second equation form the hyperspace of <latex>\RNr[3]</latex> perpendicular to <latex>\Vect{b}:=(1,1,1)</latex>. So <latex>V</latex> is the orthogonal complement of <latex>S:=\Set{ \Vect{a},\Vect{b} }</latex>.</para>
+				<para>The vectors <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> are not parallel. So their orthogonal complement in <latex>\RNr[3]</latex> has as its basis</para>
+				<computation>
+					<left>\Vect{c}</left>
+					<center>:=</center>
+					<right>\CrssPr{ \Vect{a} }{ \Vect{b} }</right>
+					<left></left>
+					<center>=</center>
+					<right>(-4,1,3)</right>
+				</computation>
+				<para>Consequently, vectors of the form <latex>t\cdot (-4,1,3)</latex>, with <latex><![CDATA[ t>0 ]]></latex>, determine one orientation of <latex>V</latex>. If <latex><![CDATA[ t<0 ]]></latex> they determine the opposite orientation of <latex>V</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Discuss possible orientations of the subspace <latex>W</latex> of <latex>\RNr[3]</latex> perpendicular to the vectors</para>
+			<computation>
+				<left>\Vect{u}</left>
+				<center>:=</center>
+				<right>(5,-1,6)</right>
+				<left>\Vect{v}</left>
+				<center>:=</center>
+				<right>(4,2,-1)</right>
+			</computation>
+		</problem>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\Vect{a}:=(1,0,1)</latex>, and <latex>\Vect{b}:=(1,0,-1)</latex>. Then put</para>
+			<computation>
+				<left>\EuScript{B}</left>
+				<center>:=</center>
+				<right>(\StdBss{3},\StdBss{1})</right>
+				<left>\EuScript{C}</left>
+				<center>:=</center>
+				<right>(\Vect{a},\Vect{b})</right>
+				<left>\EuScript{D}</left>
+				<center>:=</center>
+				<right>(\Vect{b},\Vect{a})</right>
+			</computation>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that <latex>\EuScript{B}</latex>, <latex>\EuScript{C}</latex>, and <latex>\EuScript{D}</latex> are ordered bases of the same subspace <latex>V</latex> of <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>The vectors in <latex>\EuScript{C}</latex> and <latex>\EuScript{D}</latex> are the same. So <latex>\EuScript{C}</latex> and <latex>\EuScript{D}</latex> span the same subspace <latex>V</latex> of <latex>\RNr[3]</latex>.</para>
+					<para>We see that <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> are linearly independent, for example using the determinant test:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{rr}
+1 & 1 \\
+0 & 0 \\
+1 & -1
+\end{array}
+\right] \longrightarrow 
+\left[
+\begin{array}{rr}
+1 & 1 \\
+1 & -1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>The matrix formed from the top and the bottom row has determinant <latex>-2\neq 0</latex>. So <latex>\Dim{V}=2</latex>.</para>
+					<para>Further, <latex>V</latex> is contained in <latex>\span(\EuScript{B})</latex> because</para>
+					<computation>
+						<left>\Vect{a}</left>
+						<center>=</center>
+						<right>1\cdot \StdBss{3} + 1\cdot \StdBss{1}</right>
+						<left>\Vect{b}</left>
+						<center>=</center>
+						<right>(-1)\cdot \StdBss{3} + 1\cdot \StdBss{1}</right>
+					</computation>
+					<para>But then we conclude <latex>\span(\EuScript{B}) = V</latex> because</para>
+					<ol>
+						<li><para><latex>\Dim{ \span(\EuScript{B}) }\leq 2</latex>, and</para></li>
+						<li>
+							<para>If a 2-dimensional space <latex>V</latex> is contained in another 2-dimensional space, then the two spaces are equal.</para>
+						</li>	
+					</ol>
+					<para>So <latex>\EuScript{B}</latex>, <latex>\EuScript{C}</latex>, and <latex>\EuScript{D}</latex> are ordered bases of the same subspace <latex>V</latex> of <latex>\RNr[3]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Do <latex>\EuScript{B}</latex> and <latex>\EuScript{C}</latex> determine the same orientation of <latex>V</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>Both bases determine the same orientation of <latex>V</latex>.</para>
+				</answer>
+				<solution>
+					<para>We need to find the sign of the determinant of the coordinate conversion matrix from <latex>\EuScript{B}</latex> to <latex>\EuScript{C}</latex>-coordinates or vice versa. We know</para>
+					<math.display>
+						<latex>\Vect{a} = \StdBss{3} + \StdBss{1}\quad \text{and}\quad \Vect{b} = -\StdBss{3} + \StdBss{1}</latex>
+					</math.display>
+					<para>Therefore it is easiest to convert from <latex>\EuScript{C}</latex>-coordinates to <latex>\EuScript{B}</latex>-coordinates using the conversion matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+C_{\EuScript{B}\EuScript{C}} = 
+\left[
+\begin{array}{rr}
+1 & -1 \\
+1 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>We see that <latex><![CDATA[ \det( C_{\EuScript{B}\EuScript{C}}) = 2 > 0 ]]></latex>, and conclude that both bases determine the same orientation of <latex>V</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Do <latex>\EuScript{B}</latex> and <latex>\EuScript{D}</latex> determine the same orientation of <latex>V</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>\EuScript{B}</latex> and <latex>\EuScript{D}</latex> determine opposite orientations of <latex>V</latex>.</para>
+				</answer>
+				<solution>
+					<para><latex>\EuScript{C}</latex> and <latex>\EuScript{D}</latex> determine opposite orientations of <latex>V</latex> because both ordered bases are related by a single interchange of basis vectors:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+C_{\EuScript{D}\EuScript{C}}\ =\ 
+\left[
+\begin{array}{rr}
+0 & 1 \\
+1 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>So</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\det(C_{\EuScript{D}\EuScript{C}})\ =\ \det
+\left[
+\begin{array}{rr}
+0 & 1 \\
+1 & 0
+\end{array}
+\right]\ =\ -1 < 0
+]]>
+						</latex>
+					</math.display>
+					<para>It follows that <latex>\EuScript{C}</latex> and <latex>\EuScript{D}</latex> determine opposite orientations of <latex>V</latex> and, hence, <latex>\EuScript{B}</latex> and <latex>\EuScript{D}</latex> determine opposite orientations of <latex>V</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the following statements decide if it is true or false. If it is true, explain why. If it is false describe a setting where this is so.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Given a subvector space <latex>V</latex> of <latex>\RNr[n]</latex>, every basis of <latex>V</latex> determines an orientation.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>This statement is false. An ordered basis is needed to determine an orientation of <latex>V</latex>.</para>
+					<para>For example, if <latex>V = \RNr[2]</latex> is the plane, and we just provide a basis of <latex>V</latex> consisting of the vectors <latex>\StdBss{1}</latex> and <latex>\StdBss{2}</latex>, then we do not know which of these two vectors is to be taken first in an ordering:</para>
+					<ul>
+						<li>
+							<para>If we choose the ordering <latex>(\StdBss{1},\StdBss{2})</latex>, we obtain the positive or counterclockwise orientation of <latex>\RNr[2]</latex>.</para>
+							<para>On the other hand, if we choose the ordering <latex>(\StdBss{2},\StdBss{1})</latex>, we obtain the negative or clockwise orientation of <latex>\RNr[2]</latex>.</para>
+						</li>
+					</ul>
+					<para>In short, just saying what the basis vectors are fails to provide the necessary ordering information.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>An orientation of the line <latex>\RNr</latex> is given by any nonzero number.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>This is statement is true: A nonzero number is a basis vector for <latex>\RNr</latex>. A basis consisting of a single vector is automatically ordered. So the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The vector <latex>\Vect{a}= (1,1,1)</latex> gives an orientation for the <latex>z</latex>-axis in <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>This statement is false.</para></answer>
+				<solution>
+					<para>The vector <latex>\Vect{a}</latex> does not lie in the <latex>z</latex>-axis. Therefore it can not be an ordered basis of the <latex>z</latex>-axis. On the other hand, an ordered basis of the <latex>z</latex>-axis is needed to orient it. Therefore, the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The vector <latex>\Vect{a} = (1,1,1)</latex> gives the positive orientation to the line <latex>\ell</latex> in <latex>\RNr[3]</latex> consisting of all <latex>(x,x,x)</latex>, <latex>x</latex> in <latex>\RNr</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>This statement is false.</para></answer>
+				<solution.hint><para>Does the line <latex>\ell</latex> have a positive orientation at all.</para></solution.hint>
+				<solution>
+					<para>This statement is false. The line <latex>\ell</latex> is just a line in <latex>\RNr[3]</latex>. There is no convention in place by which we choose a preferred orientation for <latex>\ell</latex>. In the absence of such a convention and talk about &lsquo;positive&rsquo; orientation of <latex>\ell</latex> makes no sense. Therefore the statement in questions is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The vectors <latex>\Vect{a} := (1,1,1)</latex> and <latex>\Vect{b}:=(-3,-3,-3)</latex> represent opposite orientations of the line <latex>\ell</latex> in <latex>\RNr[3]</latex> consisting of all <latex>(x,x,x)</latex>, <latex>x</latex> in <latex>\RNr</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>This statement is true.</para></answer>
+				<solution>
+					<para>First of all, both vectors <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> lie on <latex>\ell</latex> and each forms an ordered basis of <latex>\ell</latex>. Next we observe that <latex>\Vect{b} = (-3)\cdot \Vect{a}</latex>. Therefore the <latex>(1,1)</latex> basis conversion matrix <latex>[-3]</latex> has negative determinant equal to <latex>-3</latex>.</para>
+					<para>So the two vectors represent opposite orientations of <latex>\ell</latex>. The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_n)</latex> be an ordered basis for a subvector space <latex>V</latex> of <latex>\RNr[n]</latex>. If <latex>\EuScript{C}</latex> is the ordered basis of <latex>V</latex> which results from interchanging two vectors of <latex>\EuScript{B}</latex>, show that <latex>\EuScript{B}</latex> and <latex>\EuScript{C}</latex> represent opposite orientations of <latex>V</latex>.</para>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>You need to find the sign of the matrix which converts from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{C}</latex>-coordinates.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>For <latex><![CDATA[ 1\leq i < j\leq n ]]></latex> let be <latex>\Vect{b}_i</latex> and <latex>\Vect{b}_j</latex> be the two columns of <latex>\EuScript{B}</latex> which are being interchanged. - What is the corresponding coordinate conversion matrix.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>For <latex><![CDATA[ 1\leq i < j\leq n ]]></latex> let be <latex>\Vect{b}_i</latex> and <latex>\Vect{b}_j</latex> be the two columns of <latex>\EuScript{B}</latex> which are being interchanged. Then the corresponding coordinate conversion matrix is</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{C}_{\EuScript{C}\EuScript{B}}\ =\ 
+[\StdBss{1}\ \cdots\ \StdBss{i-1}\ \StdBss{j}\ \StdBss{i+1}\ \cdots\ \StdBss{j-1}\ \StdBss{i}\ \StdBss{j+1}\ \cdots\ \StdBss{n}]
+						]]>
+					</latex>
+				</math.display>
+			</solution.hint>
+			<solution>
+				<para>We need to find the sign of the matrix which converts from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{C}</latex>-coordinates. For <latex><![CDATA[ 1\leq i < j\leq n ]]></latex> let be <latex>\Vect{b}_i</latex> and <latex>\Vect{b}_j</latex> be the two columns of <latex>\EuScript{B}</latex> which are being interchanged. Then the corresponding coordinate conversion matrix is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C}_{\EuScript{C}\EuScript{B}}\ =\ 
+[\StdBss{1}\ \cdots\ \StdBss{i-1}\ \StdBss{j}\ \StdBss{i+1}\ \cdots\ \StdBss{j-1}\ \StdBss{i}\ \StdBss{j+1}\ \cdots\ \StdBss{n}]
+						]]>
+						</latex>
+					</math.display>
+				<para>The conversion matrix <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex> results from the identity matrix by interchanging columns <latex>i</latex> and <latex>j</latex>. Therefore</para>
+				<math.display>
+					<latex>\det(\Mtrx{C}_{\EuScript{C}\EuScript{B}}) = -\det\IdMtrx[n] = -1</latex>
+				</math.display>
+				<para>Therefore <latex>\EuScript{B}</latex> and <latex>\EuScript{C}</latex> represent opposite orientations of <latex>V</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+</exercise.pack>

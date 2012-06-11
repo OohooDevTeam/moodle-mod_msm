@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_VectorAdditionScalarMultiplicationProperties">
+	<caption>Properties of Vector Addition and Scalar Multiplication</caption>
+	<statement>
+		<para>For arbitrary vectors <latex>\mathbf{x},\mathbf{y},\mathbf{z}</latex> in <latex>\RNr[n]</latex>, and arbitrary numbers <latex>s</latex>  and <latex>t</latex>, the following hold:</para>
+		
+		<part partid="Prop_VectorAdditionCommutes">
+			<caption>Commutativity of vector addition</caption>
+			<para>
+				<latex>\mathbf{x} + \mathbf{y} = \mathbf{y} + \mathbf{x}</latex>
+			</para>
+		</part>
+		
+		<part partid="Prop_VectorAdditionAssociative">
+			<caption>Associativity of vector addition</caption>
+			<para><latex>(\mathbf{x} + \mathbf{y}) + \mathbf{z} = \mathbf{x} + (\mathbf{y} + \mathbf{z})</latex></para>
+		</part>
+		
+		<part partid="Prop_0Neutral">
+			<caption>Neutrality of the <latex>\mathbf{0}</latex>-vector</caption>
+			<para><latex>\mathbf{x} + \mathbf{0} = \mathbf{x} = \Vect{0} + \Vect{x}</latex></para>
+		</part>
+		
+		<part partid="Prop_AdditiveInverse">
+			<caption>Addivitive inverse of <latex>\mathbf{x}</latex></caption>
+			<para><latex>\mathbf{x} + (-1)\cdot \mathbf{x} = \mathbf{0}</latex></para>
+		</part>
+		
+		<part partid="Prop_ScalarMultiplicationAssociative">
+			<caption>Associativity of scalar multiplication</caption>
+			<para><latex>(st)\cdot \mathbf{x} = s\cdot (t\cdot \mathbf{x})</latex></para>
+		</part>
+		
+		<part partid="Prop_DistributivityI">
+			<caption>First distributivity law of scalar multiplication</caption>
+			<para><latex>(s+t)\cdot \mathbf{x} = s\cdot \mathbf{x} + t\cdot \mathbf{x}</latex>.</para>
+		</part>
+		
+		<part partid="Prop_DistributivityII">
+			<caption>Second distributivity law of scalar multiplication</caption>
+			<para><latex>s\cdot (\mathbf{x} + \mathbf{y}) = s\cdot \mathbf{x} + s\cdot \mathbf{y}</latex></para>
+		</part>
+		
+		<part partid="Prop_NeutralInScalarMultiplication">
+			<caption>Neutral element in scalar multiplication</caption>
+			<para><latex>1\cdot \mathbf{x} = \mathbf{x}</latex></para>
+		</part>
+	</statement>
+
+
+	<proof type="Proof">
+		<para>All of these properties appear ‘totally obvious‘ because they are familiar from the real number system. However, vectors are not the same as real numbers. So we need to verify these claims. What do we have to do? For each of these statements we have to review the underlying definitions and make corresponding computations. We will find that each of these properties can be proven by invoking the corresponding property of the real number system in each coordinate position.</para>
+		
+		<caption>
+			<partref>Prop_VectorAdditionCommutes</partref>
+			Vector addition is commutative: <latex>\mathbf{x} + \mathbf{y} = \mathbf{y} + \mathbf{x}</latex>, geometric proof
+		</caption>
+		<para>In our geometric interpretation of vector addition, <latex>\mathbf{x} + \mathbf{y}</latex> corresponds to an arrow diagram in which <latex>\mathbf{y}</latex> follows the vector <latex>\mathbf{x}</latex>. On the other hand, <latex>\mathbf{y} + \mathbf{x}</latex> corresponds to a vector diagram which <latex>\mathbf{x}</latex> follows the vector <latex>\mathbf{y}</latex>.</para>
+		<para align="center">
+			<subordinate>
+				<hot>
+					<img src="ims/VectorsAddCommutative.gif"/>
+				</hot>
+				<info>
+					<para>Both of the vectors <latex>\mathbf{x} + \mathbf{y}</latex> and <latex>\mathbf{y} + \mathbf{x}</latex> are represented by the same diagonal of the vector addition parallelogram.</para>
+				</info>
+			</subordinate>			
+			
+		</para>
+		<para>As the diagram above shows, both sum vectors are represented by the same diagonal in a parallelogram. So both sum vectors are equal.</para>
+		
+		
+		<caption>
+			<partref>Prop_VectorAdditionCommutes</partref>
+			Vector addition is commutative: <latex>\mathbf{x} + \mathbf{y} = \mathbf{y} + \mathbf{x}</latex>, algebraic proof
+		</caption>
+		<para>We compute, using the definition of vector addition: If <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex> and <latex>\mathbf{y} = (y_1,\dots ,y_n)</latex>, then</para>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para>
+						<latex>\mathbf{x} = \mathbf{y}</latex>
+					</para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para align="center">recalling the definition of <latex>\mathbf{x}</latex> and <latex>\mathbf{y}</latex>
+								</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell>
+					<para>
+						<latex>(x_1,\dots ,x_n)\ +\ (y_1,\dots ,y_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para align="center">This is the definition of vector addition</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell>
+					<para>
+						<latex>(x_1+y_1,\dots ,x_n+y_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para align="center">In each coordinate position, we use here that addition of numbers in <latex>\RNr[n]</latex> is commutative; i.e. <latex>u+v=v+u</latex>.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell>
+					<para>
+						<latex>(y_1+x_1,\dots ,y_n+x_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para align="center">This is the definition of vector addition</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell>
+					<para>
+						<latex>(y_1,\dots ,y_n)\ +\ (x_1,\dots ,x_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para align="center">recalling the definition of <latex>\mathbf{x}</latex> and <latex>\mathbf{y}</latex>
+								</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell>
+					<para>
+						<latex>\mathbf{y} + \mathbf{x}</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		
+		
+		<caption>
+			<partref>Prop_VectorAdditionAssociative</partref>
+			Associativity of vector addition: <latex>(\mathbf{x} + \mathbf{y}) + \mathbf{z} = \mathbf{x} + (\mathbf{y} + \mathbf{z})</latex>
+		</caption>
+		<para>We verify this property by direct computation: Given three vectors in <latex>\RNr[n]</latex>, <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>, <latex>\mathbf{y}=(y_1,\dots ,y_n)</latex>, and <latex>\mathbf{z} = (z_1,\dots ,z_n)</latex> we find</para>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para><latex>(\mathbf{x} + \mathbf{y}) + \mathbf{z})</latex></para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>Recalling the definition of <latex>\mathbf{x},\mathbf{y},\mathbf{z}</latex>.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\left( (x_1,\dots ,x_n) + (y_1,\dots ,y_n)\right)\ +\ (z_1,\dots ,z_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>According to the definition of vector addition.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>(x_1+y_1,\dots ,x_n+y_n)\ +\ (z_1,\dots ,z_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>According to the definition of vector addition.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\left((x_1+y_1)+z_1,\dots ,(x_n+y_n)+z_n\right)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>In each coordinate use the associativity property of addition of numbers: <latex>(u+v)+w=u+(v+w)</latex>.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\left( x_1+(y_1+z_1),\dots ,x_n+(y_n +z_n)\right)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>According to the definition of vector addition.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>(x_1,\dots ,x_n)\ +\ (y_1+z_1,\dots ,y_n+z_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>According to the definition of vector addition.</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>(x_1,\dots ,x_n)\ +\ \left( (y_1,\dots ,y_n)+(z_1,\dots ,z_n)\right)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<para>Recalling the definition of <latex>\mathbf{x},\mathbf{y},\mathbf{z}</latex>
+								</para>
+							</info>
+						</subordinate>
+						
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\mathbf{x}\ +\ (\mathbf{y}+\mathbf{z})</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		<para>This is exactly what we wanted to show.</para>
+		
+		
+		
+		<caption>
+			<partref>Prop_0Neutral</partref>
+			Neutrality of the <latex>\Vect{0}</latex>-vector: <latex>\mathbf{x}+\mathbf{0}=\mathbf{x} = \Vect{0} + \Vect{x}</latex>
+		</caption>
+		<para>Geometrically this property is evident: Concatenating any vector <latex>\mathbf{x}</latex>  with the <latex>\mathbf{0}</latex>-vector just gives us <latex>\mathbf{x}</latex> back. - Alternatively, we may argue by computation: If  <latex>\mathbf{x}=(x_1,\dots ,x_n)</latex>, then</para>
+		
+		<computation>
+			<left>\mathbf{x}+\mathbf{0}</left>
+			<center>=	<info><para>Recalling the definition of <latex>\mathbf{x}</latex></para></info>
+			</center>
+			<right>(x_1,\dots ,x_n) + (0,\dots ,0)</right>
+			<left></left>
+			<center>=	<info><para>Using definition of vector addition</para></info></center>
+			<right>(x_1+0,\dots ,x_n+0)</right>
+			<left></left>
+			<center>=</center>
+			<right>(x_1,\dots ,x_n)</right>
+			<left></left>
+			<center>=</center>
+			<right>\mathbf{x}</right>
+		</computation>
+		
+		<para>as was to be shown.</para>
+		
+		
+		<caption>
+			<partref>Prop_AdditiveInverse</partref>
+			Addivitive inverse of &nbsp; <latex>\mathbf{x}</latex>: <latex>\mathbf{x} + (-1)\cdot \mathbf{x} = \mathbf{0}</latex>, geometric argument
+		</caption>
+		<para>Reversing a vector <latex>\mathbf{x}</latex>, yields the vector <latex>-\mathbf{x}</latex>, and concatenating <latex>\mathbf{x}</latex> with its reverse yields the vector which starts and ends at the same point; i.e. the <latex>\mathbf{0}</latex>-vector. Accordingly, the additive inverse of <latex>\mathbf{x}</latex> is <latex>-\mathbf{x}</latex>, as was to be shown.</para>
+		
+		
+		<caption>
+			<partref>Prop_AdditiveInverse</partref>
+			Addivitive inverse of <latex>\mathbf{x}</latex>: <latex>\mathbf{x} + (-1)\cdot \mathbf{x} = \mathbf{0}</latex>, algebraic argument
+		</caption>
+		<para>The additive inverse of <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex> is a vector <latex>\mathbf{y}</latex> such that <latex>\mathbf{x} + \mathbf{y} = \mathbf{0}</latex>. Choosing <latex>\mathbf{y}:= -\mathbf{x} = (-x_1,\dots ,-x_n)</latex> serves this purpose because</para>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para>
+						<latex>\mathbf{x} + \mathbf{y}</latex>
+					</para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>(x_1,\dots ,x_n)\ +\ (-x_1,\dots ,x_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>(x_1-x_1,\dots ,x_n-x_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>(0,\dots ,0)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\mathbf{0}</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		<para>This confirms that <latex>\mathbf{y}=-\mathbf{x}</latex> is the additive inverse of <latex>\mathbf{x}</latex>.</para>
+		
+		
+		
+		<caption>
+			<partref>Prop_ScalarMultiplicationAssociative</partref>
+			Scalar multiplication is associative: <latex>(st)\cdot \mathbf{x} = s\cdot (t\cdot \mathbf{x})</latex>
+		</caption>
+		<para>Given numbers <latex>s</latex> and <latex>t</latex>, and a vector <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>, we compute:</para>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para>
+						<latex>(st)\cdot \mathbf{x}</latex>
+					</para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>(st)\cdot (x_1,\dots ,x_n)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\left( (st)\cdot x_1,\dots ,(st)\cdot x_n\right)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\left( s(t\cdot x_1),\dots ,s(t\cdot x_n)\right)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>s\cdot \left( t\cdot x_1,\dots ,t\cdot x_n\right)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>s\cdot \left( t\cdot (x_1,\dots ,x_n)\right)</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>s\cdot (t\cdot \mathbf{x})</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		
+		
+		<caption>
+			<partref>Prop_DistributivityI</partref>
+			First distributivity law of scalar multiplication: <latex>(s+t)\cdot \mathbf{x} = s\cdot \mathbf{x} + t\cdot \mathbf{x}</latex>.
+		</caption>
+		<para>To see why this distributivity law is true, suppose <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex> and <latex>s,t</latex> in <latex>\RNr</latex> are given. Then we compute</para>
+		
+		<computation>
+			<left>(s+t)\cdot \mathbf{x}</left>
+			<center>=</center>
+			<right>(s+t)\cdot (x_1,\dots ,x_n)</right>
+			<left></left>
+			<center>=	<info><para>Using the definition of scalar multiplication</para></info></center>
+			<right>\left( (s+t)x_1,\dots ,(s+t)x_n \right)</right>
+			<left></left>
+			<center>=	<info><para>Using the distributivity law of the real numbers system</para></info></center>
+			<right>( sx_1+tx_1,\dots ,sx_n+tx_n )</right>
+			<left></left>
+			<center>=	<info><para>Using the definition of vector addition</para></info></center>
+			<right>(sx_1,\dots ,sx_n)\ +\ (tx_1,\dots ,tx_n)</right>
+			<left></left>
+			<center>=	<info><para>Using the definition of scalar multiplication of vectors</para></info></center>
+			<right>s\cdot (x_1,\dots ,x_n)\ +\ t\cdot (x_1,\dots ,x_n)</right>
+			<left></left>
+			<center>=	</center>
+			<right>s\cdot \mathbf{x}\ +\ t\cdot \mathbf{x}</right>
+		</computation>
+		
+		
+		
+		<caption>
+			<partref>Prop_DistributivityII</partref>
+			Second distributivity law of scalar multiplication: <latex>s\cdot (\mathbf{x} + \mathbf{y}) = s\cdot \mathbf{x}\ +\ s\cdot \mathbf{y}</latex> 
+		</caption>
+		<para>To see why this distributivity law is true, suppose <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex> and <latex>\mathbf{y}=(y_1,\dots ,y_n)</latex> and <latex>s</latex> in <latex>\RNr</latex> are given. Now we compute:</para>
+		
+		
+		<computation>
+			<left>s\cdot (\mathbf{x} + \mathbf{y})</left>
+			<center>=</center>
+			<right>s\cdot \left( (x_1,\dots ,x_n) + (y_1,\dots ,y_n)\right)</right>
+			<left></left>
+			<center>=	<info><para>Using the definition of vector addition</para></info></center>
+			<right>s\cdot (x_1+y_1,\dots ,x_n+y_n)</right>
+			<left></left>
+			<center>=	<info><para>Using the definition of scalar multiplication</para></info></center>
+			<right>\left(s(x_1+y_1),\dots ,s(x_n+y_n)\right)</right>
+			<left></left>
+			<center>=	<info><para>Using the distributivity law in the real numbers system</para></info></center>
+			<right>(sx_1+sy_1,\dots ,sx_n+sy_n)</right>
+			<left></left>
+			<center>=	<info><para>Using the definition of vector addition</para></info></center>
+			<right>(sx_1,\dots ,sx_n)\ +\ (sy_1,\dots ,sy_n)</right>
+			<left></left>
+			<center>=	<info><para>Using the definition of scalar multiplication twice</para></info></center>
+			<right>s\cdot (x_1,\dots ,x_n)\ +\ s\cdot (y_1,\dots ,y_n)</right>
+			<left></left>
+			<center>=</center>
+			<right>s\cdot \mathbf{x}\ +\ s\cdot \mathbf{y}</right>
+		</computation>
+		
+		<caption>
+			<partref>Prop_NeutralInScalarMultiplication</partref>
+			Neutral element of scalar multiplication: <latex>1\cdot \mathbf{x} = \mathbf{x}</latex>
+		</caption>
+		<para>This is obvious.</para>
+	</proof>
+</theorem>

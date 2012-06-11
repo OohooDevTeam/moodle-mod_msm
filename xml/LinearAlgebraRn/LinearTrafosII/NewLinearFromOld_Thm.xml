@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_NewLinearFromOld">
+	<caption>New linear maps from old</caption>
+	<statement>
+		<para>The following hold:</para>
+		<part partid="SumLinearMaps">
+			<para>If <latex>S,T\from V\to W</latex> are linear maps, so is <latex>(S+T)\from V\to W</latex>, defined by <latex>(S+T)(\Vect{x}):= S(\Vect{x}) + T(\Vect{x})</latex></para>
+		</part>
+		<part partid="ScalarProductLinearMaps">
+			<para>If <latex>t</latex> is in <latex>\RNr</latex> and <latex>L\from V\to W</latex> is linear,  then so is <latex>(tL)\from V\to W</latex>, defined by <latex>(tL)(\Vect{x}) := t\cdot (L(\Vect{x}))</latex>.</para>
+		</part>
+		<part partid="CompositionLinearMaps">
+			<para>If <latex>S\from U\to V</latex> and <latex>T\from V\to W</latex> are linear maps, so is the composite <latex>(T\Comp S)\from U\to W</latex>, defined by <latex>T\Comp S(\Vect{u}):= T(S(\Vect{u}))</latex>.</para>
+		</part>
+	</statement>
+	<proof type="Proof Idea">
+		<para>These statements may be proved directly from the definition. The details are left as a exercises.</para>
+	</proof>
+</theorem>

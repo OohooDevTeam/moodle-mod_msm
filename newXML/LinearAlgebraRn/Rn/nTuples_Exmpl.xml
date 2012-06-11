@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_nTuples"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Examples of <math xmlns="">
+         <latex>n</latex>
+      </math>-tuples.</title>
+	  <caption xmlns="">Examples of <math>
+         <latex>n</latex>
+      </math>-tuples.</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Here are some examples of <math>
+                  <latex>n</latex>
+               </math>-tuples:</para.body>
+         </para>
+			
+			      <ul xmlns="">
+				        <li>
+					          <para>
+                  <para.body>
+                     <math>
+                        <latex>(5)</latex>
+                     </math> is a 1-tuple. Its one and only coordinate is the number <math>
+                        <latex>5</latex>
+                     </math>. <math>
+                        <latex>(-3)</latex>
+                     </math> is another 1-tuple, and an arbitrary 1-tuple is of the form <math>
+                        <latex>(s)</latex>
+                     </math>, with <math>
+                        <latex>s</latex>
+                     </math> a number in the system of real numbers <math>
+                        <latex>\RNr</latex>
+                     </math>.</para.body>
+               </para>
+				        </li>
+				        <li>
+					          <para>
+                  <para.body>
+                     <math>
+                        <latex>(2,3)</latex>
+                     </math> is a 2-tuple, or a pair of numbers. The first coordinate of this 2-tuple is 2. The second coordinate is 3. Another 2-tuple is <math>
+                        <latex>(-1,6)</latex>
+                     </math>. In this case the first coordinate of this 2-tuple is <math>
+                        <latex>-1</latex>
+                     </math>, the second coordinate is <math>
+                        <latex>6</latex>
+                     </math>.</para.body>
+               </para>
+					          <para>
+                  <para.body>An arbitrary 2-tuple, or pair of numbers, is of the form <math>
+                        <latex>(s,t)</latex>
+                     </math> with <math>
+                        <latex>s</latex>
+                     </math> and <math>
+                        <latex>t</latex>
+                     </math> numbers. In this case the first coordinate is <math>
+                        <latex>s</latex>
+                     </math>, while the second coordinate is <math>
+                        <latex>t</latex>
+                     </math>.</para.body>
+               </para>
+				        </li>
+				        <li>
+					          <para>
+                  <para.body>
+                     <math>
+                        <latex>(\tfrac{3}{2},0,-1)</latex>
+                     </math> is a 3-tuple, or a triple of numbers. Its first coordinate is <math>
+                        <latex>\tfrac{3}{2}</latex>
+                     </math>. Its second coordinate is <math>
+                        <latex>0</latex>
+                     </math>. Its third coordinate is <math>
+                        <latex>-1</latex>
+                     </math>. Another 3-tuple is <math>
+                        <latex>(-16,3,4)</latex>
+                     </math>. In this case the first coordinate is <math>
+                        <latex>-16</latex>
+                     </math>, the second coordinate is <math>
+                        <latex>3</latex>
+                     </math>, the third coordinate is <math>
+                        <latex>4</latex>
+                     </math>.</para.body>
+               </para>
+					          <para>
+                  <para.body>An arbitrary 3-tuple, or triple of numbers, is of the form <math>
+                        <latex>(x,y,z)</latex>
+                     </math> with <math>
+                        <latex>x</latex>
+                     </math>, <math>
+                        <latex>y</latex>
+                     </math>, and <math>
+                        <latex>z</latex>
+                     </math> numbers. In this case the first coordinate is <math>
+                        <latex>x</latex>
+                     </math>, the second coordinate is <math>
+                        <latex>y</latex>
+                     </math>, and the third coordinate is <math>
+                        <latex>z</latex>
+                     </math>.</para.body>
+               </para>
+				        </li>
+				        <li>
+					          <para>
+                  <para.body>
+                     <math>
+                        <latex>(4,1,0,3)</latex>
+                     </math> is a 4-tuple. Its first coordinate is <math>
+                        <latex>4</latex>
+                     </math>. Its second coordinate is <math>
+                        <latex>1</latex>
+                     </math>. Its third coordinate is <math>
+                        <latex>0</latex>
+                     </math>. Its fourth coordinate is <math>
+                        <latex>3</latex>
+                     </math>; etc.</para.body>
+               </para>
+				        </li>
+			      </ul>
+		    </statement.showme>
+	  </showme>
+</showme.pack>

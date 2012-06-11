@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack	SYSTEM "../Symbols.dtd">
+<example.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_AddingVectors">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Examples of Adding Vectors</title>
+	<example>
+		<statement>
+			<para>Find the sum of the vectors <latex>\Vect{x}=(2,-1)</latex> and <latex>\Vect{y}=(3,2)</latex> in <latex>\RNr[2]</latex>.  
+			</para>
+		</statement>
+		<answer type="Solution">
+			<para>According to the definition, we just need to add vector coordinates in matching positions; i.e.</para>
+			<math.display>
+				<latex>
+					\Vect{x}\ +\ \Vect{y}\ =\ ({\color{green} 2},{\color{blue} -1})\ +\ ({\color{green} 3},{\color{blue} 2})\ =\ ({\color{green} 2} + {\color{green} 3},{\color{blue} -1} + {\color{blue} 2})\ =\ (5,1).
+				</latex>
+			</math.display>
+		</answer>
+	</example>
+	<example>
+		<statement>
+			<para>Find the sum of the vectors <latex>\Vect{x}=(1/2,-1,5)</latex> and <latex>\Vect{y}=(-3/2,\pi,2e)</latex> in <latex>\RNr[3]</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>According to the definition, we just need to add vector coordinates in matching positions; i.e.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\mathbf{x}\ +\ \mathbf{y}\ &=\ ({\color{green} 1/2},{\color{blue} -1},{\color{red} 5})\ +\ ({\color{green} -3/2},{\color{blue} \pi},{\color{red} 2e}) \\
+&=\ ({\color{green} 1/2 - 3/2},{\color{blue} -1 +\pi},{\color{red} 5+2e}) \\
+&=\ (-1,\pi-1,5+2e).
+\endaligned
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</example>
+	<example>
+		<statement>
+			<para>Find the sum of the vectors <latex>\Vect{x}=(2/3,/14,-2,4,-7)</latex> and <latex>\Vect{y}=(1,-1,0,-1,1)</latex> in <latex>\RNr[5]</latex>.</para>
+		</statement>
+		<answer.ext>
+			<step>
+				<pilot>
+					<step>
+						<para>The answer will be vector in <latex>\RNr[5]</latex>. So there are <latex>5</latex> coordinates to compute. We begin by applying this procedure to the first coordinates.</para>
+					</step>
+				</pilot>
+				<para>To add the given vectors, we add the numbers in matching coordinates. Applying this to the first coordinates yields</para>
+				<math.display>
+					<latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,?,?,?,?) </latex>
+				</math.display>
+			</step>
+			<step>
+				<pilot>
+					<step>
+						<para>Next we add the second coordinates:</para>
+					</step>
+				</pilot>
+				<math.display>
+					<latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,?,?,?) </latex>
+				</math.display>
+			</step>
+			<step>
+				<pilot>
+					<step>
+						<para>Next we add the third coordinates:</para>
+					</step>
+				</pilot>
+				<math.display>
+					<latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,-2,?,?) </latex>
+				</math.display>
+			</step>
+			<step>
+				<pilot>
+					<step>
+						<para>Next we add the fourth coordinates:</para>
+					</step>
+				</pilot>
+				<math.display>
+					<latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,-2,3,?) </latex>
+				</math.display>
+			</step>
+			<step>
+				<pilot>
+					<step>
+						<para>Next we add the fifth coordinates:</para>
+					</step>
+				</pilot>
+				<math.display>
+					<latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,-2,3,-6). </latex>
+				</math.display>
+			</step>
+		</answer.ext>
+	</example>
+</example.pack>

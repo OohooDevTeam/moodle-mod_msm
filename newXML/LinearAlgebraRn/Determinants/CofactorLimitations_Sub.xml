@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="CofactorLimitations_Sub"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Practical Limitations of the Cofactor Method</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The computational effort of evaluating determinants using the cofactor method grows enormously with the size of the matrix. To see this, let us analyze just what it takes to expand a matrix of size <math>
+                     <latex>(n,n)</latex>
+                  </math> along the first column.</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>First we get <math>
+                           <latex>n</latex>
+                        </math> summands each of which is a product with one factor being the determinant of a matrix of size <math>
+                           <latex>(n-1,n-1)</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Next we need to expand each of these <math>
+                           <latex>n</latex>
+                        </math> determinants as a sum of its <math>
+                           <latex>(n-1)</latex>
+                        </math> cofactors. The result are <math>
+                           <latex>n(n-1)</latex>
+                        </math> summands each of which is a product with a determinant of size <math>
+                           <latex>(n-2,n-2)</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>... and so on, and so on.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>By the time we are done, we have added</para.body>
+            </para>
+            <math.display>
+               <latex>n\cdot (n-1)\cdot (n-2) \cdots 2\cdot 1 = n!</latex>
+            </math.display>
+            <para>
+               <para.body>numbers, each of which is a product of <math>
+                     <latex>n</latex>
+                  </math> numbers. In all, there are <math>
+                     <latex>n\cdot (n!)</latex>
+                  </math> operations to perform.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>To get an idea of how large the <math>
+                     <latex>n\cdot (n!)</latex>
+                  </math> is, let us work out the case <math>
+                     <latex>n=25</latex>
+                  </math>: computing the determinant of a matrix of size <math>
+                     <latex>(25,25)</latex>
+                  </math> by expansion along columns requires approximately</para.body>
+            </para>
+            <math.display>
+               <latex>25\cdot (25!) \approx 387,780,251,100,000,000,000,000,000</latex>
+            </math.display>
+            <para>
+               <para.body>arithmetical operations. A computer that is able to perform <math>
+                     <latex>10^{19}</latex>
+                  </math> arithmetical operations per second would take more than a full year to complete such a task. The fastest computer that exists today would take much longer than that.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In comparison, computing the determinant of an upper triangular matrix of size <math>
+                     <latex>(n,n)</latex>
+                  </math> requires only <math>
+                     <latex>n</latex>
+                  </math> multiplications. So this is a significant improvement over <math>
+                     <latex>n\cdot (n!)</latex>
+                  </math> arithmetical operations.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

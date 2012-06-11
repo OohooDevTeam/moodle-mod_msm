@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_LinearIndependenceRank"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Linear independence test by rank</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_LinearIndependenceRank"/>
+      <info>
+         <para>
+            <para.body>Examples on how to use this proposition</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For an <math>
+               <latex>(m,n)</latex>
+            </math>-matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> the following hold</para.body>
+      </para>
+      <part.theorem partid="ColumnRank">
+         <part.body>
+            <para>
+               <para.body>The column vectors of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> are linearly independent if and only if <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> has 
+				<subordinate>
+                     <hot>rank</hot>
+                     <info>
+                        <para>
+                           <para.body>Recall that the rank of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> is the number of leading 1’ in the RREF of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+                  <math>
+                     <latex>n</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="RowRank">
+         <part.body>
+            <para>
+               <para.body>The row vectors of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> are linearly independent if and only if <math>
+                     <latex>\Mtrx{A}^T</latex>
+                  </math> has 
+				<subordinate>
+                     <hot>rank</hot>
+                     <info>
+                        <para>
+                           <para.body>Recall that the rank of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> is the number of leading 1’ in the RREF of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+                  <math>
+                     <latex>m</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>ColumnRank</part.ref>
+         </logic>
+         <caption>ColumnRank</caption>
+         <proof.block.body>
+            <para>
+               <para.body>To see the relationship between the linear independence of the columns of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> and its rank, recall that <math>
+                     <latex>C_1,\dots , C_n</latex>
+                  </math> are linearly independent if and only if the vector equation</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>RowRank</part.ref>
+         </logic>
+         <caption>RowRank</caption>
+         <proof.block.body>
+            <para>
+               <para.body>This follows from the previous part: The rows <math>
+                     <latex>R_1,\dots ,R_m</latex>
+                  </math>are the columns of <math>
+                     <latex>\Mtrx{A}^T</latex>
+                  </math>, and the claim follows. – This completes the proof</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

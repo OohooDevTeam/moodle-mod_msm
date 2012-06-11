@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_Box2"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>2-Dimensional Slanted Box</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In <math>
+                     <latex>\RNr[2]</latex>
+                  </math> the slanted box construction is applied to two vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math>. Visually this is the parallelogram spanned by <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Box2_1.png"/>
+            </media>
+            <para>
+               <para.body>Let us explain how this results from the definition of</para.body>
+            </para>
+            <math.display>
+               <latex>\SltdBox{\Vect{x},\Vect{y}} = \Set{ r \Vect{x} + s \Vect{y} \st 0\leq s,t\leq 1 }</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Picture of</strong>  <math>
+                     <latex>\SltdBox{\Vect{x},\Vect{y}}</latex>
+                  </math>   Let <math>
+                     <latex>X</latex>
+                  </math> denote the point in <math>
+                     <latex>\RNr[2]</latex>
+                  </math> whose position vector is <math>
+                     <latex>\Vect{x}</latex>
+                  </math>. Then the vectors <math>
+                     <latex>r \Vect{x}</latex>
+                  </math> with <math>
+                     <latex>0\leq r\leq 1</latex>
+                  </math> are the position vectors for points on the line segment <math>
+                     <latex>[\Vect{0},X]</latex>
+                  </math> joining the origin to <math>
+                     <latex>X</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/ParallelogramSpan.png"/>
+            </media>
+            <para>
+               <para.body>Now a vector sum of the form <math>
+                     <latex>r \Vect{x} + s \Vect{y}</latex>
+                  </math> with <math>
+                     <latex>0\leq r\leq 1</latex>
+                  </math> parallel translates the line segment <math>
+                     <latex>[0,X]</latex>
+                  </math> by the vector <math>
+                     <latex>s \Vect{y}</latex>
+                  </math>. As <math>
+                     <latex>0\leq s\leq 1</latex>
+                  </math>, these parallel translated line segments fill the parallelogram spanned by <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> as shown.</para.body>
+            </para>
+            <para>
+               <para.body>Here is another example of such a parallelogram, the slanted box spanned by vectors <math>
+                     <latex>\Vect{u}</latex>
+                  </math> and <math>
+                     <latex>\Vect{v}</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Box2_2.png"/>
+            </media>
+         </block.body>
+      </block>
+   </body>
+</unit>

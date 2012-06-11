@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_Functions">
+	<headers>
+		<full>Functions - A Rapid Introduction</full>
+		<toc>Functions - A Rapid Introduction</toc>
+		<short>Functions</short>
+	</headers>
+	
+	<intro>
+		<para>To make this introduction to linear algebra somewhat self contained, we include here a rapid introduction to the notions of
+			<subordinate>
+				<hot>sets and functions</hot>
+				<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/SetsNaive/Sets.xml" type="html" target="sets">
+					<para>Link to an online book on sets and functions.</para>
+				</link>
+			</subordinate>.
+		</para>
+	</intro>
+	<section.body>
+		<para>Setting up a
+			<subordinate>
+				<hot>function</hot>
+				<companion>
+					<subpage.ref subpageID="Illu_FunctionRRGraph"/>
+					<para>Comment on the concept of a function</para>
+				</companion>
+			</subordinate>
+			begins with selecting two 
+			<subordinate>
+				<hot>sets</hot>
+				<info>
+					<caption>Quick description of a set</caption>
+					<para>A set is any collection <latex>U</latex> of objects, even objects of your thought or imagination are allowed. The objects in <latex>U</latex> are called the elements of <latex>U</latex>. We write <latex>u\in U</latex> to say that <latex>u</latex> is an element of <latex>U</latex>.</para>
+				</info>
+			</subordinate>
+			<index.glossary>
+				<term>function</term>
+			</index.glossary>
+		</para>
+		<ul>
+			<li><para>A set <latex>X</latex>, called the domain of the function
+				<index.glossary>
+					<term>domain</term><term>of a function</term>
+				</index.glossary>
+				<index.glossary>
+					<term>function</term><term>domain</term>
+				</index.glossary>
+			</para></li>
+			<li><para>A set <latex>Y</latex>, called the target of the function
+				<index.glossary>
+					<term>function</term><term>target</term>
+				</index.glossary>
+			</para></li>
+		</ul>
+		
+		<para>A function <latex>f</latex> from <latex>X</latex> to <latex>Y</latex>, denoted <latex>f\from X\to Y</latex>, associates to each element <latex>x</latex> in <latex>X</latex> some element of <latex>Y</latex>. This element must be unique and is denoted <latex>f(x)</latex>. Names for it include: the &lsquo;value&rsquo; of <latex>f</latex> at <latex>x</latex>, the &lsquo;function value&rsquo; of <latex>f</latex> at <latex>x</latex>, or the &lsquo;image of <latex>x</latex> under <latex>f</latex> &rsquo;.
+			<index.glossary>
+				<term>function</term><term>value</term>
+			</index.glossary>
+			<index.glossary>
+				<term>image</term><term>of element under a function</term>
+			</index.glossary>
+			<index.glossary>
+				<term>value</term><term>of element under a function</term>
+			</index.glossary>
+		</para>
+		
+		<para>It is possible that two or more distinct elements of <latex>X</latex> get sent to the same element of <latex>Y</latex>. In other words, it is possible that, for <latex>x\neq x'</latex> in <latex>X</latex>, <latex>f(x) = f(x')</latex>. - Here are some examples.</para>
+		
+		<ul>
+			<li><para>
+				<subordinate>
+					<hot>Transformation of a planar region</hot>
+					<companion>
+						<showme.pack.ref showmePackID="Exa_TrafoPlanar"/>
+						<para>An example of a planar region being transformed, and the transformation sends several points of <latex>X</latex> to the same point of <latex>Y</latex>.</para>
+					</companion>
+				</subordinate>
+			</para></li>
+			<li><para>
+				<subordinate>
+					<hot>Transformation of a line segment</hot>
+					<companion>
+						<showme.pack.ref showmePackID="Exa_TrafoLineSegment"/>
+						<para>An example of a line segment being transformed into a curve</para>
+					</companion>
+				</subordinate>
+			</para></li>
+		</ul>
+		
+		<para><b>Functions and equations</b> &nbsp; We just learned that a function <latex>f\from X\to Y</latex> can transform several distinct elements of <latex>X</latex> into the same element <latex>y\in Y</latex>. Therefore it makes sense to ask: What is the total collection of elements of <latex>X</latex> which get sent to a given <latex>y</latex> in <latex>Y</latex>? or, in symbols, what are the solutions of the equation below?
+			<index.glossary>
+				<term>equation</term>
+				<info><para>Description of the relationship between functions and equations</para></info>
+			</index.glossary>
+		</para>
+		
+		<math.display>
+			<latex>f(x) = y</latex>
+		</math.display>
+		
+		
+		<para>Thus functions provide a general tool to formulate equations. The solutions of the equation above form the &lsquo;preimage of <latex>y</latex> under <latex>f</latex>&rsquo;. It is denoted <latex>f^{-1}(y)</latex> and consists of all those <latex>x</latex> in <latex>X</latex> which satisfy the equation <latex>f(x)=y</latex>.
+			<index.symbol>
+				<symbol><latex>f^{-1}(y)</latex></symbol>
+				<info>
+					<para>Preimage of <latex>y</latex> under a function <latex>f</latex></para>
+				</info>
+			</index.symbol>
+			<index.glossary>
+				<term>preimage</term><term>under a function</term>
+				<info>
+					<para>Given a function <latex>f\from X\to Y</latex> and <latex>y\in Y</latex>, the preimage of <latex>y</latex> under <latex>f</latex> consists of all those <latex>x\in X</latex> such that <latex>f(x)=y</latex>; notation <latex>f^{-1}(y)</latex></para>
+				</info>
+			</index.glossary>
+		</para>
+		
+		<para>There remains the question: How do we solve such equations? In general, this task can be quite challenging. At this point we can indicate the following:</para>
+		
+		<ul>
+			<li><para>If <latex>f</latex> is a linear function, we will see that the equation above is equivalent to a system of linear equations, and so we know how to solve them.</para></li>
+			<li><para> If <latex>f</latex> is differentiable, we can feed our knowledge of solving linear equations into the framework of differential calculus and obtain qualitative answers. These answers include the &lsquo;inverse function theorem&rsquo; or its corollary the &lsquo;implicit function theorem&rsquo;.</para></li>
+			<li><para>If <latex>f</latex> is a polynomial, i.e. a relatively &lsquo;simple&rsquo; function, efforts to describe all of its solutions continue to provide ongoing research challenges, and is the primary goal of the subject of Algebraic Geometry. </para></li>
+		</ul>
+	</section.body>
+	
+	<studymaterials>
+		<example.pack.ref examplePackID="Exa_FunctionPreimage"/>
+		<exercise.pack.ref exercisePackID="Exe_Function"/>
+	</studymaterials>
+</section>

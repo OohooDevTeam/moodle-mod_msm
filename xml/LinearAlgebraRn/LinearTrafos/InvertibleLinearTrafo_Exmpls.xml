@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_InvertibleLinearTrafo">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Invertible Linear Transformation: Example</title>
+	<caption>Invertible Linear Trafo</caption>
+	<showme>
+		<statement>
+			<para>There is a special collection of linear transformations, called invertible, whose effect on space can be reversed. Here is an example: A dilation <latex>D\from \RNr[n]\to \RNr[n]</latex> by the factor <latex><![CDATA[ c > 1 ]]></latex> magnifies distances by the factor <latex>c</latex>. The effect of such a dilation can be reversed by a contraction with factor <latex>1/c</latex>.</para>
+			
+			<para>The picture below illustrates this situation for <latex>D\from \RNr[2]\to \RNr[2]</latex> with magnification factor <latex>c=3/2</latex>. Accordingly the <latex>D</latex>-inverting contraction <latex>C</latex> has contraction factor <latex>2/3</latex>.</para>
+			
+			<figure>
+				<img src="ims/DilateContract.png"></img><!-- svg available -->
+			</figure>
+			
+			<para>Notice how <latex>D</latex> and <latex>C</latex> undo each other&rsquo;s transformation effect:</para>
+			<computation>
+				<left>D\Comp C</left>
+				<center>=</center>
+				<right>\IdMap{\RNr[2]}</right>
+				<left>C\Comp D</left>
+				<center>=</center>
+				<right>\IdMap{\RNr[2]}</right>
+			</computation>
+			
+		</statement>
+	</showme>
+</showme.pack>

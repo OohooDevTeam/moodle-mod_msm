@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_LinearMapFindMatrix">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	
+	<title>Exercises: Find the Matrix Representing a Given Linear Map</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the linear maps specified below find the matrix representing it.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para><latex>L\from \RNr\to \RNr[2]</latex>  transforms the unit vector in <latex>\RNr</latex> into the vector <latex>(–5,7)</latex> in <latex>\RNr[2]</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>A = \left[\begin{array}{r} -5 \\ 7 \end{array}\right]</latex>
+					</math.display>
+				</answer>
+				<solution.hint>
+					<para><subordinate>
+						<hot>Look up</hot>
+						<crossref><theorem.ref theoremID="Thm_LinearMapGivesMatrix"/></crossref>
+					</subordinate>
+						how to find the matrix representing a given linear map</para></solution.hint>
+				<solution>
+					<para>We know that <latex>L\from \RNr[1]\to \RNr[2]</latex>. Therefore the matrix representing <latex>L</latex> is of type <latex>(1,2)</latex>. Its one and only column vector is</para>
+					<math.display>
+						<latex>L(\StdBss{1}) = L(1) = (-5,7)</latex>
+					</math.display>
+					<para>So <latex>L</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>A = \left[\begin{array}{r} -5 \\ 7 \end{array}\right]</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		
+		<part>
+			<problem>
+				<para><latex>L\from \RNr[2]\to \RNr[2]</latex> transforms the unit vectors <latex>\StdBss{1}</latex> and <latex>\StdBss{2}</latex> into the vectors <latex>(3,0)</latex> and <latex>(0,3)</latex>, respectively.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rr}
+3 & 0 \\
+0 & 3
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para><latex>L\from \RNr[3]\to \RNr[2]</latex> transforms the unit vectors <latex>\StdBss{1}</latex>, <latex>\StdBss{2}</latex>, and <latex>\StdBss{3}</latex> of <latex>\RNr[3]</latex> into the vectors <latex>(3,1)</latex>, <latex>(4,2)</latex>, and <latex>(-2,-3)</latex>, respectively</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = 
+\left[
+\begin{array}{rrr}
+3 & 4 & -2 \\
+1 & 2 & -3
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem><para><latex>L\from \RNr[1]\to \RNr[4]</latex> transforms <latex>-2</latex> into the point <latex>(2,-1,1,4)</latex>.</para></problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>A = \left[\begin{array}{r} -1 \\ \tfrac{1}{2} \\ -\tfrac{1}{2} \\ -2 \end{array}\right]</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We know that <latex>L\from \RNr[1]\to \RNr[4]</latex>. Therefore the matrix representing <latex>L</latex> is of type <latex>(1,4)</latex>. Its one and only column vector is <latex>L(\StdBss{1})</latex>. To find it, we compute</para>
+					
+					<computation>
+						<left>(2,-1,1,4)</left>
+						<center>=</center>
+						<right>L(-2)</right>
+						<left></left>
+						<center>=</center>
+						<right>L(-2\cdot \StdBss{1})</right>
+						<left></left>
+						<center>=</center>
+						<right>-2\cdot L(\StdBss{1})</right>
+						<left>\frac{1}{-2}\cdot (2,-1,1,4)</left>
+						<center>=</center>
+						<right>L(\StdBss{1})</right>
+					</computation>
+					
+					<para>So <latex>L</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>A = \left[\begin{array}{r} -1 \\ \tfrac{1}{2} \\ -\tfrac{1}{2} \\ -2 \end{array}\right]</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

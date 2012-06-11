@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para>
+            <para.body>In this chapter we are going to develop a concept that is quite familiar at an intuitive level: that of a 
+		<subordinate>
+                  <hot>transformation of space</hot>
+                  <info>
+                     <info.caption>Give me some idea of a ‘transformation’</info.caption>
+				
+				                 <para>
+                        <para.body>Examples of transformations result when you take a chunk of playdo or soft rubber and bend, twist, stretch, shrink it as you like.</para.body>
+                     </para>
+			               </info>
+               </subordinate>
+		together with objects contained in it. Amongst such transformations we focus upon those which are called 
+		‘<subordinate>
+                  <hot>linear</hot>
+                  <info>
+                     <info.caption>What is a linear transformation?</info.caption>
+				
+				                 <para>
+                        <para.body>Very roughly: a transformation is linear if it transforms lines into lines. – We will give a precise definition of ‘linear transformation’ later on.</para.body>
+                     </para>
+			               </info>
+               </subordinate>’.
+		Let us consider some examples to see what we mean.
+		
+	</para.body>
+            <index.glossary>
+               <term>linear transformation</term>
+               <info>
+                  <para>
+                     <para.body>Appears here in the introduction to the topic of linear transformations.</para.body>
+                  </para>
+               </info>
+            </index.glossary>
+         </para>
+         <ul>
+		          <li>
+               <para>
+                  <para.body>Twisting an elastic strip into a 
+			<subordinate>
+                        <hot>Möbius strip</hot>
+                        <companion>
+                           <unit.ref unitId="Illstrt_MoebiusStrip"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>A picture illustrating the transformation of an elastic strip into a Möbius strip</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate>
+		                </para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>Stretching a square into a rectangle</hot>
+                        <companion>
+                           <unit.ref unitId="Illstrt_TrafoSquareRectangle"/>
+                           <info>
+				
+				                          <para>
+                                 <para.body>A picture illustrating the transformation of a square into a rectangle.</para.body>
+                              </para>
+			                        </info>
+                        </companion>
+                     </subordinate>
+		                </para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>Rotating a square</hot>
+                        <companion>
+                           <unit.ref unitId="Illstrt_TrafoSquareRotate"/>
+                           <info>
+				
+				                          <para>
+                                 <para.body>A picture illustrating the rotation of a square.</para.body>
+                              </para>
+			                        </info>
+                        </companion>
+                     </subordinate>
+                  </para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>Mirroring an object</hot>
+                        <companion>
+                           <unit.ref unitId="Illstrt_TrafoHandReflection"/>
+                           <info>
+				
+				                          <para>
+                                 <para.body>A picture illustrating the transformation of a left hand into a right hand.</para.body>
+                              </para>
+			                        </info>
+                        </companion>
+                     </subordinate>
+                  </para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>Shearing an object</hot>
+                        <companion>
+                           <unit.ref unitId="Illstrt_TrafoShear3D"/>
+                           <info>
+				
+				                          <para>
+                                 <para.body>A picture illustrating a shear transformation applied to a cube.</para.body>
+                              </para>
+			                        </info>
+                        </companion>
+                     </subordinate>
+                  </para.body>
+               </para>
+            </li>
+	        </ul>
+         <para>
+            <para.body>To describe the effect of a transformation mathematically, we use the concept of a 
+		<subordinate>
+                  <hot>function</hot>
+                  <companion>
+                     <unit.ref unitId="Illstrt_FunctionTransforms"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>A preview of how a function describes a transformation.</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>.
+		
+		
+		There is a collection of functions which are particularly nice to work with. These are the 
+		<subordinate>
+                  <hot>linear functions</hot>
+                  <companion>
+                     <unit.ref unitId="Prvw_LinearMap"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>Preview description of a linear function</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>,
+		also called linear maps, linear homomorphisms, or linear transformations.</para.body>
+            <index.glossary>
+               <term>function</term>
+               <info>
+                  <para>
+                     <para.body>‘Function’ appears here in the introduction to the concept of a linear transformation.</para.body>
+                  </para>
+               </info>
+            </index.glossary>
+         </para>
+         <para>
+            <para.body>We find that every linear function can be 
+		<subordinate>
+                  <hot>described by a matrix</hot>
+                  <companion>
+                     <unit.ref unitId="Prvw_LinearMapMatrix"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>A preview of the relationship between linear maps and matrices</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>
+		and, conversely, every matrix describes a linear function. Thus we can leverage our knowledge of matrix algebra in the study of linear transformations.</para.body>
+         </para>
+         <para>
+            <para.body>We then discuss in detail the main examples of linear transformations:</para.body>
+         </para>
+         <ul>
+		          <li>
+               <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>Dilations and contractions</hot>
+                        <companion>
+                           <unit.ref unitId="Expla_Dilation"/>
+                           <info>
+				
+				                          <para>
+                                 <para.body>An illustration of a dilation operation</para.body>
+                              </para>
+			                        </info>
+                        </companion>
+                     </subordinate>   such transformations magnify, respectively shrink, the space <math>
+                        <latex>\RNr[n]</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>Rotations</hot>
+                        <companion>
+                           <unit.ref unitId="Expla_Rotation"/>
+                           <info>
+				
+				                          <para>
+                                 <para.body>An illustration of a dilation operation</para.body>
+                              </para>
+			                        </info>
+                        </companion>
+                     </subordinate>   a rotation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> rotates the plane about the origin.</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>Shear maps</hot>
+                        <companion>
+                           <unit.ref unitId="Illstrt_TrafoShear3D"/>
+                           <info>
+				
+				                          <para>
+                                 <para.body>An illustration of a shear transformation.</para.body>
+                              </para>
+			                        </info>
+                        </companion>
+                     </subordinate>   a shear transformation of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> turns a cube into a ‘slanted box’.
+		</para.body>
+               </para>
+            </li>
+	        </ul>
+         <para>
+            <para.body>These three examples of linear transformations are ‘atomic’ in the sense that every linear transformation can be built from them, as we will learn later on.</para.body>
+         </para>
+         <para>
+            <para.body>Next we consider 
+		<subordinate>
+                  <hot>properties</hot>
+                  <companion>
+                     <unit.ref unitId="Prvw_LinearMapProperties"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>A preview of some properties that are particular to linear transformations.</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>
+		enjoyed by linear transformations, but not by arbitrary transformation. For example, such properties help us distinguish transformations which are linear from ones which are not. A section on 
+		<subordinate>
+                  <hot>building new linear transformations</hot>
+                  <companion>
+                     <unit.ref unitId="Prvw_LinearMapNewFromOld"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>A preview of how to build new linear transformations from suitable given ones.</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>
+		from known ones follows.</para.body>
+         </para>
+         <para>
+            <para.body>Of particular interest are those linear transformations whose transformation effect can be reversed: These are the
+		<subordinate>
+                  <hot>invertible linear transformations</hot>
+                  <companion>
+                     <unit.ref unitId="Prvw_InvertibleLinearTrafo"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>A preview of invertible linear transformations</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>.
+		Amongst the invertible linear transformations we find a particularly nice collection: The
+		<subordinate>
+                  <hot>distance preserving linear transformations</hot>
+                  <companion>
+                     <unit.ref unitId="Prvw_DistancePreservingLinearTrafo"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>A preview of distance preserving linear transformations</para.body>
+                        </para>
+			                  </info>
+                  </companion>
+               </subordinate>.
+		We encounter those on a daily basis in the form of rotations and reflections.</para.body>
+         </para>
+         <para>
+            <para.body>Linear transformations are also related to systems of linear equations, and this relationship will be explained as well.</para.body>
+         </para>
+      </block.body>
+   </block>
+</intro>

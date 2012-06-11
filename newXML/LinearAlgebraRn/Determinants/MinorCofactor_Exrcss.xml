@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MinorsCofactor"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Minors and Cofactors</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> be the <math>
+                     <latex>(3,3)</latex>
+                  </math>-matrix</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\Mtrx{A} = \left[\begin{array}{rrr}
+5 &amp; -7 &amp; 8 \\
+6 &amp; 2 &amp; 3 \\
+1 &amp; -4 &amp; 9
+\end{array}\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>How many minors does <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> have</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> has <math>
+                              <latex>9</latex>
+                           </math> minors.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Each position of a square matrix gives rise to a minor. <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> has <math>
+                           <latex>3^2=9</latex>
+                        </math> positions. So <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> has <math>
+                           <latex>9</latex>
+                        </math> minors.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(1,1)</latex>
+                     </math>-minor of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The <math>
+                              <latex>(1,1)</latex>
+                           </math>-minor of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A}_{11} = \left[\begin{array}{rr}
+2 &amp; 3 \\
+-4 &amp; 9
+\end{array}\right]
+					
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The <math>
+                           <latex>(1,1)</latex>
+                        </math>-minor of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> results from <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> by omitting the 1st row and the 1st column. Therefore</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A}_{11} = \left[\begin{array}{rr}
+2 &amp; 3 \\
+-4 &amp; 9
+\end{array}\right]
+					
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(3,1)</latex>
+                     </math>-minor of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The <math>
+                              <latex>(3,1)</latex>
+                           </math>-minor of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A}_{31} = \left[\begin{array}{rr}
+-7 &amp; 8 \\
+ 2 &amp; 3
+\end{array}\right]
+					
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The <math>
+                           <latex>(3,1)</latex>
+                        </math>-minor of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> results from <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> by omitting the 3rd row and the 1st column. Therefore</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A}_{31} = \left[\begin{array}{rr}
+-7 &amp; 8 \\
+ 2 &amp; 3
+\end{array}\right]
+					
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(2,2)</latex>
+                     </math>-minor of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The <math>
+                              <latex>(2,2)</latex>
+                           </math>-minor of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A}_{31} = \left[\begin{array}{rrr}
+5 &amp; 8 \\
+1 &amp; 9
+\end{array}\right]
+					
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(3,3)</latex>
+                     </math>-minor of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>\Mtrx{X}</latex>
+                  </math> be the <math>
+                     <latex>(5,5)</latex>
+                  </math>-matrix</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\Mtrx{X} = \left[\begin{array}{rrrrr}
+4 &amp; 1 &amp; -11 &amp; 0 &amp; 6 \\
+2 &amp; 5 &amp; 7 &amp; 4 &amp; -5 \\
+1 &amp; 0 &amp; 0 &amp; 6 &amp; 4 \\
+-4 &amp; -19 &amp; 6 &amp; 2 &amp; -3 \\
+0 &amp; 6 &amp; 3 &amp; 7 &amp; 8
+\end{array}\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(1,4)</latex>
+                     </math>-minor of <math>
+                        <latex>\Mtrx{X}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The <math>
+                              <latex>(1,4)</latex>
+                           </math>-minor of <math>
+                              <latex>\Mtrx{X}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{X}_{14} = \left[\begin{array}{rrrr}
+2 &amp; 5 &amp; 7 &amp; -5 \\
+1 &amp; 0 &amp; 0 &amp; 4 \\
+-4 &amp; -19 &amp; 6 &amp; -3 \\
+0 &amp; 6 &amp; 3 &amp; 8
+\end{array}\right]
+					
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The <math>
+                           <latex>(1,4)</latex>
+                        </math>-minor of <math>
+                           <latex>\Mtrx{X}</latex>
+                        </math> results from <math>
+                           <latex>\Mtrx{X}</latex>
+                        </math> by omitting the 1st row and the 4th column. Therefore</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{X}_{14} = \left[\begin{array}{rrrrr}
+2 &amp; 5 &amp; 7 &amp; -5 \\
+1 &amp; 0 &amp; 0 &amp; 4 \\
+-4 &amp; -19 &amp; 6 &amp; -3 \\
+0 &amp; 6 &amp; 3 &amp; 8
+\end{array}\right]
+					
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(3,1)</latex>
+                     </math>-minor of <math>
+                        <latex>\Mtrx{X}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(4,4)</latex>
+                     </math>-minor of <math>
+                        <latex>\Mtrx{X}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>\Mtrx{C}</latex>
+                  </math> be the <math>
+                     <latex>(3,3)</latex>
+                  </math>-matrix</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\Mtrx{C} = \left[
+\begin{array}{rrr}
+3 &amp; 4 &amp; -1 \\
+0 &amp; 2 &amp; -5 \\
+7 &amp; 9 &amp; 7
+\end{array}\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(1,2)</latex>
+                     </math>-cofactor of <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>By definition, the <math>
+                           <latex>(1,2)</latex>
+                        </math>-cofactor of <math>
+                           <latex>\Mtrx{C}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>c_{1,2}(\Mtrx{C})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-1)^{1+2} \det\, C_{12}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+(-1)\cdot \det\, \left[\begin{array}{rr}
+0 &amp; -5 \\
+7 &amp; 7
+\end{array}\right]
+
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-1)\cdot 35</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-35</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(2,3)</latex>
+                     </math>-cofactor of <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>By definition, the <math>
+                           <latex>(2,3)</latex>
+                        </math>-cofactor of <math>
+                           <latex>\Mtrx{C}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>c_{2,3}(\Mtrx{C})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-1)^{2+3} \det\, C_{23}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+(-1)\cdot \det\, \left[\begin{array}{rr}
+3 &amp; 4 \\
+7 &amp; 9
+\end{array}\right]
+
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-1)\cdot (27 - 28)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(3,3)</latex>
+                     </math>-cofactor of <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The <math>
+                              <latex>(3,3)</latex>
+                           </math>-cofactor of <math>
+                              <latex>\Mtrx{C}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>c_{3,3}(\Mtrx{C}) = 6</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>(3,1)</latex>
+                     </math>-cofactor of <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The <math>
+                              <latex>(3,1)</latex>
+                           </math>-cofactor of <math>
+                              <latex>\Mtrx{C}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>c_{3,1}(\Mtrx{C}) = -18</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+</exercise.pack>

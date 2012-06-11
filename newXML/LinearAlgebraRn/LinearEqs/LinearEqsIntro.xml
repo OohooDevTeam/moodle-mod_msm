@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+	Linear Equation
+	
+		
+		<info>
+			         <para>
+               <para.body>Look at examples of linear equations</para.body>
+            </para>
+		       </info>
+	
+	
+		
+		       <info>
+            <info.caption>A Quiz on recognizing Linear Equations</info.caption>
+			
+			         <para>
+               <para.body/>
+            </para>
+		       </info>
+	
+	
+		       <info>
+            <info.caption>How to read this expression</info.caption>
+			
+			         <para>
+               <para.body>
+                  <math>
+                     <latex>a</latex>
+                  </math> one <math>
+                     <latex>x</latex>
+                  </math> one plus <math>
+                     <latex>a</latex>
+                  </math> two <math>
+                     <latex>x</latex>
+                  </math> two plus da da da da plus <math>
+                     <latex>a</latex>
+                  </math> 
+                  <math>
+                     <latex>n</latex>
+                  </math> 
+                  <math>
+                     <latex>x</latex>
+                  </math> 
+                  <math>
+                     <latex>n</latex>
+                  </math> equals <math>
+                     <latex>c</latex>
+                  </math>
+               </para.body>
+            </para>
+		       </info>
+	
+	        <para>
+            <para.body>A linear equation in <math>
+                  <latex>n</latex>
+               </math> unknowns is an expression which can be written as
+		
+	</para.body>
+            <index.glossary>
+               <term>linear</term>
+               <term>equation</term>
+               <info>
+                  <info.caption>What is a linear equation?</info.caption>
+				
+				              <para>
+                     <para.body>A linear equation is an expression which can be written as</para.body>
+                  </para>
+				
+				              <para align="center">
+                     <para.body>
+                        <media type="image" active="0" inline="0">
+                           <img src="ims/LinearEq_1Gnrl.gif" height="23" width="351"/>
+                        </media>
+                     </para.body>
+                  </para>
+				
+				              <para>
+                     <para.body>Look up the definition.</para.body>
+                  </para>
+			            </info>
+            </index.glossary>
+         </para>
+	
+	        <para align="center">
+            <para.body>
+               <media type="image" active="1" inline="0">
+                  <img src="ims/LinearEq_1Gnrl.gif" height="23" width="351"/>
+                  <image.mapping xmlns="">
+                     <area xmlns="Unit" shape="rect" coords="0,2,24,19"/>
+			                  <info xmlns="Unit">
+                        <info.caption>What does <math>
+                              <latex>a_1</latex>
+                           </math> mean</info.caption>
+				
+				                    <para>
+                           <para.body>
+                              <math>
+                                 <latex>a_1</latex>
+                              </math> is the first coefficient of this linear equation.. It is a number which is given.</para.body>
+                        </para>
+			                  </info>
+		                   <area xmlns="Unit" shape="rect" coords="79,2,103,20"/>
+			                  <info xmlns="Unit">
+                        <info.caption>What does <math>
+                              <latex>a_2</latex>
+                           </math> mean</info.caption>
+				
+				                    <para>
+                           <para.body>
+                              <math>
+                                 <latex>a_2</latex>
+                              </math> is the second coefficient of this linear equation.. It is a number which is given.</para.body>
+                        </para>
+			                  </info>
+		                   <area xmlns="Unit" shape="rect" coords="255,2,284,22"/>
+			                  <info xmlns="Unit">
+                        <info.caption>What does <math>
+                              <latex>a_n</latex>
+                           </math> mean</info.caption>
+				
+				                    <para>
+                           <para.body>
+                              <math>
+                                 <latex>a_n</latex>
+                              </math> is the <math>
+                                 <latex>n</latex>
+                              </math>-th coefficient of this linear equation.. It is a number which is given.</para.body>
+                        </para>
+			                  </info>
+		                   <area xmlns="Unit" shape="rect" coords="25,1,47,18"/>
+			                  <info xmlns="Unit">
+                        <info.caption>What does <math>
+                              <latex>x_1</latex>
+                           </math> mean</info.caption>
+				
+				                    <para>
+                           <para.body>
+                              <math>
+                                 <latex>x_1</latex>
+                              </math> is a variable, also called an unknown. It is the first unknown of this linear equation.</para.body>
+                        </para>
+			                  </info>
+		                   <area xmlns="Unit" shape="rect" coords="104,1,125,19"/>
+			                  <info xmlns="Unit">
+                        <info.caption>What does <math>
+                              <latex>x_2</latex>
+                           </math> mean</info.caption>
+				
+				                    <para>
+                           <para.body>
+                              <math>
+                                 <latex>x_2</latex>
+                              </math> is a variable, also called an unknown. It is the second unknown of this linear equation.</para.body>
+                        </para>
+			                  </info>
+		                   <area xmlns="Unit" shape="rect" coords="284,0,304,19"/>
+			                  <info xmlns="Unit">
+                        <info.caption>What does <math>
+                              <latex>x_n</latex>
+                           </math> mean</info.caption>
+				
+				                    <para>
+                           <para.body>
+                              <math>
+                                 <latex>x_n</latex>
+                              </math> is a variable, also called an unknown. It is the <math>
+                                 <latex>n</latex>
+                              </math>-th unknown of this linear equation.</para.body>
+                        </para>
+			                  </info>
+		                </image.mapping>
+               </media>
+	           </para.body>
+         </para>
+         <para>
+            <para.body>We explain the meaning of the symbols in this equation:</para.body>
+         </para>
+         <ul>
+		          <li>
+               <para>
+                  <para.body>Each of the symbols <math>
+                        <latex>a_1, \dots ,a_n</latex>
+                     </math> represents a number which is considered fixed. They are called the coefficients of the equation.
+			
+		</para.body>
+                  <index.glossary>
+                     <term>coefficient</term>
+                     <term>of a linear equation</term>
+                     <info>
+                        <para>
+                           <para.body>Look up the definition</para.body>
+                        </para>
+                     </info>
+                  </index.glossary>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>c</latex>
+                     </math> on the right represents a number which is also fixed. The equation is called homogeneous if <math>
+                        <latex>c=0</latex>
+                     </math>, and is called inhomogeneous if <math>
+                        <latex>c\neq 0</latex>
+                     </math>.
+			
+			
+		</para.body>
+                  <index.glossary>
+                     <term>homogeneous</term>
+                     <term>linear equation</term>
+                     <info>
+                        <info.caption>What is a homogeneous linear equation?</info.caption>
+					
+					                   <para>
+                           <para.body>A homogeneous linear equation can be written in the form</para.body>
+                        </para>
+					                   <math.display>
+						                     <latex>a_1x_1 + a_2x_2 + \cdots + a_n x_n = 0</latex>
+					                   </math.display>
+					                   <para>
+                           <para.body>Look up the definition</para.body>
+                        </para>
+				                 </info>
+                  </index.glossary>
+                  <index.glossary>
+                     <term>inhomogeneous</term>
+                     <term>linear equation</term>
+                     <info>
+                        <info.caption>What is a homogeneous linear equation?</info.caption>
+					
+					                   <para>
+                           <para.body>A homogeneous linear equation can be written in the form</para.body>
+                        </para>
+					                   <math.display>
+						                     <latex>a_1x_1 + a_2x_2 + \cdots + a_n x_n = c</latex>
+					                   </math.display>
+					                   <para>
+                           <para.body>with <math>
+                                 <latex>c \neq 0</latex>
+                              </math>. Look up the definition.</para.body>
+                        </para>
+				                 </info>
+                  </index.glossary>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>The symbol <math>
+                        <latex>x_1</latex>
+                     </math> is a variable or an unknown of the equation, as is each of the symbols <math>
+                        <latex>x_j</latex>
+                     </math>, <math>
+                        <latex>1\leq j\leq n</latex>
+                     </math>. Our task is to find those number values for each of these variables which render the given equation is true.</para.body>
+               </para>
+            </li>
+	        </ul>
+         <para>
+            <para.body>More generally, we will need to determine simultaneous solutions of a <subordinate>
+                  <hot>system of linear equations</hot>
+                  <companion>
+                     <unit.ref unitId="Preview_LinearEquationsSystems"/>
+                     <info>
+			
+			                     <para>
+                           <para.body>Preview of a System of Linear Equations</para.body>
+                        </para>
+		                   </info>
+                  </companion>
+               </subordinate>
+		in  <math>
+                  <latex>n</latex>
+               </math>  unknowns. Fortunately, there are several methods at our disposal to respond to this task. In this chapter we discuss the following:</para.body>
+         </para>
+         <ul>
+		          <li>
+               <para>
+                  <para.body>A <strong>geometrical method</strong>. It uses the fact that the solutions of a single linear equation in <math>
+                        <latex>n</latex>
+                     </math> unknowns form a 
+			<subordinate>
+                        <hot>hyperplane in <math>
+                              <latex>\RNr[n]</latex>
+                           </math>
+                        </hot>
+                        <companion>
+                           <unit.ref unitId="Illustr_Hyperplane"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>Recall an illustration of a hyperplane</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate>.
+			Therefore the simultaneous solutions of <math>
+                        <latex>m</latex>
+                     </math> such equations form the 
+			<subordinate>
+                        <hot>intersection of the corresponding hyperplanes</hot>
+                        <companion>
+                           <unit.ref unitId="Preview_LinearEqsGeometry"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>A Preview: how to solve a system of linear equations geometrically</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate>. - This method enables us to discuss qualitatively the simultaneous solutions of a system of linear equations.</para.body>
+               </para>
+            </li>
+		
+		          <li>
+               <para>
+                  <para.body>The <strong>elimination method</strong> of Gauß
+			
+			 and Jordan
+			
+			yields explicitly the solutions of a given system of linear equations. This method is a programmable procedure which transforms a given system of linear equations into simpler and simpler ones. In the end, one is left with a system of linear equations which is so simple that its solutions can be read off immediately.</para.body>
+               </para>
+            </li>
+	        </ul>
+         <para>
+            <para.body>Later we will learn a more advanced method for solving certain kinds of systems of linear equations: Cramer’s rule is a formula which is applicable to a system of <math>
+                  <latex>n</latex>
+               </math> linear equations with <math>
+                  <latex>n</latex>
+               </math> unknowns termed non-degenerate. Such a system has always exactly one solution, and Cramer’s rule computes it by a formula involving determinants.</para.body>
+         </para>
+      </block.body>
+   </block>
+</intro>

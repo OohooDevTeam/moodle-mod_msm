@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixInversion"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Matrix Inversion: Exercises</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Determine whether the matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> below is invertible. If it is, find <math>
+                     <latex>\Mtrx{A}^{-1}</latex>
+                  </math>
+               </para.body>
+            </para>
+			
+			         <math.display>
+				           <latex>
+					
+					A\ =\ 
+\left[\begin{array}{rrr}
+3 &amp; 5 &amp; 7 \\
+1 &amp; 2 &amp; 3 \\
+2 &amp; 3 &amp; 5
+\end{array}\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is invertible, and</para.body>
+                  </para>
+				              <math.display>
+					                <latex>
+						
+					A^{-1}\ =\ 
+\left[\begin{array}{rrr}
+1 &amp; -4 &amp; 1 \\
+1 &amp; 1 &amp; -2 \\
+-1 &amp; 1 &amp; 1
+\end{array}\right]
+					
+					</latex>
+				              </math.display>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We use the simultaneous row reduction method to answer this question</para.body>
+               </para>
+				
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rrr|rrrl}
+&amp; A &amp; &amp;&amp; \IdMtrx[3] &amp;&amp; \\
+\hline
+3 &amp; 5 &amp; 7 &amp; 1 &amp; 0 &amp; 0 &amp; {\color{red} R_1 \longleftrightarrow R_2} \\
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 1 &amp; 0 &amp; \\
+2 &amp; 3 &amp; 5 &amp; 0 &amp; 0 &amp; 1 &amp; \\
+\hline
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 1 &amp; 0 &amp; \\
+3 &amp; 5 &amp; 7 &amp; 1 &amp; 0 &amp; 0 &amp; {\color{red} -3\cdot R_1} \\
+2 &amp; 3 &amp; 5 &amp; 0 &amp; 0 &amp; 1 &amp; {\color{red} -2\cdot R_2} \\
+\hline
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 1 &amp; 0 &amp; \\
+0 &amp; -1 &amp; -2 &amp; 1 &amp; -3 &amp; 0 &amp; \\
+0 &amp; -1 &amp; -1 &amp; 0 &amp; -2 &amp; 1 &amp; {\color{red} -R_2} \\
+\hline
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 1 &amp; 0 &amp; \\
+0 &amp; -1 &amp; -2 &amp; 1 &amp; -3 &amp; 0 &amp; {\color{red} \cdot (-1)} \\
+0 &amp; 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; \\
+\hline
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 1 &amp; 0 &amp; {\color{red} -3\cdot R_3} \\
+0 &amp; 1 &amp; 2 &amp; -1 &amp; 3 &amp; 0 &amp; {\color{red} -2\cdot R_3} \\
+0 &amp; 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; \\
+\hline
+1 &amp; 2 &amp; 0 &amp; 3 &amp; -2 &amp; -3 &amp; {\color{red} -2\cdot R_2} \\
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; -2 &amp; \\
+0 &amp; 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; \\
+\hline
+1 &amp; 0 &amp; 0 &amp; 1 &amp; -4 &amp; 1 &amp; \\
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; -2 &amp; \\
+0 &amp; 0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; \\
+\hline
+&amp; \IdMtrx[3] &amp;&amp;&amp; A^{-1} &amp;&amp;
+\end{array}
+						
+					</latex>
+				           </math.display>
+				
+				           <para>
+                  <para.body>We observe that <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> row reduces down to the identity matrix . So <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is invertible, and</para.body>
+               </para>
+				
+				           <math.display>
+					             <latex>
+						
+					A^{-1}\ =\ 
+\left[\begin{array}{rrr}
+1 &amp; -4 &amp; 1 \\
+1 &amp; 1 &amp; -2 \\
+-1 &amp; 1 &amp; 1
+\end{array}\right]
+					
+					</latex>
+				           </math.display>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Determine whether the matrix <math>
+                     <latex>\Mtrx{D}</latex>
+                  </math> below is invertible. If it is, find <math>
+                     <latex>\Mtrx{D}^{-1}</latex>
+                  </math>
+               </para.body>
+            </para>
+			
+			         <math.display>
+				           <latex>
+					
+					D\ =\ 
+\left[\begin{array}{rrr}
+2 &amp; 1 &amp; -1 \\
+1 &amp; 2 &amp; 4 \\
+1 &amp; 1 &amp; 1
+\end{array}\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+                  <para>
+                     <para.body>The matrix <math>
+                           <latex>\Mtrx{D}</latex>
+                        </math> is not invertible.</para.body>
+                  </para>
+               </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We use the simultaneous row reduction method to answer this question</para.body>
+               </para>
+				
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rrr|rrrl}
+&amp; D &amp; &amp;&amp; \IdMtrx[3] &amp;&amp; \\
+\hline
+2 &amp; 1 &amp; -1 &amp; 1 &amp; 0 &amp; 0 &amp; {\color{red} R_1 \longleftrightarrow R_3} \\
+1 &amp; 2 &amp; 4 &amp; 0 &amp; 1 &amp; 0 &amp; \\
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; \\
+\hline
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; \\
+1 &amp; 2 &amp; 4 &amp; 0 &amp; 1 &amp; 0 &amp; {\color{red} - R_1} \\
+2 &amp; 1 &amp; -1 &amp; 1 &amp; 0 &amp; 0 &amp; {\color{red} -2\cdot R_1} \\
+\hline
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; \\
+0 &amp; 1 &amp; 3 &amp; 0 &amp; 1 &amp; -1 &amp; \\
+0 &amp; -1 &amp; -3 &amp; 1 &amp; 0 &amp; -2 &amp;{\color{red} + R_2} \\
+\hline
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; \\
+0 &amp; 1 &amp; 3 &amp; 0 &amp; 1 &amp; -1 &amp; \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp;  -3 &amp; 
+\end{array}
+						
+					</latex>
+				           </math.display>
+				
+				           <para>
+                  <para.body>The row reduction of <math>
+                        <latex>\Mtrx{D}</latex>
+                     </math> leads to a row of <math>
+                        <latex>0</latex>
+                     </math>’s. Therefore <math>
+                        <latex>\Mtrx{D}</latex>
+                     </math> does not row reduce to the identity matrix <math>
+                        <latex>\IdMtrx[3]</latex>
+                     </math>. Consequently, <math>
+                        <latex>\Mtrx{D}</latex>
+                     </math> is not invertible.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose the matrix</para.body>
+            </para>
+			
+			         <math.display>
+				           <latex>
+					
+C\ =\ \left[\begin{array}{rr}
+a &amp; b \\
+0 &amp; c
+\end{array}\right]
+					
+				</latex>
+			         </math.display>
+			
+			         <para>
+               <para.body>has entries satisfying   <math>
+                     <latex>ac\neq 0</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Without completing the reduction of <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math> to RREF, determine if <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math> is invertible. – Justify your answer.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{C}</latex>
+                           </math> is invertible.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The identity   <math>
+                           <latex>ac\neq 0</latex>
+                        </math>   implies that <math>
+                           <latex>a\neq 0</latex>
+                        </math> and <math>
+                           <latex>c\neq 0</latex>
+                        </math>. Therefore it is permissible to divide the first row by <math>
+                           <latex>a</latex>
+                        </math> and the second row by <math>
+                           <latex>c</latex>
+                        </math>. Aftward subtracting the appropriate multiple (which?) of the second row from the first will row reduce <math>
+                           <latex>\Mtrx{C}</latex>
+                        </math> to <math>
+                           <latex>\IdMtrx[2]</latex>
+                        </math>. So <math>
+                           <latex>\Mtrx{C}</latex>
+                        </math> is invertible.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+	  </exercise>
+	
+</exercise.pack>

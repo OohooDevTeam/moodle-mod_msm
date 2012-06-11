@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_CoordinateVector">
+	<title>Explanation: Coordinate Vector</title>
+	<sub.page.body>
+		<block>
+			<para>What is the meaning of &lsquo;<latex>\EuScript{B} = (\Vect{b}_1,\dots ,\Vect{b_m})</latex> is an ordered basis? &ndash; This statement provides two pieces of information, namely:
+			<index.glossary>
+				<term>ordered</term><term>basis</term>
+				<info><para>Explanation of the concept</para></info>
+			</index.glossary>
+				<index.glossary>
+					<term>basis</term><term>ordered</term>
+					<info><para>Explanation of the concept</para></info>
+				</index.glossary>
+			</para>
+			<ol>
+				<li><para>The vectors <latex>\Vect{b}_1</latex>, ... , <latex>\Vect{b}_m</latex> form a basis of <latex>V</latex>, and</para></li>
+				<li><para>These vectors have been arranged into an ordered sequence. Consequently</para>
+					<ol>
+						<li><para>Amongst the basis vectors, there is a 1-st vector, given here by <latex>\Vect{b}_1</latex>.</para></li>
+						<li><para>Then there is a 2-nd vector, given here by <latex>\Vect{b}_2</latex></para></li>
+						<li><para>Then there is a 3-rd vector, given here by <latex>\Vect{b}_3</latex>, etc.</para></li>
+					</ol>
+				</li>
+			</ol>
+			<para></para>
+		</block>
+		
+		
+		<block>
+			<para>Why does &lsquo;coordinate vector&rsquo; make sense?</para>
+			<para>The notion of &lsquo;coordinate vector&rsquo; relies on the fact that every vector <latex>\Vect{x}</latex> in <latex>V</latex> can be expressed in exactly one way as a linear combination of the vectors in <latex>\EuScript{B}</latex>:</para>
+			<computation>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>t_1 \Vect{b}_1 + \cdots + t_m \Vect{b}_m</right>
+			</computation>
+			<para>In other words: the numbers <latex>t_1,\dots ,t_m</latex> are unique. So we may take them as the entries of a vector in <latex>\RNr[m]</latex>, namely <latex>(t_1,\dots ,t_m)</latex>:</para>
+			<ol>
+				<li><para>The 1-st coordinate <latex>t_1</latex> is the coefficient of the basis vector <latex>\Vect{b}_1</latex> which was designated the 1-st vector in the basis <latex>\EuScript{B}</latex>.</para></li>
+				<li><para>The 2-nd coordinate <latex>t_2</latex> is the coefficient of the basis vector <latex>\Vect{b}_2</latex> which was designated the 2-nd vector in the basis <latex>\EuScript{B}</latex>.</para></li>
+				<li><para>The 3-rd coordinate <latex>t_3</latex> is the coefficient of the basis vector <latex>\Vect{b}_3</latex> which was designated the 3-rd vector in the basis <latex>\EuScript{B}</latex>; etc.</para></li>
+			</ol>
+			<para>We emphasize that the numbers <latex>t_1, \dots ,t_m</latex> depend completely upon the choice of the basis <latex>\EuScript{B}</latex> and the ordering given to the vectors in <latex>\EuScript{B}</latex>. To record this dependence, we write</para>
+			<computation>
+				<left>\Vect{x}_{\EuScript{B}}</left>
+				<center>=</center>
+				<right>(t_1,\dots ,t_m)</right>
+			</computation>
+		</block>
+		
+		
+		<block>
+			<para><b>Example</b> &nbsp; Suppose we use the vectors in <latex>\EuScript{B}</latex> to make the new ordered basis <latex>\EuScript{C} = (t_m, \dots ,t_1)</latex>; so we kept the vectors but reversed their ordering. Then</para>
+			<computation>
+				<left>\Vect{x}_{\EuScript{C}}</left>
+				<center>=</center>
+				<right>(t_m,\dots ,t_1)</right>
+			</computation>
+		</block>
+	</sub.page.body>
+</sub.page>

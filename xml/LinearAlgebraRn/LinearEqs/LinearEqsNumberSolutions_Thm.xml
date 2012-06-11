@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearEqsNumberSolutions">
+	<caption>Number of Solutions</caption>
+	<associate Description="Illustration">
+		<showme.pack.ref showmePackID="Illstrtn_LinearEqsNoSolution"/>
+		<info><para>How to recognize a system of linear equations with no solution.</para></info>
+	</associate>
+	<associate Description="Illustration">
+		<showme.pack.ref showmePackID="Illstrtn_LinearEqsOneSolution"/>
+		<info><para>How to recognize a system of linear equations with exactly one solution.</para></info>
+	</associate>
+	<associate Description="Illustration">
+		<showme.pack.ref showmePackID="Illstrtn_LinearEqsManySolutions"/>
+		<info><para>How to recognize a system of linear equations with infinitely many solutions.</para></info>
+	</associate>
+	
+	<statement>
+		<para>Given a system of linear equations, the following apply</para>
+		<part partid="NoSolutions"><para>The system has no solution exactly when the RREF of the augmented coefficient matrix has a leading <latex>1</latex> in its augmented part</para></part>
+		<part partid="UniqueSolution"><para>The system has exactly one solution exactly when the RREF of the augmented coefficient matrix has a leading <latex>1</latex> in each column of its non-augmented part and no leading <latex>1</latex> in its augmented part</para></part>
+		<part partid="InfSolutions"><para>The system has infinitely many solutions exactly when the RREF of the augmented coefficient matrix has all leading <latex>1</latex>&rsquo;s in the non-augmented part, and there is at least one non-augmented column without a leading <latex>1</latex>. In this case the number of free variables describing the collection of all solutions is equal to the number of variables less the number of leading <latex>1</latex>&rsquo;s.</para></part>
+	</statement>
+</theorem>

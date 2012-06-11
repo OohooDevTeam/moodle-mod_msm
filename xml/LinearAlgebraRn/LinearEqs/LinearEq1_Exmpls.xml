@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearEquations">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Examples of Linear Equations</title>
+	<caption>Linear Equations - Examples</caption>
+	<showme>
+		<statement>
+			<para>Determine if the following is a linear equation.</para>
+			<math.display>
+				<latex>3x -5 +2z = w -5y</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>To answer this question, we try to achieve the standard form of a linear equation. So shuffle all expressions involving a variable to the left; all constant summands to the right. The result reads:</para>
+			
+			<math.display>
+				<latex>\colorbox{lightgreen}{$-$}{\color{red} w} + \colorbox{lightgreen}{$3$}{\color{red} x} + \colorbox{lightgreen}{$5$}{\color{red} y} + \colorbox{lightgreen}{$2$}{\color{red} z} = 5</latex>
+			</math.display>
+			
+			<para>This equation has four variables: <latex>w,x,y,z</latex>. It has the form of an inhomogeneous linear equation with</para>
+			<ul>
+				<li><para>The coefficient of  <latex>w</latex> is <latex>-1</latex>.</para></li>
+				<li><para>The coefficient of <latex>x</latex> is <latex>3</latex>.</para></li>
+				<li><para>The coefficient of <latex>y</latex> is <latex>5</latex>.</para></li>
+				<li><para>The coefficient of <latex>z</latex> is <latex>2</latex>.</para></li>
+			</ul>
+			<para>The equation is inhomogeneous, as <latex>c=5\neq 0</latex>.</para>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Determine if the following is a linear equation.</para>
+			<math.display>
+				<latex>e^2 x + \sin \frac{x}{12}\, y - 3^{50} = \ln(10)\, z - 4x</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>To answer this question, we try to achieve the standard form of a linear equation. So shuffle all expressions involving a variable to the left; all constant summands to the right. The result reads:</para>
+			
+			<math.display>
+				<latex>\colorbox{lightgreen}{$\left( e^2 +4\right)$}{\color{red} x}\ +\ \colorbox{lightgreen}{$\sin\frac{\pi}{12}$}\, {\color{red} y}\ \colorbox{lightgreen}{$- \ln(10)$}\, {\color{red} z}\ =\ 3^{50}</latex>
+			</math.display>
+			
+			<para> This equation has three variables <latex>x,y,z</latex>.</para>
+			<ul>
+				<li><para>The coefficient of <latex>x</latex> is the number <latex>e^2+4</latex>.</para></li>
+				<li><para>The coefficient of <latex>y</latex> is the number <latex>\sin(\pi/12)</latex>.</para></li>
+				<li><para>The coefficient of <latex>z</latex> is the number <latex>\ln(10)</latex>.</para></li>
+			</ul>
+			<para>Thus the given equation assumes the form of an inhomogeneous linear equation.</para>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Determine if the following is a linear equation.</para>
+			<math.display>
+				<latex>(x+y+z)^2\ +\ 3xyz\ =\ 1</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>This is an equation in the variables <latex>x</latex>, <latex>y</latex>, and <latex>z</latex>. To determine if it is linear, we isolate the variables</para>
+			<math.display>
+				<latex>3xyz\ +\  x^2 + y^2 + z^2\ +\ 2xy + 2xz + 2yz = 1</latex>
+			</math.display>
+			<ul>
+				<li><para>Further cancellation does not occur. So this equation can not be rewritten in the shape of a linear equation. It is not linear.</para></li>
+			</ul>
+		</answer>
+	</showme>
+</showme.pack>

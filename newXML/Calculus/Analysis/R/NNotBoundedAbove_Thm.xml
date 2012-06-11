@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_NNotBoundedAbove"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>
+      <math>
+         <latex>\NNr</latex>
+      </math> is not bounded above</caption>
+   <associate type="Remark">
+      <info>
+         <info.caption>
+            <caption>Remark: Analogous Recognition Criterion for inf</caption>
+         </info.caption>
+         <para>
+            <para.body>For <math>
+                  <latex>A\subseteq\RNr</latex>
+               </math> and <math>
+                  <latex>x\in \RNr</latex>
+               </math> the following are equivalent:</para.body>
+         </para>
+         <ol type="i">
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>x=\inf(A)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>x</latex>
+                     </math> is a lower bound of <math>
+                        <latex>A</latex>
+                     </math>, and for all <math>
+                        <latex>t\in \RNr</latex>
+                     </math> with <math>
+                        <latex> x&gt;t </latex>
+                     </math>, <math>
+                        <latex>t</latex>
+                     </math> is not a lower bound of <math>
+                        <latex>A</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>x</latex>
+                     </math> is a lower bound of <math>
+                        <latex>A</latex>
+                     </math>, and for all <math>
+                        <latex> \varepsilon &gt; 0 </latex>
+                     </math> there exists <math>
+                        <latex>a\in A</latex>
+                     </math> with <math>
+                        <latex> a &lt; x+\varepsilon </latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>The natural numbers <math>
+               <latex>\NNr</latex>
+            </math> do not have an upper bound in <math>
+               <latex>\RNr</latex>
+            </math>.
+			</para.body>
+         <index.glossary>
+            <term>natural numbers <math>
+                  <latex>\NNr</latex>
+               </math>
+            </term>
+            <term>not bounded abouve</term>
+         </index.glossary>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We argue by contradiction. Suppose <math>
+                     <latex>\NNr</latex>
+                  </math> has an upper bound in <math>
+                     <latex>\RNr</latex>
+                  </math>. Then <math>
+                     <latex>x:=\sup(N)</latex>
+                  </math> exists in <math>
+                     <latex>\NNr</latex>
+                  </math>. It 
+			<subordinate>
+                     <hot>follows</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_InfSupRecognize"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_InfSupRecognize"/>
+                           <para>
+                              <para.body>Look up the lemma which implies this property.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			that there exists <math>
+                     <latex>n\in \NNr</latex>
+                  </math> with <math>
+                     <latex> x-1 &lt; n </latex>
+                  </math>. But then</para.body>
+            </para>
+            <math.display>
+               <latex> x = (x-1) + 1 &lt; n+1 \in \NNr</latex>
+            </math.display>
+            <para>
+               <para.body>which means that <math>
+                     <latex>x</latex>
+                  </math> is not an upper bound of <math>
+                     <latex>\NNr</latex>
+                  </math>. This contradiction implies the claim.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

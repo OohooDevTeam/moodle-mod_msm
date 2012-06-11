@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_EpsilonDeltaDisContinuous"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Detecting a Discontinuous Function</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>By definition, a function <math>
+                     <latex>f\from D\to \RNr</latex>
+                  </math>, <math>
+                     <latex>D\subseteq \RNr</latex>
+                  </math>, is continuous at <math>
+                     <latex>x\in D</latex>
+                  </math> if, for every <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math>, there exists <math>
+                     <latex> \delta &gt; 0 </latex>
+                  </math>, such that for all <math>
+                     <latex>t\in D</latex>
+                  </math>,</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ x-t } &lt; \delta\quad \implies\quad \Abs{ f(x) - f(t) } &lt; \varepsilon </latex>
+            </math.display>
+            <para>
+               <para.body>Here we analyze how this definition rejects those functions which do make a jump.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The function <math>
+                     <latex>f</latex>
+                  </math> below is defined on an interval and visibly makes a jump at <math>
+                     <latex>x</latex>
+                  </math>. How does the <math>
+                     <latex>\varepsilon</latex>
+                  </math>-<math>
+                     <latex>\delta</latex>
+                  </math> definition of continuity detect it?</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/EpsilonDelta4.png"/>
+            </media>
+            <para>
+               <para.body>For the deviation tolerance <math>
+                     <latex>\varepsilon</latex>
+                  </math> choose any positive number which is less than the size of the jump. Then there are numbers <math>
+                     <latex>t</latex>
+                  </math>, arbitrarily close to <math>
+                     <latex>x</latex>
+                  </math>, for which <math>
+                     <latex>f(t)</latex>
+                  </math> is further away from <math>
+                     <latex>f(x)</latex>
+                  </math> than the deviation tolerance.</para.body>
+            </para>
+            <para>
+               <para.body>So <strong>there is no positive</strong>
+                  <math>
+                     <latex>\delta</latex>
+                  </math> for which</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+						f(x)-\varepsilon &lt; f(t) &lt; f(x)+\varepsilon,\quad \text{whenever}\quad x-\delta &lt; t &lt; x+\delta. 
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>With the <math>
+                     <latex>\varepsilon</latex>
+                  </math>-<math>
+                     <latex>\delta</latex>
+                  </math> definition of continuity we conclude that <math>
+                     <latex>f</latex>
+                  </math> is not continuous at <math>
+                     <latex>x</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

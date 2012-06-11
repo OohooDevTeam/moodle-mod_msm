@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_SubSequence"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Subsequence: Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Given a sequence <math>
+                     <latex>(a_n)</latex>
+                  </math> of real numbers, we obtain a subsequence by forming a composite</para.body>
+            </para>
+            <math.display>
+               <latex>\NNr \overset{n}{\longrightarrow} \NNr \overset{a}{\longrightarrow} \RNr</latex>
+            </math.display>
+            <para>
+               <para.body>Thus we obtain a new sequence <math>
+                     <latex>(b_i)</latex>
+                  </math> of real numbers, with</para.body>
+            </para>
+            <math.display>
+               <latex>b_0:=a_{n(0)}=:a_{n_0},\quad b_1:=a_{n(1)}=:a_{n_1},\quad b_2:=b_{n(2)}=:a_{n_2},\quad \dots</latex>
+            </math.display>
+            <para>
+               <para.body>In the graphic below this process gives</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SubSequence.png"/>
+            </media>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>b_0 = a_{n_0} = a_3</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>b_1 = a_{n_1} = a_4</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>b_2 = a_{n_2} = a_7</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>etc.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Thus we may think of a subsequence of <math>
+                     <latex>(a_n)</latex>
+                  </math> as the outcome of</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Omitting some members of the original sequence</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Re-indexing the remaining sequence elements, as described above.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+   </body>
+</unit>

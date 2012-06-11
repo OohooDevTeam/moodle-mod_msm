@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example
+	http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_VectorAddition">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Geometric Interpretation of Vector Addition: Illustration</title>
+	<showme>
+		<statement>
+			<para>To form the sum of two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> we concatenate representing arrows. The picture below illustrates this in the case where  <latex>\Vect{x}=(3,1)</latex>, and where  <latex>\Vect{y}=(1,5)</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para align="center">
+				<subordinate>
+					<hot>
+						<img src="ims/VectorAdd_Illstrtn.gif"/>
+					</hot>
+					<info>
+						<para>Remember that we can represent a vector as a ‘free floating arrow’; i.e. an arrow which we can shift freely in space without changing its length or its direction. Therefore, when given two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>, we can always float them so that the tail of <latex>\Vect{y}</latex> lies at the tip of <latex>\Vect{x}</latex>. Now the arrow joining the tail of <latex>\Vect{x}</latex> to the tip of <latex>\Vect{y}</latex> represents the sum to the two vectors. – Why is this so?</para>
+						<para>If we start from the tail of <latex>\Vect{x}</latex>, we first move <latex>3</latex> units and then  <latex>1</latex> unit in the first coordinate direction to get to the tip of <latex>\Vect{y}</latex>. So this is just adding first coordinates. Moreover this same trip has us move <latex>1</latex> unit and then <latex>-.5</latex> units in the second coordinate direction. Thus adding coordinates in matching positions corresponds to concatenating arrows as shown.</para>
+					</info>
+				</subordinate>	
+			</para>
+		</answer>
+	</showme>
+	<showme>
+		<statement>
+			<para>Similarly, we obtain the sum of several vectors by forming the concatenation circuit of representing arrows, as in the picture below. If you like, you can watch an animation of this process.</para>
+		</statement>
+		<answer type="Solution">
+			<para align="center">
+				<subordinate>
+					<hot>
+						<img src="ims/VectorAdd_Illstrtn2.gif"/>
+					</hot>
+					<info>
+						<para>Here we are adding three vectors, represented by the arrows <latex>\overset{\longrightarrow}{AB}</latex>, <latex>\overset{\longrightarrow}{BC}</latex>, and <latex>\overset{\longrightarrow}{CD}</latex>. Below you can watch an animation of this process.</para>
+						<para align="center">
+							<img src="ims/VectorAdd_Anmtn2.gif"/>
+						</para>
+					</info>
+				</subordinate>
+				
+			</para>
+		</answer>
+	</showme>
+	<showme>
+		<statement>
+			<para>Let’s have another example, this time we form the sum of six vectors and obtain the <latex>0</latex>-vector as the final answer:</para>
+		</statement>
+		<answer>
+			<para align="center">
+				<subordinate>
+					<hot>
+						<img src="ims/VectorAdd_Illstrtn3.gif"/>
+					</hot>
+					<info>
+						<para>Here we are adding six vectors, and obtain the <latex>0</latex>-vector as the final answer. Below you can watch an animation of this process.</para>
+						<para align="center">
+							<img src="ims/VectorAdd_Anmtn3.gif"/>
+						</para>
+					</info>
+				</subordinate>
+			</para>
+		</answer>
+	</showme>
+</showme.pack>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_CrossProductGeneralized"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Cross Products in Arbitrary Dimensions?</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The operations ‘dot product’ and ‘determinant’ are defined for all dimensions <math>
+                     <latex>n\geq 1</latex>
+                  </math>. Analogously we would expect a definition of the cross product in dimensions <math>
+                     <latex>n\geq 1</latex>
+                  </math>. There are two interpretations</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>We look for an alternating and multilinear operation which assigns to an ordered <math>
+                           <latex>(n-1)</latex>
+                        </math>-tuple of vectors <math>
+                           <latex>(\Vect{b}_1,\dots ,\Vect{b}_{n-1})</latex>
+                        </math> in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> a vector <math>
+                           <latex>\text{Cross}(\Vect{b}_1,\dots ,\Vect{b}_{n-1})</latex>
+                        </math> in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> such that</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\det[\Vect{b}_1\ \ \cdots\ \ \Vect{b}_{n-1}\ \ \text{Cross}(\Vect{b}_1,\dots ,\Vect{b}_{n-1})]</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text> &gt; </text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(\Vect{b}_1,\dots ,\Vect{b}_{n-1})</latex>
+                        </math> is linearly independent. Such an operation exists, but is usually not referred to as a ‘cross product’.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>We look for an alternating bilinear operation on ordered pairs of vectors <math>
+                           <latex>(\Vect{u},\Vect{v})</latex>
+                        </math> such that <math>
+                           <latex>\CrssPr{ \Vect{u} }{ \Vect{v} }\neq \Vect{0}</latex>
+                        </math> whenever <math>
+                           <latex>\Vect{u}</latex>
+                        </math> and <math>
+                           <latex>\Vect{v}</latex>
+                        </math> are not parallel, and such that <math>
+                           <latex>\CrssPr{ \Vect{u} }{ \Vect{v} }</latex>
+                        </math> is perpendicular to both <math>
+                           <latex>\Vect{u}</latex>
+                        </math> and <math>
+                           <latex>\Vect{v}</latex>
+                        </math>.</para.body>
+                  </para>
+                  <para>
+                     <para.body>For deeper reasons, such an operation is only possible if <math>
+                           <latex>n=3</latex>
+                        </math> or <math>
+                           <latex>n=7</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Advanced information</strong>   We mention two results on the (non-)existence of cross products of pairs. First a now classical result from algebraic topology:</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Theorem</strong>   Suppose <math>
+                     <latex>\RNr[n]</latex>
+                  </math> admits a cross product operation satisfying</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> are not parallel, then <math>
+                           <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }\neq 0</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>For all <math>
+                           <latex>\Vect{x},\Vect{y}\in \RNr[n]</latex>
+                        </math>, <math>
+                           <latex>\DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \Vect{x} }\neq 0</latex>
+                        </math> and <math>
+                           <latex>\DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \Vect{y} }\neq 0</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\CrssPr{-}{-}\from \RNr[n]\times \RNr[n] \longrightarrow \RNr[n]</latex>
+                        </math> is a continuous function</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>Then <math>
+                     <latex>n=3</latex>
+                  </math> or <math>
+                     <latex>n=7</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>If we add to the list of assumptions above the requirement that the cross product be bilinear, then the conclusion of the theorem can be proven by elementary algebraic means. This is a classical theorem of Frobenius.
+				</para.body>
+               <index.author>
+                  <name>
+                     <name>
+                        <first/>
+                        <last>Frobenius</last>
+                     </name>
+                  </name>
+                  <info>
+                     <para>
+                        <para.body>In connection with the non-existence of cross product operations in dimensions other than <math>
+                              <latex>3</latex>
+                           </math> and <math>
+                              <latex>7</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.author>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

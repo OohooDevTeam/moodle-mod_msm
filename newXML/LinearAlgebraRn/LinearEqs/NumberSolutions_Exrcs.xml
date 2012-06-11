@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_NumberSolutions"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Number of Solutions - Self Test</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Which of the following systems of linear equations is homogeneous?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rcrcrcl}
+2x &amp; + &amp; 3y &amp; - &amp; z &amp; = &amp; 4 \\
+x &amp; + &amp; 2y &amp; + &amp; 3z &amp; = &amp; 2 \\
+\end{array}
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>Review the concept of a homogeneous system of linear equations.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This system is not homogeneous as the augmentation column contains nonzero entries.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>3x = 4y,\quad 2x-y = 2z,\quad z-y=2x</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This system is homogeneous.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Write this system in standard form</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This is a system of three linear equations in three variables. We write it in standard form:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\begin{array}{rcrcrcl}
+3x &amp; - &amp; 4y &amp;   &amp;    &amp; = &amp; 0 \\
+2x &amp; - &amp;  y &amp; - &amp; 2z &amp; = &amp; 0 \\
+-2x &amp; - &amp; y &amp; + &amp;  z &amp; = &amp; 0
+\end{array}
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Now we see that the augmentation column contains only <math>
+                           <latex>0</latex>
+                        </math>’s. Therefore this system of linear equations is homogeneous.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>What is special about a homogeneous system of linear equations?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+                  <para>
+                     <para.body>A homogeneous system of linear equations always has at least one solution.</para.body>
+                  </para>
+               </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>The answer has to do with the number of solutions of the system.</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below decide if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A system of <math>
+                        <latex>4</latex>
+                     </math> linear equations in <math>
+                        <latex>4</latex>
+                     </math> variables always has a unique solution.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Not always true!</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The fact that the number of equations equals the number of variables in itself does not allow any such conclusion. Depending on the ranks of the augmented and the unaugmented coefficient matrices, such a system can have no solution, exactly one solution, or infinitely many solutions.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A system of <math>
+                        <latex>4</latex>
+                     </math> linear equations in <math>
+                        <latex>3</latex>
+                     </math> variables never has a solution.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Not always true!</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Such a system can have no solution, exactly one solution, or infinitely many solutions. For example, if the same equation is just repeated four times, the system will have infinitely many solutions.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A system of <math>
+                        <latex>4</latex>
+                     </math> linear equations in <math>
+                        <latex>3</latex>
+                     </math> variables can have infinitely many solutions.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>True! – For example, if the same equation is just repeated four times, the system will have infinitely many solutions.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A system of <math>
+                        <latex>3</latex>
+                     </math> linear equations in <math>
+                        <latex>4</latex>
+                     </math> variables can have infinitely many solutions.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>True!</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A system of <math>
+                        <latex>3</latex>
+                     </math> linear equations in <math>
+                        <latex>4</latex>
+                     </math> variables can have exactly one solution.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False! – An analysis of the possible rank values reveals: such as system has either no solution or infinitely many solutions.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A system of <math>
+                        <latex>3</latex>
+                     </math> linear equations in <math>
+                        <latex>3</latex>
+                     </math> variables can have exactly three solutions.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False! - A system of linear equations can only have no solution, or exactly one solution, or infinitely many solutions. It never has <math>
+                              <latex>3</latex>
+                           </math> solutions.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A system of <math>
+                        <latex>3</latex>
+                     </math> linear equations in <math>
+                        <latex>3</latex>
+                     </math> variables always has at least one solution.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False! – It is possible that such a system has no solution. For example if it contains the two equations</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>x</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>1</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>x</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>2</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The rank of a system of linear equations is always less than or equal to the number of variables in the system.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>True! – The rank of a system of linear equations is the number of leading <math>
+                              <latex>1</latex>
+                           </math>’1 in the unaugmented RREF. Each leading <math>
+                              <latex>1</latex>
+                           </math> is matched to some variable, and each variable is matched to at most one leading <math>
+                              <latex>1</latex>
+                           </math>. Therefore, the rank of a system of linear equations is always less than or equal to the number of variables in the system.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If the rank of a system of linear equations is less than the number of its variables, there are always infinitely many solutions.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False! – There could still be a leading <math>
+                              <latex>1</latex>
+                           </math> in the augmented column, in which case the system has no solution.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A system of linear equations whose augmentation column has only <math>
+                        <latex>0</latex>
+                     </math>’s in it has always at least one solution.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>True! – Such a system is homogeneous, and a homogeneous system always has at least one solution, namely: set all variables equal to <math>
+                              <latex>0</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+	  </exercise>
+	
+	
+</exercise.pack>

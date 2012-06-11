@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_DefSolveFromRREF">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Row Reduced Echelon Form - Quiz</title>
+	<caption>RREF - Quiz</caption>
+	<showme>
+		<statement>
+			<para>In the display below, identify each leading <latex>1</latex> by placing your mouse over it.</para>
+			<para align="center">
+				<image src="ims/RREF_qz.gif" width="476" height="64">
+					<area shape="rect" coords="0,1,17,20">
+						<info><para>The leading <latex>1</latex> of the first row</para></info>
+					</area>
+					<area shape="rect" coords="125,21,145,40">
+						<info><para>The leading <latex>1</latex> of the second row</para></info>
+					</area>
+					<area shape="rect" coords="316,42,333,61">
+						<info><para>The leading <latex>1</latex> of the third row</para></info>
+					</area>
+				</image>
+			</para>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>In the display below, identify each number that must be <latex>0</latex> given the position of a leading <latex>1</latex>. Place your mouse over it to find out.</para>
+			<para align="center">
+				<image src="ims/RREF_qz.gif" width="476" height="64">
+					<area shape="rect" coords="128,2,146,22">
+						<info><para>In RREF this coefficient must be <latex>0</latex> because it occurs above a leading <latex>1</latex></para></info>
+					</area>
+					<area shape="rect" coords="317,1,334,22">
+						<info><para>In RREF this coefficient must be <latex>0</latex> because it occurs above a leading <latex>1</latex></para></info>
+					</area>
+					<area shape="rect" coords="316,41,336,22">
+						<info><para>In RREF this coefficient must be <latex>0</latex> because it occurs above a leading <latex>1</latex></para></info>
+					</area>
+					<area shape="rect" coords="128,44,145,62">
+						<info><para>In RREF this coefficient must be <latex>0</latex> because it occurs below a leading <latex>1</latex></para></info>
+					</area>
+					<area shape="rect" coords="1,22,18,62">
+						<info><para>In RREF this coefficient must be <latex>0</latex> because it occurs below a leading <latex>1</latex></para></info>
+					</area>
+					<area shape="rect" coords="65,43,82,62">
+						<info><para>In RREF this coefficient must be <latex>0</latex> because it occurs to the left of a leading <latex>1</latex></para></info>
+					</area>
+					<area shape="rect" coords="250,44,274,64">
+						<info><para>In RREF this coefficient must be <latex>0</latex> because it occurs to the left of a leading <latex>1</latex></para></info>
+					</area>
+					<area shape="rect" coords="60,24,86,64">
+						<info><para>In RREF this coefficient must be <latex>0</latex> because it occurs to the left of a leading <latex>1</latex></para></info>
+					</area>
+				</image>
+			</para>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Find the rank of the system of linear equations below:</para>
+			<para align="center"><img src="ims/RREF_qz.gif" width="476" height="64"/></para>
+		</statement>
+		<answer type="Solution">
+			<para>The rank of this system of linear equations is <latex>3</latex>. This is so because</para>
+			<ol>
+				<li><para>This system is in RREF, and</para></li>
+				<li><para>this system has <latex>3</latex> leading <latex>1</latex>&rsquo;s.</para></li>
+			</ol>
+		</answer>
+	</showme>
+</showme.pack>

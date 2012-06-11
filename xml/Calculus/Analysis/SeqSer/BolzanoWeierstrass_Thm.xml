@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_BolzanoWeierstrass">
+	<caption>Bolzano-Weierstra&szlig; Theorem</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment</caption>
+			<para>The Bolzano-Weierstra&szlig; theorem was first proved by Bolzano in 1817 as a step toward a proof of the intermediate value theorem. About half a century later the theorem was rediscovered by Karl Weierstra&szlig;.</para>
+		</info>
+	</associate>
+	
+	
+	<statement>
+		<para>Every bounded sequence <latex>(x_n)</latex> in <latex>\RNr</latex> has a convergent subsequence.
+			<index.glossary>
+				<term>Bolzano-Weierstra&szlig; theorem</term>
+				<info>
+					<caption>Bolzano-Weierstra&szlig; theorem</caption>
+					<para>Every bounded sequence in <latex>\RNr</latex> has a convergent subsequence.</para>
+				</info>
+			</index.glossary>
+			<index.author>
+				<name>
+					<first>Bernhard</first>
+					<middle>Placidus, Johann, Nepomuk</middle>
+					<last>Bolzano</last>
+				</name>
+				<info>
+					<para>Appears here in connection with the Bolzano-Weierstra&szlig; theorem in <latex>\RNr</latex>.</para>
+				</info>
+			</index.author>
+			<index.author>
+				<name>
+					<first>Karl</first>
+					<last>Weierstra&szlig;</last>
+				</name>
+				<info>
+					<para>Appears here in connection with the Bolzano-Weierstra&szlig; theorem in <latex>\RNr</latex>.</para>
+				</info>
+			</index.author>
+		</para>
+	</statement>
+	<proof>
+		<para>We show that <latex>(x_n)</latex> has a monotone subsequence. This implies the claim by the theorem on <subordinate>
+			<hot>monotone bounded convergence</hot>
+			<crossref>
+				<theorem.ref theoremID="Thm_MonotoneBoundedSequenceConverges"/>
+			</crossref>
+		</subordinate>. Let us say that <latex>(x_n)</latex> takes a dip a <latex>n</latex> if all <latex><![CDATA[ m>n ]]></latex> satisfy <latex>x_m\geq x_n</latex>. We know distinguish 3 cases:</para>
+		<para><i>Case 1:</i> <latex>(x_n)</latex> <i>takes no dip</i> &nbsp; Then <latex>(x_n)</latex> has a monotone decreasing subsequence for the following reason: Let <latex>n_0:=0</latex>. Then let <latex>n_1\geq 1</latex> be the least integer for which <latex>x_{n_1}\leq x_{n_0}</latex>. Then let <latex>n_2\geq n_1+1</latex> be the least integer for which <latex>x_{n_2}\leq x_{n_1}</latex>, etc. &ndash; These <latex>n_k</latex> exist because <latex>(x_n)</latex> takes no dip anywhere. By design <latex>(x_{n_i})</latex> is monotone decreasing. It is bounded below. So it converges.</para>
+		<para><i>Case 2</i> <latex>(x_n)</latex> <i>takes only finitely many dips</i> &nbsp; Let <latex>K</latex> be the largest index at which <latex>(x_n)</latex> takes a dip. Then the subsequence <latex>(x_n | n\geq K+1)</latex> takes no dip, hence has a monotone decreasing subsequence by Case 1.</para>
+		<para><i>Case 3</i> <latex>(x_n)</latex> <i>takes infinitely many dips</i> &nbsp; at numbers <latex><![CDATA[ n_0 < n_1 < \dots < n_k < \dots ]]></latex>. By definition, <latex>x_{n_0}\leq x_{n_1}\leq \dots \leq x_{n_k}\leq \dots </latex>. So <latex>(x_{n_k})</latex> is a monotone increasing subsequence. It is bounded above, hence converges.</para>
+	</proof>
+</theorem>

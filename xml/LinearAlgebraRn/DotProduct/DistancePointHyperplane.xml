@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_DistancePointHyperplane">
+	<headers>
+		<full>Distance of a Point from a Hyperplane</full>
+	  <toc>Distance of a Point from a Hyperplane</toc>
+		<short>Distance Point - Hyperplane</short>
+	</headers>
+	<intro>
+		<para>Here we learn how to determine the 
+			<subordinate>
+				<hot>distance of a point from a hyperplane</hot>
+				<companion>
+					<subpage.ref subpageID="Illustr_DistancePointHyperplane"/>
+					<para>An illustration of this situation.</para>
+				</companion>
+			</subordinate>. This is a very practical problem which one can encounter in many 
+			<subordinate>
+				<hot>different guises</hot>
+				<info>
+					<caption>Examples of settings which lead to the problem of finding the distance of a point from a hyperplane.</caption>
+					<para>Examples of situations which lead to the problem of finding the distance of a point from a hyperplane include:</para>
+					<ul>
+						<li><para>The problem of determining the altitude of an air plane&rsquo;s landing gear above the runway.</para></li>
+						<li><para>The problem of determining the distance of a ship from a straight shore line.</para></li>
+					</ul>
+					<para>It will help you understand the scope of this problem if you find more examples yourself.</para>
+				</info>
+			</subordinate>. Later, it will also enable us to carry out &lsquo;least squares&rsquo; approximations. Happily, there is one simple formula which solves the problem of finding the distance of a point from a hyperplane completely and in all dimensions.</para>
+	</intro>
+
+	<section.body>
+		<xi:include href="DistancePointHyperplane_Prop.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_DistancePointHyperplane"/>
+		<exercise.pack.ref exercisePackID="Test_Hyperplanes"/>
+	</studymaterials>
+</section>

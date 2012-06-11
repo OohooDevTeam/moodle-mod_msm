@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited by gepe 20060929 10:58 -->
+<!ENTITY at "&#64;">						<!-- at -->
+<!ENTITY nbsp "&#160;">				<!-- blank space -->
+<!ENTITY iexcl "&#161;">				<!-- upside down exclamation mark -->
+<!ENTITY cent "&#162;">				<!-- cent symbol -->
+<!ENTITY pount "&#163;">				<!-- pound -->
+<!ENTITY section "&#167;">			<!-- section -->
+<!ENTITY cpyrght "&#169;">			<!-- copyright -->
+<!ENTITY laquo "&#171;">				<!-- double <<-symbol -->
+<!ENTITY not "&#172;">					<!-- not -->
+<!ENTITY shy "&#173;">					<!-- conditional hyphen -->
+<!ENTITY reg "&#174;">					<!-- registered trade mark symbol -->
+<!ENTITY degree "&#176;">			<!-- degree -->
+<!ENTITY plsmns "&#177;">			<!-- plus minus -->
+<!ENTITY sup2 "&#178;">				<!-- supscript 2 -->
+<!ENTITY sup3 "&#179;">				<!-- supscript 3 -->
+<!ENTITY micro "&#181;">				<!-- micro-symbol -->
+<!ENTITY para "&#182;">				<!-- paragraph symbol -->
+<!ENTITY middot "&#183;">				<!-- middle dot -->
+<!ENTITY raquo "&#187;">				<!-- double >>-symbol -->
+<!ENTITY frac14 "&#188;">				<!-- 1/4 -->
+<!ENTITY frac12 "&#189;">				<!-- 1/2 -->
+<!ENTITY frac34 "&#190;">				<!-- 3/4 -->
+<!ENTITY iquest "&#191;">				<!-- Upside down question mark -->
+<!ENTITY Agrave "&#192;">			<!-- A Grave: A` -->
+<!ENTITY Aacute "&#193;">			<!-- A acute: 'A -->
+<!ENTITY Acirc "&#194;">				<!-- A cicumflex: A^ -->
+<!ENTITY Atilde "&#195;">				<!-- A tillde: A! -->
+<!ENTITY Auml "&#196;">				<!-- A Umlaut -->
+<!ENTITY Aring "&#197;">				<!-- A with a circle on top: A^0 -->
+<!ENTITY AElig "&#198;">				<!-- A with E joined to it -->
+<!ENTITY Ccedil "&#199;">				<!-- C with cedilla -->
+<!ENTITY Egrave "&#200;">			<!-- E Grave: E` -->
+<!ENTITY Eacute "&#201;">			<!-- E Grave: 'E -->
+<!ENTITY Ecirc "&#202;">				<!-- E cicumflex: E^ -->
+<!ENTITY Euml "&#203;">				<!-- E Umlaut -->
+<!ENTITY Igrave "&#204;">				<!-- I Grave: I` -->
+<!ENTITY Iacute "&#205;">				<!-- I Grave: 'I -->
+<!ENTITY Icirc "&#206;">					<!-- I cicumflex: I^ -->
+<!ENTITY Iuml "&#207;">					<!-- I Umlaut -->
+<!ENTITY Ntilde "&#209;">				<!-- N Tilde -->
+<!ENTITY Ograve "&#210;">			<!-- O Grave: O` -->
+<!ENTITY Oacute "&#211;">			<!-- O acute: 'O -->
+<!ENTITY Ocirc "&#212;">				<!-- O cicumflex: O^ -->
+<!ENTITY Otilde "&#213;">				<!-- O tillde: O! -->
+<!ENTITY Ouml "&#214;">				<!-- O Umlaut -->
+<!ENTITY Oslash "&#216;">			<!-- O as in "Empty Set" -->
+<!ENTITY Ugrave "&#217;">			<!-- U Grave: U` -->
+<!ENTITY Uacute "&#218;">			<!-- U acute: 'U -->
+<!ENTITY Ucirc "&#219;">				<!-- U cicumflex: U^ -->
+<!ENTITY Uuml "&#220;">				<!-- U Umlaut -->
+<!ENTITY agrave "&#224;">			<!-- a Grave: a` -->
+<!ENTITY aacute "&#225;">			<!-- a acute: 'a -->
+<!ENTITY acirc "&#226;">				<!-- a cicumflex: a^ -->
+<!ENTITY atilde "&#227;">				<!-- a tillde: a! -->
+<!ENTITY auml "&#228;">				<!-- a Umlaut -->
+<!ENTITY aring "&#229;">				<!-- a with a circle on top: a^0 -->
+<!ENTITY aelig "&#230;">				<!-- a with a joined to it -->
+<!ENTITY ccedil "&#231;">				<!-- c as in Geba, small letter c with cedilla -->
+<!ENTITY egrave "&#232;">			<!-- e Grave: e` -->
+<!ENTITY eacute "&#233;">			<!-- e Grave: 'e -->
+<!ENTITY ecirc "&#234;">				<!-- e cicumflex: e^ -->
+<!ENTITY euml "&#235;">				<!-- e Umlaut -->
+<!ENTITY igrave "&#236;">				<!-- i Grave: i` -->
+<!ENTITY iacute "&#237;">				<!-- i Grave: 'u -->
+<!ENTITY icirc "&#238;">					<!-- i cicumflex: u^ -->
+<!ENTITY iuml "&#239;">					<!-- i Umlaut -->
+<!ENTITY ntilde "&#241;">				<!-- n Tilde -->
+<!ENTITY ograve "&#242;">			<!-- o Grave: o` -->
+<!ENTITY oacute "&#243;">			<!-- o acute: 'o -->
+<!ENTITY ocirc "&#244;">				<!-- o cicumflex: o^ -->
+<!ENTITY otilde "&#245;">				<!-- o tillde: o! -->
+<!ENTITY ouml "&#246;">				<!-- o Umlaut -->
+<!ENTITY ugrave "&#249;">			<!-- u Grave: u` -->
+<!ENTITY uacute "&#250;">			<!-- u acute: 'u -->
+<!ENTITY ucirc "&#251;">				<!-- u cicumflex: u^ -->
+<!ENTITY uuml "&#252;">				<!-- u Umlaut -->
+
+<!ENTITY times "&#215;">				<!-- times -->
+<!ENTITY szlig "&#223;">				<!-- German sharp s -->
+<!ENTITY divide "&#247;">				<!-- Division symbol -->
+
+<!ENTITY Alpha "&#913;">				<!-- Greek Capital Alpha -->
+<!ENTITY alpha "&#945;">				<!-- Greek lower case alpha -->
+<!ENTITY Beta "&#914;">				<!-- Greek Capital Beta -->
+<!ENTITY beta "&#946;">				<!-- Greek lower case beta -->
+<!ENTITY Gamma "&#915;">			<!-- Greek Capital Gamma -->
+<!ENTITY gamma "&#947;">			<!-- Greek lower case gamma -->
+<!ENTITY Delta "&#916;">				<!-- Greek Capital Delta -->
+<!ENTITY delta "&#948;">				<!-- Greek lower case delta -->
+<!ENTITY Epsilon "&#917;">			<!-- Greek Capital Epsilon -->
+<!ENTITY epsilon "&#949;">			<!-- Greek lower case epsilon -->
+<!ENTITY Zeta "&#918;">				<!-- Greek Capital Zeta -->
+<!ENTITY zeta "&#950;">				<!-- Greek lower case zeta -->
+<!ENTITY eta "&#951;">					<!-- Greek lower case eta -->
+<!ENTITY Theta "&#920;">				<!-- Greek Capital Theta -->
+<!ENTITY theta "&#952;">				<!-- Greek lower case theta -->
+<!ENTITY iota "&#953;">					<!-- Greek lower case iota -->
+<!ENTITY kappa "&#954;">				<!-- Greek lower case kappa -->
+<!ENTITY Lambda "&#923;">			<!-- Greek Capital Lambda -->
+<!ENTITY lambda "&#955;">			<!-- Greek lower case lambda -->
+<!ENTITY mu "&#956;">					<!-- Greek lower case mu -->
+<!ENTITY nu "&#957;">					<!-- Greek lower case nu -->
+<!ENTITY Xi "&#926;">					<!-- Greek Capital Xi -->
+<!ENTITY xi "&#958;">						<!-- Greek lower case xi -->
+<!ENTITY Pi "&#928;">						<!-- Greek Capital Pi -->
+<!ENTITY pi "&#960;">						<!-- Greek lower case pi -->
+<!ENTITY Rho "&#929;">					<!-- Greek Capital Rho -->
+<!ENTITY rho "&#961;">					<!-- Greek lower case rho -->
+<!ENTITY Sigma "&#931;">				<!-- Greek Capital Sigma -->
+<!ENTITY sigma "&#963;">				<!-- Greek lower case sigma -->
+<!ENTITY tau "&#964;">					<!-- Greek lower case tau -->
+<!ENTITY Phi "&#934;">					<!-- Greek Capital Phi -->
+<!ENTITY phi "&#966;">					<!-- Greek lower case phi -->
+<!ENTITY Chi "&#935;">					<!-- Greek Capital Chi -->
+<!ENTITY chi "&#967;">					<!-- Greek lower case chi -->
+<!ENTITY Psi "&#936;">					<!-- Greek Capital Phi -->
+<!ENTITY psi "&#968;">					<!-- Greek lower case phi -->
+<!ENTITY Omega "&#937;">			<!-- Greek Capital Omega -->
+<!ENTITY omega "&#969;">				<!-- Greek lower case omega -->
+<!ENTITY thetasym "&#977;">			<!-- Greek lower case theta -->
+
+
+<!ENTITY ndash "&#8211;">			<!-- N Dash -->
+<!ENTITY mdash "&#8212;">			<!-- M Dash -->
+<!ENTITY bullet "&#8226;">				<!-- Bullet -->
+<!ENTITY Ohm "&#8486;">				<!-- Ohm Sign -->
+<!ENTITY infin "&#8734;">				<!-- Infinity -->
+<!ENTITY neq "&#8800;">				<!-- Not equal to -->
+
+<!ENTITY lsquo "&#8216;">				<!-- Single left side quote -->
+<!ENTITY rsquo "&#8217;">			<!-- Single right side quote -->

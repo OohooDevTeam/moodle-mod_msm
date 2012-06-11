@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book
+	http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_Intervals">
+	<headers>
+		<full>Intervals</full>
+		<toc>Intervals</toc>
+		<short>Intervals</short>
+	</headers>
+	<intro>
+		<para>We will frequently encounter sets of numbers which correspond to a line segment on the number line. Such a set of numbers is called an interval.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_Interval">
+			<caption>Number intervals</caption>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation</caption>
+					<para>Read the symbol construct</para>
+					<math.display>
+						<latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex>
+					</math.display>
+					<para>as: &lsquo;the closed interval from a to b is defined to be the set of all those x in R such that a less than or equal to x less than or equal to b&rsquo;.</para>
+				</info>
+			</associate>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation</caption>
+					<para>Read the symbol construct</para>
+					<math.display>
+						<latex><![CDATA[ \COIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b} ]]></latex>
+					</math.display>
+					<para>as: &lsquo;the left closed right open interval from a to b is defined to be the set of all those x in R such that a less than or equal to x less than b&rsquo;.</para>
+					<para>The remaining definitions of intervals are read similarly.</para>
+				</info>
+			</associate>
+			<para>For numbers <latex>a\leq b</latex> in <latex>\RNr</latex></para>
+			<ul>
+				<li><para><latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex> is the closed interval from <latex>a</latex> to <latex>b</latex>.
+					<index.glossary>
+						<term>closed</term><term>interval</term>
+						<info>
+							<para><latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex> is the closed interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>interval</term><term>closed</term>
+						<info>
+							<para><latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex> is the closed interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex>\CCIntrvl{a}{b}</latex></symbol>
+						<info>
+							<para><latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex> is the closed interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.symbol>
+				</para></li>
+				<li><para><latex><![CDATA[ \COIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x < b} ]]></latex> is the left closed right open interval from <latex>a</latex> to <latex>b</latex>.
+					<index.glossary>
+						<term>interval</term><term>left closed right open</term>
+						<info>
+							<para><latex><![CDATA[ \COIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x < b} ]]></latex> is the left closed right open interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex><![CDATA[ \COIntrvl{a}{b} ]]></latex></symbol>
+						<info>
+							<para><latex><![CDATA[ \COIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x < b} ]]></latex> is the left closed right open interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.symbol>
+				</para></li>
+				<li><para><latex><![CDATA[ \OCIntrvl{a}{b} := \Set{ x\in \RNr \st a < x \leq b} ]]></latex> is the left open right closed interval from <latex>a</latex> to <latex>b</latex>.
+					<index.glossary>
+						<term>interval</term><term>left open right closed</term>
+						<info>
+							<para><latex><![CDATA[ \OCIntrvl{a}{b} := \Set{ x\in \RNr \st a < x \leq b} ]]></latex> is the left open right closed interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex><![CDATA[ \OCIntrvl{a}{b} ]]></latex></symbol>
+						<info>
+							<para><latex><![CDATA[ \OCIntrvl{a}{b} := \Set{ x\in \RNr \st a < x \leq b} ]]></latex> is the left open right closed interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.symbol>
+				</para></li>
+				<li><para><latex><![CDATA[ \OOIntrvl{a}{b} := \Set{ x\in \RNr \st a < x < b} ]]></latex> is the open interval from <latex>a</latex> to <latex>b</latex>.
+					<index.glossary>
+						<term>open</term><term>interval</term>
+						<info>
+							<para><latex><![CDATA[ \OOIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b } ]]></latex> is the open interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>interval</term><term>open</term>
+						<info>
+							<para><latex><![CDATA[ \OOIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b} ]]></latex> is the open interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex>\OOIntrvl{a}{b}</latex></symbol>
+						<info>
+							<para><latex><![CDATA[ \OOIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b} ]]></latex> is the open interval from <latex>a</latex> to <latex>b</latex>.</para>
+						</info>
+					</index.symbol>
+				</para></li>
+			</ul>
+		</def>
+		<para>Given a real number <latex>c</latex>, we will often encounter the need to describe a 
+			<subordinate>
+				<hot>intervals</hot>
+				<info>
+					<caption>Interval neighborhood</caption>
+					<figure>
+						<img src="ims/IntervalNeighborhood.png"></img><!-- svg available -->
+					</figure>
+				</info>
+			</subordinate>
+			which appear centered at some <latex>c</latex> in <latex>\RNr</latex>. The following proposition helps recognize such intervals.</para>
+		<xi:include href="NeighborhoodRecognize_Thm.xml"/>
+<!--		<def type="Terminology" id="Def_NeighborhoodsR">
+			<caption>Closed / open <latex>r</latex>-neighborhoods</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment</caption>
+					<para>If <latex>r=0</latex>, then</para>
+					<ul>
+						<li><para>the closed <latex>r</latex>-neighborhood of <latex>c\in \RNr</latex> is <latex>\CCIntrvl{ c-0 }{ c+0 } = \Set{c}</latex>.</para></li>
+						<li><para>the open <latex>r</latex>-neighborhood of <latex>c\in \RNr</latex> is <latex>\OOIntrvl{ c-0 }{ c+0 } = \emptyset</latex>.</para></li>
+					</ul>
+				</info>
+			</associate>
+			<para>The closed <latex>r</latex>-neighborhood of <latex>c\in \RNr</latex> is <latex>\CCIntrvl{c-r}{c+r}</latex>. The open <latex>r</latex>-neighborhood of <latex>c\in \RNr</latex> is <latex>\OOIntrvl{c-r}{c+r}</latex>.
+				<index.glossary>
+					<term>neighborhood</term><term>of radius <latex>r</latex> of <latex>c\in \RNr</latex></term>
+				</index.glossary>
+			</para>
+		</def>-->
+	</section.body>
+</section>

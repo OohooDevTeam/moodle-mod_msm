@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_DimensionFormula">
+	<caption>Dimension formula for linear transformations</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_DimensionFormulaLinearMap"/>
+		<info><para>An example of how to apply the dimension formula</para></info>
+	</associate>
+	
+	<statement>
+		<para>A linear transformation <latex>L\from V\to W</latex> satisfies
+			<index.glossary>
+				<term>dimension</term><term>formula for linear transformations</term>
+				<info>
+					<computation>
+						<left>\Dim{ V }</left>
+						<center>=</center>
+						<right>\Dim{\Img{ L }}\ +\ \Dim{ \Ker{ L }}</right>
+					</computation>
+				</info>
+			</index.glossary>
+		</para>
+		<computation>
+			<left>\Dim{ V }</left>
+			<center>=</center>
+			<right>\Dim{\Img{ L }}\ +\ \Dim{ \Ker{ L }}</right>
+		</computation>
+	</statement>
+	<proof type="Proof" proofid="1">
+		<caption>A proof using the rank formula for a matrix</caption>
+		<para>The 
+			<subordinate>
+				<hot>rank formula</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_RankFormulaMatrix"/>
+					<para>Look up this result.</para>
+				</crossref>
+			</subordinate> for an <latex>(m,n)</latex>-matrix tells us that</para>
+		<computation>
+			<left>n</left>
+			<center>=</center>
+			<right>\Dim{ \ColSp{ \Mtrx{A} } } + \Dim{ \NllSp{\Mtrx{A}} }</right>
+		</computation>
+		<para>In our situation, <latex>n = \Dim{ V }</latex>, and we 
+			<subordinate>
+				<hot>found</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_KernelSubspace"/>
+					<para>Look up this result.</para>
+				</crossref>
+			</subordinate> that</para>
+		<computation>
+			<left>\Dim{ \NllSp{\Mtrx{A}} }</left>
+			<center>=</center>
+			<right>\Dim{ \Ker{ L } }</right>
+			<left>\Dim{ \Img{ L } }</left>
+			<center>=</center>
+			<right>\Dim{ \ColSp{ \Mtrx{A} } }</right>
+		</computation>
+		<para>This implies the claim.</para>
+	</proof>
+	
+	
+	
+	
+	
+	<proof type="Proof" proofid="2">
+		<caption>A direct proof of this corollary, relying less on previous results</caption>
+		<para>The strategy of this proof is to split <latex>V</latex> into two complementary subspaces, namely</para>
+		<math.display>
+			<latex>K:= \Ker{ L } \quad\text{and}\quad U</latex>
+		</math.display>
+		<para>where <latex>U</latex> has the distinguished property that the restriction of <latex>L</latex> to <latex>U</latex> gives an invertible linear map <latex>L'\from U\to \Img{ L }</latex>. Now the claim follows from the 
+			<subordinate>
+				<hot>dimension formula</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_SplittingDimensions"/>
+					<para>Look up this theorem.</para>
+				</crossref>
+			</subordinate>
+			for a splitting of <latex>V</latex> into subspaces. – Here are the details:</para>
+		<para>Choose an ordered basis <latex>\EuScript{C}=(\Vect{c}_1,\dots ,\Vect{c}_p)</latex> for <latex>\im(L)</latex>. Then choose, for each <latex>\Vect{c}_i</latex> in <latex>\EuScript{C}</latex> some <latex>\Vect{u}_i</latex> in <latex>V</latex> with <latex>L(\Vect{u}_i)=\Vect{c}_i</latex>. Setting <latex>\EuScript{U}:=(\Vect{u}_1,\dots ,\Vect{u}_p)</latex>, and <latex>U:=\span(\EuScript{U})</latex>, we claim:</para>
+		<ol>
+			<li><para><latex>\EuScript{U}</latex> is a basis of <latex>U</latex>; so <latex>\Dim{ U }=\Dim{\Img{ L }}</latex></para></li>
+			<li><para><latex>K\cap U= \Set{ \Vect{0} }</latex>; i.e. <latex>K</latex> and <latex>U</latex> only have the <latex>\Vect{0}</latex>-vector in common.</para></li>
+			<li><para><latex>\span(K\cup U)=V</latex>; i.e. <latex>K</latex> and <latex>U</latex> together span <latex>V</latex>.</para></li>
+		</ol>
+		<para>From these facts we obtain</para>
+		<math.display>
+			<latex>\Dim{ V } = \Dim{ K } + \Dim{ U } = \Dim{ \Ker{ L }} + \Dim{ \Img{ L }}</latex>
+		</math.display>
+		<para>as claimed. &ndash; Details follow:</para>
+		<para>(1) &nbsp; <latex>\EuScript{U}</latex> is a basis of <latex>U</latex>; so <latex>\Dim{ U } = \Dim{\Img { L }}</latex> &nbsp; To see this, it only remains to show that <latex>\EuScript{U}</latex> is linearly independent. If <latex>\Vect{0}= t_1 \Vect{u}_1</latex>, we find</para>
+		<computation>
+			<left>L(\Vect{0})</left>
+			<center>=</center>
+			<right>L(t_1 \Vect{u}_1 + \cdots + t_p \Vect{u}_p)</right>
+			<left>\Vect{0}</left>
+			<center>=</center>
+			<right>t_1L(\Vect{u}_1) + \cdots + t_p L(\Vect{u}_p)</right>
+			<left></left>
+			<center>=</center>
+			<right>t_1 \Vect{c}_1 + \cdots + t_p \Vect{c}_p</right>
+		</computation>
+		<para>It follows that <latex>t_1=\cdots = t_p=0</latex>, because <latex>\EuScript{C}</latex> is a basis of <latex>\Img{ L }</latex>. So <latex>\EuScript{U}</latex> is a basis of <latex>U</latex>.</para>
+		<para>(2) &nbsp; <latex>K\cap U=\Set{ \Vect{0} }</latex> &nbsp; Indeed, if <latex>\Vect{x} = t_1 \Vect{u}_1 + \cdots + t_p \Vect{u}_p</latex> is a vector in <latex>U</latex> which also belongs to <latex>K</latex>, we find</para>
+		<computation>
+			<left>L(\Vect{x})</left>
+			<center>=</center>
+			<right>L(t_1 \Vect{u}_1 + \cdots + t_p \Vect{u}_p)</right>
+			<left>\Vect{0}</left>
+			<center>=</center>
+			<right>t_1 L(\Vect{u}_1) + \cdots + t_p L(\Vect{u}_p)</right>
+			<left></left>
+			<center>=</center>
+			<right>t_1 \Vect{c}_1 + \cdots + t_p \Vect{c}_p</right>
+		</computation>
+		<para>Now the linear independence of <latex>\EuScript{C}</latex> implies that <latex>t_1=\cdots = t_p=0</latex>, and so <latex>\Vect{x}=\Vect{0}</latex>. This means that <latex>K</latex> and <latex>U</latex> have only the <latex>\Vect{0}</latex>-vector in common.</para>
+		<para>(3) &nbsp; <latex>\span(K\cup U)=V</latex> &nbsp; For an arbitrary <latex>\Vect{x}\in V</latex> we have</para>
+		<computation>
+			<left>L(\Vect{x})</left>
+			<center>=	<info>
+				<caption>Why is this so?</caption>
+				<para><latex>L(\Vect{x})</latex> belongs to the image of <latex>L</latex>. So it can be expressed in a unique way as a linear combination of the basis <latex>\EuScript{C}</latex> of <latex>\Img{ L }</latex>.</para>
+			</info></center>
+			<right>t_1 \Vect{c}_1 + \cdots + t_p \Vect{c}_p</right>
+		</computation>
+		<para>Let <latex>\Vect{u}:=t_1 \Vect{u}_1 + \cdots + t_p \Vect{u}_p</latex> in <latex>U</latex>. By design, <latex>L(\Vect{u}) = L(\Vect{x})</latex>. Consequently,</para>
+		<computation>
+			<left>L(\Vect{x}-\Vect{u})</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>implying that <latex>\Vect{k}:= \Vect{x} - \Vect{u}</latex> is in <latex>K</latex>. But this means that</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>\Vect{k} + \Vect{u}</right>
+		</computation>
+		<para>is a linear combination of a vector in <latex>K</latex> and a vector in <latex>U</latex>. So <latex>K</latex> and <latex>U</latex> together span <latex>V</latex>. This completes the proof.</para>
+	</proof>
+</theorem>

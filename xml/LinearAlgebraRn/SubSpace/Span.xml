@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_LinearCombinationSpan">
+	<headers>
+		<full>Linear Combination and Span</full>
+		<toc>Linear Combination and Span</toc>
+		<short>Span</short>
+	</headers>
+	<intro>
+		<para>The span operation applied to a set of vectors <latex>S</latex> in <latex>\RNr[n]</latex> yields a subvector space of <latex>\RNr[n]</latex> through the following process:</para>
+		<ol>
+			<li><para>A linear combination of vectors <latex>\Vect{s}_1,\dots ,\Vect{s}_r</latex> in <latex>S</latex> is a vector <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> of the form</para>
+				<computation>
+					<left>\Vect{x}</left>
+					<center>=</center>
+					<right>t_1 \Vect{s}_1 + \cdots + t_r \Vect{s}_r</right>
+				</computation>
+				<para>where <latex>t_1,\dots ,t_r</latex> are numbers in <latex>\RNr</latex>.</para>
+			</li>
+			<li><para>The span of <latex>S</latex> is the set of all possible linear combinations of vectors in <latex>S</latex>.</para></li>
+		</ol>
+		<para>Details follow:</para>
+	</intro>
+	
+	<subsection id="SubSec_LinearCombination">
+		<headers>
+			<full>Linear Combinations</full>
+			<toc>Linear Combinations</toc>
+			<short>Linear Combinations</short>
+		</headers>
+		<subsection.body>
+			<def type="Definition" id="Def_LinearCombination">
+				<caption>Linear combination</caption>
+				<associate Description="Illustration">
+					<subpage.ref subpageID="Illu_LinearCombinationGeometrically"/>
+					<info>
+						<para>An illustration of how to interpret &lsquo;linear combination&rsquo; geometrically</para>
+					</info>
+				</associate>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_LinearCombination"/>
+					<info><para>Examples of linear combinations.</para></info>
+				</associate>
+				
+				<para>A linear combination of vectors <latex>\Vect{s}_1</latex>, ... , <latex>\Vect{s}_r</latex> in <latex>\RNr[n]</latex> is a vector <latex>\Vect{x}</latex> of the form
+					<index.glossary>
+						<term>linear</term><term>combination</term>
+						<info><para>Definition of the concept</para></info>
+					</index.glossary>
+				</para>
+				<computation>
+					<left>\Vect{x}</left>
+					<center>=</center>
+					<right>t_1 \Vect{s}_1 + \cdots + t_r \Vect{s}_r</right>
+				</computation>
+				<para>where <latex>t_1,\dots ,t_r</latex> are numbers in <latex>\RNr</latex>.</para>
+			</def>
+		</subsection.body>
+	</subsection>
+	
+	
+	
+	
+	<subsection id="SubSecSpan">
+		<headers>
+			<full>The Span of a Set of Vectors</full>
+			<toc>The Span of a Set of Vectors</toc>
+			<short>Span</short>
+		</headers>
+		<subsection.body>
+			<def type="Definition" id="Def_Span">
+				<caption>Span</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_Span"/>
+					<info>
+						<caption>Example</caption>
+						<para>Examples of the span operation</para>
+					</info>
+				</associate>
+				
+				
+				
+				<para>The span of a set of vectors <latex>S</latex> in <latex>\RNr[n]</latex> is <latex>\span(S)</latex>, the collection of all linear combinations of vectors <latex>\Vect{s}_1</latex>, ... , <latex>\Vect{s}_r</latex> in <latex>S</latex>. &ndash; The span of the empty set is, by definition, the vector space consisting of the origin alone.
+					<index.glossary>
+						<term>span</term>
+						<info>
+							<para>The span of a set of vectors <latex>S</latex> in <latex>\RNr[n]</latex> is <latex>\span(S)</latex>, the collection of all linear combinations of vectors in <latex>S</latex>. &ndash; Definition of the concept.</para>
+						</info>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex>\span(S)</latex></symbol>
+						<info><para>The span of a subset <latex>S</latex> in <latex>\RNr[n]</latex>.</para></info>
+					</index.symbol>
+				</para>
+			</def>
+			
+			
+			
+			<para>The following proposition confirms that the spanning construction always yields a subvector space of <latex>\RNr[n]</latex>.</para>
+			<xi:include href="SpanGivesSubspace.xml"/>
+			
+			
+			<para>Examples of subspaces obtained by the span construction are the row space and the column space of a matrix.</para>
+			<def type="Definition" id="Def_RowColumnSpace">
+				<caption>Row space / column space</caption>
+				<associate Description="Explanation">
+					<subpage.ref subpageID="Expla_RowColumnSpace"/>
+					<info>
+						<caption>Explanation</caption>
+						<para>Details on the row and column space of a matrix.</para>
+					</info>
+				</associate>
+				<para>Given an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> express it in terms of its row and columns vectors</para>
+				<math.display>
+					<latex>
+					<![CDATA[
+\Mtrx{A} =
+\left[
+\begin{array}{ccc}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+R_1 \\ \vdots \\ R_m
+\end{array}
+\right] = 
+\left[
+\begin{array}{ccc}
+C_1 & \dots & C_n
+\end{array}
+\right]
+					]]>
+					</latex>
+				</math.display>
+				<ul>
+					<li><para>The row space of <latex>\Mtrx{A}</latex> is <latex>\RowSp{\Mtrx{A}} := \span \Set{ R_1,\dots ,R_m }</latex>.
+						<index.glossary>
+							<term>row space</term>
+							<info>
+								<para>The row space of an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> is the subspace of <latex>\RNr[n]</latex> spanned by the row vectors of <latex>\Mtrx{A}</latex>.</para>
+							</info>
+						</index.glossary>
+						<index.symbol>
+							<symbol><latex>\RowSp{\Mtrx{A}}</latex></symbol>
+							<info>
+								<para>The row space of an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> is the subspace of <latex>\RNr[n]</latex> spanned by the row vectors of <latex>\Mtrx{A}</latex>.</para>
+							</info>
+						</index.symbol>
+					</para></li>
+					<li><para>The column space of <latex>\Mtrx{A}</latex> is <latex>\ColSp{\Mtrx{A}} := \span \Set{ C_1,\dots ,C_n }</latex>.
+						<index.glossary>
+							<term>row space</term>
+							<info>
+								<para>The column space of an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> is the subspace of <latex>\RNr[m]</latex> spanned by the column vectors of <latex>\Mtrx{A}</latex>.</para>
+							</info>
+						</index.glossary>
+						<index.symbol>
+							<symbol><latex>\ColSp{\Mtrx{A}}</latex></symbol>
+							<info>
+								<para>The column space of an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> is the subspace of <latex>\RNr[m]</latex> spanned by the column vectors of <latex>\Mtrx{A}</latex>.</para>
+							</info>
+						</index.symbol>
+					</para></li>
+				</ul>
+			</def>
+			
+			
+			
+			<para>We will soon learn how to describe the row and column spaces of a matrix using the concept of &lsquo;basis&rsquo;. For now, here is an indication of the significance of the column space construction:</para>
+			<xi:include href="ColumnSpaceLinearEq_Thm.xml"/>
+			<xi:include href="ColumnSpaceLinearMap_Thm.xml"/>
+			<para>Now consider two subsets <latex>S</latex> and <latex>T</latex> of <latex>\RNr[n]</latex>. If <latex>S</latex> is a subset of <latex>T</latex>, how are <latex>\span(S)</latex> and <latex>\span(T)</latex> related? &ndash; The key to answering this question is ...</para>
+			<xi:include href="SpanCompare_Thm.xml"/>
+			<para>We conclude this section with the following technical lemma about related spanning sets.</para>
+			<xi:include href="SpanCompare1_Thm.xml"/>
+		</subsection.body>
+	</subsection>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_Span"/>
+	</studymaterials>
+</section>

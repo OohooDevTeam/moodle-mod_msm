@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_SequenceConvergeInfty"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	
+	  <title>Sequences Converging to Infinity: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Show that the sequence <math>
+                  <latex>(x_n)</latex>
+               </math> with <math>
+                  <latex>x_n = n</latex>
+               </math> converges to <math>
+                  <latex>+\infty</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Let <math>
+                        <latex>u\in \RNr</latex>
+                     </math> be given. We need to find some <math>
+                        <latex> n_0 &gt; 0 </latex>
+                     </math> such that</para.body>
+               </para>
+			            <math.display>
+				              <latex> x_n \geq u </latex>
+			            </math.display>
+			            <para>
+                  <para.body>for all <math>
+                        <latex>n\geq n_0</latex>
+                     </math>. To establish the existence of such <math>
+                        <latex>n_0</latex>
+                     </math> recall that 
+				<subordinate>
+                        <hot>
+                           <math>
+                              <latex>\NNr</latex>
+                           </math> is not bounded above</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up this fact.</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>. Therefore there exists <math>
+                        <latex>n_0\in \NNr</latex>
+                     </math> with <math>
+                        <latex> n_0 \geq u </latex>
+                     </math>. Now, if <math>
+                        <latex>n\geq n_0</latex>
+                     </math>, we find</para.body>
+               </para>
+			            <math.display>
+				              <latex> x_n = n \geq n_0 \geq u </latex>
+			            </math.display>
+			            <para>
+                  <para.body>This means that</para.body>
+               </para>
+			            <math.display>
+				              <latex>\lim_{n\to\infty} n \ =\ +\infty .</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

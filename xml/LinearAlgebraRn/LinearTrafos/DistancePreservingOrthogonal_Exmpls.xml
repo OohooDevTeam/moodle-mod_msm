@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_DistancePreservingOrthogonal">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Example: Distance Preserving Map Has Orthogonal Matrix</title>
+	<caption>Example: Distance Preserving Map - Orthogonal Matrix</caption>
+	<showme>
+		<statement>
+			<para>Determine if the linear transformation <latex>L\from \RNr[3]\to \RNr[3]</latex> represented by the matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+A\ =\ \dfrac{1}{4}\cdot
+\left[
+\begin{array}{rrr}
+2 & 0 & -2\sqrt{3} \\
+\sqrt{6} & 2\sqrt{2} & \sqrt{2} \\
+\sqrt{6} & -2\sqrt{2} & \sqrt{2}
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			
+			<para>preserves distances.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We evaluate the matrix product <latex>\Mtrx{A}\cdot \Mtrx{A}^T</latex> and find that it is equal to the identity matrix  <latex>\IdMtrx[3]</latex>. This means that <latex>\Mtrx{A}</latex> is invertible and that <latex>\Mtrx{A}^{-1} = \Mtrx{A}^T</latex>. Therefore <latex>L</latex> preserves distances.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Determine if the matrix <latex>\Mtrx{B}</latex> below represents a distance preserving linear transformation <latex>\RNr[3]\to \RNr[3]</latex>.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{B}\ =\ 
+\left[
+\begin{array}{rrr}
+0 & -1 & 1 \\
+1 & 0 & 1 \\
+0 & 0 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>We compute the product <latex>\Mtrx{B}\cdot \Mtrx{B}^T</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{B}\cdot \Mtrx{B}^T\ =\ 
+\left[
+\begin{array}{rrr}
+0 & -1 & 1 \\
+1 & 0 & 1 \\
+0 & 0 & 1
+\end{array}
+\right]\cdot 
+\left[
+\begin{array}{rrr}
+0 & 1 & 0 \\
+-1 & 0 & 0 \\
+1 & 1 & 1
+\end{array}
+\right] = 
+\left[
+\begin{array}{rrr}
+2 & 1 & 1 \\
+1 & 2 & 1 \\
+1 & 1 & 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Visibly, this is not the identity matrix of size <latex>(3,3)</latex>. So <latex>\Mtrx{B}</latex> does not represent a distance preserving linear map. &ndash; In fact, we can tell much quicker that <latex>\Mtrx{B}</latex> does not represent a distance preserving linear map:</para>
+			<ol type="1">
+				<li><para>The length of the third column is <latex>\sqrt{3}\neq 1</latex>.</para></li>
+				<li><para>The first column fails to be orthogonal to the third colum.</para></li>
+				<li><para>The second column fails to be orthogonal to the third colum.</para></li>
+			</ol>
+			<para>Any one of these three observations by itself says that <latex>\Mtrx{B}</latex> does not represent a distance preserving linear map.</para>
+		</answer>
+	</showme>
+</showme.pack>

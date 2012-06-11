@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_DimensionFormulaRn">
+	<caption>Dimension formula for linear <latex>\RNr[n]\to \RNr[m]</latex></caption>
+	<statement>
+		<para>For a linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex>, represented by the matrix <latex>\Mtrx{A}=\Mtrx{A}_{\EuScript{S}\EuScript{S}}</latex> with respect to the standard bases, the following hold:</para>
+		<part partid="KerNull">
+			<para><latex>\Ker{ L } = \NllSp{\Mtrx{A}}</latex>, and so <latex>\Dim{ \Ker{ L }} = \Dim{ \NllSp{\Mtrx{A}} }</latex>.</para>
+		</part>
+		<part partid="ImCol">
+			<para><latex>\Img{ L }=\ColSp{\Mtrx{A}}</latex>, and so <latex>\Dim{ \Img{ L }} = \Rnk{\Mtrx{A}}</latex>.</para>
+		</part>
+	</statement>
+</theorem>

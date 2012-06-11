@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack
+  SYSTEM "Symbols.dtd">
+<example.pack xmlns="Compositor"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              id="Exa_PositionVectors"
+              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <title>Examples of Position Vectors</title>
+	  <caption xmlns="">Position Vectors - Examples</caption>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>The position vector of the point <math>
+                  <latex>X(3,1)</latex>
+               </math> in <math>
+                  <latex>\RNr[2]</latex>
+               </math> is <math>
+                  <latex>\mathbf{x}=(3,1)</latex>
+               </math>.</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+				           <media type="image" active="0" inline="0">
+                  <img src="PositionVector.gif"/>
+               </media>
+			         </para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Explanation" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>Indeed, the arrow joining the origin to <math>
+                        <latex>X</latex>
+                     </math> goes, starting from its tail, <math>
+                        <latex>3</latex>
+                     </math> units in the first coordinate direction and from there <math>
+                        <latex>1</latex>
+                     </math> unit in the second coordinate direction. The corresponding coordinate vector is <math>
+                        <latex>\mathbf{x}=(3,1)</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>The point <math>
+                  <latex>X(7,-5,2)</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math> has the position vector <math>
+                  <latex>\mathbf{x} = (7,-5,2).</latex>
+               </math>
+			         </para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Explanation" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>The position vector <math>
+                        <latex>\mathbf{x}</latex>
+                     </math> of <math>
+                        <latex>X</latex>
+                     </math> is represented by the arrow whose tail is at the origin and whose tip is at <math>
+                        <latex>X</latex>
+                     </math>. Therefore <math>
+                        <latex>\mathbf{x}=(7,-5,2)</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>
+				           <math>
+                  <latex>\RNr[4]</latex>
+               </math> has four basic coordinate vectors</para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Explanation" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <ul>
+				              <li>
+					                <para>
+                        <para.body>The first basic coordinate vector of <math>
+                              <latex>\RNr[4]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_1:=(1,0,0,0)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The second basic coordinate vector of <math>
+                              <latex>\RNr[4]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_2:=(0,1,0,0)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The third basic basic coordinate vector of <math>
+                              <latex>\RNr[4]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_3:=(0,0,1,0)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The fourth basic basic coordinate vector of <math>
+                              <latex>\RNr[4]</latex>
+                           </math> is <math>
+                              <latex>\mathbf{e}_4:=(0,0,0,1)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+			            </ul>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+</example.pack>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_DeterminantRowReduction">
+	<caption>Computing determinants by row reduction</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_DeterminantByRowReduction"/>
+		<info><para>Examples of computing determinants by row reduction.</para></info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_VanderMondeDeterminant"/>
+		<info><para>An example of using the row reduction method to evaluate the &lsquo;van der Monde determinant&rsquo;.</para></info>
+	</associate>
+	<associate Description="Comment">
+		<info>
+			<caption>Warning</caption>
+			<para>To evaluate a determinant you can use row and column operations freely. However, to reduce the coefficient matrix of a system of linear equations you can only use row operations.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Suppose the <latex>(n,n)</latex>-matrix  <latex>\Mtrx{A}</latex> can be row reduced to an upper triangular matrix <latex>\Mtrx{U}</latex> with diagonal entries <latex>d_1,\dots ,d_n</latex>. If this row reduction used</para>
+		
+		<ul>
+			<li><para><latex>r</latex> interchanges of rows; and</para></li>
+			<li><para>the multiplication of rows by (nonzero) numbers <latex>c_1,\dots ,c_k</latex>, then</para></li>
+		</ul>
+		
+		<math.display>
+			<latex>\det(\Mtrx{A}) = (-1)^r\cdot \dfrac{d_1\cdots d_n}{c_1\cdots c_k}</latex>
+		</math.display>
+	</statement>
+	<proof>
+		<para>We know that the determinant operation on <latex>(n,n)</latex>-matrices is alternating and multilinear in the columns of matrices. Now we have <latex>\det(\Mtrx{A})=\det(\Mtrx{A}^T)</latex> for every matrix <latex>\Mtrx{A}</latex>. Therefore the determinant operation is alternating and multilinear in the rows of matrices as well.</para>
+		
+		<para>Now if <latex>\Mtrx{A}</latex> is given, we know that we can row reduce it to upper triangular matrix <latex>\Mtrx{U}</latex> using suitable combinations of</para>
+		
+		<ul>
+			<li><para>an interchange of columns: the determinant switches its sign;</para></li>
+			<li><para>multiplying a column by a nonzero constant <latex>c</latex>: the determinant gets multiplied by <latex>c</latex>;</para></li>
+			<li><para>adding a multiple of one row to another: the determinant remains unchanged.</para></li>
+		</ul>
+		<para>This implies the claim.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_DistancePreservingLinearTrafo"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: Distance Preserving Linear Transformations</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Of particular importance for practical purposes are those linear transformations which preserve all distances. This ensures that size and shape of any object remains unaltered by the transformation. Only its position can change. This is something we take for granted when moving an object from one place to another place in the real world. Here are the main facts.</para.body>
+            </para>
+            <ol type="1">
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>Definition</strong>   A linear transformation <math>
+                           <latex>L\from \RNr[n] \to \RNr[n]</latex>
+                        </math> is said to preserve distances if, for all <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>\RNr[n]</latex>
+                        </math>,</para.body>
+                  </para>
+                  <math.display>
+                     <latex>\norm{L(\Vect{x})} = \Vect{x}</latex>
+                  </math.display>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>Proposition</strong>   Let <math>
+                           <latex>L\from \RNr[n]\to \RNr[n]</latex>
+                        </math> be a linear transformation represented by the matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> of size <math>
+                           <latex>(n,n)</latex>
+                        </math>. Then <math>
+                           <latex>L</latex>
+                        </math> preserves all distances if and only if conditions (i) and (ii) below hold:</para.body>
+                  </para>
+                  <ol type="i">
+                     <li>
+                        <para>
+                           <para.body>Each column vector <math>
+                                 <latex>A_j</latex>
+                              </math> of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> has length <math>
+                                 <latex>1</latex>
+                              </math>: <math>
+                                 <latex>\DotPr{A_j}{A_j} = 1</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>Any two distinct column vectors of <math>
+                                 <latex>A</latex>
+                              </math> are perpendicular: whenever <math>
+                                 <latex>1\leq j\neq k\leq n</latex>
+                              </math>, <math>
+                                 <latex>\DotPr{A_j}{A_k} = 0</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                  </ol>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>Corollary</strong>   A linear transformation <math>
+                           <latex>L\from \RNr[n]\to \RNr[n]</latex>
+                        </math> preserves distances if and only if the transpose of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is also the inverse of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>: <math>
+                           <latex>\Mtrx{A}^{-1} = \Mtrx{A}^T</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_ConvergenceCriteriaSequence"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Criteria for Convergence</title>
+      <plain.title>Criteria for Convergence</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Recall the 
+			<subordinate>
+                     <hot>definition of convergence</hot>
+                     <crossref>
+                        <definition.ref definitionID="Def_SequenceConvergence"/>
+                        <info>
+                           <para>
+                              <para.body>Look up the definition of convergence of a sequence.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			of a sequence <math>
+                     <latex>(x_n)</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math>. When trying to decide whether such a sequence converges to a number, it may be quite tedious to rely on this definition only. Fortunately, there is a collection of tools which are very helpful in such situations. The purpose of this section is to develop the following criteria to detect convergence.</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>A sequence which is increasing and bounded above converges to a number.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>A sequence which is decreasing and bounded below converges to a number.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Squeeze theorem for convergence to a number</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Rules for computing with convergent sequences</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="MonotoneBoundedSeqConvergences_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="BolzanoWeierstrass_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="NestedInterval_Thm.xml"/>
+            <para>
+               <para.body>At times it is possible to squeeze a complicated sequence between two sequences which converge to the same limit <math>
+                     <latex>c</latex>
+                  </math>. In this case the complicated sequence also converges to <math>
+                     <latex>c</latex>
+                  </math>.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SqueezeTheorem_Thm.xml"/>
+            <para>
+               <para.body>We close this section with basic rules for computing with convergent sequences.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="LimitRules_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_MonotoneBoundedConverges"/>
+      <exercise.pack.ref exercisePackID="Exe_SequenceConvergence"/>
+   </studymaterials>
+</unit>

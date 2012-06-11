@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_NeighborhoodRecognize"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Some special intervals</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Given <math>
+               <latex>c,r\in \RNr</latex>
+            </math> with <math>
+               <latex>r\geq 0</latex>
+            </math>, the following hold for every <math>
+               <latex>x\in \RNr</latex>
+            </math>
+         </para.body>
+      </para>
+      <part.theorem partid="ClosedrNbhd">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Abs{x-c}\leq r</latex>
+                  </math> if and only if <math>
+                     <latex>c-r \leq x \leq c+r</latex>
+                  </math> if and only if <math>
+                     <latex>x\in \CCIntrvl{c-r}{c+r}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="OpenNbhd">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex> \Abs{x-c} &lt; r </latex>
+                  </math> if and only if <math>
+                     <latex> c-r &lt; x &lt; c+r </latex>
+                  </math> if and only if <math>
+                     <latex>x\in \OOIntrvl{c-r}{c+r}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>ClosedrNbhd</part.ref>
+         </logic>
+         <caption>ClosedrNbhd</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We have that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>OpenNbhd</part.ref>
+         </logic>
+         <caption>OpenNbhd</caption>
+         <proof.block.body>
+            <para>
+               <para.body>This follows with similar reasoning.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

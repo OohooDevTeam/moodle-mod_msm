@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Preview_LinearEquationsSystems"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>System of Linear Equations – Preview</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A system of <math>
+                     <latex>m</latex>
+                  </math> linear equation in <math>
+                     <latex>n</latex>
+                  </math> unknowns looks like this</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+				\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{11}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{12}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{1n}$}{\color{red}x_n} &amp; = &amp; c_1 \\
+\colorbox{lightgreen}{$a_{21}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{22}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{2n}$}{\color{red}x_n} &amp; = &amp; c_2 \\
+\vdots &amp; + &amp; \vdots &amp; + &amp; \ddots &amp; &amp; + &amp; \vdots &amp; &amp; \vdots \\
+\vdots &amp; + &amp; \vdots &amp; + &amp; &amp; \ddots &amp; + &amp; \vdots &amp; &amp; \vdots \\
+\colorbox{lightgreen}{$a_{m1}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{m2}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{mn}$}{\color{red}x_n} &amp; = &amp; c_m \\
+\end{array}
+				
+			</latex>
+            </math.display>
+            <para>
+               <para.body>Each row in this system is just a single linear equation in <math>
+                     <latex>n</latex>
+                  </math> unknowns. Thus each of the symbols</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>a_{ij}</latex>
+                  </math>,   <math>
+                     <latex>1\leq i\leq m</latex>
+                  </math>,   <math>
+                     <latex>1\leq j\leq n</latex>
+                  </math>,   and   <math>
+                     <latex>c_1,\dots ,c_m</latex>
+                  </math>
+               </para.body>
+            </para>
+            <para>
+               <para.body>represents a number which is assumed to be known. Specifically, the number <math>
+                     <latex>a_{ij}</latex>
+                  </math> is called the coefficient in position 
+			<subordinate>
+                     <hot>
+                        <math>
+                           <latex>(i,j)</latex>
+                        </math>
+                     </hot>
+                     <info>
+                        <info.caption>What exactly does <math>
+                              <latex>(i,j)</latex>
+                           </math> refer to?</info.caption>
+                        <para>
+                           <para.body>Note that the symbol <math>
+                                 <latex>a</latex>
+                              </math> has two subscripts:</para.body>
+                        </para>
+                        <ol>
+                           <li>
+                              <para>
+                                 <para.body>The first subscript, here named <math>
+                                       <latex>i</latex>
+                                    </math> counts the row in which the coefficient <math>
+                                       <latex>a_{ij}</latex>
+                                    </math> sits.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>The second subscript, here named <math>
+                                       <latex>j</latex>
+                                    </math> counts the column in which the coefficient <math>
+                                       <latex>a_{ij}</latex>
+                                    </math> sits.</para.body>
+                              </para>
+                           </li>
+                        </ol>
+                     </info>
+                  </subordinate>
+			of the system. The symbols <math>
+                     <latex>x_1,\dots ,x_n</latex>
+                  </math> represent variables (unknowns), and we are looking for number values</para.body>
+            </para>
+            <math.display>
+               <latex>x_1 = ?,\quad x_2 = ?,\quad \dots \quad x_n = ?</latex>
+            </math.display>
+            <para>
+               <para.body>such that all of the equations in the given system are simultaneously true.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>An <strong>example</strong> of a system of two linear equations in <math>
+                     <latex>3</latex>
+                  </math> unknowns is:</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{array}{rcrcrcl}
+					\colorbox{lightgreen}{2}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{3}{\color{red}y} &amp; - &amp; \colorbox{lightgreen}{1}{\color{red}z} &amp; = &amp; 6 \\
+\colorbox{lightgreen}{1}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{1}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{2}{\color{red}z} &amp; = &amp; 2
+\end{array}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>The coefficients of this system are:</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{array}{rclrclrcl}
+a_{11} &amp; = &amp; 2 &amp; \quad a_{12} &amp; = &amp; 3 &amp; \quad a_{13} &amp; = &amp; -1 \\
+a_{21} &amp; = &amp; 1 &amp; \quad a_{22} &amp; = &amp; 1 &amp; \quad a_{23} &amp; = &amp; 2
+\end{array}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>The variables or unknowns of this system are <math>
+                     <latex>x,y,z</latex>
+                  </math>.  One solution of this system is given by the number assignments</para.body>
+            </para>
+            <math.display>
+               <latex>x:= -6,\quad y := 5,\quad z:=1</latex>
+            </math.display>
+            <para>
+               <para.body>to the unknowns. Indeed, these assignments render both equations simultaneously  true. Let's check it!</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{array}{rcrcrcl}
+\colorbox{lightgreen}{2}{\cdot({\color{red}-6})} &amp; + &amp; \colorbox{lightgreen}{3}{\cdot{\color{red}5}} &amp; - &amp; {\color{red}1} &amp; = &amp; 2 \\
+{\color{red}-6} &amp; + &amp; {\color{red}5} &amp; + &amp; \colorbox{lightgreen}{2}{\cdot{\color{red}1}} &amp; = &amp; 1
+\end{array}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>We express this by saying that the triple  <math>
+                     <latex>(- 6,5,1)</latex>
+                  </math>  is a solution of the given system of linear equations. On the other hand, the triple  <math>
+                     <latex>(5,2,3)</latex>
+                  </math>  is not a solution of this system, because</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{array}{rcrcrcl}
+\colorbox{lightgreen}{2}{\cdot({\color{red}5})} &amp; + &amp; \colorbox{lightgreen}{3}{\cdot{\color{red}2}} &amp; - &amp; {\color{red}3} &amp; = &amp; 13\ \neq 2 \\
+{\color{red}5} &amp; + &amp; {\color{red}2} &amp; + &amp; \colorbox{lightgreen}{2}{\cdot{\color{red}3}} &amp; = &amp; 13\ \neq 1
+\end{array}
+					
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We will discuss methods for finding all solutions of a system of linear equations. Applying this method to the system at hand we will find that its solutions form a line in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>. In particular, this system has infinitely many simultaneous solutions.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

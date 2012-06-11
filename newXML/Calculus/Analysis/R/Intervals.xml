@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_Intervals"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Intervals</title>
+      <plain.title>Intervals</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We will frequently encounter sets of numbers which correspond to a line segment on the number line. Such a set of numbers is called an interval.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_Interval">
+               <caption>Number intervals</caption>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>Read the symbol construct</para.body>
+                     </para>
+                     <math.display>
+                        <latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex>
+                     </math.display>
+                     <para>
+                        <para.body>as: ‘the closed interval from a to b is defined to be the set of all those x in R such that a less than or equal to x less than or equal to b’.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>Read the symbol construct</para.body>
+                     </para>
+                     <math.display>
+                        <latex> \COIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b} </latex>
+                     </math.display>
+                     <para>
+                        <para.body>as: ‘the left closed right open interval from a to b is defined to be the set of all those x in R such that a less than or equal to x less than b’.</para.body>
+                     </para>
+                     <para>
+                        <para.body>The remaining definitions of intervals are read similarly.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>For numbers <math>
+                           <latex>a\leq b</latex>
+                        </math> in <math>
+                           <latex>\RNr</latex>
+                        </math>
+                     </para.body>
+                  </para>
+                  <ul>
+                     <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex>
+                              </math> is the closed interval from <math>
+                                 <latex>a</latex>
+                              </math> to <math>
+                                 <latex>b</latex>
+                              </math>.
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>\CCIntrvl{a}{b}</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex>
+                                       </math> is the closed interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>closed</term>
+                              <term>interval</term>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex>
+                                       </math> is the closed interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>interval</term>
+                              <term>closed</term>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\CCIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b}</latex>
+                                       </math> is the closed interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex> \COIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x &lt; b} </latex>
+                              </math> is the left closed right open interval from <math>
+                                 <latex>a</latex>
+                              </math> to <math>
+                                 <latex>b</latex>
+                              </math>.
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex> \COIntrvl{a}{b} </latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex> \COIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x &lt; b} </latex>
+                                       </math> is the left closed right open interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>interval</term>
+                              <term>left closed right open</term>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex> \COIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x &lt; b} </latex>
+                                       </math> is the left closed right open interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex> \OCIntrvl{a}{b} := \Set{ x\in \RNr \st a &lt; x \leq b} </latex>
+                              </math> is the left open right closed interval from <math>
+                                 <latex>a</latex>
+                              </math> to <math>
+                                 <latex>b</latex>
+                              </math>.
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex> \OCIntrvl{a}{b} </latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex> \OCIntrvl{a}{b} := \Set{ x\in \RNr \st a &lt; x \leq b} </latex>
+                                       </math> is the left open right closed interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>interval</term>
+                              <term>left open right closed</term>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex> \OCIntrvl{a}{b} := \Set{ x\in \RNr \st a &lt; x \leq b} </latex>
+                                       </math> is the left open right closed interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex> \OOIntrvl{a}{b} := \Set{ x\in \RNr \st a &lt; x &lt; b} </latex>
+                              </math> is the open interval from <math>
+                                 <latex>a</latex>
+                              </math> to <math>
+                                 <latex>b</latex>
+                              </math>.
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>\OOIntrvl{a}{b}</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex> \OOIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b} </latex>
+                                       </math> is the open interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>open</term>
+                              <term>interval</term>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex> \OOIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b } </latex>
+                                       </math> is the open interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>interval</term>
+                              <term>open</term>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex> \OOIntrvl{a}{b} := \Set{ x\in \RNr \st a\leq x\leq b} </latex>
+                                       </math> is the open interval from <math>
+                                          <latex>a</latex>
+                                       </math> to <math>
+                                          <latex>b</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                  </ul>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Given a real number <math>
+                     <latex>c</latex>
+                  </math>, we will often encounter the need to describe a 
+			<subordinate>
+                     <hot>intervals</hot>
+                     <info>
+                        <info.caption>Interval neighborhood</info.caption>
+                        <media type="image" active="0" inline="0">
+                           <img src="ims/IntervalNeighborhood.png"/>
+                        </media>
+                     </info>
+                  </subordinate>
+			which appear centered at some <math>
+                     <latex>c</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math>. The following proposition helps recognize such intervals.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="NeighborhoodRecognize_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+</unit>

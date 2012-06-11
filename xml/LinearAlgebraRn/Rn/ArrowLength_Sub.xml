@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_ArrowLength">
+	<title>Illustration: Length of an Arrow</title>
+	<sub.page.body>
+		<block>
+			<para>The length of the arrow joining <latex>P(x_1,\dots ,x_n)</latex> to <latex>Q(y_1,\dots ,y_n)</latex> is given by the formula</para>
+			<para align="center">
+				<img src="ims/ArrowLength_Illstrtn.gif"/>
+			</para>
+			<math.display>
+				<latex>\Abs{ \overset{\longrightarrow}{PQ} }\ :=\ \text{dist}(P,Q)\ =\ \sqrt{(y_1-x_1)^2+\cdots +(y_n-x_n)^2}.</latex>
+			</math.display>
+			<para>This means that the length of an arrow is defined to be the distance between its end points.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

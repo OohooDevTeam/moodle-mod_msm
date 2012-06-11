@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_OrthogonalComplement">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Orthogonal Complement</title>
+	<exercise>
+		<problem>
+			<para>For each of the following sets, find its orthogonal complement inside the specified space.</para>
+		</problem>
+		<part>
+			<problem><para><latex>S=\Set{ 2,-4 }</latex> in <latex>\RNr[1]</latex></para></problem>
+			<approach>
+				<answer><para><latex>S^{\bot} = \Set{ 0 }</latex> is the 0-vector.</para></answer>
+				<solution>
+					<para>A vector <latex>t</latex> in <latex>\RNr[1]</latex> belongs to <latex>S^{\bot}</latex> exactly when</para>
+					<math.display>
+						<latex>t\cdot 2 = 0 \quad \text{and}\quad t\cdot (-3)=0</latex>
+					</math.display>
+					<para>This happens exactly when <latex>t=0</latex>. Therefore <latex>S^{\bot} = \Set{ 0 }</latex> is the zero subspace of <latex>\RNr</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>S=\Set{ \Vect{u} }</latex>, where <latex>\Vect{u} = (-3,-1)</latex> in <latex>\RNr[2]</latex></para>
+			</problem>
+			<approach>
+				<answer><para><latex>S^{\bot} = \Set{ t\cdot (1,-3) \st t\in \RNr}</latex></para></answer>
+				<solution>
+					<para><latex>S^{\bot}</latex> is the set of all vectors in <latex>\RNr[2]</latex> which are perpendicular to <latex>\Vect{u}</latex>. This is a line in <latex>\RNr[2]</latex>. By inspection, or by solving the equation <latex>-3x-y=0</latex>, we see that this line consists of all multiples of <latex>(1,-3)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S=\Set{ \Vect{0} }</latex>, where <latex>\Vect{0} = (0,0)</latex> in <latex>\RNr[2]</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>S^{\bot} = \RNr[2]</latex></para></answer>
+				<solution>
+					<para>Every vector in <latex>\RNr[2]</latex> is perpendicular to <latex>\Vect{0}</latex>. Therefore <latex>S^{\bot} = \RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S= \Set{ \Vect{u}, \Vect{v} }</latex>, where <latex>\Vect{u} = (1,2)</latex> and <latex>\Vect{v} = (1,-1)</latex> in <latex>\RNr[2]</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>S^{\bot} = \Set{ \Vect{0} }</latex></para></answer>
+				<solution>
+					<para>A vector <latex>\Vect{w} = (x,y)</latex> belongs to <latex>S^{\bot}</latex> if and only if </para>
+					<math.display>
+						<latex>0= \DotPr{ \Vect{w} }{ \Vect{u} } = x + 2y \quad \text{and} \quad 0= \DotPr{ \Vect{w} }{ \Vect{v} } = x-y</latex>
+					</math.display>
+					<para>This system of two linear equations in two variables has exactly one solution: <latex>x=0</latex>, and <latex>y=0</latex>. Therefore, <latex>\Set{ \Vect{u}, \Vect{v} }^{\bot} = \Set{ \Vect{0} }</latex>, the zero subspace of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S=\Set{ \Vect{c} }</latex>, where <latex>\Vect{c} = (-1,0,3)</latex> in <latex>\RNr[3]</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>S^{\bot} = \Set{ (x,y,z)\in\RNr[3] \st x-3z=0 }</latex> is the hyperspace in <latex>\RNr[3]</latex> perpendicular to <latex>\Vect{c}</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S=\Set{ \Vect{u} , \Vect{v} }</latex>, where <latex>\Vect{u} = (2,-2,1)</latex> and <latex>\Vect{v} = (1,-2,4)</latex> in <latex>\RNr[3]</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>S^{\bot}</latex> is the line <latex>t\cdot (3,7/2,1)</latex>, in <latex>\RNr[3]</latex>, with <latex>t</latex> arbitrary.</para></answer>
+				<solution>
+					<para>A vector <latex>\Vect{w} = (x,y,z)</latex> belongs to <latex>S^{\bot}</latex> if and only if </para>
+					<math.display>
+						<latex>0=\DotPr{ \Vect{w} }{ \Vect{u} } = 2x-2y+z \quad \text{and} \quad 0=\DotPr{ \Vect{w} }{ \Vect{v} } = x-2y+4z</latex>
+					</math.display>
+					<para>These are homogeneous linear equations. The solutions of each of them form a hyperspace in <latex>\RNr[3]</latex>, and the required orthogonal complement is the intersection of these two hyperspaces. We use the row reduction method to find these solutions, and arrive at the result.</para>
+					<math.display>
+						<latex>x=3z,\quad y=(7/2)z,\quad \text{$z$ arbitrary}</latex>
+					</math.display>
+					<para>Thus <latex>S^{\bot}</latex> is the line <latex>t\cdot (6,7,2)</latex>, with <latex>t\in \RNr</latex> arbitrary.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find the null space of the matrix <latex>\Mtrx{A}</latex> below.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrr}
+1 & -1 & 1 & 2 \\
+4 & 1 & 3 & 1 \\
+-1 & 2 & -1 & 1 \\
+1 & 2 & 3 & 4
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<answer><para><latex>\Null{\Mtrx{A}} = \Set{ \Vect{0} }</latex></para></answer>
+			<solution>
+				<para><latex>\Null{ \Mtrx{A} }</latex> is the set of all vectors <latex>\Vect{x} = (x,y,z,w)</latex> in <latex>\RNr[4]</latex> which are solutions of the matrix equation <latex>\Mtrx{A} \Vect{x} = \Vect{0}</latex>. Applying the row reduction method to the corresponding system of four linear equations in four variables shows that this system has the unique solution <latex>\Vect{x} = (0,0,0,0)</latex>.</para>
+				<para>Therefore <latex>S^{\bot} = \Set{ \Vect{0} }</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider the linear transformation:</para>
+			<math.display>
+				<latex>L\from \RNr[4] \longrightarrow \RNr[2],\quad L(x,y,z,w)=(x-y,z-w)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem><para>Find the matrix which represents <latex>L</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>The matrix which represents <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrr}
+1 & -1 & 0 & 0 \\
+0 & 0 & 1 & -1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find the null space of <latex>\Mtrx{A}</latex>.</para></problem>
+		</part>
+		<part>
+			<problem><para>Find the kernel of <latex>L</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para><latex>\ker(L)=\Null{\Mtrx{A} }</latex> consists of all vectors in <latex>\RNr[4]</latex> of the form</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>y(1,1,0,0) + z(0,0,1,1)</right>
+					</computation>
+					<para>with <latex>y,z\in\RNr</latex> arbitrary.</para>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>If <latex>\Vect{s}</latex> and <latex>\Vect{t}</latex> are nonparallel vectors in <latex>\RNr[3]</latex>, explain why</para>
+			<computation>
+				<left>\Set{ \Vect{s} , \Vect{t} }^{\bot}</left>
+				<center>=</center>
+				<right>\Set{ t(\CrssPr{ \Vect{s} }{ \Vect{t} }) \st t\in \RNr }</right>
+			</computation>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>Review the geometric properties of the cross product.</para>
+			</solution.hint>
+			<solution>
+				<para>The orthogonal complement of two nonparallel vectors <latex>\Vect{s}</latex> and <latex>\Vect{t}</latex> in <latex>\RNr[3]</latex> is the line perpendicular to both of these vectors. We know that <latex>\CrssPr{ \Vect{s} }{ \Vect{t} }</latex> is a vector in the direction of this line. Therefore <latex>\Set{ \Vect{s} , \Vect{t} }^{\bot}</latex> consists of all scalar multiples of <latex>\CrssPr{ \Vect{s} }{ \Vect{t} }</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+			<problem><para>If <latex>\Vect{s}</latex> and <latex>\Vect{t}</latex> are parallel nonzero vectors in <latex>\RNr[n]</latex>, show that <latex>\Vect{s}^{\bot} = \Vect{t}^{\bot}</latex>.</para></problem>
+	</exercise>
+</exercise.pack>

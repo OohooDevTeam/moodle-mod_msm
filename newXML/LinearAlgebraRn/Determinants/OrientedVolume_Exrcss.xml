@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_OrientedVolume"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Oriented Volume</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given the vectors <math>
+                     <latex>\Vect{x}=(1,3)</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}=(2,4)</latex>
+                  </math> in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>, do the following.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the oriented area of the parallelogram spanned by <math>
+                        <latex>(\Vect{x},\Vect{y})</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The oriented area is</para.body>
+                     </para>
+					                <math.display>
+                        <latex>\OriVol(\Vect{x},\Vect{y}) = -2</latex>
+                     </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The oriented area of the parallelogram spanned by <math>
+                           <latex>(\Vect{x},\Vect{y})</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\OriVol(\Vect{x},\Vect{y}) = \det
+\left[
+\begin{array}{rr}
+1 &amp; 2 \\
+3 &amp; 4
+\end{array}
+\right] = 1\cdot 4 - (2\cdot 3) = -2
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Since the oriented volume is negative, the pair <math>
+                           <latex>(\Vect{x},\Vect{y})</latex>
+                        </math> represents the clockwise or negative orientation of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the area of the parallelogram spanned by <math>
+                        <latex>(\Vect{x},\Vect{y})</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The area is</para.body>
+                     </para>
+					                <math.display>
+                        <latex>\Vol(\Vect{x},\Vect{y}) = 2</latex>
+                     </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The area of the parallelogram spanned by <math>
+                           <latex>(\Vect{x},\Vect{y})</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Vol(\Vect{x},\Vect{y}) = \abs{ \det
+\left[
+\begin{array}{rr}
+1 &amp; 2 \\
+3 &amp; 4
+\end{array}
+\right] } = \abs{ 1\cdot 4 - (2\cdot 3) } = 2
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given the vectors <math>
+                     <latex>\Vect{x}=(-3,2)</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}=(4,2)</latex>
+                  </math> in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>, do the following.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the oriented area of the parallelogram spanned by <math>
+                        <latex>(\Vect{x},\Vect{y})</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The oriented area is</para.body>
+                     </para>
+					                <math.display>
+                        <latex>\OriVol(\Vect{x},\Vect{y}) = -14</latex>
+                     </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which orientation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> does the pair <math>
+                        <latex>(\Vect{x},\Vect{y})</latex>
+                     </math> represent?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(\Vect{x},\Vect{y})</latex>
+                           </math> represents the negative orientation of <math>
+                              <latex>\RNr[2]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the area of the parallelogram spanned by <math>
+                        <latex>(\Vect{x},\Vect{y})</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The area is</para.body>
+                     </para>
+					                <math.display>
+                        <latex>\Vol(\Vect{x},\Vect{y}) = 14</latex>
+                     </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given the vectors <math>
+                     <latex>\Vect{x}=(4,-2)</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}=(-1,1/2)</latex>
+                  </math> in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>, do the following.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the oriented area of the parallelogram spanned by <math>
+                        <latex>(\Vect{u},\Vect{v})</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The oriented area is</para.body>
+                     </para>
+					                <math.display>
+                        <latex>\OriVol(\Vect{u},\Vect{v}) = 0</latex>
+                     </math.display>
+					                <para>
+                        <para.body>This means that <math>
+                              <latex>(\Vect{u},\Vect{v})</latex>
+                           </math> spans a degenerate parallelogram in <math>
+                              <latex>\RNr[2]</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which orientation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> does the pair <math>
+                        <latex>(\Vect{u},\Vect{v})</latex>
+                     </math> represent?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(\Vect{u},\Vect{v})</latex>
+                           </math> does not represents any orientation of <math>
+                              <latex>\RNr[2]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>You are given the following vectors in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>.</para.body>
+            </para>
+			         <para align="center">
+               <para.body>
+                  <math>
+                     <latex>\Vect{x}=(1,1,2)</latex>
+                  </math>,   <math>
+                     <latex>\Vect{y}=(0,3,1)</latex>
+                  </math>, and   <math>
+                     <latex>\Vect{z}=(-1,-2,-1)</latex>
+                  </math>
+               </para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the oriented volume of the parallelepiped spanned by the triple of vectors <math>
+                        <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                     </math>. </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The oriented volume of the given parallelepiped is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\OriVol(\Vect{x},\Vect{y},\Vect{z})</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>4</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The oriented volume of the given parallelepiped is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\OriVol(\Vect{x},\Vect{y},\Vect{z}) = \det
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; -1 \\
+1 &amp; 3 &amp; -2 \\
+2 &amp; 1 &amp; -1
+\end{array}
+\right] = 4
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the volume of the parallelepiped spanned by the triple of vectors <math>
+                        <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                     </math>. </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The oriented volume of the given parallelepiped is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vol(\Vect{x},\Vect{y},\Vect{z})</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>4</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> does the triple <math>
+                        <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                     </math> represent?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                           </math> represents the positive or right hand orientation of <math>
+                              <latex>\RNr[3]</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> does the triple <math>
+                        <latex>(\Vect{z},\Vect{x},\Vect{y})</latex>
+                     </math> represent?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>(\Vect{z},\Vect{x},\Vect{y})</latex>
+                           </math> represents the positive or right hand orientation of <math>
+                              <latex>\RNr[3]</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>+1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\omega(\Vect{x},\Vect{y},\Vect{z})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-\omega(\Vect{x},\Vect{z},\Vect{y})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\omega(\Vect{z},\Vect{x},\Vect{y})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> does the triple <math>
+                        <latex>(\Vect{y},\Vect{z},\Vect{x})</latex>
+                     </math> represent?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>(\Vect{y},\Vect{z},\Vect{x})</latex>
+                           </math> represents the positive or right hand orientation of <math>
+                              <latex>\RNr[3]</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>+1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\omega(\Vect{x},\Vect{y},\Vect{z})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-\omega(\Vect{y},\Vect{x},\Vect{z})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\omega(\Vect{y},\Vect{z},\Vect{x})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> does the triple <math>
+                        <latex>(\Vect{z},\Vect{y},\Vect{x})</latex>
+                     </math> represent?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>(\Vect{z},\Vect{y},\Vect{x})</latex>
+                           </math> represents the negative or left hand orientation of <math>
+                              <latex>\RNr[3]</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>+1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\omega(\Vect{y},\Vect{z},\Vect{x})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-\omega(\Vect{z},\Vect{y},\Vect{x})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>You are given the following vectors in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>.</para.body>
+            </para>
+			         <para align="center">
+               <para.body>
+                  <math>
+                     <latex>\Vect{x}=(3,0,0)</latex>
+                  </math>,   <math>
+                     <latex>\Vect{y}=(2,-1,1)</latex>
+                  </math>, and   <math>
+                     <latex>\Vect{z}=(-1,-2,2)</latex>
+                  </math>
+               </para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the oriented volume of the parallelepiped spanned by the triple of vectors <math>
+                        <latex>(\Vect{x},\Vect{y},\Vect{z}</latex>
+                     </math>. </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The oriented volume of the given parallelepiped is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\OriVol(\Vect{x},\Vect{y},\Vect{z})</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>0</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The oriented volume of the given parallelepiped is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\OriVol(\Vect{x},\Vect{y},\Vect{z}) = \det
+\left[
+\begin{array}{rrr}
+3 &amp; 2 &amp; -1 \\
+0 &amp; -1 &amp; -2 \\
+0 &amp; 1 &amp; 2
+\end{array}
+\right] = 0
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> does the triple <math>
+                        <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                     </math> represent?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                           </math> does not represent any orientation of <math>
+                              <latex>\RNr[3]</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Which orientation of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> does the vector triple below represent?</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\left( (2,-1,0) , (3,1,2) , (2,-1,-1) \right)</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The vector triple represents the positive or right hand orientation of <math>
+                           <latex>\RNr[3]</latex>
+                        </math>.</para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>You are given the following four vectors in <math>
+                     <latex>\RNr[4]</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the volume of the slanted box spanned by the vectors <math>
+                        <latex>\Vect{w}</latex>
+                     </math>, <math>
+                        <latex>\Vect{x}</latex>
+                     </math>, <math>
+                        <latex>\Vect{y}</latex>
+                     </math>, and <math>
+                        <latex>\Vect{z}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The required volume is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Vol(\Vect{w},\Vect{x},\Vect{y},\Vect{z}) = 
+\abs{ \det
+\left[
+\begin{array}{rrrr}
+2 &amp; 1 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 6 &amp; -1 \\
+0 &amp; -2 &amp; 2 &amp; 0 \\
+1 &amp; 3 &amp; 0 &amp; 0
+\end{array}
+\right] } = \abs{ 8 } = 8
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What orientation of <math>
+                        <latex>\RNr[4]</latex>
+                     </math> does the quadruple of vectors <math>
+                        <latex>(\Vect{x},\Vect{y},\Vect{z},\Vect{w})</latex>
+                     </math> represent?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The given quadruple represents the negative orientation of <math>
+                              <latex>\RNr[4]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>+1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\omega(\Vect{w},\Vect{x},\Vect{y},\Vect{z})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-\omega(\Vect{x},\Vect{w},\Vect{y},\Vect{z})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\omega(\Vect{x},\Vect{y},\Vect{w},\Vect{z})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-\omega(\Vect{x},\Vect{y},\Vect{z},\Vect{w})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore <math>
+                           <latex>(\Vect{x},\Vect{y},\Vect{z},\Vect{w})</latex>
+                        </math> represents the negative orientation of <math>
+                           <latex>\RNr[4]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_LinearIndependenceFacts">
+	<caption>Facts about linear independence</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_LinearIndependenceFacts"/>
+		<info>
+			<caption>Examples</caption>
+			<para>Examples demonstrating applications of this proposition.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>The following hold</para>
+		<part partid="SubsetInheritsLinearIndepencdence">
+			<para>Every subset of a linearly independent set of vectors is also linearly independent.</para>
+		</part>
+		<part partid="AddVector">
+			<para>If <latex>S</latex> is a linearly independent set of vectors then, for any vector <latex>\Vect{b}</latex>, 
+				<subordinate>
+					<hot><latex>S\cup \Set{ \Vect{b} }</latex></hot>
+					<info>
+						<para>The union of sets <latex>S\cup \Set{ \Vect{b} }</latex> is the set of vectors which results from adding the vector <latex>\Vect{b}</latex> to <latex>S</latex>.</para>
+					</info>
+				</subordinate>
+				is linearly independent if and only if <latex>\Vect{b}</latex> in not in <latex>\span(S)</latex>.</para>
+		</part>
+		<part partid="LinearIndLimit">
+			<para>If <latex>\Vect{b}_1,\dots ,\Vect{b}_n</latex> are linearly independent vectors in <latex>V:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_m }</latex>, then <latex>n\leq m</latex>.</para>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<caption><partref>SubsetInheritsLinearIndepencdence</partref></caption>
+		<para>Suppose <latex>T</latex> is linearly independent, and <latex>S</latex> is a subset of <latex>T</latex>. For pairwise distinct vectors <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex> in <latex>S</latex> consider the vector equation</para>
+		<computation>
+			<left>t_1 \Vect{a}_1+ \cdots + t_r \Vect{a}_r</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>It follows that <latex>t_1=\cdots =t_r=0</latex> because <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex> also belong to the linearly independent set <latex>T</latex>.</para>
+		<caption><partref>AddVector</partref></caption>
+		<para>Let <latex>T:=S\cup \Set{ \Vect{b} }</latex>. We show first that linear independence of <latex>T</latex> implies that <latex>\Vect{b}</latex> is not in <latex>\span(S)</latex>. We argue by contradiction: Suppose <latex>\Vect{b}</latex>is in <latex>\span(S)</latex>. Then</para>
+		<computation>
+			<left>\Vect{b}</left>
+			<center>=</center>
+			<right>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</right>
+		</computation>
+		<para>for pairwise distinct vectors <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex> in <latex>S</latex> and suitable numbers <latex>t_1,\dots ,t_m</latex>. But then</para>
+		<computation>
+			<left>(-1)\Vect{b}\ +\ t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>implying that <latex>\Vect{0}</latex> is a linear combination of vectors in <latex>T</latex> for which not all coefficients are 0; a contradiction to the assumption that  <latex>T</latex> is linearly independent. Therefore <latex>\Vect{b}</latex> cannot be in <latex>\span(S)</latex>.</para>
+		
+		<para>Consider now the case where <latex>\Vect{b}</latex> is not in <latex>\span(S)</latex>. We need to show that <latex>T</latex> is linearly independent. Suppose the desired conclusion is not true; i.e. <latex>T</latex> is linearly dependent. Then there exists a linear combination</para>
+		<computation>
+			<left>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r\ +\ u \Vect{b}</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>in which the vectors on the left are pairwise distinct and at least one coefficient is not 0. If <latex>u\neq 0</latex>, we find</para>
+		<computation>
+			<left>\Vect{b}</left>
+			<center>=</center>
+			<right>(-1/u)\cdot (t_1 \Vect{a}_r + \cdots + t_r \Vect{a}_r)</right>
+		</computation>
+		<para>implying that <latex>\Vect{b}</latex> is a linear combination of vectors from <latex>S</latex>; a contradiction to the assumption that <latex>\Vect{b}</latex> is not in <latex>\span(S)</latex>. The case  &lsquo;<latex>u=0</latex>&rsquo; is impossible. For, if <latex>u=0</latex>, we would have <latex>t_1 \Vect{a}_r+\cdots + t_r \Vect{a}_r=\Vect{0}</latex>,  with at least one nonzero coefficient; a contradiction to the assumption that <latex>S</latex> is linearly independent.</para>
+		<para>In either case, the assumption  &lsquo;<latex>T</latex> is linearly dependent&rsquo;  leads to a contradiction. Therefore <latex>T</latex> must be linearly independent. The proof of the proposition is complete.</para>
+		
+		<caption><partref>LinearIndLimit</partref></caption>
+		<para>We know that each of the vectors <latex>\Vect{b}_i</latex> can be expressed in some way as a linear combination of the vectors <latex>\Vect{a}_1,\dots ,\Vect{a}_m</latex>:</para>
+		<computation>
+			<left>\Vect{b}_i</left>
+			<center>=</center>
+			<right>t_{1i}\Vect{a}_i + \cdots + t_{mi}\Vect{a}_m</right>
+		</computation>
+		<para>In addition, we know that the vector equation</para>
+		<computation>
+			<left>s_1 \Vect{b}_1 + \cdots s_n \Vect{b}_n</left>
+			<center>=</center>
+			<right>0</right>
+		</computation>
+		<para>has 
+			<subordinate>
+				<hot>exactly one solution</hot>
+				<info>
+					<caption>Why is this so?</caption>
+					<para>... because the vectors <latex>\Vect{b}_1,\dots ,\Vect{b}_n</latex> are linearly independent.</para>
+				</info>
+			</subordinate>
+			, namely <latex>s_1=\dots = s_n = 0</latex>. This
+			<subordinate>
+				<hot>implies</hot>
+				<info>
+					<caption>How does it imply this?</caption>
+					<para>Substitute <latex>\Vect{b}_i = t_{1i} \Vect{a}_1 + \cdots + t_{mi}\Vect{a}_m</latex> in the equation</para>
+					<computation>
+						<left>s_1 \Vect{b}_1 + \cdots + s_n \Vect{b}_n</left>
+						<center>=</center>
+						<right>\Vect{0}</right>
+					</computation>
+				</info>
+			</subordinate>
+		</para>
+		<computation>
+			<left>s_1(t_{11} \Vect{a}_1+ \cdots + t_{m1} \Vect{a}_m) + \cdots + s_n( t_{1n}\Vect{a}_1 + \cdots + t_{mn}\Vect{a}_m)</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+			<left>(s_1 t_{11} +\cdots + s_n t_{1n}) \Vect{a}_1 + \cdots + (s_1 t_{m1}+\cdots + s_n t_{mn}) \Vect{a}_m</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>The number <latex>s_1,\dots ,s_n</latex> satisfy this latter vector equation if and only if they solve the homogeneous system of linear equations below.</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+\left[
+\begin{array}{ccc}
+t_{11} & \cdots & t_{1n} \\
+\vdots & \ddots & \vdots \\
+t_{m1} & \cdots & t_{mn}
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+s_1 \\ \vdots \\ s_n
+\end{array}
+\right]\ &=\  
+\left[
+\begin{array}{c}
+0 \\ \vdots \\ 0
+\end{array}
+\right] \\
+\Mtrx{T} \Vect{s}\ &= \Vect{0}
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		<para>Given that <latex>s_1=\cdots = s_n=0</latex> is the only solution of this system, we have</para>
+		<math.display>
+			<latex>0 = \text{number of free variables} = n - \Rnk{T} \geq n-m</latex>
+		</math.display>
+		<para>This gives <latex>n\leq m</latex> as claimed.</para>
+	</proof>
+</theorem>

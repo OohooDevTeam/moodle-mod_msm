@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_PastingLemma">
+	<title>Pasting Lemma: Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The essence of the Pasting Lemma is illustrated in the graphic below.</para>
+			<figure>
+				<img src="ims/PastingLemma.png"></img><!-- svg available -->
+			</figure>
+			<para>We start with two functions:</para>
+			<ul>
+				<li><para><latex>{\color{red} f\from \OCIntrvl{a}{b}\to \RNr}</latex>, and</para></li>
+				<li><para><latex>{\color{blue} g\from \COIntrvl{b}{c}\to \RNr}</latex>.</para></li>
+			</ul>
+			<para>Now there is a two-step process which gives new information:</para>
+			<ol>
+				<li><para>If <latex>{\color{red} f(b)} = {\color{blue} g(b)}</latex>, then <latex>f</latex> and <latex>g</latex> can be pasted together to form a new function</para>
+				<math.display>
+					<latex>h\from \OOIntrvl{a}{c} \longrightarrow \RNr</latex>
+				</math.display>
+				</li>
+				<li>
+					<para>If <latex>f</latex> and <latex>g</latex> are both continuous at <latex>b</latex>, so is <latex>h</latex>. &ndash; Visibly: under this condition the pasted function does not make a jump at <latex>b</latex>.</para>
+				</li>
+			</ol>
+		</block>
+	</sub.page.body>
+</sub.page>

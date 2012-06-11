@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_MatrixMultiplication"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Examples of Matrix Multiplication</title>
+	  <caption xmlns="">Matrix Multiplication</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the product of the two matrices</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					{\color{blue} \Mtrx{A}}\ =\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} &amp; {\color{blue}3} \\
+					{\color{blue}1} &amp; {\color{blue}4} \\
+					{\color{blue}6} &amp; {\color{blue}4}
+					\end{array}\right] \qquad \text{and}\qquad
+					{\color{red} \Mtrx{B}}\ =\ 
+					\left[\begin{array}{rr}
+					{\color{red}-3} &amp; {\color{red}-3} \\
+					{\color{red}1} &amp; {\color{red}2}
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>is defined. If it is, compute the product <math>
+                  <latex>\Mtrx{A}\Mtrx{B}</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> has size <math>
+                        <latex>(3,2)</latex>
+                     </math> and matrix <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> has size <math>
+                        <latex>(2,2)</latex>
+                     </math>. Therefore the product <math>
+                        <latex>\Mtrx{A}\Mtrx{B}</latex>
+                     </math> is defined because the number of columns of <math>
+                        <latex>A</latex>
+                     </math> equals the number of rows of <math>
+                        <latex>B</latex>
+                     </math>: both numbers are 2. Their product is a matrix of size <math>
+                        <latex>(3,2)</latex>
+                     </math>. Its entry <math>
+                        <latex>c_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math> is the dot product of the <math>
+                        <latex>i</latex>
+                     </math>-th row of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> by the <math>
+                        <latex>j</latex>
+                     </math>-th column of <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math>. So there are a total of 6 dot products to compute. In detail:</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\aligned
+					{\color{blue}A} \cdot {\color{red}B}\ &amp;=\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} &amp; {\color{blue}3} \\
+					{\color{blue}1} &amp; {\color{blue}4} \\
+					{\color{blue}6} &amp; {\color{blue}4}
+					\end{array}\right] \cdot 
+					\left[\begin{array}{rr}
+					{\color{red}-3} &amp; {\color{red}-3} \\
+					{\color{red}1} &amp; {\color{red}2}
+					\end{array}\right] \\
+					&amp;=\ \left[\begin{array}{cc}
+					{\color{blue}7}\cdot {\color{red}(-3)} + {\color{blue}3} \cdot {\color{red}1} &amp; 
+						{\color{blue}7}\cdot {\color{red}(-3)} + {\color{blue}3}\cdot {\color{red}2} \\
+					{\color{blue}1}\cdot {\color{red}(-3)} + {\color{blue}4} \cdot {\color{red}1} &amp; 
+						{\color{blue}1}\cdot {\color{red}(-3)} + {\color{blue}4}\cdot {\color{red}2} \\
+					{\color{blue}6}\cdot {\color{red}(-3)} + {\color{blue}4} \cdot {\color{red}1} &amp; 
+						{\color{blue}6}\cdot {\color{red}(-3)} + {\color{blue}4}\cdot {\color{red}2} \\
+					\end{array}\right] \\
+					&amp;=\ \left[\begin{array}{rr}
+						-18 &amp; -15 \\
+						1     &amp; 5 \\
+						-14 &amp; -10
+					\end{array}\right]
+					\endaligned
+					
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Notice that the product matrix <math>
+                        <latex>\Mtrx{A}\cdot \Mtrx{B}</latex>
+                     </math> has as many rows as <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>, and as many columns as <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

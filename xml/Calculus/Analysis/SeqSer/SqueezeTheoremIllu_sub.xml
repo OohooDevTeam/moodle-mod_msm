@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_SqueezeTheorem">
+	<title>Squeeze Theorem: Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>If a sequence <latex>(x_n)</latex> is squeezed between two sequences <latex>(a_n)</latex> and <latex>(b_n)</latex> which converge to the same number <latex>c</latex>, then <latex>(x_n)</latex> also converges to <latex>c</latex>. Intuitively this is quite plausible as the graphic below shows.</para>
+			<figure>
+				<img src="ims/SqueezeTheorem.png"></img><!-- svg available -->
+			</figure>
+			<para>The sequence elements of <latex>(x_n)</latex> are represented by red dots; those of <latex>(a_n)</latex> by blue dots, and those of <latex>(b_n)</latex> by pale green dots.</para>
+			<para>Now <latex>(a_n)</latex> and <latex>(b_n)</latex> converge to  the same limit <latex>c</latex>. In such a situation the elements of <latex>(x_n)</latex> have no place to go but to converge to <latex>c</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_GramSchmidtOrthonormalization"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Gram-Schmidt Orthonormalization: the Idea</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The Gram-Schmidt orthonormalization procedure might look a bit intimidating at first. However, there is just one simple beautiful idea underlying: the <subordinate>
+                     <hot>orthogonal vector decomposition</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_OrthogonalVectorDecomposition"/>
+                        <info>
+                           <para>
+                              <para.body>Lookup the projection of a vector on a line.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>, <math>
+                     <latex>\Vect{x} = \Vect{x}_V + \Vect{x}_{\bot}</latex>
+                  </math>, of a vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> into the sum of a vector <math>
+                     <latex>\Vect{x}_V</latex>
+                  </math> in a subspace <math>
+                     <latex>V</latex>
+                  </math>, and a vector <math>
+                     <latex>\Vect{x}_{\bot}</latex>
+                  </math> in the orthogonal complement of <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>So, how does this orthogonal vector decomposition help in orthonormalizing an ordered set of vectors <math>
+                     <latex>(\Vect{a}_1,\dots ,\Vect{a}_n)</latex>
+                  </math>?</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>We begin by turning <math>
+                           <latex>\Vect{a}_1</latex>
+                        </math> into a vector of length <math>
+                           <latex>1</latex>
+                        </math> and in the direction of <math>
+                           <latex>\Vect{a}_1</latex>
+                        </math>. This is accomplished by setting</para.body>
+                  </para>
+                  <math.display>
+                     <latex>\Vect{v}_1 := \frac{ \Vect{a}_1 }{ \Abs{ \Vect{a}_1 } }</latex>
+                  </math.display>
+                  <para>
+                     <para.body>Then <math>
+                           <latex>\span\Set{\Vect{a}_1} = \span\Set{\Vect{v}_1} =:V_1</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Next we split <math>
+                           <latex>\Vect{a}_2</latex>
+                        </math> as</para.body>
+                  </para>
+                  <math.display>
+                     <latex>\Vect{a}_2 = (\Vect{a}_2)_{V_1} + (\Vect{a}_2)_{\bot} = \pr_{V_1}(\Vect{a}_2) + \left( \Vect{a}_2 - \pr_{V_1}(\Vect{a}_2)\right)</latex>
+                  </math.display>
+                  <para>
+                     <para.body>Thus <math>
+                           <latex>(\Vect{a}_2)_{V_1}</latex>
+                        </math> is in <math>
+                           <latex>V_1</latex>
+                        </math>, and <math>
+                           <latex>(\Vect{a}_2)_{\bot}</latex>
+                        </math> is in the orthogonal complement of <math>
+                           <latex>V_1</latex>
+                        </math>. So</para.body>
+                  </para>
+                  <math.display>
+                     <latex>(\Vect{a}_2)_{\bot} = \Vect{a}_2 -  (\DotPr{\Vect{a}_2}{\Vect{v}_1})\cdot \Vect{v}_1</latex>
+                  </math.display>
+                  <para>
+                     <para.body>is perpendicular to <math>
+                           <latex>V_1</latex>
+                        </math>. This vector need not have length <math>
+                           <latex>1</latex>
+                        </math>. So we normalize it</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{v}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Vect{a}_2 -  (\DotPr{\Vect{a}_2}{\Vect{v}_1})\cdot \Vect{v}_1 }{ \Abs{ \Vect{a}_2 -  (\DotPr{\Vect{a}_2}{\Vect{v}_1})\cdot \Vect{v}_1 } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+                  <para>
+                     <para.body>We then check that <math>
+                           <latex>\span\Set{ \Vect{a}_1,\Vect{a}_2 } = \span\Set{ \Vect{v}_1,\Vect{v}_2 } =: V_2</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Next we split <math>
+                           <latex>\Vect{a}_3</latex>
+                        </math> as</para.body>
+                  </para>
+                  <math.display>
+                     <latex>\Vect{a}_3 = (\Vect{a}_3)_{V_2} + (\Vect{a}_3)_{\bot} = \pr_{V_2}(\Vect{a}_3) + \left( \Vect{a}_3 - \pr_{V_2}(\Vect{a}_3)\right)</latex>
+                  </math.display>
+                  <para>
+                     <para.body>Thus <math>
+                           <latex>(\Vect{a}_3)_{V_2}</latex>
+                        </math> is in <math>
+                           <latex>V_2</latex>
+                        </math>, and <math>
+                           <latex>(\Vect{a}_3)_{\bot}</latex>
+                        </math> is in the orthogonal complement of <math>
+                           <latex>V_2</latex>
+                        </math>. So</para.body>
+                  </para>
+                  <math.display>
+                     <latex>(\Vect{a}_3)_{\bot} = \Vect{a}_3 -  (\DotPr{\Vect{a}_2}{\Vect{v}_1})\cdot \Vect{v}_1 - (\DotPr{\Vect{a}_3}{\Vect{v}_2})\cdot \Vect{v}_2</latex>
+                  </math.display>
+                  <para>
+                     <para.body>is perpendicular to <math>
+                           <latex>V_2</latex>
+                        </math>. This vector need not have length <math>
+                           <latex>1</latex>
+                        </math>. So we normalize it</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{v}_3</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Vect{a}_3 -  (\DotPr{\Vect{a}_2}{\Vect{v}_1})\cdot \Vect{v}_1 - (\DotPr{\Vect{a}_3}{\Vect{v}_2})\cdot \Vect{v}_2 }{ \Abs{ \Vect{a}_3 -  (\DotPr{\Vect{a}_2}{\Vect{v}_1})\cdot \Vect{v}_1 - (\DotPr{\Vect{a}_3}{\Vect{v}_2})\cdot \Vect{v}_2 } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+                  <para>
+                     <para.body>We then check that <math>
+                           <latex>\span\Set{ \Vect{a}_1,\Vect{a}_2,\Vect{a}_3 } = \span\Set{ \Vect{v}_1,\Vect{v}_2,\Vect{v}_3 } =: V_3</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>In general, suppose <math>
+                           <latex>1\leq k-1\leq r-1</latex>
+                        </math>, and vectors <math>
+                           <latex>\Vect{a}_1, \dots ,\Vect{a}_{k-1}</latex>
+                        </math> have been orthonormalized into vectors <math>
+                           <latex>\Vect{v}_1,\dots ,\Vect{v}_{k-1}</latex>
+                        </math>, and</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\span\Set{\Vect{a}_1,\dots ,\Vect{a}_{k-1}}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\span\Set{\Vect{v}_1,\dots ,\Vect{v}_{k-1}} =: V_{k-1}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+                  <para>
+                     <para.body>Then we orthonormalize <math>
+                           <latex>\Vect{a}_k</latex>
+                        </math> by splitting it as</para.body>
+                  </para>
+                  <math.display>
+                     <latex>\Vect{a}_k = (\Vect{a}_k)_{V_{k-1}} + (\Vect{a}_k)_{\bot} = \pr_{V_{k-1}}(\Vect{a}_k) + \left( \Vect{a}_k - \pr_{V_{k-1}}(\Vect{a}_k)\right)</latex>
+                  </math.display>
+                  <para>
+                     <para.body>Thus <math>
+                           <latex>(\Vect{a}_k)_{V_{k-1}}</latex>
+                        </math> is in <math>
+                           <latex>V_{k-1}</latex>
+                        </math>, and <math>
+                           <latex>(\Vect{a}_k)_{\bot}</latex>
+                        </math> is in the orthogonal complement of <math>
+                           <latex>V_{k-1}</latex>
+                        </math>. So</para.body>
+                  </para>
+                  <math.display>
+                     <latex>(\Vect{a}_k)_{\bot} = \Vect{a}_k -  (\DotPr{\Vect{a}_k}{\Vect{v}_1}) \cdot \Vect{v}_1 - \cdots - (\DotPr{\Vect{a}_k}{\Vect{v}_{k-1}})\cdot \Vect{v}_{k-1}</latex>
+                  </math.display>
+                  <para>
+                     <para.body>is perpendicular to <math>
+                           <latex>V_{k-1}</latex>
+                        </math>. This vector need not have length <math>
+                           <latex>1</latex>
+                        </math>. So we normalize it</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{v}_k</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Vect{a}_k -  (\DotPr{\Vect{a}_k}{\Vect{v}_1}) \cdot \Vect{v}_1 - \cdots - (\DotPr{\Vect{a}_k}{\Vect{v}_{k-1}})\cdot \Vect{v}_{k-1} }{ \Abs{ \Vect{a}_k -  (\DotPr{\Vect{a}_k}{\Vect{v}_1}) \cdot \Vect{v}_1 - \cdots - (\DotPr{\Vect{a}_k}{\Vect{v}_{k-1}})\cdot \Vect{v}_{k-1} } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+                  <para>
+                     <para.body>We then check that <math>
+                           <latex>\span\Set{ \Vect{a}_1,\cdots ,\Vect{a}_k } = \span\Set{ \Vect{v}_1,\cdots ,\Vect{v}_k } =: V_k</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>Thus we orthonormalize inductively the entire set of vectors <math>
+                     <latex>\Vect{a}_1</latex>
+                  </math>, ... , <math>
+                     <latex>\Vect{a}_r</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

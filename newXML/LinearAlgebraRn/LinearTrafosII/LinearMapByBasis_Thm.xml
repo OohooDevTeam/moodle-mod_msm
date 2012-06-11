@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_LinearMapByBasis"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Linear map by values on a basis</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>V</latex>
+            </math> and <math>
+               <latex>W</latex>
+            </math> be subspaces of <math>
+               <latex>\RNr[k]</latex>
+            </math>. Given a basis <math>
+               <latex>\EuScript{A}=\Set{ \Vect{a}_1,\dots ,\Vect{a}_n}</latex>
+            </math> of <math>
+               <latex>V</latex>
+            </math> and arbitrary vectors <math>
+               <latex>\Vect{z}_1</latex>
+            </math>, ... , <math>
+               <latex>\Vect{z}_n</latex>
+            </math> in <math>
+               <latex>W</latex>
+            </math>, there is exactly one linear transformation <math>
+               <latex>L\from V\to W</latex>
+            </math> with
+			</para.body>
+         <index.glossary>
+            <term>linear transformation</term>
+            <term>by specifying values on a basis</term>
+            <info>
+               <para>
+                  <para.body>Look up the proposition which says that a linear map <math>
+                        <latex>f\from V\to W</latex>
+                     </math> is given by specifying is values on a basis of <math>
+                        <latex>V</latex>
+                     </math>.</para.body>
+               </para>
+            </info>
+         </index.glossary>
+      </para>
+      <math.display>
+         <latex>L(\Vect{a}_1)=\Vect{z}_1\ ,\quad \dots \ ,\quad L(\Vect{a}_n)=\Vect{z}_n</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We begin by constructing a function <math>
+                     <latex>L\from V\to W</latex>
+                  </math> satisfying</para.body>
+            </para>
+            <math.display>
+               <latex>L(\Vect{a}_1)=\Vect{z}_1,\quad \dots ,\quad L(\Vect{a}_n)=\Vect{z}_n</latex>
+            </math.display>
+            <para>
+               <para.body>Indeed, we know that every vector <math>
+                     <latex>\Vect{x}\in V</latex>
+                  </math> has a unique expression as a linear combination</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>x_1 \Vect{a}_1 + \cdots + x_n \Vect{a}_n</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Therefore, setting <math>
+                     <latex>L(\Vect{x}) := x_1 L(\Vect{a}_1) + \cdots + x_n L(\Vect{a}_n)</latex>
+                  </math> is a function from <math>
+                     <latex>V</latex>
+                  </math> to <math>
+                     <latex>W</latex>
+                  </math>. We need to verify that <math>
+                     <latex>L</latex>
+                  </math> is linear:</para.body>
+            </para>
+            <para>
+               <para.body>Verification of the additivity property: With <math>
+                     <latex>\Vect{x}=x_1 \Vect{a}_1+\cdots + x_n \Vect{a}_n</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}=y_1 \Vect{a}_1+\cdots + y_n \Vect{a}_n</latex>
+                  </math>, we find</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{x}+\Vect{y})</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L\left( (x_1 \Vect{a}_1 +\cdots x_n \Vect{a}_n) + (y_1 \Vect{a}_1+\cdots + y_n \Vect{a}_n) \right)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L\left( (x_1+y_1)\Vect{a}_1 + \cdots + (x_n+y_n) \Vect{a}_n \right)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(x_1+y_1)L(\Vect{a}_1) + \cdots (x_n+y_n) L(\Vect{a}_n)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\left( x_1L(\Vect{a}_1) +\cdots + x_n L(\Vect{a}_n)\right)\ +\ \left(y_1L(\Vect{a}_1) + \cdots + y_nL(\Vect{a}_n)\right)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{x})\ +\ L(\Vect{y})</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Verification that <math>
+                     <latex>L</latex>
+                  </math> commutes with scalar multiplication. With <math>
+                     <latex>\Vect{x} = x_1 \Vect{a}_1 + \cdots x_n \Vect{a}_n\in V</latex>
+                  </math> and <math>
+                     <latex>t\in \RNr</latex>
+                  </math> we find</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(t \Vect{x})</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L\left( t(x_1 \Vect{a}_1 +\cdots + x_n \Vect{a}_n)\right)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L\left( (tx_1)\Vect{a}_1 + \cdots + (tx_n)\Vect{a}_n\right)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(tx_1)L(\Vect{a}_1) + \cdots + (tx_n)L(\Vect{a}_n)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t\left( x_1L(\Vect{a}_1) +\cdots + x_nL(\Vect{a}_n)\right)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t L(\Vect{x})</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>It remains to show that the function <math>
+                     <latex>L</latex>
+                  </math> we just constructed is the only linear function <math>
+                     <latex>V\to W</latex>
+                  </math> with</para.body>
+            </para>
+            <math.display>
+               <latex>L(\Vect{a}_1)=\Vect{z}_1,\quad \dots ,\quad L(\Vect{a}_n)=\Vect{z}_n</latex>
+            </math.display>
+            <para>
+               <para.body>So suppose <math>
+                     <latex>M\from V\to W</latex>
+                  </math> is linear and satisfies</para.body>
+            </para>
+            <math.display>
+               <latex>M(\Vect{a}_1)=\Vect{z}_1,\quad \dots ,\quad M(\Vect{a}_n)=\Vect{z}_n</latex>
+            </math.display>
+            <para>
+               <para.body>We need to show that <math>
+                     <latex>L=M</latex>
+                  </math>. For an arbitrary vector <math>
+                     <latex>\Vect{x}=x_1 \Vect{a}_1 + \cdots + x_n \Vect{a}_n</latex>
+                  </math> we find</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{x})</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>x_1 L(\Vect{a}_1) + \cdots + x_n L(\Vect{a}_n)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>x_1 \Vect{z}_1 + \cdots + x_n \Vect{z}_n</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>x_1 M(\Vect{a}_1) + \cdots + x_n M(\Vect{a}_n)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>M(x_1 \Vect{a}_1 + \cdots + x_n \Vect{a}_n)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>M(\Vect{x})</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>This means that <math>
+                     <latex>L=M</latex>
+                  </math>, and the proof is complete.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

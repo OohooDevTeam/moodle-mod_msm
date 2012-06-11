@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_DistancePoints">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Examples of Computing the Distance Between Points</title>
+	<caption>Distance between Points - Example</caption>
+	<showme>
+		<statement>
+			<para>Find the distance between the points <latex>R(4,-1,11)</latex> and <latex>Q(-2,6,4)</latex> in <latex>\RNr[3]</latex>.  
+			</para>
+		</statement>
+		<answer type="Solution">
+			<para>According to the general formula for the distance between two points, we find</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+			       		\aligned
+ 					\Dstnc{R}{Q}\ &=\ \sqrt{(-2-4)^2+(6-(-1))^2+(4-11)^2} \\
+ 					&=\ \sqrt{36+49+49} \\
+ 					&=\ \sqrt{134}
+ 					\endaligned
+ 					]]>
+				</latex>
+			</math.display>
+			<para>Note that we obtain the same answer if we reverse the roles of the points <latex>P</latex> and <latex>Q</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+			       		\aligned
+ 					\Dstnc{Q}{R}\ &=\ \sqrt{(4-(-2))^2+((-1)-6)^2+(11-4)^2} \\
+ 					&=\ \sqrt{36+49+49} \\
+ 					&=\ \sqrt{134}
+ 					\endaligned
+ 					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Find the distance between the points <latex>A(6,0,3,-1,5)</latex> and <latex>B(1,-2,3,0,6)</latex> in <latex>\RNr[5]</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>According to the general formula for the distance between two points, we find</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+			       		\aligned
+ 					\Dstnc{B}{A}\ &=\ \sqrt{(6-1)^2+(0-(-2))^2+(3-3)^2 + ((-1)-0)^2 + (5-6)^2} \\
+ 					&=\ \sqrt{25+4+0+1+1} \\
+ 					&=\ \sqrt{31}
+ 					\endaligned
+ 					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

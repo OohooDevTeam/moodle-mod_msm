@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illustr_ZenoParadox"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Zeno’s Paradox: Achilles and the Tortoise</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Aristotle comments on Zeno’s paradox as follows:</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <emphasis>In a race, the quickest runner can never overtake the slowest, since the pursuer must first reach the point whence the pursued started, so that the slower must always hold a lead</emphasis>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>What exactly does Aristotle mean by his comment? – Fast Achilles runs a race with slow Tortoise, and allows her a head start of 100m. For simplicity, assume both contestants run at a constant speed. Before being able to catch up to Tortoise, Achilles must cover the head start distance of 100m. However, by the time Achilles covers the head start distance, Tortoise covers a distance of, say 20m. By the time Achilles covers those 20m, Tortoise covers another 4m. By the time Achilles covers those 4m, Tortoise has again moved ahead of Achilles and, no matter how often Achilles covers Tortoise's previous head start, Tortoise is always able to establish a new, albeit shorter, head start. – Conclusion: Achilles will never catch up to Tortoise let alone overtake her.</para.body>
+            </para>
+            <para>
+               <para.body>What's wrong here? – Every day experience tells us clearly that Achilles will overtake Tortoise (can you 
+   				<subordinate>
+                     <hot>figure out</hot>
+                     <info>
+                        <info.caption>After which distance does A. overtake T.?</info.caption>
+                        <para>
+                           <para.body>It is a completely elementary problem to work out after which distance Achilles overtakes Tortoise: We know that T runs 20m while A runs 100m. Moreover, T has a head start of 100m. Now we wonder if there is a distance <math>
+                                 <latex>x</latex>
+                              </math> run by T at which A overtakes T. Combining the information provided, <math>
+                                 <latex>x</latex>
+                              </math> is characterized by the identity</para.body>
+                        </para>
+                        <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>5x</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <text>=	</text>
+                                 <companion xmlns="">
+                                    <info xmlns="Unit">
+                                       <info.caption>Explain this identity</info.caption>
+                                       <para>
+                                          <para.body>Indeed, by the time T covers distance <math>
+                                                <latex>x</latex>
+                                             </math>, A covers distance <math>
+                                                <latex>5x</latex>
+                                             </math>. Thus when T has covered distance <math>
+                                                <latex>x</latex>
+                                             </math>, she is <math>
+                                                <latex>x+100m</latex>
+                                             </math> from A's starting point, while A is <math>
+                                                <latex>5x</latex>
+                                             </math> from his starting point.</para.body>
+                                       </para>
+                                    </info>
+                                 </companion>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>x + 100m</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>x</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <text>=</text>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>25m</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+                        <para>
+                           <para.body>Thus A overtakes T after T has run 25m.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+   				after which distance?) One of the things we learn from the subject of mathematical analysis is how to bring an infinite process, like the one proposed by Zeno, to a correct conclusion and, in doing so, resolve the paradox proposed by Zeno.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

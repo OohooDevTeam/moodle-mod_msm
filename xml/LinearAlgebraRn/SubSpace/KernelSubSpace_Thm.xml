@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_KernelSubSpace">
+	<caption>Kernel is a subspace</caption>
+		
+	<statement>
+		<para>If <latex>V</latex> and <latex>W</latex> are subvector spaces of <latex>\RNr[n]</latex>, then the kernel of a linear map <latex>L\from V\to W</latex> is a subspace of <latex>V</latex>. Moreover, if the <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> represents a linear map <latex>T\from \RNr[n]\to \RNr[m]</latex>, then <latex>\Ker{T} = \NllSp{\Mtrx{A}}</latex></para>
+	</statement>
+	<proof type="Proof">
+		<para>To see that <latex>\Ker{L}</latex> is a subspace of <latex>V</latex> observe the following</para>
+		<ol>
+			<li><para><latex>\Vect{0}</latex> is in <latex>\Ker{L}</latex> 
+				<subordinate>
+					<hot>because</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_LinearTrafo0To0"/>
+						<para>Look up this theorem.</para>
+					</crossref>
+				</subordinate>
+				<latex>L(\Vect{0}) = \Vect{0}</latex>.</para></li>
+			<li>
+				<para>If <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are in <latex>\Ker{L}</latex>, then this means that</para>
+				<math.display>
+					<latex>L(\Vect{x}) = \Vect{0} = L(\Vect{y})</latex>
+				</math.display>
+				<para>But then</para>
+				<computation>
+					<left>L(\Vect{x} + \Vect{y})</left>
+					<center>=	<info><para>Here we use that <latex>L</latex> is linear and, hence, commutes with vector addition.</para></info></center>
+					<right>L(\Vect{x}) + L(\Vect{y})</right>
+					<left></left>
+					<center>=</center>
+					<right>\Vect{0} + \Vect{0} = \Vect{0}</right>
+				</computation>
+				<para>This means that <latex>\Ker{L}</latex> is closed under addition.</para>
+			</li>
+			<li>
+				<para>If <latex>\Vect{x}</latex> is in <latex>\Ker{L}</latex>, then this means that <latex>L(\Vect{x}) = \Vect{0}</latex>. Now, if <latex>t</latex> in <latex>\RNr</latex> is arbitrary, then</para>
+				<computation>
+					<left>L(t\cdot \Vect{x})</left>
+					<center>=</center>
+					<right>t\cdot L(\Vect{x})</right>
+					<left></left>
+					<center>=</center>
+					<right>t\cdot \Vect{0} = \Vect{0}</right>
+				</computation>
+				<para>This means that <latex>\Ker{L}</latex> is closed under scalar multiplication.</para>
+			</li>
+		</ol>
+		<para>Thus <latex>\Ker{L}</latex> is a subspace of <latex>V</latex>.</para>
+		<para>To see the second part of the proposition, recall that <latex>T(\Vect{x}) = \Mtrx{A}\cdot \Vect{x}</latex>, for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>. But this means exactly that <latex>\Vect{x}</latex> belongs to <latex>\Ker{T}</latex> if and only if <latex>\Vect{x}</latex> is in <latex>\NllSp{\Mtrx{A}}</latex>. &ndash; The proof of the proposition is complete.</para>
+	</proof>
+</theorem>

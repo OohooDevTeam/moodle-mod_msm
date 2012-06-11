@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_DistancePoints">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Computing the Distance between Points: Exercises </title>
+	<caption>Distance between Points: Exercises</caption>
+	<exercise id="Exe_FindDistanceBetweenPoints">
+		<problem>
+			<para>Find the distance between the following pairs of points:</para>
+		</problem>
+		<part>
+			<problem>
+				<para>
+					<latex>P(4,0)</latex> and <latex>Q(0,4)</latex>
+				</para>
+			</problem>
+<!--			<approach.ext>
+				<solution.ext>
+					<step>
+						<pilot>
+							<para>Setting up the solution</para>
+							<quiz>
+								<question>
+									<para>To which space (<latex>\RNr,\RNr[2],\RNr[3],\dots</latex>) do the points <latex>P</latex> and <latex>Q</latex> belong?</para>
+								</question>
+								<choice>
+									<answer>
+										<para><latex>\RNr</latex></para>
+									</answer>
+									<info>
+										<para>Sorry! no - you need to count the number of coordinates describing the location of the given points.</para>
+									</info>
+								</choice>
+								<choice>
+									<answer><para><latex>\RNr[2]</latex></para></answer>
+									<info>
+										<para>Correct! - Each point is given by two coordinates. So both points belong to <latex>\RNr[2]</latex>.</para>
+									</info>
+								</choice>
+								<choice>
+									<answer><para><latex>\RNr[3]</latex></para></answer>
+									<info>
+										<para>Sorry! no - you need to count the number of coordinates describing the location of the given points</para>
+									</info>
+								</choice>
+								<choice>
+									<answer><para><latex>\RNr{1999)</latex></para></answer>
+									<info><para>Sorry! no - I have no clue how you arrive at this answer!</para></info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para></para>
+					</step>
+					
+					<step>
+						<pilot>
+							<para>Choosing the correct formula to answer the question</para>
+							<quiz>
+								<question>
+									<para>Which formula do you need to use to answer this problem?</para>
+								</question>
+								<choice>
+									<answer><para>Some distance formula</para></answer>
+									<info>
+										<para>True! - But which distance formula? There is one such for each dimension.</para>
+									</info>
+								</choice>
+								<choice>
+									<answer><para>The formula that computes the distance between points in <latex>\RNr[2]</latex>.</para>
+									</answer>
+									<info>
+										<para>Correct!</para>
+									</info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para></para>
+					</step>
+					
+					<step>
+						<pilot>
+							<para>Working out the final answer</para>
+							<quiz>
+								<question>
+									<para>So, what’s your final answer</para>
+								</question>
+								<choice>
+									<answer><para><latex>0</latex></para></answer>
+									<info>
+										<para>No way! - If the distance between these points is <latex>0</latex>, then the points would have to be the same. But they are not!</para>
+									</info>
+								</choice>
+								<choice>
+									<answer>
+										<para>The points are <latex>4\sqrt{2}</latex> length units apart.</para>
+									</answer>
+									<info>
+										<para>Correct!</para>
+									</info>
+								</choice>
+								
+							</quiz>
+						</pilot>
+						<para>The two points lie in <latex>\RNr[2]</latex>. To relate them to the general formula for the distance between two points, we use the dictionary</para>
+						<para align="center">
+							<latex>P(x_1,x_2) = P(4,0)</latex> and <latex>Q(y_1,y_2) = Q(0,4)</latex>
+							
+						</para>
+						<para>Consequently, we obtain</para>
+						<math.display>
+							<latex>\text{dist}(P,Q)\ =\ \sqrt{(0-4)^2 + (4-0)^2} = \sqrt{2\cdot 16} = 4\sqrt{2}.</latex>
+						</math.display>
+					</step>
+				</solution.ext>
+			</approach.ext> -->
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>
+					<latex>R(2,-1,3)</latex> and <latex>S(-2,1,-1)</latex>
+				</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>The two points lie in <latex>\RNr[3]</latex>. To relate them to the general formula for distance between two points, we use the dictionary</para>
+					<para align="center">
+						<latex>P(x_1,x_2,x_3) = R(2,-1,3)</latex> and <latex>Q(y_1,y_2,y_3) = S(-2,1,-1).</latex>
+					</para>
+					<para>Consequently, we obtain</para>
+					<computation>
+						<left>\text{dist}(R,S)</left>
+						<center>=</center>
+						<right>\sqrt{(-2-2)^2 + (1-(-1))^2 + (-1-3)^2}</right>
+						<left></left>
+						<center>=</center>
+						<right>\sqrt{16 + 4 + 16}</right>
+						<left></left>
+						<center>=</center>
+						<right>6</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>
+					<latex>U(2,1,3,2,1)</latex> and <latex>V(1,2,2,1,2)</latex>
+				</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>The two points lie in <latex>\RNr[5]</latex>. To relate them to the general formula for distance between two points, we use the dictionary</para>
+					<ul>
+						<li><para><latex>P(x_1,x_2,x_3,x_4,x_5) = U(2,1,3,2,1)</latex> and </para></li>
+						<li><para><latex>Q(y_1,y_2,y_3,y_4,y_5)=V(1,2,2,1,2)</latex>.2</para></li>
+					</ul>
+					<para>Consequently, we obtain</para>
+					<computation>
+						<left>\text{dist}(U,V)</left>
+						<center>=</center>
+						<right>\sqrt{(1-2)^2 + (2-1)^2 + (2-3)^2 + (1-2)^2 + (2-1)^2}</right>
+						<left></left>
+						<center>=</center>
+						<right>\sqrt{1+1+1+1+1}</right>
+						<left></left>
+						<center>=</center>
+						<right>\sqrt{5}</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>A particle travels straight between the following pairs of points in <latex>\RNr[4]</latex>
+			</para>
+			<para align="center">from <latex>P(1,1,0,0)</latex> to <latex>Q(0,0,1,1)</latex> to <latex>R(-1,2,1,3)</latex> to <latex>S(4,3,-2,2)</latex>
+			</para>
+			<para>Determine the total distance travelled by the particle.</para>
+		</problem>
+		<approach.ext>
+			<solution.ext>
+				<step>
+					<pilot>
+						<para>Express first how the individual legs of the trip add up to the total distance traveled.</para>
+					</pilot>
+					<para>We observe that the total distance traveled is the sum of three straight trips between pairs of points:</para>
+					<math.display>
+						<latex>\text{dist}(P,Q) + \text{dist}(Q,R) + \text{dist}(R,S).</latex>
+					</math.display>
+				</step>
+				<step>
+					<pilot>
+						<para>Next we compute the distance traveled on each of the straight trips</para>
+					</pilot>
+					<para>Now we compute the distance traveled between each pair of adjacent points of the trip:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+							\begin{array}{rcl}
+							\text{dist}(P,Q) & = & \sqrt{1+1+1+1}\ =\ 2 \\
+							\text{dist}(Q,R) & = & \sqrt{1+4+0+4}\ =\ 3 \\
+							\text{dist}(R,S) & = & \sqrt{25 + 1 + 9 + 1}\ =\ 6
+							\end{array}
+							]]>
+						</latex>
+					</math.display>
+				</step>
+				
+				<step>
+					<pilot>
+						<para>We add the distance traveled on the straight segments up to obtain the total distance traveled.</para>
+					</pilot>
+					<para>So the total distance traveled by the particle is <latex>2+3+6=11</latex> [length units].</para>
+				</step>
+			</solution.ext>
+		</approach.ext>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Find the corners of the square in the plane which is centered at the origin, has its edges parallel to the coordinate axes and whose diagonals have length <latex>4</latex>.</para>
+		</problem>
+		<approach>
+			<solution>
+				<para>We begin by determining the upper right corner <latex>(x,y)</latex> of the square. We know, its distance from the origin <subordinate>
+					<hot>is <latex>2</latex>
+					</hot>
+					<info>
+						<para>This information is given.</para>
+					</info>
+				</subordinate>. Next we observe that <latex>x = y</latex>. Therefore,</para>
+				<para align="center">
+					<latex>4 = x^2+y^2 = 2x^2</latex>, and so, <latex>x=y=\sqrt{2}</latex>.</para>
+				<para align="center">
+					<img src="ims/DistancePointsExrcs1_sltn.gif"/>
+				</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider the solid disk in the plane whose center is <latex>C(1,1)</latex> and whose radius is <latex>\sqrt{2}</latex>.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Plot the disk.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>
+						<img src="ims/DistancePointsExrcs2_sltn.gif"/>
+						
+					</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find an equation whose solutions form the circle that appears as the boundary of the disk.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>Let  <latex>(x,y)</latex>  be a point in <latex>\RNr[2]</latex>. Then <latex>(x,y)</latex>  belongs to the given circle exactly when its distance from  <latex>C</latex>  is <latex>\sqrt{2}</latex>. This means</para>
+					<math.display>
+						<latex>\text{dist}\left( (x,y),(1,1)\right)\ =\ \sqrt{(x-1)^2 + (y-1)^2}\ =\ \sqrt{2}.</latex>
+					</math.display>
+					<para>Squaring both sides yields the equivalent equation</para>
+					<math.display>
+						<latex>(x-1)^2\ +\ (y-1)^2\ =\ 2</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find an inequality whose solutions form the entire disk, including its boundary.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>Let  <latex>(x,y)</latex>  be a point in <latex>\RNr[2]</latex>. Then <latex>(x,y)</latex>  belongs to the given disk exactly when its distance from  <latex>C</latex>  is less than or equal to <latex>\sqrt{2}</latex>. This means</para>
+					<math.display>
+						<latex>\text{dist}\left( (x,y),(1,1)\right)\ =\ \sqrt{(x-1)^2 + (y-1)^2}\ \leq\ \sqrt{2}.</latex>
+					</math.display>
+					<para>Squaring both sides yields the equivalent equation</para>
+					<math.display>
+						<latex>(x-1)^2\ +\ (y-1)^2\ \leq\ 2</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find an inequality whose solutions form the entire disk excluding its boundary.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>Let  <latex>(x,y)</latex>  be a point in <latex>\RNr[2]</latex>. Then <latex>(x,y)</latex>  belongs to the given disk excluding its boundary exactly when its distance from  <latex>C</latex>  is less than <latex>\sqrt{2}</latex>. This means</para>
+					<math.display>
+						<latex><![CDATA[ \text{dist}\left( (x,y),(1,1)\right)\ =\ \sqrt{(x-1)^2 + (y-1)^2}\ <\ \sqrt{2}. ]]></latex>
+					</math.display>
+					<para>Squaring both sides yields the equivalent equation</para>
+					<math.display>
+						<latex><![CDATA[ (x-1)^2\ +\ (y-1)^2\ <\ 2 ]]></latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find an inequality whose solutions form the exterior of the disk excluding the boundary.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>Let  <latex>(x,y)</latex>  be a point in <latex>\RNr[2]</latex>. Then <latex>(x,y)</latex>  lies strictly outside the given disk exactly when its distance from  <latex>C</latex>  is greater than <latex>\sqrt{2}</latex>. This means</para>
+					<math.display>
+						<latex><![CDATA[ \text{dist}\left( (x,y),(1,1)\right)\ =\ \sqrt{(x-1)^2 + (y-1)^2}\ >\ \sqrt{2} ]]></latex>
+					</math.display>
+					<para>Squaring both sides yields the equivalent equation</para>
+					<math.display>
+						<latex><![CDATA[ (x-1)^2\ +\ (y-1)^2\ >\ 2 ]]></latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Find an equation whose solutions form the sphere of all points in <latex>\RNr[3]</latex> whose distance from the origin is equal to 3.</para>
+		</problem>
+		<approach>
+			<answer><para><latex>x^2+y^2+z^2 = 9</latex></para></answer>
+			<solution.hint>
+				<para>What is the distance of <latex>P(x,y,z)</latex> from the origin?</para>
+			</solution.hint>
+			<solution.hint>
+				<para>Set your answer in the previous hint equal to <latex>3</latex>.</para>
+			</solution.hint>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Find an equation whose solutions form the sphere of all points in <latex>\RNr[3]</latex> whose distance from <latex>P(3,1,2)</latex> is equal to 5.</para>
+		</problem>
+		<approach>
+			<answer><para><latex>(x-3)^2+(y-1)^2+(z-2)^2 = 25</latex></para></answer>
+		</approach>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Given points <latex>X,P,R</latex> in <latex>\RNr[n]</latex>, use two equations to express the following two conditions:</para>
+			<ol>
+				<li><para>the distance of <latex>X</latex> from <latex>P</latex> is 7;</para></li>
+				<li><para>the distance of <latex>X</latex> from <latex>R</latex> is 3.</para></li>
+			</ol>
+		</problem>
+		<approach>
+			<answer>
+				<ol>
+					<li><para>Equation 1: <latex>\Dstnc{X}{P} = 7</latex></para></li>
+					<li><para>Equation 2: <latex>\Dstnc{X}{R} = 3</latex></para></li>
+				</ol>
+			</answer>
+		</approach>
+	</exercise>
+	
+</exercise.pack>

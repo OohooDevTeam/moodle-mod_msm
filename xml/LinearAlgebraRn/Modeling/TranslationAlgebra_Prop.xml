@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Theo_TranslationAlgebra">
+	<caption>Algebraic Properties of Translations</caption>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="Illustr_TranslationAlgebra"/>
+		<info><para>See an illustration of this</para></info>
+	</associate>
+	
+	
+	<statement>
+		<para>For translations of <latex>\RNr[n]</latex> the following hold:</para>
+		
+		<part partid="Prop_SumTranslations">
+			<para>Let <latex>T_1</latex> and <latex>T_2</latex> be translations of <latex>\RNr[n]</latex> with translation vectors <latex>\Vect{t}_1</latex> and <latex>\Vect{t}_2</latex> respectively. Then the concatenation <latex>T_2\Comp T_1</latex> given by <latex>T_1</latex> followed by <latex>T_2</latex> is a translation, and its associated translation vector is <latex>\Vect{t}_1+\Vect{t}_2</latex>.</para>
+		</part>
+		
+		<part partid="Prop_ScalarMultipleTranslation">
+			<para>Suppose <latex>S</latex> is a translation of <latex>\RNr[n]</latex> with translation vector <latex>\Vect{a}</latex>. If <latex>T</latex> is the translation of <latex>\RNr[n]</latex> in the same direction as <latex>S</latex>, but by <latex>t</latex> times the distance, then <latex>S</latex> has translation vector <latex>t\Vect{a}</latex>.</para>
+		</part>
+	</statement>
+	
+	
+	<proof type="Proof">
+		<caption>
+			<partref>Prop_SumTranslations</partref>
+		</caption>
+		<para>We need to determine the effect of the concatenated operation <latex>T_2\Comp T_1</latex> on an arbitrary vector <latex>\Vect{x}</latex> of <latex>\RNr[n]</latex>:</para>
+		
+		<ol>
+			<li><para>First <latex>T_1</latex> moves <latex>\Vect{x}</latex> to <latex>\Vect{t}_1 + \Vect{x}</latex></para></li>
+			<li><para>Then <latex>T_2</latex> moves <latex>\Vect{t}_1 + \Vect{x}</latex> to </para>
+				<math.display>
+					<latex>\Vect{t}_2 + (\Vect{t}_1 + \Vect{x})\ =\ (\Vect{t}_1 + \Vect{t}_2) + \Vect{x}</latex>
+				</math.display>
+			</li>
+		</ol>
+		
+		<para>This happens to <i>every</i> vector <latex>\Vect{x}</latex> of <latex>\RNr[n]</latex>. Therefore <latex>T_2\Comp T_1</latex> is a translation, and its translation vector is <latex>\Vect{t}_1+ \Vect{t}_2</latex>.</para>
+		
+		<caption>
+			<partref>Prop_ScalarMultipleTranslation</partref>
+		</caption>
+		<para>By description, <latex>T</latex> moves every <latex>\Vect{x}</latex> of <latex>\RNr[n]</latex> to <latex>t\cdot \Vect{a} + \Vect{x}</latex>. This means that <latex>T</latex> has the translation vector <latex>t\cdot \Vect{a}</latex>.</para>
+	</proof>
+</theorem>

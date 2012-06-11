@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_DistancePointHyperplane">
+<caption>Distance of a Point from a Hyperplane</caption>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="Illu_DistancePointHyperplaneCompute"/>
+		<info>
+			<para>Illustration of the Situation in the Proposition</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Let 
+			<subordinate>
+				<hot><latex>\Pi</latex></hot>
+				<info>
+					<caption>What is this symbol?</caption>
+					<para>&lsquo;<latex>\Pi</latex>&rsquo; is a capital letter from the Greek alphabet. It is pronounced &lsquo;pi&rsquo;.</para>
+				</info>
+			</subordinate>
+			 be the hyperplane of all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> with</para>
+		
+		<para align="center"><latex>\DotPr{ (\Vect{x} - \Vect{p}) }{ \Vect{n} } = 0</latex>, where 
+		<subordinate>
+			<hot><latex>\Vect{p}</latex></hot>
+			<info>
+				<caption>Meaning of <latex>\Vect{p}</latex></caption>
+				<para>In this formula <latex>\Vect{p}</latex> is the position vector of a point <latex>P</latex> on the hyperplane.</para>
+			</info>
+		</subordinate>,
+			<subordinate>
+				<hot><latex>\Vect{n}</latex></hot>
+				<info>
+					<caption>Meaning of <latex>\Vect{n}</latex></caption>
+					<para>In this formula <latex>\Vect{n}</latex> is a nonzero vector which is perpendicular to the hyperplane <latex>\Pi</latex>.</para>
+				</info>
+			</subordinate>
+			in <latex>\RNr[n]</latex>, and <latex>\Vect{n} \neq \Vect{0}</latex>.
+		</para>
+		
+		<para>Given an arbitrary point <latex>Q</latex> in <latex>\RNr[n]</latex>, the point <latex>R</latex> with position vector</para>
+		
+		<math.display>
+			<latex>\Vect{r} = \Vect{q} - \text{proj}_{\Vect{n}}(\Vect{q} - \Vect{p}) = \Vect{q}\ -\ \frac{ (\Vect{q} - \Vect{p}) \bullet \Vect{n} }{ \Vect{n} \bullet \Vect{n} } \, \cdot\, \Vect{n}</latex>
+		</math.display>
+		
+		<para>is the one and only point on <latex>\Pi</latex> whose distance from <latex>Q</latex> satisfies <latex>\Dstnc{R}{Q} \leq \Dstnc{X}{Q}</latex> for all <latex>X</latex> in <latex>\Pi</latex>. Moreover</para>
+		
+		<math.display>
+			<latex>\Dstnc{\Pi}{Q}\ :=\ \Dstnc{R}{Q}\ =\ |\text{proj}_{\Vect{n}}( \Vect{q} - \Vect{p})| = \frac{|(\Vect{q} - \Vect{p}) \bullet \Vect{n} |}{ | \Vect{n} |}</latex>
+		</math.display>
+	</statement>
+<!--
+	<proof.ext>
+		<para>The nice thing about this proof is, while we illustrate the underlying idea in <latex>\RNr[2]</latex>, the argument itself, together with all computations, is valid in all positive dimensions.</para>
+		
+		<para align="center"><img src="ims/DistancePointHyperplane02.gif" width="480" height="245"/></para>
+		
+		<step>
+			<pilot>
+				<step>
+					<para>Computation of the length of <latex>\text{proj}_{\Vect{n}}( \Vect{q} - \Vect{p})</latex>.</para>
+				</step>
+			</pilot>
+			
+			<para>The length of the vector <latex>\text{proj}_{\Vect{n}}( \Vect{q} - \Vect{p})</latex> is:</para>
+			<table align="center">
+				<row>
+					<cell align="right"><para><latex>\left| \text{proj}_{\Vect{n}}( \Vect{q} - \Vect{p}) \right|</latex></para></cell>
+					<cell align="center"><para>
+						<subordinate><hot><latex>=</latex></hot>
+							<info>
+								<caption>Why is this computational step true?</caption>
+								<para>By definition, the projection of a vector <latex>\Vect{x}</latex> along a nonzero vector <latex>\Vect{n}</latex> is</para>
+								
+								<math.display>
+									<latex>\text{proj}_{\Vect{n}}(\Vect{x}) = \frac{\Vect{x} \bullet \Vect{n}}{ \Vect{n} \bullet \Vect{n} }\, \cdot\, \Vect{n}</latex>
+								</math.display>
+							</info>
+						</subordinate>
+					</para>
+					</cell>
+					<cell align="left">
+						<para><latex>\frac{ (\Vect{q} - \Vect{p}) \bullet \Vect{n}}{ \Vect{n} \bullet \Vect{n} }\, \cdot\, \Vect{n}</latex></para>
+					</cell>
+				</row>
+				<row>
+					<cell align="right"><para>&nbsp;</para></cell>
+					<cell align="center"><para>
+						<subordinate><hot><latex>=</latex></hot>
+							<info>
+								<caption>Why is this computational step true?</caption>
+								<para>Here we use the property of the norm operation: for any number <latex>t</latex> and vector <latex>\Vect{x}</latex>,</para>
+								
+								<math.display>
+									<latex>|t\cdot \Vect{x}| = |t| \cdot |\Vect{x}|</latex>
+								</math.display>
+							</info>
+						</subordinate>
+					</para>
+					</cell>
+					<cell align="left">
+						<para><latex>\left| \frac{ (\Vect{q} - \Vect{p}) \bullet \Vect{n}}{ \Vect{n} \bullet \Vect{n} }\right|\, \cdot\, |\Vect{n}|</latex></para>
+					</cell>
+				</row>
+				<row>
+					<cell align="right"><para>&nbsp;</para></cell>
+					<cell align="center"><para>
+						<subordinate><hot><latex>=</latex></hot>
+							<info>
+								<caption>Why is this computational step true?</caption>
+								<para>Here we use the following facts:</para>
+								
+								<ul>
+									<li><para>If <latex>x,y</latex> are numbers, then</para>
+										<para align="center"><latex>|\frac{x}{y}| = \frac{|x|}{|y|}</latex></para></li>
+									<li><para><latex>\Vect{n}\bullet\Vect{n} = | \Vect{n} |^2</latex></para></li>
+								</ul>
+							</info>
+						</subordinate>
+					</para>
+					</cell>
+					<cell align="left">
+						<para><latex>\frac{| (\Vect{q} - \Vect{p}) \bullet \Vect{n} |}{ | \Vect{n} |^2 }\, \cdot\, |\Vect{n}|</latex></para>
+					</cell>
+				</row>
+				<row>
+					<cell align="right"><para>&nbsp;</para></cell>
+					<cell align="center"><para>
+						<subordinate><hot><latex>=</latex></hot>
+							<info>
+								<caption>Why is this computational step true?</caption>
+								<para>Here we just canceled by the nonzero number <latex>|\Vect{n}|</latex>.</para>
+							</info>
+						</subordinate>
+					</para>
+					</cell>
+					<cell align="left">
+						<para><latex>\frac{| (\Vect{q} - \Vect{p}) \bullet \Vect{n} |}{ | \Vect{n} | }</latex></para>
+					</cell>
+				</row>
+			</table>
+		</step>
+		
+		<step>
+			<pilot>
+				<step>
+					<para>We 
+						<subordinate>
+							<hot>verify</hot>
+							<info>
+								<caption>What is there to verify?</caption>
+								<para>Why do we need to check that <latex>\Vect{r} := \Vect{q} - \text{proj}_{\Vect{n}}(\Vect{q} - \Vect{p})</latex> does indeed belong to <latex>\Pi</latex>? The picture clearly shows that it does!</para>
+								<para>Yes, the picture suggests that <latex>R</latex> lies on <latex>\Pi</latex>. However, we must remember that this picture is merely a schematic sketch to illustrate the idea underlying this proposition. How do we know that it represents the situation accurately if all of this happens in a very high dimensional space? <latex>\RNr{10000}</latex> for example?</para>
+							</info>
+						</subordinate>
+						 that the point <latex>R</latex> with position vector <latex>\Vect{r} := \Vect{q} - \text{proj}_{\Vect{n}}(\Vect{q} - \Vect{p})</latex> does indeed belong to <latex>\Pi</latex>.</para>
+				</step>
+			</pilot>
+			
+			<para>We verify that the point <latex>R</latex> with position vector <latex>\Vect{r} := \Vect{q} - \text{proj}_{\Vect{n}}(\Vect{q} - \Vect{p})</latex> does indeed belong to <latex>\Pi</latex>. By definition, this happens exactly when <latex>( \Vect{r} - \Vect{p})\bullet \Vect{n} = 0</latex>. So we compute</para>
+			
+			<math.display>
+				<latex>( \Vect{r} - \Vect{p}) = \left( q - \proj_{\Vect{n}}(\Vect{q} - \Vect{p})\right) - \Vect{p} = (\Vect{q} - \Vect{p})\ -\ \proj_{\Vect{n}}(\Vect{q} - \Vect{p})</latex>
+			</math.display>
+			
+			<para>So we <subordinate>
+				<hot>see</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_ProjectionVectorOnLine"/>
+				</crossref>
+			</subordinate>
+				 that <latex>( \Vect{r} - \Vect{p})</latex> is perpendicular to <latex>\Vect{n}</latex>. Therefore <latex>R</latex> lies on <latex>\Pi</latex>.</para>
+		</step>
+		
+		
+		<step>
+			<pilot>
+				<step>
+					<para>We confirm that, for any point <latex>X</latex> on <latex>\Pi</latex> with position vector <latex>\Vect{x}</latex>,</para>
+					<math.display>
+						<latex>\Dstnc{R}{Q}\ \leq\ \Dstnc{X}{Q}</latex>
+					</math.display>
+				</step>
+			</pilot>
+			
+			<para>Next we show that <latex>\Dstnc{R}{Q} \leq \Dstnc{X}{Q}</latex>, for every <latex>\Vect{x}</latex> on <latex>\Pi</latex>.</para>
+			
+			<para>Indeed, if <latex>\Vect{x}</latex> is the position vector of an arbitrary point <latex>X</latex> on <latex>\Pi</latex>, we know that <latex>(\Vect{x} - \Vect{p}) \bullet \Vect{n} = 0</latex>. We have 
+				<subordinate>
+					<hot><latex>(\Vect{x} - \Vect{r}) \bullet \Vect{n} = 0</latex></hot>
+					<info>
+						<caption>Why is this true?</caption>
+						<para>The identity <latex>(\Vect{x} - \Vect{r}) \bullet \Vect{n} = 0</latex> is true because</para>
+						<table align="center">
+							<row>
+								<cell align="left"><para><latex>(\Vect{x} - \Vect{r}) \bullet \Vect{n}</latex></para></cell>
+								<cell align="center"><para><latex>=</latex></para></cell>
+								<cell align="left"><para><latex>\left( (\Vect{x} - \Vect{p}) + (\Vect{p} - \Vect{r})\right) \bullet \Vect{n}</latex></para></cell>
+							</row>
+							<row>
+								<cell align="left"><para>&nbsp;</para></cell>
+								<cell align="center"><para>
+									<subordinate><hot><latex>=</latex></hot>
+										<info>
+											<caption>Why is this computational step true?</caption>
+											<para>Here we use the distributivity property of the dot product:</para>
+											<math.display>
+												<latex>(\Vect{a} + \Vect{b}) \bullet |mathbf{c} = \Vect{a} \bullet \Vect{c}\ +\ \Vect{b}\bullet \Vect{c}</latex>
+											</math.display>	
+										</info>
+									</subordinate>
+									</para></cell>
+								<cell align="left"><para><latex>(\Vect{x} - \Vect{p}) \bullet\Vect{n} + (\Vect{p} - \Vect{r} ) \bullet \Vect{n}</latex></para></cell>
+							</row>
+							<row>
+								<cell align="left"><para>&nbsp;</para></cell>
+								<cell align="center"><para>
+									<subordinate><hot><latex>=</latex></hot>
+										<info>
+											<caption>Why is this computational step true?</caption>
+											<para>Here we recall that <latex>(\Vect{x} - \Vect{p})</latex> and <latex>(\Vect{p} - \Vect{r} )</latex> are perpendicular to <latex>\Vect{n}</latex>.</para>	
+										</info>
+									</subordinate>
+								</para></cell>
+								<cell align="left"><para><latex>0 + 0</latex></para></cell>
+							</row>
+						</table>
+					</info>
+				</subordinate>
+				 as well. Therefore we obtain</para>
+			
+			<table align="center">
+				<row>
+					<cell align="right"><para><latex>\Dstnc{X}{Q}^2</latex></para></cell>
+					<cell align="center"><para><subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>Why is this computational step true?</caption>
+							<para>Here we use that, for any vector <latex>\Vect{a}</latex>, <latex>| \Vect{a} |^2 = \Vect{a} \bullet \Vect{a}</latex>.</para>	
+						</info>
+					</subordinate></para></cell>
+					<cell align="left"><para><latex>(\Vect{q} - \Vect{x})\bullet (\Vect{q} - \Vect{x})</latex></para></cell>
+				</row>
+				<row>
+					<cell align="right"><para>&nbsp;</para></cell>
+					<cell align="center"><para><latex>=</latex></para></cell>
+					<cell align="left"><para><latex>\left( (\Vect{q} - \Vect{r}) + (\Vect{r} - \Vect{x}) \right)\bullet \left( (\Vect{q} - \Vect{r}) + (\Vect{r} - \Vect{x}) \right)</latex></para></cell>
+				</row>
+				<row>
+					<cell align="right"><para>&nbsp;</para></cell>
+					<cell align="center"><para><subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>Why is this computational step true?</caption>
+							<para>Here we use the distributivity law of the dot product to see that.</para>
+							<math.display>
+								<latex>(\Vect{a} + \Vect{b}) \bullet (\Vect{a} + \Vect{b}) = \Vect{a} \bullet \Vect{a} + 2\cdot (\Vect{a} \bullet \Vect{b}) + \Vect{b} \bullet \Vect{b}</latex>
+							</math.display>
+						</info>
+					</subordinate></para></cell>
+					<cell align="left"><para><latex>|\Vect{q} - \Vect{r}|^2 + 2(\Vect{q} - \Vect{r})\bullet (\Vect{r} - \Vect{x}) + |\Vect{r} - \Vect{x}|^2</latex></para></cell>
+				</row>
+				<row>
+					<cell align="right"><para>&nbsp;</para></cell>
+					<cell align="center"><para><subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>Why is this computational step true?</caption>
+							<para>Here we recall that <latex>(\Vect{q} - \Vect{r}) = \proj_{\Vect{n}}(\Vect{q} - \Vect{p})</latex> is parallel ot <latex>\Vect{n}</latex>. So the dot product in the middle vanishes.</para>	
+						</info>
+					</subordinate></para></cell>
+					<cell align="left"><para><latex>|\Vect{q} - \Vect{r}|^2 + |\Vect{r} - \Vect{x}|^2</latex></para></cell>
+				</row>
+				<row>
+					<cell align="right"><para>&nbsp;</para></cell>
+					<cell align="center"><para><subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>Why is this computational step true?</caption>
+							<para>Here we use that <latex>|\Vect{r} - \Vect{x}|^2\geq 0</latex>.</para>	
+						</info>
+					</subordinate></para></cell>
+					<cell align="left"><para><latex>|\Vect{q} - \Vect{r}|^2</latex></para></cell>
+				</row>
+				<row>
+					<cell align="right"><para>&nbsp;</para></cell>
+					<cell align="center"><para><latex>=</latex></para></cell>
+					<cell align="left"><para><latex>\Dstnc{R}{Q}^2</latex></para></cell>
+				</row>
+			</table>
+			
+			<para>So there is no point on <latex>\Pi</latex> that is closer to <latex>Q</latex> than <latex>R</latex>.</para>
+		</step>
+		
+		<step>
+			<pilot>
+				<step>
+					<para>If <latex>X</latex> is any point on <latex>\Pi</latex> with <latex>\Dstnc{X}{Q}=\Dstnc{R}{Q}</latex>, then <latex>X=R</latex>.</para>
+				</step>
+			</pilot>
+
+			<para>It remains to show that, if <latex>X</latex> is any point on <latex>\Pi</latex> with <latex>\Dstnc{X}{Q}=\Dstnc{R}{Q}</latex>, then <latex>X=R</latex>. Indeed, we see from the above computation that <latex>\Dstnc{X}{Q} = \Dstnc{R}{Q}</latex> if and only if <latex>|\Vect{r} - \Vect{x}| = 0</latex>. Now this identity is true 
+				<subordinate><hot>if and only if</hot>
+					<info>
+						<caption>Why is this conclusion true?</caption>
+						<para>Here we use the non-degeneracy property of the norm operation: <latex>| \Vect{u} | = 0</latex> if and only if <latex>\Vect{u} = \Vect{0}</latex>.</para>
+					</info>
+				</subordinate>
+				<latex>\Vect{r} - \Vect{x} = 0</latex>; i.e. <latex>\Vect{r} = \Vect{x}</latex>, as required. &ndash; This completes the proof.</para>
+		</step>
+	</proof.ext>-->
+</theorem>

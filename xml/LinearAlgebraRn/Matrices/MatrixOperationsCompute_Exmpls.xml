@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_MatrixOperationsComputeEffectively">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Computing Effectively with Matrices - Example</title>
+	
+	<showme>
+		<statement>
+			<para>The expression below is built from matrices and operations between them</para>
+			
+			<math.display>
+				<latex>\left( A^TX\ +\ B^TX \right)^T</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Explanation">
+			<para>It can be evaluated as written. In this case we have <latex>6</latex> matrix operations to perform: two of which are potentially time consuming matrix multiplications.
+			</para>
+			
+			<ul>
+				<li><para>The transpositions of the matrices <latex>A</latex> and <latex>B</latex></para></li>
+				<li><para>The multiplications of matrices <latex>A^TX</latex> and <latex>B^TX</latex>. Depending on the size of these matrices, the multiplications can be quite time consuming.</para></li>
+				<li><para>The summation of matrices to <latex>A^TX</latex> add <latex>B^TX</latex></para></li>
+				<li><para>The transposition of <latex>(A^TX + B^TX)</latex></para></li>
+			</ul>
+			
+			<para>On the other hand, based on the properties of the matrix operations we find that this expression is the same as</para>
+			
+			<ul>
+				<li><para><latex>X^T(A + B)</latex></para></li>
+			</ul>
+			
+			<para>This time, we have only <latex>3</latex> operations to perform:</para>
+			
+			<ul>
+				<li><para>The transposition of <latex>X</latex></para></li>
+				<li><para>The summation <latex>(A + B)</latex></para></li>
+				<li><para>The product &nbsp; <latex>X^T \cdot (A+B)</latex></para></li>
+			</ul>
+			
+			<para>In particular we see that only one of these operations is a time consuming matrix multiplication. This is a clear indication that judicious use of the properties of matrix operations can be a real labor and time saver.</para>
+		</answer>
+	</showme>	
+</showme.pack>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearIndependenceDeterminantTest">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Linear Independence Test Using Determinants: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Show that the rows of the matrix <latex>\Mtrx{A}</latex> below are linearly independent.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = \left[
+\begin{array}{rrrr}
+5 & 2 & 0 & 1 \\
+4 & -1 & 3 & 0
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>According to the determinant test for linear independence it is enough if we find two columns in <latex>\Mtrx{A}</latex> such that the determinant of the resulting <latex>(2,2)</latex>-matrix is not 0. &ndash; A convenient choice are the 3rd and 4th columns:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det\, \left[
+\begin{array}{rr}
+0 & 1 \\
+3 & 0
+\end{array}
+\right] = -3 \neq 0
+]]>
+				</latex>
+			</math.display>
+			<para>Therefore the rows of <latex>\Mtrx{A}</latex> are linearly independent.</para>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Show that the rows of the matrix <latex>\Mtrx{B}</latex> below are linearly independent.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = \left[
+\begin{array}{rrrrrr}
+1 & 4 & -5 & 2  & 9 & 1 \\
+2 & 3 &  2 & 3 & 4 & 2 \\
+21& -2& -9 & -4& 14 & 7 \\
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>According to the determinant test for linear independence it is enough if we find three columns in <latex>\Mtrx{B}</latex> such that the determinant of the resulting <latex>(3,3)</latex>-matrix is not 0. &ndash; The first column has a large number in it. when computing determinants this may result in a higher computational effort. So let us try the 2nd, 3rd, and 4th columns:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det\, \left[
+\begin{array}{rrr}
+4  & -5 & 2 \\
+3  &  2 & 3 \\
+-2 & -9 & -4
+\end{array}
+\right] = 4\cdot(-8+27) -3\cdot(20 +18) -2\cdot(-15 -4) = 0
+]]>
+				</latex>
+			</math.display>
+			<para>Ooops! &ndash; This is not what we were hoping to find. Unfortunately, we can not conclude anything from this result: the fact that <i>some columns</i> produce a matrix whose determinant is 0 does not mean that <i>all columns</i> produce a matrix with 0-determinant. Let use try columns 1, 2, 3:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det\, \left[
+\begin{array}{rrr}
+1 & 4 & -5 \\
+2 & 3 & 2 \\
+21 & -2 & -9
+\end{array}
+\right] = 1\cdot(-27 +4) -2\cdot(-36-10) + 21\cdot(8+15) = 342 \neq 0
+]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

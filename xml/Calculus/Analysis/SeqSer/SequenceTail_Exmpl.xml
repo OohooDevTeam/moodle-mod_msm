@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_SequenceTail">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Subsequence of Type Tail End: Examples</title>
+	<showme>
+		<statement>
+			<para>Let <latex magnify="yes">(a_n = 2^n)</latex>. List the first 10 elements of the tail end of this sequence beginning with <latex>N = 7</latex></para>
+		</statement>
+		<answer type="Solution">
+			<para>We have <latex>t_i = a_{n_i} = a_{5+i}</latex></para>
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+				<row>
+					<cell align="center"><para><latex>n | i</latex></para></cell>
+					<cell align="center"><para>0</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>3</para></cell>
+					<cell align="center"><para>4</para></cell>
+					<cell align="center"><para>5</para></cell>
+					<cell align="center"><para>6</para></cell>
+					<cell align="center"><para>7</para></cell>
+					<cell align="center"><para>8</para></cell>
+					<cell align="center"><para>9</para></cell>
+					<cell align="center"><para>10</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">a_n</latex></para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>4</para></cell>
+					<cell align="center"><para>8</para></cell>
+					<cell align="center"><para>16</para></cell>
+					<cell align="center"><para>32</para></cell>
+					<cell align="center"><para>64</para></cell>
+					<cell align="center"><para>128</para></cell>
+					<cell align="center"><para>256</para></cell>
+					<cell align="center"><para>512</para></cell>
+					<cell align="center"><para>1024</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">t_i = a_{5+i}</latex></para></cell>
+					<cell align="center"><para>32</para></cell>
+					<cell align="center"><para>64</para></cell>
+					<cell align="center"><para>128</para></cell>
+					<cell align="center"><para>256</para></cell>
+					<cell align="center"><para>512</para></cell>
+					<cell align="center"><para>1024</para></cell>
+					<cell align="center"><para>2048</para></cell>
+					<cell align="center"><para>4096</para></cell>
+					<cell align="center"><para>8192</para></cell>
+					<cell align="center"><para>16384</para></cell>
+					<cell align="center"><para>32768</para></cell>
+					<cell align="center"><para>...</para></cell>
+				</row>
+			</table>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Given the sequence <latex magnify="yes">(a_n = 3n)</latex>, find the first 5 elements of the tail end beginning with <latex>N=1,000,000</latex>.</para>
+			<math.display>
+				<latex>n\from \NNr \longrightarrow \NNr,\quad n(i):= i^2</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>The required tail end is</para>
+			<math.display>
+				<latex magnify="yes">(t_i) = (a_{n_i}) = (a_{1,000,000+i} = 3,000,000 + 3i)</latex>
+			</math.display>
+			<para>In tabular form:</para>
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+				<row>
+					<cell align="center"><para><latex>n | i</latex></para></cell>
+					<cell align="center"><para>0</para></cell>
+					<cell align="center"><para>1</para></cell>
+					<cell align="center"><para>2</para></cell>
+					<cell align="center"><para>3</para></cell>
+					<cell align="center"><para>4</para></cell>
+<!--					<cell align="center"><para>5</para></cell>
+					<cell align="center"><para>6</para></cell>
+					<cell align="center"><para>7</para></cell>
+					<cell align="center"><para>8</para></cell>
+					<cell align="center"><para>9</para></cell>
+					<cell align="center"><para>10</para></cell>-->
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">a_n</latex></para></cell>
+					<cell  align="center"><para>0</para></cell>
+					<cell align="center"><para>3</para></cell>
+					<cell align="center"><para>6</para></cell>
+					<cell align="center"><para>9</para></cell>
+					<cell align="center"><para>12</para></cell>
+<!--					<cell align="center"><para>15</para></cell>
+					<cell align="center"><para>18</para></cell>
+					<cell align="center"><para>21</para></cell>
+					<cell align="center"><para>24</para></cell>
+					<cell align="center"><para>27</para></cell>
+					<cell align="center"><para>30</para></cell>-->
+					<cell align="center"><para>...</para></cell>
+				</row>
+				<row>
+					<cell align="center"><para><latex magnify="yes">t_i=a_{1,000,000+i}</latex></para></cell>
+					<cell  align="center"><para>3,000,000</para></cell>
+					<cell align="center"><para>3,000,003</para></cell>
+					<cell align="center"><para>3,000,006</para></cell>
+					<cell align="center"><para>3,000,009</para></cell>
+					<cell align="center"><para>3,000,012</para></cell>
+<!--					<cell align="center"><para>3,000,015</para></cell>
+					<cell align="center"><para>3,000,018</para></cell>
+					<cell align="center"><para>3,000,021</para></cell>
+					<cell align="center"><para>3,000,024</para></cell>
+					<cell align="center"><para>3,000,027</para></cell>
+					<cell align="center"><para>3,000,030</para></cell>-->
+					<cell align="center"><para>...</para></cell>
+				</row>
+			</table>
+		</answer>
+	</showme>
+</showme.pack>

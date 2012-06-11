@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_ArrowsIllustration">
+	<title>Arrows - Illustration</title>
+	
+	<sub.page.body>
+		<para>We think of an arrow in <latex>\RNr[n]</latex> as exactly what the word suggests: a perfectly straight object with a tail and a tip. Thus the location of an arrow in space is determined by two points, namely</para>
+		<ol>
+			<li>
+				<para>a point, say <latex>P</latex>, which marks the tail of the arrow,</para>
+			</li>
+			<li>
+				<para>a point, say <latex>Q</latex>, which marks the tip of the arrow</para>
+			</li>
+		</ol>
+		<para>We write <latex>\Arrw{PQ}</latex> for the arrow which has its tail at <latex>P</latex> and its tip at <latex>Q</latex>. &ndash; The picture below shows three such arrows.</para>
+		<para align="center">
+			<img src="ims/Arrows_illstrtn1.gif"/>	
+		</para>
+		<para>For example, the pink horizontal arrow on the right has its tail at a point named <latex>R</latex>, and it has its tip at a point named <latex>S</latex>. So we write <latex>\Arrw{RS}</latex> for the arrow joining <latex>R</latex> to <latex>S</latex>. Similarly,</para>
+		<ul>
+			<li>
+				<para>
+					<latex>\Arrw{PQ}</latex> denotes the arrow joining the point <latex>P</latex> to the point <latex>Q</latex>.</para>
+			</li>
+			<li>
+				<para>
+					<latex>\Arrw{TU}</latex> denotes the arrow joining the point <latex>T</latex> to the point <latex>U</latex>.</para>
+			</li>
+		</ul>
+	</sub.page.body>
+</sub.page>

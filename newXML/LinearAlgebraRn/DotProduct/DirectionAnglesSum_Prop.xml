@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_DirectionAnglesSum"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Sum of Cosines of Direction Angles</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_DirectionAnglesSum"/>
+      <info>
+         <para>
+            <para.body>An example for this proposition on the sum of cosines of direction angles</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>The sum of cosines of direction angles <math>
+               <latex>\omega_i</latex>
+            </math> of a nonzero vector <math>
+               <latex>\mathbf{x}</latex>
+            </math> in <math>
+               <latex>\RNr[n]</latex>
+            </math> satisfy</para.body>
+      </para>
+      <math.display>
+         <latex>\cos^2 \omega_1\ +\ \cos^2 \omega_2\ +\ \cdots\ +\ \cos^2 \omega_n\ =\ 1</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We know that the <math>
+                     <latex>i</latex>
+                  </math>-th direction angle of <math>
+                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+                  </math> satisfies</para.body>
+            </para>
+            <math.display>
+               <latex>\cos \omega_i = \dfrac{x_i}{ |\mathbf{x} | }</latex>
+            </math.display>
+            <para>
+               <para.body>Therefore,</para.body>
+            </para>
+            <math.display>
+               <latex>\cos^2 \omega_i\ =\ \dfrac{ x_{i}^{2} }{ |\mathbf{x}|^2 }\ =\ \dfrac{ x_{i}^{2} }{ x_{1}^{2}+\cdots + x_{n}^{2} }</latex>
+            </math.display>
+            <para>
+               <para.body>Adding all of these terms up yields</para.body>
+            </para>
+            <math.display>
+               <latex>\cos^{2} \omega_1 + \cdots + \cos^2 \omega_{n}^{2} = \dfrac{ x_{1}^{2}+\cdots + x_{n}^{2} }{ x_{1}^{2}+\cdots + x_{n}^{2} } = 1</latex>
+            </math.display>
+            <para>
+               <para.body>This was to be shown.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

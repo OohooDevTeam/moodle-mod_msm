@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_DeterminantInvertibilityTest"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Determinant tests invertibility of a matrix</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_DeterminantInvertibility"/>
+      <info>
+         <info.caption>
+            <caption>Example</caption>
+         </info.caption>
+         <para>
+            <para.body>Some examples to show how to use a determinant to test a matrix for invertibility.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>A square matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> is invertible exactly when <math>
+               <latex>\det(\Mtrx{A}) \neq 0</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We
+			<subordinate>
+                     <hot>know</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_DeterminantRowReduction"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_DeterminantRowReduction"/>
+                           <para>
+                              <para.body>Look up how to compute the determinant of a matrix by reducing it to upper triangular form.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			that <math>
+                     <latex>\det(\Mtrx{A})\neq 0</latex>
+                  </math> if and only if any upper triangular reduction matrix <math>
+                     <latex>\Mtrx{U}</latex>
+                  </math> of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> has only nonzero elements <math>
+                     <latex>d_1,\dots ,d_n</latex>
+                  </math> on the diagonal. This happens if and only if the RREF of <math>
+                     <latex>\Mtrx{U}</latex>
+                  </math> and, hence, of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is the identity matrix. This in turn is 
+			<subordinate>
+                     <hot>equivalent</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_MatrixInversionRREF"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_MatrixInversionRREF"/>
+                           <para>
+                              <para.body>Look up this theorem.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			to the invertibility of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>.  
+		</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

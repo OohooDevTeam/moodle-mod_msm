@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_SymmetricMatrix">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of (non-)Symmetric Matrices</title>
+	<caption>(Non-)Symmetric Matrices</caption>
+	<showme>
+		<statement>
+			<para>The following matrices are symmetric</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\left[\begin{array}{rrr}
+					1 & 5 & 7 \\
+					5 & -1 & 4 \\
+					7 & 4 & 9
+					\end{array}\right]\qquad
+					\left[\begin{array}{rrrr}
+					4 & a & -2 & 1 \\
+					a & 6 & 3 & b \\
+					-2 & 3 & c & 1 \\
+					1 & b & 1 & 0
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>The following matrices are not symmetric</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\left[\begin{array}{rrr}
+					1 & 0 & 0 \\
+					5 & -1 & 0 \\
+					7 & 6 & 9
+					\end{array}\right]\qquad
+					\left[\begin{array}{rrrr}
+					0 & 1 & -2 & 1 \\
+					5 & 6 & 3 & -2 \\
+					b & 3 & 6 & 1 \\
+					1 & b & 5 & 0
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			<para>Note that, while the <latex>(4,4)</latex>-matrix on the right displays a different kind of symmetry, it is not equal to its transpose, and so it is not symmetric.</para>
+		</statement>
+	</showme>
+</showme.pack>

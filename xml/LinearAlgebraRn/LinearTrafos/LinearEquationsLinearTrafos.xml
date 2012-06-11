@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_LinearEquationsLinearTrafos">
+	<headers>
+		<full>Linear Equations and Linear Transformations</full>
+		<toc>Linear Equations and Linear Transformations</toc>
+		<short>Linear Equations / Linear Trafos</short>
+	</headers>
+	
+	<section.body>
+		<para>We can also use linear transformations to gain an alternate view of linear equations. To explain this, consider a linear transformation <latex>T\from \RNr[n]\to \RNr[m]</latex>. Given <latex>\Vect{y}</latex> in <latex>\RNr[m]</latex>, we ask: which <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex> get transformed into <latex>\Vect{y}</latex>? In other words: which <latex>\Vect{x}</latex> satisfy the equation</para>
+		
+		<math.display>
+			<latex>T( \Vect{x} ) = \Vect{y}?</latex>
+		</math.display>
+		
+		<para>The collection of such <latex>\Vect{x}</latex> form the preimage, or the level set, of <latex>\Vect{y}</latex> under <latex>T</latex> and is <subordinate>
+			<hot>denoted <latex>T^{-1}(\Vect{y})</latex></hot>
+			<info>
+				<caption>Careful here!</caption>
+				<para><latex>T^{-1}(\Vect{y})</latex> is notation for a set of points in <latex>\RNr[n]</latex>. We do not assume here that <latex>T</latex> is an invertible function.</para>
+				<para>On the other hand, if <latex>T</latex> happens to be invertible the set <latex>T^{-1}(\Vect{y})</latex> consists of a single point, and this point is the value of the function <latex>T^{-1}</latex> at <latex>\Vect{y}</latex>.</para>
+			</info>
+		</subordinate>.
+			<index.glossary>
+				<term>preimage</term><term>of a linear transformation</term>
+				<info><para>Discussed here in the context of linear transformations and linear equations.</para></info>
+			</index.glossary>
+			<index.glossary>
+				<term>level set</term><term>of a linear transformation</term>
+				<info><para>Discussed here in the context of linear transformations and linear equations.</para></info>
+			</index.glossary>
+		</para>
+		<para>Finding the solutions of the equation <latex>T(\Vect{x}) = \Vect{y}</latex> amounts to finding the solutions of a linear equation. To see this, represent <latex>T</latex> by an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex>. Then we have <latex>T(\Vect{x}) = \Mtrx{A}\cdot \Vect{x}</latex>, for every <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>. Therefore,
+		</para>
+		
+		<math.display>
+			<latex>T(\Vect{x}) = \Vect{y}\quad \text{ if and only if } \quad A\cdot \Vect{x} = \Vect{y}</latex>
+		</math.display>
+		
+		<para>We have 
+			<subordinate>
+				<hot>seen already</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_MatrixEqsLinearEqs"/>
+					<para>Look up this fact.</para>
+				</crossref>
+			</subordinate>
+			 that the matrix equation on the right corresponds to a system of <latex>m</latex> linear equations in <latex>n</latex> variables.</para>
+		<para>We will see later, that the preimage of  <latex>\Vect{y}=\Vect{0}</latex> under <latex>T</latex> plays a special role. It therefore has its own name: it is called the kernel of  <latex>T</latex>.
+			<index.glossary>
+				<term>kernel</term>
+				<info><para>`kernel' appears here in the context of linear transformations providing another view toward linear equations.</para></info>
+			</index.glossary>
+		</para>
+	</section.body>
+	
+	<studymaterials>
+		<example.pack.ref examplePackID="Exa_LevelSet"/>
+		<exercise.pack.ref exercisePackID="Exe_LevelSet"/>
+	</studymaterials>
+</section>

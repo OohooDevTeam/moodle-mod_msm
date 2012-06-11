@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_BasisNullSpace"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Basis for null space</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_BasisNullSpace"/>
+      <info>
+         <para>
+            <para.body>An example of how to find a basis for the null space of a matrix</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>A matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> of size <math>
+               <latex>(m,n)</latex>
+            </math> has a null space <math>
+               <latex>\NllSp{ \Mtrx{A} }</latex>
+            </math> whose dimension satisfies</para.body>
+      </para>
+      <math.display>
+         <latex>\Dim{ \NllSp{ \Mtrx{A} } } = n - \Rnk{ \Mtrx{A} }</latex>
+      </math.display>
+      <para>
+         <para.body>A basis for <math>
+               <latex>\NllSp{ \Mtrx{A} }</latex>
+            </math> can be found as follows:</para.body>
+      </para>
+      <ol>
+         <li>
+            <para>
+               <para.body>Choose names like <math>
+                     <latex>t_1,\dots ,t_{n-r}</latex>
+                  </math> for the free variables of the general solution of the matrix equation  <math>
+                     <latex>\Mtrx{A}\Vect{x}=\Vect{0}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </li>
+         <li>
+            <para>
+               <para.body>From the RREF of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> write out the general solution of <math>
+                     <latex>\Mtrx{A}\Vect{x}=\Vect{0}</latex>
+                  </math> in the form</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1 \Vect{b}_1 + \cdots + t_{n-r} \Vect{b}_{n-r}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+         </li>
+         <li>
+            <para>
+               <para.body>Then <math>
+                     <latex>\EuScript{B}:=\Set{ \Vect{b}_1, \dots , \Vect{b}_{n-r} }</latex>
+                  </math> is a basis for <math>
+                     <latex>\NllSp{ \Mtrx{A} }</latex>
+                  </math>.</para.body>
+            </para>
+         </li>
+      </ol>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>It is clear that <math>
+                     <latex>\span(\EuScript{B}) = \NllSp{ \Mtrx{A} }</latex>
+                  </math>. So it only remains to verify the linear independence of <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>. To do this, let us 
+			<subordinate>
+                     <hot>recall</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_SolutionsConstruct"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_SolutionsConstruct"/>
+                           <para>
+                              <para.body>Look up how this goes.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			
+			how the vectors <math>
+                     <latex>\Vect{b}_1,\dots ,\Vect{b}_{n-r}</latex>
+                  </math> are constructed:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Let <math>
+                           <latex>\Mtrx{B}=[b_{ij}]</latex>
+                        </math> denote the RREF of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Let <math>
+                           <latex>j_1,\dots ,j_{n-r}</latex>
+                        </math> denote the columns of <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> which do not contain a leading <math>
+                           <latex>1</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Let <math>
+                           <latex>u_1,\dots , u_r</latex>
+                        </math> denote the columns of <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> containing a leading <math>
+                           <latex>1</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Then construct <math>
+                           <latex>\Vect{b}_k</latex>
+                        </math> as the vector in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> which has</para.body>
+                  </para>
+                  <ul>
+                     <li>
+                        <para>
+                           <para.body>a ‘<math>
+                                 <latex>1</latex>
+                              </math>’ in position <math>
+                                 <latex>j_k</latex>
+                              </math>;</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>the entry <math>
+                                 <latex>-b_{i,j_k}</latex>
+                              </math> in position <math>
+                                 <latex>u_i</latex>
+                              </math>;</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>a ‘<math>
+                                 <latex>0</latex>
+                              </math>’ in each remaining position.</para.body>
+                        </para>
+                     </li>
+                  </ul>
+               </li>
+            </ol>
+            <para>
+               <para.body>Now use these vectors <math>
+                     <latex>\Vect{b}_1,\dots ,\Vect{b}_{n-r}</latex>
+                  </math> as the columns of the matrix <math>
+                     <latex>\Mtrx{U} := [ \Vect{b}_1\ \dots \ \Vect{b}_{n-r}]</latex>
+                  </math>. The rows <math>
+                     <latex>j_1,\dots ,j_{n-r}</latex>
+                  </math> of <math>
+                     <latex>\Mtrx{U}</latex>
+                  </math> form an upper triangular matrix with a <math>
+                     <latex>1</latex>
+                  </math> in each diagonal position. The determinant of this matrix is <math>
+                     <latex>1</latex>
+                  </math>, implying that the columns of <math>
+                     <latex>\Mtrx{U}</latex>
+                  </math> are linearly independent. This completes the proof.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

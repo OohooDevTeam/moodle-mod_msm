@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_NumberScalarMultiplicationMatrix"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Examples of Multiplying a Matrix by a Number</title>
+	  <caption xmlns="">Multiplying a Matrix by a Number</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The (scalar) product of the matrix</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					{\color{blue}A}\ =\ 
+					\left[\begin{array}{rrr}
+					{\color{blue}4} &amp; {\color{blue}-2} &amp; {\color{blue}0} \\
+					{\color{blue}6} &amp; {\color{blue}0} &amp; {\color{blue}-4}
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>by the number <math>
+                  <latex>t={\color{red}3}</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					\aligned
+					{\color{red}3}\cdot {\color{blue}A} \ &amp;=\ 
+					{\color{red}3}\cdot
+					\left[\begin{array}{rrr}
+					{\color{blue}4} &amp; {\color{blue}-2} &amp; {\color{blue}0} \\
+					{\color{blue}6} &amp; {\color{blue}0} &amp; {\color{blue}-4}
+					\end{array}\right] \\
+					&amp;=\ \left[\begin{array}{rrr}
+					{\color{red}3}\cdot{\color{blue}4} &amp; {\color{red}3}\cdot({\color{blue}-2}) &amp; {\color{red}3}\cdot{\color{blue}0} \\
+					{\color{red}3}\cdot{\color{blue}6} &amp; {\color{red}3}\cdot{\color{blue}0} &amp; {\color{red}3}\cdot{\color{blue}-4}
+					\end{array}\right] \\
+					&amp;=\ 
+					\left[\begin{array}{rrr}
+					12 &amp; -6 &amp; 0 \\
+					18 &amp; 0 &amp; -12
+					\end{array}\right] \\
+					\endaligned
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In general, the product of a matrix <math>
+                  <latex>{\color{blue}A}</latex>
+               </math> of size <math>
+                  <latex>(m,n)</latex>
+               </math> by a number <math>
+                  <latex>{\color{red}t}</latex>
+               </math> with</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					{\color{blue}A}\ =\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}a_{11}} &amp; \cdots &amp; {\color{blue}a_{1n}} \\
+					\vdots &amp; \ddots &amp; \vdots \\
+					{\color{blue}a_{m1}} &amp; \cdots &amp; {\color{blue}a_{mn}}
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					\aligned
+					{\color{red}t}\cdot {\color{blue}A} &amp;=\ 
+					{\color{red}t}\cdot \left[\begin{array}{ccc}
+					{\color{blue}a_{11}} &amp; \cdots &amp; {\color{blue}a_{1n}} \\
+					\vdots &amp; \ddots &amp; \vdots \\
+					{\color{blue}a_{m1}} &amp; \cdots &amp; {\color{blue}a_{mn}}
+					\end{array}\right] \\
+					&amp;=\ 
+					\left[\begin{array}{ccc}
+					{\color{red}t}\cdot {\color{blue}a_{11}} &amp; \cdots &amp; {\color{red}t}\cdot {\color{blue}a_{1n}} \\
+					\vdots &amp; \ddots &amp; \vdots \\
+					{\color{red}t}\cdot {\color{blue}a_{m1}} &amp; \cdots &amp; {\color{red}t}\cdot {\color{blue}a_{mn}}
+					\end{array}\right]
+					\endaligned
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+</showme.pack>

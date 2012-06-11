@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_DoubleOrthogonalComplementGivesSpan">
+	<caption>Double orthogonal complement gives span</caption>
+	<statement>
+		<para>Given a subset <latex>S</latex> of a subvector space <latex>W</latex> of <latex>\RNr[n]</latex>,</para>
+		<computation>
+			<left>S^{\bot\bot}</left>
+			<center>=</center>
+			<right>\span(S)</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>To verify the equality of the two subspaces of <latex>\RNr[n]</latex>, we need to verify two inclusions:</para>
+		<ul>
+			<li><para><latex>S^{\bot\bot}\subseteq \span(S)</latex></para></li>
+			<li><para><latex>\span(S)\subseteq S^{\bot\bot}</latex></para></li>
+		</ul>
+		<caption><latex>S^{\bot\bot}\subseteq \span(S)</latex></caption>
+		<para>To see that <latex>S^{\bot\bot}=\span(S)=:V</latex>, 
+			<subordinate>
+				<hot>recall</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_OrthogonalComplementOperationProperties"/>
+					<para>Review this fact</para>
+				</crossref>
+			</subordinate>
+			that <latex>S^{\bot}=V^{\bot}</latex>. Therefore, we may equivalently show that <latex>V^{\bot\bot}=V</latex>. Now, if
+<latex>\Vect{x}\in V^{\bot\bot}</latex>, write</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>\Vect{x}_V + \Vect{x}_{\bot}</right>
+		</computation>
+		<para>with <latex>\Vect{x}_V\in V</latex>, and <latex>\Vect{x}_{\bot}\in V^{\bot}</latex>. We have</para>
+		<computation>
+			<left>0</left>
+			<center>=	<info>
+				<caption>Why is this so?</caption>
+				<para>This dot product vanishes because <latex>\Vect{x}\in V^{\bot\bot}</latex>.</para>
+			</info></center>
+			<right>\DotPr{ \Vect{x} }{ \Vect{x}_{\bot} }</right>
+			<left></left>
+			<center>=</center>
+			<right>(\DotPr{ \Vect{x}_V }{ \Vect{x}_{\bot} })\ +\ (\DotPr{ \Vect{x}_{\bot} }{ \Vect{x}_{\bot} })</right>
+			<left></left>
+			<center>=</center>
+			<right>\DotPr{ \Vect{x}_{\bot} }{ \Vect{x}_{\bot} }</right>
+		</computation>
+		<para>This means that <latex>\Vect{x}_{\bot} = \Vect{0}</latex> and, therefore, <latex>\Vect{x}=\Vect{x}_{V}\in V</latex>.</para>
+		<caption><latex>V\subseteq S^{\bot\bot}</latex></caption>
+		<para>To see that <latex>V\subseteq S^{\bot\bot}</latex>, consider a linear combination</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>t_1 \Vect{s}_1 + \cdots + t_k \Vect{s}_k</right>
+		</computation>
+		<para>of <latex>S</latex>. We need to show that <latex>\Vect{x}\in S^{\bot\bot}</latex>. So let <latex>\Vect{z}\in S^{\bot}</latex>. We need to show that <latex>\DotPr{ \Vect{x} }{ \Vect{z} } = 0</latex>. So we compute</para>
+		<computation>
+			<left>\DotPr{ \Vect{x} }{ \Vect{z} }</left>
+			<center>=</center>
+			<right>\DotPr{ (t_1 \Vect{s}_1 +\cdots + t_k \Vect{s}_k) }{ \Vect{z} }</right>
+			<left></left>
+			<center>=</center>
+			<right>t_1(\DotPr{ \Vect{s}_1 }{ \Vect{z} }) + \cdots + t_k(\DotPr{ \Vect{s}_k }{ \Vect{z} })</right>
+			<left></left>
+			<center>=	<info>
+				<caption>Why is this true?</caption>
+				<para>Recall: <latex>\Vect{z}\in S^{\bot}</latex>. So it is perpendicular to each of the vectors  <latex>\Vect{s}_1</latex>, ... , <latex>\Vect{s}_k</latex>.</para>
+			</info></center>
+			<right>0</right>
+		</computation>
+		<para>This means that <latex>\Vect{x}\in S^{\bot\bot}</latex> as required. &ndash; This completes the proof.</para>
+	</proof>
+</theorem>

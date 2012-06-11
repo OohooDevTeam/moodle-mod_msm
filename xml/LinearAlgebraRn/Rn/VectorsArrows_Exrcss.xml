@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_VectorsArrows">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Vectors Arrows: Exercises </title>
+	<caption>Vectors Arrows: Exercises</caption>
+	
+	<exercise>
+		<problem>
+			<para>For each of the following pairs of points <latex>A</latex> and <latex>B</latex> find the vector <latex>\Vect{x}</latex> represented by the arrow <latex>\Arrw{AB}</latex></para>
+		</problem>
+		
+		<part>
+			<problem><para><latex>A(6,1)</latex> and <latex>B(9,4)</latex></para></problem>
+			<approach>
+				<answer><para><latex>\Vect{x} = (3,3)</latex></para></answer>
+				<solution.hint><para>Remember: &lsquo;Tip coordinates minus tail coordinates&rsquo;</para></solution.hint>
+				<solution>
+					<para>The vector representing <latex>\Arrw{AB}</latex> has coordinates which can be found by &lsquo;Tip coordinates minus tail coordinates&rsquo;. Therefore,</para>
+					<math.display>
+						<latex>\Vect{x} = (9-6,4-1) = (3,3)</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>A(2,-3,5))</latex> and <latex>B(7,-4,1)</latex></para></problem>
+			<approach><answer><para><latex>\Vect{x} = (5,-1,-4)</latex></para></answer></approach>
+		</part>
+		<part>
+			<problem><para><latex>A(1,3,-2))</latex> and <latex>B(6,2,-2)</latex></para></problem>
+			<approach><answer><para><latex>\Vect{x} = (5,-1,0)</latex></para></answer></approach>
+		</part>
+		<part>
+			<problem><para><latex>A(-2,0,6,-4)</latex> and <latex>B(2,-2,-6,2)</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>A(9,12,17,-15,-3)</latex> and <latex>B(-9,21,-16,4,-1)</latex></para></problem>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>For the given vector and tail point <latex>A</latex>, find the tip <latex>B</latex> of the arrow representing the vector.</para>
+		</problem>
+		<part>
+			<problem><para><latex>\Vect{x}=(4,1)</latex> and <latex>A(4,6)</latex></para></problem>
+			<approach>
+				<answer><para><latex>T(8,7)</latex></para></answer>
+				<solution.hint>
+					<para>The coordinates of <latex>B</latex> are found by</para>
+					<ol>
+						<li><para>Starting from <latex>A(4,6)</latex></para></li>
+						<li><para>from there, going <latex>4</latex> units in the first coordinate direction</para></li>
+						<li><para>from there, going <latex>1</latex> unit in the second coordinate direction</para></li>
+					</ol>
+				</solution.hint>
+				<solution>
+					<para>The coordinates of <latex>B</latex> are found by</para>
+					<ol>
+						<li><para>Starting from <latex>A(4,6)</latex></para></li>
+						<li><para>from there, going <latex>4</latex> units in the first coordinate direction</para></li>
+						<li><para>from there, going <latex>1</latex> unit in the second coordinate direction</para></li>
+					</ol>
+					<para>Therefore, <latex>T(4+4,6+1) = T(8,7)</latex></para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{y} = (1,-3,2)</latex> and <latex>A(1,1,1)</latex></para></problem>
+			<approach>
+				<answer><para>B(2,-2,3)</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{z} = (6,-2,4,-1)</latex> and <latex>A(2,1,2,1)</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{a} = (-7,2,0,1,-3))</latex> and <latex>A(6,4,1,0,-3)</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{b} = (15,-12,20,9,7,3)</latex> and <latex>A(23,18,-18,6,14,4)</latex></para></problem>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>For the given vector and tip point <latex>B</latex>, find the tail <latex>A</latex> of the arrow representing the vector.</para>
+		</problem>
+		<part>
+			<problem><para><latex>\Vect{x}=(1,1)</latex> and <latex>B(3,4)</latex></para></problem>
+			<approach>
+				<answer><para><latex>A(2,3)</latex></para></answer>
+				<solution.hint>
+					<para>The coordinates of <latex>A</latex> are found by</para>
+					<ol>
+						<li><para>Starting from <latex>B(3,4)</latex></para></li>
+						<li><para>from there, going <latex>1</latex> unit backward in the first coordinate direction</para></li>
+						<li><para>from there, going <latex>1</latex> unit backward in the second coordinate direction</para></li>
+					</ol>
+				</solution.hint>
+				<solution>
+					<para>The coordinates of <latex>A</latex> are found by</para>
+					<ol>
+						<li><para>Starting from <latex>B(3,4)</latex></para></li>
+						<li><para>from there, going <latex>1</latex> unit backward in the first coordinate direction</para></li>
+						<li><para>from there, going <latex>1</latex> unit backward in the second coordinate direction</para></li>
+					</ol>
+					<para>Therefore, <latex>A(3-1,4-1) = (2,3)</latex></para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{y} = (6,-3,1)</latex> and <latex>B(3,3,3)</latex></para></problem>
+			<approach>
+				<answer><para>A(-3,6,2)</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{z} = (1,-1,4,-2)</latex> and <latex>B(0,1,-2,1)</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{a} = (6,-6,3,1,-5)</latex> and <latex>B(1,2,-1,0,6)</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{b} = (-6,15,,-22,6,5,3)</latex> and <latex>B(41,12,21,-36,9,-4)</latex></para></problem>
+		</part>
+	</exercise>
+</exercise.pack>

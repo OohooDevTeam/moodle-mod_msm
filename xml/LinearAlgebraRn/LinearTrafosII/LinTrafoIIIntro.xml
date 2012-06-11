@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro	SYSTEM "../Symbols.dtd">
+<intro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd">
+	<para>We had 
+		<subordinate>
+			<hot>earlier</hot>
+			<crossref>
+				<chapter.ref chapterID="Chap_LinearTransformations"/>
+				<para>Review the introductory chapter on linear transformations</para>
+			</crossref>
+		</subordinate>
+		presented the idea of a linear transformation of <latex>\RNr[n]</latex> as an operation which transforms <latex>\RNr[n]</latex> in such a way that lines get transformed into lines. We then discussed in detail the main types: Scaling operations,  orthogonal projections and reflections, shear transformations, and rotations of the plane.</para>
+	<para>Here we deepen our understanding of linear transformations. This will then enable us to describe linear maps with prescribed transformation properties in arbitrary subvector spaces of <latex>\RNr[n]</latex>. Here are some examples</para>
+	<ol>
+		<li><para>A 
+			<subordinate>
+				<hot>rotation</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_GeneralRotation"/>
+					<para>An illustration of how this is done.</para>
+				</companion>
+			</subordinate> of <latex>\RNr[3]</latex> about an arbitrary axis.</para></li>
+		<!-- 		<li><para>A shear map of <latex>\RNr[n]</latex> parallel to an arbitrary hyperspace and with respect to an arbitrary vector complementary to the hyperspace</para></li>
+		Such a shear map can be expressed as a shear map with respect to a unit normal vector to the hyperspace.
+		-->
+		<li><para>A 
+			<subordinate>
+				<hot>projection</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_ProjectionGeneral"/>
+					<para>An illustration of a general projection.</para>
+				</companion>
+			</subordinate>
+			of <latex>\RNr[n]</latex> onto an arbitrary hyperspace and parallel to an arbitrary vector complementary to the hyperspace</para></li>
+		<li><para>A 
+			<subordinate>
+				<hot>reflection</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_ReflectionGeneral"/>
+					<para>An illustration of a general reflection</para>
+				</companion>
+			</subordinate>
+			of <latex>\RNr[n]</latex> about an arbitrary hyperspace and parallel to an arbitrary vector complementary to the hyperspace.</para></li>
+	</ol>
+	<para>These developments provide a platform for the following chapter on eigentheory. There we ask and answer the question: given a square matrix <latex>\Mtrx{A}</latex>, which transformation of space does it describe? We find that <latex>\Mtrx{A}</latex> is a product of matrices each of which describes a scaling operation, or a rotation, or a shear transformation.</para>
+</intro>

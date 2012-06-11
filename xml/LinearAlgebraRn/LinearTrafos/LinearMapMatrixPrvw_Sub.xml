@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_LinearMapMatrix">
+	<title>Preview: Linear Maps and Matrices</title>
+	<sub.page.body>
+		<block>
+			<para>Linear functions and matrices are intimately related via the following two facts. The first says that every matrix yields a linear function; the second says that every linear function arises in this way.</para>
+			
+			
+			<para><b>Theorem</b> &nbsp;  Every matrix <latex>\Mtrx{A}</latex> of size <latex>(m,n)</latex> yields a linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex> via the identity</para>
+			<math.display>
+				<latex>L(\Vect{x}) = A\cdot \Vect{x}</latex>
+			</math.display>
+			<para>On the right of this equation we multiply <latex>\Mtrx{A}</latex> by the column vector <latex>\Vect{x}</latex>.</para>
+			
+			<para><b>Theorem</b> &nbsp; Given an arbitrary linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex>, form the matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+A\ :=\
+\left[\begin{array}{cccc}
+\uparrow & \uparrow & \cdots & \uparrow \\
+L(\StdBss{1}) & L(\StdBss{2}) & \cdots & L(\StdBss{n}) \\
+\downarrow & \downarrow & \cdots & \downarrow
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>i.e. the <latex>j</latex>-th column of <latex>\Mtrx{A}</latex> is the column vector obtained by transforming the <latex>j</latex>-th coordinate vector of <latex>\RNr[n]</latex> with <latex>L</latex>. Then <latex>L(\Vect{x})=\Mtrx{A}\cdot \Vect{x}</latex>,  for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>. Moreover, <latex>\Mtrx{A}</latex>,  as defined above, is the only matrix with this property.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

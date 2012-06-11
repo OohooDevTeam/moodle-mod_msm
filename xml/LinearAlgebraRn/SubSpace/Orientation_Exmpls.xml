@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_OrientationGeneral">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Orientation in General: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Describe possible orientations of a 1-dimensional subspace <latex>V</latex> of <latex>\RNr[k]</latex>.</para>
+		</statement>
+		<answer type="Discussion">
+			<para>A 1-dimensional subspace <latex>V</latex> of <latex>\RNr[k]</latex> is just a line through the origin. Therefore, an ordered basis of <latex>V</latex> consists just of a single nonzero vector <latex>\Vect{b}</latex> in <latex>V</latex>. It determines a direction of `increasing' in <latex>V</latex>, together with its opposite: a direction of decreasing.</para>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Describe possible orientations of a 2-dimensional subspace <latex>V</latex> of <latex>\RNr[k]</latex>.</para>
+		</statement>
+		<answer type="Discussion">
+			<para>A 2-dimensional subspace <latex>V</latex> of <latex>\RNr[k]</latex> is a plane passing through the origin. Therefore, an ordered basis of <latex>V</latex> consists of an ordered pair of linearly independent vectors <latex>\EuScript{B} = (\Vect{a} , \Vect{b} )</latex> in <latex>V</latex>. Such a pair of vectors determines a preferred direction of rotation about a point, namely the shorter of the two possible trips from <latex>\Vect{a}</latex> to <latex>\Vect{b}</latex>. This direction of rotation is taken to be the &lsquo;positive&rsquo; direction of rotation. The opposite direction of rotation is taken to be the negative direction of orientation.</para>
+		</answer>
+	</showme>
+</showme.pack>

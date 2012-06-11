@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_TranslationOfRn"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Translations of n-Space - Exercises</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If you push a box (without rotating it) from one end of a hallway to the other, how can you mathematically describe the before after effect of this process?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+            <para>
+               <para.body>Have all points of this box been displaced in the same direction?</para.body>
+            </para>
+         </solution.hint>
+			      <solution.hint>
+            <para>
+               <para.body>Have all points of this box been displaced by the same distance?</para.body>
+            </para>
+         </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>As the box has been pushed from one place to another without rotating it, each of its points has been displaced in the same direction and by the same distance. So the box has been translated or shifted in space, and we may describe the before after effect by a vector: the translation vector of the motion.</para.body>
+               </para>
+				           <para>
+                  <para.body>To construct this translation vector, we introduce a suitable coordinate system. The location of each point of the box will then have coordinates before, say <math>
+                        <latex>(a,b,c)</latex>
+                     </math>, and after the shift, say <math>
+                        <latex>(x,y,z)</latex>
+                     </math>. The translation vector describing the displacement is then</para.body>
+               </para>
+				           <math.display>
+					             <latex>\Vect{t} := (x-a,y-b,z-c)</latex>
+				           </math.display>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>A 
+				<subordinate>
+                     <hot>window on a computer screen</hot>
+                     <info>
+                        <info.caption>
+                           <caption>Background on Moving Windows on a Computer Screen</caption>
+                        </info.caption>
+						
+						                  <para>
+                           <para.body>First some background information: To locate the position of a display point (pixel) on a computer monitor the following conventions have been adopted.</para.body>
+                        </para>
+						
+						                  <ol>
+							                    <li>
+                              <para>
+                                 <para.body>The origin of a coordinate system has been placed in the top left corner of the screen.</para.body>
+                              </para>
+                           </li>
+							                    <li>
+                              <para>
+                                 <para.body>The <math>
+                                       <latex>x</latex>
+                                    </math>-axis points horizontally to the right.</para.body>
+                              </para>
+                           </li>
+							                    <li>
+                              <para>
+                                 <para.body>The <math>
+                                       <latex>y</latex>
+                                    </math>-axis points vertically down.</para.body>
+                              </para>
+                           </li>
+						                  </ol>
+						
+					                </info>
+                  </subordinate>
+				has its top left corner in position <math>
+                     <latex>(48,20)</latex>
+                  </math> and its bottom right corner in position <math>
+                     <latex>(440,500)</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the location of the center of the window.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The coordinates of the center of the window are at <math>
+                              <latex>(244,260)</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Draw a sketch of the situation. Then express the position vector of the mid-point of the window in terms of the position vectors of its corner points.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The position vector of the top left corner of the window is <math>
+                           <latex>\Vect{a}:=(48,20)</latex>
+                        </math>. The position vector of the bottom right corner of the window is <math>
+                           <latex>\Vect{b} := (440,500)</latex>
+                        </math>. The arrow joining the top left corner to the bottom right corner represents the vector</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Vect{u} := \Vect{b} - \Vect{a} = (392,480).</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore the position vector of the midpoint of the window is</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>\Vect{a} + \tfrac{1}{2}\cdot \Vect{u} = (48,20) + (196,240) = (244,260)</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>After a mouse move the size of the window is unchanged, but its position has changed so that the top right corner is now at <math>
+                        <latex>(510,10)</latex>
+                     </math>. Find the screen coordinates of the other corners.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>After the mouse move the other corners are at</para.body>
+                     </para>
+					                <ul>
+						                  <li>
+                           <para>
+                              <para.body>Top left corner: <math>
+                                    <latex>(118,10)</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>Bottom left corner: <math>
+                                    <latex>(118,490)</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>Bottom right corner: <math>
+                                    <latex>(510,490)</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </li>
+					                </ul>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>All points of the window are shifted by the same distance in the same direction. So the window has been translated into its new position. – Try to find the translation vector from the information provided.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>All points of the window are shifted by the same distance in the same direction. The corresponding translation vector is represented by the arrow from the top left corner before the shift, in position <math>
+                           <latex>(440,20)</latex>
+                        </math>  to the top left corner after the shift:</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>\Vect{t} = (510,10) - (440,20) = (70,-10)</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>Therefore the position vectors of the other corners are:</para.body>
+                  </para>
+					
+					             <ul>
+						               <li>
+                        <para>
+                           <para.body>Top left corner: <math>
+                                 <latex>(48,20) + (70,-10) = (118,10)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>Bottom left corner: <math>
+                                 <latex>(48,500) + (70,-10) = (118,490)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>Bottom right corner: <math>
+                                 <latex>(440,500) + (70,-10) = (510,490)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+					             </ul>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>In the previous situation, find the screen coordinates of the center of the window after the mouse move.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The coordinates of the center after the mouse move are: <math>
+                              <latex>(314,250)</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>You already know the location of the center from the first part of the problem. It is being moved with the same translation vector that you found in the second part.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>From the first part of the problem we know that the position vector of the center of the window is <math>
+                           <latex>\Vect{x} := (244,260)</latex>
+                        </math>. From the second part of the problem we know that it is being shifted with the translation vector <math>
+                           <latex>\Vect{t}=(70,-10)</latex>
+                        </math>. Therefore the position of the center after the mouse move is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>(244,260) + (70,-10) = (314,250)</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>A triangle in <math>
+                     <latex>\RNr[2]</latex>
+                  </math> has the corner points <math>
+                     <latex>A(1,1)</latex>
+                  </math>, <math>
+                     <latex>B(4,3)</latex>
+                  </math>, and <math>
+                     <latex>C(2,6)</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the mid points of the edges of the triangle</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <ul>
+						                  <li>
+                           <para>
+                              <para.body>The mid point of the edge <math>
+                                    <latex>AB</latex>
+                                 </math> is <math>
+                                    <latex>(5/2,2)</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>The mid point of the edge <math>
+                                    <latex>AC</latex>
+                                 </math> is <math>
+                                    <latex>(3/2,7/2)</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>The mid point of the edge <math>
+                                    <latex>BC</latex>
+                                 </math> is <math>
+                                    <latex>(3,9/2)</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+					                </ul>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall the following: If point <math>
+                        <latex>A</latex>
+                     </math> has position vector <math>
+                        <latex>\Vect{a}</latex>
+                     </math>, and point <math>
+                        <latex>B</latex>
+                     </math> has position vector <math>
+                        <latex>\Vect{b}</latex>
+                     </math>, then the mid point <math>
+                        <latex>M</latex>
+                     </math> of <math>
+                        <latex>A</latex>
+                     </math> and <math>
+                        <latex>B</latex>
+                     </math> has position vector</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{m}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\frac{1}{2}\cdot (\Vect{a} + \Vect{b})</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the location of the corner points of the triangle after shifting it 5 units to the right and 3 units down.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <ul>
+						                  <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>A(1,1)</latex>
+                                 </math> gets shifted to the point <math>
+                                    <latex>(6,-2)</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>B(4,3)</latex>
+                                 </math> gets shifted to the point <math>
+                                    <latex>(9,0)</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>C(2,6)</latex>
+                                 </math> gets shifted to the point <math>
+                                    <latex>(7,3)</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </li>
+					                </ul>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The triangle is being moved by a translation, and the translation vector is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{t}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(5,-3)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore each point <math>
+                           <latex>X</latex>
+                        </math> with position vector <math>
+                           <latex>\Vect{x}</latex>
+                        </math> gets shifted to the point with position vector <math>
+                           <latex>\Vect{x} + \Vect{t}</latex>
+                        </math>. In particular,</para.body>
+                  </para>
+					             <ul>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>A(1,1)</latex>
+                              </math> gets shifted to the point <math>
+                                 <latex>(6,-2)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>B(4,3)</latex>
+                              </math> gets shifted to the point <math>
+                                 <latex>(9,0)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>C(2,6)</latex>
+                              </math> gets shifted to the point <math>
+                                 <latex>(7,3)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+					             </ul>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

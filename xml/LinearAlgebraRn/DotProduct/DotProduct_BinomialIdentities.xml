@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition" id="theo_DotProductBinomialIdentities">
+	<caption>Binomial Identities of the Dot Product Operation</caption>
+	<statement>
+		<para>For vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[n]</latex> the following binomial identities hold:<index.glossary>
+			<term>dot product</term>
+			<term>binomial identities</term>
+			<info>
+				<para>Click for the proposition formulating basic properties of the dot product operation</para>
+			</info>
+		</index.glossary>
+		</para>
+		
+		<part partid="Prop_DotProductSumSquared">
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+					\DotPr{ (\Vect{x} + \Vect{y}) }{ (\Vect{x} + \Vect{y}) } &= \DotPr{ \Vect{x} }{ \Vect{x} } + 2(\DotPr{ \Vect{x} }{ \Vect{y} }) + \DotPr{ \Vect{y} }{ \Vect{y} } \\
+					\DotPr{ (\Vect{x} - \Vect{y}) }{ (\Vect{x} - \Vect{y}) } &= \DotPr{ \Vect{x} }{ \Vect{x} } - 2(\DotPr{ \Vect{x} }{ \Vect{y} }) + \DotPr{ \Vect{y} }{ \Vect{y} }
+					\endaligned
+]]>
+				</latex>
+			</math.display>
+		</part>
+		
+		<part partid="Prop_DotProductSumTimesDifference">
+			<math.display>
+				<latex>\DotPr{ (\Vect{x} + \Vect{y}) }{ (\Vect{x} - \Vect{y}) } = \DotPr{ \Vect{x} }{ \Vect{x} } - \DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+			</math.display>
+		</part>
+	</statement>
+	
+	
+	
+	<proof type="Proof">
+		<para>Each of these identities follows by computing both sides of the given equation, and checking that the results are equal. Here we rely on the basic algebraic properties of the dot product.</para>
+		
+		<caption>
+			<partref>Prop_DotProductSumSquared</partref>
+			This binomial identity holds because
+		</caption>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para>
+						<latex>\DotPr{ (\Vect{x} + \Vect{y}) }{ (\Vect{x} + \Vect{y}) }</latex>
+					</para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because ...</caption>
+								<para>... of the distributivity property of the dot product operation.</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{x} }{ (\Vect{x} + \Vect{y}) } + \DotPr{ \Vect{y} }{ (\Vect{x} + \Vect{y}) }</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because</caption>
+								<para>... of the distributivity property of the dot product operation.</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{x} }{ \Vect{x} } + \DotPr{ \Vect{x} }{ \Vect{y} } + \DotPr{ \Vect{y} }{ \Vect{x} } + \DotPr{\Vect{y} }{ \Vect{y} }</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because of</caption>
+								<para>... the commutativity property of the dot product operation</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{x} }{ \Vect{x} } + \DotPr{ \Vect{x} }{ \Vect{y} } + \DotPr{ \Vect{x} }{ \Vect{y} } + \DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{x} }{ \Vect{x} } + 2(\DotPr{ \Vect{x} }{ \Vect{y} }) + \DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		<para>This proves the first binomial identity. The second follows with a similar argument.</para>
+		
+		
+		<caption>
+			<partref>Prop_DotProductSumTimesDifference</partref>
+			This binomial identity holds because
+		</caption>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para>
+						<latex>\DotPr{ (\Vect{x} + \Vect{y}) }{ (\Vect{x} - \Vect{y}) }</latex>
+					</para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because ...</caption>
+								<para>... of the distributivity property of the dot product operation.</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{x} }{ (\Vect{x} - \Vect{y}) } + \DotPr{ \Vect{y} }{ (\Vect{x} - \Vect{y}) }</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because</caption>
+								<para>... of the distributivity property of the dot product operation.</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{x} }{ \Vect{x} } - \DotPr{ \Vect{x} }{ \Vect{y} } + \DotPr{ \Vect{y} }{ \Vect{x} } - \DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<subordinate>
+							<hot>
+								<latex>=</latex>
+							</hot>
+							<info>
+								<caption>This computational step holds because of</caption>
+								<para>... the commutativity property of the dot product operation</para>
+							</info>
+						</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{x} }{ \Vect{x} } - \DotPr{ \Vect{x} }{ \Vect{y} } + \DotPr{ \Vect{x} }{ \Vect{y} } - \DotPr{\Vect{y} }{ \Vect{y} }</latex>
+					</para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para> </para>
+				</cell>
+				<cell align="center">
+					<para>
+						<latex>=</latex>
+					</para>
+				</cell>
+				<cell align="left">
+					<para>
+						<latex>\DotPr{ \Vect{x} }{ \Vect{x} } - \DotPr{ \Vect{y} }{ \Vect{y} }</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+   </proof>
+</theorem>

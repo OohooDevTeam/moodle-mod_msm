@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_SpanCompare"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Comparison of span sets</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
+         <para>
+            <para.body>Read this as: ‘T is defined to be S union v’</para.body>
+         </para>
+         <para>
+            <para.body>This means: we are forming a new collection <math>
+                  <latex>T</latex>
+               </math> of vectors in <math>
+                  <latex>\RNr[n]</latex>
+               </math> by including the vector <math>
+                  <latex>\Vect{v}</latex>
+               </math> in the set of vectors <math>
+                  <latex>S</latex>
+               </math>.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
+         <para>
+            <para.body>Thus adding new vectors to a subset <math>
+                  <latex>S</latex>
+               </math> of <math>
+                  <latex>\RNr[n]</latex>
+               </math> does not necessarily increase the span. Adding a new vector <math>
+                  <latex>\Vect{v}</latex>
+               </math> to <math>
+                  <latex>S</latex>
+               </math> only increases the span if <math>
+                  <latex>\Vect{v}</latex>
+               </math> does not belong to <math>
+                  <latex>\span(S)</latex>
+               </math>.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Given a subset <math>
+               <latex>S</latex>
+            </math> and a vector <math>
+               <latex>\Vect{v}</latex>
+            </math> of <math>
+               <latex>\RNr[n]</latex>
+            </math>, put</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>T</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>:=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>S\union \Set{ \Vect{v} }</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+      <para>
+         <para.body>Then <math>
+               <latex>\span(S)=\span(T)</latex>
+            </math> if and only if <math>
+               <latex>\Vect{v}</latex>
+            </math> is in <math>
+               <latex>\span(S)</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>Consider first the case where <math>
+                     <latex>\span(S)=\span(T)</latex>
+                  </math>. We need to show that <math>
+                     <latex>\Vect{v}</latex>
+                  </math> is a linear combination of vectors in <math>
+                     <latex>S</latex>
+                  </math>. But we know that 
+			<subordinate>
+                     <hot>
+                        <math>
+                           <latex>\Vect{v}</latex>
+                        </math> is in <math>
+                           <latex>\span(T)</latex>
+                        </math>
+                     </hot>
+                     <info>
+                        <info.caption>
+                           <caption>Why is <math>
+                                 <latex>\Vect{v}</latex>
+                              </math> in <math>
+                                 <latex>\span(T)</latex>
+                              </math>?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>We know that <math>
+                                 <latex>\Vect{v}</latex>
+                              </math> is in <math>
+                                 <latex>T</latex>
+                              </math>. Therefore</para.body>
+                        </para>
+                        <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>\Vect{v}</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <text>=</text>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>1\cdot \Vect{v}</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+                        <para>
+                           <para.body>is a linear combination of vectors in <math>
+                                 <latex>T</latex>
+                              </math> and, hence, <math>
+                                 <latex>\Vect{v}</latex>
+                              </math> is in <math>
+                                 <latex>\span(T)</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>.
+			As  <math>
+                     <latex>\span(S)=\span(T)</latex>
+                  </math>, <math>
+                     <latex>\Vect{v}</latex>
+                  </math> is also a linear combination of  <math>
+                     <latex>S</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Consider now that case where <math>
+                     <latex>\Vect{v}= a_1 \Vect{s}_1 + \cdots + a_k \Vect{s}_k</latex>
+                  </math> is in <math>
+                     <latex>\span(S)</latex>
+                  </math>. We need to show that <math>
+                     <latex>\span(S)=\span(T)</latex>
+                  </math>. – Now every linear combination of vectors in <math>
+                     <latex>S</latex>
+                  </math> is also a linear combination of vectors in <math>
+                     <latex>T</latex>
+                  </math>. So it remains to show that every linear combination of vectors in <math>
+                     <latex>T</latex>
+                  </math> is also a linear combination of vectors in <math>
+                     <latex>S</latex>
+                  </math>. – Indeed, if</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{w}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t \Vect{v}\ +\ b_1 \Vect{t}_1 + \cdots + b_r \Vect{t}_r</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>is a linear combination of <math>
+                     <latex>T</latex>
+                  </math>,  then <math>
+                     <latex>\Vect{t}_1, \dots ,\Vect{t}_r</latex>
+                  </math> are in <math>
+                     <latex>S</latex>
+                  </math>, and we need to show that <math>
+                     <latex>\Vect{w}</latex>
+                  </math> is in <math>
+                     <latex>\span(S)</latex>
+                  </math>. But we know also that</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{w}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t(a_1 \Vect{s}_1+\cdots + a_k \Vect{s}_k)\ +\ b_1 \Vect{t}_1+\cdots + b_r \Vect{t}_r</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>which is a linear combination of vectors from <math>
+                     <latex>S</latex>
+                  </math>. Therefore <math>
+                     <latex>\Vect{w}</latex>
+                  </math> is in <math>
+                     <latex>\span(S)</latex>
+                  </math>. This completes the proof.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

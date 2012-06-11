@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_VectorAdditionScalarMultiplicationProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Properties of Vector Addition and Scalar Multiplication</caption>
+   <statement.theorem>
+      <para>
+         <para.body>For arbitrary vectors <math>
+               <latex>\mathbf{x},\mathbf{y},\mathbf{z}</latex>
+            </math> in <math>
+               <latex>\RNr[n]</latex>
+            </math>, and arbitrary numbers <math>
+               <latex>s</latex>
+            </math>  and <math>
+               <latex>t</latex>
+            </math>, the following hold:</para.body>
+      </para>
+      <part.theorem partid="Prop_VectorAdditionCommutes">
+         <caption>Commutativity of vector addition</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\mathbf{x} + \mathbf{y} = \mathbf{y} + \mathbf{x}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Prop_VectorAdditionAssociative">
+         <caption>Associativity of vector addition</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>(\mathbf{x} + \mathbf{y}) + \mathbf{z} = \mathbf{x} + (\mathbf{y} + \mathbf{z})</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Prop_0Neutral">
+         <caption>Neutrality of the <math>
+               <latex>\mathbf{0}</latex>
+            </math>-vector</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\mathbf{x} + \mathbf{0} = \mathbf{x} = \Vect{0} + \Vect{x}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Prop_AdditiveInverse">
+         <caption>Addivitive inverse of <math>
+               <latex>\mathbf{x}</latex>
+            </math>
+         </caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\mathbf{x} + (-1)\cdot \mathbf{x} = \mathbf{0}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Prop_ScalarMultiplicationAssociative">
+         <caption>Associativity of scalar multiplication</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>(st)\cdot \mathbf{x} = s\cdot (t\cdot \mathbf{x})</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Prop_DistributivityI">
+         <caption>First distributivity law of scalar multiplication</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>(s+t)\cdot \mathbf{x} = s\cdot \mathbf{x} + t\cdot \mathbf{x}</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Prop_DistributivityII">
+         <caption>Second distributivity law of scalar multiplication</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>s\cdot (\mathbf{x} + \mathbf{y}) = s\cdot \mathbf{x} + s\cdot \mathbf{y}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Prop_NeutralInScalarMultiplication">
+         <caption>Neutral element in scalar multiplication</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>1\cdot \mathbf{x} = \mathbf{x}</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>Prop_VectorAdditionCommutes</part.ref>
+         </logic>
+         <caption>Prop_VectorAdditionCommutes</caption>
+         <proof.block.body>
+            <para>
+               <para.body>In our geometric interpretation of vector addition, <math>
+                     <latex>\mathbf{x} + \mathbf{y}</latex>
+                  </math> corresponds to an arrow diagram in which <math>
+                     <latex>\mathbf{y}</latex>
+                  </math> follows the vector <math>
+                     <latex>\mathbf{x}</latex>
+                  </math>. On the other hand, <math>
+                     <latex>\mathbf{y} + \mathbf{x}</latex>
+                  </math> corresponds to a vector diagram which <math>
+                     <latex>\mathbf{x}</latex>
+                  </math> follows the vector <math>
+                     <latex>\mathbf{y}</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Prop_VectorAdditionCommutes</part.ref>
+         </logic>
+         <caption>Prop_VectorAdditionCommutes</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We compute, using the definition of vector addition: If <math>
+                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+                  </math> and <math>
+                     <latex>\mathbf{y} = (y_1,\dots ,y_n)</latex>
+                  </math>, then</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Prop_VectorAdditionAssociative</part.ref>
+         </logic>
+         <caption>Prop_VectorAdditionAssociative</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We verify this property by direct computation: Given three vectors in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, <math>
+                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+                  </math>, <math>
+                     <latex>\mathbf{y}=(y_1,\dots ,y_n)</latex>
+                  </math>, and <math>
+                     <latex>\mathbf{z} = (z_1,\dots ,z_n)</latex>
+                  </math> we find</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Prop_0Neutral</part.ref>
+         </logic>
+         <caption>Prop_0Neutral</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Geometrically this property is evident: Concatenating any vector <math>
+                     <latex>\mathbf{x}</latex>
+                  </math>  with the <math>
+                     <latex>\mathbf{0}</latex>
+                  </math>-vector just gives us <math>
+                     <latex>\mathbf{x}</latex>
+                  </math> back. - Alternatively, we may argue by computation: If  <math>
+                     <latex>\mathbf{x}=(x_1,\dots ,x_n)</latex>
+                  </math>, then</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Prop_AdditiveInverse</part.ref>
+         </logic>
+         <caption>Prop_AdditiveInverse</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Reversing a vector <math>
+                     <latex>\mathbf{x}</latex>
+                  </math>, yields the vector <math>
+                     <latex>-\mathbf{x}</latex>
+                  </math>, and concatenating <math>
+                     <latex>\mathbf{x}</latex>
+                  </math> with its reverse yields the vector which starts and ends at the same point; i.e. the <math>
+                     <latex>\mathbf{0}</latex>
+                  </math>-vector. Accordingly, the additive inverse of <math>
+                     <latex>\mathbf{x}</latex>
+                  </math> is <math>
+                     <latex>-\mathbf{x}</latex>
+                  </math>, as was to be shown.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Prop_AdditiveInverse</part.ref>
+         </logic>
+         <caption>Prop_AdditiveInverse</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The additive inverse of <math>
+                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+                  </math> is a vector <math>
+                     <latex>\mathbf{y}</latex>
+                  </math> such that <math>
+                     <latex>\mathbf{x} + \mathbf{y} = \mathbf{0}</latex>
+                  </math>. Choosing <math>
+                     <latex>\mathbf{y}:= -\mathbf{x} = (-x_1,\dots ,-x_n)</latex>
+                  </math> serves this purpose because</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Prop_ScalarMultiplicationAssociative</part.ref>
+         </logic>
+         <caption>Prop_ScalarMultiplicationAssociative</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Given numbers <math>
+                     <latex>s</latex>
+                  </math> and <math>
+                     <latex>t</latex>
+                  </math>, and a vector <math>
+                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+                  </math>, we compute:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Prop_DistributivityI</part.ref>
+         </logic>
+         <caption>Prop_DistributivityI</caption>
+         <proof.block.body>
+            <para>
+               <para.body>To see why this distributivity law is true, suppose <math>
+                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+                  </math> and <math>
+                     <latex>s,t</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math> are given. Then we compute</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Prop_DistributivityII</part.ref>
+         </logic>
+         <caption>Prop_DistributivityII</caption>
+         <proof.block.body>
+            <para>
+               <para.body>To see why this distributivity law is true, suppose <math>
+                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+                  </math> and <math>
+                     <latex>\mathbf{y}=(y_1,\dots ,y_n)</latex>
+                  </math> and <math>
+                     <latex>s</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math> are given. Now we compute:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Prop_NeutralInScalarMultiplication</part.ref>
+         </logic>
+         <caption>Prop_NeutralInScalarMultiplication</caption>
+         <proof.block.body>
+            <para>
+               <para.body>This is obvious.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

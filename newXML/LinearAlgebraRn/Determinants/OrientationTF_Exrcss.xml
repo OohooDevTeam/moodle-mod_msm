@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_OrientationTF"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Self Test: Orientation of Space</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below determine if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Any two nonzero vectors in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> represent an orientation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False!</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>If <math>
+                           <latex>\Vect{x}\neq\Vect{0}</latex>
+                        </math> is a nonzero vector of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>, then the ordered pair <math>
+                           <latex>(\Vect{x},\Vect{x})</latex>
+                        </math> consists of nonzero vectors as well.</para.body>
+                  </para>
+					             <para>
+                     <para.body>However, the vectors in the pair <math>
+                           <latex>(\Vect{x},\Vect{x})</latex>
+                        </math> are parallel. So they do not represent an orientation of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>; the statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Vect{u}\neq \Vect{0}</latex>
+                     </math> is a vector in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>, then the pair <math>
+                        <latex>(\Vect{u}, 2 \Vect{u})</latex>
+                     </math> represents the positive orientation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution of the previous problem.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math> are (column) vectors in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> with <math>
+                        <latex>\det[ \Vect{x}\ \ \Vect{y}]\neq 0</latex>
+                     </math>, then <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is parallel to <math>
+                        <latex>\Vect{y}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>If these vectors were parallel, then at least one of the two situations below applies:</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{x} = s\cdot \Vect{y}</latex>
+                              </math> for some <math>
+                                 <latex>s</latex>
+                              </math> in <math>
+                                 <latex>\RNr</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{y} = t\cdot \Vect{x}</latex>
+                              </math> for some <math>
+                                 <latex>t</latex>
+                              </math> in <math>
+                                 <latex>\RNr</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>Either way, this implies that <math>
+                           <latex>\det [\Vect{x}\ \ \Vect{y}] = 0</latex>
+                        </math>, contradicting the assumption. Therefore the vectors can not be parallel.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math> are parallel (column) vectors in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> then <math>
+                        <latex>\det[ \Vect{x}\ \ \Vect{y}] = 0</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>True!</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution of the previous problem.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If the oriented volume of the ordered triple <math>
+                        <latex>(\Vect{a},\Vect{b},\Vect{c})</latex>
+                     </math> of vectors in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> is positive, then <math>
+                        <latex>(\Vect{a},\Vect{b},\Vect{c})</latex>
+                     </math> represents the right hand orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the definition of ‘oriented volume’.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>	
+</exercise.pack>

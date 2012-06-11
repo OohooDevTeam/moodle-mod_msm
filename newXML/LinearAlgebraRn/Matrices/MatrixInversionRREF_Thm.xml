@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_MatrixInversionRREF"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <statement.theorem>
+      <para>
+         <para.body>An <math>
+               <latex>(n,n)</latex>
+            </math>-matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> is invertible if and only if its RREF is <math>
+               <latex>\IdMtrx[n]</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>Consider first the situation where <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible. We want to show that the RREF of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is the identity matrix.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>Let us now consider the situation where the RREF of  <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>  is the identity matrix. We need to show that <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible, and we need to verify the proposed method of computing <math>
+                     <latex>\Mtrx{A}^{-1}</latex>
+                  </math>. From the above, we know now that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

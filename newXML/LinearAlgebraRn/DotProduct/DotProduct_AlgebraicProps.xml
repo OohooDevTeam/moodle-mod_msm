@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Theo_DotProductAlgebraicProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Algebraic Properties of the Dot Product</caption>
+   <statement.theorem>
+      <para>
+         <para.body>For vectors <math>
+               <latex>\Vect{x},\Vect{y},\Vect{a},\Vect{b}</latex>
+            </math> in <math>
+               <latex>\RNr[n]</latex>
+            </math> and any number <math>
+               <latex>t</latex>
+            </math> in <math>
+               <latex>\RNr</latex>
+            </math>, the following hold:
+      	</para.body>
+         <index.glossary>
+            <term>dot product</term>
+            <term>algebraic properties</term>
+            <info>
+               <para>
+                  <para.body>Click for the proposition formulating the algebraic properties of the dot product operation</para.body>
+               </para>
+            </info>
+         </index.glossary>
+      </para>
+      <part.theorem partid="theopart_Bilinearity">
+         <caption>Bilinearity</caption>
+         <part.body>
+            <para>
+               <para.body/>
+               <index.glossary>
+                  <term>bilinearity</term>
+                  <term>of dot product</term>
+                  <info>
+                     <para>
+                        <para.body>The bilinearity property of the dot product asserts that</para.body>
+                     </para>
+                     <table>
+                        <row>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ (\Vect{a} + \Vect{b})}{\Vect{y} }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>=</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{\Vect{a} }{ \Vect{y}}\ +\ \DotPr{\Vect{b} }{ \Vect{y} }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                        </row>
+                        <row>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ \Vect{a} }{(\Vect{x} + \Vect{y}) }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>=</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ \Vect{a} }{ \Vect{x} }\ +\ \DotPr{\Vect{a} }{ \Vect{y} }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                        </row>
+                        <row>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ (t\cdot \Vect{a}) }{ \Vect{y} }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>= t\cdot (\DotPr{\Vect{a} }{ \Vect{y} }) =</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ \Vect{a} }{ (t \cdot \Vect{y}) }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                        </row>
+                     </table>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>dot product</term>
+                  <term>is bilinear</term>
+                  <info>
+                     <para>
+                        <para.body>That the dot product is bilinear means</para.body>
+                     </para>
+                     <table>
+                        <row>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{(\Vect{a} + \Vect{b})}{ \Vect{y} }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>=</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ \Vect{a} }{ \Vect{y} }\ +\ \DotPr{\Vect{b} }{ \Vect{y} }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                        </row>
+                        <row>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ \Vect{a} }{ (\Vect{x} + \Vect{y}) }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>=</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ \Vect{a} }{ \Vect{x} }\ +\ \DotPr{ \Vect{a} }{ \Vect{y} }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                        </row>
+                        <row>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ (t\cdot \Vect{a}) }{ \Vect{y} }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>= t\cdot (\DotPr{ \Vect{a} }{ \Vect{y} }) =</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                           <cell>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\DotPr{ \Vect{a} }{ (t \cdot \Vect{y}) }</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </cell>
+                        </row>
+                     </table>
+                  </info>
+               </index.glossary>
+            </para>
+            <table>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\DotPr{(\Vect{a} + \Vect{b})}{ \Vect{y} }</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>=</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\DotPr{ \Vect{a} }{ \Vect{y} }\ +\ \DotPr{ \Vect{b} }{ \Vect{y} }</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\DotPr{ \Vect{a} }{ (\Vect{x} + \Vect{y}) }</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>=</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\DotPr{ \Vect{a} }{ \Vect{x} }\ +\ \DotPr{ \Vect{a} }{ \Vect{y} }</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\DotPr{ (t\cdot \Vect{a}) }{ \Vect{y} }</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>= t\cdot (\DotPr{ \Vect{a} }{ \Vect{y} }) =</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\DotPr{ \Vect{a} }{ (t\cdot \Vect{y}) }</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+               </row>
+            </table>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="theopart_Symmetry">
+         <caption>Symmetry</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\DotPr{ \Vect{a} }{ \Vect{x} } = \DotPr{ \Vect{x} }{ \Vect{a} }</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>symmetry</term>
+                  <term>of dot product</term>
+                  <info>
+                     <para>
+                        <para.body>The symmetry property of the dot product asserts that</para.body>
+                     </para>
+                     <math.display>
+                        <latex>\DotPr{ \Vect{a} }{ \Vect{x} } = \DotPr{ \Vect{x} }{ \Vect{a} }</latex>
+                     </math.display>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>dot product</term>
+                  <term>is symmetry</term>
+                  <info>
+                     <para>
+                        <para.body>To say that the dot product is symmetry means that</para.body>
+                     </para>
+                     <math.display>
+                        <latex>\DotPr{ \Vect{a} }{ \Vect{x} } = \DotPr{ \Vect{x} }{ \Vect{a} }</latex>
+                     </math.display>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="theopart_DotProductPositiveDefinite">
+         <caption>Positive definite</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\DotPr{ \Vect{x} }{ \Vect{x} } \geq 0</latex>
+                  </math> for all <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>positive definite</term>
+                  <term>dot product</term>
+                  <info>
+                     <para>
+                        <para.body>The positive definiteness property of the dot product asserts that <math>
+                              <latex>\DotPr{ \Vect{x} }{ \Vect{x} } \geq 0</latex>
+                           </math> for all <math>
+                              <latex>\Vect{x}</latex>
+                           </math> in <math>
+                              <latex>\RNr[n]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>dot product</term>
+                  <term>positive definite</term>
+                  <info>
+                     <para>
+                        <para.body>To say that the dot product is positive definite means that <math>
+                              <latex>\DotPr{ \Vect{x} }{ \Vect{x} } \geq 0</latex>
+                           </math> for all <math>
+                              <latex>\Vect{x}</latex>
+                           </math> in <math>
+                              <latex>\RNr[n]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="theopart_DotProductNonDegenerate">
+         <caption>Non-degeneracy</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\DotPr{ \Vect{x} }{ \Vect{x} }</latex>
+                  </math> if and only if <math>
+                     <latex>\Vect{x} = \Vect{0}</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>non-degeneracy</term>
+                  <term>dot product</term>
+                  <info>
+                     <para>
+                        <para.body>The non-degeneracy property of the dot product asserts that </para.body>
+                     </para>
+                     <para align="center">
+                        <para.body>
+                           <math>
+                              <latex>\DotPr{ \Vect{x} }{ \Vect{x} } = 0</latex>
+                           </math> if and only if <math>
+                              <latex>\Vect{x} = \Vect{0}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>dot product</term>
+                  <term>non-degenerate</term>
+                  <info>
+                     <para>
+                        <para.body>To say that the dot product is non-degenerate means that</para.body>
+                     </para>
+                     <para align="center">
+                        <para.body>
+                           <math>
+                              <latex>\DotPr{ \Vect{x} }{ \Vect{x} } = 0</latex>
+                           </math> if and only if <math>
+                              <latex>\Vect{x} = \Vect{0}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>theopart_Bilinearity</part.ref>
+         </logic>
+         <caption>theopart_Bilinearity</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The bilinearity property holds because</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>theopart_Symmetry</part.ref>
+         </logic>
+         <caption>theopart_Symmetry</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The symmetry property holds because</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>theopart_DotProductPositiveDefinite</part.ref>
+         </logic>
+         <caption>theopart_DotProductPositiveDefinite</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The dot product is positive definite because</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>theopart_DotProductNonDegenerate</part.ref>
+         </logic>
+         <caption>theopart_DotProductNonDegenerate</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The dot product operation is non-degenerate because <math>
+                     <latex>\DotPr{ \Vect{x} }{ \Vect{x} } = 0</latex>
+                  </math> if and only if</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

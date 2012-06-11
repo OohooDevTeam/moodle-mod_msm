@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_TrafoPlanar">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	<title>Example: Transformation of a Planar Region</title>
+	<caption>Trafo of Planar Region</caption>
+	<showme>
+		<statement>
+			<para>In the image below the potato shaped region <latex>X</latex> on the left gets transformed into the collar shaped object on the right.</para>
+			
+			<figure>
+				<img src="ims/Trafo_NonLinear.png"></img>
+				<caption>Transforming a &lsquo;potato&rsquo; into a &lsquo;collar&rsquo;.</caption>
+			</figure>
+			
+			
+			<para>To fit this intuitive process into the mathematical formalism of functions, we do the following:</para>
+			
+			<ul>
+				<li><para><latex>X</latex> serves as the domain of the transforming function <latex>f</latex>.</para></li>
+				<li><para>The entire background serves as the target of <latex>f</latex>.</para></li>
+				<li><para>The collar shapened object on the right represents the result of transforming the domain. This is also called the image of <latex>f</latex>.</para></li>
+			</ul>
+			
+			<para>The function <latex>f\from X\to Y</latex> transforms <latex>X</latex> into the image of <latex>f</latex>; i.e. the collar shaped object on the right. In the process the blue dot on the left, marked <latex>x</latex>, gets transformed into the blue dot, marked <latex>f(x)</latex> on the right. Both of the red dots on the left, marked <latex>u_1</latex> and <latex>u_2</latex>, get transformed into a single point. This is expressed by the identity</para>
+			
+			<math.display>
+				<latex>f(u_1) = f(u_2)</latex>
+			</math.display>
+			
+			<para>For each point of the domain <latex>X</latex> the function <latex>f</latex> tells us into which precise location in the target <latex>Y</latex> it gets transformed.</para>
+		</statement>
+	</showme>	
+</showme.pack>

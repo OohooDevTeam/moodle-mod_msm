@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_KernelSubspace"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Kernel / nullspace – image / column space</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>L\from V\to W</latex>
+            </math> and let <math>
+               <latex>\Mtrx{A}=\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)=[a_{ij}]</latex>
+            </math> be the matrix representing <math>
+               <latex>L</latex>
+            </math> with respect to ordered bases <math>
+               <latex>\EuScript{A}=(\Vect{a}_1,\dots ,\Vect{a}_n)</latex>
+            </math> and <math>
+               <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_m)</latex>
+            </math> of <math>
+               <latex>V</latex>
+            </math> and <math>
+               <latex>W</latex>
+            </math>, respectively. Then the following hold:</para.body>
+      </para>
+      <part.theorem partid="KernelNullspace">
+         <part.body>
+            <para>
+               <para.body>A vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math> belongs to the kernel of <math>
+                     <latex>L</latex>
+                  </math> if and only if <math>
+                     <latex>\Vect{x}_{\EuScript{A}}</latex>
+                  </math> is in the null space of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. Therefore <math>
+                     <latex>\Ker{L}</latex>
+                  </math> is a subvector space of <math>
+                     <latex>V</latex>
+                  </math> with <math>
+                     <latex>\Dim{\Ker{L}} = \Dim{ \NllSp{A} }</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="ImageColumnSpace">
+         <part.body>
+            <para>
+               <para.body>A vector <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>W</latex>
+                  </math> belongs to the image of <math>
+                     <latex>L</latex>
+                  </math> if and only if <math>
+                     <latex>\Vect{y}_{\EuScript{B}}</latex>
+                  </math> is in the column space of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. Therefore <math>
+                     <latex>\Img{L}</latex>
+                  </math> is a subvector space of <math>
+                     <latex>W</latex>
+                  </math>   with <math>
+                     <latex>\Dim{ \Img{ L }} = \Dim{\ColSp{A} }</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof" proofid="1">
+      <proof.block>
+         <logic>
+            <part.ref>KernelNullspace</part.ref>
+         </logic>
+         <caption>KernelNullspace</caption>
+         <proof.block.body>
+            <para>
+               <para.body>A vector <math>
+                     <latex>\Vect{x}\in V</latex>
+                  </math> belongs to <math>
+                     <latex>\ker(L)</latex>
+                  </math> exactly when</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>ImageColumnSpace</part.ref>
+         </logic>
+         <caption>ImageColumnSpace</caption>
+         <proof.block.body>
+            <para>
+               <para.body>A vector <math>
+                     <latex>\Vect{y}\in W</latex>
+                  </math> belongs to the image of <math>
+                     <latex>L</latex>
+                  </math> exactly when there exists <math>
+                     <latex>\Vect{x}\in V</latex>
+                  </math> with <math>
+                     <latex>L(\Vect{x}) = \Vect{y}</latex>
+                  </math>. This happens if and only if</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+   <proof type="Proof" proofid="2">
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We need to check that <math>
+                     <latex>\ker(L)</latex>
+                  </math> contains the <math>
+                     <latex>\Vect{0}</latex>
+                  </math>-vector and is closed under vector addition and scalar multiplication:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Sequences">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: On Sequences of Real Numbers</title>
+	<exercise>
+		<problem>
+			<para>For each of the sequences <latex>(a_n)</latex> below write out the first 5 sequence elements. Then determine if it is bounded, monotone, or alternating.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = \frac{1}{3n - 7}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = (-1)^n\frac{1}{n + 1}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = (-1)^{3n}\frac{n^3}{2n +1}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = \frac{n}{(n + 1)!}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = \cos(\pi\cdot n)\cdot e^n</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = \sin(n^2)</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = \sum_{k=0}^{n} k</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = \sum_{k=0}^{n} \frac{1}{k+1}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = \sum_{k=0}^{n} \frac{1}{2^k}</latex></para>
+			</problem>
+		</part>
+</exercise>
+	
+	
+	<exercise id="Exe_SequenceBoundedIffBoundedBelowAbove">
+		<problem>
+			<para>Show that a sequence <latex>(a_n)</latex> is bounded if and only if it is bounded below and bounded above.</para>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>About an alternating sequence <latex>a_n</latex> show the following:</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>a_n</latex> is increasing, respectively decreasing, if and only if it is constant with <latex>a_n=0</latex> for all <latex>n</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>a_n</latex> is not strictly increasing nor strictly decreasing.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+</exercise.pack>

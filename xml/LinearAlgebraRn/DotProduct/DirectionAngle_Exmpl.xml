@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_DirectionAngles">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Direction Angles: Examples</title>
+	<showme>
+		<statement>
+			<para>Find the direction angles of the vector <latex>\Vect{x} = (3,4)</latex> in <latex>\RNr[2]</latex>.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>We have <latex>| \Vect{x} | = 5</latex>, and 
+				<subordinate>
+					<hot>so</hot>
+					<info>
+						<caption>What are we going to use to make this computation</caption>
+						<para>Remember the formula for the first direction angle:</para>
+						<math.display>
+							<latex>\omega_1 = \arccos \frac{x_1}{ | \Vect{x} | }</latex>
+						</math.display>
+					</info>
+				</subordinate>,
+			</para>
+			
+			<math.display>
+				<latex>\omega_1 = \arccos \frac{3}{5} \approx 53.1\quad \text{degrees}</latex>
+			</math.display>
+			
+			<para>To find <latex>\omega_2 </latex> we now have two possible approaches. The first approach just uses the
+				<subordinate>
+					<hot>formula for direction angles</hot>
+					<info>
+						<caption>Recall the formula for the second direction angle</caption>
+						
+						<math.display>
+							<latex>\omega_2 = \arccos \frac{x_2}{ | \Vect{x} | }</latex>
+						</math.display>
+					</info>
+				</subordinate>
+				again:</para>
+			
+			<math.display>
+				<latex>\omega_2 = \arccos \frac{4}{5} \approx 36.9\quad \text{degrees}</latex>
+			</math.display>
+			
+			<para>In the second approach we 
+				<subordinate>
+					<hot>observe that</hot>
+					<info>
+						<caption>What does it tell us if <latex>\Vect{x}</latex> is a first quadrant vector?</caption>
+						<para>The direction angles of a first quadrant vector in <latex>\RNr[2]</latex> add up to <latex>90</latex> degrees.</para>
+						
+						<para align="center"><img src="ims/DirectionAnglesR2.gif" width="343" height="237"/></para>
+					</info>
+				</subordinate>
+				 <latex>\Vect{x}</latex> is a first quadrant vector. Therefore</para>
+			
+			<para align="center"><latex>\omega_1 + \omega_2 = 90</latex>, and so, <latex>\omega_2 \approx 90 - 53.1 = 36.9\quad \text{degrees}</latex>.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Find the cosines of the direction angles of <latex>\Vect{u} = (-1,1,1)</latex> in <latex>\RNr[3]</latex>.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>We have <latex>\Vect{u} = \sqrt{3}</latex>, and so</para>
+			<computation>
+				<left>\cos \omega_1</left>
+				<center>=</center>
+				<right>- \dfrac{1}{ \sqrt{3} }</right>
+				<left>\cos \omega_2</left>
+				<center>=</center>
+				<right>\dfrac{1}{ \sqrt{3} }</right>
+				<left>\cos \omega_3</left>
+				<center>=</center>
+				<right>\dfrac{1}{ \sqrt{3} }</right>
+			</computation>
+		</answer>
+	</showme>
+</showme.pack>

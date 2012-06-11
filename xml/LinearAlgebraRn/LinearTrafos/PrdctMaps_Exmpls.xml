@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_ProductMaps">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Product of Linear Maps: Examples</title>
+	<caption>Product of Linears Maps</caption>
+	<showme>
+		<statement>
+			<para>Find the product <latex>\Prdct{S}{T}</latex> of the linear maps</para>
+			<para align="center"><latex>S\from \RNr[2] \longrightarrow \RNr[3]</latex> &nbsp; and &nbsp; <latex>T\from \RNr[3] \longrightarrow \RNr[2]</latex></para>
+			<para>if <latex>S</latex> is represented by</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rr}
+6 & 1 \\
+2 & 3 \\
+-1 & 4
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			<para>and <latex>T</latex> is represented by</para>
+			<math.display>
+				<latex>
+					<![CDATA[ 
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+2 & 5 & 1 \\
+7 & 9 & 6
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para><latex>\Prdct{S}{T}\from \RNr[5]\to \RNr[5]</latex> is represented by the <latex>(5,5)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{cc}
+{\color{blue} A} & 0 \\
+0 & {\color{red} B}
+\end{array} 
+\right]\ :=\ 
+\left[
+\begin{array}{rrrrr}
+{\color{blue} 6} & {\color{blue} 1} & 0 & 0 & 0 \\
+{\color{blue} 2} & {\color{blue} 3} & 0 & 0 & 0 \\
+{\color{blue} -1} & {\color{blue} 4} & 0 & 0 & 0 \\
+0 & 0 & {\color{red} 2} & {\color{red} 5} & {\color{red} 1} \\
+0 & 0 & {\color{red} 7} & {\color{red} 9} & {\color{red} 6}
+\end{array} 
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

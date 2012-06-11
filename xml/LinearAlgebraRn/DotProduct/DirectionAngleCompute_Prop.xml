@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_DirectionAngleCompute">
+	<caption>Computing Direction Angles</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_DirectionAngles"/>
+		<info>
+			<para>Examples of direction angles</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>The <latex>i</latex>-th direction angle of a vector <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex> in <latex>\RNr[n]</latex> is</para>
+		<math.display>
+			<latex>\omega_i\ =\ \arccos \frac{x_i}{| \mathbf{x} |}</latex>
+		</math.display>
+	</statement>
+
+	<proof>
+		<para>To see where this identity comes from, recall that <latex>\mathbf{e}_i</latex> has length <latex>1</latex>; i.e. <latex>| \mathbf{e}_i | = 1</latex>. Then we compute</para>
+		
+		<math.display>
+			<latex>x_i = \mathbf{e}_i \bullet \mathbf{x} = | \mathbf{e}_i | | \mathbf{x} | \cos \omega_i = | \mathbf{x} | \cos \omega_i</latex>
+		</math.display>
+		
+		<para>This implies the claim.</para>
+	</proof>
+</theorem>

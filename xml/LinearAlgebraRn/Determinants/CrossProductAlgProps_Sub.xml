@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_CrossProductAlgebraicProperties">
+	<title>Explanation: Algebraic Properties of the Cross Product</title>
+	<sub.page.body>
+		<block>
+			<para>Let us analyze a bit what the equations describing the algebraic properties of the cross product actually say.</para>
+			<para><b>Short version</b></para>
+			<ol type="i">
+				<li>
+					<para>The three equations in i. together say that the cross product operation is bilinear.</para></li>
+				<li>
+					<para>The equation in ii. says that the cross product is alternating.</para>
+				</li>
+			</ol>
+			<para></para>
+		</block>
+		
+		<block>
+			<para><b>Detailed version</b></para>
+			<ul>
+				<li>
+					<para>The equation <latex>\CrssPr{(\Vect{u}+\Vect{v})}{\Vect{y}} = (\CrssPr{ \Vect{u} }{ \Vect{y} }) + (\CrssPr{ \Vect{v} }{\Vect{y}})</latex> says that the cross product is additive in the first variable.</para>
+				</li>
+				<li>
+					<para>The equation <latex>\CrssPr{\Vect{u}}{(\Vect{x} + \Vect{y})} = (\CrssPr{ \Vect{u} }{ \Vect{x} }) + (\CrssPr{ \Vect{u} }{\Vect{y}})</latex> says that the cross product is additive in the second variable.</para>
+				</li>
+				<li>
+					<para>The equations <latex>\CrssPr{ (t\cdot \Vect{x}) }{ \Vect{y} } = t\cdot (\CrssPr{ \Vect{x} }{ \Vect{y} }) = \CrssPr{ \Vect{x} }{ (t\cdot \Vect{y}) }</latex> say that the cross product commutes with scalar multiplication in each variable.</para>
+				</li>
+			</ul>
+			<para>Combined these equations say that the cross product is a linear function <latex>\RNr[3]\to \RNr[3]</latex> in each of its two variables.</para>
+			
+			<para>The equation <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = -(\CrssPr{ \Vect{y} }{ \Vect{x} })</latex> says that the cross product switches its sign if we interchange the two vectors. So the cross product is an alternating function.</para>
+			
+		</block>
+	</sub.page.body>
+</sub.page>

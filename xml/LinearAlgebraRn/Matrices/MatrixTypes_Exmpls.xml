@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_TypesMatrices">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of Types of Matrices</title>
+	<caption>Matrix Types</caption>
+	<showme>
+		<statement>
+			<para>A matrix is square shaped if it is of type <latex>(n,n)</latex>. For example, the matrices below are square shaped.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\left[
+					\begin{array}{rr}
+					6 & 9 \\
+					-9 & 6
+					\end{array}
+					\right] \qquad
+					\left[
+					\begin{array}{rrr}
+					4 & -4 & 1 \\
+					3 & 2 & 3 \\
+					1 & -3 & 6
+					\end{array}
+					\right] \qquad 
+					\left[
+					\begin{array}{rrrrr}
+					3 & 0 & 2 & 4 & 3 \\
+					6 & 1 & 4 & 2 & 0 \\
+					1 & 5 & 7 & 6 & 9 \\
+					6 & 2 & 4 & 7 & 4 \\
+					3 & 3 & 3 & 0 & 3
+					\end{array}
+					\right] 
+					]]>
+				</latex>
+			</math.display>
+			<para>Indeed, the matrix on the left has size <latex>(2,2)</latex>. The matrix in the middle has size <latex>(3,3)</latex>. The matrix on the right has size <latex>(5,5)</latex></para>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Determine if the following matrix is square shaped.</para>
+			<math.display>
+				<latex>
+				<![CDATA[
+				\left[
+				\begin{array}{rrrrrrr}
+				6 & 5 & 3 & 12 & 19 & 403 & 121 \\
+				3 & 0 & 0 & 1 & 21 & -12 & 11 \\
+				1 & 1 & 2 & 2 & 4 & 4 & 8
+				\end{array}
+				\right]
+				]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>The given matrix is not square shaped as its number of rows is <latex>3</latex>, while its number of columns is <latex>7\neq 3</latex>.</para>
+		</answer>
+	</showme>	
+</showme.pack>

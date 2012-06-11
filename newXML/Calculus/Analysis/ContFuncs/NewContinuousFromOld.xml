@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_NewContinuousFromOld"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>New Continuous Functions from Old</title>
+      <plain.title>New Continuous from Old</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we present a number of operations which produce new continuous functions from continuous given ones. Specifically:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>The sum of two continuous function <math>
+                           <latex>f,g\from D\to \RNr</latex>
+                        </math> is continuous.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The product of two continuous function <math>
+                           <latex>f,g\from D\to \RNr</latex>
+                        </math> is continuous.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The composite of two continuous functions is continuous.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>Combining these results with the fact that the identity function on <math>
+                     <latex>\RNr</latex>
+                  </math> is continuous, we see that</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>Polynomial functions are continuous, and</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>rational functions are continuous away from the <math>
+                           <latex>0</latex>
+                        </math>’s of the denominator.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>We close this section with the ‘pasting lemma’. It says that two continuous functions</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>f\from \OCIntrvl{a}{b}\to \RNr</latex>
+                  </math>   and   <math>
+                     <latex>g\from \COIntrvl{b}{c}\to \RNr</latex>
+                  </math>
+               </para.body>
+            </para>
+            <para>
+               <para.body>may be ‘pasted’ together so as to obtain a continuous <math>
+                     <latex>\OOIntrvl{a}{c}\to \RNr</latex>
+                  </math> whenever <math>
+                     <latex>f(b)=g(b)</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_ContinuousFunctionsNewFromOld"/>
+   </studymaterials>
+</unit>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_LinearTransformationsMainTypes">
+	<headers>
+		<full>Main Types of Linear Transformations</full>
+		<toc>Main Types of Linear Transformations</toc>
+		<short>Main Types</short>
+	</headers>
+	
+	<intro>
+		<para>Here we introduce a four special types of linear transformations: Scaling transformations, rotations, projections, and shear maps. These transformations appear in numerous practical applications of which are give a few examples.</para>
+		<para>From a theoretical point of view these transformations play a key role as well. Every linear transformation of <latex>\RNr[n]</latex> into itself is built from members of this collection in a way which we will describe soon.</para>
+	</intro>
+	
+	<section.body>
+		<def type="Definition" id="Def_IdentityLinearTrafo">
+			<caption>Identity Transformation</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_IdentityTransformation"/>
+				<info><para>Details on the identity transformation</para></info>
+			</associate>
+			
+			<para>The identity transformation of <latex>\RNr[n]</latex> is
+				<index.glossary>
+					<term>identity</term><term>linear transformation of <latex>\RNr[n]</latex></term>
+					<info>
+						<math.display>
+							<latex>\IdTrafo{n}\from \RNr[n] \longrightarrow \RNr[n],\quad \IdTrafo{n}(\Vect{x}) := \Vect{x}</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>linear</term><term>transformation of <latex>\RNr[n]</latex></term><term>identity</term>
+					<info>
+						<math.display>
+							<latex>\IdTrafo{n}\from \RNr[n] \longrightarrow \RNr[n],\quad \IdTrafo{n}(\Vect{x}) := \Vect{x}</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>\IdTrafo{n}</latex></symbol>
+					<info>
+						<para>Identity transformation of <latex>\RNr[n]</latex>.</para>
+					</info>
+				</index.symbol>
+			</para>
+			<math.display>
+				<latex>\IdTrafo{n}\from \RNr[n] \longrightarrow \RNr[n],\quad \IdTrafo{n}(\Vect{x}) := \Vect{x}</latex>
+			</math.display>
+		</def>
+		
+		
+		
+		
+		<def type="Definition" id="Def_0LinearTrafo">
+			<caption>0-Transformation</caption>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation of 0-Transformation</caption>
+					<para>The 0-transformation turns the entire space <latex>\RNr[n]</latex> into a single point, namely the origin of <latex>\RNr[m]</latex>. It is represented by the 0-matrix of size <latex>(n,m)</latex>.</para>
+				</info>
+			</associate>
+			
+			<para>The <latex>0</latex>-transformation of <latex>\RNr[n]</latex> is
+				<index.glossary>
+					<term>0-transformation</term>
+				</index.glossary>
+			</para>
+			
+			<math.display>
+				<latex>\mathbf{0}\from \RNr[n] \longrightarrow \RNr[m],\quad \mathbf{0}(\Vect{x}) := \Vect{0}</latex>
+			</math.display>
+		</def>
+		
+		
+		
+		<def type="Definition" id="Def_ScalingTransformation">
+			<caption>Scaling Transformations</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_Dilation"/>
+				<info><para>Explanation of the concept of &lsquo;dilation&rsquo;</para></info>
+			</associate>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_Contraction"/>
+				<info><para>Explanation of the concept of &lsquo;contraction&rsquo;</para></info>
+			</associate>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_Inversion"/>
+				<info><para>Explanation of the concept of &lsquo;inversion&rsquo;</para></info>
+			</associate>
+			
+			<para>A scaling transformation of <latex>\RNr[n]</latex> is of the form
+				<index.glossary>
+					<term>scaling</term><term>transformation</term>
+					<info>
+						<caption>What is a scaling transformation?</caption>
+						<para>A scaling transformation is a linear transformation of <latex>\RNr[n]</latex> of the form <latex>S(\Vect{x}) = s\cdot \Vect{x}</latex>, with <latex>s\in\RNr</latex> fixed.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>linear</term><term>transformation</term><term>scaling</term>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>S\from\RNr[n] \longrightarrow \RNr[n],\quad S(\Vect{x}) = s\cdot \Vect{x}</latex>
+			</math.display>
+			<para>Here &lsquo;<latex>s</latex>&rsquo; is a fixed number which is called the scaling factor.
+				<index.glossary>
+					<term>scaling</term><term>factor</term>
+				</index.glossary>
+				Depending on the value of <latex>s</latex>, the scaling map <latex>S</latex> is called
+			</para>
+			
+			<ul>
+				<li><para>a <i>dilation</i> if <latex><![CDATA[ s> 1 ]]></latex>
+					<index.glossary>
+						<term>dilation</term>
+						<info>
+							<caption>What is a dilation?</caption>
+							<para>A dilation is a linear transformation <latex>D</latex> of <latex>\RNr[n]</latex> of the form <latex>D(\Vect{x})= s\cdot \Vect{x}</latex>, with <latex><![CDATA[ s>0 ]]></latex> a fixed number.</para>
+						</info>
+					</index.glossary>
+				</para></li>
+				<li><para>a <i>contraction</i> if <latex><![CDATA[ 0< s < 1 ]]></latex>
+					<index.glossary>
+						<term>contraction</term>
+						<info>
+							<caption>What is a contraction?</caption>
+							<para>A contraction is a linear transformation <latex>C</latex> of <latex>\RNr[n]</latex> of the form <latex>C(\Vect{x})= s\cdot \Vect{x}</latex>, with <latex><![CDATA[ 0 < s < 1 ]]></latex> a fixed number.</para>
+						</info>
+					</index.glossary>
+				</para></li>
+				<li><para>an <i>inversion</i> if <latex><![CDATA[ s = -1 ]]></latex>
+					<index.glossary>
+						<term>inversion</term>
+						<info>
+							<caption>What is an inversion?</caption>
+							<para>An inversion is a linear transformation <latex>T</latex> of <latex>\RNr[n]</latex> of the form <latex>T(\Vect{x})= -\Vect{x}</latex>.</para>
+						</info>
+					</index.glossary>
+				</para></li>
+			</ul>
+		</def>
+		
+		<para>Note that the choice <latex>s=1</latex> yields the identity transformation, while the choice <latex>s=0</latex> yields the <latex>0</latex>-transformation.</para>
+		
+		<def type="Definition" id="Def_Rotation">
+			<caption>Rotation</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment</caption>
+					<para>Here we use the symbol <latex magnify="yes">\theta</latex> to denote the angle through which we rotate. This is a Greek letter, pronounced &lsquo;theta&rsquo;.</para>
+				</info>
+			</associate>
+			
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_Rotation"/>
+				<info><para>An explanation of the rotation transformation</para></info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_Rotation"/>
+				<info><para>An example of a rotation of <latex>\RNr[2]</latex></para></info>
+			</associate>
+			
+			
+			
+			<para>The counterclockwise rotation of <latex>\RNr[2]</latex> about the origin through the angle <latex>\theta</latex> is given by 
+				<index.glossary>
+					<term>rotation</term>
+					<info><para>Definition of the linear transformation of <latex>\RNr[2]</latex> which describes a rotation.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>linear</term><term>transformation</term><term>rotation</term>
+					<info><para>Definition of the linear transformation of <latex>\RNr[2]</latex> which describes a rotation.</para></info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>R_{\theta}</latex></symbol>
+					<info>
+						<para>The rotation of <latex>\RNr[2]</latex> about the origin through the angle <latex>\theta</latex>, respectively the matrix</para>
+						<math.display>
+							<latex>
+								<![CDATA[
+R_{\theta} := 
+\left[
+\begin{array}{rr}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{array}
+\right]
+					]]>
+							</latex>
+						</math.display>
+					</info>
+				</index.symbol>
+			</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+R_{\theta}\from \RNr[2] \longrightarrow \RNr[2],\quad R_{\theta}(x,y) = 
+\left[
+\begin{array}{rr}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{array}
+\right]
+\left[
+\begin{array}{r} x \\ y \end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</def>
+		
+		
+		<def type="Definition" id="Def_OrthogonalProjection">
+			<caption>Orthogonal Projection</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_OrthogonalProjection"/>
+				<info><para>An explanation of the construction of orthogonal projections</para></info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_OrthogonalProjection"/>
+				<info><para>An orthogonal projection of <latex>\RNr[3]</latex> onto a hyperspace</para></info>
+			</associate>
+			
+			
+			<para>The orthogonal projection of <latex>\RNr[n]</latex> onto the hyperspace perpendicular to the nonzero vector <latex>\Vect{c}</latex> is given by
+				<index.glossary>
+					<term>orthogonal</term><term>projection</term><term><latex>\RNr[n]</latex> onto a hyperspace</term>
+					<info><para>Lookup the definition of orthogonal projection</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>projection</term><term><latex>\RNr[n]</latex> onto a hyperspace</term>
+					<info><para>Lookup the definition of orthogonal projection</para></info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>P\from \RNr[n] \longrightarrow \RNr[n],\quad P(\Vect{x}) = \Vect{x}\ -\ \dfrac{\DotPr{\Vect{x}}{\Vect{c}}}{\DotPr{\Vect{c}}{\Vect{c}}} \cdot \Vect{c}</latex>
+			</math.display>
+		</def>
+		
+		
+		
+		<def type="Definition" id="Def_OrthogonalReflection">
+			<caption>Orthogonal Reflection</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_OrthogonalReflection"/>
+				<info><para>An explanation of the construction of orthogonal reflections</para></info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_OrthogonalReflection"/>
+				<info><para>An orthogonal reflection of <latex>\RNr[3]</latex> onto a hyperspace</para></info>
+			</associate>
+			
+			
+			<para>The orthogonal reflection of <latex>\RNr[n]</latex> about the hyperspace perpendicular to the nonzero vector <latex>\Vect{c}</latex> is given by
+				<index.glossary>
+					<term>orthogonal</term><term>reflection</term><term><latex>\RNr[n]</latex> about a hyperspace</term>
+					<info><para>Lookup the definition of orthogonal reflection</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>reflection</term><term><latex>\RNr[n]</latex> about a hyperspace</term>
+					<info><para>Lookup the definition of orthogonal reflection</para></info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>M\from \RNr[n] \longrightarrow \RNr[n],\quad M(\Vect{x}) = \Vect{x}\ -\ 2\cdot \dfrac{\DotPr{\Vect{x}}{\Vect{c}}}{\DotPr{\Vect{c}}{\Vect{c}}} \cdot \Vect{c}</latex>
+			</math.display>
+		</def>
+		
+		
+		
+		<def type="Definition" id="Def_ShearTransformation">
+			<caption>Shear Transformation</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_ShearTransformation"/>
+				<info><para>An explanation of shear transformations and their mathematical description</para></info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_ShearTransformation"/>
+				<info><para>Examples of shear transformations</para></info>
+			</associate>
+			
+			
+			<para>The shear map of <latex>\RNr[n]</latex> with respect to the unit vector <latex>\Vect{n}</latex>, and with shear vector <latex>\Vect{s}\bot \Vect{n}</latex> is given by
+				<index.glossary>
+					<term>shear</term><term>transformation of <latex>\RNr[n]</latex> parallel to a hyperspace</term>
+					<info><para>Lookup the definition of shear transformation</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>linear transformation</term><term>shear map of <latex>\RNr[n]</latex> parallel to a hyperspace</term>
+					<info><para>Lookup the definition of shear transformation</para></info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>S\from \RNr[n] \longrightarrow \RNr[n],\quad S(\Vect{x}) = \Vect{x} + (\DotPr{ \Vect{x} }{ \Vect{n} })\cdot \Vect{s}</latex>
+			</math.display>
+		</def>
+	</section.body>
+	
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_LinearTrafosTypes1"/>
+		<exercise.pack.ref exercisePackID="Exe_LinearTrafosTypes2"/>
+		<!-- Two more sets of exercises available here -->
+	</studymaterials>
+</section>

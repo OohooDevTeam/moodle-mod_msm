@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_InverseMapInverseMatrix"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Inverse linear map and inverse matrix</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_InverseMapInverseMatrix"/>
+      <info>
+         <para>
+            <para.body>Examples illustrating the use of this proposition</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>L\from \RNr[n]\to \RNr[n]</latex>
+            </math> be a linear transformation represented by the matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> of size <math>
+               <latex>(n,n)</latex>
+            </math>. Then <math>
+               <latex>L</latex>
+            </math> is invertible if and only if <math>
+               <latex>A</latex>
+            </math> is invertible. If so, then <math>
+               <latex>L^{-1}</latex>
+            </math> is represented by the matrix <math>
+               <latex>\Mtrx{A}^{-1}</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>Consider first the case where <math>
+                     <latex>L</latex>
+                  </math> is invertible. Then we know that there is a linear transformation <math>
+                     <latex>L^{-1}</latex>
+                  </math>, represented by an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math>, satisfying</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>Consider now the situation where we know that <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible. Then <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> has an inverse <math>
+                     <latex>\Mtrx{A}^{-1}</latex>
+                  </math>. But then we 
+			<subordinate>
+                     <hot>know</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_MatrixGivesLinearMap"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_MatrixGivesLinearMap"/>
+                           <para>
+                              <para.body>Look up how a matrix determines a linear map.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			that <math>
+                     <latex>\Mtrx{A}^{-1}</latex>
+                  </math> determines a linear map <math>
+                     <latex>M\from \RNr[n]\to \RNr[n]</latex>
+                  </math>, and we have the properties</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

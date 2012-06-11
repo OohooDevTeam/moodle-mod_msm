@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_OrthogonalComplementProperties">
+	<title>Orthogonal Complement Properties: Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>Let's analyze what the properties of the orthogonal complement operation mean.</para>
+		</block>
+		<block>
+			<para>The property &lsquo;If <latex>S\subseteq T\subseteq W</latex>, then <latex>T^{\bot}\subseteq S^{\bot}</latex>&rsquo;. We read this as:</para>
+			<para>If S is a subset of T or equal to T, and T is a subset of W or equal to W, then the orthogonal complement of T is a subset of the orthogonal complement of S or is equal to the orthogonal complement of S.</para>
+			<para>Let&rsquo;s think this through:</para>
+			<ol>
+				<li>
+					<para><latex>T^{\bot}</latex> consists of all those vectors of <latex>W</latex> which are orthogonal to every vector in <latex>T</latex></para>
+				</li>
+				<li>
+					<para>If every vector in <latex>S</latex> is also in <latex>T</latex>, this means that a vector in the orthogonal complement of <latex>T</latex> is also in the orthogonal complement of <latex>S</latex>.</para>
+				</li>
+			</ol>
+		</block>
+		
+		<block>
+			<para>The property <latex>S^{\bot} = \span(S)^{\bot}</latex>. &nbsp; We read this as:</para>
+			<para>The orthogonal complement of S is equal to the orthogonal complement of the span of S.</para>
+			<para>We know that <latex>S</latex> is contained in <latex>\span(S)</latex>. So we see that <latex>\span(S)^{\bot}</latex> is contained in <latex>S^{\bot}</latex> from the previous property. That <latex>S^{\bot}</latex> is also contained in <latex>\span(S)^{\bot}</latex> requires proof by computation.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

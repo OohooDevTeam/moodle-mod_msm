@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_ZeroUnique"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Uniqueness of the number 0</caption>
+   <statement.theorem>
+      <para>
+         <para.body>There is only one element in <math>
+               <latex>\RNr</latex>
+            </math> which is neutral with respect to addition.</para.body>
+      </para>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>The existence of at least one element <math>
+                     <latex>0</latex>
+                  </math> which is neutral with respect to addition is guaranteed by the appropriate axiom. If there is one such element, there could be many. So consider an arbitrary element <math>
+                     <latex>\theta\in \RNr</latex>
+                  </math> which satisfies <math>
+                     <latex>a + \theta = a</latex>
+                  </math> for all <math>
+                     <latex>a\in \RNr</latex>
+                  </math>. Then</para.body>
+            </para>
+            <math.display>
+               <latex>0 = 0 + \theta = \theta</latex>
+            </math.display>
+            <para>
+               <para.body>The identity on the left holds because <math>
+                     <latex>\theta</latex>
+                  </math> is neutral, and the identity on the right holds because <math>
+                     <latex>0</latex>
+                  </math> is neutral. Both identities together say that <math>
+                     <latex>0</latex>
+                  </math> is the only element in <math>
+                     <latex>\RNr</latex>
+                  </math> which is neutral with respect to addition.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

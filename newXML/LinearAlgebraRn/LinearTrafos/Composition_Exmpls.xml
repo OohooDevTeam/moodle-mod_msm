@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Composition"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Example: Composition of Linear Transformations</title>
+	  <caption xmlns="">Example: Composition of Linear Transformations</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Form the composite <math>
+                  <latex>R\Comp S</latex>
+               </math> of the two linear transformations <math>
+                  <latex>S</latex>
+               </math> and <math>
+                  <latex>R</latex>
+               </math> below. Then describe the transformation properties of the composite.</para.body>
+         </para>
+			
+			      <ul xmlns="">
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S\from \RNr[2] \to \RNr[2]</latex>
+                     </math> is the shear map given by</para.body>
+               </para>
+					          <math.display>
+						            <latex>
+							
+S(x,y) =
+\left[
+\begin{array}{rr}
+1 &amp; 2 \\
+0 &amp; 1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+x \\ y
+\end{array}
+\right]
+							
+						</latex>
+					          </math.display>
+				        </li>
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>R\from \RNr[2]\to \RNr[2]</latex>
+                     </math> is the counterclockwise rotation about the origin through the angle <math>
+                        <latex>2\pi/3</latex>
+                     </math> given by.</para.body>
+               </para>
+					          <math.display>
+						            <latex>
+							
+R(x,y) =
+\dfrac{1}{2}\cdot \left[
+\begin{array}{rr}
+-1 &amp; -\sqrt{3} \\
+\sqrt{3} &amp; -1
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+x \\ y
+\end{array}
+\right]
+							
+						</latex>
+					          </math.display>
+				        </li>
+			      </ul>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The matrix representing <math>
+                        <latex>R\Comp S\from \RNr[2] \to \RNr[2]</latex>
+                     </math> is</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\dfrac{1}{2}\left[
+\begin{array}{rr}
+-1 &amp; -\sqrt{3} \\
+\sqrt{3} &amp; -1
+\end{array}
+\right]
+\left[
+\begin{array}{rr}
+1 &amp; 2 \\
+0 &amp; 1
+\end{array}
+\right] = 
+\dfrac{1}{2}\cdot \left[
+\begin{array}{rr}
+-1 &amp; -2 - \sqrt{3} \\
+\sqrt{3} &amp; 2\sqrt{3} -1
+\end{array}
+\right]
+							
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>The transformation effect of <math>
+                        <latex>R\Comp S</latex>
+                     </math> on <math>
+                        <latex>\RNr[2]</latex>
+                     </math> is given by first performing the shear map, then performing the rotation on the result; as in the picture below.</para.body>
+               </para>
+			
+			
+				           <img src="ims/ShearRotate.png"/>
+			
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>	
+</showme.pack>

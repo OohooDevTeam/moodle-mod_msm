@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_CrossProduct"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Examples: Computing Cross Products</title>
+	  <caption xmlns="">Examples: Computing Cross Products</caption>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the cross product of the vectors</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{a}=(1,0,0)</latex>
+               </math>   and   <math>
+                  <latex>\Vect{b}=(0,1,0)</latex>
+               </math>
+            </para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>According to the general formula for the cross product we obtain for <math>
+                        <latex>\Vect{a}=(1,0,0)</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}=(0,1,0)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\CrssPr{ \Vect{a} }{ \Vect{b} }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					
+\left( \det
+\left[
+\begin{array}{rr}
+0 &amp; 1 \\
+0 &amp; 0
+\end{array}
+\right]\, ,\, 
+-\det
+\left[
+\begin{array}{rr}
+1 &amp; 0 \\
+0 &amp; 0
+\end{array}
+\right]\, ,\, 
+\det
+\left[
+\begin{array}{rr}
+1 &amp; 0 \\
+0 &amp; 1
+\end{array}
+\right] \right)
+					
+				</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0 - 0, - (0-0) , 1-0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,0,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the cross product of the vectors</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{x}=(2,1,1)</latex>
+               </math>   and   <math>
+                  <latex>\Vect{y}=(3,0,-1)</latex>
+               </math>
+            </para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>According to the general formula for the cross product we obtain for <math>
+                        <latex>\Vect{x}=(2,1,1)</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}=(3,0,-1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					
+\left( \det
+\left[
+\begin{array}{rr}
+1 &amp; 0 \\
+1 &amp; -1
+\end{array}
+\right]\, ,\, 
+-\det
+\left[
+\begin{array}{rr}
+2 &amp; 3 \\
+1 &amp; -1
+\end{array}
+\right]\, ,\, 
+\det
+\left[
+\begin{array}{rr}
+2 &amp; 3 \\
+1 &amp; 0
+\end{array}
+\right] \right)
+					
+				</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-1 - 0, - (-2-3) , 0-3)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-1,5,-3)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+</showme.pack>

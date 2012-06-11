@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illustr_Hyperplane"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Hyperplane – Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we illustrate a hyperplane in <math>
+                     <latex>\RNr[2]</latex>
+                  </math> or in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>A hyperplane in</strong>
+                  <math>
+                     <latex>\RNr[2]</latex>
+                  </math>
+                  <strong>is just a line</strong>
+               </para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/HyperPlane2D.gif"/>
+                  </media>
+               </para.body>
+            </para>
+            <para>
+               <para.body>In the picture above, the blue line is the hyperspace which is perpendicular to the green normal vector. The red line <math>
+                     <latex>L</latex>
+                  </math> is a hyperplane. It results from parallel translating the blue hyperspace.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>A hyperplane in</strong>
+                  <math>
+                     <latex>\RNr[3]</latex>
+                  </math>
+                  <strong>is just a plane in the usual sense</strong>
+               </para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/HyperPlane3D.gif"/>
+                  </media>
+               </para.body>
+            </para>
+            <para>
+               <para.body>In the picture above, the planes are hyperplanes in 3-space. The tail of the two arrows is supposed to be at the origin. So the lower hyperplane passes through the origin and, hence, is even a hyperspace. In general, we characterize the location of a hyperplane by specifying a vector <math>
+                     <latex>\Vect{n}</latex>
+                  </math> (blue) perpendicular to it and by specifying a point on it (the tip of the red arrow). Alternatively, we can think of a hyperplane as being obtained by parallel translating the hyperspace which is perpendicular to <math>
+                     <latex>\Vect{n}</latex>
+                  </math> off of the origin by a suitable vector (red).</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

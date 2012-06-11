@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_KernelSubspace">
+	<caption>Kernel / nullspace &ndash; image / column space</caption>
+	
+	
+	<statement>
+		<para>Let <latex>L\from V\to W</latex> and let <latex>\Mtrx{A}=\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)=[a_{ij}]</latex> be the matrix representing <latex>L</latex> with respect to ordered bases <latex>\EuScript{A}=(\Vect{a}_1,\dots ,\Vect{a}_n)</latex> and <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_m)</latex> of <latex>V</latex> and <latex>W</latex>, respectively. Then the following hold:</para>
+		<part partid="KernelNullspace"><para>A vector <latex>\Vect{x}</latex> in <latex>V</latex> belongs to the kernel of <latex>L</latex> if and only if <latex>\Vect{x}_{\EuScript{A}}</latex> is in the null space of <latex>\Mtrx{A}</latex>. Therefore <latex>\Ker{L}</latex> is a subvector space of <latex>V</latex> with <latex>\Dim{\Ker{L}} = \Dim{ \NllSp{A} }</latex>.</para></part>
+		<part partid="ImageColumnSpace">
+			<para>A vector <latex>\Vect{y}</latex> in <latex>W</latex> belongs to the image of <latex>L</latex> if and only if <latex>\Vect{y}_{\EuScript{B}}</latex> is in the column space of <latex>\Mtrx{A}</latex>. Therefore <latex>\Img{L}</latex> is a subvector space of <latex>W</latex> &nbsp; with <latex>\Dim{ \Img{ L }} = \Dim{\ColSp{A} }</latex>.</para>
+		</part>
+	</statement>
+	<proof type="Proof" proofid="1">
+		<caption><partref>KernelNullspace</partref> Relationship between <latex>\ker(L)</latex> and <latex>\NllSp{\Mtrx{A}}</latex></caption>
+		<para>A vector <latex>\Vect{x}\in V</latex> belongs to <latex>\ker(L)</latex> exactly when</para>
+		<math.display>
+			<latex>L(\Vect{x})_{\EuScript{B}} = \Mtrx{A}\cdot \Vect{x}_{\EuScript{A}} = \Vect{0}</latex>
+		</math.display>
+		<para>This says precisely that <latex>\Vect{x}</latex> belongs to <latex>\Ker{L}</latex> if and only if <latex>\Vect{x}_{\EuScript{A}}</latex> belongs to <latex>\NllSp{\Mtrx{A}}</latex>. It follows that <latex>\Ker{L}</latex> is a subvector space of <latex>V</latex> Consequently, we have</para>
+		<math.display>
+			<latex>\Dim{ \Ker{ L }} = \Dim{ \NllSp{\Mtrx{A}} } = \dim(V)- \Rnk{\Mtrx{A}}</latex>
+		</math.display>
+		
+		
+		<caption><partref>ImageColumnSpace</partref></caption>
+		<para>A vector <latex>\Vect{y}\in W</latex> belongs to the image of <latex>L</latex> exactly when there exists <latex>\Vect{x}\in V</latex> with <latex>L(\Vect{x}) = \Vect{y}</latex>. This happens if and only if</para>
+		<math.display>
+			<latex>\Vect{y}_{\EuScript{B}} = A\cdot \Vect{x}_{\EuScript{A}}</latex>
+		</math.display>
+		<para>i.e. if <latex>\Vect{y}_{\EuScript{B}}</latex> belongs to the column space of <latex>\Mtrx{A}</latex>.</para>
+		
+	</proof>
+	<proof type="Proof" proofid="2">
+		<caption>Direct proof that <latex>\ker(L)</latex> is a subvector space of <latex>V</latex></caption>
+		<para>We need to check that <latex>\ker(L)</latex> contains the <latex>\Vect{0}</latex>-vector and is closed under vector addition and scalar multiplication:</para>
+		<math.display>
+			<latex>M\Comp L = \IdMap{V} \quad\text{and}\quad L\Comp M = \IdMap{W}</latex>
+		</math.display>
+		<para>Every linear map satisfies
+			<subordinate>
+				<hot><latex>L(\Vect{0}) = \Vect{0}</latex></hot>
+				<info>
+					<caption>Why is this so?</caption>
+					<computation>
+						<left>L(\Vect{0})</left>
+						<center>0</center>
+						<right>L(\Vect{0} + \Vect{0})</right>
+						<left></left>
+						<center>=</center>
+						<right>L(\Vect{0}) + L(\Vect{0})</right>
+						<left>\Vect{0}</left>
+						<center>=</center>
+						<right>L(\Vect{0})</right>
+					</computation>
+				</info>
+			</subordinate>. So <latex>\Vect{0}</latex> is in <latex>\Ker{ L }</latex>.</para>
+		<para><latex>\Ker{ L }</latex> is closed under vector addition: if <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are in <latex>\Ker{ L }</latex>, we need to show that <latex>\Vect{x} + \Vect{y}</latex> also belongs to <latex>\Ker{ L }</latex>. So we compute</para>
+		<computation>
+			<left>L(\Vect{x} + \Vect{y})</left>
+			<center>=</center>
+			<right>L(\Vect{x}) + L(\Vect{y})</right>
+			<left></left>
+			<center>=</center>
+			<right>\Vect{0} + \Vect{0}</right>
+			<left></left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>So <latex>\Vect{x} + \Vect{y}</latex> belongs to <latex>\Ker{ L }</latex>, as claimed.</para>
+		<para><latex>\Ker{ L }</latex> is closed under scalar multiplication: Let <latex>\Vect{x}</latex> be in <latex>\Ker{ L }</latex>, and let <latex>t</latex> be in <latex>\RNr</latex>. We need to show that <latex>t \Vect{x}</latex> belongs to <latex>\Ker{ L }</latex>. We compute:</para>
+		<computation>
+			<left>L(t \Vect{x})</left>
+			<center>=</center>
+			<right>t\cdot L(\Vect{x})</right>
+			<left></left>
+			<center>=</center>
+			<right>t \Vect{0}</right>
+			<left></left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>So <latex>t \Vect{x}</latex> belongs to the kernel of <latex>L</latex>. – Combining these two facts, we conclude that <latex>\Ker{ L }</latex> is a subvector space of <latex>V</latex>.</para>
+	</proof>
+</theorem>

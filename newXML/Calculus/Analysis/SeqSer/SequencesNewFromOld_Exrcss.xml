@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_SequencesNewFromOld"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: On New Sequences from Given Ones</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>About sequences <math>
+                     <latex>(a_n)</latex>
+                  </math> and <math>
+                     <latex>(b_n)</latex>
+                  </math> answer the following questions. If your answer is ‘yes’, prove it; if your answer is ‘no’ give examples of sequences for which the question has a negative answer.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If both <math>
+                        <latex>(a_n)</latex>
+                     </math> and <math>
+                        <latex>(b_n)</latex>
+                     </math> are increasing, is their sum <math>
+                        <latex>(a_n + b_n)</latex>
+                     </math> increasing?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If both <math>
+                        <latex>(a_n)</latex>
+                     </math> and <math>
+                        <latex>(b_n)</latex>
+                     </math> are increasing, is their product <math>
+                        <latex>(a_n \cdot b_n)</latex>
+                     </math> increasing?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If both <math>
+                        <latex>(a_n)</latex>
+                     </math> and <math>
+                        <latex>(b_n)</latex>
+                     </math> are monotone, is their sum <math>
+                        <latex>(a_n + b_n)</latex>
+                     </math> monotone?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If both <math>
+                        <latex>(a_n)</latex>
+                     </math> and <math>
+                        <latex>(b_n)</latex>
+                     </math> are monotone, is their product <math>
+                        <latex>(a_n \cdot b_n)</latex>
+                     </math> monotone?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(a_n)</latex>
+                     </math> is monotone, is every subsequence <math>
+                        <latex>(a_{n_i})</latex>
+                     </math> monotone?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(a_n)</latex>
+                     </math> is alternating, is every subsequence <math>
+                        <latex>(a_{n_i})</latex>
+                     </math> alternating?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(a_n)</latex>
+                     </math> is bounded below, is every subsequence <math>
+                        <latex>(a_{n_i})</latex>
+                     </math> bounded below?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(a_n)</latex>
+                     </math> is monotone, is every rearrangement of <math>
+                        <latex>(a_{n})</latex>
+                     </math> monotone?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(a_n)</latex>
+                     </math> is bounded above, is every rearrangement of <math>
+                        <latex>(a_{n})</latex>
+                     </math> bounded above?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+</exercise.pack>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_BasisSelect">
+	<headers>
+		<full>Selecting a Basis</full>
+		<toc>Selecting a Basis</toc>
+		<short>Selecting a Basis</short>
+	</headers>
+	<intro>
+		<para>We have learned that every subvector space <latex>V</latex> of <latex>\RNr[n]</latex> has a basis. Just what is an efficient way of finding one if <latex>V</latex> results from any constructions &lsquo;row space&rsquo;, &lsquo;column space&rsquo;, &lsquo;span&rsquo;, &lsquo;null space&rsquo;, and &lsquo;orthogonal complement&rsquo; we have introduced earlier?</para>
+		<para>We will answer this question here with a method which builds upon the reduction of a matrix to echolon form.</para>
+	</intro>
+	<section.body>
+		<xi:include href="BasisRowColumnSpace_Thm.xml"/>
+		<para>Let us now turn to the task of finding a basis for the null space of a matrix. This amounts to re-interpreting earlier insight into solving a system of homogeneous linear equations:</para>
+		<xi:include href="BasisNullSpace_Thm.xml"/>
+		<para>Let us summarize the content of the two preceding results: for vectors <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex> in <latex>\RNr[n]</latex> the following holds:</para>
+		<ul>
+			<li><para>To find a basis for <latex>V:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_r }</latex>, use <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex> as the row vectors of a matrix <latex>\Mtrx{A}</latex>, then the nonzero row vectors of the RREF of <latex>\Mtrx{A}</latex> form a basis for <latex>V</latex>.</para></li>
+			<li><para>To select a basis for <latex>V:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_r }</latex> from amongst the vectors <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex>, use these vectors as the columns of a matrix <latex>\Mtrx{A}</latex>. Then select from <latex>\Mtrx{A}</latex> the columns in those positions where the RREF of <latex>\Mtrx{A}</latex> has a leading <latex>1</latex>.</para></li>
+			<li><para>To find a basis for the orthogonal complement <latex>W:= \span \Set{ \Vect{a}_1,\dots ,\Vect{a}_r }^{\bot}</latex>, use these vectors as the row vectors of a matrix <latex>\Mtrx{A}</latex>, and apply the method of the proposition on the
+				<subordinate>
+					<hot>basis of a null space</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_BasisNullSpace"/>
+						<para>Look this method up.</para>
+					</crossref>
+				</subordinate>
+			</para></li>
+		</ul>
+		
+		<xi:include href="RankFormula_Thm.xml"/>
+		
+		
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_Basis2"/>
+	</studymaterials>
+</section>

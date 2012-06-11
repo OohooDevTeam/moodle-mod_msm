@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_InfSupSequence"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	
+	  <title>Infimum and Supremum of Sequences: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Suppose <math>
+                  <latex>(a_n)</latex>
+               </math> is a sequence with <math>
+                  <latex>\sup(a_n) = \lambda</latex>
+               </math>. Find</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sup(a_n +1),\quad \sup(2a_n),\quad \sup(a_{n}^{2})</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+                     <strong>Very detailed</strong>   We know that <math>
+                        <latex>\lambda</latex>
+                     </math> is the least upper bound of the set</para.body>
+               </para>
+			            <math.display>
+				              <latex>A := \Set{ a_n \st n\in \NNr}</latex>
+			            </math.display>
+			            <para>
+                  <para.body>To find <math>
+                        <latex>\sup(a_n+1)</latex>
+                     </math>, we need to find the least upper bound of the set</para.body>
+               </para>
+			            <math.display>
+				              <latex>B:=\Set{a_n + 1\st n\in \NNr}.</latex>
+			            </math.display>
+			            <para>
+                  <para.body/>
+               </para>
+			            <para>
+                  <para.body>Now a number <math>
+                        <latex>x</latex>
+                     </math> belongs to <math>
+                        <latex>A</latex>
+                     </math> if and only if <math>
+                        <latex>x+1</latex>
+                     </math> belongs to <math>
+                        <latex>B</latex>
+                     </math>. Thus, if <math>
+                        <latex>u</latex>
+                     </math> is an upper bound of <math>
+                        <latex>A</latex>
+                     </math>, then <math>
+                        <latex>u+1</latex>
+                     </math> is an upper bound of <math>
+                        <latex>B</latex>
+                     </math>. In particular, <math>
+                        <latex>\lambda+1</latex>
+                     </math> is an upper bound of <math>
+                        <latex>B</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>To see that <math>
+                        <latex>\lambda+1</latex>
+                     </math> is the least upper bound of <math>
+                        <latex>B</latex>
+                     </math>, consider first an arbitrary upper bound <math>
+                        <latex>v</latex>
+                     </math> of <math>
+                        <latex>B</latex>
+                     </math>. It follows that <math>
+                        <latex>v-1</latex>
+                     </math> is an upper bound of <math>
+                        <latex>A</latex>
+                     </math> and, therefore,</para.body>
+               </para>
+			            <math.display>
+				              <latex>\lambda \leq v-1</latex>
+			            </math.display>
+			            <para>
+                  <para.body>equivalently, <math>
+                        <latex>\lambda+1 \leq v</latex>
+                     </math>. Thus <math>
+                        <latex>\lambda+1</latex>
+                     </math> is the least upper bound of <math>
+                        <latex>B</latex>
+                     </math>; in other words:</para.body>
+               </para>
+			            <math.display>
+				              <latex>\sup(a_n + 1) = \lambda +1</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+                     <strong>Compact</strong>   For <math>
+                        <latex>u\in \RNrExt</latex>
+                     </math>
+                     <math>
+                        <latex>\lambda \leq u</latex>
+                     </math> is an upper bound of</para.body>
+               </para>
+			            <math.display>
+				              <latex>A := \Set{ a_n \st n\in \NNr}</latex>
+			            </math.display>
+			            <para>
+                  <para.body>if and only if <math>
+                        <latex>\lambda+1 \leq u+1</latex>
+                     </math> is an upper bound of</para.body>
+               </para>
+			            <math.display>
+				              <latex>B := \Set{ a_n +1 \st n\in \NNr}</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore, <math>
+                        <latex>\sup(a_n +1) = \lambda + 1</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Suppose <math>
+                  <latex>(a_n)</latex>
+               </math> is a sequence with <math>
+                  <latex>\sup(a_n) = \lambda</latex>
+               </math>. Find</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sup(2a_n),\quad \sup(a_{n}^{2})</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Arguing similar to the previous example, we see</para.body>
+               </para>
+			            <ul>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\sup(2a_n) = 2\sup(a_n) = 2 \lambda</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\sup(a_{n}^{2}) = (\sup(a_n))^2 = \lambda^2</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+			            </ul>
+			
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

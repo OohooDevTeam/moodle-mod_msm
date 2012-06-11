@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack
+  SYSTEM "Symbols.dtd">
+<example.pack xmlns="Compositor"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              id="Exa_AddingVectors"
+              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Examples of Adding Vectors</title>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the sum of the vectors <math>
+                  <latex>\Vect{x}=(2,-1)</latex>
+               </math> and <math>
+                  <latex>\Vect{y}=(3,2)</latex>
+               </math> in <math>
+                  <latex>\RNr[2]</latex>
+               </math>.  
+			</para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>According to the definition, we just need to add vector coordinates in matching positions; i.e.</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					\Vect{x}\ +\ \Vect{y}\ =\ ({\color{green} 2},{\color{blue} -1})\ +\ ({\color{green} 3},{\color{blue} 2})\ =\ ({\color{green} 2} + {\color{green} 3},{\color{blue} -1} + {\color{blue} 2})\ =\ (5,1).
+				</latex>
+			            </math.display>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the sum of the vectors <math>
+                  <latex>\Vect{x}=(1/2,-1,5)</latex>
+               </math> and <math>
+                  <latex>\Vect{y}=(-3/2,\pi,2e)</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>According to the definition, we just need to add vector coordinates in matching positions; i.e.</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\aligned
+\mathbf{x}\ +\ \mathbf{y}\ &amp;=\ ({\color{green} 1/2},{\color{blue} -1},{\color{red} 5})\ +\ ({\color{green} -3/2},{\color{blue} \pi},{\color{red} 2e}) \\
+&amp;=\ ({\color{green} 1/2 - 3/2},{\color{blue} -1 +\pi},{\color{red} 5+2e}) \\
+&amp;=\ (-1,\pi-1,5+2e).
+\endaligned
+					
+				</latex>
+			            </math.display>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the sum of the vectors <math>
+                  <latex>\Vect{x}=(2/3,/14,-2,4,-7)</latex>
+               </math> and <math>
+                  <latex>\Vect{y}=(1,-1,0,-1,1)</latex>
+               </math> in <math>
+                  <latex>\RNr[5]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+		    <answer.ext type="solution" version="1">
+			      <step>
+            <pilot/>
+            <step.body>
+				
+				           <para xmlns="">
+                  <para.body>To add the given vectors, we add the numbers in matching coordinates. Applying this to the first coordinates yields</para.body>
+               </para>
+				           <math.display xmlns="">
+					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,?,?,?,?) </latex>
+				           </math.display>
+			         </step.body>
+         </step>
+			      <step>
+            <pilot/>
+            <step.body>
+				
+				           <math.display xmlns="">
+					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,?,?,?) </latex>
+				           </math.display>
+			         </step.body>
+         </step>
+			      <step>
+            <pilot/>
+            <step.body>
+				
+				           <math.display xmlns="">
+					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,-2,?,?) </latex>
+				           </math.display>
+			         </step.body>
+         </step>
+			      <step>
+            <pilot/>
+            <step.body>
+				
+				           <math.display xmlns="">
+					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,-2,3,?) </latex>
+				           </math.display>
+			         </step.body>
+         </step>
+			      <step>
+            <pilot/>
+            <step.body>
+				
+				           <math.display xmlns="">
+					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,-2,3,-6). </latex>
+				           </math.display>
+			         </step.body>
+         </step>
+		    </answer.ext>
+	  </example>
+</example.pack>

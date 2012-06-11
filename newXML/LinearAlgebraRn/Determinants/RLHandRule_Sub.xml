@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_RLHandRule"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>3-Dimensional Orientation and Rotations</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The right hand orientation is closely related to what is called rotation about an oriented axis according to the right hand rule. </para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/RightHandRule.jpg"/>
+                  </media>
+               </para.body>
+            </para>
+            <para>
+               <para.body>In the picture above the 
+				<subordinate>
+                     <hot>toroidal</hot>
+                     <info>
+                        <para>
+                           <para.body>A torus looks like the surface of a donut or an inner tube</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+				object above 
+					<subordinate>
+                     <hot>rotates</hot>
+                     <external.link href="http://webmath.math.ualberta.ca/~gepe/LinearAlgebraRn/Determinants/ims/RightHandRule.avi"
+                                    target="new"
+                                    type="animation">
+                        <info xmlns="">
+                           <para xmlns="Unit">
+                              <para.body>View an animation of this rotation. You need to have an animation player capable of using the avi-file format.</para.body>
+                           </para>
+                        </info>
+                     </external.link>
+                  </subordinate>
+				in the direction of the arrows near "FCM". To identify this rotation as one according to the right hand rule we note: The axis of rotation is oriented by the displayed vector, call it <math>
+                     <latex>\Vect{z}</latex>
+                  </math>. Upon aligning the thumb of your right hand with <math>
+                     <latex>\Vect{z}</latex>
+                  </math>, your curled fingers point in the direction of the rotation.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The relationship between a "rotation according to the right hand rule" and the "right hand orientation" is obtained as follows.</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Choose any nonzero vector <math>
+                           <latex>\Vect{x}</latex>
+                        </math> perpendicular to <math>
+                           <latex>\Vect{z}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Let <math>
+                           <latex>\Vect{y}</latex>
+                        </math> be the result of rotating <math>
+                           <latex>\Vect{y}</latex>
+                        </math> through the angle of <math>
+                           <latex>\pi/2</latex>
+                        </math> according to the right hand rule.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Then the triple <math>
+                           <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                        </math> represents the right hand orientation of <math>
+                           <latex>\RNr[3]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+   </body>
+</unit>

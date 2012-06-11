@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_OrientationProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Properties of the orientation function</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
+         <ol type="i">
+            <li>
+               <para>
+                  <para.body>Identity i. means: interchanging two vectors in an orientation representing tuple reverses the orientation.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Identity ii. means: reversing the direction in an orientation representing tuple reverses the orientation.</para.body>
+               </para>
+            </li>
+         </ol>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>The orientation function <math>
+               <latex>\omega</latex>
+            </math> on <math>
+               <latex>n</latex>
+            </math>-tuples of vectors of <math>
+               <latex>\RNr[n]</latex>
+            </math> has the following properties.</para.body>
+      </para>
+      <part.theorem partid="Alternating">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\omega(\Vect{x}_1, \dots ,{\color{blue} \Vect{x}_i},\dots ,{\color{red} \Vect{x}_j}, \dots ,\Vect{x}_n) = -\omega(\Vect{x}_1,\dots ,{\color{red} \Vect{x}_j},\dots ,{\color{blue} \Vect{x}_i},\dots ,\Vect{x}_n)</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="InverseProperty">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\omega(\Vect{x}_1,\dots ,\Vect{x}_i,\dots ,\Vect{x}_n) = -\omega(\Vect{x}_1,\dots ,-\Vect{x}_i,\dots ,\Vect{x}_n)</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>This follows immediately from the  
+			<subordinate>
+                     <hot>algebraic properties</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                           <para>
+                              <para.body>Look up these algebraic properties of the determinant operation</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			of the determinant operation.
+		</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

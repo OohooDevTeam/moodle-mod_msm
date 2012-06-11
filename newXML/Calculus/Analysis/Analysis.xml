@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Book_NaiveUseOfSets"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <headers>
+      <texsupport href="Analysis_TeXSupport.xml"/>
+      <literature.db href="../LiteratureDataBase/GePeLiterature.xml"/>
+   </headers>
+   <titles>
+      <title>Analysis</title>
+      <plain.title>Analysis</plain.title>
+   </titles>
+	  <texsupport href="Analysis_TeXSupport.xml"/>
+	  <literature.db href="../LiteratureDataBase/GePeLiterature.xml"/>
+	  <title>Analysis</title>
+	Analysis
+	
+	<authors>
+		    <person>
+			      <name>
+				        <first>WMath</first>
+				        <last/>
+			      </name>
+		    </person>
+	  </authors>
+	  <dates>
+      <creation>
+         <date>
+		          <month>03</month>
+		          <day>09</day>
+		          <year>2011</year>
+	        </date>
+      </creation>
+      <last.revision>
+         <date>
+		          <month>03</month>
+		          <day>09</day>
+		          <year>2011</year>
+	        </date>
+      </last.revision>
+   </dates>
+	  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Intro.xml"/>
+	  <legitimate.children>
+      <unit.choice unitId="Chap_Reals"/>
+      <unit.choice unitId="Chap_SequencesSeries"/>
+      <unit.choice unitId="chap_ContinuousFunctions"/>
+   </legitimate.children>
+</unit>

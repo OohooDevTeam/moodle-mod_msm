@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearEquationsNullSpace">
+	<caption>Null space and orthogonal complement</caption>
+	<statement>
+		<para>The null space of an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> is the orthogonal complement of the row vectors of <latex>\Mtrx{A}</latex> in <latex>\RNr[n]</latex>. Therefore <latex>\NllSp{A}</latex> is a subvector space of <latex>\RNr[n]</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>By definition, the null space of <latex>\Mtrx{A}</latex> consists of all solutions of the matrix equation</para>
+		<computation>
+			<left>\Mtrx{A}\cdot\Vect{x}</left>
+			<center>=</center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>Now express <latex>\Mtrx{A}</latex> in terms of its row vectors:</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+A = 
+\left[
+\begin{array}{c}
+R_1 \\ \vdots \\ R_m
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>Then we find:</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{A}\cdot\Vect{x} = 
+\left[
+\begin{array}{c}
+R_1 \\ \vdots \\ R_m
+\end{array}
+\right] \Vect{x} =
+\left[
+\begin{array}{c}
+\DotPr{ R_1 }{ \Vect{x} } \\ \vdots \\ \DotPr{ R_m }{ \Vect{x} }
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>and so we see that <latex>\Vect{x}</latex> is a solution of <latex>\Mtrx{A}\cdot \Vect{x}=\Vect{0}</latex> exactly when <latex>\Vect{x}</latex> is perpendicular to each of the row vectors <latex>R_1</latex>, ... , <latex>R_m</latex>. But this happens exactly when <latex>\Vect{x}</latex> belongs to the null space of <latex>\Mtrx{A}</latex>.</para>
+	</proof>
+</theorem>

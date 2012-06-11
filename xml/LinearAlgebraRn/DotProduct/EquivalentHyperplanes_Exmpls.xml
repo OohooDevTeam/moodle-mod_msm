@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_EquivalentHyperplanes">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	<title>Equivalent Hyperplanes - Examples</title>
+	<caption>Equivalent Hyperplanes - Examples</caption>
+	
+	<showme>
+		<statement>
+			<para>Determine if the equations below are equivalent.</para>
+			<computation>
+				<left>2x + 3y - z</left>
+				<center>=</center>
+				<right>1</right>
+				<left>4x + 6y - 2z</left>
+				<center>=</center>
+				<right>2</right>
+			</computation>
+		</statement>
+		<answer type="Solution">
+			<para>We notice that multiplying the first equation by <latex>2</latex> yields the second equation. So each solution of one of these equations is also a solution of the other. Therefore their solution sets form the same hyperplane in <latex>\RNr[3]</latex>: the hyperplane perpendicular to <latex>\Vect{n}:=(2,3,-1)</latex> passing through <latex>(0,0,-1)</latex>.</para>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Determine if the equations below are equivalent.</para>
+			<computation>
+				<left>3s + 4t -u+v</left>
+				<center>=</center>
+				<right>1</right>
+				<left>9s + 12t - 3u + 3v</left>
+				<center>=</center>
+				<right>5</right>
+			</computation>
+		</statement>
+		<answer type="Solution">
+			<para>We notice that multiplying the left hand side of the first equation by <latex>3</latex> yields the left hand side of the second equation. However, multiplying the right hand side of the first equation by <latex>3</latex> yields <latex>3\neq 5</latex>. Therefore it is not the case that one equation is a nonzero multiple of the other: the equations are not equivalent.</para>
+			<para>So </para>
+		</answer>
+	</showme>
+</showme.pack>

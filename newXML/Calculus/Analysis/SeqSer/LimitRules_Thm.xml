@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_RulesForLimits"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Rules for computing with limits</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
+         <para>
+            <para.body>When using this theorem for computing with limits, it is important to verify that <math>
+                  <latex>\lim_{n\to\infty}x_n</latex>
+               </math> and <math>
+                  <latex>\lim_{n\to \infty}y_n</latex>
+               </math> exist before making further computations.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
+         <para>
+            <para.body>These operations hold also when <math>
+                  <latex>a,b=\pm \infty</latex>
+               </math>, provided the operation on the right is defined.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For sequences <math>
+               <latex>(x_n)</latex>
+            </math> and <math>
+               <latex>(y_n)</latex>
+            </math> with</para.body>
+      </para>
+      <math.display>
+         <latex>\lim_{n\to\infty}x_n = a \quad \text{and}\quad \lim_{n\to\infty} y_n = b</latex>
+      </math.display>
+      <para>
+         <para.body>and <math>
+               <latex>t\in\RNr</latex>
+            </math> the following hold.</para.body>
+      </para>
+      <part.theorem partid="Scalar">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\lim_{n\to \infty}( t\cdot x_n) = t\cdot a</latex>
+                  </math>, provided: if <math>
+                     <latex>t=0</latex>
+                  </math>, then <math>
+                     <latex>a\neq \pm\infty</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Sum">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\lim_{n\to\infty}(x_n \pm y_n) = a \pm b</latex>
+                  </math>, provided: if <math>
+                     <latex>a=\pm\infty</latex>
+                  </math>, then <math>
+                     <latex>b\neq \mp\infty</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Product">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\lim_{n\to\infty}(x_n \cdot y_n) = a\cdot b</latex>
+                  </math>, provided: if <math>
+                     <latex>a=0</latex>
+                  </math>, then <math>
+                     <latex>b\neq \pm\infty</latex>
+                  </math> and, if <math>
+                     <latex>b=0</latex>
+                  </math>, then <math>
+                     <latex>a\neq \pm\infty</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Division">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>b_n\neq 0</latex>
+                  </math> for all <math>
+                     <latex>n</latex>
+                  </math>, and <math>
+                     <latex>b\neq 0</latex>
+                  </math>, then <math>
+                     <latex>\lim_{n\to\infty}\frac{x_n}{y_n} = \frac{a}{b}</latex>
+                  </math>, provided <math>
+                     <latex>a</latex>
+                  </math> and <math>
+                     <latex>b</latex>
+                  </math> are not simultaneously in <math>
+                     <latex>\Set{\pm\infty}</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>Scalar</part.ref>
+         </logic>
+         <caption>Scalar</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>t=0</latex>
+                  </math>, then</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Sum</part.ref>
+         </logic>
+         <caption>Sum</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Given <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math>, we need to show that there exists <math>
+                     <latex>n_0\in\NNr</latex>
+                  </math> such that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Product</part.ref>
+         </logic>
+         <caption>Product</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Given <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math>, we need to find <math>
+                     <latex> n_0 \in \NNr </latex>
+                  </math> such that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Division</part.ref>
+         </logic>
+         <caption>Division</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We suggest to prove this in two steps:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

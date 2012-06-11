@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_RulesForConvergentSeries">
+	<caption>Rules for computing with convergent series</caption>
+	<statement>
+		<part partid="SeriesScalarProduct">
+			<para>A series <latex>\sum_{n=0}^{\infty} a_n</latex> converges if and only if for every <latex>0\neq c\in \RNr</latex> the series <latex>\sum_{n=0}^{\infty}(ca_n)</latex> converges. In this case</para>
+			<math.display>
+				<latex>\sum_{n=0}^{\infty}(ca_n) = c\cdot \sum_{n=0}^{\infty}a_n</latex>
+			</math.display>
+		</part>
+		<part partid="SeriesSum">
+			<para>Suppose <latex>\sum_{n=0}^{\infty} a_n = K</latex> and <latex>\sum_{n=0}^{\infty} b_n = L</latex> and, if <latex>K=\pm \infty</latex>, then <latex>L\neq \mp\infty</latex>. Then the sum of the series also converges, and</para>
+			<math.display>
+				<latex>\sum_{n=0}^{\infty}(a_n+b_n)\ =\ \left(\sum_{n=0}^{\infty}a_n\right)\ +\ \left( \sum_{n=0}^{\infty} b_n\right)</latex>
+			</math.display>
+		</part>
+	</statement>
+	<proof>
+		<para>To verify both claims our strategy will be to consider the associated sequences of partial sums, and to use rules for computing with sequences.</para>
+		
+		<caption><partref>SeriesScalarProduct</partref> &nbsp; <latex>\sum_{n=0}^{\infty}(ca_n) = c\cdot \sum_{n=0}^{\infty}a_n</latex></caption>
+		<para>Suppose <latex>\sum_{n=0}^{\infty} a_n = L</latex> exists. By definition, this means that the associated sequence of partial sums <latex>(s_n)</latex> converges to <latex>L</latex>. Now let <latex>(t_n)</latex> be the sequence of partial sums of the series <latex>\sum_{n=0}^{\infty} (ca_n)</latex>. Then we have for each <latex>n</latex>:</para>
+		<math.display>
+			<latex>t_n = ca_0 +\cdots +ca_n = c(a_0+\cdots a_n) = cs_n</latex>
+		</math.display>
+		<para>But then the rules for computing with limits of convergent sequences say</para>
+		<math.display>
+			<latex>\sum_{n=0}^{\infty}(ca_n) = \lim_{n\to\infty}(t_n) = \lim_{n\to\infty}(cs_n) = c\cdot \lim_{n\to\infty}s_n = c\cdot \sum_{n=0}^{\infty} a_n </latex>
+		</math.display>
+		<para>To see the converse, assume <latex>\sum_{n=0}^{\infty} (ca_n)</latex> exists. The claim follows by applying the argument just given with <latex>d:=1/c</latex>.</para>
+		
+		<caption><partref>SeriesSum</partref> &nbsp; <latex>\sum_{n=0}^{\infty}(a_n+b_n)\ =\ \left(\sum_{n=0}^{\infty}a_n\right)\ +\ \left( \sum_{n=0}^{\infty} b_n\right)</latex> provided the series on the right converge</caption>
+		<para>Let <latex>(s_n)</latex> and <latex>(t_n)</latex> denote the sequences of partial sums of <latex>\sum_{n=0}^{\infty} a_n = K</latex> and <latex>\sum_{n=0}^{\infty} b_n = L</latex>, respectively. Then</para>
+		<computation>
+			<left>\left(\sum_{n=0}^{\infty} a_n\right)\ +\ \left(\sum_{n=0}^{\infty} b_n\right)</left>
+			<center>=</center>
+			<right>\lim_{n\to\infty} s_n\ +\ \lim_{n\to\infty} t_n</right>
+			<left></left>
+			<center>=	<info>
+				<caption>Why is this true?</caption>
+				<para>Here we use the rule for the 
+					<subordinate>
+						<hot>sum of two convergent sequences</hot>
+						<crossref>
+							<theorem.ref theoremID="Thm_RulesForLimits"/>
+							<para>Look this rule up.</para>
+						</crossref>
+					</subordinate>.</para>
+			</info></center>
+			<right>\lim_{n\to\infty} (s_n + t_n)</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{n=0}^{\infty}(a_n+b_n)</right>
+		</computation>
+		<para>As was to be shown.</para>
+		
+	</proof>
+</theorem>

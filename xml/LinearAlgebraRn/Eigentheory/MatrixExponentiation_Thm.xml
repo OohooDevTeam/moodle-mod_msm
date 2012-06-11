@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_MatrixExponentiation">
+	<caption>Matrix exponentiation</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_MatrixPower"/>
+		<info><para>An example of powering a diagonalizable matrix.</para></info>
+	</associate>
+	
+	<statement>
+		<para>For an integer <latex>r\geq 1</latex> and a diagonalizable matrix <latex>\Mtrx{A}</latex> with <latex>\Mtrx{D} = \Mtrx{C}^{-1} \Mtrx{A} \Mtrx{C}</latex> diagonal,
+			<index.glossary>
+				<term>matrix</term><term>power</term>
+				<info><para>A method of computing powers <latex>\Mtrx{A}^r</latex> of a diagonalizable matrix <latex>\Mtrx{A}</latex></para></info>
+			</index.glossary>
+		</para>
+		<computation>
+			<left>\Mtrx{A}^r</left>
+			<center>=</center>
+			<right>\Mtrx{C} \Mtrx{D}^r \Mtrx{C}^{-1}</right>
+		</computation>
+	</statement>
+	<proof>
+		<para>The equality <latex>\Mtrx{D} = \Mtrx{C}^{-1} \Mtrx{A} \Mtrx{C}</latex> is equivalent to</para>
+		<computation>
+			<left>\Mtrx{A}</left>
+			<center>=</center>
+			<right>\Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1}</right>
+		</computation>
+		<para>Therefore</para>
+		<computation>
+			<left>\Mtrx{A}^r</left>
+			<center>=</center>
+			<right>\left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right)^r</right>
+			<left></left>
+			<center>=	<info><para><latex>r</latex> factors</para></info></center>
+			<right>\left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right) \left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right)\ \cdots\ \left( \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \right)</right>
+			<left></left>
+			<center>=	<info><para>Here we use that the pairs <latex>\Mtrx{C}^{-1} \Mtrx{C}</latex> cancel.</para></info></center>
+			<right>\Mtrx{C}\, \Mtrx{D}^r\, \Mtrx{C}^{-1}</right>
+		</computation>
+		<para>as claimed.</para>
+	</proof>
+</theorem>

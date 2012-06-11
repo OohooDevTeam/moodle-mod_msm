@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE intro	SYSTEM "../Symbols.dtd">
+<intro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd">
+	<para>In this chapter we introduce two fundamental operations on vectors, and learn how to use them:</para>
+	<ol>
+		<li>
+			<para>The first operation is quite intuitive: the length or norm of a vector <latex>\Vect{x}</latex> is just the length of any arrow representing <latex>\Vect{x}</latex>. If <latex>\Vect{x}= (x_1,\dots, x_n)</latex>, then the norm of <latex>\Vect{x}</latex> is</para>
+			<computation>
+				<left>\Abs{\Vect{x}}</left>
+				<center>:=</center>
+				<right>\sqrt{ x_{1}^{2} + \cdots + x_{n}^{2} }</right>
+			</computation>
+			<para>The norm operation has 
+				<subordinate>
+					<hot>algebraic properties</hot>
+					<companion>
+						<theorem.ref theoremID="theo_NormAlgebraicProperties"/>
+						<para>See the statement of the algebraic properties of the norm operation.</para>
+					</companion>
+				</subordinate>
+				which match what one would expect of &lsquo;length of a vector&rsquo;.</para>
+		</li>
+		<li>
+			<para>The second operation is the &lsquo;dot product&rsquo;. It receives as input two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>. It delivers a 
+				<subordinate>
+					<hot>number, denoted <latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex></hot>
+					<companion>
+						<definition.ref definitionID="Def_DotProduct"/>
+						<para>See how the dot product is computed.</para>
+					</companion>
+				</subordinate>. The way the dot product is 
+				<subordinate>
+					<hot>computed</hot>
+					<companion>
+						<definition.ref definitionID="Def_DotProduct"/>
+						<para>See how the dot product is computed.</para>
+					</companion>
+				</subordinate> conveys nothing of its meaning. It is, therefore, perhaps a bit surprising, that the dot product is a very useful and versatile operation.</para>
+			<para>This usefulness and versatility comes from its
+				<subordinate>
+					<hot>geometric properties</hot>
+					<companion>
+						<theorem.ref theoremID="Theo_DotProductNormGeometricProperties"/>
+						<para>Preview the geometric properties of the dot product.</para>
+					</companion>
+				</subordinate>. They tell us about the relationship between norm and dot product: <latex>\Abs{ \Vect{x} }^2 = \DotPr{ \Vect{x} }{ \Vect{x} }</latex>, and the angle between two vectors. In particular, we obtain a very convenient test for when two vectors are perpendicular.</para>
+		</li>
+		<li>
+			<para>We use the dot product to construct the 
+				<subordinate>
+					<hot>orthogonal projection of a vector onto a line</hot>
+					<companion>
+						<subpage.ref subpageID="Illu_ProjectionVectorLine"/>
+						<para>An illustration of the orthogonal projection of a vector onto a line</para>
+					</companion>
+				</subordinate>.</para>
+		</li>
+		<li>
+			<para>We use the dot product to describe 
+				<subordinate>
+					<hot>hyperspaces</hot>
+					<companion>
+						<subpage.ref subpageID="Illu_HyperSpace"/>
+						<para>An illustration of a hyperspace in <latex>\RNr[2]</latex> and in <latex>\RNr[3]</latex>.</para>
+					</companion>
+				</subordinate>
+				and 
+				<subordinate>
+					<hot>hyperplanes</hot>
+					<companion>
+						<subpage.ref subpageID="Illustr_Hyperplane"/>
+						<para>An illustration of a hyperplane in <latex>\RNr[2]</latex> and in <latex>\RNr[3]</latex>.</para>
+					</companion>
+				</subordinate>
+				in <latex>\RNr[n]</latex>. It enables us further to compute the
+				<subordinate>
+					<hot>distance</hot>
+					<companion>
+						<theorem.ref theoremID="Thm_DistancePointHyperplane"/>
+						<para>See the formula to compute the distance of a point from a hyperplane.</para>
+					</companion>
+				</subordinate>
+				of an arbitrary point in <latex>\RNr[n]</latex> from a given hyperplane.</para>
+		</li>
+	</ol>
+</intro>

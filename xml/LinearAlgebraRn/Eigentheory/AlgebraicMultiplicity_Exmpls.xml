@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_AlgebraicMultiplicity">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Algebraic Multiplicity: Examples</title>
+	<showme>
+		<statement>
+			<para>Find the roots of the polynomial <latex>q(\lambda)</latex> and their algebraic multiplicities if</para>
+			<computation>
+				<left>q(\lambda)</left>
+				<center>=</center>
+				<right>\lambda^3 +4\lambda^2-3\lambda-18</right>
+			</computation>
+		</statement>
+		<answer type="Solution">
+			<para>First we need to find the roots of <latex>q</latex>, that is those number values for <latex>\lambda</latex> with <latex>q(\lambda)=0</latex>.</para>
+			<para>By trial and error we find</para>
+			<computation>
+				<left>q(2)</left>
+				<center>=</center>
+				<right>2^3 + 4\cdot 2^2 - 3\cdot 2-18</right>
+				<left></left>
+				<center>=</center>
+				<right>0</right>
+			</computation>
+			<para>So <latex>\lambda_1:=2</latex> is a root of <latex>q</latex>. So we know that <latex>(\lambda-2)</latex> divides <latex>q</latex>. Via long division we find</para>
+			<computation>
+				<left>q(\lambda)</left>
+				<center>=</center>
+				<right>(\lambda-2)(\lambda^2 +6\lambda +9)</right>
+				<left></left>
+				<center>=</center>
+				<right>(\lambda-2)^1(\lambda+3)^2</right>
+			</computation>
+			<para>We conclude that <latex>q</latex> has</para>
+			<ol>
+				<li>
+					<para>the root <latex>\lambda_1=2</latex> with algebraic multiplicity <latex>1</latex>, and</para>
+				</li>
+				<li>
+					<para>the root <latex>\lambda_2=3</latex> with algebraic multiplicity <latex>2</latex>.</para>
+				</li>
+			</ol>
+		</answer>
+	</showme>
+	<showme>
+		<statement>
+			<para>Find the algebraic multiplicities of the roots of the polynomial</para>
+			<computation>
+				<left>p(\lambda)</left>
+				<center>=</center>
+				<right>(\lambda-3)^5(\lambda+1)^2</right>
+			</computation>
+		</statement>
+		<answer type="Solution">
+			<para>Here we get lucky: <latex>p</latex> is given to us in a form from which we can read off its roots and their multiplicities right away.</para>
+			<para>Indeed, the product <latex>(\lambda-3)^5(\lambda+1)^2</latex> is <latex>0</latex> exactly when at least one of its factors <latex>(\lambda-3)</latex> or <latex>(\lambda+1)</latex> is <latex>0</latex>.</para>
+			<para>Now, <latex>\lambda-3=0</latex> exactly when <latex>\lambda=3</latex>. So <latex>p</latex> has the root <latex>\lambda_1 = 3</latex> with algebraic multiplicity <latex>5</latex>.</para>
+			<para>Similarly, <latex>\lambda+1=0</latex> exactly when <latex>\lambda=-1</latex>. So <latex>p</latex> has the root <latex>\lambda_2=-1</latex> with algebraic multiplicity <latex>2</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

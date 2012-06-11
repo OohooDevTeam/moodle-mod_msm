@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE intro	SYSTEM "../Symbols.dtd">
+<intro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd">
+<!-- 
+	Future development:
+	Include treatment of determinants of block matrices
+	Sylvester's determinant theorem: det(I_m +AB) = det(I_n + BA), where A is an (m,n)-matrix and B is an (n,m)-matrix.
+-->
+	<para>The determinant is a function which receives as input a square matrix <latex>\Mtrx{A}</latex> and yields, as output, a number denoted by <latex>\det(\Mtrx{A})</latex>. We are interested in determinants because:</para>
+	<ol>
+		<li>
+			<para>determinants enable us to develop the concept of `oriented volume' in <latex>n</latex>-dimensional space, and</para>
+		</li>
+		<li>
+			<para>determinants provide a new test for invertibility of a square matrix <latex>\Mtrx{A}</latex>: <latex>\Mtrx{A}</latex> is invertible exactly when <latex>\det(\Mtrx{A})\neq 0</latex>.</para>
+		</li>
+	</ol>
+	<para>Let us preview our determinant topics in some more detail.</para>
+	
+	<ol>
+		<li><para><subordinate>
+			<hot>How to compute determinants</hot>
+			<companion>
+				<subpage.ref subpageID="Prvw_DeterminantCompute"/>
+				<para>A preview of how to compute determinants</para>
+			</companion>
+		</subordinate> &nbsp; We first define the determinant of <latex>(1,1)</latex>-matrices, then the determinants of <latex>(2,2)</latex>-matrices, then the determinants of <latex>(3,3)</latex>-matrices and so on. &ndash; A few experiments will show you that, with increasing size of matrices, the number of computations one has to carry out increases extremely rapidly.</para></li>
+		
+		<li>
+			<para><subordinate>
+				<hot>Rules for computing with determinants</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_DeterminantRules"/>
+					<para>A preview of how to compute with determinants</para>
+				</companion>
+			</subordinate>
+				 &ndash; Given that computing determinants of large matrices requires a lot of computations, it is doubly important that there are rules for computing with determinants which are quick and efficient. Some of these rules may seem counter intuitive at first. However, we will explain how these rules correspond perfectly to the properties of the volume function on boxes.</para>
+			<para>In addition, these rules will guide us to an alternate method of computing determinants using row and column operations. For determinants of large matrices this method is much more efficient than the recursive one we discussed earlier.</para>
+		</li>
+		
+		<li>
+			<para><subordinate>
+				<hot>Orientation of space</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_Orientation"/>
+					<para>A preview of &lsquo;orientation&rsquo;</para>
+				</companion>
+			</subordinate> &ndash; Each <latex>\RNr[n]</latex> carries two distinct orientations. This is a subtle property of space. In <latex>\RNr[3]</latex> we encounter it by considering our two hands. While our hands are mirrored images of one another, they are not interchangeable, that is: we cannot replace a left hand by a right hand. Thus we need to distinguish carefully between &lsquo;left&rsquo; and &lsquo;right&rsquo;. We encounter the need for such a distinction in each <latex>\RNr[n]</latex>, and the determinant operation will help us make such a distinction.</para>
+		</li>
+		
+		
+		<li>
+			<para><subordinate>
+				<hot>Oriented volume</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_OrientedVolume"/>
+					<para>A preview of &lsquo;oriented volume&rsquo;</para>
+				</companion>
+			</subordinate>
+				&ndash; Here we combine what we learned about properties of the determinant operation with properties of the volume of boxes and orientation. The result is the surprisingly powerful notion of oriented volume, computed using determinants.</para>
+		</li>
+		
+		
+		<li>
+			<para><subordinate>
+				<hot>Cross product</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_CrossProduct"/>
+					<para>A preview of &lsquo;cross product&rsquo;</para>
+				</companion>
+			</subordinate>
+				&ndash; operation is only defined for pairs of vectors in <latex>\RNr[3]</latex>. Given two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> from <latex>\RNr[3]</latex>, it returns the vector <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> of <latex>\RNr[3]</latex>, called the cross product of <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>. The geometric properties of the cross product operation make it a very powerful tool in mechanical engineering and in parts of physics.</para>
+		</li>
+		
+		
+		<li><para><i>Cramer's rule</i> &ndash; if a system of <latex>n</latex> linear equations in <latex>n</latex> variables has an invertible coefficient matrix, then we can express the unique solution of this system by a formula which uses the determinant operation.
+		</para></li>
+	</ol>
+	
+	<para>Some <subordinate>
+	<hot>historic highlights</hot>
+	<link href="http://www-history.mcs.st-and.ac.uk/history/HistTopics/Matrices_and_determinants.html" target="_blank" type="html"><para>Details on the history of determinants.</para></link>
+</subordinate>
+	</para>
+	<ul>
+		<li><para>The history of determinants started with an analysis of the number of solutions of a system of linear equations. The determinant of the unaugmented coefficient matrix of a homogeneous system of <latex>n</latex> linear equations is nonzero exactly when the system has the unique solution <latex>(0,\dots ,0)</latex>.</para></li>
+		<li><para>The term &lsquo;determinant&rsquo; appeared first in
+			<subordinate>
+				<hot>C. F. Gau&szlig;&rsquo;s</hot>
+				<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Gauss_CarlFriedrich/GaussCarl.xml" target="_blank" type="xml"></link>
+			</subordinate>
+			<subordinate>
+				<hot>work</hot>
+				<cite>
+					<item>
+						<citekey>CFGss1801</citekey>
+					</item>
+				</cite>
+			</subordinate>
+			on quadratic forms to express the fact that the determinant determines the properties of the quadratic form. However, the concept to which Gau&szlig; applied the term &lsquo;determinant&rsquo; is distinct from the concept which we call &lsquo;determinant&rsquo; today.
+			<index.author>
+				<name>
+					<first>Carolo</first>
+					<middle>Friderico</middle>
+					<last>Gau&szlig;</last>
+					<initials>C.F.</initials>
+				</name>
+				<info>
+					<caption>Carl Friedrich Gau&szlig;</caption>
+					<para>Appears here for using the term &lsquo;determinant&rsquo; for a concept which determines the properties of a quadratic form.</para>
+				</info>
+			</index.author>
+		</para></li>
+		<li>
+			<para>The current use of the term &lsquo;determinant&rsquo; goes back at least as far as 
+				<subordinate>
+					<hot>A.-L. Cauchy</hot>
+					<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Cauchy_Augustin/CauchyAugustin.xml" target="_blank" type="xml">
+						<caption>Augustin-Louis Cauchy</caption>
+						<para>A collection of links providing information about Augustin-Louis Cauchy.</para>
+					</link>
+				</subordinate>.
+				He is credited with publishing the most complete of the 
+				<subordinate>
+					<hot>early works on determinants in 1812</hot>
+					<cite>
+						<item>
+							<citekey>ALCchy1812</citekey>
+						</item>
+					</cite>
+				</subordinate>.
+				<index.author>
+					<name>
+						<first>Augustin-Louis</first>
+						<last>Cauchy</last>
+						<initials>A.-L.</initials>
+					</name>
+					<info>
+						<caption>Augustin-Louis Cauchy</caption>
+						<para>Appears here for his contribution to the early development of determinants.</para>
+					</info>
+				</index.author>
+			</para>
+		</li>
+		<li>
+			<para>Later 
+				<subordinate>
+					<hot>Weierstrass</hot>
+					<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Weierstrass_Karl/WeierstrassKarl.xml" target="_blank" type="xml">
+						<caption>Karl Weierstrass</caption>
+						<para>A collection of links providing information about Karl Weierstrass.</para>
+					</link>
+				</subordinate>
+				<index.author>
+					<name>
+						<first>Karl</first>
+						<last>Weierstrass</last>
+						<initials>K.</initials>
+					</name>
+					<info>
+						<caption>Karl Weierstrass</caption>
+						<para>Appears here for his contribution to the early development of determinants.</para>
+					</info>
+				</index.author>
+				used an axiomatic definition of &lsquo;determinant&rsquo;. This means he used properties like &lsquo;multilinear&rsquo;, &lsquo;alternating&rsquo;, to define the determinant.</para>
+		</li>
+	</ul>
+</intro>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_LinearMapGeneral">
+	<headers>
+		<full>Linear Transformations Between Subvector Spaces of <latex>\RNr[k]</latex></full>
+		<toc>Linear Transformations Between Subvector Spaces of <latex>\RNr[k]</latex></toc>
+		<short>Linear Maps Between Subspaces</short>
+	</headers>
+	<intro>
+		<para>In this section we extend what we learned about linear maps <latex>\RNr[n]\to \RNr[m]</latex> to subvector spaces of <latex>\RNr[k]</latex>.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_LinearMapBetweenSubspaces">
+			<caption>Linear transformation</caption>
+			<associate Description="Comment">
+				<subpage.ref subpageID="Expla_LinearTrafoGeneral"/>
+				<info>
+					<para>Comment and Explanation</para>
+				</info>
+			</associate>
+			<para>Let <latex>V</latex> and <latex>W</latex> be subvector spaces of <latex>\RNr[k]</latex>. A linear transformation from <latex>V</latex> to <latex>W</latex> is a function <latex>L\from V\to W</latex> such that</para>
+			<ul>
+				<li><para><i>Additivity</i> &nbsp; <latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex> for all <latex>\Vect{x}</latex>, <latex>\Vect{y}</latex> in <latex>V</latex>.</para></li>
+				<li><para><i>Commutes with scalar multiplication</i> &nbsp; <latex>L(t\Vect{x}) = t L(\Vect{x})</latex> for all <latex>\Vect{x}</latex> in <latex>V</latex> and all <latex>t</latex> in <latex>\RNr</latex>.</para></li>
+			</ul>
+		</def>
+		
+		
+		<para>All operations and constructions we performed on linear maps <latex>\RNr[n]\to \RNr[m]</latex> are, in essence, available for linear maps <latex>V\to W</latex>. To explain how this goes, we begin with
+			<subordinate>
+				<hot>new linear maps from old</hot>
+				<crossref>
+					<section.ref sectionID="Sec_LinearTransformationsNewFromOld"/>
+					<para>Earlier we constructed</para>
+					<ul>
+						<li><para>the sum of two linear transformations</para></li>
+						<li><para>the scalar product of a linear transformation by a number</para></li>
+						<li><para>the composition of two linear transformations</para></li>
+					</ul>
+					<para>Look up how this was done.</para>
+				</crossref>
+			</subordinate>.</para>
+		
+		<xi:include href="NewLinearFromOld_Thm.xml"/>
+		
+		<para>We know that linear maps <latex>\RNr[n]\to \RNr[m]</latex> correspond to matrices of size <latex>(m,n)</latex>. The key to this relationship between linear maps and matrices is the following proposition.</para>
+		
+		<xi:include href="LinearMapByBasis_Thm.xml"/>
+		
+		<para>... and here it is: the relationship between linear maps and matrices.</para>
+		<xi:include href="LinearMapMatrix_Thm.xml"/>
+		<para>Addition of linear transformations corresponds to addition of representing matrices, and composition of linear transformation corresponds to multiplication of representing matrices in the following precise sense.</para>
+		<xi:include href="MatrixSumLinears_Thm.xml"/>
+		<xi:include href="MatrixScalarProductLinearMap_Thm.xml"/>
+		<xi:include href="MatrixCompositionLinearMaps_Thm.xml"/>
+		<xi:include href="ChangeCoordinatesLinearMap_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_LinearMapGeneral"/>
+	</studymaterials>
+</section>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_SumLinearTrafos">
+	<caption>Sum of linear maps is linear</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment: What does this proposition tell us?</caption>
+			<para>This proposition gives us two strong pieces of information:</para>
+			<ol>
+				<li><para>The sum of two linear transformations is again linear</para></li>
+				<li><para>If the linear map <latex>L</latex> is represented by <latex>\Mtrx{A}</latex> and <latex>T</latex> is represented by <latex>\Mtrx{B}</latex>, then the linear map <latex>(L+T)</latex> is represented by the sum of the matrices <latex>\Mtrx{A} + \Mtrx{B}</latex>.</para></li>
+			</ol>
+			<para>In short: the sum of two linear maps corresponds to the sum of their representing matrices.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>If <latex>L,T\from \RNr[n] \longrightarrow \RNr[m]</latex> are two linear transformations, then their sum
+			<index.glossary>
+				<term>sum</term><term>of linear transformations</term><term>represented by sum of matrices</term>
+			</index.glossary>
+			
+		</para>
+		<math.display>
+			<latex>(L+T)\from \RNr[n] \longrightarrow \RNr[m],\quad (L+T)(\Vect{x}) = L(\Vect{x}) + T(\Vect{x})</latex>
+		</math.display>
+		<para>is again linear. Further, if <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> are the <latex>(m,n)</latex>-matrices representing <latex>L</latex> and <latex>T</latex> respectively, then <latex>\Mtrx{A} + \Mtrx{B}</latex> represents <latex>L+T</latex>.</para>
+	</statement>
+	
+	<proof>
+		<caption>Linearity of <latex>(L+T)</latex></caption>
+		<para>We need to show that <latex>(L+T)</latex> satisfies the properties of a linear transformation. To see that it commutes with vector addition, let <latex>\Vect{x},\Vect{y}\in \RNr[n]</latex>. We find</para>
+		
+		<computation>
+			<left>(L+T)(\Vect{x}+\Vect{y})</left>
+			<center>=	<info><para>This is the definition of <latex>(L+T)</latex>.</para></info></center>
+			<right>L(\Vect{x}+\Vect{y}) + T(\Vect{x}+\Vect{y})</right>
+			<left></left>
+			<center>=	<info><para>Here we use that <latex>L</latex> and <latex>T</latex> are linear.</para></info></center>
+			<right>L(\Vect{x}) + L(\Vect{y})\ +\ T(\Vect{x}) + T(\Vect{y})</right>
+			<left></left>
+			<center>=	<info><para>Rearrange summands; remember: vector addition is commutative.</para></info></center>
+			<right>L(\Vect{x}) + T(\Vect{x})\ +\ L(\Vect{y}) + T(\Vect{y})</right>
+			<left></left>
+			<center>=	<info><para>Here we use the definition of <latex>(L+T)</latex> again.</para></info></center>
+			<right>(L+T)(\Vect{x})\ +\ (L+T)(\Vect{y})</right>
+		</computation>
+		
+		<para>So <latex>(L+T)</latex> commutes with vector addition.</para>
+		
+		<para>To see that <latex>(L+T)</latex> commutes with scalar multiplication, let <latex>\Vect{x}\in\RNr[n]</latex> and <latex>t\in\RNr</latex>. We find:</para>
+		
+		<computation>
+			<left>(L+T)(t \Vect{x})</left>
+			<center>=	<info><para>This is the definition of <latex>(L+T)</latex>.</para></info></center>
+			<right>L(t \Vect{x}) + T(t \Vect{x})</right>
+			<left></left>
+			<center>=	<info><para>Because <latex>L</latex> and <latex>T</latex> are linear.</para></info></center>
+			<right>t\cdot L(\Vect{x}) + t\cdot T(\Vect{x})</right>
+			<left></left>
+			<center>=</center>
+			<right>t\cdot ( L(\Vect{x}) + T(\Vect{x}) )</right>
+			<left></left>
+			<center>=	<info><para>This is the definition of <latex>(L+T)</latex> again.</para></info></center>
+			<right>t\cdot (L+T)(\Vect{x})</right>
+		</computation>
+		
+		<para>This means that <latex>(L+T)</latex> commutes with scalar multiplication. – The proof that <latex>(L+T)</latex> is linear is complete.</para>
+		
+		<caption>The matrix which represents <latex>(L+T)</latex></caption>
+		<para>We know now that <latex>(L+T)</latex> is linear. Therefore there is a unique <latex>(m,n)</latex>-matrix  which represents it. On the other hand, if <latex>\Mtrx{A}</latex> represents <latex>L</latex>, and if <latex>\Mtrx{B}</latex> represents <latex>T</latex>, we find for arbitrary <latex>\Vect{x}\in\RNr[n]</latex></para>
+		
+		<math.display>
+			<latex>(A+B)\Vect{x} = A \Vect{x} + B \Vect{x} = L(\Vect{x}) + T(\Vect{x}) = (L+T)(\Vect{x})</latex>
+		</math.display>
+		
+		<para>Therefore <latex>\Mtrx{C}:=\Mtrx{A} + \Mtrx{B}</latex> is the unique matrix representing <latex>(L+T)</latex>.</para>
+	</proof>
+</theorem>

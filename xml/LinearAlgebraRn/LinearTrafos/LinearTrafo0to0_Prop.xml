@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearTrafo0To0">
+	<caption>Linear map <latex>L</latex> satisfies <latex>L(\Vect{0})=\Vect{0}</latex></caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Why is this a special property?</caption>
+			<para>To appreciate this property of linear functions, we need to be aware that arbitrary functions need to have it. Consider, for example, the constant function <latex>f\from \RNr\to \RNr</latex>, <latex>f(x)=1</latex>. It has <latex>f(0)=1\neq 0</latex>. So even this simple function <latex>f</latex> fails to have the property <latex>L(\Vect{0})=\Vect{0}</latex> that all linear functions have.</para>
+			<para>In particular, <latex>f</latex> is not linear.</para>
+		</info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_LinearTrafo0To0"/>
+		<info>
+			<para>Linear maps must send zero vector to zero vector. If a given function fails to have this property, it cannot be linear. Here are some examples of this type.</para>
+			
+			<para><b>Warning</b> &nbsp; There are functions which satisfy <latex>f(\Vect{0}) = \Vect{0}</latex>, but still <latex>f</latex> is not linear.</para>
+		</info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_0to0NotLinear"/>
+		<info><para>Examples of linear maps which send <latex>\Vect{0}</latex> to <latex>\Vect{0}</latex> but are not linear</para></info>
+	</associate>
+	
+	<statement>
+		<para>A linear function <latex>L\from \RNr[n]\to \RNr[m]</latex> satisfies <latex>L(\Vect{0})=\Vect{0}</latex>.</para>
+	</statement>
+	
+	<proof>
+		<para>The proof are about to give might appear silly at first sight because we appear to perform pointless manipulations of zero vectors. However, these manipulations of zero vectors are designed to relate to the two 
+			<subordinate>
+				<hot>fundamental properties</hot>
+				<crossref>
+					<definition.ref definitionID="Def_LinearMap"/>
+					<para>Look up the definition of &lsquo;linear transformation&rsquo;</para>
+				</crossref>
+			</subordinate>
+			which characterize linear functions</para>
+		
+		<computation>
+			<left>L(\Vect{0})</left>
+			<center>=</center>
+			<right>L(\Vect{0} + \Vect{0})</right>
+			<left></left>
+			<center>=	<info><para>linear maps commute with vector addition</para></info></center>
+			<right>L(\Vect{0}) + L(\Vect{0})</right>
+			<left>\Vect{0}</left>
+			<center>=</center>
+			<right>L(\Vect{0})</right>
+		</computation>
+		
+		<para>This was to be shown.</para>
+	</proof>
+</theorem>

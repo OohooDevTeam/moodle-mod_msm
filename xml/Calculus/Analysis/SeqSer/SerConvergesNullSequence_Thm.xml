@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ConvergentSeriesOnlyFromNullSequence">
+	<caption>Condition for convergence to a number</caption>
+	<associate Description="Comment">
+		<showme.pack.ref showmePackID="Exa_HarmonicSeries"/>
+		<info>
+			<caption>Warning</caption>
+			<para>You may wonder if the converse of this proposition is also true: if <latex>\lim_{n\to \infty} a_n = 0</latex>, does the series <latex>\sum_{n=0}^{\infty} a_n</latex> converge to a number?</para>
+			<para>The answer is: &lsquo;no&rsquo; and here is an example which demonstrates this.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>If <latex>\sum_{n=0}^{\infty} a_n=L\in\RNr</latex>, then <latex>\lim_{n\to\infty}a_n = 0</latex>.
+			<index.glossary>
+				<term>convergence</term><term>of a series</term><term>to a number</term>
+				<info>
+					<caption>Proposition</caption>
+					<para>If <latex>\sum_{n=0}^{\infty} a_n=L\in\RNr</latex>, then <latex>\lim_{n\to\infty}a_n = 0</latex>.</para>
+				</info>
+			</index.glossary>
+		</para>
+	</statement>
+	<proof>
+		<para>Let <latex>(s_n)</latex> be the sequence of partial sums of the given series. Then</para>
+		<computation>
+			<left>\lim_{n\to\infty}a_n</left>
+			<center>=</center>
+			<right>\lim_{n\to\infty}(s_n - s_{n-1})</right>
+			<left></left>
+			<center>=</center>
+			<right>\lim_{n\to\infty}s_n\ -\ \lim_{n\to\infty}s_{n-1}</right>
+			<left></left>
+			<center>=</center>
+			<right>L-L = 0</right>
+		</computation>
+		<para>as claimed.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_CrossProductGeometricProperties">
+	<caption>Cross product: geometric properties</caption>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="Sub_CrossProductGeometricProperties"/>
+		<info>
+			<caption>Illustration</caption>
+			<para>An illustration of the geometric properties of the cross product</para>
+		</info>
+	</associate>
+	
+	
+	<statement>
+		<para>For vectors <latex>\Vect{a}</latex>, <latex>\Vect{x}</latex>, and <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex>, the following hold</para>
+		<part partid="Perpendicular">
+			<para><latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> is perpendicular to both <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+		</part>
+		<part partid="RightHandOrientation">
+			<para>If <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }\neq \Vect{0}</latex>, then the vector triple <latex>(\Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex> represents the right hand orientation of <latex>\RNr[3]</latex>.</para>
+		</part>
+		<part partid="ZeroIfParallel">
+			<para><latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex> if and only if <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel.</para>
+		</part>
+		<part partid="Length">
+			<para><latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex> is the area of the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+		</part>
+		<part partid="SineFormula">
+			<para>If <latex>\Vect{x},\Vect{y} \neq \Vect{0}</latex>, then <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \abs{ \Vect{x} } \abs{ \Vect{y} } \cdot \sin \sphericalangle(\Vect{x} , \Vect{y} )</latex>.</para>
+		</part>
+		<part partid="LagrangeIdentity">
+			<caption>Lagrange's identity</caption>
+			<para><latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2 = \abs{ \Vect{x} }^2 \abs{ \Vect{y} }^2 - (\DotPr{ \Vect{x} }{ \Vect{y} })^2</latex></para>
+		</part>
+		<part partid="DoubleCross">
+			<para><latex>\CrssPr{ \Vect{a} }{( \CrssPr{ \Vect{x} }{ \Vect{y} } )} = (\DotPr{ \Vect{a} }{ \Vect{y} })\cdot \Vect{x}\ -\ (\DotPr{ \Vect{a} }{ \Vect{x} })\cdot \Vect{y}</latex></para>
+		</part>
+	</statement>
+	<proof>
+		<para>Each of these statements can be proved by computing according to the definitions. However, we derive more conceptual arguments from the 
+			<subordinate>
+				<hot>fundamental relationship</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_CrossDotDeterminant"/>
+					<para>Look up this relationship</para>
+				</crossref>
+			</subordinate>
+			between cross product, dot product, and determinant.</para>
+		
+		<caption><partref>Perpendicular</partref> <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> is perpendicular to both <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex></caption>
+		<para>To see that <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are perpendicular to <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>, we compute</para>
+		<computation>
+			<left>\DotPr{ \Vect{x} }{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</left>
+			<center>=	<info><para>Here we use that, if two columns of a matrix <latex>\Mtrx{A}</latex> are equal, then <latex>\det(\Mtrx{A}) = 0</latex></para></info></center>
+			<right>\det[ \Vect{x}\ \ \Vect{x}\ \ \Vect{y}] = 0</right>
+			<left>\DotPr{ \Vect{y} }{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</left>
+			<center>=	<info><para>Here we use that, if two columns of a matrix <latex>\Mtrx{A}</latex> are equal, then <latex>\det(\Mtrx{A}) = 0</latex></para></info></center>
+			<right>\det[ \Vect{y}\ \ \Vect{x}\ \ \Vect{y}] = 0</right>
+		</computation>
+		<para>So, indeed, <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> is perpendicular to both of its factors.</para>
+		
+		
+		<caption><partref>RightHandOrientation</partref> <latex>(\Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex> represents the right hand orientation</caption>
+		<para>To see that the vector triple <latex>( \Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex> represents the right hand orientation of <latex>\RNr[3]</latex>, we compute</para>
+		<computation>
+			<left>\det[ \Vect{x}\ \ \Vect{y}\ \ \CrssPr{ \Vect{x} }{ \Vect{y} }]</left>
+			<center>=</center>
+			<right>\DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }</right>
+			<left></left>
+			<center><![CDATA[ > ]]>		<info><para>Here we need to use the assumption that <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } \neq \Vect{0}</latex>.</para></info></center>
+			<right>0</right>
+		</computation>
+		<para>Given that the determinant is positive, we deduce that the vector triple <latex>( \Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex> represents the right hand orientation of <latex>\RNr[3]</latex>.</para>
+		
+		
+		
+		<caption><partref>ZeroIfParallel</partref> <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex> if and only if <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel.</caption>
+		<para>Consider first the case where <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel, so that <latex>\Vect{y} = t \Vect{x}</latex>, say. We need to show that <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>. Indeed,</para>
+		<computation>
+			<left>\CrssPr{ \Vect{x} }{ \Vect{y} }</left>
+			<center>=</center>
+			<right>\CrssPr{ \Vect{x} }{ t\cdot \Vect{y} }</right>
+			<left></left>
+			<center>=	<info><para>Here we use that the crossproduct operation is linear in the second factor</para></info></center>
+			<right>t\cdot (\CrssPr{ \Vect{x} }{ \Vect{x} })</right>
+			<left></left>
+			<center>=	<info><para>Here we use the antisymmetry property of the cross product operation. It gives</para>
+				<computation>
+					<left>\CrssPr{ \Vect{x} }{ \Vect{x} }</left>
+					<center>=</center>
+					<right>-\CrssPr{ \Vect{x} }{ \Vect{x} }</right>
+				</computation>
+				<para>Therefore <latex>\CrssPr{ \Vect{x} }{ \Vect{x} } = \Vect{0}</latex>.</para>
+			</info></center>
+			<right>t\cdot \Vect{0}</right>
+		</computation>
+		<para>For the converse, assume now that <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>. We need to show that the two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel. If one of the vectors is <latex>\Vect{0}</latex>, we are done. So assume now both vectors are not <latex>\Vect{0}</latex> and have coordinates</para>
+		<para align="center"><latex>\Vect{x} = (x_1,x_2,x_3)</latex> &nbsp; and &nbsp; <latex>\Vect{y} = (y_1,y_2,y_3)</latex>.</para>
+		<para>We show the existence of <latex>t</latex> in <latex>\RNr</latex> with <latex>\Vect{y} = t \Vect{x}</latex>. We know that at least one of the coordinates of <latex>\Vect{x}</latex> is not <latex>0</latex>; say <latex>x_1\neq 0</latex>. Then <latex>t:=y_1/x_1</latex> is defined, and we claim that <latex>\Vect{y} = t\cdot \Vect{x}</latex>. Indeed, since <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>, we have</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+0 &= \det
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_3 & y_3
+\end{array}
+\right] &= x_1y_3-x_3y_1 &\quad \text{so}\quad &y_3=\dfrac{y_1}{x_1}x_3 = t x_3 \\
+0 &= \det
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_2 & y_2
+\end{array}
+\right] &= x_1y_2-x_2y_1 &\quad \text{so}\quad &y_2=\dfrac{y_1}{x_1}x_2 = t x_2
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		<para>This shows that <latex>\Vect{y} = t \Vect{x}</latex>, and so the two vectors are parallel.</para>
+		
+		
+		
+		
+		<caption><partref>Length</partref> <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex> is the area of the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex></caption>
+		<para>To relate <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex> to the area of the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>, we consider first the case where <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }= \Vect{0}</latex>. From (3) we know that <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel. Therefore the parallelogram <latex>P</latex> spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> is just a line segment. So the claimed identity</para>
+		<math.display>
+			<latex>\text{Area}(P) = 0 = \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+		</math.display>
+		<para>holds in this case.</para>
+		<para>Let us now turn to the situation where <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }\neq \Vect{0}</latex>. It follows that</para>
+		<math.display>
+			<latex>\Vect{n} := \dfrac{ \CrssPr{ \Vect{x} }{ \Vect{y} }}{ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } }</latex>
+		</math.display>
+		<para>is defined and satisfies <latex>\abs{ \Vect{n} } = 1</latex>. Moreover, we know that <latex>\Vect{n}</latex> is perpendicular to both <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>. Therefore</para>
+		<computation>
+			<left>\text{Area}(P)</left>
+			<center>=	<info><para>This is so because the parallelepiped spanned by <latex>\Vect{x}</latex>, <latex>\Vect{y}</latex>, and <latex>\Vect{y}</latex> has as its base the parallelogram <latex>P</latex> spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>, and has height <latex>\abs{ \Vect{n} }=11</latex>.</para></info></center>
+			<right>\Vol( \Vect{x} , \Vect{y} , \Vect{n} )</right>
+			<left></left>
+			<center>=</center>
+			<right>\abs{ \det[ \Vect{x}\ \ \Vect{y} \ \ \Vect{n}] }</right>
+			<left></left>
+			<center>=</center>
+			<right>\abs{ \DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \Vect{n} } }</right>
+			<left></left>
+			<center>=</center>
+			<right>\abs{ \DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \dfrac{ \CrssPr{ \Vect{x} }{ \Vect{y} }}{ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } } } }</right>
+			<left></left>
+			<center>=</center>
+			<right>\dfrac{ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2 }{ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } }</right>
+			<left></left>
+			<center>=</center>
+			<right>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</right>
+		</computation>
+		<para>This is what we wanted to show.</para>
+		
+		
+		
+		
+		
+		<caption><partref>SineFormula</partref> If <latex>\Vect{x},\Vect{y} \neq \Vect{0}</latex>, then <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \abs{ \Vect{x} } \abs{ \Vect{y} } \cdot \sin \sphericalangle(\Vect{x} , \Vect{y} )</latex></caption>
+		<para>The parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> has a base of length <latex>\abs{ \Vect{x} }</latex> and a height of <latex>\sin \sphericalangle( \Vect{x} , \Vect{y} ) \cdot \abs{ \Vect{y} }</latex>.</para>
+		<figure>
+			<img src="ims/CrossProductArea.gif"></img>
+		</figure>
+		<para>This means that the area of the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> is as claimed, namely <latex>\Abs{ \Vect{x} } \Abs{ \Vect{y} }\cdot \sin\sphericalangle (\Vect{x} , \Vect{y} )</latex>.</para>
+		
+		
+		<caption><partref>LagrangeIdentity</partref> Lagrange's identity</caption>
+		<para>This follows now by direct computation</para>
+		<computation>
+			<left>\Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2</left>
+			<center>=</center>
+			<right>\Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\cdot \sin^2\sphericalangle( \Vect{x} , \Vect{y} )</right>
+			<left></left>
+			<center>=	<info><para>Here we use the trigonometric identity</para>
+				<computation>
+					<left>\sin^2\alpha\ +\ \cos^2\alpha</left>
+					<center>=</center>
+					<right>1</right>
+				</computation>
+			</info></center>
+			<right>\Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\cdot \left(1 - \cos^2\sphericalangle( \Vect{x} , \Vect{y} ) \right)</right>
+			<left></left>
+			<center>=</center>
+			<right>\Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\ -\ \Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\cdot \cos^2(\sphericalangle( \Vect{x} , \Vect{y} ) )</right>
+			<left></left>
+			<center>=	<info>
+				<para>Here we use the geometric interpretation of the dot product:</para>
+				<computation>
+					<left>\DotPr{ \Vect{x} }{ \Vect{y} }</left>
+					<center>=</center>
+					<right>\Abs{ \Vect{x} } \Abs{ \Vect{y} }\cdot \cos(\sphericalangle( \Vect{x} , \Vect{y} ) )</right>
+				</computation>
+				
+			</info></center>
+			<right>\Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\ -\ (\DotPr{ \Vect{x} }{ \Vect{y} })^2</right>
+		</computation>
+		
+		<caption><partref>DoubleCross</partref> <latex>\CrssPr{ \Vect{a} }{( \CrssPr{ \Vect{x} }{ \Vect{y} } )} = (\DotPr{ \Vect{a} }{ \Vect{y} })\cdot \Vect{x}\ -\ (\DotPr{ \Vect{a} }{ \Vect{x} })\cdot \Vect{y}</latex></caption>
+		<para>The only argument fully available to us at the moment seems to be to evaluate both sides of the equation and check that they agree. Here is a sketch of an alternate argument which involves the concept of a basis.</para>
+		<para>If  <latex>\Vect{x}</latex>  and  <latex>\Vect{y}</latex>  are parallel, both sides of the identity are seen to be <latex>0</latex>. If they are not parallel, the vectors  <latex>\Vect{x}</latex>, <latex>\Vect{y}</latex>, and  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>  form a basis of  <latex>\RNr[3]</latex>. Therefore a vector <latex>\Vect{z}</latex> is <latex>\Vect{0}</latex> exactly when its dot product with each of the basis vectors is <latex>0</latex>. Accordingly, we show that the dot product of</para>
+		<math.display>
+			<latex>\Vect{z} := \CrssPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} })} + (\DotPr{ \Vect{a} }{ \Vect{x} })\cdot \Vect{y}\ -\ (\DotPr{\Vect{a} }{ \Vect{y} })\cdot \Vect{x}</latex>
+		</math.display>
+		<para>with each of the three basis vectors vanishes. Now  <latex>\DotPr{ \Vect{z} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) } = 0</latex>, because each summand of <latex>\Vect{z}</latex> is perpendicular to <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>. To see that <latex>\DotPr{ \Vect{z} }{ \Vect{x} } = 0 = \DotPr{ \Vect{z} }{ \Vect{y} }</latex>, we simplify matters further: As a function of <latex>\Vect{a}</latex>, <latex>\Vect{z}</latex> is linear. So it suffices to consider the cases where <latex>\Vect{a} = \Vect{x}</latex>, <latex>\Vect{y}</latex>, <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>. We find:</para>
+		<math.display>
+			<latex>\DotPr{ \left( \CrssPr{ \Vect{x} }{ ( \CrssPr{ \Vect{x} }{ \Vect{y} } ) } \right)}{ \Vect{x} }\ +\ \abs{ \Vect{x} }^2 (\DotPr{ \Vect{y} }{ \Vect{x} })\ -\ (\DotPr{ \Vect{x} }{ \Vect{y} }) \abs{ \Vect{x} }^2\ =\ 0</latex>
+		</math.display>
+		<para>as expected. Moreover,</para>
+		<computation>
+			<left>\DotPr{ \left( \CrssPr{ \Vect{x} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }\right) }{ \Vect{y} } + \abs{ \Vect{x} }^2 \abs{ \Vect{y} }^2 - (\DotPr{ \Vect{x} }{ \Vect{y} })^2</left>
+			<center>=</center>
+			<right>\DotPr{ \left( \CrssPr{ \Vect{x} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }\right) }{ \Vect{y} }\ +\ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2</right>
+			<left></left>
+			<center>=</center>
+			<right>\det[ \Vect{x}\ \ (\CrssPr{ \Vect{x} }{ \Vect{y} })\ \ \Vect{y} ]\ +\ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2</right>
+			<left></left>
+			<center>=</center>
+			<right>-\det[ \Vect{x}\ \ \Vect{y}\ \ (\CrssPr{ \Vect{x} }{ \Vect{y} })] + \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2</right>
+			<left></left>
+			<center>=</center>
+			<right>-\Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2\ +\ \Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2</right>
+			<left></left>
+			<center>=</center>
+			<right>0</right>
+		</computation>
+		<para>The case where <latex>\Vect{a} = \Vect{y}</latex> is treated similarly.</para>
+		<para>This completes the proof of the geometric properties of the cross product.</para>
+	</proof>
+</theorem>

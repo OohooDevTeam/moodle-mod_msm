@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition" id="thm_HyperplaneEquation">
+   <caption>Equation of a Hyperplane</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation</caption>
+			<para>In other words: the hyperplane in <latex>\RNr[n]</latex> perpendicular to <latex>\Vect{n}</latex> and passing through <latex>\Vect{p}</latex> consists of all those <latex>\Vect{p}</latex> such that <latex>(\Vect{x}-\Vect{p})</latex> dot <latex>\Vect{n}</latex> is zero.</para>
+		</info>
+	</associate>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="Illustr_Hyperplane"/>
+		<info>
+			<caption>Illustration</caption>
+			<para>An illustration of a hyperplane</para>
+		</info>
+	</associate>
+	<statement>
+      <para>Given a nonzero vector <latex>\Vect{n}</latex> in <latex>\RNr[n]</latex> and a point <latex>P</latex> with position vector <latex>\Vect{p}</latex>, the hyperplane perpendicular to <latex>\Vect{n}</latex> through <latex>P</latex> is the set of  all those <latex>\Vect{x} = (x_1,\dots ,x_n)</latex> in <latex>\RNr[n]</latex> with</para>
+      <math.display>
+         <latex>\DotPr{ (\Vect{x} - \Vect{p}) }{ \Vect{n} } = 0</latex>
+      </math.display>
+   </statement>
+   <proof>
+   	<para>We use the picture below to guide our argument.</para>
+   	<figure>
+   		<img src="ims/HyperPlaneEquation.gif"></img>
+   	</figure>
+   	<para>If <latex>\Vect{x}</latex> is the position vector of an arbitrary point in <latex>\RNr[n]</latex>, let <latex>\Vect{y}:= \Vect{x} - \Vect{p}</latex> be as shown in the picture above. Then <latex>\Vect{x}</latex> belongs to the hyperplane perpendicular to <latex>\Vect{n}</latex> through <latex>P</latex> if and only if <latex>\Vect{y}</latex> is perpendicular to <latex>\Vect{n}</latex>; i.e. if and only if</para>
+   	<math.display>
+   		<latex>\DotPr{ (\Vect{x} - \Vect{p}) }{ \Vect{n} } = 0</latex>
+   	</math.display>
+   	<para>This is what we wanted to show.</para>
+   </proof>
+</theorem>

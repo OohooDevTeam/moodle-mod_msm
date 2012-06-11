@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_LinearTrafosTypes2"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Self Test: Types of Linear Transformations</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below indicate if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+T =
+\left[
+\begin{array}{rr}
+3 &amp; 0 \\
+0 &amp; 3
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>represents the dilation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> by a factor of <math>
+                        <latex>3</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall the transformation effect of a matrix of the form <math>
+                        <latex>c\cdot \IdMtrx[2]</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>One way to solve this problem is by remembering that a matrix of the form <math>
+                           <latex>c\cdot \IdMtrx[2]</latex>
+                        </math> rescales <math>
+                           <latex>\RNr[2]</latex>
+                        </math> by a factor of <math>
+                           <latex>c</latex>
+                        </math>. – This means that the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Compute the transformation effect of <math>
+                        <latex>T</latex>
+                     </math> on an arbitrary vector <math>
+                        <latex>\Vect{x} = (x,y)</latex>
+                     </math>
+                  </para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix <math>
+                           <latex>T</latex>
+                        </math> represents the linear map <math>
+                           <latex>L</latex>
+                        </math> which transforms a vector <math>
+                           <latex>\Vect{x} = (x,y)</latex>
+                        </math> into</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+L(\Vect{x}) =
+\left[
+\begin{array}{rr}
+3 &amp; 0 \\
+0 &amp; 3
+\end{array}
+\right]
+\left[
+\begin{array}{c} x \\ y \end{array}
+\right] =
+\left[
+\begin{array}{c} 3x \\ 3y \end{array}
+\right] = 3\Vect{x}
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This means that <math>
+                           <latex>L</latex>
+                        </math> rescales <math>
+                           <latex>\RNr[2]</latex>
+                        </math> by a factor of <math>
+                           <latex>3</latex>
+                        </math> or, in other words, <math>
+                           <latex>L</latex>
+                        </math> is the dilation of <math>
+                           <latex>\RNr[2]</latex>
+                        </math> by the factor of <math>
+                           <latex>3</latex>
+                        </math>. – This means that the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+T =
+\left[
+\begin{array}{rr}
+3 &amp; 0 \\
+0 &amp; 3
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>represents the dilation of <math>
+                        <latex>\RNr[4]</latex>
+                     </math> by a factor of <math>
+                        <latex>3</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Check the domain and the target of this transformation</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix <math>
+                           <latex>T</latex>
+                        </math> describes a transformation of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>, not of <math>
+                           <latex>\RNr[4]</latex>
+                        </math>. Therefore the statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+T =
+\left[
+\begin{array}{rr}
+3 &amp; 3 \\
+3 &amp; 3
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>represents the dilation of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> by a factor of <math>
+                        <latex>3</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Check if this transformation transforms an arbitrary vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math> into the vector <math>
+                        <latex>3\cdot \Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix <math>
+                           <latex>T</latex>
+                        </math> transforms a vector <math>
+                           <latex>\Vect{x} = (x,y)</latex>
+                        </math> into the vector <math>
+                           <latex>\Vect{y} = (3x+3y,3x+3y)</latex>
+                        </math>. Such a vector <math>
+                           <latex>\Vect{y}</latex>
+                        </math> can be distinct from <math>
+                           <latex>3\cdot \Vect{x}</latex>
+                        </math>. For example, <math>
+                           <latex>T</latex>
+                        </math> transforms <math>
+                           <latex>\Vect{x} = (1,-1)</latex>
+                        </math> into <math>
+                           <latex>(0,0)\neq 3\cdot (1,-1)</latex>
+                        </math>. Therefore the statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+R =
+\left[
+\begin{array}{rr}
+1 &amp; 0 \\
+0 &amp; 0
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>represents the projection of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> onto the <math>
+                        <latex>x</latex>
+                     </math>-axis.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall: <math>
+                        <latex>\Prjctn{1}\from \RNr[2] \to \RNr</latex>
+                     </math> satisfies <math>
+                        <latex>\Prjctn{1}(x,y)=x</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We determine the transformation effect of <math>
+                           <latex>R</latex>
+                        </math>:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{rr}
+1 &amp; 0 \\
+0 &amp; 0
+\end{array}
+\right] \left[ \begin{array}{c} x \\ y \end{array} \right] = 
+\left[ \begin{array}{c} x \\ 0 \end{array} \right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>On the other hand, the projection of <math>
+                           <latex>\RNr[2]</latex>
+                        </math> onto the <math>
+                           <latex>x</latex>
+                        </math>-axis is given by</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Prjctn{1}\from \RNr[2] \to \RNr,\qquad \Prjctn{1}(x,y)=x</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The two transformations have the same effect on each vector of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>. So, they are equal. – Therefore the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The matrix</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+R =
+\left[
+\begin{array}{rr}
+0 &amp; 0 \\
+0 &amp; 1
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>represents the projection of <math>
+                        <latex>\RNr[2]</latex>
+                     </math> onto the <math>
+                        <latex>y</latex>
+                     </math>-axis.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall: <math>
+                        <latex>\Prjctn{2}\from \RNr[2] \to \RNr</latex>
+                     </math> satisfies <math>
+                        <latex>\Prjctn{2}(x,y)=y</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For which values of <math>
+                     <latex>s</latex>
+                  </math> is the scaling transformation of <math>
+                     <latex>\RNr[2]</latex>
+                  </math>,</para.body>
+            </para>
+			         <math.display>
+				           <latex>L\from \RNr[2] \longrightarrow \RNr[2],\quad L(\Vect{x})=s\cdot \Vect{x}</latex>
+			         </math.display>
+			         <para>
+               <para.body>also a rotation of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> about the origin?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>A rotation leaves the size and shape of an object unchanged. For which values of <math>
+                     <latex>s</latex>
+                  </math> does <math>
+                     <latex>L</latex>
+                  </math> do this?</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>A rotation leaves the size and shape of an object unchanged. The only values of <math>
+                        <latex>s</latex>
+                     </math> for which <math>
+                        <latex>L</latex>
+                     </math> leaves sizes unchanged are</para.body>
+               </para>
+				           <ol>
+					             <li>
+						               <para>
+                        <para.body>
+                           <math>
+                              <latex>s=1</latex>
+                           </math> which is the identity transformation. Indeed, this may also be viewed as the rotation about the origin of <math>
+                              <latex>\RNr[2]</latex>
+                           </math> through the angle <math>
+                              <latex>0</latex>
+                           </math>.</para.body>
+                     </para>
+					             </li>
+					             <li>
+						               <para>
+                        <para.body>
+                           <math>
+                              <latex>s=-1</latex>
+                           </math> which is the reflection through the origin. Indeed, this may also be viewed as the rotation about the origin of <math>
+                              <latex>\RNr[2]</latex>
+                           </math> through the angle <math>
+                              <latex>\pi</latex>
+                           </math>.</para.body>
+                     </para>
+					             </li>
+				           </ol>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+</exercise.pack>

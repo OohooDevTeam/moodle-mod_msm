@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illstrt_TrafoSquareRotate">
+	<title>Transformation Given by Rotating a Square</title>
+	<sub.page.body>
+		<block>
+			<para>The picture below shows a square (left) and then the result of rotating it.</para>
+			
+			<figure>
+				<img src="ims/Trafo_SquareRotate.png"></img>
+				<caption>A square transformed by a rotation</caption>
+			</figure>
+			
+			<para>This transformation acts on the square by rotating it about its center through approximately 30 degrees. It transforms lines into lines. We will see that it is linear.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

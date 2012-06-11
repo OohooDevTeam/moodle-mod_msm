@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      unitid="chap_ContinuousFunctions">
+   <titles>
+      <title>Continuous Functions</title>
+      <plain.title>Continuous Functions</plain.title>
+   </titles>
+   <legitimate.children>
+			
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ContFuncs/Intro.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ContFuncs/ContFuncs.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="ContFuncs/NewContinuousFromOld.xml"/>
+			
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ContFuncs/Ancient_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="ContFuncs/ContGraph_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="ContFuncs/LimitCommute_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="ContFuncs/EpsilonDeltaExpli_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="ContFuncs/EpsilonDeltaExpli1_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="ContFuncs/ContinuousFunctions_Exrcss.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="ContFuncs/PastingLemma_sub.xml"/>
+			   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="ContFuncs/NewFromOld_Exrcss.xml"/>
+		</legitimate.children>
+</unit>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_OrthogonalComplementSubSpace">
+	<caption>Orthogonal complement is subspace</caption>
+		
+	<statement>
+		<para>The orthogonal complement of a set <latex>S</latex> in a subvector space <latex>V</latex> of <latex>\RNr[n]</latex> is a subspace of <latex>V</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>We need to show that <latex>W:=S^{\bot}</latex> satisfies the 
+			<subordinate>
+				<hot>three defining properties</hot>
+				<crossref>
+					<definition.ref definitionID="Def_SubVectorSpace"/>
+					<para>Lookup these properties</para>
+				</crossref>
+			</subordinate>
+			of a subvector space.</para>
+		<para>The <latex>\Vect{0}</latex>-vector belongs to <latex>W</latex> because <latex>\DotPr{\Vect{0}}{ \Vect{s} }=0</latex>, for every vector <latex>\Vect{s}</latex> in <latex>S</latex>.</para>
+		<para>To see that <latex>W</latex> is closed under vector addition let <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> be in <latex>W</latex>. This means that, for every <latex>\Vect{s}</latex> in <latex>S</latex>,</para>
+		<math.display>
+			<latex>\DotPr{ \Vect{x} }{ \Vect{s} } = 0 = \DotPr{ \Vect{y} }{ \Vect{s} }</latex>
+		</math.display>
+		<para>But then</para>
+		<math.display>
+			<latex>\DotPr{ (\Vect{x} + \Vect{y}) }{ \Vect{s} } = \DotPr{ \Vect{x} }{ \Vect{s} } + \DotPr{ \Vect{y} }{ \Vect{s} } = 0+0 = 0</latex>
+		</math.display>
+		<para>So <latex>\Vect{x} + \Vect{y}</latex> belongs to <latex>W</latex> as required.</para>
+		<para>To see that <latex>W</latex> is closed under scalar multiplication, let <latex>\Vect{x}</latex> in <latex>W</latex>. This means that <latex>\DotPr{ \Vect{x} }{ \Vect{s} }=0</latex> for every <latex>\Vect{s}</latex> in <latex>S</latex>. Now if  <latex>t</latex> in <latex>\RNr</latex> is arbitrary, then</para>
+		<math.display>
+			<latex>\DotPr{ (t \Vect{x}) }{ \Vect{s} } = t\cdot (\DotPr{ \Vect{x} }{ \Vect{s} }) = 0 </latex>
+		</math.display>
+		<para>So <latex>t\Vect{x}</latex> belongs to <latex>W</latex> as required.</para>
+		<para>We have seen that <latex>S^{\bot}</latex> contains <latex>\Vect{0}</latex> and is closed under addition and scalar multiplication. Therefore <latex>S^{\bot}</latex> is a subvector space of  <latex>\RNr[n]</latex>.</para>
+	</proof>
+</theorem>

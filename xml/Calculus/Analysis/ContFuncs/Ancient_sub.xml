@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Intro_NaturaNonFacitSaltus">
+	<title>Natura Non Facit Saltus</title>
+	<sub.page.body>
+		<block>
+			<para><b>Nature does not make jumps</b> &nbsp; in other words: processes and changes in nature are &lsquo;transitional&rsquo; ... if an object/system assumes two states <latex>A</latex> and <latex>B</latex> at two moments in time <latex>a</latex> and <latex>b</latex>, then the system must have transitioned from state <latex>A</latex> to state <latex>B</latex> through intermediate states. &ndash; Here are some examples:</para>
+			<ul>
+				<li>
+					<para>Record the temperature at a certain location: in the morning <latex>10</latex> degrees; at noon time <latex>25</latex> degrees. Then, at some point in time between morning and noon, this location must have experienced each temperature between <latex>10</latex> and <latex>25</latex> degrees.</para></li>
+				<li>
+					<para>A tree of current height <latex>50</latex>m must, at some point in time, have been of any height between 0m and 50m.</para>
+				</li>
+				<li>
+					<para>A bee, observed at one moment on a flower and, at a later moment, entering its hive, must have moved from the flower to the hive on some path without any gaps.</para>
+				</li>
+			</ul>
+		</block>
+		
+		
+		<block>
+			<para><b>&lsquo;Nature does not make jumps&rsquo; now known to not hold a (sub-)atomic scales</b> &nbsp; We should point out that the perception of &lsquo;Nature does not make jumps&rsquo; very much depends on the scale at which one makes observations. In particular, humanity&rsquo;s efforts to describe nature at a subatomic scale has led Werner Heisenberg to the conception of quantum mechanics; here nature is described as making jumps, albeit at an extremely small scale.
+				<index.author>
+					<name>
+						<first>Werner</first>
+						<last>Heisenberg</last>
+					</name>
+					<info><para>appears here because his theory of quantum mechanics contradicts the ancient principle of natural philosophy that &lsquo;Nature does not make jumps&rsquo;.</para></info>
+				</index.author>
+			</para>
+		</block>
+	</sub.page.body>
+</sub.page>

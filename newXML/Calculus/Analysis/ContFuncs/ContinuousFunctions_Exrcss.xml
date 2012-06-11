@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_ContinuousFunctions"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: Continuous Functions</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Analyze the graph of the function <math>
+                     <latex>f</latex>
+                  </math> below for points of continuity and points of discontinuity. Explain your reasoning.</para.body>
+            </para>
+			
+				        <img src="ims/GraphJumps.png"/>
+			
+			         <para>
+               <para.body>Solid end points of a curve indicate they are part of the curve; hollow end points indicate they are excluded.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose the function <math>
+                     <latex>f\from \RNr\to \RNr</latex>
+                  </math> is continuous at <math>
+                     <latex>x=3</latex>
+                  </math> with <math>
+                     <latex>f(3) = -1</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What does this information mean in terms of the epsilon-delta definition of continuity?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What does this information mean in terms of the limit characterization of continuity?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Use the epsilon-delta definition of continuity to show directly that each of the functions below is continuous</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>f\from \RNr \longrightarrow \RNr,\quad f(x)= 3\cdot x</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>g\from \RNr \longrightarrow \RNr,\quad g(x)= (-5)\cdot x</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>h\from \RNr \longrightarrow \RNr,\quad h(x)= c\cdot x</latex>
+                     </math>, where <math>
+                        <latex>c\in\RNr</latex>
+                     </math> arbitrary is fixed.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Plot the graph of the function</para.body>
+            </para>
+			         <math.display>
+				           <latex>r\from (\StDffrnc{\RNr}{0}) \longrightarrow (\StDffrnc{\RNr}{0}),\quad r(x)= \frac{1}{x}</latex>
+			         </math.display>
+			         <para>
+               <para.body>Explain how it is possible that <math>
+                     <latex>r</latex>
+                  </math> is continuous despite the fact that its graph makes a jump.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+</exercise.pack>

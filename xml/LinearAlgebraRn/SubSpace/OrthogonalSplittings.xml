@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_OrthogonalSplittings">
+	<headers>
+		<full>Orthogonal Splittings</full>
+		<toc>Orthogonal Splittings</toc>
+		<short>Orthogonal Splittings</short>
+	</headers>
+	<intro>
+		<para>A splitting of a subspace <latex>W</latex> of <latex>\RNr[n]</latex> is given by two subspaces <latex>U</latex> and <latex>V</latex> of <latex>W</latex> such that</para>
+		<ul>
+			<li>
+				<para><latex>U</latex> and <latex>V</latex> have only the zero vector in common, and</para>
+			</li>
+			<li>
+				<para>The vectors of <latex>U</latex> and <latex>V</latex> combined span all of <latex>W</latex>.</para>
+			</li>
+		</ul>
+		<para>Such a splitting is orthogonal if each vector of <latex>U</latex> is perpendicular to each vector of <latex>V</latex>. A convenient way to obtain an orthogonal splitting of <latex>W</latex> is via the orthogonal 
+				<subordinate>
+					<hot>complement operation</hot>
+					<crossref>
+						<definition.ref definitionID="Def_OrthogonalComplement"/>
+						<para>Look up the definition of the operation</para>
+					</crossref>
+				</subordinate>.
+			Accordingly, we develop below the basic properties of this operation.</para>
+		<para>Using a splitting we can express each <latex>\Vect{w}\in W</latex> uniquely as <latex>\Vect{w}=\Vect{u} + \Vect{v}</latex> with <latex>\Vect{u}\in U</latex> and <latex>\Vect{v}\in V</latex>. We will see later how this simplifies the description of certain linear transformations, such as rotations, reflections, and projections.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_VectorSpaceSplitting">
+			<caption>(Orthogonal) Splitting</caption>
+			<para>A splitting of a subspace <latex>W</latex> of <latex>\RNr[n]</latex> is given by two subspaces <latex>U</latex> and <latex>V</latex> of <latex>W</latex> satisfying
+				<index.glossary>
+					<term>splitting</term><term>of a subspace</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+			</para>
+			<ul>
+				<li><para>If <latex>\Vect{w}</latex> in <latex>W</latex> belongs to both <latex>U</latex> and <latex>V</latex>, then <latex>\Vect{w}=\Vect{0}</latex>.</para></li>
+				<li><para><subordinate>
+					<hot><latex>W=\span(U\cup V)</latex></hot>
+					<info>
+						<caption>What does this notation mean?</caption>
+						<para><latex>U\cup V</latex> is the union of the sets <latex>U</latex> and <latex>V</latex>; i.e. a vector belongs to <latex>U\cup V</latex> if it belongs to <latex>U</latex> or to <latex>V</latex>.</para>
+					</info>
+				</subordinate>
+					<index.symbol>
+						<symbol><latex>U\cup V</latex></symbol>
+						<info><para>This denotes the union of the sets <latex>U</latex> and <latex>V</latex>. Thus an object belongs to <latex>(U\cup V)</latex> if it belongs to <latex>U</latex> or to <latex>V</latex>.</para></info>
+					</index.symbol>
+				</para></li>
+			</ul>
+			<para>In this case we write <latex>W=U\dotplus V</latex>. Such a splitting of <latex>W</latex> is called orthogonal if <latex>\DotPr{ \Vect{u} }{ \Vect{v} } = 0</latex> for each <latex>\Vect{u}</latex> in <latex>U</latex> and each <latex>\Vect{v}</latex> in <latex>V</latex>.
+				<index.symbol>
+					<symbol><latex>W=U\dotplus V</latex></symbol>
+					<info><para>Denotes a splitting of <latex>W</latex> with subspaces <latex>U</latex> and <latex>V</latex>.</para></info>
+				</index.symbol>
+				<index.glossary>
+					<term>orthogonal</term><term>splitting of a subspace</term>
+					<info><para>Definition of the concept</para></info>
+				</index.glossary>
+			</para>
+		</def>
+		<para>Given that <latex>W</latex> is the span of <latex>U</latex> and <latex>V</latex>, we know that every <latex>\Vect{w}\in W</latex> can be expressed as <latex>\Vect{w}=\Vect{u}+\Vect{v}</latex> with <latex>\Vect{u}\in U</latex> and <latex>\Vect{v}\in V</latex>. The lemma below says that <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> are unique.</para>
+		<xi:include href="SplittingUniqueSum_Thm.xml"/>
+		
+		
+		<para>A convenient tool to obtain orthogonal splittings is the orthogonal complement operation. So we develop basic properties of this operation next.</para>
+		<xi:include href="OrthogonalComplementProps_Thm.xml"/>
+		
+		
+		<para>Given a subspace <latex>V</latex> of <latex>W</latex>, we want to be able to split a vector <latex>\Vect{x}</latex> of <latex>W</latex> as <latex>\Vect{x} = \Vect{v} + \Vect{c}</latex>, with <latex>\Vect{v}</latex> in <latex>V</latex> and <latex>\Vect{c}</latex> in <latex>V^{\bot}</latex>. The following definition of orthogonal projection is the key.</para>
+		<def type="Definition" id="Def_ProjectionOperator">
+			<caption>Orthogonal projection</caption>
+			<para>Given subspaces <latex>V\subseteq W</latex> of <latex>\RNr[n]</latex>, the orthogonal projection of <latex>W</latex> onto <latex>V</latex> is
+				<index.glossary>
+					<term>orthogonal</term><term>projection</term>
+					<info><para>Of a subspace <latex>W</latex> of <latex>\RNr[n]</latex> onto a subspace <latex>V</latex> of <latex>W</latex>. &ndash; Definition of the concept.</para></info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>\pr_V</latex></symbol>
+					<info><para>Orthogonal projection of a subspace <latex>W</latex> of <latex>\RNr[n]</latex> onto a subspace <latex>V</latex> of <latex>W</latex>.</para></info>
+				</index.symbol>
+			</para>
+			<math.display>
+				<latex>\pr_V\from W \longrightarrow V,\quad \pr_V(\Vect{x}) := (\DotPr{ \Vect{x} }{ \Vect{b}_1 })\Vect{b}_1 + \cdots + (\DotPr{ \Vect{x} }{ \Vect{b}_r })\Vect{b}_r</latex>
+			</math.display>
+			<para>where <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_r)</latex> is an arbitrary ONB of <latex>V</latex>.</para>
+		</def>
+		
+		<para>Notice that the definition of the projection <latex>\pr_V</latex> involves an ONB for <latex>V</latex>. If <latex>\Dim{V}\geq 2</latex>, it will have infinitely many ONB's. So we face the question: &lsquo;does a different ONB yield a different projection operator?&rsquo; Fortunately, this is not the case. Indeed, the following lemma confirms that all ONB's yield the same projection operation.</para>
+		<xi:include href="OrthoProjWellDefined_Thm.xml"/>
+		
+		<para>We now show that every subspace <latex>V</latex> of <latex>W</latex>, together with its orthogonal complement <latex>V^{\bot}</latex> form an orthogonal splitting of <latex>W</latex>.</para>
+		<xi:include href="OrthoSplit_Thm.xml"/>
+		<xi:include href="OrthoSplit1_Thm.xml"/>
+		<xi:include href="PerpPerpSpan_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_OrthogonalSplittings"/>
+	</studymaterials>
+</section>

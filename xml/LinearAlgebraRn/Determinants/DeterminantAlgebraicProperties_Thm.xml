@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_DeterminantAlgebraicProperties">
+	<caption>Determinant: alternating and normalizing</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_Alternating"/>
+		<info><para>Examples of the alternating property of the determinant operation.</para></info>
+	</associate>
+	<associate Description="Quiz">
+		<quiz.pack.ref quizPackID="Qz_DeterminantAlternating"/>
+		<info><para>A quiz so you can test your understanding of the concept of the alternating property of determinants.</para></info>
+	</associate>
+	
+	
+	
+	<statement>
+		<para>The determinant operation on <latex>(n,n)</latex>-matrices has the following properties.</para>
+		<part partid="Alternating"><caption>alternating</caption>
+			<para>interchanging two distinct columns reverses the sign of the determinant.
+				<index.glossary>
+					<term>alternating</term><term>property of the determinant operation</term>
+					<info><para>Statement and proof of the alternating property</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>determinant</term><term>alternating</term>
+					<info><para>Statement and proof of the alternating property</para></info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>\det [A_1\ \dots\ {\color{blue} A_j}\ \dots\ {\color{red} A_k}\ \dots\ A_n] = -\det[A_1\ \dots\ {\color{red} A_k}\ \dots\ {\color{blue} A_j}\ \dots\ A_n]</latex>
+			</math.display>
+		</part>
+		<part partid="Normalized"><caption>normalizing property</caption>
+			<para><latex>\det(\IdMtrx[n]) = 1</latex>.
+				<index.glossary>
+					<term>norm</term><term>property of the determinant operation</term>
+					<info><para>The norm property of the determinant says that <latex>\det(\IdMtrx[n])=1</latex>. This is stated and proved here</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>determinant</term><term>norm property</term>
+					<info><para>The norm property of the determinant says that <latex>\det(\IdMtrx[n])=1</latex>. This is stated and proved here.</para></info>
+				</index.glossary>
+			</para>
+		</part>
+	</statement>
+	
+	<proof>
+		<caption><partref>Alternating</partref>   Alternating property</caption>
+		<para>Given an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}=[A_1\ \dots\ A_n]</latex> and <latex><![CDATA[ 1\leq k < j\leq n]]></latex>, we need to show that</para>
+		<computation>
+			<left>\det [A_1\ \dots\ {\color{blue} A_j}\ \dots\ {\color{red} A_k}\ \dots\ A_n]</left>
+			<center>=</center>
+			<right>-\det[A_1\ \dots\ {\color{red} A_k}\ \dots\ {\color{blue} A_j}\ \dots\ A_n]</right>
+		</computation>
+		<para>We prove the claim by induction on <latex>n</latex>.</para>
+		<para><b>Anchoring the induction</b> &nbsp; If <latex>n=2</latex>, we find</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\det
+\left[
+\begin{array}{cc}
+a & c \\
+b & d
+\end{array}
+\right] = ad-bc = -(cb-da) = -\det
+\left[
+\begin{array}{cc}
+c & a \\
+d & b
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>So the alternating property holds for <latex>n=2</latex>.</para>
+		<para><b>Induction hypothesis</b> &nbsp; Now let <latex>n\geq 2</latex>, and suppose that the determinant operation is alternating on matrices of size <latex>(n,n)</latex>.</para>
+		
+		<para><b>Induction step</b> &nbsp; We need to show that it is alternating on matrices of size  <latex>(n+1,n+1)</latex>. Let</para>
+		<computation>
+			<left>\Mtrx{U}</left>
+			<center>:=</center>
+			<right>[A_1\ \dots\ A_j\ \dots\ A_k\ \dots\ A_{n+1}]</right>
+			<left>\Mtrx{V}</left>
+			<center>:=</center>
+			<right>[A_1\ \dots\ A_k\ \dots\ A_j\ \dots\ A_{n+1}]</right>
+		</computation>
+		<para>We need to show that <latex>\det(\Mtrx{U}) = - \det(\Mtrx{V})</latex>. To see this we follow these steps:</para>
+		
+		<ol>
+			<li><para>The case where <latex><![CDATA[ j,k > 1 ]]></latex></para></li>
+			<li><para>The case where <latex>j=1</latex> and <latex>k=2</latex></para></li>
+			<li><para>The case where <latex>j=1</latex> and <latex><![CDATA[ k>2 ]]></latex> is arbitrary</para></li>
+		</ol>
+		
+		<para>The case where <latex><![CDATA[ j,k > 1 ]]></latex> &nbsp; The critical observation here is that, for each <latex>1\leq i\leq n+1</latex>, the <latex>(i,1)</latex>-minor of <latex>\Mtrx{V}</latex> results from the <latex>(i,1)</latex>-minor of <latex>\Mtrx{U}</latex> by interchanging the <latex>(j-1)</latex>-st and the <latex>(k-1)</latex>-st columns. Thus if <latex>A_1 = [a_{11}\ \dots\ a_{n+1,1}]^T</latex>, we find</para>
+		
+		<computation>
+			<left>\det(\Mtrx{U})</left>
+			<center>=	<info><para>This is the cofactor expansion of <latex>\det(\Mtrx{U})</latex> along the first column.</para></info></center>
+			<right>\sum_{i=1}^{n+1} a_{i1} (-1)^{i+1}\det(\Mtrx{U}_{i1})</right>
+			<left></left>
+			<center>=	<info><para>Interchange the <latex>(j-1)</latex>-st and the <latex>(k-1)</latex>-st column of <latex>\Mtrx{U}_{i1}</latex> to obtain <latex>\Mtrx{V}_{i1}</latex>. These are <latex>(n,n)</latex>-matrices. So we can apply the induction hypothesis and use the factor of <latex>(-1)</latex> to account for the interchange of columns.</para></info></center>
+			<right>\sum_{i=1}^{n+1}a_{i1}(-1)^{i+1}(-1)\det(\Mtrx{V}_{i1})</right>
+			<left></left>
+			<center>=</center>
+			<right>(-1)\cdot \sum_{i=1}^{n+1}a_{i1}(-1)^{i+1}\det(\Mtrx{V}_{i1})</right>
+			<left></left>
+			<center>=</center>
+			<right>-\det(\Mtrx{V})</right>
+		</computation>
+		
+		
+		
+		<para>The case where <latex>j=1</latex> and <latex>k=2</latex> &nbsp; To see this, we require a little preparation. For <latex>1\leq r\neq s\leq n+1</latex>,  let <latex>\Mtrx{U}(r,s)</latex> result from <latex>\Mtrx{U}</latex> by removing the first two columns and rows numbered <latex>r</latex> and <latex>s</latex>. This 
+			<subordinate>
+				<hot>means</hot>
+				<info><para>Recall that <latex>\Mtrx{V}</latex> results from <latex>\Mtrx{U}</latex> by interchanging the first two columns. In both <latex>\Mtrx{U}(r,s)</latex> and <latex>\Mtrx{V}(r,s)</latex>, the first two columns have been removed. So the resulting matrices are equal.</para></info>
+			</subordinate>
+			that <latex>\Mtrx{U}(r,s) = \Mtrx{V}(r,s)</latex>. The essence of the argument lies in showing that the first row in the calculation below is true. Granting this, we finish proving this case as follows.</para>
+		
+		<computation>
+			<left>\det(\Mtrx{U})</left>
+			<center>=	<info>
+				<caption>Explanation of this computational step</caption>
+				<para>In passing from the first line to the second, we know two things:</para>
+				<ol>
+					<li><para><latex>\Mtrx{U}(r,s) = \Mtrx{V}(r,s)</latex>. So their determinants are equal.</para></li>
+					<li><para>Interchanging the two columns of the <latex>(2,2)</latex>-matrix in the first line gives the <latex>(2,2)</latex>-matrix in the second line. We know that a factor of <latex>(-1)</latex> accounts for this interchange of columns.</para></li>
+				</ol>
+				<para>Combining these two facts shows why the second line is equal to the first.</para>
+			</info></center>
+			<right><![CDATA[ \sum_{r=1}^{n} \sum_{s=r+1}^{n+1} (-1)^{r+s+1}\det\, 
+				\left[
+\begin{array}{cc}
+a_{r1} & a_{r2} \\
+a_{s1} & a_{s2}
+\end{array}
+\right]\cdot \det(\Mtrx{U}(r,s))
+]]></right>
+			<left></left>
+			<center>=</center>
+			<right><![CDATA[ \sum_{r=1}^{n} \sum_{s=r+1}^{n+1} (-1)^{r+s+1}(-1)\det\, 
+				\left[
+\begin{array}{cc}
+a_{r2} & a_{r1} \\
+a_{s2} & a_{s1}
+\end{array}
+\right]\cdot \det(\Mtrx{V}(r,s))
+]]></right>
+			<left></left>
+			<center>=</center>
+			<right>-\det(\Mtrx{V})</right>
+		</computation>
+		
+		<para>It only remains to establish the truth of the first line in the calculation above. If we expand <latex>\Mtrx{U}</latex> along the first column and then every <latex>(n,n)</latex>-cofactor matrix along its first column, we obtain:</para>
+		
+		<computation>
+			<left>\det(\Mtrx{U})</left>
+			<center>=	<info><para>This is the cofactor expansion of <latex>\Mtrx{U}</latex> along the first column.</para></info></center>
+			<right>\sum_{r=1}^{n+1}a_{r1}(-1)^{r+1} \det(\Mtrx{U}_{r1})</right>
+			<left></left>
+			<center>=	<info><para>This is the cofactor expansion of <latex>\Mtrx{U}_{r1}</latex> along its first column. We write <latex>\hat{a}_{ab}</latex> for the entry of <latex>\Mtrx{U}_{r1}</latex> in position <latex>(a,b)</latex>.</para></info></center>
+			<right>\sum_{r=1}^{n+1}a_{r1}(-1)^{r+1} \sum_{s=1}^{n} \hat{a}_{s1} (-1)^{s+1} \det(\Mtrx{U}_{r1})_{s1}</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{r=1}^{n+1} \sum_{s=1}^{n} a_{r1}\hat{a}_{s1}(-1)^{r+s} \det(\Mtrx{U}(s,r))</right>
+			<left></left>
+			<center>=	<info><para>Split the double sum above into the cases where <latex><![CDATA[ s < r ]]></latex> and where <latex><![CDATA[ r < s ]]></latex>. &ndash; The situation <latex>r=s</latex> does not occur, as in <latex>\Mtrx{U}_{r1}</latex> the <latex>r</latex>-th row has been removed.</para></info></center>
+			<right>\sum_{r=2}^{n+1}\sum_{s=1}^{r-1}(-1)^{r+s} a_{r1}a_{s2} \cdot \det \Mtrx{U}(s,r)\ +</right>
+			<left></left>
+			<center></center>
+			<right>.{\ }\qquad \sum_{r=1}^{n}\sum_{s=r+1}^{n+1}(-1)^{r+s+1} a_{r1}a_{s2}\cdot \det \Mtrx{U}(s,r)</right>
+			<left></left>
+			<center>=	<info><para>Change the order of summation in the sum above.</para></info></center>
+			<right>\sum_{s=1}^{n} \sum_{r=s+1}^{n+1} (-1)^{r+1} a_{r1}a_{s2}\cdot \det\, \Mtrx{U}(s,r)\ +</right>
+			<left></left>
+			<center></center>
+			<right>.{\ }\qquad \sum_{r=1}^{n} \sum_{s=r+1}^{n+1} (-1)^{r+s+1} a_{r1}a_{s2}\cdot \det\, \Mtrx{U}(s,r)</right>
+			<left></left>
+			<center>=	<info><para>Rename the summation indices to avoid confusion.</para></info></center>
+			<right>\sum_{u=1}^{n}\sum_{v=u+1}^{n+1}(-1)^{u+v} a_{v1}a_{u2}\det(\Mtrx{U}(v,u))\ +</right>
+			<left></left>
+			<center></center>
+			<right>.{\ }\qquad \sum_{r=1}^{n}\sum_{s=r+1}^{n+1} (-1)^{r+s+1} a_{r1}a_{s2}\det\, \Mtrx{U}(s,r)</right>
+			<left></left>
+			<center>=	<info><para>If <latex>v=r</latex> and <latex>u=s</latex>, then <latex>\Mtrx{U}(v,u) = \Mtrx{U}(s,r)</latex>.</para></info></center>
+			<right>\sum_{r=1}^{n}\sum_{s=r+1}^{n+1} (-1)^{r+s} a_{s1}a_{r2} \det\, \Mtrx{U}(r,s)\ +</right>
+			<left></left>
+			<center></center>
+			<right>.{\ }\qquad \sum_{r=1}^{n} \sum_{s=r+1}^{n+1}(-1)^{r+s+1} a_{r1} a_{s2} \det\, \Mtrx{U}(r,s)</right>
+			<left></left>
+			<center>=	<info><para>Consolidate the sum above</para></info></center>
+			<right>\sum_{r=1}\sum_{s=r+1}^{n+1} (-1)^{r+s+1} (a_{r1}a_{s2}-a_{s1}a_{r2}) \det\, \Mtrx{U}(r,s)</right>
+			<left></left>
+			<center>=</center>
+			<right>
+				<![CDATA[
+				\sum_{r=1}^{n} \sum_{s=r+1}^{n+1} (-1)^{r+s+1} \det
+				\left[
+\begin{array}{cc}
+a_{r1} & a_{r2} \\
+a_{s1} & a_{s2}
+\end{array}
+\right]\ \det\, \Mtrx{U}(r,s)
+				]]>
+			</right>
+		</computation>
+		<para>This was to be shown.</para>
+		
+		<para>The case where <latex>j=1</latex> and <latex><![CDATA[ k>2 ]]></latex> &nbsp; To see this we combine the previously proven cases as follows.</para>
+		
+		<computation>
+			<left>\det[A_1\ A_2\ \dots\ A_j\ \dots\ A_{n+1}]</left>
+			<center>=	<info><para>This identity holds by step 2.</para></info></center>
+			<right>-\det[ A_2\ A_1\ \dots\ A_j\ \dots\ A_{n+1}]</right>
+			<left></left>
+			<center>=	<info><para>This identity holds by Step 1.</para></info></center>
+			<right>\det\, [A_2\ A_j\ \dots\ A_1\ \dots\ A_{n+1}]</right>
+			<left></left>
+			<center>=	<info><para>This identity holds by Step 2.</para></info></center>
+			<right>-\det\, [ A_j\ A_2\ \dots\ A_1\ \dots\ A_{n+1}]</right>
+		</computation>
+		
+		<para>This completes the induction and, with it, the proof of the alternating property of the determinant operation.</para>
+		
+		<caption><partref>Normalized</partref> <latex>\det(\IdMtrx[n]) = 1</latex></caption>
+		<para>The identity matrix is an upper triangular matrix, hence its determinant is the product of its diagonal elements:</para>
+		<computation>
+			<left>\det(\IdMtrx[n])</left>
+			<center>=</center>
+			<right>1^n = 1</right>
+		</computation>
+	</proof>
+</theorem>

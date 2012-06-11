@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_DistancePointHyperplaneCompute"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Computing the Distance of a Point from a Hyperplane</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In the picture above, the hyperplane <math>
+                     <latex>\Pi</latex>
+                  </math> is the line passing through <math>
+                     <latex>P</latex>
+                  </math>. We wish to find the distance from <math>
+                     <latex>Q</latex>
+                  </math> to <math>
+                     <latex>\Pi</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/DistancePointHyperplane01.gif"/>
+            </media>
+            <para>
+               <para.body>To this end we express the position vector <math>
+                     <latex>\Vect{q}</latex>
+                  </math> of <math>
+                     <latex>Q</latex>
+                  </math> as</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{q}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{p}\ +\ (\Vect{q}-\Vect{p})</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <media type="image" active="0" inline="0">
+               <img src="ims/DistancePointHyperplane02.gif"/>
+            </media>
+            <para>
+               <para.body>Projecting <math>
+                     <latex>(\Vect{q}-\Vect{p})</latex>
+                  </math> along the normal vector <math>
+                     <latex>\Vect{n}</latex>
+                  </math> to <math>
+                     <latex>\Pi</latex>
+                  </math> yields the shortest possible vector <math>
+                     <latex>\Prjctn{\Vect{n}}(\Vect{q}-\Vect{p})</latex>
+                  </math> which joins <math>
+                     <latex>\Pi</latex>
+                  </math> to <math>
+                     <latex>Q</latex>
+                  </math>. Therefore</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{r}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>:=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{q}\ -\ \Prjctn{\Vect{n}}(\Vect{q}-\Vect{p})</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>is the position vector of <math>
+                     <latex>R</latex>
+                  </math>, the point on <math>
+                     <latex>\Pi</latex>
+                  </math> closest to <math>
+                     <latex>Q</latex>
+                  </math>. Finally the distance of <math>
+                     <latex>Q</latex>
+                  </math> from <math>
+                     <latex>\Pi</latex>
+                  </math> is</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Dstnc{\Pi}{Q}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Dstnc{R}{Q}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Abs{\Prjctn{\Vect{n}}(\Vect{q}-\Vect{p})}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Abs{ \DotPr{ (\Vect{q}-\Vect{p}) }{ \frac{\Vect{n}}{\Abs{ \Vect{n} } } } }</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\dfrac{ \DotPr{ (\Vect{q}-\Vect{p}) }{ \Vect{n} } }{ \Abs{ \Vect{n} } }</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>So this is where the distance formula for a point from a hyperplane comes from.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_RotationR3">
+	<caption>Rotation matrix in <latex>\RNr[3]</latex></caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Expla_GeneralRotationMatrix"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>How does a rotation matrix work?</para>
+		</info>
+	</associate>
+	
+	
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_RotationR3"/>
+		<info><para>An example of a rotation in <latex>\RNr[3]</latex></para></info>
+	</associate>
+	
+	<statement>
+		<para>With the setup described above, the rotation <latex>R</latex> about the oriented axis <latex>\mathbf{L}</latex> through the angle <latex>\alpha</latex> by the RHR is represented by the <latex>(3,3)</latex>-matrix</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{A}_{\EuScript{B}\EuScript{B}}\ :=\ 
+\left[
+\begin{array}{rrr}
+\cos \alpha & -\sin \alpha & 0 \\
+\sin \alpha & \cos \alpha & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>Moreover, the matrix which represents <latex>R</latex> with respect to standard coordinates is (using <latex>\Mtrx{C}:= [ \Vect{a}\ \Vect{b}\ \Vect{r}]</latex>)</para>
+		<math.display>
+			<latex>\Mtrx{A} = \Mtrx{A}_{\EuScript{S}\EuScript{S}} = \Mtrx{C} \Mtrx{A}_{\EuScript{B}\EuScript{B}} C^{-1}</latex>
+		</math.display>
+	</statement>
+	<proof>
+		<para>To see this, we use our experience with rotating the plane counterclockwise through the angle <latex>\alpha</latex> to conclude</para>
+		<computation>
+			<left>R(\Vect{a})</left>
+			<center>=</center>
+			<right>(\cos \alpha)\cdot \Vect{a} + (\sin \alpha)\cdot \Vect{b} + 0\cdot \Vect{n}</right>
+			<left>R(\Vect{b})</left>
+			<center>=</center>
+			<right>(-\sin \alpha)\cdot \Vect{a} + (\cos \alpha) \cdot \Vect{b} + 0\cdot \Vect{n}</right>
+			<left>R(\Vect{n})</left>
+			<center>=</center>
+			<right>0\cdot \Vect{a} + 0\cdot \Vect{b} + 1\cdot \Vect{n}</right>
+		</computation>
+		<para>Therefore the
+			<subordinate>
+				<hot>columns</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_LinearMapMatrixGeneral"/>
+					<para>Look up this result</para>
+				</crossref>
+			</subordinate>
+			of <latex>\Mtrx{A}_{\EuScript{B}\EuScript{B}}</latex> are as suggested.
+		</para>
+		<para>It remains to determine the matrix <latex>\Mtrx{A}_{\EuScript{S}\EuScript{S}}</latex> representing <latex>R</latex> with respect to the standard basis of <latex>\RNr[3]</latex>. Now applying the 
+			<subordinate>
+				<hot>result on changing coordinates</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_ChangeCoordinatesLinearMap"/>
+					<para>Look up this result.</para>
+				</crossref>
+			</subordinate>
+			proves the claim.</para>
+	</proof>
+</theorem>

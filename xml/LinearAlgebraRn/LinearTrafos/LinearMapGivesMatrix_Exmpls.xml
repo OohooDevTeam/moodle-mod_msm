@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearMapGivesMatrix">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Example: Matrices for Coordinate Projection and Coordinate Inclusion</title>
+	<caption>Example: Matrices for Coordinate Projection and Coordinate Inclusion</caption>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>The matrix which represents the projection of <latex>\RNr[m]</latex> onto its <latex>j</latex>-th coordinate</para>
+			
+			<math.display>
+				<latex>\Prjctn{i}\from \RNr[m]\longrightarrow \RNr,\qquad \Prjctn{i}(x_1,\dots ,x_m)= x_i</latex>
+			</math.display>
+			
+			<para>is given by <latex>A := [0\ \dots \ 0\ \ 1\ \ 0\ \dots \ 0]</latex>, the &lsquo;<latex>1</latex>&rsquo; sitting in position <latex>i</latex>.</para>
+		</statement>
+		
+		<answer type="Proof">
+			<para>Given <latex>\Vect{x}=(x_1,\dots ,x_m)\in\RNr[m]</latex>,</para>
+			
+			<computation>
+				<left>A\Vect{x}</left>
+				<center>=</center>
+				<right>[0\ \dots \ 0\ \ 1\ \ 0\ \dots \ 0]\cdot \left[\begin{array}{c} x_1 \\ \vdots \\ x_m\end{array}\right]</right>
+				<left></left>
+				<center>=</center>
+				<right>x_i</right>
+				<left></left>
+				<center>=</center>
+				<right>\Prjctn{i}(x_1,\dots ,x_n)</right>
+			</computation>
+			
+			<para>as required.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>The inclusion of <latex>\RNr</latex> in <latex>\RNr[n]</latex> as the <latex>j</latex>-th coordinate axis</para>
+			
+			<math.display>
+				<latex>\Inclsn{j}\from \RNr \longrightarrow \RNr[n],\quad \Inclsn{j}(x) := (0,\dots ,0,x,0,\dots , 0)</latex>
+			</math.display>
+			
+			<para>is represented by the <latex>(n,1)</latex>-matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+B := \left[\begin{array}{c}
+0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>the <latex>1</latex> in row <latex>j</latex>.</para>
+		</statement>
+		
+		<answer type="Proof">
+			<para>Given <latex>x\in \RNr[1]</latex>,</para>
+			
+			<computation>
+				<left>B[x]</left>
+				<center>=</center>
+				<right>\left[\begin{array}{c} 0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{array}\right]\cdot [x] = \left[\begin{array}{c} 0 \\ \vdots \\ 0 \\ x \\ 0 \\ \vdots \\ 0 \end{array}\right] = \Inclsn{j}(x)</right>
+			</computation>
+			<para>as was to be shown.</para>
+		</answer>
+	</showme>
+	
+	
+</showme.pack>

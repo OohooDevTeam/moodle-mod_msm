@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_NNotBoundedAbove">
+	<caption><latex>\NNr</latex> is not bounded above</caption>
+	<associate Description="Remark">
+		<info>
+			<caption>Remark: Analogous Recognition Criterion for inf</caption>
+			<para>For <latex>A\subseteq\RNr</latex> and <latex>x\in \RNr</latex> the following are equivalent:</para>
+			<ol type="i">
+				<li><para><latex>x=\inf(A)</latex></para></li>
+				<li><para><latex>x</latex> is a lower bound of <latex>A</latex>, and for all <latex>t\in \RNr</latex> with <latex><![CDATA[ x>t ]]></latex>, <latex>t</latex> is not a lower bound of <latex>A</latex>.</para></li>
+				<li><para><latex>x</latex> is a lower bound of <latex>A</latex>, and for all <latex><![CDATA[ \varepsilon > 0 ]]></latex> there exists <latex>a\in A</latex> with <latex><![CDATA[ a < x+\varepsilon ]]></latex>.</para></li>
+			</ol>
+		</info>
+	</associate>
+	<statement>
+		<para>The natural numbers <latex>\NNr</latex> do not have an upper bound in <latex>\RNr</latex>.
+			<index.glossary>
+				<term>natural numbers <latex>\NNr</latex></term><term>not bounded abouve</term>
+			</index.glossary>
+		</para>
+	</statement>
+	<proof>
+		<para>We argue by contradiction. Suppose <latex>\NNr</latex> has an upper bound in <latex>\RNr</latex>. Then <latex>x:=\sup(N)</latex> exists in <latex>\NNr</latex>. It 
+			<subordinate>
+				<hot>follows</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_InfSupRecognize"/>
+					<para>Look up the lemma which implies this property.</para>
+				</crossref>
+			</subordinate>
+			that there exists <latex>n\in \NNr</latex> with <latex><![CDATA[ x-1 < n ]]></latex>. But then</para>
+		<math.display>
+			<latex><![CDATA[ x = (x-1) + 1 < n+1 \in \NNr]]></latex>
+		</math.display>
+		<para>which means that <latex>x</latex> is not an upper bound of <latex>\NNr</latex>. This contradiction implies the claim.</para>
+	</proof>
+</theorem>

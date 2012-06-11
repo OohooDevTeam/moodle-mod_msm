@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_RiemannRearrange">
+	<caption>Riemann&rsquo;s Rearrangement Theorem</caption>
+	<statement>
+		<para>Let <latex>\sum_{n=0}^{\infty} a_n</latex> be a conditionally convergent series. Then, for arbitrary <latex>L\in \RNr\union\Set{\pm\infty}</latex>, there exists a rearrangement <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex> of the original series which converges to <latex>L</latex>. Moreover, the series may be rearranged so that it diverges.
+			<index.glossary>
+				<term>Riemann</term><term>rearrangement theorem</term>
+				<info>
+					<para>Riemann&rsquo;s rearrangement theorem asserts that the terms of a conditionally convergent series may be rearranged so as to alter its limit or even cause it to diverge. &ndash; See the details of this theorem.</para>
+				</info>
+			</index.glossary>
+		</para>
+	</statement>
+	<proof type="Proof Sketch">
+		<para>Riemann&rsquo;s Rearrangement Theorem follows by combining the following observations:</para>
+		<ol type="a">
+			<li>
+				<para>Dropping from the sequence of summands <latex>(a_n)</latex> all negative summands leaves the infinite subsequence <latex>b_0,b_1,\dots ,b_n,\dots </latex> of non-negative numbers.</para>
+			</li>
+			<li>
+				<para>Dropping from the sequence of summands <latex>(a_n)</latex> all non-positive summands leaves an infinite subsequence <latex>c_0,c_1,\dots ,c_n,\dots </latex> of negative numbers.</para>
+			</li>
+			<li>
+				<para>The sequence <latex>(a_n)</latex> converges to <latex>0</latex>, and so the subsequences <latex>(b_n)</latex> and <latex>(c_n)</latex> converge to <latex>0</latex> as well.</para>
+			</li>
+			<li><para><latex>\sum_{n=0}^{\infty}b_n = +\infty</latex>, and <latex>\sum_{n=0}^{\infty} c_n = -\infty</latex>.</para></li>
+		</ol>
+		<para>With this information we now sketch a process which rearranges to summands in the original series so as to obtain a series which converges to <latex>L</latex>.</para>
+		<para><i>Case 1:</i> <latex>L</latex> <i>is a number</i>. &ndash; We apply the following recursive procedure:</para>
+		<ol type="1">
+			<li>
+				<para>Let <latex><![CDATA[ \mu_0 := \min\Set{ k\in \NNr \st b_0+\cdots +b_k > L} ]]></latex>. Such <latex>\mu_0</latex> exists and is unique by property c) above. For <latex>0\leq i\leq \mu_0</latex>, let <latex>a_{\sigma(i)}:= b_i</latex>, and set <latex>P_0:=b_0+\cdots b_{\mu_0}</latex>.</para></li>
+			<li>
+				<para>Let <latex><![CDATA[ \nu_0 := \min \Set{ k\in \NNr \st P_0 + c_0+\cdots + c_{k} < L } ]]></latex>. Such <latex>\nu_0</latex> exists because of property c). For <latex>0\leq i\leq \nu_0</latex>, let <latex>a_{\sigma(\mu_0 + 1 + i)}:=c_i</latex>, and set <latex>N_0:= P_0 + c_0 + \cdots + c_{\nu_0}</latex>.</para>
+			</li>
+			<li>
+				<para>Let <latex><![CDATA[ \mu_1 := \min\Set{ k\geq \mu_0+1 \st N_0+b_{\mu_0+1} +\cdots + b_{k} } > L ]]></latex>. For <latex>\mu_0+1 \leq i\leq \mu_1</latex>, let <latex>a_{\sigma(\nu_0 + 1 + i)} := b_i</latex>, and set <latex>P_1:= N_0 + b_{\mu_0+1}+ \cdots + b_{\mu_1}</latex>.</para>
+			</li>
+			<li>
+				<para>Let <latex><![CDATA[ \nu_1 := \min\Set{ k\geq \nu_0+1 \st P_1+c_{\nu_0+1} +\cdots + c_{k} } < L ]]></latex>. For <latex>\nu_0+1 \leq i\leq \nu_1</latex>, let <latex>a_{\sigma(\mu_1 + 1 + i)} := c_i</latex>, and set <latex>N_1:= P_1 + c_{\nu_0+1}+ \cdots + c_{\nu_1}</latex>.</para>
+			</li>
+			<li><para>Continue inductively: if the for <latex>r\geq 0</latex> <latex>\mu_r</latex>, <latex>\nu_r</latex>, <latex>P_r</latex>, and <latex>N_r</latex> have been obtained, then ...</para></li>
+			<li>
+				<para>Let <latex><![CDATA[ \mu_{r+1} := \min\Set{ k\geq \mu_r+1 \st N_r+b_{\mu_{r}+1} +\cdots + b_{\mu_r+k} } > L]]></latex>. For <latex>\mu_r+1 \leq i\leq \mu_{r+1}</latex>, let <latex>a_{\sigma(\nu_r+1+i)} := b_i</latex>, and set <latex>P_{r+1}:= N_r + b_{\mu_r+1}+ \cdots + b_{\mu_{r+1}}</latex>.</para>
+			</li>
+			<li>
+				<para>Let <latex><![CDATA[ \nu_{r+1} := \min\Set{ k\geq \nu_r+1 \st P_{r+1}+c_{\nu_r+1} +\cdots + c_{k} } < L ]]></latex>. For <latex>\nu_{r}+1 \leq i\leq \nu_{r+1}</latex>, let <latex>a_{\sigma(\mu_{r+1}+1 + i)} := c_i</latex>, and set <latex>N_{r+1}:= P_{r+1} + c_{\nu_r+1}+ \cdots + c_{\nu_{r+1}}</latex>.</para>
+			</li>
+		</ol>
+		<para>Then <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex> is a rearrangement of the original series. By design, it converges to <latex>L</latex>.</para>
+		
+		
+		<para><i>Case 2:</i> <latex>L=+\infty</latex>. &ndash; We modify the process developed if <latex>L\in \RNr</latex> as follows.</para>
+		
+		<ol type="1">
+			<li>
+				<para>Let <latex><![CDATA[ \mu_0 := \min\Set{ k\in \NNr \st b_0+\cdots +b_k > 0} ]]></latex>. Such <latex>\mu_0</latex> exists and is unique by property c) above. For <latex>0\leq i\leq \mu_0</latex>, let <latex>a_{\sigma(i)}:= b_i</latex>, and set <latex>P_0:=b_0+\cdots b_{\mu_0}</latex>.</para></li>
+			<li>
+				<para>Let <latex><![CDATA[ \nu_0 := \min \Set{ k\in \NNr \st P_0 + c_0+\cdots + c_{k} < 0 } ]]></latex>. Such <latex>\nu_0</latex> exists because of property c). For <latex>0\leq i\leq \nu_0</latex>, let <latex>a_{\sigma(\mu_0 + 1 + i)}:=c_i</latex>, and set <latex>N_0:= P_0 + c_0 + \cdots + c_{\nu_0}</latex>.</para>
+			</li>
+			<li>
+				<para>Let <latex><![CDATA[ \mu_1 := \min\Set{ k\geq \mu_0+1 \st N_0+b_{\mu_0+1} +\cdots + b_{k} } > 1 ]]></latex>. For <latex>\mu_0+1 \leq i\leq \mu_1</latex>, let <latex>a_{\sigma(\nu_0 + 1 + i)} := b_i</latex>, and set <latex>P_1:= N_0 + b_{\mu_0+1}+ \cdots + b_{\mu_1}</latex>.</para>
+			</li>
+			<li>
+				<para>Let <latex><![CDATA[ \nu_1 := \min\Set{ k\geq \nu_0+1 \st P_1+c_{\nu_0+1} +\cdots + c_{k} } < 1 ]]></latex>. For <latex>\nu_0+1 \leq i\leq \nu_1</latex>, let <latex>a_{\sigma(\mu_1 + 1 + i)} := c_i</latex>, and set <latex>N_1:= P_1 + c_{\nu_0+1}+ \cdots + c_{\nu_1}</latex>.</para>
+			</li>
+			<li><para>Continue inductively: if the for <latex>r\geq 0</latex> <latex>\mu_r</latex>, <latex>\nu_r</latex>, <latex><![CDATA[ P_r > r ]]></latex>, and <latex><![CDATA[ N_r < r ]]></latex> have been obtained, then ...</para></li>
+			<li>
+				<para>Let <latex><![CDATA[ \mu_{r+1} := \min\Set{ k\geq \mu_r+1 \st N_r+b_{\mu_{r}+1} +\cdots + b_{\mu_r+k} } > r+1 ]]></latex>. For <latex>\mu_r+1 \leq i\leq \mu_{r+1}</latex>, let <latex>a_{\sigma(\nu_r+1+i)} := b_i</latex>, and set <latex>P_{r+1}:= N_r + b_{\mu_r+1}+ \cdots + b_{\mu_{r+1}}</latex>.</para>
+			</li>
+			<li>
+				<para>Let <latex><![CDATA[ \nu_{r+1} := \min\Set{ k\geq \nu_r+1 \st P_{r+1}+c_{\nu_r+1} +\cdots + c_{k} } < r+1 ]]></latex>. For <latex>\nu_{r}+1 \leq i\leq \nu_{r+1}</latex>, let <latex>a_{\sigma(\mu_{r+1}+1 + i)} := c_i</latex>, and set <latex>N_{r+1}:= P_{r+1} + c_{\nu_r+1}+ \cdots + c_{\nu_{r+1}}</latex>.</para>
+			</li>
+		</ol>
+		<para>Then <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex> is a rearrangement of the original series. By design, it converges to <latex>+\infty</latex>.</para>
+		
+		
+		<para><i>Case 3:</i> <latex>L=-\infty</latex>. &ndash; One way to see this is to modify the process developed if <latex>L=+\infty</latex>. Alternatively, apply case 2 to <latex>\sum_{n=0}^{\infty}-a_n</latex> so as to obtain a rearrangement with <latex>\sum_{n=0}^{\infty}-a_{\sigma(n)} = +\infty</latex>. It follows that <latex>\sum_{n=0}^{\infty}a_{\sigma(n)} = -\infty</latex>.</para>
+		
+		
+		
+		<para><i>Case 4: Rearrange into a divergent series</i> &ndash;</para>
+		<ol type="1">
+			<li>
+				<para>Let <latex><![CDATA[ \mu_0 := \min\Set{ k\in \NNr \st b_0+\cdots +b_k > 0} ]]></latex>. Such <latex>\mu_0</latex> exists and is unique by property c) above. For <latex>0\leq i\leq \mu_0</latex>, let <latex>a_{\sigma(i)}:= b_i</latex>, and set <latex>P_0:=b_0+\cdots b_{\mu_0}</latex>.</para></li>
+			<li>
+				<para>Let <latex><![CDATA[ \nu_0 := \min \Set{ k\in \NNr \st P_0 + c_0+\cdots + c_{k} < 0 } ]]></latex>. Such <latex>\nu_0</latex> exists because of property c). For <latex>0\leq i\leq \nu_0</latex>, let <latex>a_{\sigma(\mu_0 + 1 + i)}:=c_i</latex>, and set <latex>N_0:= P_0 + c_0 + \cdots + c_{\nu_0}</latex>.</para>
+			</li>
+			<li>
+				<para>Let <latex><![CDATA[ \mu_1 := \min\Set{ k\geq \mu_0+1 \st N_0+b_{\mu_0+1} +\cdots + b_{k} } > 1 ]]></latex>. For <latex>\mu_0+1 \leq i\leq \mu_1</latex>, let <latex>a_{\sigma(\nu_0 + 1 + i)} := b_i</latex>, and set <latex>P_1:= N_0 + b_{\mu_0+1}+ \cdots + b_{\mu_1}</latex>.</para>
+			</li>
+			<li>
+				<para>Let <latex><![CDATA[ \nu_1 := \min\Set{ k\geq \nu_0+1 \st P_1+c_{\nu_0+1} +\cdots + c_{k} } < -1 ]]></latex>. For <latex>\nu_0+1 \leq i\leq \nu_1</latex>, let <latex>a_{\sigma(\mu_1 + 1 + i)} := c_i</latex>, and set <latex>N_1:= P_1 + c_{\nu_0+1}+ \cdots + c_{\nu_1}</latex>.</para>
+			</li>
+			<li><para>Continue inductively: if the for <latex>r\geq 0</latex> <latex>\mu_r</latex>, <latex>\nu_r</latex>, <latex><![CDATA[ P_r > r ]]></latex>, and <latex><![CDATA[ N_r < -r ]]></latex> have been obtained, then ...</para></li>
+			<li>
+				<para>Let <latex><![CDATA[ \mu_{r+1} := \min\Set{ k\geq \mu_r+1 \st N_r+b_{\mu_{r}+1} +\cdots + b_{\mu_r+k} } > r+1 ]]></latex>. For <latex>\mu_r+1 \leq i\leq \mu_{r+1}</latex>, let <latex>a_{\sigma(\nu_r+1+i)} := b_i</latex>, and set <latex>P_{r+1}:= N_r + b_{\mu_r+1}+ \cdots + b_{\mu_{r+1}}</latex>.</para>
+			</li>
+			<li>
+				<para>Let <latex><![CDATA[ \nu_{r+1} := \min\Set{ k\geq \nu_r+1 \st P_{r+1}+c_{\nu_r+1} +\cdots + c_{k} } < -(r+1) ]]></latex>. For <latex>\nu_{r}+1 \leq i\leq \nu_{r+1}</latex>, let <latex>a_{\sigma(\mu_{r+1}+1 + i)} := c_i</latex>, and set <latex>N_{r+1}:= P_{r+1} + c_{\nu_r+1}+ \cdots + c_{\nu_{r+1}}</latex>.</para>
+			</li>
+		</ol>
+		<para>Then <latex>\sum_{n=0}^{\infty} a_{\sigma_n}</latex> is a rearrangement of the original series. By design, it diverges.</para>
+	</proof>
+</theorem>

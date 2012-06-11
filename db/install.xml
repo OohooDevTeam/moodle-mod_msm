@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/msm/db" VERSION="20120605" COMMENT="XMLDB file for Moodle mod/msm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="msm" COMMENT="Default comment for msm, please edit me" NEXT="msm_compositor">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="course"/>
+        <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Course msm activity belongs to" PREVIOUS="id" NEXT="name"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="name field for moodle instances" PREVIOUS="course" NEXT="intro"/>
+        <FIELD NAME="intro" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" COMMENT="General introduction of the msm activity" PREVIOUS="name" NEXT="introformat"/>
+        <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="Format of the intro field (MOODLE, HTML, MARKDOWN...)" PREVIOUS="intro" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="introformat" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="msm_compositor" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm" NEXT="msm_unit">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="unit_id"/>
+        <FIELD NAME="unit_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="table_id"/>
+        <FIELD NAME="table_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" PREVIOUS="unit_id" NEXT="parent_id"/>
+        <FIELD NAME="parent_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="table_id" NEXT="prev_sibling_id"/>
+        <FIELD NAME="prev_sibling_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="parent_id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_unit" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_compositor" NEXT="msm_intro">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="title"/>
+        <FIELD NAME="title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="plain_title"/>
+        <FIELD NAME="plain_title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="title" NEXT="creationdate"/>
+        <FIELD NAME="creationdate" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="plain_title" NEXT="last_revision_date"/>
+        <FIELD NAME="last_revision_date" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="creationdate" NEXT="acknowledgements"/>
+        <FIELD NAME="acknowledgements" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="last_revision_date" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="acknowledgements"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_intro" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_unit" NEXT="msm_def">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_def" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_intro" NEXT="msm_theorem">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="def_type"/>
+        <FIELD NAME="def_type" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="def_type" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="def_content"/>
+        <FIELD NAME="def_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="description"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_theorem" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_def" NEXT="msm_associate">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="theorem_type"/>
+        <FIELD NAME="theorem_type" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="theorem_type" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="textcaption"/>
+        <FIELD NAME="textcaption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="textcaption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_associate" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_theorem" NEXT="msm_info">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="description"/>
+        <FIELD NAME="description" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="target"/>
+        <FIELD NAME="target" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="description"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_info" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_associate" NEXT="msm_statement_theorem">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="info_content"/>
+        <FIELD NAME="info_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_statement_theorem" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_info" NEXT="msm_part_theorem">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="statement_content"/>
+        <FIELD NAME="statement_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_part_theorem" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_statement_theorem" NEXT="msm_proof">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="partid"/>
+        <FIELD NAME="partid" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="counter"/>
+        <FIELD NAME="counter" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="partid" NEXT="equivalence_mark"/>
+        <FIELD NAME="equivalence_mark" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="counter" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="equivalence_mark" NEXT="part_content"/>
+        <FIELD NAME="part_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_proof" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_part_theorem" NEXT="msm_step">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="proof_type"/>
+        <FIELD NAME="proof_type" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="logic_type"/>
+        <FIELD NAME="logic_type" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="proof_type" NEXT="proof_logic"/>
+        <FIELD NAME="proof_logic" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="logic_type" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="proof_logic" NEXT="proof_content"/>
+        <FIELD NAME="proof_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_step" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_proof" NEXT="msm_pilot">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="partref"/>
+        <FIELD NAME="partref" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="partref" NEXT="step_content"/>
+        <FIELD NAME="step_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_pilot" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_step" NEXT="msm_subordinate">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="pilot_content"/>
+        <FIELD NAME="pilot_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_subordinate" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_pilot" NEXT="msm_cite">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="hot"/>
+        <FIELD NAME="hot" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_cite" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_subordinate" NEXT="msm_item">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="cite_label"/>
+        <FIELD NAME="cite_label" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="cite_label"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_item" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_cite" NEXT="msm_external_link">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="item_content"/>
+        <FIELD NAME="item_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="citekey"/>
+        <FIELD NAME="citekey" TYPE="char" LENGTH="300" NOTNULL="false" SEQUENCE="false" PREVIOUS="item_content" NEXT="position"/>
+        <FIELD NAME="position" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="citekey"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_external_link" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_item" NEXT="msm_index_symbol">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="href"/>
+        <FIELD NAME="href" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="type"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="href" NEXT="target"/>
+        <FIELD NAME="target" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="type"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_index_symbol" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_external_link" NEXT="msm_index_glossary">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="symbol"/>
+        <FIELD NAME="symbol" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="symbol_type"/>
+        <FIELD NAME="symbol_type" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="symbol" NEXT="sortstring"/>
+        <FIELD NAME="sortstring" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="symbol_type"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_index_glossary" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_index_symbol" NEXT="msm_stage_date">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="term"/>
+        <FIELD NAME="term" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_stage_date" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_index_glossary" NEXT="msm_para">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="stagedate"/>
+        <FIELD NAME="stagedate" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_para" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_stage_date" NEXT="msm_table">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="para_align"/>
+        <FIELD NAME="para_align" TYPE="char" LENGTH="15" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="para_align" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="para_content"/>
+        <FIELD NAME="para_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="description"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_table" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_para" NEXT="msm_comment">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="table_class"/>
+        <FIELD NAME="table_class" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="table_summary"/>
+        <FIELD NAME="table_summary" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" PREVIOUS="table_class" NEXT="table_title"/>
+        <FIELD NAME="table_title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="table_summary" NEXT="table_content"/>
+        <FIELD NAME="table_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="table_title"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_comment" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_table" NEXT="msm_math_array">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="comment_type"/>
+        <FIELD NAME="comment_type" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="comment_type" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="comment_content"/>
+        <FIELD NAME="comment_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_math_array" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_comment" NEXT="msm_media">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="no_column"/>
+        <FIELD NAME="no_column" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="math_array_content"/>
+        <FIELD NAME="math_array_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="no_column"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_media" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_math_array" NEXT="msm_img">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="active"/>
+        <FIELD NAME="active" TYPE="int" LENGTH="1" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="inline"/>
+        <FIELD NAME="inline" TYPE="int" LENGTH="1" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="active" NEXT="media_type"/>
+        <FIELD NAME="media_type" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="inline"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_img" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_media" NEXT="msm_example">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="img_content"/>
+        <FIELD NAME="img_content" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="description" NEXT="extended_caption"/>
+        <FIELD NAME="extended_caption" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="img_content" NEXT="image_mapping"/>
+        <FIELD NAME="image_mapping" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="extended_caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_example" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_img" NEXT="msm_statement_example">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="textcaption"/>
+        <FIELD NAME="textcaption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="textcaption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_statement_example" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_example" NEXT="msm_part_example">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="statement_example_content"/>
+        <FIELD NAME="statement_example_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_part_example" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_statement_example" NEXT="msm_answer">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="partid"/>
+        <FIELD NAME="partid" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="counter"/>
+        <FIELD NAME="counter" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="partid" NEXT="equivalence_mark"/>
+        <FIELD NAME="equivalence_mark" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="counter" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="equivalence_mark" NEXT="part_content"/>
+        <FIELD NAME="part_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_answer" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_part_example" NEXT="msm_showme">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="answer_type"/>
+        <FIELD NAME="answer_type" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="answer_version"/>
+        <FIELD NAME="answer_version" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="answer_type" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="answer_version" NEXT="logic_type"/>
+        <FIELD NAME="logic_type" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="caption" NEXT="answer_logic"/>
+        <FIELD NAME="answer_logic" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" PREVIOUS="logic_type" NEXT="answer_content"/>
+        <FIELD NAME="answer_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="answer_logic"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_showme" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_answer" NEXT="msm_answer_showme">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="textcaption"/>
+        <FIELD NAME="textcaption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="statement_showme"/>
+        <FIELD NAME="statement_showme" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="textcaption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_answer_showme" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_showme" NEXT="msm_exercise">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="answer_showme_content"/>
+        <FIELD NAME="answer_showme_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_exercise" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_answer_showme" NEXT="msm_problem">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="difficulty"/>
+        <FIELD NAME="difficulty" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="difficulty"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_problem" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_exercise" NEXT="msm_approach">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="textcaption"/>
+        <FIELD NAME="textcaption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="textcaption" NEXT="problem_content"/>
+        <FIELD NAME="problem_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_approach" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_problem" NEXT="msm_solution">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="approach_version"/>
+        <FIELD NAME="approach_version" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="solution_hint"/>
+        <FIELD NAME="solution_hint" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="approach_version"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_solution" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_approach" NEXT="msm_answer_exercise">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="solution_content"/>
+        <FIELD NAME="solution_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_answer_exercise" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_solution" NEXT="msm_part_exercise">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="answer_exercise_content"/>
+        <FIELD NAME="answer_exercise_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_part_exercise" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_answer_exercise" NEXT="msm_table_collection">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="part_exercise_number"/>
+        <FIELD NAME="part_exercise_number" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="difficulty"/>
+        <FIELD NAME="difficulty" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="part_exercise_number"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_table_collection" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_part_exercise" NEXT="msm_ext">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="tablename"/>
+        <FIELD NAME="tablename" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="table_description"/>
+        <FIELD NAME="table_description" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="tablename"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_ext" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_table_collection" NEXT="msm_extra_info">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="ext_type"/>
+        <FIELD NAME="ext_type" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="ext_version"/>
+        <FIELD NAME="ext_version" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="ext_type" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="ext_version" NEXT="ext_content"/>
+        <FIELD NAME="ext_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="ext_name"/>
+        <FIELD NAME="ext_name" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="ext_content"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_extra_info" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_ext" NEXT="msm_person">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="extra_info_content"/>
+        <FIELD NAME="extra_info_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="extra_info_name"/>
+        <FIELD NAME="extra_info_name" TYPE="char" LENGTH="300" NOTNULL="false" SEQUENCE="false" PREVIOUS="extra_info_content"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_person" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_extra_info" NEXT="msm_content">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="firstname"/>
+        <FIELD NAME="firstname" TYPE="char" LENGTH="30" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="middlename"/>
+        <FIELD NAME="middlename" TYPE="char" LENGTH="30" NOTNULL="false" SEQUENCE="false" PREVIOUS="firstname" NEXT="lastname"/>
+        <FIELD NAME="lastname" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="middlename" NEXT="initials"/>
+        <FIELD NAME="initials" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="lastname" NEXT="email"/>
+        <FIELD NAME="email" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="initials" NEXT="webpage"/>
+        <FIELD NAME="webpage" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="email" NEXT="phone"/>
+        <FIELD NAME="phone" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="webpage" NEXT="address"/>
+        <FIELD NAME="address" TYPE="char" LENGTH="300" NOTNULL="false" SEQUENCE="false" PREVIOUS="phone" NEXT="type"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="30" NOTNULL="false" SEQUENCE="false" PREVIOUS="address"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_content" COMMENT="For storing contents from ol, ul and math.display" PREVIOUS="msm_person" NEXT="msm_packs">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="additional_attribute"/>
+        <FIELD NAME="additional_attribute" TYPE="char" LENGTH="300" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="content"/>
+        <FIELD NAME="content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="additional_attribute" NEXT="type"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="content"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_packs" COMMENT="For showme/quiz/example/exercise packs" PREVIOUS="msm_content" NEXT="msm_quiz">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="title"/>
+        <FIELD NAME="title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="title" NEXT="doclabel"/>
+        <FIELD NAME="doclabel" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="texsupport"/>
+        <FIELD NAME="texsupport" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="doclabel" NEXT="literature_db"/>
+        <FIELD NAME="literature_db" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="texsupport" NEXT="type"/>
+        <FIELD NAME="type" TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" PREVIOUS="literature_db"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_quiz" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_packs">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="300" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="textcaption"/>
+        <FIELD NAME="textcaption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="question"/>
+        <FIELD NAME="question" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="textcaption" NEXT="hint"/>
+        <FIELD NAME="hint" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="question" NEXT="answer"/>
+        <FIELD NAME="answer" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="hint" NEXT="part"/>
+        <FIELD NAME="part" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="answer"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

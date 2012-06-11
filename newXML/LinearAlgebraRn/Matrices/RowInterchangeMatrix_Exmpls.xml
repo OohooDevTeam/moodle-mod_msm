@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_RowInterchangeMatrix"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Examples of Row Interchange Matrices</title>
+	  <caption xmlns="">Examples of Interchange Matrices</caption>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the set of <math>
+                  <latex>(3,3)</latex>
+               </math>-matrices the matrix which interchanges rows <math>
+                  <latex>1</latex>
+               </math> and <math>
+                  <latex>2</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					R_{1,2}\ :=\ \begin{bmatrix}
+						0 &amp; 1 &amp; 0 \\
+						1 &amp; 0 &amp; 0 \\
+						0 &amp; 0 &amp; 1
+						\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>This matrix is invertible with inverse   <math>
+                  <latex>R_{1,2}^{-1}= R_{1,2}</latex>
+               </math> because</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{bmatrix}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}\ =\
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the set of <math>
+                  <latex>(4,4)</latex>
+               </math>-matrices the matrix which interchanges rows <math>
+                  <latex>2</latex>
+               </math> and <math>
+                  <latex>4</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+R_{2,4}\ :=\ \begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0
+\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>This matrix is invertible with inverse   <math>
+                  <latex>R_{2,4}^{-1} = R_{2,4}</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+	  </showme>	
+</showme.pack>

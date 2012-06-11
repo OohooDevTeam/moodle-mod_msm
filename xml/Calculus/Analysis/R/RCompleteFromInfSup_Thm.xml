@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_RCompleteFromInfSup">
+	<caption>Completeness of <latex>\RNr</latex> and existence of inf / sup</caption>
+	<statement>
+		<para><latex>\RNr</latex> has the completeness property if and only if either one of the following equivalent properties hold:</para>
+		<part partid="SupExistsImpliesC">
+			<para>Every nonempty <latex>A\subset\RNr</latex> which is bounded above has a supremum in <latex>\RNr</latex>.</para>
+		</part>
+		<part partid="InfExistsImpliesC">
+			<para>Every nonempty <latex>B\subset\RNr</latex> which is bounded below has an infimum  in <latex>\RNr</latex>.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>SupExistsImpliesC</partref> &nbsp; Completeness and bounded above sets with supremum</caption>
+		<para>Suppose every nonempty bounded above subset of <latex>\RNr</latex> has a supremum in <latex>\RNr</latex>. Given nonempty <latex>A\leq B\subset\RNr</latex>, we need to verify the existence of <latex>x\in \RNr</latex> with <latex>A\leq x\leq B</latex>. To see this observe:</para>
+		<ol>
+			<li><para><latex>A</latex> is bounded above because every <latex>b\in B\neq \emptyset</latex> is an upper bound of <latex>A</latex>.</para></li>
+			<li><para>By hypothesis <latex>x:=\sup(A)</latex> exists.</para></li>
+		</ol>
+		<para>This means, in particular, that <latex>A\leq x</latex>, and we claim that <latex>x\leq B</latex> as well. From the definition of the supremum we know that <latex>x\leq u</latex> for every upper bound <latex>u</latex> of <latex>A</latex>. Thus <latex>x\leq B</latex> because every <latex>b\in B</latex> is an upper bound of <latex>A</latex>.</para>
+		<para>For the converse, suppose <latex>\RNr</latex> is complete. We need to show that every <latex>\emptyset\neq A\subset \RNr</latex> which is bounded above has a supremum in <latex>\RNr</latex>. Let</para>
+		<math.display>
+			<latex>B := \Set{ u\in \RNr \st A\leq u }</latex>
+		</math.display>
+		<para>Then <latex>B\neq \emptyset</latex> as <latex>A</latex> is bounded above, and <latex>A\leq B</latex>. By the completeness axiom there exists <latex>s\in \RNr</latex> with <latex>A\leq s \leq B</latex>. We claim that <latex>s</latex> is the supremum of <latex>A</latex>. Indeed, by design, <latex>A\leq s</latex>. So <latex>s</latex> is an upper bound of <latex>A</latex>, and it only remains to show that it is the least upper bound. So let <latex>u\in \RNr</latex> be an arbitrary upper bound of <latex>A</latex>. Then, by definition, <latex>u\in B</latex>. But then we know that that <latex>s\leq u</latex>, and this implies that <latex>s</latex> is the least upper bound of <latex>A</latex>, as required.</para>
+		
+		<caption><partref>InfExistsImpliesC</partref> &nbsp; Completeness and bounded below sets with infimum</caption>
+		<para>The proof just given can be adapted to the present situation.</para>
+	</proof>
+</theorem>

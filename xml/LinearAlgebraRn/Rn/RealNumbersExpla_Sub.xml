@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Explntn_RealNumbers">
+	
+	<title>Real Numbers: Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>We use the symbol <latex>\RNr</latex> to denote the set of all real numbers. These include</para>
+			<ol>
+				<li>
+					<para>all natural numbers <latex>\NNr</latex>: <latex>0,1,2,3,\cdots</latex></para>
+				</li>
+				<li>
+					<para>all integers <latex>\ZNr</latex>: <latex>0,1,-1,2,-2,3,-3,\cdots</latex></para>
+				</li>
+				<li>
+					<para>all rational numbers <latex>\QNr</latex>: a number is called rational if it can be expressed as a ratio <latex>\frac{m}{n}</latex> in which <latex>m</latex> and <latex>n</latex> are integers, with <latex>n\neq 0</latex>. Examples of rational numbers are: <latex>\frac{1}{2}</latex>, <latex>-\frac{7}{3}</latex>, <latex>101 = \frac{101}{1}</latex>, etc.</para>
+				</li>
+			</ol>
+			<para>In general, a number is &lsquo;real&rsquo; if it can be expressed in decimal form</para>
+			<math.display>
+				<latex>n.d_1d_2d_3\cdots</latex>
+			</math.display>
+			<para>where <latex>n</latex> is an integer, and each of <latex>d_1,d_2,d_3,\dots</latex> is one of <latex>0,1,2,3,4,5,6,7,8,9</latex>. This includes all roots of integers, but also numbers like <latex>\pi</latex>, <latex>e</latex>, <latex>\ln 2</latex>, etc.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

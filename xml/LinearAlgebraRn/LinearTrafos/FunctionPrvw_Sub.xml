@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illstrt_FunctionTransforms">
+	<title>Preview: Function Describes Transformation</title>
+	<sub.page.body>
+		<block>
+			<para>The concept of a function is properly introduced within the context of set theory. Here we describe in pictorial terms how it may be interpreted as transforming objects.</para>
+			
+			<para>In the graphic below the blob <latex>B</latex> on the left gets transformed into the object <latex>Z</latex> on the right. In the process, each point of <latex>B</latex> gets relocated to some point of <latex>Z</latex>. It is this act of relocating points of <latex>B</latex> to points of <latex>Z</latex> which is described by a function.</para>
+			<figure>
+				<img src="ims/Trafo_NonLinear.png"></img>
+			</figure>
+		</block>
+		<block>
+			<para>Let's now analyze how a function transforms an object. A function <latex>f</latex> from <latex>B</latex> to <latex>Z</latex>, denoted <latex>f\from B\to Z</latex> sends each <latex>x</latex> of <latex>B</latex> to some <latex>z</latex> in <latex>Z</latex>. Note that there must be exactly one <latex>z</latex> to which <latex>x</latex> gets transformed. We write</para>
+			<computation>
+				<left>z</left>
+				<center>=	<info><para>Read: &lsquo;z equals f of x&rsquo;</para></info></center>
+				<right>f(x)</right>
+			</computation>
+			<para>to express that <latex>f</latex> transforms <latex>x</latex> into <latex>z</latex>. Thus <latex>f</latex> &lsquo;knows&rsquo; for each <latex>x</latex> in <latex>B</latex> to which point in <latex>Z</latex> it must be relocated. Accordingly, we think of <latex>f</latex> as executing the given transformation.</para>
+			<para>It is allowed that two or more distinct points of <latex>B</latex> get transformed into the same point of <latex>Z</latex>. In the graphic above this applies to the points labeled <latex magnify="no">u_1</latex> and <latex magnify="yes">u_2</latex>. We therefore have the equation</para>
+			<computation>
+				<left>f(u_1)</left>
+				<center>=	<info>
+					<para>To see why we have this equation, recall that <latex>f(u_1)</latex> is the point of <latex>Z</latex> into which <latex>u_1</latex> gets transformed. Similarly, <latex>f(u_2)</latex> is the point of <latex>Z</latex> into which <latex>u_2</latex> gets transformed.</para>
+					<para>Here both of <latex>u_1</latex> and <latex>u_2</latex> get transformed into the same point of <latex>Z</latex>. Therefore we have the stated equation.</para>
+				</info></center>
+				<right>f(u_2)</right>
+			</computation>
+		</block>
+	</sub.page.body>
+</sub.page>

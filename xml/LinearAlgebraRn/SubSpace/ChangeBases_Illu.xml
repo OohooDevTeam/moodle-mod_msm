@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_ChangeBases">
+	<title>Change of Coordinates - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>To illustrate the essence of &lsquo;change of coordinates&rsquo;, consider two ordered bases <latex>\EuScript{A} = (\Vect{a}_1,\Vect{a}_2)</latex> and <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2)</latex> in <latex>\RNr[2]</latex>. Now, given a vector <latex>\Vect{x}</latex> in <latex>\RNr[2]</latex>, we may</para>
+			<ol>
+				<li>
+					<para>express <latex>\Vect{x}</latex> in a unique way as a linear combination of <latex>\EuScript{A}:</latex></para>
+					<math.display>
+						<latex>\Vect{x} = u \Vect{a}_1 + v \Vect{a}_2,\quad \text{and so}\quad \Vect{x}_{\EuScript{A}} = (u,v)</latex>
+					</math.display>
+					<para>The <latex>\EuScript{A}</latex>-coordinates of <latex>\Vect{x}</latex> are <latex>(u,v)</latex></para>
+				</li>
+				<li>
+					<para>express <latex>\Vect{x}</latex> in a unique way as a linear combination of <latex>\EuScript{B}:</latex></para>
+					<math.display>
+						<latex>\Vect{x} = s \Vect{b}_1 + t \Vect{a}_2,\quad \text{and so}\quad \Vect{x}_{\EuScript{B}} = (s,t)</latex>
+					</math.display>
+					<para>The <latex>\EuScript{B}</latex>-coordinates of <latex>\Vect{x}</latex> are <latex>(s,t)</latex></para>
+				</li>
+			</ol>
+			<figure>
+				<img src="ims/ChangeBases.png"></img><!-- svg available -->
+			</figure>
+			<para align="center">Here <latex>\Vect{x}_{\EuScript{A}} = \left( \tfrac{3}{2} , \tfrac{5}{2} \right)</latex></para>
+			<para>So we arrive at the question: suppose we know the <latex>\EuScript{A}</latex>-coordinates of <latex>\Vect{x}</latex>, what are its <latex>\EuScript{B}</latex>-coordinates? and, vice versa, suppose we know the <latex>\EuScript{B}</latex>-coordinates of <latex>\Vect{x}</latex>, what are its <latex>\EuScript{A}</latex>-coordinates?</para>
+		</block>
+		
+		<block>
+			<para>In the section on &lsquo;Change of Coordinates&rsquo;, we learn that there is a unique matrix <latex>\Mtrx{C}_{\EuScript{B}\EuScript{A}}</latex>, here of size <latex>(2,2)</latex>, with</para>
+			<math.display>
+				<latex>\Vect{x}_{\EuScript{B}}\ =\ \Mtrx{C}_{\EuScript{B}\EuScript{A}}\cdot \Vect{x}_{\EuScript{A}}</latex>
+			</math.display>
+			<para>Moreover, the matrix which reverses the change from <latex>\EuScript{A}</latex>-coordinates to <latex>\EuScript{B}</latex>-coordinates is</para>
+			<math.display>
+				<latex>\Mtrx{C}_{\EuScript{A}\EuScript{B}}\ =\ \Mtrx{C}_{\EuScript{B}\EuScript{A}}^{-1}</latex>
+			</math.display>
+			
+		</block>
+	</sub.page.body>
+</sub.page>

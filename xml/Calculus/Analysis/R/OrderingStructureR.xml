@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_OrderingStructureR">
+	<headers>
+		<full>The Ordering Structure of the Real Numbers System</full>
+		<toc>The Ordering Structure of the Real Numbers System</toc>
+		<short>Ordering </short>
+	</headers>
+	
+	<intro>
+		<para>In this section we introduce axioms which ensure that we have a size comparison of any two real numbers. These are the ordering axioms of <latex>\RNr</latex>. We then discuss the main properties of this ordering structure.</para>
+	</intro>
+	
+	<section.body>
+		<def type="Axiom" id="Axi_Ordering">
+			<caption>Ordering structure of real numbers</caption>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment</caption>
+					<para>These properties say that <latex>\RNr</latex> is a totally ordered set.</para>
+				</info>
+			</associate>
+			
+			<para>There is a set of ordered pairs <latex>(x,y)\in\RNr[2]</latex> satisfying the relationship 
+				<subordinate>
+					<hot><latex>x\leq y</latex></hot>
+					<info><para>Read this as: &lsquo;x is less than or equal to y.&rsquo;</para></info>
+				</subordinate>
+				with the following properties.</para>
+			<ol>
+				<li><para>Reflexivity: <latex>x\leq x</latex> for all <latex>x\in \RNr</latex>.</para></li>
+				<li><para>Transitivity: if <latex>x\leq y</latex> and <latex>y\leq z</latex>, then <latex>x\leq z</latex>, for all <latex>x,y,z\in \RNr</latex>.</para></li>
+				<li><para>Antisymmetry: if <latex>x\leq y</latex> and <latex>y\leq x</latex>, then <latex>x=y</latex>, for all <latex>x,y\in \RNr</latex>.</para></li>
+				<li><para>Totality: for all <latex>x,y\in \RNr</latex>, <latex>x\leq y</latex> or <latex>y\leq x</latex>.</para></li>
+			</ol>
+		</def>
+		<def type="Convention">
+			<para>Based on the ordering axioms or <latex>\RNr</latex>, we adopt the following conventions</para>
+			<ol>
+				<li><para>We say <subordinate>
+					<hot><latex>y\geq x</latex></hot>
+					<info><para>Read: &lsquo;y is greater than or equal to x.&rsquo;</para></info>
+				</subordinate>
+				if <latex>x\leq y</latex>.</para></li>
+				<li><para>We also say 
+					<subordinate>
+						<hot><latex><![CDATA[ x < y ]]></latex></hot>
+						<info>
+							<para>Read this as: &lsquo;x is less than y&rsquo; or &lsquo;x is strictly less than y&rsquo;.</para>
+						</info>
+					</subordinate>
+					 if <latex>x\leq y</latex> and <latex>\neq y</latex>. Equivalently, we say 
+					<subordinate>
+						<hot><latex><![CDATA[ y > x ]]></latex></hot>
+						<info>
+							<para>Read this as: &lsquo;y is greater than x&rsquo; or &lsquo;y is strictly greater than x&rsquo;.</para>
+						</info>
+					</subordinate>.</para></li>
+				<li><para>We say that <latex>x\in \RNr</latex> is positive if <latex><![CDATA[ x > 0 ]]></latex>.
+					<index.glossary>
+						<term>positive</term><term>number</term>
+					</index.glossary>
+					<index.glossary>
+						<term>number</term><term>positive</term>
+					</index.glossary>
+					We say that <latex>y\in \RNr</latex> is negative if <latex><![CDATA[ y < 0 ]]></latex>.
+					<index.glossary>
+						<term>negative</term><term>number</term>
+					</index.glossary>
+					<index.glossary>
+						<term>number</term><term>negative</term>
+					</index.glossary>
+				</para></li>
+			</ol>
+		</def>
+		<para>Addition and multiplication in <latex>\RNr</latex> are required to be compatible with the ordering structure by the axioms below.</para>
+		<def type="Axiom" id="Axi_SumProductCompatibility">
+			<caption>Compatibility with addition and multiplication</caption>
+			<para>For all <latex>x,y,z\in \RNr</latex> the following hold:</para>
+			<ol>
+				<li><para>If <latex><![CDATA[ x < y ]]></latex>, then <latex><![CDATA[ x+z < y+z ]]></latex>.</para></li>
+				<li><para>If <latex><![CDATA[ 0 < x ]]></latex> and <latex><![CDATA[ 0 < y ]]></latex>, then <latex><![CDATA[ 0 < x\cdot y ]]></latex>.</para></li>
+			</ol>
+		</def>
+		<para>Next we establish certain basic properties of the ordering structure of <latex>\RNr</latex>.</para>
+		<xi:include href="OrderingPrprts_Thm.xml"/>
+	</section.body>
+</section>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_MatrixInversionFormula">
+	<caption>Inverting a matrix using Cramer&rsquo;s rule</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>What is <latex>\Mtrx{A}_{ji}</latex>?</caption>
+			<para><latex magnify="yes">\Mtrx{A}_{ji}</latex> is the <latex>(n-1,n-1)</latex>-matrix which results from <latex>\Mtrx{A}</latex> by removing the <latex>j</latex>-th row and the <latex>i</latex>-th column.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Let <latex>\Mtrx{A}</latex> be an invertible matrix with inverse <latex magnify="yes">\Mtrx{X} = [x_{ij}]</latex>. Then</para>
+		<math.display>
+			<latex>x_{ij}\ =\ \dfrac{ (-1)^{i+j} \Mtrx{A}_{ji} }{ \det(\Mtrx{A}) }</latex>
+		</math.display>
+	</statement>
+	<proof type="Proof">
+		<para>From the matrix equation <latex>\Mtrx{A} \Mtrx{X} = \IdMtrx[n]</latex>, we deduce in particular that the  <latex>j</latex>-th column of <latex>\Mtrx{X}</latex> solves the system of linear equations</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{bmatrix}
+a_{11} & \dots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{n1} & \dots & a_{nn}
+\end{bmatrix}\,
+\begin{bmatrix}
+x_{1j} \\ \vdots \\ x_{nj}
+\end{bmatrix}\ =\
+\begin{bmatrix}
+0 \\ \vdots \\ 1 \\ \vdots \\ 0
+\end{bmatrix}
+]]>
+			</latex>
+		</math.display>
+		<para>From Cramer&rsquo;s rule we obtain</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+x_{ij}\ &=\ \dfrac{\text{det}\,
+\begin{bmatrix}
+a_{11} & \dots & a_{1i-1} & 0 & a_{1i+1} & \dots & a_{1n} \\
+\vdots &       & \vdots   & 1 & \vdots   &       & \vdots \\
+a_{n1} & \dots & a_{ni-1} & 0 & a_{ni+1} & \dots & a_{nn}
+\end{bmatrix} }{\text{det}\,
+\begin{bmatrix}
+a_{11} & \dots & a_{1i-1} & a_{1i} & a_{1i+1} & \dots & a_{1n} \\
+\vdots &       & \vdots   & \vdots & \vdots   &       & \vdots \\
+a_{n1} & \dots & a_{ni-1} & a_{ni} & a_{ni+1} & \dots & a_{nn}
+\end{bmatrix} } \\
+   &=\ (-1)^{i+j}\, \frac{\text{det}(A_{ji})}{\text{det}(A)}
+\endaligned
+
+]]>
+			</latex>
+		</math.display>
+		<para>This is exactly the claim.</para>
+	</proof>
+</theorem>

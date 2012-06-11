@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="UpperTriangularMatrices"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Illustration of Upper Triangular Matrices</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Every <math>
+                     <latex>(1,1)</latex>
+                  </math>-identity matrix is an upper triangular matrix.</para.body>
+            </para>
+            <para>
+               <para.body>An example of an upper triangular <math>
+                     <latex>(2,2)</latex>
+                  </math> matrix is</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{bmatrix}
+					2 &amp; 1 \\
+					0 &amp; 3
+					\end{bmatrix}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>An example of an upper triangular <math>
+                     <latex>(3,3)</latex>
+                  </math> matrix is</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{bmatrix}
+					7 &amp; 0 &amp; 3 \\
+					0 &amp; 1 &amp; 3 \\
+					0 &amp; 0 &amp; 2
+					\end{bmatrix}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>An example of an upper triangular <math>
+                     <latex>(4,4)</latex>
+                  </math> matrix is</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{bmatrix}
+					9 &amp; 3 &amp; 2 &amp; 6  \\
+					0 &amp; 7 &amp; 4 &amp; 3  \\
+					0 &amp; 0 &amp; 0 &amp; 1\\
+					0 &amp; 0 &amp; 0 &amp; 4
+					\end{bmatrix}
+					
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Other examples of upper triangular matrices include</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>all diagonal matrices and,</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>in  particular, all identity matrices</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </body>
+</unit>

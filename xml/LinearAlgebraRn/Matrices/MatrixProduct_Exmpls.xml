@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_MatrixMultiplication">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of Matrix Multiplication</title>
+	<caption>Matrix Multiplication</caption>
+	<showme>
+		<statement>
+			<para>Determine if the product of the two matrices</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					{\color{blue} \Mtrx{A}}\ =\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} & {\color{blue}3} \\
+					{\color{blue}1} & {\color{blue}4} \\
+					{\color{blue}6} & {\color{blue}4}
+					\end{array}\right] \qquad \text{and}\qquad
+					{\color{red} \Mtrx{B}}\ =\ 
+					\left[\begin{array}{rr}
+					{\color{red}-3} & {\color{red}-3} \\
+					{\color{red}1} & {\color{red}2}
+					\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>is defined. If it is, compute the product <latex>\Mtrx{A}\Mtrx{B}</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>Matrix <latex>\Mtrx{A}</latex> has size <latex>(3,2)</latex> and matrix <latex>\Mtrx{B}</latex> has size <latex>(2,2)</latex>. Therefore the product <latex>\Mtrx{A}\Mtrx{B}</latex> is defined because the number of columns of <latex>A</latex> equals the number of rows of <latex>B</latex>: both numbers are 2. Their product is a matrix of size <latex>(3,2)</latex>. Its entry <latex>c_{ij}</latex> in position <latex>(i,j)</latex> is the dot product of the <latex>i</latex>-th row of <latex>\Mtrx{A}</latex> by the <latex>j</latex>-th column of <latex>\Mtrx{B}</latex>. So there are a total of 6 dot products to compute. In detail:</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+					{\color{blue}A} \cdot {\color{red}B}\ &=\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} & {\color{blue}3} \\
+					{\color{blue}1} & {\color{blue}4} \\
+					{\color{blue}6} & {\color{blue}4}
+					\end{array}\right] \cdot 
+					\left[\begin{array}{rr}
+					{\color{red}-3} & {\color{red}-3} \\
+					{\color{red}1} & {\color{red}2}
+					\end{array}\right] \\
+					&=\ \left[\begin{array}{cc}
+					{\color{blue}7}\cdot {\color{red}(-3)} + {\color{blue}3} \cdot {\color{red}1} & 
+						{\color{blue}7}\cdot {\color{red}(-3)} + {\color{blue}3}\cdot {\color{red}2} \\
+					{\color{blue}1}\cdot {\color{red}(-3)} + {\color{blue}4} \cdot {\color{red}1} & 
+						{\color{blue}1}\cdot {\color{red}(-3)} + {\color{blue}4}\cdot {\color{red}2} \\
+					{\color{blue}6}\cdot {\color{red}(-3)} + {\color{blue}4} \cdot {\color{red}1} & 
+						{\color{blue}6}\cdot {\color{red}(-3)} + {\color{blue}4}\cdot {\color{red}2} \\
+					\end{array}\right] \\
+					&=\ \left[\begin{array}{rr}
+						-18 & -15 \\
+						1     & 5 \\
+						-14 & -10
+					\end{array}\right]
+					\endaligned
+					]]>
+				</latex>
+			</math.display>
+			<para>Notice that the product matrix <latex>\Mtrx{A}\cdot \Mtrx{B}</latex> has as many rows as <latex>\Mtrx{A}</latex>, and as many columns as <latex>\Mtrx{B}</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

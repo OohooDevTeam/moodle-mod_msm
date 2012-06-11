@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_BasisNullSpace">
+	<caption>Basis for null space</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_BasisNullSpace"/>
+		<info><para>An example of how to find a basis for the null space of a matrix</para></info>
+	</associate>
+	<statement>
+		<para>A matrix <latex>\Mtrx{A}</latex> of size <latex>(m,n)</latex> has a null space <latex>\NllSp{ \Mtrx{A} }</latex> whose dimension satisfies</para>
+		<math.display>
+			<latex>\Dim{ \NllSp{ \Mtrx{A} } } = n - \Rnk{ \Mtrx{A} }</latex>
+		</math.display>
+		<para>A basis for <latex>\NllSp{ \Mtrx{A} }</latex> can be found as follows:</para>
+		<ol>
+			<li><para>Choose names like <latex>t_1,\dots ,t_{n-r}</latex> for the free variables of the general solution of the matrix equation  <latex>\Mtrx{A}\Vect{x}=\Vect{0}</latex></para></li>
+			<li><para>From the RREF of <latex>\Mtrx{A}</latex> write out the general solution of <latex>\Mtrx{A}\Vect{x}=\Vect{0}</latex> in the form</para>
+				<computation>
+					<left>\Vect{x}</left>
+					<center>=</center>
+					<right>t_1 \Vect{b}_1 + \cdots + t_{n-r} \Vect{b}_{n-r}</right>
+				</computation>
+			</li>
+			<li><para>Then <latex>\EuScript{B}:=\Set{ \Vect{b}_1, \dots , \Vect{b}_{n-r} }</latex> is a basis for <latex>\NllSp{ \Mtrx{A} }</latex>.</para></li>
+		</ol>
+	</statement>
+	<proof>
+		<para>It is clear that <latex>\span(\EuScript{B}) = \NllSp{ \Mtrx{A} }</latex>. So it only remains to verify the linear independence of <latex>\EuScript{B}</latex>. To do this, let us 
+			<subordinate>
+				<hot>recall</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_SolutionsConstruct"/>
+					<para>Look up how this goes.</para>
+				</crossref>
+			</subordinate>
+			
+			how the vectors <latex>\Vect{b}_1,\dots ,\Vect{b}_{n-r}</latex> are constructed:</para>
+		<ol>
+			<li><para>Let <latex>\Mtrx{B}=[b_{ij}]</latex> denote the RREF of <latex>\Mtrx{A}</latex>.</para></li>
+			<li><para>Let <latex>j_1,\dots ,j_{n-r}</latex> denote the columns of <latex>\Mtrx{B}</latex> which do not contain a leading <latex>1</latex>.</para></li>
+			<li><para>Let <latex>u_1,\dots , u_r</latex> denote the columns of <latex>\Mtrx{B}</latex> containing a leading <latex>1</latex>.</para></li>
+			<li><para>Then construct <latex>\Vect{b}_k</latex> as the vector in <latex>\RNr[n]</latex> which has</para>
+				<ul>
+					<li><para>a &lsquo;<latex>1</latex>&rsquo; in position <latex>j_k</latex>;</para></li>
+					<li><para>the entry <latex magnify="yes">-b_{i,j_k}</latex> in position <latex>u_i</latex>;</para></li>
+					<li><para>a &lsquo;<latex>0</latex>&rsquo; in each remaining position.</para></li>
+				</ul>
+			</li>
+		</ol>
+		<para>Now use these vectors <latex>\Vect{b}_1,\dots ,\Vect{b}_{n-r}</latex> as the columns of the matrix <latex>\Mtrx{U} := [ \Vect{b}_1\ \dots \ \Vect{b}_{n-r}]</latex>. The rows <latex>j_1,\dots ,j_{n-r}</latex> of <latex>\Mtrx{U}</latex> form an upper triangular matrix with a <latex>1</latex> in each diagonal position. The determinant of this matrix is <latex>1</latex>, implying that the columns of <latex>\Mtrx{U}</latex> are linearly independent. This completes the proof.</para>
+	</proof>
+</theorem>

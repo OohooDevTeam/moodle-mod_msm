@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_DirectionAngle"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Direction Angles</title>
+      <plain.title>Direction Angles</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we develop the basic facts about the 
+			<subordinate>
+                     <hot>angles</hot>
+                     <companion>
+                        <unit.ref unitId="Illstr_DirectionAngles"/>
+                        <info>
+                           <para>
+                              <para.body>An illustration of Direction Angles</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>
+			 of a vector <math>
+                     <latex>\mathbf{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> and any of the coordinate axes.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_DirectionAngles">
+         <titles>
+            <title>Definition of Direction Angles</title>
+            <plain.title>Definition</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_DirectionAngle">
+                     <def.body>
+                        <para>
+                           <para.body>Given a vector <math>
+                                 <latex>\mathbf{x}</latex>
+                              </math> in <math>
+                                 <latex>\RNr[n]</latex>
+                              </math>, and a number <math>
+                                 <latex>i</latex>
+                              </math>, <math>
+                                 <latex>1 \leq i \leq n</latex>
+                              </math>, the <math>
+                                 <latex>i</latex>
+                              </math>-th direction angle of <math>
+                                 <latex>\mathbf{x}</latex>
+                              </math> is
+					</para.body>
+                           <index.glossary>
+                              <term>direction angle</term>
+                              <info>
+                                 <info.caption>Direction Angle</info.caption>
+                                 <para>
+                                    <para.body>the angle between a given vector <math>
+                                          <latex>\mathbf{x}</latex>
+                                       </math> in <math>
+                                          <latex>\RNr[n]</latex>
+                                       </math> and one of the coordinate axes.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                        <para align="center">
+                           <para.body>
+                              <subordinate>
+                                 <hot>
+                                    <math>
+                                       <latex>\omega_i\ :=\ \sphericalangle(\mathbf{e}_i,\mathbf{x})</latex>
+                                    </math>
+                                 </hot>
+                                 <info>
+                                    <info.caption>Read this as ...</info.caption>
+                                    <para>
+                                       <para.body>‘omega i is defined to be the angle from <math>
+                                             <latex>\mathbf{e}_i</latex>
+                                          </math> and <math>
+                                             <latex>\mathbf{x}</latex>
+                                          </math>.</para.body>
+                                    </para>
+                                 </info>
+                              </subordinate>
+                           </para.body>
+                        </para>
+                     </def.body>
+                  </def>
+                  <para>
+                     <para.body>To compute direction angles we use the 
+				<subordinate>
+                           <hot>dot product</hot>
+                           <info>
+                              <info.caption>What does the Dot Product have to do with Direction Angles?</info.caption>
+                              <para>
+                                 <para.body>Indeed, if <math>
+                                       <latex>\mathbf{x}</latex>
+                                    </math> and <math>
+                                       <latex>\mathbf{y}</latex>
+                                    </math> are nonzero vectors, we know that</para.body>
+                              </para>
+                              <math.display>
+                                 <latex>\mathbf{x} \bullet \mathbf{y} = | \mathbf{x} | | \mathbf{y} |\ \cos \sphericalangle( \mathbf{x} , \mathbf{y} )</latex>
+                              </math.display>
+                           </info>
+                        </subordinate>, as in proposition below.</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DirectionAngleCompute_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_RelationshipAmongDirectionAngles">
+         <titles>
+            <title>A Relationship among Direction Angles</title>
+            <plain.title>Relationship: Direction Angles</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>The cosines of the direction angles of a given vector are related by the following formula.</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DirectionAnglesSum_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_DirectionAngles"/>
+   </studymaterials>
+</unit>

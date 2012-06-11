@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_Orientation3"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>3-Dimensional Orientation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>‘Right hand’ and ‘left hand’ in 3-space are mirrored siblings.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/LeftHandRightHand.jpg"/>
+            </media>
+            <para>
+               <para.body>An orientation of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> is given by a choice of one of these two hands. Any triple <math>
+                     <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                  </math> of noncoplanar vectors represents an orientation <math>
+                     <latex>\omega(\Vect{x},\Vect{y},\Vect{z})</latex>
+                  </math> of  <math>
+                     <latex>\RNr[3]</latex>
+                  </math> as follows:</para.body>
+            </para>
+            <table align="center"
+                   border="3"
+                   cellpadding="2"
+                   cellspacing="3"
+                   bordercolor="Maroon">
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>If</para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>we find</para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>and say</para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = +1</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>It is possible to align your right hand's thumb with <math>
+                              <latex>\Vect{x}</latex>
+                           </math>, its index finger with <math>
+                              <latex>\Vect{y}</latex>
+                           </math>, and its 
+						<subordinate>
+                              <hot>middle finger</hot>
+                              <info>
+                                 <para>
+                                    <para.body>Without harming your hand</para.body>
+                                 </para>
+                              </info>
+                           </subordinate>
+						with <math>
+                              <latex>\Vect{z}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                           </math> represents the positive orientation of <math>
+                              <latex>\RNr[3]</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = -1</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>It is possible to align your left hand's thumb with <math>
+                              <latex>\Vect{x}</latex>
+                           </math>, its index finger with <math>
+                              <latex>\Vect{y}</latex>
+                           </math>, and its 
+						<subordinate>
+                              <hot>middle finger</hot>
+                              <info>
+                                 <para>
+                                    <para.body>Without harming your hand</para.body>
+                                 </para>
+                              </info>
+                           </subordinate>
+						with <math>
+                              <latex>\Vect{z}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                           </math> represents the negative orientation of <math>
+                              <latex>\RNr[3]</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+               </row>
+            </table>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>For example, the triple <math>
+                     <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                  </math> below represents the positive or right hand orientation of <math>
+                     <latex>\RNr[3]</latex>
+                  </math>. We express this by writing <math>
+                     <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = +1</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/3OrientationRightHand.gif"/>
+            </media>
+            <para>
+               <para.body>On the other hand, the triple <math>
+                     <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                  </math> below represents the negative or left hand orientation of <math>
+                     <latex>\RNr[3]</latex>
+                  </math>. We express this by writing <math>
+                     <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = -1</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/3OrientationLeftHand.gif"/>
+            </media>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Interchanging a pair of vectors reverses orientation</strong>   Now start with a triple of vectors <math>
+                     <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                  </math> representing a given orientation. Then interchange a pair amongst these vectors:  e.g. <math>
+                     <latex>(\Vect{y},\Vect{x},\Vect{z})</latex>
+                  </math>. This new triple determines an orientation of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> which is opposite to the orientation given by <math>
+                     <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                  </math>. Therefore:</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\omega(\Vect{x},\Vect{y},\Vect{z})</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>-\omega(\Vect{y},\Vect{x},\Vect{z})</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\omega(\Vect{z},\Vect{x},\Vect{y})</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>-\omega(\Vect{x},\Vect{z},\Vect{y})</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\omega(\Vect{y},\Vect{z},\Vect{x})</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>-\omega(\Vect{z},\Vect{y},\Vect{x})</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>In this computation, the identity <math>
+                     <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = \omega(\Vect{z},\Vect{x},\Vect{y})</latex>
+                  </math> means that the triple of vectors <math>
+                     <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>
+                  </math> represents the same orientation as the triple of vectors <math>
+                     <latex>(\Vect{z},\Vect{x},\Vect{y})</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>On the other hand, the identity <math>
+                     <latex>\omega(\Vect{y},\Vect{z},\Vect{x}) = -\omega(\Vect{x},\Vect{z},\Vect{y})</latex>
+                  </math> means that the respective triples of vectors represent opposite orientations of <math>
+                     <latex>\RNr[3]</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

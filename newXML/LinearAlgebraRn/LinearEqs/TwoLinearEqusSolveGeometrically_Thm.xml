@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_TwoLinearEqsGeometricalSoln"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Simultaneous solutions of two linear equations</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation: How do I test if two vectors are parallel?</caption>
+         </info.caption>
+         <para>
+            <para.body>
+               <math>
+                  <latex>\Vect{n}_1</latex>
+               </math> and <math>
+                  <latex>\Vect{n}_2</latex>
+               </math> are parallel if there is <math>
+                  <latex>t\in \RNr</latex>
+               </math> with <math>
+                  <latex>\Vect{n}_1=t\cdot \Vect{n}_2</latex>
+               </math>. – Review an illustration of this.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Given two linear equations in <math>
+               <latex>n</latex>
+            </math> variables</para.body>
+      </para>
+      <math.display>
+         <latex>
+				
+						\begin{array}{rcrccccrcl}
+\colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} &amp; = &amp; {\color{blue} c} \\
+\colorbox{lightgreen}{$b_{1}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$b_{2}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$b_{n}$}{\color{red}x_n} &amp; = &amp; {\color{blue} d}
+						\end{array}
+					
+			</latex>
+      </math.display>
+      <para>
+         <para.body>form the coefficient vectors <math>
+               <latex>\Vect{n}_1</latex>
+            </math>, <math>
+               <latex>\Vect{n}_2</latex>
+            </math>, and the augmented coefficient vectors <math>
+               <latex>\Vect{N}_1</latex>
+            </math> given by
+			</para.body>
+         <index.glossary>
+            <term>coefficient</term>
+            <term>vector</term>
+            <term>in a linear equation</term>
+         </index.glossary>
+         <index.glossary>
+            <term>coefficient</term>
+            <term>vector</term>
+            <term>augmented</term>
+         </index.glossary>
+         <index.glossary>
+            <term>augmented</term>
+            <term>coefficient vector</term>
+         </index.glossary>
+      </para>
+      <table align="center" border="1" cellpadding="2">
+         <row>
+            <cell>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\colorbox{lightgreen}{$\Vect{n}_1 := (a_1,\dots ,a_n)$}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </cell>
+            <cell>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\colorbox{lightgreen}{$\Vect{n}_2 := (b_1,\dots ,b_n)$}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </cell>
+         </row>
+         <row>
+            <cell>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{N}_1 := (\colorbox{lightgreen}{$a_1,\dots ,a_n$},{\color{blue} c})</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </cell>
+            <cell>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Vect{N}_2 := (\colorbox{lightgreen}{$b_1,\dots ,b_n$},{\color{blue} d})</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </cell>
+         </row>
+      </table>
+      <para>
+         <para.body>If <math>
+               <latex>\Vect{n}_1,\Vect{n}_2\neq \Vect{0}</latex>
+            </math> the following hold:</para.body>
+      </para>
+      <ul>
+         <li>
+            <para>
+               <para.body>If <math>
+                     <latex>n=2</latex>
+                  </math>, and if <math>
+                     <latex>\colorbox{lightgreen}{$\Vect{n}_1$}</latex>
+                  </math> and <math>
+                     <latex>\colorbox{lightgreen}{$\Vect{n}_2$}</latex>
+                  </math> are not parallel, then the given equations have exactly  one common solution.</para.body>
+            </para>
+         </li>
+         <li>
+            <para>
+               <para.body>If <math>
+                     <latex>n\geq 3</latex>
+                  </math>, and if <math>
+                     <latex>\colorbox{lightgreen}{$\Vect{n}_1$}</latex>
+                  </math> and <math>
+                     <latex>\colorbox{lightgreen}{$\Vect{n}_2$}</latex>
+                  </math> are not parallel, then the given equations have infinitely many common solutions.</para.body>
+            </para>
+         </li>
+         <li>
+            <para>
+               <para.body>If <math>
+                     <latex>\Vect{n}_1</latex>
+                  </math> and <math>
+                     <latex>\Vect{n}_2</latex>
+                  </math> are parallel but <math>
+                     <latex>\mathbf{N}_1</latex>
+                  </math> and <math>
+                     <latex>\mathbf{N}_2</latex>
+                  </math> are not parallel, the given equations have no simultaneous solutions.</para.body>
+            </para>
+         </li>
+         <li>
+            <para>
+               <para.body>If <math>
+                     <latex>\Vect{N}_1</latex>
+                  </math> and <math>
+                     <latex>\Vect{N}_2</latex>
+                  </math> are parallel, one of the equations is redundant, and the solutions hyperplane of one equation also forms the simultaneous solution set of both equations.</para.body>
+            </para>
+         </li>
+      </ul>
+   </statement.theorem>
+</theorem>

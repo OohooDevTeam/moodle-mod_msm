@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="TwoEqnsParallel1">
+	<title>Solutions of Two Linear Equations with Parallel Solution Hyperplanes</title>
+	<sub.page.body>
+		<block>
+			<para>Here we consider the simultaneous solutions of two linear equations with two unknowns</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+						\begin{array}{rcrccccrcl}
+						a_1x_1 & + & a_2x_2 & + & \cdots & \cdots & + & a_nx_n & = & c \\
+						b_1x_1 & + & b_2x_2 & + & \cdots & \cdots & + & b_nx_n & = & d
+						\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>If the coefficient vectors <latex magnify="yes">\mathbf{n}_1 = (a_1,a_2,\dots ,a_n)</latex> and <latex magnify="yes">\mathbf{n}_2 = (b_1,b_2,\dots ,b_n)</latex> are not <latex>\mathbf{0}</latex> but parallel, this means that there exists a unique number <latex>t</latex> such that <latex magnify="yes">t\cdot \mathbf{n}_1 = \mathbf{n}_2</latex>; i.e.</para>
+			
+			<math.display>
+				<latex>t\cdot (a_1,a_2,\dots ,a_n) = (ta_1,ta_2,\dots ,ta_n) = (b_1,b_2,\dots ,b_n)</latex>
+			</math.display>
+			
+			<para>This means that, for any choice of <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex> the left hand side of the second equation is <latex>t</latex> times the left hand side of the first. So there are two possibilities:</para>
+		</block>
+		
+		<block>
+			<para><b>First possibility</b> <latex>d\neq tc</latex> &nbsp; In this case a solution of the first equation cannot simultaneously be a solution of the second. This is reflected in the fact that the corresponding solution hyperplanes are parallel and distinct.</para>
+			
+			<para align="center"><image src="ims/TwoEqnsR2Parallel.gif" width="345" height="274">
+				<area shape="poly" coords="86,98,112,92,101,33,85,39,73,92">
+					<info>
+						<para>This is the normal vector associated to the first linear equation.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="196,137,221,131,212,71,195,79,183,131,201,139">
+					<info>
+						<para>This is the normal vector associated to the second linear equation.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="179,192,169,187,180,145,194,152">
+					<info>
+						<para>This is the normal vector associated to the second linear equation.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="299,188,306,163,194,136,191,149">
+					<info>
+						<para>In <latex>\RNr[2]</latex>, the hyperplane of solutions of the first linear equation form a line.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="181,130,176,144,83,108,88,98">
+					<info>
+						<para>In <latex>\RNr[2]</latex>, the hyperplane of solutions of the first linear equation form a line.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="70,94,66,106,2,83,6,67,71,91">
+					<info>
+						<para>In <latex>\RNr[2]</latex>, the hyperplane of solutions of the first linear equation form a line.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="326,271,329,243,183,198,295,252,301,272,329,272,329,272">
+					<info>
+						<para>In <latex>\RNr[2]</latex>, the hyperplane of solutions of the first linear equation form a line.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="163,191,154,203,22,155,29,143">
+					<info>
+						<para>In <latex>\RNr[2]</latex>, the hyperplane of solutions of the second linear equation form a line.</para>
+					</info>
+				</area>
+			</image>
+			</para>
+			
+			<para align="center"><image src="ims/TwoEqnsR3Parallel.gif" width="377" height="350">
+				<area shape="poly" coords="163,115,174,111,150,15,123,30">
+					<info>
+						<para>This is a normal vector common to both hyperplanes.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="163,31,227,2,377,86,133,246,5,129,134,55,162,115,175,115,182,107,165,37">
+					<info>
+						<para>In <latex>\RNr[3]</latex> the solution hyperplane of the first equation form a plane in the ordinary sense.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="310,138,374,180,131,344,3,216,55,186,130,254">
+					<info>
+						<para>In <latex>\RNr[3]</latex> the solution hyperplane of the second equation form a plane in the ordinary sense, and this plane is parallel and distinct from the solution plane of the first equation.</para>
+					</info>
+				</area>
+			</image>
+			</para>
+			
+			<para>As the solution hyperplanes of the given two equations are parallel and distinct, there is no point which belongs to both hyperplanes. Therefore the given system of linear equations has no solution. We express this by saying that the solution set of this system of linear equations is empty; or: The two equations are inconsistent.</para>
+		</block>
+		
+		<block>
+			<para><b>Second Possibility</b> &nbsp; <latex>d\neq t\cdot c</latex> &nbsp; We know that <latex>t\neq 0</latex>. So, in this case each solution of one of the equations is also a solution of the other. So both equations have the same solution hyperplane. Consequently, this system of two equations is equivalent to the system consisting of just one them.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

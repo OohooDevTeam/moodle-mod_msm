@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_AbsoluteValueOperation"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Absolute Value Operation</title>
+      <plain.title>Absolute Value Operation</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In this section we use the ordering structure on the real number system to define the absolute value operation. We then establish its basic properties.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_AbsoluteValueR">
+               <caption>Absolute value operation on <math>
+                     <latex>\RNr</latex>
+                  </math>
+               </caption>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>Read this as: ‘The absolute value of x is defined to be x if 0 is less than or equal to x, and is defined to be negative x if x is less than or equal to 0.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>This definition makes sense because we know from the totality property of the ordering on <math>
+                              <latex>\RNr</latex>
+                           </math> that one of the two statements ‘<math>
+                              <latex>0\leq x</latex>
+                           </math>’ and ‘<math>
+                              <latex>x\leq 0</latex>
+                           </math>’ always applies. Moreover, we proved that, if <math>
+                              <latex>x\leq 0</latex>
+                           </math>, then <math>
+                              <latex>0\leq -x</latex>
+                           </math>. So <math>
+                              <latex>0\leq \Abs{x}</latex>
+                           </math> always.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Comment">
+                  <info>
+                     <info.caption>Comment</info.caption>
+                     <para>
+                        <para.body>Notice that we do not require a new assumption in the form of an axiom to introduce the absolute value of a real number. Rather this is a construction which can be performed based on axioms and properties discussed earlier.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>The absolute value, or norm, of <math>
+                           <latex>x\in \RNr</latex>
+                        </math> is
+				</para.body>
+                     <index.glossary>
+                        <term>absolute valued</term>
+                        <term>of a number in <math>
+                              <latex>\RNr</latex>
+                           </math>
+                        </term>
+                        <info>
+                           <para>
+                              <para.body>The absolute value, or norm, of <math>
+                                    <latex>x\in \RNr</latex>
+                                 </math> is
+							</para.body>
+                              <index.symbol>
+                                 <symbol>
+                                    <math>
+                                       <latex>\Abs{x}</latex>
+                                    </math>
+                                 </symbol>
+                                 <info>
+                                    <para>
+                                       <para.body>The absolute value of <math>
+                                             <latex>x\in \RNr</latex>
+                                          </math>
+                                       </para.body>
+                                    </para>
+                                 </info>
+                              </index.symbol>
+                              <index.glossary>
+                                 <term>absolute value of <math>
+                                       <latex>x\in \RNr</latex>
+                                    </math>
+                                 </term>
+                              </index.glossary>
+                              <index.glossary>
+                                 <term>norm of <math>
+                                       <latex>x\in \RNr</latex>
+                                    </math>
+                                 </term>
+                              </index.glossary>
+                           </para>
+                           <math.display>
+                              <latex>
+								
+\Abs{x}\ :=\ \left\{
+\aligned
+x &amp;\quad \text{if $0\leq x$} \\
+-x &amp;\quad \text{if $x\leq 0$}
+\endaligned
+\right.
+
+							</latex>
+                           </math.display>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>
+					
+\Abs{x}\ :=\ \left\{
+\aligned
+x &amp;\quad \text{if $0\leq x$} \\
+-x &amp;\quad \text{if $x\leq 0$}
+\endaligned
+\right.
+
+				</latex>
+                  </math.display>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Let us now establish the most basic properties of the absolute value operation.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="NormProperties_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+</unit>

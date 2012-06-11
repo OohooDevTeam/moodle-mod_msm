@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_DirectionAngles"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Direction Angles: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the direction angles of the vector <math>
+                  <latex>\Vect{x} = (3,4)</latex>
+               </math> in <math>
+                  <latex>\RNr[2]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We have <math>
+                        <latex>| \Vect{x} | = 5</latex>
+                     </math>, and 
+				<subordinate>
+                        <hot>so</hot>
+                        <info>
+                           <info.caption>
+                              <caption>What are we going to use to make this computation</caption>
+                           </info.caption>
+						
+						                     <para>
+                              <para.body>Remember the formula for the first direction angle:</para.body>
+                           </para>
+						                     <math.display>
+							                       <latex>\omega_1 = \arccos \frac{x_1}{ | \Vect{x} | }</latex>
+						                     </math.display>
+					                   </info>
+                     </subordinate>,
+			</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>\omega_1 = \arccos \frac{3}{5} \approx 53.1\quad \text{degrees}</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>To find <math>
+                        <latex>\omega_2 </latex>
+                     </math> we now have two possible approaches. The first approach just uses the
+				<subordinate>
+                        <hot>formula for direction angles</hot>
+                        <info>
+                           <info.caption>
+                              <caption>Recall the formula for the second direction angle</caption>
+                           </info.caption>
+						
+						
+						                     <math.display>
+							                       <latex>\omega_2 = \arccos \frac{x_2}{ | \Vect{x} | }</latex>
+						                     </math.display>
+					                   </info>
+                     </subordinate>
+				again:</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>\omega_2 = \arccos \frac{4}{5} \approx 36.9\quad \text{degrees}</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>In the second approach we 
+				<subordinate>
+                        <hot>observe that</hot>
+                        <info>
+                           <info.caption>
+                              <caption>What does it tell us if <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> is a first quadrant vector?</caption>
+                           </info.caption>
+						
+						                     <para>
+                              <para.body>The direction angles of a first quadrant vector in <math>
+                                    <latex>\RNr[2]</latex>
+                                 </math> add up to <math>
+                                    <latex>90</latex>
+                                 </math> degrees.</para.body>
+                           </para>
+						
+						                     <para align="center">
+                              <para.body>
+                                 <media type="image" active="0" inline="0">
+                                    <img src="ims/DirectionAnglesR2.gif" height="237" width="343"/>
+                                 </media>
+                              </para.body>
+                           </para>
+					                   </info>
+                     </subordinate>
+				                 <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is a first quadrant vector. Therefore</para.body>
+               </para>
+			
+			            <para align="center">
+                  <para.body>
+                     <math>
+                        <latex>\omega_1 + \omega_2 = 90</latex>
+                     </math>, and so, <math>
+                        <latex>\omega_2 \approx 90 - 53.1 = 36.9\quad \text{degrees}</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the cosines of the direction angles of <math>
+                  <latex>\Vect{u} = (-1,1,1)</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We have <math>
+                        <latex>\Vect{u} = \sqrt{3}</latex>
+                     </math>, and so</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\cos \omega_1</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>- \dfrac{1}{ \sqrt{3} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\cos \omega_2</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{1}{ \sqrt{3} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\cos \omega_3</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{1}{ \sqrt{3} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

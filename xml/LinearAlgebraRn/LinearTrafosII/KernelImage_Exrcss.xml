@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_KernelImage">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Linear Transformations II - Kernel and Image</title>
+	<exercise>
+		<problem>
+			<para>Consider the projection function</para>
+			<math.display>
+				<latex>P\from \RNr[5] \longrightarrow \RNr[2],\quad P(u,v,x,y,z) := (v,y)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that <latex>P</latex> is a linear function</para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>You have at least two approaches to answering this problem:</para>
+					<ol>
+						<li><para>Show that <latex>P</latex> satisfies the definition of a linear function; that is, it commutes with vector addition and with scalar multiplication.</para></li>
+						<li><para>Show that <latex>P</latex> can be represented by a matrix.</para></li>
+					</ol>
+				</solution.hint>
+				<solution>
+					<para>One way to solve this problem is to show that <latex>P</latex> is represented by a matrix. Indeed, put</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}\ :=\ 
+\left[
+\begin{array}{ccccc}
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Then we find that for every <latex>\Vect{x} = (u,v,x,y,z)</latex> in <latex>\RNr[5]</latex>,</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+(v,y) = P(\Vect{x}) \ =\ \Mtrx{A}\ :=\ 
+\left[
+\begin{array}{ccccc}
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0
+\end{array}
+\right]\, 
+\left[
+\begin{array}{r}
+u \\ v \\ x \\ y \\ z
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{A}</latex> which represents <latex>P</latex> with respect to standard coordinates.</para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>See the solution of the previous part of this problem.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find <latex>\Rnk{\Mtrx{A}}</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>\Rnk{\Mtrx{A}} = 2</latex>.</para></answer>
+				<solution.hint>
+					<para>Recall: the rank of <latex>\Mtrx{A}</latex> is the number of leading 1&rsquo;s in the RREF of <latex>\Mtrx{A}</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the image of <latex>P</latex> and its dimension.</para>
+			</problem>
+			<approach version="1">
+				<solution.hint>
+					<para>The image of <latex>P</latex> consists of all those <latex>(a,b)</latex> in <latex>\RNr[2]</latex> for which there exists <latex>\Vect{x}</latex> in <latex>\RNr[5]</latex> with</para>
+					<computation>
+						<left>P(\Vect{x})</left>
+						<center>=</center>
+						<right>(a,b)</right>
+					</computation>
+				</solution.hint>
+				<solution.hint>
+					<para>You need to determine for which <latex>(a,b)</latex> in <latex>\RNr[2]</latex>, there exists <latex>\Vect{x}=(u,v,x,y,z)</latex> in <latex>\RNr[5]</latex> with <latex>P(\Vect{x}) = (a,b)</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>We know that the image of <latex>P</latex> consists of all those <latex>(a,b)</latex> in <latex>\RNr[2]</latex> for which there exists <latex>\Vect{x}</latex> in <latex>\RNr[5]</latex> with</para>
+					<computation>
+						<left>P(\Vect{x})</left>
+						<center>=</center>
+						<right>(a,b)</right>
+					</computation>
+					<para>Now, given such <latex>(a,b)</latex>, we find</para>
+					<computation>
+						<left>P(0,a,0,b,0)</left>
+						<center>=</center>
+						<right>(a,b)</right>
+					</computation>
+					<para>Therefore every vector in <latex>\RNr[2]</latex> belongs to <latex>\Img{P}</latex>; in other words</para>
+					<computation>
+						<left>\Img{P}</left>
+						<center>=</center>
+						<right>\RNr[2]</right>
+					</computation>
+				</solution>
+			</approach>
+			<approach version="2">
+				<solution.hint>
+					<para>Recall that the dimension of <latex>\Img{P}</latex> equals the rank of <latex>\Mtrx{A}</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>We know that the dimension of <latex>\Img{P}</latex> equals the rank of <latex>\Mtrx{A}</latex>. Thus <latex>\Img{P}</latex> is a 2-dimensional subspace of <latex>\RNr[2]</latex>. So</para>
+					<computation>
+						<left>\Img{P}</left>
+						<center>=</center>
+						<right>\RNr[2]</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the column space of <latex>\Mtrx{A}</latex> and its dimension.</para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Recall that the column space of <latex>\Mtrx{A}</latex> equals the image of <latex>P</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>We know that</para>
+					<math.display>
+						<latex>\ColSp{\Mtrx{A}} = \Img{P} = \RNr[2]</latex>
+					</math.display>
+					<para>using a previous part of this problem.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the kernel of <latex>P</latex> and its dimension.</para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Recall the definition of &lsquo;kernel of <latex>P</latex>&rsquo;: it is the collection of all those <latex>(u,v,x,y,z)</latex> in <latex>\RNr[5]</latex> with</para>
+					<math.display>
+						<latex>P(u,v,x,y,z) = (0,0)</latex>
+					</math.display>
+				</solution.hint>
+				<solution>
+					<para>We know that the kernel of <latex>P</latex> is the collection of all those <latex>(u,v,x,y,z)</latex> in <latex>\RNr[5]</latex> with</para>
+					<math.display>
+						<latex>P(u,v,x,y,z) = (0,0)</latex>
+					</math.display>
+					<para>Thus <latex>\Ker{P}</latex> consists of all those <latex>\Vect{x}</latex> in <latex>\RNr[5]</latex> of the form</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>(u,0,x,0,z)</right>
+					</computation>
+					<para>Thus <latex>\Ker{P}</latex> has the ordered basis</para>
+					<math.display>
+						<latex>\EuScript{K} = (\StdBss{1},\StdBss{3},\StdBss{5})</latex>
+					</math.display>
+					<para>Therefore,</para>
+					<computation>
+						<left>\Dim{ \Ker{P} }</left>
+						<center>=</center>
+						<right>3</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Find <latex>\NllSp{ \Mtrx{A} }</latex> and its dimension.</para></problem>
+			<approach>
+				<solution.hint>
+					<para>Recall that <latex>\NllSp{\Mtrx{A}}</latex> equals <latex>\Ker{P}</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>We know that</para>
+					<math.display>
+						<latex>\NllSp{ \Mtrx{A} } = \Ker{P} = \Span{ \StdBss{1}, \StdBss{3}, \StdBss{5} }</latex>
+					</math.display>
+					<para>So, in particular,</para>
+					<math.display>
+						<latex>\Dim{ \NllSp{ \Mtrx{A} } } = \Dim{ \Ker{P} } = 3 = 5 - \Rnk{ \Mtrx{A} }</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Determine if <latex>P</latex> is a monomorphism, an epimorphism, or an isomorphism.</para>
+			</problem>
+			<approach>
+				<answer>
+					<ul>
+						<li><para><latex>P</latex> is not a monomorphism.</para></li>
+						<li><para><latex>P</latex> is an epimorphism.</para></li>
+						<li><para><latex>P</latex> is not an isomorphism, as it is not a monomorphism.</para></li>
+					</ul>
+				</answer>
+			</approach>
+		</part>
+		
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>You are given the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} :=
+\left[
+\begin{array}{rrrrr}
+1 & 0 & -1 & 0 & -4 \\
+-2 & -1 & 3 & 1 & 5 \\
+0 & 1 & -1 & -1 & 3 \\
+2 & 1 & -3 & -1 & -5
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>and the linear map <latex>L\from \RNr[5] \to \RNr[4]</latex> represented by <latex>\Mtrx{A}</latex> with respect to standard coordinates.</para>
+		</problem>
+		<part>
+			<problem><para>Find the rank of <latex>\Mtrx{A}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>\Rnk{\Mtrx{A}}</left>
+						<center>=</center>
+						<right>2</right>
+					</computation>
+				</answer>
+				<solution.hint>
+					<para>Recall: the rank of <latex>\Mtrx{A}</latex> is the number of leading <latex>1</latex>&rsquo;s in the Row Reduced Echelon Form of <latex>\Mtrx{A}</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>The RREF of <latex>\Mtrx{A}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{rrrrr}
+1 & 0 & -1 & 0 & -4 \\
+0 & 1 & -1 & -1 & 3 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>This RREF has <latex>2</latex> leading <latex>1</latex>&rsquo;s. Therefore,</para>
+					<computation>
+						<left>\Rnk{\Mtrx{A}}</left>
+						<center>=</center>
+						<right>2</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is <latex>\dim(\RowSp{\Mtrx{A}})</latex>, the dimension of the row space of <latex>\Mtrx{A}</latex>?</para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>\dim(\RowSp{\Mtrx{A}})</left>
+						<center>=</center>
+						<right>2</right>
+					</computation>
+				</answer>
+				<solution>
+					<computation>
+						<left>\dim(\RowSp{\Mtrx{A}})</left>
+						<center>=</center>
+						<right>\Rnk{\Mtrx{A}} = 2</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Which vector space <latex>\RNr[k]</latex> contains the row space of <latex>\Mtrx{A}</latex> as a subvector space?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>\RNr[5]</latex></para></answer>
+				<solution>
+					<para>Each row of <latex>\Mtrx{A}</latex> is a vector in <latex>\RNr[5]</latex>. The row space of <latex>\Mtrx{A}</latex> is the space spanned by its row vectors. So the row space of <latex>\Mtrx{A}</latex> is a subvector space of <latex>\RNr[5]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>What is <latex>\dim(\ColSp{\Mtrx{A}})</latex>, the dimension of the column space of <latex>\Mtrx{A}</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>\dim(\ColSp{\Mtrx{A}})</left>
+						<center>=</center>
+						<right>2</right>
+					</computation>
+				</answer>
+				<solution>
+					<computation>
+						<left>\dim(\ColSp{\Mtrx{A}})</left>
+						<center>=</center>
+						<right>\Rnk{\Mtrx{A}} = 2</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Which vector space <latex>\RNr[k]</latex> contains the column space of <latex>\Mtrx{A}</latex> as a subvector space?</para>
+			</problem>
+			<approach>
+				<answer><para><latex>\RNr[4]</latex></para></answer>
+				<solution>
+					<para>Each column of <latex>\Mtrx{A}</latex> is a vector in <latex>\RNr[4]</latex>. The column space is the span of the column vectors. Therefore the column space of <latex>\Mtrx{A}</latex> is a subvector space of <latex>\RNr[4]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\dim(\NllSp{\Mtrx{A}})</latex>, the dimension of the null space of <latex>\Mtrx{A}</latex>.</para> 
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>\Dim{\NllSp{ \Mtrx{A} }} = 5 - 2 = 3</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>What is <latex>\Dim{\Ker{L}}</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>\Dim{ \Ker{L} } = \Dim{\NllSp{ \Mtrx{A} } } = 3</latex></para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>What is <latex>\Dim{\Img{L}}</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>\Dim{\Img{L}} = \Dim{ \ColSp{A} } = 2</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider two linear transformations</para>
+			<math.display>
+				<latex>R\from U \longrightarrow V \quad\text{and}\quad S\from V \longrightarrow W</latex>
+			</math.display>
+			<para>If <latex>(S\Comp R)\from U\to W</latex> is the 0-map, i.e. <latex>(S\Comp R)(\Vect{x}) = \Vect{0}</latex> for all <latex>\Vect{x}</latex> in <latex>V</latex>, show that every <latex>\Vect{v}</latex> in the image of <latex>R</latex> is in the kernel of <latex>S</latex>.</para>
+		</problem>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider two linear transformations</para>
+			<math.display>
+				<latex>R\from \RNr[5] \longrightarrow \RNr[3] \quad\text{and}\quad S\from \RNr[3] \longrightarrow \RNr[5]</latex>
+			</math.display>
+			<para>Show that <latex>S\Comp R</latex> is not invertible.</para>
+		</problem>
+		<approach>
+			<solution>
+				<para>We show that <latex>\Ker{ S\Comp R } \neq \Vect{0}</latex>: The dimension formula applied to <latex>R</latex> tells us that</para>
+				<computation>
+					<left>\Dim{ \Ker{R} }</left>
+					<center>=</center>
+					<right>5 - \Dim{ \Img{R} }</right>
+				</computation>
+				<para>Now, the image of <latex>R</latex> is contained in <latex>\RNr[3]</latex>. Therefore,</para>
+				<computation>
+					<left>\Dim{ \Img{R} }</left>
+					<center>\leq</center>
+					<right>3</right>
+				</computation>
+				<para>Consequently,</para>
+				<computation>
+					<left>5-\Dim{ \Img{R} }</left>
+					<center>\geq 2</center>
+					<right></right>
+				</computation>
+				<para>This means that there is <latex>\Vect{x}\neq \Vect{0}</latex> in <latex>\RNr[5]</latex> with <latex>R(\Vect{x})=\Vect{0}</latex>. But then</para>
+				<computation>
+					<left>S\Comp R(\Vect{x})</left>
+					<center>=</center>
+					<right>S(\Vect{0})</right>
+					<left></left>
+					<center>=</center>
+					<right>\Vect{0}</right>
+				</computation>
+				<para>It follows that <latex>(\S\Comp R)</latex> fails to be a monomorphism. So it can not be an isomorphism.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Consider two linear transformations</para>
+			<math.display>
+				<latex>L\from \RNr[n] \longrightarrow \RNr[k] \quad\text{and}\quad T\from \RNr[k] \longrightarrow \RNr[n]</latex>
+			</math.display>
+			<para>If <latex><![CDATA[ k < n ]]></latex>, show that <latex>T\Comp L</latex> is not invertible.</para>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>Show that the kernel of <latex>T\Comp L</latex> must have positive dimension.</para>
+			</solution.hint>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Suppose the linear map <latex>L\from \RNr[6] \to \RNr[6]</latex> has <latex>\dim(\im(L))=4</latex>. Show that <latex>L^2:= L\Comp L</latex> is not the 0-map.</para>
+		</problem>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>The function <latex>T\from \RNr[n] \to \RNr</latex> is defined by <latex>T(x_1,\dots ,x_n) = x_1</latex>.</para>
+		</problem>
+		<part>
+			<problem><para>Show that <latex>T</latex> is a linear transformation.</para></problem>
+		</part>
+		<part>
+			<problem><para>Find the kernel of <latex>T</latex>.</para></problem>
+		</part>
+		<part>
+			<problem><para>Find the image of <latex>T</latex>.</para></problem>
+		</part>
+	</exercise>
+</exercise.pack>

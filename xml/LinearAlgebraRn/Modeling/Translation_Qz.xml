@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE quiz.pack	SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_TranslationQz">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Translation - Quiz</title>
+	<quiz>
+		<question>
+			<para>The pictures below display the movement of an object in space; left before &ndash; right after the movement. Determine by inspection which of the following movements is a translation.</para>
+		</question>
+		<part>
+			<question>
+				<para align="center"><img src="Translation01_Qz.gif" width="325" height="99"/></para>
+			</question>
+			<choice>
+				<answer><para>Yes, this is a translation.</para></answer>
+				<info>
+					<caption>Comment: &lsquo;Yes, this is a translation.&rsquo;</caption>
+					<para>No, this movement is not a translation. How do you test it? The arrow describing the movement of the top corner of the triangle is much longer than the arrow describing the movement of the right corner of the left hand triangle. So there is no single translation vector which describes the movement of the entire object.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>No, this is not a translation.</para></answer>
+				<info>
+					<caption>Comment: &lsquo;No, this is not a translation.&rsquo;</caption>
+					<para>Correct! This movement is not a translation. How do you test it? The arrow describing the movement of the top corner of the triangle is much longer than the arrow describing the movement of the right corner of the left hand triangle. So there is no single translation vector which describes the movement of the entire object.</para>
+					
+					<para>The operation moving one triangle into the other is a reflection. We will learn later how to describe reflections.</para>
+				</info>
+			</choice>
+		</part>
+		
+		<part>
+			<question>
+				<para align="center"><img src="Translation02_Qz.gif" width="307" height="155"/></para>
+			</question>
+			<choice>
+				<answer><para>Yes, this is a translation.</para></answer>
+				<info>
+					<caption>Comment: &lsquo;Yes, this is a translation.&rsquo;</caption>
+					<para>No, this movement is not a translation. How do you test it? The arrow describing the movement of the top right corner of the left hand square points to the upper right. While the arrow describing the movement of the to left corner of the left hand square points to the lower right. So there is no single translation vector which describes the movement of the entire object.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>No, this is not a translation.</para></answer>
+				<info>
+					<caption>Comment: &lsquo;No, this is not a translation.&rsquo;</caption>
+					<para>Correct! This movement is not a translation. How do you test it? The arrow describing the movement of the top right corner of the left hand square points to the upper right. While the arrow describing the movement of the to left corner of the left hand square points to the lower right. So there is no single translation vector which describes the movement of the entire object.</para>
+					
+					<para>The operation moving one square into the other is a shift followed by a rotation. We will learn later how to describe rotations.</para>
+				</info>
+			</choice>
+		</part>
+		
+		<part>
+			<question>
+				<para align="center"><img src="Translation03_Qz.gif" width="301" height="101"/></para>
+			</question>
+			<choice>
+				<answer><para>Yes, this is a translation.</para></answer>
+				<info>
+					<caption>Comment: &lsquo;Yes, this is a translation.&rsquo;</caption>
+					<para>No, this movement is not a translation. How do you test it? The arrow describing the movement of the top corner of the triangle is longer than the arrow describing the movement of the bottom right corner of the triangle. So there is no single translation vector which describes the movement of the entire object.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>No, this is not a translation.</para></answer>
+				<info>
+					<caption>Comment: &lsquo;No, this is not a translation.&rsquo;</caption>
+					<para>Correct! This movement is not a translation. How do you test it: How do you test it? The arrow describing the movement of the top corner of the triangle is longer than the arrow describing the movement of the bottom right corner of the triangle. So there is no single translation vector which describes the movement of the entire object.</para>
+					
+					<para>The operation moving one triangle into the other is a shift followed by a shear operation. We will learn later how to describe shear operations.</para>
+				</info>
+			</choice>
+		</part>
+		
+		<part>
+			<question>
+				<para align="center"><img src="Translation04_Qz.gif" width="243" height="139"/></para>
+			</question>
+			<choice>
+				<answer><para>Yes, this is a translation.</para></answer>
+				<info>
+					<caption>Comment: &lsquo;Yes, this is a translation.&rsquo;</caption>
+					<para>Correct! &ndash; All arrows connecting a point from the left hand pentagon to the corresponding point on the right hand pentagon have the same length and direction. Therefore there is a translation vector which describes the entire operation.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>No, this is not a translation.</para></answer>
+				<info>
+					<caption>Comment: &lsquo;No, this is not a translation.&rsquo;</caption>
+					<para>Oops! &ndash; Look again to determine if it is possible to shift the left hand pentagon to the right hand pentagon.</para>
+				</info>
+			</choice>
+		</part>
+	</quiz>
+</quiz.pack>

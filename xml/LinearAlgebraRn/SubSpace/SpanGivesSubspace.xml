@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_SpanGivesSubSpace">
+	<caption>Span and subvector space</caption>
+	<statement>
+		<para>For every subset <latex>S</latex> of <latex>\RNr[n]</latex>, <latex>\span(S)</latex> is a subvector space of <latex>\RNr[n]</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>We need to show that <latex>V:=\span(S)</latex> satisfies the 
+			<subordinate>
+				<hot>three defining properties</hot>
+				<crossref>
+					<definition.ref definitionID="Def_SubVectorSpace"/>
+					<para>Look up the defining properties of a subspace</para>
+				</crossref>
+			</subordinate>
+			of a subvector space. If <latex>S</latex> is the empty subset of <latex>\RNr[n]</latex>, this is so by definition. So it remains to consider the case where <latex>S</latex> is not empty.</para>
+		<para>To see that the <latex>\Vect{0}</latex>-vector belongs to <latex>V</latex>, 
+			<subordinate>
+				<hot>pick any</hot>
+				<info><para>It is possible to pick such a vector because <latex>S</latex> is not empty.</para></info>
+			</subordinate>
+			vector <latex>\Vect{v}</latex> in <latex>S</latex>. Then <latex>\Vect{0} = 0\cdot \Vect{v}</latex> belongs to <latex>V</latex>.</para>
+		<para>To see that <latex>V</latex> is closed under addition, consider any two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>V</latex>. Then we know that</para>
+		<math.display>
+			<latex>\Vect{x} = s_1 \Vect{x_1} + \cdots + s_a \Vect{x}_a\quad \text{and}\quad \Vect{y} = t_1 \Vect{y}_1+\cdots + t_b \Vect{y}_b</latex>
+		</math.display>
+		<para>for vectors <latex>\Vect{x}_1,\dots ,\Vect{x}_a, \Vect{y}_1,\dots ,\Vect{y}_b</latex> in <latex>S</latex> and numbers <latex>s_1,\dots ,s_a, t_1,\dots ,t_b</latex>. This means that</para>
+		<computation>
+			<left>\Vect{x} + \Vect{y}</left>
+			<center>=</center>
+			<right>s_1 \Vect{x}_1 + \cdots + s_a \Vect{x}_1\ +\ t_1 \Vect{y}_1+\cdots +t_b \Vect{y}_b</right>
+		</computation>
+		<para>is also a linear combination of <latex>S</latex> and, hence, belongs to <latex>V</latex>. Thus <latex>V</latex> is closed under vector addition.</para>
+		<para>To see that <latex>V</latex> is closed under scalar multiplication, consider a vector</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>s_1 \Vect{x}_1 + \cdots + s_a \Vect{x}_a</right>
+		</computation>
+		<para>in <latex>V</latex>. If <latex>t</latex> is any number, then</para>
+		<computation>
+			<left>t \Vect{x}</left>
+			<center>=</center>
+			<right>(ts_1) \Vect{x}_1 + \cdots + (ts_a) \Vect{x}_a</right>
+		</computation>
+		<para>is also a linear combination of vectors in <latex>S</latex>, hence belongs to <latex>V</latex>. Thus <latex>V</latex> is closed under scalar multiplication.</para>
+		<para>This completes the proof.</para>
+	</proof>
+</theorem>

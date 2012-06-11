@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_OrderingStructureR"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Ordering Structure of the Real Numbers System</title>
+      <plain.title>Ordering </plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In this section we introduce axioms which ensure that we have a size comparison of any two real numbers. These are the ordering axioms of <math>
+                     <latex>\RNr</latex>
+                  </math>. We then discuss the main properties of this ordering structure.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Axiom" id="Axi_Ordering">
+               <caption>Ordering structure of real numbers</caption>
+               <associate type="Comment">
+                  <info>
+                     <info.caption>Comment</info.caption>
+                     <para>
+                        <para.body>These properties say that <math>
+                              <latex>\RNr</latex>
+                           </math> is a totally ordered set.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>There is a set of ordered pairs <math>
+                           <latex>(x,y)\in\RNr[2]</latex>
+                        </math> satisfying the relationship 
+				<subordinate>
+                           <hot>
+                              <math>
+                                 <latex>x\leq y</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>Read this as: ‘x is less than or equal to y.’</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+				with the following properties.</para.body>
+                  </para>
+                  <ol>
+                     <li>
+                        <para>
+                           <para.body>Reflexivity: <math>
+                                 <latex>x\leq x</latex>
+                              </math> for all <math>
+                                 <latex>x\in \RNr</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>Transitivity: if <math>
+                                 <latex>x\leq y</latex>
+                              </math> and <math>
+                                 <latex>y\leq z</latex>
+                              </math>, then <math>
+                                 <latex>x\leq z</latex>
+                              </math>, for all <math>
+                                 <latex>x,y,z\in \RNr</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>Antisymmetry: if <math>
+                                 <latex>x\leq y</latex>
+                              </math> and <math>
+                                 <latex>y\leq x</latex>
+                              </math>, then <math>
+                                 <latex>x=y</latex>
+                              </math>, for all <math>
+                                 <latex>x,y\in \RNr</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>Totality: for all <math>
+                                 <latex>x,y\in \RNr</latex>
+                              </math>, <math>
+                                 <latex>x\leq y</latex>
+                              </math> or <math>
+                                 <latex>y\leq x</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                  </ol>
+               </def.body>
+            </def>
+            <def type="Convention">
+               <def.body>
+                  <para>
+                     <para.body>Based on the ordering axioms or <math>
+                           <latex>\RNr</latex>
+                        </math>, we adopt the following conventions</para.body>
+                  </para>
+                  <ol>
+                     <li>
+                        <para>
+                           <para.body>We say <subordinate>
+                                 <hot>
+                                    <math>
+                                       <latex>y\geq x</latex>
+                                    </math>
+                                 </hot>
+                                 <info>
+                                    <para>
+                                       <para.body>Read: ‘y is greater than or equal to x.’</para.body>
+                                    </para>
+                                 </info>
+                              </subordinate>
+				if <math>
+                                 <latex>x\leq y</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>We also say 
+					<subordinate>
+                                 <hot>
+                                    <math>
+                                       <latex> x &lt; y </latex>
+                                    </math>
+                                 </hot>
+                                 <info>
+                                    <para>
+                                       <para.body>Read this as: ‘x is less than y’ or ‘x is strictly less than y’.</para.body>
+                                    </para>
+                                 </info>
+                              </subordinate>
+					 if <math>
+                                 <latex>x\leq y</latex>
+                              </math> and <math>
+                                 <latex>\neq y</latex>
+                              </math>. Equivalently, we say 
+					<subordinate>
+                                 <hot>
+                                    <math>
+                                       <latex> y &gt; x </latex>
+                                    </math>
+                                 </hot>
+                                 <info>
+                                    <para>
+                                       <para.body>Read this as: ‘y is greater than x’ or ‘y is strictly greater than x’.</para.body>
+                                    </para>
+                                 </info>
+                              </subordinate>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>We say that <math>
+                                 <latex>x\in \RNr</latex>
+                              </math> is positive if <math>
+                                 <latex> x &gt; 0 </latex>
+                              </math>.
+					
+					We say that <math>
+                                 <latex>y\in \RNr</latex>
+                              </math> is negative if <math>
+                                 <latex> y &lt; 0 </latex>
+                              </math>.
+					</para.body>
+                           <index.glossary>
+                              <term>positive</term>
+                              <term>number</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>number</term>
+                              <term>positive</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>negative</term>
+                              <term>number</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>number</term>
+                              <term>negative</term>
+                           </index.glossary>
+                        </para>
+                     </li>
+                  </ol>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Addition and multiplication in <math>
+                     <latex>\RNr</latex>
+                  </math> are required to be compatible with the ordering structure by the axioms below.</para.body>
+            </para>
+            <def type="Axiom" id="Axi_SumProductCompatibility">
+               <caption>Compatibility with addition and multiplication</caption>
+               <def.body>
+                  <para>
+                     <para.body>For all <math>
+                           <latex>x,y,z\in \RNr</latex>
+                        </math> the following hold:</para.body>
+                  </para>
+                  <ol>
+                     <li>
+                        <para>
+                           <para.body>If <math>
+                                 <latex> x &lt; y </latex>
+                              </math>, then <math>
+                                 <latex> x+z &lt; y+z </latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>If <math>
+                                 <latex> 0 &lt; x </latex>
+                              </math> and <math>
+                                 <latex> 0 &lt; y </latex>
+                              </math>, then <math>
+                                 <latex> 0 &lt; x\cdot y </latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                  </ol>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Next we establish certain basic properties of the ordering structure of <math>
+                     <latex>\RNr</latex>
+                  </math>.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="OrderingPrprts_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+</unit>

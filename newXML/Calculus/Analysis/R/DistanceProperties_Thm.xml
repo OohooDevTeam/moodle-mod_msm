@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_DistanceRProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Properties of ‘distance between numbers’</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
+         <para>
+            <para.body>Where does the term ‘triangle inequality’ come from? See an explanation and illustration.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For all <math>
+               <latex>x,y,z\in \RNr</latex>
+            </math> the following hold:
+			</para.body>
+         <index.glossary>
+            <term>distance</term>
+            <term>between numbers</term>
+            <info>
+               <para>
+                  <para.body>A proposition providing the basic properties of the distance operation.</para.body>
+               </para>
+            </info>
+         </index.glossary>
+      </para>
+      <part.theorem partid="Positivity">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Dstnc{x}{y} \geq 0</latex>
+                  </math>, the positivity property
+				</para.body>
+               <index.glossary>
+                  <term>distance</term>
+                  <term>positivity</term>
+                  <info>
+                     <para>
+                        <para.body>The positivity property of ‘distance’ states that <math>
+                              <latex>\Dstnc{x}{y} \geq 0</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>positivity</term>
+                  <term>of distance between numbers</term>
+                  <info>
+                     <para>
+                        <para.body>The positivity property of ‘distance’ states that <math>
+                              <latex>\Dstnc{x}{y} \geq 0</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="DistanceSymmetric">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Dstnc{x}{y} = \Dstnc{y}{x}</latex>
+                  </math>, the symmetry property of distance
+				</para.body>
+               <index.glossary>
+                  <term>distance</term>
+                  <term>symmetry</term>
+                  <info>
+                     <para>
+                        <para.body>The symmetry property of ‘distance’ states that <math>
+                              <latex>\Dstnc{x}{y} = \Dstnc{y}{x}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>symmetry</term>
+                  <term>of distance between numbers</term>
+                  <info>
+                     <para>
+                        <para.body>The symmetry property of ‘distance’ states that <math>
+                              <latex>\Dstnc{x}{y} = \Dstnc{y}{x}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="TriangleInequality">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Dstnc{x}{z} \leq \Dstnc{x}{y} + \Dstnc{y}{z}</latex>
+                  </math>, the triangle inequality
+				</para.body>
+               <index.glossary>
+                  <term>distance</term>
+                  <term>triangle inequality</term>
+                  <info>
+                     <para>
+                        <para.body>The triangle inequality property of ‘distance’ states that <math>
+                              <latex>\Dstnc{x}{z} \geq \Dstnc{x}{y} + \Dstnc{y}{z}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>triangle inequality</term>
+                  <term>of distance between numbers</term>
+                  <info>
+                     <para>
+                        <para.body>The triangle inequality property of ‘distance’ states that <math>
+                              <latex>\Dstnc{x}{z} \geq \Dstnc{x}{y} + \Dstnc{y}{z}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Nondegeneracy">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Dstnc{x}{y} = 0</latex>
+                  </math> if and only if <math>
+                     <latex>x=y</latex>
+                  </math>, the non degeneracy property.
+				</para.body>
+               <index.glossary>
+                  <term>distance</term>
+                  <term>non degenerate</term>
+                  <info>
+                     <para>
+                        <para.body>The non degeneracy property of ‘distance’ states that <math>
+                              <latex>\Dstnc{x}{y} = 0</latex>
+                           </math> if and only if <math>
+                              <latex>x=y</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>non degeneracy</term>
+                  <term>distance</term>
+                  <info>
+                     <para>
+                        <para.body>The non degeneracy property of ‘distance’ states that <math>
+                              <latex>\Dstnc{x}{y} = 0</latex>
+                           </math> if and only if <math>
+                              <latex>x=y</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>Positivity</part.ref>
+         </logic>
+         <caption>Positivity</caption>
+         <proof.block.body>
+            <para>
+               <para.body>By definition, <math>
+                     <latex>\Dstnc{x}{y} = \Abs{ y-x }\geq 0</latex>
+                  </math> by a 
+			<subordinate>
+                     <hot>basic property of the absolute value operation</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_NormRProperties"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_NormRProperties"/>
+                           <para>
+                              <para.body>Look up this fact.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>DistanceSymmetric</part.ref>
+         </logic>
+         <caption>DistanceSymmetric</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We compute</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>TriangleInequality</part.ref>
+         </logic>
+         <caption>TriangleInequality</caption>
+         <proof.block.body>
+            <para>
+               <para.body>For <math>
+                     <latex>r,s\in\RNr</latex>
+                  </math> we show first that <math>
+                     <latex>\Abs{s+t} \leq \Abs{s} + \Abs{t}</latex>
+                  </math>
+                  <subordinate>
+                     <hot>know</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_NormRProperties"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_NormRProperties"/>
+                           <para>
+                              <para.body>Look up this fact.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Nondegeneracy</part.ref>
+         </logic>
+         <caption>Nondegeneracy</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>x=y</latex>
+                  </math>, then</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_ReductionRREF"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+	  <title>Finding the Solutions of a System of Linear Equations by Reduction to RREF - Example</title>
+	  <caption xmlns="">Reduction to RREF - Example</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Use the method of reduction to RREF to find all solutions of the system of 3 linear equations in 4 variables below.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-9$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$6$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$3$}{\color{red}z} &amp; = &amp; 9 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$8$}{\color{red}z} &amp; = &amp; 14 \\
+\end{array}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+                     <strong>1)</strong>   The variable <math>
+                        <latex>w</latex>
+                     </math> occurs with non-zero coefficients. So we can use the basic row operations to generate a leading <math>
+                        <latex>1</latex>
+                     </math> in the top left corner. The first step is to use the operations to place a non-zero number in the top left corner: Interchange rows <math>
+                        <latex>1</latex>
+                     </math> and <math>
+                        <latex>2</latex>
+                     </math>:</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-9$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$6$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$3$}{\color{red}z} &amp; = &amp; 9 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$8$}{\color{red}z} &amp; = &amp; 14 \\
+%
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-9$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$6$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$3$}{\color{red}z} &amp; = &amp; 9 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$8$}{\color{red}z} &amp; = &amp; 14 \\
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>The two systems of three linear equations above are equivalent. The second system results from the first by interchanging the first two equations.</para.body>
+               </para>
+			
+			            <para>
+                  <para.body>
+                     <strong>2)</strong>   Multiplying an equation by a non-zero number yields an equivalent system.</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-9$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$6$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$3$}{\color{red}z} &amp; = &amp; 9 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$8$}{\color{red}z} &amp; = &amp; 14 \\
+%
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \\
+%
+\colorbox{lightgreen}{$1$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-3$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$8$}{\color{red}z} &amp; = &amp; 14 \\
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>The two systems of 3 linear equations above are equivalent. The second system results from the first by dividing the first equation by <math>
+                        <latex>3</latex>
+                     </math> (i.e. multiplying it by <math>
+                        <latex>1/3</latex>
+                     </math>).</para.body>
+               </para>
+			
+			
+			            <para>
+                  <para.body>
+                     <strong>3)</strong>   Now we have a leading <math>
+                        <latex>1</latex>
+                     </math> in the top left position. We must use row operations to make all coefficients above or below it equal to <math>
+                        <latex>0</latex>
+                     </math>. Adding any multiple of one equation to another yields an equivalent system.</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$1$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-3$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$8$}{\color{red}z} &amp; = &amp; 14 \\
+%
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \\
+\colorbox{lightgreen}{$1$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-3$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 1 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$10$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-5$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$5$}{\color{red}z} &amp; = &amp; 5
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>The two systems of 3 linear equations above are 
+				<subordinate>
+                        <hot>equivalent</hot>
+                        <info>
+                           <info.caption>
+                              <caption>Why are the two system of linear equations above equivalent?</caption>
+                           </info.caption>
+						
+						                     <para>
+                              <para.body>Here it takes some reflection to see why the two systems have the same solutions: Suppose <math>
+                                    <latex>w,x,y,z</latex>
+                                 </math> are numbers which render one of the two systems of equations true. Then, in particular, the first equation is true. So adding any multiple of it to the third equation just adds the same number on both sides; i.e. the third equation is true after the operation exactly when it was true before the operation. Thus the two systems are indeed equivalent.</para.body>
+                           </para>
+					                   </info>
+                     </subordinate>. The second system results from the first by subtracting <math>
+                        <latex>3</latex>
+                     </math> times the first row from the third.</para.body>
+               </para>
+			
+			            <para>
+                  <para.body>
+                     <strong>4)</strong>   Next we turn to the second row. It’s leftmost non-zero coefficient is <math>
+                        <latex>2</latex>
+                     </math>. We turn it into a leading <math>
+                        <latex>1</latex>
+                     </math> by dividing the second row by <math>
+                        <latex>2</latex>
+                     </math> (i.e. multiplying it by <math>
+                        <latex>1/2</latex>
+                     </math>).</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$1$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-3$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 1 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$10$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-5$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$5$}{\color{red}z} &amp; = &amp; 5 \\
+%
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \\
+\colorbox{lightgreen}{$1$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-3$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-\tfrac{1}{2}$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$\tfrac{1}{2}$}{\color{red}z} &amp; = &amp; \tfrac{1}{2} \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$10$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-5$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$5$}{\color{red}z} &amp; = &amp; 5
+					\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>
+                     <strong>5)</strong>   Now we have a leading <math>
+                        <latex>1</latex>
+                     </math> in the second row. So we must turn all coefficients above or below it into <math>
+                        <latex>0</latex>
+                     </math>’. So we add <math>
+                        <latex>3</latex>
+                     </math> times the second row to the first row, and we subtract <math>
+                        <latex>10</latex>
+                     </math> times the second row from the third row.</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rcrcrcrcr}
+					\colorbox{lightgreen}{$1$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-3$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-\tfrac{1}{2}$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$\tfrac{1}{2}$}{\color{red}z} &amp; = &amp; \tfrac{1}{2} \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$10$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-5$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$5$}{\color{red}z} &amp; = &amp; 5 \\
+%
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \\
+\colorbox{lightgreen}{$1$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$\tfrac{1}{2}$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$\tfrac{5}{2}$}{\color{red}z} &amp; = &amp; \tfrac{9}{2} \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-\tfrac{1}{2}$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$\tfrac{1}{2}$}{\color{red}z} &amp; = &amp; \tfrac{1}{2} \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$0$}{\color{red}z} &amp; = &amp; 0
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Now we have a system of linear equations in <strong>R</strong>ow <strong>R</strong>educed <strong>E</strong>chelon <strong>F</strong>orm, and it is equivalent to the one originally given. So the solutions of the reduced system are the solutions of the originally given system:</para.body>
+               </para>
+			
+			            <para>
+                  <para.body>Now we can read off the solutions of the system of linear equations: Solve for the variables associated to a leading one, and choose number values for the remaining variables freely.</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\aligned
+x\ &amp;=\ \dfrac{1}{2}\ +\ \dfrac{1}{2}\, y\ -\ \dfrac{1}{2}\, z \\
+w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
+\endaligned
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Consequently, the solutions of this system of linear equations are given by vectors of the form</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>\left( \dfrac{9}{2}\, -\, \dfrac{1}{2}\, y\, -\, \dfrac{5}{2}\, z , \dfrac{1}{2}\, +\, \dfrac{1}{2}\, y\, -\, \dfrac{1}{2}\, z , y , z \right)</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>where <math>
+                        <latex>y</latex>
+                     </math> and <math>
+                        <latex>z</latex>
+                     </math> are arbitrary real numbers. Another way of expressing these solution vectors is:</para.body>
+               </para>
+			            <math.display>
+				              <latex>\left( \dfrac{9}{2} , \dfrac{1}{2} , 0 ,  0 \right) + y\cdot \left( -\dfrac{1}{2},\dfrac{1}{2} , 1,0\right) + z\cdot \left( -\dfrac{5}{2} ,-\dfrac{1}{2} , 0 , 1\right)</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Now we see that solutions are vectors <math>
+                        <latex>(w,x,y,z)</latex>
+                     </math> of the form</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(w,x,y,z)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{a} + y\cdot \Vect{u} + z\cdot \Vect{v}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>with</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{a}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left( \dfrac{9}{2} , \dfrac{1}{2} , 0 ,  0 \right)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left( -\dfrac{1}{2},\dfrac{1}{2} , 1,0\right)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{v}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left( -\dfrac{5}{2} ,-\dfrac{1}{2} , 0 , 1\right)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Thus <math>
+                        <latex>\Vect{a}</latex>
+                     </math> forms a distinguished solution, to which we add sums of the form <math>
+                        <latex>y\cdot \Vect{u} + z\cdot \Vect{v}</latex>
+                     </math>, with <math>
+                        <latex>y,z</latex>
+                     </math> arbitrary in <math>
+                        <latex>\RNr</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>An expressions of the form <math>
+                        <latex>y\cdot \Vect{u} + z\cdot \Vect{v}</latex>
+                     </math> is called a linear combination of <math>
+                        <latex>\Vect{u}</latex>
+                     </math> and <math>
+                        <latex>\Vect{v}</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+</showme.pack>

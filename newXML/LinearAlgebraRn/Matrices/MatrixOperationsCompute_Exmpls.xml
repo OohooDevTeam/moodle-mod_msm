@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_MatrixOperationsComputeEffectively"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Computing Effectively with Matrices - Example</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The expression below is built from matrices and operations between them</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>\left( A^TX\ +\ B^TX \right)^T</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>It can be evaluated as written. In this case we have <math>
+                        <latex>6</latex>
+                     </math> matrix operations to perform: two of which are potentially time consuming matrix multiplications.
+			</para.body>
+               </para>
+			
+			            <ul>
+				              <li>
+                     <para>
+                        <para.body>The transpositions of the matrices <math>
+                              <latex>A</latex>
+                           </math> and <math>
+                              <latex>B</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>The multiplications of matrices <math>
+                              <latex>A^TX</latex>
+                           </math> and <math>
+                              <latex>B^TX</latex>
+                           </math>. Depending on the size of these matrices, the multiplications can be quite time consuming.</para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>The summation of matrices to <math>
+                              <latex>A^TX</latex>
+                           </math> add <math>
+                              <latex>B^TX</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>The transposition of <math>
+                              <latex>(A^TX + B^TX)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+			            </ul>
+			
+			            <para>
+                  <para.body>On the other hand, based on the properties of the matrix operations we find that this expression is the same as</para.body>
+               </para>
+			
+			            <ul>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>X^T(A + B)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+			            </ul>
+			
+			            <para>
+                  <para.body>This time, we have only <math>
+                        <latex>3</latex>
+                     </math> operations to perform:</para.body>
+               </para>
+			
+			            <ul>
+				              <li>
+                     <para>
+                        <para.body>The transposition of <math>
+                              <latex>X</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>The summation <math>
+                              <latex>(A + B)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>The product   <math>
+                              <latex>X^T \cdot (A+B)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+			            </ul>
+			
+			            <para>
+                  <para.body>In particular we see that only one of these operations is a time consuming matrix multiplication. This is a clear indication that judicious use of the properties of matrix operations can be a real labor and time saver.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>	
+</showme.pack>

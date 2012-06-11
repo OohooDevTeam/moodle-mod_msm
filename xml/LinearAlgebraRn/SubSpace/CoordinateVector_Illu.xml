@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_CoordinateVector">
+	<title>Coordinate Vector - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The picture below shows <latex>\RNr[2]</latex> with an ordered basis <latex>\EuScript{B} = (\Vect{a} , \Vect{b} )</latex>.</para>
+			
+			<figure>
+				<img src="ims/CoordinateVector_1.gif"></img>
+			</figure>
+			<para>The basis vectors <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> set up a coordinate grid, and we use this grid to express arbitrary vectors as linear combinations of the basis vectors. For example</para>
+			<table align="center" border="1" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+				<row>
+					<cell><para><b>Linear Combination</b></para></cell>
+					<cell><para><b>Coordinate vector with respect to</b> <latex>\EuScript{B}</latex></para></cell>
+				</row>
+				<row>
+					<cell>
+						<computation>
+							<left>\Vect{a}</left>
+							<center>=</center>
+							<right>1\cdot \Vect{a}</right>
+						</computation>
+					</cell>
+					<cell>
+						<computation>
+							<left>\Vect{a}_{\EuScript{B}}</left>
+							<center>=</center>
+							<right>(1,0)</right>
+						</computation>
+					</cell>
+				</row>
+				<row>
+					<cell>
+						<computation>
+							<left>\Vect{b}</left>
+							<center>=</center>
+							<right>1\cdot \Vect{b}</right>
+						</computation>
+					</cell>
+					<cell>
+						<computation>
+							<left>\Vect{b}_{\EuScript{B}}</left>
+							<center>=</center>
+							<right>(0,1)</right>
+						</computation>
+					</cell>
+				</row>
+				<row>
+					<cell>
+						<computation>
+							<left>\Vect{x}</left>
+							<center>=</center>
+							<right>(-1)\cdot \Vect{a} + 5\cdot \Vect{b}</right>
+						</computation>
+					</cell>
+					<cell>
+						<computation>
+							<left>\Vect{x}_{\EuScript{B}}</left>
+							<center>=</center>
+							<right>(-1,5)</right>
+						</computation>
+					</cell>
+				</row>
+				<row>
+					<cell>
+						<computation>
+							<left>\Vect{y}</left>
+							<center>=</center>
+							<right>3\cdot \Vect{a} + 2\cdot \Vect{b}</right>
+						</computation>
+					</cell>
+					<cell>
+						<computation>
+							<left>\Vect{y}_{\EuScript{B}}</left>
+							<center>=</center>
+							<right>(3,2)</right>
+						</computation>
+					</cell>
+				</row>
+			</table>
+		</block>
+	</sub.page.body>
+</sub.page>

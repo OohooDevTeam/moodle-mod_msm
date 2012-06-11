@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_OrientationSame"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Same Orientation: Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Wait a minute! If we want to test whether two ordered bases <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> and <math>
+                     <latex>\EuScript{C}</latex>
+                  </math> determine the same or opposite orientations of <math>
+                     <latex>V</latex>
+                  </math>, how do we know whether we need to convert from <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>-coordinates to <math>
+                     <latex>\EuScript{C}</latex>
+                  </math>-coordinates or vice versa?</para.body>
+            </para>
+            <para>
+               <para.body>Answer: It does not matter! The determinants of both matrices have the same sign. To see this, we just need to recall that </para.body>
+            </para>
+            <math.display>
+               <latex>C_{\EuScript{B}\EuScript{C}} = \left( C_{\EuScript{C}\EuScript{B}} \right)^{-1}</latex>
+            </math.display>
+            <para>
+               <para.body>Because then we compute</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>+1</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\det( C_{\EuScript{B}\EuScript{C}}) \cdot \det( C_{\EuScript{B} \EuScript{C}} )^{-1}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\det( C_{\EuScript{B}\EuScript{C}}) \cdot \det( C_{\EuScript{C} \EuScript{B}} )</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>So the two matrices have the same sign.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

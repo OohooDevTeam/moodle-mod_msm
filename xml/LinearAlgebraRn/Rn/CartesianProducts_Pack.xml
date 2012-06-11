@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_CartesianProducts">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Cartesian Products: Exercises</title>
+	<xi:include href="ProductIntervalsR2_Exrcs.xml"/>
+	<xi:include href="ProductIntervalsR3_Exrcs.xml"/>
+	<xi:include href="BoxExpress_Exrcs.xml"/>
+</exercise.pack>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_LinearCombinationGeometrically"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Linear Combination Interpreted Geometrically</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A linear combination of vectors <math>
+                     <latex>\Vect{s}_1, \dots ,\Vect{s}_r</latex>
+                  </math> constructs a vector <math>
+                     <latex>\Vect{w}</latex>
+                  </math>:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Start with <math>
+                           <latex>t_1</latex>
+                        </math> times vector <math>
+                           <latex>\Vect{s}_1</latex>
+                        </math>;</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>now add <math>
+                           <latex>t_2</latex>
+                        </math> times vector  <math>
+                           <latex>\Vect{s}_2</latex>
+                        </math>, ... until</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>add <math>
+                           <latex>t_r</latex>
+                        </math> times vector <math>
+                           <latex>\Vect{s}_r</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>The result is the vector</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{w}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t_1 \Vect{s}_1 + \cdots + t_r \Vect{s}_r</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>It has been ‘combined’ by adding up rescalings of the vectors <math>
+                     <latex>\Vect{s}_1</latex>
+                  </math>, ... , <math>
+                     <latex>\Vect{s}_r</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The picture below shows two linear combinations of the vectors  <math>
+                     <latex>\Vect{x}</latex>
+                  </math>  and  <math>
+                     <latex>\Vect{y}</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/LinearCombination1.gif"/>
+            </media>
+            <para>
+               <para.body>The vectors</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{w}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(1.5)\Vect{x} + (2.5)\Vect{y}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{u}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(-1)\Vect{x} + (1.5)\Vect{y}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>have been formed as linear combinations of the vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

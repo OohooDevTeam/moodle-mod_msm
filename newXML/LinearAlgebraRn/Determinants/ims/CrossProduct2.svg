@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X5 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="800px" height="600px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 800 600"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <font id="FontID1" font-variant="normal" class="str4" style="fill-rule:nonzero" font-style="normal" font-weight="400">
+	<font-face 
+		font-family="Symbol">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="a" horiz-adv-x="630"><path d="M457.504 447.337l80.9955 0 -63.3356 -222.171c-4.32757,-14.0032 -10.9985,-36.0001 -20.1638,-66.0002 12.5008,-50.1639 21.6662,-80.0034 27.8363,-89.8302 11.83,-17.8394 26.6647,-26.8347 44.4946,-26.8347 13.0016,0 25.0017,5.32915 36.1702,16.167 10.9985,10.6678 18.3308,27.4961 21.9969,50.1639l19.5024 0c-4.49765,-46.8285 -14.504,-79.1625 -29.4993,-97.1625 -15.1654,-17.8394 -32.6647,-26.8347 -52.4978,-26.8347 -18.6709,0 -35.4993,7.8331 -50.6742,23.4993 -14.9953,15.6662 -28.6584,49.1624 -40.6584,100.498 -14.3339,-28.3276 -28.3371,-49.8332 -42.0001,-64.3278 -19.1717,-20.1733 -40.0064,-35.3387 -62.5041,-45.1749 -22.4977,-9.99688 -48.0002,-14.9953 -76.668,-14.9953 -72.0002,0 -124.829,24.0001 -158.665,71.8301 -33.8363,47.8395 -50.8348,102.34 -50.8348,163.503 0,71.6695 19.8331,129.667 59.6695,174.171 39.6663,44.3245 86.1641,66.6616 139.503,66.6616 37.1623,0 69.827,-11.3292 98.1641,-33.997 28.3276,-22.6678 54.0002,-64.6679 77.1687,-126.17l42.0001 147.005zm-59.0081 -201.667c-17.6599,66.9923 -40.3277,113.83 -67.9939,140.334 -27.6662,26.4946 -55.8332,39.8269 -84.331,39.8269 -32.0033,0 -58.5073,-17.4993 -79.6727,-52.4978 -21.1654,-34.9985 -31.6631,-90.8318 -31.6631,-167.33 0,-45.1749 4.49765,-80.8349 13.663,-106.668 9.00475,-25.8332 22.8379,-45.8364 41.1686,-60.0002 18.5008,-14.1733 37.8332,-21.3355 58.3372,-21.3355 25.1623,0 48.0002,11.6693 68.8254,34.6678 28.3371,31.3324 55.5025,95.6696 81.6664,193.002z"/></glyph>
+   <glyph unicode="´" horiz-adv-x="548"><path d="M93.3314 470.661l181.501 -180.663 181.667 180.663 33.6617 -33.1656 -180.994 -182.163 180.994 -180.663 -33.6617 -34.1696 -181.667 181.171 -181.501 -181.171 -34.1696 34.1696 181.501 181.159 -181.501 180.675 34.1696 34.1577z"/></glyph>
+  </font>
+  <font id="FontID0" font-variant="normal" class="str1" style="fill-rule:nonzero" font-style="normal" font-weight="900">
+	<font-face 
+		font-family="Arial Black">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="y" horiz-adv-x="610"><path d="M2.50394 518.504l209.827 0 107 -345.173 99.1732 345.173 195.827 0 -205.661 -554.173c-23.3386,-63.1654 -47.3386,-105.835 -71.8346,-127.835 -34.5039,-31.3307 -87,-47 -157.669,-47 -28.6614,0 -72.8346,4 -132.835,11.8346l-15.4961 138.669c28.4961,-9.16535 60.4961,-13.6693 95.6693,-13.6693 23.3307,0 42.3307,5.33858 56.8268,16 14.5039,10.8346 26.8346,30 36.8346,57.6693l-217.661 518.504z"/></glyph>
+   <glyph unicode="x" horiz-adv-x="666"><path d="M15.1654 518.504l235.835 0 82.5039 -144.504 95.6614 144.504 219.339 0 -176.835 -247 189.496 -271.504 -232 0 -95.6614 167 -112.835 -167 -215.339 0 188.504 271.504 -178.669 247z"/></glyph>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Symbol";src:url("#FontID1") format(svg)}
+    @font-face { font-family:"Arial Black";src:url("#FontID0") format(svg)}
+    .str0 {stroke:black;stroke-width:0.3005}
+    .str5 {stroke:blue;stroke-width:0.3005}
+    .str3 {stroke:#339966;stroke-width:0.3005}
+    .str2 {stroke:red;stroke-width:0.3005}
+    .str8 {stroke:blue;stroke-width:1.39129}
+    .str7 {stroke:#9900CC;stroke-width:1.39129}
+    .str6 {stroke:fuchsia;stroke-width:1.39129}
+    .str1 {stroke-width:6.00014}
+    .str9 {stroke-width:7.20017}
+    .str4 {stroke-width:9.00002}
+    .fil7 {fill:none}
+    .fil6 {fill:blue}
+    .fil4 {fill:#339966}
+    .fil3 {fill:red}
+    .fil0 {fill:#FFFFCC;fill-rule:nonzero}
+    .fil5 {fill:blue;fill-rule:nonzero}
+    .fil2 {fill:#339966;fill-rule:nonzero}
+    .fil1 {fill:red;fill-rule:nonzero}
+    .fnt1 {font-weight:normal;font-size:33.3886;font-family:'Symbol'}
+    .fnt3 {font-weight:normal;font-size:41.736;font-family:'Symbol'}
+    .fnt0 {font-weight:900;font-size:50.0834;font-family:'Arial Black'}
+    .fnt2 {font-weight:900;font-size:50.0834;font-family:'Arial Black'}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fil0 str0" d="M354.425 272.051l418.543 83.3494 -192.668 149.44 -418.543 -83.3494 192.668 -149.44zm209.272 41.6749m112.937 116.394m-305.605 33.0467m-112.939 -116.396"/>
+  <g>
+   <path class="fil1" d="M570.279 505.948l-412.171 -82.6127 0.410131 -2.04592 412.171 82.6127 -0.410131 2.04592zm12.0748 1.3558l-13.7804 3.75389 2.51048 -12.5244 11.2699 8.7705z"/>
+  </g>
+  <g>
+   <path class="fil2" d="M345.172 280.055l-186.223 143.085 -1.27141 -1.65472 186.223 -143.085 1.27141 1.65472zm8.96571 -8.2046l-6.23755 12.8513 -7.78422 -10.131 14.0218 -2.72028z"/>
+  </g>
+  <text x="535" y="481.581"  class="fil3 str2 fnt0">x</text>
+  <text x="341.874" y="326.044"  class="fil4 str3 fnt0">y</text>
+  <g>
+   <path class="fil5" d="M45.5762 151.339l113.699 270.569 -1.92367 0.808432 -113.699 -270.569 1.92367 -0.808432zm-5.65153 -10.7565l10.8389 9.30131 -11.7763 4.94839 0.937387 -14.2497z"/>
+  </g>
+  <text x="69.2251" y="181.081"  class="fil3 str2 fnt0">x</text>
+  <text x="107.639" y="178.076"  class="fil6 str5 fnt1">´</text>
+  <text x="132.475" y="181.081"  class="fil4 str3 fnt2">y</text>
+  <path class="fil7 str6" d="M217.53 376.933c-10.779,-25.8722 -46.0286,-26.5284 -78.733,-1.46583"/>
+  <path class="fil7 str7" d="M215.189 433.712c-11.7349,-28.277 -44.8648,-52.0039 -76.3921,-58.2446"/>
+  <path class="fil7 str8" d="M218.169 434.329c56.6549,-44.0891 76.6875,-85.2103 44.7434,-91.847"/>
+  <g transform="matrix(1 0 -0.451459 1 -27.2965 83.1845)">
+   <text x="400" y="300"  class="fil6 str5 fnt3">a</text>
+  </g>
+ </g>
+</svg>

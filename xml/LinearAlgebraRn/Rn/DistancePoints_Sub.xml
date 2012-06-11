@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expl_DistancePoints">
+	<title>Distance between Two Points: Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>When we define the distance between <latex>P(x_1,\dots ,x_n)</latex> and <latex>Q(y_1,\dots, y_n)</latex> as</para>
+			<math.display>
+				<latex>\Dstnc{P}{Q}\ =\ \sqrt{(y_1-x_1)^2+\cdots + (y_n-x_n)^2}\ \ .</latex>
+			</math.display>
+			<para>... where does this formula come from? &ndash; The Theorem of Pythagoras provides an answer. Let us sketch the idea first for two points in the plane <latex>\RNr[2]</latex>:</para>
+			<para>If <latex>P(a,b)</latex> and <latex>R(x,y)</latex> are two points in <latex>\RNr[2]</latex>, then the distance from <latex>P</latex> to <latex>R</latex> satisfies</para>
+				<math.display>
+					<latex>\Dstnc{P}{R}^2\ =\ \Dstnc{P}{Q}^2\ +\ \Dstnc{Q}{R}\ =\ (x-a)^2+(y-b)^2.</latex>
+				</math.display>
+			<figure>
+				<img src="ims/DistancePoints.png"></img><!-- svg available -->
+			</figure>
+			<para>This is so by the Theorem of Pythagoras. The general formula follows using a process called mathematical induction:</para>
+			<figure>
+				<img src="ims/DistancePoints1.png"></img><!-- svg available -->
+			</figure>
+			<para>In the schematic picture above, if</para>
+			<ul>
+				<li><para><latex>P(x_1,\dots ,x_{n-1},x_n)</latex> and <latex>R(y_1,\dots ,y_{n-1},y_n)</latex>, then</para></li>
+				<li><para><latex>U(x_1,\dots ,x_{n-1})</latex> and <latex>V(y_1,\dots ,y_{n-1})</latex></para></li>
+			</ul>
+		</block>
+		
+		<block>
+			<para>One of its strengths of this distance formula lies in the fact that it completely relieves us from having to visualize the spatial relationship between the points in question.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

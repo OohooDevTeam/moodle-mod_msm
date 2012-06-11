@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="IdentityMatrices">
+	<title>Illustration of Identity Matrices</title>
+	<sub.page.body>
+		<block>
+			<para>The <latex>(1,1)</latex>-identity matrix is</para>
+			<math.display>
+				<latex>\IdMtrx[1]\ =\ [1]</latex>
+			</math.display>
+			
+			<para>The <latex>(2,2)</latex>-identity matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\IdMtrx[2]\ =\ 
+					\begin{bmatrix}
+					1 & 0 \\
+					0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			
+			<para>The <latex>(3,3)</latex>-identity matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\IdMtrx[3]\ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 \\
+					0 & 1 & 0 \\
+					0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			
+			<para>The <latex>(4,4)</latex>-identity matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\IdMtrx[4]\ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 & 0  \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</block>
+	</sub.page.body>
+</sub.page>

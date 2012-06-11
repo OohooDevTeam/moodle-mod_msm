@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_InfSupLimSequence">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Limit of a Sequence</title>
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>(x_n)</latex> be a sequence in <latex>\RNr</latex> with <latex>\lim_{n\to \infty} x_n = c</latex>. If <latex>(x_{n_i})</latex> is a subsequence of <latex>(x_n)</latex>, show that</para>
+			<math.display>
+				<latex>\lim_{i\to \infty} x_{n_i}\ =\ c</latex>
+			</math.display>
+		</problem>
+	</exercise>
+	
+	
+	
+</exercise.pack>

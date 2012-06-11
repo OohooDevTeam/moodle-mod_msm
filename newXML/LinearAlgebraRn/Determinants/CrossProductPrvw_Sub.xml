@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_CrossProduct"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: Cross Product</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The cross product of two vectors <math>
+                     <latex>\Vect{x} = (x_1,x_2,x_3)</latex>
+                  </math> and <math>
+                     <latex>\Vect{y} = (y_1,y_2,y_3)</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> is the vector in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> given by the formula</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\aligned
+\CrssPr{ \Vect{x} }{ \Vect{y} }\ &amp;=\ 
+\left(
+\det
+\left[
+\begin{array}{cc}
+x_2 &amp; y_2 \\
+x_3 &amp; y_3
+\end{array}
+\right] , 
+-\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_3 &amp; y_3
+\end{array}
+\right] , 
+\det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2
+\end{array}
+\right]
+\right) \\
+%
+	&amp;=\ \left( x_2y_3-x_3y_2 , -(x_1y_3-x_3y_1) , x_1y_2-x_2y_1 \right)
+\endaligned
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>Below we formulate the algebraic properties and the geometric properties of the cross product, as well as its relationship to the dot product and the determinant.</para.body>
+            </para>
+            <para>
+               <para.body>For deeper reasons, the cross product of two vectors is only available in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> and in <math>
+                     <latex>\RNr[7]</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Algebraic properties of the cross product</strong>
+               </para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>bilinear</strong>
+                     </para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ (\Vect{x} + \Vect{x}' )}{ \Vect{y} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } + \CrssPr{ \Vect{x}' }{ \Vect{y} }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ \Vect{x} }{ (\Vect{y} + \Vect{y}') }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } + \CrssPr{ \Vect{x} }{ \Vect{y}' }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ (t\cdot \Vect{x}) }{ \Vect{y} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>t\cdot ( \CrssPr{ \Vect{x} }{ \Vect{y} } )</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>antisymmetric</strong>
+                     </para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-\left( \CrssPr{ \Vect{y} }{ \Vect{x} } \right)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Geometric properties of the cross product</strong>
+               </para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                        </math> is perpendicular to both <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } \neq \Vect{0}</latex>
+                        </math>, then the vector triple <math>
+                           <latex>( \Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+                        </math> represents the right hand orientation of <math>
+                           <latex>\RNr[3]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>
+                        </math> if and only if <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> are parallel.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                        </math> is the area of the parallelogram spanned by <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>\Vect{x},\Vect{y} \neq \Vect{0}</latex>
+                        </math> then <math>
+                           <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \abs{ \Vect{x} } \abs{ \Vect{y} }\cdot \sin \sphericalangle( \Vect{x} , \Vect{y} )</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2 = \abs{ \Vect{x} }^2 \abs{ \Vect{y} }^2 - ( \DotPr{ \Vect{x} }{ \Vect{y} })^2</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\CrssPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) } = (\DotPr{ \Vect{a} }{ \Vect{y} } )\cdot \Vect{x}\ -\ (\DotPr{ \Vect{a} }{ \Vect{x} }) \cdot \Vect{y}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Cross product, dot product and determinant</strong>
+               </para.body>
+            </para>
+            <math.display>
+               <latex>\DotPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) } = \det[ \Vect{a}\ \ \Vect{x} \ \ \Vect{y} ]</latex>
+            </math.display>
+         </block.body>
+      </block>
+   </body>
+</unit>

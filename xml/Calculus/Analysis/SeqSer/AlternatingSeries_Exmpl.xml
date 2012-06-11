@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_AlternatingSeriesConverges">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Alternating Series Test: Example.</title>
+	<showme>
+		<statement>
+			<para>Determine the convergence behavior of the series</para>
+			<math.display>
+				<latex magnify="yes">\sum_{n=1}^{\infty} \dfrac{\cos(n\pi)}{ \sqrt[4]{n^3} }</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>First we observe that</para>
+			<computation>
+				<left>\cos(n\pi)</left>
+				<center>=</center>
+				<right>(-1)^n</right>
+			</computation>
+			<para>for all <latex>n\in \NNr</latex>. Next we observe that the numbers <latex>a_n := 1/\sqrt[4]{n^3}</latex> are all positive. So the given series is an alternating series. If the sequence <latex>(a_n)</latex> is strictly decreasing and converges to <latex>0</latex>, we may apply the alternating series test and conclude that the given series converges to a number <latex>\leq a_0 = 1</latex>.</para>
+			<para>So we analyze the sequence <latex>(a_n)</latex>:</para>
+			<ol>
+				<li><para>The sequence <latex>(n^3)</latex> is strictly increasing and converges to <latex>+\infty</latex>.</para></li>
+				<li><para>So the sequence <latex>\sqrt[4]{n^3}</latex> is strictly increasing and converges to <latex>+\infty</latex>.</para></li>
+				<li><para>So the sequence <latex>a_n=1/\sqrt[4]{n^3}</latex> is strictly decreasing and converges to <latex>0</latex>.</para></li>
+			</ol>
+			<para>Thus the alternating series test applies to the given series, and we see that it converges to a number <latex>\leq a_0=1</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

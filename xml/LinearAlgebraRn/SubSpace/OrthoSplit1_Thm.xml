@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_OrthogonalSplittingByOrthogonalComplement">
+	<caption>Orthogonal splitting by orthogonal complement</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_OrthogonalSplitting"/>
+		<info>
+			<caption>Examples</caption>
+			<para>Examples of splittings by orthogonal complement.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>In subspaces <latex>V\subseteq W</latex> of <latex>\RNr[n]</latex>, the spaces <latex>V</latex> and <latex>V^{\bot}</latex> form an orthogonal splitting of <latex>W</latex>. Consequently,
+			<index.glossary>
+				<term>orthogonal</term><term>splitting</term>
+				<info><para>The construction of orthogonal splittings.</para></info>
+			</index.glossary>
+		</para>
+		<computation>
+			<left>\dim(W)</left>
+			<center>=</center>
+			<right>\dim(V) + \dim(V^{\bot})</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>If <latex>V</latex> contains only the zero vector, we have <latex>V^{\bot}=W</latex>, and so the dimension formula is valid in this case:</para>
+		<computation>
+			<left>\dim(W)</left>
+			<center>=</center>
+			<right>0 + \dim(V^{\bot})</right>
+		</computation>
+		<para>Consider now the case where <latex>V</latex> contains a nonzero vector. Then we have</para>
+		<ol>
+			<li><para><latex>\span(V\cup V^{\bot}) = W</latex>, because every <latex>\Vect{x}\in W</latex> can be written as <latex>\Vect{x} = \Vect{x}_V + \Vect{x}_{\bot}</latex> which is a linear combination of a vector in <latex>V</latex> and one in <latex>V_{\bot}</latex>.</para></li>
+			<li><para><latex>V</latex> and <latex>V^{\bot}</latex> have only the zero vector in common. &ndash; If not, the decomposition of <latex>\Vect{x}\in W</latex> as <latex>\Vect{x} = \Vect{x}_{V} + \Vect{x}_{\bot}</latex> would not be unique.</para></li>
+		</ol>
+		<para>This means that <latex>V</latex> and <latex>V^{\bot}</latex> form a splitting of <latex>W</latex>. Now the formula</para>
+		<computation>
+			<left>\dim(W)</left>
+			<center>=</center>
+			<right>\dim(V) + \dim(V^{\bot})</right>
+		</computation>
+		<para>follows from the 
+			<subordinate>
+				<hot>dimension formula</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_SplittingDimensions"/>
+					<para>Look up this formula</para>
+				</crossref>
+			</subordinate>
+			for arbitrary splittings of a vector space.</para>
+	</proof>
+</theorem>

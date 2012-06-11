@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_RootTest"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	
+	  <title>Root Test: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Use the root test to determine if the series</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sum_{n=0}^{\infty} \left( \dfrac{ 2 - 6n }{ 9 + 7n }\right)^n</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>converges absolutely.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The <math>
+                        <latex>n</latex>
+                     </math>-th summand of the given series is</para.body>
+               </para>
+			            <math.display>
+				              <latex>a_n := \left( \dfrac{ 2 - 6n }{ 9 + 7n }\right)^n</latex>
+			            </math.display>
+			            <para>
+                  <para.body>So,</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt[n]{\Abs{ a_n } }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt[n]{ \Abs{ \left( \dfrac{ 2 - 6n }{ 9 + 7n }\right)^n } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt[n]{  \Abs{ \dfrac{ 2 - 6n }{ 9 + 7n } }^n }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{ \dfrac{ 2 - 6n }{ 9 + 7n } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{ \dfrac{ 2/n - 6 }{ 9/n + 7} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore</para.body>
+               </para>
+			            <math.display>
+				              <latex> \lim_{n\to \infty} \sqrt[n]{ \Abs{ a_n }} = \lim_{n\to\infty} \Abs{ \dfrac{ 2/n - 6 }{ 9/n + 7} } = \dfrac{6}{7} &lt; 1 </latex>
+			            </math.display>
+			            <para>
+                  <para.body>So the given series converges absolutely by the root test.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Use the root test to determine if the series</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sum_{n=0}^{\infty} \dfrac{ n \cdot 3^{2n} }{ (n+1)\cdot 5^n }</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>converges absolutely.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The <math>
+                        <latex>n</latex>
+                     </math>-th summand of the given series is</para.body>
+               </para>
+			            <math.display>
+				              <latex>a_n := \dfrac{ n \cdot 3^{2n} }{ (n+1) 5^n }</latex>
+			            </math.display>
+			            <para>
+                  <para.body>So,</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt[n]{\Abs{ a_n } }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt[n]{ \Abs{ \dfrac{ n \cdot 3^{2n} }{ (n+1) 5^n } } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt[n]{ \dfrac{ n \cdot 3^{2n} }{ (n+1) 5^n } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \sqrt[n]{ n\cdot 3^{2n} } }{ \sqrt[n]{ (n+1) 5^n } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ 9\cdot \sqrt[n]{n} }{ 5\cdot \sqrt[n]{n+1} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore</para.body>
+               </para>
+			            <math.display>
+				              <latex> \lim_{n\to \infty} \sqrt[n]{ \Abs{ a_n }} = \lim_{n\to\infty} \dfrac{ 9\cdot \sqrt[n]{n} }{ 5\cdot \sqrt[n]{n+1} } = \dfrac{9}{5} &gt; 1 </latex>
+			            </math.display>
+			            <para>
+                  <para.body>So the root test says that the given series does not converge to a number.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

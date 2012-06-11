@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_DetUpperTriangular">
+	<caption>Determinant of an upper triangular matrix</caption>
+	<associate Description="Comment">
+		<info><para>In other words, the determinant of an upper triangular matrix is just the product of its diagonal entries.</para></info>
+	</associate>
+	<associate Description="Example">
+		<info>
+			<caption>Example</caption>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det\, 
+\left[
+\begin{array}{rrr}
+7 & 91 & -77 \\
+0 & -3 & 304 \\
+0 & 0 & 2
+\end{array}
+\right]\ =\ 7\cdot (-3)\cdot 2\ =\ -42
+]]>
+				</latex>
+			</math.display>
+		</info>
+	</associate>
+	<associate Description="Comment">
+		<subpage.ref subpageID="CofactorLimitations_Sub"/>
+		<info>
+			<caption>Comment on the strength of this proposition</caption>
+			<para>To be able to better appreciate the substance of this proposition here is an estimate of the computational effort required if one wants to evaluate determinants of large matrices with the cofactor method.</para>
+		</info>
+	</associate>
+	
+	
+	
+	<statement>
+		<math.display>
+			<latex>
+				<![CDATA[
+\det\, 
+\left[
+\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+0 & a_{22} & \cdots & a_{2n} \\
+\vdots & & \ddots & \vdots \\
+0 & \cdots & 0 & a_{nn}
+\end{array}
+\right]\ =\ a_{11}\, a_{22}\, \cdots \, a_{nn}
+]]>
+			</latex>
+		</math.display>
+	</statement>
+	
+	<proof>
+		<para>We prove this claim by induction on the size of the upper triangular matrix:</para>
+		<para>If <latex>n=1</latex></para>
+		<math.display>
+			<latex>\det [a_{11}] = a_{11}</latex>
+		</math.display>
+		<para>as claimed.</para>
+		
+		<para>So assume now that the claim holds for some <latex>n\geq 1</latex>. &ndash; This is called the &lsquo;induction hypothesis&rsquo;. Under this assumption, we need to show that it holds for any upper triangular <latex>(n+1)</latex>-matrix <latex>\Mtrx{A}</latex>. Indeed,</para>
+		
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+\det(\Mtrx{A})\ &=\ 
+\det\, 
+\left[
+\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1,n+1} \\
+0 & a_{22} & \cdots & a_{2,n+1} \\
+\vdots & & \ddots & \vdots \\
+0 & \cdots & 0 & a_{n+1,n+1}
+\end{array}
+\right] \\
+	&=\ a_{11}\cdot
+\det\, 
+\left[
+\begin{array}{ccc}
+a_{22} & \cdots & a_{2,n+1} \\
+0 & \ddots & \vdots \\
+0 & \cdots & a_{n+1,n+1}
+\end{array}
+\right] + 0\cdot c_{21}(\Mtrx{A}) + \cdots + 0\cdot c_{n+1,1}(\Mtrx{A}) \\
+	&=\ a_{11}\, a_{22}\ \cdots \ a_{n+1,n+1}
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		<para>In this last identity we have used the induction hypothesis: the matrix</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\left[
+\begin{array}{ccc}
+a_{22} & \cdots & a_{2,n+1} \\
+0 & \ddots & \vdots \\
+0 & \cdots & a_{n+1,n+1}
+\end{array}
+\right]
+				]]>
+			</latex>
+		</math.display>
+		<para>has size <latex>(n,n)</latex>. So the induction hypothesis applies, and it tells us that </para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\det\, \left[
+\begin{array}{ccc}
+a_{22} & \cdots & a_{2,n+1} \\
+0 & \ddots & \vdots \\
+0 & \cdots & a_{n+1,n+1}
+\end{array}
+\right]\ =\ a_{22}\, a_{33}\cdots\, a_{n+1,n+1}
+				]]>
+			</latex>
+		</math.display>
+	</proof>
+</theorem>

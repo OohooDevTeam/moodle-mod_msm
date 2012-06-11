@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_SubSpaceClosedScalarMult"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Sub Vector Space is Closed under Scalar Multiplication - Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The collection of vectors in a subvector space <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> is closed under scalar multiplication. Here are some illustrations of what this means.</para.body>
+            </para>
+            <para>
+               <para.body>The subset below is closed under vector addition and scalar multiplication. So it is a subspace of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SubSpaceClosedScalarMultiplication.gif"/>
+               <extended.caption>The scalar product <math>
+                     <latex>t\cdot \Vect{x}</latex>
+                  </math> of a vector in <math>
+                     <latex>V</latex>
+                  </math> by a number is again in <math>
+                     <latex>V</latex>
+                  </math>.</extended.caption>
+            </media>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The two lines below form a set <math>
+                     <latex>S</latex>
+                  </math> which is closed under scalar multiplication: For any vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>S</latex>
+                  </math>, the entire line through the origin in the direction of <math>
+                     <latex>\Vect{x}</latex>
+                  </math> also belongs to <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/ClosedScalarMultiplication_1.gif"/>
+            </media>
+            <para>
+               <para.body>The set <math>
+                     <latex>S</latex>
+                  </math> above is, however, not closed under vector addition. Therefore it is not a subvector space of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The blue dots below form a set <math>
+                     <latex>S</latex>
+                  </math> which is closed under vector addition but not under scalar multiplication. To see that it is not closed under scalar multiplication, consider any vector in <math>
+                     <latex>S</latex>
+                  </math>: there are points on the line through <math>
+                     <latex>\Vect{x}</latex>
+                  </math> which do not belong to <math>
+                     <latex>S</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Lattice2_2.gif"/>
+               <extended.caption>The scalar multiple of <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>S</latex>
+                  </math> by a number is not always again in <math>
+                     <latex>S</latex>
+                  </math>.</extended.caption>
+            </media>
+            <para>
+               <para.body>Therefore this set <math>
+                     <latex>S</latex>
+                  </math> is not a subvector space.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

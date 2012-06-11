@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" targetNamespace="Exercise"
+	xmlns="Exercise">
+	<xsd:include schemaLocation="Molecules.xsd"/>
+	<xsd:include schemaLocation="CyberTutor.xsd"/>
+	<xsd:import schemaLocation="http://www.w3.org/2004/10/xml.xsd"
+		namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xsd:annotation>
+		<xsd:documentation> =============   The Exercise schema describes the formulation of a mathematical/scientific exercise together with one or several solutions. 
+		We provide markup for two types of solutions: "solution" marks ordinary expositions. "solution.ext" marks solutions which provide additional services and features, such as a solution pilot, etc.
+		To display an XML-document consistent with this schema, we assume that a browser has been split into two frames. The left hand frame presents the exercise together with its parts. The right hand frame presents progressively solution steps, the progression being triggered by action.
+		An instance of the solution pilot can possibly be presented in a sticky hint window whose appearance is triggered by user action. Alternatively it can be loaded into a slide-in window (the kind we will need lateron to present the topic tree of an FCM-book) - whichever works best.
+		This schema will be used as a component in other schemas, for example ExercisePack.xsd, or a book-like structure, etc.
+		 ======================
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="exercise">
+		<xsd:annotation>
+			<xsd:documentation>Exercise with optional inclusion of a solution or an extended solution</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element ref="problem"/>
+				<xsd:element ref="approach" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="approach.ext" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="part.exercise" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:NCName" use="optional"/>
+			<xsd:attribute name="Difficulty">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:positiveInteger">
+						<xsd:maxInclusive value="10"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="problem">
+		<xsd:annotation>
+			<xsd:documentation>Statement of the problem</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="textcaption" minOccurs="0"/>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element name="problem.body">
+					<xsd:complexType>
+						<xsd:group ref="content_block" maxOccurs="unbounded" minOccurs="0"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="part.exercise">
+		<xsd:annotation>
+			<xsd:documentation>Describes a part of an exercise</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="problem"/>
+				<xsd:element ref="approach" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="approach.ext" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="number" type="xsd:positiveInteger">
+				<xsd:annotation>
+					<xsd:documentation>Enumerates the part of the exercise. This number should be created automatically.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="Difficulty">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:positiveInteger">
+						<xsd:maxInclusive value="10"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="solution">
+		<xsd:annotation>
+			<xsd:documentation>Solution of exercise or of part of exercise. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element name="solution.body">
+					<xsd:complexType>
+						<xsd:group ref="content_block" maxOccurs="unbounded" minOccurs="1"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="solution.hint">
+		<xsd:annotation>
+			<xsd:documentation>Hint for a solution or a step in a solution</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:group ref="content_block" maxOccurs="unbounded"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="solution.ext">
+		<xsd:annotation>
+			<xsd:documentation>Solution of exercisex or of part of exercisex. Offers markup for use of solution pilot</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element name="step" maxOccurs="unbounded">
+					<xsd:complexType mixed="false">
+						<xsd:sequence>
+							<xsd:element ref="caption" minOccurs="0"/>
+							<xsd:element name="pilot">
+								<xsd:annotation>
+									<xsd:documentation>Solution pilot material for this particular solution step.</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType mixed="false">
+									<xsd:choice maxOccurs="unbounded">
+										<xsd:element ref="quiz" minOccurs="0"/>
+										<xsd:element minOccurs="0" name="pilot.body">
+											<xsd:complexType>
+												<xsd:group ref="content_block" minOccurs="1"
+												maxOccurs="unbounded"/>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:choice>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="step.body">
+								<xsd:complexType>
+									<xsd:group ref="content_block" maxOccurs="unbounded"
+										minOccurs="1"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="partref" type="xsd:positiveInteger" use="optional">
+							<xsd:annotation>
+								<xsd:documentation>Refers to the part of the exercise whose solution begins with this step.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="approach">
+		<xsd:annotation>
+			<xsd:documentation>Approach to a solution. If several different approaches can be used to solve the problem, the `version'-attribute should be used to make a distinction.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="answer.exercise" minOccurs="0"/>
+				<xsd:element ref="solution.hint" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="solution" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="xsd:positiveInteger" use="optional" default="1"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="approach.ext">
+		<xsd:annotation>
+			<xsd:documentation>Approach to an extended solution. If several different approaches can be used to solve the problem, the `version'-attribute should be used to make a distinction.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="answer.exercise" minOccurs="0"/>
+				<xsd:element ref="solution.ext" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="xsd:positiveInteger" use="optional" default="1"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="answer.exercise">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" name="answer.exercise.block">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="0" ref="caption"/>
+							<xsd:element name="answer.exercise.block.body">
+								<xsd:complexType>
+									<xsd:group ref="content_block"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

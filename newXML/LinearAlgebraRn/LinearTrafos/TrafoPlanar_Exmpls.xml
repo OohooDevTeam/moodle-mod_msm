@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_TrafoPlanar"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	  <title>Example: Transformation of a Planar Region</title>
+	  <caption xmlns="">Trafo of Planar Region</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the image below the potato shaped region <math>
+                  <latex>X</latex>
+               </math> on the left gets transformed into the collar shaped object on the right.</para.body>
+         </para>
+			
+			
+				     <img xmlns="" src="ims/Trafo_NonLinear.png"/>
+				     <caption xmlns="">Transforming a ‘potato’ into a ‘collar’.</caption>
+			
+			
+			
+			      <para xmlns="">
+            <para.body>To fit this intuitive process into the mathematical formalism of functions, we do the following:</para.body>
+         </para>
+			
+			      <ul xmlns="">
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>X</latex>
+                     </math> serves as the domain of the transforming function <math>
+                        <latex>f</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>The entire background serves as the target of <math>
+                        <latex>f</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>The collar shapened object on the right represents the result of transforming the domain. This is also called the image of <math>
+                        <latex>f</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+			      </ul>
+			
+			      <para xmlns="">
+            <para.body>The function <math>
+                  <latex>f\from X\to Y</latex>
+               </math> transforms <math>
+                  <latex>X</latex>
+               </math> into the image of <math>
+                  <latex>f</latex>
+               </math>; i.e. the collar shaped object on the right. In the process the blue dot on the left, marked <math>
+                  <latex>x</latex>
+               </math>, gets transformed into the blue dot, marked <math>
+                  <latex>f(x)</latex>
+               </math> on the right. Both of the red dots on the left, marked <math>
+                  <latex>u_1</latex>
+               </math> and <math>
+                  <latex>u_2</latex>
+               </math>, get transformed into a single point. This is expressed by the identity</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>f(u_1) = f(u_2)</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>For each point of the domain <math>
+                  <latex>X</latex>
+               </math> the function <math>
+                  <latex>f</latex>
+               </math> tells us into which precise location in the target <math>
+                  <latex>Y</latex>
+               </math> it gets transformed.</para.body>
+         </para>
+		    </statement.showme>
+	  </showme>	
+</showme.pack>

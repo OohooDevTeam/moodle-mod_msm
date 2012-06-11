@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_LinearMap">
+	<title>Preview: Linear Function</title>
+	<sub.page.body>
+		<block>
+			<para>A function <latex>L\from \RNr[n]\to \RNr[m]</latex> is linear if it satisfies the two properties below</para>
+			<ol type="1">
+				<li><para><latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex> for all <latex>\Vect{x},\Vect{y}\in\RNr[n]</latex></para></li>
+				<li><para><latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex> for all <latex>t\in \RNr</latex>, and <latex>\Vect{x}\in \RNr[n]</latex>.</para></li>
+			</ol>
+			<para>Thus <latex>L</latex> transforms points of <latex>\RNr[n]</latex> into points of <latex>\RNr[m]</latex>.</para>
+			<para>The first identity asserts that <latex>L</latex> transforms the vector sum <latex>\Vect{x} + \Vect{y}</latex> of <latex>\RNr[n]</latex> into the vector of <latex>\RNr[m]</latex> obtained by</para>
+			<ol>
+				<li><para>first transforming <latex>\Vect{x}</latex> so as to obtain <latex>L(\Vect{x})</latex>,</para></li>
+				<li><para>then transforming <latex>\Vect{y}</latex> so as to obtain <latex>L(\Vect{y})</latex>,</para></li>
+				<li><para>finally adding up the transformed vectors <latex>L(\Vect{x})</latex> and <latex>L(\Vect{y})</latex>.</para></li>
+			</ol>
+			<para>The second identity implies that <latex>L</latex> transforms the line of vectors <latex>t\cdot \Vect{x}</latex> through the origin of <latex>\RNr[n]</latex> into the line of vectors <latex>t\cdot L(\Vect{x})</latex> of <latex>\RNr[m]</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

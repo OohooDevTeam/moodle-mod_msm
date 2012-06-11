@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_CoordinateSystems">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Coordinate Systems</title>
+	<exercise>
+		<problem>
+			<para>You are given the vectors <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> in <latex>\RNr[2]</latex> with</para>
+			<para align="center"><latex>\Vect{a}=(2,1)</latex> and <latex>\Vect{b}=(1,2)</latex></para>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that <latex>\EuScript{B}:=(\Vect{a},\Vect{b})</latex> is an ordered basis of <latex>\RNr[2]</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We use the determinant test to check that the given vectors are linearly independent:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\det\, 
+\left[
+\begin{array}{rr}
+2 & 1 \\
+1 & 2
+\end{array}
+\right] = 3 \neq 0
+]]>
+						</latex>
+					</math.display>
+					<para>So the vectors are linearly independent. Now we also know that two linearly independent vectors in the 2-dimensional space <latex>\RNr[2]</latex> form a basis of <latex>\RNr[2]</latex>. Therefore <latex>\EuScript{B}</latex> is an ordered basis of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\Vect{x}</latex> if <latex>\Vect{x}_{\EuScript{B}} = (6,-2)</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We recall that <latex>\Vect{x}_{\EuScript{B}}=(6,-2)</latex> means that</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>6\cdot \Vect{a} + (-2)\cdot \Vect{b}</right>
+						<left></left>
+						<center>=</center>
+						<right>6\cdot (2,1) + (-2)\cdot (1,2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(10,2)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\Vect{y}</latex> if <latex>\Vect{y}_{\EuScript{B}} = (-2,6)</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We recall that <latex>\Vect{y}_{\EuScript{B}}=(-2,6)</latex> means that</para>
+					<computation>
+						<left>\Vect{y}</left>
+						<center>=</center>
+						<right>(-2)\cdot \Vect{a} + 6\cdot \Vect{b}</right>
+						<left></left>
+						<center>=</center>
+						<right>(-2)\cdot (2,1) + 6\cdot (1,2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(2,10)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\Vect{z}</latex> if <latex>\Vect{z}_{\EuScript{B}} = (3,3)</latex>.</para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Pattern your approach after the previous two problems.</para>
+				</solution.hint>
+				<solution.hint>
+					<para><latex>\Vect{z}_{\EuScript{B}} = (3,3)</latex> means what?</para>
+				</solution.hint>
+				<solution.hint>
+					<para><latex>\Vect{z}_{\EuScript{B}} = (3,3)</latex> means that</para>
+					<computation>
+						<left>\Vect{z}</left>
+						<center>=</center>
+						<right>3\cdot \Vect{a} + 3\cdot \Vect{b}</right>
+					</computation>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\Vect{u}_{\EuScript{B}}</latex> if <latex>\Vect{u} = (1,8)</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We know that <latex>\Vect{u}_{\EuScript{B}}=(s,t)</latex> if <latex>\Vect{u}=s\cdot \Vect{a} + t\cdot \Vect{b}</latex>. Therefore, we look for the solutions of the vector equation</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{r}
+1 \\ 8
+\end{array}
+\right]\ =\ s\cdot
+\left[
+\begin{array}{r}
+2 \\ 1
+\end{array}
+\right]\ +\ t\cdot
+\left[
+\begin{array}{r}
+1 \\ 2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>This vector equation is equivalent to the system of linear equations</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcrcr}
+2s & + & t & = & 1 \\
+x & + & 2t   & = & 8
+\end{array}
+]]>
+						</latex>
+					</math.display>
+					<para>We find that this system of linear equations has the unique solution <latex>s=-2</latex> and <latex>t=5</latex>. Therefore</para>
+					<computation>
+						<left>\Vect{u}_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(-2,5)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>You are given the vectors <latex>\Vect{a}</latex>, <latex>\Vect{b}</latex> and <latex>\Vect{c}</latex> in <latex>\RNr[3]</latex> with</para>
+			<para align="center"><latex>\Vect{a}=(-1,3,2)</latex>, <latex>\Vect{b}=(7,4,1)</latex>, and <latex>\Vect{c}=(3,5,2)</latex></para>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that <latex>\EuScript{B}:=(\Vect{a},\Vect{b},\Vect{c})</latex> is an ordered basis of <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<solution.hint><para>Check first if the vectors are linearly independent.</para></solution.hint>
+				<solution.hint>
+					<para>To check if the vectors are linearly independent, you may use the determinant test.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>To use the determinant test, form the <latex>(3,3)</latex>-matrix with the vectors as column vectors; then check if the determinant is nonzero.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\Vect{x}</latex> if <latex>\Vect{x}_{\EuScript{B}} = (6,-2)</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We recall that <latex>\Vect{x}_{\EuScript{B}}=(6,-2)</latex> means that</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>6\cdot \Vect{a} + (-2)\cdot \Vect{b}</right>
+						<left></left>
+						<center>=</center>
+						<right>6\cdot (2,1) + (-2)\cdot (1,2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(10,2)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\Vect{y}</latex> if <latex>\Vect{y}_{\EuScript{B}} = (-2,6)</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We recall that <latex>\Vect{y}_{\EuScript{B}}=(-2,6)</latex> means that</para>
+					<computation>
+						<left>\Vect{y}</left>
+						<center>=</center>
+						<right>(-2)\cdot \Vect{a} + 6\cdot \Vect{b}</right>
+						<left></left>
+						<center>=</center>
+						<right>(-2)\cdot (2,1) + 6\cdot (1,2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(2,10)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\Vect{z}</latex> if <latex>\Vect{z}_{\EuScript{B}} = (3,3)</latex>.</para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Pattern your approach after the previous two problems.</para>
+				</solution.hint>
+				<solution.hint>
+					<para><latex>\Vect{z}_{\EuScript{B}} = (3,3)</latex> means what?</para>
+				</solution.hint>
+				<solution.hint>
+					<para><latex>\Vect{z}_{\EuScript{B}} = (3,3)</latex> means that</para>
+					<computation>
+						<left>\Vect{z}</left>
+						<center>=</center>
+						<right>3\cdot \Vect{a} + 3\cdot \Vect{b}</right>
+					</computation>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\Vect{u}_{\EuScript{B}}</latex> if <latex>\Vect{u} = (1,8)</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We know that <latex>\Vect{u}_{\EuScript{B}}=(s,t)</latex> if <latex>\Vect{u}=s\cdot \Vect{a} + t\cdot \Vect{b}</latex>. Therefore, we look for the solutions of the vector equation</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{r}
+1 \\ 8
+\end{array}
+\right]\ =\ s\cdot
+\left[
+\begin{array}{r}
+2 \\ 1
+\end{array}
+\right]\ +\ t\cdot
+\left[
+\begin{array}{r}
+1 \\ 2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>This vector equation is equivalent to the system of linear equations</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcrcr}
+2s & + & t & = & 1 \\
+x & + & 2t   & = & 8
+\end{array}
+]]>
+						</latex>
+					</math.display>
+					<para>We find that this system of linear equations has the unique solution <latex>s=-2</latex> and <latex>t=5</latex>. Therefore</para>
+					<computation>
+						<left>\Vect{u}_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(-2,5)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>From the vectors</para>
+			<computation>
+				<left>\Vect{a}</left>
+				<center>:=</center>
+				<right>(1,0,0,2,2,0)</right>
+				<left>\Vect{b}</left>
+				<center>:=</center>
+				<right>(0,1,0,-2,2,0)</right>
+				<left>\Vect{c}</left>
+				<center>:=</center>
+				<right>(0,0,3,0,0,4)</right>
+			</computation>
+			<para>form the subspace <latex>V:=\span \Set{ \Vect{a},\Vect{b},\Vect{c} }</latex> of <latex>\RNr[6]</latex>.</para>
+		</problem>
+		<part>
+			<problem><para>Show that <latex>\EuScript{B}:= (\Vect{a},\Vect{b},\Vect{c})</latex> is an orthogonal basis of <latex>V</latex>.</para></problem>
+			<approach>
+				<solution.hint>
+					<para>We already know that <latex>V=\span(\EuScript{B})</latex>. So it only remains to check that the vectors are linearly independent.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>To see that <latex>\EuScript{B}</latex> is linearly independent, show that the vectors in <latex>\EuScript{B}</latex> are pairwise orthogonal.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Denoting by <latex>\EuScript{S}</latex> the standard basis of <latex>\RNr[6]</latex>, find the standard coordinate vectors <latex>\Vect{x}_{\EuScript{S}}</latex> and <latex>\Vect{y}_{\EuScript{S}}</latex> if</para>
+				<computation>
+					<left>\Vect{x}_{\EuScript{B}}</left>
+					<center>=</center>
+					<right>(1,2,1)</right>
+					<left>\Vect{y}_{\EuScript{B}}</left>
+					<center>=</center>
+					<right>(4,-7,4)</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>\Vect{x}_{\EuScript{S}}</left>
+						<center>=</center>
+						<right>(1,2,3,-2,6,4)</right>
+						<left>\Vect{y}_{\EuScript{S}}</left>
+						<center>=</center>
+						<right>(4,-7,12,22,-6,16)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>If <latex>\Vect{x}_{\EuScript{B}} = (1,2,1)</latex>, then</para>
+					<computation>
+						<left>\Vect{x}_{\EuScript{S}}</left>
+						<center>=</center>
+						<right>\Vect{a} + 2 \Vect{b} + \Vect{c}</right>
+						<left></left>
+						<center>=</center>
+						<right>(1,2,3,-2,6,4)</right>
+					</computation>
+					<para><latex>\Vect{y}_{\EuScript{S}}</latex> is found with a similar computation.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Given the information that the following vectors are in <latex>V</latex>, find <latex>\Vect{x}_{\EuScript{B}}</latex> and <latex>\Vect{y}_{\EuScript{B}}</latex> if</para>
+				<computation>
+					<left>\Vect{x}_{\EuScript{S}}</left>
+					<center>=</center>
+					<right>(2,-3,-3,10,-2,-4)</right>
+					<left>\Vect{y}_{\EuScript{S}}</left>
+					<center>=</center>
+					<right>(-1,2,6,-6,2,8)</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>\Vect{x}_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(2,-3,-1)</right>
+						<left>\Vect{y}_{\EuScript{B}}</left>
+						<center>=</center>
+						<right>(-1,2,2)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>We have <latex>\Vect{x}_{\EuScript{B}} = (r,s,t)</latex> with</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>r \Vect{a} + s \Vect{b} + t \Vect{c}</right>
+					</computation>
+					<para>Now <latex>\Vect{a},\Vect{b},\Vect{c}</latex> are orthogonal. Therefore</para>
+					<computation>
+						<left>r</left>
+						<center>=</center>
+						<right>\tfrac{1}{ \abs{ \Vect{a} }^2}\, (\DotPr{ \Vect{x} }{ \Vect{a} } ) = 2</right>
+						<left>s</left>
+						<center>=</center>
+						<right>\tfrac{1}{ \abs{ \Vect{b} }^2}\, (\DotPr{ \Vect{x} }{ \Vect{b} } ) = -3</right>
+						<left>t</left>
+						<center>=</center>
+						<right>\tfrac{1}{ \abs{ \Vect{c} }^2}\, (\DotPr{ \Vect{x} }{ \Vect{c} } ) = -1</right>
+					</computation>
+					<para>Therefore <latex>\Vect{x}_{\EuScript{B}} = (2,-3,-1)</latex></para>
+					<para><latex>\Vect{y}_{\EuScript{B}} = (-1,2,2)</latex> is found with a similar computation.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\EuScript{B}=(\Vect{a},\Vect{b},\Vect{c})</latex> be an ordered basis for a subvector space <latex>V</latex> of <latex>\RNr[n]</latex>.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para>Show that <latex>\EuScript{C}=(\Vect{u},\Vect{v},\Vect{w})</latex> with</para>
+				<math.display>
+					<latex>\Vect{u}=\Vect{b} - \Vect{a}\qquad \Vect{v} = \Vect{c} - \Vect{b}\qquad \Vect{w} = \Vect{a} + \Vect{c}</latex>
+				</math.display>
+				<para>is also a basis of <latex>V</latex>.</para>
+			</problem>
+			<approach>
+				<solution.hint><para>It suffices to show that <latex>\EuScript{C}</latex> is linearly independent.</para></solution.hint>
+				<solution.hint>
+					<para>To show that <latex>\EuScript{C}</latex> is linearly independent you need to check if</para>
+					<computation>
+						<left>\Vect{0}</left>
+						<center>=</center>
+						<right>x\cdot \Vect{u} + y\cdot \Vect{v} + z\cdot \Vect{w}</right>
+					</computation>
+					<para>has only one solution.</para>
+				</solution.hint>
+				<solution>
+					<para>It suffices to show that <latex>\EuScript{C}</latex> is linearly independent. For in this case, <latex>\span(\EuScript{C})</latex> is a <latex>3</latex>-dimensional subspace of the <latex>3</latex>-dimensional space <latex>V</latex>. But then these two vector spaces are the same. So consider solutions of the vector equation</para>
+					<computation>
+						<left>\Vect{0}</left>
+						<center>=</center>
+						<right>x\cdot \Vect{u} + y\cdot \Vect{v} + z\cdot \Vect{w}</right>
+						<left>\Vect{0}</left>
+						<center>=</center>
+						<right>x\cdot (\Vect{b}-\Vect{a}) + y\cdot (\Vect{c}-\Vect{b}) + z\cdot (\Vect{a} + \Vect{c})</right>
+						<left>\Vect{0}</left>
+						<center>=</center>
+						<right>(z-x)\cdot \Vect{a} + (x-y)\cdot \Vect{b} + (y+z)\cdot \Vect{c}</right>
+					</computation>
+					<para>The numbers <latex>x,y,z</latex> solve this vector equation exactly when they form a simultaneous solution of the following system of linear equations</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rrrcr}
+-x & & +z & = & 0 \\
+ x & -y &  & = & 0 \\
+  &  y & + z & = & 0
+\end{array}
+]]>
+						</latex>
+					</math.display>
+					<para>This is so because <latex>\EuScript{B}</latex> is linearly independent and, therefore, the bottom vector equation has exactly one solution, namely the coefficients of <latex>\Vect{a}, \Vect{b}, \Vect{c}</latex> must be <latex>0</latex>.</para>
+					<para>The unaugmented coefficient matrix of this system of linear equation is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}\ =\ 
+\left[
+\begin{array}{rrr}
+-1 & 0 & 1 \\
+1 & -1 & 0 \\
+0 & 1 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Then we find</para>
+					<computation>
+						<left>\det(\Mtrx{A})</left>
+						<center>=</center>
+						<right>2</right>
+					</computation>
+					<para>So <latex>\Mtrx{A}</latex> is invertible, hence its null space consists only of the vector <latex>(x,y,z) = (0,0,0)</latex>. This implies that <latex>\EuScript{C}</latex> is also a basis of <latex>V</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>If <latex>\Vect{x}_{\EuScript{C}}=(2,-1,3)</latex>, what is <latex>\Vect{x}_{\EuScript{B}}</latex>?</para></problem>
+			<approach>
+				<answer>
+					<para><latex>\EuScript{B} =  (1,3,2)</latex>.</para>
+				</answer>
+				<solution>
+					<para>We evaluate</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>2 \Vect{u} - \Vect{v} + 3 \Vect{w}</right>
+						<left></left>
+						<center>=</center>
+						<right>2(\Vect{b} - \Vect{a}) - (\Vect{c} - \Vect{b}) + 3(\Vect{a} + \Vect{c} )</right>
+						<left></left>
+						<center>=</center>
+						<right>\Vect{a} + 3 \Vect{b} + 2 \Vect{c}</right>
+					</computation>
+					<para>Therefore, <latex>\Vect{x}_{\EuScript{B}} = (1,3,2)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>If <latex>\Vect{y}_{\EuScript{B}} = (-1,-2,1)</latex>, what is <latex>\Vect{y}_{\EuScript{C}}</latex>?</para></problem>
+			<approach>
+				<answer><para><latex>\Vect{y}_{\EuScript{C}} = (2,2,-1)</latex></para></answer>
+				<solution>
+					<para>We have that <latex>\Vect{y}_{\EuScript{C}} = (r,s,t)</latex> if</para>
+					<computation>
+						<left>\Vect{y}</left>
+						<center>=</center>
+						<right>r(\Vect{b} - \Vect{a}) + s(\Vect{c} - \Vect{b}) + t(\Vect{a} + \Vect{c})</right>
+						<left></left>
+						<center>=</center>
+						<right>(-r+t)\Vect{a} + (r-s)\Vect{v} + (s+t) \Vect{c}</right>
+					</computation>
+					<para>On the other hand, <latex>\Vect{y} = - \Vect{a} -2 \Vect{b} + 1 \Vect{c}</latex>. Given that <latex>\EuScript{B}</latex> is a basis for <latex>V</latex>, there is exactly one way to express <latex>\Vect{y}</latex> as a linear combination of vectors in <latex>\EuScript{B}</latex>. So we obtain the system of linear equations</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rcrcrcr}
+r & & & - & t & = & 1 \\
+  & - & s & + & t & = & -3 \\
+  &   & s & + & t & = & 1
+\end{array}
+]]>
+						</latex>
+					</math.display>
+					<para>With the row reduction method we see that this system of three linear equations in the unknowns <latex>r,s,t</latex> has exactly one solution, namely <latex>r=2</latex>, <latex>s=2</latex>, <latex>t=-1</latex>. We conclude: <latex>\Vect{y}_{\EuScript{C}} = (2,2,-1)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Suppose <latex>V</latex> is a subvector space of <latex>\RNr[n]</latex> with <latex>\dim(V)=20</latex>, and let <latex>S</latex> be a subset of <latex>\RNr[n]</latex>. How many vectors can there be in <latex>S</latex> if</para>
+		</problem>
+		<part>
+			<problem><para><latex>\span(S)=V</latex></para></problem>
+			<approach>
+				<answer>
+					<para><latex>S</latex> contains at least <latex>20</latex> vectors, possibly infinitely many.</para>
+				</answer>
+				<solution>
+					<para>It is possible to select from <latex>S</latex> a basis for <latex>V</latex>, and this basis must have exactly <latex>20</latex> vectors.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\span(S)</latex> contains <latex>V</latex></para></problem>
+			<approach>
+				<answer>
+					<para><latex>S</latex> contains at least <latex>20</latex> vectors, possibly infinitely many.</para>
+				</answer>
+				<solution>
+					<para>It is possible to select from <latex>S</latex> a basis for <latex>\span(S)</latex>, and <latex>\span(S)</latex> has dimension at least <latex>20</latex> as it contains <latex>V</latex>. Therefore <latex>S</latex> must have at least <latex>\dim(\span(S)) \geq 20</latex> vectors.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>V</latex> contains <latex>\span(S)</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>S</latex> can have any number of vectors.</para></answer>
+				<solution>
+					<para>All we know is that <latex>\span(S)</latex> is contained in <latex>V</latex>. But this relationship does not impose any constraint on the number of vectors in <latex>S</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S</latex> is linearly independent and <latex>V</latex> contains <latex>S</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>S</latex> can have at most <latex>20</latex> vectors.</para></answer>
+				<solution>
+					<para><latex>S</latex> can be completed to a basis of <latex>V</latex>. Such a basis has exactly <latex>20</latex> vectors. Therefore <latex>S</latex> can have at most <latex>20</latex> vectors.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below decide if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>If <latex>\EuScript{B} = (\Vect{a}, \Vect{b}, \Vect{c} )</latex> is an ordered basis for a vector space <latex>V</latex>, then <latex>\Vect{x}_{\EuScript{B}} = (2,-3,7)</latex> means that</para>
+				<computation>
+					<left>\Vect{x}</left>
+					<center>=</center>
+					<right>2\cdot \Vect{a} - 3\cdot \Vect{b} + 7\cdot \Vect{c}</right>
+				</computation>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>Recall: <latex>\Vect{x}_{\EuScript{B}}</latex> is the coordinate vector of <latex>\Vect{x}</latex> with respect to the basis <latex>\EuScript{B}</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\EuScript{B} = (\Vect{a}, \Vect{b}, \Vect{c} )</latex> is an ordered basis for a vector space <latex>V</latex>, then <latex>\Vect{x}_{\EuScript{B}} = (2,-3,7)</latex> means that <latex>\Vect{x}</latex> is a vector in <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution>
+					<para>The fact that the coordinate vector <latex>\Vect{x}_{\EuScript{B}}</latex> of <latex>\Vect{x}</latex> has three coordinates means that <latex>\Dim{V}=3</latex>. However, <latex>V</latex> need not be contained in <latex>\RNr[3]</latex>. &ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\EuScript{B} = (\Vect{a}, \Vect{b}, \Vect{c} )</latex> is an ordered basis for a vector space <latex>V</latex>, then <latex>\Vect{x}_{\EuScript{B}} = (2,-3,7)</latex> means that <latex>\Vect{x}</latex> can be turned into a vector in <latex>\RNr[3]</latex> by converting to standard coordinates.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution>
+					<para>An arbitrary vector space <latex>V</latex> need not have anything like &lsquo;standard coordinates&lsquo;. Even if <latex>V</latex> has some set of standard coordinates, changing from <latex>\EuScript{B}</latex>-coordinates to standard coordinates does not change the vector in <latex>V</latex> to a vector in <latex>\RNr[3]</latex> (unless, of course, <latex>V=\RNr[3]</latex> in which case <latex>\Vect{x}</latex> has been in <latex>\RNr[3]</latex> all along).</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>U</latex> be the subspace of <latex>\RNr[3]</latex> spanned by the vectors</para>
+			<math.display>
+				<latex>\Vect{a} := (0,-1,1)\quad \text{and}\quad \Vect{b}:= (4,2,2)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find an ordered orthonormal basis <latex>\EuScript{B}</latex> for <latex>U</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We see that <latex>\Vect{a}</latex> is perpendicular to <latex>\Vect{b}</latex> by checking that <latex>\DotPr{ \Vect{a} }{ \Vect{b} } = 0</latex>. Therefore we obtain an ordered ONB <latex>\EuScript{B} := (\Vect{u},\Vect{v})</latex> of <latex>U</latex> by normalizing <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex>:</para>
+					<computation>
+						<left>\Vect{u}</left>
+						<center>:=</center>
+						<right>\dfrac{ \Vect{a} }{ \Abs{ \Vect{a} } }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{1}{\sqrt{2}}\cdot (0,-1,1)</right>
+						<left>\Vect{v}</left>
+						<center>:=</center>
+						<right>\dfrac{ \Vect{b} }{ \Abs{ \Vect{b} } }</right>
+						<left></left>
+						<center>=</center>
+						<right>\dfrac{1}{ \sqrt{6} }\cdot (2,1,1)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Complete <latex>\EuScript{B}</latex> to an ordered ONB <latex>\EuScript{C}</latex> of <latex>\RNr[3]</latex> which represents the left hand orientation.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>Perpendicular to <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> is</para>
+					<computation>
+						<left>\Vect{c}</left>
+						<center>:=</center>
+						<right>\CrssPr{ \Vect{a} }{ \Vect{c} }</right>
+						<left></left>
+						<center>=</center>
+						<right>4\cdot (-1,1,1)</right>
+					</computation>
+					<para>The unit vector in the direction of <latex>\Vect{c}</latex> is</para>
+					<computation>
+						<left>\Vect{w}</left>
+						<center>:=</center>
+						<right>\dfrac{1}{ \sqrt{3} }\cdot (-1,1,1)</right>
+					</computation>
+					<para>Therefore <latex>( \Vect{u} , \Vect{v} , \Vect{w} )</latex> is an ONB of <latex>\RNr[3]</latex> representing the RHO. It follows that </para>
+					<math.display>
+						<latex>\EuScript{C} := ( \Vect{u} , \Vect{v} , - \Vect{w} )</latex>
+					</math.display>
+					<para>is an ordered ONB of <latex>\RNr[3]</latex> which represents the LHO.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find <latex>\Vect{x}_{\EuScript{C}}</latex> if <latex>\Vect{x} = (2,1,2)</latex></para></problem>
+			<approach>
+				<solution>
+					<para>As <latex>\EuScript{C}</latex> is an ONB or <latex>\RNr[3]</latex>, we know that</para>
+					<computation>
+						<left>\Vect{x}_{\EuScript{C}}</left>
+						<center>=</center>
+						<right>( \DotPr{ \Vect{x} }{ \Vect{u} } , \DotPr{ \Vect{x} }{ \Vect{v} } , \DotPr{ \Vect{x} }{ \Vect{w} } )</right>
+						<left></left>
+						<center>=</center>
+						<right>\left( \dfrac{1}{ \sqrt{2} } , \dfrac{7}{ \sqrt{6} } , \dfrac{1}{\sqrt{3}} \right)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+</exercise.pack>

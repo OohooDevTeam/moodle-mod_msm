@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_CramerRule"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Cramer’s Rule</title>
+      <plain.title>Cramer’s Rule</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Consider a system of <math>
+                     <latex>n</latex>
+                  </math> linear equations in <math>
+                     <latex>n</latex>
+                  </math> unknowns whose coefficient matrix is invertible. We know then that this system of linear has exactly one solution. Here we use determinants to build a formula which computes this unique solution.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="CramerRule_Thm.xml"/>
+            <para>
+               <para.body>A nice application of Cramer’s rule is the following theorem. It provides a formula for computing the inverse of an invertible matrix.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="MatrixInverseFormula_Thm.xml"/>
+            <para>
+               <para.body>A special case of the formula for the inverse of a matrix is the following simple formula for the inverse of an invertible <math>
+                     <latex>(2,2)</latex>
+                  </math>-matrix.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="MatrixInverseFormula22_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_CramerRule"/>
+   </studymaterials>
+</unit>

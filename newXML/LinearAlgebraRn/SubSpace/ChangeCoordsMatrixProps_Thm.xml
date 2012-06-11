@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_ChangeCoordinatesMatrixProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Properties of coordinate change</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Given ordered bases <math>
+               <latex>\EuScript{B}</latex>
+            </math>, <math>
+               <latex>\EuScript{C}</latex>
+            </math>, and <math>
+               <latex>\EuScript{D}</latex>
+            </math> of a subvector space <math>
+               <latex>W</latex>
+            </math> of <math>
+               <latex>\RNr[n]</latex>
+            </math>, the associated coordinate conversion matrices are related by
+			</para.body>
+         <index.glossary>
+            <term>change of coordinates matrix</term>
+            <term>of a composition of linear maps</term>
+            <info>
+               <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Mtrx{C}_{\EuScript{D}\EuScript{B}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Mtrx{C}_{\EuScript{D}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+            </info>
+         </index.glossary>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Mtrx{C}_{\EuScript{D}\EuScript{B}}</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Mtrx{C}_{\EuScript{D}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>For an arbitrary vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>W</latex>
+                  </math> we find</para.body>
+            </para>
+            <math.display>
+               <latex>\Vect{x}_{\EuScript{D}} = \Mtrx{C}_{\EuScript{D}\EuScript{C}}\Vect{x}_{\EuScript{C}} = \Mtrx{C}_{\EuScript{D}\EuScript{C}}\left( \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Vect{x}_{\EuScript{B}}\right)</latex>
+            </math.display>
+            <para>
+               <para.body>Therefore the product matrix <math>
+                     <latex>\left( \Mtrx{C}_{\EuScript{D}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}}\right)</latex>
+                  </math> converts from <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>-coordinates to <math>
+                     <latex>\EuScript{D}</latex>
+                  </math>-coordinates. But we know that there is only one matrix with this property, namely <math>
+                     <latex>\Mtrx{C}_{\EuScript{D}\EuScript{B}}</latex>
+                  </math>. Therefore these two matrices are equal, and this proves the corollary.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

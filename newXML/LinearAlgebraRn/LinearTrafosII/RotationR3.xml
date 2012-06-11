@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_RotationR3"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Rotations of 3-Space</title>
+      <plain.title>Rotations of 3-Space</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we learn how to find the standard coordinate matrix of a 
+			<subordinate>
+                     <hot>rotation of <math>
+                           <latex>\RNr[3]</latex>
+                        </math>
+                     </hot>
+                     <companion>
+                        <unit.ref unitId="Illu_RotationR3"/>
+                        <info>
+                           <para>
+                              <para.body>An illustration of a rotation of <math>
+                                    <latex>\RNr[3]</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>
+			about an arbitrary axis and through a specified angle. Actually, we need to be a bit more careful here: There are two directions in which we rotate about an axis. So we need a way of distinguishing between these directions. This is accomplished with the following setup.
+			</para.body>
+               <index.glossary>
+                  <term>rotation</term>
+                  <term>of 3-space</term>
+                  <info>
+                     <para>
+                        <para.body>A section on arbitrary rotations in <math>
+                              <latex>\RNr[3]</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Orient the axis <math>
+                           <latex>\mathbf{L}</latex>
+                        </math> of rotation by a unit vector <math>
+                           <latex>\Vect{r}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Align the thumb of your right hand with <math>
+                           <latex>\Vect{r}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>We say that the rotation is by the Right Hand Rule, if the remaining fingers of your right hand curl around the axis in the direction of the rotation. Else we say that the rotation is by the Left Hand Rule. To find the <math>
+                     <latex>(3,3)</latex>
+                  </math>-matrix representing such a rotation with respect to standard coordinates, we use the following approach:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Let <math>
+                           <latex>\Vect{a}</latex>
+                        </math> be any unit vector which is perpendicular to <math>
+                           <latex>\Vect{r}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Set <math>
+                           <latex>\Vect{b} := \CrssPr{ \Vect{r} }{ \Vect{a} }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>It follows that the ordered vector triple <math>
+                     <latex>\EuScript{B} := (\Vect{a},\Vect{b},\Vect{r})</latex>
+                  </math> is an
+			<subordinate>
+                     <hot>ONB</hot>
+                     <info>
+                        <para>
+                           <para.body>ONB = Orthonormal Basis</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+			of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> representing the 
+			<subordinate>
+                     <hot>RHO</hot>
+                     <info>
+                        <para>
+                           <para.body>RHO = Right Hand Orientation</para.body>
+                        </para>
+                     </info>
+                  </subordinate>,
+			and with respect to this basis we now describe the rotation.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="RotationR3_Thm.xml"/>
+            <para>
+               <para.body>The transformation effect of a rotation is reversible, namely by a rotation through the same angle in the opposite direction:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="RotationR3Inverse_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_RotationGeneral"/>
+   </studymaterials>
+</unit>

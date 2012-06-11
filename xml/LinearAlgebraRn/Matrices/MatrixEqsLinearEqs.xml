@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_MatrixEqsLinearEqs">
+	<headers>
+	      <full>Matrix Equations and Linear Equations</full>
+		<toc>Matrix Equations and Linear Equations</toc>
+		<short>Matrix Equations - Linear Equations</short>
+	</headers>
+	
+	<intro>
+		<para>The starting point for this sections is that a system of linear equations can 
+			<subordinate>
+				<hot>equivalently</hot>
+				<companion>
+					<subpage.ref subpageID="Info_MatrixEqsLinearEqs"/>
+					<para>See details on the relationship between a system of linear equations and a matrix equation.</para>
+				</companion>
+			</subordinate>
+			be expressed as a matrix equation. Here we consider the special case where the coefficient matrix of the system is invertible. In this case the system of equations has a unique solution, and here we explain how to find it.</para>
+	</intro>
+	
+	<section.body>
+		<xi:include href="MatrixEqsLinearEqs_Prop.xml"/>
+	</section.body>
+	
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_MatrixEqsLinearEqs"/>
+	</studymaterials>
+</section>

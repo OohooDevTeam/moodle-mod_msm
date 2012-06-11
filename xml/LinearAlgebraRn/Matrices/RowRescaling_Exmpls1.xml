@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_RowRescalingExplanation">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Explanation for Row Rescaling Matrices</title>
+	<caption>Exaplantion for Rescaling Matrices</caption>
+	
+	<showme>
+		<statement>
+			<para>The row rescaling matrices</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_u(s)\ :=\ \begin{bmatrix}
+						1 & \cdots & 0 & \cdots & 0 \\
+						\vdots & \ddots & \vdots & & \vdots \\
+						0 & \cdots & s & \cdots & 0 \\
+						\vdots & & \vdots & \ddots & \vdots \\
+						0 & \cdots & 0 & \cdots & 1
+						\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>are named thus because, if <latex>\Mtrx{B}</latex> is an arbitrary matrix of size <latex>(n,p)</latex>, then</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{bmatrix}
+					1 & \cdots & 0 & \cdots & 0 \\
+					\vdots & \ddots & \vdots & & \vdots \\
+					0 & \cdots & s & \cdots & 0 \\
+					\vdots & & \vdots & \ddots & \vdots \\
+					0 & \cdots & 0 & \cdots & 1
+					\end{bmatrix}
+					\begin{bmatrix}
+					* & \cdots & * \\
+					\vdots & & \vdots \\
+					a_{u1} & \cdots & a_{up} \\
+					\vdots & & \vdots \\
+					{*} & \cdots & *
+					\end{bmatrix}\ =\
+					\begin{bmatrix}
+					* & \cdots & * \\
+					\vdots & & \vdots \\
+					sa_{u1} & \cdots & sa_{up} \\
+					\vdots & & \vdots \\
+					{*} & \cdots & *
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>i.e. multiplying <latex>\Mtrx{B}</latex> on the left with <latex magnify="yes">D_{u}(s)</latex> has the effect of muyltiplying the <latex>u</latex>-th row of <latex>\Mtrx{B}</latex> by <latex>s</latex>.</para>
+		</statement>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the set of <latex>(3,3)</latex>-matrices, the matrix which multiplies the second row by <latex>3</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{2}(3) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 \\
+					0 & 3 & 0 \\
+					0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The inverse of <latex>D_2(3)</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{2}(1/3) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 \\
+					0 & 1/3 & 0 \\
+					0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the set of <latex>(3,3)</latex>-matrices, the matrix which multiplies the third row by <latex>5</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{3}(5) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 \\
+					0 & 1 & 0 \\
+					0 & 0 & 5
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The inverse of  <latex>D_3(5)</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{3}(1/5) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 \\
+					0 & 1 & 0 \\
+					0 & 0 & 1/5
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the set of <latex>(4,4)</latex>-matrices, the matrix which multiplies the <latex>1</latex>-st row by <latex>6</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{1}(6) \ =\ 
+					\begin{bmatrix}
+					6 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The inverse of <latex>D_1(6)</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{1}(1/6) \ =\ 
+					\begin{bmatrix}
+					1/6 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the world of <latex>(4,4)</latex>-matrices, the matrix which multiplies the <latex>2</latex>-nd row by <latex>6</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{2}(6) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 & 0 \\
+					0 & 6 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The inverse of <latex>D_2(6)</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{2}(1/6) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 & 0 \\
+					0 & 1/6 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the set of <latex>(4,4)</latex>-matrices, the matrix which multiplies the <latex>3</latex>-rd row by <latex>2</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{3}(2) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 2 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The inverse of <latex>D_3(2)</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{3}(1/2) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 1/2 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+</showme.pack>

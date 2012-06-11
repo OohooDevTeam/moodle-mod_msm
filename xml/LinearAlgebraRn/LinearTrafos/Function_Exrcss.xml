@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Function">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Functions</title>
+	<exercise>
+		<problem>
+			<para>About the function</para>
+			<math.display>
+				<latex>f\from \RNr \to \RNr[3],\qquad f(t) = (t,t^2,t^3)</latex>
+			</math.display>
+			<para>answer the following questions</para>
+		</problem>
+		<part>
+			<problem>
+				<para>What is the domain of <latex>f</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>The domain of <latex>f</latex> is the set <latex>\RNr</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>What is the target set of <latex>f</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>The target of <latex>f</latex> is the set <latex>\RNr[3]</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>What is <latex>f(1)</latex></para>
+			</problem>
+			<approach>
+				<answer><para><latex>f(1) = (1,1,1)</latex></para></answer>
+				<solution>
+					<para>To find <latex>f(1)</latex>, we need to substitute <latex>1</latex> for the variable <latex>t</latex>. Thus we obtain</para>
+					<computation>
+						<left>f(1)</left>
+						<center>=</center>
+						<right>(1,1^2,1^3)</right>
+						<left></left>
+						<center>=</center>
+						<right>(1,1,1)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the (function) value of <latex>f</latex> at <latex>2</latex>?</para></problem>
+			<approach>
+				<answer>
+					<para>The value of <latex>f</latex> at <latex>2</latex> is</para>
+					<computation>
+						<left>f(2)</left>
+						<center>=</center>
+						<right>(2,4,8)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>The value of <latex>f</latex> at <latex>2</latex> is <latex>f(2)</latex>. Therefore, we must substitute <latex>2</latex> for the variable <latex>t</latex>. The result is</para>
+					<computation>
+						<left>f(2)</left>
+						<center>=</center>
+						<right>(2,2^2,2^3)</right>
+						<left></left>
+						<center>=</center>
+						<right>(2,4,8)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the (function) value of <latex>f</latex> at <latex>-2</latex>?</para></problem>
+			<approach>
+				<answer>
+					<para>The value of <latex>f</latex> at <latex>-2</latex> is</para>
+					<computation>
+						<left>f(-2)</left>
+						<center>=</center>
+						<right>(-2,4,-8)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>The value of <latex>f</latex> at <latex>-2</latex> is <latex>f(-2)</latex>. Therefore, we must substitute <latex>-2</latex> for the variable <latex>t</latex>. The result is</para>
+					<computation>
+						<left>f(-2)</left>
+						<center>=</center>
+						<right>(-2,(-2)^2,(-2)^3)</right>
+						<left></left>
+						<center>=</center>
+						<right>(-2,4,-8)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>About the function</para>
+			<math.display>
+				<latex>s\from \RNr[2] \to \RNr[2],\qquad s(u,v) = (u^2-v^2,2uv)</latex>
+			</math.display>
+			<para>answer the following questions</para>
+		</problem>
+		<part>
+			<problem>
+				<para>What is the domain of <latex>s</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>The domain of <latex>s</latex> is the set <latex>\RNr[2]</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>What is the target set of <latex>s</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>The target of <latex>s</latex> is the set <latex>\RNr[2]</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>What is <latex>s(0,1)</latex></para>
+			</problem>
+			<approach>
+				<answer><para><latex>s(0,1) = (-1,0)</latex></para></answer>
+				<solution>
+					<para>To find <latex>s(0,1)</latex>, we need to substitute <latex>0</latex> for the variable <latex>u</latex>, and <latex>1</latex> for the variable <latex>v</latex>. Thus we obtain</para>
+					<computation>
+						<left>s(0,1)</left>
+						<center>=</center>
+						<right>(0^2-1^2,2\cdot 0\cdot 1)</right>
+						<left></left>
+						<center>=</center>
+						<right>(0,-1)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the (function) value of <latex>s</latex> at <latex>(1,1)</latex>?</para></problem>
+			<approach>
+				<answer>
+					<para>The value of <latex>s</latex> at <latex>(1,1)</latex> is</para>
+					<computation>
+						<left>s(1,1)</left>
+						<center>=</center>
+						<right>(0,2)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>The value of <latex>s</latex> at <latex>(1,1)</latex> is <latex>s(1,1)</latex>. Therefore, we must substitute <latex>1</latex> for the variable <latex>u</latex> and <latex>1</latex> for the variable <latex>v</latex>. The result is</para>
+					<computation>
+						<left>s(1,1)</left>
+						<center>=</center>
+						<right>(1^2-1^2,2\cdot 1\cdot 1)</right>
+						<left></left>
+						<center>=</center>
+						<right>(0,2)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is the (function) value of <latex>f</latex> at <latex>(-1,-2)</latex>?</para></problem>
+			<approach>
+				<answer>
+					<para>The value of <latex>s</latex> at <latex>(-1,-2)</latex> is</para>
+					<computation>
+						<left>s(-1,-2)</left>
+						<center>=</center>
+						<right>(-3,4)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>The value of <latex>s</latex> at <latex>(-1,-2)</latex> is <latex>s(-1,-2)</latex>. Therefore, we must substitute <latex>-1</latex> for the variable <latex>u</latex> and <latex>-2</latex> for the variable <latex>v</latex>. The result is</para>
+					<computation>
+						<left>s(-1,-2)</left>
+						<center>=</center>
+						<right>((-1)^2 - (-2)^2,2\cdot(-1)\cdot (-2))</right>
+						<left></left>
+						<center>=</center>
+						<right>(-3,4)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>About the function</para>
+			<math.display>
+				<latex>f\from \RNr[3] \longrightarrow \RNr[2],\quad f(x,y,z)=(x+y^2,y-z^2)</latex>
+			</math.display>
+			<para>answer the following questions.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>What is the domain of <latex>f</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>The domain of <latex>f</latex> is the set <latex>\RNr[3]</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>What is the target set of <latex>f</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>The target of <latex>f</latex> is the set <latex>\RNr[2]</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is <latex>f(0,0,0)</latex>?</para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>f(0,0,0)</left>
+						<center>=</center>
+						<right>(0,0)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>To find <latex>f(0,0,0)</latex>, we must</para>
+					<ol>
+						<li><para>substitute <latex>0</latex> for <latex>x</latex>.</para></li>
+						<li><para>substitute <latex>0</latex> for <latex>y</latex>.</para></li>
+						<li><para>substitute <latex>0</latex> for <latex>z</latex>.</para></li>
+					</ol>
+					<para>The result is</para>
+					<computation>
+						<left>f(0,0,0)</left>
+						<center>=</center>
+						<right>(0+0^2,0-0^2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(0,0)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is <latex>f(2,0,1)</latex>?</para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>f(2,0,1)</left>
+						<center>=</center>
+						<right>(2,-1)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>To find <latex>f(2,0,1)</latex>, we must</para>
+					<ol>
+						<li><para>substitute <latex>2</latex> for <latex>x</latex>.</para></li>
+						<li><para>substitute <latex>0</latex> for <latex>y</latex>.</para></li>
+						<li><para>substitute <latex>1</latex> for <latex>z</latex>.</para></li>
+					</ol>
+					<para>The result is</para>
+					<computation>
+						<left>f(2,0,1)</left>
+						<center>=</center>
+						<right>(2+0^2,0-1^2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(2,-1)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>What is <latex>f(-1,2,5)</latex>?</para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>f(-1,2,5)</left>
+						<center>=</center>
+						<right>(3,-23)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>To find <latex>f(-1,2,5)</latex>, we must</para>
+					<ol>
+						<li><para>substitute <latex>-1</latex> for <latex>x</latex>.</para></li>
+						<li><para>substitute <latex>2</latex> for <latex>y</latex>.</para></li>
+						<li><para>substitute <latex>5</latex> for <latex>z</latex>.</para></li>
+					</ol>
+					<para>The result is</para>
+					<computation>
+						<left>f(-1,2,5)</left>
+						<center>=</center>
+						<right>(-1+2^2,2-5^2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(3,-23)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Does the equation <latex>f(x,y,z) = (1,1)</latex> have a solution?</para></problem>
+			<approach>
+				<answer><para>Yes!</para></answer>
+				<solution.hint>
+					<para>Do not look for a method for solving this equation. Just try to find number values for <latex>x</latex>, <latex>y</latex>, and <latex>z</latex> such that the given equation is true.</para>
+				</solution.hint>
+				<solution>
+					<para>We need to determine if it is possible to substitute number values for the variables <latex>x</latex>, <latex>y</latex>, and <latex>z</latex> such that the given equation is true.</para>
+					<para>By trial and error, we find that</para>
+					<computation>
+						<left>f(0,1,0)</left>
+						<center>=</center>
+						<right>(0+1^2,1-0^2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(1,1)</right>
+					</computation>
+					<para>Therefore the given equation has at least one solution, namely <latex>(x,y,z) = (0,1,0)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Does the equation <latex>f(x,y,z) = (0,0)</latex> have more than one solution?</para></problem>
+			<approach>
+				<answer><para>Yes!</para></answer>
+				<solution.hint>
+					<para>Do not look for a method for solving this equation. Just try to find number values for <latex>x</latex>, <latex>y</latex>, and <latex>z</latex> such that the given equation is true.</para>
+				</solution.hint>
+				<solution>
+					<para>We need to determine if it is possible to substitute number values for the variables <latex>x</latex>, <latex>y</latex>, and <latex>z</latex> such that the given equation is true.</para>
+					<para>By trial and error, we find that</para>
+					<computation>
+						<left>f(0,0,0)</left>
+						<center>=</center>
+						<right>(0+0^2,0-0^2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(0,0)</right>
+					</computation>
+					<para>and</para>
+					<computation>
+						<left>f(-1,1,1)</left>
+						<center>=</center>
+						<right>(-1+1^2,1-1^2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(0,0)</right>
+					</computation>
+					<para>So the given equation has at least two solutions. &ndash; This is enough to answer the given question. But while we are at it, we can just as well observe that in the last solution the sign of <latex>z</latex> does not really matter:</para>
+					<computation>
+						<left>f(-1,1,-1)</left>
+						<center>=</center>
+						<right>(-1+1^2,1-(-1)^2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(0,0)</right>
+					</computation>
+					<para>Therefore the given equation has at least three solutions, namely</para>
+					<math.display>
+						<latex>(x,y,z) = (0,0,0)\quad \text{and}\quad (x,y,z) = ( -1,1,\pm 1)</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Does <latex>f</latex> transform points on <latex>x</latex>-axis of <latex>\RNr[3]</latex> into points on the <latex>x</latex>-axis of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>Yes!</para></answer>
+				<solution.hint>
+					<para>The <latex>x</latex>-axis of <latex>\RNr[3]</latex> consists of all points of the form <latex>(x,0,0)</latex>. The problem asks if any such point gets transformed into a point on the <latex>x</latex>-axis of <latex>\RNr[2]</latex>, that is into a point of the form <latex>(t,0)</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>The <latex>x</latex>-axis of <latex>\RNr[3]</latex> consists of all points of the form <latex>(x,0,0)</latex>. The problem asks if any such point gets transformed into a point on the <latex>x</latex>-axis of <latex>\RNr[2]</latex>, that is into a point of the form <latex>(t,0)</latex>.</para>
+					<para>Therefore we compute</para>
+					<computation>
+						<left>f(x,0,0)</left>
+						<center>=</center>
+						<right>(x+0^2,0-0^2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(x,0)</right>
+					</computation>
+					<para>Therefore <latex>f</latex> transforms points on the <latex>x</latex>-axis of <latex>\RNr[3]</latex> into points on the <latex>x</latex>-axis of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Does <latex>f</latex> transform points on <latex>y</latex>-axis of <latex>\RNr[3]</latex> into points on the <latex>y</latex>-axis of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>No!</para></answer>
+				<solution.hint>
+					<para>The <latex>y</latex>-axis of <latex>\RNr[3]</latex> consists of all points of the form <latex>(0,y,0)</latex>. The problem asks if any such point gets transformed into a point on the <latex>y</latex>-axis of <latex>\RNr[2]</latex>, that is into a point of the form <latex>(0,t)</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>The <latex>y</latex>-axis of <latex>\RNr[3]</latex> consists of all points of the form <latex>(0,y,0)</latex>. The problem asks if any such point gets transformed into a point on the <latex>y</latex>-axis of <latex>\RNr[2]</latex>, that is into a point of the form <latex>(0,t)</latex>.</para>
+					<para>Therefore we compute</para>
+					<computation>
+						<left>f(0,y,0)</left>
+						<center>=</center>
+						<right>(0+y^2,y-0^2)</right>
+					</computation>
+					<para>So, for example, <latex>f(0,1,0) = (1,1)</latex>, which does not lie on the <latex>y</latex>-axis. Therefore <latex>f</latex> fails to transform points on the <latex>y</latex>-axis of <latex>\RNr[3]</latex> into points on the <latex>y</latex>-axis of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Does <latex>f</latex> transform points on <latex>z</latex>-axis of <latex>\RNr[3]</latex> into points on the positive <latex>y</latex>-axis of <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer><para>No!</para></answer>
+				<solution.hint>
+					<para>The <latex>z</latex>-axis of <latex>\RNr[3]</latex> consists of all points of the form <latex>(0,0,z)</latex>. The problem asks if any such point gets transformed into a point on the positive <latex>y</latex>-axis of <latex>\RNr[2]</latex>, that is into a point of the form <latex>(0,t)</latex>, with <latex><![CDATA[ t> 0 ]]></latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>The <latex>z</latex>-axis of <latex>\RNr[3]</latex> consists of all points of the form <latex>(0,0,z)</latex>. The problem asks if any such point gets transformed into a point on the positive <latex>y</latex>-axis of <latex>\RNr[2]</latex>, that is into a point of the form <latex>(0,t)</latex>, with <latex><![CDATA[ t> 0 ]]></latex>.</para>
+					<para>Therefore we compute</para>
+					<computation>
+						<left>f(0,0,z)</left>
+						<center>=</center>
+						<right>(0+0^2,0-z^2)</right>
+					</computation>
+					<para>As <latex>z^2\leq 0</latex> for all <latex>z</latex>, this implies that <latex>f</latex> transforms points on the <latex>z</latex>-axis of <latex>\RNr[3]</latex> into points on the nonpositive <latex>y</latex>-axis of <latex>\RNr[2]</latex>. Therefore it fails to transform points on the <latex>z</latex>-axis of <latex>\RNr[3]</latex> into points on the positive <latex>y</latex>-axis of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below indicate if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>For a function <latex>f\from \RNr[3]\to \RNr[2]</latex>, &lsquo;<latex>\Vect{a}</latex> is in <latex>f^{-1}(2,0)</latex>&rsquo; means that <latex>f(\Vect{a})=(2,0)</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>The set <latex>f^{-1}(2,0)</latex> consists of all those <latex>\Vect{x}</latex> in <latex>\RNr[3]</latex> with <latex>f(\Vect{x}) = (2,0)</latex>. According to this definition the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>For a function <latex>f\from \RNr[3]\to \RNr[2]</latex>, &lsquo;<latex>\Vect{a}</latex> is in <latex>f^{-1}(2,0)</latex>&rsquo; means that <latex>f(\mathbf{a})=\mathbf{a}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution>
+					<para>The set <latex>f^{-1}(2,0)</latex> consists of all those <latex>\Vect{x}</latex> in <latex>\RNr[3]</latex> with <latex>f(\Vect{x}) = (2,0)</latex>. According to this definition the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>For a function <latex>f\from \RNr[3]\to \RNr[2]</latex>, if &lsquo;<latex>\Vect{a}</latex> is in <latex>f^{-1}(2,0)</latex>&rsquo; then <latex>\Vect{a}</latex> is in <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>The set <latex>f^{-1}(2,0)</latex> consists of all those <latex>\Vect{x}</latex> in <latex>\RNr[3]</latex> with <latex>f(\Vect{x}) = (2,0)</latex>. Thus, if <latex>\Vect{a}</latex> is in <latex>f^{-1}(2,0)</latex>, then <latex>\Vect{a}</latex> must be a vector in <latex>\RNr[3]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>For a function <latex>f\from \RNr[3]\to \RNr[2]</latex>, if &lsquo;<latex>\Vect{a}</latex> is in <latex>f^{-1}(2,0)</latex>&rsquo; then <latex>\Vect{a}</latex> is in <latex>\RNr[2]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution>
+					<para>The set <latex>f^{-1}(2,0)</latex> consists of all those <latex>\Vect{x}</latex> in <latex>\RNr[3]</latex> with <latex>f(\Vect{x}) = (2,0)</latex>. Thus, if <latex>\Vect{a}</latex> is in <latex>f^{-1}(2,0)</latex>, then <latex>\Vect{a}</latex> must be a vector in <latex>\RNr[3]</latex>, not in <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the functions below find the specified preimage.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>For <latex>f\from \RNr\to \RNr</latex>, <latex>f(x)=\sin (\pi\cdot x)</latex>, find <latex>f^{-1}(0)</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>f^{-1} = \ZNr</latex>.</para>
+				</answer>
+				<solution.hint>
+					<para>Recall: <latex>f^{-1}(0)</latex> is the collection of all solutions of the equation</para>
+					<computation>
+						<left>f(x)</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+				</solution.hint>
+				<solution>
+					<para>Recall that <latex>f^{-1}(0)</latex> is the collection of all solutions of the equation</para>
+					<computation>
+						<left>f(x)</left>
+						<center>=</center>
+						<right>0</right>
+						<left>\sin (\pi x)</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>From properties of the sin-function we know that this last equation is true exactly when <latex>x</latex> is an integer. Therefore,</para>
+					<computation>
+						<left>f^{-1}(0)</left>
+						<center>=</center>
+						<right>\ZNr</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>For <latex>g\from \RNr[2] \to \RNr[2]</latex>, <latex>g(x,y) = (2x,2y)</latex>, find <latex>g^{-1}(4,-2)</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para><latex>g^{-1}(4,-2)</latex> contains exactly one point, namely <latex>(2,-1)</latex>.</para></answer>
+				<solution>
+					<para>Recall that <latex>g^{-1}(4,-2)</latex> is the collection of all solutions of the equation</para>
+					<computation>
+						<left>g(x,y)</left>
+						<center>=</center>
+						<right>(4,-2)</right>
+						<left>(2x,2y)</left>
+						<center>=</center>
+						<right>(4,-2)</right>
+					</computation>
+					<para>This last equation is a vector equation, and such a vector equation is true exactly when the two equations</para>
+					<math.display>
+						<latex>2x = 4\quad \text{and}\quad 2y = -2</latex>
+					</math.display>
+					<para>are simultaneously true. This happens exactly when</para>
+					<math.display>
+						<latex>x = 2\quad \text{and}\quad y = -1</latex>
+					</math.display>
+					<para>Therefore <latex>g^{-1}(4,-2)</latex> consists exactly of the point <latex>(2,-1)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+</exercise.pack>

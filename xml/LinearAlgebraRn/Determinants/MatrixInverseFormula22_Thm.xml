@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_MatrixInversionFormula22">
+	<caption>Inverse of a (2,2)-matrix</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_Inverse22Matrix"/>
+		<info><para>An example of inverting a <latex>(2,2)</latex>-matrix</para></info>
+	</associate>
+	
+	<statement>
+		<para>An invertible <latex>(2,2)</latex>-matrix
+			<index.glossary>
+				<term>inverse</term><term>of a <latex>(2,2)</latex>-matrix</term>
+				<info>
+					<caption>Inverse of a <latex>(2,2)</latex>-matrix</caption>
+					<para>An invertible <latex>(2,2)</latex>-matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right]\quad \text{has}\quad
+\Mtrx{A}^{-1} = \dfrac{1}{\det(\Mtrx{A})}
+\left[
+\begin{array}{rr}
+d & -b \\
+-c & a
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</info>
+			</index.glossary>
+			<index.glossary>
+				<term>matrix</term><term>inverse of a <latex>(2,2)</latex>-matrix</term>
+				<info>
+					<caption>Inverse of a <latex>(2,2)</latex>-matrix</caption>
+					<para>An invertible <latex>(2,2)</latex>-matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right]\quad \text{has}\quad
+\Mtrx{A}^{-1} = \dfrac{1}{\det(\Mtrx{A})}
+\left[
+\begin{array}{rr}
+d & -b \\
+-c & a
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</info>
+			</index.glossary>
+		</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+a & b \\
+c & d
+\end{array}
+\right]\quad \text{has}\quad
+\Mtrx{A}^{-1} = \dfrac{1}{\det(\Mtrx{A})}
+\left[
+\begin{array}{rr}
+d & -b \\
+-c & a
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+	</statement>
+</theorem>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_MatrixTypes">
+	<headers>
+		<full>Types of Matrices</full>
+		<toc>Types of Matrices</toc>
+		<short>Types of Matrices</short>
+	</headers>
+	
+	<intro>
+		<para>Here we learn how to distinguish various types of matrices by their shape, respectively by properties of their entries. Some of these concepts will only be needed later. Therefore, this section can be skipped on a first reading and used as a reference when needed.</para>
+	</intro>
+	
+	<subsection id="SubSec_MatrixShapes">
+		<headers>
+			<full>Distinguishing Matrices by their Shape</full>
+			<toc>Distinguishing Matrices by their Shape</toc>
+			<short>Matrix Shapes</short>
+		</headers>
+		<subsection.body>
+			<def type="Definition" id="def_SquareMatrix">
+				<caption>Square Matrix</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_TypesMatrices"/>
+					<info>
+						<para>Some examples of square shaped and non-square shaped matrices.</para>
+					</info>
+				</associate>
+				
+				<para>A matrix is square shaped if the number of its rows equals the number of its columns; i.e. if it is of size <latex>(n,n)</latex> for some <latex>n\geq 1</latex>.
+					<index.glossary>
+						<term>square</term><term>matrix</term>
+						<info>
+							<caption>Square Matrix</caption>
+							<para>A matrix is square shaped if the number of its rows equals the number of its columns; i.e. if it is of size <latex>(n,n)</latex> for some <latex>n\geq 1</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>matrix</term><term>square shaped</term>
+						<info>
+							<caption>Square Matrix</caption>
+							<para>A square shaped matrix is one whose number of its rows equals the number of its columns; i.e. if it is of size <latex>(n,n)</latex> for some <latex>n\geq 1</latex>.</para>
+						</info>
+					</index.glossary>
+				</para>
+			</def>
+			
+			<def type="Definition" id="def_RowMatrix">
+				<caption>Row Matrix</caption>
+				<associate Description="Explanation">
+					<info>
+						<caption>On row matrices</caption>
+						<para>A row matrix is one which has exactly one row, i.e. is of size <latex>(1,n)</latex>. Thus the matrices below are row matrices.</para>
+						<math.display>
+							<latex>[15\ \ 4\ \ -7]\qquad [2\ \ -1\ \ -2\ \ 3\ \ -1]</latex>
+						</math.display>
+						
+					</info>
+				</associate>
+				
+				<para>A matrix of size <latex>(1,n)</latex> is called a row matrix.
+					<index.glossary>
+						<term>row</term><term>matrix</term>
+						<info>
+							<caption>Row Matrix</caption>
+							<para>A matrix of size <latex>(1,n)</latex> is called a row matrix.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>matrix</term><term>of one row</term>
+						<info>
+							<caption>Row Matrix</caption>
+							<para>A matrix of size <latex>(1,n)</latex> is called a row matrix.</para>
+						</info>
+					</index.glossary>
+				</para>
+			</def>
+			
+			<def type="Definition" id="Def_ColumnMatrix">
+				<caption>Column Matrix</caption>
+				<associate Description="Explanation">
+					<info>
+						<caption>On column matrices</caption>
+						<para>A column matrix is one which has exactly one column, i.e. is of size <latex>(m,1)</latex>. Thus the matrices below are column matrices.</para>
+						
+						<math.display>
+							<latex>
+								\left[
+								\begin{array}{r}
+								15 \\ 4 \\ -7
+								\end{array}
+								\right]\qquad
+								\left[
+								\begin{array}{r}
+								3 \\ 1 \\ 1 \\ 0\\ 1
+								\end{array}
+								\right]
+							</latex>
+						</math.display>
+					</info>
+				</associate>
+				
+				<para>A matrix of size <latex>(m,1)</latex> is called a column matrix.
+					<index.glossary>
+						<term>column</term><term>matrix</term>
+						<info>
+							<caption>Column Matrix</caption>
+							<para>A matrix of size <latex>(m,1)</latex> is called a column matrix.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>matrix</term><term>of one column</term>
+						<info>
+							<caption>Column Matrix</caption>
+							<para>A matrix of size <latex>(m,1)</latex> is called a column matrix.</para>
+						</info>
+					</index.glossary>
+				</para>
+			</def>
+			
+			<comment type="Comment">
+				<caption>on Vectors vs. Row / Column Matrices</caption>
+				<associate Description="Comment">
+					<subpage.ref subpageID="VectorRowColumnMatrix"/>
+					<info>
+						<para>Details on the distinction between vectors / row matrices / column matrices.</para>
+					</info>
+				</associate>
+				
+				<para>It can be advantageous to write a vector <latex>(x_1,\dots ,x_n)</latex> in <latex>\RNr[n]</latex> alternately as a row matrix of size <latex>(1,n)</latex> or a column matrix of size <latex>(n,1)</latex>.</para>
+			</comment>
+		</subsection.body>
+	</subsection>
+	
+	
+	<subsection id="SubSec_MatrixTypes">
+		<headers>
+			<full>Types of Matrices</full>
+			<toc>Types of Matrices</toc>
+			<short>Matrix Types</short>
+		</headers>
+		<subsection.body>
+			<def type="Definition" id="def_0-Matrix">
+				<caption>0-Matrix</caption>
+				<associate Description="Example">
+					<info>
+						<caption>Some Examples of 0-Matrices</caption>
+						<para>The following are <latex>0</latex>-matrices</para>
+						
+						<math.display>
+							<latex>
+								<![CDATA[
+								\begin{bmatrix}
+								0 & 0 & 0 \\
+								0 & 0 & 0
+								\end{bmatrix}\qquad
+								\begin{bmatrix}
+								0 & 0 & 0 & 0 \\
+								0 & 0 & 0 & 0 \\
+								0 & 0 & 0 & 0 \\
+								0 & 0 & 0 & 0
+								\end{bmatrix} \qquad
+								\begin{bmatrix}
+								0 & 0 \\
+								0 & 0 \\
+								0 & 0 \\
+								0 & 0
+								\end{bmatrix}
+								]]>
+							</latex>
+						</math.display>
+					</info>
+				</associate>
+				
+				<para>For any size <latex>(m,n)</latex>, the <latex>0</latex>-matrix has only <latex>0</latex>'s as entries.
+					<index.glossary>
+						<term>0-matrix</term>
+						<info>
+							<caption>0-Matrix</caption>
+							<para>For any size <latex>(m,n)</latex>, the <latex>0</latex>-matrix has only <latex>0</latex>'s as entries.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>matrix</term><term>0-</term>
+						<info>
+							<caption>0-Matrix</caption>
+							<para>For any size <latex>(m,n)</latex>, the <latex>0</latex>-matrix has only <latex>0</latex>'s as entries.</para>
+						</info>
+					</index.glossary>
+				</para>
+			</def>
+			
+			<def type="Definition" id="Def_DiagonalMatrix">
+				<caption>Diagonal Matrix</caption>
+				<associate Description="Example">
+					<info>
+						<caption>Some Examples of Diagonal Matrices</caption>
+						
+						<math.display>
+							<latex>
+								<![CDATA[
+								\begin{bmatrix}
+								2 & 0 \\
+								0 & 1
+								\end{bmatrix}\qquad
+								\begin{bmatrix}
+								\pi & 0 & 0 \\
+								0 & x & 0 \\
+								0 & 0 & 1
+								\end{bmatrix}\qquad
+								\begin{bmatrix}
+								2 & 0 & 0 & 0 \\
+								0 & 3 & 0 & 0 \\
+								0 & 0 & 5 & 0 \\
+								0 & 0 & 0 & 7
+								\end{bmatrix}
+								]]>
+							</latex>
+						</math.display>
+					</info>
+				</associate>
+				
+				<para>A diagonal matrix is square shaped and only diagonal entries <latex magnify="yes">a_{ii}</latex> are allowed to be distinct from <latex>0</latex>.
+					<index.glossary>
+						<term>diagonal</term><term>matrix</term>
+						<info>
+							<caption>Diagonal Matrix</caption>
+							<para>A diagonal matrix is square shaped and only diagonal entries <latex magnify="yes">a_{ii}</latex> are allowed to be distinct from <latex>0</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>matrix</term><term>diagonal</term>
+						<info>
+							<caption>Diagonal Matrix</caption>
+							<para>A diagonal matrix is square shaped and only diagonal entries <latex magnify="yes">a_{ii}</latex> are allowed to be distinct from <latex>0</latex>.</para>
+						</info>
+					</index.glossary>
+				</para>
+			</def>
+			
+			<def type="Definition" id="def_IdentityMatrix">
+				<caption>Identity Matrix</caption>
+				<associate Description="Illustration">
+					<subpage.ref subpageID="IdentityMatrices"/>
+					<info>
+						<para>A display of the identity matrices <latex>\IdMtrx[1]</latex>, <latex>\IdMtrx[2]</latex>, <latex>\IdMtrx[3]</latex>, <latex>\IdMtrx[4]</latex>.</para>
+					</info>
+				</associate>
+				
+				<para>The <latex>(n,n)</latex>-identity matrix is the square matrix with <latex>n</latex> rows and <latex>n</latex> columns whose diagonal entries are all equal to <latex>1</latex>, and all other entries are equal to <latex>0</latex>. We write <latex>\IdMtrx[n]</latex> for this matrix.
+					<index.glossary>
+						<term>identity</term><term>matrix</term>
+						<info>
+							<caption>Identity Matrix</caption>
+							<para>The <latex>(n,n)</latex>-identity matrix <latex>\IdMtrx[n]</latex>is the square matrix with <latex>n</latex> rows and <latex>n</latex> columns whose diagonal entries are all equal to <latex>1</latex>, and all other entries are equal to <latex>0</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>matrix</term><term>identity</term>
+						<info>
+							<caption>Identity Matrix</caption>
+							<para>The <latex>(n,n)</latex>-identity matrix <latex>\IdMtrx[n]</latex>is the square matrix with <latex>n</latex> rows and <latex>n</latex> columns whose diagonal entries are all equal to <latex>1</latex>, and all other entries are equal to <latex>0</latex>.</para>
+						</info>
+					</index.glossary>
+				</para>
+			</def>
+			
+			<def type="Definition" id="def_UpperTriangularMatrix">
+				<caption>Upper Triangular Matrix</caption>
+				<associate Description="Illustration">
+					<subpage.ref subpageID="UpperTriangularMatrices"/>
+					<info>
+						<para>A display of some upper triangular matrices.</para>
+					</info>
+				</associate>
+				<para>An upper triangular matrix is square shaped and only entries on or above the diagonal are allowed to be different from <latex>0</latex>.
+					<index.glossary>
+						<term>upper triangular matrix</term>
+						<info>
+							<caption>Upper Triangular Matrix</caption>
+							<para>An upper triangular matrix is square shaped and only entries on or above the diagonal are allowed to be different from <latex>0</latex>.</para>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>matrix</term><term>of upper triangular shape</term>
+						<info>
+							<caption>Upper Triangular Matrix</caption>
+							<para>A matrix is of upper triangular shape if it is square shaped and only entries on or above the diagonal are different from <latex>0</latex>.</para>
+						</info>
+					</index.glossary>
+				</para>
+			</def>
+		</subsection.body>
+	</subsection>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_MatrixShapes"/>
+	</studymaterials>
+</section>

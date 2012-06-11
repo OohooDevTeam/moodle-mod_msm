@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Preview_LinearEquationsSystems">
+	<title>System of Linear Equations – Preview</title>
+	<sub.page.body>
+		<block>
+		<para>A system of <latex>m</latex> linear equation in <latex>n</latex> unknowns looks like this</para>
+		<math.display>
+			<latex magnify="yes">
+				<![CDATA[
+				\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{11}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{12}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{1n}$}{\color{red}x_n} & = & c_1 \\
+\colorbox{lightgreen}{$a_{21}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{22}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{2n}$}{\color{red}x_n} & = & c_2 \\
+\vdots & + & \vdots & + & \ddots & & + & \vdots & & \vdots \\
+\vdots & + & \vdots & + & & \ddots & + & \vdots & & \vdots \\
+\colorbox{lightgreen}{$a_{m1}$}{\color{red}x_1} & + & \colorbox{lightgreen}{$a_{m2}$}{\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{mn}$}{\color{red}x_n} & = & c_m \\
+\end{array}
+				]]>
+			</latex>
+		</math.display>
+		
+		<para>Each row in this system is just a single linear equation in <latex>n</latex> unknowns. Thus each of the symbols</para>
+		
+		<para align="center"><latex magnify="yes">a_{ij}</latex>, &nbsp; <latex>1\leq i\leq m</latex>, &nbsp; <latex>1\leq j\leq n</latex>, &nbsp; and &nbsp; <latex magnify="yes">c_1,\dots ,c_m</latex></para>
+		
+		<para>represents a number which is assumed to be known. Specifically, the number <latex magnify="yes">a_{ij}</latex> is called the coefficient in position 
+			<subordinate>
+				<hot><latex>(i,j)</latex></hot>
+				<info>
+					<caption>What exactly does <latex>(i,j)</latex> refer to?</caption>
+					<para>Note that the symbol <latex>a</latex> has two subscripts:</para>
+					<ol>
+						<li><para>The first subscript, here named <latex>i</latex> counts the row in which the coefficient <latex magnify="yes">a_{ij}</latex> sits.</para></li>
+						<li><para>The second subscript, here named <latex>j</latex> counts the column in which the coefficient <latex magnify="yes">a_{ij}</latex> sits.</para></li>
+					</ol>
+				</info>
+			</subordinate>
+			of the system. The symbols <latex magnify="yes">x_1,\dots ,x_n</latex> represent variables (unknowns), and we are looking for number values</para>
+		<math.display>
+			<latex>x_1 = ?,\quad x_2 = ?,\quad \dots \quad x_n = ?</latex>
+		</math.display>
+		
+		<para>such that all of the equations in the given system are simultaneously true.</para>
+		</block>
+		
+		
+		<block>
+			<para>An <b>example</b> of a system of two linear equations in <latex>3</latex> unknowns is:</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcl}
+					\colorbox{lightgreen}{2}{\color{red}x} & + & \colorbox{lightgreen}{3}{\color{red}y} & - & \colorbox{lightgreen}{1}{\color{red}z} & = & 6 \\
+\colorbox{lightgreen}{1}{\color{red}x} & + & \colorbox{lightgreen}{1}{\color{red}y} & + & \colorbox{lightgreen}{2}{\color{red}z} & = & 2
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The coefficients of this system are:</para>
+			
+			<math.display>
+				<latex magnify="yes">
+					<![CDATA[
+					\begin{array}{rclrclrcl}
+a_{11} & = & 2 & \quad a_{12} & = & 3 & \quad a_{13} & = & -1 \\
+a_{21} & = & 1 & \quad a_{22} & = & 1 & \quad a_{23} & = & 2
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The variables or unknowns of this system are <latex>x,y,z</latex>.  One solution of this system is given by the number assignments</para>
+			
+			<math.display>
+				<latex>x:= -6,\quad y := 5,\quad z:=1</latex>
+			</math.display>
+			
+			<para>to the unknowns. Indeed, these assignments render both equations simultaneously  true. Let's check it!</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcl}
+\colorbox{lightgreen}{2}{\cdot({\color{red}-6})} & + & \colorbox{lightgreen}{3}{\cdot{\color{red}5}} & - & {\color{red}1} & = & 2 \\
+{\color{red}-6} & + & {\color{red}5} & + & \colorbox{lightgreen}{2}{\cdot{\color{red}1}} & = & 1
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>We express this by saying that the triple  <latex>(- 6,5,1)</latex>  is a solution of the given system of linear equations. On the other hand, the triple  <latex>(5,2,3)</latex>  is not a solution of this system, because</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcl}
+\colorbox{lightgreen}{2}{\cdot({\color{red}5})} & + & \colorbox{lightgreen}{3}{\cdot{\color{red}2}} & - & {\color{red}3} & = & 13\ \neq 2 \\
+{\color{red}5} & + & {\color{red}2} & + & \colorbox{lightgreen}{2}{\cdot{\color{red}3}} & = & 13\ \neq 1
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para>We will discuss methods for finding all solutions of a system of linear equations. Applying this method to the system at hand we will find that its solutions form a line in <latex>\RNr[3]</latex>. In particular, this system has infinitely many simultaneous solutions.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

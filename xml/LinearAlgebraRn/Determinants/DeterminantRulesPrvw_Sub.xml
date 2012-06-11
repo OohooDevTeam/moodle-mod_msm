@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_DeterminantRules">
+	<title>Preview: Rules for Computing with Determinants</title>
+	<sub.page.body>
+		<block>
+			<para>The following rules for computing with determinants lead to an interpretation of determinants as `oriented volume' and, in addition, can often simplify the process of evaluating a determinant</para>
+		</block>
+		
+		<block>
+			<para><b>Multilinear</b> When applying the determinant operation to <latex>(n,n)</latex>-matrices, varying one column vector, while keeping the others fixed, yields a linear function <latex>\RNr[n] \to \RNr</latex>. For example:</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\det
+\left[
+\begin{array}{ccc}
+1 & {\color{red} 3} + {\color{green} a} & 7 \\
+1 & {\color{red} 6} + {\color{green} b} & 2 \\
+1 & {\color{red} 9} + {\color{green} c} & 1
+\end{array}
+\right]\ &=\ 
+\det
+\left[
+\begin{array}{ccc}
+1 & {\color{red} 3} & 7 \\
+1 & {\color{red} 6} & 2 \\
+1 & {\color{red} 9} & 1
+\end{array}
+\right]\ +\ 
+\det \left[
+\begin{array}{ccc}
+1 & {\color{green} a} & 7 \\
+1 & {\color{green} b} & 2 \\
+1 & {\color{green} c} & 1
+\end{array}
+\right] \\
+	&=\ {\color{red} 3}\cdot 
+\det
+\left[
+\begin{array}{ccc}
+1 & {\color{red} 1} & 7 \\
+1 & {\color{red} 2} & 2 \\
+1 & {\color{red} 3} & 1
+\end{array}
+\right]\ +\ 
+\det \left[
+\begin{array}{ccc}
+1 & {\color{green} a} & 7 \\
+1 & {\color{green} b} & 2 \\
+1 & {\color{green} c} & 1
+\end{array}
+\right]
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</block>
+		
+		
+		
+		<block>
+			<para><b>Alternating</b> &nbsp; Interchanging any two columns of a matrix reverses the sign of its determinant. For example:</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\det
+\left[
+\begin{array}{ccc}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0
+\end{array}
+\right] = 
+-\det
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{array}
+\right] = 
+\det
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right] = 1
+]]>
+				</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para><b>Additional rules</b></para>
+			
+			<ul>
+				<li><para><latex>\det(\Mtrx{A}^T) = \det(\Mtrx{A})</latex></para></li>
+				<li><para><latex>\det(\Mtrx{A}\cdot \Mtrx{B}) = \det(\Mtrx{A}) \det(\Mtrx{B})</latex></para></li>
+			</ul>
+		</block>
+	</sub.page.body>
+</sub.page>

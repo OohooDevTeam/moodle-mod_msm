@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_DeterminantRules"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Rules for Computing with Determinants</title>
+      <plain.title>Computing with Determinants</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>After learning how to compute the determinant of a matrix, let us now turn to rules for computing with determinants. The essence here is: these rules apply even if we do not know the number value of the determinant of a given matrix. In subsequent sections we will use these rules to discover what a determinant actually means via the concept of ‘oriented volume’. Moreover, we will develop a more efficient method of computing determinants of large matrices.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_DeterminantsAlgebraicProperties">
+         <titles>
+            <title>Algebraic Properties of the Determinant</title>
+            <plain.title>Algebraic Properties</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>To discuss the algebraic properties of the determinant of a square matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>, it is advantageous to express <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> in terms of its 
+				<subordinate>
+                           <hot>column vectors</hot>
+                           <info>
+                              <info.caption>Example of column vectors</info.caption>
+                              <para>
+                                 <para.body>For example,</para.body>
+                              </para>
+                              <math.display>
+                                 <latex>
+								
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+1 &amp; 4 &amp; 6 \\
+3 &amp; 1 &amp; 2 \\
+-4 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+							</latex>
+                              </math.display>
+                              <para>
+                                 <para.body>has the column vectors</para.body>
+                              </para>
+                              <math.display>
+                                 <latex>
+								
+A_1 = 
+\left[
+\begin{array}{r}
+1 \\ 3 \\ -4
+\end{array}
+\right],\qquad
+A_2 = 
+\left[
+\begin{array}{r}
+4 \\ 1 \\ 0
+\end{array}
+\right],\qquad
+A_3 = 
+\left[
+\begin{array}{r}
+6 \\ 2 \\ 1
+\end{array}
+\right]
+
+							</latex>
+                              </math.display>
+                           </info>
+                        </subordinate>: <math>
+                           <latex>\Mtrx{A}=[A_1\ \dots\ A_n]</latex>
+                        </math>.</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DeterminantMultiLinear_Thm.xml"/>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DeterminantAlgebraicProperties_Thm.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_DeterminantProperties">
+         <titles>
+            <title>Further properties of the determinant operation</title>
+            <plain.title>Further properties</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>The algebraic properties of the determinant operation have a number of 
+				<subordinate>
+                           <hot>consequences</hot>
+                           <info>
+                              <info.caption>Comment</info.caption>
+                              <para>
+                                 <para.body>It is possible to prove the statements below directly from the definition of the determinant by cofactor expansion that we gave earlier. However, it is more efficient to derive these statements from the algebraic properties listed above.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+				which can simplify the task of computing determinants a lot.</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DeterminantMoreProperties_Thm.xml"/>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DeterminantRowReduction_Thm.xml"/>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DeterminantInvertibility_Thm.xml"/>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DeterminantCommutesMultiplication_Thm.xml"/>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DeterminantInverseMatrix_Thm.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_DeterminantProperties"/>
+      <exercise.pack.ref exercisePackID="Exe_DeterminantPropertiesTF"/>
+   </studymaterials>
+</unit>

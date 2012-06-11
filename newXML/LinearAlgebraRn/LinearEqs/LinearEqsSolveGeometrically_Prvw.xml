@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Preview_LinearEqsGeometry"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Solving a System of Linear Equations Geometrically - Preview</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we express, in geometrical terms, the structure of the simultaneous solutions of a system of linear equations. We recall that the solutions of a single linear equation</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} &amp; = &amp; c \\
+\end{array}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>form a hyperplane which is perpendicular to the vector <math>
+                     <latex>\mathbf{n}:= (a_1,\dots ,a_n)</latex>
+                  </math>.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="1" inline="0">
+                     <img src="ims/LinearEqSingle.gif" height="255" width="359"/>
+                  </media>
+                  <info>
+                     <info.caption>Illustration</info.caption>
+                     <para>
+                        <para.body>Of the solution set of the linear equation</para.body>
+                     </para>
+                     <math.display>
+                        <latex>
+							
+					\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} &amp; = &amp; c \\
+\end{array}
+					
+						</latex>
+                     </math.display>
+                     <para>
+                        <para.body>Here we assume tacitly that the normal vector <math>
+                              <latex>\mathbf{n}:= (a_1,\dots ,a_n)</latex>
+                           </math> is not the 0-vector.</para.body>
+                     </para>
+                  </info>
+               </para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The simultaneous solutions of two linear equations</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} &amp; = &amp; c \\
+					\colorbox{lightgreen}{$b_{1}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$b_{2}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$b_{n}$}{\color{red}x_n} &amp; = &amp; d
+\end{array}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>form the intersection of two hyperplanes. When forming such an intersection of hyperplanes, one of several distinct situations can occur. Let's illustrate this for equations in 3 unknowns.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>First case</strong> the normal vectors <math>
+                     <latex>\mathbf{n}_1:= (a_1,a_2 ,a_3)</latex>
+                  </math> and <math>
+                     <latex>\mathbf{n}_2 := (b_1,b_2,b_3)</latex>
+                  </math> are not parallel. Therefore, the associated hyperplanes are not parallel and, as a consequence, the simultaneous solutions of the two equations form the intersection of the two planes. It always is a line.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/LinearEqsTwo.gif" height="281" width="333"/>
+                  </media>
+               </para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Second case</strong> the two hyperplanes are parallel and distinct. There is no point that belongs to both hyperplanes. Therefore there is no simultaneous solution of the given system of two linear equations.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/LinearEqsTwoParallel.gif" height="350" width="377"/>
+                  </media>
+               </para.body>
+            </para>
+            <para>
+               <para.body>
+                  <strong>Third case</strong> the two hyperplanes are identical. This situation is a sibling of the second case. Only this time, the solutions of one equation also solve the other. So the simultaneous solutions of the given equations form a plane.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In a system of <math>
+                     <latex>m</latex>
+                  </math> linear equations in <math>
+                     <latex>n</latex>
+                  </math> unknowns, the solutions of each one of them form a hyperplane in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>. Therefore the simultaneous solutions of the system form exactly the intersection of all of these hyperplanes.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

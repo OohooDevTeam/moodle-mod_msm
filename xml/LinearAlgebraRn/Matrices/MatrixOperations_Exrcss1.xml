@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MatrixOperations-TrueFalse">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Matrix Operations: Exercises</title>
+	
+	<exercise>
+		<problem><para>Let <latex>\Mtrx{A}</latex>, <latex>\Mtrx{B}</latex>, and <latex>\Mtrx{C}</latex> be matrices of size <latex>(3,3)</latex>. Indicate whether the following statements are always true. &ndash; Justify each answer.</para></problem>
+		<part>
+			<problem><para><latex>\Mtrx{A}(B+C) = \Mtrx{A}\Mtrx{B} + \Mtrx{A}\Mtrx{C}</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>This statement is always true.</para>
+				</answer>
+				<solution>
+					<para>This statement is always true. &ndash; Reason: matrix multiplication distributes over matrix addition.</para></solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Mtrx{A}\cdot \IdMtrx[4] = \Mtrx{A}</latex></para></problem>
+			<approach>
+				<answer><para>This statement is false.</para></answer>
+				<solution>
+					<para>This statement is false. &ndash; Reason: the product of the <latex>(3,3)</latex>-matrix <latex>\Mtrx{A}</latex> by the <latex>(4,4)</latex>-matrix <latex>\IdMtrx[4]</latex> is not defined.</para></solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Mtrx{A}(\Mtrx{B}\Mtrx{C}) = (\Mtrx{A} \Mtrx{B})\Mtrx{C}</latex></para></problem>
+			<approach>
+				<answer><para>Yes! - This statement is always true.</para></answer>
+				<solution.hint><para>Recall the rules for matrix multiplication.</para></solution.hint>
+				<solution>
+					<para>This statement is true. &ndash; Reason: this follows from the associative law of matrix multiplication.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Mtrx{A}^2 \Mtrx{A}^3 = \Mtrx{A}^6</latex></para></problem>
+			<approach>
+				<answer><para>This statement is not always true.</para></answer>
+				<solution>
+					<para>This statement is not always true. &ndash; Reason: <latex>\Mtrx{A}^2\Mtrx{A}^3 = (\Mtrx{A} \Mtrx{A}) (\Mtrx{A} \Mtrx{A} \Mtrx{A}) = \Mtrx{A}^5</latex>. For example when <latex>\Mtrx{A} = 2\cdot \IdMtrx[3]</latex>, we find</para>
+					<math.display>
+						<latex>\Mtrx{A}^6 = 64\cdot \IdMtrx[3] \neq 32\cdot \IdMtrx[3] = \Mtrx{A}^5</latex>
+					</math.display>
+					<para>Therefore this statement is not always true.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>(\Mtrx{A} - \Mtrx{B})(\Mtrx{A} + \Mtrx{B}) = \Mtrx{A}^2 - \Mtrx{B}^2</latex></para></problem>
+			<approach>
+				<answer><para>This statement is not always true!</para></answer>
+				<solution.hint><para>Expand the brackets using the properties of matrix multiplication.</para></solution.hint>
+				<solution>
+					<para>We expand the brackets using the distributivity law of matrix multiplication repeatedly:</para>
+					
+					<computation>
+						<left>(\Mtrx{A} - \Mtrx{B})(\Mtrx{A} + \Mtrx{B})</left>
+						<center>=</center>
+						<right>\Mtrx{A}(\Mtrx{A} + \Mtrx{B})\ -\ \Mtrx{B}(\Mtrx{A} + \Mtrx{B})</right>
+						<left></left>
+						<center>=</center>
+						<right>\Mtrx{A}^2 + \Mtrx{A}\Mtrx{B} - \Mtrx{B}\Mtrx{A} - \Mtrx{B}^2</right>
+					</computation>
+					
+					<para>If <latex>\Mtrx{A}\Mtrx{B}</latex> were always equal to <latex>\Mtrx{B}\Mtrx{A}</latex>, we could cancel the terms in the middle and arrive at the proposed &lsquo;identity&rsquo;. We know, however, that <latex>\Mtrx{A}\Mtrx{B}</latex> can be distinct from <latex>\Mtrx{B}\Mtrx{A}</latex>. So there is no reason why the proposed &lsquo;identity&rsquo; should hold. In fact, there are choices of <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> where it is false. For example, let</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+							A := 
+							\left[
+							\begin{array}{rrr}
+							1 & -1 & -1 \\
+							1 & 1 & -1 \\
+							0 & 0 & 1
+							\end{array}
+							\right]\qquad \text{and} \qquad
+							B :=
+							\left[
+							\begin{array}{rrr}
+							2 & 0 & 1 \\
+							0 & -1 & 0 \\
+							1 & 1 & 1
+							\end{array}
+							\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>Then</para>
+					
+					<computation>
+						<left>(\Mtrx{A} - \Mtrx{B})(\Mtrx{A}+\Mtrx{B})</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+							\left[
+							\begin{array}{rrr}
+							-1 & -1 & -2 \\
+							1 & 2 & -1 \\
+							-1 & -1 & -1 
+							\end{array}
+							\right]\cdot
+							\left[\begin{array}{rrr}
+							3 & -1 & 0 \\
+							1 & 0 & -1 \\
+							1 & 1 & 3
+							\end{array}
+							\right]
+							]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+							\left[
+							\begin{array}{rrr}
+							-4 & 0 & -2 \\
+							0 & 2 & 0 \\
+							-2 & -2 & -4
+							\end{array}
+							\right]
+							]]>
+						</right>
+					</computation>
+					
+					<para>On the other hand</para>
+					
+					<computation>
+						<left>\Mtrx{A}^2 - \Mtrx{B}^2</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+							\left[
+							\begin{array}{rrr}
+							0 & -2 & -1 \\
+							2 & 0 & -3 \\
+							0 & 0 & 1
+							\end{array}\right] -
+							\left[
+							\begin{array}{rrr}
+							5 & 1 & 4 \\
+							0 & 1 & 0 \\
+							4 & 1 & 5
+							\end{array}
+							\right]
+							]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+							\left[
+							\begin{array}{rrr}
+							-5 & -3 & -5 \\
+							2 & -1 & -3 \\
+							-4 & -1 & -4
+							\end{array}
+							\right]
+							]]>
+						</right>
+					</computation>
+					
+					<para>This example shows that the suggested matrix &lsquo;identity&rsquo; is not always true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Whenever matrices <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> satisfy the identity <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>, then &nbsp; <latex>(\Mtrx{A}+\Mtrx{B})^2 = \Mtrx{A}^2 + 2\Mtrx{A}\Mtrx{B} + \Mtrx{B}^2</latex>.</para></problem>
+			
+			<approach>
+				<answer><para>This statement is always true.</para></answer>
+				<solution.hint><para>Expand the brackets using the distributivity law of matrix multiplication.</para></solution.hint>
+				<solution>
+					<para>We compute, using the distributivity law of matrix multiplication</para>
+					
+					<computation>
+						<left>(\Mtrx{A} + \Mtrx{B})^2</left>
+						<center>=</center>
+						<right>\Mtrx{A}^2 + \Mtrx{A}\Mtrx{B} + \Mtrx{B}\Mtrx{A} + \Mtrx{B}^2</right>
+					</computation>
+					
+					<para>Now the proposed identity follows from the assumption that <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> are matrices for which <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>.</para>
+					
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

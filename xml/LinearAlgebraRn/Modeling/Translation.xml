@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_Translation">
+	<headers>
+	      <full>Vectors Modeling Translations</full>
+		<toc>Vectors Modeling Translations</toc>
+		<short>Translations</short>
+	</headers>
+	<intro>
+		<para>When we 
+			<subordinate>
+				<hot>shift an object in space</hot>
+				<companion>
+					<subpage.ref subpageID="Prvw_Translation"/>
+					<para>A Preview of Vectors Modeling Translations</para>
+				</companion>
+			</subordinate>, each of its points gets moved by the same distance in the same direction. If we join the original location of a point to its destination location, we obtain an arrow. All of these arrows have the same length and direction. So they represent the same vector. This vector then describes the shifting operation.</para>
+	</intro>
+	
+	<section.body>
+		<def type="Definition" id="Def_TranslationVector">
+			<caption>Translation Vector</caption>
+			<associate Description="Quiz">
+				<quiz.pack.ref quizPackID="Exe_TranslationQz"/>
+				<info>
+					<caption>Concept Comprehension</caption>
+					<para>A simple quiz which tests your understanding of the concept of translation of space.</para>
+				</info>
+			</associate>
+			
+			<para>A translation vector is a vector <latex>\mathbf{t}</latex> in <latex>\RNr[n]</latex> which is used to describe the shifting operation in <latex>\RNr[n]</latex> whose effect on a vector <latex>\mathbf{x}</latex> is to send it to <latex>\mathbf{t} + \mathbf{x}</latex>.
+				<index.glossary>
+					<term>translation</term><term>vector</term>
+					<info>
+						<caption>Translation Vector</caption>
+						<para>A translation vector is a vector <latex>\mathbf{t}</latex> in <latex>\RNr[n]</latex> which is used to describe the shifting operation in <latex>\RNr[n]</latex> whose effect on a vector <latex>\mathbf{x}</latex> is to send it to <latex>\mathbf{t} + \mathbf{x}</latex>.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>vector</term><term>translation</term>
+					<info>
+						<caption>Translation Vector</caption>
+						<para>A translation vector is a vector <latex>\mathbf{t}</latex> in <latex>\RNr[n]</latex> which is used to describe the shifting operation in <latex>\RNr[n]</latex> whose effect on a vector <latex>\mathbf{x}</latex> is to send it to <latex>\mathbf{t} + \mathbf{x}</latex>.</para>
+					</info>
+				</index.glossary>
+			</para>
+		</def>
+		
+		
+		
+		<para>What happens if we translate an object using one translation vector, and then translate it again using another translation vector? This is called concatenation of translations, and it corresponds to addition of translation vectors, as we will see in the following proposition.</para>
+		
+		<xi:include href="TranslationAlgebra_Prop.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_TranslationOfRn"/>
+	</studymaterials>
+</section>

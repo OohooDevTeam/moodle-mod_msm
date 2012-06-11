@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_GeometricSeriesConDivergence">
+	<caption>Con / Divergence of a Geometric Series</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_GeometricSeries"/>
+		<info><para>Examples of geometric series and their convergence.</para></info>
+	</associate>
+	
+	<statement>
+		<para>For a geometric series <latex>\sum_{n=0}^{\infty}r^n</latex> the following hold.</para>
+		<part counter="1" partid="rgetone">
+			<para>If <latex>r\geq 1</latex>, then <latex>\sum_{n=0}^{\infty}r^n=+\infty</latex>.</para>
+		</part>
+		<part counter="2" partid="Absrltone">
+			<para>If <latex>r\neq 0</latex> and <latex><![CDATA[ -1 < r < 1 ]]></latex>, then <latex>\sum_{n=0}^{\infty}r^n = 1/(1-r)</latex>.</para>
+		</part>
+		<part counter="3" partid="rletmone">
+			<para>If <latex>r\leq -1</latex>, then the geometric series <latex>\sum_{n=0}^{\infty}r^n</latex> diverges.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>rgetone</partref> &nbsp; <latex>r\geq 1</latex></caption>
+		<para>If <latex>r\geq 1</latex>, then <latex>r=1+t</latex> for some <latex>t\geq 0</latex>. Consequently, the <latex>n</latex>-th partial sum satisfies</para>
+		<math.display>
+			<latex>s_n = 1 + (1+t) + \cdots + (1+t)^n \geq n+1</latex>
+		</math.display>
+		<para>Therefore</para>
+		<math.display>
+			<latex>\sum_{n=0}^{\infty} r^n = \lim_{n\to \infty} s_n \geq \lim_{n\to \infty}(n+1) = +\infty</latex>
+		</math.display>
+		<para>as claimed.</para>
+		
+		<caption><partref>Absrltone</partref> &nbsp; <latex>r\neq 0</latex> and <latex><![CDATA[ -1 < r < 1 ]]></latex></caption>
+		<para>Then <latex>n</latex>-th partial sum of such a geometric series is</para>
+		<math.display>
+			<latex>s_n = \dfrac{(1+r+r^2+\cdots +r^n)(1-r)}{1-r} = \dfrac{1-r^{n+1}}{1-r}</latex>
+		</math.display>
+		<para>As <latex><![CDATA[ \Abs{r} < 1 ]]></latex>, <latex>\lim_{n\to\infty} r^{n+1} = 0</latex>. Therefore,</para>
+		<math.display>
+			<latex>\lim_{n\to\infty} s_n\ =\ \lim_{n\to\infty} \dfrac{1-r^{n+1}}{1-r}\ =\ \dfrac{1}{1-r}</latex>
+		</math.display>
+		
+		<caption><partref>rletmone</partref> &nbsp; <latex>r\leq -1</latex></caption>
+		<para>Consider first the case <latex>r=-1</latex>. Then resulting geometric series is</para>
+		<math.display>
+			<latex>1-1+1-1+1-1+\cdots +(-1)^n\pm \cdots</latex>
+		</math.display>
+		<para>Consequently, the sequence of partial sums is</para>
+		<math.display>
+			<latex>1,\, 0,\, 1,\, 0,\, 1\ ,\, 0,\, \dots</latex>
+		</math.display>
+		<para>This sequence does not converge. So it diverges, and so <latex>\sum_{n=0}^{\infty} (-1)^n</latex> diverges.</para>
+		<para>Now consider the situation <latex><![CDATA[ r< -1 ]]></latex>. We note that</para>
+		<math.display>
+			<latex><![CDATA[ \Abs{ s_{n+1} - s_n } = \Abs{r^{n+1}} > 1 ]]></latex>
+		</math.display>
+		<para>So <latex>(s_n)</latex> can not converge to a number. To show that <latex>(s_n)</latex> does not converge to <latex>+\infty</latex> or to <latex>-\infty</latex> either, we show that the sign of <latex>(s_n)</latex> alternates. We argue by induction. With some trial and error we arrive at the claim: for <latex>k\geq 0</latex>,</para>
+		<ol>
+			<li><para><latex><![CDATA[ 0 < s_{2k} < \Abs{r^{2k+1}} ]]></latex>, and</para></li>
+			<li><para><latex><![CDATA[ -r^{2k+2} < s_{2k+1} < 0 ]]></latex></para></li>
+		</ol>
+		<para>To start the induction, consider the case <latex>k=0</latex>. Indeed, we find</para>
+		<ol>
+			<li><para><latex><![CDATA[ 0 < 1 = s_{2\cdot 0} < \Abs{r}^{1} ]]></latex></para></li>
+			<li><para><latex><![CDATA[ -r^2 < r < 1+r = s_{2\cdot 0 + 1} < 0 ]]></latex></para></li>
+		</ol>
+		<para>Now assume the claim is true for <latex><![CDATA[ k\geq 0 ]]></latex>. We find</para>
+		<ol>
+			<li><para><latex><![CDATA[ 0 < s_{2k+1} + r^{2(k+1)} = s_{2(k+1)} < r^{2(k+1)} < \Abs{ r^{2(k+1)+1} } ]]></latex> and, therefore,</para></li>
+			<li><para><latex><![CDATA[ -r^{2(k+1)+1} < s_{2(k+1)} + r^{2(k+1)+1} = s_{2(k+1)+1} < 0 ]]></latex></para></li>
+		</ol>
+		<para>So <latex>(s_n)</latex> alternates, hence does not converge to <latex>+\infty</latex> or to <latex>-\infty</latex>. In summary, <latex>\sum_{n=0}^{\infty} r^n</latex> diverges if <latex><![CDATA[ r< -1 ]]></latex>.</para>
+		<para>This completes the proof of the con / divergence properties of geometric series.</para>
+	</proof>
+</theorem>

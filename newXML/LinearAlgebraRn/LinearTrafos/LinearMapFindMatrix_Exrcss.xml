@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_LinearMapFindMatrix"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	
+	  <title>Exercises: Find the Matrix Representing a Given Linear Map</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the linear maps specified below find the matrix representing it.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L\from \RNr\to \RNr[2]</latex>
+                     </math>  transforms the unit vector in <math>
+                        <latex>\RNr</latex>
+                     </math> into the vector <math>
+                        <latex>(–5,7)</latex>
+                     </math> in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>A = \left[\begin{array}{r} -5 \\ 7 \end{array}\right]</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>
+                     <subordinate>
+                        <hot>Look up</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_LinearMapGivesMatrix"/>
+                        </crossref>
+                     </subordinate>
+						how to find the matrix representing a given linear map</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that <math>
+                           <latex>L\from \RNr[1]\to \RNr[2]</latex>
+                        </math>. Therefore the matrix representing <math>
+                           <latex>L</latex>
+                        </math> is of type <math>
+                           <latex>(1,2)</latex>
+                        </math>. Its one and only column vector is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>L(\StdBss{1}) = L(1) = (-5,7)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>So <math>
+                           <latex>L</latex>
+                        </math> is represented by the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>A = \left[\begin{array}{r} -5 \\ 7 \end{array}\right]</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L\from \RNr[2]\to \RNr[2]</latex>
+                     </math> transforms the unit vectors <math>
+                        <latex>\StdBss{1}</latex>
+                     </math> and <math>
+                        <latex>\StdBss{2}</latex>
+                     </math> into the vectors <math>
+                        <latex>(3,0)</latex>
+                     </math> and <math>
+                        <latex>(0,3)</latex>
+                     </math>, respectively.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+A = 
+\left[
+\begin{array}{rr}
+3 &amp; 0 \\
+0 &amp; 3
+\end{array}
+\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>L\from \RNr[3]\to \RNr[2]</latex>
+                     </math> transforms the unit vectors <math>
+                        <latex>\StdBss{1}</latex>
+                     </math>, <math>
+                        <latex>\StdBss{2}</latex>
+                     </math>, and <math>
+                        <latex>\StdBss{3}</latex>
+                     </math> of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> into the vectors <math>
+                        <latex>(3,1)</latex>
+                     </math>, <math>
+                        <latex>(4,2)</latex>
+                     </math>, and <math>
+                        <latex>(-2,-3)</latex>
+                     </math>, respectively</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+A = 
+\left[
+\begin{array}{rrr}
+3 &amp; 4 &amp; -2 \\
+1 &amp; 2 &amp; -3
+\end{array}
+\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>L\from \RNr[1]\to \RNr[4]</latex>
+                     </math> transforms <math>
+                        <latex>-2</latex>
+                     </math> into the point <math>
+                        <latex>(2,-1,1,4)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>A = \left[\begin{array}{r} -1 \\ \tfrac{1}{2} \\ -\tfrac{1}{2} \\ -2 \end{array}\right]</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that <math>
+                           <latex>L\from \RNr[1]\to \RNr[4]</latex>
+                        </math>. Therefore the matrix representing <math>
+                           <latex>L</latex>
+                        </math> is of type <math>
+                           <latex>(1,4)</latex>
+                        </math>. Its one and only column vector is <math>
+                           <latex>L(\StdBss{1})</latex>
+                        </math>. To find it, we compute</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,-1,1,4)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(-2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(-2\cdot \StdBss{1})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-2\cdot L(\StdBss{1})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\frac{1}{-2}\cdot (2,-1,1,4)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(\StdBss{1})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>So <math>
+                           <latex>L</latex>
+                        </math> is represented by the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>A = \left[\begin{array}{r} -1 \\ \tfrac{1}{2} \\ -\tfrac{1}{2} \\ -2 \end{array}\right]</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

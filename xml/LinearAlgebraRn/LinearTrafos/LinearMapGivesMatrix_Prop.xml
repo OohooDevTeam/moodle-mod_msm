@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearMapGivesMatrix">
+	<caption>Given Linear map, Find Matrix</caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Expla_LinearMapFindMatrix"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>An explanation of the content of the proposition and how to use it.</para>
+		</info>
+	</associate>
+	
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_LinearMapGivesMatrix"/>
+		<info><para>The matrix representing a projection onto a coordinate axis, and the matrix representing an inclusion of <latex>\RNr</latex> as a coordinate axis.</para></info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_LinearMapGivesMatrix1"/>
+		<info><para>An example of finding the matrix representing a linear map <latex>L\from \RNr[2]\to \RNr[2]</latex></para></info>
+	</associate>
+	
+	
+	<statement>
+		<para>Given an arbitrary linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex>, form the matrix</para>
+		
+		<math.display>
+			<latex>
+				<![CDATA[
+A\ :=\
+\left[\begin{array}{cccc}
+\uparrow & \uparrow & \cdots & \uparrow \\
+L(\StdBss{1}) & L(\StdBss{2}) & \cdots & L(\StdBss{n}) \\
+\downarrow & \downarrow & \cdots & \downarrow
+\end{array}\right]
+					]]>
+			</latex>
+		</math.display>
+		
+		<para>Then <latex>L(\Vect{x}) = \Mtrx{A}\Vect{x}</latex>, for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>. Moreover <latex>\Mtrx{A}</latex>, so defined, is the only matrix with this property. </para>
+	</statement>
+	
+	<proof>
+		<para><b>Existence of</b> <latex>\Mtrx{A}</latex> &nbsp; We begin by expressing the vectors  <latex>L(\StdBss{j})</latex> of <latex>\RNr[m]</latex> in coordinates</para>
+		
+		<math.display>
+			<latex>L(\StdBss{j}) = (a_{1j},\dots ,a_{mj}) = a_{1j}\StdBss{1} + \dots + a_{mj}\StdBss{m}</latex>
+		</math.display>
+		
+		<para>Now if</para>
+		
+		<math.display>
+			<latex>\Vect{x} = (x_1,\dots ,x_n) = x_1\StdBss{1} + \dots + x_n\StdBss{n}</latex>
+		</math.display>
+		
+		<para>then the following computation shows that <latex>L(\Vect{x})</latex> can be computed from the vectors <latex>L(\StdBss{1}),\dots ,L(\StdBss{n})</latex> alone</para>
+		
+		<computation>
+			<left>L(\Vect{x})</left>
+			<center>=</center>
+			<right>L(x_1\StdBss{1} + \cdots + x_n\StdBss{n})</right>
+			<left></left>
+			<center>=	<info>
+				<para>Here we use the linearity property of <latex>L</latex> twice</para>
+				<computation>
+					<left>L(x_1\StdBss{1} + \cdots + x_n\StdBss{n})</left>
+					<center>=</center>
+					<right>L(x_1\StdBss{1}) + \cdots + L(x_n\StdBss{n})</right>
+					<left></left>
+					<center>=</center>
+					<right>x_1L(\StdBss{1}) + \cdots + x_nL(\StdBss{n})</right>
+				</computation>
+			</info></center>
+			<right>x_1 L(\StdBss{1}) + \cdots + x_n L(\StdBss{n})</right>
+			<left></left>
+			<center>=	<info><para>Substitute <latex>a_{1j}\StdBss{1} + \cdots + a_{mj}\StdBss{m}</latex> for <latex>L(\StdBss{j})</latex>.</para></info></center>
+			<right>x_1(a_{11}\StdBss{1} + \cdots + a_{m1}\StdBss{m}) + \cdots + x_n(a_{1n}\StdBss{1} + \cdots + a_{mn}\StdBss{m})</right>
+			<left></left>
+			<center>=</center>
+			<right>
+				<![CDATA[
+\begin{array}{cccccc}
+(a_{11}x_1 & + & \cdots & + & a_{1n}x_n)\StdBss{1} + \\
+\vdots & & & & \vdots \\
+(a_{m1}x_1 & + & \cdots & + & a_{mn}x_n)\StdBss{m}
+\end{array}
+				]]>
+			</right>
+			<left></left>
+			<center>=</center>
+			<right>
+				<![CDATA[
+\left[
+\begin{array}{ccc}
+a_{11} & \dots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} & \dots & a_{mn}
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right]
+				]]>
+			</right>
+		</computation>
+		
+		<para>This means exactly that <latex>L</latex> can be computed by the matrix product stated in the theorem.</para>
+		
+		<para><b>Uniqueness of</b> <latex>\Mtrx{A}</latex> &nbsp; It remains to show the matrix <latex>\Mtrx{A}</latex> we found above is the only matrix with the property <latex>L(\Vect{x}) = \Mtrx{A}\Vect{x}</latex>. So suppose <latex>\Mtrx{B}</latex> is another matrix satisfying</para>
+		
+		<math.display>
+			<latex>\Mtrx{A}\Vect{x} = L(\Vect{x}) = \Mtrx{B}\Vect{x},\quad \text{for all $\Vect{x}\in \RNr[n]$}</latex>
+		</math.display>
+		
+		<para>Choosing <latex>\Vect{x} = \StdBss{j}</latex>, we find</para>
+		
+		<para align="center"><latex>j</latex>-th column of <latex>\Mtrx{A} = A\StdBss{j} = L(\StdBss{j}) = B\StdBss{j} =</latex> <latex>j</latex>-th column of <latex>\Mtrx{B}</latex>.</para>
+		
+		<para> This holds for each <latex>j</latex> with <latex>1\leq j\leq n</latex>, and so <latex>\Mtrx{A} = \Mtrx{B}</latex>, as was to be shown.</para>
+	</proof>
+</theorem>

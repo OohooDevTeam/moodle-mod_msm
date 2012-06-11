@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_OrthogonalMaps1"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Self Test: Distance Preserving Linear Maps</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below indicate whether it is true or false</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>L\from \RNr[n]\to \RNr[n]</latex>
+                     </math> is invertible, then <math>
+                        <latex>\Abs{ L(\Vect{x}) } = \Abs{ \Vect{x} }</latex>
+                     </math> for all <math>
+                        <latex>\Vect{x}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Can you imagine a linear map whose transformation can be reversed, but which fails to preserve all distances?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Consider a dilation of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> by the factor of <math>
+                        <latex>2</latex>
+                     </math>.</para.body>
+               </para>
+					          <ol>
+						            <li>
+                     <para>
+                        <para.body>Is such a dilation invertible?</para.body>
+                     </para>
+                  </li>
+						            <li>
+                     <para>
+                        <para.body>Is such a dilation length preserving?</para.body>
+                     </para>
+                  </li>
+					          </ol>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We claim that this statement is false. For example, the dilation of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> by the factor <math>
+                           <latex>2</latex>
+                        </math> is invertible. It's inverse is the contraction with factor <math>
+                           <latex>1/2</latex>
+                        </math>. By its nature, a dilation with factor two magnifies all distances to twice their original length. But this means that such a dilation is not length preserving.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Therefore the statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>T\from \RNr[n]\to \RNr[n]</latex>
+                     </math> is distance preserving, then <math>
+                        <latex>\Abs{ T(\Vect{x}) } = \Abs{ \Vect{x} }</latex>
+                     </math> for all <math>
+                        <latex>\Vect{x}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Review the definition of a distance preserving linear map.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This statement is verbatim the definition of a distance preserving linear map. So this statement is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>T\from \RNr[n]\to \RNr[n]</latex>
+                     </math> is distance preserving, then <math>
+                        <latex>\Abs{ T(\Vect{y}) - T(\Vect{x}) } = \Abs{ \Vect{y} - \Vect{x} }</latex>
+                     </math> for all <math>
+                        <latex>\Vect{x},\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall that <math>
+                        <latex>\Abs{ \Vect{y} - \Vect{x} }</latex>
+                     </math> is the distance from <math>
+                        <latex>\Vect{x}</latex>
+                     </math> to <math>
+                        <latex>\Vect{y}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We give a conceptual and then a computational answer to this problem.</para.body>
+                  </para>
+					             <para>
+                     <para.body>For the conceptual approach, recall that</para.body>
+                  </para>
+					             <ol>
+						               <li>
+							                 <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Abs{ \Vect{y} - \Vect{x} }</latex>
+                              </math> is the distance from <math>
+                                 <latex>\Vect{x}</latex>
+                              </math> to <math>
+                                 <latex>\Vect{y}</latex>
+                              </math>, and</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Abs{ T(\Vect{y})- T(\Vect{x}) }</latex>
+                              </math> is the distance from <math>
+                                 <latex>T(\Vect{x})</latex>
+                              </math> to <math>
+                                 <latex>T(\Vect{y})</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+					             </ol>
+					             <para>
+                     <para.body>If <math>
+                           <latex>T</latex>
+                        </math> is distance preserving, this means exactly that these two distances are equal. So the statement in question is true.</para.body>
+                  </para>
+					
+					             <para>
+                     <para.body>For the computational approach we argue as follows</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ T(\Vect{y}) - T(\Vect{x}) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>because <math>
+                                          <latex>T</latex>
+                                       </math> is linear</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>because <math>
+                                          <latex>T</latex>
+                                       </math> is linear</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ T( \Vect{y}-\Vect{x}) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Because <math>
+                                          <latex>T</latex>
+                                       </math> is distance preserving.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Because <math>
+                                          <latex>T</latex>
+                                       </math> is distance preserving.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ \Vect{y} - \Vect{x} }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For every distance preserving <math>
+                        <latex>U\from \RNr[3]\to \RNr[3]</latex>
+                     </math>, it is true that <math>
+                        <latex>\Abs{ U(1,1,1) } = \sqrt{3}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Compare the length of <math>
+                        <latex>\Vect{x}=(1,1,1)</latex>
+                     </math> to the length of <math>
+                        <latex>U(\Vect{x}) = U(1,1,1)</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The vector <math>
+                           <latex>\Vect{x}:=(1,1,1)</latex>
+                        </math> has length <math>
+                           <latex>\Abs{ \Vect{x} } = \sqrt{3}</latex>
+                        </math>. A distance preserving linear map preserves this length. Therefore the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>U\from \RNr[3]\to \RNr[3]</latex>
+                     </math> is distance preserving, it is true that <math>
+                        <latex>\Abs{ U(1,1,1) } = 3</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the previous problem and its solution.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For every linear <math>
+                        <latex>L\from \RNr[3]\to \RNr[3]</latex>
+                     </math> it is true that <math>
+                        <latex>\Abs{ L(2,1,-2) }=3</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Consider the zero map <math>
+                        <latex>L\from \RNr[3] \to \RNr[3]</latex>
+                     </math>, <math>
+                        <latex>L(\Vect{x}) = \Vect{0}</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For every invertible linear <math>
+                        <latex>K\from \RNr[3]\to \RNr[3]</latex>
+                     </math> it is true that <math>
+                        <latex>\Abs{ K(2,1,-2) }=3</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Consider the dilation <math>
+                        <latex>K\from \RNr[3] \to \RNr[3]</latex>
+                     </math>, <math>
+                        <latex>K(\Vect{x}) = 2\cdot \Vect{x}</latex>
+                     </math>. – What is <math>
+                        <latex>\Abs{ K(2,1,-2) }</latex>
+                     </math>?</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For every distance preserving <math>
+                        <latex>R\from \RNr[3]\to \RNr[3]</latex>
+                     </math> it is true that <math>
+                        <latex>\Abs{ R(2,1,-2) }=3</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>What is the length of <math>
+                        <latex>(2,1,-2)</latex>
+                     </math>?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Continuing from the previous hint, we find <math>
+                        <latex>\Abs{ (2,1,-2) } = 3</latex>
+                     </math>. If <math>
+                        <latex>R</latex>
+                     </math> is distance preserving, what is <math>
+                        <latex>\Abs{ R(2,1,-2) }</latex>
+                     </math>?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We find <math>
+                           <latex>\Abs{ (2,1,-2) } = 3</latex>
+                        </math>. If <math>
+                           <latex>R</latex>
+                        </math> is distance preserving, then</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Abs{ R(2,1,-2) } = \Abs{ (2,1,-2) } = 3</latex>
+					             </math.display>
+					             <para>
+                     <para.body>So, the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>S\from \RNr[3]\to \RNr[3]</latex>
+                     </math> is a shear map with respect to the unit vector <math>
+                        <latex>\Vect{n}</latex>
+                     </math>, then <math>
+                        <latex>S(\Vect{x})=\Vect{x}</latex>
+                     </math> for every <math>
+                        <latex>\Vect{x}\bot \Vect{n}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the construction of a shear map.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The shear map <math>
+                           <latex>S</latex>
+                        </math> transforms an arbitrary vector <math>
+                           <latex>\Vect{x}</latex>
+                        </math> of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> into</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>S(\Vect{x})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x} + (\DotPr{ \Vect{x} }{ \Vect{n} })\cdot \Vect{n}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>If <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is perpendicular to <math>
+                           <latex>\Vect{n}</latex>
+                        </math>, and <math>
+                           <latex>\DotPr{ \Vect{x} }{ \Vect{n} } = 0</latex>
+                        </math>. So <math>
+                           <latex>S(\Vect{x}) = \Vect{x}</latex>
+                        </math> in this case. – Therefore the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>S\from \RNr[3]\to \RNr[3]</latex>
+                     </math> is a shear map with respect to the unit vector <math>
+                        <latex>\Vect{n}</latex>
+                     </math>, then <math>
+                        <latex>\Abs{ S(\Vect{x}) } = \Abs{ \Vect{x} }</latex>
+                     </math> for every <math>
+                        <latex>\Vect{x}\bot \Vect{n}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the previous problem.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below indicate whether it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The projection of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> onto the hyperspace perpendicular to <math>
+                        <latex>(1,2,-1)</latex>
+                     </math> is invertible.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>This is like saying: ‘If you know that shadow of an object, you can tell all about the shape of the object’. – Is this true?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This projection sends every vector of the form <math>
+                           <latex>t\cdot (1,2,-1)</latex>
+                        </math> to the <math>
+                           <latex>0</latex>
+                        </math>-vector. So it can not be invertible. – The statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For <math>
+                        <latex>1\leq i\leq n</latex>
+                     </math> and <math>
+                        <latex>n\geq 2</latex>
+                     </math>, the coordinate projection <math>
+                        <latex>\Prjctn{i}\from \RNr[n]\to \RNr</latex>
+                     </math> is invertible.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Just consider the projection <math>
+                        <latex>\Prjctn{1}\from \RNr[2] \to \RNr</latex>
+                     </math>, <math>
+                        <latex>\Prjctn{1}(x,y)=x</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Continuing from the previous hint, we have</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{1}(1,0)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>1</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{1}(1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+					          <para>
+                  <para.body>So if you know that the projection of some point in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> is equal to <math>
+                        <latex>1</latex>
+                     </math>, can you tell what the point was?</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The shear map of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> with respect to the vector <math>
+                        <latex>\Vect{n}=\frac{1}{\sqrt{3}}(1,1,1)</latex>
+                     </math> with shear vector <math>
+                        <latex>\Vect{s}=(1,1,-2)</latex>
+                     </math> is invertible.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Consider the shear map of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> with respect to the vector <math>
+                        <latex>\Vect{n} = \frac{1}{\sqrt{3}}(1,1,1)</latex>
+                     </math> and shear vector <math>
+                        <latex>\Vect{t} = (-1,-1,2)</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The shear map of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> with respect to the vector <math>
+                        <latex>\Vect{n}=\frac{1}{\sqrt{3}}(1,1,1)</latex>
+                     </math> with shear vector <math>
+                        <latex>\Vect{s}=(1,1,-2)</latex>
+                     </math> is distance preserving.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Apply <math>
+                        <latex>S</latex>
+                     </math> to the vector <math>
+                        <latex>\Vect{s}</latex>
+                     </math>, and observe how length is affected.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>L\from \RNr[n]\to \RNr[n]</latex>
+                     </math> is a distance preserving linear map, so is <math>
+                        <latex>-L</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We determine the effect of <math>
+                           <latex>-L</latex>
+                        </math> on the length of an arbitrary vector <math>
+                           <latex>\Vect{x}</latex>
+                        </math>:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ -L(\Vect{x}) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{(-1)}\cdot \Abs{ L(\Vect{x} }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <info.caption>
+                                    <caption>Why is this true?</caption>
+                                 </info.caption>
+							
+							                          <para>
+                                    <para.body>Given that <math>
+                                          <latex>L</latex>
+                                       </math> is orthogonal, we know that</para.body>
+                                 </para>
+							                          <math.array column="3">
+                                    <row rowspan="1">
+                                       <cell colspan="2" halign="center" valign="middle">
+                                          <math>
+                                             <latex>\Abs{ L(\Vect{x}) }</latex>
+                                          </math>
+                                       </cell>
+                                       <cell colspan="1" halign="center" valign="middle">
+                                          <text>=</text>
+                                       </cell>
+                                       <cell colspan="2" halign="center" valign="middle">
+                                          <math>
+                                             <latex>\Abs{ \Vect{x} }</latex>
+                                          </math>
+                                       </cell>
+                                    </row>
+                                 </math.array>
+							                          <para>
+                                    <para.body>for all <math>
+                                          <latex>\Vect{x}</latex>
+                                       </math> in <math>
+                                          <latex>\RNr[n]</latex>
+                                       </math>.</para.body>
+                                 </para>
+						                        </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <info.caption>
+                                    <caption>Why is this true?</caption>
+                                 </info.caption>
+							
+							                          <para>
+                                    <para.body>Given that <math>
+                                          <latex>L</latex>
+                                       </math> is orthogonal, we know that</para.body>
+                                 </para>
+							                          <math.array column="3">
+                                    <row rowspan="1">
+                                       <cell colspan="2" halign="center" valign="middle">
+                                          <math>
+                                             <latex>\Abs{ L(\Vect{x}) }</latex>
+                                          </math>
+                                       </cell>
+                                       <cell colspan="1" halign="center" valign="middle">
+                                          <text>=</text>
+                                       </cell>
+                                       <cell colspan="2" halign="center" valign="middle">
+                                          <math>
+                                             <latex>\Abs{ \Vect{x} }</latex>
+                                          </math>
+                                       </cell>
+                                    </row>
+                                 </math.array>
+							                          <para>
+                                    <para.body>for all <math>
+                                          <latex>\Vect{x}</latex>
+                                       </math> in <math>
+                                          <latex>\RNr[n]</latex>
+                                       </math>.</para.body>
+                                 </para>
+						                        </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1\cdot \Abs{ \Vect{x} }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This means that <math>
+                           <latex>-L</latex>
+                        </math> preserves the length of <math>
+                           <latex>\Vect{x}</latex>
+                        </math>. – The statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The sum of two distance preserving linear maps is again distance preserving.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall from the previous problem: if <math>
+                        <latex>L</latex>
+                     </math> is orthogonal, so is <math>
+                        <latex>-L</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Start with an orthogonal map <math>
+                        <latex>L</latex>
+                     </math> and add to it <math>
+                        <latex>-L</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The composite of two distance preserving linear maps is again distance preserving.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Every shear map of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> is invertible.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

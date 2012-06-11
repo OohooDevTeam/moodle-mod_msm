@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_Basis11"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Self Test: Bases for a Subspace</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below determine if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A basis for a subvector space <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> provides a set of vectors which span <math>
+                        <latex>V</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+            <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+         </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\EuScript{B}=\Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>
+                     </math> is a basis for a subvector space <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, then every vector in <math>
+                        <latex>V</latex>
+                     </math> is equal to one of <math>
+                        <latex>\Vect{a}</latex>
+                     </math>, <math>
+                        <latex>\Vect{b}</latex>
+                     </math>, or <math>
+                        <latex>\Vect{c}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This statement is false. For example, the vector</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a} + \Vect{b}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>is a linear combination of vectors in <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>, hence belongs to <math>
+                           <latex>V</latex>
+                        </math>. But <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is not in <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\EuScript{B}=\Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>
+                     </math> is a basis for a subvector space <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, then for every vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math> there are unique numbers <math>
+                        <latex>r,s,t</latex>
+                     </math> such that</para.body>
+               </para>
+				           <math.display>
+					             <latex>\Vect{x} = r\cdot \Vect{a} + s\cdot \Vect{b} + t\cdot \Vect{c}</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is in general false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This statement is false. – True is: For every vector <math>
+                           <latex>\Vect{y}</latex>
+                        </math> in <math>
+                           <latex>V</latex>
+                        </math> there are unique numbers <math>
+                           <latex>r,s,t</latex>
+                        </math> such that</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Vect{y} = r\cdot \Vect{a} + s\cdot \Vect{b} + t\cdot \Vect{c}</latex>
+					             </math.display>
+					             <para>
+                     <para.body>So unless <math>
+                           <latex>n=3</latex>
+                        </math>, which implies <math>
+                           <latex>V=\RNr[n]</latex>
+                        </math>, this statement is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\EuScript{B}=\Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>
+                     </math> is a basis for a subvector space <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, then <math>
+                        <latex>\dim(V) = 3</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+                  <para>
+                     <para.body>According to the definition of ‘dimension’, the dimension of <math>
+                           <latex>V</latex>
+                        </math> equals the number of vectors in any of its bases. <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> is a basis of <math>
+                           <latex>B</latex>
+                        </math>, and it contains three vectors. So:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\dim(V) = 3</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\EuScript{B}=\Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>
+                     </math> is a basis for a subvector space <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, then any set of three distinct nonzero vectors in <math>
+                        <latex>V</latex>
+                     </math> is also a basis of <math>
+                        <latex>V</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+                  <para>
+                     <para.body>This statement is false. For example, the set <math>
+                           <latex>\Set{ \Vect{a}, 2\cdot \Vect{a}, 3\cdot \Vect{a} }</latex>
+                        </math> consists of three distinct nonzero vectors in <math>
+                           <latex>V</latex>
+                        </math>. But they do not form a basis of <math>
+                           <latex>V</latex>
+                        </math> as there are vectors in <math>
+                           <latex>V</latex>
+                        </math> which do not belong to the span of <math>
+                           <latex>\Set{ \Vect{a}, 2\cdot \Vect{a}, 3\cdot \Vect{a} }</latex>
+                        </math>; examples of such vectors include <math>
+                           <latex>\Vect{b}</latex>
+                        </math> and <math>
+                           <latex>\Vect{c}</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>The problem here is: three vectors can be distinct, but fail to be linearly independent. However, linear independence is a critical requirement for the vectors in a basis.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\EuScript{B}=\Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>
+                     </math> is a basis for a subvector space <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, then any set of three distinct nonzero vectors in <math>
+                        <latex>V</latex>
+                     </math> is also a basis of <math>
+                        <latex>V</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+                  <para>
+                     <para.body>This statement is false. For example, the set <math>
+                           <latex>\Set{ \Vect{a}, 2\cdot \Vect{a}, 3\cdot \Vect{a} }</latex>
+                        </math> consists of three distinct nonzero vectors in <math>
+                           <latex>V</latex>
+                        </math>. But they do not form a basis of <math>
+                           <latex>V</latex>
+                        </math> as there are vectors in <math>
+                           <latex>V</latex>
+                        </math> which do not belong to the span of <math>
+                           <latex>\Set{ \Vect{a}, 2\cdot \Vect{a}, 3\cdot \Vect{a} }</latex>
+                        </math>; examples of such vectors include <math>
+                           <latex>\Vect{b}</latex>
+                        </math> and <math>
+                           <latex>\Vect{c}</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>The problem here is: three vectors can be distinct, but fail to be linearly independent. However, linear independence is a critical requirement for the vectors in a basis.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\EuScript{B}=\Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>
+                     </math> is a basis for a subvector space <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, then <math>
+                        <latex>n\geq 3</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This statement is true. – Reason: The dimension formula asserts</para.body>
+                  </para>
+					             <math.display>
+						               <latex>n = \dim(V)\ +\ \dim(V^{\bot}) = 3\ +\ \dim(V^{\bot})</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore, <math>
+                           <latex>n\geq 3</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below determine if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Any two nonparallel vectors in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> form a basis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>How many vectors are in a basis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+            </solution.hint>
+				        <solution.hint>
+               <para>
+                  <para.body>Recall: If <math>
+                        <latex>V</latex>
+                     </math> has dimension <math>
+                        <latex>n</latex>
+                     </math>, then any collection of <math>
+                        <latex>n</latex>
+                     </math> linearly independent vectors in <math>
+                        <latex>V</latex>
+                     </math> forms a basis of <math>
+                        <latex>V</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Any four nonparallel vectors in <math>
+                        <latex>\RNr[4]</latex>
+                     </math> form a basis of <math>
+                        <latex>\RNr[4]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>As an example of four nonparallel vectors consider</para.body>
+               </para>
+					          <math.display>
+						            <latex>(1,0,0,0),\quad (0,1,0,0),\quad (1,1,0,0),\quad (-1,1,0,0)</latex>
+					          </math.display>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>The vectors in the previous hint ... is <math>
+                        <latex>(0,0,1,0)</latex>
+                     </math> in their span?</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Any four linearly independent vectors in <math>
+                        <latex>\RNr[4]</latex>
+                     </math> form a basis of <math>
+                        <latex>\RNr[4]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>How many vectors are in a basis of <math>
+                        <latex>\RNr[4]</latex>
+                     </math>?</para.body>
+               </para>
+            </solution.hint>
+				        <solution.hint>
+               <para>
+                  <para.body>Recall: If <math>
+                        <latex>V</latex>
+                     </math> has dimension <math>
+                        <latex>n</latex>
+                     </math>, then any collection of <math>
+                        <latex>n</latex>
+                     </math> linearly independent vectors in <math>
+                        <latex>V</latex>
+                     </math> forms a basis of <math>
+                        <latex>V</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If the vectors <math>
+                        <latex>\Vect{a},\Vect{b},\Vect{c}</latex>
+                     </math> form a basis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>, then these vectors are linearly independent.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the definition of ‘basis’.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>By definition, the vectors in any basis of a vector space form a linearly independent set.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro SYSTEM "../Symbols.dtd">
+<intro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd">
+	<para>Here are some snippets that can be used to compose an introduction to this chapter on the real number system.</para>
+	<para>In this chapter, we introduce a set of axioms which characterize the system of real numbers <latex>\RNr</latex>. In particular, we distinguish:
+		<index.symbol>
+			<symbol><latex>\RNr</latex></symbol>
+			<info>
+				<para>Description of <latex>\RNr</latex> in terms of its algebraic properties, its ordering properties, and its completeness property.</para>
+			</info>
+		</index.symbol>
+	</para>
+	<ol>
+		<li><para><subordinate>
+			<hot>Axioms</hot>
+			<companion>
+				<subpage.ref subpageID="Sub_RAxiomsSummary"/>
+				<para>A summary of these axioms is given here.</para>
+			</companion>
+		</subordinate> describing the <b>algebraic structure</b> of <latex>\RNr</latex>. &nbsp; The algebraic structure of <latex>\RNr</latex> is given by the operations of addition and multiplication and their properties.</para></li>
+		<li><para><subordinate>
+			<hot>Axioms</hot>
+			<companion>
+				<subpage.ref subpageID="Sub_RAxiomsSummary"/>
+				<para>A summary of these axioms is given here.</para>
+			</companion>
+		</subordinate> describing the <b>ordering structure</b> of <latex>\RNr</latex>. &nbsp; The ordering structure of <latex>\RNr</latex> provides a comparison of numbers by &lsquo;size&rsquo;. From it, we construct norm operation, also called absolute value operation. From it we obtain the geometric concept of distance between real numbers.</para></li>
+		<li><para>An <subordinate>
+			<hot>axiom</hot>
+			<companion>
+				<subpage.ref subpageID="Sub_RAxiomsSummary"/>
+				<para>A summary of these axioms is given here.</para>
+			</companion>
+		</subordinate> expressing the <b>completeness property</b> of <latex>\RNr</latex>. &nbsp; If we represent real numbers by points on a line, then the completeness axiom says that this line has no gaps.</para></li>
+	</ol>
+	<para>You are probably familiar with these properties at an intuitive level. So what is the point here? &ndash; To answer this question we need to recall that, when we develop the subject of mathematics we start from a list of assertions assumed to be true. Such assertions are called axioms. We then use those axioms as a foundation to prove the truth of further assertions.</para>
+	<para>The development of the mathematical theory of analysis proceeds exactly along such a path, and here we make this development explicit. So, while at the setup stage many assertions are familiar &lsquo;facts&rsquo;, the point here is that, now, any such fact is either an axiom or a true assertion proven from these axioms.</para>
+	<para>Our foundational concerns go even deeper: even naively, we can think of real numbers in various ways, such as &lsquo;points on a line&rsquo; or &lsquo;decimal numbers&rsquo;.  So we find that there are various &lsquo;models&rsquo; of the system of real numbers.
+		<index.glossary>
+			<term>model of the system of real numbers</term>
+		</index.glossary>
+		But if there are various distinct models of the system of real numbers, how then can we be justified in talking about &lsquo;the real number system&rsquo;?
+	</para>
+	<para>The axiom system we described above helps us answer this question. A model for this axiom system consists of a <latex>X</latex>, containing designated elements <latex>0_X</latex> and <latex>1_x</latex>, together with operations &lsquo;<latex>+_X</latex>&rsquo; and &lsquo;<latex>\cdot_X</latex>&rsquo;, and an ordering relation &lsquo;<latex>\leq_X</latex>&rsquo; satisfying the axioms listed above. Now if</para>
+	<math.display>
+		<latex>(X,0_X,1_X,+_X,\cdot_X,\leq_X)\quad \text{and}\quad (Y,0_Y,1_Y,+_Y,\cdot_Y,\leq_Y)</latex>
+	</math.display>
+	<para>are two models of the axiom system for the real numbers, it possible to show that there exists a unique bijective function <latex>f\from X\to Y</latex> with the following properties</para>
+	<ol>
+		<li><para><latex>f(0_X) = 0_Y</latex></para></li>
+		<li><para><latex>f(1_X) = 1_Y</latex></para></li>
+		<li><para><latex>f(a+_X b) = f(a) +_Y f(b)</latex></para></li>
+		<li><para><latex>f(a \cdot_X b) = f(a) \cdot_Y f(b)</latex></para></li>
+		<li><para><latex>a \leq_X b</latex> if and only if <latex>f(a) \leq_Y f(b)</latex></para></li>
+	</ol>
+	<para>Such a function <latex>f</latex> is called an isomorphism between the given models for the axiom system of real numbers. So, when we talk about &lsquo;the real number system&rsquo;, we really want express the existence of a unique isomorphism between any two models for the axiom system of real numbers.</para>
+	<para>An informal passage on relating the real number system to points on a line.</para>
+</intro>

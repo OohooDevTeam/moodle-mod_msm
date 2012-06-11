@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_AbsoluteConvergentImpliesInvariantRearrangements"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Rearrangements of absolutely convergent series</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Suppose <math>
+               <latex>\sum_{n=0}^{\infty}a_n</latex>
+            </math> converges absolutely. If <math>
+               <latex>\sigma\from \NNr\to \NNr</latex>
+            </math> is a bijection, then</para.body>
+      </para>
+      <math.display>
+         <latex>\sum_{n=0}^{\infty} a_n\ =\ \sum_{n=0}^{\infty} a_{\sigma_n}</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We know that <math>
+                     <latex>\sum_{n=0}^{\infty}a_n = L\in\RNr</latex>
+                  </math>, and we need to show that the sequence of partial sums</para.body>
+            </para>
+            <math.display>
+               <latex>A_n\ :=\ a_{\sigma_0}+a_{\sigma_1}+\ \cdots\ a_{\sigma_n}</latex>
+            </math.display>
+            <para>
+               <para.body>converges to <math>
+                     <latex>L</latex>
+                  </math> as well. To see this, suppose <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> is given. Choose <math>
+                     <latex>N\in\NNr</latex>
+                  </math> such that</para.body>
+            </para>
+            <math.display>
+               <latex>
+				\Abs{ \sum_{n=0}^{\infty}\Abs{ a_n } \ -\ \sum_{n=0}^{N} \Abs{ a_n } }\ =\ \sum_{n=N+1}\Abs{ a_n }\ &lt;\ \dfrac{\varepsilon}{2}
+				</latex>
+            </math.display>
+            <para>
+               <para.body>Then set <math>
+                     <latex>K:=\max\Set{ \sigma(0),\dots ,\sigma(N) } \geq N</latex>
+                  </math>. For arbitrary <math>
+                     <latex>k\geq 0</latex>
+                  </math>, we then find</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\begin{array}{rcl}
+\Abs{ {\color{red} L}\ -\ A_{K+k} } &amp; = &amp;
+	\Abs{ {\color{red} \left(\sum_{n=0}^{N} a_n\ +\ \sum_{n=N+1}^{\infty} a_n\right)}\ -\ {\color{blue} \sum_{n=0}^{K+k}a_{\sigma_n} } } \\
+	&amp; = &amp; \Abs{ {\color{red} \left(\sum_{n=0}^{N} a_n\ +\ \sum_{n=N+1}^{\infty} a_n\right)}\ -\ {\color{blue} \left( \sum_{n=0}^{N} a_n\ +\ \sum_{n=N+1}^{K+k} a_{t_n} \right) } } \\
+	&amp; = &amp; \Abs{ \sum_{n=N+1} a_n\ -\ \sum_{n=N+1}^{K+k} a_{t_n} } \\
+	&amp; \leq &amp; \underset{\leftarrow\hfill &lt;\ \varepsilon/2 \hfill \to}{ \sum_{n=N+1}^{\infty} \Abs{a_n} }\ +\ \underset{\leftarrow\hfill &lt;\ \varepsilon/2\ \hfill \to }{ \sum_{n=N+1}^{K+k} \Abs{a_{t_n}} } \\
+	&amp; &lt; &amp; \varepsilon
+\end{array}
+				
+			</latex>
+            </math.display>
+            <para>
+               <para.body>In the computation above, <math>
+                     <latex>t_n \geq N+1</latex>
+                  </math> for <math>
+                     <latex>n\geq N+1</latex>
+                  </math>. This was to be shown.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

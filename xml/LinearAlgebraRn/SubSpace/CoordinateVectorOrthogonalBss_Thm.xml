@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_CoordinateVectorOrthogonalBasis">
+	<caption>Coordinate vector w.r. to an ONB</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_CoordinateVectorONB"/>
+		<info><para>An example of how to find the coordinate vector with respect to an ONB.</para></info>
+	</associate>
+	<statement>
+		<para>Let <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_r)</latex> be an ordered orthonormal basis for a subvector space <latex>V</latex> of <latex>\RNr[n]</latex>. If <latex>\Vect{x}</latex> is an arbitrary vector in <latex>V</latex>, then</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=	<info>
+				<para>To interpret this formula advantageously, recall that <latex>(\DotPr{ \Vect{x} }{ \Vect{b}_j }) \cdot \Vect{b}_j</latex> is the projection of <latex>\Vect{x}</latex> along <latex>\Vect{b}_j</latex>.</para>
+			</info></center>
+			<right>(\DotPr{ \Vect{x} }{ \Vect{b}_1 })\cdot \Vect{b}_1 + \cdots + (\DotPr{ \Vect{x} }{ \Vect{e}_r })\cdot \Vect{b}_r</right>
+		</computation>
+		<para>and, therefore, <latex>\Vect{x}</latex> has the coordinate vector with respect to <latex>\EuScript{B}</latex></para>
+		<computation>
+			<left>\Vect{x}_{\EuScript{B}}</left>
+			<center>=</center>
+			<right>( \DotPr{ \Vect{x} }{ \Vect{b}_1 } , \dots , \DotPr{ \Vect{x} }{ \Vect{b}_r } )</right>
+		</computation>
+	</statement>
+	<proof>
+		<para>We know that <latex>\Vect{x}</latex> can be expressed in a unique way as a linear combination of <latex>\EuScript{B}</latex>, say</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>t_1 \Vect{b}_1 + \cdots + t_r \Vect{b}_r</right>
+		</computation>
+		<para>Taking the dot product of both sides of the equation with <latex>\Vect{b}_j</latex> yields.</para>
+		<computation>
+			<left>\DotPr{ \Vect{x} }{ \Vect{b}_j }</left>
+			<center>=</center>
+			<right>t_1(\DotPr{ \Vect{b}_1 }{ \Vect{b}_j }) + \cdots + t_j(\DotPr{ \Vect{b}_j }{ \Vect{b}_j }) + \cdots + t_r(\DotPr{ \Vect{b}_r }{ \Vect{b}_j })</right>
+			<left></left>
+			<center>=</center>
+			<right>t_j</right>
+		</computation>
+		<para>Therefore</para>
+		<computation>
+			<left>\Vect{x}_{\EuScript{B}}</left>
+			<center>=</center>
+			<right>(t_1,\dots ,t_r)</right>
+			<left></left>
+			<center>=</center>
+			<right>( \DotPr{ \Vect{x} }{ \Vect{b}_1 } , \dots , \DotPr{ \Vect{x} }{ \Vect{b}_1 })</right>
+		</computation>
+		<para>as claimed.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_DotProduct1"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+	  <title>The Dot Product Operation: Self Test</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below decide if it is true or false. – If it is true explain why; if it is false provide a counter example.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Abs{ (0,1) + (1,0) } = 2</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>One possible line of reasoning which leads to the given is statement is</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{ (0,1) + (1,0) }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>\overset{?}{=}</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{ (0,1) } + \Abs{ (1,0) }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>2</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+					          <para>
+                  <para.body>The question is: is this computation valid?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Note that <math>
+                        <latex>(0,1) + (1,0) = (1,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ (0,1) + (1,0) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ (1,1) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\sqrt{2}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore the statement under consideration is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ (3,7) }{ (1,-1) } = 3\cdot 7 + 1\cdot (-1) = 20</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the definition of the dot product operation.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below indicate if it is true or false. – If it is true explain why; if it is false provide a counter example.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If both of the vectors <math>
+                        <latex>\Vect{a}</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}</latex>
+                     </math> are perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>, then <math>
+                        <latex>(\Vect{a} + \Vect{b})</latex>
+                     </math> is perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>To test if <math>
+                           <latex>(\Vect{a} + \Vect{b})</latex>
+                        </math> is perpendicular to <math>
+                           <latex>\Vect{x}</latex>
+                        </math>, we compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (\Vect{a} + \Vect{b}) }{ \Vect{x} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ \Vect{a} }{ \Vect{x} }\ +\ \DotPr{ \Vect{b} }{ \Vect{x} }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0 + 0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore <math>
+                           <latex>(\Vect{a} + \Vect{b})</latex>
+                        </math> is perpendicular to <math>
+                           <latex>\Vect{x}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If both of the vectors <math>
+                        <latex>\Vect{a}</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}</latex>
+                     </math> are perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>, then <math>
+                        <latex>(\Vect{a} - \Vect{b})</latex>
+                     </math> is perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Evaluate the dot product <math>
+                        <latex>\DotPr{ \Vect{x} }{ (\Vect{a} - \Vect{b}) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We evaluate the dot product <math>
+                           <latex>\DotPr{ \Vect{x} }{ (\Vect{a} - \Vect{b}) }</latex>
+                        </math> to determine if it is <math>
+                           <latex>0</latex>
+                        </math>:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ \Vect{x} }{ (\Vect{a} - \Vect{b}) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>by the additivity property of the dot product in the second variable.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>by the additivity property of the dot product in the second variable.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ \Vect{x} }{ \Vect{a} }\ +\ \DotPr{ \Vect{x} }{ (-\Vect{b}) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>By the linearity property of the dot product in the second variable</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>By the linearity property of the dot product in the second variable</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ \Vect{x} }{ \Vect{a} }\ -\ \DotPr{ \Vect{x} }{ \Vect{b} }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Both dot products vanish because <math>
+                                          <latex>\Vect{x}</latex>
+                                       </math> is perpendicular to both <math>
+                                          <latex>\Vect{a}</latex>
+                                       </math> and <math>
+                                          <latex>\Vect{b}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Both dot products vanish because <math>
+                                          <latex>\Vect{x}</latex>
+                                       </math> is perpendicular to both <math>
+                                          <latex>\Vect{a}</latex>
+                                       </math> and <math>
+                                          <latex>\Vect{b}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>We conclude that <math>
+                           <latex>(\Vect{a}-\Vect{b})</latex>
+                        </math> is perpendicular to <math>
+                           <latex>\Vect{x}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If the vector <math>
+                        <latex>\Vect{b}</latex>
+                     </math> is perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>, then <math>
+                        <latex>s\cdot \Vect{b}</latex>
+                     </math> is perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>, for every <math>
+                        <latex>s</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Evaluate the dot product <math>
+                        <latex>\DotPr{ \Vect{x} }{ s\cdot \Vect{b} }</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution of the previous problem.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If both of the vectors <math>
+                        <latex>\Vect{a}</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}</latex>
+                     </math> are perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>, then <math>
+                        <latex>(t\cdot \Vect{a} + s\cdot \Vect{b})</latex>
+                     </math> is perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math> for all <math>
+                        <latex>t,x</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution of the two previous problems.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all vectors <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>\RNr[n]</latex>
+                     </math>, <math>
+                        <latex>\Abs{ \Vect{x} + \Vect{y} } = \Abs{ \Vect{x} } + \Abs{ \Vect{y} }</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the triangle inequality of the norm operation.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This statement is false because there are vectors <math>
+                           <latex>\Vect{x}</latex>
+                        </math> and <math>
+                           <latex>\Vect{y}</latex>
+                        </math> for which it is not true. For example, if <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is any nonzero vector, put <math>
+                           <latex>\Vect{y} := -\Vect{x}</latex>
+                        </math>. Then</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ \Vect{x} + \Vect{y} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ \Vect{0} } = 0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>While</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ \Vect{x} } + \Abs{ \Vect{y} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ \Vect{x} } + \Abs{ -\Vect{x} }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2\cdot \Vect{x} \neq 0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all vectors <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and all numbers <math>
+                        <latex>t</latex>
+                     </math>, <math>
+                        <latex>\Abs{ t\cdot \Vect{x} } = t\cdot \Abs{ \Vect{x} }</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that <math>
+                           <latex>\Abs{ t\cdot \Vect{x} } = \Abs{ t }\cdot \Abs{ \Vect{x} }</latex>
+                        </math>. Therefore the statement in question is false whenever <math>
+                           <latex>\Vect{x}\neq \Vect{0}</latex>
+                        </math> and <math>
+                           <latex> t&lt;0 </latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all vectors <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and all positive numbers <math>
+                        <latex>t</latex>
+                     </math>, <math>
+                        <latex>\Abs{ t\cdot \Vect{x} } = t\cdot \Abs{ \Vect{x} }</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that for all numbers <math>
+                           <latex>t</latex>
+                        </math>
+                     </para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{t \Vect{x} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{t} \cdot \Abs{x}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>We have <math>
+                           <latex>\Abs{t} = t</latex>
+                        </math>, as we assume here that <math>
+                           <latex>t</latex>
+                        </math> is positive. Therefore the statement under consideration is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If vector <math>
+                        <latex>\Vect{a}</latex>
+                     </math> is perpendicular to <math>
+                        <latex>\Vect{x}</latex>
+                     </math>, then <math>
+                        <latex>\Vect{a}</latex>
+                     </math> and <math>
+                        <latex>\Vect{x}</latex>
+                     </math> are parallel.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Consider the vectors <math>
+                        <latex>\Vect{a} := (1,0)</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}:=(0,1)</latex>
+                     </math> in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>. – Are these vectors perpendicular?</para.body>
+               </para>
+            </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>The dot product of the vectors <math>
+                        <latex>\Vect{a} := (1,0)</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}:=(0,1)</latex>
+                     </math> in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> is <math>
+                        <latex>0</latex>
+                     </math>. So these vectors are perpendicular. – Are these vectors parallel?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Consider the vectors <math>
+                           <latex>\Vect{a} := (1,0)</latex>
+                        </math> and <math>
+                           <latex>\Vect{b}:=(0,1)</latex>
+                        </math> in <math>
+                           <latex>\RNr[2]</latex>
+                        </math>. They satisfy</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\DotPr{ (0,1) }{ (1,0) } = 0 + 0 = 0</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>So <math>
+                                 <latex>\Vect{a}</latex>
+                              </math> is perpendicular to <math>
+                                 <latex>\Vect{b}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>So we ask if these vectors are also parallel. If they are, there must exist a number <math>
+                           <latex>t</latex>
+                        </math> such that</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>t\cdot (0,1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Comparing first coordinates requires a solution of the equation</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>t\cdot 0</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This equation has no solution, implying that the two vectors are not parallel. – Therefore the statement under consideration is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>State in your own words the bilinearity property of the dot product operation, then compare with the Proposition on the algebraic properties of the dot product.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Explain in your own words the meaning of the ‘triangle inequality’ of the norm operation no vectors.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+</exercise.pack>

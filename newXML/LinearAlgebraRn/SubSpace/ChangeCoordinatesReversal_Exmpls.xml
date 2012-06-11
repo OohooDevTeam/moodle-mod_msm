@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_ChangeCoordinatesReversal"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Reversal of Change Coordinates: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Converting from standard coordinates to general coordinates:  Consider these two ordered bases of <math>
+                  <latex>\RNr[3]</latex>
+               </math>:</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{ccclcclccl}
+\EuScript{S} &amp; \StdBss{1} &amp; = &amp; (1,0,0) &amp; \StdBss{2} &amp; = &amp; (0,1,0) &amp; \StdBss{3} &amp; = &amp; (0,0,1) \\
+\EuScript{B} &amp; \Vect{b}_1 &amp; = &amp; (2,-3,7) &amp; \Vect{b}_2 &amp; = &amp; (-1,9,2) &amp; \Vect{b}_3 &amp; = &amp; (4,2,-6)
+\end{array}
+
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>Find the matrix <math>
+                  <latex>\Mtrx{C}_{\EuScript{B}\EuScript{S}}</latex>
+               </math> which converts from <math>
+                  <latex>\EuScript{S}</latex>
+               </math>-coordinates to <math>
+                  <latex>\EuScript{B}</latex>
+               </math>-coordinates. Then find <math>
+                  <latex>\Vect{x}_{\EuScript{B}}</latex>
+               </math> if <math>
+                  <latex>\Vect{x}_{\EuScript{S}} = (4,-1,2)</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>From the information given, we know immediately that the column vectors of <math>
+                        <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>
+                     </math> consist of the coordinate vectors of <math>
+                        <latex>\Vect{b}_1</latex>
+                     </math>, <math>
+                        <latex>\Vect{b}_2</latex>
+                     </math>, and <math>
+                        <latex>\Vect{b}_3</latex>
+                     </math> with respect to <math>
+                        <latex>\EuScript{S}</latex>
+                     </math>. As <math>
+                        <latex>\EuScript{S}</latex>
+                     </math> is the standard basis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>, we have</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(\Vect{b}_1)_{\EuScript{S}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{b}_1 = (2,-3,7)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(\Vect{b}_2)_{\EuScript{S}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{b}_2 = (-1,9,2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(\Vect{b}_3)_{\EuScript{S}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{b}_3 = (4,2,-6)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Using these coordinate vectors as the column vectors of the coordinate conversion matrix <math>
+                        <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>
+                     </math>, we obtain</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{C}_{\EuScript{SB}}\ =\ 
+\left[\begin{array}{rrr}
+2 &amp; -1 &amp; 4 \\
+-3 &amp; 9 &amp; 2 \\
+7 &amp; 2 &amp; -6
+\end{array}\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Consequently,</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Mtrx{C}_{\EuScript{BS}} = \left( \Mtrx{A}_{\EuScript{SB}}\right)^{-1}\ =\ \left[\begin{array}{rrr}
+2 &amp; -1 &amp; 4 \\
+-3 &amp; 9 &amp; 2 \\
+7 &amp; 2 &amp; -6
+\end{array}\right]^{-1}\ =\ \frac{1}{388}
+\left[\begin{array}{rrr}
+58 &amp; -2 &amp; 38 \\
+4 &amp; 40 &amp; 16 \\
+69 &amp; 11 &amp; -15
+\end{array}\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>To find the <math>
+                        <latex>\EuScript{B}</latex>
+                     </math>-coordinates of <math>
+                        <latex>\Vect{x}_{\EuScript{S}}</latex>
+                     </math>, we compute</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\Vect{x}_{\EuScript{B}}\ =\ \frac{1}{388}
+\left[\begin{array}{rrr}
+58 &amp; -2 &amp; 38 \\
+4 &amp; 40 &amp; 16 \\
+69 &amp; 11 &amp; -15
+\end{array}\right]
+\left[\begin{array}{r} 4 \\ -1 \\ 2 \end{array}\right]\ =\ 
+\frac{1}{388}
+\left[\begin{array}{r} 310 \\ 8 \\ 235 \end{array}\right]
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>	
+</showme.pack>

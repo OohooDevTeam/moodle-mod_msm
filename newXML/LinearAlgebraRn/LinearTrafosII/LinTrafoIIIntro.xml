@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para>
+            <para.body>We had 
+		<subordinate>
+                  <hot>earlier</hot>
+                  <crossref>
+                     <unit.ref unitId="Chap_LinearTransformations"/>
+                     <info>
+				
+				                    <para>
+                           <para.body>Review the introductory chapter on linear transformations</para.body>
+                        </para>
+			                  </info>
+                  </crossref>
+               </subordinate>
+		presented the idea of a linear transformation of <math>
+                  <latex>\RNr[n]</latex>
+               </math> as an operation which transforms <math>
+                  <latex>\RNr[n]</latex>
+               </math> in such a way that lines get transformed into lines. We then discussed in detail the main types: Scaling operations,  orthogonal projections and reflections, shear transformations, and rotations of the plane.</para.body>
+         </para>
+         <para>
+            <para.body>Here we deepen our understanding of linear transformations. This will then enable us to describe linear maps with prescribed transformation properties in arbitrary subvector spaces of <math>
+                  <latex>\RNr[n]</latex>
+               </math>. Here are some examples</para.body>
+         </para>
+         <ol>
+		          <li>
+               <para>
+                  <para.body>A 
+			<subordinate>
+                        <hot>rotation</hot>
+                        <companion>
+                           <unit.ref unitId="Prvw_GeneralRotation"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>An illustration of how this is done.</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate> of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> about an arbitrary axis.</para.body>
+               </para>
+            </li>
+		
+		          <li>
+               <para>
+                  <para.body>A 
+			<subordinate>
+                        <hot>projection</hot>
+                        <companion>
+                           <unit.ref unitId="Prvw_ProjectionGeneral"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>An illustration of a general projection.</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate>
+			of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> onto an arbitrary hyperspace and parallel to an arbitrary vector complementary to the hyperspace</para.body>
+               </para>
+            </li>
+		          <li>
+               <para>
+                  <para.body>A 
+			<subordinate>
+                        <hot>reflection</hot>
+                        <companion>
+                           <unit.ref unitId="Prvw_ReflectionGeneral"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>An illustration of a general reflection</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate>
+			of <math>
+                        <latex>\RNr[n]</latex>
+                     </math> about an arbitrary hyperspace and parallel to an arbitrary vector complementary to the hyperspace.</para.body>
+               </para>
+            </li>
+	        </ol>
+         <para>
+            <para.body>These developments provide a platform for the following chapter on eigentheory. There we ask and answer the question: given a square matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>, which transformation of space does it describe? We find that <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is a product of matrices each of which describes a scaling operation, or a rotation, or a shear transformation.</para.body>
+         </para>
+      </block.body>
+   </block>
+</intro>

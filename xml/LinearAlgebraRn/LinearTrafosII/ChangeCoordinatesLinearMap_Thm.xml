@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_ChangeCoordinatesLinearMap">
+	<caption>Matrix and change of coordinates</caption>
+	<statement>
+		<para>Let <latex>V</latex> and <latex>W</latex> be subvector spaces of <latex>\RNr[k]</latex> with ordered bases <latex>\EuScript{A}</latex> and <latex>\EuScript{B}</latex> of <latex>V</latex>, and <latex>\EuScript{C}</latex> and <latex>\EuScript{D}</latex> of <latex>W</latex>. Given a linear map <latex>L\from V\to W</latex>, denote by</para>
+		<table align="center" border="3" cellpadding="3" cellspacing="3">
+			<row>
+				<cell><para><latex>\Mtrx{C}_{\EuScript{B}\EuScript{A}}</latex></para></cell>
+				<cell><para><latex>\EuScript{A}</latex>- to <latex>\EuScript{B}</latex>-conversion matrix</para></cell>
+			</row>
+			<row>
+				<cell><para><latex>\Mtrx{A}_{\EuScript{C}\EuScript{B}}(L)</latex></para></cell>
+				<cell><para>matrix representing <latex>L</latex> with respect to <latex>\EuScript{C}</latex>- and <latex>\EuScript{B}</latex>-coordinates</para></cell>
+			</row>
+			<row>
+				<cell><para><latex>\Mtrx{C}_{\EuScript{D}\EuScript{C}}</latex></para></cell>
+				<cell><para><latex>\EuScript{C}</latex>- to <latex>\EuScript{D}</latex>-conversion matrix</para></cell>
+			</row>
+		</table>
+		<para>Then these matrices are related by the following identity:</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{D}\EuScript{A}}(L)</left>
+			<center>=</center>
+			<right>\Mtrx{C}_{\EuScript{D}\EuScript{C}}\cdot \Mtrx{A}_{\EuScript{C}\EuScript{B}}(L) \cdot \Mtrx{C}_{\EuScript{B}\EuScript{A}}</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>We reduce this claim to a special case of the theorem which describes the 
+			<subordinate>
+				<hot>matrix representing a composition of linear maps</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_MatrixCompositionLinearMaps"/>
+					<para>Look up this theorem</para>
+				</crossref>
+			</subordinate>: The coordinate transformation matrix <latex>\Mtrx{C}_{\EuScript{B}\EuScript{A}}</latex> actually represents the identity map <latex>V \to V</latex> with respect to the basis <latex>\EuScript{A}</latex> on the domain side and the basis <latex>\EuScript{B}</latex> on the target side. Similarly, the matrix <latex>\Mtrx{C}_{\EuScript{D}\EuScript{C}}</latex> represents the identity map with respect to the basis <latex>\EuScript{C}</latex> on the domain side and the basis <latex>\EuScript{D}</latex> on the target side. Therefore</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{D}\EuScript{A}}(L)</left>
+			<center>=</center>
+			<right>\Mtrx{A}_{\EuScript{D}\EuScript{A}}(\Id[W]\Comp L\Comp \Id[V])</right>
+			<left></left>
+			<center>=</center>
+			<right>\Mtrx{A}_{\EuScript{D}\EuScript{C}}(\Id[W]) \cdot \Mtrx{A}_{\EuScript{C}\EuScript{B}}(L)\cdot \Mtrx{A}_{\EuScript{B}\EuScript{A}}(\Id[V])</right>
+			<left></left>
+			<center>=</center>
+			<right>\Mtrx{C}_{\EuScript{D}\EuScript{C}}\cdot \Mtrx{A}_{\EuScript{C}\EuScript{B}}(L) \cdot \Mtrx{C}_{\EuScript{B}\EuScript{A}}</right>
+		</computation>
+		<para>This was to be shown.</para>
+	</proof>
+</theorem>

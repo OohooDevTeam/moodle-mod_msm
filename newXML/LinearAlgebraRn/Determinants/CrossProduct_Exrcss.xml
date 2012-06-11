@@ -1,0 +1,1742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_CrossProduct"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Cross Product</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given vectors <math>
+                     <latex>\Vect{v}=(-3,-2,1)</latex>
+                  </math> and <math>
+                     <latex>\Vect{w}=(1,-2,4)</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>, do the following</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find a vector perpendicular to both <math>
+                        <latex>\Vect{v}</latex>
+                     </math> and <math>
+                        <latex>\Vect{w}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>(-6,13,8)</latex>
+                           </math> is perpendicular to <math>
+                              <latex>\Vect{v}</latex>
+                           </math> and <math>
+                              <latex>\Vect{w}</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A vector perpendicular to both <math>
+                           <latex>\Vect{v}</latex>
+                        </math>and <math>
+                           <latex>\Vect{w}</latex>
+                        </math> is the cross product of these two vectors:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+\CrssPr{ \Vect{v} }{ \Vect{w} }\ &amp;=\ 
+\det
+\left[
+\begin{array}{rrr}
+\Vect{i} &amp; -3 &amp; 1 \\
+\Vect{j} &amp; -2 &amp; -2 \\
+\Vect{k} &amp; 1 &amp; 4
+\end{array}
+\right] \\
+	&amp;=\ \det
+\left[
+\begin{array}{rr}
+-2 &amp; -2 \\
+1 &amp; 4
+\end{array}
+\right] \Vect{i} -
+\det
+\left[
+\begin{array}{rr}
+-3 &amp; 1 \\
+1 &amp; 4
+\end{array}
+\right] \Vect{j} +
+\det
+\left[
+\begin{array}{rr}
+-3 &amp; 1 \\
+-2 &amp; -2
+\end{array}
+\right] \Vect{k} \\
+	&amp;=\ (-6) \Vect{i}- (-13)\Vect{j} + 8\Vect{k} \\
+	&amp;=\ (-6,13,8)
+\endaligned
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Observe that any nonzero multiple of <math>
+                           <latex>\CrssPr{ \Vect{v} }{ \Vect{w} }</latex>
+                        </math> is also perpendicular to both <math>
+                           <latex>\Vect{v}</latex>
+                        </math> and <math>
+                           <latex>\Vect{w}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the area of the parallelogram spanned by <math>
+                        <latex>\Vect{v}</latex>
+                     </math> and <math>
+                        <latex>\Vect{w}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The area of the specified parallelogram is <math>
+                              <latex>\sqrt{ 269}</latex>
+                           </math> [square units]</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The area of the parallelogram spanned by <math>
+                           <latex>\Vect{v}</latex>
+                        </math>and <math>
+                           <latex>\Vect{w}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							\abs{ \CrssPr{ \Vect{v} }{ \Vect{w} } } = \sqrt{ (-6)^2 + 13^2 + 8^2} = \sqrt{ 269 }
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose for vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math>, <math>
+                     <latex>\Vect{y}</latex>
+                  </math>, <math>
+                     <latex>\Vect{u}</latex>
+                  </math>, and <math>
+                     <latex>\Vect{v}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> the following are true</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(4,-3,2)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ \Vect{u} }{ \Vect{v} }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(1,1,-5)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ \Vect{v} }{ \Vect{y} }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(-2,1.5, -1)</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+			
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>\CrssPr{ (7 \Vect{x} ) }{ \Vect{y} }</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\CrssPr{ (7 \Vect{x} ) }{ \Vect{y} }</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(28,-21,14)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The cross product is linear in the first factor. Therefore</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ (7 \Vect{x} ) }{ \Vect{y} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>7\cdot (\CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(28,-21,14)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>\CrssPr{ \Vect{y} }{ (\Vect{u} + \Vect{v}) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\CrssPr{ \Vect{y} }{ (\Vect{u} + \Vect{v}) }</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(1,-2.5,6)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ \Vect{y} }{ (\Vect{u} + \Vect{v}) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\CrssPr{ \Vect{y} }{ \Vect{y} }) + (\CrssPr{ \Vect{y} }{ \Vect{v} }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-(\CrssPr{ \Vect{u} }{ \Vect{y} }) - (\CrssPr{ \Vect{v} }{ \Vect{y} })</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-(1,1,-5) - (-2,1.5,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,-2.5,6)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>\CrssPr{ \Vect{x} }{ (-3 \Vect{y} ) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\CrssPr{ \Vect{x} }{ (-3 \Vect{y} ) }</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(-12,9,-6)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ \Vect{x} }{ (-3 \Vect{y} ) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-3( \CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-3( 4,-3,2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-12,9,-6)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Are the vectors <math>
+                        <latex>( \Vect{x} + \Vect{v} )</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math> parallel?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No! – The vectors are not parallel.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We use the following feature of the cross product operation to answer this question: Two vectors in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> are parallel if and only if their cross product is <math>
+                           <latex>\Vect{0}=(0,0,0)</latex>
+                        </math>. However, we find:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ (\Vect{x} + \Vect{v}) }{ \Vect{y} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\CrssPr{ \Vect{x} }{ \Vect{y} }) + (\CrssPr{ \Vect{v} }{ \Vect{y} })</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(4,-3,2) + (-2,1.5,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,-1.5,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Since the cross product of the two vectors is not zero, the two vectors are not parallel.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Is <math>
+                        <latex>(\Vect{x} + 2 \Vect{v})</latex>
+                     </math> parallel to <math>
+                        <latex>\Vect{y}</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! – The two vectors are parallel.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For <math>
+                        <latex>\Vect{a} := (-1,0,2)</latex>
+                     </math> find <math>
+                        <latex>\det[\Vect{a}\ \ \Vect{y}\ \ \Vect{x}]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\det[\Vect{a}\ \ \Vect{y}\ \ \Vect{x}]</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>0</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\det[\Vect{a}\ \ \Vect{y}\ \ \Vect{x}]</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-\det[\Vect{a}\ \ \Vect{x}\ \ \Vect{y}]</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>- \DotPr{ (-1,0,2) }{ (4,-3,2) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What does the previous problem tell you about the vector triple <math>
+                        <latex>(\Vect{a} , \Vect{x} , \Vect{y})</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The three vectors lie all in one plane.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know from the previous part that <math>
+                           <latex>\det[\Vect{a}\ \ \Vect{x}\ \ \Vect{y}]=0</latex>
+                        </math>. Therefore the parallelepiped determined by the three column vectors has oriented volume 0. This means that the three vectors lie all in one plane.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For the points in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> below solve the following problems.</para.body>
+            </para>
+			         <para>
+               <para.body>
+                  <math>
+                     <latex>A(-1,0,2)</latex>
+                  </math>,   <math>
+                     <latex>B(1,2,3)</latex>
+                  </math>,   C(-2,1,2)</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find a linear equation whose solutions form the plane which passes through <math>
+                        <latex>A</latex>
+                     </math>, <math>
+                        <latex>B</latex>
+                     </math>, and <math>
+                        <latex>C</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>An equation for the specified plane is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>x+y-4z</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>-9</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We try to find the equation of the plane by using the point-normal formula</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (\Vect{x} - \Vect{a}) }{ \Vect{n} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>As input, it requires a point on the plane and a vector perpendicular to the plane. For the point, we can use any one of the given three points, say <math>
+                           <latex>A</latex>
+                        </math>. For a normal vector we use <math>
+                           <latex>\Vect{n} := \CrssPr{ \Vect{u} }{ \Vect{v} }</latex>
+                        </math>, where</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>The vector represented by <math>
+                                          <latex>\Arrw{AB}</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>The vector represented by <math>
+                                          <latex>\Arrw{AB}</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,2,3) - (-1,0,2) = (2,2,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{v}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>The vector represented by <math>
+                                          <latex>\Arrw{AC}</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>The vector represented by <math>
+                                          <latex>\Arrw{AC}</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-2,1,2) - (-1,0,2) = (-1,1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus we obtain</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-1,-1,4)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>An equation for the specified plane is, therefore,</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ ( (x,y,z) - (-1,0,2) )}{ (-1,-1,4) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>x+y-4z</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-9</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the area of the triangle <math>
+                        <latex>ABC</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The area of the triangle is <math>
+                              <latex>\tfrac{3}{2} \sqrt{2}</latex>
+                           </math> [square units].</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The area of the given triangle is half the area of the parallelogram spanned by the vectors joining any one of the three points to its two neighbors. In part a. we already computed two such vectors, namely</para.body>
+                  </para>
+					             <para align="center">
+                     <para.body>
+                        <math>
+                           <latex>\Vect{u} = (2,2,1)</latex>
+                        </math>   and   <math>
+                           <latex>\Vect{v}=(-1,1,0)</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Therefore the area of the parallelogram spanned by <math>
+                           <latex>\Vect{u}</latex>
+                        </math> and <math>
+                           <latex>\Vect{v}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\abs{ \CrssPr{ \Vect{u} }{ \Vect{v} } }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\abs{ (-1,-1,4) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\sqrt{ 18 }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Consequently, the area of the triangle <math>
+                           <latex>ABC</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{1}{2} \abs{ \CrssPr{ \Vect{u} }{ \Vect{v} } }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{ 1 }{ 2 } \sqrt{ 18 }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{ 3 }{ 2 } \sqrt{ 2 }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>\Vect{x}:=(2,-1,2)</latex>
+                  </math> and <math>
+                     <latex>\Vect{z} := (3,4,-1)</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a vector <math>
+                        <latex>\Vect{y}</latex>
+                     </math> such that <math>
+                        <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{z}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{y} = (1,-1,-1)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>An arbitrary vector <math>
+                           <latex>\Vect{y} = (a,b,c)</latex>
+                        </math> satisfies <math>
+                           <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{z}</latex>
+                        </math> exactly when</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-2b-c,2a-2c,a+2b) = (3,4,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This vector equation is equivalent to the system of linear equations</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\begin{array}{rcrcrcr}
+&amp; - &amp; 2b &amp; - &amp; c &amp; = 3 \\
+2a &amp; &amp; &amp; - &amp; 2c &amp; = &amp; 4 \\
+a &amp; + &amp; 2b &amp; &amp; &amp; = &amp; -1
+\end{array}
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Solving the system, for example with the row reduction method, yields</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>a</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-2b-1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>c</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-2b-3</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>where <math>
+                           <latex>b</latex>
+                        </math> is arbitrary. For every choice of a real number for <math>
+                           <latex>b</latex>
+                        </math>, the vector  <math>
+                           <latex>\Vect{y} := (-2b-1 , b , -2b-3)</latex>
+                        </math> satisfies the requirement of the problem. For example, with <math>
+                           <latex>b=1</latex>
+                        </math>, we obtain  <math>
+                           <latex>\Vect{y} = (1,-1,-1)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Can there be more than one such vector?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! – There are many such vectors.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>There are several vectors satisfying the given requirements. Indeed, we have seen in part a) that every vector of the form</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{y}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-2b-1,b,-2b-3)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>with <math>
+                           <latex>b</latex>
+                        </math> arbitrary in <math>
+                           <latex>\RNr</latex>
+                        </math> satisfies the identity <math>
+                           <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{z}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider the two lines in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>
+               </para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\aligned
+L_1: &amp;\quad (2,-3,0) + t(1,2,-1) &amp;\quad t\in \RNr \\
+L_2: &amp;\quad (1,0,0) + s(-1,3,0) &amp;\quad s\in \RNr
+\endaligned
+
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Determine if <math>
+                        <latex>L_1</latex>
+                     </math> and <math>
+                        <latex>L_2</latex>
+                     </math> intersect.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! – The two lines intersect.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>If there is a point <math>
+                           <latex>Q(x,y,z)</latex>
+                        </math> on both lines, then there exist numbers <math>
+                           <latex>s</latex>
+                        </math> and <math>
+                           <latex>t</latex>
+                        </math> such that:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,-3,0) + t(1,2,-1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>= (x,y,z) =</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,0,0) + s(-1,3,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This vector equation holds exactly when the numbers in matching coordinates are equal. So we obtain the following system of linear equations:</para.body>
+                  </para>
+					             <para align="center">
+                     <para.body>
+                        <math>
+                           <latex>t+s=-1</latex>
+                        </math>,   <math>
+                           <latex>2t-3s=3</latex>
+                        </math>,   <math>
+                           <latex>-t=0</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>This system has the unique solution <math>
+                           <latex>t=0</latex>
+                        </math> and <math>
+                           <latex>s=-1</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Thus <math>
+                           <latex>L_1</latex>
+                        </math> and <math>
+                           <latex>L_2</latex>
+                        </math> intersect in the point <math>
+                           <latex>Q(2,-3,0)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If they do intersect, find an equation of the plane <math>
+                        <latex>P</latex>
+                     </math> in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> which contains the lines. </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>An equation of the plane <math>
+                              <latex>P</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>3x+y+5z</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>3</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>From the previous part, <math>
+                           <latex>L_1</latex>
+                        </math> and <math>
+                           <latex>L_2</latex>
+                        </math> intersect in the point <math>
+                           <latex>Q(2,-3,0)</latex>
+                        </math>, and, therefore, the point <math>
+                           <latex>(2,3,0)</latex>
+                        </math> lies on the plane  passing through both the lines.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Now a  vector <math>
+                           <latex>\Vect{n}</latex>
+                        </math> is perpendicular to <math>
+                           <latex>P</latex>
+                        </math> if and only if  it is perpendicular to both <math>
+                           <latex>L_1</latex>
+                        </math> and <math>
+                           <latex>L_2</latex>
+                        </math>. We may, therefore, choose <math>
+                           <latex>\Vect{n} = \CrssPr{ \Vect{u} }{ \Vect{v} }</latex>
+                        </math>, where <math>
+                           <latex>\Vect{u} := (1,2,-1)</latex>
+                        </math> is the direction vector of <math>
+                           <latex>L_1</latex>
+                        </math> and <math>
+                           <latex>\Vect{v} := (-1,3,0)</latex>
+                        </math> is the direction vector of <math>
+                           <latex>L_2</latex>
+                        </math>. We compute <math>
+                           <latex>\Vect{n}</latex>
+                        </math> as follows:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{n}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>= \CrssPr{ \Vect{u} }{ \Vect{v} } =</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(3,1,5)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>An equation of <math>
+                           <latex>P</latex>
+                        </math> is, therefore,</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ ((x,y,z)-(2,-3,0) ) }{ (3,1,5) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>or</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>3x+y+5z</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>3</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math>, <math>
+                     <latex>\Vect{y}</latex>
+                  </math>, and <math>
+                     <latex>\Vect{z}</latex>
+                  </math> for which</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \Vect{z} }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>\neq</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ \Vect{x} }{ (\CrssPr{ \Vect{y} }{ \Vect{z} } ) }</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+			         <para>
+               <para.body>i.e. show, using a counterexample, that the cross product operation is not associative. </para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>One possible solution is</para.body>
+               </para>
+				           <para align="center">
+                  <para.body>
+                     <math>
+                        <latex>\Vect{x}:=\Vect{i} = (1,0,0)</latex>
+                     </math>,   <math>
+                        <latex>\Vect{y} := \Vect{j} = (0,1,0)</latex>
+                     </math>,   <math>
+                        <latex>\Vect{z} := \Vect{k} = (0,0,1)</latex>
+                     </math>.</para.body>
+               </para>
+				           <para>
+                  <para.body>and observe that the two cross products in question are distinct.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below decide if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all numbers <math>
+                        <latex>a</latex>
+                     </math> and <math>
+                        <latex>b</latex>
+                     </math>, <math>
+                        <latex>\CrssPr{ (a,a,a) }{ (b,b,b) } = 0</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\CrssPr{ (a,a,a) }{ (b,b,b) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>ab\cdot \CrssPr{ (1,1,1) }{ (1,1,1) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all vectors <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>, <math>
+                        <latex>(\Vect{x},\Vect{y},\CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+                     </math> represents the positive orientation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Consider the situation where <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math> are parallel.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all vectors <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>, <math>
+                        <latex>\DotPr{ \Vect{x} }{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = 0</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall that <math>
+                        <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                     </math> is always perpendicular to both <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

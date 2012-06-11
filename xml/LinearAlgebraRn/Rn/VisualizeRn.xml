@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_VisualizeRn">
+	<title>Visualizing <latex>\RNr[n]</latex></title>
+	<sub.page.body>
+		<para>If <latex>n</latex> is one of the integers <latex>1,2,3</latex>, then we may visualize <latex>\RNr[n]</latex> as follows</para>
+		<para>
+			<b>Visualizing</b> 
+			<latex>\RNr=\RNr[1]</latex>: The set of all <subordinate>
+				<hot>
+					<latex>1</latex>-tuples</hot>
+				<info>
+					<para>i.e. a single number <latex>x</latex> between brackets: <latex>(x)</latex>
+					</para>
+				</info>
+			</subordinate> forms a line on which one point has been designated to be <latex>0</latex>, and a unit of measurement has been chosen. – It is customary to call the line the <latex>x</latex>-<b>axis</b>.
+		</para>
+		<para align="center"><img src="ims/R1_illstrtn.gif"/></para>
+		<para>
+			<b>Visualizing</b> 
+			<latex>\RNr[2]</latex>: The set of all <subordinate>
+				<hot>
+					<latex>2</latex>-tuples or ordered pairs</hot>
+				<info>
+					<para>i.e. two number <latex>x</latex> and <latex>y</latex> between brackets: <latex>(x,y)</latex>. Such <latex>2</latex>-tuples are also called <b>ordered pairs</b>.</para>
+				</info>
+			</subordinate>
+			
+			<index.glossary>
+				<term>ordered pair</term>
+				<info>
+					<para>another word for <latex>2</latex>-tuple; i.e. an expression of the form <latex>(x,y)</latex>, where <latex>x</latex> and <latex>y</latex> are numbers.</para>
+				</info>
+			</index.glossary>
+			forms a plane on which one point <latex>\mathbf{0}</latex> has been designated to be the origin, and two perpendicular lines with a unit of measurement have been chosen. – It is customary to draw one of these axes horizontal and call it the <latex>x</latex>-<b>axis</b>. The other line will then appear vertical and will be called the <latex>y</latex>-<b>axis</b>.
+		</para>
+		<para align="center">
+			<img src="ims/R2_illstrtn.gif"/>
+		</para>
+		<para>If we want to give the name <latex>P</latex> to the point <latex>(2,1)</latex> 
+			<subordinate>
+				<hot>displayed above</hot>
+				<info>
+					<caption>Animation of relating ordered pairs to points in the plane</caption>
+					<para align="center">
+						<img src="ims/CrtsnCrdnts2_anm.gif"/>
+					</para>
+				</info>
+			</subordinate>, we write <latex>P(2,1)</latex> to express that it has coordinates <latex>2</latex> and <latex>1</latex>.</para>
+		<para>
+			<b>Visualizing</b> 
+			<latex>\RNr[3]</latex>: The set of all <subordinate>
+				<hot>
+					<latex>3</latex>-tuples or ordered triples</hot>
+				<info>
+					<para>i.e. three numbers <latex>x,y,z</latex> between brackets: <latex>(x,y,z)</latex>
+					</para>
+				</info>
+			</subordinate> can be related to points in the world surrounding us. We pick one point, <latex>\mathbf{0}</latex>, to act as the origin. Then we pick three perpendicular lines with a unit of measurement.. – In the picture below,
+		</para>
+		<ul>
+			<li><para>the first coordinate axis points toward you. We call it the <latex>x</latex>-axis.</para></li>
+			<li><para> the second coordinate axis goes from left to right. We call the <latex>y</latex>-axis.</para></li>
+			<li><para>the third coordinate axis has a vertical direction. We call it the <latex>z</latex>-axis</para></li>
+		</ul>
+		<para align="center"><img src="ims/R3_illstrtn.jpg"/></para>
+		<para>If we want to give the name <latex>Q</latex> to the point <latex>(3,2,2)</latex> displayed above, we write <latex>Q(3,2,2)</latex>. To plot it, consider the box in the picture above. Then, starting from the origin,</para>
+		<ol>
+			<li><para>move 3 units in the <latex>x</latex>-direction (to arrive a the bottom front left corner of the box),</para></li>
+			<li><para>from there move 2 units parallel to the <latex>y</latex>-direction (to arrive at the front right bottom corner of the box),</para></li>
+			<li><para>from there move 2 units parallel to the <latex>z</latex>-direction (to arrive at the blue corner of the box)</para></li>
+		</ol>
+		
+		<para>You can also see an 
+			<subordinate>
+				<hot>animation</hot>
+				<info>
+					<caption>Animation of plotting ordered triples in a 3D-coordinate system.</caption>
+					<para align="center"><img src="ims/CrtsnCrdnts3_anm.gif"/></para>
+				</info>
+			</subordinate>  of this plotting process for several points in <latex>\RNr[3]</latex>.</para>
+		
+		
+		<para>Note that, in <latex>\RNr[3]</latex>,</para>
+		<ol>
+			<li>
+				<para>points on the first coordinate axis are given by triples of the form <latex>(x,0,0)</latex>, where <latex>x</latex> is an arbitrary number.</para>
+			</li>
+			<li>
+				<para>points on the second coordinate axis are given by triples of the form <latex>(0,y,0)</latex>, where <latex>y</latex> is an arbitrary number.</para>
+			</li>
+			<li>
+				<para>points on the third coordinate axis are given by triples of the form <latex>(0,0,z)</latex>, where <latex>z</latex> is an arbitrary number.</para>
+			</li>
+		</ol>
+	</sub.page.body>
+</sub.page>

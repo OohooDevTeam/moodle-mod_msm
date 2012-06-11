@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_RFieldAxms1"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Further properties of <math>
+         <latex>(\RNr,+,\cdot)</latex>
+      </math>
+   </caption>
+   <statement.theorem>
+      <para>
+         <para.body>The following hold:</para.body>
+      </para>
+      <part.theorem partid="AdditiveEquationSolve">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>a + x = a + y</latex>
+                  </math> if and only if <math>
+                     <latex>x=y</latex>
+                  </math> for all <math>
+                     <latex>a,x,y\in \RNr</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Times0">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>0\cdot a = 0</latex>
+                  </math> for all <math>
+                     <latex>a\in \RNr</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Negativea">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>-a = (-1)\cdot a</latex>
+                  </math> for all <math>
+                     <latex>a\in \RNr</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>AdditiveEquationSolve</part.ref>
+         </logic>
+         <caption>AdditiveEquationSolve</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>x=y</latex>
+                  </math>, then <math>
+                     <latex>a+x=a+y</latex>
+                  </math> by substitution. To see the converse, we compute</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Times0</part.ref>
+         </logic>
+         <caption>Times0</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We compute as follows</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Negativea</part.ref>
+         </logic>
+         <caption>Negativea</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We compute:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

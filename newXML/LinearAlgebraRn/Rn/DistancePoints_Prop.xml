@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="thm_DistanceBetweenPoints"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Distance between Points</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_DistancePoints"/>
+      <info>
+         <para>
+            <para.body>Examples on computing the distance between points.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
+         <para>
+            <para.body>This formula is a consequence of the Theorem of Pythagoras. – See details of this</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>The distance between two points in <math>
+               <latex>P(x_1,\dots ,x_n)</latex>
+            </math> and <math>
+               <latex>Q(y_1,\dots
+			,y_n)</latex>
+            </math> in <math>
+               <latex>\RNr[n]</latex>
+            </math> is given by</para.body>
+      </para>
+      <math.display>
+         <latex>\Dstnc{P}{Q}\ =\ \sqrt{(y_1-x_1)^2+\cdots + (y_n-x_n)^2}\ \ .</latex>
+      </math.display>
+   </statement.theorem>
+</theorem>

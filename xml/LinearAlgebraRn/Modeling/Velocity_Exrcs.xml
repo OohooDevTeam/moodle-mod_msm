@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_ModelingVelocity">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	<title>Modeling Velocities - Exercises</title>
+	
+	<exercise>
+		<problem>
+			<para>An airplane is moving east with a speed of 800km/hour relative to the surrounding air. The surrounding air is moving north-east with a speed of 150km/hour relative to the ground, carrying the plane with it. Find the velocity and the speed of the airplane relative to the ground.</para>
+			
+			<para align="center"><image src="ims/VelocitySuperposition.gif" width="441" height="173">
+				<area shape="rect" coords="217,39,417,53">
+					<info>
+						<caption>What does the blue arrow mean?</caption>
+						<para>This vector represents the velocity of the aircraft relative to the surrounding air.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="135,115,155,111,219,39,193,35">
+					<info>
+						<caption>What does the green arrow mean?</caption>
+						<para>This vector represents the velocity of the air relative to the ground.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="157,113,161,121,425,47,369,51,159,107">
+					<info>
+						<caption>What does the red arrow mean?</caption>
+						<para>This vector represents the velocity of the aircraft relative to the ground.</para>
+					</info>
+				</area>
+			</image>
+			</para>
+		</problem>
+		<approach>
+			<answer>
+				<ul>
+					<li><para>Velocity of the air plane relative to ground: <latex>(800 + 150\cdot \tfrac{1}{\sqrt{2}} , 150\cdot \tfrac{1}{\sqrt{2}}</latex></para></li>
+					
+					<li><para>Speed relative to the ground: approximately <latex>912.253</latex> [km/h]</para></li>
+				</ul>
+			</answer>
+			<solution.hint>
+				<para>Use the vector diagram above to model the velocity of the plane relative to the ground.</para>
+			</solution.hint>
+			<solution>
+				<para>Let a vector of length 1 represent the speed of 1km/h. Then the velocity of the air relative to the ground is represented by the vector</para>
+				
+				<para align="center"><subordinate>
+					<hot><latex>\mathbf{a}\ :=\ 150\cdot \dfrac{1}{\sqrt{2}}\cdot (1,1)</latex></hot>
+					<info>
+						<caption>Explanation</caption>
+						<para>The vector <latex>(1,1)</latex> has length <latex>| (1,1) | = \sqrt{2}</latex>. Therefore the vector <latex>\tfrac{1}{\sqrt{2}}\cdot (1,1)</latex> has length <latex>1</latex> and points North-West. Finally, the vector <latex>\mathbf{a}</latex> has length <latex>150</latex> and points North-West. It therefore represents the velocity of the air relative to the ground.</para>
+					</info>
+				</subordinate>
+				</para>
+				
+				<para>The velocity of the airplane relative to the air is represented by the vector</para>
+				
+				<math.display>
+					<latex>\mathbf{b}\ :=\ 800 \cdot (1,0)</latex>
+				</math.display>
+				
+				<para>Therefore the velocity vector of the aircraft relative to the ground is</para>
+				
+				<table align="center">
+					<row>
+						<cell align="right"><para><latex>\mathbf{v}</latex></para></cell>
+						<cell align="center"><para><latex>=</latex></para></cell>
+						<cell align="left"><para><latex>\mathbf{a} + \mathbf{b}</latex></para></cell>
+					</row>
+					<row>
+						<cell align="right"><para>&nbsp;</para></cell>
+						<cell align="center"><para><latex>=</latex></para></cell>
+						<cell align="left"><para><latex>150\cdot tfrac{1}{\sqrt{2}}\cdot (1,1)\ +\ 800\cdot (1,0)</latex></para></cell>
+					</row>
+					<row>
+						<cell align="right"><para>&nbsp;</para></cell>
+						<cell align="center"><para><latex>=</latex></para></cell>
+						<cell align="left"><para><latex>(800 + 150\cdot tfrac{1}{\sqrt{2}}, 150\cdot tfrac{1}{\sqrt{2}})</latex></para></cell>
+					</row>
+				</table>
+				
+				<para>Consequently, the speed of the aircraft relative to the ground is</para>
+				
+				<table align="center">
+					<row>
+						<cell align="right"><para><latex>| \mathbf{v} |</latex></para></cell>
+						<cell align="center"><para><latex>=</latex></para></cell>
+						<cell align="left"><para><latex>\sqrt{ ( 800 + 150 \cdot \tfrac{1}{ \sqrt{2} } )^2\ +\ (150\cdot \tfrac{1}{\sqrt{2}})^2}</latex></para></cell>
+					</row>
+					<row>
+						<cell align="right"><para>&nbsp;</para></cell>
+						<cell align="center"><para><latex>\approx</latex></para></cell>
+						<cell align="left"><para><latex>\sqrt{ 820955.6275 + 11250 }</latex></para></cell>
+					</row>
+					<row>
+						<cell align="right"><para>&nbsp;</para></cell>
+						<cell align="center"><para><latex>\approx</latex></para></cell>
+						<cell align="left"><para><latex>912.253</latex> [km/h]</para></cell>
+					</row>
+				</table>
+			</solution>
+		</approach>
+	</exercise>
+</exercise.pack>

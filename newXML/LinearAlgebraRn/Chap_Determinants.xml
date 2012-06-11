@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
+      unitid="Chap_Determinants">
+   <titles>
+      <title>Determinants</title>
+      <plain.title>Determinants</plain.title>
+   </titles>
+   <legitimate.children>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantsIntro.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantCompute.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantRules.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/AlternatingMultilinearMaps.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Orientation.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/OrientedVolume.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProduct.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CramerRule.xml"/>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantComputePrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantRulesPrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/OrientationPrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/OrientedVolumePrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProductPrvw_Sub.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Determinant22_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Determinant33_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Determinant44_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Minor_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Cofactor_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CofactorLimitations_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/MinorCofactor_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantCofactor_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Multilinear_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Multilinear_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantMultilinear_Quz.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantInvertibility_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantCommutesMultiplication_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Alternating_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantMoreProperties_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantAlternating_Quz.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantRowReduction_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/VanderMonde_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantProperties_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/DeterminantPropertiesTF_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Orientation_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Orientation1_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Orientation2_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Orientation3_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Orientation0_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/RLHandRule_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Orientation_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/OrientationTF_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Determinants/Box2_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/OrientedVolume_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/OrientedArea_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/OrientedVolume_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/OrientedVolume_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProductQuaternions_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProductGeneralized_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProductAlgProps_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProduct_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProduct_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProductArea_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProductPlaneInR3_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProductTheory_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/Inverse22Matrix_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/MatrixInversion_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Determinants/CrossProductGeometric_Sub.xml"/>
+			</legitimate.children>
+</unit>

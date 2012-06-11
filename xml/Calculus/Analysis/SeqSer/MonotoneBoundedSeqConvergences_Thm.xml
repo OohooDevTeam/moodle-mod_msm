@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MonotoneBoundedSequenceConverges">
+	<caption>Convergence of monotone bounded sequences</caption>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="Illu_MonotoneBoundedSequenceConverges"/>
+		<info>
+			<para>The convergence property of the monotone bounded sequences is actually quite intuitive. See an illustration of this.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>A sequence <latex>(x_n)</latex> in <latex>\RNr</latex> converges to a number if it satisfies either one of the following conditions.</para>
+		<part partid="IncreasingBoundedAbove">
+			<para><latex>(x_n)</latex> is increasing and bounded above, in which case <latex>\lim_{n\to \infty} x_n=\sup(x_n)</latex> is the infimum of all upper bounds of <latex>(x_n)</latex>.</para>
+		</part>
+		<part partid="DecreasingBoundedBelow">
+			<para><latex>(x_n)</latex> is decreasing and bounded below, in which case <latex>\lim_{n\to \infty} x_n=\inf(x_n)</latex> is also the supremum of all lower bounds of <latex>(x_n)</latex>.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption>
+			<partref>IncreasingBoundedAbove</partref> &nbsp; Suppose <latex>(x_n)</latex> is increasing and bounded above.
+		</caption>
+		<para>Consider the set <latex>B</latex> of all upper bounds of <latex>(x_n)</latex>. 
+			<subordinate>
+				<hot>Then <latex>B\neq \emptyset</latex></hot>
+				<info>
+					<caption>Why is this so?</caption>
+					<para>... as <latex>(x_n)</latex> is bounded above.</para>
+				</info>
+			</subordinate>. Moreover, 
+			<subordinate>
+				<hot><latex>B</latex> is bounded below</hot>
+				<info>
+					<caption>Why is this so?</caption>
+					<para>For example <latex>x_0\leq B</latex>. So <latex>B</latex> is bounded below.</para>
+				</info>
+			</subordinate>.
+			Therefore <latex>c:=\inf(B) \in \RNr</latex> exists. We claim that <latex>\lim_{n\to \infty} x_n = c</latex>. So let <latex><![CDATA[ \varepsilon > 0 ]]></latex> be given. We need to show that there exists <latex>n_0\in \NNr</latex> such that <latex><![CDATA[ \Abs{ x_n - c } < \varepsilon ]]></latex> for all <latex>n\geq n_0</latex>.</para>
+		<para>Now there 
+			<subordinate>
+				<hot>must exist</hot>
+				<info>
+					<caption>Why is this so?</caption>
+					<para>Suppose there does not exist such <latex>n_0</latex>. Then where in <latex>\RNr</latex> can the sequence elements <latex>x_n</latex> be? &ndash; We have <latex><![CDATA[ x_n \leq c ]]></latex> because every <latex><![CDATA[ x_n\leq u]]></latex> for each <latex><![CDATA[ u>c ]]></latex>. Now, if there is no <latex>n_0\in \NNr</latex> with <latex><![CDATA[ c - x_{n_0} < \varepsilon ]]></latex>, then <latex>x_n \leq c - \varepsilon</latex> for all <latex>n\in \NNr</latex>. But then <latex>(c-\varepsilon)</latex> is an upper bound of <latex>(x_n)</latex> which is less that the infimum of all upper bounds of <latex>(x_n)</latex>, a contradiction.</para>
+				</info>
+			</subordinate>
+			<latex>n_0\in \NNr</latex> with <latex><![CDATA[ 0\leq c - x_{n_0} < \varepsilon ]]></latex>. But then we have, for all <latex>n\geq n_0</latex>,</para>
+		<math.display>
+			<latex>
+				<![CDATA[ c-\varepsilon < x_{n_0} \leq x_n \leq c < c + \varepsilon ]]>
+			</latex>
+		</math.display>
+		<para>which tells us that the tail of <latex>(x_n)</latex> beginning with <latex>n_0</latex> stays within <latex>\varepsilon</latex>-tolerance of <latex>c</latex>; in other words:</para>
+		<math.display>
+			<latex>\lim_{n\to \infty} x_n\ =\ c</latex>
+		</math.display>
+		<para>as claimed.</para>
+		
+		<caption>
+			<partref>DecreasingBoundedBelow</partref> &nbsp; Suppose <latex>(x_n)</latex> is decreasing and bounded below.
+		</caption>
+		<para>We claim that <latex>(x_n)</latex> converges to <latex>\sup(A)</latex>, where <latex>A</latex> is the collection of lower bounds of <latex>(x_n)</latex>. The argument is similar to the one just given.</para>
+	</proof>
+</theorem>

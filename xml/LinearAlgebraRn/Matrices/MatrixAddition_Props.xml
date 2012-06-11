@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MatrixAdditionProperties">
+	<statement>
+		<para>The addition of matrices has the following properties</para>
+		<part partid="Associativity">
+			<caption>Associativity</caption>
+			<para><latex>(A+B)+C = A + (B+C)</latex>
+				<index.glossary>
+					<term>associativity</term><term>of matrix addition</term>
+					<info>
+						<caption>Associativity of matrix addition</caption>
+						<para>The associativity property of matrix addition is the identity</para>
+						<computation>
+							<left>(\Mtrx{A} + \Mtrx{B}) + \Mtrx{C}</left>
+							<center>=</center>
+							<right>\Mtrx{A} + (\Mtrx{B} + \Mtrx{C})</right>
+						</computation>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>addition</term><term>matrices</term><term>associativity property</term>
+					<info>
+						<caption>Associativity of matrix addition</caption>
+						<para>The associativity property of matrix addition is the identity</para>
+						<computation>
+							<left>(\Mtrx{A} + \Mtrx{B}) + \Mtrx{C}</left>
+							<center>=</center>
+							<right>\Mtrx{A} + (\Mtrx{B} + \Mtrx{C})</right>
+						</computation>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="Commutativity">
+			<caption>Commutativity</caption>
+			<para><latex>A + B = B + A</latex>
+				<index.glossary>
+					<term>commutativity</term><term>of matrix addition</term>
+					<info>
+						<caption>Commutativity of matrix addition</caption>
+						<para>The commutativity property of matrix addition is the identity</para>
+						<computation>
+							<left>\Mtrx{A} + \Mtrx{B}</left>
+							<center>=</center>
+							<right>\Mtrx{B} + \Mtrx{A}</right>
+						</computation>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>addition</term><term>matrices</term><term>commutativity</term>
+					<info>
+						<caption>Commutativity of matrix addition</caption>
+						<para>The commutativity property of matrix addition is the identity</para>
+						<computation>
+							<left>\Mtrx{A} + \Mtrx{B}</left>
+							<center>=</center>
+							<right>\Mtrx{B} + \Mtrx{A}</right>
+						</computation>
+					</info>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="ZeroNeutral">
+			<caption>0 is neutral element</caption>
+			<para><latex>A + \mathbf{0} = A = \mathbf{0} + A</latex></para>
+		</part>
+		<part partid="MinusAIsAdditiveInverse">
+			<para><latex>(-1)\cdot A</latex> is the additive inverse of <latex>A</latex></para>
+			<para align="center"><latex>A + (-1)\cdot A = \mathbf{0} = (-1)\cdot A + A</latex></para>
+		</part>
+	</statement>
+	
+	<proof>
+		<para>Addition of matrices is defined by adding the matrix entries in matching positions. Therefore the above identities for matrix sums follow directly from the corresponding identities for sums of real numbers. &ndash; The details follow.</para>
+		
+		<caption>
+			<partref>Associativity</partref>
+			Associativity
+		</caption>
+		<para>Suppose <latex>A</latex>, <latex>B</latex>, and <latex>C</latex> are three matrices of size <latex>(m,n)</latex>. Let us work with the entries in position <latex>(i,j)</latex> for some fixed <latex>1\leq i\leq m</latex> and <latex>1\leq j\leq n</latex>. Suppose</para>
+		
+		<ul>
+			<li><para><latex>A</latex> has the number <latex magnify="yes">a_{ij}</latex> in position <latex>(i,j)</latex></para></li>
+			<li><para><latex>B</latex> has the number <latex magnify="yes">b_{ij}</latex> in position <latex>(i,j)</latex></para></li>
+			<li><para><latex>C</latex> has the number <latex magnify="yes">c_{ij}</latex> in position <latex>(i,j)</latex></para></li>
+		</ul>
+		
+		<para>Now let’s look at the entry in position <latex>(i,j)</latex> of the two matrix sums in question:</para>
+		
+		<ul>
+			<li><para><latex>(A+B)+C</latex> has the number <latex magnify="yes">(a_{ij}+b_{ij})+c_{ij}</latex> in position <latex>(i,j)</latex></para></li>
+			<li><para><latex>A+(B+C)</latex> has the number <latex magnify="yes">a_{ij}+(b_{ij}+c_{ij})</latex> in position <latex>(i,j)</latex></para></li>
+		</ul>
+		
+		<para>These two numbers are equal because of the associativity law for the addition of real numbers. – This result applies to each position. Therefore the two matrix sums are equal, and the associativity property of matrix addition is proven.</para>
+		
+		
+		
+		
+		
+		<caption>
+			<partref>Commutativity</partref>
+			Commutativity
+		</caption>
+		
+		<para>Again let's look at the entry in position <latex>(i,j)</latex> of the two matrix sums in question.</para>
+		
+		<ul>
+			<li><para><latex>A+B</latex> has the number <latex magnify="yes">a_{ij}+b_{ij}</latex> in position <latex>(i,j)</latex></para></li>
+			<li><para><latex>B+A</latex> has the number <latex magnify="yes">b_{ij}+a_{ij}</latex> in position <latex>(i,j)</latex></para></li>
+		</ul>
+		
+		<para>These two numbers are equal because of the commutativity law for the addition of real numbers. – This result applies to each position. Therefore the two matrix sums are equal, and the associativity property of matrix addition is proven.</para>
+		
+		<para>The remaining properties of matrix addition can be proved with the same method. &ndash; Try it!</para>
+	</proof>
+</theorem>

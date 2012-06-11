@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearMapByBasis">
+	<caption>Linear map by values on a basis</caption>
+	<statement>
+		<para>Let <latex>V</latex> and <latex>W</latex> be subspaces of <latex>\RNr[k]</latex>. Given a basis <latex>\EuScript{A}=\Set{ \Vect{a}_1,\dots ,\Vect{a}_n}</latex> of <latex>V</latex> and arbitrary vectors <latex>\Vect{z}_1</latex>, ... , <latex>\Vect{z}_n</latex> in <latex>W</latex>, there is exactly one linear transformation <latex>L\from V\to W</latex> with
+			<index.glossary>
+				<term>linear transformation</term><term>by specifying values on a basis</term>
+				<info>
+					<para>Look up the proposition which says that a linear map <latex>f\from V\to W</latex> is given by specifying is values on a basis of <latex>V</latex>.</para>
+				</info>
+			</index.glossary>
+		</para>
+		<math.display>
+			<latex>L(\Vect{a}_1)=\Vect{z}_1\ ,\quad \dots \ ,\quad L(\Vect{a}_n)=\Vect{z}_n</latex>
+		</math.display>
+	</statement>
+	<proof>
+		<para>We begin by constructing a function <latex>L\from V\to W</latex> satisfying</para>
+		<math.display>
+			<latex>L(\Vect{a}_1)=\Vect{z}_1,\quad \dots ,\quad L(\Vect{a}_n)=\Vect{z}_n</latex>
+		</math.display>
+		<para>Indeed, we know that every vector <latex>\Vect{x}\in V</latex> has a unique expression as a linear combination</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>x_1 \Vect{a}_1 + \cdots + x_n \Vect{a}_n</right>
+		</computation>
+		<para>Therefore, setting <latex>L(\Vect{x}) := x_1 L(\Vect{a}_1) + \cdots + x_n L(\Vect{a}_n)</latex> is a function from <latex>V</latex> to <latex>W</latex>. We need to verify that <latex>L</latex> is linear:</para>
+		<para>Verification of the additivity property: With <latex>\Vect{x}=x_1 \Vect{a}_1+\cdots + x_n \Vect{a}_n</latex> and <latex>\Vect{y}=y_1 \Vect{a}_1+\cdots + y_n \Vect{a}_n</latex>, we find</para>
+		<computation>
+			<left>L(\Vect{x}+\Vect{y})</left>
+			<center>=</center>
+			<right>L\left( (x_1 \Vect{a}_1 +\cdots x_n \Vect{a}_n) + (y_1 \Vect{a}_1+\cdots + y_n \Vect{a}_n) \right)</right>
+			<left></left>
+			<center>=</center>
+			<right>L\left( (x_1+y_1)\Vect{a}_1 + \cdots + (x_n+y_n) \Vect{a}_n \right)</right>
+			<left></left>
+			<center>=</center>
+			<right>(x_1+y_1)L(\Vect{a}_1) + \cdots (x_n+y_n) L(\Vect{a}_n)</right>
+			<left></left>
+			<center>=</center>
+			<right>\left( x_1L(\Vect{a}_1) +\cdots + x_n L(\Vect{a}_n)\right)\ +\ \left(y_1L(\Vect{a}_1) + \cdots + y_nL(\Vect{a}_n)\right)</right>
+			<left></left>
+			<center>=</center>
+			<right>L(\Vect{x})\ +\ L(\Vect{y})</right>
+		</computation>
+		<para>Verification that <latex>L</latex> commutes with scalar multiplication. With <latex>\Vect{x} = x_1 \Vect{a}_1 + \cdots x_n \Vect{a}_n\in V</latex> and <latex>t\in \RNr</latex> we find</para>
+		<computation>
+			<left>L(t \Vect{x})</left>
+			<center>=</center>
+			<right>L\left( t(x_1 \Vect{a}_1 +\cdots + x_n \Vect{a}_n)\right)</right>
+			<left></left>
+			<center>=</center>
+			<right>L\left( (tx_1)\Vect{a}_1 + \cdots + (tx_n)\Vect{a}_n\right)</right>
+			<left></left>
+			<center>=</center>
+			<right>(tx_1)L(\Vect{a}_1) + \cdots + (tx_n)L(\Vect{a}_n)</right>
+			<left></left>
+			<center>=</center>
+			<right>t\left( x_1L(\Vect{a}_1) +\cdots + x_nL(\Vect{a}_n)\right)</right>
+			<left></left>
+			<center>=</center>
+			<right>t L(\Vect{x})</right>
+		</computation>
+		<para>It remains to show that the function <latex>L</latex> we just constructed is the only linear function <latex>V\to W</latex> with</para>
+		<math.display>
+			<latex>L(\Vect{a}_1)=\Vect{z}_1,\quad \dots ,\quad L(\Vect{a}_n)=\Vect{z}_n</latex>
+		</math.display>
+		<para>So suppose <latex>M\from V\to W</latex> is linear and satisfies</para>
+		<math.display>
+			<latex>M(\Vect{a}_1)=\Vect{z}_1,\quad \dots ,\quad M(\Vect{a}_n)=\Vect{z}_n</latex>
+		</math.display>
+		<para>We need to show that <latex>L=M</latex>. For an arbitrary vector <latex>\Vect{x}=x_1 \Vect{a}_1 + \cdots + x_n \Vect{a}_n</latex> we find</para>
+		<computation>
+			<left>L(\Vect{x})</left>
+			<center>=</center>
+			<right>x_1 L(\Vect{a}_1) + \cdots + x_n L(\Vect{a}_n)</right>
+			<left></left>
+			<center>=</center>
+			<right>x_1 \Vect{z}_1 + \cdots + x_n \Vect{z}_n</right>
+			<left></left>
+			<center>=</center>
+			<right>x_1 M(\Vect{a}_1) + \cdots + x_n M(\Vect{a}_n)</right>
+			<left></left>
+			<center>=</center>
+			<right>M(x_1 \Vect{a}_1 + \cdots + x_n \Vect{a}_n)</right>
+			<left></left>
+			<center>=</center>
+			<right>M(\Vect{x})</right>
+		</computation>
+		<para>This means that <latex>L=M</latex>, and the proof is complete.</para>
+	</proof>
+</theorem>

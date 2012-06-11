@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illustr_TranslationAlgebra">
+	<title>Algebra of Translations – Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>Concatenating translations of space corresponds to adding the representing vectors.</para>
+			<figure>
+				<img src="ims/TranslationConcatenation.gif"></img>
+			</figure>
+		</block>
+		<block>
+			<para>Shift an object into a different location using a translation vector <latex>\Vect{a}</latex>. Compare this with shifting the object twice as far in the same direction. The corresponding translation vector is <latex>2\Vect{a}</latex>.</para>
+			<figure>
+				<img src="ims/TranslationScalarMultiplication.gif"></img>
+			</figure>
+			<para>In general, shifting the object in the given direction  times as far as the original translation does has the translation vector <latex>t\cdot \Vect{a}</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

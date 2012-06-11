@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack
+  SYSTEM "Symbols.dtd">
+<example.pack xmlns="Compositor"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              id="Exa_CrossProductArea"
+              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Examples: Area of a Parallelogram Using Cross Products</title>
+	  <caption xmlns="">Examples: Parallelogram Area</caption>
+	
+	
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the area of the parallelogram in <math>
+                  <latex>\RNr[3]</latex>
+               </math> spanned by the vectors</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{x} = (1,1,-2)</latex>
+               </math>   and   <math>
+                  <latex>\Vect{y} = (-3,-1,1)</latex>
+               </math>
+            </para.body>
+         </para>
+		    </statement.example>
+		
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>We use the fact that <math>
+                        <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                     </math> is the area of the parallelogram spanned by <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math>. We find:</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-1,5,2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore the area of the given parallelogram is</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\abs{ (-1,5,2) }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt{ 30 }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	
+	
+	
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the area of the triangle in <math>
+                  <latex>\RNr[3]</latex>
+               </math> with vertices</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+               <math>
+                  <latex>(2,-1,3)</latex>
+               </math>,   <math>
+                  <latex>(1,2,-2)</latex>
+               </math>, and   <math>
+                  <latex>(-1,1,1)</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>The vectors joining <math>
+                        <latex>(1,2,-2)</latex>
+                     </math> to the points <math>
+                        <latex>(2,-1,3)</latex>
+                     </math> and <math>
+                        <latex>(-1,1,1)</latex>
+                     </math>, respectively, are given by</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2,-1,3) - (1,2,-2) = (1,-3,5)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{y}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-1,1,1) - (1,2,-2) = (-2,-1,3)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>The area of the given triangle is half the area of the parallelogram spanned by <math>
+                        <latex>\Vect{x}</latex>
+                     </math> and <math>
+                        <latex>\Vect{y}</latex>
+                     </math>. Therefore the area of the triangle is</para.body>
+               </para>
+			            <math.display>
+				              <latex>\frac{1}{2}\cdot \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \frac{1}{2}\cdot \abs{ (-4,-13,-7) } = \frac{1}{2}\cdot \sqrt{ 234 }</latex>
+			            </math.display>
+			
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	
+</example.pack>

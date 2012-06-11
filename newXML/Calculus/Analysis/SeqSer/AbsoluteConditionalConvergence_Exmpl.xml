@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_AbsoluteConditionalConvergence"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <title>Absolute vs. Conditional Convergence: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Show that the series</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sum_{n=0}^{\infty} \dfrac{\cos n}{ 2^n }</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>converges absolutely.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>First we observe that, for each <math>
+                        <latex>n\geq 0</latex>
+                     </math>,</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>0</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>\leq</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{ \dfrac{\cos n }{ 2^n } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \Abs{\cos n} }{ \Abs{ 2^n } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>\leq </text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{1}{2^n}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Thus the series <math>
+                        <latex>\sum_{n=0}^{\infty} \Abs{ \cos n / 2^n }</latex>
+                     </math> of absolute values
+				<subordinate>
+                        <hot>converges to a number</hot>
+                        <crossref>
+                           <theorem.ref theoremID="Thm_SeriesComparisonTest"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Look up the comparison test for series which implies this.</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>
+				less than or 
+				<subordinate>
+                        <hot>equal</hot>
+                        <crossref>
+                           <example.pack.ref examplePackID="Exa_GeometricSeries"/>
+                           <info>
+						
+						                        <para>
+                                 <para.body>Here we apply the formula for the limit of a geometric series.</para.body>
+                              </para>
+					                      </info>
+                        </crossref>
+                     </subordinate>
+				to</para.body>
+               </para>
+			            <math.display>
+				              <latex>\sum_{n=0}^{\infty} \dfrac{1}{2^n}\ =\ 2</latex>
+			            </math.display>
+			            <para>
+                  <para.body>We conclude further that the given series converges to a number as well.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Show that the series below converges conditionally.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sum_{n=2}^{\infty}\ \dfrac{(-1)^n}{\ln n}</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We need to show two things:</para.body>
+               </para>
+			            <ol>
+				              <li>
+                     <para>
+                        <para.body>The given series converges to a number</para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>The associated series of absolute values satisfies.</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>\sum_{n=1}^{\infty} \Abs{ \dfrac{ (-1)^n }{ \ln n } } = +\infty</latex>
+					                </math.display>
+				              </li>
+			            </ol>
+			            <para>
+                  <para.body>
+                     <emphasis>Convergence of the given series to a number</emphasis>   This follows with the alternating series test, given that <math>
+                        <latex>\lim_{n\to \infty} \ln n = +\infty</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>
+                     <emphasis>Checking that</emphasis> 
+                     <math>
+                        <latex>\sum_{n=1}^{\infty} \Abs{ (-1)^n/\ln n } = +\infty</latex>
+                     </math>:   This follows by comparison with the harmonic series: For <math>
+                        <latex>n\geq 2</latex>
+                     </math>,</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Abs{ \dfrac{ (-1)^n }{ \ln n } } = \dfrac{1}{\ln n}\ \leq\ \dfrac{1}{n}</latex>
+			            </math.display>
+			            <para>
+                  <para.body>and, therefore,</para.body>
+               </para>
+			            <math.display>
+				              <latex>+\infty = \sum_{n=0}^{\infty} \dfrac{1}{n}\ \leq\ \sum_{n=0}^{\infty} \Abs{ \dfrac{(-1)^n}{ \ln n } }</latex>
+			            </math.display>
+			            <para>
+                  <para.body>as required.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

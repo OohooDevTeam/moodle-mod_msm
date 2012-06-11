@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_LinearEqsRank"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+	  <title>The rank of a system of linear equations</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the rank of the system of linear equations</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{rcrcrcr}
+x &amp; + &amp; 3y &amp; &amp; &amp; = &amp; 4 \\
+  &amp;   &amp;    &amp; &amp; z &amp; = &amp; -1
+\end{array}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The coefficient matrix of this system of linear equations is</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rrr|r}
+{\color{red} 1} &amp; 3 &amp; 0 &amp; 4 \\
+0 &amp; 0 &amp; {\color{red} 1} &amp; -1
+\end{array}
+					
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>The non-augmented coefficient matrix has two leading 1’s. Therefore the rank of this system of linear equations is <math>
+                        <latex>2</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Suppose a system of linear equations has a coefficient matrix which row reduces to </para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{rrrrrr|r}
+1 &amp; 3 &amp; 0 &amp; 0 &amp; 7 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 5 &amp; 0 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 4 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 5
+\end{array}
+					
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>Find the rank of the system.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Indeed, the given matrix is already in RREF. Let us identify its leading 1’s:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rrrrrr|r}
+{\color{red} 1} &amp; 3 &amp; 0 &amp; 0 &amp; 7 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; {\color{red} 1} &amp; 0 &amp; 5 &amp; 0 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; {\color{red} 1} &amp; 1 &amp; 0 &amp; 4 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; {\color{red} 1} &amp; 5
+\end{array}
+					
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>So the non-augmented part of the row reduced coefficient matrix contains 4 leading 1’s. Therefore the rank of this system of linear equations is 4.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

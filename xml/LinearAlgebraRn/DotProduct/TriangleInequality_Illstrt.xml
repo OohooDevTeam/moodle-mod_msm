@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illstr_TriangleInequality">
+	<title>Triangle Inequality – Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>Given vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>, the triangle inequality <latex>|\Vect{x} + \Vect{y}| \leq |\Vect{x}| + |\Vect{y}|</latex> deserves its name: It asserts that in a triangle any one edge is at most as long as the sum of the other two.</para>
+			
+			<para align="center"><img src="ims/TriangleInequality.png" width="480"/></para>
+		</block>
+	</sub.page.body>
+</sub.page>

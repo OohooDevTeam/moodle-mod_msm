@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="EigenvectorSpace_Sub">
+	<title>Eigenspace - Comments</title>
+	<sub.page.body>
+		<block>
+			<para><b>Subspace property of an eigenspace</b> &nbsp; Given an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>, the eigenspace <latex>E_k</latex> of <latex>\Mtrx{A}</latex> with eigenvalue <latex>\lambda_k</latex> is a subvector space of <latex>\RNr[n]</latex>. This is so because <latex>E_k</latex> is the null space of the matrix <latex>(\Mtrx{A} - \IdMtrx[n])</latex>, hence is the orthogonal complement of the row vectors of <latex>(\Mtrx{A} - \IdMtrx[n])</latex>, and this is a subspace of <latex>\RNr[n]</latex>.</para>
+		</block>
+		
+		<block>
+			<para><b>Algebraic vs. geometric multiplicity</b> &nbsp; One can show that the algebraic and geometric multiplicity of an eigenvalue are related by the inequality</para>
+			<math.display>
+				<latex>1 \leq \text{geometric multiplicity} \leq \text{algebraic multiplicity}</latex>
+			</math.display>
+		</block>
+	</sub.page.body>
+</sub.page>

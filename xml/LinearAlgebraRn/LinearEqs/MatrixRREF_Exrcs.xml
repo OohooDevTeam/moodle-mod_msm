@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MatrixRREF">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Matrices and RREF - Exercises</title>
+	
+	<exercise>
+		<problem>
+			<para>Which of the following matrices is an augmented coefficient matrix in RREF? If it is in RREF, determine the rank of the augmented coefficient matrix and the rank of the unaugmented coefficient matrix.</para>
+		</problem>
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{cccc|c}
+1 & 0 & 4 & 3 & 1 \\
+0 & 0 & 1 & 3 & 2
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This matrix is not in RREF</para>
+				</answer>
+				<solution>
+					<para>This matrix is not in RREF because the entry marked red sits above the leading <latex>1</latex> of the second row. Therefore this entry should be <latex>0</latex>.</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{cccc|c}
+1 & 0 & {\color{red} 4} & 3 & 1 \\
+0 & 0 & 1 & 3 & 2
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{cccc|c}
+1 & 4 & 0 & 3 & 1 \\
+0 & 0 & 1 & 3 & 2
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This matrix is in RREF, and</para>
+					<ul>
+						<li><para>The rank of the augmented coefficient matrix is <latex>R:=2</latex>.</para></li>
+						<li><para>The rank of the coefficient matrix is <latex>r:=2</latex>.</para></li>
+					</ul>
+				</answer>
+				<solution>
+					<para>The conditions required of a 
+						<subordinate>
+							<hot>matrix in RREF</hot>
+							<crossref>
+								<definition.ref definitionID="Def_RREF"/>
+								<para>Look up these conditions.</para>
+							</crossref>
+						</subordinate>
+						are satisfied. So the given matrix is in RREF.</para>
+					<para>The coefficient matrix and the augmented coefficient matrix have both two leading <latex>1</latex>. Therefore</para>
+					<ul>
+						<li><para>The rank of the augmented coefficient matrix is <latex>R:=2</latex>.</para></li>
+						<li><para>The rank of the coefficient matrix is <latex>r:=2</latex>.</para></li>
+					</ul>
+				</solution>	
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{cccccc|c}
+1 & 0 & 3 & 0 & 1 & 6 & 0 \\
+0 & 1 & 1 & 0 & 2 & 4 & 1 \\
+0 & 0 & 0 & 1 & 4 & 5 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This matrix is not in RREF.</para>
+				</answer>
+				<solution>
+					<para>The fourth row of this matrix has its leading <latex>1</latex> in the last column. All entries above or below it should be <latex>0</latex>. This is not the case. Therefore this matrix is not in RREF.</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{cccccc|c}
+1 & 0 & 3 & 0 & 1 & 6 & 0 \\
+0 & 1 & 1 & 0 & 2 & 4 & {\color{red} 1 } \\
+0 & 0 & 0 & 1 & 4 & 5 & {\color{red} 1 } \\
+0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{cccccc|c}
+1 & 0 & 3 & 0 & 1 & 6 & 0 \\
+0 & 1 & 1 & 0 & 2 & 4 & 0 \\
+0 & 0 & 0 & 1 & 4 & 5 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This matrix is in RREF.</para>
+					<ul>
+						<li><para>The rank of the augmented coefficient matrix is <latex>R:=4</latex></para></li>
+						<li><para>The rank of the coefficient matrix is <latex>r:=3</latex></para></li>
+					</ul>
+				</answer>
+				<solution>
+					<para>This matrix is in RREF. The augmented coefficient matrix has four leading <latex>1</latex>&rsquo;s, while the coefficient matrix has three leading <latex>1</latex>&rsquo;s. Therefore</para>
+					<ul>
+						<li><para>The rank of the augmented coefficient matrix is <latex>R:=4</latex></para></li>
+						<li><para>The rank of the coefficient matrix is <latex>r:=3</latex></para></li>
+					</ul>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{cccccc|c}
+1 & 0 & 3 & 0 & 2 & 6 & 1 \\
+0 & 1 & 1 & 0 & 0 & 9 & 3 \\
+0 & 0 & 0 & 1 & 4 & 5 & 6 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>This matrix is in RREF.</para>
+					<ul>
+						<li><para>The rank of the augmented coefficient matrix is <latex>R:=3</latex></para></li>
+						<li><para>The rank of the coefficient matrix is <latex>r:=3</latex></para></li>
+					</ul>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>From the system of linear equations below extract its augmented coefficient matrix, then transform this matrix into RREF and determine all solutions of the equations.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+						\begin{array}{rcrcrcrcr}
+2x & - & y & + & 3z & + & 4w & = & 9 \\
+x &  &  & - & 2z & + & 7w & = & 11 \\ 
+3x & - & 3y & + & z & + & 5w & = & 8 \\
+2x & + & y & + & 4z & + & 4w & = & 10 
+\end{array} 
+						]]>
+				</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<answer>
+				<para>The RREF of the augmented coefficient matrix associated to this system of linear equations is</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rrrr|r}
+1 & 0 & 0 & 0 & -1 \\
+0 & 1 & 0 & 0 & 0  \\
+0 & 0 & 1 & 0 & 1 \\
+0 & 0 & 0 & 1 & 2
+\end{array} 
+						]]>
+					</latex>
+				</math.display>
+				<para>Therefore, this system has exactly one solution, namely</para>
+				<computation>
+					<left>(x,y,z,w)</left>
+					<center>=</center>
+					<right>(-1 , 0 , 1, 2)</right>
+				</computation>
+			</answer>
+			<solution>
+				<para>The augmented coefficient matrix of this system of linear equations is</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rrrr|r}
+2 & -1 & 3 & 4 & 9 \\
+1 & 0 & -2 & 7 & 11 \\
+3 & -3 & 1 & 5 & 8 \\
+2 & 1 & 4 & 4 & 10
+\end{array} 
+						]]>
+					</latex>
+				</math.display>
+				<para>We 
+					<subordinate>
+						<hot>can transform</hot>
+						<info>
+							<caption>Explanation</caption>
+							<para>Remember, there are usually many transformation paths along which we can transform a given matrix into RREF. However, for all possible choices of transformation paths, the eventual RREF is always the same.</para>
+						</info>
+					</subordinate>
+					this matrix into RREF using the following steps.</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rrrr|rr}
+2 & -1 & 3 & 4 & 9 & {\color{red} R_1 \leftrightarrow R_2} \\
+1 & 0 & -2 & 7 & 11 & {\color{red} R_1 \leftrightarrow R_2}\\
+3 & -3 & 1 & 5 & 8 & \\
+2 & 1 & 4 & 4 & 10 & \\ \hline
+%
+1 & 0 & -2 & 7 & 11 & \\
+2 & -1 & 3 & 4 & 9 & {\color{red} -2\cdot R_2} \\
+3 & -3 & 1 & 5 & 8 & {\color{red} -3\cdot R_2} \\
+2 & 1 & 4 & 4 & 10 & {\color{red} -2\cdot R_2} \\ \hline
+%
+1 & 0 & -2 & 7 & 11 & \\
+0 & -1 & 7 & -10 & -13 & {\color{red} \times (-1) } \\
+0 & -3 & 7 & -16 & -25 & \\
+0 & -1 & 8 & -10 & -12 & \\ \hline
+%
+1 & 0 & -2 & 7 & 11 & \\
+0 & 1 & -7 & 10 & 13 & \\
+0 & -3 & 7 & -16 & -25 & {\color{red} +3\cdot R_2 } \\
+0 & -1 & 8 & -10 & -12 & {\color{red} -1\cdot R_2 } \\ \hline
+%
+1 & 0 & -2 & 7 & 11 & \\
+0 & 1 & -7 & 10 & 13 & \\
+0 & 0 & -14 & 14 & 14 & {\color{red} \times(-1/14) } \\
+0 & 0 & 15 & -20 & -25 & {\color{red} \times(1/5) } \\ \hline
+%
+1 & 0 & -2 & 7 & 11 & {\color{red} +2\cdot R_3 } \\
+0 & 1 & -7 & 10 & 13 & {\color{red} +7\cdot R_3 } \\
+0 & 0 & 1 & -1 & -1 &  \\
+0 & 0 & 3 & -4 & -5 & {\color{red} -3\cdot R_3 } \\ \hline
+%
+1 & 0 & 0 & 5 & 9 & \\
+0 & 1 & 0 & 3 & 6 & \\
+0 & 0 & 1 & -1 & -1 & \\
+0 & 0 & 0 & -1 & -2 & {\color{red} \times(-1) } \\ \hline
+%
+1 & 0 & 0 & 5 & 9 & {\color{red} -5\cdot R_4 } \\
+0 & 1 & 0 & 3 & 6 & {\color{red} -3\cdot R_4 } \\
+0 & 0 & 1 & -1 & -1 & {\color{red} +1\cdot R_4 } \\
+0 & 0 & 0 & 1 & 2 &  \\ \hline
+%
+1 & 0 & 0 & 0 & -1 & \\
+0 & 1 & 0 & 0 & 0 & \\
+0 & 0 & 1 & 0 & 1 & \\
+0 & 0 & 0 & 1 & 2 &
+\end{array} 
+						]]>
+					</latex>
+				</math.display>
+				<para>This final matrix is in RREF.</para>
+				<ul>
+					<li><para>The augmented coefficient matrix has rank <latex>R:=4</latex></para></li>
+					<li><para>The augmented matrix has rank <latex>r:=4</latex></para></li>
+				</ul>
+				<para>The system of linear equations corresponding to the matrix has a unique solution, namely</para>
+				<math.display>
+					<latex>x=-1,\quad y=0,\quad z=1,\quad w=2</latex>
+				</math.display>
+				<para>In other words, the system has exactly one solution vector, namely</para>
+				<math.display>
+					<latex>(-1,0,1,2)</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+</exercise.pack>

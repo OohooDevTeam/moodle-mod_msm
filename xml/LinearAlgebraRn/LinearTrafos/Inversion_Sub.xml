@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_Inversion">
+	<title>The Inversion Transformation</title>
+	<sub.page.body>
+		<block>
+			<para>The inversion transformation of <latex>\RNr[n]</latex> is given by</para>
+			<math.display>
+				<latex>T\from \RNr[n] \longrightarrow \RNr[n],\quad T(\Vect{x}) := (-1)\cdot\Vect{x}</latex>
+			</math.display>
+			
+			<para>Why is it called &lsquo;inversion transformation&rsquo;? &ndash; <latex>T</latex> is called inversion transformation because it inverts each vector. The effect of this transformation on objects is also described as &lsquo;reflection about the origin&rsquo;.</para>
+			
+			<figure>
+				<img src="ims/Inversion.png"></img><!-- svg available -->
+				<caption>The inversion of <latex>\RNr[2]</latex></caption>
+			</figure>
+		</block>
+		
+		<block>
+			<para>To find the matrix representing <latex>T</latex>, we note that <latex>T</latex> transforms the basic vector <latex>\StdBss{j}</latex> into
+				<index.glossary>
+					<term>matrix</term><term>of a contraction</term>
+					<info><para>The matrix representing the contraction of <latex>\RNr[n]</latex> with factor <latex><![CDATA[ 0 < s < 1 ]]></latex> is represented by the matrix <latex>s\cdot \IdMtrx[n]</latex>; i.e. <latex>s</latex> times the identity matrix of size <latex>(n,n)</latex>.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>contraction</term><term>matrix</term>
+					<info><para>The matrix representing the contraction of <latex>\RNr[n]</latex> with factor <latex><![CDATA[ 0 < s < 1 ]]></latex> is represented by the matrix <latex>s\cdot \IdMtrx[n]</latex>; i.e. <latex>s</latex> times the identity matrix of size <latex>(n,n)</latex>.</para></info>
+				</index.glossary>
+			</para>
+			
+			<math.display>
+				<latex>T(\StdBss{j}) = - \StdBss{j} = (0,\dots ,0,-1,0,\dots ,0)</latex>
+			</math.display>
+			
+			<para>Therefore <latex>T</latex> is represented by the matrix of size <latex>(n,n)</latex></para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+s\cdot \IdMtrx[n] = 
+\left[
+\begin{array}{rrrr}
+-1 & 0 & \cdots & 0 \\
+0 & -1 &             & 0 \\
+\vdots & & \ddots & \vdots \\
+0 & 0 & \cdots & -1
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>For example, the inversion of <latex>\RNr[2]</latex> in the picture above is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+T\from \RNr[2] \longrightarrow \RNr[2],\qquad D(x,y) = (-x,-y) = 
+\left[
+\begin{array}{cc}
+-1 & 0 \\
+0 & -1
+\end{array}
+\right] \left[ \begin{array}{c} x \\ y \end{array} \right]
+					]]>
+				</latex>
+			</math.display>
+		</block>
+	</sub.page.body>
+</sub.page>

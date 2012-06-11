@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_MatrixTypes"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	  <title>Examples of Matrices</title>
+	  <caption xmlns="">Matrices</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Identify the type and the entries of the matrix</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					A = 
+					\left[
+					\begin{array}{rrrr}
+					2 &amp; 0 &amp; -10 &amp; 3 \\
+					1 &amp; 4 &amp; \pi &amp; 6
+					\end{array}
+					\right]
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+				This is a matrix with <math>
+                        <latex>2</latex>
+                     </math> rows and <math>
+                        <latex>4</latex>
+                     </math> columns. So <math>
+                        <latex>A</latex>
+                     </math> is of size <math>
+                        <latex>(2,4)</latex>
+                     </math>. Its entries are
+			</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rcrcrcrcrcrcrcr}
+a_{11} &amp; = &amp; 2 &amp; \quad &amp; a_{12} &amp; = &amp; 0 &amp; \quad &amp; a_{13} &amp; = &amp; -10 &amp; \quad &amp; a_{14} &amp; = &amp; 3 \\
+a_{21} &amp; = &amp; 1 &amp; \quad &amp; a_{22} &amp; = &amp; 4 &amp; \quad &amp; a_{23} &amp; = &amp; \pi &amp; \quad &amp; a_{24} &amp; = &amp; 6
+\end{array}
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Identify the type and the entries of the matrix</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+				
+				B = 
+				\left[
+				\begin{array}{ccc}
+				3 &amp; 0 &amp; x \\
+				4 &amp; 1+y &amp; 0 \\
+				x+y &amp; -1 &amp; 8
+				\end{array}
+				\right]
+				
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>
+				This matrix has <math>
+                        <latex>3</latex>
+                     </math> rows and <math>
+                        <latex>3</latex>
+                     </math> columns. So <math>
+                        <latex>B</latex>
+                     </math> is of type <math>
+                        <latex>(3,3)</latex>
+                     </math>. Some of its entries are variables. For example we find 
+			</para.body>
+               </para>
+			
+			            <ul>
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>b_{11} = 3</latex>
+                           </math>   and   <math>
+                              <latex>b_{13} = x</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+				
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>b_{22} = 1+y</latex>
+                           </math>   and   <math>
+                              <latex>b_{23} = 0</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+				
+				              <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>b_{31} = x+y</latex>
+                           </math>   and   <math>
+                              <latex>b_{32} = -1</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+			            </ul>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>	
+</showme.pack>

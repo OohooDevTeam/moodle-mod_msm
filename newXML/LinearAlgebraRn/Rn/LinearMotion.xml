@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_LinearMotion"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Linear Motion</title>
+      <plain.title>Linear Motion</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A particle moves linearly If it moves straight and with constant speed, and so we call its motion a  linear motion. Vectors are ideally suited to describe such motions. We just need to learn how to interpret the following definition:</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_LinearMotion">
+               <caption>Linear Motion</caption>
+               <def.body>
+                  <para>
+                     <para.body>The linear motion through <math>
+                           <latex>\mathbf{a}</latex>
+                        </math> with velocity vector <math>
+                           <latex>\mathbf{v}</latex>
+                        </math> is given by</para.body>
+                  </para>
+                  <para align="center">
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>\mathbf{l}(t)\ =\ \mathbf{a} + t\cdot \mathbf{v}</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>Read this as: ‘ell of <math>
+                                       <latex>t</latex>
+                                    </math> equals a plus t times v’</para.body>
+                              </para>
+                           </info>
+                        </subordinate>, with <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>t\in \RNr</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>Read this as: ‘t in R’, which means: <math>
+                                       <latex>t</latex>
+                                    </math> is a number in <math>
+                                       <latex>\RNr</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                     <index.glossary>
+                        <term>linear</term>
+                        <term>motion</term>
+                        <info>
+                           <para>
+                              <para.body>A motion of a particle whose location at time <math>
+                                    <latex>t</latex>
+                                 </math> has position vector <math>
+                                    <latex>\mathbf{l}(t)\ =\ \mathbf{a} + t\cdot \mathbf{v}</latex>
+                                 </math>. – Click to see to the definition.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>velocity vector</term>
+                        <info>
+                           <para>
+                              <para.body>Click to see the definition of the velocity vector of a linear motion.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <para>
+                     <para.body>The variable <math>
+                           <latex>t</latex>
+                        </math> is called the time parameter for the motion, and the above equation is the parametric equation for the given linear motion.</para.body>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>How does vector expression in the above definition describe a motion? We interpret the variable <math>
+                     <latex>t</latex>
+                  </math> as time and the vector <math>
+                     <latex>\mathbf{l}(t)</latex>
+                  </math> as the <subordinate>
+                     <hot>position vector</hot>
+                     <companion>
+                        <unit.ref unitId="LinearMotion_Explntn"/>
+                        <info>
+                           <para>
+                              <para.body>An explanation of the concept of a linear motion</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate> of a moving particle at time <math>
+                     <latex>t</latex>
+                  </math>. So, at time <math>
+                     <latex>t=0</latex>
+                  </math>, the particle is at <math>
+                     <latex>\mathbf{a}</latex>
+                  </math>; at time <math>
+                     <latex>t=1</latex>
+                  </math>, the particle is at <math>
+                     <latex>\mathbf{a} + \mathbf{v}</latex>
+                  </math>; at time <math>
+                     <latex>t=2</latex>
+                  </math>, the particle is at <math>
+                     <latex>\mathbf{a} + 2\cdot \mathbf{v}</latex>
+                  </math>, etc. In particular, during the time interval <math>
+                     <latex>[0,1]</latex>
+                  </math>, the particle has been displaced by the vector <math>
+                     <latex>\Vect{v}</latex>
+                  </math>. This is why we call <math>
+                     <latex>\mathbf{v}</latex>
+                  </math> the velocity vector of the motion.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <example.pack.ref examplePackID="LinearMotion_Exmpl"/>
+      <exercise.pack.ref exercisePackID="Exrcss_LinearMotion"/>
+      <exercise.pack.ref exercisePackID="Exrcss_LinearMotion1"/>
+   </studymaterials>
+</unit>

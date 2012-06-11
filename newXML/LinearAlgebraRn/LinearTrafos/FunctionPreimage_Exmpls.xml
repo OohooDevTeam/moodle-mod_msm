@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack
+  SYSTEM "Symbols.dtd">
+<example.pack xmlns="Compositor"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              id="Exa_FunctionPreimage"
+              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Examples of Preimage of a Function</title>
+	  <caption xmlns="">Preimage of a Function</caption>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the preimage of <math>
+                  <latex>y\in \RNr</latex>
+               </math> of the function</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>f\from \RNr[2] \longrightarrow \RNr,\qquad f(u,v) = u^2 +v^2</latex>
+			      </math.display>
+		    </statement.example>
+		
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>In this case we can use geometric reasoning to answer this problem: <math>
+                        <latex>f</latex>
+                     </math> sends a point <math>
+                        <latex>(u,v)</latex>
+                     </math> to the number <math>
+                        <latex>u^2+v^2</latex>
+                     </math>. This is the square of the distance of <math>
+                        <latex>(u,v)</latex>
+                     </math> from the origin. Therefore</para.body>
+               </para>
+			
+			            <ul>
+				              <li>
+                     <para>
+                        <para.body>The preimage of <math>
+                              <latex>y=0</latex>
+                           </math> in <math>
+                              <latex>\RNr</latex>
+                           </math> is the origin <math>
+                              <latex>(0,0)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>The preimage of <math>
+                              <latex> y&gt;0 </latex>
+                           </math> in <math>
+                              <latex>\RNr</latex>
+                           </math> is the circle in <math>
+                              <latex>\RNr[2]</latex>
+                           </math> centered at <math>
+                              <latex>(0,0)</latex>
+                           </math> of radius <math>
+                              <latex>\sqrt{y}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>The preimage of <math>
+                              <latex> y&lt; 0 </latex>
+                           </math> is empty; i.e. the equation <math>
+                              <latex>f(u,v)=y</latex>
+                           </math> has no solution if <math>
+                              <latex> y&lt;0 </latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+			            </ul>
+			
+			            <para align="center">
+                  <para.body>
+                     <media type="image" active="1" inline="0">
+                        <img src="ims/FunctionPreimage_SquareDistance.gif"/>
+                        <image.mapping>
+                           <area shape="circle" coords="154,154,74"/>
+					                      <info>
+						                        <para>
+                                 <para.body>This black circle has radius <math>
+                                       <latex>1</latex>
+                                    </math>. It forms the preimage of <math>
+                                       <latex>1</latex>
+                                    </math>, denoted <math>
+                                       <latex>f^{-1}(1)</latex>
+                                    </math>.</para.body>
+                              </para>
+					                      </info>
+				                       <area shape="poly"
+                                 coords="149,53,90,73,54,149,82,214,147,241,206,225,240,181,241,128,203,74,162,54,166,45,203,58,228,77,245,103,254,128,255,156,252,179,235,211,210,237,178,251,152,255,116,251,86,234,63,210,47,180,42,143,53,104,74,75,105,52,131,43,148,42"/>
+					                      <info>
+						                        <para>
+                                 <para.body>This purple circle has radius <math>
+                                       <latex>\sqrt{2}</latex>
+                                    </math>. It forms the preimage of <math>
+                                       <latex>2</latex>
+                                    </math>, denoted <math>
+                                       <latex>f^{-1}(2)</latex>
+                                    </math>.</para.body>
+                              </para>
+					                      </info>
+				                       <area shape="poly"
+                                 coords="149,29,119,33,83,50,59,72,42,101,33,140,35,176,44,202,66,228,88,247,124,261,168,262,215,246,243,215,260,186,265,151,263,125,255,98,234,69,204,45,164,31,166,19,203,31,225,42,244,59,261,82,273,105,278,133,279,158,275,184,264,210,245,235,217,258,186,273,154,277,117,275,88,263,58,241,38,215,22,172,22,131,32,96,48,68,82,40,115,23,150,19"/>
+					                      <info>
+						                        <para>
+                                 <para.body>This blue circle has radius <math>
+                                       <latex>\sqrt{3}</latex>
+                                    </math>. It forms the preimage of <math>
+                                       <latex>3</latex>
+                                    </math>, denoted <math>
+                                       <latex>f^{-1}(3)</latex>
+                                    </math>.</para.body>
+                              </para>
+					                      </info>
+				                       <area shape="poly"
+                                 coords="149,11,110,18,65,40,33,76,16,126,16,174,33,220,60,249,93,271,141,284,196,275,240,248,271,209,285,159,280,108,258,67,216,28,164,13,168,1,230,17,284,77,301,149,286,215,236,272,176,297,98,295,41,259,10,206,1,147,9,95,45,41,95,5,149,2"/>
+					                      <info>
+						                        <para>
+                                 <para.body>This yellow circle has radius <math>
+                                       <latex>2</latex>
+                                    </math>. It forms the preimage of <math>
+                                       <latex>4</latex>
+                                    </math>, denoted <math>
+                                       <latex>f^{-1}(4)</latex>
+                                    </math>.</para.body>
+                              </para>
+					                      </info>
+				                    </image.mapping>
+                     </media>
+			               </para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	
+	
+	
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the preimage of the number <math>
+                  <latex>k</latex>
+               </math> under the function </para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>f\from \RNr[2] \longrightarrow \RNr,\qquad f(x,y) = 2x + y</latex>
+			      </math.display>
+		    </statement.example>
+		
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>We need to solve the equation <math>
+                        <latex>2x+y = k</latex>
+                     </math>. This equation is linear. So we know that the solutions form a line in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>, which is perpendicular to the vector <math>
+                        <latex>\Vect{n} = (2,1)</latex>
+                     </math>.</para.body>
+               </para>
+			
+			
+				           <img src="ims/FunctionPreimage_Linear.gif"/>
+			
+			
+			            <para>
+                  <para.body>Thus we see that the preimage of a colored dot on the right is the line of the same color on the left. This implies that the function    transforms each of the colored lines on the left into the single point of the same color on the right.</para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	
+</example.pack>

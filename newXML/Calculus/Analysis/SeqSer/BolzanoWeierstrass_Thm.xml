@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_BolzanoWeierstrass"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Bolzano-Weierstraß Theorem</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
+         <para>
+            <para.body>The Bolzano-Weierstraß theorem was first proved by Bolzano in 1817 as a step toward a proof of the intermediate value theorem. About half a century later the theorem was rediscovered by Karl Weierstraß.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Every bounded sequence <math>
+               <latex>(x_n)</latex>
+            </math> in <math>
+               <latex>\RNr</latex>
+            </math> has a convergent subsequence.
+			</para.body>
+         <index.author>
+            <name>
+               <name>
+                  <first>Bernhard</first>
+                  <middle>Placidus, Johann, Nepomuk</middle>
+                  <last>Bolzano</last>
+               </name>
+            </name>
+            <info>
+               <para>
+                  <para.body>Appears here in connection with the Bolzano-Weierstraß theorem in <math>
+                        <latex>\RNr</latex>
+                     </math>.</para.body>
+               </para>
+            </info>
+         </index.author>
+         <index.author>
+            <name>
+               <name>
+                  <first>Karl</first>
+                  <last>Weierstraß</last>
+               </name>
+            </name>
+            <info>
+               <para>
+                  <para.body>Appears here in connection with the Bolzano-Weierstraß theorem in <math>
+                        <latex>\RNr</latex>
+                     </math>.</para.body>
+               </para>
+            </info>
+         </index.author>
+         <index.glossary>
+            <term>Bolzano-Weierstraß theorem</term>
+            <info>
+               <info.caption>
+                  <caption>Bolzano-Weierstraß theorem</caption>
+               </info.caption>
+               <para>
+                  <para.body>Every bounded sequence in <math>
+                        <latex>\RNr</latex>
+                     </math> has a convergent subsequence.</para.body>
+               </para>
+            </info>
+         </index.glossary>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We show that <math>
+                     <latex>(x_n)</latex>
+                  </math> has a monotone subsequence. This implies the claim by the theorem on <subordinate>
+                     <hot>monotone bounded convergence</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_MonotoneBoundedSequenceConverges"/>
+                     </crossref>
+                  </subordinate>. Let us say that <math>
+                     <latex>(x_n)</latex>
+                  </math> takes a dip a <math>
+                     <latex>n</latex>
+                  </math> if all <math>
+                     <latex> m&gt;n </latex>
+                  </math> satisfy <math>
+                     <latex>x_m\geq x_n</latex>
+                  </math>. We know distinguish 3 cases:</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <emphasis>Case 1:</emphasis>
+                  <math>
+                     <latex>(x_n)</latex>
+                  </math>
+                  <emphasis>takes no dip</emphasis>   Then <math>
+                     <latex>(x_n)</latex>
+                  </math> has a monotone decreasing subsequence for the following reason: Let <math>
+                     <latex>n_0:=0</latex>
+                  </math>. Then let <math>
+                     <latex>n_1\geq 1</latex>
+                  </math> be the least integer for which <math>
+                     <latex>x_{n_1}\leq x_{n_0}</latex>
+                  </math>. Then let <math>
+                     <latex>n_2\geq n_1+1</latex>
+                  </math> be the least integer for which <math>
+                     <latex>x_{n_2}\leq x_{n_1}</latex>
+                  </math>, etc. – These <math>
+                     <latex>n_k</latex>
+                  </math> exist because <math>
+                     <latex>(x_n)</latex>
+                  </math> takes no dip anywhere. By design <math>
+                     <latex>(x_{n_i})</latex>
+                  </math> is monotone decreasing. It is bounded below. So it converges.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <emphasis>Case 2</emphasis>
+                  <math>
+                     <latex>(x_n)</latex>
+                  </math>
+                  <emphasis>takes only finitely many dips</emphasis>   Let <math>
+                     <latex>K</latex>
+                  </math> be the largest index at which <math>
+                     <latex>(x_n)</latex>
+                  </math> takes a dip. Then the subsequence <math>
+                     <latex>(x_n | n\geq K+1)</latex>
+                  </math> takes no dip, hence has a monotone decreasing subsequence by Case 1.</para.body>
+            </para>
+            <para>
+               <para.body>
+                  <emphasis>Case 3</emphasis>
+                  <math>
+                     <latex>(x_n)</latex>
+                  </math>
+                  <emphasis>takes infinitely many dips</emphasis>   at numbers <math>
+                     <latex> n_0 &lt; n_1 &lt; \dots &lt; n_k &lt; \dots </latex>
+                  </math>. By definition, <math>
+                     <latex>x_{n_0}\leq x_{n_1}\leq \dots \leq x_{n_k}\leq \dots </latex>
+                  </math>. So <math>
+                     <latex>(x_{n_k})</latex>
+                  </math> is a monotone increasing subsequence. It is bounded above, hence converges.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

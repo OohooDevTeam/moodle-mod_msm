@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_MatrixInversion">
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_MatrixInverse"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>What is happening here? &ndash; We assume that the RREF of <latex>\Mtrx{A}</latex> is the identity matrix <latex>\IdMtrx[n]</latex>. Now, while we are applying row operations to <latex>\Mtrx{A}</latex> to transform it to RREF, we simultaneously start from <latex>\IdMtrx[n]</latex> and apply these exact same operations to it. The outcome is the <latex>\Mtrx{A}^{-1}</latex>.</para>
+			<para>See an example of how this works.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Given an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}=[a_{ij}]</latex>, suppose row reduction applied to <latex>\Mtrx{A}</latex> and <latex>\IdMtrx[n]</latex> simultaneously has the following outcome</para>
+		
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{ccc|ccc}
+a_{11} & \cdots & a_{1n} & 1 & \cdots & 0 \\
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & \cdots & a_{nn} & 0 & \cdots & 1 \\ \hline
+1 & \cdots & 0 & b_{11} & \cdots & b_{1n} \\
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+0 & \cdots & 1 & b_{n1} & \cdots & b_{nn}
+\end{array}
+				]]>
+			</latex>
+		</math.display>
+		
+		<para>Then <latex>\Mtrx{A}</latex> is invertible and</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{A}^{-1} = \Mtrx{B}\ :=\ 
+\left[
+\begin{array}{ccc}
+b_{11} & \cdots & b_{1n} \\
+\vdots & \ddots & \vdots \\
+b_{n1} & \cdots & b_{nn}
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>If the RREF of <latex>\Mtrx{A}</latex> is not <latex>\IdMtrx[n]</latex>, then <latex>\Mtrx{A}</latex> is not invertible.</para>
+	</statement>
+</theorem>

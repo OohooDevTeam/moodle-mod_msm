@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixTransposition-Symmetry"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Matrix Transposition: Exercises</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+            <para>
+               <para.body>Suppose <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is a matrix of size <math>
+                     <latex>(m,n)</latex>
+                  </math>.</para.body>
+            </para>
+         </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What does the notation <math>
+                        <latex>\Mtrx{A}^T</latex>
+                     </math> mean?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}^T</latex>
+                           </math> denotes the transpose of the matrix <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math>. The transpose results from turning the rows of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> into columns and vice versa.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the size of <math>
+                        <latex>\Mtrx{A}^T</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{A}^T</latex>
+                           </math> has size <math>
+                              <latex>(n,m)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is the product <math>
+                        <latex>\Mtrx{A}\cdot \Mtrx{A}^T</latex>
+                     </math> defined? – Explain!</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! - This product is defined.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Recall that the number of columns of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> must equal the number of rows of <math>
+                        <latex>\Mtrx{A}^T</latex>
+                     </math> for this product to be defined.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> has <math>
+                           <latex>n</latex>
+                        </math> columns and, therefore, <math>
+                           <latex>\Mtrx{A}^T</latex>
+                        </math> has <math>
+                           <latex>n</latex>
+                        </math> rows. Therefore, the product <math>
+                           <latex>\Mtrx{A}\Mtrx{A}^T</latex>
+                        </math> is defined.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is the product <math>
+                        <latex>\Mtrx{A}^T\cdot \Mtrx{A}</latex>
+                     </math> defined? – Explain!</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! - This product is defined.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Recall that the number of columns of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> must equal the number of rows of <math>
+                        <latex>\Mtrx{A}^T</latex>
+                     </math> for this product to be defined.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <math>
+                           <latex>\Mtrx{A}^T</latex>
+                        </math> has <math>
+                           <latex>m</latex>
+                        </math> columns and, therefore, <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> has <math>
+                           <latex>m</latex>
+                        </math> rows. Therefore, the product <math>
+                           <latex>\Mtrx{A}^T\Mtrx{A}</latex>
+                        </math> is defined.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given the matrices <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> and <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> below, answer the following questions:</para.body>
+            </para>
+			
+			         <math.display>
+				           <latex>
+					
+					A\ =\ 
+					\left[\begin{array}{rrrr}
+					1 &amp; 1 &amp; 0 &amp; 1 \\
+					1 &amp; 0 &amp; 1 &amp; 0 \\
+					0 &amp; 0 &amp; 0 &amp;  1 \\
+					1 &amp; 0 &amp; 1 &amp; 0
+					\end{array}\right] \qquad
+					B\ =\ 
+					\left[\begin{array}{rr}
+					9 &amp; -3 \\
+					5 &amp; -4 \\
+					2 &amp; 0 \\
+					-8 &amp; -3
+					\end{array}\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> a symmetric matrix?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>No! – <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is not symmetric.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The entries in positions <math>
+                           <latex>(2,3)</latex>
+                        </math> and <math>
+                           <latex>(3,2)</latex>
+                        </math> should be equal. However, these entries are <math>
+                           <latex>1</latex>
+                        </math> and <math>
+                           <latex>0</latex>
+                        </math>, respectively. So <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is not symmetric.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> symmetric?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{B}</latex>
+                           </math> is not symmetric.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A symmetric matrix is always square shaped. However, <math>
+                           <latex>B</latex>
+                        </math> is not square shaped. So it cannot be symmetric.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find   <math>
+                        <latex>(2\Mtrx{A}\Mtrx{B})^T</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+							(2\Mtrx{A}\Mtrx{B})^T\ =\ 
+							\left[\begin{array}{rrrr}
+							12 &amp; 22 &amp; -16 &amp; 22 \\
+							-20 &amp; -6 &amp; -6 &amp; -6
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2\Mtrx{A}\Mtrx{B})^T</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2\cdot \Mtrx{B}^T \Mtrx{A}^T
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							2\cdot
+							\left[\begin{array}{rr}
+							9 &amp; -3 \\
+							5 &amp; -4 \\
+							2 &amp; 0 \\
+							-8 &amp; -3
+							\end{array}\right]^T \cdot
+							\left[\begin{array}{rrrr}
+							1 &amp; 1 &amp; 0 &amp; 1 \\
+							1 &amp; 0 &amp; 1 &amp; 0 \\
+							0 &amp; 0 &amp; 0 &amp;  1 \\
+							1 &amp; 0 &amp; 1 &amp; 0
+							\end{array}\right]^T
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							2\cdot
+							\left[\begin{array}{rrrr}
+							9 &amp; 5 &amp; 2 &amp; -8 \\
+							-3 &amp; -4 &amp; 0 &amp; -3
+							\end{array}\right] \cdot
+							\left[\begin{array}{rrrr}
+							1 &amp; 1 &amp; 0 &amp; 1 \\
+							1 &amp; 0 &amp; 0 &amp; 0 \\
+							0 &amp; 1 &amp; 0 &amp; 1 \\ 
+							1 &amp; 0 &amp; 1 &amp; 0 
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrrr}
+							12 &amp; 22 &amp; -16 &amp; 22 \\
+							-20 &amp; -6 &amp; -6 &amp; -6
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_RREFExists">
+	<caption>Existence of Reduction to RREF</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_ReductionRREF"/>
+		<info><para>An example of reducing a system of linear equations to RREF.</para></info>
+	</associate>
+	
+	<statement>
+		<para>Every system of linear equations can be transformed into equivalent to one which is in RREF using the following three operations.</para>
+		
+		<ul>
+			<li><para>Interchanging of two equations in a system of linear equations</para></li>
+			<li><para>Multiplying an equation by a non-zero number</para></li>
+			<li><para>Adding any multiple of one equation to another</para></li>
+		</ul>
+		
+		<para>Moreover, the row reduced form of a system of linear equations is unique.</para>
+	</statement>
+	<!-- To do: Give a proof of this, or make a link one. -->
+</theorem>

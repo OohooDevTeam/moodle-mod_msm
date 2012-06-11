@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_InfSupRecognize">
+	<caption>Recognizing inf / sup</caption>
+	<associate Description="Remark">
+		<info>
+			<caption>Remark: Analogous Recognition Criterion for inf</caption>
+			<para>For <latex>A\subseteq\RNr</latex> and <latex>x\in \RNr</latex> the following are equivalent:</para>
+			<ol type="i">
+				<li><para><latex>x=\inf(A)</latex></para></li>
+				<li><para><latex>x</latex> is a lower bound of <latex>A</latex>, and for all <latex>t\in \RNr</latex> with <latex><![CDATA[ x>t ]]></latex>, <latex>t</latex> is not a lower bound of <latex>A</latex>.</para></li>
+				<li><para><latex>x</latex> is a lower bound of <latex>A</latex>, and for all <latex><![CDATA[ \varepsilon > 0 ]]></latex> there exists <latex>a\in A</latex> with <latex><![CDATA[ a < x+\varepsilon ]]></latex>.</para></li>
+			</ol>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>For <latex>A\subseteq\RNr</latex> and <latex>x\in \RNr</latex> the following are equivalent:</para>
+		<part partid="xEquSup" counter="1" equivalence.mark="1"><para><latex>x=\sup(A)</latex></para></part>
+		<part partid="LXNotUpperBound" counter="2" equivalence.mark="1"><para><latex>x</latex> is an upper bound of <latex>A</latex>, and for all <latex>t\in \RNr</latex> with <latex><![CDATA[ t<x ]]></latex>, <latex>t</latex> is not an upper bound of <latex>A</latex>.</para></part>
+		<part partid="EpsilonCrit" counter="3" equivalence.mark="1"><para><latex>x</latex> is an upper bound of <latex>A</latex>, and for all <latex><![CDATA[ \varepsilon > 0 ]]></latex> there exists <latex>a\in A</latex> with <latex><![CDATA[ x-\varepsilon < a ]]></latex>.</para></part>
+	</statement>
+	<proof>
+		<caption><partref>xEquSup</partref> <latex>\implies</latex> ii.</caption>
+		<para>Suppose there is a number <latex>t\in \RNr</latex> with <latex><![CDATA[ A < t < x ]]></latex>. Well, then <latex>t</latex> is an upper bound of <latex>A</latex> which is less than the least upper bound <latex>x</latex> of <latex>A</latex>. This contradicts the defining property of <latex>x</latex> as <latex>\sup(A)</latex>. Therefore no such <latex>t</latex> exists.</para>
+		
+		<caption><partref>LXNotUpperBound</partref> <latex>\implies</latex> iii.</caption>
+		<para>It only remains to show that, given <latex><![CDATA[ \varepsilon > 0 ]]></latex> we need to establish the existence of <latex>a\in A</latex> with <latex><![CDATA[ x- \varepsilon < a ]]></latex>. But we know that <latex><![CDATA[ x-\varepsilon < x ]]></latex> is not an upper bound of <latex>A</latex> and, hence, there exists <latex>a\in A</latex> with <latex><![CDATA[ x-\varepsilon < a ]]></latex>.</para>
+		
+		<caption><partref>EpsilonCrit</partref> <latex>\implies i.</latex></caption>
+		<para>By assumption, <latex><![CDATA[ A<x ]]></latex>. So it remains to show that, whenever <latex><![CDATA[ A< u ]]></latex>, then <latex><![CDATA[ x<u ]]></latex>. We know that, for every <latex><![CDATA[ \varepsilon >0 ]]></latex>, there is <latex>a(\varepsilon)</latex> such that <latex><![CDATA[ x-\varepsilon < a(\varepsilon) \leq u ]]></latex>. Therefore</para>
+		<math.display>
+			<latex><![CDATA[ \OOIntrvl{-\infty}{x} = \Set{ x-\varepsilon \st \varepsilon>0 } \leq u]]></latex>
+		</math.display>
+		<para>But this means</para>
+		<math.display>
+			<latex>u\in (\StDffrnc{\RNr}{\OOIntrvl{-\infty}{x}}) = \COIntrvl{x}{+\infty}</latex>
+		</math.display>
+		<para>and so <latex>x\leq u</latex>. In other words, <latex>x</latex> is the least upper bound of <latex>A</latex>, and this means: <latex>x=\sup(A)</latex>.</para>
+		
+		<para>The proof of the lemma is complete.</para>
+	</proof>
+</theorem>

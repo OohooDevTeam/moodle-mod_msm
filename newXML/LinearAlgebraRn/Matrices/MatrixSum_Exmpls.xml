@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_MatrixAddition"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Examples of Matrix Addition</title>
+	  <caption xmlns="">Matrix Addition</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The sum of the two matrices</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					{\color{blue}A}\ =\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} &amp; {\color{blue}3} \\
+					{\color{blue}1} &amp; {\color{blue}4} \\
+					{\color{blue}6} &amp; {\color{blue}4}
+					\end{array}\right] \qquad \text{and}\qquad
+					{\color{red}B}\ =\ 
+					\left[\begin{array}{cc}
+					{\color{red}-3} &amp; {\color{red}-3} \\
+					{\color{red}1} &amp; {\color{red}2} \\
+					{\color{red}6} &amp; {\color{red}1}
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>is defined because both matrices are of the same size <math>
+                  <latex>(3,2)</latex>
+               </math>. Their sum is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					{\color{blue}A} + {\color{red}B}\ =\ 
+					\left[\begin{array}{cc}
+					{\color{blue}7} - {\color{red}3} &amp; {\color{blue}3} -{\color{red}3} \\
+					{\color{blue}1} + {\color{red}1} &amp; {\color{blue}4} +{\color{red}2} \\
+					{\color{blue}6} + {\color{red}6} &amp; {\color{blue}4} + {\color{red}1}
+					\end{array}\right] \ =\ 
+					\left[\begin{array}{cc}
+					4 &amp; 0 \\
+					2 &amp; 6 \\
+					12 &amp; 5
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In general, the sum of two matrices of size <math>
+                  <latex>(m,n)</latex>
+               </math>
+            </para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					{\color{blue}A}\ =\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}a_{11}} &amp; \cdots &amp; {\color{blue}a_{1n}} \\
+					\vdots &amp; \ddots &amp; \vdots \\
+					{\color{blue}a_{m1}} &amp; \cdots &amp; {\color{blue}a_{mn}}
+					\end{array}\right]\qquad \text{and}\qquad
+					{\color{red}B}\ =\ 
+					\left[\begin{array}{ccc}
+					{\color{red}b_{11}} &amp; \cdots &amp; {\color{red}b_{1n}} \\
+					\vdots &amp; \ddots &amp; \vdots \\
+					{\color{red}b_{m1}} &amp; \cdots &amp; {\color{red}b_{mn}}
+					\end{array}\right]
+					
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+					\aligned
+					{\color{blue}A}\ +\ {\color{red}B}\ &amp;=\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}a_{11}} &amp; \cdots &amp; {\color{blue}a_{1n}} \\
+					\vdots &amp; \ddots &amp; \vdots \\
+					{\color{blue}a_{m1}} &amp; \cdots &amp; {\color{blue}a_{mn}}
+					\end{array}\right]\ +\
+					\left[\begin{array}{ccc}
+					{\color{red}b_{11}} &amp; \cdots &amp; {\color{red}b_{1n}} \\
+					\vdots &amp; \ddots &amp; \vdots \\
+					{\color{red}b_{m1}} &amp; \cdots &amp; {\color{red}b_{mn}}
+					\end{array}\right] \\
+					&amp;=\ 
+					\left[\begin{array}{ccc}
+					{\color{blue}a_{11}} + {\color{red}b_{11}} &amp; \cdots &amp; {\color{blue}a_{1n}} + {\color{red}b_{1n}} \\
+					\vdots &amp; \ddots &amp; \vdots \\
+					{\color{blue}a_{m1}} + {\color{red}b_{m1}} &amp; \cdots &amp; {\color{blue}a_{mn}} + {\color{red}b_{mn}}
+					\end{array}\right]
+					\endaligned
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+</showme.pack>

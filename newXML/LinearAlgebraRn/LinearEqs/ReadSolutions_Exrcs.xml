@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_ReadSolutions"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Reading off Solutions - Exercises</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Each of the matrices below is the RREF of the augmented coefficient matrix of a system of linear equations. Determine the rank of the augmented and the unaugmented coefficient matrix, then say how many solutions the associated system of linear equations has. If it has solutions, find a distinguished solution, and describe all solutions.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rrr|r}
+1 &amp; 0 &amp; 1 &amp; 2 \\
+0 &amp; 1 &amp; 3 &amp; 6 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The ranks are <math>
+                              <latex>R=r=2</latex>
+                           </math>. A particular solution is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{d}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(2,6,0)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+					                <para>
+                        <para.body>An arbitrary solution is of the form</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{x}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(2,6,0) + z\cdot (-1,-3,1)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <math.display>
+						               <latex>
+							
+\begin{array}{rrr|r}
+1 &amp; 0 &amp; {\color{red} 1} &amp; {\color{blue} 2} \\
+0 &amp; 1 &amp; {\color{red} 3} &amp; {\color{blue} 6} \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+						
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Both the augmented and the unaugmented coefficient matrix have two leading <math>
+                           <latex>1</latex>
+                        </math>’s. Therefore,</para.body>
+                  </para>
+					             <ul>
+						               <li>
+                        <para>
+                           <para.body>The rank of the augmented coefficient matrix is <math>
+                                 <latex>R=2</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>The rank of the unaugmented coefficient matrix is <math>
+                                 <latex>r=2</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+					             </ul>
+					             <para>
+                     <para.body>As <math>
+                           <latex>r=R</latex>
+                        </math>, the system is consistent. It has exactly one free variable in position <math>
+                           <latex>3</latex>
+                        </math>. Therefore the system has infinitely many solutions. We obtain a distinguished solution</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{d}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,6,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>by inserting the entries of the augmentation column into those positions of a 3D-vector in which the coefficient matrix has a leading <math>
+                           <latex>1</latex>
+                        </math>. To this distinguished solution we may add any multiple of</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{b}:=\Vect{b}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>({\color{red} -1},{\color{red} -3},1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>obtained by</para.body>
+                  </para>
+					             <ol>
+						               <li>
+							                 <para>
+                           <para.body>inserting a <math>
+                                 <latex>1</latex>
+                              </math> into the position of the free variable, and</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>inserting the negative of the RREF-column without a leading <math>
+                                 <latex>1</latex>
+                              </math> into the positions in which the RREF has a leading <math>
+                                 <latex>1</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+					             </ol>
+					             <para>
+                     <para.body>Therefore, an arbitrary solution of the given system of linear equations is a vector of the form</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,6,0) + z\cdot (-1,-3,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>with <math>
+                           <latex>z</latex>
+                        </math> arbitrary in <math>
+                           <latex>\RNr</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rrrr|r}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>This matrix has ranks <math>
+                              <latex>R=3</latex>
+                           </math> and <math>
+                              <latex>r=2</latex>
+                           </math>. The associated system of linear equations has no solutions.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The augmented matrix has a leading <math>
+                           <latex>1</latex>
+                        </math> in the augmentation column. Thereforer the associated system of linear equations is inconsistent, hence has no solution.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rrrrr|r}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 2 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; -3
+\end{array}
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>This matrix has ranks <math>
+                              <latex>R=r=3</latex>
+                           </math>. The associated system of linear equations has infinitely many solutions.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Does the matrix have a leading <math>
+                        <latex>1</latex>
+                     </math> in its augmentation column?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>The matrix has <math>
+                        <latex>3</latex>
+                     </math> leading <math>
+                        <latex>1</latex>
+                     </math>’s, and they all lie in the non-augmented part. – What do you conclude?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>The matrix has <math>
+                        <latex>R=r=3</latex>
+                     </math>. So the associated system of linear equations is consistent and has <math>
+                        <latex>2</latex>
+                     </math> free variables.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <math.display>
+						               <latex>
+							
+\begin{array}{rrrrr|r}
+{\color{green} 0} &amp; 1 &amp; {\color{red} 0} &amp; 0 &amp; 0 &amp; {\color{blue} 0} \\
+{\color{green} 0} &amp; 0 &amp; {\color{red} 0} &amp; 1 &amp; 0 &amp; {\color{blue} 2} \\
+{\color{green} 0} &amp; 0 &amp; {\color{red} 0} &amp; 0 &amp; 1 &amp; {\color{blue} -3}
+\end{array}
+						
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Both the augmented and the unaugmented RREF-matrix have <math>
+                           <latex>3</latex>
+                        </math> leading <math>
+                           <latex>1</latex>
+                        </math>’s. Therefore,</para.body>
+                  </para>
+					             <ul>
+						               <li>
+							                 <para>
+                           <para.body>The rank of the augmented matrix is <math>
+                                 <latex>R=3</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>The rank of the unaugmented matrix is <math>
+                                 <latex>r=3</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+					             </ul>
+					             <para>
+                     <para.body>As <math>
+                           <latex>r=R</latex>
+                        </math>, the associated system of linear equations is consistent. It has <math>
+                           <latex>2</latex>
+                        </math> free variables in positions <math>
+                           <latex>1</latex>
+                        </math> and <math>
+                           <latex>3</latex>
+                        </math>. Therefore the system has infinitely many solutions. We obtain a distinguished solution</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{d}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,{\color{blue} 0},0,{\color{blue} 2},{\color{blue} -3})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>by inserting the entries of the augmentation column into those positions of a 5D-vector in which the coefficient matrix has a leading <math>
+                           <latex>1</latex>
+                        </math>. To this distinguished solution we may add any multiples of</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{b}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,{\color{green} -0},0,{\color{green} -0},{\color{green} -0})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{b}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,{\color{red} -0},1,{\color{red} -0},{\color{red} -0})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore, an arbitrary solution of the associated system of linear equations is a 5D-vector of the form</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{d} + s\cdot \Vect{b}_1 + t\cdot \Vect{b}_2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>with <math>
+                           <latex>s,t</latex>
+                        </math> arbitrary in <math>
+                           <latex>\RNr</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rrr|r}
+1 &amp; 0 &amp; 0 &amp; 6 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; -2
+\end{array}
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>This matrix has ranks <math>
+                              <latex>R=r=3</latex>
+                           </math>. The associated system of linear equations has exactly one solution, namely</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(x,y,z)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(6,0,-2)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rrrrrr|r}
+0 &amp; 1 &amp; 0 &amp; -3 &amp; 0 &amp;  2 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp;  4 &amp; 0 &amp; -1 &amp; 3 \\
+0 &amp; 0 &amp; 0 &amp;  0 &amp; 1 &amp; -2 &amp; 5
+\end{array}
+						
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For which values of <math>
+                     <latex>r</latex>
+                  </math> does the system of linear equations below have no solution, exactly one solution, respectively infinitely many solutions?</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\begin{array}{rcrcrcr}
+2x &amp; - &amp; y &amp; + &amp; z &amp; = &amp; 1 \\
+x &amp; + &amp; 3y &amp; - &amp; 2z &amp; = &amp; 3 \\
+3x &amp; + &amp; 2y &amp; - &amp; z &amp; = &amp; r
+\end{array}
+						
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The system has no solution for <math>
+                           <latex>r\neq 4</latex>
+                        </math>. It has infinitely many solutions for <math>
+                           <latex>r=4</latex>
+                        </math>. Therefore, there is no value of <math>
+                           <latex>r</latex>
+                        </math> for which this system has exactly one solution.</para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We interchange the first and the second equation of the given system of linear equations and extract the augmented coefficient matrix.</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rrr|rl}
+1 &amp; 3 &amp; -2 &amp; 3 &amp; \\
+2 &amp; -1 &amp; 1 &amp; 1 &amp; {\color{blue} -2R_1} \\
+3 &amp; 2 &amp; -1 &amp; r &amp; {\color{blue} -3R_1}\\ \hline
+1 &amp; 3 &amp; -2 &amp; 3 &amp; \\
+0 &amp; -7 &amp; 5 &amp; -5 &amp; \\
+0 &amp; -7 &amp; 5 &amp; r-9 &amp;
+\end{array}
+						
+					</latex>
+				           </math.display>
+				           <para>
+                  <para.body>The two rows at the bottom correspond to the equations</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-7y + 5z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-5</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-7y + 5z</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>r-9</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>These two equations have a common solution exactly when</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>r-9</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-5</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>r</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>4</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Therefore,</para.body>
+               </para>
+				           <ul>
+					             <li>
+                     <para>
+                        <para.body>The system has no solution if <math>
+                              <latex>r\neq 4</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+					             <li>
+                     <para>
+                        <para.body>If <math>
+                              <latex>r=4</latex>
+                           </math>, the bottom row of the transformed system is redundant, and so the RREF of the system has the form</para.body>
+                     </para>
+						               <math.display>
+							                 <latex>
+								
+\begin{array}{rrrr}
+1 &amp; 0 &amp; * &amp; * \\
+0 &amp; 1 &amp; * &amp; * \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+						
+							</latex>
+						               </math.display>
+						               <para>
+                        <para.body>Therefore the system has infinitely many solutions in this case.</para.body>
+                     </para>
+					             </li>
+					             <li>
+                     <para>
+                        <para.body>There is no value of <math>
+                              <latex>r</latex>
+                           </math> for which the system has exactly one solution.</para.body>
+                     </para>
+                  </li>
+				           </ul>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+</exercise.pack>

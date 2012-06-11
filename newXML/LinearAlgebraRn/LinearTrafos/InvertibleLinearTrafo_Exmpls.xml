@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_InvertibleLinearTrafo"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Invertible Linear Transformation: Example</title>
+	  <caption xmlns="">Invertible Linear Trafo</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>There is a special collection of linear transformations, called invertible, whose effect on space can be reversed. Here is an example: A dilation <math>
+                  <latex>D\from \RNr[n]\to \RNr[n]</latex>
+               </math> by the factor <math>
+                  <latex> c &gt; 1 </latex>
+               </math> magnifies distances by the factor <math>
+                  <latex>c</latex>
+               </math>. The effect of such a dilation can be reversed by a contraction with factor <math>
+                  <latex>1/c</latex>
+               </math>.</para.body>
+         </para>
+			
+			      <para xmlns="">
+            <para.body>The picture below illustrates this situation for <math>
+                  <latex>D\from \RNr[2]\to \RNr[2]</latex>
+               </math> with magnification factor <math>
+                  <latex>c=3/2</latex>
+               </math>. Accordingly the <math>
+                  <latex>D</latex>
+               </math>-inverting contraction <math>
+                  <latex>C</latex>
+               </math> has contraction factor <math>
+                  <latex>2/3</latex>
+               </math>.</para.body>
+         </para>
+			
+			
+				     <img xmlns="" src="ims/DilateContract.png"/>
+			
+			
+			      <para xmlns="">
+            <para.body>Notice how <math>
+                  <latex>D</latex>
+               </math> and <math>
+                  <latex>C</latex>
+               </math> undo each other’s transformation effect:</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>D\Comp C</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\IdMap{\RNr[2]}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>C\Comp D</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\IdMap{\RNr[2]}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+			
+		    </statement.showme>
+	  </showme>
+</showme.pack>

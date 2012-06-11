@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_VectorsScalarMultiply">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Scalar Multiplication of Vectors: Exercises </title>
+	<caption>Scalar Multiplication of Vectors: Exercises</caption>
+	
+	<exercise>
+		<problem>
+			<para>Find the following scalar products of vectors:</para>
+		</problem>
+		<part>
+			<problem>
+				<para>
+					<latex>2\cdot (1,2)</latex>
+				</para>
+			</problem>
+			<approach>
+				<solution>
+					<para align="center">
+						<latex>2\cdot (1,2) = (2\cdot 1,2\cdot 2) = (2,4)</latex>
+					</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>
+					<latex>6\cdot (3,-2,5)</latex>
+				</para>
+			</problem>
+			<approach>
+				<solution>
+					<math.display>
+						<latex>6\cdot (3,-2,5) = (6\cdot 3,6\cdot(-2),6\cdot 5) = (18,-12,30)</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>
+					<latex>3\cdot (-12,17,25,-19)</latex>
+				</para>
+			</problem>
+			<approach>
+				<solution>
+					<math.display>
+						<latex>3\cdot (-12,17,25,-19) = (3\cdot (-12),3\cdot 17,3\cdot 25,3\cdot (-19)) = (-36,51,75,-57)</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>
+					<latex>-2\cdot (4,3,-3,5,-12)</latex>
+				</para>
+			</problem>
+			<approach>
+				<solution>
+					<computation>
+						<left>-2\cdot (4,3,-3,5,-12)</left>
+						<center>=</center>
+						<right>\left( (-2)\cdot 4,(-2)\cdot 3,(-2)\cdot (-3),(-2)\cdot 5,(-2)\cdot (-12)\right)</right>
+						<left></left>
+						<center>=</center>
+						<right>(-8,-6,6,-10,24)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para><latex>6\cdot (8,-1,4,3)</latex></para></problem>
+		</part>
+		
+		<part>
+			<problem><para><latex>(-12)\cdot (9,-3,-1,6,-5)</latex></para></problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Determine if the following vector pairs are parallel.</para>
+		</problem>
+		<part>
+			<problem><para><latex>\Vect{a} = (1,2)</latex> and <latex>\Vect{x} = (-3,-6)</latex></para></problem>
+			<approach>
+				<solution.hint>
+					<para>Given that <latex>\Vect{a}\neq \Vect{0}</latex>, the question is if there is a number <latex>t</latex> such that</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>t\cdot \Vect{a}</right>
+					</computation>
+				</solution.hint>
+				<solution>
+					<para>Given that <latex>\Vect{a}\neq \Vect{0}</latex>, the question is if there is a number <latex>t</latex> such that</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>t\cdot \Vect{a}</right>
+					</computation>
+					<para>In other words, we ask if the vector equation below has a solution</para>
+					<computation>
+						<left>(-3,-6)</left>
+						<center>=</center>
+						<right>t\cdot (1,2)</right>
+					</computation>
+					<para>A number <latex>t</latex> satisfies this vector equation if and only if it satisfies both of the equations below</para>
+					<computation>
+						<left>-6</left>
+						<center>=</center>
+						<right>2t</right>
+						<left>-3</left>
+						<center>=</center>
+						<right>1t</right>
+					</computation>
+					<para>We see that <latex>t:= -3</latex> satisfies both equations. Therefore <latex>\Vect{x} = -3\cdot \Vect{a}</latex>, which means that the two vectors are parallel.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{c} = (3,1,-1)</latex> and <latex>\Vect{y} = (3,0,-1)</latex></para></problem>
+			<approach>
+				<solution.hint><para>Try to follow the solution approach in the previous problem.</para></solution.hint>
+				<solution>
+					<para>We need to determine if the vector equation</para>
+					<computation>
+						<left>\Vect{y}</left>
+						<center>=</center>
+						<right>t\cdot \Vect{c}</right>
+					</computation>
+					<para>has a solution. This happens if and only if there is a number <latex>t</latex> which solves the three equations below.</para>
+					<computation>
+						<left>3</left>
+						<center>=</center>
+						<right>3\cdot t</right>
+						<left>0</left>
+						<center>=</center>
+						<right>1\cdot t</right>
+						<left>-1</left>
+						<center>=</center>
+						<right>-1\cdot t</right>
+					</computation>
+					<para>We see that <latex>t=1</latex> is the only number which solves the first and the third equation. However, the second equation requires <latex>t=0</latex>. But <latex>t</latex> can not simultaneously assume two distinct number values. Therefore the vector equation in question has no solution. The vectors are not parallel.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{b} = (2,4,5)</latex> and <latex>\Vect{z} = (4,8,10)</latex></para></problem>
+			<approach>
+				<answer><para><latex>\Vect{z} = 2\cdot \Vect{b}</latex>; so the vectors are parallel.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{a} = (1,0,0,0)</latex> and <latex>\Vect{x} = (0,0,0,0)</latex></para></problem>
+			<approach>
+				<answer><para><latex>\Vect{x} = 0\cdot \Vect{a}</latex>; so the vectors are parallel.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{d} = (3,-3,0,6,1)</latex> and <latex>\Vect{w} = (1,-2,9,3,6)</latex></para></problem>
+			<approach><answer><para>The vectors are not parallel.</para></answer></approach>
+		</part>
+		<part>
+			<problem><para><latex>\Vect{a} = (9,2,-3,6,4)</latex> and <latex>\Vect{x} = (81,18,-27,54,36)</latex></para></problem>
+		</part>
+	</exercise>
+</exercise.pack>

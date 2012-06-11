@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_DeterminantRules"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: Rules for Computing with Determinants</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The following rules for computing with determinants lead to an interpretation of determinants as `oriented volume' and, in addition, can often simplify the process of evaluating a determinant</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Multilinear</strong> When applying the determinant operation to <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrices, varying one column vector, while keeping the others fixed, yields a linear function <math>
+                     <latex>\RNr[n] \to \RNr</latex>
+                  </math>. For example:</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\aligned
+\det
+\left[
+\begin{array}{ccc}
+1 &amp; {\color{red} 3} + {\color{green} a} &amp; 7 \\
+1 &amp; {\color{red} 6} + {\color{green} b} &amp; 2 \\
+1 &amp; {\color{red} 9} + {\color{green} c} &amp; 1
+\end{array}
+\right]\ &amp;=\ 
+\det
+\left[
+\begin{array}{ccc}
+1 &amp; {\color{red} 3} &amp; 7 \\
+1 &amp; {\color{red} 6} &amp; 2 \\
+1 &amp; {\color{red} 9} &amp; 1
+\end{array}
+\right]\ +\ 
+\det \left[
+\begin{array}{ccc}
+1 &amp; {\color{green} a} &amp; 7 \\
+1 &amp; {\color{green} b} &amp; 2 \\
+1 &amp; {\color{green} c} &amp; 1
+\end{array}
+\right] \\
+	&amp;=\ {\color{red} 3}\cdot 
+\det
+\left[
+\begin{array}{ccc}
+1 &amp; {\color{red} 1} &amp; 7 \\
+1 &amp; {\color{red} 2} &amp; 2 \\
+1 &amp; {\color{red} 3} &amp; 1
+\end{array}
+\right]\ +\ 
+\det \left[
+\begin{array}{ccc}
+1 &amp; {\color{green} a} &amp; 7 \\
+1 &amp; {\color{green} b} &amp; 2 \\
+1 &amp; {\color{green} c} &amp; 1
+\end{array}
+\right]
+\endaligned
+
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Alternating</strong>   Interchanging any two columns of a matrix reverses the sign of its determinant. For example:</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\det
+\left[
+\begin{array}{ccc}
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0
+\end{array}
+\right] = 
+-\det
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0
+\end{array}
+\right] = 
+\det
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right] = 1
+
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Additional rules</strong>
+               </para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\det(\Mtrx{A}^T) = \det(\Mtrx{A})</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\det(\Mtrx{A}\cdot \Mtrx{B}) = \det(\Mtrx{A}) \det(\Mtrx{B})</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </body>
+</unit>

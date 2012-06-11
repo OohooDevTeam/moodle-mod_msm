@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_ReductionRREF1"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Row Reduction with Coefficient Matrix - Example</title>
+	  <caption xmlns="">Reduction to RREF - Example</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the solutions of the system of linear equations below by extracting its augmented coefficient matrix and transforming it to RREF.</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$-9$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$6$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$3$}{\color{red}z} &amp; = &amp; 9 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$8$}{\color{red}z} &amp; = &amp; 14 \\
+\end{array}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The augmented coefficient matrix of the given system of linear equations is.</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rrrr|r}
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$2$} &amp; \colorbox{lightgreen}{$-1$} &amp; \colorbox{lightgreen}{$1$} &amp; 1 \\
+%
+\colorbox{lightgreen}{$3$} &amp; \colorbox{lightgreen}{$-9$} &amp; \colorbox{lightgreen}{$6$} &amp; \colorbox{lightgreen}{$3$} &amp; 9 \\
+%
+\colorbox{lightgreen}{$3$} &amp; \colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$8$} &amp; 14
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>The part on the left of the vertical bar is the coefficient matrix. The part on the right is the augmented part, also called the augmentation vector. To find the solutions of the given system of linear equations, we reduce the augmented coefficient matrix to RREF. We begin by interchanging the first two rows:</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rrrr|rr}
+\colorbox{lightgreen}{$3$} &amp; \colorbox{lightgreen}{$-9$} &amp; \colorbox{lightgreen}{$6$} &amp; \colorbox{lightgreen}{$3$} &amp; 9 &amp; {\color{red} :3} \\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$2$} &amp; \colorbox{lightgreen}{$-1$} &amp; \colorbox{lightgreen}{$1$} &amp; 1 &amp; \\
+%
+\colorbox{lightgreen}{$3$} &amp; \colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$8$} &amp; 14 &amp;
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Dividing the first row by <math>
+                        <latex>3</latex>
+                     </math> yields</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rrrr|rr}
+\colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$-3$} &amp; \colorbox{lightgreen}{$2$} &amp; \colorbox{lightgreen}{$1$} &amp; 3 &amp;  \\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$2$} &amp; \colorbox{lightgreen}{$-1$} &amp; \colorbox{lightgreen}{$1$} &amp; 1 &amp; \\
+%
+\colorbox{lightgreen}{$3$} &amp; \colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$8$} &amp; 14 &amp; {\color{red} -3\cdot R_1}
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Subtracting <math>
+                        <latex>3</latex>
+                     </math> times the first row from the third yields</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rrrr|rr}
+\colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$-3$} &amp; \colorbox{lightgreen}{$2$} &amp; \colorbox{lightgreen}{$1$} &amp; 3 &amp;  \\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$2$} &amp; \colorbox{lightgreen}{$-1$} &amp; \colorbox{lightgreen}{$1$} &amp; 1 &amp; \\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$10$} &amp; \colorbox{lightgreen}{$-5$} &amp; \colorbox{lightgreen}{$5$} &amp; 5 &amp; {\color{red} (-5)\cdot R_2}
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Subtracting <math>
+                        <latex>5</latex>
+                     </math> times the second row from the third yields</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rrrr|rr}
+\colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$-3$} &amp; \colorbox{lightgreen}{$2$} &amp; \colorbox{lightgreen}{$1$} &amp; 3 &amp;  \\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$2$} &amp; \colorbox{lightgreen}{$-1$} &amp; \colorbox{lightgreen}{$1$} &amp; 1 &amp; {\color{red} :2}\\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$0$} &amp; 0 &amp; 
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Dividing the second row by <math>
+                        <latex>2</latex>
+                     </math> yields</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rrrr|rr}
+\colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$-3$} &amp; \colorbox{lightgreen}{$2$} &amp; \colorbox{lightgreen}{$1$} &amp; 3 &amp;  {\color{red} +3\cdot R_2 }\\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$-1/2$} &amp; \colorbox{lightgreen}{$1/2$} &amp; 1/2 &amp; \\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$0$} &amp; 0 &amp; 
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Adding <math>
+                        <latex>3</latex>
+                     </math> times row 2 to row <math>
+                        <latex>1</latex>
+                     </math> yields.</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rrrr|rr}
+\colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$1/2$} &amp; \colorbox{lightgreen}{$5/2$} &amp; 9/2 &amp;  \\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$1$} &amp; \colorbox{lightgreen}{$-1/2$} &amp; \colorbox{lightgreen}{$1/2$} &amp; 1/2 &amp; \\
+%
+\colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$0$} &amp; \colorbox{lightgreen}{$0$} &amp; 0 &amp; 
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>The matrix above is in Row Reduced Echelon Form. This tells us that the original system of linear equations is equivalent to the system.</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$1$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$1/2$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$5/2$}{\color{red}z} &amp; = &amp; 9/2 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$-1/2$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$1/2$}{\color{red}z} &amp; = &amp; 1/2 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}y} &amp;  + &amp; \colorbox{lightgreen}{$0$}{\color{red}z} &amp; = &amp; 0 \\
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Thus we see that its solutions are obtained by choosing freely number values for <math>
+                        <latex>y</latex>
+                     </math> and <math>
+                        <latex>z</latex>
+                     </math> and then solving for the variables tied to leading <math>
+                        <latex>1</latex>
+                     </math>:</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+					\aligned
+x\ &amp;=\ \dfrac{1}{2}\ +\ \dfrac{1}{2}\, y\ -\ \dfrac{1}{2}\, z \\
+w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
+\endaligned
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>Consequently, the solutions of this system of linear equations are vectors of the form</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+\begin{array}{l}
+\left( \dfrac{9}{2}\, -\, \dfrac{1}{2}\, y\, -\, \dfrac{5}{2}\, z , \dfrac{1}{2}\, +\, \dfrac{1}{2}\, y\, -\, \dfrac{1}{2}\, z , y , z \right) = \\
+\tfrac{1}{2}\cdot (9,1,0,0) + y\cdot (-\tfrac{1}{2},\tfrac{1}{2},1,0) + z\cdot (-\tfrac{5}{2},-\tfrac{1}{2},0,1)
+\end{array}
+					
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>where <math>
+                        <latex>y</latex>
+                     </math> and <math>
+                        <latex>z</latex>
+                     </math> are arbitrary real numbers. So we see that the solutions of the given system of linear equations are spanned by the vectors <math>
+                        <latex>(-\tfrac{1}{2},\tfrac{1}{2},1,0)</latex>
+                     </math> and <math>
+                        <latex>(-\tfrac{5}{2},-\tfrac{1}{2},0,1)</latex>
+                     </math> and is shifted by the vector <math>
+                        <latex>(\tfrac{9}{2},\tfrac{1}{2},0,0)</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

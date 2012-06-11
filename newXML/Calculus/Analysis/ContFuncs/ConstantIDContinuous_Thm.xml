@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_ConstantIdContinuous"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Constant maps, inclusion maps are continuous</caption>
+   <statement.theorem>
+      <para>
+         <para.body>For an arbitrary subsets <math>
+               <latex>D\subseteq T</latex>
+            </math> of <math>
+               <latex>\RNr</latex>
+            </math> the following functions are continuous:</para.body>
+      </para>
+      <part.theorem partid="Constant">
+         <part.body>
+            <para>
+               <para.body>For <math>
+                     <latex>y\in T</latex>
+                  </math> arbitrary, the constant function <math>
+                     <latex>c\from D\to T</latex>
+                  </math>, <math>
+                     <latex>c(x)=y</latex>
+                  </math>.
+				</para.body>
+               <index.glossary>
+                  <term>constant</term>
+                  <term>function is continuous</term>
+                  <info>
+                     <para>
+                        <para.body>Statement and proof of this result.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Inclusion">
+         <part.body>
+            <para>
+               <para.body>The inclusion function <math>
+                     <latex>i\from D\to T</latex>
+                  </math>, <math>
+                     <latex>i(x)=x</latex>
+                  </math>.
+				</para.body>
+               <index.glossary>
+                  <term>inclusion function</term>
+                  <term>is continuous</term>
+                  <info>
+                     <para>
+                        <para.body>Statement and proof of this result.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Inverse">
+         <part.body>
+            <para>
+               <para.body>The inverse function <math>
+                     <latex>p\from (\StDffrnc{\RNr}{0}) \to (\StDffrnc{\RNr}{0})</latex>
+                  </math>, <math>
+                     <latex>p(x):=1/x</latex>
+                  </math>, is continuous.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>Constant</part.ref>
+         </logic>
+         <caption>Constant</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Let <math>
+                     <latex>x\in D</latex>
+                  </math> be arbitrary, and suppose <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> is given. We may choose <math>
+                     <latex> \delta &gt; 0 </latex>
+                  </math> arbitrary, and find that for <math>
+                     <latex>t\in D</latex>
+                  </math> and <math>
+                     <latex> x-\delta &lt; t &lt; x + \delta</latex>
+                  </math>,</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Inclusion</part.ref>
+         </logic>
+         <caption>Inclusion</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Let <math>
+                     <latex>x\in D</latex>
+                  </math> be arbitrary, and suppose <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> is given. We choose <math>
+                     <latex>\delta := \varepsilon</latex>
+                  </math> and find that for <math>
+                     <latex>t\in D</latex>
+                  </math> and <math>
+                     <latex> \Abs{ t - x } &lt; \delta</latex>
+                  </math>,</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Inverse</part.ref>
+         </logic>
+         <caption>Inverse</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Let <math>
+                     <latex>x\neq 0</latex>
+                  </math> be arbitrary, and suppose a deviation tolerance <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> is given. We need to find <math>
+                     <latex> \delta&gt;0 </latex>
+                  </math> such that for all <math>
+                     <latex>t\neq 0</latex>
+                  </math> with <math>
+                     <latex> \Abs{t-x} &lt; \delta </latex>
+                  </math>, <math>
+                     <latex> \Abs{ \tfrac{1}{t} - \tfrac{1}{x} } &lt; \varepsilon </latex>
+                  </math>. To find such <math>
+                     <latex>\delta</latex>
+                  </math>, put <math>
+                     <latex>\tau:= t-x</latex>
+                  </math> so that <math>
+                     <latex>t=x+\tau</latex>
+                  </math>. Then we require</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

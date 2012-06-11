@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_BasisExists">
+	<caption>Existence of a basis</caption>
+	<statement>
+		<para>Every subvector space of <latex>\RNr[n]</latex> has a basis. Moreover, any such basis contains at most <latex>n</latex> vectors.</para>
+	</statement>
+	<proof>
+		<para>Let us dispose first of an extreme case: if <latex>V</latex> consists only of the 0-vector, we may take the empty set as a basis for <latex>V</latex>.</para>
+		
+		<para>Now suppose <latex>V</latex> contains a nonzero vector. We use the following two facts in combination to build a basis of <latex>V</latex>.</para>
+		<ol>
+			<li><para>Given a linearly independent subset <latex>S</latex> of <latex>V</latex>, there are two possibilities: </para>
+				<ol type="a">
+					<li><para><latex>S</latex> spans <latex>V</latex>, in which case it is a basis of <latex>V</latex>;</para></li>
+					<li><para><latex>S</latex> does not span <latex>V</latex> in which case we can add to <latex>S</latex> a vector from <latex>V</latex> outside <latex>\span(S)</latex> to obtain a 
+						<subordinate>
+							<hot>larger linearly independent subset</hot>
+							<crossref>
+								<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+								<para>Look up this fact.</para>
+							</crossref>
+						</subordinate>
+						of <latex>V</latex>.</para></li>
+				</ol>
+			</li>
+			<li><para>This process of adding vectors to <latex>S</latex> to obtain larger linearly independent sets 
+				<subordinate>
+					<hot>stops after at most <latex>n</latex> steps</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+						<para>Look up this fact.</para>
+					</crossref>
+				</subordinate>,
+				because  <latex>\RNr[n]</latex> itself is spanned by <latex>n</latex> vectors.</para></li>
+		</ol>
+		<para>Here are the details: Pick any nonzero vector in <latex>V</latex>, call it <latex>\Vect{a}_1</latex>, and form <latex>\EuScript{B}_1:=\Set{ \Vect{a}_1 }</latex>.</para>
+		<para>We know that <latex>\EuScript{B}_1</latex> is linearly independent. If <latex>\span( \EuScript{B}_1 )=V</latex>, then <latex>\EuScript{B}:=\EuScript{B}_1</latex> is a basis for <latex>V</latex>. If <latex>\span( \EuScript{B}_1 ) \neq V</latex>, there are vectors in <latex>V</latex>  which do not belong to <latex>\span(\EuScript{B}_1)</latex>. Pick any one such, call it <latex>\Vect{a}_2</latex>, and form <latex>\EuScript{B}_2:=\EuScript{B}_1\cup \Set{ \Vect{a}_2 }</latex>.</para>
+		<para>We know that <latex>\EuScript{B}_2</latex> is 
+			<subordinate>
+				<hot>linearly independent</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+					<para>Look up this fact.</para>
+				</crossref>
+			</subordinate>.
+			If <latex>\span( \EuScript{B}_2 )=V</latex>, then <latex>\EuScript{B}:=\EuScript{B}_2</latex> is a basis for <latex>V</latex>. If <latex>\span( \EuScript{B}_2 ) \neq V</latex>, there are vectors in <latex>V</latex>  which do not belong to <latex>\span(\EuScript{B}_2)</latex>. Pick any one such, call it <latex>\Vect{a}_3</latex>, and form <latex>\EuScript{B}_3:=\EuScript{B}_2\cup \Set{ \Vect{a}_3 }</latex>; etc.</para>
+		<para>The crucial fact now is that, for some <latex>k\leq n</latex>, we must have <latex>\span( \EuScript{B}_k) = V</latex>. To see this, we argue by contradiction: Suppose <latex><![CDATA[ n< k ]]></latex> and <latex>\EuScript{B}_k</latex> is a linearly independent subset of <latex>V</latex>. Then <latex>\EuScript{B}_k</latex> is, in particular, a linearly independent subset of <latex>\RNr[n]</latex>; a contradiction to the fact any linearly independent subset of <latex>\RNr[n]</latex> 
+			<subordinate>
+				<hot>has at most <latex>n</latex> vectors</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+					<para>Look up this fact.</para>
+				</crossref>
+			</subordinate>. Thus the process described above stops after <latex>k\leq n</latex> steps, in which case <latex>\EuScript{B}:= \EuScript{B}_k</latex> is a basis of <latex>V</latex>, and <latex>\EuScript{B}</latex> contains at most <latex>n</latex> vectors.</para>
+	</proof>
+</theorem>

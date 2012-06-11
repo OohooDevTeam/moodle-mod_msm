@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_RotationR3"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Rotation matrix in <math>
+         <latex>\RNr[3]</latex>
+      </math>
+   </caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
+         <para>
+            <para.body>How does a rotation matrix work?</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_RotationR3"/>
+      <info>
+         <para>
+            <para.body>An example of a rotation in <math>
+                  <latex>\RNr[3]</latex>
+               </math>
+            </para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>With the setup described above, the rotation <math>
+               <latex>R</latex>
+            </math> about the oriented axis <math>
+               <latex>\mathbf{L}</latex>
+            </math> through the angle <math>
+               <latex>\alpha</latex>
+            </math> by the RHR is represented by the <math>
+               <latex>(3,3)</latex>
+            </math>-matrix</para.body>
+      </para>
+      <math.display>
+         <latex>
+				
+\Mtrx{A}_{\EuScript{B}\EuScript{B}}\ :=\ 
+\left[
+\begin{array}{rrr}
+\cos \alpha &amp; -\sin \alpha &amp; 0 \\
+\sin \alpha &amp; \cos \alpha &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+			</latex>
+      </math.display>
+      <para>
+         <para.body>Moreover, the matrix which represents <math>
+               <latex>R</latex>
+            </math> with respect to standard coordinates is (using <math>
+               <latex>\Mtrx{C}:= [ \Vect{a}\ \Vect{b}\ \Vect{r}]</latex>
+            </math>)</para.body>
+      </para>
+      <math.display>
+         <latex>\Mtrx{A} = \Mtrx{A}_{\EuScript{S}\EuScript{S}} = \Mtrx{C} \Mtrx{A}_{\EuScript{B}\EuScript{B}} C^{-1}</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>To see this, we use our experience with rotating the plane counterclockwise through the angle <math>
+                     <latex>\alpha</latex>
+                  </math> to conclude</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>R(\Vect{a})</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(\cos \alpha)\cdot \Vect{a} + (\sin \alpha)\cdot \Vect{b} + 0\cdot \Vect{n}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>R(\Vect{b})</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(-\sin \alpha)\cdot \Vect{a} + (\cos \alpha) \cdot \Vect{b} + 0\cdot \Vect{n}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>R(\Vect{n})</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>0\cdot \Vect{a} + 0\cdot \Vect{b} + 1\cdot \Vect{n}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Therefore the
+			<subordinate>
+                     <hot>columns</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_LinearMapMatrixGeneral"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_LinearMapMatrixGeneral"/>
+                           <para>
+                              <para.body>Look up this result</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			of <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{B}}</latex>
+                  </math> are as suggested.
+		</para.body>
+            </para>
+            <para>
+               <para.body>It remains to determine the matrix <math>
+                     <latex>\Mtrx{A}_{\EuScript{S}\EuScript{S}}</latex>
+                  </math> representing <math>
+                     <latex>R</latex>
+                  </math> with respect to the standard basis of <math>
+                     <latex>\RNr[3]</latex>
+                  </math>. Now applying the 
+			<subordinate>
+                     <hot>result on changing coordinates</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_ChangeCoordinatesLinearMap"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_ChangeCoordinatesLinearMap"/>
+                           <para>
+                              <para.body>Look up this result.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			proves the claim.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

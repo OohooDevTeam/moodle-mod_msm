@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expl_DistancePoints"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Distance between Two Points: Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>When we define the distance between <math>
+                     <latex>P(x_1,\dots ,x_n)</latex>
+                  </math> and <math>
+                     <latex>Q(y_1,\dots, y_n)</latex>
+                  </math> as</para.body>
+            </para>
+            <math.display>
+               <latex>\Dstnc{P}{Q}\ =\ \sqrt{(y_1-x_1)^2+\cdots + (y_n-x_n)^2}\ \ .</latex>
+            </math.display>
+            <para>
+               <para.body>... where does this formula come from? – The Theorem of Pythagoras provides an answer. Let us sketch the idea first for two points in the plane <math>
+                     <latex>\RNr[2]</latex>
+                  </math>:</para.body>
+            </para>
+            <para>
+               <para.body>If <math>
+                     <latex>P(a,b)</latex>
+                  </math> and <math>
+                     <latex>R(x,y)</latex>
+                  </math> are two points in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>, then the distance from <math>
+                     <latex>P</latex>
+                  </math> to <math>
+                     <latex>R</latex>
+                  </math> satisfies</para.body>
+            </para>
+            <math.display>
+               <latex>\Dstnc{P}{R}^2\ =\ \Dstnc{P}{Q}^2\ +\ \Dstnc{Q}{R}\ =\ (x-a)^2+(y-b)^2.</latex>
+            </math.display>
+            <media type="image" active="0" inline="0">
+               <img src="ims/DistancePoints.png"/>
+            </media>
+            <para>
+               <para.body>This is so by the Theorem of Pythagoras. The general formula follows using a process called mathematical induction:</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/DistancePoints1.png"/>
+            </media>
+            <para>
+               <para.body>In the schematic picture above, if</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>P(x_1,\dots ,x_{n-1},x_n)</latex>
+                        </math> and <math>
+                           <latex>R(y_1,\dots ,y_{n-1},y_n)</latex>
+                        </math>, then</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>U(x_1,\dots ,x_{n-1})</latex>
+                        </math> and <math>
+                           <latex>V(y_1,\dots ,y_{n-1})</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>One of its strengths of this distance formula lies in the fact that it completely relieves us from having to visualize the spatial relationship between the points in question.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

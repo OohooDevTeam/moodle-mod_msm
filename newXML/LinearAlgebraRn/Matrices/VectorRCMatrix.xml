@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="VectorRowColumnMatrix"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>On Vectors, Row Matrices, and Column Matrices</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Let us comment on the need for vector notation, row matrix notation, and column matrix notation. At this point we have developed 3 ways to write an ordered string of numbers; for example</para.body>
+            </para>
+            <table align="center" border="3" cellpadding="3" bordercolor="Maroon">
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <strong>vector</strong>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <strong>row matrix</strong>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <strong>column matrix</strong>
+                        </para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>(15,4,-7)</para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>[15\ \ 4\ \ -7]</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para align="center">
+                        <para.body>
+                           <math>
+                              <latex>\left[\begin{array}{r} 15 \\ 4 \\ -7 \end{array}\right]</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+               </row>
+            </table>
+            <para>
+               <para.body>Isn’t this a prime example of inflated symbolism? Why not just settle on one way of writing an ordered string of numbers and be done with it?</para.body>
+            </para>
+            <para>
+               <para.body>Yes, perhaps in principle, we could manage with one way of writing an ordered string of numbers. But we would end up losing a lot! Just from an organizational point of view, the rows and columns of the coefficient matrix of a system of linear equations correspond visually to the location of these coefficients within the system of equations. If abandon the option of writing a sequence of number as needed in an application, we would lose our method of solving a system of linear equations by transforming its coefficient matrix.</para.body>
+            </para>
+            <para>
+               <para.body>But there is much more. We will soon learn how to compute with matrices in a way which extends computing with numbers, thereby creating the amazingly versatile and powerful algebraic structure of ‘matrix algebra’. Within this algebraic structure, row and column matrices behave very differently. In particular, if we want to incorporate a vector like  <math>
+                     <latex>(15 , 4 , -7)</latex>
+                  </math>  into this algebra of matrices, we reserve the option to write it as a row matrix or as a column matrix, depending on the specific context.</para.body>
+            </para>
+            <para>
+               <para.body>In other words, without the option of writing a vector as a row matrix or as a column matrix as needed, we would break some valuable features of the extension of the system of real numbers <math>
+                     <latex>\RNr</latex>
+                  </math> provided by matrices.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

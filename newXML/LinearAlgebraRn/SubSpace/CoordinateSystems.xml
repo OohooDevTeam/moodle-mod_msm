@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_CoordinateSystems"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Arbitrary Coordinate Systems</title>
+      <plain.title>Arbitrary Coordinate Systems</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Given a subvector space <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, we now use a basis for <math>
+                     <latex>V</latex>
+                  </math> of  to set up a corresponding coordinate system in <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_CoordinateVector">
+               <caption>Coordinate vector</caption>
+               <associate type="Explanation">
+                  <unit.ref unitId="Expla_CoordinateVector"/>
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>What does ‘ordered basis’ mean? – Explanation</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Illustration">
+                  <unit.ref unitId="Illu_CoordinateVector"/>
+                  <info>
+                     <para>
+                        <para.body>An illustration of ‘coordinate vector’</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_CoordinateVector"/>
+                  <info>
+                     <info.caption>Example</info.caption>
+                     <para>
+                        <para.body>Examples of coordinate vectors</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>Given an ordered basis <math>
+                           <latex>\EuScript{B} = (\Vect{b}_1,\dots , \Vect{b}_m)</latex>
+                        </math> of a subvector space <math>
+                           <latex>V</latex>
+                        </math> of  <math>
+                           <latex>\RNr[n]</latex>
+                        </math>, the coordinate vector of <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>V</latex>
+                        </math> with respect to <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> is
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>\Vect{x}_{\EuScript{B}}</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>The coordinate vector of <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> with respect to the ordered basis <math>
+                                    <latex>\EuScript{B}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>coordinate</term>
+                        <term>vector</term>
+                        <info>
+                           <para>
+                              <para.body>Look up the definition of the term.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>ordered</term>
+                        <term>basis</term>
+                        <info>
+                           <para>
+                              <para.body>... when used to define a coordinate vector.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>basis</term>
+                        <term>ordered</term>
+                        <info>
+                           <para>
+                              <para.body>... when used to define a coordinate vector.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>\Vect{x}_{\EuScript{B}} = (t_1,\dots ,t_m)\quad \text{if}\quad \Vect{x} = t_1 \Vect{b}_1+\cdots + t_m \Vect{b}_m</latex>
+                  </math.display>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Let us analyze how our original description of a vector <math>
+                     <latex>\Vect{x}=(x_1,\dots ,x_n)</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> fits into this context. Let <math>
+                     <latex>\EuScript{S}:=(\StdBss{1},\dots ,\StdBss{n})</latex>
+                  </math> denote the ordered basis of standard basis vectors in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>. Then</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>x_1 \StdBss{1} + \cdots + x_n\StdBss{n}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>which means that <math>
+                     <latex>\Vect{x}_{\EuScript{S}} = (x_1,\dots ,x_n)</latex>
+                  </math>. Thus our original description of a vector in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> uses the coordinate vector of <math>
+                     <latex>\Vect{x}</latex>
+                  </math> with respect to the standard basis of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>. Whenever we are working only with the standard basis of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, we will continue to write  <math>
+                     <latex>\Vect{x}</latex>
+                  </math> instead of <math>
+                     <latex>\Vect{x}_{\EuScript{S}}</latex>
+                  </math>, as this will not cause any confusion.</para.body>
+            </para>
+            <para>
+               <para.body>If <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> is an ordered orthonormal basis, it is easy to find a coordinate vector with respect to <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="CoordinateVectorOrthogonalBss_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_CoordinateSystems"/>
+   </studymaterials>
+</unit>

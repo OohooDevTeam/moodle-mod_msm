@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_LinearIndependence">
+	<title>Linear Independence - Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>We define a set <latex>S</latex> to be linearly independent if, for any choice of pairwise distinct vectors <latex>\Vect{a}_1,\dots , \Vect{a}_r</latex> from <latex>S</latex>, the vector equation</para>
+			<computation>
+				<left>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</left>
+				<center>=</center>
+				<right>0</right>
+			</computation>
+			<para>has exactly one solution, namely <latex>t_1=\cdots = t_r=0</latex>. – If <latex>S</latex> fails to be linearly independent, it is called linearly dependent.</para>
+			<para>This definition is remarkable efficient as it relates the new concept of linear independence directly to the familiar concept of a system of linear equations having a unique solution. &ndash; But let us analyze a bit more what it actually means:</para>
+		</block>
+
+
+		<block>
+			<para>Using a collection of vectors <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex>, it is always possible to express the zero vector as a linear combination:</para>
+			<computation>
+				<left>\Vect{0}</left>
+				<center>=</center>
+				<right>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</right>
+			</computation>
+			<para>All we need to do is set <latex>t_1= \cdots = t_r = 0</latex>. This is often called the &lsquo;trivial&rsquo; linear combination of <latex>\Vect{0}</latex>. With the concept of linear independence we distinguish those vector collections <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex> for which the trivial combination is the only way of expressing <latex>\Vect{0}</latex> as a linear combination of <latex>\Vect{a}_1, \dots ,\Vect{a}_r</latex>.</para>
+			
+			<para>In contrast, suppose this linear independence requirement is violated. Then it is possible to express the zero vector as a linear combination</para>
+			
+			<computation>
+				<left>\Vect{0}</left>
+				<center>=</center>
+				<right>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</right>
+			</computation>
+			
+			<para>in which at least one of the numbers <latex>t_1, \dots , t_r</latex> is not zero. Consider, for example, the case where <latex>t_1\neq 0</latex>. We may then compute.</para>
+			
+			<computation>
+				<left>\Vect{0}</left>
+				<center>=</center>
+				<right>t_1 \Vect{a}_1 + \cdots + t_r \Vect{a}_r</right>
+				<left>t_1 \Vect{a}_1</left>
+				<center>=</center>
+				<right>t_2\Vect{a}_2 + \cdots + t_r \Vect{a}_r</right>
+				<left>\Vect{a}_1</left>
+				<center>=	<info><para>Notice: here we divide by <latex>t_1</latex>, and this is only allowed if <latex>t_1\neq 0</latex>.</para></info></center>
+				<right>\frac{1}{t_1}\left( t_2\Vect{a}_2 + \cdots + t_r \Vect{a}_r \right)</right>
+			</computation>
+			
+			<para>This last equation is a linear dependence relation amongst the vectors <latex>\Vect{a}_1, \dots ,\Vect{a}_r</latex> as it expresses <latex>\Vect{a}_1</latex> as a linear combination of the remaining ones.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

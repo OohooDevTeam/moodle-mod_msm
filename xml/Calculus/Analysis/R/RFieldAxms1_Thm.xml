@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_RFieldAxms1">
+	<caption>Further properties of <latex>(\RNr,+,\cdot)</latex></caption>
+	<statement>
+		<para>The following hold:</para>
+		<part partid="AdditiveEquationSolve">
+			<para><latex>a + x = a + y</latex> if and only if <latex>x=y</latex> for all <latex>a,x,y\in \RNr</latex>.</para>
+		</part>
+		<part partid="Times0">
+			<para><latex>0\cdot a = 0</latex> for all <latex>a\in \RNr</latex>.</para>
+		</part>
+		<part partid="Negativea">
+			<para><latex>-a = (-1)\cdot a</latex> for all <latex>a\in \RNr</latex></para>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<caption><partref>AdditiveEquationSolve</partref> <latex>a + x = a + y \longleftrightarrow x = y</latex></caption>
+		<para>If <latex>x=y</latex>, then <latex>a+x=a+y</latex> by substitution. To see the converse, we compute</para>
+		<computation>
+			<left>a+x</left>
+			<center>=</center>
+			<right>a+y</right>
+			<left>(-a)+(a+x)</left>
+			<center>=</center>
+			<right>(-a) + (a+y)</right>
+			<left>((-a) + a) + x</left>
+			<center>=	<info><para>Here we use the associativity axiom for addition in <latex>\RNr</latex>.</para></info></center>
+			<right>((-a)+a)+y</right>
+			<left>0 + x</left>
+			<center>=</center>
+			<right>0 + y</right>
+			<left>x</left>
+			<center>=	<info><para>Using that <latex>0</latex> neutral with respect of addition.</para></info></center>
+			<right>y</right>
+		</computation>
+		<caption><partref>Times0</partref> <latex>0\cdot a = 0</latex> for all <latex>a\in \RNr</latex></caption>
+		<para>We compute as follows</para>
+		<computation>
+			<left>0\cdot a</left>
+			<center>=	<info><para><latex>0</latex> is neutral with respect to addition in <latex>\RNr</latex>. Therefore,</para>
+				<computation>
+					<left>0</left>
+					<center>=</center>
+					<right>0+0</right>
+				</computation>
+			</info></center>
+			<right>(0+0)\cdot a</right>
+			<left>0\cdot a + 0</left>
+			<center>=	<info><para>Here we carried out two steps</para>
+				<ol>
+					<li><para>On the left: <latex>0\cdot a = 0\cdot a + 0</latex> because <latex>0</latex> is neutral with respect to addition.</para></li>
+					<li><para>On the right: we applied the distributivity law of addition and multiplication in <latex>\RNr</latex>.</para></li>
+				</ol>
+			</info></center>
+			<right>0\cdot a\ +\ 0\cdot a</right>
+			<left>0</left>
+			<center>=	<info><para>Here we apply the previous part of the proposition.</para></info></center>
+			<right>0\cdot a</right>
+		</computation>
+		<caption><partref>Negativea</partref> <latex>-a = (-1)\cdot a</latex> for all <latex>a\in \RNr</latex></caption>
+		<para>We compute:</para>
+		<computation>
+			<left>0</left>
+			<center>=</center>
+			<right>0\cdot a</right>
+			<left></left>
+			<center>=</center>
+			<right>(1+(-1))\cdot a</right>
+			<left></left>
+			<center>=</center>
+			<right>1\cdot a + (-1)\cdot a</right>
+			<left></left>
+			<center>=</center>
+			<right>a + (-1)\cdot a</right>
+		</computation>
+		<para>This means that <latex>(-1)\cdot</latex> is the unique additive inverse of <latex>a</latex>; i.e. <latex>(-a) = (-1)\cdot a</latex>.</para>
+	</proof>
+</theorem>

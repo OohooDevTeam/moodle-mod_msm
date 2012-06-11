@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_ElementaryMatrixExplanation"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Explanation for Elementary Matrices</title>
+	  <caption xmlns="">Explanation for Elementary Matrices</caption>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The elementary matrix <math>
+                  <latex>E_{ij}(s)</latex>
+               </math> allows us to perform the row operation ‘add <math>
+                  <latex>t</latex>
+               </math> times the <math>
+                  <latex>j</latex>
+               </math>-th row of an <math>
+                  <latex>(n,p)</latex>
+               </math>-matrix <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> to the <math>
+                  <latex>i</latex>
+               </math>-th row of <math>
+                  <latex>\Mtrx{B}</latex>
+               </math>’. In symbols:</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{bmatrix}
+1 &amp; \cdots &amp; 0 &amp; \cdots &amp; 0 \\
+\vdots &amp; \ddots &amp; \vdots &amp; t &amp; \vdots \\
+0 &amp; \cdots &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; \cdots &amp; 0 &amp; \cdots &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+* &amp; \cdots &amp; * \\
+\vdots &amp; &amp; \vdots \\
+a_{i1} &amp; \cdots &amp; a_{ip} \\
+\vdots &amp; &amp; \vdots \\
+a_{j1} &amp; \cdots &amp; a_{jp} \\
+\vdots &amp; &amp; \vdots \\
+{*} &amp; \cdots &amp; *
+\end{bmatrix}\ =\
+\begin{bmatrix}
+* &amp; \cdots &amp; * \\
+\vdots &amp; &amp; \vdots \\
+a_{i1}+ta_{j1} &amp; \cdots &amp; a_{ip}+ta_{jp} \\
+\vdots &amp; &amp; \vdots \\
+a_{j1} &amp; \cdots &amp; a_{jp} \\
+\vdots &amp; &amp; \vdots \\
+{*} &amp; \cdots &amp; *
+\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The matrix which, in the set of <math>
+                  <latex>(5,5)</latex>
+               </math>-matrices adds <math>
+                  <latex>5</latex>
+               </math> times the <math>
+                  <latex>3</latex>
+               </math>-rd to the <math>
+                  <latex>4</latex>
+               </math>-th row is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+E_{3,4}(5)\ =\ 
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 5 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>The inverse of <math>
+                  <latex>E_{3,4}(5)</latex>
+               </math> is</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+E_{3,4}(-5)\ =\ 
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -5 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+					
+				</latex>
+			      </math.display>
+			
+		    </statement.showme>
+	  </showme>
+	
+</showme.pack>

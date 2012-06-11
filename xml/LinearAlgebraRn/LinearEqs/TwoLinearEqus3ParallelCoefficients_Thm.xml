@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_TwoLinearEqs3ParallelCoefficients">
+	<caption>Two linear equations, parallel coefficients</caption>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="TwoEqnsParallel1"/>
+		<info>
+			<caption>Illustration</caption>
+			<para>An illustration of the solutions of two linear equations in three variables with parallel coefficient vectors.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Given two linear equations in three variables <latex>x,y,z</latex></para>
+		
+		<math.display>
+			<latex>
+				<![CDATA[
+						\begin{array}{rcrcrcl}
+\colorbox{lightgreen}{$a_1$}{\color{red} x} & + & \colorbox{lightgreen}{$a_2$}{\color{red} y} & + & \colorbox{lightgreen}{$a_3$}{\color{red} z} & = & {\color{blue} c} \\
+\colorbox{lightgreen}{$b_1$}{\color{red} x} & + & \colorbox{lightgreen}{$b_2$}{\color{red} y} & + & \colorbox{lightgreen}{$b_3$}{\color{red} z} & = & {\color{blue} d}
+						\end{array}
+					]]>
+			</latex>
+		</math.display>
+		<para>the coefficient vectors are</para>
+		<math.display>
+			<latex>\colorbox{lightgreen}{$\Vect{n}_1 := (a_1,a_2,a_3)$}\quad \text{and}\quad \colorbox{lightgreen}{$\Vect{n}_2 := (b_1,b_2,b_3)$}</latex>
+		</math.display>
+		<para>While the augmented coefficient vectors are</para>
+		<math.display>
+			<latex>\Vect{N}_1 := (\colorbox{lightgreen}{$a_1,a_2,a_3$},{\color{blue} c})\quad \text{and}\quad \Vect{N}_2 := (\colorbox{lightgreen}{$b_1,b_2,b_3$},{\color{blue} d})</latex>
+		</math.display>
+		<para>The solutions of each equation form a plane in <latex>\RNr[3]</latex>. If <latex>\Vect{n}_1 = t\cdot \Vect{n}_2</latex> and <latex>d\neq t\cdot c</latex> these planes are parallel and distinct. So they have no point in common. Therefore the given system of linear equations has no simultaneous solution.</para>
+		<para>If <latex>\Vect{n}_1 = t\cdot \Vect{n}_2</latex> and <latex>d = t\cdot c</latex> these planes are the same. So each solution of one equation is also a solution of the other: the two equations are said to be equivalent.</para>
+	</statement>
+</theorem>

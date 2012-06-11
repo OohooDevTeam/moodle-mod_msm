@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Inclusion"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Example: Inclusion as a Coordinate Axis</title>
+	  <caption xmlns="">Example: Inclusion as a Coordinate Axis</caption>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Recall: the inclusion of <math>
+                  <latex>\RNr</latex>
+               </math> as the <math>
+                  <latex>j</latex>
+               </math>-th coordinate axis of <math>
+                  <latex>\RNr[n]</latex>
+               </math> is given by the function</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\Inclsn{j}\from \RNr\longrightarrow \RNr[n],\quad \Inclsn{j}(x):=(0,\dots,0,x,0,\dots ,0)</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>Show that <math>
+                  <latex>\Inclsn{j}</latex>
+               </math> is a linear function.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>To see why <math>
+                        <latex>\Inclsn{j}\from \RNr\to \RNr[m]</latex>
+                     </math> is linear, we check that it commutes with vector addition and scalar multiplication:</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Inclsn{j}(x+y)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>The number <math>
+                                       <latex>x+y</latex>
+                                    </math> on the right appears in position <math>
+                                       <latex>i</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>The number <math>
+                                       <latex>x+y</latex>
+                                    </math> on the right appears in position <math>
+                                       <latex>i</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,\dots ,0,x+y,0,\dots,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,\dots ,0,x,0,\dots ,0) + (0,\dots ,0,y,0,\dots ,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>By definition of the inclusion function.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>By definition of the inclusion function.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Inclsn{j}(x) + \Inclsn{j}(y)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\inc_j(tx)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,\dots ,0,tx,0,\dots ,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>t\cdot (0,\dots ,0,x,0,\dots ,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>t\cdot \inc_j(0,\dots ,0,x,0,\dots ,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find all coordinate inclusions of <math>
+                  <latex>\RNr</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math>, and compute their effect on a number <math>
+                  <latex>t</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>There are three inclusions of <math>
+                        <latex>\RNr</latex>
+                     </math> in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> as a coordinate axis, namely <math>
+                        <latex>\Inclsn{1}</latex>
+                     </math>, <math>
+                        <latex>\Inclsn{2}</latex>
+                     </math>, and <math>
+                        <latex>\Inclsn{3}</latex>
+                     </math>. The effect of these inclusions on <math>
+                        <latex>u</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> is given by</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Inclsn{1}(u)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(u,0,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Inclsn{2}(u)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,u,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Inclsn{3}(u)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,0,u)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the effect of the three coordinate inclusion functions of <math>
+                  <latex>\RNr</latex>
+               </math> in  <math>
+                  <latex>\RNr[3]</latex>
+               </math> on the number <math>
+                  <latex>-1</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The effect of the coordinate inclusions of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> on <math>
+                        <latex>-1</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> is given by</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Inclsn{1}(-1)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-1,0,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Inclsn{2}(-1)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,-1,0)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Inclsn{3}(-1)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(0,0,-1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

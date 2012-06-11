@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
+      unitid="Chap_MatrixAlgebra">
+   <titles>
+      <title>Matrix Algebra</title>
+      <plain.title>Matrices</plain.title>
+   </titles>
+   <legitimate.children>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Matrices/MatrixIntro.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixConcept.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Matrices/MatrixTypes.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixOperations.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixOperationsProperties.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/InvertibleMatrices.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixInversionProperties.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixEqsLinearEqs.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixIllstrtn.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/VectorRCMatrix.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/IdentityMatrices.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/UpperTriangularMatrices.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/Matrix_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixTypes_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Matrices/Matrix_Qz.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixConcept_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixShapes_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixSum_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixScalarMultiplication_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixProduct_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixTransposition_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/SymmetricMatrix_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixOperations_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixOperationsCompute_Exmpls.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixOperationsExceptions_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/TranspositionSymmetrics_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixOperations_Exrcss1.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixOperations_Exrcss2.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/InvertibleMatrix_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/InvertibilityQuestion_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixInverse_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/RowRescaling_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/RowRescaling_Exmpls1.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/ElementaryMatrix_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/ElementaryMatrix_Exmpls1.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/RowInterchangeMatrix_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/RowInterchangeMatrix_Exmpls1.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixInversion_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/InvertibleMatrix_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixInvertibility_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixEqsLinearEqs_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixEqsLinearEqs_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Matrices/MatrixEqsLinearEqs_Exrcss.xml"/>
+			</legitimate.children>
+</unit>

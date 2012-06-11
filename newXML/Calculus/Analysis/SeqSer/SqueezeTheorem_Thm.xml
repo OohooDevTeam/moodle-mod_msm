@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_SqueezeTheorem"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Squeeze Theorem</caption>
+   <associate type="Illustration">
+      <info>
+         <para>
+            <para.body>The content of the Squeeze Theorem is actually quite intuitive. See an illustration of this.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>(a_n)</latex>
+            </math>, <math>
+               <latex>(x_n)</latex>
+            </math>, and <math>
+               <latex>(b_n)</latex>
+            </math> be sequences satisfying
+			</para.body>
+         <index.glossary>
+            <term>squeeze theorem</term>
+            <info>
+               <para>
+                  <para.body>A way of testing a sequence for convergence.</para.body>
+               </para>
+            </info>
+         </index.glossary>
+      </para>
+      <math.display>
+         <latex>a_n \leq x_n \leq b_n\qquad \text{for all $n\in\NNr$}</latex>
+      </math.display>
+      <para>
+         <para.body>If <math>
+               <latex>(a_n)</latex>
+            </math> and <math>
+               <latex>(b_n)</latex>
+            </math> converge with <math>
+               <latex>\lim_{n\to\infty} a_n = \lim_{n\to \infty} b_n</latex>
+            </math>, then <math>
+               <latex>(x_n)</latex>
+            </math> also converges, and</para.body>
+      </para>
+      <math.display>
+         <latex>\lim_{n\to \infty} a_n = \lim_{n\to \infty} x_n = \lim_{n\to \infty} b_n</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>Set <math>
+                     <latex>c:=\lim_{n\to \infty} a_n</latex>
+                  </math>. We check that <math>
+                     <latex>(x_n)</latex>
+                  </math> satisfies the definition of convergence to <math>
+                     <latex>c</latex>
+                  </math>. So, let <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> be given. Then we know</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>There exists <math>
+                           <latex>n_1\in\NNr</latex>
+                        </math> such that <math>
+                           <latex> c-\varepsilon &lt; a_n &lt; c+\varepsilon</latex>
+                        </math> for all <math>
+                           <latex>n\geq n_1</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>There exists <math>
+                           <latex>n_2\in\NNr</latex>
+                        </math> such that <math>
+                           <latex> c-\varepsilon &lt; b_n &lt; c+\varepsilon</latex>
+                        </math> for all <math>
+                           <latex>n\geq n_2</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>Now choose <math>
+                     <latex>n_0 := \max \Set{ n_1 , n_2 }</latex>
+                  </math>, and observe that for all <math>
+                     <latex>n\geq n_0</latex>
+                  </math>,</para.body>
+            </para>
+            <math.display>
+               <latex> c-\varepsilon &lt; a_n \leq x_n \leq b_n &lt; c + \varepsilon </latex>
+            </math.display>
+            <para>
+               <para.body>as was to be shown.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

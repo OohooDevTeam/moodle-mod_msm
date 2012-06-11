@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_Hyperplanes">
+	<headers>
+		<full>Hyperplanes</full>
+		<toc>Hyperplanes</toc>
+		<short>Hyperplanes</short>
+	</headers>
+	<intro>
+		<para>A <subordinate>
+			<hot>hyperspace</hot>
+			<companion>
+				<subpage.ref subpageID="Illu_HyperSpace"/>
+				<para>An illustration of the concept of a hyperspace</para>
+			</companion>
+			</subordinate> in <latex>\RNr[n]</latex> consists of all vectors which are perpendicular to a given non-zero vector. Thus a hyperspace always contains the origin. If we allow it to be (parallel-)translated away from the origin, we obtain a <subordinate>
+			<hot>hyperplane</hot>
+			<companion>
+				<subpage.ref subpageID="Illustr_Hyperplane"/>
+				<para>An illustration of the concept of a hyperplane</para>
+			</companion>
+		</subordinate>
+			in <latex>\RNr[n]</latex>.</para>
+		<para>We will see that a hyperplanes provides a geometric view of the solutions of a special kind of equation in <latex>n</latex> variables, namely a linear equation. Depending on the context such an equation may appear in one of several guises, and we will learn how to recognize these guises as variations of one and the same thing.</para>
+	</intro>
+	
+	<subsection id="SubSec_Hyperspaces">
+		<headers>
+			<full>Hyperspaces</full>
+			<toc>Hyperspaces</toc>
+			<short>Hyperspaces</short>
+		</headers>
+		<subsection.body>
+			<para>Let us begin by saying in mathematical terms what a hyperspace is.</para>
+			<def type="Definition" id="Def_Hyperspace">
+				<caption>Hyperspace</caption>
+				<associate Description="Explanation">
+					<info>
+						<caption>Explanation: How to read this expression</caption>
+						<para>Read <latex>\text{Perp}(\Vect{n}) := \Set{ \Vect{x} \in \RNr[n] \st \DotPr{\Vect{x}}{\Vect{n}} = 0}</latex> as:</para>
+						<para>&lsquo;Perp of <latex>\Vect{n}</latex> is defined to be the set of all those <latex>\Vect{x}</latex> in <latex>\RNr\ \ n</latex> such that the dot product of <latex>\Vect{x}</latex> and <latex>\Vect{n}</latex> is <latex>0</latex>&rsquo;.</para>
+					</info>
+				</associate>
+				<associate Description="Illustration">
+					<subpage.ref subpageID="Illu_HyperSpace"/>
+					<info>
+						<caption>Illustration</caption>
+						<para>For this definition to make sense we need to recall that the word &lsquo;normal&rsquo; here means &lsquo;perpendicular&rsquo;. So <latex>\text{Perp}(\Vect{n})</latex> consists of all those <latex>\Vect{x}</latex> which are perpendicular to the given vector <latex>\Vect{n}</latex>. The mathematical test for being perpendicular is: <latex>\DotPr{\Vect{x}}{\Vect{n}} = 0</latex>.</para>
+						<para>See an illustration of this.</para>
+					</info>
+				</associate>
+				
+				<para>Given a nonzero vector <latex>\Vect{n}</latex> in <latex>\RNr[n]</latex>, the hyperspace perpendicular to <latex>\Vect{n}</latex> is the set</para>
+				<math.display>
+					<latex>\text{Perp}(\Vect{n}) := \Set{ \Vect{x} \in \RNr[n] \st \DotPr{\Vect{x}}{\Vect{n}} = 0}</latex>
+				</math.display>
+				<para>The vector <latex>\Vect{n}</latex> is called a normal vector of <latex>\text{Perp}(\Vect{n})</latex>.
+					<index.glossary>
+						<term>hyperspace</term>
+						<info>
+							<para>The hyperspace in <latex>\RNr[n]</latex> perpendicular to a nonzero vector <latex>\Vect{n}</latex>  is the set</para>
+							<para align="center">
+								<latex>\text{Perp}(\Vect{n}) := \Set{ \Vect{x} \in \RNr[n] \st \DotPr{\Vect{x}}{\Vect{n}} = 0}</latex>
+							</para>
+						</info>
+					</index.glossary>
+					
+					
+					<index.glossary>
+						<term>normal</term><term>vector</term>
+						<info>
+							<para>to a hyperspace in <latex>\RNr[n]</latex></para>
+						</info>
+					</index.glossary>
+				</para>
+			</def>
+			
+			<comment type="Comment" id="Com_Dot0LinearEquation">
+				<caption>Coordinate version of the Hyperspace Equation</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_Hyperspaces"/>
+					<info>
+						<para>Some examples of hyperspaces</para>
+					</info>
+				</associate>
+				<associate Description="Comment">
+					<info>
+						<caption>Comment</caption>
+						<para>Thus a linear equation of the form</para>
+						<math.display>
+							<latex>{\color{red} a_1}x_1 + {\color{red} a_2}x_2 + \cdots + {\color{red} a_n}x_n = 0</latex>
+						</math.display>
+						<para>always reveals a normal vector to the hyperspace of its solutions, namely</para>
+						<computation>
+							<left>\Vect{n}</left>
+							<center>=</center>
+							<right>({\color{red} a_1},{\color{red} a_2},\cdots ,{\color{red} a_n})</right>
+						</computation>
+						<para>So the components of the normal vector are the coefficients of the linear equation.</para>
+					</info>
+				</associate>
+				
+				<para>Let us express the dot product equation <latex>\DotPr{\Vect{x}}{\Vect{n}} = 0</latex> in terms of the coordinates of <latex>\Vect{x}</latex> and <latex>\Vect{n}</latex>: if</para>
+				
+				<para align="center">
+					<latex>\Vect{x} = (x_1,\dots ,x_n)</latex> &nbsp; and &nbsp; <latex>\Vect{n} = (a_1,\dots ,a_n)</latex>,
+				</para>
+				
+				<para>then</para>
+				
+				<math.display>
+					<latex>0 = \DotPr{\Vect{x}}{\Vect{n}} = a_1x_n + \cdots + a_n x_n</latex>
+				</math.display>
+				
+				<para>This means that <latex>\text{Perp}(\Vect{n})</latex> consists of the solutions of the linear equation</para>
+				
+				<math.display>
+					<latex>a_1x_n + \cdots + a_n x_n = 0</latex>
+				</math.display>
+				
+				<para>in the variables <latex>x_1,\dots ,x_n</latex> with coefficients <latex>a_1,\dots ,a_n</latex>. Conversely, given an equation</para>
+				
+				<para align="center">
+					<latex>a_1x_1+ \cdots + a_nx_n = 0</latex>,   with   <latex>\Vect{n} = (a_1,\dots ,a_n) \neq \Vect{0}</latex>, </para>
+				<para>we know that its solutions form the hyperspace <latex>\text{Perp}(\Vect{n})</latex>.
+					<index.glossary>
+						<term>equation</term>
+						<term>of hyperspace</term>
+						<info>
+							<para>The equation whose solutions form the hyperspace in <latex>\RNr[n]</latex> perpendicular to the normal vector <latex>\Vect{n} = (a_1,\dots ,a_n)</latex> is</para>
+							<math.display>
+								<latex>0 = \DotPr{\Vect{x}}{\Vect{n}} = a_1x_1 + \cdots + a_nx_n</latex>
+							</math.display>
+						</info>
+					</index.glossary>
+				</para>
+			</comment>
+		</subsection.body>
+	</subsection>
+	
+	
+	
+	
+	
+	<subsection id="SubSec_Hyperplanes">
+		<headers>
+			<full>Hyperplanes</full>
+			<toc>Hyperplanes</toc>
+			<short>Hyperplanes</short>
+		</headers>
+		<subsection.body>
+			<para>Recall: a hyperplane results from shifting a hyperspace off of the origin. Visual <subordinate>
+				<hot>inspection</hot>
+				<companion>
+					<subpage.ref subpageID="Illustr_Hyperplane"/>
+					<para>Pictures which assist you with such an inspection.</para>
+				</companion>
+			</subordinate> suggests: The location of a hyperplane <latex>H</latex> is completely determined by a nonzero vector <latex>\Vect{n}</latex> which is perpendicular to <latex>H</latex>, and a point <latex>P</latex> on <latex>H</latex>. Accordingly, we have</para>
+			
+			<xi:include href="HyperplaneEquation_Prop.xml"/>
+			
+			<para>The vector <latex>\Vect{n}</latex> is called <subordinate>
+				<hot>a normal vector</hot>
+				<info>
+					<caption>Why &lsquo;a&rsquo; normal vector and not ‘the’ normal vector</caption>
+					<para>If <latex>\Vect{n}</latex> is a normal vector of the given hyperplane, then <latex>2\Vect{n}</latex>, <latex>3\Vect{n}</latex>, etc. are also normal vectors of the hyperplane. Therefore, a given hyperplane has many normal vectors (which are all parallel to one another). For this reason we need to speak of a normal vector of a given hyperplane, rather than of the normal vector.</para>
+				</info>
+			</subordinate> of the specified hyperplane. An equation for one and the same hyperplane can present itself in various guises:</para>
+			
+			<comment type="Remark">
+				<caption>Alternate appearances of hyperplane equation</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_Hyperplanes"/>
+					<info>
+						<para>Examples of hyperplanes</para>
+					</info>
+				</associate>
+				
+				<para>The dot product equation <latex>\DotPr{ (\Vect{x} - \Vect{p}) }{ \Vect{n} } = 0</latex> <subordinate>
+					<hot>just differs in appearance</hot>
+					<info>
+						<caption>Why is this so?</caption>
+						<para>The symbols <latex>a_1,\dots ,a_n</latex> and <latex>p_1,\dots ,p_n</latex> represent fixed numbers. So we obtain a constant</para>
+						<math.display>
+							<latex>c := a_1p_1 + \cdots + a_n p_n</latex>
+						</math.display>
+						<para>Therefore the equation <latex>\DotPr{(\Vect{x} - \Vect{p})}{ \Vect{n} } = 0</latex> is equivalent to</para>
+						<para align="center">
+							<latex>\DotPr{\Vect{x}}{\Vect{n}} = \DotPr{ \Vect{p} }{\Vect{n} } = c</latex>   or   <latex>a_1x_1 + \cdots + a_n x_n = c</latex>
+						</para>
+					</info>
+				</subordinate> from either one of the two equations below</para>
+				<para align="center">
+					<latex>\DotPr{\Vect{x}}{\Vect{n}} = c</latex>   and   <latex>a_1x_1 + \cdots + a_n x_n = c</latex>,</para>
+				<para>where <latex>c:=a_1p_1+\cdots + a_np_n</latex>, <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>, <latex>\Vect{n} = (a_1,\dots ,a_n)</latex>, and <latex>\Vect{p}=(p_1,\dots ,p_n)</latex>. Therefore the solutions of each of these equations forms the same hyperplane as the solutions of any of the other equations.</para>
+				<para>Conversely, if we are given such an equation we can read off a normal vector <latex>\Vect{n} := (a_1,\dots ,a_n)</latex> to the hyperplane in question. If <latex>a_k\neq 0</latex>, we conclude that the point <latex>P</latex> with position vector <latex>\Vect{p} := (0,\dots ,0,c/a_k,0,\dots , 0)</latex> belongs to the hyperplane.</para>
+			</comment>
+			
+			<comment type="Remark" id="Rem_EquivalentHyperplaneEquations">
+				<caption>Equivalent hyperplane equations</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_EquivalentHyperplanes"/>
+					<info><para>Examples of equivalent hyperplanes</para></info>
+				</associate>
+				
+				
+				<para>Let <latex>u</latex> be any nonzero number, and consider the two equations below:</para>
+				<computation>
+					<left>a_1 x_1 + \cdots + a_n x_n</left>
+					<center>=</center>
+					<right>c</right>
+					<left>ua_1x_1 + \cdots ua_n x_n</left>
+					<center>=</center>
+					<right>uc</right>
+				</computation>
+				<para>These two equations are not the same. Still, a vector <latex>\Vect{x} = (x_1, \dots ,x_n)</latex> satisfies one of them exactly when it satisfies the other. Therefore both equations describe the same hyperplane in <latex>\RNr[n]</latex>. In this situation we call the equations equivalent.
+					<index.glossary>
+						<term>equivalent</term><term>equations</term>
+						<info><para>Definition of the concept of equivalent equations.</para></info>
+					</index.glossary>
+				</para>
+			</comment>
+			
+			<def type="Definition" id="Def_ParallelHyperplanes">
+				<caption>Parallel hyperplanes</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_ParallelHyperplanes"/>
+					<info><para>Examples of parallel hyperplanes</para></info>
+				</associate>
+				<para>Two hyperplanes in <latex>\RNr[n]</latex> are called parallel if they have parallel normal vectors.
+				<index.glossary>
+					<term>parallel</term><term>hyperplanes</term>
+					<info><para>Definition of the concept.</para></info>
+				</index.glossary>
+				</para>
+			</def>
+		</subsection.body>
+	</subsection>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_Hyperplanes"/>
+	</studymaterials>
+</section>

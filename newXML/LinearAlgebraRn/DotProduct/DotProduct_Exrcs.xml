@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_DotProduct"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	  <title>The Dot Product Operation: Exercises</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Evaluate the following dot products</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>\DotPr{(2,-1)}{(6,1)}</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>11</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\DotPr{(2,-1)}{(6,1)} = 12 -1 =11</latex>
+                        </math>
+					                </para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ (1,3,2) }{(-2,1,1)}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>3</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\DotPr{(1,3,2)}{(-2,1,1)} = -2 +3 +2 = 3</latex>
+                        </math>
+					                </para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>\DotPr{(-3,1,3,1)}{(6,1,1,1)}</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+						                     <math>
+                              <latex>-13</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+						                  <math>
+                           <latex>\DotPr{(-3,1,3,1)}{(6,1,1,1)} = -18 + 1 + 3 + 1 = -13</latex>
+                        </math>
+					                </para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Each of the following expressions contains an invalid use of the dot product. Write out exactly what is wrong before looking at the solution.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ (312,-781,2013) }{ (9143,691, -901,1618) } = 443</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The dot product is only defined for two vectors from the same space <math>
+                           <latex>\RNr[n]</latex>
+                        </math>; i.e. both vectors must have the same number of coordinates. – In the case at hand the first vector has <math>
+                           <latex>3</latex>
+                        </math> coordinates, and the second has <math>
+                           <latex>4</latex>
+                        </math>. Therefore the dot product of these two vectors is not defined. The assertion that the dot product of these two vectors has the value 443 is entirely out of place, because the dot product of the given vectors isn’t equal to anything ... it is simply not defined.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ (4,1,3) }{ (1, -2,1) } = (4, -2,3)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The dot product of two vectors always is a number (in this case: <math>
+                           <latex>5</latex>
+                        </math>), not a vector as is suggested here. Therefore the suggested identity is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\dfrac{(2,3,1)}{(2,3,1)} = 1</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The division of one vector by another is not defined. An identity of the suggested form is, therefore, invalid.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>\DotPr{ (\Vect{y}/ \Vect{x}) }{ \Vect{x} } = \Vect{y}</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The problem here is the same as in the previous problem: The operation of dividing the vector <math>
+                           <latex>\Vect{y}</latex>
+                        </math> by the vector <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is not defined. No identity of the suggested form is valid.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Verify each of the identities below by evaluating the left and the right hand side separately.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ (2,5,-1) }{ \left((3,1,1) + (2,-3,4)\right) } = \DotPr{ (2,5,-1) }{ (3,1,1) } + \DotPr{ (2,5,-1) }{ (2,-3,4) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Computation of the left hand side:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (2,5,-1) }{ \left((3,1,1) + (2,-3,4)\right) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (2,5,-1) }{ (5,-2,5) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>10 -10 -5</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-5</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Computation of the right hand side</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\DotPr{ (2,5,-1) }{ (3,1,1) } + \DotPr{ (2,5,-1) }{ (2,-3,4) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(6+5-1)\ +\ (4-15-4)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-5</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So both sides are equal as expected.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ (6,-1) }{ (2,4) - (1,2) } = \DotPr{ (6,-1) }{ (2,4) }\ -\ \DotPr{ (6,-1) }{ (1,2) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ -3\cdot (4,4,-1,6) }{ (-2,3,5,7) } = -3\cdot \left( \DotPr{ (4,4,-1,6) }{ (-2,3,5,7) } \right)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ -3\cdot (4,4,-1,6) }{ (-2,3,5,7) } = \DotPr{ (4,4,-1,6) }{\left( (-3)\cdot (-2,3,5,7) \right)}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ (4,4,-1,6) }{ (-2,3,5,7) } = \DotPr{ (4,4,-1,6) }{ (6,-9,-15,-21) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ (4,6,-1) }{ (3,7,1) } = \DotPr{ (3,7,1) }{ (4,6,-1) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\DotPr{ (7,3,4,-1,5) }{ (1,-3,2,0,1) } = \DotPr{ (1,-3,2,0,1) }{ (7,3,4,-1,5) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Amongst the vectors given below, determine which pair(s) are perpendicular.</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Vect{a} = (1,3,-1), \quad \Vect{b} = (4,0,1), \quad \Vect{x} = (2,0,-8), \quad \Vect{y} = (4,1,7)</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>
+					                   <math>
+                           <latex>\Vect{b}</latex>
+                        </math> is perpendicular to <math>
+                           <latex>\Vect{x}</latex>
+                        </math>, and <math>
+                           <latex>\Vect{a}</latex>
+                        </math> is perpendicular to <math>
+                           <latex>\Vect{y}</latex>
+                        </math>. – None of the other pairs of vectors is perpendicular.</para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>For each pair of vectors you need to evaluate the dot product. A pair of vectors is perpendicular if their dot product is <math>
+                     <latex>0</latex>
+                  </math>.</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>This exercise may help you overcome a certain psychological hurdle: Whenever you want to know whether two vectors are perpendicular, try to show that their dot product is <math>
+                     <latex>0</latex>
+                  </math> – regardless of how ‘complicated’ the vectors may look at first sight. – Apply this method in the following situation</para.body>
+            </para>
+			         <para>
+               <para.body>Assume that <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are nonzero vectors in <math>
+                     <latex>\RNr[5]</latex>
+                  </math>. Show that the vector</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Vect{z} := \Vect{y} - \dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{x} }{ \Vect{x} } } \cdot \Vect{x}</latex>
+			         </math.display>
+			         <para>
+               <para.body>is perpendicular to <math>
+                     <latex>\Vect{x}</latex>
+                  </math>
+			            </para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We evaluate the dot product of the given vectors</para.body>
+               </para>
+				
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\DotPr{\Vect{z}}{\Vect{x}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\DotPr{ \left( \Vect{y} - \dfrac{\DotPr{\Vect{x}}{\Vect{y}} }{ \DotPr{\Vect{x}}{\Vect{x}} } \cdot \Vect{x} \right) }{ \Vect{x} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we use the distributivity law of the dot product</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Here we use the distributivity law of the dot product</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\DotPr{\Vect{y}}{\Vect{x}}\ -\ \dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{\Vect{x}}{\Vect{x}} } \cdot ( \DotPr{\Vect{x}}{\Vect{x} })</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+						                        <para>
+                                 <para.body>Note that division and multiplication by the nonzero number <math>
+                                       <latex>\Vect{x} \bullet \Vect{x}</latex>
+                                    </math> is allowed. In addition we use the commutativity law of the dot product: <math>
+                                       <latex>\Vect{y} \bullet \Vect{x} = \Vect{x} \bullet \Vect{y}</latex>
+                                    </math>.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                        <companion>
+                           <info>
+						                        <para>
+                                 <para.body>Note that division and multiplication by the nonzero number <math>
+                                       <latex>\Vect{x} \bullet \Vect{x}</latex>
+                                    </math> is allowed. In addition we use the commutativity law of the dot product: <math>
+                                       <latex>\Vect{y} \bullet \Vect{x} = \Vect{x} \bullet \Vect{y}</latex>
+                                    </math>.</para.body>
+                              </para>
+					                      </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\DotPr{\Vect{x} }{ \Vect{y} } - \DotPr{ \Vect{x} }{ \Vect{y} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+
+				           <para>
+                  <para.body>So <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is perpendicular to <math>
+                        <latex>\Vect{z}</latex>
+                     </math>.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+</exercise.pack>

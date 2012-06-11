@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_GramSchmidtOrthonormalization"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Gram-Schmidt Orthonormalization: Example</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>You are given the vectors <math>
+                  <latex>\Vect{a}</latex>
+               </math>, <math>
+                  <latex>\Vect{b}</latex>
+               </math>, and <math>
+                  <latex>\Vect{c}</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math> with</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{a}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(1,1,1)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{b}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(0,-1,1)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{c}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(1,1,0)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+			      <para xmlns="">
+            <para.body>Verify that these vectors form a basis of <math>
+                  <latex>\RNr[3]</latex>
+               </math>, then orthonormalize them.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We begin by checking that the given vectors are linearly independent. we use the determinant.</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\det \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+1 &amp; -1&amp; 1 \\
+1 &amp; 1 &amp; 0
+\end{array}
+\right] = \det \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+1 &amp;-1 &amp; 0 \\
+1 &amp; 1 &amp;-1
+\end{array}
+\right] = 1 \neq 0
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>So the vectors are linearly independent. Then we know that three linearly independent vectors in the 3-dimensional space <math>
+                        <latex>\RNr[3]</latex>
+                     </math> always form a basis. This answers the first part of the problem.</para.body>
+               </para>
+			
+			            <para>
+                  <para.body>We use the Gram-Schmidt orthonormalization method to turn the given basis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> into an orthonormal basis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\frac{\Vect{a}}{ \Abs{ \Vect{a} } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\frac{1}{\sqrt{3}}\cdot (1,1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			
+			            <para>
+                  <para.body>To orthonormalize <math>
+                        <latex>\Vect{b}</latex>
+                     </math> with respect to <math>
+                        <latex>\Vect{u}</latex>
+                     </math>, we encounter the expression</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left[ \DotPr{ (0,-1,1) }{ \left( \tfrac{1}{\sqrt{3}}\cdot (1,1,1) \right) }\right]\cdot \tfrac{1}{\sqrt{3}}\cdot (1,1,1)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>So we find</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{v}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\frac{ \Vect{b} }{ \Abs{ \Vect{b} } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\frac{1}{ \sqrt{2} }\cdot (0,-1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			
+			            <para>
+                  <para.body>To orthonormalize <math>
+                        <latex>\Vect{c}</latex>
+                     </math> with respect to <math>
+                        <latex>\Vect{u}</latex>
+                     </math> and <math>
+                        <latex>\Vect{v}</latex>
+                     </math> we encounter the expressions</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left[ \DotPr{ (1,1,0) }{ \left( \tfrac{1}{\sqrt{3}}\cdot (1,1,1) \right) }\right]\cdot \tfrac{1}{\sqrt{3}}\cdot (1,1,1)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\frac{2}{3}\cdot (1,1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left[ \DotPr{ (1,1,0) }{ \left( \tfrac{1}{\sqrt{2}}\cdot (0,-1,1) \right) }\right]\cdot \tfrac{1}{\sqrt{2}}\cdot (0,-1,1)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>-\frac{1}{2}\cdot (0,-1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore the orthonormalization of <math>
+                        <latex>\Vect{c}</latex>
+                     </math> with respect to <math>
+                        <latex>\Vect{u}</latex>
+                     </math> and <math>
+                        <latex>\Vect{v}</latex>
+                     </math> is</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{w}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\frac{ (1,1,0) - \tfrac{2}{3}\cdot (1,1,1) + \tfrac{1}{2}\cdot (0,-1,1) }{ \Abs{ (1,1,0) - \tfrac{2}{3}\cdot (1,1,1) + \tfrac{1}{2}\cdot (0,-1,1) } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\frac{ \tfrac{1}{6}\cdot (2,-1,-1) }{ \Abs{ \tfrac{1}{6}\cdot (2,-1,-1) } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\frac{1}{\sqrt{6}}\cdot (2,-1,-1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Thus <math>
+                        <latex>\Vect{u}</latex>
+                     </math>, <math>
+                        <latex>\Vect{v}</latex>
+                     </math>, and <math>
+                        <latex>\Vect{w}</latex>
+                     </math> as found above form the Gram-Schmidt orthonormalization of <math>
+                        <latex>\Vect{a}</latex>
+                     </math>, <math>
+                        <latex>\Vect{b}</latex>
+                     </math>, and <math>
+                        <latex>\Vect{c}</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

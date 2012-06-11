@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illstrt_TrafoShear3D">
+	<title>Transformation Given by Reflection</title>
+	<sub.page.body>
+		<block>
+			<para>The picture below shows a cube being transformed by applying a shear transformation.</para>
+			
+			<figure>
+				<img src="ims/Trafo_Shear3D.jpg"></img>
+			</figure>
+			
+			<para>We will see that shear transformations are linear.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

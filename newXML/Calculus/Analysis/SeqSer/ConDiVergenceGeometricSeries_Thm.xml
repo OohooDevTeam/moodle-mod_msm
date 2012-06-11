@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_GeometricSeriesConDivergence"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Con / Divergence of a Geometric Series</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_GeometricSeries"/>
+      <info>
+         <para>
+            <para.body>Examples of geometric series and their convergence.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For a geometric series <math>
+               <latex>\sum_{n=0}^{\infty}r^n</latex>
+            </math> the following hold.</para.body>
+      </para>
+      <part.theorem counter="1" partid="rgetone">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>r\geq 1</latex>
+                  </math>, then <math>
+                     <latex>\sum_{n=0}^{\infty}r^n=+\infty</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem counter="2" partid="Absrltone">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>r\neq 0</latex>
+                  </math> and <math>
+                     <latex> -1 &lt; r &lt; 1 </latex>
+                  </math>, then <math>
+                     <latex>\sum_{n=0}^{\infty}r^n = 1/(1-r)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem counter="3" partid="rletmone">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>r\leq -1</latex>
+                  </math>, then the geometric series <math>
+                     <latex>\sum_{n=0}^{\infty}r^n</latex>
+                  </math> diverges.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>rgetone</part.ref>
+         </logic>
+         <caption>rgetone</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>r\geq 1</latex>
+                  </math>, then <math>
+                     <latex>r=1+t</latex>
+                  </math> for some <math>
+                     <latex>t\geq 0</latex>
+                  </math>. Consequently, the <math>
+                     <latex>n</latex>
+                  </math>-th partial sum satisfies</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Absrltone</part.ref>
+         </logic>
+         <caption>Absrltone</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Then <math>
+                     <latex>n</latex>
+                  </math>-th partial sum of such a geometric series is</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>rletmone</part.ref>
+         </logic>
+         <caption>rletmone</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Consider first the case <math>
+                     <latex>r=-1</latex>
+                  </math>. Then resulting geometric series is</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearEqsHomoInHomo">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	<title>Homogeneous and Inhomogeneous Systems of Linear Equations</title>
+	<caption>Homogeneous and Inhomogeneous Systems of Linear Equations</caption>
+	<showme>
+		<statement>
+			<para>A system of linear equations is called homogeneous if all of the augmented constants are <latex>0</latex>.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcr}
+\colorbox{lightgreen}{$3$}{\color{red}x_1}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_2}\ -\ \colorbox{lightgreen}{$1$}{\color{red}x_3}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_4}\ -\ \colorbox{lightgreen}{$3$}{\color{red}x_5}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_6}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_7} & = & 0 \\
+%
+\colorbox{lightgreen}{-1}{\color{red}x_1}\ +\ \colorbox{lightgreen}{2}{\color{red}x_2}\ -\ \colorbox{lightgreen}{1}{\color{red}x_3}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$4$}{\color{red}x_5} \ -\ \colorbox{lightgreen}{$6$}{\color{red}x_6}\ -\ \colorbox{lightgreen}{$3$}{\color{red}x_7} & = & 0 \\
+%
+\colorbox{lightgreen}{$5$}{\color{red}x_1}\ -\ \colorbox{lightgreen}{$4$}{\color{red}x_2}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_3}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_5}\ +\ \colorbox{lightgreen}{$5$}{\color{red}x_6}\ -\ \colorbox{lightgreen}{$3$}{\color{red}x_7} & = & 0 \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>This means that choosing all unknowns equal to <latex>0</latex> is a solution. Therefore a homogeneous system of linear equations always has at least one solution, namely <latex magnify="yes">x_1=\cdots =x_n=0</latex></para>
+		</statement>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>A system of linear equations is called inhomogeneous if at least one of its augmented constants is different from <latex>0</latex>. This implies that setting all variables equal to <latex>0</latex> can never be a solution of an inhomogeneous system.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcr}
+\colorbox{lightgreen}{$1$}{\color{red}x_1}\ +\ \colorbox{lightgreen}{$3$}{\color{red}x_2}\ +\ \colorbox{lightgreen}{$9$}{\color{red}x_3}\ -\ \colorbox{lightgreen}{$6$}{\color{red}x_4}\ -\ \colorbox{lightgreen}{$6$}{\color{red}x_5}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_6}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_7} & = & 11 \\
+%
+\colorbox{lightgreen}{20}{\color{red}x_1}\ +\ \colorbox{lightgreen}{0}{\color{red}x_2}\ +\ \colorbox{lightgreen}{3}{\color{red}x_3}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_5} \ +\ \colorbox{lightgreen}{$0$}{\color{red}x_6}\ -\ \colorbox{lightgreen}{$3$}{\color{red}x_7} & = & 2 \\
+%
+\colorbox{lightgreen}{$10$}{\color{red}x_1}\ -\ \colorbox{lightgreen}{$2$}{\color{red}x_2}\ +\ \colorbox{lightgreen}{$2$}{\color{red}x_3}\ +\ \colorbox{lightgreen}{$1$}{\color{red}x_4}\ +\ \colorbox{lightgreen}{$0$}{\color{red}x_5}\ -\ \colorbox{lightgreen}{$1$}{\color{red}x_6}\ -\ \colorbox{lightgreen}{$9$}{\color{red}x_7} & = & -3 \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+</showme.pack>

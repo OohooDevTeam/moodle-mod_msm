@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_IdentityTransformation"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Identity Transformation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The identity transformation on <math>
+                     <latex>\RNr[n]</latex>
+                  </math> is given by</para.body>
+            </para>
+            <math.display>
+               <latex>\IdTrafo{n}\from \RNr[n] \longrightarrow \RNr[n],\quad \IdTrafo{n}(\Vect{x}) := \Vect{x}</latex>
+            </math.display>
+            <para>
+               <para.body>Why is it called the ‘identity transformation’? In general a linear transformation of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> changes location, size or shape of objects contained in it. However, there is one transformation which does not cause any change at all. This is the identity transformation. It sends every <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> to itself: </para.body>
+            </para>
+            <para>
+               <para.body>To find the matrix representing <math>
+                     <latex>\IdTrafo{n}</latex>
+                  </math>, we note that each basic vector <math>
+                     <latex>\StdBss{j}</latex>
+                  </math> gets transformed into itself. </para.body>
+            </para>
+            <math.display>
+               <latex>\IdTrafo{n}(\StdBss{j}) = 1\cdot \StdBss{j} = (0,\dots ,0,1,0,\dots ,0)</latex>
+            </math.display>
+            <para>
+               <para.body>the ‘<math>
+                     <latex>1</latex>
+                  </math>’ appearing in position <math>
+                     <latex>j</latex>
+                  </math>. Therefore <math>
+                     <latex>\IdTrafo{n}</latex>
+                  </math> is represented by the identity matrix of size <math>
+                     <latex>(n,n)</latex>
+                  </math>.</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\IdMtrx[n]= 
+\left[
+\begin{array}{cccc}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp;             &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1
+\end{array}
+\right]
+					
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+   </body>
+</unit>

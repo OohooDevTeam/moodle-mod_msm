@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Rotation">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Example of a Rotation of the Plane</title>
+	<caption>Rotation of the Plane</caption>
+	<showme>
+		<statement>
+			<para>Find the matrix representing the counterclockwise rotation of the plane about the origin through the angle of <latex>60</latex> degrees.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>The specified rotation transformation has <latex>\theta = \tfrac{\pi}{3}</latex>. Therefore it rotates</para>
+			<ul>
+				<li><para>the vector <latex>\StdBss{1}=(1,0)</latex> into the vector <latex magnify="yes">(\cos\theta , \sin\theta) = (\tfrac{1}{2} , \tfrac{\sqrt{3}}{2})</latex>.</para></li>
+				<li><para>the vector <latex>\StdBss{2}=(0,1)</latex> into the vector <latex magnify="yes">(-\sin\theta , \cos\theta) = (-\tfrac{\sqrt{3}}{2},\tfrac{1}{2})</latex>.</para></li>
+			</ul>
+			<para>These vectors form the columns of the rotation matrix:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+R_{\pi/3} := 
+\left[
+\begin{array}{rr}
+\tfrac{1}{2} & -\tfrac{\sqrt{3}}{2} \\
+\tfrac{\sqrt{3}}{2} & \tfrac{1}{2}
+\end{array}
+\right]\ =\ \dfrac{1}{2}\,
+\left[
+\begin{array}{rr}
+1 & -\sqrt{3} \\
+\sqrt{3} & 1
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			<para>This means that a point <latex>(x,y)\in\RNr[2]</latex> gets transformed into the point</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+R_{\pi/3}(x,y) = 
+\left[
+\begin{array}{rr}
+\tfrac{1}{2} & -\tfrac{\sqrt{3}}{2} \\
+\tfrac{\sqrt{3}}{2} & \tfrac{1}{2}
+\end{array}
+\right]
+\left[
+\begin{array}{r} x \\ y \end{array}
+\right] = \dfrac{1}{2}\cdot
+\left[
+\begin{array}{r} x - \sqrt{3}\, y \\ \sqrt{3}\, x + y \end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

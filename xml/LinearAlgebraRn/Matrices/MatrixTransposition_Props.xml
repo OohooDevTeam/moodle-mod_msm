@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MatrixTranspositionProperties">
+	<associate Description="Comment">
+		<info>
+			<caption>Convention when reading this proposition</caption>
+			<para>In the formuli of this proposition, we assume that the matrices involved satisfy the size property so that multiplication and addition is defined.</para>
+		</info>
+	</associate>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment on multiplication and transposition of matrices</caption>
+			<para>When transposing the product <latex>\Mtrx{A}\Mtrx{B}</latex> of two matrices the result is not &lsquo;transpose of <latex>\Mtrx{A}</latex>&rsquo; times &lsquo;transpose of <latex>\Mtrx{B}</latex>&rsquo;. Rather, the result is</para>
+			
+			<math.display>
+				<latex>\Mtrx{B}^T\cdot \Mtrx{A}^T</latex>
+			</math.display>
+			
+			<para>i.e. the order in which <latex>\Mtrx{A}^T</latex> and <latex>\Mtrx{B}^T</latex> need to be multiplied is the reverse of what one might naively expect.</para>
+		</info>
+	</associate>
+	
+	
+	
+	<statement>
+		<para>The transposition operation on matrices has the following properties</para>
+		<part partid="SelfInverse">
+			<caption>Transposition is its own inverse</caption>
+			<para><latex>(\Mtrx{A}^T)^T = \Mtrx{A}</latex></para>
+		</part>
+		<part partid="CommutesAddition">
+			<caption>Commutes with addition of matrices</caption>
+			<para><latex>(\Mtrx{A} + \Mtrx{B})^T = \Mtrx{A}^T + \Mtrx{B}^T</latex>
+				<index.glossary>
+					<term>matrix</term><term>transposition</term><term>commutes with addition</term>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="CommutesScalarMultiplication">
+			<caption>Commutes with scalar multiplication of matrices</caption>
+			<para><latex>(t\cdot \Mtrx{A})^T = t\cdot (\Mtrx{A}^T)</latex>
+				<index.glossary>
+					<term>matrix</term><term>transposition</term><term>commutes with scalar multiplication</term>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="AnticommutesMultiplication">
+			<caption>Anticommutes with multiplication</caption>
+			<para><latex>(\Mtrx{A}\Mtrx{B})^T = \Mtrx{B}^T \Mtrx{A}^T</latex>
+				<index.glossary>
+					<term>matrix</term><term>transposition</term><term>anticommutes with multiplication</term>
+				</index.glossary>
+			</para>
+		</part>
+	</statement>
+	
+	<proof>
+		<caption>
+			<partref>SelfInverse</partref>
+			Transposition is its own inverse
+		</caption>
+		<para>Why does double transposition of a matrix return the original matrix? &ndash; Applying transposition once turns the  <latex>i</latex>-th row into the  <latex>i</latex>-th column. Applying transposition again turns this  <latex>i</latex>-th column back into the  <latex>i</latex>-th row, thus restoring the original matrix. </para>
+		
+		<caption>
+			<partref>CommutesAddition</partref>
+			Transposition commutes with addition of matrices</caption>
+		
+		<para>So why does the transposition operation commute with matrix addition? Let <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> be matrices of size <latex>(m,n)</latex>. Then  <latex>(\Mtrx{A} + \Mtrx{B})^T</latex>  and <latex>\Mtrx{A}^T + \Mtrx{B}^T</latex> are matrices of size <latex>(n,m)</latex>. We need to show that in each position <latex>(j,i)</latex>, <latex>1\leq j\leq n</latex> and <latex>1\leq i\leq m</latex>, the entries of these two matrices are equal. Indeed, in both cases this entry is <latex magnify="yes">a_{ij} + b_{ij}</latex>. So the proof is complete.</para>
+		
+		
+		<caption>
+			<partref>CommutesScalarMultiplication</partref>
+			Transposition commutes with scalar multiplication of a matrix by a number
+		</caption>
+		<para>We leave it to the reader to establish this fact.</para>
+		
+		
+		
+		<caption>
+			<partref>AnticommutesMultiplication</partref>
+			Transposition anticommutes with multiplication of matrices.
+		</caption>
+		<para>A new phenomenon is that transposition anticommutes with matrix multiplication. To see why this is so, let </para>
+		
+		<ul>
+			<li><para><latex magnify="yes">A = [a_{ij}]</latex> be a matrix of size <latex>(m,n)</latex></para></li>
+			<li><para><latex magnify="yes">B = [b_{jk}]</latex> be a matrix of size <latex>(n,p)</latex></para></li>
+		</ul>
+		
+		<para>Then <latex>(\Mtrx{A}\Mtrx{B})^T</latex> and <latex>\Mtrx{B}^T \cdot \Mtrx{A}^T</latex> are matrices of size <latex>(p,m)</latex>. We need to show that in each position <latex>(j,i)</latex>, <latex>1\leq j\leq p</latex> and <latex>1\leq i\leq m</latex>, the entries of these two matrices are equal. Indeed, we find:</para>
+		
+		<ul>
+			<li><para>Entry in position <latex>(j,i)</latex> of <latex>(\Mtrx{A}\Mtrx{B})^T</latex> is: &nbsp; 
+				<subordinate>
+					<hot><latex magnify="yes">a_{i1}b_{1j} + \cdots + a_{in}b_{nj}</latex></hot>
+					<info>
+						<caption>Explanation</caption>
+						<para>This is the entry in position <latex>(i,j)</latex> of <latex>AB</latex>. It turns into the entry in position <latex>(j,i)</latex> of <latex>(AB)^T</latex>.</para>
+					</info>
+				</subordinate>
+				.</para></li>
+			<li><para>Entry in position <latex>(j,i)</latex> of <latex>\Mtrx{B}^T \Mtrx{A}^T</latex> is: &nbsp; <latex magnify="yes">b_{1j}a_{i1} + \cdots + b_{nj}a_{in}</latex></para></li>
+		</ul>
+		
+		<para>Visibly these two expressions are equal. So the proof is complete.</para>
+		
+	</proof>
+</theorem>

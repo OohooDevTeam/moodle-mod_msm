@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_MatrixOperationsProperties"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Properties of Matrix Operations</title>
+      <plain.title>Matrix Operations: Properties</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We just introduced 
+			<subordinate>
+                     <hot>four operations</hot>
+                     <info>
+                        <info.caption>A listing of the four matrix operations</info.caption>
+                        <para>
+                           <para.body>The matrix operations we introduced in the previous section are</para.body>
+                        </para>
+                        <ul>
+                           <li>
+                              <para>
+                                 <para.body>Addition of matrices</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>Scalar multiplication of a matrix by a number</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>Multiplication of a matrix by another</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>Transposition of matrices</para.body>
+                              </para>
+                           </li>
+                        </ul>
+                     </info>
+                  </subordinate>
+			that can be applied to matrices. To
+			<subordinate>
+                     <hot>compute effectively</hot>
+                     <companion>
+                        <showme.pack.ref showmePackID="Exa_MatrixOperationsComputeEffectively"/>
+                        <info>
+                           <para>
+                              <para.body>An example which shows how much labor one can spare by skillfully using properties of the matrix operations.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>
+			with matrices, we need to know the properties of these operations.</para.body>
+            </para>
+            <para>
+               <para.body>Many properties of the matrix operations are analogous to properties of addition and multiplication of numbers. For example, the rules for addition are exactly as the rules for adding numbers. However, multiplication of matrices must be treated with care, as there are differences between the multiplication of numbers and multiplication of matrices. We emphasize two exceptions.</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>When multiplying two matrices <math>
+                           <latex>A</latex>
+                        </math> and <math>
+                           <latex>B</latex>
+                        </math>, the products <math>
+                           <latex>AB</latex>
+                        </math> and <math>
+                           <latex>BA</latex>
+                        </math>
+                        <subordinate>
+                           <hot>need not be the same</hot>
+                           <companion>
+                              <unit.ref unitId="Exa_MatrixOperationsExceptions"/>
+                              <info>
+                                 <para>
+                                    <para.body>Indeed, if <math>
+                                          <latex>a,b</latex>
+                                       </math> are numbers, the identity</para.body>
+                                 </para>
+                                 <math.array column="3">
+                                    <row rowspan="1">
+                                       <cell colspan="2" halign="center" valign="middle">
+                                          <math>
+                                             <latex>ab</latex>
+                                          </math>
+                                       </cell>
+                                       <cell colspan="1" halign="center" valign="middle">
+                                          <text>=</text>
+                                       </cell>
+                                       <cell colspan="2" halign="center" valign="middle">
+                                          <math>
+                                             <latex>ba</latex>
+                                          </math>
+                                       </cell>
+                                    </row>
+                                 </math.array>
+                                 <para>
+                                    <para.body>holds. An analogous identity for the product of two matrices need not hold. Here is an example which demonstrates this.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If the matrix product <math>
+                           <latex>AB</latex>
+                        </math> is the 
+				<subordinate>
+                           <hot>0-matrix</hot>
+                           <info>
+                              <info.caption>What is the 0-matrix?</info.caption>
+                              <para>
+                                 <para.body>A matrix all of whose entries are <math>
+                                       <latex>0</latex>
+                                    </math> is called a <math>
+                                       <latex>0</latex>
+                                    </math>-matrix.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+				it
+				<subordinate>
+                           <hot>need not be true</hot>
+                           <companion>
+                              <unit.ref unitId="Exa_MatrixOperationsExceptions"/>
+                              <info>
+                                 <para>
+                                    <para.body>An example which demonstrates this.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </subordinate>
+				that at least one of <math>
+                           <latex>A</latex>
+                        </math> or <math>
+                           <latex>B</latex>
+                        </math> is a <math>
+                           <latex>0</latex>
+                        </math>-matrix.
+			</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_MatrixAdditionRules">
+         <titles>
+            <title>Rules for Adding Matrices</title>
+            <plain.title>Rules for Adding Matrices</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="MatrixAddition_Props.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_MatrixScalarMultiplicationRules">
+         <titles>
+            <title>Rules for Multiplying a Matrix by a Number</title>
+            <plain.title>Rules for Matrix Scalar Multiplication</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="MatrixScalarMultiplication_Props.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_MatrixMultiplicationRules">
+         <titles>
+            <title>Rules for Multiplying Matrices</title>
+            <plain.title>Rules for Multiplying Matrices</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="MatrixMultiplication_Props.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_MatrixTranspositionRules">
+         <titles>
+            <title>Rules for Transposition of Matrices</title>
+            <plain.title>Rules for Transposition</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="MatrixTransposition_Props.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_MatrixOperations-TrueFalse"/>
+      <exercise.pack.ref exercisePackID="Exe_MatrixOperations"/>
+      <exercise.pack.ref exercisePackID="Exe_MatrixOperations-MiniProofs"/>
+      <para xmlns="Unit">
+         <para.body>These exercises will really strengthen your ability to work effectively with the matrix operations ‘plus’, ‘times’, and ‘transposition’.</para.body>
+      </para>
+   </studymaterials>
+</unit>

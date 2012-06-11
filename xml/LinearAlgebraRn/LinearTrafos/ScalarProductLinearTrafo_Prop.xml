@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ScalarProductLinearTrafo">
+	<caption>Scalar product  of a linear map is linear</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment: What does this proposition tell us?</caption>
+			<para>This proposition gives us two strong pieces of information:</para>
+			<ol>
+				<li><para>The scalar product of a linear transformation by a number is again linear</para></li>
+				<li><para>If the linear map <latex>L</latex> is represented by <latex>\Mtrx{A}</latex>, then the linear map <latex>(tL)</latex> is represented by the scalar product <latex>(t\cdot \Mtrx{A})</latex>.</para></li>
+			</ol>
+			<para>In short: the scalar product  of a linear map corresponds to the scalar product of the representing matrix.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>If <latex>L\from \RNr[n] \longrightarrow \RNr[m]</latex> is a linear transformations and <latex>t\in \RNr</latex> is a number, the scalar product of <latex>L</latex> by <latex>t</latex>
+			<index.glossary>
+				<term>scalar product</term><term>of a linear transformation</term><term>represented by scalar product of matrix</term>
+			</index.glossary>
+			
+		</para>
+		<math.display>
+			<latex>(tL)\from \RNr[n] \longrightarrow \RNr[m],\quad (tL)(\Vect{x}) = t\cdot L(\Vect{x})</latex>
+		</math.display>
+		<para>is again linear. Moreover, if <latex>\Mtrx{A}</latex> is the <latex>(m,n)</latex>-matrix representing <latex>L</latex>, then <latex>(t\cdot \Mtrx{A})</latex> represents <latex>(tL)</latex>.</para>
+	</statement>
+	
+	<proof>
+		<caption>Linearity of <latex>(tL)</latex></caption>
+		<para>We need to show that <latex>(tL)</latex> satisfies the properties of a linear transformation. To see that it commutes with vector addition, let <latex>\Vect{x},\Vect{y}\in \RNr[n]</latex>. We find</para>
+		
+		<computation>
+			<left>(tL)(\Vect{x}+\Vect{y})</left>
+			<center>=	<info><para>This is the definition of <latex>(tL)</latex>.</para></info></center>
+			<right>t\cdot L(\Vect{x}+\Vect{y})</right>
+			<left></left>
+			<center>=	<info><para>As <latex>L</latex> is linear.</para></info></center>
+			<right>t\cdot L(\Vect{x}) + t\cdot L(\Vect{y})</right>
+			<left></left>
+			<center>=</center>
+			<right>tL(\Vect{x}) + tL(\Vect{y})</right>
+			<left></left>
+			<center>=</center>
+			<right>(tL)(\Vect{x})\ +\ (tL)(\Vect{y})</right>
+		</computation>
+		
+		<para>So <latex>(tL)</latex> commutes with vector addition.</para>
+		
+		<para>To see that <latex>(tL)</latex> commutes with scalar multiplication, let <latex>\Vect{x}\in\RNr[n]</latex> and <latex>a\in\RNr</latex>. We find:</para>
+		
+		<computation>
+			<left>(tL)(s\Vect{x})</left>
+			<center>=	<info><para>This is the definition of <latex>(tL)</latex>.</para></info></center>
+			<right>t\cdot (L(a \Vect{x}) )</right>
+			<left></left>
+			<center>=	<info><para>... because <latex>L</latex> is linear</para></info></center>
+			<right>t\cdot ( aL(\Vect{x}) )</right>
+			<left></left>
+			<center>=</center>
+			<right>(ta)\cdot L(\Vect{x})</right>
+			<left></left>
+			<center>=</center>
+			<right>s\cdot \left( t\cdot L(\Vect{x}) \right)</right>
+			<left></left>
+			<center>=</center>
+			<right>a\cdot (tL(\Vect{x}))</right>
+		</computation>
+		
+		<para>This means that <latex>(tL)</latex> commutes with scalar multiplication. – The proof that <latex>(tL)</latex> is linear is complete.</para>
+		
+		<caption>The matrix which represents <latex>(tL)</latex></caption>
+		<para>We know now that <latex>(tL)</latex> is linear. Therefore there is a unique <latex>(m,n)</latex>-matrix  which represents it. On the other hand, if <latex>\Mtrx{A}</latex> represents <latex>L</latex>, we find for arbitrary <latex>\Vect{x}\in\RNr[n]</latex></para>
+		
+		<math.display>
+			<latex>(tA)\Vect{x} = t\cdot (A \Vect{x}) = t\cdot ( L(\Vect{x}) ) = (tL)(\Vect{x})</latex>
+		</math.display>
+		
+		<para>Therefore <latex>\Mtrx{C}:=t\Mtrx{A}</latex> is the unique matrix representing <latex>(tL)</latex>.</para>
+	</proof>
+</theorem>

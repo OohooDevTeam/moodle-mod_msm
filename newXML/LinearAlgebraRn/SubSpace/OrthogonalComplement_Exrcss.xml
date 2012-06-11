@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_OrthogonalComplement"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Orthogonal Complement</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the following sets, find its orthogonal complement inside the specified space.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{ 2,-4 }</latex>
+                     </math> in <math>
+                        <latex>\RNr[1]</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>S^{\bot} = \Set{ 0 }</latex>
+                           </math> is the 0-vector.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A vector <math>
+                           <latex>t</latex>
+                        </math> in <math>
+                           <latex>\RNr[1]</latex>
+                        </math> belongs to <math>
+                           <latex>S^{\bot}</latex>
+                        </math> exactly when</para.body>
+                  </para>
+					             <math.display>
+						               <latex>t\cdot 2 = 0 \quad \text{and}\quad t\cdot (-3)=0</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This happens exactly when <math>
+                           <latex>t=0</latex>
+                        </math>. Therefore <math>
+                           <latex>S^{\bot} = \Set{ 0 }</latex>
+                        </math> is the zero subspace of <math>
+                           <latex>\RNr</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{ \Vect{u} }</latex>
+                     </math>, where <math>
+                        <latex>\Vect{u} = (-3,-1)</latex>
+                     </math> in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>S^{\bot} = \Set{ t\cdot (1,-3) \st t\in \RNr}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <math>
+                           <latex>S^{\bot}</latex>
+                        </math> is the set of all vectors in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> which are perpendicular to <math>
+                           <latex>\Vect{u}</latex>
+                        </math>. This is a line in <math>
+                           <latex>\RNr[2]</latex>
+                        </math>. By inspection, or by solving the equation <math>
+                           <latex>-3x-y=0</latex>
+                        </math>, we see that this line consists of all multiples of <math>
+                           <latex>(1,-3)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{ \Vect{0} }</latex>
+                     </math>, where <math>
+                        <latex>\Vect{0} = (0,0)</latex>
+                     </math> in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>S^{\bot} = \RNr[2]</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Every vector in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> is perpendicular to <math>
+                           <latex>\Vect{0}</latex>
+                        </math>. Therefore <math>
+                           <latex>S^{\bot} = \RNr[2]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S= \Set{ \Vect{u}, \Vect{v} }</latex>
+                     </math>, where <math>
+                        <latex>\Vect{u} = (1,2)</latex>
+                     </math> and <math>
+                        <latex>\Vect{v} = (1,-1)</latex>
+                     </math> in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>S^{\bot} = \Set{ \Vect{0} }</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A vector <math>
+                           <latex>\Vect{w} = (x,y)</latex>
+                        </math> belongs to <math>
+                           <latex>S^{\bot}</latex>
+                        </math> if and only if </para.body>
+                  </para>
+					             <math.display>
+						               <latex>0= \DotPr{ \Vect{w} }{ \Vect{u} } = x + 2y \quad \text{and} \quad 0= \DotPr{ \Vect{w} }{ \Vect{v} } = x-y</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This system of two linear equations in two variables has exactly one solution: <math>
+                           <latex>x=0</latex>
+                        </math>, and <math>
+                           <latex>y=0</latex>
+                        </math>. Therefore, <math>
+                           <latex>\Set{ \Vect{u}, \Vect{v} }^{\bot} = \Set{ \Vect{0} }</latex>
+                        </math>, the zero subspace of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{ \Vect{c} }</latex>
+                     </math>, where <math>
+                        <latex>\Vect{c} = (-1,0,3)</latex>
+                     </math> in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>S^{\bot} = \Set{ (x,y,z)\in\RNr[3] \st x-3z=0 }</latex>
+                           </math> is the hyperspace in <math>
+                              <latex>\RNr[3]</latex>
+                           </math> perpendicular to <math>
+                              <latex>\Vect{c}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S=\Set{ \Vect{u} , \Vect{v} }</latex>
+                     </math>, where <math>
+                        <latex>\Vect{u} = (2,-2,1)</latex>
+                     </math> and <math>
+                        <latex>\Vect{v} = (1,-2,4)</latex>
+                     </math> in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>S^{\bot}</latex>
+                           </math> is the line <math>
+                              <latex>t\cdot (3,7/2,1)</latex>
+                           </math>, in <math>
+                              <latex>\RNr[3]</latex>
+                           </math>, with <math>
+                              <latex>t</latex>
+                           </math> arbitrary.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A vector <math>
+                           <latex>\Vect{w} = (x,y,z)</latex>
+                        </math> belongs to <math>
+                           <latex>S^{\bot}</latex>
+                        </math> if and only if </para.body>
+                  </para>
+					             <math.display>
+						               <latex>0=\DotPr{ \Vect{w} }{ \Vect{u} } = 2x-2y+z \quad \text{and} \quad 0=\DotPr{ \Vect{w} }{ \Vect{v} } = x-2y+4z</latex>
+					             </math.display>
+					             <para>
+                     <para.body>These are homogeneous linear equations. The solutions of each of them form a hyperspace in <math>
+                           <latex>\RNr[3]</latex>
+                        </math>, and the required orthogonal complement is the intersection of these two hyperspaces. We use the row reduction method to find these solutions, and arrive at the result.</para.body>
+                  </para>
+					             <math.display>
+						               <latex>x=3z,\quad y=(7/2)z,\quad \text{$z$ arbitrary}</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Thus <math>
+                           <latex>S^{\bot}</latex>
+                        </math> is the line <math>
+                           <latex>t\cdot (6,7,2)</latex>
+                        </math>, with <math>
+                           <latex>t\in \RNr</latex>
+                        </math> arbitrary.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find the null space of the matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> below.</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrr}
+1 &amp; -1 &amp; 1 &amp; 2 \\
+4 &amp; 1 &amp; 3 &amp; 1 \\
+-1 &amp; 2 &amp; -1 &amp; 1 \\
+1 &amp; 2 &amp; 3 &amp; 4
+\end{array}
+\right]
+
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\Null{\Mtrx{A}} = \Set{ \Vect{0} }</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Null{ \Mtrx{A} }</latex>
+                     </math> is the set of all vectors <math>
+                        <latex>\Vect{x} = (x,y,z,w)</latex>
+                     </math> in <math>
+                        <latex>\RNr[4]</latex>
+                     </math> which are solutions of the matrix equation <math>
+                        <latex>\Mtrx{A} \Vect{x} = \Vect{0}</latex>
+                     </math>. Applying the row reduction method to the corresponding system of four linear equations in four variables shows that this system has the unique solution <math>
+                        <latex>\Vect{x} = (0,0,0,0)</latex>
+                     </math>.</para.body>
+               </para>
+				           <para>
+                  <para.body>Therefore <math>
+                        <latex>S^{\bot} = \Set{ \Vect{0} }</latex>
+                     </math>.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider the linear transformation:</para.body>
+            </para>
+			         <math.display>
+				           <latex>L\from \RNr[4] \longrightarrow \RNr[2],\quad L(x,y,z,w)=(x-y,z-w)</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find the matrix which represents <math>
+                        <latex>L</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix which represents <math>
+                              <latex>L</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrr}
+1 &amp; -1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; -1
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find the null space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find the kernel of <math>
+                        <latex>L</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\ker(L)=\Null{\Mtrx{A} }</latex>
+                           </math> consists of all vectors in <math>
+                              <latex>\RNr[4]</latex>
+                           </math> of the form</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{x}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>y(1,1,0,0) + z(0,0,1,1)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+					                <para>
+                        <para.body>with <math>
+                              <latex>y,z\in\RNr</latex>
+                           </math> arbitrary.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If <math>
+                     <latex>\Vect{s}</latex>
+                  </math> and <math>
+                     <latex>\Vect{t}</latex>
+                  </math> are nonparallel vectors in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>, explain why</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Set{ \Vect{s} , \Vect{t} }^{\bot}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Set{ t(\CrssPr{ \Vect{s} }{ \Vect{t} }) \st t\in \RNr }</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>Review the geometric properties of the cross product.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>The orthogonal complement of two nonparallel vectors <math>
+                        <latex>\Vect{s}</latex>
+                     </math> and <math>
+                        <latex>\Vect{t}</latex>
+                     </math> in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> is the line perpendicular to both of these vectors. We know that <math>
+                        <latex>\CrssPr{ \Vect{s} }{ \Vect{t} }</latex>
+                     </math> is a vector in the direction of this line. Therefore <math>
+                        <latex>\Set{ \Vect{s} , \Vect{t} }^{\bot}</latex>
+                     </math> consists of all scalar multiples of <math>
+                        <latex>\CrssPr{ \Vect{s} }{ \Vect{t} }</latex>
+                     </math>.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+			   <problem>
+         <problem.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Vect{s}</latex>
+                  </math> and <math>
+                     <latex>\Vect{t}</latex>
+                  </math> are parallel nonzero vectors in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, show that <math>
+                     <latex>\Vect{s}^{\bot} = \Vect{t}^{\bot}</latex>
+                  </math>.</para.body>
+            </para>
+         </problem.body>
+      </problem>
+	  </exercise>
+</exercise.pack>

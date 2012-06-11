@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_MatrixIllstrtn">
+
+	<title>Description of a Matrix</title>
+	<sub.page.body>
+		<block>
+			<para>A matrix of numbers is a rectangular arrangement of numbers. Here are some examples:</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+						\left[
+						\begin{array}{rrr}
+						3 & 1 & -1 \\
+						0 & 2 &  5
+						\end{array}
+						\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>This is a matrix with <latex>2</latex> rows and <latex>3</latex> columns. So we call it a matrix of type <latex>(2,3)</latex>.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+						\left[
+						\begin{array}{rrrr}
+						7 & -4 & 6 & 9 \\
+						3 & 0 & 4 & 11 \\
+						-3 & -1 & 6 & 9 \\
+						2 & 2 & 0 & 4
+						\end{array}
+						\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>This is a matrix with <latex>4</latex> rows and <latex>4</latex> columns. So we call it a matrix of type <latex>(4,4)</latex>.</para>
+		</block>
+		
+		<block>
+			<para>We have already used matrices to record the coefficients of a system of linear equations. For example, the matrices above are the (unaugmented) coefficient matrices of the systems of linear equations below.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{ccccccc}
+\colorbox{lightgreen}{$3$}{\color{red}x} & + & \colorbox{lightgreen}{$1$}{\color{red}y} & - & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 0 \\
+\colorbox{lightgreen}{$0$}{\color{red}x} & + & \colorbox{lightgreen}{$2$}{\color{red}y} & + & \colorbox{lightgreen}{$5$}{\color{red}z} & = & 0
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcccccrcc}
+\colorbox{lightgreen}{$7$}{\color{red}r} & - & \colorbox{lightgreen}{$4$}{\color{red}s} & + & \colorbox{lightgreen}{$6$}{\color{red}t} & + & \colorbox{lightgreen}{$9$}{\color{red}u} & = & 0 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}r} & + & \colorbox{lightgreen}{$0$}{\color{red}s} & + & \colorbox{lightgreen}{$4$}{\color{red}t} & + & \colorbox{lightgreen}{$11$}{\color{red}u} & = & 0 \\
+\colorbox{lightgreen}{$-3$}{\color{red}r} & - & \colorbox{lightgreen}{$1$}{\color{red}s} & + & \colorbox{lightgreen}{$6$}{\color{red}t} & + & \colorbox{lightgreen}{$9$}{\color{red}u} & = & 0 \\
+\colorbox{lightgreen}{$2$}{\color{red}r} & + & \colorbox{lightgreen}{$2$}{\color{red}s} & + & \colorbox{lightgreen}{$0$}{\color{red}t} & + & \colorbox{lightgreen}{$4$}{\color{red}u} & = & 0 \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_AlternatingSeriesTest">
+	<caption>Alternating series test</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_AlternatingSeriesConverges"/>
+		<info><para>An example of the alternating series test.</para></info>
+	</associate>
+	
+	<statement>
+		<para>Let <latex><![CDATA[ a_0 > a_1 > \cdots > a_n > \cdots > 0]]></latex>. If <latex>\lim_{n\to\infty}a_n = 0</latex>, then the alternating series <latex>\sum_{n=0}^{\infty}(-1)^n a_n</latex> converges to a number.
+		<index.glossary>
+			<term>alternating</term><term>series test</term>
+			<info><para>... helps determine convergence to a number of some series.</para></info>
+		</index.glossary>
+		</para>
+	</statement>
+	<proof>
+		<para>We begin by analyzing the odd indexed partial sums</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{lclcl}
+s_{2n+1} & = & \left( a_0 - a_1\right)\ +\ \left( a_2 - a_3\right)\ +\ \dots\ +\ \left(a_{2n} - a_{2n+1}\right) & & \\
+s_{2n+3} & = & s_{2n+1} & + & \underset{ > 0 }{\left(a_{2n+2} - a_{2n+3}\right)}
+\end{array}
+					]]>
+			</latex>
+		</math.display>
+		<para>Thus we see that the sequence <latex>(s_{2n+1})</latex> is 
+			<subordinate>
+				<hot>increasing</hot>
+				<info>
+					<caption>Why is this sequence increasing?</caption>
+					<para>We assume that <latex><![CDATA[ a_k> a_{k+1}]]></latex>, for all <latex>k</latex>. So <latex><![CDATA[ a_k - a_{k+1} > 0 ]]></latex> for all <latex>k</latex>.</para>
+				</info>
+			</subordinate>. We will now show now that this sequence is bounded above by <latex>a_0</latex>. Indeed,</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+s_{2n+1}\ =\ a_0\ -\ \underset{>\ 0}{\left(a_1 - a_2\right)} - \underset{>\ 0}{ \left( a_3 - a_4\right)}\ -\ \cdots\ -\ \underset{>\ 0}{ \left(a_{2n-1} - a_{2n}\right) } - a_{2n+1}\ <\ a_0.
+					]]>
+			</latex>
+		</math.display>
+		<para>Thus <latex>(s_{2n+1})</latex> is increasing and bounded above by <latex>a_0</latex>, hence converges to a number <latex>L\leq a_0</latex>. To see that the given series converges to <latex>L</latex>, we analyze the even indexed partial sums</para>
+		<math.display>
+			<latex>s_{2n+2}\ =\ s_{2n+1}\ +\ a_{2n+2}</latex>
+		</math.display>
+		<para>We find</para>
+		<math.display>
+			<latex>\lim_{n\to\infty} s_{2n+2}\ =\ \lim_{n\to\infty}\left( s_{2n+1} + a_{2n+2}\right)\ =\ \lim_{n\to\infty} s_{2n+1}\ +\ 0\ =\ L</latex>
+		</math.display>
+		<para>Consequently, <latex>\lim_{k\to\infty} s_k = L</latex> and, therefore, the given alternating alternating series converges to a number</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+0\ <\ \sum_{n=1}^{\infty} (-1)^{n}a_n\ \leq\ a_0
+					]]>
+			</latex>
+		</math.display>
+	</proof>
+</theorem>

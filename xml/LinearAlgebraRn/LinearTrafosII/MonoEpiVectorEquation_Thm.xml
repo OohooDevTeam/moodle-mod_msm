@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MonoEpiVectorEquation">
+	<caption>Mono-, epimorphism and vector equations</caption>
+	
+	<statement>
+		<para>Given a linear transformation <latex>L\from V\to W</latex> and <latex>\Vect{y}</latex> in <latex>W</latex> the following hold for the vector equation</para>
+		<computation>
+			<left>L(\Vect{x})</left>
+			<center>=</center>
+			<right>\Vect{y}</right>
+		</computation>
+		<part partid="MonoSolUnique">
+			<para><latex>L</latex> is a monomorphism if and only if for each <latex>\Vect{y}</latex> in <latex>W</latex> the equation above has at most one solution.</para>
+		</part>
+		<part partid="EpiSolExists">
+			<para><latex>L</latex> is an epimorphism if and only if for each <latex>\Vect{y}</latex> in <latex>W</latex> the equation above has at least one solution.</para>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<caption><partref>MonoSolUnique</partref> Monomorphisms have unique solutions</caption>
+		<para>If <latex>L</latex> is a monomorphism, suppose</para>
+		<math.display>
+			<latex>L(\Vect{u}) = \Vect{y} = L(\Vect{v})</latex>
+		</math.display>
+		<para>Then we have</para>
+		<math.display>
+			<latex>\Vect{0} = L(\Vect{u}) - L(\Vect{v}) = L( \Vect{u} - \Vect{v} )</latex>
+		</math.display>
+		<para>Therefore <latex>(\Vect{u} - \Vect{v})</latex> belongs to <latex>\ker(L)</latex>. But <latex>L</latex> is a monomorphism. So only the <latex>\Vect{0}</latex>-vector belongs to <latex>\ker(L)</latex>, implying that <latex>(\Vect{u}- \Vect{v})=\Vect{0}</latex>, and so <latex>\Vect{u}= \Vect{v}</latex>.</para>
+		<para>In other words, given <latex>\Vect{y}\in W</latex> arbitrary, there is at most one <latex>\Vect{x}\in V</latex> with <latex>L(\Vect{x}) = \Vect{y}</latex>.</para>
+		
+		<caption><partref>EpiSolExists</partref> Epimorphisms have solutions</caption>
+		<para>We just need to recall the definition of <latex>\Img{L}</latex>: it is the collection of all those <latex>\Vect{y}</latex> in <latex>W</latex> for which there exists <latex>\Vect{x}</latex> in <latex>V</latex> with <latex>L(\Vect{x}) = \Vect{y}</latex>. Thus, if <latex>\Img{L} = W</latex>, this means that the equation</para>
+		<computation>
+			<left>L(\Vect{x})</left>
+			<center>=</center>
+			<right>\Vect{y}</right>
+		</computation>
+		<para>has a solution for each <latex>\Vect{y}</latex> in <latex>W</latex>.</para>
+		
+	</proof>
+</theorem>

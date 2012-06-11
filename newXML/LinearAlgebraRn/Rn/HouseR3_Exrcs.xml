@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise	SYSTEM "../Symbols.dtd">
+<exercise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd">
+	<problem>
+		<para>A house in <latex>\RNr[3]</latex> has the following corner points:</para>
+		<ul>
+			<li>
+				<para>
+					<latex>(0,0,0), (20,0,0), (0,16,0), (20,16,0)</latex>
+				</para>
+			</li>
+			<li>
+				<para>
+					<latex>(0,0,10), (20,0,10), (0,16,10), (20,16,10)</latex>
+				</para>
+			</li>
+			<li>
+				<para>
+					<latex>(0,8,20), (20,8,20)</latex>
+				</para>
+			</li>
+		</ul>
+		<para>Plot the points and sketch the house.</para>
+	</problem>
+	<approach>
+		<answer>
+			<para align="center"><img src="ims/HouseR3.gif" width="425" height="339"/></para>
+		</answer>
+		<solution.hint>
+			<para>The base of the house lies in the <latex>xy</latex>-plane.</para>
+		</solution.hint>
+		<solution.hint>
+			<para>The sides of the house are parallel to the coordinate planes.</para>
+		</solution.hint>
+	</approach>
+</exercise>

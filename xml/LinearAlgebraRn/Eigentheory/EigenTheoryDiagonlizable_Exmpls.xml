@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_EigenTheoryDiagonalizable1">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Example of Eigentheory</title>
+	<caption>Composed of Scalings</caption>
+	<showme>
+		<statement>
+			<para>Consider the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} =
+\left[
+\begin{array}{cc}
+3 & 1 \\
+1 & 3
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>It transforms the vector <latex>\Vect{a} := (1,1)</latex> into the vector <latex>\Mtrx{A}\cdot\Vect{a} = (4,4)</latex>. This means that <latex>\Vect{a}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>4</latex>, and <latex>\Mtrx{A}</latex> transforms the line <latex>L_1</latex> in the direction of <latex>\Vect{a}</latex> into itself while stretching it by the factor <latex>4</latex>.</para>
+			<para>Further <latex>\Mtrx{A}</latex> transforms the vector <latex>\Vect{b}:=(-1,1)</latex> into the vector <latex>\Mtrx{A}\cdot\Vect{b} = (-2,2)</latex>. This means that <latex>\Vect{b}</latex> is an eigenvector of <latex>\Mtrx{A}</latex> with eigenvalue <latex>2</latex>, and <latex>\Mtrx{A}</latex> transforms the line <latex>L_2</latex> in the direction of <latex>\Vect{b}</latex> into itself while stretching it by the factor of <latex>2</latex>.</para>
+			<figure>
+				<img src="ims/Diagonalizable01.png"></img><!-- svg available -->
+			</figure>
+			<para>The picture above shows the plane <latex>\RNr[2]</latex> before and after transformation by <latex>\Mtrx{A}</latex>.</para>
+			<ul>
+				<li><para>The vectors <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> are rendered in green.</para></li>
+				<li><para>The vectors <latex>\Mtrx{A}\cdot\Vect{a}</latex> and <latex>\Mtrx{A}\cdot\Vect{b}</latex> are rendered in red. They are scaled by a factor of <latex>4</latex> and <latex>2</latex>, respectively.</para></li>
+				<li><para>The circle of radius <latex>1</latex> centered at the origin is rendered in green.</para></li>
+				<li><para>The result of transforming this circle by <latex>\Mtrx{A}</latex> is the red ellipse.</para></li>
+			</ul>
+		</statement>
+	</showme>
+</showme.pack>

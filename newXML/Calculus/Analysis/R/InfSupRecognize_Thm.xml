@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_InfSupRecognize"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Recognizing inf / sup</caption>
+   <associate type="Remark">
+      <info>
+         <info.caption>
+            <caption>Remark: Analogous Recognition Criterion for inf</caption>
+         </info.caption>
+         <para>
+            <para.body>For <math>
+                  <latex>A\subseteq\RNr</latex>
+               </math> and <math>
+                  <latex>x\in \RNr</latex>
+               </math> the following are equivalent:</para.body>
+         </para>
+         <ol type="i">
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>x=\inf(A)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>x</latex>
+                     </math> is a lower bound of <math>
+                        <latex>A</latex>
+                     </math>, and for all <math>
+                        <latex>t\in \RNr</latex>
+                     </math> with <math>
+                        <latex> x&gt;t </latex>
+                     </math>, <math>
+                        <latex>t</latex>
+                     </math> is not a lower bound of <math>
+                        <latex>A</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>x</latex>
+                     </math> is a lower bound of <math>
+                        <latex>A</latex>
+                     </math>, and for all <math>
+                        <latex> \varepsilon &gt; 0 </latex>
+                     </math> there exists <math>
+                        <latex>a\in A</latex>
+                     </math> with <math>
+                        <latex> a &lt; x+\varepsilon </latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For <math>
+               <latex>A\subseteq\RNr</latex>
+            </math> and <math>
+               <latex>x\in \RNr</latex>
+            </math> the following are equivalent:</para.body>
+      </para>
+      <part.theorem partid="xEquSup" counter="1" equivalence.mark="1">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>x=\sup(A)</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="LXNotUpperBound" counter="2" equivalence.mark="1">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>x</latex>
+                  </math> is an upper bound of <math>
+                     <latex>A</latex>
+                  </math>, and for all <math>
+                     <latex>t\in \RNr</latex>
+                  </math> with <math>
+                     <latex> t&lt;x </latex>
+                  </math>, <math>
+                     <latex>t</latex>
+                  </math> is not an upper bound of <math>
+                     <latex>A</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="EpsilonCrit" counter="3" equivalence.mark="1">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>x</latex>
+                  </math> is an upper bound of <math>
+                     <latex>A</latex>
+                  </math>, and for all <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> there exists <math>
+                     <latex>a\in A</latex>
+                  </math> with <math>
+                     <latex> x-\varepsilon &lt; a </latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>xEquSup</part.ref>
+         </logic>
+         <caption>xEquSup</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Suppose there is a number <math>
+                     <latex>t\in \RNr</latex>
+                  </math> with <math>
+                     <latex> A &lt; t &lt; x </latex>
+                  </math>. Well, then <math>
+                     <latex>t</latex>
+                  </math> is an upper bound of <math>
+                     <latex>A</latex>
+                  </math> which is less than the least upper bound <math>
+                     <latex>x</latex>
+                  </math> of <math>
+                     <latex>A</latex>
+                  </math>. This contradicts the defining property of <math>
+                     <latex>x</latex>
+                  </math> as <math>
+                     <latex>\sup(A)</latex>
+                  </math>. Therefore no such <math>
+                     <latex>t</latex>
+                  </math> exists.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>LXNotUpperBound</part.ref>
+         </logic>
+         <caption>LXNotUpperBound</caption>
+         <proof.block.body>
+            <para>
+               <para.body>It only remains to show that, given <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> we need to establish the existence of <math>
+                     <latex>a\in A</latex>
+                  </math> with <math>
+                     <latex> x- \varepsilon &lt; a </latex>
+                  </math>. But we know that <math>
+                     <latex> x-\varepsilon &lt; x </latex>
+                  </math> is not an upper bound of <math>
+                     <latex>A</latex>
+                  </math> and, hence, there exists <math>
+                     <latex>a\in A</latex>
+                  </math> with <math>
+                     <latex> x-\varepsilon &lt; a </latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>EpsilonCrit</part.ref>
+         </logic>
+         <caption>EpsilonCrit</caption>
+         <proof.block.body>
+            <para>
+               <para.body>By assumption, <math>
+                     <latex> A&lt;x </latex>
+                  </math>. So it remains to show that, whenever <math>
+                     <latex> A&lt; u </latex>
+                  </math>, then <math>
+                     <latex> x&lt;u </latex>
+                  </math>. We know that, for every <math>
+                     <latex> \varepsilon &gt;0 </latex>
+                  </math>, there is <math>
+                     <latex>a(\varepsilon)</latex>
+                  </math> such that <math>
+                     <latex> x-\varepsilon &lt; a(\varepsilon) \leq u </latex>
+                  </math>. Therefore</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

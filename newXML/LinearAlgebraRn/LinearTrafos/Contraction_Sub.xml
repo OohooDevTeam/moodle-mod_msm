@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_Contraction"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Contraction Transformations</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The contraction transformations of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> are given by</para.body>
+            </para>
+            <math.display>
+               <latex>C\from \RNr[n] \longrightarrow \RNr[n],\quad C(\Vect{x}) := s\cdot\Vect{x}</latex>
+            </math.display>
+            <para>
+               <para.body>where <math>
+                     <latex> 0 &lt; s &lt; 1 </latex>
+                  </math> is a fixed number. – Why is it called a ‘contraction transformation’? – <math>
+                     <latex>C</latex>
+                  </math> is called a contraction transformation because it shrinks or contracts each distance and, therefore, each object in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> by the factor <math>
+                     <latex>s</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Contraction.png"/>
+               <extended.caption>A contraction of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> with contraction factor <math>
+                     <latex>1/2</latex>
+                  </math>.</extended.caption>
+            </media>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>To find the matrix representing <math>
+                     <latex>C</latex>
+                  </math>, we note that <math>
+                     <latex>C</latex>
+                  </math> transforms the basic vector <math>
+                     <latex>\StdBss{j}</latex>
+                  </math> into
+				</para.body>
+               <index.glossary>
+                  <term>matrix</term>
+                  <term>of a contraction</term>
+                  <info>
+                     <para>
+                        <para.body>The matrix representing the contraction of <math>
+                              <latex>\RNr[n]</latex>
+                           </math> with factor <math>
+                              <latex> 0 &lt; s &lt; 1 </latex>
+                           </math> is represented by the matrix <math>
+                              <latex>s\cdot \IdMtrx[n]</latex>
+                           </math>; i.e. <math>
+                              <latex>s</latex>
+                           </math> times the identity matrix of size <math>
+                              <latex>(n,n)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>contraction</term>
+                  <term>matrix</term>
+                  <info>
+                     <para>
+                        <para.body>The matrix representing the contraction of <math>
+                              <latex>\RNr[n]</latex>
+                           </math> with factor <math>
+                              <latex> 0 &lt; s &lt; 1 </latex>
+                           </math> is represented by the matrix <math>
+                              <latex>s\cdot \IdMtrx[n]</latex>
+                           </math>; i.e. <math>
+                              <latex>s</latex>
+                           </math> times the identity matrix of size <math>
+                              <latex>(n,n)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+            <math.display>
+               <latex>C(\StdBss{j}) = s\cdot \StdBss{j} = (0,\dots ,0,s,0,\dots ,0)</latex>
+            </math.display>
+            <para>
+               <para.body>Therefore <math>
+                     <latex>C</latex>
+                  </math> is represented by the matrix of size <math>
+                     <latex>(n,n)</latex>
+                  </math>
+               </para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+s\cdot \IdMtrx[n] = 
+\left[
+\begin{array}{cccc}
+s &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; s &amp;             &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; s
+\end{array}
+\right]
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>For example, the dilation of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> in the picture above is</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+D\from \RNr[2] \longrightarrow \RNr[2],\qquad D(x,y)=\tfrac{3}{2}\cdot (x,y) = 
+\left[
+\begin{array}{cc}
+\tfrac{3}{2} &amp; 0 \\
+0 &amp; \tfrac{3}{2}
+\end{array}
+\right] \left[ \begin{array}{c} x \\ y \end{array} \right]
+					
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+   </body>
+</unit>

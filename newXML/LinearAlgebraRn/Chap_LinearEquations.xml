@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
+      unitid="Chap_LinearEquations">
+   <titles>
+      <title>Linear Equations</title>
+      <plain.title>Linear Equations</plain.title>
+   </titles>
+   <legitimate.children>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEqsIntro.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEqsSolveGeometrically.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/GaussJordanElimination.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/CoefficientMatrix.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/NumberSolutions.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEqs_Prvw.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEqsSolveGeometrically_Prvw.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEq1_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEq1_Qz.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/TwoEqnsR2NonParallel.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/TwoEqnsR3NonParallel.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/Overdetermined_Illstrt.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/UniqueSolution_Illstrt.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/TwoEqnsParallel1.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/GeomtricallySolve_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/GeomtricallySolve1_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/MatrixRREF_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/MatrixRREF1_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/ReadSolutions_Exa.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/ReadSolutions_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/DefSolveFromRREF_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/ReductionToRREF_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/ReductionToRREF1_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/RREFSolve_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/RREFSolveConcepts_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="LinearEqs/RREF_Exmpl.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/CoefficientMatrix_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/ReductionToRREF1_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEqsRank_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEqsNoSolution_Illstrtn.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEqsOneSolution_Illstrtn.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEqsManySolutions_Illstrtn.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/LinearEqsHomo_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearEqs/NumberSolutions_Exrcs.xml"/>
+			</legitimate.children>
+</unit>

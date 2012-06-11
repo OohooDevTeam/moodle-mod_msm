@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_CrossProductAlgebraicProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Cross product: algebraic properties</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
+         <para>
+            <para.body>What do these equations describing algebraic properties of the cross product actually say? – Find details here.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>The cross product operation has the following properties</para.body>
+      </para>
+      <part.theorem partid="Bilinear">
+         <part.body>
+            <para>
+               <para.body>For arbitrary vectors <math>
+                     <latex>\Vect{u}</latex>
+                  </math>, <math>
+                     <latex>\Vect{v}</latex>
+                  </math>, <math>
+                     <latex>\Vect{x}</latex>
+                  </math>, <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>, and <math>
+                     <latex>t</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math> the following hold</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ (\Vect{u} + \Vect{v}) }{ \Vect{y} }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ \Vect{u} }{ \Vect{y} }\ +\ \CrssPr{ \Vect{v} }{ \Vect{y} }</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ \Vect{u} }{ (\Vect{x} + \Vect{y}) }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ \Vect{u} }{ \Vect{x} }\ +\ \CrssPr{ \Vect{u} }{ \Vect{y} }</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ (t\cdot \Vect{x}) }{ \Vect{y} }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>t\cdot (\CrssPr{ \Vect{x} }{ \Vect{y} }) = \CrssPr{ \Vect{x} }{ (t\cdot \Vect{y}) }</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="AntiSymmetric">
+         <part.body>
+            <para>
+               <para.body>For arbitrary <math>
+                     <latex>\Vect{x}</latex>
+                  </math>, <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>,</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>-\CrssPr{ \Vect{y} }{ \Vect{x} }</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>Bilinear</part.ref>
+         </logic>
+         <caption>Bilinear</caption>
+         <proof.block.body>
+            <para>
+               <para.body>These three identities together assert that the cross product operation is bilinear. To verify these bilinearity properties, we recall that the determinant operation on  <math>
+                     <latex>(2,2)</latex>
+                  </math>-matrices is 
+			<subordinate>
+                     <hot>bilinear</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                           <para>
+                              <para.body>Look up these properties of the determinant operation.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>.
+			So we obtain, for example,</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>AntiSymmetric</part.ref>
+         </logic>
+         <caption>AntiSymmetric</caption>
+         <proof.block.body>
+            <para>
+               <para.body>The antisymmetry property of the cross product follows directly from the 
+			<subordinate>
+                     <hot>alternating property</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                           <para>
+                              <para.body>Look up these properties of the determinant operation.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			of the determinant operation.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

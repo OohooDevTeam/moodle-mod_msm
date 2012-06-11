@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_CrossProductTheory">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Cross Product Theory</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>Show that, for arbitrary vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> in <latex>\RNr[3]</latex>, any scalar multiple <latex>t\cdot (\CrssPr{ \Vect{x} }{ \Vect{y} })</latex> of the cross product is perpendicular to both <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+		</problem>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Show that, for arbitrary vectors <latex>\Vect{u}</latex>, <latex>\Vect{v}</latex>, and <latex>\Vect{w}</latex> in <latex>\RNr[3]</latex>,</para>
+			<computation>
+				<left>\DotPr{ (\Vect{u} + \Vect{v} ) }{( \CrssPr{(\Vect{u} + \Vect{v})}{ \Vect{w} }) }</left>
+				<center>=</center>
+				<right>0</right>
+			</computation>
+		</problem>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Show that, for arbitrary vectors <latex>\Vect{u}</latex>, <latex>\Vect{v}</latex>, and <latex>\Vect{w}</latex> in <latex>\RNr[3]</latex>,</para>
+			<computation>
+				<left>\DotPr{ \Vect{u} }{ (\CrssPr{ \Vect{v} }{ \Vect{w} }) }</left>
+				<center>=</center>
+				<right>-\DotPr{ \Vect{v} }{ (\CrssPr{ \Vect{u} }{ \Vect{w} }) }</right>
+			</computation>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>Recall the formula which relates dot product, cross product, and determinant:</para>
+				<computation>
+					<left>\DotPr{ \Vect{u} }{ (\CrssPr{ \Vect{v} }{ \Vect{w} }) }</left>
+					<center>=</center>
+					<right>\det[\Vect{u}\ \ \Vect{v}\ \ \Vect{w}]</right>
+				</computation>
+			</solution.hint>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>If <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> are orthonormal vectors in <latex>\RNr[3]</latex> which lie in a hyperspace <latex>H</latex>, show that <latex>\CrssPr{ \Vect{a} }{ \Vect{b} }</latex> is a unit normal vector of <latex>H</latex>.</para>
+		</problem>
+	</exercise>
+</exercise.pack>

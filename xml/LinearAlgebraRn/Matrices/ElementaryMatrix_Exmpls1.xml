@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_ElementaryMatrixExplanation">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Explanation for Elementary Matrices</title>
+	<caption>Explanation for Elementary Matrices</caption>
+	
+	<showme>
+		<statement>
+			<para>The elementary matrix <latex magnify="yes">E_{ij}(s)</latex> allows us to perform the row operation &lsquo;add <latex>t</latex> times the <latex>j</latex>-th row of an <latex>(n,p)</latex>-matrix <latex>\Mtrx{B}</latex> to the <latex>i</latex>-th row of <latex>\Mtrx{B}</latex>&rsquo;. In symbols:</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{bmatrix}
+1 & \cdots & 0 & \cdots & 0 \\
+\vdots & \ddots & \vdots & t & \vdots \\
+0 & \cdots & 1 & \cdots & 0 \\
+\vdots & & \vdots & \ddots & \vdots \\
+0 & \cdots & 0 & \cdots & 1
+\end{bmatrix}
+\begin{bmatrix}
+* & \cdots & * \\
+\vdots & & \vdots \\
+a_{i1} & \cdots & a_{ip} \\
+\vdots & & \vdots \\
+a_{j1} & \cdots & a_{jp} \\
+\vdots & & \vdots \\
+{*} & \cdots & *
+\end{bmatrix}\ =\
+\begin{bmatrix}
+* & \cdots & * \\
+\vdots & & \vdots \\
+a_{i1}+ta_{j1} & \cdots & a_{ip}+ta_{jp} \\
+\vdots & & \vdots \\
+a_{j1} & \cdots & a_{jp} \\
+\vdots & & \vdots \\
+{*} & \cdots & *
+\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>The matrix which, in the set of <latex>(5,5)</latex>-matrices adds <latex>5</latex> times the <latex>3</latex>-rd to the <latex>4</latex>-th row is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+E_{3,4}(5)\ =\ 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 5 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The inverse of <latex>E_{3,4}(5)</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+E_{3,4}(-5)\ =\ 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & -5 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+		</statement>
+	</showme>
+	
+</showme.pack>

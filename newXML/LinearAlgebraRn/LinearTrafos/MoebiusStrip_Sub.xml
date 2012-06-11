@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illstrt_MoebiusStrip"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Transformation of a Strip into a Möbius Strip</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The two pictures below show a planar sheet and then the result of deforming it into a twisted band, called a Möbius strip: give</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/MoebiusStrip1.gif"/>
+                  </media>   <media type="image" active="0" inline="0">
+                     <img src="ims/MoebiusStrip2.jpg" width="240"/>
+                  </media>
+               </para.body>
+            </para>
+            <para>
+               <para.body>This transformation does not transform lines into lines. So it is not linear.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

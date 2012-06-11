@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_DistancePointHyperplane"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Distance of a Point from a Hyperplane</caption>
+   <associate type="Illustration">
+      <info>
+         <para>
+            <para.body>Illustration of the Situation in the Proposition</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Let 
+			<subordinate>
+               <hot>
+                  <math>
+                     <latex>\Pi</latex>
+                  </math>
+               </hot>
+               <info>
+                  <info.caption>
+                     <caption>What is this symbol?</caption>
+                  </info.caption>
+                  <para>
+                     <para.body>‘<math>
+                           <latex>\Pi</latex>
+                        </math>’ is a capital letter from the Greek alphabet. It is pronounced ‘pi’.</para.body>
+                  </para>
+               </info>
+            </subordinate>
+			 be the hyperplane of all <math>
+               <latex>\Vect{x}</latex>
+            </math> in <math>
+               <latex>\RNr[n]</latex>
+            </math> with</para.body>
+      </para>
+      <para align="center">
+         <para.body>
+            <math>
+               <latex>\DotPr{ (\Vect{x} - \Vect{p}) }{ \Vect{n} } = 0</latex>
+            </math>, where 
+		<subordinate>
+               <hot>
+                  <math>
+                     <latex>\Vect{p}</latex>
+                  </math>
+               </hot>
+               <info>
+                  <info.caption>
+                     <caption>Meaning of <math>
+                           <latex>\Vect{p}</latex>
+                        </math>
+                     </caption>
+                  </info.caption>
+                  <para>
+                     <para.body>In this formula <math>
+                           <latex>\Vect{p}</latex>
+                        </math> is the position vector of a point <math>
+                           <latex>P</latex>
+                        </math> on the hyperplane.</para.body>
+                  </para>
+               </info>
+            </subordinate>,
+			<subordinate>
+               <hot>
+                  <math>
+                     <latex>\Vect{n}</latex>
+                  </math>
+               </hot>
+               <info>
+                  <info.caption>
+                     <caption>Meaning of <math>
+                           <latex>\Vect{n}</latex>
+                        </math>
+                     </caption>
+                  </info.caption>
+                  <para>
+                     <para.body>In this formula <math>
+                           <latex>\Vect{n}</latex>
+                        </math> is a nonzero vector which is perpendicular to the hyperplane <math>
+                           <latex>\Pi</latex>
+                        </math>.</para.body>
+                  </para>
+               </info>
+            </subordinate>
+			in <math>
+               <latex>\RNr[n]</latex>
+            </math>, and <math>
+               <latex>\Vect{n} \neq \Vect{0}</latex>
+            </math>.
+		</para.body>
+      </para>
+      <para>
+         <para.body>Given an arbitrary point <math>
+               <latex>Q</latex>
+            </math> in <math>
+               <latex>\RNr[n]</latex>
+            </math>, the point <math>
+               <latex>R</latex>
+            </math> with position vector</para.body>
+      </para>
+      <math.display>
+         <latex>\Vect{r} = \Vect{q} - \text{proj}_{\Vect{n}}(\Vect{q} - \Vect{p}) = \Vect{q}\ -\ \frac{ (\Vect{q} - \Vect{p}) \bullet \Vect{n} }{ \Vect{n} \bullet \Vect{n} } \, \cdot\, \Vect{n}</latex>
+      </math.display>
+      <para>
+         <para.body>is the one and only point on <math>
+               <latex>\Pi</latex>
+            </math> whose distance from <math>
+               <latex>Q</latex>
+            </math> satisfies <math>
+               <latex>\Dstnc{R}{Q} \leq \Dstnc{X}{Q}</latex>
+            </math> for all <math>
+               <latex>X</latex>
+            </math> in <math>
+               <latex>\Pi</latex>
+            </math>. Moreover</para.body>
+      </para>
+      <math.display>
+         <latex>\Dstnc{\Pi}{Q}\ :=\ \Dstnc{R}{Q}\ =\ |\text{proj}_{\Vect{n}}( \Vect{q} - \Vect{p})| = \frac{|(\Vect{q} - \Vect{p}) \bullet \Vect{n} |}{ | \Vect{n} |}</latex>
+      </math.display>
+   </statement.theorem>
+</theorem>

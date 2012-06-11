@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_LinearMapNewFromOld"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: New Linear Transformations from Given Ones</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we discuss three ways of generating a new linear transformation from given ones</para.body>
+            </para>
+            <ol type="1">
+               <li>
+                  <para>
+                     <para.body>The sum of two linear transformations <math>
+                           <latex>L,T\from \RNr[n]\to \RNr[m]</latex>
+                        </math> is again linear, and it is given by</para.body>
+                  </para>
+                  <math.display>
+                     <latex>L+T\from \RNr[n] \longrightarrow \RNr[m],\qquad (L+T)(\Vect{x}) := L(\Vect{x}) + T(\Vect{x})</latex>
+                  </math.display>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The scalar product of a linear transformation <math>
+                           <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                        </math> by a number <math>
+                           <latex>t\in \RNr</latex>
+                        </math> is again linear, and it is given by</para.body>
+                  </para>
+                  <math.display>
+                     <latex>(tL)\from \RNr[n]\longrightarrow \RNr[m],\qquad (tL)(\Vect{x}) := t\cdot L(\Vect{x})</latex>
+                  </math.display>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The composition of linear transformations <math>
+                           <latex>S</latex>
+                        </math> and <math>
+                           <latex>T</latex>
+                        </math> with</para.body>
+                  </para>
+                  <math.display>
+                     <latex>\RNr[p] \overset{L}{\longrightarrow} \RNr[n] \overset{T}{\longrightarrow} \RNr[m]</latex>
+                  </math.display>
+                  <para>
+                     <para.body>is again linear, and it is given by</para.body>
+                  </para>
+                  <math.display>
+                     <latex>T\Comp S\from \RNr[p] \longrightarrow \RNr[m],\qquad T\Comp S(\Vect{x}) := T(S(\Vect{x}))</latex>
+                  </math.display>
+               </li>
+            </ol>
+            <para>
+               <para.body>We will discuss these operations in detail later on.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

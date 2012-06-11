@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_ChangeCoordinates">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Change of Coordinates</title>
+	<exercise>
+		<problem>
+			<para>You are given the ordered basis <latex>\EuScript{B}= (\Vect{b}_1,\Vect{b}_2)</latex> of <latex>\RNr[2]</latex>, where</para>
+			<math.display>
+				<latex>\Vect{b}_1 = (1,3) \quad\text{and}\quad \Vect{b}_2 = (-2,-1)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find the coordinate conversion matrix <latex>\Mtrx{C}_{\EuScript{B}\EuScript{S}}</latex> from standard <latex>\EuScript{S}</latex>-coordinates to <latex>\EuScript{B}</latex>-coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C}_{\EuScript{B}\EuScript{S}} = \dfrac{1}{5}
+\left[
+\begin{array}{rr}
+-1 & 2 \\
+-3 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We know that the matrix which converts from <latex>\EuScript{B}</latex>-coordinates to standard coordinates has the vector <latex>\Vect{b}_1</latex> as its 1st column and <latex>\Vect{b}_2</latex> as its second column. Therefore,</para>
+					<math.display>
+						<latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}} = [ \Vect{b}_1\ \ \Vect{b}_2]</latex>
+					</math.display>
+					
+					<para>We also know that the inverse of <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex> converts from <latex>\EuScript{S}</latex>-coordinates to <latex>\EuScript{B}</latex>-coordinates. In symbols:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C}_{\EuScript{B}\EuScript{S}} = \left(\Mtrx{C}_{\EuScript{S}\EuScript{B}}\right)^{-1} =
+\left[
+\begin{array}{rr}
+1 & -2 \\
+3 & -1
+\end{array}
+\right]^{-1}
+=\dfrac{1}{5}\left[
+\begin{array}{rr}
+-1 & 2 \\
+-3 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find <latex>\Vect{x}_{\EuScript{B}}</latex> if <latex>\Vect{x}_{\EuScript{S}} = (5,-4)</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>\Vect{x}_{\EuScript{B}} = -\tfrac{1}{5}(13 , 19)</latex></para></answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>You are given two ordered bases of <latex>\RNr[3]</latex>:  <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2,\Vect{b}_3)</latex> and <latex>\EuScript{C}=(\Vect{c}_1,\Vect{c}_2,\Vect{c}_3)</latex> with </para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{cclcclccl}
+\Vect{b}_1 & = & (1,0,1) & \Vect{b}_2 & = & (-1,-1,0) & \Vect{b}_3 & = & (0,-1,-1) \\
+\Vect{c}_1 & = & (1,0,0) & \Vect{c}_2 & = & (-1,-1,1) & \Vect{c}_3 & = & (0,0,2)
+\end{array}
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find the coordinate conversion matrix <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex> from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{C}</latex>-coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C}_{\EuScript{C}\EuScript{B}} = 
+\dfrac{1}{2}\left[
+\begin{array}{rrr}
+2 & 0 & 2 \\
+0 & 2 & 2 \\
+1 & -1 & -2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We construct the required coordinate conversion matrix conveniently as</para>
+					<computation>
+						<left>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</left>
+						<center>=</center>
+						<right>\Mtrx{C}_{\EuScript{C}\EuScript{S}} \Mtrx{C}_{\EuScript{S}\EuScript{B}}</right>
+					</computation>
+					<para>This is indeed convenient because we know</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C}_{\EuScript{S}\EuScript{B}} = 
+\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+0 & -1 & -1 \\
+1 & 0 & -1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>and</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C}_{\EuScript{C}\EuScript{S}} = \left( \Mtrx{C}_{\EuScript{S}\EuScript{C}}\right)^{-1} =
+\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+0 & -1 & 0 \\
+0 & 1 & 2
+\end{array}
+\right]^{-1}
+]]>
+						</latex>
+					</math.display>
+					<para>With the row reduction method, we obtain</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+0 & -1 & 0 \\
+0 & 1 & 2
+\end{array}
+\right]^{-1} = 
+\dfrac{1}{2} \left[
+\begin{array}{rrr}
+2 & -2 & 0 \\
+0 & -2 & 0 \\
+0 & 1 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Therefore we obtain</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C}_{\EuScript{C}\EuScript{B}} = \Mtrx{C}_{\EuScript{C}\EuScript{S}} \cdot \Mtrx{C}_{\EuScript{S}\EuScript{B}} = 
+\dfrac{1}{2}\left[
+\begin{array}{rrr}
+2 & 0 & 2 \\
+0 & 2 & 2 \\
+1 & -1 & -2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>If <latex>\Vect{x}_{\EuScript{B}} = (2,0,-1)</latex>, find <latex>\Vect{x}_{\EuScript{C}}</latex>.</para></problem>
+			<approach>
+				<answer><para><latex>\Vect{x}_{\EuScript{C}} = (1,-1,2)</latex></para></answer>
+				<solution.hint>
+					<para>Recall:</para>
+					<computation>
+						<left>\Vect{x}_{\EuScript{C}}</left>
+						<center>=</center>
+						<right>\Mtrx{C}_{\EuScript{C}\EuScript{B}}\cdot \Vect{x}_{\EuScript{B}}</right>
+					</computation>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>You are given two ordered bases <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_n)</latex> and <latex>\EuScript{C}=(\Vect{c}_1,\dots ,\Vect{c}_n)</latex> of <latex>\RNr[n]</latex>.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that the RREF of the <latex>(n,2n)</latex>-matrix <latex>[\Mtrx{C}_{\EuScript{S}\EuScript{C}}\ |\ \Mtrx{A}_{\EuScript{S}\EuScript{B}}]</latex> is the <latex>(n,2n)</latex>-matrix <latex>[\IdMtrx[n]\ |\ \Mtrx{C}_{\EuScript{C}\EuScript{B}}]</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>Find <latex>\Mtrx{C}_{\EuScript{B}\EuScript{C}}</latex>, the coordinate conversion matrix from <latex>\EuScript{C}</latex>-coordinates to <latex>\EuScript{B}</latex>-coordinates, given the bases</para>
+				<math.display>
+					<latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2,\Vect{b}_3,\Vect{b}_4) \quad\text{and}\quad \EuScript{C}=(\Vect{c}_1,\Vect{c}_2,\Vect{c}_3,\Vect{c}_4)</latex>
+				</math.display>
+				<para>of <latex>\RNr[4]</latex>, where</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{cclcclcclccl}
+\Vect{b}_1 & = & (1,1,1,1) & \Vect{b}_2 & = & (0,-1,0,1) \\ \Vect{b}_3 & = & (-1,0,-1,0) & \Vect{b}_4 & = & (0,0,1,-1) \\
+\Vect{c}_1 & = & (1,-1,1,2) & \Vect{c}_2 & = & (4,1,3,1) \\ \Vect{c}_3 & = & (-1,2,-1,1) & \Vect{c}_4 & = & (1,2,3,4)
+\end{array}
+]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C}_{\EuScript{B}\EuScript{C}} = 
+\dfrac{1}{2}\left[
+\begin{array}{rrrr}
+1 & 1 & 3 & 8 \\
+3 & -1 & -1 & 4 \\
+-1 & -7 & 5 & 6 \\
+0 & -2 & 0 & 4
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>You are given two ordered bases <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_n)</latex> and <latex>\EuScript{C}=(\Vect{c}_1,\dots ,\Vect{c}_n)</latex> of <latex>\RNr[n]</latex>. For each of the following statements decide if it is true or false</para>
+		</problem>
+		<part>
+			<problem>
+				<para>The matrix which converts from <latex>\EuScript{C}</latex>-coordinates to <latex>\EuScript{B}</latex>-coordinates is denoted <latex>\Mtrx{C}_{\EuScript{B}\EuScript{C}}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The matrix which converts from <latex>\EuScript{C}</latex>-coordinates to <latex>\EuScript{B}</latex>-coordinates has size <latex>(3,3)</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>This coordinate conversion matrix has size <latex>(n,n)</latex>. So the statement in question is true only if <latex>n=3</latex>; in general it is false.</para></answer>
+				<solution.hint><para>Review how this coordinate conversion matrix is constructed.</para></solution.hint>
+				<solution.hint><para>Is it possible that, no matter what number  <latex>n</latex> represents, this coordinate conversion matrix always has the same size?</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The matrix which converts from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{C}</latex>-coordinates is invertible.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>This is true! - We proved that the inverse of <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex> is the matrix which converts from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{C}</latex>-coordinates.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The matrix which converts from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{C}</latex>-coordinates has rank <latex>n</latex>.</para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Recall: a coordinate conversion matrix is always invertible.</para>
+				</solution.hint>
+				<solution>
+					<para>We need to recall two facts</para>
+					<ol>
+						<li>
+							<para>This coordinate conversion matrix has size <latex>(n,n)</latex>.</para>
+						</li>
+						<li>
+							<para>The matrix is invertible</para>
+						</li>
+					</ol>
+					<para>Now we know that an invertible matrix of size <latex>(n,n)</latex> has the identity matrix of size <latex>(n,n)</latex> as its RREF, hence has rank <latex>n</latex>. So the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The determinant of the matrix which converts from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{C}</latex>-coordinates is nonzero.</para>
+			</problem>
+			<approach>
+				<solution.hint><para>Review previous parts of this problem.</para></solution.hint>
+				<solution>
+					<para>We know that this coordinate conversion matrix is invertible. Therefore its determinant is nonzero.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

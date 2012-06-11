@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="Molecules.xsd"/>
+	<xsd:element name="comment">
+		<xsd:annotation>
+			<xsd:documentation>To comment on a definition, notation, convention, theorem, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element ref="associate" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="comment.body">
+					<xsd:complexType>
+						<xsd:group ref="content_block" maxOccurs="unbounded" minOccurs="1"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="type" use="optional" default="Comment">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:normalizedString">
+						<xsd:enumeration value="Comment"/>
+						<xsd:enumeration value="Remark"/>
+						<xsd:enumeration value="Information"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="id" type="xsd:NCName" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

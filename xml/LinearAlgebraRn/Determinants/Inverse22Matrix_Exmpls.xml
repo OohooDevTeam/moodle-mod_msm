@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Inverse22Matrix">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Inverse of a (2,2)-Matrix</title>
+	
+	<showme>
+		<statement>
+			<para>Find the inverse of the <latex>(2,2)</latex>-matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rr}
+3 & 4 \\
+1 & 7
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			
+			<para>provided it exists.</para>
+		</statement>
+		<answer type="Solution">
+			<para>To test whether <latex>\Mtrx{A}</latex> is invertible, we compute:</para>
+			<computation>
+				<left>\det(\Mtrx{A})</left>
+				<center>=</center>
+				<right>17 \neq 0</right>
+			</computation>
+			<para>Therefore <latex>\Mtrx{A}</latex> is invertible. According to the formula for the inverse of an invertible  (2,2)-matrix, we find</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+A^{-1}\ &=\ \frac{1}{\text{det}(A)}\,
+\left[
+\begin{array}{rr}
+7 & -4 \\
+-1 & 3
+\end{array}\right] \\
+   &=\ \frac{1}{17}\,
+   \left[
+\begin{array}{rr}
+7 & -4 \\
+-1 & 3
+\end{array}\right]
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

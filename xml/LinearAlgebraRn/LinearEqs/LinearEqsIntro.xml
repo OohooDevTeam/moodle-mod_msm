@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro	SYSTEM "../Symbols.dtd">
+<intro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd">
+
+<def type="Definition" id="Def_LinearEquation">
+	<caption>Linear Equation</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_LinearEquations"/>
+		<info>
+			<para>Look at examples of linear equations</para>
+		</info>
+	</associate>
+	<associate Description="Quiz">
+		<quiz.pack.ref quizPackID="Qz_LinearEquations"/>
+		<info>
+			<caption>A Quiz on recognizing Linear Equations</caption>
+			<para></para>
+		</info>
+	</associate>
+	<associate Description="Comment">
+		<info>
+			<caption>How to read this expression</caption>
+			<para><latex>a</latex> one <latex>x</latex> one plus <latex>a</latex> two <latex>x</latex> two plus da da da da plus <latex>a</latex> <latex>n</latex> <latex>x</latex> <latex>n</latex> equals <latex>c</latex></para>
+		</info>
+	</associate>
+	<para>A linear equation in <latex>n</latex> unknowns is an expression which can be written as
+		<index.glossary>
+			<term>linear</term><term>equation</term>
+			<info>
+				<caption>What is a linear equation?</caption>
+				<para>A linear equation is an expression which can be written as</para>
+				
+				<para align="center"><img src="ims/LinearEq_1Gnrl.gif" width="351" height="23"/></para>
+				
+				<para>Look up the definition.</para>
+			</info>
+		</index.glossary>
+	</para>
+	
+	<para align="center"><image src="ims/LinearEq_1Gnrl.gif" width="351" height="23">
+		<area shape="rect" coords="0,2,24,19">
+			<info>
+				<caption>What does <latex>a_1</latex> mean</caption>
+				<para><latex>a_1</latex> is the first coefficient of this linear equation.. It is a number which is given.</para>
+			</info>
+		</area>
+		<area shape="rect" coords="79,2,103,20">
+			<info>
+				<caption>What does <latex>a_2</latex> mean</caption>
+				<para><latex>a_2</latex> is the second coefficient of this linear equation.. It is a number which is given.</para>
+			</info>
+		</area>
+		<area shape="rect" coords="255,2,284,22">
+			<info>
+				<caption>What does <latex>a_n</latex> mean</caption>
+				<para><latex>a_n</latex> is the <latex>n</latex>-th coefficient of this linear equation.. It is a number which is given.</para>
+			</info>
+		</area>
+		<area shape="rect" coords="25,1,47,18">
+			<info>
+				<caption>What does <latex>x_1</latex> mean</caption>
+				<para><latex>x_1</latex> is a variable, also called an unknown. It is the first unknown of this linear equation.</para>
+			</info>
+		</area>
+		<area shape="rect" coords="104,1,125,19">
+			<info>
+				<caption>What does <latex>x_2</latex> mean</caption>
+				<para><latex>x_2</latex> is a variable, also called an unknown. It is the second unknown of this linear equation.</para>
+			</info>
+		</area>
+		<area shape="rect" coords="284,0,304,19">
+			<info>
+				<caption>What does <latex>x_n</latex> mean</caption>
+				<para><latex>x_n</latex> is a variable, also called an unknown. It is the <latex>n</latex>-th unknown of this linear equation.</para>
+			</info>
+		</area>
+	</image>
+	</para>
+</def>
+		
+	<para>We explain the meaning of the symbols in this equation:</para>
+	
+	<ul>
+		<li><para>Each of the symbols <latex>a_1, \dots ,a_n</latex> represents a number which is considered fixed. They are called the coefficients of the equation.
+			<index.glossary>
+				<term>coefficient</term><term>of a linear equation</term>
+				<info><para>Look up the definition</para></info>
+			</index.glossary>
+		</para></li>
+		<li><para><latex>c</latex> on the right represents a number which is also fixed. The equation is called homogeneous if <latex>c=0</latex>, and is called inhomogeneous if <latex>c\neq 0</latex>.
+			<index.glossary>
+				<term>homogeneous</term><term>linear equation</term>
+				<info>
+					<caption>What is a homogeneous linear equation?</caption>
+					<para>A homogeneous linear equation can be written in the form</para>
+					<math.display>
+						<latex>a_1x_1 + a_2x_2 + \cdots + a_n x_n = 0</latex>
+					</math.display>
+					<para>Look up the definition</para>
+				</info>
+			</index.glossary>
+			<index.glossary>
+				<term>inhomogeneous</term><term>linear equation</term>
+				<info>
+					<caption>What is a homogeneous linear equation?</caption>
+					<para>A homogeneous linear equation can be written in the form</para>
+					<math.display>
+						<latex>a_1x_1 + a_2x_2 + \cdots + a_n x_n = c</latex>
+					</math.display>
+					<para>with <latex>c \neq 0</latex>. Look up the definition.</para>
+				</info>
+			</index.glossary>
+		</para></li>
+		<li><para>The symbol <latex>x_1</latex> is a variable or an unknown of the equation, as is each of the symbols <latex>x_j</latex>, <latex>1\leq j\leq n</latex>. Our task is to find those number values for each of these variables which render the given equation is true.</para></li>
+	</ul>
+
+	<para>More generally, we will need to determine simultaneous solutions of a <subordinate>
+		<hot>system of linear equations</hot>
+		<companion>
+			<subpage.ref subpageID="Preview_LinearEquationsSystems"/>
+			<para>Preview of a System of Linear Equations</para>
+		</companion>
+	</subordinate>
+		in  <latex>n</latex>  unknowns. Fortunately, there are several methods at our disposal to respond to this task. In this chapter we discuss the following:</para>
+	
+	<ul>
+		<li><para>A <b>geometrical method</b>. It uses the fact that the solutions of a single linear equation in <latex>n</latex> unknowns form a 
+			<subordinate>
+				<hot>hyperplane in <latex>\RNr[n]</latex></hot>
+				<companion>
+					<subpage.ref subpageID="Illustr_Hyperplane"/>
+					<para>Recall an illustration of a hyperplane</para>
+				</companion>
+			</subordinate>.
+			Therefore the simultaneous solutions of <latex>m</latex> such equations form the 
+			<subordinate>
+				<hot>intersection of the corresponding hyperplanes</hot>
+				<companion>
+					<subpage.ref subpageID="Preview_LinearEqsGeometry"></subpage.ref>
+					<para>A Preview: how to solve a system of linear equations geometrically</para>
+				</companion>
+			</subordinate>. - This method enables us to discuss qualitatively the simultaneous solutions of a system of linear equations.</para></li>
+		
+		<li><para>The <b>elimination method</b> of Gau&szlig;
+			<!--<subordinate>
+				<hot>Gau&szlig;</hot>
+				<companion>
+					<scientist.ref scientistID="Sci_CFGauss1777"></scientist.ref>
+					<caption>Carl Friedrich Gau&szlig; and the elimination method</caption>
+					<para>Variants of this method for finding the solutions of a system of linear equations have been known for millenia; e.g. in China 2000 years. In the Western World C.F. Gau&szlig; is known to have made use of it. It appeared later in a textbook by Wilhelm Jordan on geodesy.</para>
+				</companion>
+			</subordinate>-->
+			 and Jordan
+			<!--<subordinate>
+				<hot>Jordan</hot>
+				<companion>
+					<scientist.ref scientistID="Sci_WJordan1842"></scientist.ref>
+					<caption>Wilhelm Jordan and the elimination method</caption>
+				</companion>
+			</subordinate>-->
+			yields explicitly the solutions of a given system of linear equations. This method is a programmable procedure which transforms a given system of linear equations into simpler and simpler ones. In the end, one is left with a system of linear equations which is so simple that its solutions can be read off immediately.</para></li>
+	</ul>
+	
+	<para>Later we will learn a more advanced method for solving certain kinds of systems of linear equations: Cramer’s rule is a formula which is applicable to a system of <latex>n</latex> linear equations with <latex>n</latex> unknowns termed non-degenerate. Such a system has always exactly one solution, and Cramer’s rule computes it by a formula involving determinants.</para>
+</intro>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE quiz.pack	SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Qz_DeterminantMultilinear">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Quiz on the Multilinearity Property of Determinants</title>
+	
+	
+	<quiz>
+		<question>
+			<para>Among the determinant expressions below which two are equal? With</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{U} = \left[
+\begin{array}{rrr}
+6 & 4 & -2 \\
+2 & 8 & 12 \\
+4 & 6 & -4
+\end{array}
+\right] \qquad
+\Mtrx{V} = 
+\left[
+\begin{array}{rrr}
+3 & 2 & -1 \\
+1 & 4 & 6 \\
+2 & 3 & -2
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>a) &nbsp; <latex>\det(\Mtrx{U})</latex>, &nbsp; b) &nbsp; <latex>2\cdot \det(\Mtrx{V})</latex>, &nbsp; c) &nbsp; <latex>8\cdot \det(\Mtrx{V})</latex></para>
+		</question>
+		
+		<choice>
+			<answer><para>a) and (b)</para></answer>
+			<info><para>Sorry! No. &ndash; While it is true that for matrices <latex>\Mtrx{U}=2\cdot \Mtrx{V}</latex>, the two determinant expressions are not equal. To solve this problem correctly, please review what the multilinearity property of determinants really means.</para></info>
+		</choice>
+		<choice>
+			<answer><para>a) and c)</para></answer>
+			<info><para>Correct!</para></info>
+		</choice>
+		<choice>
+			<answer><para>b) and c)</para></answer>
+			<info><para>No! &ndash; If you really think b) and c) are equal, with which reasoning do you deduce this from the multilinearity property of the determinant operation?</para></info>
+		</choice>
+		<choice>
+			<answer><para>No two of the given determinant expressions are equal.</para></answer>
+			<info><para>No! &ndash; Please review the concept of multilinearity of the determinant operation.</para></info>
+		</choice>
+	</quiz>
+	
+	<quiz>
+		<question>
+			<para>Which of the determinant expressions below are equal?</para>
+			<ol type="a">
+				<li>
+					<math.display>
+						<latex>
+							<![CDATA[
+\det\, 
+\left[
+\begin{array}{rrrr}
+3 & 7 & 1 & 5 \\
+0 & 1 & 6 & 15 \\
+4 & 0 & 2 & -5 \\
+-4 & 0 & 0 & 10
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</li>
+				<li>
+					<math.display>
+						<latex>
+							<![CDATA[
+\det\, 
+\left[
+\begin{array}{rrrr}
+3 & 7 & 1 & 5 \\
+0 & 1 & 6 & 15 \\
+0 & 0 & 2 & -5 \\
+0 & 0 & 0 & 10
+\end{array}
+\right]\ +\ \det\, 
+\left[
+\begin{array}{rrrr}
+0 & 7 & 1 & 5 \\
+0 & 1 & 6 & 15 \\
+4 & 0 & 2 & -5 \\
+-4 & 0 & 0 & 10
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</li>
+				<li>
+					<math.display>
+						<latex>
+							<![CDATA[
+\det\, 
+\left[
+\begin{array}{rrrr}
+3 & 7 & 1 & 5 \\
+0 & 1 & 6 & 15 \\
+0 & 0 & 2 & -5 \\
+0 & 0 & 0 & 10
+\end{array}
+\right]\ +\ \det\, 
+\left[
+\begin{array}{rrrr}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0  \\
+4 & 0 & 0 & 0 \\
+-4 & 0 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</li>
+				<li>
+					<math.display>
+						<latex>
+							<![CDATA[
+\det\, 
+\left[
+\begin{array}{rrrr}
+3 & 7 & 1 & 5 \\
+0 & 1 & 6 & 15 \\
+0 & 0 & 2 & -5 \\
+0 & 0 & 0 & 10
+\end{array}
+\right]\ +\ 20\cdot \det\, 
+\left[
+\begin{array}{rrrr}
+0 & 7 & 1 & 1 \\
+0 & 1 & 6 & 3 \\
+1 & 0 & 2 & -1 \\
+-1 & 0 & 0 & 2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</li>
+			</ol>
+			
+		</question>
+		<choice>
+			<answer><para>a) and b)</para></answer>
+			<info><para>Yes! This is correct: Apply linearity in the first column to express the determinant in a) as the sum of the two determinants in b).</para></info>
+		</choice>
+		<choice>
+			<answer><para>a) and c)</para></answer>
+			<info><para>Sorry, no! &ndash; The matrix in a) is equal to the sum of the two matrices in c). However, the determinants in a) and c) are not equal.</para></info>
+		</choice>
+		<choice>
+			<answer><para>b) and d)</para></answer>
+			<info><para>Yes! &ndash; Start with the determinant expression in b). In the second determinant pull a factor of <latex>4</latex> out of the first column and then a factor of <latex>5</latex> out of the fourth column. This gives the second determinant in d).</para></info>
+		</choice>
+		<choice>
+			<answer><para>a) and b) and d)</para></answer>
+			<info><para>Yes! This is correct.</para></info>
+		</choice>
+	</quiz>	
+</quiz.pack>

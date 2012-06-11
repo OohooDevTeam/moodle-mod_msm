@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_SolutionsConstruct">
+	<caption>Infinitely many solutions - constructive version</caption>
+	<associate Description="Illustration">
+		<showme.pack.ref showmePackID="Illstrtn_LinearEqsManySolutions"/>
+		<info><para>A 3D-illustration of how to recognize a system of linear equations with infinitely many solutions.</para></info>
+	</associate>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation</caption>
+			<para>In other words, the vector <latex>\Vect{b}_k</latex> is constructed as follows</para>
+			<ol>
+				<li><para>Place a <latex>1</latex> in position <latex>j_1</latex>.</para></li>
+				<li><para>Place the negatives of the <latex>j_k</latex>-th column into the positions of leading <latex>1</latex>&rsquo;s.</para></li>
+				<li><para>Fill the remaining positions with <latex>0</latex>&rsquo;s.</para></li>
+			</ol>
+		</info>
+	</associate>
+	
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_ReadSolutions"/>
+		<info>
+			<para>Some examples of how to apply this proposition.</para>
+		</info>
+	</associate>
+	<!-- To do: Add examples here on how to use this result -->
+	<statement>
+		<para>Suppose a system of linear equations with <latex>n</latex> variables has 
+			<subordinate>
+				<hot>rank</hot>
+				<info><para>Recall: the rank of a system of linear equations is the number of leading <latex>1</latex>'s in the non-augmented part of its RREF-matrix</para></info>
+			</subordinate>
+			<latex><![CDATA[ r<n ]]></latex>. If its RREF-matrix has no leading 1 in the augmentation column</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{ccccccccccccccc|c}
+0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & 0 & * & \cdots & * & {\color{blue} d_1 } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & {\color{blue} d_2 } \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & {\color{blue} \vdots } \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & {\color{blue} \vdots } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & {\color{blue} d_r } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & {\color{blue} 0 } \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & {\color{blue} \vdots } \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & {\color{blue} 0 }
+\end{array}
+					]]>
+			</latex>
+		</math.display>
+		<para>then this system has infinitely many solutions. Moreover, each of its solutions is of the form</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>\Vect{d}\ + \ t_1 \Vect{b}_1 + \cdots + t_{n-r} \Vect{b}_{n-r}</right>
+		</computation>
+		<para>Here <latex>t_1,\dots ,t_{n-r}</latex> are arbitrary numbers; and the vectors <latex>\Vect{d}, \Vect{b}_1,\dots ,\Vect{b}_{n-r}</latex> of <latex>\RNr[n]</latex> are constructed from the RREF-matrix as follows.
+			<index.glossary>
+				<term>rank</term><term>of a system of linear equations</term>
+				<info><para>Use of the concept while describing the general solution of such a system.</para></info>
+			</index.glossary>
+		</para>
+		<ol>
+			<li><para>Let <latex magnify="yes">\Mtrx{B} = [ b_{ij} ]</latex> denote the unaugmented part of the RREF-matrix;</para></li>
+			<li><para><latex magnify="yes">u_1,\dots ,u_r</latex> are the columns of <latex>\Mtrx{B}</latex> containing a leading <latex>1</latex>.</para></li>
+			<li><para><latex magnify="yes">j_1,\dots ,j_{n-r}</latex> are the columns of <latex>\Mtrx{B}</latex> not containing a leading <latex>1</latex>.</para></li>
+			<li><para><latex>\Vect{d}</latex> is the vector in <latex>\RNr[n]</latex> with <latex>d_k</latex> in position <latex>u_k</latex> and <latex>0</latex>'s elsewhere.</para></li>
+			<li><para>For <latex>1\leq k\leq n-r</latex>, let <latex>\Vect{b}_k</latex> in <latex>\RNr[n]</latex> be the vector which has</para>
+				<ul>
+					<li><para>a &lsquo;<latex>1</latex>&rsquo; in position <latex magnify="yes">j_k</latex></para></li>
+					<li><para>the entry <latex magnify="yes">(-b_{i,j_k})</latex> in position <latex magnify="yes">u_i</latex>;</para></li>
+					<li><para>a &lsquo;<latex>0</latex>&rsquo; in each remaining position.</para></li>
+				</ul>
+			</li>
+		</ol>
+	</statement>
+	<proof type="Proof">
+		<para>By design, <latex>\Vect{x} := \Vect{d}</latex> is a solution of the given system of linear equations. So we can show that every <latex>\Vect{x}</latex> of the specified form is a solution by showing that, for each choice of <latex magnify="yes">t_1,\dots ,t_{n-r}</latex>,</para>
+		<math.display>
+			<latex>t_1 \Vect{b}_1 + \cdots + t_{n-r} \Vect{b}_{n-r}</latex>
+		</math.display>
+		<para>is a solution of the system of linear equations which results from replacing in the augmentation column in the RREF-matrix of the original system by <latex>0</latex>'s, as is indicated below:</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{ccccccccccccccc|c}
+0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & 0 & * & \cdots & * & 0 \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & 0 & * & \cdots & * & 0 \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & \vdots \\
+\vdots &   &   & \vdots & &     &   & \vdots & &     &   & \vdots & &     & \vdots & \vdots \\
+0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & 1 & * & \cdots & * & 0
+\end{array}
+					]]>
+			</latex>
+		</math.display>
+		<para>To see this more clearly, consider how we build the vector <latex>\Vect{b}_k</latex>. We use the <latex magnify="yes">j_k</latex>-th column</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+B_{j_k} = 
+\left[
+\begin{array}{c}
+b_{1,j_k} \\ \vdots \\ b_{r,j_k}
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>of the RREF-matrix to form the vector <latex>\Vect{b}_k</latex> below (the dotted positions are occupied by <latex>0</latex>'s)</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\begin{array}{rcccccccc}
+\Vect{b}_k := ( \dots, & -b_{1,j_k} &, \dots , & -b_{2,j_k} &,\dots, & 1 & ,\dots\ \dots  , & -b_{r,j_k} &,\dots)  \\
+ & u_1 & & u_2 & & j_k & & u_r &
+\end{array}
+]]>
+			</latex>
+		</math.display>
+		<para>Now observe what happens if we substitute the coordinates of <latex>\Vect{b}_k</latex> for the variables in the <latex>i</latex>-th equation of the RREF-system: all but two nonzero entries of <latex>\Vect{b}_k</latex> are multiplied by a <latex>0</latex>-coefficient. These two nonzero entries yield</para>
+		<computation>
+			<left>1\cdot (-b_{i,j_k})\ +\ b_{i,j_k}\cdot 1</left>
+			<center>=</center>
+			<right>0</right>
+		</computation>
+		<para>It follows that, for <latex magnify="yes">t_k</latex> arbitrary, substituting <latex>t_k \Vect{b}_k</latex> for the variables of any left hand side gives <latex>0</latex>. This implies the claim.</para>
+	</proof>
+</theorem>

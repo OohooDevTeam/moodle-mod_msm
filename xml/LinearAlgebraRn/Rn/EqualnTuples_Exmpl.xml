@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="EqualExa_nTuples">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Equality of <latex>n</latex>-tuples.</title>
+	<caption>Equality of <latex>n</latex>-tuples.</caption>
+	<showme>
+		<statement>
+			<para>Determine which of the following pairs of tuples are equal.</para>
+			<ol>
+				<li><para><latex>(4,1,-6,3)</latex> and <latex>(4,1,-6,3)</latex></para></li>
+				<li><para><latex>(1,0,3)</latex> and <latex>(1,0,0,3)</latex></para></li>
+				<li><para><latex>(1,3,2)</latex> and <latex>(6-5,2+1,3-1)</latex></para></li>
+				<li><para><latex>(1,2,1,2)</latex> and <latex>(2,1,2,1)</latex></para></li>
+			</ol>
+		</statement>
+		<answer type="Solution">
+			<para>To tell if two tuples are equal, we need to check if the numbers in matching positions are the same. Let&rsquo;s begin with the first pair:</para>
+			<para>1. These two 4-tuples are equal: the numbers in matching positions are the same.</para>
+			<para>2. The first tuple is a 3-tuple, while the second tuple is a 4-tuple. Tuples of distinct size are never equal.</para>
+			<para>3. These two 3-tuples are equal as the entries in matching positions are the same.</para>
+			<para>4. The <latex>4</latex>-tuple <latex>(1,2,1,2)</latex> has a <latex>1</latex> as its first coordinate, whereas the <latex>4</latex>-tuple <latex>(2,1,2,1)</latex> has a <latex>2</latex> as its first coordinate. So the first coordinates are distinct, and this is enough to render the 4-tuples distinct. In this case we could alternatively have observed that the second, or the third, or the fourth coordinates are distinct.</para>
+		</answer>
+	</showme>
+</showme.pack>

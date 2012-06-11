@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack
+  SYSTEM "Symbols.dtd">
+<example.pack xmlns="Compositor"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              id="LinearMotion_Exmpl"
+              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Linear Motion: Examples</title>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the parametric equation which describes the motion of a particle in <math>
+                  <latex>\RNr[2]</latex>
+               </math> which moves through <math>
+                  <latex>P(0,.5)</latex>
+               </math> at time <math>
+                  <latex>0</latex>
+               </math> and has velocity vector <math>
+                  <latex>\Vect{v}=(1,-.5)</latex>
+               </math>. Then find the location of the particle at times <math>
+                  <latex>-2,1,5</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>The position vector of the particle at time <math>
+                        <latex>0</latex>
+                     </math> is <math>
+                        <latex>\Vect{a}=(0,.5)</latex>
+                     </math>. Therefore the required parametric equation is</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{l}(t)\ =\ (0,.5)\ +\ t\cdot (1,-.5)</latex>
+			            </math.display>
+			            <para>
+                  <para.body>This gives the location of the particle at an arbitrary time <math>
+                        <latex>t</latex>
+                     </math>. So we obtain, in particular, the locations of the particle at the specified times</para.body>
+               </para>
+			            <table align="center"
+                      border="3"
+                      bordercolor="Maroon"
+                      cellpadding="3"
+                      cellspacing="3">
+				              <row>
+					                <cell>
+						                  <para>
+                           <para.body>
+							                       <strong>time</strong>
+						                     </para.body>
+                        </para>
+					                </cell>
+					                <cell>
+						                  <para>
+                           <para.body>
+							                       <strong>position vector at specified time</strong>
+						                     </para.body>
+                        </para>
+					                </cell>
+				              </row>
+				              <row>
+					                <cell>
+						                  <para>
+                           <para.body>
+							                       <math>
+                                 <latex>-2</latex>
+                              </math>
+						                     </para.body>
+                        </para>
+					                </cell>
+					                <cell>
+						                  <para>
+                           <para.body>
+                              <math>
+                                 <latex>(0,1/2)+(-2)\cdot (1,-1/2) = (-2,3/2)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+					                </cell>
+				              </row>
+				              <row>
+					                <cell>
+						                  <para>
+                           <para.body>
+							                       <math>
+                                 <latex>1</latex>
+                              </math>
+						                     </para.body>
+                        </para>
+					                </cell>
+					                <cell>
+						                  <para>
+                           <para.body>
+                              <math>
+                                 <latex>(0,.5)+(1)\cdot (1,-.5) = (1,0)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+					                </cell>
+				              </row>
+				              <row>
+					                <cell>
+						                  <para>
+                           <para.body>
+							                       <math>
+                                 <latex>5</latex>
+                              </math>
+						                     </para.body>
+                        </para>
+					                </cell>
+					                <cell>
+						                  <para>
+                           <para.body>
+                              <math>
+                                 <latex>(0,1/2)+(5)\cdot (1,-1/2) = (5,-2)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+					                </cell>
+				              </row>
+			            </table>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	
+	
+	
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Find the parametric equation of the linear motion in <math>
+                  <latex>\RNr[3]</latex>
+               </math> which passes through  <math>
+                  <latex>A(1,1,1)</latex>
+               </math> at time <math>
+                  <latex>1</latex>
+               </math>, and passes through <math>
+                  <latex>B(2,1,0)</latex>
+               </math> at  time <math>
+                  <latex>4</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>We know that the equation of the motion is of the form <math>
+                        <latex>\Vect{l}(t)=\Vect{a}+t\cdot \Vect{v}</latex>
+                     </math>, and we need to find the vectors <math>
+                        <latex>\Vect{a}</latex>
+                     </math> and <math>
+                        <latex>\Vect{v}</latex>
+                     </math>. The information provided yields</para.body>
+               </para>
+			            <table align="center">
+				              <row>
+					                <cell>
+						                  <para>
+                           <para.body>
+							                       <math>
+                                 <latex>\Vect{l}(1) = (1,1,1) = \Vect{a} + 1\cdot \Vect{v}</latex>
+                              </math>
+						                     </para.body>
+                        </para>
+					                </cell>
+					                <cell>
+						                  <para>
+                           <para.body>(I)</para.body>
+                        </para>
+					                </cell>
+				              </row>
+				              <row>
+					                <cell>
+						                  <para>
+                           <para.body>
+							                       <math>
+                                 <latex>\Vect{l}(4) = (2,1,0) = \Vect{a} + 4\cdot \Vect{v}</latex>
+                              </math>
+						                     </para.body>
+                        </para>
+					                </cell>
+					                <cell>
+						                  <para>
+                           <para.body>(II)</para.body>
+                        </para>
+					                </cell>
+				              </row>
+			            </table>
+			            <para>
+                  <para.body>(II) – (I):  <math>
+                        <latex>(2,1,0)-(1,1,1)\ =\ \Vect{a} + 4\cdot \Vect{v}\ -\ (\Vect{a} + \Vect{v})\ =\ 3\Vect{v}</latex>
+                     </math>  yields</para.body>
+               </para>
+			            <para align="center">
+                  <para.body>
+				                 <math>
+                        <latex>\Vect{v}\ =\ \tfrac{1}{3}\cdot (2-1,1-1,0-1)\ =\ \tfrac{1}{3}\cdot (1,0,-1)</latex>
+                     </math>.  (III)</para.body>
+               </para>
+			            <para>
+                  <para.body>(III) in (I) yields</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{a}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1,1,1)-\Vect{v}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1,1,1) - (\tfrac{1}{3},0, -\tfrac{1}{3})</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(\tfrac{2}{3} , 1 , \tfrac{4}{3}) = \tfrac{1}{3}\cdot (2,3,4)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore the required equation is</para.body>
+               </para>
+			            <math.display>
+				              <latex>\Vect{l}(t)\ =\ \frac{1}{3}\cdot (2,3,4)\ +\ t\cdot \tfrac{1}{3}\cdot (1,0,-1)</latex>
+			            </math.display>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+</example.pack>

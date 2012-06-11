@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_EqualDimEqualSpace">
+	<statement>
+		<para>Given subvector spaces <latex>V\subseteq W</latex> of <latex>\RNr[n]</latex>, suppose <latex>\dim(V)=\dim(W)</latex>. Then <latex>V=W</latex>.</para>
+	</statement>
+	<proof>
+		<para>If <latex>\dim(V)=0=\dim(W)</latex>, then <latex>V=\Set{ \Vect{0} } = W</latex>, and so the claim holds in this case.</para>
+		<para>Consider now the case where <latex><![CDATA[ \dim(V) = k=\dim(W)>0 ]]></latex>. Then <latex>V</latex> has a basis <latex>\EuScript{A}</latex> consisting of <latex>k</latex> vectors. If <latex>V\neq W</latex>, then there are vectors in <latex>W</latex> which are not in <latex>V</latex>. We can then 
+			<subordinate>
+				<hot>choose linearly independent vectors</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+					<para>Look up this fact.</para>
+				</crossref>
+			</subordinate>
+			<latex>\EuScript{C}</latex> from <latex>W</latex> such that such that <latex>\EuScript{B}:=\EuScript{A} \cup \EuScript{C}</latex> is a basis of <latex>W</latex>.</para>
+		<para>Now <latex>\dim(W)=k</latex>. Therefore <latex>\EuScript{B}</latex> contains exactly <latex>k</latex> vectors, implying that <latex>\EuScript{C}</latex> must be empty. Consequently, <latex>\EuScript{B}=\EuScript{A}</latex>, implying that</para>
+		<math.display>
+			<latex>V = \span(\EuScript{A}) = \span(\EuScript{B}) = W</latex>
+		</math.display>
+		<para>as was to be shown.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_CoefficientMatrix">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>An Example of a Coefficient Matrix</title>
+	<caption>Coefficient Matrix</caption>
+	<showme>
+		<statement>
+			<para>Find the coefficient matrix and the augmented coefficient matrix of the system of linear equations</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$0$}{\color{red} w} & + & \colorbox{lightgreen}{$2$}{\color{red} x} & + & \colorbox{lightgreen}{$-1$}{\color{red} y} & + & \colorbox{lightgreen}{$1$}{\color{red} z} & = & {\color{blue} 1 } \\
+\colorbox{lightgreen}{$3$}{\color{red} w} & + & \colorbox{lightgreen}{$-9$}{\color{red} x} & + & \colorbox{lightgreen}{$6$}{\color{red} y} & + & \colorbox{lightgreen}{$3$}{\color{red} z} & = & {\color{blue} 9 } \\
+\colorbox{lightgreen}{$3$}{\color{red} w} & + & \colorbox{lightgreen}{$1$}{\color{red} x} & + & \colorbox{lightgreen}{$1$}{\color{red} y} & + & \colorbox{lightgreen}{$8$}{\color{red} z} & = & {\color{blue} 14 } \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Solution">
+			<para>The augmented coefficient matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A\ =\
+\left[\begin{array}{rrrr|r}
+\colorbox{lightgreen}{$0$} & \colorbox{lightgreen}{$2$} & \colorbox{lightgreen}{$-1$} & \colorbox{lightgreen}{$1$} & {\color{blue} 1 } \\
+\colorbox{lightgreen}{$3$} & \colorbox{lightgreen}{$-9$} & \colorbox{lightgreen}{$6$} & \colorbox{lightgreen}{$3$} & {\color{blue} 9 } \\
+\colorbox{lightgreen}{$3$} & \colorbox{lightgreen}{$1$} & \colorbox{lightgreen}{$1$} & \colorbox{lightgreen}{$8$} & {\color{blue} 14 }
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The coefficient matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A\ =\
+\left[\begin{array}{rrrr}
+\colorbox{lightgreen}{$0$} & \colorbox{lightgreen}{$2$} & \colorbox{lightgreen}{$-1$} & \colorbox{lightgreen}{$1$} \\
+\colorbox{lightgreen}{$3$} & \colorbox{lightgreen}{$-9$} & \colorbox{lightgreen}{$6$} & \colorbox{lightgreen}{$3$} \\
+\colorbox{lightgreen}{$3$} & \colorbox{lightgreen}{$1$} & \colorbox{lightgreen}{$1$} & \colorbox{lightgreen}{$8$}  \\
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_InvertibleLinearMapsI">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	
+	<title>Exercises: Invertible Linear Maps</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>Answer the questions below related to the linear maps:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+L\from \RNr[2] \longrightarrow \RNr[2], &\qquad (x,y) \mapsto (x-3y,y) \\
+T\from \RNr[2] \longrightarrow \RNr[2], &\qquad (x,y) \mapsto (y,-x)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = \left[
+\begin{array}{rr}
+1 & -3 \\
+0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>We determine the effect of <latex>L</latex> on the basic vectors <latex>\StdBss{1}</latex> and <latex>\StdBss{2}</latex>:</para>
+					
+					<computation>
+						<left>L(1,0)</left>
+						<center>=</center>
+						<right>(1,0)</right>
+						<left>L(0,1)</left>
+						<center>=</center>
+						<right>(-3,1)</right>
+					</computation>
+					
+					<para>Therefore the matrix representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = \left[
+\begin{array}{rr}
+1 & -3 \\
+0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>L</latex> transform the space <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> shears <latex>\RNr[2]</latex> parallel to the <latex>x</latex>-axis with shear vector <latex>\Vect{s}=(-3,0)</latex></para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Is <latex>L</latex> invertible? If if is, what is <latex>L^{-1}</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>Yes, <latex>L</latex> is invertible. The inverse is</para>
+					
+					<math.display>
+						<latex>L^{-1}\from \RNr[2] \longrightarrow \RNr[2],\qquad L^{-1}(u,v) = (u+3v,v)</latex>
+					</math.display>
+					
+					<para><latex>L^{-1}</latex> is represented by the matrix</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+A^{-1} = \left[
+\begin{array}{rr}
+1 & 3 \\
+0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				
+				<solution>
+					<para>We use the row reduction method to determine if the matrix <latex>\Mtrx{M}</latex> representing <latex>L</latex> is invertible.</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{rr|rrr}
+1 & -3 & 1 & 0 & {\color{red} +3\cdot R_2} \\
+0 & 1 & 0 & 1 &  \\ \hline
+%
+1 & 0 & 1 & 3 & \\
+0 & 1 & 0 & 1 &
+\end{array}
+]]>
+						</latex>
+					</math.display>
+					<para>So we see that <latex>\Mtrx{A}</latex> is invertible, and that <latex>\Mtrx{A}^{-1}</latex> is given by</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}^{-1} = 
+\left[
+\begin{array}{cc}
+1 & 3 \\
+0 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					
+					<para>We conclude that <latex>L</latex> is invertible, and that <latex>L^{-1}</latex> is represented by <latex>\Mtrx{A}^{-1}</latex> as found above.</para>
+					
+					<para>Alternatively, we can argue that <latex>L</latex> shears <latex>\RNr[2]</latex> with respect to <latex>\StdBss{2}</latex> and shear vector <latex>\Vect{s}=(-3,0)</latex>. This shear effect is reversed by shearing <latex>\RNr[2]</latex> with respect to <latex>\StdBss{2}</latex> and shear vector <latex>\Vect{s}=(3,0)</latex>. Therefore <latex>L</latex> is invertible, and <latex>L^{-1}</latex> is represented by the matrix <latex>\Mtrx{A}^{-1}</latex> found above.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{B}</latex> representing <latex>T</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>T</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+B = 
+\left[
+\begin{array}{rr}
+0 & 1 \\
+-1 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>T</latex> transform the space <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>T</latex> rotates <latex>\RNr[2]</latex> clockwise through the angle of <latex>\pi/2</latex> about the origin.</para>
+				</answer>
+				<solution>
+					<para>The columns of <latex>\Mtrx{B}</latex> are of the form</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{cc}
+\cos(-\pi/2) & -\sin(-\pi/2) \\
+\sin(-\pi/2) & \cos(\pi/2)
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Therefore <latex>\Mtrx{B}</latex> represents the counterclockwise rotation of <latex>\RNr[2]</latex> about the origin through the angle of <latex>-\pi/2</latex>; i.e. the clockwise rotation of <latex>\RNr[2]</latex> about the origin through the angle of <latex>\pi/2</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Is <latex>T</latex> invertible? If so, what is <latex>T^{-1}</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>Yes, <latex>T</latex> is invertible. <latex>T^{-1}</latex> is the counterclockwise rotation of <latex>\RNr[2]</latex> about the origin through the angle <latex>\pi/2</latex>. The matrix representing <latex>T^{-1}</latex> is</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+B^{-1} = 
+\left[
+\begin{array}{rr}
+0 & -1 \\
+1 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>What is <latex>(L+T)(x,y)</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>(L+T)(x,y) = (x-2y , y-x)</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{C}</latex> representing <latex>L+T</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>(L+T)</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A+B = 
+\left[
+\begin{array}{rr}
+1 & -2 \\
+-1 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>How does <latex>3T</latex> transform the space <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>3T = (3\cdot \Id[2])\Comp T</latex>; i.e. it rotates <latex>\RNr[2]</latex> clockwise about the origin through the angle of <latex>\pi/2</latex> (action of <latex>T</latex>), and then dilates it radially from the origin by a factor of <latex>3</latex> (action of <latex>3\Id[n]</latex>.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Find the matrix representing <latex>3T</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>3T</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+3\cdot \Mtrx{B} = \left[
+\begin{array}{rr}
+0 & 3 \\
+-3 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>How does <latex>-2L</latex> transform the space <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>-2L</latex> shears <latex>\RNr[2]</latex> parallel to the <latex>x</latex>-axis with shear vector <latex>\Vect{s}=(-3,0)</latex> (action of <latex>L</latex>), then dilates the result by the factor of <latex>2</latex> (action of the factor of <latex>2</latex>) and, finally, reflects the result over the origin (action of the factor of <latex>-1</latex>).</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find the matrix representing <latex>-2L</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>-2L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+-2\cdot \Mtrx{A} = 
+\left[
+\begin{array}{rr}
+-2 & 6 \\
+0 & -2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find the matrices <latex>\Mtrx{A}\Mtrx{B}</latex> and <latex>\Mtrx{B}\Mtrx{A}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>
+							<![CDATA[
+\Mtrx{A}\cdot \Mtrx{B} = 
+\left[
+\begin{array}{rr}
+1 & -3 \\
+0 & 1
+\end{array}
+\right] \cdot
+\left[
+\begin{array}{rr}
+0 & 1 \\
+-1 & 0
+\end{array}
+\right]
+							]]>
+						</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[
+\begin{array}{rr}
+3 & 1 \\
+-1 & 0
+\end{array}
+\right]
+							]]>
+						</right>
+						<left>
+							<![CDATA[
+\Mtrx{B}\cdot \Mtrx{A} = 
+\left[
+\begin{array}{rr}
+0 & 1 \\
+-1 & 0
+\end{array}
+\right]\cdot
+\left[
+\begin{array}{rr}
+1 & -3 \\
+0 & 1
+\end{array}
+\right]
+							]]>
+						</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[
+\begin{array}{rr}
+0 & 1 \\
+-1 & 3
+\end{array}
+\right]
+							]]>
+						</right>
+					</computation>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What is <latex>(L\Comp T)(x,y)</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>(L\Comp T)(x,y) = L(T(x,y)) = L(y,-x) = (y+3x,-x)</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What is the matrix representing <latex>L\Comp T</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>L\Comp T</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A\cdot B =
+\left[
+\begin{array}{rr}
+3 & 1 \\
+-1 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>How does <latex>L\Comp T</latex> transform the space <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>(L\Comp T)</latex> first rotates <latex>\RNr[2]</latex> clockwise about the origin through the angle of <latex>\pi/2</latex> (action of <latex>T</latex>) and then shears the result parallel to the <latex>x</latex>-axis with shear vector  <latex>\Vect{s}=(-3,0)</latex> (action of <latex>L</latex>).</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What is <latex>(T\Comp L)(x,y)</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>(T\Comp L)(x,y)</left>
+						<center>=</center>
+						<right>(y,3y-x)</right>
+					</computation>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What is the matrix representing <latex>(T\Comp L)</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>T\Comp L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+B\cdot A =
+\left[
+\begin{array}{rr}
+0 & 1 \\
+-1 & 3
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>How does <latex>T\Comp L</latex> transform the space <latex>\RNr[2]</latex>?</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>(T\Comp L)</latex> shears <latex>\RNr[2]</latex> parallel to the <latex>x</latex>-axis with shear vector <latex>\Vect{s}=(-3,0)</latex> (action of <latex>L</latex>) and then rotates the result clockwise about the origin through the angle of <latex>\pi/2</latex> (action of <latex>T</latex>).</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Is <latex>(L\Comp T)</latex> an invertible transformation? If so, find the matrix representing <latex>(L\Comp T)^{-1}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>Yes! <latex>L\Comp T</latex> is invertible: <latex>(L\Comp T)^{-1} = T^{-1}\Comp L^{-1}</latex>. Moreover, the matrix representing <latex>(L\Comp T)^{-1}</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+(A\cdot B)^{-1} = B^{-1} \cdot A^{-1} = 
+\left[
+\begin{array}{rr}
+0 & -1 \\
+1 & 3
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Answer the questions below about the linear maps</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+L\from \RNr[3] \longrightarrow \RNr[3], &\quad L(x,y,z) = (-z,y+z,2z-x) \\
+T\from \RNr[3] \longrightarrow \RNr[3], &\quad T(x,y,z) = (z,x,y)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that <latex>T</latex> is invertible and find the matrix representing <latex>T^{-1}</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We know that the matrix representing <latex>T</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+B =
+\left[
+\begin{array}{rrr}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>To determine if <latex>T</latex> is invertible, we use the row reduction method:</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\begin{array}{ccc|cccr}
+0 & 0 & 1 & 1 & 0 & 0 & {\color{red} R_1 \longleftrightarrow R_2} \\
+1 & 0 & 0 & 0 & 1 & 0 & {\color{red} R_2 \longleftrightarrow R_3} \\
+0 & 1 & 0 & 0 & 0 & 1 & \\ \hline
+%
+1 & 0 & 0 & 0 & 1 & 0 & \\
+0 & 1 & 0 & 0 & 0 & 1 & \\
+0 & 0 & 1 & 1 & 0 & 0 & 
+\end{array}
+]]>
+						</latex>
+					</math.display>
+					<para>We conclude: <latex>T</latex> is invertible and <latex>T^{-1}</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+B^{-1} = 
+\left[
+\begin{array}{ccc}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Show that <latex>T^2</latex> is invertible, and find the matrix representing <latex>(T^2)^{-1}</latex>.</para></problem>
+			<approach>
+				<solution.hint>
+					<para>Recall: <latex>T^2 = T\Comp T</latex>.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Recall the 
+						<subordinate>
+							<hot>proposition</hot>
+							<crossref>
+								<theorem.ref theoremID="Thm_InvertibleMapsComposition"/>
+								<para>Look up this result.</para>
+							</crossref>
+						</subordinate>
+						on the inverse of a composite of linear functions.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>If <latex>U</latex> and <latex>V</latex> are invertible, then <latex>(V\Comp U)</latex> is invertible, and <latex>(V\Comp U)^{-1} = U^{-1}\Comp V^{-1}</latex>. &ndash; Apply this general fact here in the case where</para>
+					<math.display>
+						<latex>U=T=V</latex>
+					</math.display>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem><para>Show that <latex>T^3</latex> is invertible, and find the matrix representing <latex>(T^3)^{-1}</latex>.</para></problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Is <latex>4T</latex> an invertible transformation? If so, find the matrix representing its inverse.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>Yes! <latex>4T = (4\cdot \Id[3])\Comp T</latex> is the composite of two invertible transformations, hence is invertible, hence is invertible. The matrix representing <latex>(4T)^{-1}</latex> is</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+T^{-1}\Comp (4\Id[3])^{-1} = \tfrac{1}{4} B^{-1} = 
+\dfrac{1}{4}\cdot 
+\left[
+\begin{array}{ccc}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>What is <latex>(T^{-1}\Comp L\Comp T)(x,y,z)</latex>?</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We have <latex>T^{-1}(u,v,w)=(v,w,u)</latex>. Now we compute</para>
+					<computation>
+						<left>(T^{-1}\Comp L\Comp T)(x,y,z)</left>
+						<center>=</center>
+						<right>(T^{-1}\Comp L)(z,x,y)</right>
+						<left></left>
+						<center>=</center>
+						<right>(T^{-1}\Comp L)(z,x,y)</right>
+						<left></left>
+						<center>=</center>
+						<right>T^{-1}(-y,x+y,2y-z)</right>
+						<left></left>
+						<center>=</center>
+						<right>(x+y,2y-z,-y)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find the matrix representing <latex>(T^{-1}\Comp L\Comp T)</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para>The columns of the required matrix can be found using the previous problem: If <latex>U=(T^{-1}\Comp L\Comp T)</latex>, these columns are given by <latex>U(\StdBss{1})</latex>, <latex>U(\StdBss{2})</latex>, and <latex>U(\StdBss{3})</latex>. Alternatively the matrix can be computed as</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+B^{-1} A B = 
+\left[
+\begin{array}{rrr}
+1 & 1 & 0 \\
+0 & 2 & -1 \\
+0 & -1 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Is <latex>T^{-1}\Comp L\Comp T</latex> invertible? If so, find the matrix representing its inverse.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>Yes, <latex>T^{-1}\Comp L\Comp T</latex> is invertible, being a composite of invertible maps. The matrix representing <latex>T^{-1}\Comp L\Comp T</latex> is</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+(\Mtrx{B}^{-1}\Mtrx{A}\Mtrx{B})^{-1} = \Mtrx{B}^{-1} \Mtrx{A}^{-1} \Mtrx{B} =
+\left[
+\begin{array}{rrr}
+1 & 0 & 1 \\
+0 & 0 & -1 \\
+0 & -1 & -2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>For invertible linear transformations</para>
+			<math.display>
+				<latex>R,S,T\from \RNr[n] \longrightarrow \RNr[n]</latex>
+			</math.display>
+			<para>prove the following:</para>
+		</problem>
+		<part>
+			<problem><para>For <latex>n\geq 1</latex>, <latex>S^n</latex> is invertible, and <latex>(S^n)^{-1} = (S^{-1})^n</latex></para></problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(R\Comp S\Comp T)^{-1} = T^{-1}\Comp S^{-1} \Comp R^{-1}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>R^{-1}\Comp S^{-1} = S^{-1}\Comp R^{-1}</latex> if and only if <latex>R\Comp S = S\Comp R</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>For a natural number <latex>k\geq 1</latex>, <latex>(R\Comp S\Comp R^{-1})^k = R\Comp S^k\Comp R^{-1}</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+</exercise.pack>

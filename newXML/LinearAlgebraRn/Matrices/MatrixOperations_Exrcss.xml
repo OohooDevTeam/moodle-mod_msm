@@ -1,0 +1,1811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixOperations"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Matrix Operations: Exercises</title>
+	  <exercise>
+		    <caption>Computing matrix operations</caption>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>With the matrices</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+					\Mtrx{A}\ =\ 
+					\left[\begin{array}{rrr}
+					1 &amp; 1 &amp; 3 \\
+					3 &amp; -4 &amp; 2 \\
+					-5 &amp; 0 &amp; -1
+					\end{array}\right] \qquad
+					\Mtrx{B}\ =\ 
+					\left[\begin{array}{rrr}
+					-3 &amp; 1 &amp; -9 \\
+					-8 &amp; -2 &amp; 4 \\
+					0 &amp; 1 &amp; 3
+					\end{array}\right]
+					
+				</latex>
+			         </math.display>
+			         <para>
+               <para.body>do the following:</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find   <math>
+                        <latex>\Mtrx{A}+ \Mtrx{B}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+					\Mtrx{A} + \Mtrx{B}\ =\ 
+					\left[\begin{array}{rrr}
+					-2 &amp; 2 &amp; -6 \\
+					-5 &amp; -6 &amp; 6 \\
+					-5 &amp; 1 &amp; 2
+					\end{array}\right]
+					
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>{\color{blue}A} + {\color{red}B}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrr}
+							{\color{blue}1} &amp; {\color{blue}1} &amp; {\color{blue}3} \\
+							{\color{blue}3} &amp; {\color{blue}-4} &amp; {\color{blue}2} \\
+							{\color{blue}-5} &amp; {\color{blue}0} &amp; {\color{blue}-1}
+							\end{array}\right]\ +\ 
+							\left[\begin{array}{rrr}
+							{\color{red}-3} &amp; {\color{red}1} &amp; {\color{red}-9} \\
+							{\color{red}-8} &amp; {\color{red}-2} &amp; {\color{red}4} \\
+							{\color{red}0} &amp; {\color{red}1} &amp; {\color{red}3}
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{ccc}
+							{\color{blue}1} + {\color{red}(-3)} &amp; {\color{blue}1} + {\color{red}1} &amp; {\color{blue}3} + {\color{red}(-9)} \\
+							{\color{blue}3} + {\color{red}(-8)} &amp; {\color{blue}(-4)} + {\color{red}(-2)} &amp; {\color{blue}2} + {\color{red}4} \\
+							{\color{blue}-5} + {\color{red}0} &amp; {\color{blue}0} + {\color{red}1} &amp; {\color{blue}-1} + {\color{red}3}
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrr}
+					-2 &amp; 2 &amp; -6 \\
+					-5 &amp; -6 &amp; 6 \\
+					-5 &amp; 1 &amp; 2
+					\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find   <math>
+                        <latex>-3\cdot A</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+							\left[\begin{array}{rrr}
+							-3 &amp; -3 &amp; -9 \\
+							-9 &amp; 12 &amp; -6 \\
+							15 &amp; 0 &amp; 3
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>{\color{red}-3}\cdot {\color{blue} A}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							{\color{red}(-3)}\cdot
+							\left[\begin{array}{rrr}
+							{\color{blue}1} &amp; {\color{blue}1} &amp; {\color{blue}3} \\
+							{\color{blue}3} &amp; {\color{blue}-4} &amp; {\color{blue}2} \\
+							{\color{blue}-5} &amp; {\color{blue}0} &amp; {\color{blue}-1}
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{ccc}
+							{\color{red}(-3)}\cdot{\color{blue}1} &amp; {\color{red}(-3)}\cdot{\color{blue}1} &amp; {\color{red}(-3)}\cdot{\color{blue}3} \\
+							{\color{red}(-3)}\cdot{\color{blue}3} &amp; {\color{red}(-3)}\cdot{\color{blue}-4} &amp; {\color{red}(-3)}\cdot{\color{blue}2} \\
+							{\color{red}(-3)}\cdot{\color{blue}-5} &amp; {\color{red}(-3)}\cdot{\color{blue}0} &amp; {\color{red}(-3)}\cdot{\color{blue}-1}
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrr}
+							-3 &amp; -3 &amp; -9 \\
+							-9 &amp; 12 &amp; -6 \\
+							15 &amp; 0 &amp; 3
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>A - B</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+							\left[\begin{array}{rrr}
+							4 &amp; 0 &amp; 12 \\
+							11 &amp; -2 &amp; -2 \\
+							-5 &amp; -1 &amp; -4
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>{\color{blue}A} - {\color{red}B}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrr}
+							{\color{blue}1} &amp; {\color{blue}1} &amp; {\color{blue}3} \\
+							{\color{blue}3} &amp; {\color{blue}-4} &amp; {\color{blue}2} \\
+							{\color{blue}-5} &amp; {\color{blue}0} &amp; {\color{blue}-1}
+							\end{array}\right]\ -\ 
+							\left[\begin{array}{rrr}
+							{\color{red}-3} &amp; {\color{red}1} &amp; {\color{red}-9} \\
+							{\color{red}-8} &amp; {\color{red}-2} &amp; {\color{red}4} \\
+							{\color{red}0} &amp; {\color{red}1} &amp; {\color{red}3}
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{ccc}
+							{\color{blue}1} - {\color{red}(-3)} &amp; {\color{blue}1} - {\color{red}1} &amp; {\color{blue}3} - {\color{red}(-9)} \\
+							{\color{blue}3} - {\color{red}(-8)} &amp; {\color{blue}(-4)} - {\color{red}(-2)} &amp; {\color{blue}2} - {\color{red}4} \\
+							{\color{blue}-5} - {\color{red}0} &amp; {\color{blue}0} - {\color{red}1} &amp; {\color{blue}-1} - {\color{red}3}
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrr}
+							4 &amp; 0 &amp; 12 \\
+							11 &amp; -2 &amp; -2 \\
+							-5 &amp; -1 &amp; -4
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>A + 2\cdot B</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+							A + 2\cdot B\ =\ 
+							\left[\begin{array}{rrr}
+							-5 &amp; 3 &amp; -15 \\
+							-13 &amp; -8 &amp; 10 \\
+							-5 &amp; 2 &amp; 5
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>{\color{blue}A} + 2\cdot {\color{red}B}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrr}
+							{\color{blue}1} &amp; {\color{blue}1} &amp; {\color{blue}3} \\
+							{\color{blue}3} &amp; {\color{blue}-4} &amp; {\color{blue}2} \\
+							{\color{blue}-5} &amp; {\color{blue}0} &amp; {\color{blue}-1}
+							\end{array}\right]\ +\ 2\cdot 
+							\left[\begin{array}{rrr}
+							{\color{red}-3} &amp; {\color{red}1} &amp; {\color{red}-9} \\
+							{\color{red}-8} &amp; {\color{red}-2} &amp; {\color{red}4} \\
+							{\color{red}0} &amp; {\color{red}1} &amp; {\color{red}3}
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{ccc}
+							{\color{blue}1} + {\color{red}(-6)} &amp; {\color{blue}1} + {\color{red}2} &amp; {\color{blue}3} + {\color{red}(-18)} \\
+							{\color{blue}3} + {\color{red}(-16)} &amp; {\color{blue}(-4)} + {\color{red}(-4)} &amp; {\color{blue}2} + {\color{red}8} \\
+							{\color{blue}-5} + {\color{red}0} &amp; {\color{blue}0} + {\color{red}2} &amp; {\color{blue}-1} + {\color{red}6}
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							A + 2\cdot B\ =\ 
+							\left[\begin{array}{rrr}
+							-5 &amp; 3 &amp; -15 \\
+							-13 &amp; -8 &amp; 10 \\
+							-5 &amp; 2 &amp; 5
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>A\cdot B</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+							A \cdot B\ =\ 
+							\left[\begin{array}{rrr}
+							-11 &amp; 2 &amp; 4 \\
+							23 &amp; 13 &amp; -37 \\
+							15 &amp; -6 &amp; 42
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>{\color{blue}A} \cdot {\color{red}B}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrr}
+							{\color{blue}1} &amp; {\color{blue}1} &amp; {\color{blue}3} \\
+							{\color{blue}3} &amp; {\color{blue}-4} &amp; {\color{blue}2} \\
+							{\color{blue}-5} &amp; {\color{blue}0} &amp; {\color{blue}-1}
+							\end{array}\right]\ \cdot 
+							\left[\begin{array}{rrr}
+							{\color{red}-3} &amp; {\color{red}1} &amp; {\color{red}-9} \\
+							{\color{red}-8} &amp; {\color{red}-2} &amp; {\color{red}4} \\
+							{\color{red}0} &amp; {\color{red}1} &amp; {\color{red}3}
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrr}
+							-11 &amp; 2 &amp; 4 \\
+							23 &amp; 13 &amp; -37 \\
+							15 &amp; -6 &amp; 42
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>For example, the ‘-11’ in position <math>
+                           <latex>(1,1)</latex>
+                        </math>, i.e. the top left corner, is the dot product</para.body>
+                  </para>
+					             <math.display>
+						               <latex>{\color{blue}1}\cdot {\color{red}(-3)}\ +\ {\color{blue}1}\cdot {\color{red}(-8)}\ +\ {\color{blue}3}\cdot {\color{red}0}\ =\ -11</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>The ‘-37’ in position <math>
+                           <latex>(2,3)</latex>
+                        </math> is the dot product</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>{\color{blue}3}\cdot {\color{red}(-9)}\ +\ {\color{blue}-4}\cdot {\color{red}4}\ +\ {\color{blue}2}\cdot {\color{red}3}\ =\ -37</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>(-2A)B</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+							\left[\begin{array}{rrr}
+							22 &amp; -4 &amp; -8 \\
+							-46 &amp; -26 &amp; 74 \\
+							-30 &amp; 12 &amp; -84
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find   <math>
+                        <latex>A^T</latex>
+                     </math> and <math>
+                        <latex>B^T</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+							A^T\ =\ 
+							\left[\begin{array}{rrr}
+							1 &amp; 3 &amp; -5 \\
+							1 &amp; -4 &amp; 0 \\
+							3 &amp; 2 &amp; -1
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+					                <math.display>
+						                  <latex>
+							
+							B^T\ =\ 
+							\left[\begin{array}{rrr}
+							-3 &amp; -8 &amp; 0 \\
+							 1 &amp; -2 &amp; 1 \\
+							 -9 &amp; 4 &amp; 3
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find   <math>
+                        <latex>B^T\cdot A^T</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+							B^T \cdot A^T\ =\ 
+							\left[\begin{array}{rrr}
+							-11 &amp; 23 &amp; 15 \\
+							2 &amp; 13 &amp; -6 \\
+							4 &amp; -37 &amp; 42
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>B^T\cdot A^T</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrr}
+							-3 &amp; -8 &amp; 0 \\
+							 1 &amp; -2 &amp; 1 \\
+							 -9 &amp; 4 &amp; 3
+							\end{array}\right]\ \cdot\ 
+							\left[\begin{array}{rrr}
+							1 &amp; 3 &amp; -5 \\
+							1 &amp; -4 &amp; 0 \\
+							3 &amp; 2 &amp; -1
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							B^T \cdot A^T\ =\ 
+							\left[\begin{array}{rrr}
+							-11 &amp; 23 &amp; 15 \\
+							2 &amp; 13 &amp; -6 \\
+							4 &amp; -37 &amp; 42
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>How is the matrix <math>
+                        <latex>AB</latex>
+                     </math> related to the matrix <math>
+                        <latex>B^T\cdot A^T</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Computing the two matrices shows that</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>B^T \cdot A^T\ =\ (AB)^T</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given: the matrices <math>
+                     <latex>A</latex>
+                  </math> and <math>
+                     <latex>B</latex>
+                  </math> below, perform the specified operations, provided they are defined. If they are not defined, say why not.</para.body>
+            </para>
+			
+			         <math.display>
+				           <latex>
+					
+					A\ =\ 
+					\left[\begin{array}{rr}
+					-4 &amp; 3 \\
+					3 &amp; -4 \\
+					1 &amp; 0 \\
+					2 &amp; 2
+					\end{array}\right] \qquad\quad
+					\left[\begin{array}{rrrr}
+					2 &amp; 1 &amp; -5  &amp; -3 \\
+					-1 &amp; -2 &amp; -3 &amp; 0 \\
+					0 &amp; 4 &amp; -1 &amp; 1 \\
+					3 &amp; -1 &amp; 2 &amp; -2
+					\end{array}\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A + B</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Addition of matrices is only defined for matrices of equal size. Now, <math>
+                           <latex>A</latex>
+                        </math> has size <math>
+                           <latex>(4,2)</latex>
+                        </math>, while <math>
+                           <latex>B</latex>
+                        </math> has size <math>
+                           <latex>(4,4)</latex>
+                        </math>. Therefore the matrix sum <math>
+                           <latex>A + B</latex>
+                        </math> is not defined in this case.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>B - A</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We need to consider the expression</para.body>
+                  </para>
+					             <math.display>
+						               <latex>B\ +\ (-1)\cdot A</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>Addition of matrices is only defined for matrices of equal size. Now, <math>
+                           <latex>B</latex>
+                        </math> has size <math>
+                           <latex>(4,4)</latex>
+                        </math>, while <math>
+                           <latex>(-1)\cdot </latex>
+                        </math> has the same size as <math>
+                           <latex>A</latex>
+                        </math>, namely <math>
+                           <latex>(4,2)</latex>
+                        </math>. Therefore the matrix sum <math>
+                           <latex>B - A</latex>
+                        </math> is not defined in this case.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>AB</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>For <math>
+                           <latex>AB</latex>
+                        </math> to be defined, the number of columns of <math>
+                           <latex>A</latex>
+                        </math> must equal the number of rows of <math>
+                           <latex>B</latex>
+                        </math>. Now the number of columns of <math>
+                           <latex>A</latex>
+                        </math> is <math>
+                           <latex>2</latex>
+                        </math>, while the number of rows of <math>
+                           <latex>B</latex>
+                        </math> is <math>
+                           <latex>4</latex>
+                        </math>. Therefore the matrix product <math>
+                           <latex>AB</latex>
+                        </math> is not defined in this case.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>BA</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix product <math>
+                              <latex>BA</latex>
+                           </math> is defined as the number of columns of <math>
+                              <latex>B</latex>
+                           </math> is equal to the number of rows of <math>
+                              <latex>A</latex>
+                           </math>, namely <math>
+                              <latex>4</latex>
+                           </math>. We find</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+							B\cdot A\ =\ 
+							\left[\begin{array}{rr}
+							-16 &amp; -4 \\
+							-5 &amp; 5 \\
+							13 &amp; -14 \\
+							17 &amp; 9
+							\end{array}\right]
+							
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>BA - A</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know from the previous part that <math>
+                           <latex>BA</latex>
+                        </math> has size <math>
+                           <latex>(4,2)</latex>
+                        </math>, which agrees with the size of <math>
+                           <latex>A</latex>
+                        </math>. Therefore the specified matrix operation <math>
+                           <latex>BA + A</latex>
+                        </math> is defined, and the result is</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>BA + A</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrrr}
+							2 &amp; 1 &amp; -5  &amp; -3 \\
+							-1 &amp; -2 &amp; -3 &amp; 0 \\
+							0 &amp; 4 &amp; -1 &amp; 1 \\
+							3 &amp; -1 &amp; 2 &amp; -2
+							\end{array}\right] \cdot 
+							\left[\begin{array}{rr}
+							-4 &amp; 3 \\
+							3 &amp; -4 \\
+							1 &amp; 0 \\
+							2 &amp; 2
+							\end{array}\right]\ +\ 
+							\left[\begin{array}{rr}
+							-4 &amp; 3 \\
+							3 &amp; -4 \\
+							1 &amp; 0 \\
+							2 &amp; 2
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rr}
+							-16 &amp; -4 \\
+							-5 &amp; 5 \\
+							13 &amp; -14 \\
+							17 &amp; 9
+							\end{array}\right]\ +\
+							\left[\begin{array}{rr}
+							-4 &amp; 3 \\
+							3 &amp; -4 \\
+							1 &amp; 0 \\
+							2 &amp; 2
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rr}
+							-20 &amp; -1 \\
+							-2 &amp; 1 \\
+							14 &amp; -14 \\
+							-15 &amp; 11
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>3A</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The scalar product <math>
+                           <latex>t\cdot A</latex>
+                        </math> of a matrix <math>
+                           <latex>A</latex>
+                        </math> by a number <math>
+                           <latex>t</latex>
+                        </math> is always defined. In the case at hand we get</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+							3\cdot A\ =\ 
+							\left[\begin{array}{rr}
+							-12 &amp; 9 \\
+							9 &amp; -12 \\
+							3 &amp; 0 \\
+							6 &amp; 6
+							\end{array}\right]
+							
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(-2)\cdot B</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The scalar product <math>
+                           <latex>t\cdot B</latex>
+                        </math> of a matrix <math>
+                           <latex>B</latex>
+                        </math> by a number <math>
+                           <latex>t</latex>
+                        </math> is always defined. In the case at hand we get</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+							(-2)\cdot B\ =\ 
+							\left[\begin{array}{rrrr}
+							-4 &amp; -2 &amp; 10 &amp; 6 \\
+							2 &amp; 4 &amp; 6 &amp; 0 \\
+							0 &amp; -8 &amp; 2 &amp; -2 \\
+							-6 &amp; 2 &amp; -4 &amp; 4
+							\end{array}\right]
+							
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>A^T</latex>
+                     </math> and <math>
+                        <latex>B^T</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The transpose of a matrix is always defined. In the two cases at hand, we get</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>A^T</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrrr}
+							-4 &amp; 3 &amp; 1 &amp; 2 \\
+							3 &amp; -4 &amp; 0 &amp; 2
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>B^T</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrrr}
+							2 &amp; -1 &amp; 0 &amp; 3 \\
+							1 &amp; -2 &amp; 4 &amp; -1 \\
+							-5 &amp; -3 &amp; -1 &amp; 2 \\
+							-3 &amp; 0 &amp; 1 &amp; -2
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A^T B^T</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The number of columns of <math>
+                           <latex>A^T</latex>
+                        </math> is <math>
+                           <latex>4</latex>
+                        </math>, and this equals the number of rows of <math>
+                           <latex>B^T</latex>
+                        </math>. Therefore the matrix product <math>
+                           <latex>A^T B^T</latex>
+                        </math> is defined. We obtain</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>A^T\cdot B^T</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrrr}
+							-4 &amp; 3 &amp; 1 &amp; 2 \\
+							3 &amp; -4 &amp; 0 &amp; 2
+							\end{array}\right] \cdot 
+							\left[\begin{array}{rrrr}
+							2 &amp; -1 &amp; 0 &amp; 3 \\
+							1 &amp; -2 &amp; 4 &amp; -1 \\
+							-5 &amp; 03 &amp; -1 &amp; 2 \\
+							-3 &amp; 0 &amp; 1 &amp; -2
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrrr}
+							-16 &amp; -5 &amp; 13 &amp; -17 \\
+							-4 &amp; 5 &amp; -14 &amp; 9
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>B^T A^T</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>Check if the number of columns of <math>
+                        <latex>B^T</latex>
+                     </math> equals the number of rows of <math>
+                        <latex>A^T</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <math>
+                           <latex>B^T</latex>
+                        </math> has <math>
+                           <latex>4</latex>
+                        </math> columns, while <math>
+                           <latex>A^T</latex>
+                        </math> has <math>
+                           <latex>2</latex>
+                        </math> rows. For <math>
+                           <latex>B^TA^T</latex>
+                        </math> to be defined these two numbers would have to be equal. So the given product is not defined.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given: the following matrices <math>
+                     <latex>A</latex>
+                  </math> and <math>
+                     <latex>B</latex>
+                  </math>, answer the questions below. If the specified matrix operation is defined, compute the answer.</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+					A\ =\ [1\ \ -5\ \ -4\ \ 1] \qquad \qquad
+					B\ =\ \left[\begin{array}{r} -6 \\ 0 \\ 3 \\ -9 \end{array}\right]
+					
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What kind of matrix is <math>
+                        <latex>A</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>A</latex>
+                           </math> is a row matrix of size <math>
+                              <latex>(1,4)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What kind of matrix is <math>
+                        <latex>B</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+            <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>B</latex>
+                           </math> is a column matrix of size <math>
+                              <latex>(4,1)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+         </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is <math>
+                        <latex>AB</latex>
+                     </math> defined? if not, why not?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix product is <math>
+                           <latex>AB</latex>
+                        </math> is defined because the number of columns of <math>
+                           <latex>A</latex>
+                        </math> equals the number of rows of <math>
+                           <latex>B</latex>
+                        </math>: both numbers are equal to <math>
+                           <latex>4</latex>
+                        </math>. The resulting matrix has size <math>
+                           <latex>(1,1)</latex>
+                        </math>:</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>AB\ =\ [1\cdot (-6) + (-5)\cdot 0 + (-4)\cdot 3 + 1\cdot (-9)]\ =\ [-27]</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is <math>
+                        <latex>BA</latex>
+                     </math> defined? If not, why not?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix product <math>
+                           <latex>BA</latex>
+                        </math> is defined because the number of columns of <math>
+                           <latex>B</latex>
+                        </math> equals the number of rows of <math>
+                           <latex>A</latex>
+                        </math>. The resulting matrix has size <math>
+                           <latex>(4,4)</latex>
+                        </math>:</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+							BA\ =\ 
+							\left[\begin{array}{rrrr}
+							-6 &amp; 30 &amp; 24 &amp; -12 \\
+							0  &amp;   0  &amp;  0  &amp;  0  \\
+							3 &amp; -15 &amp; -12 &amp; 6 \\
+							-9 &amp; 45 &amp; 36 &amp; -18
+							\end{array}\right]
+							
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find <math>
+                        <latex>A^T</latex>
+                     </math> and <math>
+                        <latex>B^T</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>A^T</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>
+							
+							\left[\begin{array}{r}
+							1 \\ -5 \\ -4 \\ 1
+							\end{array}\right]
+							
+						</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>B^T</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>[-6\ \ 0\ \ 3\ \ -9 ]</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is <math>
+                        <latex>A^TB^T</latex>
+                     </math> defined? If not, why not?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <math>
+                           <latex>A^T</latex>
+                        </math> has <math>
+                           <latex>1</latex>
+                        </math> column, and <math>
+                           <latex>B^T</latex>
+                        </math> has <math>
+                           <latex>1</latex>
+                        </math> row. As these two numbers are equal, the required product is defined. The resulting matrix has size <math>
+                           <latex>(4,4)</latex>
+                        </math>:</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>A^T\cdot B^T</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							[1\ \ -5\ \ -4\ \ 2]^T \cdot \left[\begin{array}{r} -6 \\ 0 \\ 3 \\ -9 \end{array}\right]^T
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{r} 1 \\ -5 \\ -4 \\ 2 \end{array}\right] \cdot [-6\ \ 0\ \ 3\ \ -9]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{rrrr}
+							-6 &amp; 0 &amp; 3 &amp; -9 \\
+							30 &amp; 0 &amp; -15 &amp; 45 \\
+							-24 &amp; 0 &amp; -12 &amp; 36 \\
+							-12 &amp; 0 &amp; 6 &amp; -18
+							\end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Is <math>
+                        <latex>B^TA^T</latex>
+                     </math> defined? If not, why not?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <math>
+                           <latex>B^T</latex>
+                        </math> has <math>
+                           <latex>4</latex>
+                        </math> columns, while <math>
+                           <latex>A^T</latex>
+                        </math> has <math>
+                           <latex>4</latex>
+                        </math> rows. The product <math>
+                           <latex>B^TA^T</latex>
+                        </math> is defined because these two numbers are equal. The resulting matrix will have size <math>
+                           <latex>(1,1)</latex>
+                        </math>:</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>B^TA^T</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[\begin{array}{r} -6 \\ 0 \\ 3 \\ -9 \end{array}\right]^T \cdot [1\ \ -5\ \ -4\ \ 2]^T
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							[-6\ \ 0\ \ 3\ \ -9] \cdot \left[\begin{array}{r} 1 \\ -5 \\ -4 \\ 2 \end{array}\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>[ -36 ]</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Exa_MatrixOperationsExceptions">
+	<title>Matrix Multiplication: Exceptional Properties</title>
+	<sub.page.body>
+		<block>
+			<para>Most rules for computing with numbers continue to hold when we compute with matrices, but not all: The multiplication of matrices is more delicate because there are two basic exceptions:</para>
+		</block>
+		
+		<block>
+			<para><b>Exception 1</b> &nbsp; When multiplying two matrices <latex>A</latex> and <latex>B</latex>, the products <latex>AB</latex> and <latex>BA</latex> need not be the same, even if both products are defined. &ndash; For example</para>
+			
+			<computation>
+				<left>[1\ \ 4\ \ 3] \cdot \left[\begin{array}{r} 5 \\ -2 \\ 7 \end{array}\right]</left>
+				<center>=</center>
+				<right>[ 18 ]</right>
+				<left>\left[\begin{array}{r} 5 \\ -2 \\ 7 \end{array}\right] \cdot [ 1\ \ 4\ \ 3 ]</left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+					\left[\begin{array}{rrr}
+					5 & 20 & 15 \\
+					-2 & -8 & -6 \\
+					7 & 28 & 21
+					\end{array}\right]
+					]]>
+				</right>
+			</computation>
+			
+			<para>In this case the two products don't even have the same size. So they cannot be equal. However, difference in size is not the only possible reason why <latex>AB</latex> might be different from <latex>BA</latex>:</para>
+			
+			<computation>
+				<left>
+					<![CDATA[
+					\left[\begin{array}{rr}
+					-3 & -6 \\
+					4 & 8
+					\end{array}\right] \cdot
+					\left[\begin{array}{rr}
+					8 & 6 \\
+					4 & 3
+					\end{array}\right]
+					]]>
+				</left>
+				<center></center>
+				<right>
+					<![CDATA[
+					\left[\begin{array}{rr}
+					-48 & -36 \\
+					64 & 48
+					\end{array}\right]
+					]]>
+				</right>
+				<left>
+					<![CDATA[
+					\left[\begin{array}{rr}
+					8 & 6 \\
+					4 & 3
+					\end{array}\right] \cdot 
+					\left[\begin{array}{rr}
+					-3 & -6 \\
+					4 & 8
+					\end{array}\right]
+					]]>
+				</left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+					\left[\begin{array}{rr}
+					0 & 0 \\
+					0 & 0
+					\end{array}\right]
+					]]>
+				</right>
+			</computation>
+			
+			<para>Here <latex>AB</latex> and <latex>BA</latex> are both of size <latex>(2,2)</latex>. Still, they are distinct.</para>
+		</block>
+		
+		<block>
+			<para><b>Exception 2</b> &nbsp; If <latex>AX</latex> is the
+				<subordinate>
+					<hot>0-matrix</hot>
+					<info>
+						<caption>What is the 0-matrix?</caption>
+						<para>A matrix all of whose entries are <latex>0</latex> is called a <latex>0</latex>-matrix.</para>
+					</info>
+				</subordinate>,
+				it need not be true that at least one of <latex>A</latex> or <latex>X</latex> is the 0-matrix.</para>
+			
+			<para>If <latex>ax=0</latex> is an equation of numbers, and we know that <latex>a\neq 0</latex>, we conclude immediately that <latex>x=0</latex>. It is very tempting to assume that we can draw the same conclusion when presented with a matrix equation like</para>
+			
+			<math.display>
+				<latex>AX = \mathbf{0}</latex>
+			</math.display>
+			
+			<para>However, the example below shows that, in this situation, neither <latex>A</latex> nor <latex>X</latex> need be <latex>\mathbf{0}</latex>.</para>
+			
+			<computation>
+				<left>
+					<![CDATA[
+					\left[\begin{array}{rr}
+					8 & 6 \\
+					4 & 3
+					\end{array}\right] \cdot 
+					\left[\begin{array}{rr}
+					-3 & -6 \\
+					4 & 8
+					\end{array}\right]
+					]]>
+				</left>
+				<center>=</center>
+				<right>
+					<![CDATA[
+					\left[\begin{array}{rr}
+					0 & 0 \\
+					0 & 0
+					\end{array}\right]
+					]]>
+				</right>
+			</computation>
+			
+			<para>Therefore, a matrix identity like <latex>\Mtrx{A}\Mtrx{X} = \Vect{0}</latex> by itself does not support the conclusion that <latex>\Mtrx{A}</latex> or <latex>\Mtrx{X}</latex> are <latex>\Vect{0}</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

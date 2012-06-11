@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MonotoneBoundedConverges"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
+	  <title>Exercises: Convergence of Monotone Bounded Sequences</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Use criteria for the convergence of monotone bounded sequences to show that each of the sequences below converges. If possible, find its limit.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(x_n)</latex>
+                     </math> with <math>
+                        <latex>x_n = \frac{2n}{3n +2}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(u_n)</latex>
+                     </math> with <math>
+                        <latex>u_n = \frac{n^2}{9n + 3}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(a_n)</latex>
+                     </math> with <math>
+                        <latex>a_n = n + \frac{1}{n+1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(y_n)</latex>
+                     </math> with <math>
+                        <latex>y_n = \frac{n!}{3^n}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(a_n)</latex>
+                     </math> with <math>
+                        <latex>a_n = \frac{n!}{n^n}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(b_n)</latex>
+                     </math> with <math>
+                        <latex>b_n = \frac{1}{n+\cos n}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(c_n)</latex>
+                     </math> with <math>
+                        <latex>c_n = \frac{1}{n+1}(\sin n + \cos n)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Each of  the sequences below is recursively defined. Write down the first 5 sequence elements. Then show that it converges.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>x_0 := 1</latex>
+                     </math>, and <math>
+                        <latex>x_{n+1} := x_n \cdot \frac{n+1}{2n+1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>a_0 := 1</latex>
+                     </math>, and <math>
+                        <latex>a_{n+1} := a_n\cdot \frac{2n+1}{2n+2}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>t_0 := 10</latex>
+                     </math>, and <math>
+                        <latex>t_{n+1} := \sqrt{t_n}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>s_0 := \cos 0</latex>
+                     </math>, and <math>
+                        <latex>s_{n+1} := s_n\cdot \cos n</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If <math>
+                     <latex>(x_n)</latex>
+                  </math> is an increasing sequence which fails to have an upper bound, show that <math>
+                     <latex>\lim_{n\to \infty} x_n = +\infty</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>If <math>
+                     <latex>(x_n)</latex>
+                  </math> is a decreasing sequence which fails to have a lower bound, show that <math>
+                     <latex>\lim_{n\to \infty} x_n = -\infty</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose the sequence <math>
+                     <latex>(x_n)</latex>
+                  </math> is bounded. Show that it can not converge to <math>
+                     <latex>+\infty</latex>
+                  </math> nor to <math>
+                     <latex>-\infty</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>(x_n)</latex>
+                  </math> be a sequence in <math>
+                     <latex>\RNr</latex>
+                  </math> with <math>
+                     <latex>\lim_{n\to \infty} x_n = c</latex>
+                  </math>. If <math>
+                     <latex>(x_{n_i})</latex>
+                  </math> is a subsequence of <math>
+                     <latex>(x_n)</latex>
+                  </math>, show that</para.body>
+            </para>
+			         <math.display>
+				           <latex>\lim_{i\to \infty} x_{n_i}\ =\ c</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find an example of a sequence <math>
+                     <latex>(x_n)</latex>
+                  </math> which is bounded, but fails to converge.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>About the recursively defined sequence</para.body>
+            </para>
+			         <math.display>
+				           <latex>a_0 := 0,\qquad a_{n+1} := a_n + \frac{1}{(n+1)^2}</latex>
+			         </math.display>
+			         <para>
+               <para.body>you are given the information: <math>
+                     <latex>\lim_{n\to\infty} a_n = \frac{\pi^2}{6}</latex>
+                  </math>. – What exactly does this mean?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+</exercise.pack>

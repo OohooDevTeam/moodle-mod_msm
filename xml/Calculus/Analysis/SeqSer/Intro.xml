@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+	SYSTEM "../Symbols.dtd">
+<intro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd">
+	<para>In this chapter we will learn how to examine and use objects called &lsquo;infinite sequence of real numbers&rsquo;.</para>
+	<para><b>Sequences</b> &nbsp; Informally speaking, an infinite sequence of real numbers is a never ending list of real numbers. For example
+		<index.glossary>
+			<term>sequence</term>
+			<info><para>Appears here in the introduction to the chapter on sequences and series.</para></info>
+		</index.glossary>
+		<index.glossary>
+			<term>infinite</term><term>sequence</term>
+			<info><para>Appears here in the introduction to the chapter on sequences and series.</para></info>
+		</index.glossary>
+	</para>
+	<ol type="1">
+		<li><para>Sequence: &nbsp; 0, 1, 2, 3, 4, 5, 6, .... </para></li>
+		<li><para>Sequence: &nbsp; 0, 3, 6, 9, 12, 15, 18, .... </para></li>
+		<li><para>Sequence: &nbsp; 1, 1/2, 1/4, 1/8, 1/16, .... </para></li>
+		<li><para>Sequence: &nbsp; -1, 1, -1, 1, -1, 1, .... </para></li>
+		<li><para>Sequence: &nbsp; 10, 12, 15, 19, 24, 30, 37, .... </para></li>
+		<li><para>Sequence: &nbsp; 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, .... </para></li>
+		<li><para>Sequence: &nbsp; 1, 4, 1, 4, 2, 1, 3, 5, 6, 2, .... </para></li>
+		<li><para>Sequence: &nbsp; 3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, .... </para></li>
+	</ol>
+	<para>Each of these lists of numbers forms a sequence. Each sequence has a first number, a second number, a third number, and so on. Rearranging the numbers in a given sequence will generally produce a new and different sequence.</para>
+	<para>Sometimes the numbers in a sequence follow an easily recognizable pattern; as is the case for 
+		<subordinate>
+			<hot>sequences 1,2,3,4</hot>
+			<info>
+				<caption>Examples</caption>
+				<para>The pattern in sequences 1,2,3,4 is:</para>
+				<ol>
+					<li><para>Sequence 1: &nbsp; the next three sequence elements are: 
+						<subordinate>
+							<hot>????</hot>
+							<info><para>7, 8, 9</para></info>
+						</subordinate>
+					</para></li>
+					<li><para>Sequence 2: &nbsp; the next three sequence elements are: 
+						<subordinate>
+							<hot>????</hot>
+							<info><para>21, 24, 27</para></info>
+						</subordinate>
+					</para></li>
+					<li><para>Sequence 3: &nbsp; the next three sequence elements are: 
+						<subordinate>
+							<hot>????</hot>
+							<info><para>1/32, 1/64, 1/128</para></info>
+						</subordinate>
+					</para></li>
+					<li><para>Sequence 4: &nbsp; the next three sequence elements are: 
+						<subordinate>
+							<hot>????</hot>
+							<info><para>-1, 1, -1</para></info>
+						</subordinate>
+					</para></li>
+				</ol>
+			</info>
+		</subordinate>.
+		Such a pattern can involve one or several previous elements, as is the case for 
+			<subordinate>
+				<hot>sequences 5</hot>
+				<info>
+					<caption>Example: Pattern in Sequence 5</caption>
+					<para>The pattern underlying sequence 5 is:</para>
+					<ol>
+						<li><para>1st sequence element: 10</para></li>
+						<li><para>2nd sequence element: 12 = 10 + 2 = previous sequence element + 2</para></li>
+						<li><para>3rd sequence element: 15 = 12 + 3 = previous sequence element + 3</para></li>
+						<li><para>4th sequence element: 19 = 15 + 4 = previous sequence element + 4</para></li>
+						<li><para>5th sequence element: 24 = 19 + 5 = previous sequence element + 5</para></li>
+						<li><para>6th sequence element: 30 = 24 + 6 = previous sequence element + 6</para></li>
+					</ol>
+				</info>
+			</subordinate>
+		and 
+			<subordinate>
+				<hot>6, called a Fibonacci sequence</hot>
+				<info>
+					<caption>Example: Pattern in Sequence 6</caption>
+					<para>The pattern underlying sequence 6 is:</para>
+					<ol>
+						<li><para>1st sequence element: 0</para></li>
+						<li><para>2nd sequence element: 1</para></li>
+						<li><para>3rd sequence element: 1 = 0 + 1 = (second last sequence element) + (previous sequence element)</para></li>
+						<li><para>4th sequence element: 2 = 1 + 1 = (second last sequence element) + (previous sequence element)</para></li>
+						<li><para>5th sequence element: 3 = 1 + 2 = (second last sequence element) + (previous sequence element)</para></li>
+						<li><para>6th sequence element: 5 = 2 + 3 = (second last sequence element) + (previous sequence element)</para></li>
+						<li><para>7th sequence element: 8 = 3 + 5 = (second last sequence element) + (previous sequence element)</para></li>
+						<li><para>8th sequence element: 13 = 5 + 8 = (second last sequence element) + (previous sequence element)</para></li>
+					</ol>
+				</info>
+			</subordinate>.
+		<index.glossary>
+			<term>Fibonacci sequence</term>
+			<info>
+				<caption>Fibonacci sequence</caption>
+				<para>A sequence <latex>(x_n)</latex> is called a Fibonacci sequence if, for all <latex>n\geq 2</latex></para>
+				<computation>
+					<left>x_{n+1}</left>
+					<center>=</center>
+					<right>x_{n-1} + x_n</right>
+				</computation>
+				<para>This instance of &lsquo;Fibonacci sequence&rsquo; appears as an example in the introduction to the concept of sequences.</para>
+			</info>
+		</index.glossary>
+	</para>
+			<para>We point out that the elements in a sequence need not follow any pattern at all. In fact the numbers in a sequence can be totally random. An example of a random sequence of numbers between 1 and 6 results from rolling a die: First number in sequence = number shown on first roll; second number in sequence = number shown on second roll, etc.</para>
+	<para>While the numbers in sequences 7 and 8 show no such pattern at all, there is still meaning to these sequences. To unlock this meaning, consider:</para>
+	<math.display>
+		<latex>
+			<![CDATA[
+\aligned
+1.&000000000        &\qquad\qquad 3.& \\
++\ 0.&4 						&\qquad\qquad 0.&1 \\
++\ 0.&01 						&\qquad\qquad 0.&04 \\
++\ 0.&004 					&\qquad\qquad 0.&001 \\
++\ 0.&0002 					&\qquad\qquad 0.&0005 \\
++\ 0.&00001					&\qquad\qquad 0.&00009 \\
++\ 0.&000003				&\qquad\qquad 0.&000002 \\
++\ 0.&0000005				&\qquad\qquad 0.&0000006 \\
++\ 0.&00000006			&\qquad\qquad 0.&00000005 \\
++\ 0.&000000002 		&\qquad\qquad 0.&000000003\\
++\ \vdots\ .&\ \vdots\quad \vdots \quad \vdots		&\qquad\qquad \vdots\ .&\ \vdots \qquad\qquad\vdots 	\\ \hline
+\sqrt{2}\ \approx\ 1.&414213562\dots 	&\qquad\qquad \pi\ \approx\ 3.&14159265358979323846 \dots
+\endaligned
+			]]>
+		</latex>
+	</math.display>
+	<para>In the sum on the left the <latex>n</latex>-th number <latex magnify="yes">a_n</latex> of sequence 7 provides the <latex>n</latex>-th summand via <latex magnify="yes">a_n\cdot 10^{-n}</latex>. Similarly, in the sum on the right, the <latex>n</latex>-th <latex magnify="yes">b_n</latex> of sequence 8 provides the <latex>n</latex>-th summand via <latex magnify="yes">b_n\cdot 10^{-n}</latex>. There are two insights we want to derive from the last two examples:</para>
+	<ul>
+		<li><para>An infinite sequence can be used to approximate a real number as accurately as we want, and this is one of the main applications of infinite sequences and leads to the study of such a sequence for convergence.</para></li>
+		<li><para>It is possible that a &lsquo;sum&rsquo; of infinitely many positive numbers gives a real number in a meaningful way. This observation is the starting point for the study of infinite series.</para></li>
+	</ul>
+	<para><b>Series</b> &nbsp; An infinite series of real numbers results from &lsquo;adding&rsquo; the numbers in an infinite sequence of real numbers. This is sometimes possible in a meaningful way, as in the two examples above. In this case we say the series converges. There are, however, sequences whose elements can not be added up in any meaningful way. In this case we say the resulting series diverges.</para>
+	<para>Accordingly we develop a set of criteria which help us decide whether a given infinite series of real numbers</para>
+	
+	<para><b>History</b> <subordinate>
+		<hot>Zeno</hot>
+		<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Zeno/ZenoElea.xml" target="_blank">
+			<para>More information on Zeno of Elea</para>
+		</link>
+	</subordinate>
+		<index.author>
+			<name>
+				<first>Zeno</first>
+				<last>of Elea</last>
+			</name>
+			<info>
+				<para>appears here in the introduction to infinite sequences and series.</para>
+			</info>
+		</index.author>
+		encountered sums of infinitely many numbers in the paradox named after him. The first recorded use of infinite sequences / series dates back to
+		<subordinate>
+			<hot>Archimedes</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Archimedes/ArchimedesSyracuse.xml" target="_blank">
+				<para>More information on Archimedes of Syracuse</para>
+			</link>
+		</subordinate> and was motivated by geometric concerns: Archimedes approximated the circumference of a circle by starting from the circumference of the largest equilateral that fits inside the circle. A better approximation is the circumference of the largest square that fits inside the circle. An even better approximation is given by the circumference of the largest regular 5-gon which fits inside the circle, etc.
+		<index.author>
+			<name>
+				<first></first>
+				<last>Archimedes of Syracuse</last>
+			</name>
+			<info>
+				<para>Appears here as the first recorded user of infinite series.</para>
+			</info>
+		</index.author>
+		<index.glossary>
+			<term>series</term>
+			<info><para>Appears here in the introduction to the chapter on sequences and series.</para></info>
+		</index.glossary>
+		<index.glossary>
+			<term>infinite</term><term>series</term>
+			<info><para>Appears here in the introduction to the chapter on sequences and series.</para></info>
+		</index.glossary>
+	</para>
+	<para>It appears that the next significant innovations in the use of infinite sequences / series needed to wait for one and a half thousand years: In India 
+		<subordinate>
+			<hot>Irinjaatappilly Madhavan Namboodiri</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Nambadoori/Nambadoori.xml" target="_blank">
+				<para>More information on Irinjaatappilly Madhavan Namboodiri</para>
+			</link>
+		</subordinate>, known as Madhavan of Sangamagrama discovered how to express trigonometric functions as infinite series. The work of Madhavan and his scholarly descendants in the &lsquo;Kerela School of Astronomy and Mathematics&rsquo; provided the seeds for the subject of analysis.
+		<index.author>
+			<name>
+				<first></first>
+				<last>Madhavan of Sangamagrama</last>
+			</name>
+			<info><para>Appears here for his role in founding the subject of analysis.</para></info>
+		</index.author>
+	</para>
+	<para>Later contributors to the use and understanding of infinite sequences and series include 
+		<subordinate>
+			<hot>James Gregory</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Gregory_James/GregoryJames.xml" target="_blank">
+				<para>More information on James Gregory</para>
+			</link>
+		</subordinate>,
+		<index.author>
+			<name>
+				<first>James</first>
+				<last>Gregory</last>
+				<initials>J.</initials>
+			</name>
+			<info><para>In the introduction of the chapter on &lsquo;sequences and series&rsquo; for his contributions to infinite sequences and series.</para></info>
+		</index.author> 
+		<subordinate>
+			<hot>Isaac Newton</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Newton_Isaac/Newton.xml" target="_blank">
+				<para>More information on Sir Isaac Newton</para>
+			</link>
+		</subordinate>,
+		<index.author>
+			<name>
+				<first>Isaac</first>
+				<last>Newton</last>
+				<initials>I.</initials>
+			</name>
+			<info><para>In the introduction of the chapter on &lsquo;sequences and series&rsquo; for his contributions to infinite sequences and series.</para></info>
+		</index.author> 
+		<subordinate>
+			<hot>Gottfried Wilhelm Leibniz</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Leibniz_Gottfried/Leibniz.xml" target="_blank">
+				<para>More information on Gottfried Wilhelm Leibniz</para>
+			</link>
+		</subordinate>,
+		<index.author>
+			<name>
+				<first>Gottfried</first>
+				<middle>Wilhelm</middle>
+				<last>Leibniz</last>
+				<initials>G.W.</initials>
+			</name>
+			<info><para>In the introduction of the chapter on &lsquo;sequences and series&rsquo; for his contributions to infinite sequences and series.</para></info>
+		</index.author> 
+		<subordinate>
+			<hot>Brook Taylor</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Taylor_Brook/TaylorBrook.xml" target="_blank">
+				<para>More information on Brook Taylor</para>
+			</link>
+		</subordinate> and 
+		<subordinate>
+			<hot>Colin MacLaurin</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/MacLaurin_Colin/MacLaurinC.xml" target="_blank">
+				<para>More information on Colin MacLaurin</para>
+			</link>
+		</subordinate>,
+		<index.author>
+			<name>
+				<first>Brook</first>
+				<last>Taylor</last>
+				<initials>B.</initials>
+			</name>
+			<info><para>In the introduction of the chapter on &lsquo;sequences and series&rsquo; for his contributions to infinite sequences and series.</para></info>
+		</index.author>
+		<index.author>
+			<name>
+				<first>Colin</first>
+				<last>MacLaurin</last>
+				<initials>C.</initials>
+			</name>
+			<info><para>In the introduction of the chapter on &lsquo;sequences and series&rsquo; for his contributions to infinite sequences and series.</para></info>
+		</index.author> 
+		<subordinate>
+			<hot>Leonhard Euler</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Euler_Leonhard/EulerLeonhard.xml" target="_blank">
+				<para>More information on Leonhard Euler</para>
+			</link>
+		</subordinate>.
+		<index.author>
+			<name>
+				<first>Leonhard</first>
+				<last>Euler</last>
+				<initials>L.</initials>
+			</name>
+			<info><para>In the introduction of the chapter on &lsquo;sequences and series&rsquo; for his contributions to infinite sequences and series.</para></info>
+		</index.author> Convergence questions related to infinite series were largely dealt with at an intuitive level. The development of a rigorous approach to convergence questions is the work of mathematicians in the 19th century, with main contributors 
+		<subordinate>
+			<hot>Carl Friedrich Gau&szlig;</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Gauss_CarlFriedrich/GaussCarl.xml" target="_blank">
+				<para>More information on Carl Friedrich Gau&szlig;</para>
+			</link>
+		</subordinate>, 
+		<subordinate>
+			<hot>Augustin-Louis Cauchy</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Cauchy_Augustin/CauchyAugustin.xml" target="_blank">
+				<para>More information on Augustin-Louis Cauchy</para>
+			</link>
+		</subordinate>, and 
+		<subordinate>
+			<hot>Karl Weierstrass</hot>
+			<link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Weierstrass_Karl/WeierstrassKarl.xml" target="_blank">
+				<para>More information on Karl Weierstra&szlig;</para>
+			</link>
+		</subordinate>.
+			<index.author>
+				<name>
+					<first>Carl</first>
+					<middle>Friedrich</middle>
+					<last>Gau&szlig;</last>
+					<initials>C.F.</initials>
+				</name>
+				<info><para>In the introduction of the chapter on &lsquo;sequences and series&rsquo; for his contributions to convergence questions related to infinite sequences and series.</para></info>
+			</index.author>
+		<index.author>
+			<name>
+				<first>Augustin-Louis</first>
+				<last>Cauchy</last>
+				<initials>A.L.</initials>
+			</name>
+			<info><para>In the introduction of the chapter on &lsquo;sequences and series&rsquo; for his contributions to convergence questions related to infinite sequences and series.</para></info>
+		</index.author>
+		<index.author>
+			<name>
+				<first>Karl</first>
+				<last>Weierstrass</last>
+				<initials>K.</initials>
+			</name>
+			<info><para>In the introduction of the chapter on &lsquo;sequences and series&rsquo; for his contributions to convergence questions related to infinite sequences and series.</para></info>
+		</index.author>
+	</para>
+</intro>

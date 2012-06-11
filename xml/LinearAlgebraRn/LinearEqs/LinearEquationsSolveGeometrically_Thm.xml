@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_SeveralLinearEquationsSolveGeometrically">
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation</caption>
+			<para>In other words, the simultaneous solutions of the given system of linear equations consists of the intersection of the hyperplanes <latex>H_1,\dots ,H_n</latex>.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Given a system of <latex>m</latex> linear equations in <latex>n</latex> unknowns
+			<index.glossary>
+				<term>system of linear equations</term>
+				<info><para>solutions discussed in geometrical terms</para></info>
+			</index.glossary>
+		</para>
+		
+		<math.display>
+			<latex>
+				<![CDATA[
+							\begin{array}{rcccccccccc}
+							(E_1)\qquad & \colorbox{lightgreen}{$a_{11}$}{\color{red} x_1} & + & \colorbox{lightgreen}{$a_{12}$}{\color{red} x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{1n}$}{\color{red} x_n} & = & {\color{blue} c_1} \\
+							(E_2)\qquad & \colorbox{lightgreen}{$a_{21}$}{\color{red} x_1} & + & \colorbox{lightgreen}{$a_{22}$}{\color{red} x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{2n}$}{\color{red} x_n} & = & {\color{blue} c_2} \\
+							\vdots\qquad & \vdots & + & \vdots & + & \ddots & & + & \vdots & & \vdots \\
+							\vdots\qquad & \vdots & + & \vdots & + & & \ddots & + & \vdots & & \vdots \\
+							(E_m)\qquad & \colorbox{lightgreen}{$a_{m1}$}{\color{red} x_1} & + & \colorbox{lightgreen}{$a_{m2}$}{\color{red} x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{mn}$}{\color{red} x_n} & = & {\color{blue} c_m} \\
+\end{array}
+							]]>
+			</latex>
+		</math.display>
+		
+		<para>let <latex magnify="yes">H_i</latex> denote the hyperplane in <latex>\RNr[n]</latex> formed by the solutions of the equation <latex magnify="yes">E_i</latex>. Then the simultaneous solutions of equations <latex magnify="yes">E_1,\dots ,E_n</latex> consists of all those points in <latex>\RNr[n]</latex> which belong to each of the hyperplanes <latex magnify="yes">H_1,\dots ,H_n</latex>.</para>
+	</statement>
+</theorem>

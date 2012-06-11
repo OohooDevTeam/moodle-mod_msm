@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_ChangeCoordinatesMatrixProperties">
+	<caption>Properties of coordinate change</caption>
+	<statement>
+		<para>Given ordered bases <latex>\EuScript{B}</latex>, <latex>\EuScript{C}</latex>, and <latex>\EuScript{D}</latex> of a subvector space <latex>W</latex> of <latex>\RNr[n]</latex>, the associated coordinate conversion matrices are related by
+			<index.glossary>
+				<term>change of coordinates matrix</term><term>of a composition of linear maps</term>
+				<info>
+					<computation>
+						<left>\Mtrx{C}_{\EuScript{D}\EuScript{B}}</left>
+						<center>=</center>
+						<right>\Mtrx{C}_{\EuScript{D}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}}</right>
+					</computation>
+				</info>
+			</index.glossary>
+		</para>
+		<computation>
+			<left>\Mtrx{C}_{\EuScript{D}\EuScript{B}}</left>
+			<center>=</center>
+			<right>\Mtrx{C}_{\EuScript{D}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}}</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>For an arbitrary vector <latex>\Vect{x}</latex> in <latex>W</latex> we find</para>
+		<math.display>
+			<latex>\Vect{x}_{\EuScript{D}} = \Mtrx{C}_{\EuScript{D}\EuScript{C}}\Vect{x}_{\EuScript{C}} = \Mtrx{C}_{\EuScript{D}\EuScript{C}}\left( \Mtrx{C}_{\EuScript{C}\EuScript{B}} \Vect{x}_{\EuScript{B}}\right)</latex>
+		</math.display>
+		<para>Therefore the product matrix <latex>\left( \Mtrx{C}_{\EuScript{D}\EuScript{C}} \Mtrx{C}_{\EuScript{C}\EuScript{B}}\right)</latex> converts from <latex>\EuScript{B}</latex>-coordinates to <latex>\EuScript{D}</latex>-coordinates. But we know that there is only one matrix with this property, namely <latex>\Mtrx{C}_{\EuScript{D}\EuScript{B}}</latex>. Therefore these two matrices are equal, and this proves the corollary.</para>
+	</proof>
+</theorem>

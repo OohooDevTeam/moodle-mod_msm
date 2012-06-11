@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_SubSpaceClosedAddition"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Sub Vector Space is Closed under Addition - Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The collection of vectors in a subvector space <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> is closed under vector addition. Here are some illustrations of what this means.</para.body>
+            </para>
+            <para>
+               <para.body>The subset below is closed under vector addition and scalar multiplication. So it is a subspace of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SubSpaceClosedAddition.gif"/>
+               <extended.caption>The sum of two vectors in <math>
+                     <latex>V</latex>
+                  </math> is again in <math>
+                     <latex>V</latex>
+                  </math>.</extended.caption>
+            </media>
+            <para>
+               <para.body>In contrast, here is a subset <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> which fails to be closed under vector addition. It is, therefore, not a subvector space.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SubSetNotClosedAddition.gif"/>
+            </media>
+            <para>
+               <para.body>Indeed, there are (at least) two vectors <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> whose sum <math>
+                     <latex>\Vect{x} + \Vect{y}</latex>
+                  </math> is not in <math>
+                     <latex>V</latex>
+                  </math>. This means that this line is not closed under vector addition, hence is not a subvector space.</para.body>
+            </para>
+            <para>
+               <para.body>The green half plane below is closed under vector addition, but not under scalar multiplication. For example, the vector <math>
+                     <latex>-\Vect{x}</latex>
+                  </math> is not in <math>
+                     <latex>S</latex>
+                  </math>. Therefore <math>
+                     <latex>S</latex>
+                  </math> is not a subvector space.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SubSetClosedAdditionNotScalarMult.gif"/>
+               <extended.caption>The scalar multiple of <math>
+                     <latex>\Vect{x}</latex>
+                  </math> by a negative number is not in <math>
+                     <latex>V</latex>
+                  </math>.</extended.caption>
+            </media>
+         </block.body>
+      </block>
+   </body>
+</unit>

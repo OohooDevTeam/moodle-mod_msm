@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="LinearMotion_Explntn"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Linear Motion – Explanation</title>
+   </titles>
+   <body>
+      <para>
+         <para.body>Just how does an expression like</para.body>
+      </para>
+      <para align="center">
+         <para.body>
+            <math>
+               <latex>\mathbf{l}(t) = \mathbf{a} + t\cdot \mathbf{v}</latex>
+            </math>,  <math>
+               <latex>t</latex>
+            </math> in <math>
+               <latex>\RNr</latex>
+            </math>
+         </para.body>
+      </para>
+      <para>
+         <para.body>describe a straight motion with constant speed? – The key is to think of the variable <math>
+               <latex>t</latex>
+            </math> as time and of the vector <math>
+               <latex>\mathbf{l}(t)</latex>
+            </math> as the position vector of the particle at time <math>
+               <latex>t</latex>
+            </math>. The result is illustrated below.</para.body>
+      </para>
+      <para align="center">
+         <para.body>
+            <media type="image" active="0" inline="0">
+               <img src="ims/LinearMotion_Illstrtn.gif"/>
+            </media>
+         </para.body>
+      </para>
+      <para>
+         <para.body>In general, the location <math>
+               <latex>\mathbf{l}(t)</latex>
+            </math> of the particle at time <math>
+               <latex>t</latex>
+            </math> is found by starting from the tip of <math>
+               <latex>\mathbf{a}</latex>
+            </math> and moving <math>
+               <latex>t</latex>
+            </math> units in the direction of <math>
+               <latex>\mathbf{v}</latex>
+            </math>. As a consequence, for any time <math>
+               <latex>t</latex>
+            </math>, the displacement of the particle during the time interval <math>
+               <latex>[t,t+1]</latex>
+            </math> is given by</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\mathbf{l}(t+1)-\mathbf{l}(t)</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>=	</text>
+               <companion xmlns="">
+                  <info xmlns="Unit">
+                     <info.caption>Computation of displacement vector</info.caption>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{l}(t+1)</latex>
+                           </math> is the position vector of the particle at time <math>
+                              <latex>t+1</latex>
+                           </math>; <math>
+                              <latex>\Vect{l}(t)</latex>
+                           </math> is the position vector of the particle at time <math>
+                              <latex>t</latex>
+                           </math>. Therefore the displacement of the particle during the time interval <math>
+                              <latex>[t,t+1]</latex>
+                           </math> is given by <math>
+                              <latex>\Vect{l}(t+1)-\Vect{l}(t)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </companion>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\mathbf{a}+(t+1)\cdot \mathbf{v}\ -\ (\mathbf{a}+t\cdot \mathbf{v}) = \Vect{v}</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+      <para>
+         <para.body>So <math>
+               <latex>\Vect{v}</latex>
+            </math> gives the displacement of the moving particle within any time interval of length <math>
+               <latex>1</latex>
+            </math>. This is the reason why we call it the velocity vector.</para.body>
+      </para>
+   </body>
+</unit>

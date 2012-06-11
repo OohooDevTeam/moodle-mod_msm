@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_InfSupLim"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Infimum, Supremum, Limit of a Sequence</title>
+      <plain.title>Infimum, Supremum, Limit of a Sequence</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In analysis we use sequences systematically to characterize a number <math>
+                     <latex>x</latex>
+                  </math>: this is possible whenever the progression of sequence elements gives an ever better approximation of <math>
+                     <latex>x</latex>
+                  </math>. If so, we say that the sequence converges to <math>
+                     <latex>x</latex>
+                  </math>. – The main purpose of this section is to make the concept of convergence of a sequence precise, and to develop its basic properties. We begin with the notions of infimum and supremum of a sequence.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_SequenceInfSup">
+               <caption>Infimum / supremum of a sequence</caption>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>The infimum of <math>
+                              <latex>(a_n)</latex>
+                           </math> is the greatest lower bound of the set of sequence elements <math>
+                              <latex>A = \Set{a_n \st n\in \NNr}</latex>
+                           </math>. If the sequence is bounded below, this is a number. If the sequence is not bounded below, it is <math>
+                              <latex>-\infty</latex>
+                           </math>.</para.body>
+                     </para>
+                     <para>
+                        <para.body>Similarly, the supremum of <math>
+                              <latex>(a_n)</latex>
+                           </math> is the least lower bound of <math>
+                              <latex>A</latex>
+                           </math>. If the sequence is bounded above, this is a number. If the sequence is not bounded above, it is <math>
+                              <latex>+\infty</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_InfSupSequence"/>
+                  <info>
+                     <para>
+                        <para.body>Examples of infimum and supremum of a sequence</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>Given a sequence <math>
+                           <latex>(a_n)</latex>
+                        </math>,</para.body>
+                  </para>
+                  <ul>
+                     <li>
+                        <para>
+                           <para.body>its infimum is <math>
+                                 <latex>\inf(a_n) := \inf\Set{ a_n \st n\in \NNr}</latex>
+                              </math>;
+					</para.body>
+                           <index.glossary>
+                              <term>infimum</term>
+                              <term>of a sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>its supremum is <math>
+                                 <latex>\sup(a_n) := \sup\Set{ a_n \st n\in \NNr}</latex>
+                              </math>.
+					</para.body>
+                           <index.glossary>
+                              <term>supremum</term>
+                              <term>of a sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                  </ul>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Next we develop the basic properties of the operations sup and inf of a sequence.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="InfSupSequenceProps_Thm.xml"/>
+            <para>
+               <para.body>We turn to the concept of convergence of a sequence</para.body>
+            </para>
+            <def type="Definition" id="Def_SequenceConvergence">
+               <caption>Convergence of a sequence to a number</caption>
+               <associate type="Explanation">
+                  <unit.ref unitId="Explana_SequenceConvergence"/>
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>The concept of convergence of a sequence is fundamental in much of what follows. So let’s analyze carefully what this definition says.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>How to read <math>
+                           <latex>\lim_{n\to \infty} x_n = c</latex>
+                        </math>
+                     </info.caption>
+                     <para>
+                        <para.body>Read the expression <math>
+                              <latex>\lim_{n\to \infty} x_n = c</latex>
+                           </math> as: ‘limit of xn as n tends to infinity equals c’.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_SequenceConverge1"/>
+                  <info>
+                     <para>
+                        <para.body>Examples on convergence of a sequence.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A sequence <math>
+                           <latex>(x_n)</latex>
+                        </math> in <math>
+                           <latex>\RNr</latex>
+                        </math> converges to a number <math>
+                           <latex>c</latex>
+                        </math> if, for every <math>
+                           <latex> \varepsilon &gt; 0 </latex>
+                        </math> there exists <math>
+                           <latex>n_0\in \NNr</latex>
+                        </math> such that</para.body>
+                  </para>
+                  <math.display>
+                     <latex> x_n\in \OOIntrvl{c-\varepsilon}{c+\varepsilon}\quad \text{for all $n\geq n_0$} </latex>
+                  </math.display>
+                  <para>
+                     <para.body>In this case we write <math>
+                           <latex>x_n\to c</latex>
+                        </math> or <math>
+                           <latex>\lim_{n\to \infty} x_n = c</latex>
+                        </math> and call <math>
+                           <latex>c</latex>
+                        </math> the limit of <math>
+                           <latex>(x_n)</latex>
+                        </math>.
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>\lim_{n\to \infty} x_n = c</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>Sequence <math>
+                                    <latex>(x_n)</latex>
+                                 </math> converges to <math>
+                                    <latex>c</latex>
+                                 </math>. – Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>convergence</term>
+                        <term>of a sequence to a number</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>sequence</term>
+                        <term>convergence to a number</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>A potential problem with the definition of convergence to a number just given is that we need to know the limit of <math>
+                     <latex>(x_n)</latex>
+                  </math> in order to discuss convergence of <math>
+                     <latex>(x_n)</latex>
+                  </math> to a number. In practice it is often sufficient to know that there <emphasis>exists</emphasis> a unique number <math>
+                     <latex>c</latex>
+                  </math> which is the limit of <math>
+                     <latex>(x_n)</latex>
+                  </math>, without knowing what <math>
+                     <latex>c</latex>
+                  </math> actually is. This is possible using 
+			<subordinate>
+                     <hot>Cauchy</hot>
+                     <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Cauchy_Augustin/CauchyAugustin.xml"
+                                    target="_blank">
+                        <info xmlns="">
+                           <para xmlns="Unit">
+                              <para.body>Lookup background on Augustin Cauchy</para.body>
+                           </para>
+                        </info>
+                     </external.link>
+                  </subordinate>'s criterion for convergence.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="CauchySequenceConvergence_Thm.xml"/>
+            <def type="Definition" id="Def_SequenceConvergenceInfinity">
+               <caption>Convergence of a sequence to <math>
+                     <latex>+\infty</latex>
+                  </math> or <math>
+                     <latex>-\infty</latex>
+                  </math>
+               </caption>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_SequenceConvergeInfty"/>
+                  <info>
+                     <para>
+                        <para.body>Examples of convergence to infinity.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A sequence <math>
+                           <latex>(x_n)</latex>
+                        </math> in <math>
+                           <latex>\RNr</latex>
+                        </math> converges to <math>
+                           <latex>+\infty</latex>
+                        </math> if, for every <math>
+                           <latex>u\in \RNr</latex>
+                        </math>, there exists <math>
+                           <latex>n_0\in \NNr</latex>
+                        </math> such that <math>
+                           <latex>u\leq x_n</latex>
+                        </math> whenever <math>
+                           <latex>n\geq n_0</latex>
+                        </math>. In this case we write <math>
+                           <latex>x_n\to +\infty</latex>
+                        </math> or <math>
+                           <latex>\lim_{n\to \infty} x_n = +\infty</latex>
+                        </math>.
+				</para.body>
+                     <index.glossary>
+                        <term>convergence</term>
+                        <term>of a sequence to <math>
+                              <latex>\pm \infty</latex>
+                           </math>
+                        </term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>sequence</term>
+                        <term>convergent to <math>
+                              <latex>\pm \infty</latex>
+                           </math>
+                        </term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <para>
+                     <para.body>A sequence <math>
+                           <latex>(x_n)</latex>
+                        </math> in <math>
+                           <latex>\RNr</latex>
+                        </math> converges to <math>
+                           <latex>-\infty</latex>
+                        </math> if, for every <math>
+                           <latex>l\in \RNr</latex>
+                        </math>, there exists <math>
+                           <latex>n_0\in \NNr</latex>
+                        </math> such that <math>
+                           <latex>x_n \leq l</latex>
+                        </math> whenever <math>
+                           <latex>n\geq n_0</latex>
+                        </math>. In this case we write <math>
+                           <latex>x_n\to -\infty</latex>
+                        </math> or <math>
+                           <latex>\lim_{n\to \infty} x_n = -\infty</latex>
+                        </math>.</para.body>
+                  </para>
+               </def.body>
+            </def>
+            <def type="Definition" id="Def_SequenceDiverges">
+               <caption>Divergent sequence</caption>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_SequenceDivergent"/>
+                  <info>
+                     <para>
+                        <para.body>An example of a divergent sequence</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A sequence in <math>
+                           <latex>\RNr</latex>
+                        </math> is said to diverge if it fails to converge to a number or to <math>
+                           <latex>\pm \infty</latex>
+                        </math>.
+				</para.body>
+                     <index.glossary>
+                        <term>divergent</term>
+                        <term>sequence</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>sequence</term>
+                        <term>divergent</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_InfSupSequence"/>
+      <exercise.pack.ref exercisePackID="Exe_InfSupLimSequence"/>
+   </studymaterials>
+</unit>

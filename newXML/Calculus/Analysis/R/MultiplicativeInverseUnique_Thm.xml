@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_MultiplicativeInverseUnique"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Multiplicative inverse is unique</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment of the proof of this lemma</caption>
+         </info.caption>
+         <para>
+            <para.body>This lemma can be proven by adapting the proof of uniqueness of the additive inverse of <math>
+                  <latex>a\in \RNr</latex>
+               </math> to the present situation.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Given <math>
+               <latex>0\neq a\in \RNr</latex>
+            </math>, there is exactly one element <math>
+               <latex>b\in \RNr</latex>
+            </math> with <math>
+               <latex>a\cdot b=1</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+</theorem>

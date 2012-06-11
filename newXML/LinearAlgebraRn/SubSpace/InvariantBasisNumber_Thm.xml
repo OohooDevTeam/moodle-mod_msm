@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_InvariantBasisNumber"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Invariant number of basis vectors</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Any two bases of a nonzero subvector space <math>
+               <latex>V</latex>
+            </math> of <math>
+               <latex>\RNr[n]</latex>
+            </math> have the same number of vectors.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>The key ingredient in this proof is the fact that, if <math>
+                     <latex>V</latex>
+                  </math> can be spanned by <math>
+                     <latex>m</latex>
+                  </math> vectors, then any linearly independent subset of <math>
+                     <latex>V</latex>
+                  </math>
+                  <subordinate>
+                     <hot>has at most <math>
+                           <latex>m</latex>
+                        </math> vectors</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                           <para>
+                              <para.body>Look up this fact.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>.</para.body>
+            </para>
+            <para>
+               <para.body>Now suppose <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> and <math>
+                     <latex>\EuScript{C}</latex>
+                  </math> are bases of <math>
+                     <latex>V</latex>
+                  </math>, containing exactly <math>
+                     <latex>r</latex>
+                  </math> and <math>
+                     <latex>s</latex>
+                  </math> vectors, respectively. Then we have <math>
+                     <latex>r\leq s</latex>
+                  </math>, because <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> is a linearly independent subset contained in the span of <math>
+                     <latex>\EuScript{C}</latex>
+                  </math>. Moreover, we have that <math>
+                     <latex>s\leq r</latex>
+                  </math>, because <math>
+                     <latex>\EuScript{C}</latex>
+                  </math> is a linearly independent subset contained in the span of <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>. Thus <math>
+                     <latex>r=s</latex>
+                  </math>, and the theorem is proven.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

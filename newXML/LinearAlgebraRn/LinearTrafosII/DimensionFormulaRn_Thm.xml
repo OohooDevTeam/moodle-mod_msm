@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_DimensionFormulaRn"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Dimension formula for linear <math>
+         <latex>\RNr[n]\to \RNr[m]</latex>
+      </math>
+   </caption>
+   <statement.theorem>
+      <para>
+         <para.body>For a linear transformation <math>
+               <latex>L\from \RNr[n]\to \RNr[m]</latex>
+            </math>, represented by the matrix <math>
+               <latex>\Mtrx{A}=\Mtrx{A}_{\EuScript{S}\EuScript{S}}</latex>
+            </math> with respect to the standard bases, the following hold:</para.body>
+      </para>
+      <part.theorem partid="KerNull">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Ker{ L } = \NllSp{\Mtrx{A}}</latex>
+                  </math>, and so <math>
+                     <latex>\Dim{ \Ker{ L }} = \Dim{ \NllSp{\Mtrx{A}} }</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="ImCol">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Img{ L }=\ColSp{\Mtrx{A}}</latex>
+                  </math>, and so <math>
+                     <latex>\Dim{ \Img{ L }} = \Rnk{\Mtrx{A}}</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+</theorem>

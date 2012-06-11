@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_InvertibleLinearTrafo"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: New Linear Transformations from Given Ones</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>There are some special linear transformations whose effect on space can be reversed. Here are the definition and most relevant facts:</para.body>
+            </para>
+            <ol type="1">
+               <li>
+                  <para>
+                     <para.body>
+                        <strong>Definition</strong>   A linear transformation <math>
+                           <latex>L\from \RNr[n] \to \RNr[n]</latex>
+                        </math> is called invertible if there exists a linear transformation <math>
+                           <latex>M\from \RNr[n]\to \RNr[n]</latex>
+                        </math> such that</para.body>
+                  </para>
+                  <math.display>
+                     <latex>M\Comp L = \IdMtrx[n] = L\Comp M</latex>
+                  </math.display>
+                  <para>
+                     <para.body>In this case we call <math>
+                           <latex>M</latex>
+                        </math> the inverse of <math>
+                           <latex>L</latex>
+                        </math> and write <math>
+                           <latex>M=L^{-1}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If the linear transformation <math>
+                           <latex>L\from \RNr[n]\to \RNr[n]</latex>
+                        </math> is invertible, with inverse <math>
+                           <latex>M=L^{-1}</latex>
+                        </math>, then <math>
+                           <latex>M</latex>
+                        </math> is also invertible and</para.body>
+                  </para>
+                  <math.display>
+                     <latex>L = M^{-1} = (L^{-1})^{-1}</latex>
+                  </math.display>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Let <math>
+                           <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                        </math> be a linear transformation represented by the matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> of size <math>
+                           <latex>(n,n)</latex>
+                        </math>. Then <math>
+                           <latex>L</latex>
+                        </math> is invertible if and only if <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is invertible. Moreover, <math>
+                           <latex>L^{-1}</latex>
+                        </math>  is represented by the matrix <math>
+                           <latex>\Mtrx{A}^{-1}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book
+	http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_SeriesRootRatioTest">
+	<headers>
+		<full>Root and Ratio Tests for Absolute Convergence</full>
+		<toc>Root and Ratio Tests for Absolute Convergence</toc>
+		<short>Root and Ratio Tests</short>
+	</headers>
+	<intro>
+		<para>We saw that absolute convergence of a series is a strong property in the sense that it is inherited by any subsequence of summands, and that arbitrary rearrangements of summands leave the limit of the series unchanged. In this section we present two convenient tools to detect absolutely convergent series: the &lsquo;root test&rsquo; and the &lsquo;ratio test&rsquo;. Both tests are actually applications of the limit comparison test with a geometric series.</para>
+	</intro>
+	<section.body>
+		<xi:include href="SeriesRootTest_Thm.xml"/>
+		<xi:include href="SeriesRatioTest_Thm.xml"/>
+		<para></para>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_RootRatioTest"/>
+	</studymaterials>
+</section>

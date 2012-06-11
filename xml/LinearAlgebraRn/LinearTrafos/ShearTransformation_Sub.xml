@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_ShearTransformation">
+	<title>Shear Transformations</title>
+	<sub.page.body>
+		<block>
+			<para>Shear transformations occur in a variety of contexts, for example when converting ordinary type into italics.</para>
+			
+			<figure>
+				<img src="ims/ShearingText.gif"></img>
+			</figure>
+			
+			<para>We can think of this transformation as resulting from holding the base of these characters fixed and sliding the top by a certain amount parallel to the base line (the shear line) of the characters.</para>
+		</block>
+		
+		<block>
+			<para>To describe such a shear transformation <latex>S\from \RNr[n]\to \RNr[n]</latex> mathematically, we adopt the following setup:</para>
+			<ul>
+				<li><para>Let <latex>\Vect{n}</latex> be a unit vector of <latex>\RNr[n]</latex>.</para></li>
+				<li><para>Let <latex>H</latex> denote the hyperspace of <latex>\RNr[n]</latex> perpendicular to <latex>\Vect{n}</latex>. This is the hyperspace parallel to which we shear.</para></li>
+				<li><para>Let <latex>\Vect{s} := S(\Vect{n}) - \Vect{n}</latex> denote the shear vector; i.e. <latex>\Vect{s}</latex> is the vector by which <latex>\Vect{n}</latex> must be slanted parallel to <latex>H</latex> so as to transform it into <latex>S(\Vect{n})</latex>.</para></li>
+			</ul>
+			
+			<figure>
+				<img src="ims/ShearR2_1.png"></img><!-- svg available -->
+			</figure>
+			
+			<para>How to read the picture above:</para>
+			<ol type="1">
+				<li><para>The effect of <latex>S</latex> on <latex>\Vect{n}</latex> is <latex>S(\Vect{n}) = \Vect{n} + \Vect{s}</latex>.</para></li>
+				<li><para>The effect of <latex>S</latex> on a stretched copy <latex>t\cdot \Vect{n}</latex> of <latex>\Vect{n}</latex> is <latex>S(t\cdot \Vect{n}) = t\cdot \Vect{n} + t\cdot \Vect{s}</latex>.</para></li>
+				<li><para>The effect of <latex>S</latex> on an arbitrary vector <latex>\Vect{x}</latex> with <latex>\pr_{\Vect{n}}(\Vect{x}) = t\cdot \Vect{n}</latex> is </para>
+				<math.display>
+					<latex>S(\Vect{x}) = \Vect{x} + t\cdot \Vect{s} = \Vect{x} + (\DotPr{\Vect{x}}{\Vect{n}})\cdot \Vect{s}</latex>
+				</math.display>
+					
+				</li>
+			</ol>
+			
+		</block>
+	</sub.page.body>
+</sub.page>

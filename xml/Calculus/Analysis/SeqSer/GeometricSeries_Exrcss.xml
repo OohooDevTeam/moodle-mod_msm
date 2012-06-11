@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_GeometricSeries">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Geometric Series</title>
+	<exercise>
+		<problem>
+			<para>For each of the following series determine if it converges diverges. If it converges, find its limit.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex magnify="yes">1 + \frac{1}{3} + \frac{1}{9} + \frac{1}{27} + \cdots</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para>This series is geometric with <latex>r=1/3</latex>. Therefore it converges to the number</para>
+					<math.display>
+						<latex>\sum_{n=0}^{\infty} \dfrac{1}{3^n}\ =\ \dfrac{1}{1-(1/3)}\ =\ \dfrac{3}{2}</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>4+8+16+32+\cdots</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This series converges to <latex>+\infty</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">1 - \frac{1}{3} + \frac{1}{9} - \frac{1}{27} \pm \cdots</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">\frac{4}{5} + \frac{16}{25} + \frac{64}{125} + \cdots</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para>This series is geometric with <latex>r=4/5</latex>, except that the first summand <latex>1</latex> is missing. Therefore, it converges to the number</para>
+					<math.display>
+						<latex>\sum_{n=1}^{\infty} \left( \dfrac{4}{5}\right)^n\ =\ -1 + \sum_{n=0}^{\infty} \left( \dfrac{4}{5}\right)^n\ =\ -1 + \dfrac{1}{1-(4/5)} = 4</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>-100 + 1000-10000\pm \cdots</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para>This is a geometric series of the form</para>
+					<math.display>
+						<latex>-100\cdot (1-10+100-1000) = -100\cdot \left( \sum_{n=0}^{\infty} (-10)^n\right)</latex>
+					</math.display>
+					<para>The series <latex>\sum (-10)^n</latex> diverges. So the original series diverges.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For <latex>2\leq k\in \NNr</latex> fixed, compare the limits of the series</para>
+			<math.display>
+				<latex>\sum_{n=0}^{\infty} \dfrac{1}{k^n}\quad \text{and}\quad \sum_{n=0}^{\infty} \dfrac{(-1)^n}{k^n}</latex>
+			</math.display>
+		</problem>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Express the following periodic decimal numbers as fractions.</para>
+		</problem>
+		<part>
+			<problem><para><latex>2.\overline{13}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>-1.1\overline{036}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>5.209\overline{2014}</latex></para></problem>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Find the limit of the series</para>
+			<math.display>
+				<latex>\sum_{n=1}^{\infty}\left( \left( \dfrac{1}{2}\right)^n - \left( \dfrac{1}{3}\right)^{n+1} \right)</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<solution>
+				<para>We relate the given series to a sum of two geometric series:</para>
+				<computation>
+					<left>\sum_{n=1}^{\infty}\left( \dfrac{1}{2}\right)^n</left>
+					<center>=	<info>
+						<para>Notice: we have added the summand <latex>(\tfrac{1}{2})^0 = 1</latex> to the infinite sum on the right by letting the summation index start from <latex>0</latex>, instead of from <latex>1</latex>, as in the left hand expression. Therefore we subtract <latex>1</latex> from the resulting geometric series.</para>
+					</info></center>
+					<right>-1\ +\ \sum_{n=0}^{\infty}\left( \dfrac{1}{2}\right)^n</right>
+					<left></left>
+					<center>=	<info><para>Here we use the formula for the sum of a geometric series.</para></info></center>
+					<right>-1\ +\ \dfrac{1}{1- \tfrac{1}{2}}</right>
+					<left></left>
+					<center>=</center>
+					<right>1</right>
+				</computation>
+				<para>Moreover,</para>
+				<computation>
+					<left>\sum_{n=1}^{\infty}\left( \dfrac{1}{3}\right)^{n+1}</left>
+					<center>=	<info>
+						<para>Notice: we have added the summands <latex>(\tfrac{1}{3})^0 = 1</latex> and <latex>(\tfrac{1}{3})^1</latex> to the infinite sum on the right by letting the summation index start from <latex>0</latex>, instead of from <latex>1+1=2</latex>, as in the left hand expression. Therefore we subtract these two numbers from the resulting geometric series.</para>
+					</info></center>
+					<right>-1 - \dfrac{1}{3} \ +\ \sum_{n=0}^{\infty}\left( \dfrac{1}{3}\right)^n</right>
+					<left></left>
+					<center>=	<info><para>Here we use the formula for the sum of a geometric series.</para></info></center>
+					<right>-1 - \dfrac{1}{3}\ +\ \dfrac{1}{1- \tfrac{1}{3}}</right>
+					<left></left>
+					<center>=</center>
+					<right>1/6</right>
+				</computation>
+				<para>Therefore the two series we considered converge individually, and so:</para>
+				<math.display>
+					<latex>\sum_{n=1}^{\infty}\left( \left( \dfrac{1}{2}\right)^n - \left( \dfrac{1}{3}\right)^{n+1} \right)\ =\ 1-\dfrac{1}{6} = \dfrac{5}{6}</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Determine if the series <latex>\sum_{n=0}^{\infty} \arctan n</latex> converges to a number.</para>
+		</problem>
+	</exercise>
+	
+</exercise.pack>

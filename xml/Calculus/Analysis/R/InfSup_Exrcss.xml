@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack
+	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_InfSup">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: On Infimum and Supremum</title>
+	<exercise>
+		<problem>
+			<para>Suppose <latex>x\in\RNr</latex> satisfies <latex>x\geq 0</latex> and <latex>x\leq 1/10^n</latex> for all <latex>n\geq 1</latex>. Show that <latex>x=0</latex>.</para>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Show that the set <latex>-\NNr:=\Set{ -n\st n\in \NNr}</latex> is not bounded below.</para>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Show that a set <latex>X\subseteq\RNr</latex> is not bounded above if and only if for every <latex>n\in\NNr</latex> there exists <latex>x\in X</latex> with <latex>n\leq x</latex>.</para>
+		</problem>
+	</exercise>
+	
+</exercise.pack>

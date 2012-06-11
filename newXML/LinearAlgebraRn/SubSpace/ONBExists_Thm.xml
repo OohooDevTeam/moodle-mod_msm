@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_ONBExists"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Existence of an ONB</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Existence of an ONB</caption>
+         </info.caption>
+         <para>
+            <para.body>Note that this corollary says, in particular, that <math>
+                  <latex>V</latex>
+               </math> has an ONB: namely the extension of the empty subset of <math>
+                  <latex>V</latex>
+               </math> to an ONB of <math>
+                  <latex>V</latex>
+               </math>.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>In a nonzero subvector space <math>
+               <latex>V</latex>
+            </math> of <math>
+               <latex>\RNr[n]</latex>
+            </math> every orthonormal subset <math>
+               <latex>S</latex>
+            </math> of <math>
+               <latex>V</latex>
+            </math> can be complemented to an orthonormal basis of <math>
+               <latex>V</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We know already that 
+			<subordinate>
+                     <hot>
+                        <math>
+                           <latex>S</latex>
+                        </math> is linearly independent</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_OrthogonalmpliesLinearIndependence"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_OrthogonalmpliesLinearIndependence"/>
+                           <para>
+                              <para.body>Look up this result</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			and, hence, 
+			<subordinate>
+                     <hot>can be complemented to a basis of <math>
+                           <latex>V</latex>
+                        </math>
+                     </hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_BasisExists"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_BasisExists"/>
+                           <para>
+                              <para.body>Look up this result.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>.
+			So, if <math>
+                     <latex>S=(\Vect{b}_1,\dots ,\Vect{b}_s)</latex>
+                  </math>, choose an ordered set of linearly independent vectors <math>
+                     <latex>T=(\Vect{c}_1,\dots ,\Vect{c}_t)</latex>
+                  </math> such that</para.body>
+            </para>
+            <math.display>
+               <latex>\EuScript{A}:=(\Vect{b}_1,\dots ,\Vect{b}_s,\Vect{c}_1,\dots ,\Vect{c}_t)</latex>
+            </math.display>
+            <para>
+               <para.body>is an ordered basis of <math>
+                     <latex>V</latex>
+                  </math>. Then apply the Gram-Schmidt process to <math>
+                     <latex>\EuScript{A}</latex>
+                  </math> so as to obtain an ONB <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> of <math>
+                     <latex>V</latex>
+                  </math>. It only remains to observe that the vectors from <math>
+                     <latex>S</latex>
+                  </math> remain unchanged as they are already orthonormal, and this completes the proof.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

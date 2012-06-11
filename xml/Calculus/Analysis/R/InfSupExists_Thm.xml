@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_InfSupExists">
+	<caption>Existence of unique least upper / greatest lower bound</caption>
+	<statement>
+		<para>For <latex>A\subseteq \RNr</latex> the following hold:</para>
+		<part partid="SupExists">
+			<para>There exists a unique <latex>s\in \bar{\RNr}</latex> satisfying <latex>s\leq u</latex> for all <latex>u\in \bar{\RNr}</latex> with <latex>A\leq u</latex>. Moreover, <latex>s\in \RNr</latex> if and only if <latex>A</latex> has an upper bound in <latex>\RNr</latex> and <latex>A\neq \emptyset</latex>.</para>
+		</part>
+		<part partid="InfExists">
+			<para>There exists a unique <latex>i\in\RNr</latex> satisfying <latex>l\leq i</latex> for all <latex>l\in\bar{\RNr}</latex> with <latex>l\leq A</latex>.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>SupExists</partref> existence of unique least <latex>s\in\bar{\RNr}</latex> with <latex>A\leq s</latex></caption>
+		<para>Consider the set</para>
+		<math.display>
+			<latex>B := \Set{ x\in \RNr \st A\leq x }</latex>
+		</math.display>
+		<para>If <latex>B=\emptyset</latex>, then <latex>s:=+\infty</latex> is the only element in <latex>\bar{\RNr}</latex> with <latex>A\leq s</latex>. Thus the claim holds in this case.</para>
+		<para>So let us turn to the case where <latex>B\neq \emptyset</latex>. If <latex>A=\emptyset</latex>, it follows that</para>
+		<math.display>
+			<latex>\bar{B} := \Set{ x\in \bar{\RNr} \st x\leq A} = \bar{\RNr}</latex>
+		</math.display>
+		<para>In this case <latex>s:=-\infty</latex> is the unique element of <latex>\bar{\RNr}</latex> with <latex>A\leq s\leq B</latex>.</para>
+		<para>It remains to consider the case where <latex>A,B\neq \emptyset</latex>. By design, we have <latex>A\leq B</latex>. Therefore the 
+			<subordinate>
+				<hot>completeness axiom</hot>
+				<crossref>
+					<definition.ref definitionID="Def_CompletenessAxiomForR"/>
+					<para>Look up the statement of the completeness axiom.</para>
+				</crossref>
+			</subordinate>
+			gives us the existence of <latex>s\in \RNr</latex> with <latex>A\leq s\leq B</latex>. In particular, this means that <latex>s</latex> is an upper bound of <latex>A</latex> and, hence, <latex>s\in B</latex>. But then <latex>s\leq B</latex> says that <latex>s</latex> is least among all upper bounds of <latex>A</latex>.</para>
+		<para>It remains to show that any least upper bound of <latex>A</latex> is unique. So consider an arbitrary upper bound <latex>t</latex> of <latex>A</latex> with <latex>t\leq B</latex>. Then</para>
+		<computation>
+			<left>t</left>
+			<center>\leq	<info><para>Because <latex>s\in B</latex> and <latex>t\leq B</latex></para></info></center>
+			<right>s</right>
+			<left>s</left>
+			<center>\leq	<info><para>Because <latex>t\in B</latex> and <latex>s\leq B</latex></para></info></center>
+			<right>t</right>
+		</computation>
+		<para>Therefore <latex>s=t</latex>, implying that <latex>s</latex> is the least upper bound of <latex>A</latex> is unique. It remains to show that if <latex>s\in \RNr</latex>, then <latex>A</latex> has an upper bound in <latex>\RNr</latex>, and <latex>A\neq \emptyset</latex>. But this follows readily:</para>
+		<ol>
+			<li><para>We know that <latex>A\leq s</latex> and <latex>s\in \RNr</latex>. So <latex>s</latex> is an upper bound of <latex>A</latex> in <latex>\bar{\RNr}</latex>.</para></li>
+			<li><para>To see that <latex>A\neq \emptyset</latex>, we argue by contradiction: if <latex>A=\emptyset</latex>, we saw earlier that <latex>s=-\infty\notin\RNr</latex>, a contradiction to <latex>s\in \RNr</latex>.</para></li>
+		</ol>
+		
+		<caption><partref>InfExists</partref> existence of unique greatest <latex>i\in\bar{\RNr}</latex> with <latex>i\leq A</latex></caption>
+		<para>The argument given above for the existence of a unique least upper bound of a nonempty set that is bounded above can be adapted word for word to establish the existence of a unique greatest lower bound of a nonempty set that is bounded below. As an alternative, we can argue as follows:</para>
+		<para><latex>(-A)</latex> has the unique least upper bound <latex>s\in \bar{\RNr}</latex>. From this it follows that <latex>i:=(-s)</latex> is the unique greatest lower bound of <latex>-(-A)=A</latex>.</para>
+	</proof>
+</theorem>

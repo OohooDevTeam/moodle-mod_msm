@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_TwoLinearEqs2ParallelCoefficients">
+	<caption>Two linear equations, parallel coefficients</caption>
+	<associate Description="Illustration">
+		<subpage.ref subpageID="TwoEqnsParallel1"/>
+		<info>
+			<caption>Illustration</caption>
+			<para>An illustration of the solutions of two linear equations in two variables with parallel coefficient vectors.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>Given two linear equations in two variables <latex>x</latex> and <latex>y</latex></para>
+		
+		<math.display>
+			<latex>
+				<![CDATA[
+						\begin{array}{rcrcl}
+\colorbox{lightgreen}{$a_1$}{\color{red} x} & + & \colorbox{lightgreen}{$a_2$}{\color{red} y} & = & {\color{blue} c} \\
+\colorbox{lightgreen}{$b_1$}{\color{red} x} & + & \colorbox{lightgreen}{$b_2$}{\color{red} y} & = & {\color{blue} d} \\
+						\end{array}
+					]]>
+			</latex>
+		</math.display>
+		<para>the coefficient vectors are</para>
+		<math.display>
+			<latex>\colorbox{lightgreen}{$\Vect{n}_1 := (a_1,a_2)$}\quad \text{and}\quad \colorbox{lightgreen}{$\Vect{n}_2 := (b_1,b_2)$}</latex>
+		</math.display>
+		<para>While the augmented coefficient vectors are</para>
+		<math.display>
+			<latex>\Vect{N}_1 := (\colorbox{lightgreen}{$a_1,a_2$},{\color{blue} c})\quad \text{and}\quad \Vect{N}_2 := (\colorbox{lightgreen}{$b_1,b_2$},{\color{blue} d})</latex>
+		</math.display>
+		<para>The solutions of each equation form a line in <latex>\RNr[2]</latex>. If <latex>\Vect{n}_1 = t\cdot \Vect{n}_2</latex> and <latex>d\neq tc</latex> then these lines are parallel and distinct. So they have no point in common and, therefore, this system of linear equations has no simultaneous solution.</para>
+		<para>If <latex>\Vect{n}_1 = t\cdot \Vect{n}_2</latex> and <latex>d = tc</latex> then these two lines are the same. This means that each solution of one equation is also a solution of the other: the two equations are said to be equivalent.</para>
+	</statement>
+</theorem>

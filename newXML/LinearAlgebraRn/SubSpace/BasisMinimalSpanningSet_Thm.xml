@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_BasisMinimalSpanningSet"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Basis is minimal spanning set</caption>
+   <statement.theorem>
+      <para>
+         <para.body>If <math>
+               <latex>V=\span(S)</latex>
+            </math>, then <math>
+               <latex>S</latex>
+            </math> is a basis of <math>
+               <latex>V</latex>
+            </math> if and only if removing any <math>
+               <latex>\Vect{v}</latex>
+            </math> from <math>
+               <latex>S</latex>
+            </math> yields a set <math>
+               <latex>S'</latex>
+            </math> which fails to span <math>
+               <latex>V</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>Consider first the case where <math>
+                     <latex>S</latex>
+                  </math> is a basis of <math>
+                     <latex>V</latex>
+                  </math>. If we remove a vector <math>
+                     <latex>\Vect{v}</latex>
+                  </math> from <math>
+                     <latex>S</latex>
+                  </math>, we obtain a set  <math>
+                     <latex>S</latex>
+                  </math>  whose 
+			<subordinate>
+                     <hot>span does not contain <math>
+                           <latex>\Vect{v}</latex>
+                        </math>
+                     </hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+                           <para>
+                              <para.body>Look up this fact</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>.
+			Thus <math>
+                     <latex>S'</latex>
+                  </math> fails to span  <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Conversely, suppose removing any vector <math>
+                     <latex>\Vect{v}</latex>
+                  </math> from <math>
+                     <latex>V</latex>
+                  </math> yields a set <math>
+                     <latex>S'</latex>
+                  </math> which fails to span <math>
+                     <latex>V</latex>
+                  </math>. We need to show that <math>
+                     <latex>S</latex>
+                  </math> is linearly independent. We argue by contradiction: Suppose <math>
+                     <latex>S</latex>
+                  </math> is linearly dependent. Then there is a vector <math>
+                     <latex>\Vect{v}</latex>
+                  </math> in <math>
+                     <latex>S</latex>
+                  </math> which is a linear combination of the remaining vectors in <math>
+                     <latex>S</latex>
+                  </math>. So form <math>
+                     <latex>S'</latex>
+                  </math> by removing <math>
+                     <latex>\Vect{v}</latex>
+                  </math> from <math>
+                     <latex>S</latex>
+                  </math>. We find <math>
+                     <latex>\span(S)= \span(S')</latex>
+                  </math>, contradicting the assumption of the proposition.</para.body>
+            </para>
+            <para>
+               <para.body>We have shown that the assumption that <math>
+                     <latex>S</latex>
+                  </math> is not linearly independent leads to a contradiction to the hypothesis of this result. This assumption is, therefore, false. Consequently <math>
+                     <latex>S</latex>
+                  </math> a linearly independent spanning set of <math>
+                     <latex>V</latex>
+                  </math>; i.e. it is a basis of <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

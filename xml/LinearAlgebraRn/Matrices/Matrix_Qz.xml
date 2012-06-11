@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE quiz.pack	SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Quz_MatrixTypes">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	<title>Matrix Quiz</title>
+	
+	<quiz>
+		<question>
+			<para>
+				Which of the following matrices is of type <latex>(2,3)</latex>?
+			</para>
+		</question>
+		
+		<choice>
+			<answer>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\left[\begin{array}{rr}
+4 & -1 \\
+0 & 0 \\
+1 & 6
+\end{array}\right]
+						]]>
+					</latex>
+				</math.display>
+			</answer>
+			<info>
+				<para>This matrix has <latex>3</latex> rows and <latex>2</latex> columns. So it is of size <latex>(3,2)</latex>. &ndash; Not the correct answer!</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\left[\begin{array}{rrr}
+1 & 3 & 2 \\
+3 & 1 & 2
+\end{array}\right]
+						]]>
+					</latex>
+				</math.display>
+			</answer>
+			<info>
+				<para>This matrix has <latex>2</latex> rows and <latex>3</latex> columns. So it is of size <latex>(2,3)</latex>. &ndash; So it is the correct answer to this question!</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\left[\begin{array}{rrr}
+4 & -4 & 1 \\
+3 & 2 & 3 \\
+1 & -3 & 6
+\end{array}\right]
+						]]>
+					</latex>
+				</math.display>
+			</answer>
+			<info>
+				<para>This matrix has <latex>3</latex> rows and <latex>3</latex> columns. So it is of size <latex>(3,3)</latex>. &ndash; Not the correct answer to this question!</para>
+			</info>
+		</choice>
+	</quiz>
+	
+	<quiz>
+		<question>
+			<para>What is the size the following matrix?</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\left[\begin{array}{rrrrrrr}
+6 & 5 & 3 & 12 & 19 & 403 & 121 \\
+3 & 0 & 0 & 1 & 21 & -12 & 11 \\
+1 & 1 & 2 & 2 & 4 & 4 & 8
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</question>
+		<choice>
+			<answer>
+				<para>This matrix is of size or type <latex>(7,3)</latex></para>
+			</answer>
+			<info><para>Sorry! - No!</para></info>
+		</choice>
+		<choice>
+			<answer>
+				<para>This matrix is of size or type <latex>(3,7)</latex></para>
+			</answer>
+			<info><para>Yes!</para></info>
+		</choice>
+	</quiz>
+	
+	<quiz>
+		<question>
+			<para>Identyify the entry <latex>a_{26}</latex> of the matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					A := \left[\begin{array}{rrrrrrr}
+6 & 5 & 3 & 12 & 19 & 403 & 121 \\
+3 & 0 & 0 & 1 & 21 & -12 & 11 \\
+1 & 1 & 2 & 2 & 4 & 4 & 8
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</question>
+		<choice>
+			<answer><para>0</para></answer>
+			<info>
+				<para>Sorry! No! &ndash; We have <latex>a_{22} = 0 = a_{23}</latex>. But <latex>a_{26}</latex> is something else.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer><para>-12</para></answer>
+			<info><para>Correct! &ndash; <latex>a_{26}</latex> is the entry in the second row and the sixth column. So this is <latex>-12</latex>.</para></info>
+		</choice>
+	</quiz>
+	
+	<quiz>
+		<question>
+			<para>Which positions of the matrix <latex>A</latex> below are occupied by the number 1?</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					A := \left[\begin{array}{rrrrrrr}
+6 & 5 & 3 & 12 & 19 & 403 & 121 \\
+3 & 0 & 0 & 1 & 21 & -12 & 11 \\
+1 & 1 & 2 & 2 & 4 & 4 & 8
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</question>
+		<choice>
+			<answer><para>(1,4)</para></answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+		<choice>
+			<answer><para>(1,7)</para></answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+		<choice>
+			<answer><para>(2,4)</para></answer>
+			<info><para>Yes!</para></info>
+		</choice>
+		<choice>
+			<answer><para>(3,8)</para></answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+		<choice>
+			<answer><para>(3,1)</para></answer>
+			<info><para>Yes!</para></info>
+		</choice>
+		<choice>
+			<answer><para>(3,5)</para></answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+		<choice>
+			<answer><para>(3,2)</para></answer>
+			<info><para>Yes!</para></info>
+		</choice>
+		<choice>
+			<answer><para>(2,7)</para></answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+	</quiz>
+	
+</quiz.pack>

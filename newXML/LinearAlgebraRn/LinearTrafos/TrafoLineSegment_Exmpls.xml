@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_TrafoLineSegment"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	  <title>Example: Transformation of a Line Segment</title>
+	  <caption xmlns="">Transformation of a Line Segment</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>In the picture below the line segment <math>
+                  <latex>[a,b]</latex>
+               </math> on the left gets transformed into the red curve on the right.</para.body>
+         </para>
+			
+			
+				     <img xmlns="" src="ims/Trafo_LineSegment.png"/>
+				     <caption xmlns="">Transforming a line segment into a curve.</caption>
+			
+			
+			
+			      <para xmlns="">
+            <para.body>To fit this intuitive process into the mathematical formalism of functions, we do the following:</para.body>
+         </para>
+			
+			      <ul xmlns="">
+				        <li>
+               <para>
+                  <para.body>We take the interval <math>
+                        <latex>[a,b]</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> as the domain of the transforming function <math>
+                        <latex>f</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>The plane <math>
+                        <latex>\RNr[2]</latex>
+                     </math> on the right is the target of <math>
+                        <latex>f</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>The curve on the right is the transformed line segment. This is also called the image of <math>
+                        <latex>f</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+			      </ul>
+			
+			      <para xmlns="">
+            <para.body>The function <math>
+                  <latex>f\from [a,b]\to \RNr[2]</latex>
+               </math> transforms <math>
+                  <latex>[a,b]</latex>
+               </math> into the curve on the right. Note that the image of <math>
+                  <latex>f</latex>
+               </math> need not be equal to the target <math>
+                  <latex>\RNr[2]</latex>
+               </math>. Note also that the end point <math>
+                  <latex>a</latex>
+               </math> of <math>
+                  <latex>[a,b]</latex>
+               </math> gets transformed into the end point <math>
+                  <latex>f(a)</latex>
+               </math> of the curve on the right, and that the end point <math>
+                  <latex>b</latex>
+               </math> of <math>
+                  <latex>[a,b]</latex>
+               </math> gets transformed into the end point <math>
+                  <latex>f(b)</latex>
+               </math> of the curve.</para.body>
+         </para>
+		    </statement.showme>
+	  </showme>	
+</showme.pack>

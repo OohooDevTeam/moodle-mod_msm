@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_DistancePreservingLinearTransformations">
+	<headers>
+		<full>Distance Preserving Linear Transformations</full>
+		<toc>Distance Preserving Linear Transformations</toc>
+		<short>Distance Preserving Transformations</short>
+	</headers>
+	
+	<intro>
+		<para>Of particular importance for practical purposes are those linear transformations which preserve all distances. This ensures that size and shape of any object remain unaltered by the transformation. Only its position can change.</para>
+		<para>Given an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> how do we recognize if it represents a distance preserving linear transformation? The answer is pleasantly simple: the column vectors of <latex>\Mtrx{A}</latex> must have length <latex>1</latex> and must be pairwise orthogonal.</para>
+	</intro>
+	
+	<section.body>
+		<def type="Definition" id="Def_DistancePreservingLinearTransformation">
+			<caption>Distance preserving linear transformation</caption>
+			<associate Description="Explanation">
+				<info>
+					<para>The identity <latex>\abs{ L(\Vect{x}) } = \abs{ \Vect{x} }</latex> says exactly that the length of <latex>\Vect{x}</latex> equals the length of (<latex>\Vect{x}</latex> transformed by <latex>L</latex>). If this happens for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>, then <latex>L</latex> preserves the length of all vectors and, hence, the distance between any pair of points in <latex>\RNr[n]</latex>.</para>
+				</info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_RotationOrthogonal"/>
+				<info><para>A rotation is an example of a distance preserving linear transformation.</para></info>
+			</associate>
+			<associate Description="Quiz">
+				<quiz.pack.ref quizPackID="Quz_OrthogonalMap"/>
+				<info><para>A quiz that helps you develop your understanding of the concept of &lsquo;distance preserving linear map&rsquo;</para></info>
+			</associate>
+			
+			
+			<para>A linear transformation <latex>L\from \RNr[n] \to \RNr[n]</latex> is said to preserve distances if, for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>,
+				<index.glossary>
+					<term>distance</term><term>preserving linear transformation</term>
+					<info><para>Definition of the term</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>linear transformation</term><term>distance preserving</term>
+					<info><para>Definition of the term</para></info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>\abs{L(\Vect{x})} = \abs{\Vect{x}}</latex>
+			</math.display>
+			<para>Other terms in use for &lsquo;distance preserving linear transformation&rsquo; include &lsquo;orthogonal transformation&rsquo; or &lsquo;unitary transformation&rsquo;
+				<index.glossary>
+					<term>orthogonal</term><term>linear transformation</term>
+					<info><para>is an alternate term for &lsquo;distance preserving linear transformation&rsquo;</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>unitary</term><term>linear transformation</term>
+					<info><para>is an alternate term for &lsquo;distance preserving linear transformation&rsquo;</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>linear transformation</term><term>orthogonal</term>
+					<info><para>is an alternate term for &lsquo;distance preserving linear transformation&rsquo;</para></info>
+				</index.glossary>
+			</para>
+		</def>
+		
+		<para>A distance preserving linear transformation is easy to recognize by inspecting the matrix representing it:</para>
+		
+		<xi:include href="OrthogonalMapRecognize_Prop.xml"/>
+		
+		<para>An alternate way of formulating this recognition criterion for distance preserving linear maps is the following:</para>
+		
+		<xi:include href="DistancePreservingOrthogonal_Cor.xml"/>
+		
+		<para>The previous corollary motivates the following terminology</para>
+		
+		<def type="Terminology" id="Term_OrthogonalMatrix">
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation</caption>
+					<para>In view of the previous corollary: a matrix is orthogonal exactly when it represents a distance preserving linear map.</para>
+				</info>
+			</associate>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment</caption>
+					<para>The terminology &lsquo;orthogonal matrix&rsquo; is historically entrenched. It is, however, not optimally descriptive because &lsquo;orthogonal&rsquo; only suggests that the column vectors of <latex>\Mtrx{A}</latex> must be mutually perpendicular.</para>
+					<para>A bit more descriptive would be something like &lsquo;orthonormal matrix&rsquo;. This would truly mean that the columns of <latex>\Mtrx{A}</latex> are normed, i.e. have length <latex>1</latex>, and must be mutually perpendicular. These are exactly the properties <latex>\Mtrx{A}</latex> needs to represent a distance preserving linear map.</para>
+				</info>
+			</associate>
+			
+			<para>A matrix <latex>\Mtrx{A}</latex> is called orthogonal if its column vectors have length <latex>1</latex> and are mutually orthogonal.
+				<index.glossary>
+					<term>orthogonal</term><term>matrix</term>
+					<info>
+						<caption>What is an orthogonal matrix?</caption>
+						<para>A matrix <latex>\Mtrx{A}</latex> is called orthogonal if <latex>\Mtrx{A}\Mtrx{A}^T = \IdMtrx</latex>.</para>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>orthogonal</term>
+					<info>
+						<caption>What is an orthogonal matrix?</caption>
+						<para>A matrix <latex>\Mtrx{A}</latex> is called orthogonal if <latex>\Mtrx{A}\Mtrx{A}^T = \IdMtrx</latex>.</para>
+					</info>
+				</index.glossary>
+			</para>
+		</def>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_OrthogonalMaps"/>
+		<exercise.pack.ref exercisePackID="Exe_OrthogonalMaps1"/>
+	</studymaterials>
+</section>

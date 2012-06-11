@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_ChangeCoordinates"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Change of Coordinates</title>
+      <plain.title>Change of Coordinates</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Suppose we are given two ordered bases for a vector space <math>
+                     <latex>W</latex>
+                  </math>:</para.body>
+            </para>
+            <math.display>
+               <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_r) \quad\text{and}\quad \EuScript{C}=(\Vect{c}_1,\dots ,\Vect{c}_r)</latex>
+            </math.display>
+            <para>
+               <para.body>Then a vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>W</latex>
+                  </math> can be expressed in exactly one way as a linear combination of <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> and of <math>
+                     <latex>\EuScript{C}</latex>
+                  </math>:</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\begin{array}{rcllrcl}
+\Vect{x} &amp; = &amp; s_1 \Vect{b}_1 + \cdots + s_r\Vect{b}_r &amp;\quad \text{so} &amp; \Vect{x}_{\EuScript{B}} = (s_1,\dots ,s_r) \\
+\Vect{x} &amp; = &amp; t_1 \Vect{c}_1 + \cdots + t_r\Vect{c}_r &amp;\quad \text{so} &amp; \Vect{x}_{\EuScript{C}} = (t_1,\dots ,t_r) \\
+\end{array}
+
+			</latex>
+            </math.display>
+            <para>
+               <para.body>What is the <subordinate>
+                     <hot>relationship between the coordinate vectors</hot>
+                     <companion>
+                        <unit.ref unitId="Illu_ChangeBases"/>
+                        <info>
+                           <para>
+                              <para.body>See an illustration of this.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>
+                  <math>
+                     <latex>\Vect{x}_{\EuScript{B}}</latex>
+                  </math> and <math>
+                     <latex>\Vect{x}_{\EuScript{C}}</latex>
+                  </math>?</para.body>
+            </para>
+            <para>
+               <para.body>Here we learn that there is a single matrix <math>
+                     <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
+                  </math> which handles all conversions from <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>-coordinates to <math>
+                     <latex>\EuScript{C}</latex>
+                  </math>-coordinates via the vector equation</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}_{\EuScript{C}}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}\cdot \Vect{x}_{\EuScript{B}}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="ChangeCoordsMatrix_Thm.xml"/>
+            <para>
+               <para.body>The matrix <math>
+                     <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
+                  </math> is called the change of coordinates matrix or the coordinate conversion matrix from  <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>-coordinates to <math>
+                     <latex>\EuScript{C}</latex>
+                  </math>-coordinates.
+		</para.body>
+               <index.symbol>
+                  <symbol>
+                     <math>
+                        <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
+                     </math>
+                  </symbol>
+                  <info>
+                     <para>
+                        <para.body>Coordinate conversion matrix</para.body>
+                     </para>
+                  </info>
+               </index.symbol>
+               <index.glossary>
+                  <term>coordinate</term>
+                  <term>conversion matrix</term>
+                  <info>
+                     <para>
+                        <para.body>Definition of the concept</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>change of coordinates matrix</term>
+                  <info>
+                     <para>
+                        <para.body>Definition of the concept</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+            <para>
+               <para.body>Let us now turn to rules which apply to coordinate conversion matrices: Suppose we are given three ordered bases of a subspace <math>
+                     <latex>W</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, say <math>
+                     <latex>\EuScript{B}</latex>
+                  </math>, <math>
+                     <latex>\EuScript{C}</latex>
+                  </math>, and <math>
+                     <latex>\EuScript{D}</latex>
+                  </math>. We then have associated coordinate conversion matrices</para.body>
+            </para>
+            <table align="center"
+                   border="3"
+                   cellpadding="2"
+                   cellspacing="0"
+                   bordercolor="maroon">
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{C}_{\EuScript{C}\EuScript{B}}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>  to convert from <math>
+                              <latex>\EuScript{B}</latex>
+                           </math>-coordinates to <math>
+                              <latex>\EuScript{C}</latex>
+                           </math>-coordinates</para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{C}_{\EuScript{D}\EuScript{C}}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>  to convert from <math>
+                              <latex>\EuScript{C}</latex>
+                           </math>-coordinates to <math>
+                              <latex>\EuScript{D}</latex>
+                           </math>-coordinates</para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Mtrx{C}_{\EuScript{D}\EuScript{B}}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>  to convert from <math>
+                              <latex>\EuScript{B}</latex>
+                           </math>-coordinates to <math>
+                              <latex>\EuScript{D}</latex>
+                           </math>-coordinates</para.body>
+                     </para>
+                  </cell>
+               </row>
+            </table>
+            <para>
+               <para.body>The relationship between these matrices is given by the following:</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="ChangeCoordsMatrixProps_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="ChangeCoordsMatrixInverse_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_ChangeCoordinates"/>
+   </studymaterials>
+</unit>

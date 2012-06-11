@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_RotationOrthogonal"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Rotations are Distance Preserving</title>
+	  <caption xmlns="">Rotations are Distance Preserving</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>We say that a linear transformation <math>
+                  <latex>L</latex>
+               </math> preserves the distance between two points <math>
+                  <latex>\Vect{a}</latex>
+               </math>  and <math>
+                  <latex>\Vect{b}</latex>
+               </math> if the distance from <math>
+                  <latex>\Vect{a}</latex>
+               </math> to <math>
+                  <latex>\Vect{b}</latex>
+               </math> is equal to the distance from <math>
+                  <latex>L(\Vect{a})</latex>
+               </math> to <math>
+                  <latex>L(\Vect{b})</latex>
+               </math>. For example, a rotation of the plane about the origin preserves the distance between any two points.</para.body>
+         </para>
+			
+			
+			
+				     <img xmlns="" src="ims/RotationOrthogonal.png"/>
+			
+			
+		    </statement.showme>
+	  </showme>
+</showme.pack>

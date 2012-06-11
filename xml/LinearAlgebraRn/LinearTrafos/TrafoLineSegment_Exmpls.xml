@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_TrafoLineSegment">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	<title>Example: Transformation of a Line Segment</title>
+	<caption>Transformation of a Line Segment</caption>
+	<showme>
+		<statement>
+			<para>In the picture below the line segment <latex>[a,b]</latex> on the left gets transformed into the red curve on the right.</para>
+			
+			<figure>
+				<img src="ims/Trafo_LineSegment.png"></img>
+				<caption>Transforming a line segment into a curve.</caption>
+			</figure>
+			
+			
+			<para>To fit this intuitive process into the mathematical formalism of functions, we do the following:</para>
+			
+			<ul>
+				<li><para>We take the interval <latex>[a,b]</latex> in <latex>\RNr</latex> as the domain of the transforming function <latex>f</latex>.</para></li>
+				<li><para>The plane <latex>\RNr[2]</latex> on the right is the target of <latex>f</latex>.</para></li>
+				<li><para>The curve on the right is the transformed line segment. This is also called the image of <latex>f</latex>.</para></li>
+			</ul>
+			
+			<para>The function <latex>f\from [a,b]\to \RNr[2]</latex> transforms <latex>[a,b]</latex> into the curve on the right. Note that the image of <latex>f</latex> need not be equal to the target <latex>\RNr[2]</latex>. Note also that the end point <latex>a</latex> of <latex>[a,b]</latex> gets transformed into the end point <latex>f(a)</latex> of the curve on the right, and that the end point <latex>b</latex> of <latex>[a,b]</latex> gets transformed into the end point <latex>f(b)</latex> of the curve.</para>
+		</statement>
+	</showme>	
+</showme.pack>

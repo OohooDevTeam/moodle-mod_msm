@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_Orientation2">
+	<title>2-Dimensional Orientation</title>
+	<sub.page.body>
+		<block>
+			<para>&lsquo;Counterclockwise&rsquo; and &lsquo;clockwise&rsquo; motions in the plane are mirrored siblings.</para>
+			<figure>
+				<img src="ims/Orientation2.png"></img><!-- svg available -->
+			</figure>
+			<para>An orientation of <latex>\RNr[2]</latex> is given by a choice of one of these two directions. Any pair <latex>(\Vect{x},\Vect{y})</latex> of noncolinear vectors represents an orientation <latex>\omega(\Vect{x},\Vect{y})</latex> of  <latex>\RNr[2]</latex> as follows:</para>
+			
+			<table align="center" border="3" cellpadding="2" cellspacing="3" bordercolor="Maroon">
+				<row>
+					<cell><para>If</para></cell>
+					<cell><para>we find</para></cell>
+					<cell><para>and say</para></cell>
+				</row>
+				<row>
+					<cell><para><latex>\omega(\Vect{x},\Vect{y}) = +1</latex></para></cell>
+					<cell><para>The lesser of the two angles from <latex>\Vect{x}</latex> to <latex>\Vect{y}</latex> occurs in the counterclockwise direction</para></cell>
+					<cell><para><latex>(\Vect{x},\Vect{y})</latex> represents the positive orientation of <latex>\RNr[2]</latex></para></cell>
+				</row>
+				<row>
+					<cell><para><latex>\omega(\Vect{x},\Vect{y}) = -1</latex></para></cell>
+					<cell><para>The lesser of the two angles from <latex>\Vect{x}</latex> to <latex>\Vect{y}</latex> occurs in the clockwise direction</para></cell>
+					<cell><para><latex>(\Vect{x},\Vect{y})</latex> represents the negative orientation of <latex>\RNr[2]</latex></para></cell>
+				</row>
+			</table>
+		</block>
+		
+		<block>
+			<para>For example, the pair <latex>(\Vect{x},\Vect{y})</latex> below represents the positive or counterclockwise orientation of <latex>\RNr[2]</latex>. We express this by writing <latex>\omega(\Vect{x},\Vect{y}) = +1</latex>.</para>
+			<figure>
+				<img src="ims/Orientation2CClockwise.png"></img>
+			</figure>
+			<para>On the other hand, the pair <latex>(\Vect{x},\Vect{y})</latex> below represents the negative or clockwise orientation of <latex>\RNr[2]</latex>. We express this by writing <latex>\omega(\Vect{x},\Vect{y}) = -1</latex>.</para>
+			<figure>
+				<img src="ims/Orientation2Clockwise.png"></img>
+			</figure>
+		</block>
+		
+		<block>
+			<para><b>Interchanging vectors in a pair of vectors reverses orientation</b></para>
+			<para>Start with a pair of vectors <latex>(\Vect{x},\Vect{y})</latex> representing a given orientation. Then interchange the vectors so as to obtain a new pair of ordered vectors: <latex>(\Vect{y},\Vect{x})</latex>. This new pair also represents an orientation of <latex>\RNr[2]</latex>. However, this time the shorter of the two arcs from <latex>\Vect{y}</latex> to <latex>\Vect{x}</latex> is the same as the shorter of the two arcs from <latex>\Vect{x}</latex> to <latex>\Vect{y}</latex>, just in the opposite direction. Therefore:</para>
+			
+			<computation>
+				<left>\omega(\Vect{x},\Vect{y})</left>
+				<center>=</center>
+				<right>-\omega(\Vect{y},\Vect{x})</right>
+			</computation>
+		</block>
+	</sub.page.body>
+</sub.page>

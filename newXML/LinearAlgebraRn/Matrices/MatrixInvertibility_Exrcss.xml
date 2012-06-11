@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixInvertibility"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Matrix Invertibility: Exercises</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For invertible <math>
+                     <latex>(3,3)</latex>
+                  </math>-matrices <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>, <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math>, and <math>
+                     <latex>\Mtrx{C}</latex>
+                  </math>, indicate whether the following statements are always true. If a statement is always true, prove it. If not give a 
+				<subordinate>
+                     <hot>counterexample</hot>
+                     <info>
+                        <para>
+                           <para.body>i.e. provide an example for which this statement is false.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>.
+			</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}\Mtrx{B}\Mtrx{A} = \Mtrx{A}^2\Mtrx{B}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This identity does not hold for all <math>
+                              <latex>(3,3)</latex>
+                           </math>-matrices <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> and <math>
+                              <latex>\Mtrx{B}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>This formula would be valid if, for all <math>
+                        <latex>(3,3)</latex>
+                     </math>-matrices <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math>, we had <math>
+                        <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>
+                     </math>. This, however, is not the case; i.e. there are matrices <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> for which multiplication is not commutative. Therefore it makes sense to look for a counterexample.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix equation <math>
+                           <latex>\Mtrx{A}\Mtrx{B}\Mtrx{A} = \Mtrx{A}^2\Mtrx{B}</latex>
+                        </math> is not true in general. Here is a counterexample. Let</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; -1 \\
+1 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right] \qquad \text{and} \qquad
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+2 &amp; 0 &amp; 1 \\
+0  &amp; -1 &amp; 0 \\
+1 &amp; 1 &amp; 2
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Then</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}\Mtrx{B}\Mtrx{A}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; -1 \\
+1 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right] 
+\left[
+\begin{array}{rrr}
+2 &amp; 0 &amp; 1 \\
+0  &amp; -1 &amp; 0 \\
+1 &amp; 1 &amp; 2
+\end{array}
+\right]
+\left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; -1 \\
+1 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; -1 \\
+1 &amp; -2 &amp; -1 \\
+1 &amp; 1 &amp; 2
+\end{array}
+\right] 
+\left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; -1 \\
+1 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right] 
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; -2 \\
+-1 &amp; 03 &amp; 0 \\
+2 &amp; 0 &amp; 0
+\end{array}
+\right] 
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>While</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^2\Mtrx{B}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[
+\begin{array}{rrr}
+0 &amp; -2 &amp; -1 \\
+2 &amp; 0 &amp; -3 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right] \left[
+\begin{array}{rrr}
+2 &amp; 0 &amp; 1 \\
+0 &amp; -1 &amp; 0 \\
+1 &amp; 1 &amp; 2
+\end{array}
+\right] 
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\left[
+\begin{array}{rrr}
+-1 &amp; 1 &amp; -2 \\
+1 &amp; -3 &amp; -4 \\
+1 &amp; 1 &amp; 2
+\end{array}
+\right] 
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>This is an example of matrices <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> and <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> where <math>
+                           <latex>\Mtrx{A}\Mtrx{B}\Mtrx{A}</latex>
+                        </math> is distinct from <math>
+                           <latex>\Mtrx{A}^2\Mtrx{B}</latex>
+                        </math>. Therefore the given matrix identity is not always true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(\Mtrx{A}\Mtrx{C})^{-1} = \Mtrx{A}^{-1}\Mtrx{C}^{-1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>This identity does not hold for all invertible matrices <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> and <math>
+                              <latex>\Mtrx{C}</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>We have the valid formula <math>
+                        <latex>(\Mtrx{A}\Mtrx{C})^{-1} = \Mtrx{C}^{-1} \Mtrx{A}^{-1}</latex>
+                     </math>. Therefore the identity in question holds if multiplication of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math> commutes. This, however, is not the case.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Consider the row interchanging matrices</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0
+\end{array}
+\right] \qquad \text{and} \qquad
+\Mtrx{C} = 
+\left[
+\begin{array}{rrr}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>We know that <math>
+                           <latex>\Mtrx{A}=\Mtrx{A}^{-1}</latex>
+                        </math>, and that <math>
+                           <latex>\Mtrx{C}=\Mtrx{C}^{-1}</latex>
+                        </math>. Now compute <math>
+                           <latex>\Mtrx{A}\Mtrx{C}</latex>
+                        </math> and <math>
+                           <latex>\Mtrx{C}\Mtrx{A}</latex>
+                        </math> to confirm that <math>
+                           <latex>\Mtrx{A}\Mtrx{C} \neq \Mtrx{C}\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(\Mtrx{A} + \Mtrx{A}^{-1})^2 - (\Mtrx{A} - \Mtrx{A}^{_1})^2 = 4 \IdMtrx[3]</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This identity is always true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Evaluate the brackets on the left, using the identities</para.body>
+               </para>
+					          <math.display>
+						            <latex>\Mtrx{A}\Mtrx{A}^{-1} = \IdMtrx[3] = \Mtrx{A}^{-1} \Mtrx{A}</latex>
+					          </math.display>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We evaluate the individual brackets:</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A} + \Mtrx{A}^{-1})^2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^2 + \Mtrx{A}\Mtrx{A}^{-1} + \Mtrx{A}^{-1}\Mtrx{A} + (\Mtrx{A}^{-1})^2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^{2} + 2\IdMtrx[3] + (\Mtrx{A}^{-1})^2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A} - \Mtrx{A}^{-1})^2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^2 - \Mtrx{A}\Mtrx{A}^{-1} - \Mtrx{A}^{-1} \Mtrx{A} + (\Mtrx{A}^{-1})^2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^2 - 2\IdMtrx[3] + (\Mtrx{A}^{-1})^2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>From this the proposed equation follows.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>(\Mtrx{A}\Mtrx{B}\Mtrx{A})^{10} = \Mtrx{A} \Mtrx{B}^{10} \Mtrx{A}^{-1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This identity is always true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Use the observation</para.body>
+               </para>
+					          <math.display>
+						            <latex>(\Mtrx{A}\Mtrx{B}\Mtrx{A}^{-1}) (\Mtrx{A}\Mtrx{B}\Mtrx{A}^{-1}) = \Mtrx{A}\Mtrx{B}(\Mtrx{A}\Mtrx{A}^{-1}) \Mtrx{B}\Mtrx{A}^{-1} = \Mtrx{A}\Mtrx{B}^2\Mtrx{A}^{-1}</latex>
+					          </math.display>
+					          <para>
+                  <para.body>repeatedly.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Mtrx{A}\Mtrx{C} = \Mtrx{B}\Mtrx{C}</latex>
+                     </math>, then  <math>
+                        <latex>\Mtrx{A} = \Mtrx{B}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Under the assumption that <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math>, <math>
+                              <latex>\Mtrx{B}</latex>
+                           </math>, and <math>
+                              <latex>\Mtrx{C}</latex>
+                           </math> are invertible this conclusion is always true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Multiply the identity <math>
+                        <latex>\Mtrx{A}\Mtrx{C} = \Mtrx{B}\Mtrx{C}</latex>
+                     </math> by <math>
+                        <latex>\Mtrx{C}^{-1}</latex>
+                     </math> on the right.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(\Mtrx{A} + \Mtrx{B})(\Mtrx{A}^{-1} + \Mtrx{B}^{-1}) = 2\IdMtrx[3]</latex>
+                     </math>, then <math>
+                        <latex>\Mtrx{A}\Mtrx{B}^{-1} = - \Mtrx{B}\Mtrx{A}^{-1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This conclusion is always true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Just evaluate the product <math>
+                        <latex>(\Mtrx{A} + \Mtrx{B})(\Mtrx{A}^{-1} + \Mtrx{B}^{-1})</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+            <para>
+               <para.body>Prove the following statements.</para.body>
+            </para>
+         </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Suppose <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> are invertible <math>
+                        <latex>(n,n)</latex>
+                     </math>-matrices satisfying <math>
+                        <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>
+                     </math>. Show that <math>
+                        <latex>\Mtrx{A}^{-1}\Mtrx{B}^{-1} = \Mtrx{B}^{-1} \Mtrx{A}^{-1}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Using the general identity <math>
+                           <latex>(\Mtrx{X}\Mtrx{Y})^{-1} = \Mtrx{Y}^{-1}\Mtrx{X}^{-1}</latex>
+                        </math>, we compute</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{B}^{-1}\Mtrx{A}^{-1}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A}\Mtrx{B})^{-1}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we use the hypothesis that multiplication of <math>
+                                          <latex>\Mtrx{A}</latex>
+                                       </math> and <math>
+                                          <latex>\Mtrx{B}</latex>
+                                       </math> commutes.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we use the hypothesis that multiplication of <math>
+                                          <latex>\Mtrx{A}</latex>
+                                       </math> and <math>
+                                          <latex>\Mtrx{B}</latex>
+                                       </math> commutes.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{B}\Mtrx{A})^{-1}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Using the formula for the inverse of a product again</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Using the formula for the inverse of a product again</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^{-1}\Mtrx{B}^{-1}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>This was to be shown.</para.body>
+                  </para>
+					
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For an invertible matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> prove   <math>
+                        <latex>(\Mtrx{A}^T)^{-1} = (\Mtrx{A}^{-1})^T</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>Use the identities</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(\Mtrx{A}\Mtrx{B})^T</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Mtrx{B}^T \Mtrx{A}^T</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(\Mtrx{A}\Mtrx{B})^{-1}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Mtrx{B}^{-1}\Mtrx{A}^{-1}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+					          <para>
+                  <para.body>and compute   <math>
+                        <latex>(\Mtrx{A}^{-1})^T \Mtrx{A}^T</latex>
+                     </math>
+                  </para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We use the identities</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A}\Mtrx{B})^T</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{B}^T \Mtrx{A}^T</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A}\Mtrx{B})^{-1}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{B}^{-1}\Mtrx{A}^{-1}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>and compute.</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A}^{-1})^T \Mtrx{A}^T</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A}\Mtrx{A}^{-1})^T</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\IdMtrx[n]^T</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\IdMtrx[n]</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>This means that <math>
+                           <latex>\Mtrx{A}^T</latex>
+                        </math> is the inverse of <math>
+                           <latex>(\Mtrx{A}^{-1})^T</latex>
+                        </math>; in symbols</para.body>
+                  </para>
+					             <math.display>
+						               <latex>(\Mtrx{A}^T)^{-1} = (\Mtrx{A}^{-1})^T</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>as claimed.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Suppose <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> are <math>
+                        <latex>(n,n)</latex>
+                     </math>-matrices satisfying <math>
+                        <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>
+                     </math>. If <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> is invertible, show that   <math>
+                        <latex>\Mtrx{A}\Mtrx{B}^{-1} = \Mtrx{B}^{-1}\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Starting from the given identity <math>
+                           <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>
+                        </math>, we compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}\Mtrx{B}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{B}\Mtrx{A}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{B}^{-1}\Mtrx{A}\Mtrx{B}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{B}^{-1}\Mtrx{B}\Mtrx{A}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{B}^{-1}\Mtrx{A}\Mtrx{B}\Mtrx{B}^{-1}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}\Mtrx{B}^{-1}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{B}\Mtrx{A}^{-1}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}\Mtrx{B}^{-1}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This was to be shown.</para.body>
+                  </para>
+					
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+            <para>
+               <para.body>Prove the following claims.</para.body>
+            </para>
+         </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Suppose the invertible <math>
+                        <latex>(n,n)</latex>
+                     </math>-matrix <math>
+                        <latex>\Mtrx{D}</latex>
+                     </math> is a solution of the matrix equation</para.body>
+               </para>
+				           <math.display>
+					             <latex>\Mtrx{D}^7 - 3\Mtrx{D} + \IdMtrx[n] = \ZMtrx[n]</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Show that   <math>
+                        <latex>\Mtrx{D}^{-1} = 3\IdMtrx[n] - \Mtrx{D}^6</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>Mutliply both sides of the given equation by <math>
+                        <latex>\Mtrx{D}^{-1}</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Suppose the invertible <math>
+                        <latex>(n,n)</latex>
+                     </math>-matrix <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math> satisfies the matirx equation</para.body>
+               </para>
+				           <math.display>
+					             <latex>3\Mtrx{C}^2 - 4\Mtrx{C} + \IdMtrx[n] = \ZMtrx[n]</latex>
+				           </math.display>
+				           <para>
+                  <para.body>Show that <math>
+                        <latex>\Mtrx{C}^{-1} = 4\IdMtrx[n] - 3\Mtrx{C}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose the <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{P}</latex>
+                  </math> satisfies <math>
+                     <latex>\Mtrx{P}^T = \Mtrx{P}^{-1}</latex>
+                  </math>; such a matrix is called ‘orthogonal’. If <math>
+                     <latex>t</latex>
+                  </math> is in <math>
+                     <latex>\RNr</latex>
+                  </math>, and <math>
+                     <latex>t\cdot \Mtrx{P}</latex>
+                  </math> is also orthogonal, show that <math>
+                     <latex>t=\pm 1</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For <math>
+                     <latex>1\leq i\neq j\leq n</latex>
+                  </math>, let <math>
+                     <latex>E_{ij}(t)</latex>
+                  </math> denote the <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix which has a <math>
+                     <latex>1</latex>
+                  </math> in each diagonal position, the number <math>
+                     <latex>t</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math> in position <math>
+                     <latex>(i,j)</latex>
+                  </math>, and a <math>
+                     <latex>0</latex>
+                  </math> in each of the remaining positions. Show that <math>
+                     <latex>E_{ij}(t)</latex>
+                  </math> is invertible, and compute its inverse.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+	  </exercise>
+	
+</exercise.pack>

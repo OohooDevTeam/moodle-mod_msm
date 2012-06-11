@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_SequenceConvergence">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Finding Limits of Sequences</title>
+	<exercise>
+		<problem>
+			<para>Find the limit of the following sequences</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex magnify="yes">a_n = \dfrac{n-1}{n+1}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">b_n = \dfrac{2n^2 -1}{3n^3 + 2}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">c_n = \dfrac{ -n^3 - 4}{5n^2 + 3}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">d_n = \dfrac{ 6n^3 + 2x^2 + 1}{ 3n^3 -2n^2 + 3n + 3 }</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex magnify="yes">x_n = \dfrac{ a_rn^r + \cdots + a_1 n + a_0 }{ b_s n^s + \cdots + b_1 n + b_0}</latex>, defined for all <latex>n</latex> for which the denominator does not vanish.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Show that <latex>\lim_{n\to \infty} \sqrt[n]{n} = 1</latex>.</para>
+		</problem>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>For each of the sequences below, write out the first five sequence elements. Then find its limit.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>a_0 := \sqrt{2}</latex>, and <latex>a_{n+1} := \sqrt{2}\cdot \sqrt{a_n}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>b_0 := \sqrt{3}</latex>, and <latex>b_{n+1} := \sqrt{3}\cdot \sqrt{b_n}</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>For a positive integer <latex>k</latex>, <latex>c_0 := \sqrt{k}</latex>, and <latex>c_{n+1} := \sqrt{k}\cdot \sqrt{c_n}</latex></para>
+			</problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>s</latex> be a sum of money that is being invested and bears 5% interest, compounded annually.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Find the sequence <latex>(s_n)</latex> such that <latex>s_n</latex> is the value of the investment after <latex>n</latex> years.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>Determine if the sequence is converges or diverges.</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>For <latex>x\in \RNr</latex> fixed, let <latex>a_n := nx^n</latex>.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>For which values of <latex>x</latex> does this sequence converge to a number?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>For which values of <latex>x</latex> does this sequence converge to <latex>\pm \infty</latex>?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>For which values of <latex>x</latex> does this sequence diverge?</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>You are given the information that the sequence <latex>(x_n)</latex> is increasing and has sequence elements satisfying <latex>-1 \leq x_n \leq 4</latex>.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that <latex>(x_n)</latex> converges to a number <latex>c</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>What are the possible values for <latex>c</latex>?</para>
+			</problem>
+		</part>
+	</exercise>
+	
+</exercise.pack>

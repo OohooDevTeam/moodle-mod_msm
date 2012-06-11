@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_MatrixEqsLinearEqs">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>An Example of Turning Systems of Linear Equations into Matrix Equations</title>
+	<caption>Matrix Transposition</caption>
+	<showme>
+		<statement>
+			<para>Solve the two systems of linear equations below.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcrcrcr}
+-x & - & y & + & 3z & = & 1 \\
+-2x & + & y & - & 3z & = & 4 \\
+-x & - & 2y & + & 2z & = & -1
+\end{array}\text{ \ and \ }
+\begin{array}{rcrcrcr}
+-x & - & y & + & 3z & = & 24 \\
+-2x & + & y & - & 3z & = & -8 \\
+-x & - & 2y & + & 2z & = & -14
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Solution">
+			<para>First of all we observe that both systems of linear equations have the same coefficient matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A\ =\
+\left[\begin{array}{rrr}
+-1 & -1 & 3 \\
+-2 &  1 & -3 \\
+-1 & -2 & 2
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>This matrix is square-shaped and of size <latex>(3,3)</latex>. If it happens to be invertible, we can use its inverse to conveniently solve both systems. Indeed, we find</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+A^{-1}\ =\
+\dfrac{1}{12}\,
+\left[\begin{array}{rrr}
+-4 & -4 & 0 \\
+7  &  1 & -9 \\
+5  &  -1 & -3
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>Consequently, the first system has the unique solution</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{bmatrix} x \\ y \\ z \end{bmatrix}\ =\ \dfrac{1}{12}\, 
+\left[\begin{array}{rrr}
+-4 & -4 & 0 \\
+7  &  1 & -9 \\
+5  &  -1 & -3
+\end{array}\right]
+\left[\begin{array}{r} 1 \\ 4 \\ -1 \end{array}\right]\ =\
+\dfrac{1}{3}\, \left[\begin{array}{r} -5 \\ 5 \\ 1 \end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>While, the second system has the unique solution</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{bmatrix} x \\ y \\ z \end{bmatrix}\ =\ \dfrac{1}{12}\, 
+\left[\begin{array}{rrr}
+-4 & -4 & 0 \\
+7  &  1 & -9 \\
+5  &  -1 & -3
+\end{array}\right]
+\left[\begin{array}{r} 24 \\ -8 \\ -14 \end{array}\right]\ =\
+\dfrac{1}{6}\, \left[\begin{array}{r} -32 \\ 143 \\ 85  \end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

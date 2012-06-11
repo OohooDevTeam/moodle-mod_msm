@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_LinearMapGivesMatrix"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Example: Matrices for Coordinate Projection and Coordinate Inclusion</title>
+	  <caption xmlns="">Example: Matrices for Coordinate Projection and Coordinate Inclusion</caption>
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The matrix which represents the projection of <math>
+                  <latex>\RNr[m]</latex>
+               </math> onto its <math>
+                  <latex>j</latex>
+               </math>-th coordinate</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>\Prjctn{i}\from \RNr[m]\longrightarrow \RNr,\qquad \Prjctn{i}(x_1,\dots ,x_m)= x_i</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>is given by <math>
+                  <latex>A := [0\ \dots \ 0\ \ 1\ \ 0\ \dots \ 0]</latex>
+               </math>, the ‘<math>
+                  <latex>1</latex>
+               </math>’ sitting in position <math>
+                  <latex>i</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Given <math>
+                        <latex>\Vect{x}=(x_1,\dots ,x_m)\in\RNr[m]</latex>
+                     </math>,</para.body>
+               </para>
+			
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>A\Vect{x}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>[0\ \dots \ 0\ \ 1\ \ 0\ \dots \ 0]\cdot \left[\begin{array}{c} x_1 \\ \vdots \\ x_m\end{array}\right]</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x_i</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Prjctn{i}(x_1,\dots ,x_n)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			
+			            <para>
+                  <para.body>as required.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>The inclusion of <math>
+                  <latex>\RNr</latex>
+               </math> in <math>
+                  <latex>\RNr[n]</latex>
+               </math> as the <math>
+                  <latex>j</latex>
+               </math>-th coordinate axis</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>\Inclsn{j}\from \RNr \longrightarrow \RNr[n],\quad \Inclsn{j}(x) := (0,\dots ,0,x,0,\dots , 0)</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>is represented by the <math>
+                  <latex>(n,1)</latex>
+               </math>-matrix</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+B := \left[\begin{array}{c}
+0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0
+\end{array}\right]
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>the <math>
+                  <latex>1</latex>
+               </math> in row <math>
+                  <latex>j</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>Given <math>
+                        <latex>x\in \RNr[1]</latex>
+                     </math>,</para.body>
+               </para>
+			
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>B[x]</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left[\begin{array}{c} 0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{array}\right]\cdot [x] = \left[\begin{array}{c} 0 \\ \vdots \\ 0 \\ x \\ 0 \\ \vdots \\ 0 \end{array}\right] = \Inclsn{j}(x)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>as was to be shown.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+</showme.pack>

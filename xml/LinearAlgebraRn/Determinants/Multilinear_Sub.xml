@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expl_DeterminantMultilinear">
+	<title>The Multilinearity Property of Determinants</title>
+	<sub.page.body>
+		<block>
+			<para>The determinant operation is linear in each column. What exactly does this mean? Let <latex>1\leq j\leq n</latex> be an integer. Let's build an <latex>(n,n)</latex>-matrix by placing a fixed column vector in each column position, except for one, say in position <latex>j</latex>. The result is an <latex>(n,n)</latex>-matrix which looks like this:</para>
+			
+			<math.display>
+				<latex>[A_1\ \dots\ A_{j-1}\ \ -\ \ A_{j+1}\ \dots\ A_n]</latex>
+			</math.display>
+			
+			<para>Allowing the still vacant <latex>j</latex>-th column to be filled by vectors from <latex>\RNr[n]</latex> yields a function <latex>L\from \RNr[n]\longrightarrow \RNr</latex>:</para>
+			
+			<math.display>
+				<latex>L(X) := \det[A_1\ \dots A_{j-1}\ X\ A_{j+1}\ \dots\ A_n]</latex>
+			</math.display>
+			
+			<para>To say that the determinant operation is linear in the <latex>j</latex>-th column means that the function <latex>L</latex> above is 
+				<subordinate>
+					<hot>linear</hot>
+					<crossref>
+						<definition.ref definitionID="Def_LinearMap"/>
+						<para>So <latex>L</latex> commutes with vector addition and scalar multiplicaiton. Look up the definition of &lsquo;linear transformation&rsquo;.</para>
+					</crossref>
+				</subordinate>. To say the determinant operation is multilinear means that this happens for each column <latex>1\leq j\leq n</latex>. In other words, these two identities hold:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det[A_1 \cdots {\color{red}(X+Y)} \cdots  A_n] = \det[A_1 \cdots {\color{red} X} \cdots \ A_n]\ + \det[A_1 \cdots {\color{red} Y} \cdots  A_n]
+]]>
+				</latex>
+			</math.display>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det[A_1\ \dots\ ({\color{red} t}\cdot X)\ \dots \ A_n] = {\color{red} t}\cdot \det[A_1\ \dots\ X\ \dots\ A_n]
+]]>
+				</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para><b>Warning</b> &nbsp; It may be tempting to think that the determinant operation as a whole is linear and, consequently, to assert that the numbers</para>
+			
+			<para align="center"><latex>\det(\Mtrx{A} + \Mtrx{B})</latex> &nbsp; and &nbsp; <latex>(\det(\Mtrx{A}) + \det(\Mtrx{B}))</latex></para>
+			
+			<para>are the same. This is, in general, <b>not true</b>.</para>
+			
+			<para><b>Warning</b> &nbsp; It may be tempting to think that the numbers</para>
+			
+			<para align="center"><latex>\det(t\cdot \Mtrx{A})</latex> and <latex>t\cdot \det(\Mtrx{A})</latex></para>
+			
+			<para>are the same. This is, in general, <b>not true</b>. Instead, if <latex>\Mtrx{A}</latex> has size <latex>(n,n)</latex>, we have the identity</para>
+			
+			<math.display>
+				<latex>\det(t\cdot \Mtrx{A}) = t^n\cdot \det(\Mtrx{A})</latex>
+			</math.display>
+		</block>
+	</sub.page.body>
+</sub.page>

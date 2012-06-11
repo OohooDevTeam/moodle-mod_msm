@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_LinearMapMatrixGeneral"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Matrix representation of a linear map</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
+         <para>
+            <para.body>An explanation on how to work with this proposition.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_MatrixFromLinearMap"/>
+      <info>
+         <para>
+            <para.body>An example of representing a linear map by a matrix.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For subvector spaces <math>
+               <latex>V</latex>
+            </math> and <math>
+               <latex>W</latex>
+            </math> of <math>
+               <latex>\RNr[k]</latex>
+            </math> with ordered bases <math>
+               <latex>\EuScript{A}=(\Vect{a}_1,\dots ,\Vect{a}_n)</latex>
+            </math> of <math>
+               <latex>V</latex>
+            </math> and <math>
+               <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_m)</latex>
+            </math> of <math>
+               <latex>W</latex>
+            </math>, the following hold:</para.body>
+      </para>
+      <part.theorem partid="MatrixGivesLinearMap">
+         <part.body>
+            <para>
+               <para.body>An <math>
+                     <latex>(m,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> determines a linear map</para.body>
+            </para>
+            <math.display>
+               <latex>L\from V \longrightarrow W,\qquad L(\Vect{x})_{\EuScript{B}} := A\cdot \Vect{x}_{\EuScript{A}}</latex>
+            </math.display>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="LinearMapFromMatrix">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>L\from V\to W</latex>
+                  </math> is linear, then the <math>
+                     <latex>(m,n)</latex>
+                  </math>-matrix</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+A_{\EuScript{B}\EuScript{A}} :=
+\left[
+\begin{array}{cccc}
+\uparrow &amp; \uparrow &amp; &amp; \uparrow \\
+L(\Vect{a}_1)_{\EuScript{B}} &amp; L(\Vect{a}_2)_{\EuScript{B}} &amp; \cdots &amp; L(\Vect{a}_n)_{\EuScript{B}} \\
+\downarrow &amp; \downarrow &amp; &amp; \downarrow
+\end{array}
+\right]
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>represents <math>
+                     <latex>L</latex>
+                  </math> in the sense that, for every <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math>,</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{x})_{\EuScript{B}}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>A_{\EuScript{B}\EuScript{A}}\cdot \Vect{x}_{\EuScript{A}}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Moreover, the matrix <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
+                  </math> is the only matrix with this property.
+				</para.body>
+               <index.symbol>
+                  <symbol>
+                     <math>
+                        <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
+                     </math>
+                  </symbol>
+                  <info>
+                     <para>
+                        <para.body>Given a linear map <math>
+                              <latex>L\from V\to W</latex>
+                           </math>, a basis <math>
+                              <latex>\EuScript{A}</latex>
+                           </math> of <math>
+                              <latex>V</latex>
+                           </math>, and a basis <math>
+                              <latex>\EuScript{B}</latex>
+                           </math> of <math>
+                              <latex>W</latex>
+                           </math>, <math>
+                              <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
+                           </math> is the unique matrix which satisfies</para.body>
+                     </para>
+                     <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>L(\Vect{x})_{\EuScript{B}}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>A_{\EuScript{B}\EuScript{A}}\cdot \Vect{x}_{\EuScript{A}}</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+                  </info>
+               </index.symbol>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>MatrixGivesLinearMap</part.ref>
+         </logic>
+         <caption>MatrixGivesLinearMap</caption>
+         <proof.block.body>
+            <para>
+               <para.body>For <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math>, we have <math>
+                     <latex>(\Vect{x}+\Vect{y})_{\EuScript{A}} = \Vect{x}_{\EuScript{A}} + \Vect{y}_{\EuScript{A}}</latex>
+                  </math>. Therefore,</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>LinearMapFromMatrix</part.ref>
+         </logic>
+         <caption>LinearMapFromMatrix</caption>
+         <proof.block.body>
+            <para>
+               <para.body>From the first part of the theorem we know already that the matrix <math>
+                     <latex>A_{\EuScript{B}\EuScript{A}}</latex>
+                  </math> determines a linear transformation <math>
+                     <latex>M\from V\to W</latex>
+                  </math>. Moreover,</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

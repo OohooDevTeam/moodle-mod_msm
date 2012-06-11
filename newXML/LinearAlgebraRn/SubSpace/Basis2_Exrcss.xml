@@ -1,0 +1,2459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_Basis2"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Bases for Row-, Column-, Nullspace</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Given the following matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> and its RREF <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math>, do the problems below.</para.body>
+            </para>
+							     <math.display>
+								       <latex>
+									
+\Mtrx{A} =
+\left[
+\begin{array}{rr}
+1 &amp; 3 \\
+-2 &amp; 3 \\
+-1 &amp; -2 \\
+2 &amp; 4
+\end{array}
+\right]\quad \text{and} \quad
+\Mtrx{B} =
+\left[
+\begin{array}{rr}
+1 &amp; 0 \\
+0 &amp; 1 \\
+0 &amp; 0 \\
+0 &amp; 0
+\end{array}
+\right]
+					
+								</latex>
+							     </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is <math>
+                        <latex>\rk(\Mtrx{A})</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\rk(\Mtrx{A}) = \rk(\Mtrx{B}) = 2</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The rank of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is defined to be the number of leading <math>
+                           <latex>1</latex>
+                        </math>'s in the RREF <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>. We conclude</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\rk(\Mtrx{A}) = \rk(\Mtrx{B}) = 2</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for the row space <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\EuScript{B} := \Set{ (1,0),(0,1) }</latex>
+                           </math> is a basis for <math>
+                              <latex>\RowSp{ \Mtrx{A} }</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A basis for <math>
+                           <latex>V</latex>
+                        </math> consists of the nonzero rows of the RREF of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>. Therefore a basis for <math>
+                           <latex>V</latex>
+                        </math> is <math>
+                           <latex>\EuScript{B} := \Set{ (1,0),(0,1) }</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the dimension of <math>
+                        <latex>V</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\dim(V) = 2</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The dimension of <math>
+                           <latex>V</latex>
+                        </math> is the number of vectors in any one of its bases. We found earlier that <math>
+                           <latex>V</latex>
+                        </math> has a basis with two vectors. Thus <math>
+                           <latex>\dim(V) = 2</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for the column space <math>
+                        <latex>W</latex>
+                     </math> of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The columns of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> form a basis of <math>
+                              <latex>\ColSp{ \Vect{A} }</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Columns 1, 2 of , the RREF of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>, have leading 1´s. Therefore, columns 1, 2 of , namely <math>
+                           <latex>(1,2,1,2), (3,3,2,4)</latex>
+                        </math>, form a basis for <math>
+                           <latex>W</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The determinant test for linear independence shows that the column vectors of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> are linearly independent, hence form a basis for the subspace <math>
+                           <latex>W</latex>
+                        </math> of <math>
+                           <latex>\RNr[4]</latex>
+                        </math> they span.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the dimension of <math>
+                        <latex>W</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\dim(W) = 2</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+                  <para>
+                     <para.body>We found earlier that <math>
+                           <latex>W</latex>
+                        </math> has a basis of two vectors. Thus <math>
+                           <latex>\dim(W) = 2</latex>
+                        </math>.</para.body>
+                  </para>
+               </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for the null space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The empty set is the only basis of <math>
+                              <latex>\NllSp{ \Mtrx{A} }</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <math>
+                           <latex>\NllSp{ \Mtrx{A} } = \Set{ \Vect{0} }</latex>
+                        </math>. So the empty set is its only basis.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find the dimension of the null space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\dim (\NllSp{ \Mtrx{A} }) = 0</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We found earlier that the empty set <math>
+                           <latex>\emptyset</latex>
+                        </math> is the only basis of <math>
+                           <latex>\NllSp{ \Mtrx{A} }</latex>
+                        </math>. The number of vectors in <math>
+                           <latex>\NllSp{ \Mtrx{A} }</latex>
+                        </math> is <math>
+                           <latex>0</latex>
+                        </math>. Thus <math>
+                           <latex>\dim( \NllSp{ \Mtrx{A} } ) = \Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for <math>
+                        <latex>V^{\bot}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The empty set is the only basis of <math>
+                              <latex>V^{\bot}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The orthogonal complement of the row space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is, by definition, the null space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>. We know from an earlier part that <math>
+                           <latex>\emptyset</latex>
+                        </math> is its only basis.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the dimension of <math>
+                        <latex>V^{\bot}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\dim( V^{\bot}) = 0</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We have seen that <math>
+                           <latex>V^{\bot} = \Set{ \Vect{0} }</latex>
+                        </math>. Therefore, <math>
+                           <latex>\dim(V^{\bot}) = 0</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider the following matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> and its RREF matrix <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math>.</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+1 &amp; -1 &amp; 5 &amp; -2 &amp; 2 \\
+2 &amp; 3 &amp; -2 &amp; 5 &amp; 1 \\
+0 &amp; 5 &amp; -12 &amp; 9 &amp; -3 \\
+1 &amp; 4 &amp; -7 &amp; 8 &amp; -1 \\
+\end{array}
+\right]\qquad
+\Mtrx{B} =
+\left[
+\begin{array}{rrrrr}
+1 &amp; 0 &amp; \tfrac{13}{5} &amp; 0 &amp; \tfrac{7}{5} \\
+0 &amp; 1 &amp; -\tfrac{12}{5} &amp; 0 &amp; -\tfrac{3}{5} \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for the row space <math>
+                        <latex>V</latex>
+                     </math> of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\EuScript{B} := \Set{ (5,0,13,0,7), (0,5,-12,0,-3),(0,0,0,1,0) }</latex>
+                           </math> is a basis for <math>
+                              <latex>\RowSp{ \Mtrx{A} }</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A basis for the row space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> consists of the nonzero rows of its RREF <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math>, namely</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Set{ (1,0,\tfrac{13}{5},0,\tfrac{7}{5}) , (0,1,-\tfrac{12}{5}, 0, -\tfrac{3}{5}), (0,0,0,1,0) }</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Now</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\span \Set{ (1,0,\tfrac{13}{5},0,\tfrac{7}{5}) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\span \Set{ (5,0,13,0,7) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\span \Set{ (0,1,-\tfrac{12}{5},0,-\tfrac{3}{5}) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\span \Set{ (0,5,-12,0,-3) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore, an alternate basis for <math>
+                           <latex>\RowSp{ \Mtrx{A} }</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\EuScript{B}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Set{ (5,0,13,0,7), (0,5,-12,0,-3),(0,0,0,1,0) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the dimension of <math>
+                        <latex>V</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\dim(V) = 3</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The dimension of <math>
+                           <latex>\RowSp{ \Mtrx{A} }</latex>
+                        </math> is the number of vectors in any of its bases. In a previous part of this problem we found that <math>
+                           <latex>V</latex>
+                        </math> has a basis of three vectors. Therefore,</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\dim\RowSp{ \Mtrx{A} } = 3</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for the row space of <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\EuScript{B} := \Set{ (5,0,13,0,7), (0,5,-12,0,-3),(0,0,0,1,0) }</latex>
+                           </math> is a basis for <math>
+                              <latex>\RowSp{ \Mtrx{B} }</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall how the row spaces of a matrix and its RREF are related.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We now that <math>
+                           <latex>\RowSp{\Mtrx{A}} = \RowSp{ \Mtrx{B} }</latex>
+                        </math>. Therefore the basis</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\EuScript{B} := \Set{ (5,0,13,0,7), (0,5,-12,0,-3),(0,0,0,1,0) }</latex>
+					             </math.display>
+					             <para>
+                     <para.body>for <math>
+                           <latex>\RowSp{ \Mtrx{A} }</latex>
+                        </math> is also a basis for <math>
+                           <latex>\RowSp{ \Mtrx{B} }</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for the column space <math>
+                        <latex>W</latex>
+                     </math> of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>A basis for <math>
+                              <latex>\ColSp{ \Mtrx{A} }</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\EuScript{C}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Set{ (1,2,0,1), (-1,3,5,4),(-2,5,9,8) }</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Columns 1, 2, and 4 of <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> have leading 1’s. Therefore columns 1,2, and 4 of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> form a basis <math>
+                           <latex>\EuScript{C}</latex>
+                        </math> of the column space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>. This means</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\EuScript{C}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Set{ (1,2,0,1), (-1,3,5,4),(-2,5,9,8) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the dimension of <math>
+                        <latex>W</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\dim \ColSp{ \Mtrx{A} } = 3</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that <math>
+                           <latex>W</latex>
+                        </math> has a basis consisting of 3 vectors. Therefore</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\dim \ColSp{ \Mtrx{A} } = 3</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for the column space of <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>A basis for the column space of <math>
+                              <latex>\Mtrx{B}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\EuScript{D}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Set{ (1,0,0,0), (0,1,0,0), (0,0,1,0) }</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>A basis for the column space of <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> consists of those columns of <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> containing a leading <math>
+                           <latex>1</latex>
+                        </math>. This is so because <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> is already in RREF. Thus a basis for <math>
+                           <latex>\ColSp{ \Mtrx{B} }</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\EuScript{D}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Set{ (1,0,0,0), (0,1,0,0), (0,0,1,0) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find a basis for the null space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>A basis for <math>
+                              <latex>\NllSp{ \Mtrx{A} }</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\EuScript{E}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Set{ (-1,12,5,0,0), (-7,3,0,0,5) }</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <math>
+                           <latex>\NllSp{ \Mtrx{A} }</latex>
+                        </math> is the solution set to the matrix equation <math>
+                           <latex>\Mtrx{A}\Vect{x} = \Vect{0}</latex>
+                        </math>. With <math>
+                           <latex>\Vect{x}=(x,y,z,u,v)</latex>
+                        </math> we read off of the RREF of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>: <math>
+                           <latex>z</latex>
+                        </math> and <math>
+                           <latex>v</latex>
+                        </math> are arbitrary, and</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>x</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-\tfrac{13}{5}z - \tfrac{7}{5}v</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>y</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{12}{5} z + \tfrac{3}{5} v</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>u</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is in <math>
+                           <latex>\NllSp{ \Mtrx{A} }</latex>
+                        </math> exactly when it is of the form</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>z(-13,12,1,0,0) + v(-7,3,0,0,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>with <math>
+                           <latex>z</latex>
+                        </math>and <math>
+                           <latex>v</latex>
+                        </math> in <math>
+                           <latex>\RNr</latex>
+                        </math> arbitrary. Therefore the vectors</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{s}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-13,12,5,0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{t}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-7,3,0,0,5)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>span <math>
+                           <latex>\NllSp{ \Mtrx{A} }</latex>
+                        </math>. The determinant test shows that <math>
+                           <latex>\Vect{s}</latex>
+                        </math> and <math>
+                           <latex>\Vect{t}</latex>
+                        </math> are linearly independent. Therefore <math>
+                           <latex>\Set{ \Vect{s} , \Vect{t} }</latex>
+                        </math> is a basis for <math>
+                           <latex>\NllSp{ \Mtrx{A} }</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find the dimension of <math>
+                        <latex>\NllSp{ \Mtrx{A} }</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\dim\, \NllSp{ \Mtrx{A} } = 2</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that <math>
+                           <latex>\NllSp{ \Mtrx{A} }</latex>
+                        </math> has a basis consisting of 2 vectors. Therefore</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dim\, \NllSp{ \Mtrx{A} }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for <math>
+                        <latex>V^{\bot}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>A basis for <math>
+                              <latex>V^{\bot}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\EuScript{E}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Set{ (-1,12,5,0,0), (-7,3,0,0,5) }</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Recall the relationship between the null space of a matrix and the orthogonal complement of its row space.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider the following set <math>
+                     <latex>S</latex>
+                  </math> of vectors in <math>
+                     <latex>\RNr[4]</latex>
+                  </math>.</para.body>
+            </para>
+			         <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{w}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(1,2,3,2)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{x}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(2,-1,1,4)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{y}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(-1,3,2,-2)</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{z}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(0,1,1,0)</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>From the vectors of <math>
+                        <latex>S</latex>
+                     </math> select a basis for <math>
+                        <latex>\span(S)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>A basis for <math>
+                              <latex>\span(S)</latex>
+                           </math> is <math>
+                              <latex>\Set{ \Vect{w}, \Vect{x} }</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Use the given vectors as the column vectors of the matrix <math>
+                           <latex>\Mtrx{A} = [ \Vect{w} \ \ \Vect{x} \ \ \Vect{y} \ \ \Vect{z} ]</latex>
+                        </math>. The RREF of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{B} = 
+\left[
+\begin{array}{rrrr}
+1 &amp; 0 &amp; 1 &amp; \tfrac{2}{5} \\
+0 &amp; 1 &amp; -1 &amp; -\tfrac{1}{5} \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Columns 1 and 2 of <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> have leading <math>
+                           <latex>1</latex>
+                        </math>'s. Therefore a basis for <math>
+                           <latex>\span(S)</latex>
+                        </math> from the amongst the vectors in <math>
+                           <latex>S</latex>
+                        </math> consists of columns 1 and 2 of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math>; i. e. <math>
+                           <latex>\Set{ \Vect{w} , \Vect{x} }</latex>
+                        </math> is a basis for <math>
+                           <latex>\span(S)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Find a basis for <math>
+                        <latex>S^{\bot}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>A basis for <math>
+                              <latex>S^{\bot}</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\EuScript{B}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Set{ (-1,-1,1,0) , (-2,0,0,1) }</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that the orthogonal complement of <math>
+                           <latex>S</latex>
+                        </math> is the null space of the matrix <math>
+                           <latex>\Mtrx{T}</latex>
+                        </math> whose rows are <math>
+                           <latex>\Vect{w},\Vect{x},\Vect{y},\Vect{z}</latex>
+                        </math>.</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{T} = 
+\left[
+\begin{array}{rrrr}
+1 &amp; 2 &amp; 3 &amp; 2 \\
+0 &amp; 1 &amp; 1 &amp; 0 \\
+2 &amp; -1 &amp; 1 &amp; 4 \\
+-1 &amp; 3 &amp; 2 &amp; -2
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The RREF of <math>
+                           <latex>\Mtrx{T}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+U = 
+\left[
+\begin{array}{rrrr}
+1 &amp; 0 &amp; 1 &amp; 2 \\
+0 &amp; 1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>We see that <math>
+                           <latex>\Vect{x} = (u,x,y,z)</latex>
+                        </math> belongs to the null space of <math>
+                           <latex>\Mtrx{T}</latex>
+                        </math> if and only if </para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>u</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-y-2z</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>x</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-y</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>where <math>
+                           <latex>y</latex>
+                        </math> and <math>
+                           <latex>z</latex>
+                        </math> are arbitrary numbers. Thus <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is in the null space if and only if </para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>y(-1,-1,1,0) + z(-2,0,0,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This means that</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>S^{\bot}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\span \Set{ (-1,-1,1,0) , (-2,0,0,1) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>The determinant test shows that these two vectors are linearly independent. Therefore they form a basis for <math>
+                           <latex>S^{\bot}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+		
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the matrices below find a basis for their row space and their column space.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+1 &amp; 2 &amp; 0 &amp; 3 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 2 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <ol>
+						                  <li>
+							                    <para>
+                              <para.body>A basis for the row space of <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is <math>
+                                    <latex>S = \Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>
+                                 </math>, with</para.body>
+                           </para>
+							                    <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{a}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(1,2,0,3,0)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{b}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(0,0,1,2,0)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{c}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(0,0,0,0,1)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+						                  </li>
+						                  <li>
+							                    <para>
+                              <para.body>A basis for the column space of <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is <math>
+                                    <latex>T = \Set{ \Vect{u}, \Vect{v}, \Vect{w} }</latex>
+                                 </math>, with</para.body>
+                           </para>
+							                    <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{u}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(1,0,0)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{v}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(0,1,0)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{w}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(0,0,1)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+						                  </li>
+					                </ol>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>A convenient way to find a basis for the row / column space of a matrix is by transforming the matrix into RREF.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is already in RREF. Therefore a basis for its row space is given by all those rows of the RREF containing a leading <math>
+                           <latex>1</latex>
+                        </math>. Consequently, a basis for the row space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is <math>
+                           <latex>S = \Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>
+                        </math>, with</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,2,0,3,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{b}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0,1,2,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{c}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0,0,0,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus the row space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> forms a subspace of <math>
+                           <latex>\RNr[5]</latex>
+                        </math> of dimension <math>
+                           <latex>3</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Moreover, a basis for the column space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is <math>
+                           <latex>T = \Set{ \Vect{u}, \Vect{v}, \Vect{w} }</latex>
+                        </math>, with</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{v}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{w}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus the column space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is all of <math>
+                           <latex>\RNr[3]</latex>
+                        </math>
+                     </para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+2 &amp; 1 &amp; 2 \\
+-2 &amp; 2 &amp; -2 \\
+2 &amp; 4 &amp; 2
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <ol>
+						                  <li>
+							                    <para>
+                              <para.body>A basis for the row space of <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is <math>
+                                    <latex>S = \Set{ \Vect{a}, \Vect{b} }</latex>
+                                 </math>, with</para.body>
+                           </para>
+							                    <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{a}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(1,0,1)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{b}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(0,1,0)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+						                  </li>
+						                  <li>
+							                    <para>
+                              <para.body>A basis for the column space of <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is <math>
+                                    <latex>T = \Set{ \Vect{u}, \Vect{v} }</latex>
+                                 </math>, with</para.body>
+                           </para>
+							                    <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{u}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(2,-2,2)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{v}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(1,2,4)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+						                  </li>
+					                </ol>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We transform <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> into RREF and find the matrix <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math>:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>A basis for the row space is given by all those rows of <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> containing a leading <math>
+                           <latex>1</latex>
+                        </math>. Consequently, a basis for the row space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is <math>
+                           <latex>S = \Set{ \Vect{a}, \Vect{b} }</latex>
+                        </math>, with</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,0,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{b}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus the row space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> forms a subspace of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> of dimension <math>
+                           <latex>2</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Moreover, a basis for the column space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is <math>
+                           <latex>T = \Set{ \Vect{u}, \Vect{v} }</latex>
+                        </math>, consisting of those columns of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> in which <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> has a leading <math>
+                           <latex>1</latex>
+                        </math>:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,-2,2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{v}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,2,4)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus the column space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is a <math>
+                           <latex>2</latex>
+                        </math>-dimensional subspace of <math>
+                           <latex>\RNr[3]</latex>
+                        </math>
+                     </para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+2 &amp; 6 &amp; -10 &amp; 36 &amp; 38 \\
+0 &amp; 3 &amp; -9 &amp; 15 &amp; 21 \\
+1 &amp; 3 &amp; -5 &amp; 18 &amp; 21 \\
+1 &amp; 0 &amp; 4 &amp; 3 &amp; 0
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <ol>
+						                  <li>
+							                    <para>
+                              <para.body>A basis for the row space of <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is <math>
+                                    <latex>S = \Set{ \Vect{a}, \Vect{b}, \Vect{c} }</latex>
+                                 </math>, with</para.body>
+                           </para>
+							                    <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{a}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(1,0,4,3,0)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{b}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(0,1,-3,5,0)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{c}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(0,0,0,0,1)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+						                  </li>
+						                  <li>
+							                    <para>
+                              <para.body>A basis for the column space of <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> is <math>
+                                    <latex>T = \Set{ \Vect{u}, \Vect{v}, \Vect{w} }</latex>
+                                 </math>, with</para.body>
+                           </para>
+							                    <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{u}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(2,0,1,1)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{v}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(6,3,3,0)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Vect{w}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>(38,21,21,0)</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+						                  </li>
+					                </ol>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The RREF of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>
+							
+\Mtrx{B}\ =\ 
+\left[
+\begin{array}{rrrrr}
+1 &amp; 0 &amp; 4 &amp; 3 &amp; 0 \\
+0 &amp; 1 &amp; -3 &amp; 5 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					          </math.display>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the matrices below find a basis for their null space.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+1 &amp; 2 &amp; 0 &amp; 3 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 2 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>A basis for the null space of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is <math>
+                              <latex>N = \Set{ \Vect{a}, \Vect{b} }</latex>
+                           </math>, with</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{a}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(-2,1,0,0,0)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{b}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(-3,0,-2,1,0)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>The null space of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> consists of all solutions of the vector equation <math>
+                        <latex>\Mtrx{A}\cdot \Vect{x} = \Vect{0}</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is already in RREF. Therefore its null space consists of all vectors <math>
+                           <latex>(u,v,x,y,z)</latex>
+                        </math> with</para.body>
+                  </para>
+					             <math.display>
+						               <latex>z=0,\quad x = -2y,\quad u=-2v - 3y</latex>
+					             </math.display>
+					             <para>
+                     <para.body>while <math>
+                           <latex>v</latex>
+                        </math> and <math>
+                           <latex>y</latex>
+                        </math> are arbitrary. This means that the null space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> consists of all vectors of the form</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(u,v,x,y,z)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-2v - 3y,v,-2y,y,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>v\cdot (-2,1,0,0,0)\ +\ y\cdot (-3,0,-2,1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus, a basis for the null space of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is <math>
+                           <latex>N = \Set{ \Vect{a}, \Vect{b} }</latex>
+                        </math>, with</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{a}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-2,1,0,0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{b}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-3,0,-2,1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This means that <math>
+                           <latex>\NllSp{ \Mtrx{A} }</latex>
+                        </math> is a 2-dimensional subvector space of <math>
+                           <latex>\RNr[5]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+2 &amp; 1 &amp; 2 \\
+-2 &amp; 2 &amp; -2 \\
+2 &amp; 4 &amp; 2
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>A basis for the null space of <math>
+                              <latex>\Mtrx{A}</latex>
+                           </math> is <math>
+                              <latex>S = \Set{ (1,0,-1) }</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The RREF of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>
+							
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					          </math.display>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+2 &amp; 6 &amp; -10 &amp; 36 &amp; 38 \\
+0 &amp; 3 &amp; -9 &amp; 15 &amp; 21 \\
+1 &amp; 3 &amp; -5 &amp; 18 &amp; 21 \\
+1 &amp; 0 &amp; 4 &amp; 3 &amp; 0
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+					          <para>
+                  <para.body>The RREF of <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is</para.body>
+               </para>
+					          <math.display>
+						            <latex>
+							
+\Mtrx{B}\ =\ 
+\left[
+\begin{array}{rrrrr}
+1 &amp; 0 &amp; 4 &amp; 3 &amp; 0 \\
+0 &amp; 1 &amp; -3 &amp; 5 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					          </math.display>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_AngleVectors"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Angle between Vectors: Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>What exactly do we mean by the angle between two nonzero vectors? – Consider the image below</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/AngleVectors.png"/>
+            </media>
+            <para>
+               <para.body>If <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are not parallel, the angle <math>
+                     <latex>\theta</latex>
+                  </math> from <math>
+                     <latex>\Vect{x}</latex>
+                  </math> to <math>
+                     <latex>\Vect{y}</latex>
+                  </math> is the shorter of the two possible arcs from <math>
+                     <latex>\Vect{x}</latex>
+                  </math> to <math>
+                     <latex>\Vect{y}</latex>
+                  </math>; the angle <math>
+                     <latex>\theta</latex>
+                  </math> in the image above. It is always a number between <math>
+                     <latex>0</latex>
+                  </math> and <math>
+                     <latex>\pi</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>If <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are parallel,</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\theta = 0</latex>
+                        </math> if the vectors have the same directions.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\theta = \pi</latex>
+                        </math> if the vectors have opposite directions.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Remarkable is that <math>
+                     <latex>\cos \theta</latex>
+                  </math> is readily computable using the dot product:</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Abs{ \Vect{x} }\Abs{ \Vect{y} } \cdot \cos\theta</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\cos\theta</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>= </text>
+                     <companion xmlns="">
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>Here we assume that <math>
+                                    <latex>\Vect{x},\Vect{y} \neq \Vect{0}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \Abs{ \Vect{x} }\Abs{ \Vect{y} } }</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>So the cos of the angle between the vectors is their dot product divided by their lengths. </para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

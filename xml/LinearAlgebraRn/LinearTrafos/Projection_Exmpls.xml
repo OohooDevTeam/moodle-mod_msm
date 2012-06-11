@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Projection">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Example: Projection onto a Coordinate Axis</title>
+	<caption>Example: Projection onto a Coordinate Axis</caption>
+	<showme>
+		<statement>
+			<para>Recall: the projection of <latex>\RNr[m]</latex> onto the <latex>i</latex>-th coordinate is the function</para>
+			<math.display>
+				<latex>\Prjctn{i}\from \RNr[m] \longrightarrow \RNr,\qquad \Prjctn{i}(x_1,\dots ,x_m)=x_i</latex>
+			</math.display>
+			<para>Show that <latex>\Prjctn{i}</latex> is a linear function.</para>
+		</statement>
+		
+		<answer type="Proof">
+			<para>To see why <latex>\Prjctn{i}\from \RNr[m]\to \RNr</latex> is linear, we check that it commutes with vector addition and with scalar multiplication</para>
+			<computation>
+				<left>\Prjctn{i}\left( (x_1,\dots ,x_m)+(y_1,\dots ,y_m) \right)</left>
+				<center>=	<info><para>Here we just add the two vectors.</para></info></center>
+				<right>\Prjctn{i}(x_1+y_1,\dots ,x_m+y_m)</right>
+				<left></left>
+				<center>=	<info><para>Here we apply the definition of the <latex>i</latex>-th coordinate projection: from the <latex>n</latex>-tuple it picks the entry in the <latex>i</latex>-th position.</para></info></center>
+				<right>x_i+y_i</right>
+				<left></left>
+				<center>=	<info><para>Now we just observe that <latex>x_i=\Prjctn{i}(x_1,\dots ,x_i,\dots ,x_n)</latex> and <latex>y_i=\Prjctn{i}(y_1,\dots ,y_i,\dots ,y_n)</latex></para></info></center>
+				<right>\Prjctn{i}(x_1,\dots ,x_m) + \Prjctn{i}(y_1,\dots ,y_m)</right>
+				<left>\Prjctn{i}\left( t\cdot (x_1,\dots ,x_m) \right)</left>
+				<center>=</center>
+				<right>\Prjctn{i}(tx_1,\dots ,tx_m)</right>
+				<left></left>
+				<center>=</center>
+				<right>tx_i</right>
+				<left></left>
+				<center>=</center>
+				<right>t\cdot \Prjctn{i}(x_1,\dots ,x_m)</right>
+			</computation>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>List all coordinate projections of <latex>\RNr[3]</latex>, and find their effect on a vector <latex>(x,y,z)</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para><latex>\RNr[3]</latex> has three projection functions, namely <latex>\Prjctn{1}</latex>, <latex>\Prjctn{2}</latex>, and <latex>\Prjctn{3}</latex>. The effect of these projections on <latex>\Vect{x}=(x,y,z)</latex> is given by</para>
+			<computation>
+				<left>\Prjctn{1}(x,y,z)</left>
+				<center>=</center>
+				<right>x</right>
+				<left>\Prjctn{2}(x,y,z)</left>
+				<center>=</center>
+				<right>y</right>
+				<left>\Prjctn{3}(x,y,z)</left>
+				<center>=</center>
+				<right>z</right>
+			</computation>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Find the effect of the three coordinate projections of <latex>\RNr[3]</latex> on the vector <latex>\Vect{x}=(2,5,7)</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>From the previous problem we know that <latex>\RNr[3]</latex> has three coordinate projections, namely</para>
+			<computation>
+				<left>\Prjctn{1}(x,y,z)</left>
+				<center>=</center>
+				<right>x</right>
+				<left>\Prjctn{2}(x,y,z)</left>
+				<center>=</center>
+				<right>y</right>
+				<left>\Prjctn{3}(x,y,z)</left>
+				<center>=</center>
+				<right>z</right>
+			</computation>
+			<para>Therefore,</para>
+			<computation>
+				<left>\Prjctn{1}(2,5,7)</left>
+				<center>=</center>
+				<right>2</right>
+				<left>\Prjctn{2}(2,5,7)</left>
+				<center>=</center>
+				<right>5</right>
+				<left>\Prjctn{3}(2,5,7)</left>
+				<center>=</center>
+				<right>7</right>
+			</computation>
+		</answer>
+	</showme>
+</showme.pack>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_ArrowLength"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	  <title>Length of an Arrow: Examples</title>
+	  <caption xmlns="">Length of an Arrow: Examples</caption>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the length of the arrow joining the point <math>
+                  <latex>P(4,-1,11)</latex>
+               </math> to the point <math>
+                  <latex>Q(-2,6,4)</latex>
+               </math> in <math>
+                  <latex>\RNr[3]</latex>
+               </math>.  
+			</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The length of the arrow <math>
+                        <latex>\Arrow{P}{Q}</latex>
+                     </math> is the distance from <math>
+                        <latex>P</latex>
+                     </math> to <math>
+                        <latex>Q</latex>
+                     </math>:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+					\aligned
+\Length{\Arrow{P}{Q}}\ &amp;=\ \Dstnc{P}{Q} \\
+					&amp; =\ \sqrt{(-2-4)^2+(6-(-1))^2+(4-11)^2} \\
+					&amp; =\ \sqrt{36+49+49} \\
+					&amp; =\ \sqrt{134}
+					\endaligned
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the length of the arrow joining the point <math>
+                  <latex>A(1,3,0,5)</latex>
+               </math> to the point <math>
+                  <latex>B(2,1,-2,4)</latex>
+               </math> in <math>
+                  <latex>\RNr[4]</latex>
+               </math>.  
+			</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The length of the arrow <math>
+                        <latex>\Arrow{A}{B}</latex>
+                     </math> is the distance from <math>
+                        <latex>A</latex>
+                     </math> to <math>
+                        <latex>B</latex>
+                     </math>:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+					\aligned
+\Length{\Arrow{A}{B}}\ &amp;=\ \Dstnc{A}{B} \\
+					&amp; =\ \sqrt{(2-1)^2 + (1-3)^2 + ((-2)-0)^2 + (4-5)^2 } \\
+					&amp; =\ \sqrt{1 + 4 + 4 + 1} \\
+					&amp; =\ \sqrt{10}
+					\endaligned
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

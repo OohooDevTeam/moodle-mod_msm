@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_OrientationTF">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Self Test: Orientation of Space</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below determine if it is true or false.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para>Any two nonzero vectors in <latex>\RNr[2]</latex> represent an orientation of <latex>\RNr[2]</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>False!</para>
+				</answer>
+				<solution>
+					<para>If <latex>\Vect{x}\neq\Vect{0}</latex> is a nonzero vector of <latex>\RNr[2]</latex>, then the ordered pair <latex>(\Vect{x},\Vect{x})</latex> consists of nonzero vectors as well.</para>
+					<para>However, the vectors in the pair <latex>(\Vect{x},\Vect{x})</latex> are parallel. So they do not represent an orientation of <latex>\RNr[2]</latex>; the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\Vect{u}\neq \Vect{0}</latex> is a vector in <latex>\RNr[2]</latex>, then the pair <latex>(\Vect{u}, 2 \Vect{u})</latex> represents the positive orientation of <latex>\RNr[2]</latex>.</para></problem>
+			<approach>
+				<answer>
+					<para>False.</para>
+				</answer>
+				<solution.hint><para>Review the solution of the previous problem.</para></solution.hint>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are (column) vectors in <latex>\RNr[2]</latex> with <latex>\det[ \Vect{x}\ \ \Vect{y}]\neq 0</latex>, then <latex>\Vect{x}</latex> is parallel to <latex>\Vect{y}</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>False.</para>
+				</answer>
+				<solution>
+					<para>If these vectors were parallel, then at least one of the two situations below applies:</para>
+					<ol>
+						<li><para><latex>\Vect{x} = s\cdot \Vect{y}</latex> for some <latex>s</latex> in <latex>\RNr</latex>.</para></li>
+						<li><para><latex>\Vect{y} = t\cdot \Vect{x}</latex> for some <latex>t</latex> in <latex>\RNr</latex>.</para></li>
+					</ol>
+					<para>Either way, this implies that <latex>\det [\Vect{x}\ \ \Vect{y}] = 0</latex>, contradicting the assumption. Therefore the vectors can not be parallel.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel (column) vectors in <latex>\RNr[2]</latex> then <latex>\det[ \Vect{x}\ \ \Vect{y}] = 0</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>True!</para>
+				</answer>
+				<solution.hint><para>Review the solution of the previous problem.</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If the oriented volume of the ordered triple <latex>(\Vect{a},\Vect{b},\Vect{c})</latex> of vectors in <latex>\RNr[3]</latex> is positive, then <latex>(\Vect{a},\Vect{b},\Vect{c})</latex> represents the right hand orientation of <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint><para>Review the definition of &lsquo;oriented volume&rsquo;.</para></solution.hint>
+			</approach>
+		</part>
+	</exercise>	
+</exercise.pack>

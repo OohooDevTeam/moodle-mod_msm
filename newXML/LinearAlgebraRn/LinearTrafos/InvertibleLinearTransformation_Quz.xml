@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE quiz.pack
+  SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns="Compositor"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           id="Quz_InvertibleLinearTrafo"
+           xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Quiz on Invertible Linear Transformations</title>
+	
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Is the counterclockwise rotation of the plane about the origin through the angle <math>
+                  <latex>\theta</latex>
+               </math> invertible?</para.body>
+         </para>
+			
+				     <img src="ims/Rotation.png"/>
+			
+		    </question>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>R_{\theta}</latex>
+                  </math> is invertible</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Correct! – The inverse of <math>
+                     <latex>R_{\theta}</latex>
+                  </math> is <math>
+                     <latex>R_{-\theta}</latex>
+                  </math>; i.e. the rotation of <math>
+                     <latex>\RNr[2]</latex>
+                  </math> about the origin through the angle <math>
+                     <latex>\theta</latex>
+                  </math> in the clockwise direction.</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>R_{\theta}</latex>
+                  </math> is not invertible.</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! – No. The question here is if the transformation effect of <math>
+                     <latex>R_{\theta}</latex>
+                  </math> can be reversed. Why do you think this would not be the case?</para.body>
+            </para>
+         </info>
+		    </choice>
+	  </quiz>
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Is the reflection of <math>
+                  <latex>\RNr[3]</latex>
+               </math> about a hyperspace invertible?</para.body>
+         </para>
+			
+				     <img src="ims/LeftHandMirrorRightHand.jpg"/>
+			
+		    </question>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>Yes! Such a reflection is invertible</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Correct!</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>No! Such a reflection is not invertible</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+	  </quiz>
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Is the projection of <math>
+                  <latex>\RNr[3]</latex>
+               </math> onto the <math>
+                  <latex>xy</latex>
+               </math>-plane invertible?</para.body>
+         </para>
+		    </question>
+		    <hint>
+			      <info>
+				        <para>
+               <para.body>Visualize the effect of this projection on an object: Shine a light vertically onto the object. Its shadow in the <math>
+                     <latex>xy</latex>
+                  </math>-plane is the outcome of the projection. Therefore the question is: can you always recover the original object from its shadow.</para.body>
+            </para>
+			      </info>
+		    </hint>
+		
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>Yes! This projection is invertible.</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No. – To see why such a projection is not invertible, consider the case where the projection of an object is a single point. In this case we do not know if the original is a single point or a vertical stick. Nor do we know how far either of these objects is from the <math>
+                     <latex>xy</latex>
+                  </math>-plane. Therefore such a projection is not invertible.</para.body>
+            </para>
+         </info>
+		    </choice>
+		    <choice>
+			      <answer>
+            <para>
+               <para.body>No! This projection is not invertible.</para.body>
+            </para>
+         </answer>
+			      <info>
+            <para>
+               <para.body>Correct! – Why is it not invertible?</para.body>
+            </para>
+         </info>
+		    </choice>
+	  </quiz>
+	
+	
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Is a shear transformation of <math>
+                  <latex>\RNr[2]</latex>
+               </math> parallel to the <math>
+                  <latex>x</latex>
+               </math>-axis invertible?</para.body>
+         </para>
+			
+				     <img src="ims/ShearR2_3.png"/>
+			
+		    </question>
+		    <choice>
+			      <answer>
+				        <para>
+               <para.body>Yes! Such a  shear transformation is invertible.</para.body>
+            </para>
+			      </answer>
+			      <info>
+				        <para>
+               <para.body>Correct! – – Why is a shear transformation invertible? If the original shear transformation has shear vector <math>
+                     <latex>\Vect{s}</latex>
+                  </math>, then the shear transformation with shear vector <math>
+                     <latex>-\Vect{s}</latex>
+                  </math> will restore each point and each object in its original position.</para.body>
+            </para>
+			      </info>
+		    </choice>
+		    <choice>
+			      <answer>
+				        <para>
+               <para.body>No! Such a transformation is not invertible.</para.body>
+            </para>
+			      </answer>
+			      <info>
+            <para>
+               <para.body>Sorry! No!</para.body>
+            </para>
+         </info>
+		    </choice>
+		
+	  </quiz>
+	
+</quiz.pack>

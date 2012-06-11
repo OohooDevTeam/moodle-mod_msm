@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE intro	SYSTEM "Symbols.dtd">
+<intro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd">
+	
+	<para>The subject of linear algebra is concerned with linear processes, relationships or phenomena. Let us consider some examples to see what this means:</para>
+	
+	<ul>
+		<li><para>Suppose you are traveling at constant speed. After one hour you will have covered a certain distance, let&rsquo;s denote it by <latex>d</latex>. Now if you continue to travel at this same constant speed, you know that after 2 hours you will have covered a distance of <latex>2d</latex>; after 3 hours a distance of <latex>3d</latex>; etc. &ndash; This is an example of a linear relationship between time traveled and distance covered.</para></li>
+		
+		<li><para>Suppose each day you put a marble into some bag. Then you know that after 1 day you will have 1 marble, after 2 days you will have two marbles; after <latex>n</latex> days you  will have <latex>n</latex> marbles in the bag. &ndash; This is an example of a linear relationship, this time between number of days during which marbles have been collected and number of marbles collected.</para></li>
+		
+		<li><para>When driving a car, let&rsquo;s make a table which records the distance it takes to brake the vehicle to a full stop from a given speed (environmental conditions such as road, tires, and break force are always the same). Approximately, such a table looks like this:</para>
+			<table align="center" border="1" bordercolor="Maroon" cellpadding="3">
+				<row>
+					<cell><para><b>Speed</b> [km/h]</para></cell>
+					<cell><para>s</para></cell>
+					<cell><para>2s</para></cell>
+					<cell><para>3s</para></cell>
+					<cell><para>4s</para></cell>
+					<cell><para>5s</para></cell>
+					<cell><para>6s</para></cell>
+					<cell><para>7s</para></cell>
+					<cell><para>8s</para></cell>
+					<cell><para>9s</para></cell>
+					<cell><para>10s</para></cell>
+				</row>
+				<row>
+					<cell><para><b>Break Distance</b> [m]</para></cell>
+					<cell><para>d</para></cell>
+					<cell><para>4d</para></cell>
+					<cell><para>9d</para></cell>
+					<cell><para>16d</para></cell>
+					<cell><para>25d</para></cell>
+					<cell><para>36d</para></cell>
+					<cell><para>49d</para></cell>
+					<cell><para>64d</para></cell>
+					<cell><para>81d</para></cell>
+					<cell><para>100d</para></cell>
+				</row>
+			</table>
+			<para>We notice that the distance to break the car to a full stop grows with the square of the speed. This is not a linear relationship but rather a quadratic relationship.</para></li>
+		<li>
+			<para>In a cell growth experiment you might encounter a table like the following</para>
+			<table align="center" border="1" bordercolor="Maroon" cellpadding="3">
+				<row>
+					<cell><para><b>Day</b></para></cell>
+					<cell><para>1</para></cell>
+					<cell><para>2</para></cell>
+					<cell><para>3</para></cell>
+					<cell><para>4</para></cell>
+					<cell><para>5</para></cell>
+					<cell><para>6</para></cell>
+					<cell><para>7</para></cell>
+				</row>
+				<row>
+					<cell><para><b>Cell Mass</b></para></cell>
+					<cell><para>m</para></cell>
+					<cell><para>2m</para></cell>
+					<cell><para>4m</para></cell>
+					<cell><para>8m</para></cell>
+					<cell><para>16m</para></cell>
+					<cell><para>32m</para></cell>
+					<cell><para>64m</para></cell>
+				</row>
+			</table>
+			<para>This corresponds to a substance which doubles itself every day. Thus &lsquo;number of days passed&rsquo; and &lsquo;cell mass&rsquo; are not in a linear relationship but rather in an exponential relationship.</para>
+		</li>
+	</ul>
+	
+	<para>Such examples demonstrate how easy it is to comprehend linear relationships and to work with them. In contrast, non-linear relationships can be counter-intuitive and much harder to work with. For example, the quadratic relationship between car speed and distance to break to a full stop can easily be the cause of accidents. For another example of the counter intuitive nature of non linear relationships I'll suggest a deal to you:</para>
+	<para>I&rsquo;ll give you $100 today, if over the next 14 days you agree to give me 1 penny today, 2 pennies tomorrow, and on each day double the amount of the day before. &ndash; If this sounds like a good deal to you, work it out
+			<subordinate>
+				<hot>carefully</hot>
+				<info>
+					<caption>List of your payments</caption>
+					<table align="center" border="1" bordercolor="Maroon" cellpadding="3">
+						<row>
+							<cell><para><b>day</b></para></cell>
+							<cell><para>0</para></cell>
+							<cell><para>1</para></cell>
+							<cell><para>2</para></cell>
+							<cell><para>3</para></cell>
+							<cell><para>4</para></cell>
+							<cell><para>5</para></cell>
+							<cell><para>6</para></cell>
+							<cell><para>7</para></cell>
+							<cell><para>8</para></cell>
+							<cell><para>9</para></cell>
+							<cell><para>10</para></cell>
+							<cell><para>11</para></cell>
+							<cell><para>12</para></cell>
+							<cell><para>13</para></cell>
+							<cell><para>14</para></cell>
+						</row>
+						<row>
+							<cell><para><b>due</b></para></cell>
+							<cell><para>1</para></cell>
+							<cell><para>2</para></cell>
+							<cell><para>4</para></cell>
+							<cell><para>8</para></cell>
+							<cell><para>16</para></cell>
+							<cell><para>32</para></cell>
+							<cell><para>64</para></cell>
+							<cell><para>128</para></cell>
+							<cell><para>256</para></cell>
+							<cell><para>512</para></cell>
+							<cell><para>1024</para></cell>
+							<cell><para>2048</para></cell>
+							<cell><para>4096</para></cell>
+							<cell><para>8192</para></cell>
+							<cell><para>16384</para></cell>
+						</row>
+					</table>
+					<para>So you see that, on the 14-th day alone, I&rsquo;d be making a profit of $63.84.</para>
+				</info>
+			</subordinate>. This is an example of exponential growth, a &lsquo;gotcha&rsquo; in many ways.</para>
+	
+	<para>In this introduction to Linear Algebra we will encounter</para>
+	
+	<ol>
+		<li><para>Vector spaces: the environment within which linear processes can be described</para></li>
+		<li><para>Systems of linear equations, and methods of solving them</para></li>
+		<li><para>Matrices as a vast extension of the system of real numbers <latex>\RNr</latex></para></li>
+		<li><para>Linear transformations and their relationship to matrices</para></li>
+		<li><para>Determinants and their relationship to oriented volume</para></li>
+	</ol>
+	
+	<para>Here we study the subject of linear algebra in its own right. However, you might also be interested in knowing that it enables us to examine and describe non-linear processes and phenomena as well: the idea underlying differential calculus is to approximate non-linear processes by linear ones. The power of calculus then stems from mechanisms which carry properties of the linear approximations to properties of the approximated process itself.</para>
+</intro>

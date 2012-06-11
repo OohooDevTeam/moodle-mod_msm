@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_AlternatingMultilinearMpas">
+	<headers>
+		<full>Alternating Multilinear Functions</full>
+		<toc>Alternating Multilinear Functions</toc>
+		<short>Alternating Multilinear Functions</short>
+	</headers>
+	
+	<intro>
+		<para>This section is more theoretical. It develops the determinant operation as a special case of functions 
+			<subordinate>
+				<hot><latex>F\from M_{nn} \to \RNr</latex></hot>
+				<info>
+					<para><latex magnify="yes">M_{nn}</latex> denotes the set of all matrices of size <latex>(n,n)</latex>.</para>
+				</info>
+			</subordinate>
+			which are 
+			<subordinate>
+				<hot>linear in each column</hot>
+				<companion>
+					<subpage.ref subpageID="Expl_DeterminantMultilinear"/>
+					<para>See details of this property</para>
+				</companion>
+			</subordinate>
+			 and have the 
+			 <subordinate>
+			 	<hot>alternating property</hot>
+			 	<info>
+			 		<caption>What does &lsquo;alternating&rsquo; mean?</caption>
+			 		<para>If <latex>\Mtrx{A} = [A_1\ \dots\ A_j\ \dots\ A_k\ \dots\ A_n]</latex> is a <latex>(n,n)</latex>-matrix with columns <latex>A_1,\dots ,A_n</latex>, the alternating property of the determinant operation means that</para>
+			 		<math.display>
+			 			<latex>\det [A_1\ \dots\ A_j\ \dots\ A_k\ \dots\ A_n] = -\det[A_1\ \dots\ A_k\ \dots\ A_j\ \dots\ A_n]</latex>
+			 		</math.display>
+			 		<para>Here we have interchanged the columns numbered <latex>j</latex> and <latex>k</latex>. All other columns remain in their positions. The effect on the determinant is: it changes its sign. Consequently, if we interchange columns of a matrix repeatedly, say <latex>r</latex> times, then the determinant of the original matrix and the determinant of the final matrix differ by the sign <latex>(-1)^r</latex>.</para>
+			 	</info>
+			 </subordinate>.</para>
+		<para>We know that the determinant function <latex>\det\from M_{nn}\to \RNr</latex> has both of these properties. We will see that these two properties &lsquo;multilinear&rsquo; and &lsquo;alternating&rsquo; alone characterize the determinant operation in the following sense: if <latex>F\from M_{nn}\to \RNr</latex> is alternating and multilinear then there exists a unique number <latex>c</latex> in <latex>\RNr</latex> such that <latex>F=c\cdot \det</latex>.
+		<index.glossary>
+			<term>alternating</term><term>multilinear function</term>
+		</index.glossary>
+		</para>
+	</intro>
+	
+	<section.body>
+		<xi:include href="AlternatingMultilinearProperties_Thm.xml"/>
+		<xi:include href="DeterminantUnique_Thm.xml"/>
+	</section.body>
+</section>

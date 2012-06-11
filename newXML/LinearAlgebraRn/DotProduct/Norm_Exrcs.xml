@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_Norm"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	  <title>The Norm Operation: Exercises</title>
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Answer the following questions:</para.body>
+         </para>
+		    </question>
+		    <part>
+			      <question>
+				        <para>
+               <para.body>What is the norm of a vector?</para.body>
+            </para>
+			      </question>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>Same as the distance between two points</para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>Not quite! While the formula for the distance between two points and the formula with which we compute the norm of a vector appear to be the same, the concepts of ‘distance between two points’ and ‘vector’ are very distinct. So the norm of a vector is not the same as the distance between two points.</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>Same as the length of an arrow</para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>Almost right! - You need to specify which arrow you are taking the length of!</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>The norm of a vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is the length of any arrow representing <math>
+                        <latex>\Vect{x}</latex>
+                     </math>.</para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>Correct!</para.body>
+               </para>
+				        </info>
+			      </choice>
+		    </part>
+		    <part>
+			      <question>
+				        <para>
+               <para.body>The norm of a vector is ... – What kind of information is required to complete this sentence?</para.body>
+            </para>
+			      </question>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>A point in 3-dimensional space</para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>Sorry, no!</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>Some number</para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>Correct!</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>Some number which is greater than or equal to <math>
+                        <latex>0</latex>
+                     </math>.</para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>Correct! – Notice that, while the previous answer was correct as well, it was less accurate than the answer given here.</para.body>
+               </para>
+				        </info>
+			      </choice>
+		    </part>
+		    <part>
+			      <question>
+				        <para>
+               <para.body>What is a unit vector?</para.body>
+            </para>
+			      </question>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>Any vector in <math>
+                        <latex>\RNr[1]</latex>
+                     </math>
+					             </para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>If this is what you think, please review the definition of a ‘unit vector’</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>A vector pointing in the direction of the first coordinate axis.</para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>Not necessarily! - The truth is: there are exactly two unit vectors which point in the direction of the first coordinate axis. – Which?</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>A unit vector is a vector of length <math>
+                        <latex>1</latex>
+                     </math>
+					             </para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>Correct!</para.body>
+               </para>
+				        </info>
+			      </choice>
+		    </part>
+		    <part>
+			      <question>
+				        <para>
+               <para.body>How many unit vectors are there which are parallel to the third coordinate vector in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>?</para.body>
+            </para>
+			      </question>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>One unit vector, namely <math>
+                        <latex>\Vect{u} = (0,0,1) = \Vect{e}_3</latex>
+                     </math>
+					             </para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>The vector <math>
+                        <latex>\Vect{u}</latex>
+                     </math> is a unit vector which is indeed parallel to the third coordinate axis. However, it is not the only unit vector.</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>There are infinitely many such unit vectors.</para.body>
+               </para>
+				        </answer>
+				        <info>
+					          <para>
+                  <para.body>Sorry, no! – Let's think this through carefully now: The third coordinate axis in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> is a line. Now how many vectors of length <math>
+                        <latex>1</latex>
+                     </math> are there which are parallel to a given line?</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+					          <para>
+                  <para.body>There are two such unit vectors, namely <math>
+                        <latex>\Vect{e}_3 = (0,0,1)</latex>
+                     </math> and <math>
+                        <latex>-\Vect{e}_3 = (0,0,-1)</latex>
+                     </math>.</para.body>
+               </para>
+				        </answer>
+			      </choice>
+		    </part>
+	  </quiz>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>
+				              <subordinate>
+                     <hot>Normalize</hot>
+                     <info>
+                        <info.caption>
+                           <caption>Recall: Normalize</caption>
+                        </info.caption>
+						
+						                  <para>
+                           <para.body>This means, for each of the given vectors <math>
+                                 <latex>\Vect{x}</latex>
+                              </math> you need to find one of length <math>
+                                 <latex>1</latex>
+                              </math> and in the same direction as <math>
+                                 <latex>\Vect{x}</latex>
+                              </math> 
+						                     </para.body>
+                        </para>
+					                </info>
+                  </subordinate> each of the vectors below</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>(3,4)</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The normalizion of <math>
+                              <latex>\Vect{x} = (3,4)</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>\Vect{u} = \frac{1}{5}\cdot (3,4)</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>(2,1,2)</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The normalizion of <math>
+                              <latex>\Vect{y} = (2,1,2)</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>\Vect{v} = \frac{1}{3}\cdot (2,1,2)</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>(3,1,6,1,1,1)</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The normalizion of <math>
+                              <latex>\Vect{z} = (3,1,6,1,1,1)</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>\Vect{w} = \frac{1}{7}\cdot (3,1,6,1,1,1)</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Which of the following identities is true?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Abs{ (4,-6,10) } = 2\cdot \Abs{ (2,-3,5) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+               <para>
+                  <para.body>Review the algebraic properties of the norm operation.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ (4,-6,10) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ 2\cdot (2,-3,5) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{2}\cdot \Abs{ (2,-3,5) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2\cdot \Abs{ (2,-3,5) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus the identity in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Abs{ (-15,-6,9) } = -3\cdot \Abs{ (5,2,-3) }</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The proposed identity is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ (-15,-6,9) }</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{ (-3)\cdot (5,2,-3) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{-3}\cdot \Abs{ (5,2,-3) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>3\cdot \Abs{ (5,2,-3) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-3)\cdot \Abs{ (5,2,-3) }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Thus the identity in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Abs{ ( -1, 4, 3, -4) } = 12</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The proposed identity is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Recall the formula for the norm operation.</para.body>
+               </para>
+            </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>If you believe this identity should be correct, you may have computed.</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{ ( -1, 4, 3, -4) }</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>\overset{?}{=}</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{-1} + \Abs{4} + \Abs{3} + \Abs{-4}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>1 + 4 + 3 + 4</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>12</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+					          <para>
+                  <para.body>However, this is not a correct application of the formula for the norm operation, and so you can <strong>not conclude</strong> from this that the proposed identity is correct.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find all unit vectors in <math>
+                     <latex>\RNr[2]</latex>
+                  </math> which are parallel to the line bisecting the first and third quadrant.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The vectors <math>
+                           <latex>\pm (1/\sqrt{2})\cdot (1,1)</latex>
+                        </math> are the two unit vectors which are parallel to the given bisector.</para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Find first a non-zero vector which is parallel to the bisector.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>A nonzero vector which is parallel to the bisector of the first and third quadrant in <math>
+                        <latex>\RNr[2]</latex>
+                     </math> is <math>
+                        <latex>\Vect{x} := (1,1)</latex>
+                     </math>.</para.body>
+               </para>
+				
+					          <img src="ims/Bisector.png"/>
+				
+				           <para>
+                  <para.body>The length of <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{\Vect{x}}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt{ 1^2 + 1^2 }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt{2}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Therefore the two required unit vectors are</para.body>
+               </para>
+				           <para align="center">
+                  <para.body>
+					                <math>
+                        <latex>\Vect{u} = \frac{1}{\sqrt{2})}\cdot (1,1)</latex>
+                     </math>   and   <math>
+                        <latex>-\Vect{u} = -\tfrac{1}{\sqrt{2}}\cdot (1,1)</latex>
+                     </math>.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>Alternatively, you might want to work abstractly: An arbitrary nonzero vector parallel to the given line is</para.body>
+            </para>
+				        <math.display>
+					          <latex>\Vect{y} = (t,t),\quad t\neq 0</latex>
+				        </math.display>
+				        <para>
+               <para.body>Can you find the required unit vectors starting with <math>
+                     <latex>\Vect{y}</latex>
+                  </math>?</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>Instead of starting with the vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math> as a vector parallel to the given line, we could have chosen any nonzero vector</para.body>
+               </para>
+				           <math.display>
+					             <latex>\Vect{y} = (t,t),\quad t\neq 0</latex>
+				           </math.display>
+				           <para>
+                  <para.body>that is parallel to the line. We still obtain the same unit vectors parallel to the line: The length of <math>
+                        <latex>\Vect{y}</latex>
+                     </math> is</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{(t,t)}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sqrt{ t^2 + t^2 }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Abs{t}\cdot \sqrt{ 2 }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Therefore we obtain for the unit vectors</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{u}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\pm\dfrac{(t,t)}{ \Abs{t}\cdot \sqrt{2} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\pm\dfrac{t}{\Abs{t}\cdot \sqrt{2} }\cdot (1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\pm \tfrac{1}{\sqrt{2}}\cdot (1,1)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>In <math>
+                     <latex>\RNr[3]</latex>
+                  </math>, find all unit vectors which are parallel to the line through the origin and the point <math>
+                     <latex>P(2,-1,-2)</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>There are exactly two unit vectors which fit this description.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>The unit vector in the direction of <math>
+                     <latex>\Vect{a}:=(2,-1,-2)</latex>
+                  </math> is one unit vector which fits this description.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>If <math>
+                     <latex>\Vect{n}</latex>
+                  </math> is one of the unit vectors in question, then <math>
+                     <latex>-\Vect{n}</latex>
+                  </math> is the other.</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Prove that, for every vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math>, <math>
+                     <latex>| \Vect{x} | = | -\Vect{x} |</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>Review the algebraic properties of the norm operation.</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </exercise>
+</exercise.pack>

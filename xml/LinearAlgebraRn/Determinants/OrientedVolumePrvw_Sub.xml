@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_OrientedVolume">
+	<title>Preview: Oriented Volume</title>
+	<sub.page.body>
+		<block>
+			<para>The central result of this section is the following geometrical interpretation of the determinant operation.</para>
+		</block>
+		
+		<block>
+			<table align="center" border="3"  bordercolor="Maroon" cellpadding="2" cellspacing="2">
+				<row>
+					<cell>
+						<para><b>Theorem</b> &ndash; Let <latex>\Vect{x}_1, \dots , \Vect{x}_n</latex> be <latex>n</latex> vectors in <latex>\RNr[n]</latex>, and write them as column vectors. Then</para>
+						
+						<math.display>
+							<latex>\det [ \Vect{x}_1\ \dots\ \Vect{x}_n] = \omega( \Vect{x}_1 , \dots , \Vect{x}_n ) \cdot \Vol( \Vect{x}_1 , \dots , \Vect{x}_n )</latex>
+						</math.display>
+					</cell>
+				</row>
+			</table>
+			
+			<para>In the formula above, <latex>\omega( \Vect{x}_1 , \dots , \Vect{x}_n )</latex> denotes the orientation of <latex>\RNr[n]</latex> represented by the <latex>n</latex>-tuple of vectors <latex>( \Vect{x}_1 , \dots , \Vect{x}_n )</latex>. This is <latex>+1</latex> if the orientation is positive, and it is <latex>-1</latex> if the orientation is negative. Finally, <latex>\Vol( \Vect{x}_1 , \dots , \Vect{x}_n )</latex> denotes the volume of the slanted box in <latex>\RNr[n]</latex> spanned by the vectors <latex>( \Vect{x}_1 , \dots , \Vect{x}_n )</latex>.</para>
+			<para>Already the following two examples illustrate the simple beauty of this result.</para>
+		</block>
+		
+		
+		
+		<block>
+			<para><b>Example</b> &ndash; the result</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\det
+\left[
+\begin{array}{rr}
+4320 & 4310 \\
+89 & 87
+\end{array}
+\right]\ &=\ 
+4320\cdot 87\ -\ 4310\cdot 89 \\
+	&=\ 375840\ -\ 383590 \\
+	&<\ 0
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			
+			<para>means</para>
+			
+			<ul>
+				<li><para>The vectors <latex>\Vect{x} = (4320,89)</latex> and <latex>\Vect{y} = (4310,87)</latex> span a parallelogram whose area is <latex>\Abs{375840 - 383590} = 383590 - 375840</latex>.</para></li>
+				<li><para>The pair of vectors <latex>( \Vect{x} , \Vect{y} )</latex> represents the negative or clockwise orientation of the plane.</para></li>
+			</ul>
+		</block>
+		
+		
+		
+		
+		<block>
+			<para><b>Example</b> &ndash; the result</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\det
+\left[
+\begin{array}{rrr}
+3 & 7 & -1 \\
+-2 & 4 & 3 \\
+1 & 0 & 6
+\end{array}
+\right]\ &=\ 
+	72 + 21 - (-4 + (-84)) \\
+	&=\ 181 > 0
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			
+			<para>means</para>
+			
+			<ul>
+				<li><para>The vectors <latex>\Vect{x} = (3,-2,1)</latex>, <latex>\Vect{y} = (7,4,0)</latex>, <latex>\Vect{z} = (-1,3,6)</latex> span a slanted box in <latex>\RNr[3]</latex> whose volume is <latex>181</latex>.</para></li>
+				<li><para>The ordered triple of vectors <latex>( \Vect{x} , \Vect{y} , \Vect{z} )</latex> represents the positive or right hand orientation of the <latex>\RNr[3]</latex>.</para></li>
+			</ul>
+		</block>
+	</sub.page.body>
+</sub.page>

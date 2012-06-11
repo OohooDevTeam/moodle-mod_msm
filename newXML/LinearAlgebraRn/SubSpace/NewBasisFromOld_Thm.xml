@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_NewBasisFromOld"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>New basis from old</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>\Vect{a}_1,\dots ,\Vect{a}_p</latex>
+            </math> be linearly independent vectors in <math>
+               <latex>V</latex>
+            </math>, and let <math>
+               <latex>\Vect{x}_1=(x_{11},\dots ,x_{1p})</latex>
+            </math>, ... , <math>
+               <latex>\Vect{x}_p=(x_{p1},\dots ,x_{pp})</latex>
+            </math> be a basis of <math>
+               <latex>\RNr[p]</latex>
+            </math>. Then</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Vect{y}_1</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>:=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>x_{11}\Vect{a}_1 + \cdots + x_{1p} \Vect{a}_p</latex>
+               </math>
+            </cell>
+         </row>
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\vdots{\ \ }</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>\vdots</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>{\quad }\vdots\qquad\qquad \vdots</latex>
+               </math>
+            </cell>
+         </row>
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Vect{y}_p</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>:=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>x_{p1}\Vect{a}_1 + \cdots + x_{pp} \Vect{a}_p</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+      <para>
+         <para.body>form a basis for <math>
+               <latex>\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p}</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>Let <math>
+                     <latex>W:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_p }</latex>
+                  </math>. We need to show</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>\span\Set{ \Vect{y}_1,\dots ,\Vect{y}_p } = W</latex>
+                              </math>
+                           </hot>
+                           <crossref>
+                              <theorem.ref theoremID="Thm_SpanCompare1"/>
+                              <info>
+                                 <theorem.ref theoremID="Thm_SpanCompare1"/>
+                                 <para>
+                                    <para.body>Look up this result</para.body>
+                                 </para>
+                              </info>
+                           </crossref>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\Set{ \Vect{y}_1,\dots ,\Vect{y}_p }</latex>
+                        </math> is linearly independent.
+			</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>Now, we proved earlier that the vectors <math>
+                     <latex>\Vect{y}_1,\dots ,\Vect{y}_p</latex>
+                  </math>, as constructed, are 
+			<subordinate>
+                     <hot>linearly independent.</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_LinearIndepentFromOld"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_LinearIndepentFromOld"/>
+                           <para>
+                              <para.body>Look up this result which we proved earlier</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>. These vectors a vector space <math>
+                     <latex>Y</latex>
+                  </math>, and so they form a basis of <math>
+                     <latex>Y</latex>
+                  </math>. But then <math>
+                     <latex>Y</latex>
+                  </math> is a <math>
+                     <latex>p</latex>
+                  </math>-dimensional subvector space of the <math>
+                     <latex>p</latex>
+                  </math>-dimensional vector space <math>
+                     <latex>W</latex>
+                  </math>. <subordinate>
+                     <hot>So</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
+                           <para>
+                              <para.body>Look up this result.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+                  <math>
+                     <latex>Y=W</latex>
+                  </math>, and the claim follows.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

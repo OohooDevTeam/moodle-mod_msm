@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_GramSchmidtOrthonormalization">
+	<caption>Gram-Schmidt orthonormalization</caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Expla_GramSchmidtOrthonormalization"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>An explanation of the idea underlying the Gram-Schmidt orthonormalization procedure.</para>
+		</info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_GramSchmidtOrthonormalization"/>
+		<info>
+			<caption>Example</caption>
+			<para>An example of orthonormalizing a set of vectors.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>Given an ordered linearly independent set <latex>\EuScript{A}:=(\Vect{a}_1,\dots ,\Vect{a}_r)</latex> of vectors in <latex>\RNr[n]</latex>, the ordered set of vectors <latex>\EuScript{B}:=(\Vect{v}_1,\dots ,\Vect{v}_r)</latex> defined below is an ordered ONB of <latex>\span(\EuScript{A})</latex>.
+			<index.glossary>
+				<term>Gram-Schmidt orthonormalization process</term>
+			</index.glossary>
+		</para>
+		<computation>
+			<left>\Vect{v}_1</left>
+			<center>:=	<info><para>Thus <latex>\Vect{v}_1</latex> is the normalization of <latex>\Vect{a}_1</latex>; i.e. <latex>\Vect{v}_1</latex> has the same direction as <latex>\Vect{a}_1</latex>, but has length <latex>1</latex>.</para></info></center>
+			<right>\dfrac{ \Vect{a}_1 }{ \abs{ \Vect{a}_1} }</right>
+			<left>\Vect{v}_2</left>
+			<center>:=	<info>
+				<para>Thus <latex>\Vect{v}_2</latex> is the component of <latex>\Vect{a}_2</latex> which is perpendicular to <latex>\Vect{v}_1</latex>, normalized.</para>
+			</info></center>
+			<right>\dfrac{ \Vect{a}_2 - (\DotPr{ \Vect{a}_2 }{ \Vect{v}_1 })\Vect{v}_1 }{ \abs{ \Vect{a}_2 - (\DotPr{ \Vect{a}_2 }{ \Vect{v}_1 })\Vect{v}_1} }</right>
+			<left>\vdots</left>
+			<center></center>
+			<right>\qquad \vdots \qquad\qquad \vdots</right>
+			<left>\Vect{v}_r</left>
+			<center>:=	<info>
+				<para>Thus <latex>\Vect{v}_r</latex> is the component of <latex>\Vect{a}_r</latex> which is perpendicular to each of <latex>\Vect{v}_1</latex>, ... , <latex>\Vect{v}_{r-1}</latex>, normalized.</para>
+			</info></center>
+			<right>\dfrac{ \Vect{a}_r - (\DotPr{ \Vect{a}_r }{ \Vect{v}_1 })\Vect{v}_1 - (\DotPr{ \Vect{a}_r }{ \Vect{v}_2 })\Vect{v}_2 - \cdots - (\DotPr{ \Vect{a}_r }{ \Vect{v}_{r-1} })\Vect{v}_{r-1} }{ \abs{ \Vect{a}_r - (\DotPr{ \Vect{a}_r }{ \Vect{v}_1 })\Vect{v}_1 - (\DotPr{ \Vect{a}_r }{ \Vect{v}_2 })\Vect{v}_2 - \cdots - (\DotPr{ \Vect{a}_r }{ \Vect{v}_{r-1} })\Vect{v}_{r-1} } }</right>
+		</computation>
+		<para>Moreover, <latex>\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_j } = \span\Set{ \Vect{v}_1,\dots ,\Vect{v}_j }</latex> for each <latex>1\leq j\leq r</latex> and, if <latex>\Vect{a}_1,\dots ,\Vect{a}_j</latex> are already orthonormal, then <latex>\Vect{a}_k=\Vect{v}_k</latex> for each <latex>1\leq k\leq j</latex>.</para>
+	</statement>
+	<proof>
+		<para>We prove the theorem by induction on <latex>r</latex>. If <latex>r=1</latex>, <latex>\EuScript{B}_1 := ( \Vect{v}_1 )</latex> is an ordered ONB of <latex>\span\Set{ \Vect{a}_1 }</latex>  for the following reasons:</para>
+		<ol>
+			<li><para>the definition of <latex>\Vect{v}_1</latex> is valid 
+					<subordinate>
+						<hot>since</hot>
+						<info><para>Else <latex>\EuScript{A}</latex> would not be linearly independent.</para></info>
+					</subordinate>
+				<latex>\Vect{a}_1\neq \Vect{0}</latex>.</para></li>
+			<li><para><latex>\span\Set{ \Vect{v}_1 } = \span\Set{ \Vect{a}_1 }</latex> because <latex>t \Vect{a}_1 = (t \abs{ \Vect{a}_1 }) \Vect{v}_1</latex> for all <latex>t\in \RNr</latex></para></li>
+			<li><para><latex>\EuScript{B}_1</latex> is linearly independent since <latex>\abs{ \Vect{v}_1 } = 1</latex>.</para></li>
+		</ol>
+		<para>So suppose the theorem is true for <latex><![CDATA[ 1\leq (j-1) < r ]]></latex>. We need to deduce that the theorem is true for <latex>j</latex>. The induction hypothesis tells us that, <latex>\EuScript{B}_{j-1} := (\Vect{v}_1,\dots ,\Vect{v}_{j-1})</latex> is an ordered ONB of <latex>\EuScript{A}_{j-1}:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_{j-1} }</latex>. Therefore the following hold</para>
+		<ol>
+			<li><para><subordinate>
+				<hot><latex>\Vect{a}_j - (\DotPr{ \Vect{a}_j }{ \Vect{v}_1 })\Vect{v}_1 - \cdots - (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} })\Vect{v}_{j-1}\neq \Vect{0}</latex></hot>
+				<info>
+					<caption>Why is the vector distinct from 0?</caption>
+					<para>If this vector were <latex>\Vect{0}</latex>, then <latex>\Vect{a}_j</latex> would be a linear combination of <latex>\Vect{v}_1</latex>, ... ,<latex>\Vect{v}_{j-1}</latex> and, hence, of <latex>\Vect{a}_1</latex>, ... , <latex>\Vect{a}_{j-1}</latex>, a contradiction to the assumption that <latex>\EuScript{A}</latex> is linearly independent.</para>
+				</info>
+			</subordinate>,
+				and so the definition of <latex>\Vect{v}_j</latex> is valid</para></li>
+			<li>
+				<para><latex>\EuScript{A}_{j}:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_j} \subseteq \span\Set{ \Vect{v}_1,\dots ,\Vect{v}_{j-1} }=:\EuScript{B}_j</latex>. To see this, it only 
+					<subordinate>
+						<hot>remains</hot>
+						<info>
+							<caption>Why is this so?</caption>
+							<para>From the induction hypothesis we already know that <latex>\span(\EuScript{A}_{j-1})=\span(\EuScript{B}_{j-1})</latex>. Further, <latex>\span(\EuScript{B}_{j-1}) \subseteq \span(\EuScript{B}_j)</latex> because <latex>\EuScript{B}_{j-1}\subseteq \EuScript{B}_j</latex>.</para>
+						</info>
+					</subordinate>
+					to show that <latex>\Vect{a}_j\in \span(\EuScript{B}_j)</latex>. Indeed, the defining equation for <latex>\Vect{v}_j</latex> yields</para>
+				<computation>
+					<left>\Vect{v}_j</left>
+					<center>=</center>
+					<right>(\DotPr{ \Vect{a}_j }{ \Vect{v}_1 })\Vect{v}_1 + \cdots + (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} })\Vect{v}_{j-1} + s \Vect{v}_j</right>
+				</computation>
+				<para>where <latex>s=\abs{ \Vect{a}_j - (\DotPr{ \Vect{a}_j }{ \Vect{v}_1 })\Vect{v}_1 - \cdots -  (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} })\Vect{v}_{j-1}}</latex>. Therefore, <latex>\span(\EuScript{A}_j) \subseteq \span( \EuScript{B}_j)</latex>.</para>
+			</li>
+			<li><para>Conversely, <latex>\span(\EuScript{B}_j)\subseteq \span(\EuScript{A}_j)</latex>: Indeed, <latex>\span(\EuScript{B}_{j-1})=\span(\EuScript{A}_{j-})</latex> by induction hypothesis, and <latex>\span(\EuScript{A}_{j-1})\subset \span(\EuScript{A}_j)</latex>. So, <latex>\Vect{v}_r</latex> is a linear combination of vectors in <latex>\span(\EuScript{A}_j)</latex>.</para></li>
+			<li><para>So <latex>\span(\EuScript{A}_j)=\span(\EuScript{B}_j)</latex>.</para></li>
+			<li><para><latex>\EuScript{B}_j</latex> is an orthonormal set of vectors: In view of the induction hypothesis it only remains to show that <latex>\abs{ \Vect{v}_j } = 1</latex>, which holds by design, and that <latex>\DotPr{ \Vect{v}_j }{ \Vect{v}_k } = 0</latex> for <latex>1\leq k\leq j-1</latex>. We find</para>
+			<computation>
+				<left>\DotPr{ \Vect{v}_j }{ \Vect{v}_k }</left>
+				<center>=</center>
+				<right>(1/s)\left( \DotPr{ \Vect{a}_j }{ \Vect{v}_k } - (\DotPr{ \Vect{a}_j }{ \Vect{v}_1 }(\DotPr{ \Vect{v}_1 }{ \Vect{v}_k }) - \cdots - (\DotPr{ \Vect{a}_j }{ \Vect{v}_k }(\DotPr{ \Vect{v}_k }{ \Vect{v}_k })\right.</right>
+				<left></left>
+				<center></center>
+				<right>\left.\qquad  - \cdots - (\DotPr{ \Vect{a}_j }{ \Vect{v}_{j-1} }(\DotPr{ \Vect{v}_{j-1} }{ \Vect{v}_k })\right)</right>
+				<left></left>
+				<center>=</center>
+				<right>(1/s)(\DotPr{ \Vect{a}_j }{ \Vect{v}_k } - \DotPr{ \Vect{a}_j }{ \Vect{v}_k })</right>
+				<left></left>
+				<center>=</center>
+				<right>0</right>
+			</computation>
+			</li>
+		</ol>
+		<para>It only remains to consider the situation where <latex>\EuScript{A}_j</latex> is already orthonormal. By induction hypothesis, <latex>\Vect{a}_1=\Vect{v}_1</latex>, <latex>\Vect{a}_{j-1}=\Vect{v}_{j-1}</latex>. In the defining formula for <latex>\Vect{v}_j</latex>, we find <latex>\DotPr{ \Vect{a}_j }{ \Vect{v}_k }=0</latex>, for <latex>1\leq k\leq j-1</latex>. Therefore</para>
+		<computation>
+			<left>\Vect{v}_j</left>
+			<center>=</center>
+			<right>\Vect{a}_j/\abs{ \Vect{a}_j } = \Vect{a}_j</right>
+		</computation>
+		<para>This completes the induction and, with it, the proof of the validity of the Gram-Schmidt orthonormalization procedure.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_ArrowLength">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	<title>Length of an Arrow: Examples</title>
+	<caption>Length of an Arrow: Examples</caption>
+	
+	<showme>
+		<statement>
+			<para>Find the length of the arrow joining the point <latex>P(4,-1,11)</latex> to the point <latex>Q(-2,6,4)</latex> in <latex>\RNr[3]</latex>.  
+			</para>
+		</statement>
+		<answer type="Solution">
+			<para>The length of the arrow <latex>\Arrow{P}{Q}</latex> is the distance from <latex>P</latex> to <latex>Q</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+\Length{\Arrow{P}{Q}}\ &=\ \Dstnc{P}{Q} \\
+					& =\ \sqrt{(-2-4)^2+(6-(-1))^2+(4-11)^2} \\
+					& =\ \sqrt{36+49+49} \\
+					& =\ \sqrt{134}
+					\endaligned
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Find the length of the arrow joining the point <latex>A(1,3,0,5)</latex> to the point <latex>B(2,1,-2,4)</latex> in <latex>\RNr[4]</latex>.  
+			</para>
+		</statement>
+		<answer type="Solution">
+			<para>The length of the arrow <latex>\Arrow{A}{B}</latex> is the distance from <latex>A</latex> to <latex>B</latex>:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+\Length{\Arrow{A}{B}}\ &=\ \Dstnc{A}{B} \\
+					& =\ \sqrt{(2-1)^2 + (1-3)^2 + ((-2)-0)^2 + (4-5)^2 } \\
+					& =\ \sqrt{1 + 4 + 4 + 1} \\
+					& =\ \sqrt{10}
+					\endaligned
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

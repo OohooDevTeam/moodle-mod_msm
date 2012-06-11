@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_LinearTrafoGeneral">
+	<title>General Linear Transformation - Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>Earlier we already discussed 
+				<subordinate>
+					<hot>linear transformations <latex>\RNr[n]\to \RNr[m]</latex></hot>
+					<crossref>
+						<definition.ref definitionID="Def_LinearMap"/>
+						<para>Look up this definition</para>
+					</crossref>
+				</subordinate>. So what is new here?</para>
+			<para>Indeed, the formal properties defined for a linear map <latex>\RNr[n]\to \RNr[m]</latex> are the exact same as  those for a linear map <latex>L\from V\to W</latex>:</para>
+			
+			<ul>
+				<li>
+					<para><latex>L</latex> must commute with vector addition: <latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex>.</para>
+				</li>
+				<li>
+					<para><latex>L</latex> must commute with scalar multiplication: <latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex>.</para>
+				</li>
+			</ul>
+			<para>New here is merely that the vector spaces <latex>V</latex> and <latex>W</latex> need not be equal to <latex>\RNr[n]</latex> and <latex>\RNr[m]</latex>. Instead, any subvector space is allowed.</para>
+			<para></para>
+		</block>
+		
+		<block>
+			<para><b>Comment on a technicality</b> &nbsp; When we require <latex>V</latex> and <latex>W</latex> to be subvector space of <latex>\RNr[k]</latex>, at first sight, it would seem more appropriate to let <latex>V</latex> be a subvector space of <latex>\RNr[p]</latex> and to let <latex>W</latex> be a subvector space of <latex>\RNr[q]</latex>. However, we can take <latex>k</latex> to be the maximum of <latex>p</latex> and <latex>q</latex>, and so both <latex>V</latex>and <latex>W</latex> appear as subspaces of the same vector space <latex>\RNr[k]</latex>.</para>
+		</block>
+		
+		<block>
+			<para><b>Outlook</b> &nbsp; In a more advanced setting, we will liberate ourselves from the requirement that <latex>V</latex> and <latex>W</latex> be subsets of any other vector space. Instead, we will just assume that a vector space is an algebraic object in which one may operate &lsquo;as if one were inside some <latex>\RNr[n]</latex>&rsquo;.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

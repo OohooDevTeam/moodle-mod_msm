@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_RotationR3">
+	<title>Rotation of 3-Space - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>How do we describe the rotation of space about an arbitrary axis in <latex>\RNr[3]</latex>?</para>
+			<figure>
+				<img src="ims/RotationGeneral.jpg"></img>
+				<info>
+					<para>In this picture, take <latex>\Vect{r}</latex> to be the unit vector pointing upward, take <latex>\Vect{a}_1</latex> to be any unit vector perpendicular to <latex>\Vect{r}</latex>, for example the one point toward you. Finally take <latex>\Vect{a}_2</latex> to be the cross product <latex>\CrssPr{ \Vect{r} }{ \Vect{a}_1 }</latex>. This is the third vector in the picture.</para>
+				</info>
+			</figure>
+			<para>Our strategy is to reduce a rotation about an arbitrary axis through the angle <latex>\alpha</latex> to a rotation about a coordinate axis:</para>
+			<ol>
+				<li><para>Introduce an ordered orthonormal coordinate system <latex>\EuScript{B}=(\Vect{a},\Vect{b},\Vect{n})</latex> such that the axis of rotation has the direction of the basis vector <latex>\Vect{n}</latex>.</para></li>
+				<li><para>Using <latex>\EuScript{B}</latex>-coordinates, we describe the given rotation as if it were a rotation of <latex>\RNr[3]</latex> about the <latex>z</latex>-axis.</para></li>
+				<li><para><latex>\Vect{a}</latex> gets transformed into <latex>\cos\alpha \Vect{a} + \sin\theta \Vect{b}</latex>.</para></li>
+				<li><para><latex>\Vect{b}</latex> gets transformed into <latex>-\sin\alpha \Vect{a} +\cos\theta \Vect{b}</latex>.</para></li>
+				<li><para><latex>\Vect{n}</latex> gets transformed into <latex>\Vect{n}</latex>.</para></li>
+				<li>
+					<para>In <latex>\EuScript{B}</latex>-coordinates this rotation is therefore represented by</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{\EuScript{B}\EuScript{B}}\ =\ 
+\left[
+\begin{array}{rrr}
+\cos \alpha & -\sin\alpha & 0 \\
+\sin\alpha & \cos \alpha & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</li>
+				<li><para>Let <latex>\Mtrx{C}_{\EuScript{B}\EuScript{S}}</latex> denote the matrix which converts from standard coordinates to  <latex>\EuScript{B}</latex>-coordinates. Then the matrix describing the given rotation in standard coordinates is</para>
+					<computation>
+						<left>\Mtrx{R}_{\EuScript{S}\EuScript{S}}</left>
+						<center>=</center>
+						<right>\Mtrx{C}_{\EuScript{S}\EuScript{B}} \Mtrx{R}_{\EuScript{B}\EuScript{B}} \Mtrx{C}_{\EuScript{B} \EuScript{S}}</right>
+					</computation>
+					
+				</li>
+			</ol>
+			
+		</block>
+	</sub.page.body>
+</sub.page>

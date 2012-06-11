@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem
+	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_NeighborhoodRecognize">
+	<!--<caption>Recognizing neighborhoods</caption>-->
+	<caption>Some special intervals</caption>
+	<statement>
+		<para>Given <latex>c,r\in \RNr</latex> with <latex>r\geq 0</latex>, the following hold for every <latex>x\in \RNr</latex></para>
+		<part partid="ClosedrNbhd">
+			<para><latex>\Abs{x-c}\leq r</latex> if and only if <latex>c-r \leq x \leq c+r</latex> if and only if <latex>x\in \CCIntrvl{c-r}{c+r}</latex></para>
+		</part>
+		<part partid="OpenNbhd">
+			<para><latex><![CDATA[ \Abs{x-c} < r ]]></latex> if and only if <latex><![CDATA[ c-r < x < c+r ]]></latex> if and only if <latex>x\in \OOIntrvl{c-r}{c+r}</latex></para>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<caption><partref>ClosedrNbhd</partref> <latex>\Abs{x-c}\leq r</latex> if and only if <latex>c-r \leq x \leq c+r</latex> if and only if <latex>x\in \CCIntrvl{c-r}{c+r}</latex></caption>
+		<para>We have that</para>
+		<math.display>
+			<latex>\Abs{ x-c } \leq r\quad \text{if and only if}\quad -r \leq x-c \leq r</latex>
+		</math.display>
+		<para>which holds if and only if </para>
+		<math.display>
+			<latex>c-r \leq x\leq c+r,\quad \text{i.e.}\quad x\in \CCIntrvl{ c-r }{c+r}</latex>
+		</math.display>
+		<para>as was to be shown.</para>
+		<caption><partref>OpenNbhd</partref> <latex><![CDATA[ \Abs{x-c} < r ]]></latex> if and only if <latex><![CDATA[ c-r < x < c+r ]]></latex> if and only if <latex>x\in \OOIntrvl{c-r}{c+r}</latex></caption>
+		<para>This follows with similar reasoning.</para>
+	</proof>
+</theorem>

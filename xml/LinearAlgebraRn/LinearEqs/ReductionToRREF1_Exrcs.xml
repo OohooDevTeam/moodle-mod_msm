@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_SolveLinearEqsRREF">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Solving Systems of Linear Equations by Reducing them to RREF - Exercises</title>
+	
+	<exercise>
+		<problem>
+			<para>Transform each of the following systems of linear equations into <b>R</b>ow <b>R</b>educed <b>E</b>chelon <b>F</b>orm (RREF, for short). Then find all its solutions.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcrcr}
+x & - & 2y & = & 3 \\
+-2x & + & 4y & = & -3 \\  
+\end{array} 
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>The given system of linear equations is equivalent to</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+							\begin{array}{rcrcr}
+x & - & 2y & = & 3 \\
+0x & + & 0y & = & 3 \\  
+\end{array} 
+							]]>
+						</latex>
+					</math.display>
+					<para>The second equation has no solutions. Therefore the system has no solutions.</para>
+				</answer>
+				<solution>
+					<para>The first equation already has a leading <latex>1</latex> in the top left position. So we need to turn the coefficients below it into <latex>0</latex>&rsquo;s. This can be accomplished by adding <latex>2</latex> times equation one to equation two:</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+							\begin{array}{rcrcr}
+x & - & 2y & = & 3 \\
+0x & + & 0y & = & 3 \\  
+\end{array} 
+							]]>
+						</latex>
+					</math.display>
+					<para>The second equation has no solutions. Therefore the system has no solutions.</para>
+				</solution>
+			</approach>
+			<approach.ext>
+				<solution.ext>
+					<step>
+						<pilot>
+							<para>Our strategy is to reduce the given system of linear equations to RREF. So, we ask:</para>
+							<quiz>
+								<question>
+									<para>Is the system already in RREF?</para>
+								</question>
+								<choice>
+									<answer><para>Yes!</para></answer>
+									<info>
+										<para>Sorry, no! &ndash; If this system were in RREF, the top left <latex>1</latex> would be a leading <latex>1</latex>. So we should have <latex>0x</latex> below it. Instead, we find <latex>-2x</latex> and conclude that the system is not in RREF.</para>
+									</info>
+								</choice>
+								<choice>
+									<answer><para>No!</para></answer>
+									<info><para>Correct!</para></info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para>Our strategy is to reduce the given system of linear equations to RREF. The system is not yet in RREF, as &lsquo;<latex>1</latex>&rsquo; in the top row should be a leading <latex>1</latex>, and then we should only find <latex>0x</latex> below it. So we need to perform row operations to achieve <latex>0x</latex> in the second row.</para>
+					</step>
+					<step>
+						<pilot>
+							<quiz>
+								<question><para>What can you do to bring the system closer to RREF?</para></question>
+								<hint>
+									<info><para>You could try to generate <latex>0x</latex> in the second row</para></info>
+								</hint>
+								<choice>
+									<answer><para>I just ignore the second row</para></answer>
+									<info>
+										<para>Not a good idea! &ndash; If you ignore the second row, you will obtain all solutions of the first equations. However, some of these are not solutions of the second equation; e.g. <latex>(1,-1)</latex> solves the first equation but not the second.</para>
+									</info>
+								</choice>
+								<choice>
+									<answer><para>Add <latex>2</latex> times Row 1 to Row 2</para></answer>
+									<info><para>Yes! &ndash; This will do it!</para></info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para>We add two times Row 1 to Row 2 to turn the <latex>x</latex>-coefficient in Row 2 into <latex>0</latex>:</para>
+						<math.display>
+							<latex>
+								<![CDATA[
+							\begin{array}{rcrcr}
+x & - & 2y & = & 3 \\
+0x & + & 0y & = & 3 \\  
+\end{array} 
+							]]>
+							</latex>
+						</math.display>
+					</step>
+					<step>
+						<pilot>
+							<quiz>
+								<question><para>Is the system now in RREF?</para></question>
+								<choice>
+									<answer><para>Yes!</para></answer>
+									<info><para>Sorry! &ndash; This is not correct. The second row does not consist of <latex>0</latex>&rsquo;s only. So there should be a leading <latex>1</latex>.</para></info>
+								</choice>
+								<choice>
+									<answer><para>No!</para></answer>
+									<info><para>Correct!</para></info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para>We note that the system is not in RREF as the second row does not consist of <latex>0</latex>&rsquo;s only. So there should be a leading <latex>1</latex>. But there is none.</para>
+					</step>
+					<step>
+						<pilot>
+							<quiz>
+								<question><para>What do you do next?</para></question>
+								<choice>
+									<answer><para>I divide Row 2 by <latex>3</latex> to turn the system into RREF.</para></answer>
+									<info><para>Yes, this is the logical next step. &ndash; However, let&rsquo; give it a brief thought: Is this really necessary?</para></info>
+								</choice>
+								<choice>
+									<answer><para>I don&rsquo;t know what to do</para></answer>
+									<info><para>In this case, please review the criteria which determine if a system of linear equations is in RREF.</para></info>
+								</choice>
+								<choice>
+									<answer><para>I am done! &ndash; This system of linear equations has no solution. Therefore it is pointless to reduce it further to RREF.</para></answer>
+									<info><para>Correct! The second equation says that <latex>0 = 3</latex> for all choices of number values for <latex>x</latex> and <latex>y</latex>, which is decidedly false. Therefore the system has no solution, and there is no reason to reduce it fully to RREF.</para></info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para>We could divide Row 2 by <latex>3</latex> to reduce the system to RREF. However, we can observe already at this stage that the second row yields <latex>0 = 3</latex>, for all choices of number values for <latex>x</latex> and <latex>y</latex>, which is decidedly false. Therefore the system has no solution, and there is no reason to reduce it fully to RREF.</para>
+					</step>
+				</solution.ext>
+			</approach.ext>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcrcrcr}
+x &  &  & + & 2v & = & 6 \\
+ &  & z & - & 4v & = & -3 \\  
+\end{array} 
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<solution>
+					<para>Rearranging the equations suitably shows that this system is already in RREF.</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcr}
+1x & + & 0z & + & 2v & = & 6 \\
+0x & + & 1z & - & 4v & = & -3
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>We find all of its solutions by solving for the variables with a leading <latex>1</latex>, and choosing number values for the remaining variables arbitrarily:</para>
+					
+					<math.display>
+						<latex>x = -2v + 6 \qquad \text{and}\qquad z = 4v -3</latex>
+					</math.display>
+					
+					<para>with <latex>v</latex> in <latex>\RNr</latex> arbitrary. Alternatively, we can express this result by saying that the solutions of this system are given by all vectors of the form</para>
+					
+					<math.display>
+						<latex>(6-2v,-3+4v,v)\ =\ (6,-3,0)\ +\ v\cdot (2,4,1)</latex>
+					</math.display>
+					
+					<para>with <latex>v</latex> arbitrary in <latex>\RNr</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcrcrcr}
+x &  &  & - & z & = & 1 \\
+-x & - & 2y & + & z & = & -1 \\ 
+2x & + & 2y & - & 2z & = & 2 \\ 
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach.ext>
+				<answer>
+					<para>The simultaneous solutions of this system of three linear equations in three variables are given by all vectors of the form</para>
+					<math.display>
+						<latex>(z+1,0,z)\ =\ (1,0,0)\ +\ z\cdot (1,0,1)</latex>
+					</math.display>
+					<para>Thus the solutions form the line through <latex>(1,0,0)</latex> in the direction of <latex>(1,0,1)</latex>.</para>
+				</answer>
+				<solution.ext>
+					<step>
+						<pilot>
+							<para>Our strategy is to reduce the given system of linear equations to RREF. So, we ask</para>
+							<quiz>
+								<question><para>Is the system already in RREF</para></question>
+								<choice>
+									<answer><para>Yes!</para></answer>
+									<info>
+										<para>Sorry, no! &ndash; While there is already a leading <latex>1</latex> in the top left position, there are nonzero entries below it. A system in RREF must have <latex>0</latex>&rsquo;s below a leading <latex>1</latex>.</para>
+									</info>
+								</choice>
+								<choice>
+									<answer><para>No!</para></answer>
+									<info><para>Correct!</para></info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para>Our strategy is to reduce the given system of linear equations to RREF, if necessary. We observe that the system is not in RREF yet: While there is already a leading <latex>1</latex> in the top left position, there are nonzero entries below it. A system in RREF must have <latex>0</latex>&rsquo;s below a leading <latex>1</latex>.</para>
+					</step>
+					<step>
+						<pilot>
+							<quiz>
+								<question><para>What do you do next?</para></question>
+								<choice>
+									<answer><para>I use a row operation to transform the given system into an equivalent one which is closer to RREF.</para></answer>
+									<info><para>Yes!</para></info>
+								</choice>
+								<choice>
+									<answer>
+										<para>I add Row 1 to Row 2 and subtract 2 times Row 1 from Row 3 to generate <latex>0</latex>&rsquo;s below the leading <latex>1</latex> in the top row.</para>
+									</answer>
+									<info><para>Even better!</para></info>
+								</choice>
+								<choice>
+									<answer>
+										<para>I add 2 times Row 2 to Row 3 and then Row 1 to Row 2 to generate <latex>0</latex>&rsquo;s below the leading <latex>1</latex> in the top row.</para>
+									</answer>
+									<info><para>This will also work.</para></info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para>So we apply row operations to generate <latex>0</latex>&rsquo;s below the leading <latex>1</latex> in Row 1. For example, adding Row 1 to Row 2 and subtract 2 times Row 1 from Row 3 will achieve this objective. The result is</para>
+						<math.display>
+							<latex>
+								<![CDATA[
+							\begin{array}{rcrcrcr}
+x &  &  & - & z & = & 1 \\
+0x & - & 2y & + & 0z & = & 0 \\ 
+0x & + & 2y & + & 0z & = & 0 \\ 
+\end{array}
+							]]>
+							</latex>
+						</math.display>
+					</step>
+					
+					<step>
+						<pilot>
+							<quiz>
+								<question><para>What do you do next?</para></question>
+								<choice>
+									<answer><para>I create a leading <latex>1</latex> in Row 2 by multiplying it by <latex>-1/2</latex>.</para></answer>
+									<info><para>Good!</para></info>
+								</choice>
+								<choice>
+									<answer><para>I add Row 2 to Row 3 to generate a row of &lsquo;all <latex>0</latex>&rsquo;. This row can then be omitted as it is true for all choices of number values for <latex>x,y,z</latex>.</para></answer>
+									<info><para>This will also work!</para></info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para>We transform this system closer to RREF by adding Row 2 to Row 3 to generate a row of &lsquo;all <latex>0</latex>&rsquo;. This row can then be omitted as it is true for all choices of number values for <latex>x,y,z</latex>. Next, we divide Row 2 by <latex>(-2)</latex> (i.e. multiply by <latex>(-1/2)</latex>) to generate a leading <latex>1</latex> in Row 2.</para>
+					</step>
+					
+					<step>
+						<pilot>
+							<quiz>
+								<question><para>Is the system now in RREF?</para></question>
+								<choice>
+									<answer><para>Yes!</para></answer>
+									<info><para>Correct!</para></info>
+								</choice>
+								<choice>
+									<answer><para>No!</para></answer>
+									<info><para>This is curious. Which of the criteria for RREF do you think is not satisfied?</para></info>
+								</choice>
+							</quiz>
+						</pilot>
+						<para>The system is now in RREF.</para>
+					</step>
+					
+					<step>
+						<pilot><para>It only remains to read off the solutions of the system.</para></pilot>
+						<para>So can read off the solutions by solving for the variables associated to a leading <latex>1</latex>. we find:</para>
+						<para align="center"><latex>y=0</latex> &nbsp; and &nbsp; <latex>x = z+1</latex>, with <latex>z</latex> in <latex>\RNr</latex> arbitrary. Alternatively, we can say that the solutions of the given system of linear equations are given by all vectors of the form</para>
+						<math.display>
+							<latex>(z+1,0,z)\ =\ (1,0,0)\ +\ z\cdot (1,0,1)</latex>
+						</math.display>
+						<para>Thus the solutions form the line through <latex>(1,0,0)</latex> in the direction of <latex>(1,0,1)</latex>.</para>
+					</step>
+				</solution.ext>
+			</approach.ext>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcrcrcrcr}
+2x & - & y & + & 3z & + & 4w & = & 9 \\
+x &  &  & - & 2z & + & 7w & = & 11 \\ 
+3x & - & 3y & + & z & + & 5w & = & 8 \\
+2x & + & y & + & 4z & + & 4w & = & 10 \\ 
+\end{array} 
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>The RREF is the given system of linear equations is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+							\begin{array}{rcrcrcrcr}
+x &  &  &  &  &  &  & = & -1 \\
+ &  & y &  &  &  &  & = & 0 \\ 
+&  &  &  & z &  & & = & 1 \\
+ &  &  &  &  &  & w & = & 2 \\ 
+\end{array} 
+\begin{array}{r}
+							]]>
+						</latex>
+					</math.display>
+					<para>Therefore the system has exactly one solution, namely</para>
+					<para align="center"><latex>x=-1</latex>, &nbsp; <latex>y=0</latex>, &nbsp; <latex>z=1</latex>, &nbsp; <latex>w=2</latex>.</para>
+					<para>In other words, the one and only solution vector in <latex>\RNr[4]</latex> is <latex>(-1,0,1,2)</latex>.</para>
+				</answer>
+				<solution>
+					<para>We first fill in silent entries in the given system of 4 linear equations in 4 variables. Then we transform it into RREF using row operations as indicated.</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+2x & - & 1y & + & 3z & + & 4w & = & 9 \\
+1x & + & 0y & - & 2z & + & 7w & = & 11 \\ 
+3x & - & 3y & + & z & + & 5w & = & 8 \\
+2x & + & y & + & 4z & + & 4w & = & 10 \\ 
+\end{array} 
+\begin{array}{r}
+{\color{red} R_1 \leftrightarrow R_2 }\\
+{\color{red} R_2 \leftrightarrow R_1 } \\
+\quad \\ 
+\quad \\
+\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+						1x & + & 0y & - & 2z & + & 7w & = & 11 \\
+						2x & - & 1y & + & 3z & + & 4w & = & 9 \\
+						3x & - & 3y & + & z & + & 5w & = & 8 \\
+						2x & + & y & + & 4z & + & 4w & = & 10
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						{\color{red} - \ 2 R_1 }\\
+						{\color{red} - \ 3 R_1 }\\
+						{\color{red} - \ 2 R_1 }
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+						1x & + & 0y & - & 2z & + & 7w & = & 11 \\
+						0x & - & 1y & + & 7z & - & 10w & = & -13 \\
+						0x & - & 3y & + & 7z & - & 16w & = & -25 \\
+						0x & - & 1y & + & 8z & - & 10w & = & -12
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						{\color{red} \times (-1)} \\
+						\quad \\
+						\quad
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+						1x & + & 0y & - & 2z & + & 7w & = & 11 \\
+						0x & + & 1y & - & 7z & + & 10w & = & 13 \\
+						0x & - & 3y & + & 7z & - & 16w & = & -25 \\
+						0x & - & 1y & + & 8z & - & 10w & = & -12
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						\quad \\
+						{\color{red} + 3\cdot R_2} \\
+						{\color{red} - R_2}
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+						1x & + & 0y & - & 2z & + & 7w & = & 11 \\
+						0x & + & 1y & - & 7z & + & 10w & = & 13 \\
+						0x & + & 0y & - & 14z & + & 14w & = & 14 \\
+						0x & + & 0y & + & 15z & - & 20w & = & -25
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						\quad \\
+						{\color{red} \times (-1/14)} \\
+						{\color{red} \times (1/5)}
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+						1x & + & 0y & - & 2z & + & 7w & = & 11 \\
+						0x & + & 1y & - & 7z & + & 10w & = & 13 \\
+						0x & + & 0y & + & 1z & - & 1w & = & -1 \\
+						0x & + & 0y & + & 3z & - & 4w & = & -5
+						\end{array}
+						\begin{array}{r}
+						{\color{red} + 2\cdot R_3} \\
+						{\color{red} + 7\cdot R_3} \\
+						{ } \\
+						{\color{red} - 3 \cdot R_3}
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+						1x & + & 0y & + & 0z & + & 5w & = & 9 \\
+						0x & + & 1y & + & 0z & + & 3w & = & 6 \\
+						0x & + & 0y & + & 1z & - & 1w & = & -1 \\
+						0x & + & 0y & + & 0z & - & 1w & = & -2
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						\quad \\
+						\quad \\
+						{\color{red} \times (-1)}
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+						1x & + & 0y & + & 0z & + & 5w & = & 9 \\
+						0x & + & 1y & + & 0z & + & 3w & = & 6 \\
+						0x & + & 0y & + & 1z & - & 1w & = & -1 \\
+						0x & + & 0y & + & 0z & + & 1w & = & 2
+						\end{array}
+						\begin{array}{r}
+						{\color{red} -5 R_4} \\
+						{\color{red} -3 R_4} \\
+						{\color{red} + R_4} \\
+						\quad
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcr}
+						1x & + & 0y & + & 0z & + & 0w & = & -1 \\
+						0x & + & 1y & + & 0z & + & 0w & = & 0 \\
+						0x & + & 0y & + & 1z & + & 0w & = & 1 \\
+						0x & + & 0y & + & 0z & + & 1w & = & 2
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						\quad \\
+						\quad \\
+						\quad
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<para>The final system is in RREF and is equivalent to the original one. We now see that the original system has exactly one solution, namely:</para>
+					
+					<para align="center"><latex>x=-1</latex>, &nbsp; <latex>y=0</latex>, &nbsp; <latex>z=1</latex>, &nbsp; <latex>w=2</latex></para>
+					
+					<para>In other words the one and only solution vector in <latex>\RNr[4]</latex> is <latex>(-1,0,1,2)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						2x & + & 4y & - & z & - & 2w & + & 2v & = & 0 \\
+						3x & + & 3y & &  & - & 3w & && = & 0 \\
+						-5x & + & 6y & - & 3z & + & 6w & + & 11v & = & 0 \\
+						\end{array}
+						]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para>The row reduced system is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						1x & + & 0y & + & 0z & - & (6/5)w & - & 1v & = & 0 \\
+						0x & + & 1y & + & 0z & + & (1/5)w & + & 1v& = & 0 \\
+						0x & + & 0y & + & 1z & + & (2/5)w & + & 0v & = & 0 \\
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					<para>Therefore the solutions of the system are</para>
+					<para align="center"><latex>x=(6/5)w + v</latex>, &nbsp; <latex>y= -(1/5)w - v</latex>, &nbsp; <latex>z= -(2/5)w</latex>, &nbsp; <latex>w,v</latex> arbitrary in <latex>\RNr</latex>.</para>
+					<para>In other words, the solutions of the given system of linear equations consist of vectors in <latex>\RNr[5]</latex> of the form</para>
+					<para align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<latex>((6/5)w+v , -(1/5)w - v , -(2/5)w , w , v)\ =</latex></para>
+					<para align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <latex>w\cdot (6/5 , -1/5 , -2/5 , 1 , 0)\ +\ v\cdot (1,-1,0,0,1)</latex>,</para>
+					
+					<para>where <latex>w,v</latex> in <latex>\RNr</latex> are arbitrary.</para>
+				</answer>
+				<solution>
+					<para>We first fill in silent entries in the given system of 3 linear equations in 5 variables. Then we transform it into RREF using row operations as indicated.</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						2x & + & 4y & - & 1z & - & 2w & + & 2v & = & 0 \\
+						3x & + & 3y & + & 0z & - & 3w & + & 0v& = & 0 \\
+						-5x & + & 6y & - & 3z & + & 6w & + & 11v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						{\color{red} \times (1/3)} \\
+						\quad
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						2x & + & 4y & - & 1z & - & 2w & + & 2v & = & 0 \\
+						1x & + & 1y & + & 0z & - & 1w & + & 0v& = & 0 \\
+						-5x & + & 6y & - & 3z & + & 6w & + & 11v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						{\color{red} R_2} \\
+						{\color{red} R_1} \\
+						\quad
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						1x & + & 1y & + & 0z & - & 1w & + & 0v& = & 0 \\
+						2x & + & 4y & - & 1z & - & 2w & + & 2v & = & 0 \\
+						-5x & + & 6y & - & 3z & + & 6w & + & 11v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						{\color{red} - 2 R_1} \\
+						{\color{red} + 5R_1}
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						1x & + & 1y & + & 0z & - & 1w & + & 0v& = & 0 \\
+						0x & + & 2y & - & 1z & + & 0w & + & 2v & = & 0 \\
+						0x & + & 11y & - & 3z & + & 1w & + & 11v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						\quad \\
+						{\color{red} - 5R_2}
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						1x & + & 1y & + & 0z & - & 1w & + & 0v& = & 0 \\
+						0x & + & 2y & - & 1z & + & 0w & + & 2v & = & 0 \\
+						0x & + & 1y & + & 2z & + & 1w & + & 1v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						{\color{red} R_3} \\
+						{\color{red} R_2}
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						1x & + & 1y & + & 0z & - & 1w & + & 0v& = & 0 \\
+						0x & + & 1y & + & 2z & + & 1w & + & 1v & = & 0 \\
+						0x & + & 2y & - & 1z & + & 0w & + & 2v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						{\color{red} - R_2} \\
+						\quad \\
+						{\color{red} - 2R_2}
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						1x & + & 0y & - & 2z & - & 2w & - & 1v& = & 0 \\
+						0x & + & 1y & + & 2z & + & 1w & + & 1v & = & 0 \\
+						0x & + & 0y & - & 5z & - & 2w & + & 0v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						\quad \\
+						{\color{red} \times (-1/5)}
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						1x & + & 0y & - & 2z & - & 2w & - & 1v& = & 0 \\
+						0x & + & 1y & + & 2z & + & 1w & + & 1v & = & 0 \\
+						0x & + & 0y & + & 1z & + & (2/5)w & + & 0v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						{\color{red} + 2 R_3} \\
+						{\color{red} - 2 R_3} \\
+						\quad
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						1x & + & 0y & - & 2z & - & 2w & - & 1v& = & 0 \\
+						0x & + & 1y & + & 2z & + & 1w & + & 1v & = & 0 \\
+						0x & + & 0y & + & 1z & + & (2/5)w & + & 0v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						{\color{red} + 2 R_3} \\
+						{\color{red} - 2 R_3} \\
+						\quad
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+						\begin{array}{rcrcrcrcrrc}
+						1x & + & 0y & + & 0z & - & (6/5)w & - & 1v & = & 0 \\
+						0x & + & 1y & + & 0z & + & (1/5)w & + & 1v& = & 0 \\
+						0x & + & 0y & + & 1z & + & (2/5)w & + & 0v & = & 0 \\
+						\end{array}
+						\begin{array}{r}
+						\quad \\
+						\quad \\
+						\quad
+						\end{array}
+						]]>
+						</latex>
+					</math.display>
+					
+					<para>The last system is in RREF. It is equivalent to the original system. – We now read off its solutions:</para>
+					<para align="center"><latex>x=(6/5)w + v</latex>, &nbsp; <latex>y= -(1/5)w - v</latex>, &nbsp; <latex>z= -(2/5)w</latex>, &nbsp; <latex>w,v</latex> arbitrary in <latex>\RNr</latex>.</para>
+					<para>In other words, the solutions of the given system of linear equations consist of vectors in <latex>\RNr[5]</latex> of the form</para>
+					<para align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<latex>((6/5)w+v , -(1/5)w - v , -(2/5)w , w , v)\ =</latex></para>
+					<para align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <latex>w\cdot (6/5 , -1/5 , -2/5 , 1 , 0)\ +\ v\cdot (1,-1,0,0,1)</latex>,</para>
+					
+					<para>where <latex>w,v</latex> in <latex>\RNr</latex> are arbitrary.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

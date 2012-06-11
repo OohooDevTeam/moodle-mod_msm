@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_PointsCoordinates">
+	<title>Points and Coordinates: Exercises</title>
+	<xi:include href="CornersSquareR2_Exrcs.xml"/>
+	<xi:include href="CornersCubeR3_Exrcs.xml"/>
+	<xi:include href="HouseR3_Exrcs.xml"/>
+</exercise.pack>

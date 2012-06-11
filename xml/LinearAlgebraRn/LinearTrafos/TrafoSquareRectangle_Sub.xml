@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illstrt_TrafoSquareRectangle">
+	<title>Transformation of a Square into a Rectangle</title>
+	<sub.page.body>
+		<block>
+			<para>The picture below shows a square (left) and then the result of transforming it into a rectangle.</para>
+			
+			<figure>
+				<img src="ims/Trafo_SquareRectangle.png"></img>
+			</figure>
+			
+			<para>This transformation acts on the square by compressing it a bit vertically and stretching it horizontally. In doing so it transforms lines into lines. We will see that it is a linear transformation.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

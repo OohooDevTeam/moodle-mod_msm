@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_MatrixOperations-TrueFalse"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Matrix Operations: Exercises</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+            <para>
+               <para.body>Let <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>, <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math>, and <math>
+                     <latex>\Mtrx{C}</latex>
+                  </math> be matrices of size <math>
+                     <latex>(3,3)</latex>
+                  </math>. Indicate whether the following statements are always true. – Justify each answer.</para.body>
+            </para>
+         </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}(B+C) = \Mtrx{A}\Mtrx{B} + \Mtrx{A}\Mtrx{C}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>This statement is always true.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This statement is always true. – Reason: matrix multiplication distributes over matrix addition.</para.body>
+                  </para>
+               </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}\cdot \IdMtrx[4] = \Mtrx{A}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is false.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This statement is false. – Reason: the product of the <math>
+                           <latex>(3,3)</latex>
+                        </math>-matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> by the <math>
+                           <latex>(4,4)</latex>
+                        </math>-matrix <math>
+                           <latex>\IdMtrx[4]</latex>
+                        </math> is not defined.</para.body>
+                  </para>
+               </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}(\Mtrx{B}\Mtrx{C}) = (\Mtrx{A} \Mtrx{B})\Mtrx{C}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes! - This statement is always true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Recall the rules for matrix multiplication.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This statement is true. – Reason: this follows from the associative law of matrix multiplication.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}^2 \Mtrx{A}^3 = \Mtrx{A}^6</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is not always true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>This statement is not always true. – Reason: <math>
+                           <latex>\Mtrx{A}^2\Mtrx{A}^3 = (\Mtrx{A} \Mtrx{A}) (\Mtrx{A} \Mtrx{A} \Mtrx{A}) = \Mtrx{A}^5</latex>
+                        </math>. For example when <math>
+                           <latex>\Mtrx{A} = 2\cdot \IdMtrx[3]</latex>
+                        </math>, we find</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Mtrx{A}^6 = 64\cdot \IdMtrx[3] \neq 32\cdot \IdMtrx[3] = \Mtrx{A}^5</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore this statement is not always true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(\Mtrx{A} - \Mtrx{B})(\Mtrx{A} + \Mtrx{B}) = \Mtrx{A}^2 - \Mtrx{B}^2</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is not always true!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Expand the brackets using the properties of matrix multiplication.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We expand the brackets using the distributivity law of matrix multiplication repeatedly:</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A} - \Mtrx{B})(\Mtrx{A} + \Mtrx{B})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}(\Mtrx{A} + \Mtrx{B})\ -\ \Mtrx{B}(\Mtrx{A} + \Mtrx{B})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^2 + \Mtrx{A}\Mtrx{B} - \Mtrx{B}\Mtrx{A} - \Mtrx{B}^2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>If <math>
+                           <latex>\Mtrx{A}\Mtrx{B}</latex>
+                        </math> were always equal to <math>
+                           <latex>\Mtrx{B}\Mtrx{A}</latex>
+                        </math>, we could cancel the terms in the middle and arrive at the proposed ‘identity’. We know, however, that <math>
+                           <latex>\Mtrx{A}\Mtrx{B}</latex>
+                        </math> can be distinct from <math>
+                           <latex>\Mtrx{B}\Mtrx{A}</latex>
+                        </math>. So there is no reason why the proposed ‘identity’ should hold. In fact, there are choices of <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> and <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> where it is false. For example, let</para.body>
+                  </para>
+					
+					             <math.display>
+						               <latex>
+							
+							A := 
+							\left[
+							\begin{array}{rrr}
+							1 &amp; -1 &amp; -1 \\
+							1 &amp; 1 &amp; -1 \\
+							0 &amp; 0 &amp; 1
+							\end{array}
+							\right]\qquad \text{and} \qquad
+							B :=
+							\left[
+							\begin{array}{rrr}
+							2 &amp; 0 &amp; 1 \\
+							0 &amp; -1 &amp; 0 \\
+							1 &amp; 1 &amp; 1
+							\end{array}
+							\right]
+							
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>Then</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A} - \Mtrx{B})(\Mtrx{A}+\Mtrx{B})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[
+							\begin{array}{rrr}
+							-1 &amp; -1 &amp; -2 \\
+							1 &amp; 2 &amp; -1 \\
+							-1 &amp; -1 &amp; -1 
+							\end{array}
+							\right]\cdot
+							\left[\begin{array}{rrr}
+							3 &amp; -1 &amp; 0 \\
+							1 &amp; 0 &amp; -1 \\
+							1 &amp; 1 &amp; 3
+							\end{array}
+							\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[
+							\begin{array}{rrr}
+							-4 &amp; 0 &amp; -2 \\
+							0 &amp; 2 &amp; 0 \\
+							-2 &amp; -2 &amp; -4
+							\end{array}
+							\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>On the other hand</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^2 - \Mtrx{B}^2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[
+							\begin{array}{rrr}
+							0 &amp; -2 &amp; -1 \\
+							2 &amp; 0 &amp; -3 \\
+							0 &amp; 0 &amp; 1
+							\end{array}\right] -
+							\left[
+							\begin{array}{rrr}
+							5 &amp; 1 &amp; 4 \\
+							0 &amp; 1 &amp; 0 \\
+							4 &amp; 1 &amp; 5
+							\end{array}
+							\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+							\left[
+							\begin{array}{rrr}
+							-5 &amp; -3 &amp; -5 \\
+							2 &amp; -1 &amp; -3 \\
+							-4 &amp; -1 &amp; -4
+							\end{array}
+							\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>This example shows that the suggested matrix ‘identity’ is not always true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Whenever matrices <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> and <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> satisfy the identity <math>
+                        <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>
+                     </math>, then   <math>
+                        <latex>(\Mtrx{A}+\Mtrx{B})^2 = \Mtrx{A}^2 + 2\Mtrx{A}\Mtrx{B} + \Mtrx{B}^2</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This statement is always true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Expand the brackets using the distributivity law of matrix multiplication.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute, using the distributivity law of matrix multiplication</para.body>
+                  </para>
+					
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\Mtrx{A} + \Mtrx{B})^2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{A}^2 + \Mtrx{A}\Mtrx{B} + \Mtrx{B}\Mtrx{A} + \Mtrx{B}^2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>Now the proposed identity follows from the assumption that <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> and <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> are matrices for which <math>
+                           <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>
+                        </math>.</para.body>
+                  </para>
+					
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

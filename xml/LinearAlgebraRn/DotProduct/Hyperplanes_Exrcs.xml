@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Hyperplanes">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Hyperplanes: Exercises</title>
+	<quiz>
+		<question>
+			<para>Which of the following are true?</para>
+		</question>
+		<part>
+			<question>
+				<para>Every hyperspace is also a hyperplane.</para>
+			</question>
+			<choice>
+				<answer><para>True</para></answer>
+				<info>
+					<para>Correct! - A hyperspace is a hyperplane with a special property: It passes through the origin.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para>False</para></answer>
+				<info>
+					<para>Sorry! No! – Please review the definition of hyperspace and hyperplane</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>Every hyperplane is also a hyperspace.</para>
+			</question>
+			<choice>
+				<answer>
+					<para>True</para>
+				</answer>
+				<info>
+					<para>Sorry! No! – Please review the definition of hyperspace and hyperplane</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>False</para>
+				</answer>
+				<info>
+					<para>Correct! – There are lots of hyperplanes which do not pass through the origin, and such hyperplanes are not hyperspaces.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>A hyperspace is the same thing as a hyperplane.</para>
+			</question>
+			<choice>
+				<answer>
+					<para>True</para>
+				</answer>
+				<info>
+					<para>Sorry! No! – Please review the definition of hyperspace and hyperplane</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>False</para>
+				</answer>
+				<info>
+					<para>Correct! – There are lots of hyperplanes which do not pass through the origin, and such hyperplanes are not hyperspaces.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>A hyperplane is a 2-dimensional hyperspace. </para>
+			</question>
+			<choice>
+				<answer>
+					<para>True</para>
+				</answer>
+				<info>
+					<para>Sorry, no! – A hyperplane need not be two dimensional.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>False</para>
+				</answer>
+				<info>
+					<para>Correct! – A hyperplane need not be <latex>2</latex>-dimensional, nor need it pass through the origin (as a hyperspace must).</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>Every line in <latex>\RNr[2]</latex> is a hyperplane in <latex>\RNr[2]</latex>.</para>
+			</question>
+			<choice>
+				<answer>
+					<para>True</para>
+				</answer>
+				<info>
+					<para>Correct!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>False</para>
+				</answer>
+				<info>
+					<para>Sorry, no! – Please review the definition of a hyperplane, together with the corresponding examples.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>Every plane in <latex>\RNr[3]</latex> which passes through the origin is a hyperspace in <latex>\RNr[3]</latex>.</para>
+			</question>
+			<choice>
+				<answer>
+					<para>True</para>
+				</answer>
+				<info>
+					<para>Correct!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>False</para>
+				</answer>
+				<info>
+					<para>Sorry, no! – You really need to read the section on hyperspaces and hyperplanes from the beginning.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>A hyperplane in <latex>\RNr[n]</latex> is a hyperspace that is plane shaped.</para>
+			</question>
+			<choice>
+				<answer>
+					<para>True</para>
+				</answer>
+				<info>
+					<para>Sorry, no! – You really need to read the section on hyperspaces and hyperplanes from the beginning.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>False</para>
+				</answer>
+				<info>
+					<para>Correct!</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>Every hyperplane in  passes through the origin.</para>
+			</question>
+			<choice>
+				<answer>
+					<para>True</para>
+				</answer>
+				<info>
+					<para>Sorry, no! – You really need to read the section on hyperspaces and hyperplanes from the beginning.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>False</para>
+				</answer>
+				<info>
+					<para>Correct! – having to pass through the origin is a property required of a hyperspace, not of a hyperplane.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>Every hyperspace in <latex>\RNr[n]</latex> passes through the origin.</para>
+			</question>
+			<choice>
+				<answer>
+					<para>True</para>
+				</answer>
+				<info>
+					<para>Correct!</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>False</para>
+				</answer>
+				<info>
+					<para>Sorry, no! – You really need to read the section on hyperspaces and hyperplanes from the beginning.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>If you are in the space <latex>\RNr[n]</latex> and accelerate to warp speed, you travel through hyperspace.</para>
+			</question>
+			<choice>
+				<answer>
+					<para>True</para>
+				</answer>
+				<info>
+					<para>Star Trek lives! – But this question does not relate to anything that we’ve tried to teach you.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer>
+					<para>False</para>
+				</answer>
+				<info>
+					<para>Star Trek lives! – But this question does not relate to anything that we’ve tried to teach you.</para>
+				</info>
+			</choice>
+		</part>
+	</quiz>
+	<quiz>
+		<question>
+			<para>Write out answers to the following questions in your own words. Then compare with the relevant definitions in the section on hyperspaces and hyperplanes.</para>
+		</question>
+		<part>
+			<question>
+				<para>What is a hyperspace in <latex>\RNr[n]</latex>?</para>
+			</question>
+			<choice>
+				<answer>
+					<para>Hint!</para>
+				</answer>
+				<info>
+					<para>You need to refer to one of two possible equations which characterize a hyperspace, respectively a hyperplane</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>What is a hyperplane in <latex>\RNr[n]</latex>?</para>
+			</question>
+			<choice>
+				<answer>
+					<para>Hint</para>
+				</answer>
+				<info>
+					<para>You need to refer to one of two possible equations which characterize a hyperspace, respectively a hyperplane</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question>
+				<para>What is the difference between a hyperspace and a hyperplane in <latex>\RNr[n]</latex>?</para>
+			</question>
+			<choice>
+				<answer>
+					<para>Hint</para>
+				</answer>
+				<info>
+					<para>A hyperspace is required to pass through the origin, while a hyperplane can be freely positioned in space.</para>
+				</info>
+			</choice>
+		</part>
+	</quiz>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Which of the following equations in 3 variables determines a hyperspace of <latex>\RNr[3]</latex>?</para>
+		</problem>
+		<part>
+			<problem>
+				<para>
+					<latex>2x = 4y</latex>
+				</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solutions of this equation form a hyperspace in <latex>\RNr[3]</latex>.</para>
+				</answer>
+				<solution.hint>
+					<para>You need to see if you can transform this equation into one that has the general form of a hyperspace equation.</para>
+				</solution.hint>
+				<solution>
+					<para>The given equation is equivalent to</para>
+					<math.display>
+						<latex>2x - 4y + 0z = 0</latex>
+					</math.display>
+					<para>In this guise it matches exactly the general form of a hyperspace equation. In fact its solutions form the hyperspace in <latex>\RNr[3]</latex> which is perpendicular to <latex>\Vect{n} = (2,-4,0)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>
+					<latex>2x + 3y -2 = 0</latex>
+				</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solutions of this equation do not form a hyperspace in <latex>\RNr[3]</latex>.</para>
+				</answer>
+				<solution.hint>
+					<para>You need to try to transform this equation into one that has the general form of hyperspace equation.</para>
+				</solution.hint>
+				<solution>
+					<para>The standard form of the given equation is</para>
+					<math.display>
+						<latex>2x + 3y + 0z = 2</latex>
+					</math.display>
+					<para>Therefore the solutions of this equation form a hyperplane in <latex>\RNr[3]</latex>. This hyperplane is not a hyperspace as <latex>(x,y,z) = (0,0,0)</latex> is not a solution of the given equation.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>
+					<latex>3x + y = z</latex>
+				</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solutions of this equation form a hyperspace of <latex>\RNr[3]</latex>
+					</para>
+				</answer>
+				<solution.hint>
+					<para>You need to try to transform this equation into one that has the general form of hyperspace equation.</para>
+				</solution.hint>
+				<solution>
+					<para>The given equation has the standard form</para>
+					<math.display>
+						<latex>3x + y - z = 0</latex>
+					</math.display>
+					<para>This is the standard form of a hyperspace in <latex>\RNr[3]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>
+					<latex>x - 2y - z + 4 = 0</latex>
+				</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solutions of this equation do not form a hyperspace in <latex>\RNr[3]</latex>.</para>
+				</answer>
+				<solution.hint>
+					<para>You need to try to transform this equation into one that has the general form of a hyperspace equation.</para>
+				</solution.hint>
+				<solution>
+					<para>The given equation has the standard form</para>
+					<math.display>
+						<latex>x - 2y - z = -4</latex>
+					</math.display>
+					<para>This is the standard form of a hyperplane in <latex>\RNr[3]</latex>. However, this hyperplane is not a hyperspace as <latex>(x,y,z) = (0,0,0)</latex> is not a solution of the given equation.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the hyperplanes below find at least 3 points which lie on it, as well as 3 points which do not lie on it.</para>
+		</problem>
+		<part>
+			<problem><para><latex>H</latex> consisting of all solutions of <latex>3x - 2y + z = 1</latex></para></problem>
+			<approach>
+				<solution>
+					<para>Amongst the points which lie on <latex>H</latex> we find the following by inspection.</para>
+					<ol>
+						<li><para><latex>(1,1,0)</latex> lies on <latex>H</latex> because <latex>3\cdot 1 - 2\cdot 1 + 0=1</latex> is true.</para></li>
+						<li><para><latex>(0,-1/2,0)</latex> lies on <latex>H</latex> because <latex>3\cdot 0 - 2\cdot (-1/2) + 0=1</latex> is true.</para></li>
+						<li><para><latex>(0,0,1)</latex> lies on <latex>H</latex> because <latex>3\cdot 0 - 2\cdot 0 + 1=1</latex> is true.</para></li>
+					</ol>
+					<para>Amongst the points which do not lie on <latex>H</latex> we find the following by inspection.</para>
+					<ol>
+						<li><para><latex>(1,0,0)</latex> does not lie on <latex>H</latex> because <latex>3\cdot 1 - 2\cdot 0 + 0=1</latex> is false.</para></li>
+						<li><para><latex>(0,1,0)</latex> does not lie on <latex>H</latex> because <latex>3\cdot 0 - 2\cdot 1 + 0=1</latex> is false.</para></li>
+						<li><para><latex>(0,0,6)</latex> does not lie on <latex>H</latex> because <latex>3\cdot 0 - 2\cdot 0 + 6=1</latex> is false.</para></li>
+					</ol>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>S</latex> consisting of all solutions of <latex>-w + 2x + 6y - 2z = 4</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>T</latex> consisting of all solutions of <latex>2x - y = 1</latex></para></problem>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find an equation of the hyperspace in <latex>\RNr[2]</latex> which is perpendicular to the vector <latex>\Vect{n} = (8,-3)</latex>
+			</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>An equation whose solutions form the specified hyperspace is</para>
+				<math.display>
+					<latex>8x - 3y = 0</latex>
+				</math.display>
+			</answer>
+			<solution.hint>
+				<para>The required equation is of the form</para>
+				<math.display>
+					<latex>ax + by = 0</latex>
+				</math.display>
+			</solution.hint>
+			<solution>
+				<para>The vector <latex>\Vect{n} = (8,-3)</latex> is a normal vector of the hyperspace. So an equation whose solution set is the specified hyperspace is given by</para>
+				<math.display>
+					<latex>0 = \DotPr{\Vect{n}}{\Vect{x}} = \DotPr{ (8,-3) }{ (x,y) } = 8x - 3y</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find an equation of the hyperplane in <latex>\RNr[2]</latex> which is normal to the vector <latex>\Vect{n} = (8,-3)</latex> and which passes through the point <latex>Q (11,-2)</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>One equation of the specified line is</para>
+				<math.display>
+					<latex>8x - 3y = 94</latex>
+				</math.display>
+			</answer>
+			<solution.hint>
+				<para>The required equation is of the form</para>
+				<math.display>
+					<latex>ax + by = c</latex>
+				</math.display>
+			</solution.hint>
+			<solution>
+				<para>The vector <latex>\Vect{n} = (8,-3)</latex> is a normal vector of the hyperplane. Now evaluate</para>
+				<math.display>
+					<latex>\DotPr{ \left( (x,y) - (11,-2) \right) }{ (8,-3) } = 0</latex>
+				</math.display>
+				<para>to find the solution</para>
+				<math.display>
+					<latex>8x - 3y = 94</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find an equation of the hyperplane in <latex>\RNr[2]</latex> which passes through the points <latex>P(-1,1)</latex> and  <latex>Q(3,-1)</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>A hyperplane in <latex>\RNr[2]</latex> is a line, and one equation whose solutions form the specified line is</para>
+				<math.display>
+					<latex>x + 2y = 1</latex>
+				</math.display>
+			</answer>
+			<solution.hint>
+				<para>The required equation is of the form</para>
+				<math.display>
+					<latex>ax + by = c</latex>
+				</math.display>
+			</solution.hint>
+			<solution>
+				<para>A hyperplane in <latex>\RNr[2]</latex> is just a line, and such a line consists of the solution set of an equation of the form</para>
+				<math.display>
+					<latex>ax + by = c</latex>
+				</math.display>
+				<para>Therefore our first objective is to find a normal vector <latex>(a,b)</latex> to the given line <latex>L</latex>. We know that the vector <latex>(P,Q) = (4,-2)</latex> has the direction of the given line. So <latex>\Vect{n} = (2,4)</latex> is perpendicular to <latex>L</latex>. Moreover, <latex>P</latex> is a point on <latex>L</latex>, and so <latex>L</latex> is the solution set of the equation</para>
+				<table>
+					<row>
+						<cell align="right">
+							<para>
+								<latex>\DotPr{ \left( (x,y) - (-1,1)\right) }{ (2,4) }</latex>
+							</para>
+						</cell>
+						<cell align="center">
+							<para>
+								<latex>=</latex>
+							</para>
+						</cell>
+						<cell align="left">
+							<para>
+								<latex>0</latex>
+							</para>
+						</cell>
+					</row>
+					<row>
+						<cell align="right">
+							<para>
+								<latex>2x + 4y</latex>
+							</para>
+						</cell>
+						<cell align="center">
+							<para>
+								<latex>=</latex>
+							</para>
+						</cell>
+						<cell align="left">
+							<para>
+								<latex>-2 + 4</latex>
+							</para>
+						</cell>
+					</row>
+					<row>
+						<cell align="right">
+							<para>
+								<latex>x + 2y</latex>
+							</para>
+						</cell>
+						<cell align="center">
+							<para>
+								<latex>=</latex>
+							</para>
+						</cell>
+						<cell align="left">
+							<para>
+								<latex>1</latex>
+							</para>
+						</cell>
+					</row>
+				</table>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find an equation of the hyperspace in <latex>\RNr[3]</latex> with normal vector <latex>\Vect{n} = (4,1,-4)</latex>. </para>
+		</problem>
+		<approach>
+			<answer>
+				<para>One equation whose solutions form the specified hyperspace is</para>
+				<math.display>
+					<latex>4x + y -4z = 0</latex>
+				</math.display>
+			</answer>
+			<solution.hint>
+				<para>The required equation is of the form</para>
+				<math.display>
+					<latex>ax + by + cz = 0</latex>
+				</math.display>
+				<para>where <latex>(a,b,c)</latex> is a normal vector of the specified hyperspace</para>
+			</solution.hint>
+			<solution>
+				<para>A normal vector of this hyperspace is given to us: <latex>\Vect{n} = (4,1,-4)</latex>. Therefore the equation below has the required solution set</para>
+				<math.display>
+					<latex>0 = \DotPr{ \Vect{n} }{ \Vect{x} } = \DotPr{ (4,1,-4) }{ (x,y,z) } = 4x + y - 4z</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find an equation of the hyperspace in <latex>\RNr[3]</latex> which is normal to the vector <latex>\Vect{n} = (-2,-1,5)</latex>, and which passes through the point <latex>Q(1,-1,2)</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>One equation whose solutions form the specified hyperplane is</para>
+				<math.display>
+					<latex>2x + y - 5z = -9</latex>
+				</math.display>
+			</answer>
+			<solution.hint>
+				<para>The required equation is of the form</para>
+				<math.display>
+					<latex>ax + by + cz = c</latex>
+				</math.display>
+				<para>where <latex>(a,b,c)</latex> is anormal vector of the hyperplane.</para>
+			</solution.hint>
+			<solution>
+				<para>We use the equation of a hyperplane   <latex>\DotPr{ (\Vect{x} - \Vect{q}) }{ \Vect{n} } = 0</latex>, where</para>
+				<ul>
+					<li>
+						<para>
+							<latex>\Vect{x} = (x,y,z)</latex> is the position vector of an arbitrary point of <latex>\RNr[3]</latex>
+						</para>
+					</li>
+					<li>
+						<para>
+							<latex>\Vect{q} = (1,-1,2)</latex> is the position vector of <latex>Q</latex>
+						</para>
+					</li>
+					<li>
+						<para>
+							<latex>\Vect{n} = (-2,-1,5)</latex> is a normal vector to the plane</para>
+					</li>
+				</ul>
+				<para>Substituting these values for the variables in the hyperplane formula, we obtain</para>
+				<table align="center">
+					<row>
+						<cell align="right">
+							<para>
+								<latex>\DotPr{ (x-1,y-1,z-2) }{(-2,-1,5) }</latex>
+							</para>
+						</cell>
+						<cell align="center">
+							<para>
+								<latex>=</latex>
+							</para>
+						</cell>
+						<cell align="left">
+							<para>
+								<latex>0</latex>
+							</para>
+						</cell>
+					</row>
+					<row>
+						<cell align="right">
+							<para>
+								<latex>-2(x-1) - (y+1) +5(z-2)</latex>
+							</para>
+						</cell>
+						<cell align="center">
+							<para>
+								<latex>=</latex>
+							</para>
+						</cell>
+						<cell align="left">
+							<para>
+								<latex>0</latex>
+							</para>
+						</cell>
+					</row>
+					<row>
+						<cell align="right">
+							<para>
+								<latex>2x + y -5z + 9</latex>
+							</para>
+						</cell>
+						<cell align="center">
+							<para>
+								<latex>=</latex>
+							</para>
+						</cell>
+						<cell align="left">
+							<para>
+								<latex>0</latex>
+							</para>
+						</cell>
+					</row>
+				</table>
+				<para>Therefore an equation whose solutions form the given hyperplane is</para>
+				<math.display>
+					<latex>2x + y - 5z = -9</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find an equation of the hyperplane in <latex>\RNr[3]</latex> which passes through the point <latex>Q(3,4,-5)</latex> and which is parallel to the plane</para>
+			<math.display>
+				<latex>3x - 4y + 6z = 2</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<answer>
+				<para>One equation whose solutions form the specified hyperplane is</para>
+				<math.display>
+					<latex>3x - 4y + tz = -37</latex>
+				</math.display>
+			</answer>
+			<solution.hint>
+				<para>The required equation is of the form</para>
+				<math.display>
+					<latex>ax + by + cz = e</latex>
+				</math.display>
+				<para>where <latex>(a,b,c)</latex> is a normal vector of the hyperplane.</para>
+			</solution.hint>
+			<solution>
+				<para>Since the two planes are parallel, they have common normal vectors, for example <latex>\Vect{n} = (3,-4,6)</latex>. Moreover, the hyperplane <latex>H</latex> passes through <latex>Q(3,4,-5)</latex>. So it is the solution set of the equation.</para>
+				<computation>
+					<left>\DotPr{ \left( (x,y,z) - (3,4,-5)\right) }{ (3,-4,6) }</left>
+					<center>=</center>
+					<right>0</right>
+					<left>3x -4y +6z + 37</left>
+					<center>=</center>
+					<right>0</right>
+					<left>3x -4y +6z</left>
+					<center>=</center>
+					<right>-37</right>
+				</computation>
+				<para>Therefore an equation whose solution set is <latex>H</latex> is given by</para>
+				<computation>
+					<left>3x -4y +6z</left>
+					<center>=</center>
+					<right>-37</right>
+				</computation>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Find at least three vectors which are perpendicular to the hyperplane <latex>H</latex> in <latex>\RNr[3]</latex> consisting of all solutions of the equation</para>
+			<math.display>
+				<latex>3x + y + 7z = 4</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<solution>
+				<para>One normal vector to <latex>H</latex> is <latex>\Vect{v} = (3,1,7)</latex>. Therefore,</para>
+				<math.display>
+					<latex>t\cdot \Vect{v} = (3t,t,7t)</latex>
+				</math.display>
+				<para>is also a normal vector to <latex>H</latex>, so long as <latex>t\neq 0</latex>. Therefore, examples of normal vectors to <latex>H</latex> include</para>
+				<ul>
+					<li><para><latex>1\cdot \Vect{v} = (3,1,7)</latex></para></li>
+					<li><para><latex>2\cdot \Vect{v} = (6,2,14)</latex></para></li>
+					<li><para><latex>-5\cdot \Vect{v} = (-15,-5,-35)</latex></para></li>
+				</ul>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Find two vectors of length <latex>1</latex> which are perpendicular to the hyperplane <latex>H</latex> in <latex>\RNr[3]</latex> consisting of all solutions of the equation</para>
+			<math.display>
+				<latex>4x - 2y + 4z = 12</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<solution>
+				<para>One vector perpendicular to <latex>H</latex> is <latex>\Vect{v} = (4,-2,4)</latex>. Therefore the two vectors of length <latex>1</latex> which are perpendicular to <latex>H</latex> are</para>
+				<math.display>
+					<latex>\Vect{n} := \dfrac{\Vect{v}}{ \Abs{\Vect{v}} } = \dfrac{1}{6}\cdot (4,-2,4)</latex>
+				</math.display>
+				<para>and</para>
+				<math.display>
+					<latex>-\Vect{n} = -\dfrac{1}{6}\cdot (4,-2,4)</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>From the following equations for hyperplanes in <latex>\RNr[3]</latex> identify parallel pairs and identical pairs.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rrcl}
+\text{(I)}\quad & 4x - y + 3z & = & -1 \\
+\text{(II)}\quad & 2x + 2y -z & = 1 \\
+\text{(III)}\quad & 4x + 4y -2z & = 0 \\
+\text{(IV)}\quad & -4x + y -4z & = & 1 \\
+\text{(V)}\quad & 4x + 4y -2z & = 2 \\
+\text{(VI)}\quad & -4x + y -3z & = & 1 \\
+\text{(VII)}\quad & -4x + y -3z & = & 6 \\
+\text{(VIII)}\quad & 10x + 10y -5z & = 3
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>Look first for equations whose corresponding hyperplanes are parallel. Two hyperplanes are parallel if their normal vectors are parallel.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>Amongst equations for parallel hyperplanes look for equations which describe the same hyperplane. The solutions of equations</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rcl}
+a_1x_1 + \cdots + a_nx_n & = & c \\
+b_1x_1 + \cdots + b_nx_n & = & d
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+				<para>form equal hyperplanes exactly when their equations are equivalent, that is when the vectors <latex>(a_1,\dots ,a_n,c)</latex> and <latex>(b_1,\dots ,b_n,d)</latex> are parallel.</para>
+			</solution.hint>
+			<solution>
+				<para>To find pairs of equations whose corresponding hyperplanes are parallel, we look for pairs of equations with parallel normal vectors.</para>
+				<para>These normal vectors are</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{rl}
+\text{(I)}\quad & (4,-1,3) \\
+\text{(II)}\quad & (2,2,-1) \\
+\text{(III)}\quad & (4,4,-2) \\
+\text{(IV)}\quad & (-4,1,-4) \\
+\text{(V)}\quad & (4,4,-2) \\
+\text{(VI)}\quad & (-4,1,-3) \\
+\text{(VII)}\quad & (-4,1,-3) \\
+\text{(VIII)}\quad & (10,10,-5)
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+				<para>We see that the following vectors are parallel:</para>
+				<ol>
+					<li><para>(I), (VI) and (VII)</para></li>
+					<li><para>(II), (III), (V), and (VIII)</para></li>
+				</ol>
+				<para>Now we look for equations whose solutions form equal hyperplanes amongst (I), (VI) and (VII), and amongst  (II), (III), (V), and (VIII).</para>
+				<ol>
+					<li><para>We find that <latex>(VI) = (-1)\cdot (I)</latex>. So these two equations describe the same hyperplane, and this hyperplane is parallel, but distinct, from the one given by (VII).</para></li>
+					<li><para>We find that <latex>(V) = 2\cdot (II)</latex>. So these two equations describe the same hyperplane, and all the other hyperplanes in this collection are pairwise distinct.</para></li>
+				</ol>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Show that whenever two equations describing a hyperplane are equivalent, the two hyperplanes are parallel.</para>
+		</problem>
+	</exercise>
+</exercise.pack>

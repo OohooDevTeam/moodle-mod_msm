@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_MultiplyVectorByScalar">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Multiplying a Vector by a Scalar: Examples</title>
+	<showme>
+		<statement>
+			<para>To multiply a vector <latex>\Vect{x}</latex> by a scalar <latex>t</latex>, we multiply each coordinate of <latex>\Vect{x}</latex> by <latex>t</latex>. For example, we find the scalar product of <latex>\Vect{x}=(-2,1)</latex> by <latex>t=2</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<math.display>
+				<latex>t\cdot \Vect{x}\ =\ 2\cdot (-2,1)\ =\ (-4,2).</latex>
+			</math.display>
+		</answer>
+	</showme>
+	<showme>
+		<statement>
+			<para>In <latex>\RNr[3]</latex> find the scalar product of <latex>\Vect{x}=(3,2,-1)</latex> by <latex>t=-\frac{3}{2}</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<math.display>
+				<latex>t\cdot \Vect{x}\ =\ -\frac{3}{2}\cdot (3,2,-1)\ =\ \left(-\frac{9}{2},-3,\frac{3}{2}\right).</latex>
+			</math.display>
+		</answer>
+	</showme>
+	<showme>
+		<statement>
+			<para>In <latex>\RNr[3]</latex> find the scalar product of <latex>\Vect{x}=(-1,3,0,4)</latex> and <latex>t=6</latex>.</para>
+		</statement>
+		<answer>
+			<math.display>
+				<latex>t\cdot \Vect{x}\ =\ 6\cdot (-1,3,0,4)\ =\ (-6,18,0,24).</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_CramerRule">
+	<headers>
+		<full>Cramer&rsquo;s Rule</full>
+		<toc>Cramer&rsquo;s Rule</toc>
+		<short>Cramer&rsquo;s Rule</short>
+	</headers>
+	
+	<intro>
+		<para>Consider a system of <latex>n</latex> linear equations in <latex>n</latex> unknowns whose coefficient matrix is invertible. We know then that this system of linear has exactly one solution. Here we use determinants to build a formula which computes this unique solution.</para>
+	</intro>
+	
+	<section.body>
+		<xi:include href="CramerRule_Thm.xml"/>
+		<para>A nice application of Cramer&rsquo;s rule is the following theorem. It provides a formula for computing the inverse of an invertible matrix.</para>
+		<xi:include href="MatrixInverseFormula_Thm.xml"/>
+		<para>A special case of the formula for the inverse of a matrix is the following simple formula for the inverse of an invertible <latex>(2,2)</latex>-matrix.</para>
+		<xi:include href="MatrixInverseFormula22_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_CramerRule"/>
+	</studymaterials>
+</section>

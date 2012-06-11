@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_RotationOrthogonal">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Rotations are Distance Preserving</title>
+	<caption>Rotations are Distance Preserving</caption>
+	<showme>
+		<statement>
+			<para>We say that a linear transformation <latex>L</latex> preserves the distance between two points <latex>\Vect{a}</latex>  and <latex>\Vect{b}</latex> if the distance from <latex>\Vect{a}</latex> to <latex>\Vect{b}</latex> is equal to the distance from <latex>L(\Vect{a})</latex> to <latex>L(\Vect{b})</latex>. For example, a rotation of the plane about the origin preserves the distance between any two points.</para>
+			
+			
+			<figure>
+				<img src="ims/RotationOrthogonal.png"></img><!-- svg available -->
+			</figure>
+			
+		</statement>
+	</showme>
+</showme.pack>

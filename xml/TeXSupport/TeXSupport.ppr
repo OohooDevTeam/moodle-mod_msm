@@ -1,0 +1,55 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.HideOutput=0
+Compilator.LogType=0
+DefaultDir=X:\XML\Contents\TeXSupport
+DefaultCPIndex=0
+LogtoEnd=0
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+DocumentRoot=X:\XML\Contents\TeXSupport
+[Project tree]
+TeXSupport
+	+Folder
+		AlgebraInXML.tex
+		CategoriesInXML.tex
+		ColorInXML.tex
+		GenericTeXSupport.xml
+		..\LinearAlgebraRn\LinearAlgebraTeXSupport.xml
+		..\Cobordism\CobordismTeXSupport.xml
+		LaTeXInXML.tex
+		LinearAlgebraInXML.tex
+		RCCalculusInXML.tex
+		SpacesInXML.tex
+		XYPicCommands.tex
+[Open project files]
+0=..\..\..\Felynx\Calculus\DMps\DffrntblFnctns.tex
+1=RCCalculusInXML.tex
+2=CalculusInXML.tex
+3=LaTeXInXML.tex
+4=LinearAlgebraInXML.tex
+5=..\xsl.txt
+[Selected Project Files]
+Main=
+Selected=..\xsl.txt
+[..\..\..\Felynx\Calculus\DMps\DffrntblFnctns.tex]
+TopLine=385
+Caret=98,421
+[RCCalculusInXML.tex]
+TopLine=1
+Caret=1,1
+[CalculusInXML.tex]
+TopLine=1
+Caret=32,1
+[LaTeXInXML.tex]
+TopLine=1
+Caret=1,1
+[LinearAlgebraInXML.tex]
+TopLine=1
+Caret=1,1
+[..\xsl.txt]
+TopLine=1
+Caret=27,55

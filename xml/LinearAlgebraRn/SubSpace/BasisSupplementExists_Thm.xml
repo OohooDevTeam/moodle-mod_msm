@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_BasisSupplementExists">
+	<caption>Complementing a linearly independent set to a basis</caption>
+	<statement>
+		<para>Given a subvector space <latex>V</latex> of <latex>\RNr[n]</latex>, together with a linearly independent subset <latex>\EuScript{A}</latex> of <latex>V</latex>, there is a subset <latex>\EuScript{C}</latex> of <latex>V</latex> such that <latex>\EuScript{B}:=\EuScript{A} \cup \EuScript{C}</latex> is a basis of <latex>V</latex>.</para>
+	</statement>
+	<proof>
+		<para>If <latex>V=\span( \EuScript{A} )</latex>, we set <latex>\EuScript{C}:=\emptyset</latex>, and we are done . If <latex>\span( \EuScript{A} ) \neq V</latex>, there are vectors in <latex>V</latex>  which do not belong to <latex>\span(\EuScript{A})</latex>. Pick any one such, call it <latex>\Vect{c}_1</latex>, and form <latex>\EuScript{C}_1:=\Set{ \Vect{c}_1 }</latex>.</para>
+		<para>We know that <latex>\EuScript{B}_1:= \EuScript{A} \cup \EuScript{C}_1</latex> is 
+			<subordinate>
+				<hot>linearly independent</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+					<para>Look up this fact.</para>
+				</crossref>
+			</subordinate>.
+			If <latex>\span( \EuScript{B}_1 )=V</latex>, then <latex>\EuScript{B}:=\EuScript{B}_1</latex> is a basis for <latex>V</latex>. If <latex>\span( \EuScript{B}_1 ) \neq V</latex>, there are vectors in <latex>V</latex>  which do not belong to <latex>\span(\EuScript{B}_1)</latex>. Pick any one such, call it <latex>\Vect{c}_2</latex>, and form <latex>\EuScript{B}_2:=\EuScript{B}_1\cup \Set{ \Vect{c}_2 }</latex>; etc.</para>
+		<para>The crucial fact now is that, for some <latex>k\leq n</latex>, we must have <latex>\span( \EuScript{B}_k) = V</latex>. To see this, we argue by contradiction: Suppose <latex><![CDATA[ n< k ]]></latex> and <latex>\EuScript{B}_k</latex> is a linearly independent subset of <latex>V</latex>. Then <latex>\EuScript{B}_k</latex> is, in particular, a linearly independent subset of <latex>\RNr[n]</latex>; a contradiction to the fact that any linearly independent subset of <latex>\RNr[n]</latex> 
+			<subordinate>
+				<hot>has at most <latex>n</latex> vectors</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
+					<para>Look up this fact.</para>
+				</crossref>
+			</subordinate>. Thus the process described above stops after <latex>k\leq n</latex> steps, in which case <latex>\EuScript{B}:= \EuScript{B}_k=\EuScript{A} \cup \EuScript{C}_k</latex> is a basis of <latex>V</latex>, and <latex>\EuScript{B}</latex> contains at most <latex>n</latex> vectors.</para>
+	</proof>
+</theorem>

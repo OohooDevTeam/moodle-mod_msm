@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book
+	http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_ContinuousFunctions">
+	<headers>
+		<full>Continuous Functions</full>
+		<toc>Continuous Functions</toc>
+		<short>Continuous Functions</short>
+	</headers>
+	<intro>
+		<para>Here we introduce the &lsquo;epsilon-delta&rsquo; definition of continuity. It goes back to Bernard Bolzano in 1817. We establish the continuity of certain key functions, namely constant functions, inclusion functions, and the inverse function <latex>p(x)=1/x</latex>. In subsequent sections these form the inputs into operations which generate new continuous functions from given ones.</para>
+		<para>Then we show that continuity may alternately be characterized by the limit condition <latex>\lim_{n\to \infty}f(t_n)=f(x)</latex> whenever <latex>\lim_{n\to\infty} t_n = x</latex>.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_EpsilonDeltaContinuity">
+			<caption>Epsilon-delta approach to continuity</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_EpsilonDeltaContinuous"/>
+				<info>
+					<caption>Explanation</caption>
+					<para>A detailed explanation of what this <latex>\varepsilon</latex>-<latex>\delta</latex> definition means.</para>
+				</info>
+			</associate>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_EpsilonDeltaDisContinuous"/>
+				<info>
+					<caption>Explanation</caption>
+					<para>Here we explain how the <latex>\varepsilon</latex>-<latex>\delta</latex> definition of continuity detects and rejects functions which make one or several jumps.</para>
+				</info>
+			</associate>
+			<para>A function <latex>f\from D\to \RNr</latex>, <latex>D\subseteq \RNr</latex>, is continuous at <latex>x\in D</latex> if, for every <latex><![CDATA[ \varepsilon > 0 ]]></latex>, there exists <latex><![CDATA[ \delta > 0 ]]></latex>, such that for all <latex>t\in D</latex>,
+				<index.glossary>
+					<term>continuous</term><term>at a point</term>
+					<info><para>Here continuity at a point is defined via the (<latex>\varepsilon</latex>-<latex>\delta</latex>)-condition</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>function</term><term>continuous at a point</term>
+					<info><para>Here continuity of a function at a point is defined via the (<latex>\varepsilon</latex>-<latex>\delta</latex>)-condition</para></info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex><![CDATA[ \Abs{ x-t } < \delta\quad \implies\quad \Abs{ f(x) - f(t) } < \varepsilon ]]></latex>
+			</math.display>
+			<para>The function is continuous (everywhere) if it is continuous at each <latex>x</latex> in <latex>D</latex>.
+				<index.glossary>
+					<term>continuous</term><term>everywhere</term>
+					<info><para>Here continuity of a function on its entire domain is defined via the (<latex>\varepsilon</latex>-<latex>\delta</latex>)-condition</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>function</term><term>continuous</term>
+					<info><para>Here continuity of a function on its entire domain is defined via the (<latex>\varepsilon</latex>-<latex>\delta</latex>)-condition</para></info>
+				</index.glossary>
+			</para>
+		</def>
+		
+		<para>Here are first examples of continuous functions.</para>
+		<xi:include href="ConstantIDContinuous_Thm.xml"/>
+		
+		<para>Continuity may be characterized equivalently as follows.</para>
+		<xi:include href="ContinuousByLimit_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_ContinuousFunctions"/>
+	</studymaterials>
+</section>

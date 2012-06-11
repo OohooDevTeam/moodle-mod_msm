@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_GramSchmidtOrthonormalization">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Gram-Schmidt Orthonormalization: Example</title>
+	
+	<showme>
+		<statement>
+			<para>You are given the vectors <latex>\Vect{a}</latex>, <latex>\Vect{b}</latex>, and <latex>\Vect{c}</latex> in <latex>\RNr[3]</latex> with</para>
+			<computation>
+				<left>\Vect{a}</left>
+				<center>=</center>
+				<right>(1,1,1)</right>
+				<left>\Vect{b}</left>
+				<center>=</center>
+				<right>(0,-1,1)</right>
+				<left>\Vect{c}</left>
+				<center>=</center>
+				<right>(1,1,0)</right>
+			</computation>
+			<para>Verify that these vectors form a basis of <latex>\RNr[3]</latex>, then orthonormalize them.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We begin by checking that the given vectors are linearly independent. we use the determinant.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det \left[
+\begin{array}{rrr}
+1 & 0 & 1 \\
+1 & -1& 1 \\
+1 & 1 & 0
+\end{array}
+\right] = \det \left[
+\begin{array}{rrr}
+1 & 0 & 0 \\
+1 &-1 & 0 \\
+1 & 1 &-1
+\end{array}
+\right] = 1 \neq 0
+]]>
+				</latex>
+			</math.display>
+			<para>So the vectors are linearly independent. Then we know that three linearly independent vectors in the 3-dimensional space <latex>\RNr[3]</latex> always form a basis. This answers the first part of the problem.</para>
+			
+			<para>We use the Gram-Schmidt orthonormalization method to turn the given basis of <latex>\RNr[3]</latex> into an orthonormal basis of <latex>\RNr[3]</latex>.</para>
+			<computation>
+				<left>\Vect{u}</left>
+				<center>:=</center>
+				<right>\frac{\Vect{a}}{ \Abs{ \Vect{a} } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\frac{1}{\sqrt{3}}\cdot (1,1,1)</right>
+			</computation>
+			
+			<para>To orthonormalize <latex>\Vect{b}</latex> with respect to <latex>\Vect{u}</latex>, we encounter the expression</para>
+			<computation>
+				<left>\left[ \DotPr{ (0,-1,1) }{ \left( \tfrac{1}{\sqrt{3}}\cdot (1,1,1) \right) }\right]\cdot \tfrac{1}{\sqrt{3}}\cdot (1,1,1)</left>
+				<center>=</center>
+				<right>0</right>
+			</computation>
+			<para>So we find</para>
+			<computation>
+				<left>\Vect{v}</left>
+				<center>=</center>
+				<right>\frac{ \Vect{b} }{ \Abs{ \Vect{b} } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\frac{1}{ \sqrt{2} }\cdot (0,-1,1)</right>
+			</computation>
+			
+			<para>To orthonormalize <latex>\Vect{c}</latex> with respect to <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> we encounter the expressions</para>
+			<computation>
+				<left>\left[ \DotPr{ (1,1,0) }{ \left( \tfrac{1}{\sqrt{3}}\cdot (1,1,1) \right) }\right]\cdot \tfrac{1}{\sqrt{3}}\cdot (1,1,1)</left>
+				<center>=</center>
+				<right>\frac{2}{3}\cdot (1,1,1)</right>
+				<left>\left[ \DotPr{ (1,1,0) }{ \left( \tfrac{1}{\sqrt{2}}\cdot (0,-1,1) \right) }\right]\cdot \tfrac{1}{\sqrt{2}}\cdot (0,-1,1)</left>
+				<center>=</center>
+				<right>-\frac{1}{2}\cdot (0,-1,1)</right>
+			</computation>
+			<para>Therefore the orthonormalization of <latex>\Vect{c}</latex> with respect to <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> is</para>
+			<computation>
+				<left>\Vect{w}</left>
+				<center>:=</center>
+				<right>\frac{ (1,1,0) - \tfrac{2}{3}\cdot (1,1,1) + \tfrac{1}{2}\cdot (0,-1,1) }{ \Abs{ (1,1,0) - \tfrac{2}{3}\cdot (1,1,1) + \tfrac{1}{2}\cdot (0,-1,1) } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\frac{ \tfrac{1}{6}\cdot (2,-1,-1) }{ \Abs{ \tfrac{1}{6}\cdot (2,-1,-1) } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\frac{1}{\sqrt{6}}\cdot (2,-1,-1)</right>
+			</computation>
+			<para>Thus <latex>\Vect{u}</latex>, <latex>\Vect{v}</latex>, and <latex>\Vect{w}</latex> as found above form the Gram-Schmidt orthonormalization of <latex>\Vect{a}</latex>, <latex>\Vect{b}</latex>, and <latex>\Vect{c}</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

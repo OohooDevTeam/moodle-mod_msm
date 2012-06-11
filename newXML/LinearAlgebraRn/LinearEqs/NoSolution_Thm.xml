@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_NoSolution"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>No solution</caption>
+   <associate type="Illustration">
+      <showme.pack.ref showmePackID="Illstrtn_LinearEqsNoSolution"/>
+      <info>
+         <para>
+            <para.body>How to recognize a system of linear equations with no solution.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Suppose a system of linear equations is equivalent to an RREF-matrix with a leading 1 in its augmentation column.</para.body>
+      </para>
+      <math.display>
+         <latex>
+				
+\begin{array}{ccccccccccccccc|c}
+0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; {\color{blue} 0 } \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; 0 &amp; * &amp; \cdots &amp; * &amp; {\color{blue} 0 } \\
+\vdots &amp;   &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp; \vdots &amp; {\color{blue} \vdots } \\
+\vdots &amp;   &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp; \vdots &amp; {\color{blue} \vdots } \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; * &amp; \cdots &amp; * &amp; {\color{blue} 0 } \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; {\color{blue} 1 } \\
+\vdots &amp;   &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp;   &amp; \vdots &amp; &amp;     &amp; \vdots &amp; {\color{blue} \vdots } \\
+0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; {\color{blue} 0 }
+\end{array}
+					
+			</latex>
+      </math.display>
+      <para>
+         <para.body>Then the system has no solution.</para.body>
+      </para>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We know that the RREF-matrix in question corresponds to a system of linear equations whose solutions agree with the original system. Now if the RREF-matrix contains a leading one in its augmentation column, the row containing this leading 1 reads:</para.body>
+            </para>
+            <math.display>
+               <latex>0 \ \cdots\ 0\ |\  1</latex>
+            </math.display>
+            <para>
+               <para.body>The corresponding linear equation reads</para.body>
+            </para>
+            <math.display>
+               <latex>0\cdot x_1 + \cdots + 0\cdot x_n= 1</latex>
+            </math.display>
+            <para>
+               <para.body>Regardless of the number values substituted for the variables <math>
+                     <latex>x_1,\dots ,x_n</latex>
+                  </math>, the left hand side of this equation is always <math>
+                     <latex>0\neq 1</latex>
+                  </math>. Therefore this equation has no solution. So the entire system has no solution either.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

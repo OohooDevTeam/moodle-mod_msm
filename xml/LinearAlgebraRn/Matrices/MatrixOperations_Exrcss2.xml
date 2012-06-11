@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MatrixOperations-MiniProofs">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Matrix Operations: Mini Proofs</title>
+	<exercise>
+		<problem><para>Proof the following statements</para></problem>
+		<part>
+			<problem><para>Suppose <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> are two <latex>(n,n)</latex>-matrices satisfying</para>
+			<math.display>
+				<latex>(\Mtrx{A} + \Mtrx{B})(\Mtrx{A} - \Mtrx{B}) = \Mtrx{A}^2 - \Mtrx{B}^2</latex>
+			</math.display>
+				<para>Show that &nbsp; <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex></para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Expand the given expression using the distributivity law of matrix multiplication.</para>
+				</solution.hint>
+				<solution>
+					<para>Using the distributivity law of matrix multiplication, we compute:</para>
+					<computation>
+						<left>(\Mtrx{A}+\Mtrx{B})(\Mtrx{A}-\Mtrx{B})</left>
+						<center>=</center>
+						<right>\Mtrx{A}^2 -\Mtrx{A}\Mtrx{B} +\Mtrx{B}\Mtrx{A} -\Mtrx{B}^2</right>
+						<left></left>
+						<center>=	<info><para>By assumption</para></info></center>
+						<right>\Mtrx{A}^2 - \Mtrx{B}^2</right>
+					</computation>
+					
+					<para>So &nbsp; <latex>\Mtrx{A}\Mtrx{B} = \Mtrx{B}\Mtrx{A}</latex>, as claimed.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>If <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> are two symmetric <latex>(n,n)</latex>-matrices, show that the following matrices are symmetric as well.</para>
+			<ul>
+				<li><para><latex>\Mtrx{A} + \Mtrx{B}</latex></para></li>
+				<li><para><latex>\Mtrx{A} - \Mtrx{B}</latex></para></li>
+				<li><para><latex>\Mtrx{A}^T - \Mtrx{B}^T</latex></para></li>
+			</ul>
+			</problem>
+			<approach>
+				<solution.hint><para>In each case show that the given matrix expression is equal to its transpose; use the properties of transposition to achieve this.</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem><para>If <latex>\Mtrx{A}</latex> and <latex>\Mtrx{B}</latex> are 
+				<subordinate>
+					<hot>anti-symmetric</hot>
+					<info>
+						<caption>Definition of anti-symmetric</caption>
+						<para>A matrix <latex>\Mtrx{X}</latex> is called anti-symmetric if &nbsp; <latex>\Mtrx{X}^T = -\Mtrx{X}</latex>.</para>
+					</info>
+				</subordinate>
+				matrices of size <latex>(n,n)</latex>, show that <latex>\Mtrx{A} + \Mtrx{B}</latex> is anti-symmetric.
+			</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem><para>Given an arbitrary <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>, show the following</para></problem>
+		<part>
+			<problem><para><latex>\Mtrx{A} + \Mtrx{A}^T</latex> is symmetric</para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\Mtrx{A} - \Mtrx{A}^T</latex> is anti-symmetric.</para></problem>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>For arbitrary natural numbers <latex>k,n\geq 1</latex>, show that <latex>(\IdMtrx[n])^k = \IdMtrx[n]</latex>.</para>
+		</problem>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>A square matrix <latex>\Mtrx{U}</latex> is idempotent if it satisfies <latex>\Mtrx{U}^2 = \Mtrx{U}</latex>.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that, for each <latex>n\geq 1</latex> the identity matrix <latex>\IdMtrx[n]</latex> is idempotent.</para>
+			</problem>
+			<approach>
+				<solution.hint><para>You need to recall what the statement means &lsquo;a matrix is idempotent&rsquo;.</para></solution.hint>
+				<solution.hint>
+					<para>By definition, <latex>\Mtrx{U}</latex> is idempotent if <latex>\Mtrx{U}^2=\Mtrx{U}</latex>. Now, in this case, the role of <latex>\Mtrx{U}</latex> is played by the identity matrix <latex>\IdMtrx[n]</latex>. So, what do you need to do?</para>
+				</solution.hint>
+				<solution.hint>
+					<para>You need to show that <latex>\IdMtrx[n]^{2} = \IdMtrx[n]</latex>.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Show that, for each <latex>n\geq 1</latex> the <latex>(n,n)</latex>-zero-matrix is idempotent.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>Give an example of a <latex>(2,2)</latex>-matrix <latex>\Mtrx{A}</latex>, distinct from 0-matrix and identity matrix, which is idempotent.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>Give an example of a <latex>(3,3)</latex>-matrix <latex>\Mtrx{A}</latex>, distinct from 0-matrix and identity matrix, which is idempotent.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If the <latex>(n,n)</latex>-matrix <latex>\Mtrx{T}</latex> is idempotent, show that the <latex>(n+1,n+1)</latex>-matrix</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+V := 
+\left[
+\begin{array}{cc}
+T & 0 \\
+0 & 1
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>is idempotent.</para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\Mtrx{B}</latex> is idempotent, show that <latex>\Mtrx{B}^3 = \Mtrx{B}</latex>.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>\Mtrx{A}</latex> is idempotent, show that <latex>\Mtrx{A}^T</latex> is idempotent.</para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>\Mtrx{B}</latex> is idempotent, show that <latex>\Mtrx{C} := \IdMtrx[n] - \Mtrx{B}</latex> is also idempotent.</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>\Mtrx{Q}</latex> is idempotent, show that &nbsp; <latex>\Mtrx{C}^3 = \Mtrx{C}</latex>, where <latex>\Mtrx{C}:= \IdMtrx[n] - \Mtrx{Q}</latex>.</para>
+			</problem>
+		</part>
+		
+	</exercise>
+	
+
+
+	<exercise>
+		<problem>
+			<para>Suppose an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> satisfies the matrix equation</para>
+			<math.display>
+				<latex>\Mtrx{A}^3 + 4\Mtrx{A} - 2\IdMtrx[n] = \Mtrx{0}_n</latex>
+			</math.display>
+			<para>Show that <latex>\Mtrx{A}^T</latex> satisfies this matrix equation as well.</para>
+		</problem>
+	</exercise>
+</exercise.pack>

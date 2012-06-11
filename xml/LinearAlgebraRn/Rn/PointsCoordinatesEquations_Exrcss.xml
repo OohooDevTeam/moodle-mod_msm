@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_PointsCoordinatesEquations">
+	<title>Points, Coordinates, and Equations: Exercises</title>
+	<exercise>
+		<problem>
+			<para>The point <latex>(3,6)</latex> in <latex>\RNr[2]</latex> is a solution of the equation</para>
+			<math.display>
+				<latex>3x + 2y\ =\ 21</latex>
+			</math.display>
+			<para>because ... </para>
+		</problem>
+		<approach>
+			<solution>
+				<para>The point <latex>(3,6)</latex> in <latex>\RNr[2]</latex> is a solution of the equation</para>
+				<math.display>
+					<latex>3{\color{red} x} + 2{\color{blue} y}\ =\ 21</latex>
+				</math.display>
+				<para>because substituting the coordinates of <latex>({\color{red} 3},{\color{blue} 6})</latex> yields the true statement</para>
+				<math.display>
+					<latex>3\cdot{\color{red} 3} + 2\cdot{\color{blue} 6}\ =\ 21</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>The point <latex>(-2,5,-3)</latex> in <latex>\RNr[3]</latex> is a solution of the equation</para>
+			<math.display>
+				<latex>2x - 6y + 2z\ =\ -40</latex>
+			</math.display>
+			<para>because ... </para>
+		</problem>
+		<approach>
+			<solution>
+				<para>The point <latex>({\color{red} -2},{\color{blue} 5},{\color{green} -3})</latex> in <latex>\RNr[3]</latex> is a solution of the equation</para>
+				<math.display>
+					<latex>2{\color{red} x} - 6{\color{blue} y}\ + 2{\color{green} z}\ =\ -40</latex>
+				</math.display>
+				<para>because substituting the coordinates of <latex>({\color{red} -2},{\color{blue} 5},{\color{green} -3})</latex> yields the true statement</para>
+				<math.display>
+					<latex>2{\color{red} (-2)} - 6\cdot {\color{blue} 5}\ + 2\cdot {\color{green} (-3)}\ =\ -40</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Determine if the following points are solutions of the given equation. &ndash; In each case justify your answer.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>(1,1)</latex> of the equation <latex>2x-2y = 0</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para><latex>(1,1)</latex> is a solution of the given equation because</para>
+					<math.display>
+						<latex>2\cdot 1 - 2\cdot 1\ =\ 0</latex>
+					</math.display>
+					<para>is a true statement.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(6,1,0,5)</latex> of the equation <latex>2w + x - 3y - z = 12</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para><latex>(6,1,0,5)</latex> is not a solution of the equation <latex>2w + x - 3y - z = 12</latex> because</para>
+					<math.display>
+						<latex>8\ =\ 2\cdot 6 + 1\cdot 1 - 3\cdot 0 - 5\ =\ 12</latex>
+					</math.display>
+					<para>is not a true statement.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(-3,4,7)</latex> of <latex>x + y + z = 4</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>(-3,4,7)</latex> is not a solution of the given equation.</para>
+				</answer>
+				<solution.hint>
+					<para>You need to substitute <latex>-3</latex> for <latex>x</latex>, <latex>4</latex> for <latex>y</latex>, and <latex>7</latex> for <latex>7</latex>. Then determine if this turns the given equation <latex>x+y+z=4</latex> into a true statement.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(5,2,3,-1,6)</latex> of <latex>v - 2w + 3x + y - 4z = -15</latex></para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>Determine if the following points are solutions of the given equation. &ndash; In each case justify your answer.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>(1,2)</latex> of the equation <latex>x^3-2y^2 = 1</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para><latex>(1,2)</latex> is not a solution of the given equation because</para>
+					<math.display>
+						<latex>-7\ =\ 1\cdot 1^3 - 2\cdot 2^2\ =\ 1</latex>
+					</math.display>
+					<para>is not a true statement.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(2,1,-2,-1)</latex> of the equation <latex>w^3 + x^3 + y^3 + z^3 = 0</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para><latex>(2,1,-2,-1)</latex> is a solution of the equation <latex>w^3 + x^3 + y^3 + z^3 = 0</latex> because</para>
+					<math.display>
+						<latex>1\cdot 2^2 + 1\cdot 1^3 + 1\cdot (-2)^3 + 1\cdot (-1)^3\ =\ 0</latex>
+					</math.display>
+					<para>is a true statement.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(-2,5,6)</latex> of <latex>2x^2 - 3y^3 + z^2 = 0</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(1,-1,0,-1,1)</latex> of <latex>2v^4 - w^8 + 3x - 6y^6 + 2z^3 = -3</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(\pi,-\pi/2)</latex> of <latex>\cos x - \sin y = 0</latex></para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para><latex>(\pi,-\pi/2)</latex> is a solution of the given equation; why?</para>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>By trial and error find at least one solution of the given equation. &ndash; You do not need to find all solutions.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para><latex>3x + y = 5</latex></para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Try substituting an arbitrary number for one of the variables. Then solve for the other.</para>
+				</solution.hint>
+				<solution>
+					<para>Often one can find particular solutions of a given equation by substituting random values for all but one of the variables in the equation. What remains is an equation in one variable only, and this equation can often be solved. For example, in the case at hand:</para>
+					<ul>
+						<li><para><latex>(0,5)</latex> is a solution of the given equation, found by substituting <latex>0</latex> for <latex>x</latex>.</para></li>
+						<li><para><latex>(1,2)</latex> is a solution of the given equation, found by substituting <latex>1</latex> for <latex>x</latex>.</para></li>
+						<li><para><latex>(4,-7)</latex> is a solution of the given equation, found by substituting <latex>4</latex> for <latex>x</latex>.</para></li>
+						<li><para><latex>(5/3,0)</latex> is a solution of the given equation, found by substituting <latex>0</latex> for <latex>y</latex>.</para></li>
+					</ul>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>2x - y + 3z = 0</latex></para>
+			</problem>
+			<approach>
+				<solution.hint>
+					<para>Try substituting <latex>0</latex> for <latex>x</latex> and for <latex>y</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>There are many correct answers; for example:</para>
+					<ul>
+						<li><para><latex>(1,1,-1/3)</latex> is a solution of the given equation, found by substituting <latex>1</latex> for <latex>x</latex>, and <latex>1</latex> for <latex>y</latex></para></li>
+						<li><para><latex>(1,5,1)</latex>  is a solution of the given equation, found by substituting <latex>1</latex> for <latex>x</latex>, and <latex>1</latex> for <latex>z</latex></para></li>
+					</ul>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>x^2 + y^2 = 1</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>x^2 + y^2 + z^2 = 4</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>w^2 + x^2 + y^2 + z^2 = 9</latex></para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>x^4 + y^4 + z^4 = -1</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para>This equation has no solution <latex>(x,y,z)</latex> in <latex>\RNr[3]</latex> because</para>
+					<ol>
+						<li><para><latex>x^4,y^4,z^4 \geq 0</latex> for all <latex>x,y,z</latex> in <latex>\RNr</latex>. So, for all possible substitutions of real number values for <latex>x,y,z</latex>, the statement <latex>x^4 + y^4 + z^4 = -1</latex> is false.</para></li>
+					</ol>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<caption>Simultaneous equations</caption>
+		<problem>
+			<para>Determine if the given point is a simultaneous solution of the two given equations; i.e. if it turns both equations into a true statement.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>(1,1)</latex> of <latex>x-y^2 = 0</latex> and <latex>x^2 - y = 0</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para><latex>(1,1)</latex> is a simultaneous solution of the given equations because both of the resulting statements</para>
+					<computation>
+						<left>1 - 1^2</left>
+						<center>=</center>
+						<right>0</right>
+						<left>1^2 - 1</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>are true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(1,4,1)</latex> of <latex>2x + y - 3z = 1</latex> and <latex>x + y - 5z = 0</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para><latex>(1,4,1)</latex> is not a simultaneous solution of <latex>2x + y - 3z = 1</latex> and <latex>x + y - 5z = 0</latex> because one of the resulting statements</para>
+					<computation>
+						<left>2\cdot 1 + 4 -3\cdot 1</left>
+						<center>=</center>
+						<right>1</right>
+						<left>1\cdot 1 + 1\cdot 4 - 5\cdot 1</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>is not true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(2,2,2)</latex> of <latex>x+y+z=6</latex> and <latex>x^2 + y^2 + z^2 = 6</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>(2,2,2)</latex> is not a simultaneous solution of the two given equations.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>(-1,2,-1)</latex> of <latex>2x+2y+2z=0</latex> and <latex>x^3 - y^4 + z^3 = -18</latex></para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>(-1,2,-1)</latex> is a simultaneous solution of the two given equations.</para>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

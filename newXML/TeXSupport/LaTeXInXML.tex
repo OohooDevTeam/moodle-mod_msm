@@ -1,0 +1,190 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%   Brackets and Containers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Norm}[1]{\left\Vert#1\right\Vert}	% norm of #1
+\newcommand{\Abs}[1]{\left\vert#1\right\vert}		% absolute value of #1
+\newcommand{\AnglBr}[1]{\left\langle#1\right\rangle}	% angle bracket of #1
+\newcommand{\SqBr}[1]{\left[#1\right]}					% square brackets
+% deprecated
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}		% norm of #1
+\newcommand{\abs}[1]{\left\vert#1\right\vert}			% absolute value of #1
+\newcommand{\abr}[1]{\left\langle#1\right\rangle}	% angle bracket of #1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\hy}{\text{-}}
+\newcommand{\imes}{\hskip -.2mm\times\hskip -.2mm} 	%-->shortented \times
+\newcommand{\st}{:\hskip -.8pt\mid\hskip -.75pt :}	% "such that" symbol
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%		Sets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\prdct}{\hskip -.1em\times\hskip -.1em}  				% product in a given category
+\newcommand{\Prdct}[2]{#1\hskip -.1em\times\hskip -.1em #2} % #1 product #2
+%
+\newcommand{\Set}[1]{\left\{#1\right\}}		% set of #1 object
+\newcommand{\union}{\cup}									% union of sets
+\newcommand{\Union}[2]{#1\cup #2}					% #1 union with #2
+\newcommand{\dunion}{\bigcup}							% union of sets in display mode
+\newcommand{\FamUnion}[2]{\bigcup_{#1}#2}	% #1 union with #2
+\newcommand{\intrsctn}{\cap}							% intersection of sets
+\newcommand{\Intrsctn}[2]{#1\cap #2}			% #1 intersection with #2
+\newcommand{\FamIntrsctn}[2]{\bigcap_{#1}#2}	% intersection of sets in display mode
+\newcommand{\stdffrnc}{-}									% difference of sets
+\newcommand{\StDffrnc}[2]{#1 - #2}				% #1 minus set #2
+\newcommand{\stprdct}{\hskip -.1em\times\hskip -.1em}  % product of sets
+\newcommand{\StPrdct}[2]{#1\hskip -.2em\times\hskip -.2em #2} % #1 set product #2
+\newcommand{\PwrSt}[1]{\EuScript{P}(#1)}    % Powerset on #1
+\newcommand{\Crdnlty}[1]{\text{\it card}\, #1}  % Cardinality of #1
+\newcommand{\crdnlty}{\text{\it card}} 		  % Cardinality
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%		Functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% arrows
+\newcommand{\llongrightarrow}{-\hskip -2mm \longrightarrow}	% gives ---->
+\newcommand{\lllongrightarrow}{-\hskip -1mm-\hskip -2mm \longrightarrow}	% gives ------->
+\newcommand{\mono}{\rightarrowtail}			% gives >-->
+\newcommand{\epi}{\twoheadrightarrow}		% gives -->>
+\newcommand{\lepi}{\longrightarrow\hskip -3mm \rightarrow}	% gives --->>
+\newcommand{\iso}{\rightarrowtail\hskip -9pt \rightarrow}		% gives >-->>
+\newcommand{\restrict}{\hskip -1mm \mid\hskip -1mm}
+%%%%%		Functions
+\newcommand{\from}{\colon}									% Colon in description of a function
+\newcommand{\Comp}{\circ}										% Composition
+\newcommand{\dom}{\text{\it dom}}						% Domain of a function
+\newcommand{\im}{\it im}										% image of a map
+\newcommand{\Img}[1]{\text{\it im}(#1)}			% image of the map #1
+\newcommand{\tar}{\text{\it tar}}				  	% target of a function
+\newcommand{\Id}[1][]{\text{\it Id}_{#1}} 	% Identity on #1
+\newcommand{\IdMap}[1]{\text{\it Id}_{#1}}	% Identity on #1
+\newcommand{\pr}{\text{\it proj}}						% Projection operator
+\newcommand{\Prjctn}[1]{\text{\it pr}_{#1}} % Projection function
+%\Pr is already defined
+\newcommand{\inc}{\text{\it inc}}							% Inclusion ...
+\newcommand{\Inclsn}[1]{\text{\it inc}_{#1}}	% Inclusion of #1
+\newcommand{\Dgnl}[1]{\bigtriangleup_{#1}}		% Diagonal map #1 -> #1x#1
+\newcommand{\dgnl}{\bigtriangleup}						% Diagonal map
+%
+%	Number System
+%
+\newcommand{\NNr}[1][]{\mathbb N^{#1}}		% natural numbers, with one optional argument for dimension
+\newcommand{\ZNr}[1][]{\mathbb Z^{#1}}		% integers, with one optional argument for dimension
+\newcommand{\QNr}[1][]{\mathbb{Q}^{#1}}		% rational numbers, with one optional argument for dimension
+\newcommand{\RNr}[1][]{\mathbb R^{#1}}		% real numbers, with one optional argument for dimension
+%
+\newcommand{\CCIntrvl}[2]{\left[ #1 , #2 \right]} % Interval [#1,#2]
+\newcommand{\COIntrvl}[2]{\left[ #1 , #2 \right[} % Interval [#1,#2[
+\newcommand{\OCIntrvl}[2]{\left] #1 , #2 \right]} % Interval [#1,#2[
+\newcommand{\OOIntrvl}[2]{\left] #1 , #2 \right[} % Interval [#1,#2[
+%
+\newcommand{\Min}[1]{\text{\it min}\left\{ #1 \right\}} % Minimum of #1
+\newcommand{\Max}[1]{\text{\it max}\left\{ #1 \right\}} % Maximum of #1
+%
+\newcommand{\CNr}[1][]{\mathbb C^{#1}}			% complex numbers, with one optional argument for dimension
+\newcommand{\QuatNr}[1][]{\mathbb{H}^{#1}}	% quaternions, with one optional argument for dimension
+%
+\newcommand{\Zmod}[1]{\mathbb{Z}\hskip -.2em/\hskip -.1em #1}	% Z/#1
+\newcommand{\FFld}[1]{\mathbb{F}_{#1}}		% Finite field of order #1
+\newcommand{\ZLcl}[1]{\mathbb{Z}_{#1}}		% Z localized at set of primes #1
+\newcommand{\ZInfty}[1]{\mathbb{Z}_{{#1}^{\infty}}}	% Z/#1^infty
+\newcommand{\ZCmplt}[1]{\mathbb{Z}^{\wedge}_{#1}}		% Z completed at prime #1
+%
+\DeclareMathOperator{\lcm}{lcm}	        	% least common multiple
+%
+\newcommand{\Poly}[2]{#1\SqBr{#2}}				% PolynomialRing#1[#2]; #1=Ring; #2=variable(s)
+\newcommand{\ZPoly}[1]{\ZNr\SqBr{#1}}			% PolynomialRing Z[#1]
+\newcommand{\QPoly}[1]{\QNr\SqBr{#1}}			% PolynomialRing Q[#1]
+\newcommand{\RPoly}[1]{\RNr\SqBr{#1}}			% PolynomialRing R[#1]
+\newcommand{\CPoly}[1]{\CNr\hskip -.2em\left[#1\right]}	% PolynomialRing C[#1]
+\newcommand{\Degree}[1]{\text{\it deg}\left(#1\right)}	%
+%
+%	Groups
+%
+\newcommand{\AutGrp}[1]{\text{\em Aut}(#1)}	% Automorphism group of #1
+\newcommand{\InnGrp}[1]{\text{\em Inn}(#1)}	% Inner automorphism group of #1
+\newcommand{\OutGrp}[1]{\text{\em Out(#1)}}	% Outer automorphism group
+\newcommand{\IsoGrp}[1]{\text{\em Iso}(#1)}	% Isomorphism group of #1
+\newcommand{\PermGrp}[1]{S(#1)}				      % Permutation group of set #1
+\newcommand{\SymGrp}[1]{S_{#1}}				      % Symmetric group of #1 objects
+\newcommand{\CycGrp}[1]{C_{#1}}             % Cyclic Group of order #1
+% Matrix groups
+\newcommand{\CUGrp}[1][]{\mathbb U_{#1}}		% complex unitary group, optional dimension argument
+\newcommand{\SCUGrp}[1][]{S\mathbb U_{#1}}	% special complex unitary group, optional dimension argument
+\newcommand{\RUGrp}[1][]{\mathbb O_{#1}}		% orthogonal group of R^{#1}, (#1 optional)
+\newcommand{\SRUGrp}[1][]{S\mathbb O_{#1}}	% special orthogonal group, dimension #1 (optional)
+\newcommand{\Spin}[1][]{\text{\em Spin}_{#1}}	% Spinor group, dimension #1 (optional), of ring/module
+\newcommand{\GLGrp}[2][]{\text{\em GL}_{#1}(#2)}	% General linear group, optional dimension argument,
+\newcommand{\GLMGrp}[1]{\text{\em MGL}_{#1}}	% Mixed General linear group, type #1
+\newcommand{\CGLGrp}[1][]{\mathbb{C} \hskip -.22em\text{\em GL}_{#1}}	% C-Gen lin grp, dim #1 (optional)
+\newcommand{\RGLGrp}[1][]{\mathbb{R} \hskip -.18em\text{\em GL}_{#1}}	% R-Gen lin grp, dim #1 (optional)
+\newcommand{\SRGLGrp}[1][]{\mathbb{R}\text{\em SL}_{#1}}	% special gen lin grp over R, dim #1 (optional)
+\newcommand{\SCGLGrp}[1][]{\mathbb{C}\text{\em SL}_{#1}}	% special gen lin grp over C, dim #1 (optional)
+\newcommand{\TrsGrp}[1][]{\mathbb{T}^{#1}}	% Torus of dimension #1 (optional)
+\newcommand{\PCGLGrp}[1][]{P\mathbb{C} \hskip -.22em\text{\em GL}_{#1}}	% proj C-Gen lin grp, dim #1 (op)
+%
+%	Algebraic Constructs
+%
+\newcommand{\normal}{\vartriangleleft}		% Normal subgroup
+\newcommand{\rnormal}{\vartriangleright}
+\newcommand{\ideal}{\vartriangleleft}			% ideal in a ring
+\DeclareMathOperator{\Hom}{Hom}						% Homomorphisms
+\newcommand{\Tens}[1][]{\otimes_{#1}}			% Tensor product over #1
+\DeclareMathOperator{\End}{End}						% Endomorphisms
+\newcommand{\CoKer}[1]{\it coker(#1)}			% Cokernel of #1
+\newcommand{\coker}{\it coker}						% Cokernel
+\renewcommand{\ker}{\text{\it ker}}       % Kernel
+\newcommand{\Ker}[1]{\text{\it ker}(#1)}	% Kernel of #1
+\newcommand{\Dtrmnnt}[1]{\text{\it det}\, #1} % determinant of #1
+\newcommand{\dtrmnnt}{\text{\it det}}     % determinanant
+\newcommand{\Trc}[1]{\text{\it tr}(#1)}   % Trace of #1
+%
+\renewcommand{\span}{\text{\it span}}			% span of a set of vectors
+\newcommand{\Span}[2][]{\text{\it span}_{#1}\left\{#2\right\}}	% span [over #1] of #2
+\newcommand{\Rspan}{\text{\it span}_{\RNr}}					% R-span of a set of vectors
+\newcommand{\RSpan}[1]{\text{\it span}_{\RNr}(#1)}				% R-span of a set of vectors
+\newcommand{\Cspan}{\text{\it span}_{\hspace{.1em}\CNr}}	% C-span of a set of vectors
+\newcommand{\CSpan}[1]{\text{\it span}_{\hspace{.1em}\CNr}(#1)}	% C-span of a set of vectors
+%
+\newcommand{\Rdim}{\text{\it dim}_{\RNr}}	% real dimension
+\newcommand{\RDim}[1]{\text{\it dim}_{\RNr}\left(#1\right)}	% real dimension
+\newcommand{\Cdim}{\text{\it dim}_{\CNr}}	% complex dimension
+\newcommand{\CDim}[1]{\text{\it dim}_{\CNr}\left(#1\right)}	% complex dimension
+%
+\newcommand{\Dim}[1]{\text{\it dim}(#1)}	% dimension of #1
+%
+%                                                                         
+\DeclareMathOperator{\sign}{sign}			% sign of a number or a permutation
+%
+%	Basic Topological Spaces
+%
+\newcommand{\uInt}[1][]{\mathbb{I}^{#1}}	% unit cube in R^{#1}, #1 optional
+\newcommand{\uBll}[1]{\mathbb{B}^{#1}}		% unit ball in R^n
+\newcommand{\uDsk}[1]{\mathbb{D}^{#1}}		% unit disk of dimension {#1}
+\newcommand{\uSphr}[1]{\mathbb{S}^{#1}}   % unit sphere in R^{#1}, #1 optional
+\newcommand{\uCrcl}{\mathbb{T}}		   		  % unit circle in C
+\newcommand{\OBll}[2]{B(#1;#2)}						% open ball centered at #1, radius #2
+\newcommand{\CBll}[2]{\bar{B}(#1;#2)}			% closed ball centered at #1, radius #2
+\newcommand{\Sphr}[2]{S(#1;#2)}						% sphere centered at #1, radius #2
+%
+\newcommand{\Trs}[1]{\mathbb{T}}	   		  % torus of dimension #1
+%
+\newcommand{\TopIntr}[1]{\text{\it int}\left(#1\right)}	% topological interior
+\newcommand{\TopClsr}[1]{\overline{#1}}		% topological closure
+\newcommand{\TopBndy}[1]{\partial {#1}}		% topological boundary
+\newcommand{\Dstnc}[2]{\text{\it dist}\left(#1,#2\right)}	% Distance in a metric space
+\DeclareMathOperator{\map}{map}				    % Mapping space
+%
+%
+%  Complex Variables
+%
+\renewcommand{\Im}{\text{Im}} 		% imaginary part of complex number
+\renewcommand{\Re}{\text{Re}} 		% real part of complex number
+%
+%
+%
+%
+% \char is already defined with unexpected effect
+%\DeclareMathOperator{\deg}{deg}			% Degree (exists already)
+% gcd is already defined
+\DeclareMathOperator{\Vol}{Vol}				% Volume
+\newcommand{\Ori}[1][]{\text{\it Ori}_{#1}} % Orientation of #1
+\DeclareMathOperator{\OriVol}{OVol} 	% Oriented Volume

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MatrixMultiplicationProperties">
+	<associate Description="Comment">
+		<info>
+			<caption>Convention when reading this proposition</caption>
+			<para>In the formuli of this proposition, we assume that the matrices involved satisfy the size property so that multiplication is defined.</para>
+		</info>
+	</associate>
+	<associate Description="Comment">
+		<info>
+			<caption>On the neutral element property</caption>
+			<para>In the formula &nbsp; <latex>\IdMtrx[m]A = A\IdMtrx[n]</latex>, we also say</para>
+			<ul>
+				<li><para><latex>\IdMtrx[m]</latex> is left neutral with respect to multiplication by by <latex>(m,n)</latex>-matrices</para></li>
+				<li><para><latex>\IdMtrx[n]</latex> is right neutral with respect to multiplication by by <latex>(m,n)</latex>-matrices</para></li>
+			</ul>
+			
+		</info>
+	</associate>
+	
+	
+	<statement>
+		<para>The multiplication of matrices has the following properties</para>
+		<part partid="Associativity">
+			<caption>Associativity</caption>
+			<para><latex>(AB)C = A(BC)</latex>
+				<index.glossary>
+					<term>associativity</term><term>matrix multiplication</term>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>multiplication</term><term>associative</term>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="Distributivity">
+			<caption>Distributivity</caption>
+			<para><latex>A ( B + C) = AB + AC</latex> &nbsp; <latex>(B + C)D = BD + CD</latex>
+				<index.glossary>
+					<term>distributivity</term><term>matrix multiplication</term>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>multiplication</term><term>distributive</term>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="IdNeutral">
+			<caption>Identity matrix is neutral element</caption>
+			<para>If <latex>\Mtrx{A}</latex> has size <latex>(m,n)</latex>, then &nbsp; <latex>\IdMtrx[m]A = A\IdMtrx[n]</latex>.
+				<index.glossary>
+					<term>neutral element</term><term>matrix multiplication</term>
+				</index.glossary>
+				<index.glossary>
+					<term>matrix</term><term>multiplication</term><term>neutral element</term>
+				</index.glossary>
+			</para>
+		</part>
+	</statement>
+	
+	<proof>
+		<para>To verify these claims we compute the entries in matching positions of both sides of the suggested equation.</para>
+		
+		<caption>
+			<partref>Associativity</partref>
+			Associativity
+		</caption>
+		<para>Suppose</para>
+		
+		<ul>
+			<li><para><latex magnify="yes">A=[a_{ij}]</latex> is a matrix of size <latex>(m,n)</latex></para></li>
+			<li><para><latex magnify="yes">B=[b_{jk}]</latex> is a matrix of size <latex>(n,p)</latex></para></li>
+			<li><para><latex magnify="yes">C=[c_{kl}]</latex> is a matrix of size <latex>(p,q)</latex></para></li>
+		</ul>
+		
+		<para>Then <latex>(AB)C</latex> and <latex>A(BC)</latex> are matrices of size <latex>(m,q)</latex>. We need to show that in each position <latex>(i,l)</latex>, <latex>1\leq i\leq m</latex>    and  <latex>1\leq l\leq q</latex>, the entries of these two matrices are equal. To simplify the exposition, let</para>
+		
+		<ul>
+			<li><para><latex>X := AB =[x_{ik}]</latex> &nbsp; be the matrix of size <latex>(m,p)</latex></para></li>
+			<li><para><latex>Y := BC = [y_{jl}]</latex> &nbsp; be the matrix of size <latex>(n,q)</latex></para></li>
+		</ul>
+		
+		<para>Then we need to show that <latex>XC = AY</latex>. For the entry in position <latex>(i,l)</latex> of these matrices we find:</para>
+		
+		<computation>
+			<left>\sum_{k=1}^{p} x_{ik}c_{kl}</left>
+			<center>=</center>
+			<right>\sum_{k=1}^{p}\left( \sum_{j=1}^{n} a_{ij} b_{jk} \right) c_{kl}</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{k=1}^{p}\sum_{j=1}^{n} (a_{ij}b_{jk}) c_{kl}</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{k=1}^{n}\sum_{j=1}^{p} a_{ij} ( b_{jk}c_{kl} )</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{j=1}^{n} \sum_{k=1}^{p} a_{ij} ( b_{jk} c_{kl})</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{j=1}^{n} a_{ij} \left( \sum_{k=1}^{p} b_{jk} c_{kl} \right)</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{j=1}^{n} a_{ij}y_{jl}</right>
+		</computation>
+		
+		<para>This says exactly that the matrices <latex>XC</latex> and <latex>AY</latex> have the same entry in each position <latex>(i,l)</latex>.</para>
+		
+		
+		
+		<caption>
+			<partref>Distributivity</partref>
+			Distributivity
+		</caption>
+		
+		<para>Suppose</para>
+		
+		<ul>
+			<li><para><latex magnify="yes">A=[a_{ij}]</latex> is a matrix of size <latex>(m,n)</latex></para></li>
+			<li><para><latex magnify="yes">B=[b_{jk}]</latex> and <latex>C=[c_{jk}]</latex> are matrices of size <latex>(n,p)</latex></para></li>
+		</ul>
+		
+		<para>Then <latex>A(B+C)</latex> and <latex>AB + AC</latex> are matrices of size <latex>(m,p)</latex>. We need to show that in each position <latex>(i,k)</latex>, <latex>1\leq i\leq m</latex> and <latex>1\leq k\leq p</latex>, the entries in those two matrices are equal. We find</para>
+		
+		<ul>
+			<li><para>of <latex>A(B+C)</latex>: &nbsp; <latex magnify="yes">a_{i1}(b_{1j}+c_{1j}) + \cdots + a_{in}(b_{nj} + c_{nj})</latex></para></li>
+			<li><para>of <latex>AB + AC</latex> &nbsp; <latex magnify="yes">(a_{i1}b_{1j}+\cdots + a_{in}b_{nj})\ +\ a_{i1}c_{1j}+\cdots +a_{in}c_{nj})</latex></para></li>
+		</ul>
+		
+		<para>Rules for computing with numbers show that these entries are equal, and the distributivity property of matrix multiplication follows. - We second distributivity law follows with the same method. </para>
+		
+		
+		
+		<caption><partref>IdNeutral</partref>Identity matrix is neutral with respect to multiplication</caption>
+		
+		<para>We leave it to the reader to establish this claim.</para>
+	</proof>
+</theorem>

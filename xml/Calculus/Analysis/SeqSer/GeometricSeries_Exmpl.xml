@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_GeometricSeries">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Geometric Series: Examples</title>
+	<showme>
+		<statement>
+			<para>Determine if the sequence below convergences. If it does, find its limit</para>
+			<math.display>
+				<latex>1 + \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \cdots + \dfrac{1}{2^n} + \cdots</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>The given series is a geometric series with <latex>r:=1/2</latex>. The series converges to a number because <latex><![CDATA[ \Abs{r} < 1 ]]></latex>, and</para>
+			<math.display>
+				<latex>\sum_{r=0}^{\infty} r^n\ =\ \dfrac{1}{1-r}\ =\ 2.</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	<showme>
+		<statement>
+			<para>Turn the periodic decimal number <latex>7.55555...</latex> into a fraction
+				<index.glossary>
+					<term>periodic</term><term>decimal number</term>
+					<info><para>Method of expressing it as a fraction</para></info>
+				</index.glossary>
+			</para>
+		</statement>
+		<answer type="Solution">
+			<para>We notice that there is a geometric series underlying the given periodic decimal number:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcl}
+7.5555... & = & 7 + 5\cdot\left( \dfrac{1}{10} + \dfrac{1}{100} + \cdots + \dfrac{1}{10^n} + \cdots \right) \\
+	& = & 7 + 5\cdot \dfrac{1}{10}\cdot \left( 1 + \dfrac{1}{10} + \dfrac{1}{100} + \cdots + \dfrac{1}{10^n} + \cdots \right) \\
+	& = & 7 + 5\cdot \dfrac{1}{10}\cdot \left( \sum_{n=0}^{\infty} \dfrac{1}{10^n} \right) \\
+	& = & 7 + \dfrac{1}{2} \dfrac{1}{1-(1/10)} \\
+	& = & 7 + \dfrac{1}{2} \cdot \cfrac{10}{9} \\
+	& = & 7  \dfrac{5}{9}
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Turn the periodic decimal number <latex>3.14\overline{605}</latex> into a fraction; the string <latex>605</latex> repeats indefinitely.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We notice that there is a geometric series underlying the given periodic decimal number:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcl}
+3.14\overline{605} & = & 3\dfrac{14}{100} + \dfrac{605}{100,000}\cdot\left( 1 + \dfrac{1}{1000} + \dfrac{1}{1000^2} + \cdots + \dfrac{1}{1000^n} + \cdots \right) \\
+	& = & 3\dfrac{14}{100} + \dfrac{605}{100,000}\cdot \left( \sum_{n=0}^{\infty} \dfrac{1}{1000^n} \right) \\
+	& = & 3\dfrac{14}{100} + \dfrac{605}{100,000}\cdot \dfrac{1}{1-(1/1000)} \\
+	& = & 3\dfrac{14}{100} + \dfrac{605}{100,000}\cdot \dfrac{1000}{999} \\
+	& = & 3\dfrac{14}{100} + \dfrac{605}{99900} \\
+	& = & 3\dfrac{14591}{99900}
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>
+</showme.pack>

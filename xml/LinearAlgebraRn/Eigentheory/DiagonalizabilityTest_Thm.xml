@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Theorem"
+	id="Thm_DiagonalizabilityTest">
+	<caption>Diagonalizability test</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_Diagonalize"/>
+		<info><para>Examples: Diagonalizing a matrix</para></info>
+	</associate>
+	<statement>
+		<para>An <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>  is diagonalizable if and only if the following conditions hold:</para>
+		<ol>
+			<li>
+				<para>There exist numbers <latex>\lambda_1,\dots ,\lambda_r</latex> in <latex>\RNr</latex> such that the characteristic polynomial of <latex>\Mtrx{A}</latex> is of the form</para>
+				<computation>
+					<left>p(\lambda)</left>
+					<center>=</center>
+					<right>(\lambda-\lambda_1)^{a_1}\, \cdots\, (\lambda - \lambda_r)^{a_r}</right>
+				</computation>
+				<para>where <latex>\lambda_1,\dots ,\lambda_r</latex> are pairwise distinct.</para>
+			</li>
+			<li>
+				<para>The algebraic multiplicity of each eigenvalue <latex>\lambda_k</latex> equals its
+					<subordinate>
+						<hot>geometric multiplicity</hot>
+						<info>
+							<para>This means that the subspace of eigenvectors of <latex>\Mtrx{A}</latex> with eigenvalue <latex>\lambda_k</latex> has dimension <latex>a_k</latex>.</para>
+						</info>
+					</subordinate>.
+				</para>
+			</li>
+		</ol>
+		<para>Whenever these conditions are satisfied, <latex>\RNr[n]</latex> has an ordered basis <latex>\EuScript{B} = (\Vect{b}_1 , \dots ,\Vect{b}_n)</latex> consisting of eigenvectors of <latex>\Mtrx{A}</latex>. Let <latex>\Mtrx{D}</latex> be the <latex>(n,n)</latex>-diagonal matrix whose <latex>i</latex>-th diagonal entry is the eigenvalue of <latex>\Vect{b}_i</latex>, and let <latex>\Mtrx{C} = \Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex> be the matrix whose <latex>i</latex>-th column is <latex>\Vect{b}_i</latex>. Then</para>
+		<computation>
+			<left>\Mtrx{D}</left>
+			<center>=</center>
+			<right>C^{-1}\, \Mtrx{A}\, \Mtrx{C}</right>
+		</computation>
+	</statement>
+	<proof>
+		<para>Let <latex>L\from \RNr[n] \to \RNr[n]</latex> denote the linear map represented by <latex>\Mtrx{A}</latex> in standard coordinates. Consider now the situation where <latex>\Mtrx{A}</latex> is diagonalizable with diagonalizing matrix</para>
+		<computation>
+			<left>\Mtrx{C}</left>
+			<center>=</center>
+			<right>[ \Vect{b}_1\ \dots\ \Vect{b}_n ]</right>
+		</computation>
+		<para>satisfying</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\left[
+\begin{array}{cccc}
+d_1 & 0 & \cdots & 0 \\
+0 & d_2 & & \vdots \\
+\vdots &&\ddots & 0 \\
+0 & \cdots & 0 & d_n
+\end{array}
+\right]\ =\ \Mtrx{C}^{-1}\, \Mtrx{A}\, \Mtrx{C}
+]]>
+			</latex>
+		</math.display>
+		<para>We show first that <latex>\EuScript{B} := (\Vect{b}_1,\dots , \Vect{b}_n)</latex> is an ordered basis of <latex>\RNr[n]</latex>  consisting of eigenvectors of <latex>\Mtrx{A}</latex>. Indeed,</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+\Mtrx{A} \Vect{b}_i\ &=\ \Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1} \Vect{b}_i \\
+	&=\ \Mtrx{C}_{\EuScript{S}\EuScript{B}} \Mtrx{D} \Mtrx{C}_{\EuScript{B}\EuScript{S}} \Vect{b}_i \\
+	&=\ \Mtrx{C}_{\EuScript{S}\EuScript{B}}\, 
+\left[
+\begin{array}{cccc}
+d_1 & 0 & \cdots & 0 \\
+0 & d_2 & & \vdots \\
+\vdots &&\ddots & 0 \\
+0 & \cdots & 0 & d_n
+\end{array}
+\right]\, 
+\left[
+\begin{array}{c}
+0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0
+\end{array}
+\right] \\
+	&=\ \Mtrx{C}_{\EuScript{S}\EuScript{B}}\,
+\left[
+\begin{array}{c}
+0 \\ \vdots \\ 0 \\ d_i \\ 0 \\ \vdots \\ 0
+\end{array}
+\right] \\
+	&=\ d_i \Vect{b}_i
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		<para>So <latex>\EuScript{B}</latex> consists of eigenvectors of <latex>\Mtrx{A}</latex>, and the eigenvalue of <latex>\Vect{b}_i</latex> is <latex>d_i</latex>. To see how these eigenvalues are related to the characteristic polynomial of <latex>\Mtrx{A}</latex>, we compute</para>
+		<computation>
+			<left>\det(\Mtrx{A} - \lambda \IdMtrx[n])</left>
+			<center>=</center>
+			<right>\det(\Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1}\ -\ \lambda \IdMtrx[n])</right>
+			<left></left>
+			<center>=	<info><para>Here we use that <latex>\Mtrx{C}\IdMtrx[n] = \IdMtrx[n] \Mtrx{C}</latex>.</para></info></center>
+			<right>\det(\Mtrx{C} \Mtrx{D} \Mtrx{C}^{-1}\ -\ C(\lambda \IdMtrx[n])C^{-1})</right>
+			<left></left>
+			<center>=	<info><para>Here we use the associative law of matrix multiplication</para></info></center>
+			<right>\det(\Mtrx{C} (\Mtrx{D} - \lambda \IdMtrx[n]) \Mtrx{C}^{-1} )</right>
+			<left></left>
+			<center>=	<info><para>Here we use that <latex>\det(\Mtrx{U}\Mtrx{V}) = \det( \Mtrx{V} \Mtrx{U} )</latex></para></info></center>
+			<right>\det( \Mtrx{D} - \lambda \IdMtrx[n] )</right>
+			<left></left>
+			<center>=</center>
+			<right>(\lambda - d_1)\cdots (\lambda - d_n)</right>
+			<left></left>
+			<center>=	<info><para>Here we just lump multiple occurrences of a factor <latex>(\lambda - d_i)</latex> into one exponentiated occurrence.</para></info></center>
+			<right>(\lambda - d_1)^{a_1}\, \cdots\, (\lambda - d_r)^{a_r}</right>
+		</computation>
+		<para>Now we turn to the relationship between algebraic and geometric multiplicity of <latex>d_i</latex>. From the computation above we see that <latex>d_i</latex> occurred in exactly <latex>a_i</latex> diagonal positions of <latex>\Mtrx{D}</latex>. Corresponding to each of these diagonal positions there is exactly one vector in the ordered list <latex>\Vect{b}_1,\dots, \Vect{b}_n</latex> of basis vectors in <latex>\EuScript{B}</latex>. It follows that the eigenspace <latex>E_i</latex> of <latex>d_i</latex> has dimension <latex>a_i</latex>.</para>
+		
+		
+		<para>Conversely, assume that conditions 1) and 2) of the theorem are satisfied. By hypothesis, <latex>\RNr[n]</latex> has an ordered basis <latex>\EuScript{B} = (\Vect{b}_1,\dots ,\Vect{b}_n)</latex> of eigenvectors of <latex>\Mtrx{A}</latex>. Let <latex>\lambda_1,\dots ,\lambda_n</latex> denote the corresponding eigenvalues. We need to show that <latex>\Mtrx{A}</latex> is diagonalizable. Let <latex>\Mtrx{C} := [\Vect{b}_1\ \dots\ \Vect{b}_n]</latex> and</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{D}\ :=\ 
+\left[
+\begin{array}{cccc}
+\lambda_1 & 0 & \cdots & 0 \\
+0 & \lambda_2 & & \vdots \\
+\vdots & & \ddots & 0 \\
+0 & \cdots & 0 & \lambda_n
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>Then <latex>\Mtrx{D}</latex> represents <latex>L</latex> with respect to <latex>\EuScript{B}</latex> because, for <latex>1\leq i\leq n</latex>,</para>
+		<math.display>
+			<latex>L(\Vect{b}_i) = \lambda_i \Vect{b}_i= \Mtrx{D}(\Vect{b}_i)_{\EuScript{B}}</latex>
+		</math.display>
+		<para>Therefore,</para>
+		<math.display>
+			<latex>\Mtrx{D} = \Mtrx{C}_{\EuScript{B}\EuScript{S}}\, \Mtrx{A}\, \Mtrx{C}_{\EuScript{S}\EuScript{B}} = \Mtrx{C}^{-1} \Mtrx{A}\, \Mtrx{C}</latex>
+		</math.display>
+		<para>and this means exactly that <latex>\Mtrx{C}</latex> is diagonalizable, as claimed.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_LinearIndependenceFacts"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Facts about linear independence</caption>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_LinearIndependenceFacts"/>
+      <info>
+         <info.caption>
+            <caption>Examples</caption>
+         </info.caption>
+         <para>
+            <para.body>Examples demonstrating applications of this proposition.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>The following hold</para.body>
+      </para>
+      <part.theorem partid="SubsetInheritsLinearIndepencdence">
+         <part.body>
+            <para>
+               <para.body>Every subset of a linearly independent set of vectors is also linearly independent.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="AddVector">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>S</latex>
+                  </math> is a linearly independent set of vectors then, for any vector <math>
+                     <latex>\Vect{b}</latex>
+                  </math>, 
+				<subordinate>
+                     <hot>
+                        <math>
+                           <latex>S\cup \Set{ \Vect{b} }</latex>
+                        </math>
+                     </hot>
+                     <info>
+                        <para>
+                           <para.body>The union of sets <math>
+                                 <latex>S\cup \Set{ \Vect{b} }</latex>
+                              </math> is the set of vectors which results from adding the vector <math>
+                                 <latex>\Vect{b}</latex>
+                              </math> to <math>
+                                 <latex>S</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+				is linearly independent if and only if <math>
+                     <latex>\Vect{b}</latex>
+                  </math> in not in <math>
+                     <latex>\span(S)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="LinearIndLimit">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Vect{b}_1,\dots ,\Vect{b}_n</latex>
+                  </math> are linearly independent vectors in <math>
+                     <latex>V:=\span\Set{ \Vect{a}_1,\dots ,\Vect{a}_m }</latex>
+                  </math>, then <math>
+                     <latex>n\leq m</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>SubsetInheritsLinearIndepencdence</part.ref>
+         </logic>
+         <caption>SubsetInheritsLinearIndepencdence</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Suppose <math>
+                     <latex>T</latex>
+                  </math> is linearly independent, and <math>
+                     <latex>S</latex>
+                  </math> is a subset of <math>
+                     <latex>T</latex>
+                  </math>. For pairwise distinct vectors <math>
+                     <latex>\Vect{a}_1,\dots ,\Vect{a}_r</latex>
+                  </math> in <math>
+                     <latex>S</latex>
+                  </math> consider the vector equation</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>AddVector</part.ref>
+         </logic>
+         <caption>AddVector</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Let <math>
+                     <latex>T:=S\cup \Set{ \Vect{b} }</latex>
+                  </math>. We show first that linear independence of <math>
+                     <latex>T</latex>
+                  </math> implies that <math>
+                     <latex>\Vect{b}</latex>
+                  </math> is not in <math>
+                     <latex>\span(S)</latex>
+                  </math>. We argue by contradiction: Suppose <math>
+                     <latex>\Vect{b}</latex>
+                  </math>is in <math>
+                     <latex>\span(S)</latex>
+                  </math>. Then</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>LinearIndLimit</part.ref>
+         </logic>
+         <caption>LinearIndLimit</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We know that each of the vectors <math>
+                     <latex>\Vect{b}_i</latex>
+                  </math> can be expressed in some way as a linear combination of the vectors <math>
+                     <latex>\Vect{a}_1,\dots ,\Vect{a}_m</latex>
+                  </math>:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

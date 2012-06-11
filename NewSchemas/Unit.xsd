@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" targetNamespace="Unit" xmlns="Unit" xmlns:unit="Unit"
+	xmlns:thm="Theorem" xmlns:exe="Exercise" xmlns:exa="Example">
+	<xsd:include schemaLocation="Definition.xsd"/>
+	<xsd:include schemaLocation="Comment.xsd"/>
+
+	<xsd:import schemaLocation="http://www.w3.org/2004/10/xml.xsd"
+		namespace="http://www.w3.org/XML/1998/namespace"/>
+	<xsd:import namespace="Theorem" schemaLocation="Theorem.xsd"/>
+	<xsd:element name="unit">
+		<xsd:annotation>
+			<xsd:documentation>Generic WMath document that can be used in a stand-alone mode or via a nesting to make compositions like a book or article, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="true">
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="headers"/>
+				<xsd:element ref="description" minOccurs="0"/>
+				<xsd:element minOccurs="0" name="titles">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="title" minOccurs="0"/>
+							<xsd:element ref="plain.title" minOccurs="0"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="authors" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>List of all authors of the unit</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="person" maxOccurs="unbounded">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="name"/>
+										<xsd:element ref="contactdata" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="contributors" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>List of all contributors to the unit; e.g. programmers, graphic designers, etc.</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="person" maxOccurs="unbounded">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="name"/>
+										<xsd:element ref="contactdata" minOccurs="0"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="acknowledgements" minOccurs="0">
+					<xsd:complexType>
+						<xsd:group ref="content_block" maxOccurs="unbounded"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="dates" minOccurs="0">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="creation">
+								<xsd:annotation>
+									<xsd:documentation>To record the date of creation of the unit.</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="date"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element maxOccurs="unbounded" minOccurs="0" name="stage">
+								<xsd:annotation>
+									<xsd:documentation>To record the dates of the revision history (only if explicitly requested)</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="date"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="last.revision">
+								<xsd:annotation>
+									<xsd:documentation>To record the date of the last revision.</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="date"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="preface" minOccurs="0">
+					<xsd:complexType>
+						<xsd:choice maxOccurs="unbounded">
+							<xsd:element ref="block"/>
+						</xsd:choice>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element ref="intro" minOccurs="0"/>
+				<xsd:choice>
+					<xsd:element name="body">
+						<xsd:complexType mixed="false">
+							<xsd:choice maxOccurs="unbounded">
+								<xsd:element ref="block"/>
+							</xsd:choice>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element maxOccurs="unbounded" name="legitimate.children">
+						<xsd:annotation>
+							<xsd:documentation>This element is a helper for the compositor activity.  It lists a collection of units which would make sense as possible subunits of the current one.  No rendering is based on the data in the legitimate.children element.  Rendering choices are made in the compositor.</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element maxOccurs="unbounded" name="unit.choice">
+									<xsd:annotation>
+										<xsd:documentation>For references to subunits</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:attribute name="unitId" type="xsd:QName"/>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+				<xsd:element minOccurs="0" name="historical.notes">
+					<xsd:annotation>
+						<xsd:documentation>For the historic notes on the content of this unit.</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:choice maxOccurs="unbounded">
+							<xsd:element ref="block"/>
+						</xsd:choice>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element minOccurs="0" name="summary">
+					<xsd:annotation>
+						<xsd:documentation>For the summary of the content of this unit.</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:choice maxOccurs="unbounded">
+							<xsd:element ref="block"/>
+						</xsd:choice>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element minOccurs="0" name="trailer">
+					<xsd:annotation>
+						<xsd:documentation>For any additional information on the content of this unit.</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:choice maxOccurs="unbounded">
+							<xsd:element ref="block"/>
+						</xsd:choice>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="unitid" type="xsd:NCName" use="required"/>
+		</xsd:complexType>
+		<xsd:unique name="IDs">
+			<xsd:selector xpath=".//*"/>
+			<xsd:field xpath="@id"/>
+		</xsd:unique>
+		<xsd:unique name="theorems">
+			<xsd:selector xpath=".//thm:theorem"/>
+			<xsd:field xpath="@id"/>
+		</xsd:unique>
+		<xsd:keyref name="theoremRefs" refer="theorems">
+			<xsd:selector
+				xpath=".//unit:crossref/unit:theorem.ref | .//unit:associate/unit:theorem.ref | .//unit:companion/unit:theorem.ref | .//thm:crossref/thm:theorem.ref | .//thm:associate/thm:theorem.ref | .//thm:companion/thm:theorem.ref | .//exa:crossref/exa:theorem.ref | .//exa:associate/exa:theorem.ref | .//exa:companion/exa:theorem.ref | .//exe:crossref/exa:theorem.ref | .//exe:associate/exa:theorem.ref | .//exe:companion/exa:theorem.ref"/>
+			<xsd:field xpath="@theoremID"/>
+		</xsd:keyref>
+		<xsd:unique name="comments">
+			<xsd:selector xpath=".//unit:comment"/>
+			<xsd:field xpath="@id"/>
+		</xsd:unique>
+		<xsd:keyref name="commentRefs" refer="comments">
+			<xsd:selector
+				xpath=".//unit:crossref/unit:comment.ref | .//unit:associate/unit:comment.ref | .//unit:companion/unit:comment.ref | .//thm:crossref/thm:comment.ref | .//thm:associate/thm:comment.ref | .//thm:companion/thm:comment.ref | .//exa:crossref/exa:comment.ref | .//exa:associate/exa:comment.ref | .//exa:companion/exa:comment.ref | .//exe:crossref/exa:comment.ref | .//exe:associate/exa:comment.ref | .//exe:companion/exa:comment.ref"/>
+			<xsd:field xpath="@commentID"/>
+		</xsd:keyref>
+		<xsd:unique name="definitions">
+			<xsd:selector xpath=".//unit:def"/>
+			<xsd:field xpath="@id"/>
+		</xsd:unique>
+		<xsd:keyref name="definitionRefs" refer="definitions">
+			<xsd:selector
+				xpath=".//unit:crossref/unit:definition.ref | .//unit:associate/unit:definition.ref | .//unit:companion/unit:definition.ref | .//thm:crossref/thm:definition.ref | .//thm:associate/thm:definition.ref | .//thm:companion/thm:definition.ref | .//exa:crossref/exa:definition.ref | .//exa:associate/exa:definition.ref | .//exa:companion/exa:definition.ref | .//exe:crossref/exa:definition.ref | .//exe:associate/exa:definition.ref | .//exe:companion/exa:definition.ref"/>
+			<xsd:field xpath="@definitionID"/>
+		</xsd:keyref>
+		<xsd:unique name="exercisePacks">
+			<xsd:selector xpath=".//exe:exercise.pack"/>
+			<xsd:field xpath="@id"/>
+		</xsd:unique>
+		<xsd:keyref name="exercisePackRefs" refer="exercisePacks">
+			<xsd:selector
+				xpath=".//crossref/exercise.pack.ref | .//studymaterials/exercise.pack.ref"/>
+			<xsd:field xpath="@exercisePackID"/>
+		</xsd:keyref>
+		<xsd:unique name="quizPacks">
+			<xsd:selector xpath=".//exe:quiz.pack"/>
+			<xsd:field xpath="@id"/>
+		</xsd:unique>
+		<xsd:keyref name="quizPackRefs" refer="quizPacks">
+			<xsd:selector
+				xpath=".//unit:crossref/unit:quiz.pack.ref | .//unit:associate/unit:quiz.pack.ref | .//unit:companion/unit:quiz.pack.ref | .//thm:crossref/thm:quiz.pack.ref | .//thm:associate/thm:quiz.pack.ref | .//thm:companion/thm:quiz.pack.ref | .//exa:crossref/exa:quiz.pack.ref | .//exa:associate/exa:quiz.pack.ref | .//exa:companion/exa:quiz.pack.ref | .//exe:crossref/exa:quiz.pack.ref | .//exe:associate/exa:quiz.pack.ref | .//exe:companion/exa:quiz.pack.ref"/>
+			<xsd:field xpath="@quizPackID"/>
+		</xsd:keyref>
+		<xsd:unique name="examplePacks">
+			<xsd:selector xpath=".//exa:example.pack"/>
+			<xsd:field xpath="@id"/>
+		</xsd:unique>
+		<xsd:keyref name="examplePackRefs" refer="examplePacks">
+			<xsd:selector
+				xpath=".//unit:crossref/unit:example.pack.ref | .//unit:studymaterials/unit:example.pack.ref"/>
+			<xsd:field xpath="@examplePackID"/>
+		</xsd:keyref>
+		<xsd:unique name="showmePacks">
+			<xsd:selector xpath=".//exa:showme.pack"/>
+			<xsd:field xpath="@id"/>
+		</xsd:unique>
+		<xsd:keyref name="showmePackRefs" refer="showmePacks">
+			<xsd:selector
+				xpath=".//unit:crossref/unit:showme.pack.ref | .//unit:associate/unit:showme.pack.ref | .//unit:companion/unit:showme.pack.ref"/>
+			<xsd:field xpath="@showmePackID"/>
+		</xsd:keyref>
+	</xsd:element>
+	<xsd:element name="intro">
+		<xsd:annotation>
+			<xsd:documentation>Introduction to a unit.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:element ref="block"/>
+			</xsd:choice>
+			<xsd:attribute name="id" type="xsd:negativeInteger"/>
+			<xsd:attribute ref="xml:base"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="headers">
+		<xsd:annotation>
+			<xsd:documentation>For support documents and additional information on this unit.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="texsupport"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="literature.db"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="block">
+		<xsd:annotation>
+			<xsd:documentation>To identify conceptually linked content within the unit.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="unbounded">
+				<xsd:element minOccurs="0" ref="caption"/>
+				<xsd:element name="block.body">
+					<xsd:complexType>
+						<xsd:choice maxOccurs="unbounded">
+							<xsd:group minOccurs="0" ref="content_block"/>
+							<xsd:element minOccurs="0" ref="thm:theorem"/>
+							<xsd:element minOccurs="0" ref="def"/>
+							<xsd:element minOccurs="0" ref="comment"/>
+						</xsd:choice>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

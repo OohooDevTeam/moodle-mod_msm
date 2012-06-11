@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_MatrixGivesLinearMap"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Matrix gives linear map</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation: How to construct <math>
+                  <latex>L</latex>
+               </math>
+            </caption>
+         </info.caption>
+         <para>
+            <para.body>Details on how the matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> determines <math>
+                  <latex>L</latex>
+               </math>.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_MatrixGivesLinearMap"/>
+      <info>
+         <para>
+            <para.body>Examples of using a matrix to define a linear map</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Every matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> of size <math>
+               <latex>(m,n)</latex>
+            </math> yields a linear transformation <math>
+               <latex>L\from \RNr[n]\to \RNr[m]</latex>
+            </math>     via the identity</para.body>
+      </para>
+      <math.display>
+         <latex>L(\Vect{x}) := \Mtrx{A}\cdot \Vect{x}</latex>
+      </math.display>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>L</latex>
+                  </math>   is a function from <math>
+                     <latex>\RNr[n]</latex>
+                  </math> to <math>
+                     <latex>\RNr[m]</latex>
+                  </math>, because it associates to each vector  <math>
+                     <latex>\Vect{x}</latex>
+                  </math> a unique vector in <math>
+                     <latex>\RNr[m]</latex>
+                  </math>, namely the column vector resulting from the matrix product</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>This is so because, if <math>
+                     <latex>\Vect{x}</latex>
+                  </math> and <math>
+                     <latex>\Vect{y}</latex>
+                  </math> are arbitrary vectors in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, then</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>This is so because, if <math>
+                     <latex>t\in \RNr</latex>
+                  </math> and <math>
+                     <latex>\Vect{x}\in \RNr[n]</latex>
+                  </math>, then</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

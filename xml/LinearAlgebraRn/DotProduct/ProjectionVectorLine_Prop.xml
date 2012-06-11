@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ProjectionVectorOnLine">
+	<caption>Orthogonal Projection of a Vector on a Line</caption>
+ 	<associate Description="Illustration">
+ 		<subpage.ref subpageID="Illu_ProjectionVectorLine"/>
+		<info>
+			<para>An illustration of the effect of the projection process.</para>
+		</info>
+	</associate>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation of a Computational Expression in the Projection Formula</caption>
+			<para>Note that the expression</para>
+			<math.display>
+				<latex>\dfrac{ \DotPr{\Vect{x}}{\Vect{y}} }{ \DotPr{\Vect{y}}{\Vect{y}} }</latex>
+			</math.display>
+			<para>is a number. In fact, it is the number by which <latex>\Vect{y}</latex> must be multiplied to give <latex>\pr_{L}(\Vect{x})</latex>.</para>
+		</info>
+	</associate>
+	<associate Description="Comment">
+		<info>
+			<caption>A Special Case of this Proposition</caption>
+			<para>Note this special case: if <latex>\Vect{x}</latex> is parallel to <latex>\Vect{y}</latex>, then <latex>\text{proj}_{L}(\Vect{x}) = \Vect{x}</latex>. Therefore, in this case, the projection formula tells us how we need to stretch or shrink <latex>\Vect{y}</latex> to obtain <latex>\Vect{x}</latex>.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>Let <latex>\Vect{x}</latex> be an arbitrary vector of <latex>\RNr[n]</latex>, and let <latex>L</latex> be the line through the origin in the direction of a nonzero vector <latex>\Vect{y}</latex>. Then the orthogonal projection of <latex>\Vect{x}</latex> onto <latex>L</latex> is the vector
+ 			<index.glossary><term>orthogonal</term><term>projection of a vector along a line</term>
+				<info>
+					<para>The projection of a vector <latex>\Vect{x}</latex> onto the line <latex>L</latex> in the direction of the nonzero vector <latex>\Vect{y}</latex> is the vector</para>
+					<math.display>
+						<latex>\pr_L(\Vect{x}) = \dfrac{ \DotPr{\Vect{x}}{\Vect{y}} }{ \DotPr{\Vect{y}}{\Vect{y}} } \cdot \Vect{y}</latex>
+					</math.display>
+				</info>
+			</index.glossary>
+			<index.glossary><term>projection</term><term>of a vector along a line</term>
+				<info>
+					<para>The projection of a vector <latex>\Vect{x}</latex> onto the line <latex>L</latex> in the direction of the nonzero vector <latex>\Vect{y}</latex> is the vector</para>
+					<math.display>
+						<latex>\pr_L(\Vect{x}) = \dfrac{ \DotPr{\Vect{x}}{\Vect{y}} }{ \DotPr{\Vect{y}}{\Vect{y}} } \cdot \Vect{y}</latex>
+					</math.display>
+				</info>
+			</index.glossary>
+			<index.symbol>
+				<symbol><latex>\pr_L(\Vect{x})</latex></symbol>
+				<info>
+					<para><latex>\pr_L(\Vect{x})</latex> denotes the orthogonal projection of a vector <latex>\Vect{x}</latex> onto the line <latex>L</latex> in the direction of the nonzero vector <latex>\Vect{y}</latex>
+					</para>
+				</info>
+			</index.symbol>
+		</para>
+		
+		<math.display>
+			<latex>\pr_L(\Vect{x}) = \dfrac{ \DotPr{\Vect{x}}{\Vect{y}} }{ \DotPr{\Vect{y}}{\Vect{y}} } \cdot \Vect{y}</latex>
+		</math.display>
+		
+		<para>Moreover, <latex>\Vect{y}</latex> is perpendicular to <latex>\Vect{x} - \pr_{L}(\Vect{x})</latex>.</para>
+	</statement>
+	
+	<proof>
+		<para>We know that the projection vector has the direction of <latex>\Vect{y}</latex>. So 
+			<subordinate><hot>there is a number <latex>t</latex></hot>
+				<info>
+					<caption>Why does such a number exist?</caption>
+					<para>Here we need the assumption that <latex>\Vect{y} \neq \Vect{0}</latex>. With this assumption we have, by definition, that a vector <latex>\Vect{z}</latex> is parallel to <latex>\Vect{y}</latex> exactly when there is a number <latex>s</latex> with <latex>\Vect{z} = s\cdot \Vect{y}</latex>. – In the case at hand, <latex>\Vect{z}</latex> is the projection of <latex>\Vect{x}</latex> onto <latex>L</latex>
+					</para>
+				</info>
+			</subordinate> with <latex>\text{proj}_L(\Vect{x}) = t\cdot \Vect{y}</latex>. For a given number <latex>t</latex>, set</para>
+		<para align="center"><latex>\Vect{u} := \Vect{x} - t\cdot \Vect{y}</latex> so that <latex>\Vect{x} = t\cdot \Vect{y} + \Vect{u}</latex>.</para>
+		
+		<para align="center"><img src="ims/ProjectionVectorLine_1.gif"/></para>
+		
+		<para>Then <latex>\Vect{u}</latex> is perpendicular to <latex>L</latex> if and only if <latex>\Vect{u} \bullet \Vect{y} = 0</latex>.</para>
+		
+		<para align="center"><img src="ims/ProjectionVectorLine_2.gif"/></para>
+		
+		<para>We find the number <latex>t</latex> for which this happens by dot producting both sides of the equation <latex>\Vect{x} = t\cdot \Vect{y} + \Vect{u}</latex> with <latex>\Vect{y}</latex>:</para>
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para><latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex></para>
+				</cell>
+				<cell align="center">
+					<para><latex>=</latex></para>
+				</cell>
+				<cell align="left">
+					<para><latex>\DotPr{ (t \Vect{y} + \Vect{u}) }{ \Vect{y} }</latex></para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right"><para>&nbsp;</para></cell>
+				<cell align="center">
+					<para><subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>Why is this computational step true?</caption>
+							<para>Here we use the distributivity law of the dot product.</para>
+						</info>
+					</subordinate>
+					</para>
+				</cell>
+				<cell align="left"><para><latex> \DotPr{ (t \Vect{y}) }{ \Vect{y} } + \DotPr{ \Vect{u} }{ \Vect{y} }</latex></para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right"><para>&nbsp;</para></cell>
+				<cell align="center">
+					<para><subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>Why is this computational step true?</caption>
+							<para>Here we use the fact that <latex>\DotPr{ (t\cdot \Vect{y}) }{ \Vect{y} } = t\, ( \DotPr{ \Vect{y} }{ \Vect{y} })</latex>, and that <latex>\Vect{u}</latex> is to be perpendicular to <latex>\Vect{y}</latex>.</para>
+						</info>
+					</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para><latex>t ( \DotPr{ \Vect{y} }{ \Vect{y} }) + 0</latex></para>
+				</cell>
+			</row>
+			<row>
+				<cell align="right">
+					<para><latex>t</latex></para>
+				</cell>
+				<cell align="center">
+					<para><subordinate><hot><latex>=</latex></hot>
+						<info><caption>Why is this computational step true?</caption>
+							<para>Here we use again that <latex>\Vect{y} \neq \Vect{0}</latex>; so we are allowed to divide by the positive number <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex>.</para>
+						</info>
+					</subordinate>
+					</para>
+				</cell>
+				<cell align="left">
+					<para><latex>\dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{ \Vect{y} } }</latex>
+					</para>
+				</cell>
+			</row>
+		</table>
+		
+		<para>It remains to show that <latex>\pr_{L}(\Vect{x})</latex> is perpendicular to <latex>\Vect{x} - \pr_{L}(\Vect{x})</latex>; i.e. we need to check that the dot product of the two vectors vanishes. So we compute</para>
+		
+		<table align="center">
+			<row>
+				<cell align="right">
+					<para><latex>\DotPr{ \Vect{y} }{ (\Vect{x} - \pr_{L}(\Vect{x} ) }</latex></para>
+				</cell>
+				<cell align="center"><para><latex>=</latex></para></cell>
+				<cell align="left"><para><latex>\DotPr{ \Vect{y} }{ \left( \Vect{x} - \dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{  \Vect{y} } }\cdot \Vect{y} \right) }</latex></para></cell>
+			</row>
+			<row>
+				<cell align="right"><para>&nbsp;</para></cell>
+				<cell align="center"><para>
+					<subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>Why is this true?</caption>
+							<para>Here we use the distributivity property of the dot product:</para>
+							<math.display>
+								<latex>\DotPr{ \Vect{u} }{ (\Vect{v} + \Vect{w}) } = \DotPr{ \Vect{u} }{ \Vect{v} }\ +\ \DotPr{ \Vect{u} }{ \Vect{w} }</latex>
+							</math.display>
+						</info>
+					</subordinate></para></cell>
+				<cell align="left"><para><latex>\DotPr{ \Vect{y} }{ \Vect{x} } - \dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \DotPr{ \Vect{y} }{ \Vect{y} } }\cdot \DotPr{ \Vect{y} }{ \Vect{y} }</latex></para></cell>
+			</row>
+			<row>
+				<cell align="right"><para>&nbsp;</para></cell>
+				<cell align="center"><para>
+					<subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>Why is this true?</caption>
+							<para>Here we cancel by <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex></para>
+						</info>
+					</subordinate></para></cell>
+				<cell align="left"><para><latex>\DotPr{ \Vect{y} }{ \Vect{x} } - \DotPr{ \Vect{x} }{ \Vect{y} }</latex></para></cell>
+			</row>
+			<row>
+				<cell align="right"><para>&nbsp;</para></cell>
+				<cell align="center"><para>
+					<subordinate><hot><latex>=</latex></hot>
+						<info>
+							<caption>Why is this true?</caption>
+							<para>Here we use the commutativity property of the dot product: <latex>\DotPr{ \Vect{x} }{ \Vect{y} } = \DotPr{ \Vect{y} }{ \Vect{x} }</latex>, and we canceled by <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex>.</para>
+						</info>
+					</subordinate></para></cell>
+				<cell align="left"><para><latex>\DotPr{ \Vect{x} }{ \Vect{y} } - \DotPr{ \Vect{x} }{ \Vect{y} }</latex></para></cell>
+			</row>
+			<row>
+				<cell align="right"><para>&nbsp;</para></cell>
+				<cell align="center"><para><latex>=</latex></para></cell>
+				<cell align="left"><para><latex>0</latex></para></cell>
+			</row>
+		</table>
+		<para>So the two vectors in question are, indeed, perpendicular. &ndash; This completes the proof.</para>
+	</proof>
+</theorem>

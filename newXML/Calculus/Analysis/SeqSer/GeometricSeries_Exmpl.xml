@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_GeometricSeries"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	
+	  <title>Geometric Series: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the sequence below convergences. If it does, find its limit</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>1 + \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \cdots + \dfrac{1}{2^n} + \cdots</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The given series is a geometric series with <math>
+                        <latex>r:=1/2</latex>
+                     </math>. The series converges to a number because <math>
+                        <latex> \Abs{r} &lt; 1 </latex>
+                     </math>, and</para.body>
+               </para>
+			            <math.display>
+				              <latex>\sum_{r=0}^{\infty} r^n\ =\ \dfrac{1}{1-r}\ =\ 2.</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Turn the periodic decimal number <math>
+                  <latex>7.55555...</latex>
+               </math> into a fraction
+				
+			</para.body>
+            <index.glossary>
+               <term>periodic</term>
+               <term>decimal number</term>
+               <info>
+                  <para>
+                     <para.body>Method of expressing it as a fraction</para.body>
+                  </para>
+               </info>
+            </index.glossary>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We notice that there is a geometric series underlying the given periodic decimal number:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rcl}
+7.5555... &amp; = &amp; 7 + 5\cdot\left( \dfrac{1}{10} + \dfrac{1}{100} + \cdots + \dfrac{1}{10^n} + \cdots \right) \\
+	&amp; = &amp; 7 + 5\cdot \dfrac{1}{10}\cdot \left( 1 + \dfrac{1}{10} + \dfrac{1}{100} + \cdots + \dfrac{1}{10^n} + \cdots \right) \\
+	&amp; = &amp; 7 + 5\cdot \dfrac{1}{10}\cdot \left( \sum_{n=0}^{\infty} \dfrac{1}{10^n} \right) \\
+	&amp; = &amp; 7 + \dfrac{1}{2} \dfrac{1}{1-(1/10)} \\
+	&amp; = &amp; 7 + \dfrac{1}{2} \cdot \cfrac{10}{9} \\
+	&amp; = &amp; 7  \dfrac{5}{9}
+\end{array}
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Turn the periodic decimal number <math>
+                  <latex>3.14\overline{605}</latex>
+               </math> into a fraction; the string <math>
+                  <latex>605</latex>
+               </math> repeats indefinitely.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We notice that there is a geometric series underlying the given periodic decimal number:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rcl}
+3.14\overline{605} &amp; = &amp; 3\dfrac{14}{100} + \dfrac{605}{100,000}\cdot\left( 1 + \dfrac{1}{1000} + \dfrac{1}{1000^2} + \cdots + \dfrac{1}{1000^n} + \cdots \right) \\
+	&amp; = &amp; 3\dfrac{14}{100} + \dfrac{605}{100,000}\cdot \left( \sum_{n=0}^{\infty} \dfrac{1}{1000^n} \right) \\
+	&amp; = &amp; 3\dfrac{14}{100} + \dfrac{605}{100,000}\cdot \dfrac{1}{1-(1/1000)} \\
+	&amp; = &amp; 3\dfrac{14}{100} + \dfrac{605}{100,000}\cdot \dfrac{1000}{999} \\
+	&amp; = &amp; 3\dfrac{14}{100} + \dfrac{605}{99900} \\
+	&amp; = &amp; 3\dfrac{14591}{99900}
+\end{array}
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

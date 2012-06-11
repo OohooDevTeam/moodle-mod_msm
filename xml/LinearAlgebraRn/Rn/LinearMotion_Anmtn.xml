@@ -1,0 +1,11 @@
+<!DOCTYPE sub.page SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="LinearMotion_Anmtn">
+	<title>Linear Motion – Animation</title>
+	<sub.page.body>
+      <para>Click the ‘start’-button below to see the motion of a particle along a straight line with constant speed.</para>
+      <para align="center">
+         <b>Element for placement of an applet is needed here</b>; Applet document to be linked to: LnrMtn_illstrtn1.htm in legacy materials</para>
+	</sub.page.body>
+</sub.page>

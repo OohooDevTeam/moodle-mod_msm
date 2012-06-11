@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_NullSpace">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Null Space: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Find the null space of the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+3 & 1 & 7 \\
+-2 & 1 & 4 \\
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>We are looking for the solutions of the vector equation</para>
+			<math.display>
+				<latex>
+					<![CDATA[ 
+\left[
+\begin{array}{rrr}
+3 & 1 & 7 \\
+-2 & 1 & 4 \\
+\end{array}
+\right]\cdot 
+\left[
+\begin{array}{r}
+x \\ y \\ z
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{cc}
+0 \\ 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>We see that the solutions of this vector equation correspond to the simultaneous solutions of the system of two homogeneous linear equations</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcrcrcl}
+3x & + & y & + & 7z & = & 0 \\
+-2x& + & y & + & 4z & = & 0
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>The augmented coefficient matrix of this system of linear equations is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rrr|r}
+3 & 1 & 7 & 0 \\
+-2& 1 & 4 & 0
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>The RREF of this matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rrr|r}
+1 & 0 & \tfrac{3}{5} & 0 \\
+0 & 1 & \tfrac{26}{5}& 0
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>This means that <latex>(x,y,z)</latex> solves the system exactly when, for arbitrary <latex>z</latex> in <latex>\RNr</latex>,</para>
+			<computation>
+				<left>x</left>
+				<center>=</center>
+				<right>-\tfrac{3}{5}</right>
+				<left>y</left>
+				<center>=</center>
+				<right>-\tfrac{26}{5}</right>
+			</computation>
+			<para>In other words,</para>
+			<computation>
+				<left>(x,y,z)</left>
+				<center>=</center>
+				<right>z\cdot (-\tfrac{3}{5},-\tfrac{26}{5},1)</right>
+			</computation>
+			<para>Therefore, the null space of <latex>\Mtrx{A}</latex> consists of all vectors of the form <latex>z\cdot (-\tfrac{3}{5},-\tfrac{26}{5},1)</latex>, with <latex>z</latex> in <latex>\RNr</latex> arbitrary. This is the line in <latex>\RNr[3]</latex> through the origin in the direction of the vector <latex>(-3,-26,5)</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

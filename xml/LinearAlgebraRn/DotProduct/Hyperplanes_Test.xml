@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Test_Hyperplanes">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Distance of Point from Hyperplane: Self Test</title>
+	<exercise>
+		<problem>
+			<para>For each of the statements below about a point <latex>P</latex> and hyperplane <latex>H</latex> in <latex>\RNr[n]</latex> indicate if it is true or false</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>P</latex> always lies on <latex>H</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>This is false.</para></answer>
+				<solution>
+					<para>This is false. &ndash; To see this recall that there is some nonzero vector <latex>\Vect{n}\neq 0</latex>, and a number <latex>c</latex> such that <latex>\Vect{x}</latex> belongs to the hyperplane exactly when</para>
+					<math.display>
+						<latex>\DotPr{ \Vect{n} }{ \Vect{x} } = c</latex>
+					</math.display>
+					<para>But then <latex>s := \Abs{ \Vect{n} } \neq 0</latex>. So the equation</para>
+					<computation>
+						<left>t\cdot s</left>
+						<center>=</center>
+						<right>c</right>
+					</computation>
+					<para>has the unique solution <latex>t = c/s</latex>. Therefore, <latex>t\cdot \Vect{n}</latex> does not lie on <latex>H</latex> so long as <latex>t\neq c/s</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>P</latex> always has distance <latex>0</latex> from <latex>H</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This is false.</para></answer>
+				<solution>
+					<para>This is false. &ndash; <latex>P</latex> has distance <latex>0</latex> from <latex>H</latex> exactly when <latex>P</latex> lies on <latex>H</latex>. However, we just found in the previous problem that not every point in <latex>\RNr[n]</latex> lies on <latex>H</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>The distance from <latex>P</latex> to <latex>H</latex> is <latex>0</latex> exactly when <latex>P</latex> lies on <latex>H</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>This is true!</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The distance from <latex>P</latex> to <latex>H</latex> is only defined if any two points of <latex>H</latex> have the same distance from <latex>P</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>This is false.</para></answer>
+				<solution>
+					<para>This is false. &ndash; The distance from <latex>P</latex> to <latex>H</latex> is always defined.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The distance from <latex>P</latex> to <latex>H</latex> is the distance of <latex>P</latex> from all points of <latex>H</latex></para>
+			</problem>
+			<approach>
+				<answer><para>This is false.</para></answer>
+				<solution>
+					<para>This is false. &ndash; There is always exactly one point on <latex>H</latex> which is closest to <latex>P</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The distance from <latex>P</latex> to <latex>H</latex> is the distance from <latex>P</latex> to the point of <latex>H</latex> closest to <latex>P</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If the distance from <latex>P</latex> to <latex>H</latex> is <latex>d</latex>, then</para>
+				<computation>
+					<left>\Dstnc{P}{Q}</left>
+					<center>\geq</center>
+					<right>d</right>
+				</computation>
+				<para>for every <latex>Q</latex> on <latex>H</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If the distance from <latex>P</latex> to <latex>H</latex> is negative, then <latex>P</latex> lies on the other side of <latex>H</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>This sentence does not make any sense.</para>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If the distance from <latex>P</latex> to <latex>H</latex> is positive, then <latex>P</latex> does not lie on <latex>H</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True</para></answer>
+				<solution>
+					<para>Correct! &ndash; The distance from <latex>P</latex> to <latex>H</latex> is the distance from <latex>P</latex> to the point on <latex>H</latex> closest to <latex>P</latex>. If this distance is positive, this means that <latex>P</latex> does not lie on <latex>H</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

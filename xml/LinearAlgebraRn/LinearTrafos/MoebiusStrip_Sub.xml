@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illstrt_MoebiusStrip">
+	<title>Transformation of a Strip into a M&ouml;bius Strip</title>
+	<sub.page.body>
+		<block>
+			<para>The two pictures below show a planar sheet and then the result of deforming it into a twisted band, called a M&ouml;bius strip: give</para>
+			
+			<para align="center"><img src="ims/MoebiusStrip1.gif"></img> &nbsp; <img src="ims/MoebiusStrip2.jpg" width="240"></img></para>
+			
+			<para>This transformation does not transform lines into lines. So it is not linear.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

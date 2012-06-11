@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_Force">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	<title>Modeling Forces - Exercises</title>
+	
+	<exercise>
+		<problem>
+			<para>Consider an object suspended on a rope as is illustrated in the picture below.</para>
+			<para align="center"><img src="ims/Force01_Exrcs.gif" width="229" height="171"/></para>
+			<para>How strong must the rope minimally be so that it supports the object in its position and so that there is a safety margin of 100%?</para>
+		</problem>
+		<approach>
+			<answer>
+				<para>The rope must be able to withstand a force of approximately 6,100N.</para>
+			</answer>
+			<solution.hint>
+				<para>Recall these two fundamental facts:</para>
+				<ul>
+					<li><para>The only way a rope can exert a force is by pulling. &ndash; So the force vectors suspending the object must have the direction of the rope.</para></li>
+					<li><para>The magnitude of the forces acting at the various points of a rope are all equal.</para></li>
+				</ul>
+			</solution.hint>
+			<solution.hint>
+				<para>Represent the weight of the object by a downward vector. To keep the object in suspense, an upward force vector of equal length must result from the forces in the rope. These forces act in the direction of the rope; i.e. towards the upper right and the upper left. Use elementary geometry to find their magnitudes.</para>
+			</solution.hint>
+			<solution>
+				<para>First we recall two fundamental facts about forces and communicated by ropes:</para>
+				<ul>
+					<li><para>The only way a rope can exert a force is by pulling. &ndash; So the force vectors suspending the object must have the direction of the rope.</para></li>
+					<li><para>The magnitude of the forces acting at the various points of a rope are all equal.</para></li>
+				</ul>
+				<para>Now consider the schematic picture below: We represent the force corresponding to the weight of the object by a downward arrow of length 1, represented here by the vector <latex>F</latex>. To keep the object suspended, the rope must deliver an upward force of equal magnitude, represented here by the vector <latex>-F</latex>.</para>
+				
+				<para align="center"><img src="ims/Force.gif" width="341" height="267"/></para>
+				
+				<para>The vector <latex>-F</latex> is the sum of the force vectors <latex>F_1</latex> and <latex>F_2</latex> in the ropes. Using similar triangles</para>
+				
+				<para align="center"><img src="ims/Force02_Exrcs.gif" width="341" height="145"/></para>
+				
+				<para>we see that</para>
+				
+				<table align="center">
+					<row>
+						<cell align="right"><para>
+							<subordinate>
+								<hot><latex>\dfrac{1}{\sqrt{6^2+1^2} }</latex></hot>
+								<info>
+									<caption>Where to these numbers come from?</caption>
+									<para>The number <latex>1</latex> in the numerator of this ratio is the distance by which the weight of the object makes the rope sag. The denominator is the length of the rope piece from one of the suspsension points to the weight.</para>
+								</info>
+							</subordinate>
+						</para></cell>
+						<cell align="center"><para><latex>=</latex></para></cell>
+						<cell align="left"><para>
+							<subordinate>
+								<hot><latex>\dfrac{500N}{| F_1 | }</latex></hot>
+								<info>
+									<caption>How is this ratio built?</caption>
+									<para><latex>500N</latex> is the upward force contributed by one piece of rope from a suspension point to the weight. <latex>|F_1|</latex> is the length of the force vector <latex>F_1</latex>. &ndash; The law of similar triangles asserts that both sides of this equation are equal.</para>
+								</info>
+							</subordinate>
+						</para></cell>
+					</row>
+					
+					<row>
+						<cell align="right"><para><latex>|F_1|</latex></para></cell>
+						<cell align="center"><para><latex>=</latex></para></cell>
+						<cell align="left"><para><latex>500 \cdot \sqrt{37}\, N</latex></para></cell>
+					</row>
+				</table>
+				
+				<para>Given that the rope is to have a safety margin of 100%, it must be able to withstand a force of <latex>1000\cdot \sqrt{37} N</latex>.</para>
+			</solution>			
+		</approach>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>Solve the previous problem modified as follows:</para>
+		</problem>
+		<part>
+			<problem>
+				<para>The center of the rope is only .5m below the two suspension points.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The rope must be able to withstand a force of approximately 12,100N.</para>
+				</answer>
+				<solution.hint>
+					<para>You can pattern your approach after the solution given for the previous problem.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The two suspension points are right next to each other; i.e. the distance between them is 0.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The rope must be able to withstand a force of 1000N.</para>
+				</answer>
+				<solution.hint>
+					<para>Here you don't even need mathematical theory. Common sense is enough.</para>
+				</solution.hint>
+				<solution>
+					<para>In this situation each of the left and right rope segments carries exactly half of the weight of the object; i.e. 500N. To allow for a safety margin of 100%, the rope must be able to withstand a force of 1000N.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

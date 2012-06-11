@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_Sequences"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Sequences of Real Numbers</title>
+      <plain.title>Sequences of Real Numbers</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we introduce infinite sequences of real numbers, and we learn how to investigate them for properties  bounded, increasing, and decreasing. Then we introduce the concepts of subsequence and tail end of a sequence.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_SequenceInR">
+               <caption>Infinite sequence of real numbers</caption>
+               <associate type="Illustration">
+                  <unit.ref unitId="Illu_Sequence"/>
+                  <info>
+                     <para>
+                        <para.body>An illustration of a sequence</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <info>
+                     <info.caption>Example</info.caption>
+                     <para>
+                        <para.body>The assignment <math>
+                              <latex>a_n:=2^n</latex>
+                           </math> gives the sequence <math>
+                              <latex>(a_n)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                     <para align="center">
+                        <para.body>1, 2, 4, 8, 16, 32, 64, ....</para.body>
+                     </para>
+                     <para>
+                        <para.body>The sequence elements are</para.body>
+                     </para>
+                     <math.display>
+                        <latex>a_0=1,\ \ a_1=2,\ \ a_2=4,\ \ a_3=8,\ \ \dots</latex>
+                     </math.display>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <info>
+                     <info.caption>Example</info.caption>
+                     <para>
+                        <para.body>The assignment <math>
+                              <latex>a_n:=(-1)^n\cdot n</latex>
+                           </math> gives the sequence <math>
+                              <latex>(a_n)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                     <para align="center">
+                        <para.body>0, -1, 2, -3, 4, -5, 6, ....</para.body>
+                     </para>
+                     <para>
+                        <para.body>The sequence elements are</para.body>
+                     </para>
+                     <math.display>
+                        <latex>a_0=0,\ \ a_1=-1,\ \ a_2=2,\ \ a_3=-3,\ \ \dots</latex>
+                     </math.display>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <info>
+                     <info.caption>Example</info.caption>
+                     <para>
+                        <para.body>The assignment <math>
+                              <latex>a_n:=\sin (n\pi)</latex>
+                           </math> gives the sequence <math>
+                              <latex>(a_n)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                     <para align="center">
+                        <para.body>0, 0, 0, 0, 0, 0, 0, ....</para.body>
+                     </para>
+                     <para>
+                        <para.body>The sequence elements are</para.body>
+                     </para>
+                     <math.display>
+                        <latex>a_0=0,\ \ a_1=0,\ \ a_2=0,\ \ a_3=0,\ \ \dots</latex>
+                     </math.display>
+                     <para>
+                        <para.body>This example demonstrates that one and the same number can appear repeatedly as a sequence element.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>An (infinite) sequence of real numbers is given by a function <math>
+                           <latex>a\from \NNr\to \RNr</latex>
+                        </math>. For <math>
+                           <latex>n\in \NNr</latex>
+                        </math>, <math>
+                           <latex>a_n:=a(n)</latex>
+                        </math> is called the <math>
+                           <latex>n</latex>
+                        </math>-th sequence element. We write</para.body>
+                  </para>
+                  <math.display>
+                     <latex>(a_n)\ :=\ (a_n | n\in \NNr)\ =\ (a_0,a_1,a_2,\dots )</latex>
+                  </math.display>
+                  <para>
+                     <para.body>for such a sequence.
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>(a_n)</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>(a_n)</latex>
+                                 </math> denotes a sequence of real numbers.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>a_n</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>a_n</latex>
+                                 </math> denotes the <math>
+                                    <latex>i</latex>
+                                 </math>-th sequence element in a sequence <math>
+                                    <latex>(a_n)</latex>
+                                 </math> of real numbers.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>sequence</term>
+                        <info>
+                           <info.caption>Sequence</info.caption>
+                           <para>
+                              <para.body>An (infinite) sequence of real numbers is given by a function <math>
+                                    <latex>a\from \NNr\to \RNr</latex>
+                                 </math>. – Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>sequence</term>
+                        <term>element</term>
+                        <info>
+                           <info.caption>Sequence element</info.caption>
+                           <para>
+                              <para.body>Given an (infinite) sequence of real numbers <math>
+                                    <latex>a\from \NNr\to \RNr</latex>
+                                 </math>, for <math>
+                                    <latex>n\in \NNr</latex>
+                                 </math>,
+							<math>
+                                    <latex>a_n:=a(n)</latex>
+                                 </math> is called the <math>
+                                    <latex>n</latex>
+                                 </math>-th sequence element.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>It will be useful to distinguish sequences by any one of the following properties.</para.body>
+            </para>
+            <def type="Definition" id="Def_SequenceAttributes">
+               <caption>Some sequence types</caption>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_SequenceTypes"/>
+                  <info>
+                     <para>
+                        <para.body>A set of worked examples related to these concepts</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A sequence <math>
+                           <latex>(a_n)</latex>
+                        </math> of real numbers is called</para.body>
+                  </para>
+                  <ul>
+                     <li>
+                        <para>
+                           <para.body>
+                              <strong>constant</strong> if there is <math>
+                                 <latex>c\in \RNr</latex>
+                              </math> such that <math>
+                                 <latex>a_n=c</latex>
+                              </math> for all <math>
+                                 <latex>n\in \NNr</latex>
+                              </math>;
+					</para.body>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>constant</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called constant if there is <math>
+                                          <latex>c\in \RNr</latex>
+                                       </math> such that <math>
+                                          <latex>a_n=c</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \NNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <strong>bounded</strong> by <math>
+                                 <latex>b\geq 0</latex>
+                              </math> if <math>
+                                 <latex>\Abs{a_n}\leq b</latex>
+                              </math> for all <math>
+                                 <latex>n\in \NNr</latex>
+                              </math>; it is called bounded above by <math>
+                                 <latex>u\in \RNr</latex>
+                              </math> if <math>
+                                 <latex>a_n\leq u</latex>
+                              </math> for all <math>
+                                 <latex>n\in \NNr</latex>
+                              </math>, and it is bounded below if there is <math>
+                                 <latex>l\in\RNr</latex>
+                              </math> such that <math>
+                                 <latex>l\leq a_n</latex>
+                              </math> for all <math>
+                                 <latex>n\in \NNr</latex>
+                              </math>.
+					</para.body>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>bounded</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called bounded by <math>
+                                          <latex>b\in \RNr</latex>
+                                       </math> if <math>
+                                          <latex>\Abs{a_n}\leq b</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \RNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>bounded below</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called bounded below by <math>
+                                          <latex>b\in \RNr</latex>
+                                       </math> if <math>
+                                          <latex>b\leq a_n</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \RNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>bounded above</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called bounded above by <math>
+                                          <latex>u\in \RNr</latex>
+                                       </math> if <math>
+                                          <latex>a_n\leq u</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \RNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>bounded below</term>
+                              <term>sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called bounded below by <math>
+                                          <latex>b\in \RNr</latex>
+                                       </math> if <math>
+                                          <latex>b\leq a_n</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \RNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>bounded above</term>
+                              <term>sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called bounded above by <math>
+                                          <latex>u\in \RNr</latex>
+                                       </math> if <math>
+                                          <latex>a_n\leq u</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \RNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <strong>increasing</strong> if <math>
+                                 <latex>a_n\leq a_{n+1}</latex>
+                              </math> for all <math>
+                                 <latex>n\in \NNr</latex>
+                              </math> and decreasing if <math>
+                                 <latex>a_n\geq a_{n+1}</latex>
+                              </math> for all <math>
+                                 <latex>n\in \NNr</latex>
+                              </math>; it is called monotone if it is increasing or decreasing;
+					</para.body>
+                           <index.glossary>
+                              <term>increasing</term>
+                              <term>sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called increasing if <math>
+                                          <latex>a_n\leq a_{n+1}</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \NNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>increasing</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called increasing if <math>
+                                          <latex>a_n\leq a_{n+1}</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \NNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>decreasing</term>
+                              <term>sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called decreasing if <math>
+                                          <latex>a_n\geq a_{n+1}</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \NNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>decreasing</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called decreasing if <math>
+                                          <latex>a_n\geq a_{n+1}</latex>
+                                       </math> for all <math>
+                                          <latex>n\in \NNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>monotone</term>
+                              <term>sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called monotone if it is increasing or decreasing.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>monotone</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called monotone if it is increasing or decreasing.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <strong>strictly increasing</strong> if <math>
+                                 <latex> a_n &lt; a_{n+1}</latex>
+                              </math> for all <math>
+                                 <latex>n\in \NNr</latex>
+                              </math> and strictly decreasing if <math>
+                                 <latex> a_n &gt; a_{n+1} </latex>
+                              </math> for all <math>
+                                 <latex>n\in \NNr</latex>
+                              </math>; it is called strictly monotone if it is either strictly increasing or strictly decreasing;
+					</para.body>
+                           <index.glossary>
+                              <term>strictly increasing</term>
+                              <term>sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called strictly increasing if <math>
+                                          <latex> a_n &lt; a_{n+1} </latex>
+                                       </math> for all <math>
+                                          <latex>n\in \NNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>strictly increasing</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called strictly increasing if <math>
+                                          <latex> a_n &lt; a_{n+1} </latex>
+                                       </math> for all <math>
+                                          <latex>n\in \NNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>strictly decreasing</term>
+                              <term>sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called strictly decreasing if <math>
+                                          <latex> a_n &gt; a_{n+1} </latex>
+                                       </math> for all <math>
+                                          <latex>n\in \NNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>strictly decreasing</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called strictly decreasing if <math>
+                                          <latex> a_n &gt; a_{n+1} </latex>
+                                       </math> for all <math>
+                                          <latex>n\in \NNr</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>strictly monotone</term>
+                              <term>sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called strictly monotone if it is either strictly increasing or strictly decreasing.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>strictly monotone</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called strictly monotone if it is either strictly increasing or strictly decreasing.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <strong>alternating</strong> if <math>
+                                 <latex>\sign(a_n) = - \sign(a_{n+1})</latex>
+                              </math> for all <math>
+                                 <latex>n\in\NNr</latex>
+                              </math>.
+					</para.body>
+                           <index.glossary>
+                              <term>alternating</term>
+                              <term>sequence</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called alternating if <math>
+                                          <latex>\sign(a_n) = - \sign(a_{n+1})</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>sequence</term>
+                              <term>alternating</term>
+                              <info>
+                                 <para>
+                                    <para.body>A sequence <math>
+                                          <latex>(a_n)</latex>
+                                       </math> of real numbers is called alternating if <math>
+                                          <latex>\sign(a_n) = - \sign(a_{n+1})</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                  </ul>
+                  <para>
+                     <para.body>A sequence is called (strictly) monotone if it is (strictly) increasing or decreasing.
+				</para.body>
+                     <index.glossary>
+                        <term>monotone</term>
+                        <term>sequence</term>
+                        <info>
+                           <para>
+                              <para.body>A sequence is called (strictly) monotone if it is (strictly) increasing or decreasing.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <def type="Definition" id="Def_SetSequenceElements">
+               <caption>Set of sequence elements</caption>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>The set of sequence elements is simply the collection of numbers which occur somewhere in the sequence. Any information about the position of some number in the sequence or how often it has occurred has been lost.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <info>
+                     <info.caption>Example</info.caption>
+                     <para>
+                        <para.body>If <math>
+                              <latex>a_n = (-1)^n = (-1,1,-1,1,\dots)</latex>
+                           </math>, then the set of sequence elements is <math>
+                              <latex>\Set{ +1, -1 }</latex>
+                           </math>.</para.body>
+                     </para>
+                     <para>
+                        <para.body>Let <math>
+                              <latex>b_n = 1</latex>
+                           </math> if <math>
+                              <latex>n</latex>
+                           </math> is a prime number, and <math>
+                              <latex>b_n=-1</latex>
+                           </math> if <math>
+                              <latex>n</latex>
+                           </math> not a prime number; so</para.body>
+                     </para>
+                     <math.display>
+                        <latex>(b_n) = (-1,-1,1,1,-1,1,-1,1,-1,-1,-1,1,-1,1,\dots)</latex>
+                     </math.display>
+                     <para>
+                        <para.body>Then the set of sequence elements is <math>
+                              <latex>\Set{+1, -1}</latex>
+                           </math>.</para.body>
+                     </para>
+                     <para>
+                        <para.body>Visibly, the sequences <math>
+                              <latex>(a_n)</latex>
+                           </math> and <math>
+                              <latex>(b_n)</latex>
+                           </math> are quite distinct. Still, their respective sets of sequence elements are equal.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>Given a sequence <math>
+                           <latex>(a_n)</latex>
+                        </math> in <math>
+                           <latex>\RNr</latex>
+                        </math>, the set of sequence elements or set of sequence values is
+				</para.body>
+                     <index.glossary>
+                        <term>set</term>
+                        <term>of sequence elements</term>
+                        <info>
+                           <para>
+                              <para.body>Given a sequence <math>
+                                    <latex>(a_n)</latex>
+                                 </math> in <math>
+                                    <latex>\RNr</latex>
+                                 </math>, the set of sequence elements is</para.body>
+                           </para>
+                           <math.display>
+                              <latex>\Set{ a_n \in \RNr \st n\in \NNr }</latex>
+                           </math.display>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>set</term>
+                        <term>of sequence values</term>
+                        <info>
+                           <para>
+                              <para.body>Given a sequence <math>
+                                    <latex>(a_n)</latex>
+                                 </math> in <math>
+                                    <latex>\RNr</latex>
+                                 </math>, the set of sequence values is</para.body>
+                           </para>
+                           <math.display>
+                              <latex>\Set{ a_n \in \RNr \st n\in \NNr }</latex>
+                           </math.display>
+                           <para>
+                              <para.body>Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>\Set{ a_n \in \RNr \st n\in \NNr }</latex>
+                  </math.display>
+               </def.body>
+            </def>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_Sequences"/>
+   </studymaterials>
+</unit>

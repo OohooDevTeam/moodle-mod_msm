@@ -1,0 +1,1341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_OrthogonalSplittings"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Orthogonal Splittings</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>W</latex>
+                  </math> be the subspace of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> spanned by the ordered set of vectors <math>
+                     <latex>\EuScript{B} := ( \Vect{w}_1, \Vect{w}_2 )</latex>
+                  </math>, where</para.body>
+            </para>
+			         <math.display>
+				           <latex>\Vect{w}_1 = (1,0,-1) \quad\text{and}\quad \Vect{w}_2 = (1,1,0)</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Show that <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> is an ordered basis of <math>
+                        <latex>W</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We already know that <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> spans <math>
+                           <latex>W</latex>
+                        </math>. So, to show that <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> is a basis of <math>
+                           <latex>W</latex>
+                        </math>, it suffices to show that it is linearly independent.</para.body>
+                  </para>
+					             <para>
+                     <para.body>One way of showing that the vectors in <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> are linearly independent is to show directly that they are not parallel; i.e. the vector equation</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{w}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>t\cdot \Vect{w}_1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>has no solution.</para.body>
+                  </para>
+					
+					             <para>
+                     <para.body>Alternatively, we may use the determinant test to show that the vectors are linearly independent:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+[\Vect{w}_1\ \ \Vect{w}_2]\ =\ 
+\left[
+\begin{array}{rr}
+1 &amp; 1 \\
+0 &amp; 1 \\
+-1 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The top two rows satisfy</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\det \left[
+\begin{array}{rr}
+1 &amp; 1 \\
+0 &amp; 1
+\end{array}
+\right] = 1 \neq 0
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore the vectors are linearly independent, and so <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> is an ordered basis of <math>
+                           <latex>W</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find an ONB for <math>
+                        <latex>W</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>An ONB of <math>
+                              <latex>W</latex>
+                           </math> is given by</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{u}_1</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\tfrac{1}{\sqrt{2}} (1,0,-1)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{u}_2</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>:=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\tfrac{\sqrt{2}}{2\sqrt{3}} (1,2,1)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We are told that the two vectors <math>
+                           <latex>\Vect{w}_1</latex>
+                        </math> and <math>
+                           <latex>\Vect{w}_2</latex>
+                        </math> are linearly independent. Therefore we can obtain an orthonormal basis of <math>
+                           <latex>W</latex>
+                        </math> by orthonormalizing them using the Gram-Schmidt process:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}_1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Vect{w}_1 }{ \abs{ \Vect{w}_1 } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{(1,0,-1)}{ \abs{ (1,0,-1) } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{1}{\sqrt{2}} (1,0,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>and</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}_2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Vect{w}_2 - (\DotPr{ \Vect{w}_2 }{ \Vect{u}_1 }) \Vect{u}_1}{ \abs{ \Vect{w}_2 - (\DotPr{ \Vect{w}_2 }{ \Vect{u}_1 }) \Vect{u}_1 } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ (1,1,0) - \tfrac{1}{2}(1,0,-1) }{ \abs{ \Vect{w}_2 - (\DotPr{ \Vect{w}_2 }{ \Vect{u}_1 }) \Vect{u}_1 } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \tfrac{1}{2} (1,2,1) }{ \abs{ \tfrac{1}{2} (1,2,1) } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{1}{\sqrt{6}} (1,2,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore <math>
+                           <latex>\EuScript{B}:= (\Vect{u}_1,\Vect{u}_2)</latex>
+                        </math> form an orthonormal basis of <math>
+                           <latex>W</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Express the vector <math>
+                        <latex>\Vect{x} := (\sqrt{2},1,-\sqrt{2})</latex>
+                     </math> as the sum of its component in <math>
+                        <latex>W</latex>
+                     </math> and its component in <math>
+                        <latex>W^{\bot}</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+\begin{array}{rcccc}
+\Vect{x} &amp; = &amp; \left( \sqrt{2}+1/3 , 2/3 , -\sqrt{2}+1/3 \right) &amp; + &amp; \left( - 1/3 , 1/3 , -1/3 \right) \\
+              &amp;    &amp;  \in W &amp; &amp; \in W^{\bot}
+\end{array}
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We already know that <math>
+                           <latex>\EuScript{B}=\left( \tfrac{1}{\sqrt{2}}(1,0,-1) , \tfrac{1}{\sqrt{6}}(1,2,1) \right) =: (\Vect{u}_1,\Vect{u}_2)</latex>
+                        </math> is an ONB of <math>
+                           <latex>W</latex>
+                        </math>. Using <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> we find the component of <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>W</latex>
+                        </math> as follows.</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\pr_{W}(\Vect{x})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(\DotPr{ \Vect{x} }{ \Vect{u}_1 }) \Vect{u}_1 + (\DotPr{ \Vect{x} }{ \Vect{u}_2 }) \Vect{u}_2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2 \Vect{u}_1 + \tfrac{\sqrt{2}}{\sqrt{3}} \Vect{u}_2</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\sqrt{2}(1,0,-1) + \tfrac{1}{3}(1,2,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\left( \sqrt{2} + \tfrac{1}{3} , \tfrac{2}{3} , -\sqrt{2} + \tfrac{1}{3} \right) \text{in}\ W</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>The component of <math>
+                           <latex>\Vect{x}</latex>
+                        </math> orthogonal to <math>
+                           <latex>W</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}_{\bot}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x} - \pr_{W}(\Vect{x})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\left( \sqrt{2} , 1 , -\sqrt{2} \right)\ -\ \left( \sqrt{2} + \tfrac{1}{3} , \tfrac{2}{3} , -\sqrt{2} + \tfrac{1}{3} \right)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{1}{3}(-1,1,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore the required splitting of <math>
+                           <latex>\Vect{x}</latex>
+                        </math> is given by</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\begin{array}{rcccc}
+\Vect{x} &amp; = &amp; \left( \sqrt{2}+ \tfrac{1}{3} , \tfrac{2}{3} , -\sqrt{2}+ \tfrac{1}{3} \right) &amp; + &amp; \left( - \tfrac{1}{3} , \tfrac{1}{3} , -\tfrac{1}{3} \right) \\
+              &amp;    &amp;  \text{in}\ W &amp; &amp; \text{in}\ W^{\bot}
+\end{array}
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Verify that <math>
+                        <latex>\Vect{x}_{\bot}</latex>
+                     </math> found above belongs to <math>
+                        <latex>W^{\bot}</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution.hint>
+               <para>
+                  <para.body>Show that <math>
+                        <latex>\Vect{x}_{\bot}</latex>
+                     </math> is perpendicular to the vectors in a basis of <math>
+                        <latex>W</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Expand the ONB of <math>
+                        <latex>W</latex>
+                     </math> found earlier to an ONB of  <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>\EuScript{C}=(\Vect{u}_1,\Vect{u}_2,\Vect{u}_3)</latex>
+                           </math> with</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{u}_1</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\tfrac{1}{\sqrt{2}}(1,0,-1)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{u}_2</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\tfrac{1}{\sqrt{6}}(1,2,1)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{u}_3</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\tfrac{1}{\sqrt{3}}(-1,1,-1)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We already know that <math>
+                           <latex>\EuScript{B}=\left( \tfrac{1}{\sqrt{2}}(1,0,-1) , \tfrac{1}{\sqrt{6}}(1,2,1) \right) =: (\Vect{u}_1,\Vect{u}_2)</latex>
+                        </math> is an ONB of <math>
+                           <latex>W</latex>
+                        </math>. Any unit vector orthogonal to <math>
+                           <latex>\Vect{u}_1</latex>
+                        </math> and <math>
+                           <latex>\Vect{u}_2</latex>
+                        </math> is linearly independent to both of these vectors, hence provides a complement of <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> to an orthonormal basis <math>
+                           <latex>\EuScript{C}</latex>
+                        </math> of <math>
+                           <latex>\RNr[3]</latex>
+                        </math>. We can use <math>
+                           <latex>\Vect{u}_3:=\CrssPr{ \Vect{u}_1 }{ \Vect{u}_2}</latex>
+                        </math> or, alternatively, use the vector <math>
+                           <latex>\Vect{x}_{\bot}</latex>
+                        </math> found earlier and normalize it.</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{u}_3</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Vect{x}_{\bot} }{ \abs{ \Vect{x}_{\bot} } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ (-1,1,-1) }{ \abs{ (-1,1,-1) } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\tfrac{1}{ \sqrt{3} } (-1,1,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So <math>
+                           <latex>\EuScript{C}:= (\Vect{u}_1,\Vect{u}_2,\Vect{u}_3)</latex>
+                        </math> is an ONB or <math>
+                           <latex>\RNr[3]</latex>
+                        </math> of the required kind.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below determine if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The orthogonal complement of <math>
+                        <latex>(1,1,2,1,1)</latex>
+                     </math> in <math>
+                        <latex>\RNr[5]</latex>
+                     </math> has a basis of four vectors.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the dimension formula for a subspace and its orthogonal complement.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Let <math>
+                           <latex>V:=\span\Set{ (1,1,2,1,1) }</latex>
+                        </math>, and let <math>
+                           <latex>W:=V^{\bot}</latex>
+                        </math>. Then <math>
+                           <latex>V</latex>
+                        </math> and <math>
+                           <latex>W</latex>
+                        </math> form an orthogonal splitting of <math>
+                           <latex>\RNr[5]</latex>
+                        </math>, and the dimension formula gives</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>5=\dim(\RNr[5])</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dim(V) + \dim(W)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Now <math>
+                           <latex>\dim(V)=1</latex>
+                        </math> as <math>
+                           <latex>V</latex>
+                        </math> is spanned by the single nonzero vector <math>
+                           <latex>(1,1,2,1,1)</latex>
+                        </math>. Therefore, <math>
+                           <latex>\dim(W) = 4</latex>
+                        </math>. – The statement in question is correct.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Any four linearly independent vectors in the orthogonal complement <math>
+                        <latex>W</latex>
+                     </math> of <math>
+                        <latex>(1,1,2,1,1)</latex>
+                     </math> in <math>
+                        <latex>\RNr[5]</latex>
+                     </math> form a basis of <math>
+                        <latex>W</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution of the previous problem.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that <math>
+                           <latex>\dim(W)=4</latex>
+                        </math>. Therefore any collection of four linearly independent vectors in <math>
+                           <latex>W</latex>
+                        </math> 
+						                  <subordinate>
+                           <hot>forms a basis of <math>
+                                 <latex>W</latex>
+                              </math>
+                           </hot>
+                           <crossref>
+                              <theorem.ref theoremID="Thm_EqualDimEqualSpace"/>
+                              <info>
+								
+							</info>
+                           </crossref>
+                        </subordinate>. – The statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Any four linearly independent vectors in <math>
+                        <latex>\RNr[5]</latex>
+                     </math> form a basis of the orthogonal complement <math>
+                        <latex>W</latex>
+                     </math> of <math>
+                        <latex>(1,1,2,1,1)</latex>
+                     </math> in <math>
+                        <latex>\RNr[5]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>If <math>
+                        <latex>\Vect{a}</latex>
+                     </math> is a basis vector of <math>
+                        <latex>W</latex>
+                     </math>, then <math>
+                        <latex>\Vect{a}</latex>
+                     </math> must lie in <math>
+                        <latex>W</latex>
+                     </math>. – Is the condition satisfied for each of any four linearly vectors picked randomly in <math>
+                        <latex>\RNr[5]</latex>
+                     </math>?</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Start with <math>
+                           <latex>\Vect{a}:=(1,1,2,1,1)</latex>
+                        </math>, and let <math>
+                           <latex>\Vect{b}, \Vect{c}, \Vect{d}</latex>
+                        </math> be any three vectors in <math>
+                           <latex>\RNr[5]</latex>
+                        </math> such that <math>
+                           <latex>\Set{\Vect{a}, \Vect{b}, \Vect{c}, \Vect{d} }</latex>
+                        </math> are linearly independent. Then this is certainly not a basis of <math>
+                           <latex>W</latex>
+                        </math> because <math>
+                           <latex>\Vect{a}</latex>
+                        </math> does not belong to <math>
+                           <latex>W</latex>
+                        </math>. – The statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>U</latex>
+                     </math> and <math>
+                        <latex>V</latex>
+                     </math> are subspaces of <math>
+                        <latex>\RNr[k]</latex>
+                     </math> such that <math>
+                        <latex>U</latex>
+                     </math> is contained in the orthogonal complement of <math>
+                        <latex>V</latex>
+                     </math> in <math>
+                        <latex>\RNr[k]</latex>
+                     </math>, then <math>
+                        <latex>U</latex>
+                     </math> and <math>
+                        <latex>V</latex>
+                     </math> have only the 0-vector in common.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review properties of an orthogonal splitting of <math>
+                        <latex>\RNr[k]</latex>
+                     </math> into <math>
+                        <latex>U</latex>
+                     </math> and <math>
+                        <latex>U^{\bot}</latex>
+                     </math>.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that <math>
+                           <latex>U</latex>
+                        </math> and <math>
+                           <latex>U^{\bot}</latex>
+                        </math> have only the 0-vector in common. Therefore</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>U</latex>
+                              </math> and <math>
+                                 <latex>W</latex>
+                              </math> have at most the 0-vector in common, because that <math>
+                                 <latex>V</latex>
+                              </math> is contained in <math>
+                                 <latex>U^{\bot}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>U</latex>
+                              </math> and <math>
+                                 <latex>W</latex>
+                              </math> have at least the 0-vector in common, because both spaces contain the 0-vector</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>Both conclusions combined, we see that the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Let <math>
+                        <latex>U</latex>
+                     </math> and <math>
+                        <latex>V</latex>
+                     </math> be subspaces of <math>
+                        <latex>\RNr[k]</latex>
+                     </math> of dimension <math>
+                        <latex>p</latex>
+                     </math> and <math>
+                        <latex>q</latex>
+                     </math>, respectively. If <math>
+                        <latex>V</latex>
+                     </math> is contained in <math>
+                        <latex>U^{\bot}</latex>
+                     </math>, then <math>
+                        <latex>q\leq k-p</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>How are <math>
+                        <latex>\dim(V)</latex>
+                     </math> and <math>
+                        <latex>\dim(U^{\bot})</latex>
+                     </math> related?</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We need to draw conclusions from two pieces of information:</para.body>
+                  </para>
+					             <ol>
+						               <li>
+							                 <para>
+                           <para.body>
+                              <math>
+                                 <latex>\dim(U^{\bot}) = k - p</latex>
+                              </math> by the dimension formula for orthogonal splittings.</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>
+                              <math>
+                                 <latex>q=\dim(V) \leq \dim(U^{\bot})</latex>
+                              </math>, as <math>
+                                 <latex>V</latex>
+                              </math> is a subspace of <math>
+                                 <latex>U^{\bot}</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+					             </ol>
+					             <para>
+                     <para.body>It follows that <math>
+                           <latex>q\leq k-p</latex>
+                        </math>. – The statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Let <math>
+                        <latex>U</latex>
+                     </math> and <math>
+                        <latex>V</latex>
+                     </math> be subspaces of <math>
+                        <latex>\RNr[k]</latex>
+                     </math> of dimension <math>
+                        <latex>p</latex>
+                     </math> and <math>
+                        <latex>q</latex>
+                     </math>, respectively. If <math>
+                        <latex>V</latex>
+                     </math> is contained in <math>
+                        <latex>U^{\bot}</latex>
+                     </math>, then <math>
+                        <latex>q = k-p</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Not always!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution of the previous problem.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Let <math>
+                        <latex>U</latex>
+                     </math> and <math>
+                        <latex>V</latex>
+                     </math> be subspaces of <math>
+                        <latex>\RNr[k]</latex>
+                     </math> of dimension <math>
+                        <latex>p</latex>
+                     </math> and <math>
+                        <latex>q</latex>
+                     </math>, respectively. If <math>
+                        <latex>V</latex>
+                     </math> is contained in <math>
+                        <latex>U^{\bot}</latex>
+                     </math>, then <math>
+                        <latex>q \geq k-p</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Not always!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Review the solution of the previous two problems.</para.body>
+               </para>
+            </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The orthogonal complement of the vectors <math>
+                        <latex>\Vect{a} = (1,0,0,0)</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}=(0,0,1,0)</latex>
+                     </math> in <math>
+                        <latex>\RNr[4]</latex>
+                     </math> consists of all vectors of the form <math>
+                        <latex>\Vect{x} = (0,a,0,b)</latex>
+                     </math> with <math>
+                        <latex>a,b</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> arbitrary.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Do the vectors of the given form belong to <math>
+                        <latex>\Set{ \Vect{a}, \Vect{b} }^{\bot}</latex>
+                     </math>?</para.body>
+               </para>
+            </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>What is the dimension of the subspace of <math>
+                        <latex>\RNr[4]</latex>
+                     </math> that consists of the vectors <math>
+                        <latex>\Vect{x}</latex>
+                     </math>?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>What is the dimension of <math>
+                        <latex>\Set{ \Vect{a}, \Vect{b} }</latex>
+                     </math>?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We collect the following facts:</para.body>
+                  </para>
+					             <ol>
+						               <li>
+							                 <para>
+                           <para.body>The vectors <math>
+                                 <latex>\Vect{a}</latex>
+                              </math> and <math>
+                                 <latex>\Vect{b}</latex>
+                              </math> are linearly independent. So they span a subspace <math>
+                                 <latex>U</latex>
+                              </math> of <math>
+                                 <latex>\RNr[4]</latex>
+                              </math> of dimension <math>
+                                 <latex>2</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>Therefore <math>
+                                 <latex>\dim(U^{\bot}) = 4- 2 = 2</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>The vectors of the form <math>
+                                 <latex>\Vect{x} = (0,a,0,b) = a\cdot (0,1,0,0) + b\cdot (0,0,0,1)</latex>
+                              </math> form the subspace <math>
+                                 <latex>V</latex>
+                              </math> of <math>
+                                 <latex>\RNr[4]</latex>
+                              </math> spanned by <math>
+                                 <latex>\StdBss{2}=(0,1,0,0)</latex>
+                              </math> and <math>
+                                 <latex>\StdBss{4}=(0,0,0,1)</latex>
+                              </math>. So <math>
+                                 <latex>\dim(V) = 2</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>
+                              <math>
+                                 <latex>\StdBss{2}</latex>
+                              </math> and <math>
+                                 <latex>\StdBss{4}</latex>
+                              </math> are perpendicular to <math>
+                                 <latex>\Vect{a}</latex>
+                              </math> and <math>
+                                 <latex>\Vect{b}</latex>
+                              </math>. So they belong to <math>
+                                 <latex>U^{\bot}</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>So <math>
+                                 <latex>V</latex>
+                              </math> is a subspace of dimension <math>
+                                 <latex>2</latex>
+                              </math> of <math>
+                                 <latex>U^{\bot}</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+						               <li>
+							                 <para>
+                           <para.body>So <math>
+                                 <latex>V=U^{\bot}</latex>
+                              </math>.</para.body>
+                        </para>
+						               </li>
+					             </ol>
+					             <para>
+                     <para.body>This means that the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The orthogonal complement of the vectors <math>
+                        <latex>\Vect{a} = (1,0,0,0)</latex>
+                     </math> and <math>
+                        <latex>\Vect{b}=(0,0,1,0)</latex>
+                     </math> in <math>
+                        <latex>\RNr[4]</latex>
+                     </math> consists of the vectors <math>
+                        <latex>\StdBss{2} = (0,1,0,0)</latex>
+                     </math> and <math>
+                        <latex>\StdBss{3} = (0,0,0,1)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Do these vectors form a subspace of <math>
+                        <latex>\RNr[4]</latex>
+                     </math>?</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Let <math>
+                           <latex>U</latex>
+                        </math> denote the subspace spanned by <math>
+                           <latex>\Vect{a}</latex>
+                        </math> and <math>
+                           <latex>\Vect{b}</latex>
+                        </math>. Then <math>
+                           <latex>\StdBss{2}</latex>
+                        </math> and <math>
+                           <latex>\StdBss{4}</latex>
+                        </math> belong to <math>
+                           <latex>U^{\bot}</latex>
+                        </math>. However, <math>
+                           <latex>U^{\bot}</latex>
+                        </math> has dimension <math>
+                           <latex>2</latex>
+                        </math>, hence contains infinitely many vectors. In other words, <math>
+                           <latex>U^{\bot}</latex>
+                        </math> consists of more than just the given vectors. – The statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+</exercise.pack>

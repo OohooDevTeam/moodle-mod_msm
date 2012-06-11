@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_LinearTrafosComposition">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Adding, Scalar Multiplying and Composing Linear Transformations</title>
+	<exercise>
+		<problem>
+			<para>If <latex>S,T\from \RNr[3]\to \RNr[2]</latex>, respectively, are represented by</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A = 
+\left[
+\begin{array}{rrr}
+2 & -1 & 7 \\
+4 & 1 & 6
+\end{array}
+\right]\quad \text{and} \quad 
+B = 
+\left[
+\begin{array}{rrr}
+-2 & 6 & 11 \\
+3 & -4 & 1
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			<para>find the matrix representing <latex>S+T</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<para><latex>(S+T)</latex> is represented by</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+A + B = 
+\left[
+\begin{array}{rrr}
+0 & 5 & 18 \\
+7 & -3 & 7
+\end{array}
+\right]
+					]]>
+					</latex>
+				</math.display>
+			</answer>
+			<solution.hint>
+				<para>Review the 
+					<subordinate>
+						<hot>proposition</hot>
+						<crossref>
+							<theorem.ref theoremID="Thm_SumLinearTrafos"/>
+							<para>Look up this result</para>
+						</crossref>
+					</subordinate>
+					which shows that <latex>S+T</latex> is linear, and what its representing  matrix is.</para>
+			</solution.hint>
+			<solution>
+				<para>We <subordinate>
+					<hot>know</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_SumLinearTrafos"/>
+						<para>Look up this result</para>
+					</crossref>
+				</subordinate> that <latex>(S+T)</latex> is linear and that it is represented by the matrix <latex>\Mtrx{A} + \Mtrx{B}</latex>. Thus we compute</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\aligned
+A +B\ &=\  
+\left[
+\begin{array}{rrr}
+2 & -1 & 7 \\
+4 & 1 & 6
+\end{array}
+\right]\ + \ 
+\left[
+\begin{array}{rrr}
+-2 & 6 & 11 \\
+3 & -4 & 1
+\end{array}
+\right] \\
+&=\ 
+\left[
+\begin{array}{rrr}
+0 & 5 & 18 \\
+7 & -3 & 7
+\end{array}
+\right]
+\endaligned
+					]]>
+					</latex>
+				</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>If <latex>L\from \RNr[3]\to \RNr[4]</latex> is represented by</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+C = 
+\left[
+\begin{array}{rrr}
+4 & 1 & 6 \\
+2 & -1 & 7 \\
+9 & 3 & -11 \\
+-1 & 2 & 5
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			<para>find the matrix representing <latex>4\cdot L</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<para><latex>(4\cdot L)</latex> is represented by</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+4\cdot C = 
+\left[
+\begin{array}{rrr}
+16 & 4 & 24 \\
+8 & -4 & 28 \\
+36 & 12 & -44 \\
+-4 & 8 & 20
+\end{array}
+\right]
+					]]>
+					</latex>
+				</math.display>
+			</answer>
+			<solution.hint>
+				<para>Review the 
+					<subordinate>
+						<hot>proposition</hot>
+						<crossref>
+							<theorem.ref theoremID="Thm_ScalarProductLinearTrafo"/>
+							<para>Look up this result</para>
+						</crossref>
+					</subordinate>
+					which shows that <latex>t\cdot L</latex> is linear for every <latex>t</latex> in <latex>\RNr</latex>, and what its representing  matrix is.</para>
+			</solution.hint>
+			<solution>
+				<para>We <subordinate>
+					<hot>know</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_ScalarProductLinearTrafo"/>
+						<para>Look up this result</para>
+					</crossref>
+				</subordinate> that <latex>(4\cdot L)</latex> is linear and that it is represented by the matrix <latex>4\cdot \Mtrx{C}</latex>. Therefore we compute</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\aligned
+4\cdot C\ &=\ 
+4\cdot \left[
+\begin{array}{rrr}
+4 & 1 & 6 \\
+2 & -1 & 7 \\
+9 & 3 & -11 \\
+-1 & 2 & 5
+\end{array}
+\right] \\
+&=\ 
+\left[
+\begin{array}{rrr}
+16 & 4 & 24 \\
+8 & -4 & 28 \\
+36 & 12 & -44 \\
+-4 & 8 & 20
+\end{array}
+\right]
+\endaligned
+							]]>
+						</latex>
+					</math.display>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>You are given linear maps <latex>S\from \RNr\to \RNr[3]</latex>, <latex>S(x)=(2x,5x,-x)</latex> and <latex>T\from \RNr[3]\to \RNr</latex>, <latex>T(x,y,z)=x-y+2z</latex>. Find the matrix representing <latex>T\Comp S</latex>.</para>
+		</problem>
+		<approach>
+			<answer>
+				<para><latex>T\Comp S</latex> is represented by</para>
+				<math.display>
+					<latex>\Mtrx{A} = [-5]</latex>
+				</math.display>
+			</answer>
+			<solution.hint>
+				<para>Review the 
+					<subordinate>
+						<hot>proposition</hot>
+						<crossref>
+							<theorem.ref theoremID="Thm_CompositeLinearTrafos"/>
+							<para>Look up this result</para>
+						</crossref>
+					</subordinate>
+					which shows that <latex>T\Comp S</latex> is linear for every <latex>t</latex> in <latex>\RNr</latex>, and what its representing  matrix is.</para>
+			</solution.hint>
+			<solution>
+				<para>We <subordinate>
+					<hot>know</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_CompositeLinearTrafos"/>
+						<para>Look up this result</para>
+					</crossref>
+				</subordinate>
+					that <latex>T\Comp S\from \RNr \to \RNr</latex> is linear. So we may compute the <latex>(1,1)</latex>-matrix representing <latex>T\Comp S</latex> as the product of the matrices representing <latex>T</latex> and <latex>S</latex> individually. The matrix representing <latex>S</latex> is</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A}\ :=\ 
+\left[
+\begin{array}{r}
+2 \\ 5 \\ -1
+\end{array}
+\right]
+						]]>
+					</latex>
+				</math.display>
+				<para>Moreover, the matrix representing <latex>T</latex> is</para>
+				<math.display>
+					<latex>\Mtrx{B} := [1\ \ -1\ \ 2]</latex>
+				</math.display>
+				<para>Therefore <latex>T\Comp S</latex> is represented by</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\aligned
+\Mtrx{B}\cdot \Mtrx{A}\ &=\ 
+[1\ \ -1\ \ 2]\cdot
+\left[
+\begin{array}{r}
+2 \\ 5 \\ -1
+\end{array}
+\right] \\
+&=\ 
+[-5]
+\endaligned
+						]]>
+					</latex>
+				</math.display>
+			</solution>
+		</approach>
+		<approach>
+			<solution>
+				<para>Another way of answering this problem is to compute the effect of <latex>T\Comp S</latex> on <latex>x</latex> in <latex>\RNr</latex> first, and then finding the representing matrix:</para>
+				<math.display>
+					<latex>T\Comp S(x) = T(2x,5x,-x) = 2x-5x-2x = -5x</latex>
+				</math.display>
+				<para>Therefore <latex>(T\Comp S)</latex> is represented by the <latex>(1,1)</latex>-matrix <latex>[-5]</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the linear transformations <latex>\RNr[2]\to \RNr[2]</latex> below find the matrix representing it.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>L</latex> doubles the length of each vector <latex>\Vect{x}\in \RNr[2]</latex> and then rotates it about the origin through an angle of 150 degrees in the counterclockwise direction.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{cc}
+-\sqrt{3} & -1 \\
+1 & -\sqrt{3}
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The columns of the matrix representing <latex>L</latex> are given by</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+L(1,0) &= 2(\cos(5\pi/6),\sin(5\pi/6)) &= 2\left( -\sqrt{3}/2 , 1/2 \right) \\
+L(0,1) &= 2(\cos(8\pi/6),\sin(8\pi/6)) &= 2\left( -1/2 , -\sqrt{3}/2 \right)
+\endaligned
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>Here we have used that 150 degrees is <latex>5\pi/6</latex> radians. Thus <latex>L</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{cc}
+-\sqrt{3} & -1 \\
+1 & -\sqrt{3}
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>L</latex> projects each vector  <latex>\Vect{x}</latex> of <latex>\RNr[2]</latex> orthogonally onto the line <latex>y=x</latex> and then quarters its length.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The matrix representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\dfrac{1}{8}
+\left[
+\begin{array}{cc}
+1 & 1 \\
+1 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The columns of the matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex> consist of <latex>L(\StdBss{1})=(1,0)</latex> and <latex>L(\StdBss{2})=(0,1)</latex>. To find these vectors, we first find the projection <latex>P</latex> of <latex>\RNr[2]</latex> onto the line <latex>x=y</latex>.</para>
+					
+					<para>A normal vector to the line <latex>x=y</latex> is <latex>\Vect{n}:=(-1,1)</latex>. Therefore</para>
+					
+					<computation>
+						<left>P(x,y)</left>
+						<center>=</center>
+						<right>(x,y) - \dfrac{ \DotPr{(x,y)}{(-1,1)} }{ \DotPr{(-1,1)}{(-1,1)} } \cdot (-1,1)</right>
+						<left></left>
+						<center>=</center>
+						<right>(x,y) - \dfrac{-x + y}{2}\cdot (-1,1)</right>
+					</computation>
+					
+					<para>Therefore</para>
+					
+					<computation>
+						<left>P(1,0)</left>
+						<center>=</center>
+						<right>(1,0) - \tfrac{-1}{2}(-1,1) = \tfrac{1}{2} (1,1)</right>
+						<left>P(0,1)</left>
+						<center>=</center>
+						<right>(0,1) - \tfrac{1}{2} (-1,1) = \tfrac{1}{2}(1,1)</right>
+					</computation>
+					
+					<figure>
+						<img src="ims/Prjctn_Exrcs.png"></img><!-- svg available -->
+					</figure>
+					<para>Now we need to contract these vectors by a factor of <latex>1/4</latex>:</para>
+					
+					<computation>
+						<left>L(1,0)</left>
+						<center>=</center>
+						<right>\tfrac{1}{8}(1,1)</right>
+						<left>L(0,1)</left>
+						<center>=</center>
+						<right>\tfrac{1}{8}(1,1)</right>
+					</computation>
+					
+					<para>Therefore the matrix representing <latex>L</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\dfrac{1}{8}
+\left[
+\begin{array}{cc}
+1 & 1 \\
+1 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the linear transformations <latex>\RNr[3]\to \RNr[3]</latex> below find the matrix representing it.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<para><latex>L\from \RNr[3] \to \RNr[3]</latex> dilates each vector <latex>\Vect{x}</latex> of <latex>\RNr[3]</latex> by a factor of <latex>3/2</latex> and then projects it orthogonally onto the <latex>yz</latex>-plane. </para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\dfrac{3}{2}
+\left[
+\begin{array}{ccc}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The matrix <latex>\Mtrx{A}</latex> representing the dilation <latex>D</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A = \dfrac{3}{2}
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					<para>The orthogonal projection <latex>P</latex> of <latex>\RNr[3]</latex> onto the <latex>yz</latex>-plane satisfies</para>
+					<math.display>
+						<latex>P(x,y,z) = (0,y,z)</latex>
+					</math.display>
+					<para>Consequently <latex>P</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+B = 
+\left[
+\begin{array}{ccc}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					<para>The transformation <latex>L = P\Comp D</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+B\cdot A = \left[
+\begin{array}{ccc}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]\dfrac{3}{2}
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right] = 
+\dfrac{3}{2}
+\left[
+\begin{array}{ccc}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		
+		<part>
+			<problem>
+				<para><latex>L</latex> shears each vector <latex>\Vect{x}</latex> of <latex>\RNr[3]</latex> parallel to the <latex>xy</latex>-plane with shear vector <latex>\Vect{s}=(-3,-1,0)</latex> and then reflects <latex>\RNr[3]</latex> through the origin.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{rrr}
+-1 & 0 & 3 \\
+0 & -1 & 1 \\
+0 & 0 & -1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The shear transformation <latex>S</latex> leaves the basic vectors <latex>\StdBss{1}</latex> and <latex>\StdBss{2}</latex> unchanged, and transforms <latex>\StdBss{3}</latex> into <latex>(-3,-1,1)</latex>. Therefore it is represented by the matrix <latex>\Mtrx{A}</latex> below.</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} := \left[
+\begin{array}{rrr}
+1 & 0 & -3 \\
+0 & 1 & -1 \\
+0 & 0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>The reflection <latex>R</latex> through the origin sends every vector <latex>\Vect{x}</latex> to <latex>-\Vect{x}</latex>. Therefore it is represented by the matrix <latex>\Mtrx{B}</latex> below.</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B} := \left[
+\begin{array}{rrr}
+-1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & -1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>As <latex>L=R\Comp S</latex>, the matrix representing <latex>L</latex> is</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B}\Mtrx{A} = \left[
+\begin{array}{rrr}
+-1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & -1
+\end{array}
+\right]
+\left[
+\begin{array}{rrr}
+1 & 0 & -3 \\
+0 & 1 & -1 \\
+0 & 0 & 1
+\end{array}
+\right] =
+\left[
+\begin{array}{rrr}
+-1 & 0 & 3 \\
+0 & -1 & 1 \\
+0 & 0 & -1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		
+		<part>
+			<problem>
+				<para><latex>L</latex>  first rotates , when viewed from the positive <latex>y</latex>-direction, through an angle of 60 degrees clockwise about the <latex>y</latex>-axis, then reflects <latex>\RNr[3]</latex> orthogonally through the <latex>xy</latex>-plane.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>L</latex> is represented by the matrix</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 & 0 & -\sqrt{3} \\
+0 & 1 & 0 \\
+-\sqrt{3} & 0 & -1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</answer>
+				
+				<solution>
+					<para>The angle <latex>\theta:=\pi/3</latex> corresponds to 60 degrees. Now the rotation <latex>R</latex> has the following effect on the basic vectors</para>
+					
+					<computation>
+						<left>R(\StdBss{1})</left>
+						<center>=	<info><para>To see this, draw a sketch, with the <latex>y</latex>-axis pointing toward you, the <latex>x</latex>-axis then points to the left, and the <latex>z</latex>-axis points upward.</para></info></center>
+						<right>(\cos\theta , 0 , \sin\theta)</right>
+						<left>R(\StdBss{2})</left>
+						<center>=</center>
+						<right>(0,1,0)</right>
+						<left>R(\StdBss{3})</left>
+						<center>=</center>
+						<right>(-\sin\theta, 0 , \cos\theta)</right>
+					</computation>
+					
+					<para>Therefore the matrix <latex>\Mtrx{A}</latex> representing <latex>R</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+A := \dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 & 0 & -\sqrt{3} \\
+0 & 1 & 0 \\
+\sqrt{3} & 0 & 1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>The reflection <latex>T</latex> through the <latex>xy</latex>-plane has</para>
+					
+					<computation>
+						<left>T(\StdBss{1})</left>
+						<center>=</center>
+						<right>(1,0,0)</right>
+						<left>T(\StdBss{2})</left>
+						<center>=</center>
+						<right>(0,1,0)</right>
+						<left>T(\StdBss{3})</left>
+						<center>=</center>
+						<right>(0,0,-1)</right>
+					</computation>
+					
+					<para>Therefore the matrix <latex>\Mtrx{B}</latex> representing <latex>T</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+B := \left[
+\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & -1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<para>As <latex>L=T\Comp R</latex>, it is represented by the matrix</para>
+					
+					<math.display>
+						<latex>
+							<![CDATA[
+BA := \left[
+\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & -1
+\end{array}
+\right] \dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 & 0 & -\sqrt{3} \\
+0 & 1 & 0 \\
+\sqrt{3} & 0 & 1
+\end{array}
+\right] =
+\dfrac{1}{2} \left[
+\begin{array}{rrr}
+1 & 0 & -\sqrt{3} \\
+0 & 1 & 0 \\
+-\sqrt{3} & 0 & -1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Given linear transformations</para>
+			<para align="center"><latex>R\from \RNr[q]\to \RNr[p]</latex>, &nbsp; <latex>S\from \RNr[p]\to \RNr[n]</latex>, &nbsp;<latex>U\from \RNr[p]\to \RNr[n]</latex>, and <latex>T\from \RNr[n]\to \RNr[m]</latex>,</para>
+			<para>answer the questions below.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>What is the difference in the constructions of the linear transformations <latex>T\Comp (S\Comp R)</latex> and <latex>(T\Comp S)\Comp R</latex>?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>Why is <latex>T\Comp (S\Comp R) = (T\Comp S)\Comp R</latex>?</para>
+			</problem>
+		</part>
+		<part>
+			<problem><para>Why is <latex>(S+U)\Comp R</latex> linear?</para></problem>
+			<approach>
+				<solution>
+					<para>The function <latex>(S+U)\Comp R</latex> is linear because</para>
+					<ol>
+						<li><para>The <latex>(S+U)</latex> is linear being a sum of linear maps, and, therefore,</para></li>
+						<li><para> <latex>(S+U)\Comp R</latex> is linear, being a composition of linear maps.</para></li>
+					</ol>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Why is <latex>(S+U)\Comp R = S\Comp R + U\Comp R</latex>?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>Why is <latex>T\Comp (S+U)</latex> linear?</para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para>Why is <latex>T\Comp (S+U) = T\Comp S + T\Comp U</latex>?</para>
+			</problem>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>A linear transformation <latex>T\from \RNr[2]\to \RNr[2]</latex> satisfies</para>
+			<math.display>
+				<latex>T(1,2) = (-2,2) \quad \text{and} \quad T(-1,3) = (-1,2)</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem><para>Find <latex>T(0,5)</latex>.</para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>T(0,5)</left>
+						<center>=</center>
+						<right>(-3,4)</right>
+					</computation>
+				</answer>
+				<solution.hint>
+					<para>One way to solve this problem is by noticing that</para>
+					<computation>
+						<left>(0,5)</left>
+						<center>=</center>
+						<right>(1,2) + (-1,3)</right>
+					</computation>
+					<para>Now compute, using the information that <latex>T</latex> is linear.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Given that <latex>(0,5) = (1,2) + (-1,3)</latex>, we know that</para>
+					<computation>
+						<left>T(0,5)</left>
+						<center>=</center>
+						<right>T(1,2) + T(-1,3)</right>
+					</computation>
+				</solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Find <latex>T\Comp T(0,5)</latex></para></problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>T\Comp T(0,5)</left>
+						<center>=</center>
+						<right>(0,2)</right>
+					</computation>
+				</answer>
+				<solution.hint>
+					<para>Look for numbers <latex>r</latex> and <latex>s</latex> such that</para>
+					<math.display>
+						<latex>T(0,5) = (-3,4) = r\cdot (1,2) + s\cdot (-1,3)</latex>
+					</math.display>
+				</solution.hint>
+				<solution.hint>
+					<para><latex>(0,5) = (-1)\cdot (1,2)\ +\ 2\cdot (-1,3)</latex></para>
+				</solution.hint>
+				<solution>
+					<para>From part a) we know that <latex>T(0,5)=(-3,4)</latex>. To be able to apply the given information</para>
+					<math.display>
+						<latex>T(1,2) = (-2,2) \quad \text{and} \quad T(-1,3) = (-1,2)</latex>
+					</math.display>
+					<para>we look for numbers <latex>r</latex> and <latex>s</latex> such that</para>
+					<math.display>
+						<latex>T(0,5) = (-3,4) = r\cdot (1,2) + s\cdot (-1,3)</latex>
+					</math.display>
+					<para>This is a system of two linear equations with two variables. It has the unique solution</para>
+					<math.display>
+						<latex>T(0,5) = (-3,4) = (-1)\cdot (1,2) + 2\cdot (-1,3)</latex>
+					</math.display>
+					<para>Therefore,</para>
+					<computation>
+						<left>T\Comp T(0,5)</left>
+						<center>=</center>
+						<right>T( (-1)\cdot (1,2) + 2\cdot (-1,3) )</right>
+						<left></left>
+						<center>=</center>
+						<right>- T(1,2) + 2\cdot T(-1,3)</right>
+						<left></left>
+						<center>=</center>
+						<right>-(-2,2) + 2\cdot (-1,2)</right>
+						<left></left>
+						<center>=</center>
+						<right>(0,2)</right>
+					</computation>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

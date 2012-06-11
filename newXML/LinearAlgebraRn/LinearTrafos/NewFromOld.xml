@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_LinearTransformationsNewFromOld"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>New Linear Transformations from Old</title>
+      <plain.title>New from Old</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In this section we describe four ways of generating a new linear transformation from one or several given ones:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>The sum of linear transformations; it corresponds to addition of representing matrices</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The scalar product of a linear transformation by a number; it corresponds to the scalar product of the representing matrix by the given scalar.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The composite of linear transformations; it corresponds to the product of representing matrices.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The (Cartesian) product of two linear transformations.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_SumLinearTransformations">
+         <titles>
+            <title>Sum of Linear Transformations</title>
+            <plain.title>Sum of Linear Transformations</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_LinearTrafosSum">
+                     <caption>Sum of linear transformations</caption>
+                     <associate type="Explanation">
+                        <info>
+                           <info.caption>Explanation</info.caption>
+                           <para>
+                              <para.body>Given the functions <math>
+                                    <latex>L</latex>
+                                 </math> and <math>
+                                    <latex>T</latex>
+                                 </math>, we define a new function here, namely <math>
+                                    <latex>(L+T)</latex>
+                                 </math>. The effect of the sum function <math>
+                                    <latex>(L+T)</latex>
+                                 </math> on a vector <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> is the sum <math>
+                                    <latex>L(\Vect{x})</latex>
+                                 </math> plus <math>
+                                    <latex>T(\Vect{x})</latex>
+                                 </math>.</para.body>
+                           </para>
+                           <para>
+                              <para.body>Note: At this stage of making a definition, if we start with two linear function <math>
+                                    <latex>L</latex>
+                                 </math> and <math>
+                                    <latex>T</latex>
+                                 </math>, we do not know if their sum <math>
+                                    <latex>(L+T)</latex>
+                                 </math> is linear. Therefore we must check that <math>
+                                    <latex>(L+T)</latex>
+                                 </math> satisfies the properties of a linear transformation</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>The sum of two linear transformations <math>
+                                 <latex>L,T\from \RNr[n] \longrightarrow \RNr[m]</latex>
+                              </math> is
+					</para.body>
+                           <index.glossary>
+                              <term>sum</term>
+                              <term>of linear transformations</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>of linear transformations</term>
+                              <term>sum</term>
+                           </index.glossary>
+                        </para>
+                        <math.display>
+                           <latex>(L+T)\from \RNr[n] \longrightarrow \RNr[m], \quad (L+T)(\Vect{x}) := L(\Vect{x}) + T(\Vect{x})</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SumLinearTrafos_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_ScalarProductOfLinearTransformation">
+         <titles>
+            <title>The Scalar Product of a Linear Transformation by a Number</title>
+            <plain.title>Scalar Product</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_LinearTrafoScalarProduct">
+                     <caption>Scalar product of a linear transformation</caption>
+                     <associate type="Explanation">
+                        <info>
+                           <info.caption>Explanation</info.caption>
+                           <para>
+                              <para.body>Given the function <math>
+                                    <latex>L</latex>
+                                 </math> and a number <math>
+                                    <latex>t</latex>
+                                 </math>, we define a new function here, namely <math>
+                                    <latex>(t\cdot L)</latex>
+                                 </math>. The effect of the function <math>
+                                    <latex>(t\cdot L)</latex>
+                                 </math> on a vector <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> is defined to be the scalar product of <math>
+                                    <latex>L(\Vect{x})</latex>
+                                 </math> times <math>
+                                    <latex>t</latex>
+                                 </math>.</para.body>
+                           </para>
+                           <para>
+                              <para.body>Note: At this stage of making a definition, if we start with a linear function <math>
+                                    <latex>L</latex>
+                                 </math> and a number <math>
+                                    <latex>t</latex>
+                                 </math>, we do not know if their scalar product  <math>
+                                    <latex>(t\cdot L)</latex>
+                                 </math> is linear. Therefore we must check that <math>
+                                    <latex>(t\cdot L)</latex>
+                                 </math> satisfies the properties of a linear transformation</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>The scalar product of a linear function <math>
+                                 <latex>L\from \RNr[n] \to \RNr[m]</latex>
+                              </math> by a number <math>
+                                 <latex>t\in \RNr</latex>
+                              </math> is
+					</para.body>
+                           <index.glossary>
+                              <term>scalar product</term>
+                              <term>of a linear map by a number</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>linear transformation</term>
+                              <term>scalar product</term>
+                           </index.glossary>
+                        </para>
+                        <math.display>
+                           <latex>(tL)\from \RNr[n] \longrightarrow \RNr[m],\quad (tL)(\Vect{x}) := t\cdot L(\Vect{x})</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="ScalarProductLinearTrafo_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_LinearTrafosComposition">
+         <titles>
+            <title>Composition of Linear Transformation</title>
+            <plain.title>Composition</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_LinearTrafosComposition">
+                     <caption>Composition of linear maps</caption>
+                     <associate type="Comment">
+                        <info>
+                           <info.caption>How to read this</info.caption>
+                           <math.display>
+                              <latex>\RNr[p] \overset{S}{\longrightarrow} \RNr[n] \overset{T}{\longrightarrow} \RNr[m]</latex>
+                           </math.display>
+                           <para>
+                              <para.body>is read: ‘T following S from R p to Rm, T following S of x is defined to be T of S of x’.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Explanation">
+                        <info>
+                           <info.caption>Explanation</info.caption>
+                           <para>
+                              <para.body>Given the functions <math>
+                                    <latex>S</latex>
+                                 </math> and <math>
+                                    <latex>T</latex>
+                                 </math>, we define a new function here, namely their composite <math>
+                                    <latex>T\Comp S</latex>
+                                 </math>. The effect of the function <math>
+                                    <latex>T\Comp S</latex>
+                                 </math> on a vector <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> is defined by successive evaluation: first evaluate <math>
+                                    <latex>S</latex>
+                                 </math> on <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> so as to obtain the vector <math>
+                                    <latex>S(\Vect{x})</latex>
+                                 </math> in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math>. To this vector we apply <math>
+                                    <latex>T</latex>
+                                 </math> so as to obtain the vector <math>
+                                    <latex>T(S(\Vect{x}))</latex>
+                                 </math> in <math>
+                                    <latex>\RNr[m]</latex>
+                                 </math>.</para.body>
+                           </para>
+                           <para>
+                              <para.body>Note: At this stage of making a definition, if we start with two linear functions <math>
+                                    <latex>S</latex>
+                                 </math> and <math>
+                                    <latex>T</latex>
+                                 </math>, we do not know if their composite <math>
+                                    <latex>(T\Comp S)</latex>
+                                 </math> is linear. Therefore we must check that <math>
+                                    <latex>(T\Comp S)</latex>
+                                 </math> satisfies the properties of a linear transformation</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>The composition of linear transformations <math>
+                                 <latex>S</latex>
+                              </math> and <math>
+                                 <latex>T</latex>
+                              </math> with
+					</para.body>
+                           <index.glossary>
+                              <term>composition</term>
+                              <term>of linear transformations</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>linear transformations</term>
+                              <term>composition</term>
+                           </index.glossary>
+                        </para>
+                        <math.display>
+                           <latex>\RNr[p] \overset{S}{\longrightarrow} \RNr[n] \overset{T}{\longrightarrow} \RNr[m]</latex>
+                        </math.display>
+                        <para>
+                           <para.body>is given by</para.body>
+                        </para>
+                        <math.display>
+                           <latex>T\Comp S\from \RNr[p] \longrightarrow \RNr[m], \quad T\Comp S(\Vect{x}) := T(S(\Vect{x}))</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="CompositeLinearTrafos_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_ProductLinearTrafos">
+         <titles>
+            <title>Product of Linear Transformations</title>
+            <plain.title>Product of Linear Transformations</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_ProductLinearTrafos">
+                     <caption>Product of linear transformations</caption>
+                     <associate type="Comment">
+                        <info>
+                           <info.caption>Comment on the construction of <math>
+                                 <latex>S\times T</latex>
+                              </math>
+                           </info.caption>
+                           <para>
+                              <para.body>Recall that we have identifications</para.body>
+                           </para>
+                           <math.display>
+                              <latex>\RNr[n_1]\times \RNr[n_2] \longleftrightarrow \RNr[n_1+n_2] \quad \text{and} \quad \RNr[m_1]\times \RNr[m_2] \longleftrightarrow \RNr[m_1 + m_2]</latex>
+                           </math.display>
+                           <para>
+                              <para.body>So we can think of <math>
+                                    <latex>S\times T</latex>
+                                 </math> as a map <math>
+                                    <latex>S\times T\from \RNr[n_1 + n_2] \to \RNr[m_1 + m_2]</latex>
+                                 </math>. According to this identification, we express an arbitrary <math>
+                                    <latex>(n_1+n_2)</latex>
+                                 </math>-tuple <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> as the concatenation of an <math>
+                                    <latex>n_1</latex>
+                                 </math>-tuple <math>
+                                    <latex>\Vect{u}</latex>
+                                 </math> and an <math>
+                                    <latex>n_2</latex>
+                                 </math>-tuple <math>
+                                    <latex>\Vect{v}</latex>
+                                 </math>; i.e. <math>
+                                    <latex>\Vect{x}=(\Vect{u}, \Vect{v})</latex>
+                                 </math>. Accordingly, <math>
+                                    <latex>(S\times T)(\Vect{x})</latex>
+                                 </math> is the <math>
+                                    <latex>(m_1 + m_2)</latex>
+                                 </math>-tuple <math>
+                                    <latex>(S(\Vect{u}),T(\Vect{v}))</latex>
+                                 </math>; i.e. it is given by the concatenation of the <math>
+                                    <latex>m_1</latex>
+                                 </math>-tuple <math>
+                                    <latex>S(\Vect{u})</latex>
+                                 </math> and the <math>
+                                    <latex>m_2</latex>
+                                 </math>-tuple <math>
+                                    <latex>T(\Vect{v})</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>The product of a linear map <math>
+                                 <latex>S\from \RNr[n_1] \to \RNr[m_1]</latex>
+                              </math> by a linear map <math>
+                                 <latex>T\from \RNr[n_2]\to \RNr[m_2]</latex>
+                              </math> is</para.body>
+                        </para>
+                        <math.display>
+                           <latex>
+						
+\aligned
+S\times T\from \RNr[n_1]\times \RNr[n_2] &amp;\longrightarrow &amp;\RNr[m_1]\times \RNr[m_2] \\ 
+(S\times T)(\Vect{u},\Vect{v}) &amp;= &amp;(S(\Vect{u}),T(\Vect{v}) )
+\endaligned
+						
+					</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="ProductLinearTrafos_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_LinearTrafosComposition"/>
+   </studymaterials>
+</unit>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_ColumnSpaceLinearEq"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Column space and solution of linear equation</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Given a system of <math>
+               <latex>m</latex>
+            </math> linear equations in <math>
+               <latex>n</latex>
+            </math> variables,</para.body>
+      </para>
+      <math.display>
+         <latex>
+				
+\begin{array}{ccccccc}
+a_{11}x_1 &amp; + &amp; \cdots &amp; + &amp; a_{1n}x_n &amp; = &amp; c_1 \\
+\vdots &amp;&amp;&amp;&amp; \vdots &amp;&amp; \vdots \\
+a_{m1}x_1 &amp; + &amp; \cdots &amp; + &amp; a_{mn}x_n &amp; = &amp; c_m
+\end{array}
+					
+			</latex>
+      </math.display>
+      <para>
+         <para.body>let <math>
+               <latex>\Mtrx{A}</latex>
+            </math> denote its unaugmented coefficient matrix. Then the system of linear equations has a solution if and only if its augmentation column is in the column space of <math>
+               <latex>\Mtrx{A}</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We know that <math>
+                     <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
+                  </math> is a solution of this system if and only if it is a solution of the matrix equation</para.body>
+            </para>
+            <math.display>
+               <latex>
+								
+\left[
+\begin{array}{ccc}
+a_{11} &amp; \cdots &amp; a_{1n} \\
+\vdots &amp; \ddots  &amp; \vdots \\
+a_{m1} &amp; \cdots &amp; a_{mn}
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+c_1 \\ \vdots \\ c_m
+\end{array}
+\right]
+					
+							</latex>
+            </math.display>
+            <para>
+               <para.body>Writing <math>
+                     <latex>C_1,\dots, C_n</latex>
+                  </math> for the columns of the unaugmented coefficient matrix <math>
+                     <latex>\Mtrx{A}=[a_{ij}]</latex>
+                  </math>, we observe that</para.body>
+            </para>
+            <math.display>
+               <latex>
+								
+\left[
+\begin{array}{ccc}
+a_{11} &amp; \cdots &amp; a_{1n} \\
+\vdots &amp; \ddots  &amp; \vdots \\
+a_{m1} &amp; \cdots &amp; a_{mn}
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right] = x_1C_1 + \cdots + x_n C_n
+					
+							</latex>
+            </math.display>
+            <para>
+               <para.body>The right hand side of this equation is a linear combination of the column vectors of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. The original system of linear equations may now be interpreted as: find all possible ways of expressing the augmentation column</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+C\ :=\ \left[\begin{array}{c} c_1 \\ \vdots \\ c_m \end{array}\right]
+
+			</latex>
+            </math.display>
+            <para>
+               <para.body>as a linear combination of the column vectors of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. In particular, this means that this system of linear equations has a solution if and only if the augmentation column is in the column space of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

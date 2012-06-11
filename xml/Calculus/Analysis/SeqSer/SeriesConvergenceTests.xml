@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book
+	http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_SeriesConvergenceTests">
+	<headers>
+		<full>Convergence Tests for Series</full>
+		<toc>Convergence Tests for Series</toc>
+		<short>Convergence Tests</short>
+	</headers>
+	<intro>
+		<para>Here we develop a collection of basic tests to determine if a given series converges. If two series <latex>\sum a_n</latex> and <latex>\sum b_n</latex> have non-negative summands <latex>0\leq a_n,b_n</latex>, we look for conditions under which the known convergence properties of one of the series yields convergence information of the other.</para>
+		<ol>
+			<li>
+				<para><b>Comparison</b>: this very intuitive test says that if <latex>a_n\leq b_n</latex> for large <latex>n</latex> and <latex>\sum b_n</latex> converges to a number, then <latex>\sum a_n</latex> converges to a number. On the other hand, if <latex>a_n\leq b_n</latex> for large <latex>n</latex> and <latex>\sum a_n=+\infty</latex>, then <latex>\sum a_n=+\infty</latex>.</para>
+			</li>
+			<li>
+				<para><b>Limit comparison</b>: This set of tests takes the comparison tests above a step deeper by drawing convergence conclusions from a limit analysis of the ratios <latex>a_n/b_n</latex>.</para>
+			</li>
+			<li>
+				<para><b>Alternating series test</b>: it says that <latex>\sum_{n=0}^{\infty} (-1)^na_n</latex> converges to a number whenever the sequence <latex>(a_n)</latex> is strictly decreasing and converges to <latex>0</latex>.</para>
+			</li>
+		</ol>
+		
+	</intro>
+	<section.body>
+		<xi:include href="SeriesComparison_Thm.xml"/>
+		<para>In the setting of the comparison test, convergence of a series to a number implies the convergence of a series with lesser summands, and convergence of a series to infinity implies the convergence to infinity of any series with greater summands. &ndash; In contrast the limit comparison test below works by &lsquo;size similarity&lsquo; of the summands of two series. More precisely:</para>
+		<xi:include href="SeriesLimitComparison_Thm.xml"/>
+		
+		<para>We turn to a particularly elegant test for the convergence of certain series. The underlying principle is a generalization of this 
+			<subordinate>
+				<hot>fundamental example</hot>
+				<companion>
+					<showme.pack.ref showmePackID="Exa_AlternatingHarmonicConverges"/>
+					<para>Take a look at this example.</para>
+				</companion>
+			</subordinate>. To formulate this generalization we introduce the concept of an alternating series.</para>
+		
+		<def type="Definition" id="Def_AlternatingSeries">
+			<caption>Alternating series</caption>
+			<para>A series <latex>\sum_{n=0}^{\infty} a_n</latex> is alternating if <latex>\sign(a_{n+1}) = (-1)\cdot \sign(a_n)</latex> for all <latex>n</latex> in <latex>\NNr</latex>.
+				<index.glossary>
+					<term>alternating</term><term>series</term>
+				</index.glossary>
+			</para>
+		</def>
+		<xi:include href="AlternatingSeriesTest_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_SeriesLimitComparison"/>
+		<exercise.pack.ref exercisePackID="Exe_AlternatingSeries"/>
+	</studymaterials>
+</section>

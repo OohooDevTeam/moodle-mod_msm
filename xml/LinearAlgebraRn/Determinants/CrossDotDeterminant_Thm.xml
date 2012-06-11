@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_CrossDotDeterminant">
+	<caption>Cross product, dot product, and determinant</caption>
+	
+	<statement>
+		<para>If <latex>\Vect{a}</latex>, <latex>\Vect{x}</latex>, and <latex>\Vect{y}</latex> are arbitrary vectors in <latex>\RNr[3]</latex>, then</para>
+		<computation>
+			<left>\DotPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} } ) }</left>
+			<center>=</center>
+			<right>\det[ \Vect{a}\ \ \Vect{x}\ \ \Vect{y}]</right>
+		</computation>
+	</statement>
+	<proof>
+		<para>We prove this claim by evaluating both sides of the equation</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+&\det
+\left[
+\begin{array}{ccc}
+a_1 & x_1 & y_1 \\
+a_2 & x_2 & y_2 \\
+a_3 & x_3 & y_3\
+\end{array}
+\right]\ =\\
+&\quad =\ a_1\cdot \det
+\left[
+\begin{array}{cc}
+x_2 & y_2 \\
+x_3 & y_3
+\end{array}
+\right]\ -\ 
+a_2\cdot \det
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_3 & y_3
+\end{array}
+\right]\ +\ 
+a_3\cdot \det
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_2 & y_2
+\end{array}
+\right] \\
+&\quad =\ \DotPr{ (a_1,a_2,a_3) }{ \left(
+\det
+\left[
+\begin{array}{cc}
+x_2 & y_2 \\
+x_3 & y_3
+\end{array}
+\right]\, ,\, -\det
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_3 & y_3
+\end{array}
+\right]\, ,\, \det
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_2 & y_2
+\end{array}
+\right]  
+\right) } \\
+&\quad =\ \DotPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		<para>This is what we wanted to show.</para>
+	</proof>
+</theorem>

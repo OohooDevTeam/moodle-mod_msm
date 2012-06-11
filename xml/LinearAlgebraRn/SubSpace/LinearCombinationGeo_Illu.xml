@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_LinearCombinationGeometrically">
+	<title>Linear Combination Interpreted Geometrically</title>
+	<sub.page.body>
+		<block>
+			<para>A linear combination of vectors <latex>\Vect{s}_1, \dots ,\Vect{s}_r</latex> constructs a vector <latex>\Vect{w}</latex>:</para>
+			<ol>
+				<li><para>Start with <latex>t_1</latex> times vector <latex>\Vect{s}_1</latex>;</para></li>
+				<li><para>now add <latex>t_2</latex> times vector  <latex>\Vect{s}_2</latex>, ... until</para></li>
+				<li><para>add <latex>t_r</latex> times vector <latex>\Vect{s}_r</latex>.</para></li>
+			</ol>
+			<para>The result is the vector</para>
+			<computation>
+				<left>\Vect{w}</left>
+				<center>=</center>
+				<right>t_1 \Vect{s}_1 + \cdots + t_r \Vect{s}_r</right>
+			</computation>
+			<para>It has been &lsquo;combined&rsquo; by adding up rescalings of the vectors <latex>\Vect{s}_1</latex>, ... , <latex>\Vect{s}_r</latex>.</para>
+		</block>
+		
+		<block>
+			<para>The picture below shows two linear combinations of the vectors  <latex>\Vect{x}</latex>  and  <latex>\Vect{y}</latex>.</para>
+			<figure>
+				<img src="ims/LinearCombination1.gif"></img>
+			</figure>
+			<para>The vectors</para>
+			<computation>
+				<left>\Vect{w}</left>
+				<center>=</center>
+				<right>(1.5)\Vect{x} + (2.5)\Vect{y}</right>
+				<left>\Vect{u}</left>
+				<center>=</center>
+				<right>(-1)\Vect{x} + (1.5)\Vect{y}</right>
+			</computation>
+			<para>have been formed as linear combinations of the vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

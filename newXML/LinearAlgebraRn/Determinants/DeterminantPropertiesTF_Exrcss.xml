@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_DeterminantPropertiesTF"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Self Test: Determinant Properties</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below determine if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all numbers <math>
+                        <latex>a,b</latex>
+                     </math>,</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\det \left[
+\begin{array}{cc}
+1 &amp; 4a \\
+3 &amp; 12b
+\end{array}
+\right]\ =\ 
+12\cdot 
+\left[
+\begin{array}{cc}
+1 &amp; a \\
+1 &amp; b
+\end{array}
+\right]
+							
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>True!</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\det \left[
+\begin{array}{cc}
+1 &amp; 4a \\
+3 &amp; 12b
+\end{array}
+\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we pull the factor <math>
+                                          <latex>3</latex>
+                                       </math> out of the second row</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we pull the factor <math>
+                                          <latex>3</latex>
+                                       </math> out of the second row</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+3\cdot
+\det \left[
+\begin{array}{cc}
+1 &amp; 4a \\
+1 &amp; 4b
+\end{array}
+\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we pull the factor <math>
+                                          <latex>4</latex>
+                                       </math> out of the second column</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we pull the factor <math>
+                                          <latex>4</latex>
+                                       </math> out of the second column</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+3\cdot 4\cdot 
+\det \left[
+\begin{array}{cc}
+1 &amp; a \\
+1 &amp; b
+\end{array}
+\right]
+							
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all numbers <math>
+                        <latex>t</latex>
+                     </math>,</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\det
+\left[
+\begin{array}{rr}
+t &amp; 3t \\
+t^2 &amp; 4t^3
+\end{array}
+\right] = t\cdot
+\det
+\left[
+\begin{array}{rr}
+1 &amp; 3 \\
+t &amp; 4t^2
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False!</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The perception that the stated identity is true is a common error. True is:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\det
+\left[
+\begin{array}{rr}
+t &amp; 3t \\
+t^2 &amp; 4t^3
+\end{array}
+\right] = t^2\cdot
+\det
+\left[
+\begin{array}{rr}
+1 &amp; 3 \\
+t &amp; 4t^2
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This identity results from pulling a factor of <math>
+                           <latex>t</latex>
+                        </math> from each column of the matrix on the left.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>There is an invertible matrix whose determinant is <math>
+                        <latex>0</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False!</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Review how to compute determinants by row reduction.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all numbers <math>
+                        <latex>a,b</latex>
+                     </math>:</para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\det
+\left[
+\begin{array}{rr}
+a &amp; b \\
+b &amp; a
+\end{array}
+\right] =
+\det
+\left[
+\begin{array}{rr}
+a &amp; 0 \\
+b &amp; 0
+\end{array}
+\right] +
+\det
+\left[
+\begin{array}{rr}
+0 &amp; b \\
+0 &amp; a
+\end{array}
+\right]
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>False!</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Test the truth of this statement for a matrix with nonzero determinant, such as the identity matrix:</para.body>
+               </para>
+					          <math.display>
+						            <latex>
+							
+\left[
+\begin{array}{rr}
+1 &amp; 0 \\
+0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					          </math.display>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For all numbers <math>
+                        <latex>a,b,c,d</latex>
+                     </math>
+                  </para.body>
+               </para>
+				           <math.display>
+					             <latex>
+						
+\det \left[
+\begin{array}{cccc}
+a &amp; a &amp; a &amp; a \\
+b &amp; b &amp; b &amp; b \\
+c &amp; c &amp; c &amp; c \\
+d &amp; d &amp; d &amp; d
+\end{array}
+\right]\ =\ 0
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>Notice that the entries in each row have a common factor, and pull it out of the determinant.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+\det \left[
+\begin{array}{cccc}
+a &amp; a &amp; a &amp; a \\
+b &amp; b &amp; b &amp; b \\
+c &amp; c &amp; c &amp; c \\
+d &amp; d &amp; d &amp; d
+\end{array}
+\right]
+
+						</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>
+							
+abcd\det \left[
+\begin{array}{cccc}
+1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 1 &amp; 1 
+\end{array}
+\right]
+
+						</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>The determinant on the right is <math>
+                           <latex>0</latex>
+                        </math> as all of its columns are equal.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_DistancePointHyperplane"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Distance of a Point from a Hyperplane</title>
+      <plain.title>Distance Point - Hyperplane</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we learn how to determine the 
+			<subordinate>
+                     <hot>distance of a point from a hyperplane</hot>
+                     <companion>
+                        <unit.ref unitId="Illustr_DistancePointHyperplane"/>
+                        <info>
+                           <para>
+                              <para.body>An illustration of this situation.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>. This is a very practical problem which one can encounter in many 
+			<subordinate>
+                     <hot>different guises</hot>
+                     <info>
+                        <info.caption>Examples of settings which lead to the problem of finding the distance of a point from a hyperplane.</info.caption>
+                        <para>
+                           <para.body>Examples of situations which lead to the problem of finding the distance of a point from a hyperplane include:</para.body>
+                        </para>
+                        <ul>
+                           <li>
+                              <para>
+                                 <para.body>The problem of determining the altitude of an air plane’s landing gear above the runway.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>The problem of determining the distance of a ship from a straight shore line.</para.body>
+                              </para>
+                           </li>
+                        </ul>
+                        <para>
+                           <para.body>It will help you understand the scope of this problem if you find more examples yourself.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>. Later, it will also enable us to carry out ‘least squares’ approximations. Happily, there is one simple formula which solves the problem of finding the distance of a point from a hyperplane completely and in all dimensions.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_DistancePointHyperplane"/>
+      <exercise.pack.ref exercisePackID="Test_Hyperplanes"/>
+   </studymaterials>
+</unit>

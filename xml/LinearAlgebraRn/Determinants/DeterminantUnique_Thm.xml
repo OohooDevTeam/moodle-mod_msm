@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Prop_DeterminantUnique">
+	<caption>Uniqueness of the determinant operation</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment on the Uniqueness Corollary</caption>
+			<para>As a consequence of the corollary, we see that the determinant operation is the only function <latex>F\from M_{nn}\to \RNr</latex> which is alternating, linear in each column, and satisfies <latex>\det(\IdMtrx[n])=1</latex>.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>If <latex>F\from M_{nn}\to \RNr</latex> is alternating and linear in each column, then</para>
+		<computation>
+			<left>F</left>
+			<center>=</center>
+			<right>F(\IdMtrx[n])\cdot \det</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>Given an arbitrary matrix <latex>\Mtrx{A}</latex> in <latex>M_{nn}</latex>, we compute</para>
+		<computation>
+			<left>F(\Mtrx{A})</left>
+			<center>=	<crossref>
+				<theorem.ref theoremID="Thm_AlternatingMultilinearProps"/>
+				<para>Such an identity holds for every alternating function. - Look it up</para>
+			</crossref></center>
+			<right>\sum_{r\in\SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} F(\Mtrx{E}(r))</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{r\in\SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} \sign(r) F(\IdMtrx[n])</right>
+			<left></left>
+			<center>=</center>
+			<right>F(\IdMtrx[n])\cdot\det(\Mtrx{A})</right>
+		</computation>
+		<para>as was to be shown.</para>
+	</proof>
+</theorem>

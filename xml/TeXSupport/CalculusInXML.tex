@@ -1,0 +1,26 @@
+\newcommand{\RC}[1][]{\mathbb{R\hskip .1em}^{#1}}	% Field of real or complex numbers
+%
+\newcommand{\TDiff}[3]{#1'_{#2}\left(#3\right)}	% total derivative of #1 at #2, evaluated at #3
+\newcommand{\Tdiff}[2]{#1'({#2})}       				% total derivative of #1 at #2 (linear map)
+\newcommand{\PDiff}[3]{\frac{\partial^{#1} #2}{\partial #3^{#1}}}		% partial derivative
+\newcommand{\DPDiff}[3]{\dfrac{\partial^{#1} #2}{\partial #3^{#1}}}	% partial derivative
+\newcommand{\Pdiff}[2]{\frac{\partial #1}{\partial #2}}							% first order partial derivative
+\newcommand{\DPdiff}[2]{\dfrac{\partial #1}{\partial #2}}						% first order partial derivative
+\newcommand{\Diff}[3]{\frac{d #1}{d #2}(#3)}		% derivative of #1 wrt #2 at #3
+\newcommand{\DDiff}[3]{\dfrac{d #1}{d #2}(#3)}	% derivative of #1 wrt #2 at #3 (display version)
+\newcommand{\diff}[2]{\frac{d #1}{d #2}}				% derivative of #1 wrt #2
+\newcommand{\Ddiff}[2]{\dfrac{d #1}{d #2}}			% derivative of #1 wrt #2		(display version)
+\newcommand{\DirDiff}[3]{\frac{\partial #1}{\partial #2}(#3)}		% directional derivative of #1 wrt #2 at #3
+\newcommand{\DDirDiff}[3]{\dfrac{\partial #1}{\partial #2}(#3)}	% display dir derivative of #1 wrt #2 at #3
+\newcommand{\Grdnt}[2]{\nabla{#1}(#2)}											% gradient of #1 at #2
+% Tangent data
+\newcommand{\TngntBdl}[1]{T#1}								% tangent bundle functor
+\newcommand{\TngntSpc}[2]{T_{#1}{#2}}					% tangent space to #2 at #1
+\newcommand{\TngntMp}[3]{T_{#1}{#2}(#3)}			% tangent map of #2 at #1, applied to #3
+% curves
+\newcommand{\Vlcty}[1]{#1^{\text{\tiny $^\bullet$}}}				% velocity vector
+\newcommand{\Acclrtn}[1]{#1^{\text{\tiny $\bullet\bullet$}}}% acceleration vector
+\newcommand{\AcclrtnRt}[1]{#1^{\text{\tiny $\bullet\bullet\bullet$}}} % triple dot of curve
+%
+\newcommand{\Intgrl}[2]{\int_{#1}^{#2}}	% integral over #1, integrand #2
+\newcommand{\intgrl}{\int}							% integral

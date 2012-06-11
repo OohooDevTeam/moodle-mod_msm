@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_EpsilonDeltaDisContinuous">
+	<title>Detecting a Discontinuous Function</title>
+	<sub.page.body>
+		<block>
+			<para>By definition, a function <latex>f\from D\to \RNr</latex>, <latex>D\subseteq \RNr</latex>, is continuous at <latex>x\in D</latex> if, for every <latex><![CDATA[ \varepsilon > 0 ]]></latex>, there exists <latex><![CDATA[ \delta > 0 ]]></latex>, such that for all <latex>t\in D</latex>,</para>
+			<math.display>
+				<latex><![CDATA[ \Abs{ x-t } < \delta\quad \implies\quad \Abs{ f(x) - f(t) } < \varepsilon ]]></latex>
+			</math.display>
+			<para>Here we analyze how this definition rejects those functions which do make a jump.</para>
+		</block>
+		
+		<block>
+			<para>The function <latex>f</latex> below is defined on an interval and visibly makes a jump at <latex>x</latex>. How does the <latex>\varepsilon</latex>-<latex>\delta</latex> definition of continuity detect it?</para>
+			<figure>
+				<img src="ims/EpsilonDelta4.png"></img>
+			</figure>
+			<para>For the deviation tolerance <latex>\varepsilon</latex> choose any positive number which is less than the size of the jump. Then there are numbers <latex>t</latex>, arbitrarily close to <latex>x</latex>, for which <latex>f(t)</latex> is further away from <latex>f(x)</latex> than the deviation tolerance.</para>
+			<para>So <b>there is no positive</b> <latex>\delta</latex> for which</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+						f(x)-\varepsilon < f(t) < f(x)+\varepsilon,\quad \text{whenever}\quad x-\delta < t < x+\delta. 
+					]]>
+				</latex>
+			</math.display>
+			<para>With the <latex>\varepsilon</latex>-<latex>\delta</latex> definition of continuity we conclude that <latex>f</latex> is not continuous at <latex>x</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_NumberOfSolutions"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>The Number of Solutions of a System of Linear Equations</title>
+      <plain.title>Number of Solutions</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we develop a procedure which delivers all solutions of a system of linear equations from the RREF of its associated augmented coefficient matrix. This procedure tells us further that there are only three types of systems of linear equations:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>the type with no solution;</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>the type with exactly one solution;</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>the type with infinitely many solutions.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="NoSolution_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="ExactlyOneSolution_Thm.xml"/>
+            <para>
+               <para.body>Whenever the RREF-matrix of a system of linear equations does not contain a leading 1 in its augmentation column, this system has at least one solution. Next we explain how to construct all of its solutions from the RREF-matrix.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="SolutionsConstruct_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SolutionsExist_Thm.xml"/>
+            <para>
+               <para.body>Whenever a system of linear equations has only <math>
+                     <latex>0</latex>
+                  </math>'s in its augmentation column, it has the solution <math>
+                     <latex>\Vect{x}=(0,\dots ,0)</latex>
+                  </math>. This leads to the following concept:</para.body>
+            </para>
+            <def type="Definition" id="Def_HomogeneousSystemLinearEqs">
+               <caption>(In-)Homogeneous System of Linear equations</caption>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_LinearEqsHomoInHomo"/>
+                  <info>
+                     <para>
+                        <para.body>An example of a homogeneous system of linear equations and an inhomogeneous system of linear equations.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A system of linear equations</para.body>
+                  </para>
+                  <math.display>
+                     <latex>
+					
+\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{11}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{12}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{1n}$}{\color{red}x_n} &amp; = &amp; c_1 \\
+\colorbox{lightgreen}{$a_{21}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{22}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{2n}$}{\color{red}x_n} &amp; = &amp; c_2 \\
+\vdots &amp; + &amp; \vdots &amp; + &amp; \ddots &amp; &amp; + &amp; \vdots &amp; &amp; \vdots \\
+\vdots &amp; + &amp; \vdots &amp; + &amp; &amp; \ddots &amp; + &amp; \vdots &amp; &amp; \vdots \\
+\colorbox{lightgreen}{$a_{m1}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{m2}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{mn}$}{\color{red}x_n} &amp; = &amp; c_m \\
+\end{array}
+						
+				</latex>
+                  </math.display>
+                  <para>
+                     <para.body>is called homogeneous if <math>
+                           <latex>c_1=c_2=\cdots =c_n=0</latex>
+                        </math>. Else it is called inhomogeneous.
+				</para.body>
+                     <index.glossary>
+                        <term>homogeneous system of linear equations</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>inhomogeneous system of linear equations</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>system of linear equations</term>
+                        <term>homogeneous</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>system of linear equations</term>
+                        <term>inhomogeneous</term>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_ReadSolutions"/>
+      <exercise.pack.ref exercisePackID="Exe_NumberSolutions"/>
+   </studymaterials>
+</unit>

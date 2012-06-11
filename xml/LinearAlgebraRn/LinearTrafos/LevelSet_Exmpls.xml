@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack	SYSTEM "../Symbols.dtd">
+<example.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LevelSet">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Examples: Level Sets of Linear Transformations</title>
+	<caption>Example: A Linear Map from a Matrix</caption>
+	
+	<example>
+		<statement>
+			<para>Let <latex>T\from \RNr[3] \to \RNr[2]</latex> be given by</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+T(x,y,z) = 
+\left[
+\begin{array}{ccc}
+1 & -1 & 2 \\
+1 & 1/2 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>Find <latex>T^{-1}(1,1)</latex>; in other words, find the level set of <latex>\Vect{y}=(1,1)</latex> under <latex>T</latex>.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>We know that <latex>T^{-1}(1,1)</latex> consists of all solutions of the system of linear equations</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+T(x,y,z) = 
+\left[
+\begin{array}{ccc}
+1 & -1 & 2 \\
+1 & 1/2 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = 
+\left[
+\begin{array}{cc}
+1 \\ 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			
+			<para>In geometrical terms: therefore, <latex>T^{-1}(1,1)</latex> consists of the intersection of the two (hyper-)planes which arise from the two linear equations</para>
+			
+			<para align="center"><latex>x-y+2z = 1</latex> &nbsp; and &nbsp; <latex>x + (1/2)y + z = 1</latex>.</para>
+			
+			<para>To find a numerical description of <latex>T^{-1}(1,1)</latex>,  we solve the system of linear equations</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{ccc}
+1 & -1 & 2 \\
+1 & 1/2 & 1
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = 
+\left[
+\begin{array}{cc}
+1 \\ 1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			
+			<para>To find the solutions of this system, we form its augmented coefficient matrix and row reduce it.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rrr|c}
+1 & -1 & 2 & 1 \\
+1 & \tfrac{1}{2} & 1 & 1 \\ \hline
+%
+1 & -1 & 2 & 1 \\
+0 & \tfrac{3}{2} & -1 & 0 \\ \hline
+%
+1 & -1 & 2 & 1 \\
+0 & 1 & -\tfrac{2}{3} & 0 \\ \hline
+%
+1 & 0 & \tfrac{4}{3} & 1 \\
+0 & 1 & -\tfrac{2}{3} & 0
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			
+			<para>So the variable <latex>z</latex> is free, and</para>
+			
+			<computation>
+				<left>y</left>
+				<center>=</center>
+				<right>\tfrac{2}{3}z</right>
+				<left>x</left>
+				<center>=</center>
+				<right>1 - \tfrac{4}{3}z</right>
+			</computation>
+			<para>Therefore each solution is of the form</para>
+			
+			<computation>
+				<left>\left( 1 - \tfrac{4}{3} z , \tfrac{2}{3} z,z \right)</left>
+				<center>=</center>
+				<right>(1,0,0) + z\cdot \left( -\tfrac{4}{3} , \tfrac{2}{3} , 1\right)</right>
+			</computation>
+			<para>with <latex>z</latex> in <latex>\RNr</latex> arbitrary.</para>
+			
+			<para>This is a line in <latex>\RNr[3]</latex>. It forms all of <latex>T^{-1}(1,1)</latex>. So, in particular, <latex>T</latex> transforms this entire line into the point <latex>(1,1)</latex>.</para>
+		</answer>
+	</example>
+	
+</example.pack>

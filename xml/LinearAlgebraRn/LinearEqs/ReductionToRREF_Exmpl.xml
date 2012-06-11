@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_ReductionRREF">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+	<title>Finding the Solutions of a System of Linear Equations by Reduction to RREF - Example</title>
+	<caption>Reduction to RREF - Example</caption>
+	<showme>
+		<statement>
+			<para>Use the method of reduction to RREF to find all solutions of the system of 3 linear equations in 4 variables below.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$2$}{\color{red}x} & + & \colorbox{lightgreen}{$-1$}{\color{red}y} & + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$-9$}{\color{red}x} & + & \colorbox{lightgreen}{$6$}{\color{red}y} &  + & \colorbox{lightgreen}{$3$}{\color{red}z} & = & 9 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$1$}{\color{red}x} & + & \colorbox{lightgreen}{$1$}{\color{red}y} &  + & \colorbox{lightgreen}{$8$}{\color{red}z} & = & 14 \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para><b>1)</b> &nbsp; The variable <latex>w</latex> occurs with non-zero coefficients. So we can use the basic row operations to generate a leading <latex>1</latex> in the top left corner. The first step is to use the operations to place a non-zero number in the top left corner: Interchange rows <latex>1</latex> and <latex>2</latex>:</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$2$}{\color{red}x} & + & \colorbox{lightgreen}{$-1$}{\color{red}y} & + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$-9$}{\color{red}x} & + & \colorbox{lightgreen}{$6$}{\color{red}y} &  + & \colorbox{lightgreen}{$3$}{\color{red}z} & = & 9 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$1$}{\color{red}x} & + & \colorbox{lightgreen}{$1$}{\color{red}y} &  + & \colorbox{lightgreen}{$8$}{\color{red}z} & = & 14 \\
+%
+& & & & & & & & \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$-9$}{\color{red}x} & + & \colorbox{lightgreen}{$6$}{\color{red}y} &  + & \colorbox{lightgreen}{$3$}{\color{red}z} & = & 9 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$2$}{\color{red}x} & + & \colorbox{lightgreen}{$-1$}{\color{red}y} & + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$1$}{\color{red}x} & + & \colorbox{lightgreen}{$1$}{\color{red}y} &  + & \colorbox{lightgreen}{$8$}{\color{red}z} & = & 14 \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The two systems of three linear equations above are equivalent. The second system results from the first by interchanging the first two equations.</para>
+			
+			<para><b>2)</b> &nbsp; Multiplying an equation by a non-zero number yields an equivalent system.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$-9$}{\color{red}x} & + & \colorbox{lightgreen}{$6$}{\color{red}y} &  + & \colorbox{lightgreen}{$3$}{\color{red}z} & = & 9 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$2$}{\color{red}x} & + & \colorbox{lightgreen}{$-1$}{\color{red}y} & + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$1$}{\color{red}x} & + & \colorbox{lightgreen}{$1$}{\color{red}y} &  + & \colorbox{lightgreen}{$8$}{\color{red}z} & = & 14 \\
+%
+& & & & & & & & \\
+%
+\colorbox{lightgreen}{$1$}{\color{red}w} & + & \colorbox{lightgreen}{$-3$}{\color{red}x} & + & \colorbox{lightgreen}{$2$}{\color{red}y} &  + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$2$}{\color{red}x} & + & \colorbox{lightgreen}{$-1$}{\color{red}y} & + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$1$}{\color{red}x} & + & \colorbox{lightgreen}{$1$}{\color{red}y} &  + & \colorbox{lightgreen}{$8$}{\color{red}z} & = & 14 \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The two systems of 3 linear equations above are equivalent. The second system results from the first by dividing the first equation by <latex>3</latex> (i.e. multiplying it by <latex>1/3</latex>).</para>
+			
+			
+			<para><b>3)</b> &nbsp; Now we have a leading <latex>1</latex> in the top left position. We must use row operations to make all coefficients above or below it equal to <latex>0</latex>. Adding any multiple of one equation to another yields an equivalent system.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$1$}{\color{red}w} & + & \colorbox{lightgreen}{$-3$}{\color{red}x} & + & \colorbox{lightgreen}{$2$}{\color{red}y} &  + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$2$}{\color{red}x} & + & \colorbox{lightgreen}{$-1$}{\color{red}y} & + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 1 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}w} & + & \colorbox{lightgreen}{$1$}{\color{red}x} & + & \colorbox{lightgreen}{$1$}{\color{red}y} &  + & \colorbox{lightgreen}{$8$}{\color{red}z} & = & 14 \\
+%
+& & & & & & & & \\
+\colorbox{lightgreen}{$1$}{\color{red}w} & + & \colorbox{lightgreen}{$-3$}{\color{red}x} & + & \colorbox{lightgreen}{$2$}{\color{red}y} &  + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$2$}{\color{red}x} & + & \colorbox{lightgreen}{$-1$}{\color{red}y} & + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 1 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$10$}{\color{red}x} & + & \colorbox{lightgreen}{$-5$}{\color{red}y} &  + & \colorbox{lightgreen}{$5$}{\color{red}z} & = & 5
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>The two systems of 3 linear equations above are 
+				<subordinate>
+					<hot>equivalent</hot>
+					<info>
+						<caption>Why are the two system of linear equations above equivalent?</caption>
+						<para>Here it takes some reflection to see why the two systems have the same solutions: Suppose <latex>w,x,y,z</latex> are numbers which render one of the two systems of equations true. Then, in particular, the first equation is true. So adding any multiple of it to the third equation just adds the same number on both sides; i.e. the third equation is true after the operation exactly when it was true before the operation. Thus the two systems are indeed equivalent.</para>
+					</info>
+				</subordinate>. The second system results from the first by subtracting <latex>3</latex> times the first row from the third.</para>
+			
+			<para><b>4)</b> &nbsp; Next we turn to the second row. It’s leftmost non-zero coefficient is <latex>2</latex>. We turn it into a leading <latex>1</latex> by dividing the second row by <latex>2</latex> (i.e. multiplying it by <latex>1/2</latex>).</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcrcr}
+\colorbox{lightgreen}{$1$}{\color{red}w} & + & \colorbox{lightgreen}{$-3$}{\color{red}x} & + & \colorbox{lightgreen}{$2$}{\color{red}y} &  + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$2$}{\color{red}x} & + & \colorbox{lightgreen}{$-1$}{\color{red}y} & + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 1 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$10$}{\color{red}x} & + & \colorbox{lightgreen}{$-5$}{\color{red}y} &  + & \colorbox{lightgreen}{$5$}{\color{red}z} & = & 5 \\
+%
+& & & & & & & & \\
+\colorbox{lightgreen}{$1$}{\color{red}w} & + & \colorbox{lightgreen}{$-3$}{\color{red}x} & + & \colorbox{lightgreen}{$2$}{\color{red}y} &  + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$1$}{\color{red}x} & + & \colorbox{lightgreen}{$-\tfrac{1}{2}$}{\color{red}y} & + & \colorbox{lightgreen}{$\tfrac{1}{2}$}{\color{red}z} & = & \tfrac{1}{2} \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$10$}{\color{red}x} & + & \colorbox{lightgreen}{$-5$}{\color{red}y} &  + & \colorbox{lightgreen}{$5$}{\color{red}z} & = & 5
+					\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para><b>5)</b> &nbsp; Now we have a leading <latex>1</latex> in the second row. So we must turn all coefficients above or below it into <latex>0</latex>&rsquo;. So we add <latex>3</latex> times the second row to the first row, and we subtract <latex>10</latex> times the second row from the third row.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcrcr}
+					\colorbox{lightgreen}{$1$}{\color{red}w} & + & \colorbox{lightgreen}{$-3$}{\color{red}x} & + & \colorbox{lightgreen}{$2$}{\color{red}y} &  + & \colorbox{lightgreen}{$1$}{\color{red}z} & = & 3 \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$1$}{\color{red}x} & + & \colorbox{lightgreen}{$-\tfrac{1}{2}$}{\color{red}y} & + & \colorbox{lightgreen}{$\tfrac{1}{2}$}{\color{red}z} & = & \tfrac{1}{2} \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$10$}{\color{red}x} & + & \colorbox{lightgreen}{$-5$}{\color{red}y} &  + & \colorbox{lightgreen}{$5$}{\color{red}z} & = & 5 \\
+%
+& & & & & & & & \\
+\colorbox{lightgreen}{$1$}{\color{red}w} & + & \colorbox{lightgreen}{$0$}{\color{red}x} & + & \colorbox{lightgreen}{$\tfrac{1}{2}$}{\color{red}y} &  + & \colorbox{lightgreen}{$\tfrac{5}{2}$}{\color{red}z} & = & \tfrac{9}{2} \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$1$}{\color{red}x} & + & \colorbox{lightgreen}{$-\tfrac{1}{2}$}{\color{red}y} & + & \colorbox{lightgreen}{$\tfrac{1}{2}$}{\color{red}z} & = & \tfrac{1}{2} \\
+%
+\colorbox{lightgreen}{$0$}{\color{red}w} & + & \colorbox{lightgreen}{$0$}{\color{red}x} & + & \colorbox{lightgreen}{$0$}{\color{red}y} &  + & \colorbox{lightgreen}{$0$}{\color{red}z} & = & 0
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>Now we have a system of linear equations in <b>R</b>ow <b>R</b>educed <b>E</b>chelon <b>F</b>orm, and it is equivalent to the one originally given. So the solutions of the reduced system are the solutions of the originally given system:</para>
+			
+			<para>Now we can read off the solutions of the system of linear equations: Solve for the variables associated to a leading one, and choose number values for the remaining variables freely.</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\aligned
+x\ &=\ \dfrac{1}{2}\ +\ \dfrac{1}{2}\, y\ -\ \dfrac{1}{2}\, z \\
+w\ &=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
+\endaligned
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>Consequently, the solutions of this system of linear equations are given by vectors of the form</para>
+			
+			<math.display>
+				<latex>\left( \dfrac{9}{2}\, -\, \dfrac{1}{2}\, y\, -\, \dfrac{5}{2}\, z , \dfrac{1}{2}\, +\, \dfrac{1}{2}\, y\, -\, \dfrac{1}{2}\, z , y , z \right)</latex>
+			</math.display>
+			
+			<para>where <latex>y</latex> and <latex>z</latex> are arbitrary real numbers. Another way of expressing these solution vectors is:</para>
+			<math.display>
+				<latex>\left( \dfrac{9}{2} , \dfrac{1}{2} , 0 ,  0 \right) + y\cdot \left( -\dfrac{1}{2},\dfrac{1}{2} , 1,0\right) + z\cdot \left( -\dfrac{5}{2} ,-\dfrac{1}{2} , 0 , 1\right)</latex>
+			</math.display>
+			<para>Now we see that solutions are vectors <latex>(w,x,y,z)</latex> of the form</para>
+			<computation>
+				<left>(w,x,y,z)</left>
+				<center>=</center>
+				<right>\Vect{a} + y\cdot \Vect{u} + z\cdot \Vect{v}</right>
+			</computation>
+			<para>with</para>
+			<computation>
+				<left>\Vect{a}</left>
+				<center>:=</center>
+				<right>\left( \dfrac{9}{2} , \dfrac{1}{2} , 0 ,  0 \right)</right>
+				<left>\Vect{u}</left>
+				<center>:=</center>
+				<right>\left( -\dfrac{1}{2},\dfrac{1}{2} , 1,0\right)</right>
+				<left>\Vect{v}</left>
+				<center>:=</center>
+				<right>\left( -\dfrac{5}{2} ,-\dfrac{1}{2} , 0 , 1\right)</right>
+			</computation>
+			<para>Thus <latex>\Vect{a}</latex> forms a distinguished solution, to which we add sums of the form <latex>y\cdot \Vect{u} + z\cdot \Vect{v}</latex>, with <latex>y,z</latex> arbitrary in <latex>\RNr</latex>.</para>
+			<para>An expressions of the form <latex>y\cdot \Vect{u} + z\cdot \Vect{v}</latex> is called a linear combination of <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex>.</para>
+		</answer>
+	</showme>
+	
+</showme.pack>

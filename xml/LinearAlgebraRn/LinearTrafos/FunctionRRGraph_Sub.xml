@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_FunctionRRGraph">
+	<title>The Contraction Transformations</title>
+	<sub.page.body>
+		<block>
+			<para>It is very likely that you have already come in contact with the concept of a function. For example, within the context of calculus, you might have gotten used thinking of a function as a curve in a 2D-coordinate system like this one:</para>
+			<figure>
+				<img src="ims/FunctionGraph.png"></img>
+			</figure>
+			<para>Here the domain <latex>X</latex> of the function is an interval of the horizontal axis, and the target <latex>Y</latex> is <latex>\RNr</latex>. The curve in the graphic consists of all points <latex>(x,y)</latex> in <latex>\RNr[2]</latex> with <latex>x</latex> in <latex>X</latex> and <latex>y=f(x)</latex>.</para> 
+			<para>Let us understand clearly that the curve in the graphic does not depict the transformation described by <latex>f</latex>. Rather, the curve is called the &lsquo;graph&rsquo; of <latex>f</latex>.</para>
+			<para>For most of our present purposes the graph is not the appropriate object to associate to a function. Therefore it is necessary to take the concept of a function in its original form and then learn how to use it to transforms space.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

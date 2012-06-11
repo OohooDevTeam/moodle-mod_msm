@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_InvertibleLinearMapGeneral">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Linear Transformations II - Invertible Maps</title>
+	<exercise>
+		<problem>
+			<para>The linear maps <latex>L</latex> and <latex>T</latex> below are described in standard coordinates.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+L\from \RNr[4] \longrightarrow \RNr[3] &\quad L(x,y,z,t)= (-t+x,y+x,z-x) \\
+T\from \RNr[3] \longrightarrow \RNr[4] &\quad T(x,y,z) = (x+z,y,-x,-z+y)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			<para>Answer the subsequent questions</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Show that <latex>(L\Comp T)</latex> is invertible.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>We answer this problem via the following steps:</para>
+					<ol>
+						<li><para>Find the matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex>.</para></li>
+						<li><para>Find the matrix <latex>\Mtrx{B}</latex> representing <latex>T</latex>.</para></li>
+						<li><para>The matrix representing <latex>(L\Comp T)</latex> is then the matrix product <latex>\Mtrx{C}:=\Mtrx{A}\cdot \Mtrx{B}</latex></para></li>
+						<li><para>We then know that <latex>(L\Comp T)</latex> is invertible exactly when <latex>\Mtrx{C}</latex> is invertible. So, we may test <latex>\Mtrx{C}</latex> for invertibility by checking if its determinant is nonzero.</para></li>
+					</ol>
+					<para><b>Step 1</b> &nbsp; The matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex> has the following vectors as its columns:</para>
+					<computation>
+						<left>L(\StdBss{1})</left>
+						<center>=</center>
+						<right>(1,1,-1)</right>
+						<left>L(\StdBss{2})</left>
+						<center>=</center>
+						<right>(0,1,0)</right>
+						<left>L(\StdBss{3})</left>
+						<center>=</center>
+						<right>(0,0,1)</right>
+						<left>L(\StdBss{4})</left>
+						<center>=</center>
+						<right>(-1,0,0)</right>
+					</computation>
+					<para>Therefore,</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}\ =\ 
+\left[
+\begin{array}{rrrr}
+1 & 0 & 0 & -1 \\
+1 & 1 & 0 & 0 \\
+-1 & 0 & 1 & 0
+\end{array}
+\right] 
+							]]>
+						</latex>
+					</math.display>
+					
+					<para><b>Step 2</b> &nbsp; Similarly, the matrix <latex>\Mtrx{B}</latex> representing <latex>T</latex> has the following vectors as its columns:</para>
+					<computation>
+						<left>T(\StdBss{1})</left>
+						<center>=</center>
+						<right>(1,0,-1,0)</right>
+						<left>T(\StdBss{2})</left>
+						<center>=</center>
+						<right>(0,1,0,1)</right>
+						<left>T(\StdBss{3})</left>
+						<center>=</center>
+						<right>(1,0,0,-1)</right>
+					</computation>
+					<para>Therefore,</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{B}\ =\ 
+\left[
+\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-1 & 0 & 0 \\
+0 & 1 & -1
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					
+					<para><b>Step 3</b> &nbsp; The matrix representing <latex>(L\Comp T)</latex> is</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{C} := 
+\left[
+\begin{array}{rrrr}
+1 & 0 & 0 & -1 \\
+1 & 1 & 0 & 0 \\
+-1 & 0 & 1 & 0
+\end{array}
+\right] 
+\left[
+\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-1 & 0 & 0 \\
+0 & 1 & -1
+\end{array}
+\right] = 
+\left[
+\begin{array}{rrr}
+1 & -1 & 1 \\
+1 &  1 & 0 \\
+-2 & 0 & 0 
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					
+					
+					<para><b>Step 4</b> testing <latex>\Mtrx{C}</latex> for invertibility. We find that <latex>\det(\Mtrx{C})=2</latex>. Therefore, <latex>(\Mtrx{A} \Mtrx{B})</latex> is invertible, and so  <latex>(L\Comp T)</latex> is invertible.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>Find <latex>(L\Comp T)^{-1}(x,y,z)</latex> for an arbitrary vector <latex>(x,y,z)</latex> of <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>(L\Comp T)^{-1}(x,y,z) = (-(1/2)z , y + (1/2)z , x+y+z)</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>Using the first part of the problem, we see</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+(\Mtrx{A} \Mtrx{B})^{-1} =
+\left[
+\begin{array}{rrr}
+1 & -1 & 1 \\
+1 & 1 & 0 \\
+-2 & 0 & 0 
+\end{array}
+\right]^{-1} = 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+0 & 0 & -1 \\
+0 & 2 & 1 \\
+2 & 2 & 2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Accordingly, we obtain</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+(L\Comp T)^{-1} (x,y,z)\ =\ 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+0 & 0 & -1 \\
+0 & 2 & 1 \\
+2 & 2 & 2
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+-\tfrac{1}{2}z \\ y + \tfrac{1}{2} z \\ x + y + z
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>Determine if <latex>(T\Comp L)</latex> is invertible. Explain your answer.</para></problem>
+			<approach>
+				<answer>
+					<para><latex>(T\Comp L)</latex> is not invertible.</para>
+				</answer>
+				<solution>
+					<para>The matrix representing <latex>(T\Comp L)</latex> is <latex>(B\cdot A)</latex>, and</para>
+					<computation>
+						<left>\det(\Mtrx{B} \Mtrx{A})</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>Therefore <latex>(\Mtrx{B} \Mtrx{A})</latex> is not invertible and, consequently, <latex>(T\Comp L)</latex> is not invertible.</para>
+					
+					<para>Note that this result may be explained conceptually as follows: in the composite <latex>(T\Comp L)</latex>, we first execute the linear map <latex>L</latex>. Now <latex>L</latex> transforms <latex>\RNr[4]</latex> into the lower dimensional <latex>\RNr[3]</latex>. In the process some &lsquo;collapsing&rsquo; of material in <latex>\RNr[4]</latex> must occur; for example the nullspace of the matrix <latex>\Mtrx{A}</latex> gets collapsed into the 0-vector of <latex>\RNr[3]</latex>. Once such collapsing has occurred, it can never be reversed by another linear map. So <latex>(T\Comp L)</latex> is not invertible.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2,\Vect{b}_3)</latex> and <latex>\EuScript{D}=(\Vect{d}_1,\Vect{d}_2,\Vect{d}_3)</latex> be the ordered bases of <latex>\RNr[3]</latex> with</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\Vect{b}_1 &= (1,0,0), &\quad \Vect{b}_2 &= (-1,-1,1), &\quad \Vect{b}_3 &= (0,0,1) \\
+\Vect{d}_1 &= (1,0,1), &\quad \Vect{d}_2 &= (-1,-1,0), &\quad \Vect{d}_3 &= (0,-1,-1)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			<para>Further, let <latex>L\from \RNr[3] \to \RNr[3]</latex> be the linear map which is represented by the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}_{\EuScript{B}\EuScript{D}} = 
+\left[
+\begin{array}{rrr}
+0 & -2 & 1 \\
+0 & -1 & 0 \\
+1 & 0 & 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</problem>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{A}_{\EuScript{D}\EuScript{B}}</latex> representing <latex>L^{-1}</latex> with respect to the bases <latex>\EuScript{B}</latex> for the domain and <latex>\EuScript{D}</latex> for the target.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A}_{\EuScript{D}\EuScript{B}} = \left( \Mtrx{A}_{\EuScript{B}\EuScript{D}}\right)^{-1} =
+\left[
+\begin{array}{rrr}
+0 & -2 & 1 \\
+0 & -1 & 0 \\
+1 & 0 & 0
+\end{array}
+\right]^{-1} = 
+\left[
+\begin{array}{rrr}
+0 & 0 & 1 \\
+0 & -1 & 0 \\
+1 & -2 & 0
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the <latex>\EuScript{D}</latex>-coordinates of <latex>L^{-1}(a,b,c)_{\EuScript{B}}</latex>, where <latex>(a,b,c)_{\EuScript{B}}</latex> is arbitrary in <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<solution>
+					<para>If <latex>\Vect{x}_{\EuScript{B}}=(a,b,c)</latex>, then</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+L^{-1}(\Vect{x})_{\EuScript{D}} = \Mtrx{A}_{\EuScript{D}\EuScript{B}} \Vect{x}_{\EuScript{B}} = \left[
+\begin{array}{rrr}
+0 & 0 & 1 \\
+0 & -1 & 0 \\
+1 & -2 & 0
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+a \\ b \\ c
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+c \\ -b \\ a-2b
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>Find the matrix <latex>\Mtrx{A}</latex> representing <latex>L^{-1}</latex> with respect to the standard basis of  <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<math.display>
+						<latex>
+							<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+0 & 0 & 1 \\
+-1 & -2 & 0 \\
+-1 & 0 & 1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+				</answer>
+				<solution>
+					<para>The matrix <latex>\Mtrx{A}=\Mtrx{A}_{\EuScript{S}\EuScript{S}}</latex> representing <latex>L^{-1}</latex> with respect to the standard basis of <latex>\RNr[3]</latex> is given by</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+\Mtrx{A}\ &=\ \Mtrx{C}_{\EuScript{S}\EuScript{D}}\cdot \Mtrx{A}_{\EuScript{D}\EuScript{B}}(L^{-1})\cdot \Mtrx{C}_{\EuScript{B}\EuScript{S}} \\
+	&=\ 
+	\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+0 & -1 & -1 \\
+1 & 0 & -1
+\end{array}
+\right]
+\left[
+\begin{array}{rrr}
+0 & 0 & 1 \\
+0 & -1 & 0 \\
+1 & -2 & 0
+\end{array}
+\right]
+\left[
+\begin{array}{rrr}
+1 & -1 & 0 \\
+0 & -1 & 0 \\
+0 & 1 & 1
+\end{array}
+\right]^{-1} \\
+	&=\ 
+	\left[
+\begin{array}{rrr}
+0 & 0 & 1 \\
+-1 & -2 & 0 \\
+-1 & 0 & 1
+\end{array}
+\right]
+\endaligned
+]]>
+						</latex>
+					</math.display>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>\Vect{x}_{\EuScript{S}}=(x,y,z)</latex>, express <latex>L^{-1}(\Vect{x})</latex> in standard coordinates.</para>
+			</problem>
+			<approach>
+				<answer>
+					<computation>
+						<left>L^{-1}(x,y,z)</left>
+						<center>=</center>
+						<right>(z,-x-2y,-x+z)</right>
+					</computation>
+				</answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Suppose <latex>L\from \RNr[n] \to \RNr[n]</latex> is a linear map such that, whenever <latex>\Vect{u}_1,\dots ,\Vect{u}_r</latex> are linearly independent vectors in <latex>\RNr[n]</latex>, the vectors <latex>L(\Vect{u}_1),\dots ,L(\Vect{u}_r)</latex> are also linearly independent.  Show that <latex>L</latex> is invertible.</para>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>The hypothesis applies, in particular to a basis of <latex>\RNr[n]</latex>.</para>
+			</solution.hint>
+			<solution>
+				<para>Choose an ordered basis <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_n)</latex> of <latex>\RNr[n]</latex>. The vectors in <latex>\EuScript{B}</latex> are linearly independent. So <latex>\EuScript{D}:=(L(\Vect{b}_1),\dots ,L(\Vect{b}_n))</latex> is linearly independent and, hence, an ordered basis of <latex>\RNr[n]</latex>.</para>
+				<para>The matrix <latex>\Mtrx{A}_{\EuScript{D}\EuScript{B}}</latex> representing <latex>L</latex> with respect to these two bases is the identity <latex>(n,n)</latex>-matrix. This matrix is invertible, and so <latex>L</latex> is invertible. &ndash; This was to be shown.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below determine if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>Given an isomorphism <latex>L\from V\to W</latex>, there are always vectors <latex>\Vect{x}\neq \Vect{0}</latex> in <latex>V</latex> with <latex>L(\Vect{x})=\Vect{0}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint>
+					<para>Suppose there is a vector <latex>\Vect{x}\neq \Vect{0}</latex> in <latex>V</latex> with <latex>L(\Vect{0}) = \Vect{0}</latex>, and suppose <latex>M=L^{-1}</latex>. Then <latex>M</latex> reverses the transformation effect of <latex>L</latex>. What does this mean in the case at hand?</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Previous hint continued: in the case at hand, this means</para>
+					<ol>
+						<li><para><latex>\Vect{0} = M\Comp L(\Vect{0}) = M(\Vect{0})</latex></para></li>
+						<li><para><latex>\Vect{x} = M\Comp L(\Vect{x}) = M(\Vect{0})</latex></para></li>
+					</ol>
+					<para>So ... ?</para>
+				</solution.hint>
+				<solution>
+					<para>Let us analyze the situation: suppose there is a vector <latex>\Vect{x}\neq \Vect{0}</latex> in <latex>V</latex> with <latex>L(\Vect{0}) = \Vect{0}</latex>, and suppose <latex>M=L^{-1}</latex>. Then <latex>M</latex> reverses the transformation effect of <latex>L</latex>. Therefore,</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>M\Comp L(\Vect{x})</right>
+						<left></left>
+						<center>=	<info><para>Here we use the assumption <latex>L(\Vect{x}) = \Vect{0}</latex>.</para></info></center>
+						<right>M(\Vect{0})</right>
+						<left></left>
+						<center>=	<info><para>Here we use the general fact: every linear function <latex>M</latex> satisfies <latex>M(\Vect{0}) = \Vect{0}</latex>.</para></info></center>
+						<right>\Vect{0}</right>
+					</computation>
+					<para>This means that for an isomorphism <latex>L</latex> there is never an <latex>\Vect{x}\neq \Vect{0}</latex> with <latex>L(\Vect{x}) = \Vect{0}</latex>. &ndash; The statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Given an isomorphism <latex>L\from V\to W</latex>, the vector equation <latex>L(\Vect{x}) = \Vect{0}</latex> has exactly one solution, namely <latex>\Vect{x} = \Vect{0}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>Review the solution of the previous problem.</para>
+				</solution.hint>
+				<solution>
+					<para>We know that <latex>L(\Vect{x}) = \Vect{0}</latex>, as <latex>L</latex> is linear. So the equation</para>
+					<computation>
+						<left>L(\Vect{x})</left>
+						<center>=</center>
+						<right>\Vect{0}</right>
+					</computation>
+					<para>has at least one solution, namely <latex>\Vect{x} = \Vect{0}</latex>. To see if there are further solutions, let us analyze the situation:</para>
+					<para>Suppose there is a vector <latex>\Vect{x}</latex> in <latex>V</latex> with <latex>L(\Vect{0}) = \Vect{0}</latex>, and suppose <latex>M=L^{-1}</latex>. Then <latex>M</latex> reverses the transformation effect of <latex>L</latex>. Therefore,</para>
+					<math.display>
+						<latex>\Vect{x} = M\Comp L(\Vect{x}) = M(\Vect{0}) = \Vect{0}</latex>
+					</math.display>
+					<para>This means that <latex>\Vect{x} = \Vect{0}</latex> is the only solution of the given equation. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Given an isomorphism <latex>L\from V\to W</latex> and a vector <latex>\Vect{y}</latex> in <latex>W</latex>, there is a unique <latex>\Vect{x}</latex> in <latex>V</latex> with <latex>L(\Vect{x}) = \Vect{y}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution.hint>
+					<para>Use the fact that <latex>L\Comp L^{-1} = \Id[W]</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>Put <latex>M:=L^{-1}</latex>. Then we know that <latex>L\Comp M = \Id[W]</latex>. This means, in particular, that</para>
+					<computation>
+						<left>L(M(\Vect{y}))</left>
+						<center>=</center>
+						<right>\Vect{y}</right>
+					</computation>
+					<para>So set <latex>\Vect{x} := L(\Vect{y})</latex>, and we have that <latex>L(\Vect{x}) = \Vect{y}</latex>. Therefore the equation</para>
+					<math.display>
+						<latex>L(\Vect{x}) = \Vect{y}</latex>
+					</math.display>
+					<para>has at least one solution. So we wonder if it could have more solutions. Suppose <latex>\Vect{s}</latex> in <latex>V</latex> also satisfies <latex>L(\Vect{s}) = \Vect{y}</latex>. Then we know</para>
+					<math.display>
+						<latex>L(\Vect{x} - \Vect{s}) = L(\Vect{x}) - L(\Vect{s}) = \Vect{y} - \Vect{y} = \Vect{0}</latex>
+					</math.display>
+					<para>Now we learned in the previous parts of the exercise that <latex>\Vect{0}</latex> is the only vector which gets sent to <latex>\Vect{0}</latex> by the isomorphism <latex>L</latex>; in other words <latex>(\Vect{x} - \Vect{s}) = \Vect{0}</latex> and, therefore <latex>\Vect{x} = \Vect{0}</latex>. &ndash; The statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>Given an isomorphism <latex>L\from V\to W</latex> and a vector <latex>\Vect{y}</latex> in <latex>W</latex>, there are always infinitely many <latex>\Vect{x}</latex> in <latex>V</latex> with <latex>L(\Vect{x}) = \Vect{y}</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint>
+					<para>Review the solution of the previous problem.</para>
+				</solution.hint>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

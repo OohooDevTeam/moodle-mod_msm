@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_GeometricallySolve1">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Solving Linear Equations Geometrically - Self Test</title>
+	
+	<exercise>
+		<problem>
+			<para>About the equation</para>
+			<math.display>
+				<latex>(E)\qquad 2x - 3y^2 = 1</latex>
+			</math.display>
+			<para>decide if the following statements are true or false.</para>
+		</problem>
+		<part>
+			<problem><para><latex>(1,2)</latex> is a solution of (E)</para></problem>
+			<approach>
+				<answer><para><latex>(1,2)</latex> is not a solution of <latex>(E)</latex>.</para></answer>
+				<solution.hint><para>You need to test if setting <latex>x:=1</latex> and <latex>y:=2</latex> renders equation (E) true.</para></solution.hint>
+				<solution>
+					<para>We need to test if setting <latex>x:=1</latex> and <latex>y:=2</latex> renders equation (E) true:</para>
+					<computation>
+						<left>2\cdot 1 - 3\cdot (2^2)</left>
+						<center>\overset{?}{=}</center>
+						<right>1</right>
+						<left>2\ -\ 12</left>
+						<center>\overset{?}{=}</center>
+						<right>1</right>
+					</computation>
+					<para>Visibly, this is not true. So <latex>(1,2)</latex> is not a solution of <latex>(E)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>(2,1)</latex> is a solution of (E).</para></problem>
+			<approach>
+				<answer><para><latex>(2,1)</latex> is a solution of <latex>(E)</latex>.</para></answer>
+				<solution.hint><para>You need to test if setting <latex>x:=2</latex> and <latex>y:=1</latex> renders equation (E) true.</para></solution.hint>
+				<solution>
+					<para>We need to test if setting <latex>x:=1</latex> and <latex>y:=2</latex> renders equation (E) true:</para>
+					<computation>
+						<left>2\cdot 2 - 3\cdot (1^2)</left>
+						<center>\overset{?}{=}</center>
+						<right>1</right>
+						<left>4\ -\ 1</left>
+						<center>\overset{?}{=}</center>
+						<right>1</right>
+					</computation>
+					<para>This is not true. So <latex>(2,1)</latex> is a solution of <latex>(E)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>(3,4)</latex> is a solution of (E).</para></problem>
+			<approach>
+				<answer><para><latex>(3,4)</latex> is not a solution of <latex>(E)</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>(4,3)</latex> is a solution of (E).</para></problem>
+			<approach>
+				<answer><para><latex>(4,3)</latex> is not a solution of <latex>(E)</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>(14,3)</latex> is a solution of (E).</para></problem>
+			<approach>
+				<answer><para>Yes, <latex>(14,3)</latex> is a solution of <latex>(E)</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para><latex>(16,-3)</latex> is a solution of (E).</para></problem>
+			<approach>
+				<answer><para><latex>(16,-3)</latex> is not a solution of <latex>(E)</latex>.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem><para>If <latex>(s,t)</latex> is a solution of (E), so is <latex>(s,-t)</latex>.</para></problem>
+			<approach>
+				<answer><para>This is true.</para></answer>
+				<solution>
+					<para>To test this statement we substitute <latex>x:=s</latex> and <latex>y:=-t</latex> and compute</para>
+					<computation>
+						<left>2\cdot s - 3\cdot (-t)^2</left>
+						<center>\overset{?}{=}</center>
+						<right>1</right>
+						<left>2\cdot s - 3\cdot t^2</left>
+						<center>\overset{?}{=}</center>
+						<right>1</right>
+					</computation>
+					<para>Now we see that this identity is true because we are told that <latex>(s,t)</latex> is a solution of (E).</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>You are given a system of three linear equations in two variables:</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+(E1) &\qquad a_1x + b_1y &= c_1 \\
+(E2) &\qquad a_2x + b_2y &= c_2 \\
+(E3) &\qquad a_3x + b_3y &= c_3
+\endaligned
+					]]>
+				</latex>
+			</math.display>
+			<para>Suppose <latex>a_{1},b_{1}</latex> are not simultaneously <latex>0</latex>, <latex>a_{2},b_{2}</latex> are not simultaneously <latex>0</latex>, and <latex>a_{3},b_{3}</latex>, are not simultaneously <latex>0</latex>. For each of the following statements indicate if it is true or false?</para>
+		</problem>
+		<part>
+			<problem>
+				<para>The solution set of each equation by itself is a line in <latex>\RNr[2]</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>The solution set of each equation is a line in <latex>\RNr[2]</latex>. &nbsp; This is a fundamental fact about linear equations in two variables.</para>
+				</answer>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>A point <latex>P</latex> is a solution of the system if it is a solution of exactly one of the equations <latex>(E1)</latex>, or <latex>(E2)</latex>, or <latex>(E3)</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>This is false in general.</para>
+				</answer>
+				<solution>
+					<para>If a point <latex>P</latex> in <latex>\RNr[2]</latex> solves this system of equations exactly when it solves all three of the equations. But then it fails to solve exactly one of the equations. Therefore the given statement is false, in general.</para>
+				</solution>	
+			</approach>
+		</part>
+		
+		
+		
+		<part>
+			<problem>
+				<para>A point <latex>P</latex> is a solution of the system if it is a solution of at least one of the equations <latex>(E1)</latex>, <latex>(E2)</latex>, or <latex>(E3)</latex>.</para>
+			</problem>
+			<approach>
+				<answer>
+					<para>This is false, in general.</para>
+				</answer>
+				<solution>
+					<para>If a point <latex>P</latex> in <latex>\RNr[2]</latex> solves at least one of the given equations, it is still possible that <latex>P</latex> solves only this one equation, and none of the others. Consequently, <latex>P</latex> is not a simultaneous solution of the given system of linear equations. Therefore the given statement is false, in general.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>A point <latex>p</latex> is a solution of the system if it is a solution of each of the equations <latex>(E1)</latex>, <latex>(E2)</latex>, or <latex>(E3)</latex>.</para>
+			</problem>
+			<approach><answer><para>This is correct!</para></answer></approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>(a_3,b_3)=t(a_1,b_1)</latex> and <latex>c_3=tc_1</latex>, for some <latex>t</latex>, then the system has no solution.</para>
+			</problem>
+			<approach>
+				<answer><para>This is not true in general.</para></answer>
+				<solution>
+					<para>Under the stated conditions <latex>(E1)</latex> and <latex>(E3)</latex> have the same line of solutions. So, if <latex magnify="yes">(a_2,a_3)</latex> is not parallel to <latex magnify="yes">(a_1,a_2)</latex>, then the given system has exactly one solution in <latex>\RNr[2]</latex>. Therefore, the statement in question is false in general.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>If <latex>(a_3,b_3)=t(a_1,b_1)</latex> and <latex>c_3\neq tc_1</latex>, for some <latex>t</latex>, then the system has no solution.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>Under the stated conditions <latex>(E1)</latex> and <latex>(E3)</latex> have parallel and distinct lines of solutions. In other words, <latex>(E1)</latex> and <latex>(E2)</latex> have no simultaneous solutions and, therefore, <latex>(E1)</latex>, <latex>(E2)</latex>, and <latex>(E3)</latex> have no simultaneous solutions. &ndash; Therefore the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>If <latex>(a_3,b_3)\neq t(a_1,b_1)</latex> for all <latex>t</latex>, then the system has no solution.</para>
+			</problem>
+			<approach>
+				<answer><para>This is not true in general.</para></answer>
+				<solution>
+					<para>Under the stated conditions <latex>(E1)</latex> and <latex>(E3)</latex> have exactly one simultaneous solution. It is now possible that this solution also solves <latex>(E2)</latex>. &ndash; Therefore the statement in questions is false.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>If <latex>(a_3,b_3)\neq t(a_1,b_1)</latex> for all <latex>t</latex>, then the system has exactly one solution.</para>
+			</problem>
+			<approach>
+				<answer><para>This is not true in general.</para></answer>
+				<solution>
+					<para>Under the stated conditions <latex>(E1)</latex> and <latex>(E3)</latex> have exactly one simultaneous solution. It is now possible that this solution does not solve <latex>(E2)</latex>. &ndash; Therefore the statement in questions is false, in general.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+</exercise.pack>

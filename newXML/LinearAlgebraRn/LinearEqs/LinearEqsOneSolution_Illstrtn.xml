@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Illstrtn_LinearEqsOneSolution"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	  <title>Linear Equations with Exactly One Solutions</title>
+	  <caption xmlns="">Linear Equations with Exactly One Solutions</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>If a system of linear equations exactly one solution, then the solution hyperplanes of its equations have exactly one point in common.</para.body>
+         </para>
+			
+			      <para xmlns="" align="center">
+            <para.body>
+               <media type="image" active="0" inline="0">
+                  <img src="ims/ThreeEqnsR3Generic.gif"/>
+               </media>
+            </para.body>
+         </para>
+			
+			      <para xmlns="">
+            <para.body>The RREF of a system of linear equations indicates that the system has exactly one solution as follows: There is no leading <math>
+                  <latex>1</latex>
+               </math> in the augmented part of the RREF, and each column of its non-augmented part contains a leading <math>
+                  <latex>1</latex>
+               </math>.</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>
+					
+\begin{array}{cccccc|c}
+1 &amp; 0 &amp; 0 &amp; \cdots &amp; \cdots &amp; 0 &amp; d_1 \\
+0 &amp; 1 &amp; 0 &amp; \cdots &amp; \cdots &amp; 0 &amp; d_2 \\
+\vdots &amp; \vdots &amp; \vdots &amp;\ddots &amp;        &amp; \vdots &amp; \vdots \\
+\vdots &amp; \vdots &amp; \vdots &amp;       &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; \cdots &amp; 1 &amp; d_r \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; \cdots &amp; 0 &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; &amp; &amp; \vdots  &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; \cdots &amp; 0 &amp; 0 \\
+\end{array}
+					
+				</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>Indeed, the <math>
+                  <latex>j</latex>
+               </math>-th row of this reduced augmented coefficient matrix corresponds to the equation</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>x_j = t_j\qquad 1\leq j\leq n</latex>
+			      </math.display>
+			
+			      <para xmlns="">
+            <para.body>So the only solution of the given system is the vector</para.body>
+         </para>
+			
+			      <math.display xmlns="">
+				        <latex>(d_1,d_2,\dots,d_r)</latex>
+			      </math.display>
+		    </statement.showme>
+	  </showme>
+</showme.pack>

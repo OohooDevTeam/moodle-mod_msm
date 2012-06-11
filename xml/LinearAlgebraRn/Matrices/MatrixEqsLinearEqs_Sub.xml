@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Info_MatrixEqsLinearEqs">
+	<title>Relationship between Linear Equations and Matrix Equations</title>
+	<sub.page.body>
+		<block>
+			<para>There is a fundamental connection between systems of linear equations and certain matrix equations. Indeed, given a system of linear equations</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{cccccccccc}
+\colorbox{lightgreen}{$a_{11}$} {\color{red} x_1} & + & \colorbox{lightgreen}{$a_{12}$} {\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{1n}$} {\color{red} x_n} & = & c_1 \\
+\colorbox{lightgreen}{$a_{21}$} {\color{red} x_1} & + & \colorbox{lightgreen}{$a_{22}$} {\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{2n}$} {\color{red} x_n} & = & c_2 \\
+\vdots &  & \vdots &  & \ddots & & \vdots & && \vdots \\
+\vdots &  & \vdots &  &  & \ddots & \vdots & && \vdots \\
+\colorbox{lightgreen}{$a_{m1}$} {\color{red} x_1} & + & \colorbox{lightgreen}{$a_{m2}$} {\color{red}x_2} & + & \cdots & \cdots & + & \colorbox{lightgreen}{$a_{mn}$} {\color{red} x_n} & = & c_m \\
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>form its associated</para>
+			
+			<table align="center" border="3" bordercolor="Maroon" cellpadding="2" cellspacing="2">
+				<row>
+					<cell><para>Coefficient Matrix</para></cell>
+					<cell><para>Variables Vector</para></cell>
+					<cell><para>Augmentation Vector</para></cell>
+				</row>
+				<row>
+					<cell>
+						<math.display>
+							<latex>
+								<![CDATA[
+A := \left[
+\begin{array}{ccc}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{array}
+\right]
+								]]>
+							</latex>
+						</math.display>
+					</cell>
+					<cell>
+						<math.display>
+							<latex>
+								<![CDATA[
+{\color{red}
+X := \left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right]
+}
+								]]>
+							</latex>
+						</math.display>
+					</cell>
+					<cell>
+						<math.display>
+							<latex>
+								<![CDATA[
+C := \left[
+\begin{array}{c}
+c_1 \\ \vdots \\ c_m
+\end{array}
+\right]
+								]]>
+							</latex>
+						</math.display>
+					</cell>
+				</row>
+			</table>
+			
+			<para>Then observe that the left hand side of the given system of linear equations is just the matrix product</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\left[
+\begin{array}{ccc}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{array}
+\right] \cdot 
+{\color{red}
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right]
+}\ =\ 
+\left[
+\begin{array}{ccccc}
+\colorbox{lightgreen}{$a_{11}$} {\color{red} x_1} & + & \cdots & + & \colorbox{lightgreen}{$a_{1n}$} {\color{red} x_n} \\
+\vdots & & & & \vdots \\
+\colorbox{lightgreen}{$a_{m1}$} {\color{red} x_1} & + & \cdots & + & \colorbox{lightgreen}{$a_{mn}$} {\color{red} x_n}
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>Accordingly, the given system of linear equations is equivalent to the matrix equation</para>
+			
+			<math.display>
+				<latex>\Mtrx{A}{\color{red} \Mtrx{X}} = \Mtrx{C}</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para><b>Example</b> &nbsp; The system of linear equatons</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rcccrcr}
+\colorbox{lightgreen}{$2$} {\color{red} x} & + & \colorbox{lightgreen}{$3$} {\color{red} y} & - & \colorbox{lightgreen}{$1$} {\color{red} z} & = & 6 \\
+\colorbox{lightgreen}{$4$} {\color{red} x} & - & \colorbox{lightgreen}{$2$} {\color{red} z} & + & \colorbox{lightgreen}{$6$} {\color{red} z} & = & 2
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>is equivalent to the matrix equation</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\colorbox{lightgreen}{$\left[\begin{array}{rrr}
+2 & 3 & -1 \\
+4 & -2 & 6
+\end{array}\right]$}\cdot
+{\color{red} \begin{bmatrix} x \\ y \\ z \end{bmatrix} }\ =\
+\begin{bmatrix} 6 \\ 2 \end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+		</block>
+	</sub.page.body>
+</sub.page>

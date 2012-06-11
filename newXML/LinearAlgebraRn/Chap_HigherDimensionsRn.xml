@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
+      unitid="Chap_HigherDimensionsRn">
+   <titles>
+      <title>Higher Dimensions and the Vector Space <math>
+            <latex>\RNr[n]</latex>
+         </math>
+      </title>
+      <plain.title>Higher Dimensions</plain.title>
+   </titles>
+   <legitimate.children>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/Rn_Intro.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/PointsCoordinates.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/Products.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/DistancePoints.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/PointsArrowsVectors.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/VectorsAddMultiply.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/LinearMotion.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/RealNumbersExpla_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/HighDimensions_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/DegreesMotion_Illstrt.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/VisualizeRn.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/nTuples_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/nTuples_Qz.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/EqualnTuples_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/PointsCoordinates_Pack.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/PointsCoordinatesEquations_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/Products_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/CartesianProducts_Pack.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/DistancePoints_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/DistancePoints_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/DistancePoints_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/Arrows_illstrtn.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/ArrowLength_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/ArrowLength_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/VectorCoordinates_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/CoordinateVector_Qz.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/BasicCoordinateVector_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/PositionVector_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/VectorsArrows_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/VectorsAdd_Illstrtn.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/VectorsAdd_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/VectorScalar_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/VectorsParallel.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/VectorsAdd_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/VectorsScalarMultiply_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/VectorsAddScalarMultiply_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/LinearMotion_Explntn.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Rn/LinearMotion_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/LinearMotion_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Rn/LinearMotion1_Exrcss.xml"/>
+			</legitimate.children>
+</unit>

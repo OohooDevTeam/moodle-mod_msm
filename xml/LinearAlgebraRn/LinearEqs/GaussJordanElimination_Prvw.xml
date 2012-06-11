@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Preview_LinearEqsGeometry">
+	<title>Solving a System of Linear Equations Geometrically - Preview</title>
+	<sub.page.body>
+		<block>	
+			<para>The elimination method of Gauß and Jordan transforms a given system of linear equations in one which has the same solutions as the original one but which is so simple that one can read off its solutions right away. – For example, Gauß–Jordan elimination transforms the system</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcl}
+{\color{red}x} & + & \colorbox{lightgreen}{3}{\color{red}y} & - & \color{red}z & = & 5 \\
+\colorbox{lightgreen}{2}{\color{red}x} & + & {\color{red}y} & + & \colorbox{lightgreen}{3}{\color{red}z} & = & 5 \\
+\colorbox{lightgreen}{-1}{\color{red}x} & + & \colorbox{lightgreen}{7}{\color{red}y} & + & \colorbox{lightgreen}{-9}{\color{red}z} & = & 5
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>of 3 equations with 3 unknowns into the system</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{array}{rcrcrcl}
+{\color{red}x} & + & {\color{red}} & + & \colorbox{lightgreen}{2}{\color{red}z} & = & 2 \\
+ & + & {\color{red}y} & - & {\color{red}1} & = & 1
+\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>of 2 equations with 3 unknowns. The 
+				<subordinate>
+					<hot>steps taken in this process</hot>
+					<info>
+						<caption>What are the steps in the Gau&szlig;-Jordan elimination</caption>
+						<para>You can learn details about the steps in the Gau&szlig;-Jordan elimination in the so named section. Here our goal is merely to explain that the system of linear equations which result from the Gau&szlig;_jordan elimination process can be significantly simpler than the original system of linear equations.</para>
+					</info>
+				</subordinate>
+				are designed to ensure that both systems have exactly the same solutions.</para>
+		</block>
+		
+		<block>
+			<para>So, what’s the difference between the first system and second system above? &ndash; In the first system it is not easy to see what the solutions are. However, solutions of the second system are easy to read off: For every choice of  <latex>z</latex> in <latex>\RNr</latex>, setting</para>
+			
+			<para align="center"><latex>z:= 1+z</latex> &nbsp; <latex>x := 2-2z</latex></para>
+			
+			<para>yields a triple of simultaneous solutions of the system. For example.</para>
+			
+			<ul>
+				<li><para><latex>z:= 0</latex> yields <latex>y=1</latex> and <latex>x=2</latex></para></li>
+				<li><para><latex>z:= 1</latex> yields <latex>y=2</latex> and <latex>x=0</latex></para></li>
+				<li><para><latex>z:= -2</latex> yields <latex>y=-1</latex> and <latex>x=6</latex></para></li>
+			</ul>
+			
+			<para>As the two systems of linear equations above are equivalent, each of the number triples <latex>(2,1,0)</latex>, <latex>(0,2,1)</latex>, and <latex>(6,-1,-2)</latex> is also a simultaneous solution of the three equations of the first system.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

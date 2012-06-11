@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_SeriesLimitComparison">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	
+	<title>Limit Comparison Test for Series: Examples</title>
+	<showme>
+		<statement>
+			<para>Compare the convergence behavior of</para>
+			<math.display>
+				<latex magnify="yes">\sum_{n=1}^{\infty} \dfrac{1}{n^2 + n\sin n}\quad \text{and}\quad \sum_{n=1}^{\infty} \dfrac{1}{n^2}</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>We set <latex>a_n:=\tfrac{1}{n^2+n\sin n}</latex> and <latex>b_n:=\tfrac{1}{n^2}</latex>. Notice that <latex>b_n</latex> captures the most dominant part of <latex>a_n</latex> for large values of <latex>n</latex>. Then</para>
+			<computation>
+				<left>\lim_{n\to\infty}\dfrac{a_n}{b_n}</left>
+				<center>=</center>
+				<right>\lim_{n\to\infty}\dfrac{n^2}{n^2 + n\sin n}</right>
+				<left></left>
+				<center>=</center>
+				<right>\lim_{n\to\infty}\dfrac{1}{1 + \frac{\sin n}{n}}</right>
+				<left></left>
+				<center>=</center>
+				<right>1</right>
+			</computation>
+			<para>By limit comparison, either both series converge to a positive number, or both series converge to <latex>+\infty</latex>.</para>
+			<para>With the aid of integral calculus, we will see that <latex>\sum_{n=1}^{\infty}\frac{1}{n^2}</latex> converges to a number. Consequently, <latex>\sum_{n=1}^{\infty}a_n</latex> converges to a number as well.</para>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Analyze the convergence behavior of</para>
+			<math.display>
+				<latex magnify="yes">\sum_{n=0}^{\infty} \dfrac{n^2-n+2}{\sqrt[4]{n^{10} + n^5 + 3}}\ =:\ \sum_{n=0}^{\infty}a_n</latex>
+			</math.display>
+			<para>by comparing it to <latex>\sum_{n=?}^{\infty}b_n</latex>, where <latex>b_n</latex> captures the most dominant part of <latex>a_n</latex> for large values of <latex>n</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>To capture the most dominant part of <latex>a_n</latex> for large <latex>n</latex>, we just use the largest powers of <latex>n</latex> by setting for <latex>n\geq 1</latex></para>
+			<math.display>
+				<latex>b_n\ :=\ \dfrac{n^2}{\sqrt[4]{n^{10}}}\ =\ \dfrac{n^2}{n^2\sqrt{n}}\ =\ \dfrac{1}{\sqrt{n}}</latex>
+			</math.display>
+			<para>So we need to analyze the convergence behavior of <latex>\sum_{n=1}^{\infty}\frac{1}{\sqrt{n}}</latex>. To this end we recall that the harmonic series satisfies</para>
+			<computation>
+				<left>\sum_{n=1}^{\infty} \dfrac{1}{n}</left>
+				<center>=</center>
+				<right>\infty</right>
+			</computation>
+			<para>Further, we observe that, for <latex>n\geq 1</latex>,</para>
+			<math.display>
+				<latex>\sqrt{n}\leq n,\quad \text{and so}\quad \dfrac{1}{\sqrt{n}}\geq \dfrac{1}{n}</latex>
+			</math.display>
+			<para>Consequently, <latex>\sum_{n=1}^{\infty}\frac{1}{\sqrt{n}}=\infty</latex> by comparison with <latex>\sum_{n=1}^{\infty}\frac{1}{n}</latex>. Therefore,</para>
+			<math.display>
+				<latex magnify="yes">\sum_{n=0}^{\infty} \dfrac{n^2-n+2}{\sqrt[4]{n^{10} + n^5 + 3}}\ =\ \infty</latex>
+			</math.display>
+			<para>by limit comparison with <latex>\sum_{n=1}^{\infty}(1/\sqrt{n})</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

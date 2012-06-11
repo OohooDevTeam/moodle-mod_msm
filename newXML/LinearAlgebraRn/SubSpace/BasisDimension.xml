@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_BasisDimension"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Basis and Dimension</title>
+      <plain.title>Basis and Dimension</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We are now ready to equip an arbitrary subvector space <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> with a coordinate system: the coordinate axes are determined by any choice of a collection of vectors <math>
+                     <latex>\EuScript{B}</latex>
+                  </math> of <math>
+                     <latex>V</latex>
+                  </math> which 
+			<subordinate>
+                     <hot>spans <math>
+                           <latex>V</latex>
+                        </math>
+                     </hot>
+                     <info>
+                        <para>
+                           <para.body>So every vector in <math>
+                                 <latex>V</latex>
+                              </math> can be expressed in some way as a linear combination of vectors in <math>
+                                 <latex>\EuScript{B}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+			and is 
+			<subordinate>
+                     <hot>linearly independent</hot>
+                     <info>
+                        <para>
+                           <para.body>So vectors in <math>
+                                 <latex>V</latex>
+                              </math> can be expressed in exactly one way as a linear combination of vectors in <math>
+                                 <latex>\EuScript{B}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>.
+			Such a collection of vectors  is called a basis of <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>We will see that every subspace <math>
+                     <latex>V</latex>
+                  </math> has a basis, and that any two such bases contain the same number of vectors. This count of basis vectors is the dimension of <math>
+                     <latex>V</latex>
+                  </math>
+               </para.body>
+            </para>
+            <para>
+               <para.body>We will discuss the use of bases in detail in the next section. Here we merely introduce the concept and we learn how to find a basis for  <math>
+                     <latex>V</latex>
+                  </math>. It is one of the most central concepts in linear algebra.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_Basis">
+               <caption>Basis</caption>
+               <associate type="Explanation">
+                  <unit.ref unitId="Expla_Basis"/>
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>Analyze what a basis really is.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A 
+				<subordinate>
+                           <hot>basis</hot>
+                           <info>
+                              <para>
+                                 <para.body>The plural of ‘basis’ is ‘bases’.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+				
+				of a subvector space <math>
+                           <latex>V</latex>
+                        </math> of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> is a collection of vectors <math>
+                           <latex>\EuScript{B}</latex>
+                        </math> satisfying:
+				</para.body>
+                     <index.glossary>
+                        <term>basis</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <ul>
+                     <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\EuScript{B}</latex>
+                              </math> spans <math>
+                                 <latex>V</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\EuScript{B}</latex>
+                              </math> is linearly independent.</para.body>
+                        </para>
+                     </li>
+                  </ul>
+               </def.body>
+            </def>
+            <para>
+               <para.body>The following two results ensure the existence of a basis of a subspace of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="BasisExists_Thm.xml"/>
+            <para>
+               <para.body>More generally, any linearly independent subset of a subvector space <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> can be included in a basis of <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="BasisSupplementExists_Thm.xml"/>
+            <para>
+               <para.body>Next we show that any two bases of a subvector space <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> have the same number of vectors. This number of vectors is the dimension of <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="InvariantBasisNumber_Thm.xml"/>
+            <def type="Definition" id="Def_Dimension">
+               <caption>Dimension</caption>
+               <associate type="Illustration">
+                  <unit.ref unitId="Illu_BasisDimension"/>
+                  <info>
+                     <para>
+                        <para.body>An illustration of the role of a basis in the case where <math>
+                              <latex>V=\RNr[3]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>The dimension of a subvector space <math>
+                           <latex>V</latex>
+                        </math> of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> is</para.body>
+                  </para>
+                  <math.display>
+                     <latex>\dim(V):= k\quad \text{if $V$ has a basis of $k$ vectors}</latex>
+                  </math.display>
+                  <para>
+                     <para.body>If <math>
+                           <latex>V=\Set{ \Vect{0} }</latex>
+                        </math>, we set <math>
+                           <latex>\dim(V):=0</latex>
+                        </math>.
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>\dim(V)</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>Dimension of the vector space <math>
+                                    <latex>V</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>dimension</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the dimension of a vector space <math>
+                                    <latex>V</latex>
+                                 </math> as the number of basis vectors in <math>
+                                    <latex>V</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>The dimension of a subvector space <math>
+                     <latex>V</latex>
+                  </math> of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> is a measure of the size of <math>
+                     <latex>V</latex>
+                  </math>. The properties of ‘dimension’ agree nicely with our intuition of ‘size’. For example:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>There are many low dimensional subspaces 
+				<subordinate>
+                           <hot>inside</hot>
+                           <info>
+                              <para>
+                                 <para.body>Consider, for example all 1-dimensional subvector spaces (lines through the origin) in <math>
+                                       <latex>\RNr[2]</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+				a high dimensional one.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>However, a high dimensional space 
+				<subordinate>
+                           <hot>can not sit inside</hot>
+                           <info>
+                              <para>
+                                 <para.body>Else the high dimensional space would contain more linearly independent vectors than the number of vectors needed to span the low dimensional one.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+				a low dimensional one.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>If <math>
+                           <latex>V</latex>
+                        </math> sits inside <math>
+                           <latex>W</latex>
+                        </math> and <math>
+                           <latex>\dim(V)=\dim(W)</latex>
+                        </math>, then <math>
+                           <latex>V=W</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="EqualDimEqualSpace_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="SplittingDimensions_Thm.xml"/>
+            <para>
+               <para.body>We close this section with two alternate characterizations of a basis and a result which creates a new basis from a given one.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="BasisMinimalSpanningSet_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="BasisMaximalLinIndSet_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="NewBasisFromOld_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_Basis1"/>
+      <exercise.pack.ref exercisePackID="Exe_Basis11"/>
+   </studymaterials>
+</unit>

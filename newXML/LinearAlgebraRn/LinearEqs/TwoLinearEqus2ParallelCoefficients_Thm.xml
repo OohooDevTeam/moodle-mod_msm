@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_TwoLinearEqs2ParallelCoefficients"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Two linear equations, parallel coefficients</caption>
+   <associate type="Illustration">
+      <info>
+         <info.caption>
+            <caption>Illustration</caption>
+         </info.caption>
+         <para>
+            <para.body>An illustration of the solutions of two linear equations in two variables with parallel coefficient vectors.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Given two linear equations in two variables <math>
+               <latex>x</latex>
+            </math> and <math>
+               <latex>y</latex>
+            </math>
+         </para.body>
+      </para>
+      <math.display>
+         <latex>
+				
+						\begin{array}{rcrcl}
+\colorbox{lightgreen}{$a_1$}{\color{red} x} &amp; + &amp; \colorbox{lightgreen}{$a_2$}{\color{red} y} &amp; = &amp; {\color{blue} c} \\
+\colorbox{lightgreen}{$b_1$}{\color{red} x} &amp; + &amp; \colorbox{lightgreen}{$b_2$}{\color{red} y} &amp; = &amp; {\color{blue} d} \\
+						\end{array}
+					
+			</latex>
+      </math.display>
+      <para>
+         <para.body>the coefficient vectors are</para.body>
+      </para>
+      <math.display>
+         <latex>\colorbox{lightgreen}{$\Vect{n}_1 := (a_1,a_2)$}\quad \text{and}\quad \colorbox{lightgreen}{$\Vect{n}_2 := (b_1,b_2)$}</latex>
+      </math.display>
+      <para>
+         <para.body>While the augmented coefficient vectors are</para.body>
+      </para>
+      <math.display>
+         <latex>\Vect{N}_1 := (\colorbox{lightgreen}{$a_1,a_2$},{\color{blue} c})\quad \text{and}\quad \Vect{N}_2 := (\colorbox{lightgreen}{$b_1,b_2$},{\color{blue} d})</latex>
+      </math.display>
+      <para>
+         <para.body>The solutions of each equation form a line in <math>
+               <latex>\RNr[2]</latex>
+            </math>. If <math>
+               <latex>\Vect{n}_1 = t\cdot \Vect{n}_2</latex>
+            </math> and <math>
+               <latex>d\neq tc</latex>
+            </math> then these lines are parallel and distinct. So they have no point in common and, therefore, this system of linear equations has no simultaneous solution.</para.body>
+      </para>
+      <para>
+         <para.body>If <math>
+               <latex>\Vect{n}_1 = t\cdot \Vect{n}_2</latex>
+            </math> and <math>
+               <latex>d = tc</latex>
+            </math> then these two lines are the same. This means that each solution of one equation is also a solution of the other: the two equations are said to be equivalent.</para.body>
+      </para>
+   </statement.theorem>
+</theorem>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_CompositeLinearTrafos">
+	<caption>Composite of linear maps is linear</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment: What does this proposition tell us?</caption>
+			<para>This proposition gives us two strong pieces of information:</para>
+			<ol>
+				<li><para>The composite of two linear transformations is again linear</para></li>
+				<li><para>How is the composite of <latex>T</latex> and <latex>S</latex> represented?</para></li>
+			</ol>
+			<para>In short: the composite of linear maps corresponds to the product of representing matrices.</para>
+		</info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_Composition"/>
+		<info><para>An example of composition of linear maps</para></info>
+	</associate>
+	
+	<statement>
+		<para>If <latex>S\from \RNr[p] \to \RNr[n]</latex> and <latex>T\from \RNr[n] \to \RNr[m]</latex> are linear transformations, then their composite 
+			<index.glossary>
+				<term>composite</term><term>of linear transformations</term><term>represented by matrix product</term>
+			</index.glossary>
+			
+		</para>
+		<math.display>
+			<latex>(T\Comp S)\from \RNr[p] \longrightarrow \RNr[m],\quad (T\Comp S)(\Vect{x}) = T(S(\Vect{x}))</latex>
+		</math.display>
+		<para>is again linear. Moreover, if <latex>\Mtrx{A}</latex> is the <latex>(n,p)</latex>-matrix representing <latex>S</latex>, and if <latex>\Mtrx{B}</latex> is the <latex>(m,n)</latex>-matrix representing <latex>T</latex>, then <latex>\Mtrx{B}\Mtrx{A}</latex> is the <latex>(m,p)</latex>-matrix which represents <latex>T\Comp S</latex>.</para>
+	</statement>
+	
+	<proof>
+		<caption>Linearity of <latex>T\Comp S</latex></caption>
+		<para>We need to show that <latex>T\Comp S</latex> satisfies the properties of a linear transformation. To see that it commutes with vector addition, let <latex>\Vect{x},\Vect{y}\in \RNr[n]</latex>. We find</para>
+		
+		<computation>
+			<left>(T\Comp S)(\Vect{x}+\Vect{y})</left>
+			<center>=</center>
+			<right>T(S(\Vect{x}+\Vect{y}))</right>
+			<left></left>
+			<center>=	<info><para>As <latex>S</latex> is linear.</para></info></center>
+			<right>T(S(\Vect{x}) + T(S(\Vect{y}) )</right>
+			<left></left>
+			<center>=	<info><para>As <latex>T</latex> is linear.</para></info></center>
+			<right>T(S(\Vect{x})) + T(S(\Vect{y}))</right>
+			<left></left>
+			<center>=</center>
+			<right>T\Comp S(\Vect{x}) + T\Comp S(\Vect{y})</right>
+		</computation>
+		
+		<para>So <latex>T\Comp S</latex> commutes with vector addition.</para>
+		
+		<para>To see that <latex>T\Comp S</latex> commutes with scalar multiplication, let <latex>\Vect{x}\in\RNr[n]</latex> and <latex>t\in\RNr</latex>. We find:</para>
+		
+		<computation>
+			<left>T\Comp S(t\Vect{x})</left>
+			<center>=	<info><para>This is the definition of <latex>T\Comp S</latex>.</para></info></center>
+			<right>T(S(t \Vect{x}) )</right>
+			<left></left>
+			<center>=	<info><para>... because <latex>S</latex> is linear</para></info></center>
+			<right>T(tS(\Vect{x}) )</right>
+			<left></left>
+			<center>=	<info><para>as <latex>T</latex> is linear.</para></info></center>
+			<right>t\cdot T(S(\Vect{x}))</right>
+			<left></left>
+			<center>=</center>
+			<right>t\cdot \left( T\Comp S\right)(\Vect{x})</right>
+		</computation>
+		
+		<para>This means that <latex>T\Comp S</latex> commutes with scalar multiplication. – The proof that <latex>T\Comp S</latex> is linear is complete.</para>
+		
+		<caption>The matrix which represents <latex>T\Comp S</latex></caption>
+		<para>We know now that <latex>T\Comp S</latex> is linear. Therefore there is a unique <latex>(m,p)</latex>-matrix  which represents it. On the other hand, if <latex>\Mtrx{A}</latex> represents <latex>S</latex>, and <latex>\Mtrx{B}</latex> represents <latex>T</latex>, we find for arbitrary <latex>\Vect{x}\in\RNr[p]</latex></para>
+		
+		<math.display>
+			<latex>BA\Vect{x} = B S(\Vect{x}) = T(S(\Vect{x}) ) = T\Comp S(\Vect{x})</latex>
+		</math.display>
+		
+		<para>Therefore <latex>\Mtrx{C}:=\Mtrx{B}\Mtrx{A}</latex> is the unique matrix representing <latex>T\Comp S</latex>.</para>
+	</proof>
+</theorem>

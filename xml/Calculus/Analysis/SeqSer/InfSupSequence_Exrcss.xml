@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_InfSupSequence">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: Infimum, Supremum of a Sequence</title>
+	<exercise>
+		<problem>
+			<para>For each of the sequences below, find its infimum and its supremum</para>
+		</problem>
+		<part>
+			<problem><para><latex>(a_n)</latex> with <latex>a_n = (-1)^n</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>(b_n)</latex> with <latex>b_n =  n-3</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>(c_n)</latex> with <latex magnify="yes">c_n =  \tfrac{1}{1 + n^2}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>(d_n)</latex>with <latex>d_n = - \dfrac{n}{n+1}</latex></para></problem>
+		</part>
+	</exercise>
+	
+	
+	<exercise>
+		<problem>
+			<para>If <latex>(x_n)</latex> is a 
+				<subordinate>
+					<hot>positive sequence</hot>
+					<info><para>That is <latex><![CDATA[ x_n > 0 ]]></latex> for all <latex>n\in \NNr</latex>.</para></info>
+				</subordinate>
+				show the following:
+			</para>
+		</problem>
+		<part>
+			<problem>
+				<para>If <latex>\sup(x_n) = u</latex> for some <latex>u\in \RNr</latex>, then <latex><![CDATA[ u>0 ]]></latex> and <latex magnify="yes">\inf(1/x_n) = 1/u</latex>.</para>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<para><latex>\sup(x_n) = +\infty</latex> if and only if <latex>\inf(1/x_n) = 0</latex>.</para>
+			</problem>
+		</part>
+	</exercise>
+</exercise.pack>

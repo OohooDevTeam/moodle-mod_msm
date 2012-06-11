@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_DeterminantInvertibility"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Examples: Invertibility Test Using Determinants</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Use the determinant to test if the matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>
+            </para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+3 &amp; 1 \\
+4 &amp; 7
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>is invertible.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We know that <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is invertible exactly when its determinant does not vanish. So we compute</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\det(\Mtrx{A}) = 
+\left[
+\begin{array}{cc}
+3 &amp; 1 \\
+4 &amp; 7
+\end{array}
+\right]\ =\ 21 - 4 = 17 \neq 0
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is invertible.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Use the determinant to test if the matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{B}\ :=\  
+\left[
+\begin{array}{rrrrr}
+-1 &amp; 4 &amp; 3 &amp; 4 &amp; 5 \\
+5 &amp; -2 &amp; 3 &amp; -2 &amp; 1 \\
+0 &amp; 6 &amp; 0 &amp; 6 &amp; 2 \\
+-1 &amp; -1 &amp; 2 &amp; -1 &amp; 4 \\
+9 &amp; 3 &amp; 3 &amp; 3 &amp; -1
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>is invertible.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We need to test if <math>
+                        <latex>\det(\Mtrx{B})</latex>
+                     </math> is nonzero. To this end we observe that the 2nd and 4th columns of matrix <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> are equal:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+\left[
+\begin{array}{rrrrr}
+-1 &amp; {\color{red} 4} &amp; 3 &amp; {\color{red} 4} &amp; 5 \\
+5 &amp; {\color{red} -2} &amp; 3 &amp; {\color{red} -2} &amp; 1 \\
+0 &amp; {\color{red} 6} &amp; 0 &amp; {\color{red} 6} &amp; 2 \\
+-1 &amp; {\color{red} -1} &amp; 2 &amp; {\color{red} -1} &amp; 4 \\
+9 &amp; {\color{red} 3} &amp; 3 &amp; {\color{red} 3} &amp; -1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Therefore</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\det\, \Mtrx{B}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Consequently, <math>
+                        <latex>\Mtrx{B}</latex>
+                     </math> is not invertible.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Use the the determinant to test if the <math>
+                  <latex>(3,3)</latex>
+               </math>-matrix <math>
+                  <latex>\Mtrx{C}</latex>
+               </math>
+            </para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{C}\ :=  
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+2 &amp; 3 &amp; 1 \\
+0 &amp; 5 &amp; 0
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>is invertible.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We use row/column operations to turn <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math> into an upper triangular matrix. The effect on the determinant is recorded in the following computation</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					
+\det\, \left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+2 &amp; 3 &amp; 1 \\
+0 &amp; 5 &amp; 0
+\end{array}
+\right]
+					
+				</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Interchange 1st and 2nd rows. This operation flips the sign of the determinant.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Interchange 1st and 2nd rows. This operation flips the sign of the determinant.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					
+-\det\, \left[
+\begin{array}{rrr}
+2 &amp; 3 &amp; 1 \\
+1 &amp; 0 &amp; 1 \\
+0 &amp; 5 &amp; 0
+\end{array}
+\right]
+					
+				</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Interchange 2nd and 3rd rows. This operation flips the sign of the determinant.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Interchange 2nd and 3rd rows. This operation flips the sign of the determinant.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					
+\det\, \left[
+\begin{array}{rrr}
+2 &amp; 3 &amp; 1 \\
+0 &amp; 5 &amp; 0 \\
+1 &amp; 0 &amp; 1
+\end{array}
+\right]
+					
+				</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Subtract the 3rd column from the 1st to create an uppter triangular matrix. This operation does not change the determinant.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>Subtract the 3rd column from the 1st to create an uppter triangular matrix. This operation does not change the determinant.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>
+					
+\det\, \left[
+\begin{array}{rrr}
+1 &amp; 3 &amp; 1 \\
+0 &amp; 5 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+					
+				</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>The determinant of an upper triangular matrix is the product of its diagonal entries.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>The determinant of an upper triangular matrix is the product of its diagonal entries.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>5\neq 0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math> is invertible.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_Sequence"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Sequence: Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A sequence <math>
+                     <latex>(a_n)</latex>
+                  </math> of real numbers associates to each <math>
+                     <latex>n\in \NNr</latex>
+                  </math> a number in <math>
+                     <latex>\RNr</latex>
+                  </math>. The graphic below illustrates this process for the first 9 sequence elements.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Sequence.png"/>
+            </media>
+            <para>
+               <para.body>Here we have approximately</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_0 \approx 3.6</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_1 \approx 0.5</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_2 \approx -0.3</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_3 \approx 3.8</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_4 = -2</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_5 \approx -4.8</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_6 \approx -2.4</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_7 \approx 0.3</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_8 \approx 4.5</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>a_9 \approx 4.4</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Note that a sequence might, but need not, display any regularity.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

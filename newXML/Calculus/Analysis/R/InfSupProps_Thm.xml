@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Thm_InfSupProps"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Properties of supremum and infimum</caption>
+   <associate type="Explanation">
+      <info>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
+         <para>
+            <para.body>For <math>
+                  <latex>c\in \RNr</latex>
+               </math> and <math>
+                  <latex>A\subseteq \RNr</latex>
+               </math>,</para.body>
+         </para>
+         <math.display>
+            <latex>cA\ :=\ \Set{ ca\in \RNr \st a\in A}</latex>
+         </math.display>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For <math>
+               <latex>A,B\subseteq\RNr</latex>
+            </math> the following hold</para.body>
+      </para>
+      <part.theorem partid="SupNegativeA">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\sup(-A) = -\inf(A)</latex>
+                  </math> and <math>
+                     <latex>\inf(-A) = -\sup(A)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="SupScalarA">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>c\in \RNr</latex>
+                  </math> satisfies <math>
+                     <latex> c&gt;0 </latex>
+                  </math>, then <math>
+                     <latex>\sup(cA) = c\cdot\sup(A)</latex>
+                  </math> and <math>
+                     <latex>\inf(cA) = c\cdot \inf(A)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="SupASubSetB">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>A\subseteq B</latex>
+                  </math> then <math>
+                     <latex>\sup(A) \leq \sup(B)</latex>
+                  </math> and <math>
+                     <latex>\inf(A)\geq \inf(B)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>SupNegativeA</part.ref>
+         </logic>
+         <caption>SupNegativeA</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Let <math>
+                     <latex>i\in \bar{\RNr}</latex>
+                  </math> denote the infimum of <math>
+                     <latex>A</latex>
+                  </math>. Then we know</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>SupScalarA</part.ref>
+         </logic>
+         <caption>SupScalarA</caption>
+         <proof.block.body>
+            <para>
+               <para.body>
+                  <subordinate>
+                     <hot>Let</hot>
+                     <info>
+                        <info.caption>
+                           <caption>Try to prove this one yourself!</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>If you understand the argument just given you should have no difficulty proving this part.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+                  <math>
+                     <latex>s\in \bar{\RNr}</latex>
+                  </math> denote the supremum of <math>
+                     <latex>A</latex>
+                  </math>. Then we know</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>SupASubSetB</part.ref>
+         </logic>
+         <caption>SupASubSetB</caption>
+         <proof.block.body>
+            <para>
+               <para.body>This is so because each upper bound of <math>
+                     <latex>B</latex>
+                  </math> is also an upper bound of <math>
+                     <latex>A</latex>
+                  </math>. Therefore,</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

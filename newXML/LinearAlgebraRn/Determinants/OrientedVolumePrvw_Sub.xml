@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_OrientedVolume"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: Oriented Volume</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>The central result of this section is the following geometrical interpretation of the determinant operation.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <table align="center"
+                   border="3"
+                   bordercolor="Maroon"
+                   cellpadding="2"
+                   cellspacing="2">
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <strong>Theorem</strong> – Let <math>
+                              <latex>\Vect{x}_1, \dots , \Vect{x}_n</latex>
+                           </math> be <math>
+                              <latex>n</latex>
+                           </math> vectors in <math>
+                              <latex>\RNr[n]</latex>
+                           </math>, and write them as column vectors. Then</para.body>
+                     </para>
+                     <math.display>
+                        <latex>\det [ \Vect{x}_1\ \dots\ \Vect{x}_n] = \omega( \Vect{x}_1 , \dots , \Vect{x}_n ) \cdot \Vol( \Vect{x}_1 , \dots , \Vect{x}_n )</latex>
+                     </math.display>
+                  </cell>
+               </row>
+            </table>
+            <para>
+               <para.body>In the formula above, <math>
+                     <latex>\omega( \Vect{x}_1 , \dots , \Vect{x}_n )</latex>
+                  </math> denotes the orientation of <math>
+                     <latex>\RNr[n]</latex>
+                  </math> represented by the <math>
+                     <latex>n</latex>
+                  </math>-tuple of vectors <math>
+                     <latex>( \Vect{x}_1 , \dots , \Vect{x}_n )</latex>
+                  </math>. This is <math>
+                     <latex>+1</latex>
+                  </math> if the orientation is positive, and it is <math>
+                     <latex>-1</latex>
+                  </math> if the orientation is negative. Finally, <math>
+                     <latex>\Vol( \Vect{x}_1 , \dots , \Vect{x}_n )</latex>
+                  </math> denotes the volume of the slanted box in <math>
+                     <latex>\RNr[n]</latex>
+                  </math> spanned by the vectors <math>
+                     <latex>( \Vect{x}_1 , \dots , \Vect{x}_n )</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Already the following two examples illustrate the simple beauty of this result.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Example</strong> – the result</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\aligned
+\det
+\left[
+\begin{array}{rr}
+4320 &amp; 4310 \\
+89 &amp; 87
+\end{array}
+\right]\ &amp;=\ 
+4320\cdot 87\ -\ 4310\cdot 89 \\
+	&amp;=\ 375840\ -\ 383590 \\
+	&amp;&lt;\ 0
+\endaligned
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>means</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>The vectors <math>
+                           <latex>\Vect{x} = (4320,89)</latex>
+                        </math> and <math>
+                           <latex>\Vect{y} = (4310,87)</latex>
+                        </math> span a parallelogram whose area is <math>
+                           <latex>\Abs{375840 - 383590} = 383590 - 375840</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The pair of vectors <math>
+                           <latex>( \Vect{x} , \Vect{y} )</latex>
+                        </math> represents the negative or clockwise orientation of the plane.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Example</strong> – the result</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\aligned
+\det
+\left[
+\begin{array}{rrr}
+3 &amp; 7 &amp; -1 \\
+-2 &amp; 4 &amp; 3 \\
+1 &amp; 0 &amp; 6
+\end{array}
+\right]\ &amp;=\ 
+	72 + 21 - (-4 + (-84)) \\
+	&amp;=\ 181 &gt; 0
+\endaligned
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>means</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>The vectors <math>
+                           <latex>\Vect{x} = (3,-2,1)</latex>
+                        </math>, <math>
+                           <latex>\Vect{y} = (7,4,0)</latex>
+                        </math>, <math>
+                           <latex>\Vect{z} = (-1,3,6)</latex>
+                        </math> span a slanted box in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> whose volume is <math>
+                           <latex>181</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The ordered triple of vectors <math>
+                           <latex>( \Vect{x} , \Vect{y} , \Vect{z} )</latex>
+                        </math> represents the positive or right hand orientation of the <math>
+                           <latex>\RNr[3]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+         </block.body>
+      </block>
+   </body>
+</unit>

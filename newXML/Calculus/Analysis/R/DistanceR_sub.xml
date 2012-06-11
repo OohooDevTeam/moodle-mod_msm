@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_DistanceR"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Distance between Numbers: Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>If we know that <math>
+                     <latex>s\leq t</latex>
+                  </math> are numbers in <math>
+                     <latex>\RNr</latex>
+                  </math>, it makes sense to define the distance from <math>
+                     <latex>s</latex>
+                  </math> to <math>
+                     <latex>t</latex>
+                  </math> to be <math>
+                     <latex>\Dstnc{s}{t}:=t-s</latex>
+                  </math>. If, however, <math>
+                     <latex>s,t\in \RNr</latex>
+                  </math> are arbitrary and we don't know which of the two is bigger, we can use the identity of absolute values</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Abs{ t-s }</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Abs{ s-t }</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>to make a definition of distance between the two numbers</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/DistanceNumbers.png"/>
+            </media>
+         </block.body>
+      </block>
+   </body>
+</unit>

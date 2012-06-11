@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_MonoEpiIso"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Mono-, Epi-, Isomorphism: Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Let us analyze what the concepts of monomorphism, epimorphism, and isomorphism actually mean.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Epimorphism</strong>   Suppose <math>
+                     <latex>L</latex>
+                  </math> is an epimorphism. Now, if <math>
+                     <latex>\Vect{y}\in W</latex>
+                  </math> is arbitrary, there is at least one <math>
+                     <latex>\Vect{x}\in V</latex>
+                  </math> with <math>
+                     <latex>L(\Vect{x}) = \Vect{y}</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>In other words, the transform of <math>
+                     <latex>V</latex>
+                  </math> inside <math>
+                     <latex>W</latex>
+                  </math> fills all of <math>
+                     <latex>W</latex>
+                  </math>. – Note, however, that while <math>
+                     <latex>L</latex>
+                  </math> transforms <math>
+                     <latex>V</latex>
+                  </math> to cover <math>
+                     <latex>W</latex>
+                  </math>, it is possible that <math>
+                     <latex>L</latex>
+                  </math> collapses parts of <math>
+                     <latex>V</latex>
+                  </math> to single points.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Monomorphism</strong>   If <math>
+                     <latex>L\from V\to W</latex>
+                  </math> is a monomorphism, it can not collapse distinct parts of <math>
+                     <latex>V</latex>
+                  </math>. To see this, consider vectors <math>
+                     <latex>\Vect{u}</latex>
+                  </math> and <math>
+                     <latex>\Vect{v}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math>, and suppose</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{u})</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{v})</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Then we compute</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{0}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{v}) - L(\Vect{u})</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion xmlns="">
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>Here we use that <math>
+                                    <latex>L</latex>
+                                 </math> is linear.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>L(\Vect{v} - \Vect{u})</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Now the only vector which gets transformed into <math>
+                     <latex>\Vect{0}</latex>
+                  </math> by the monomorphic <math>
+                     <latex>L</latex>
+                  </math> is the 0-vector. So</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{u}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{v}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>We conclude that a monomorphic <math>
+                     <latex>L</latex>
+                  </math> transforms distinct points of <math>
+                     <latex>V</latex>
+                  </math> into distinct points of <math>
+                     <latex>W</latex>
+                  </math>. In  other words, a monomorphic linear transformation does no collapsing. – Note, however, that there might be vectors <math>
+                     <latex>\Vect{w}</latex>
+                  </math> in <math>
+                     <latex>W</latex>
+                  </math> for which there is no <math>
+                     <latex>\Vect{v}</latex>
+                  </math> in <math>
+                     <latex>V</latex>
+                  </math> with <math>
+                     <latex>L(\Vect{v}) = \Vect{w}</latex>
+                  </math>: the transform of <math>
+                     <latex>V</latex>
+                  </math> via <math>
+                     <latex>L</latex>
+                  </math> need not cover <math>
+                     <latex>W</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Isomorphism</strong>   An isomorphism <math>
+                     <latex>L\from V\to W</latex>
+                  </math> combines both properties of a epimorphism and an monomorphism: it transforms <math>
+                     <latex>V</latex>
+                  </math> to cover all of <math>
+                     <latex>W</latex>
+                  </math> without collapsing any parts of <math>
+                     <latex>V</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

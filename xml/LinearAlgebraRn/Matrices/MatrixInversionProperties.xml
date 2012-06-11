@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_MatrixInversionProperties">
+	<headers>
+		<full>Properties of Matrix Inversion</full>
+		<toc>Properties of Matrix Inversion</toc>
+		<short>Properties of Matrix Inversion</short>
+	</headers>
+	
+	<intro>
+		<para>Like any algebraic operation, matrix inversion has certain properties and satisfies certain rules. We develop the most important ones of these rules below. Among other things this will enable us to explain why the row reduction method for the computation of the inverse matrix works.</para>
+	</intro>
+	
+	<subsection id="SubSec_InverseMatrixProperties">
+		<headers>
+			<full>Basic Properties of Inverse Matrices</full>
+			<toc>Basic Properties of Inverse Matrices</toc>
+			<short>Basic Properties of Inverse Matrices</short>
+		</headers>
+		<subsection.body>
+			<xi:include href="MatrixInversion_Props.xml"/>
+			
+		</subsection.body>
+	</subsection>
+	
+	
+	<subsection id="SubSec_ProofOfMatrixInversionProcedure">
+		<headers>
+			<full>Justification of the Inversion Procedure</full>
+			<toc>Justification of the Inversion Procedure</toc>
+			<short>Justification of Inversion Procedure</short>
+		</headers>
+		<subsection.body>
+			<para>We are now in a position where we can explain &lsquo;why does the reduction to RREF-method compute the inverse of an invertible matrix?&rsquo; The key is that a row operation on a matrix <latex>\Mtrx{A}</latex> can be accomplished by a matrix product <latex>\Mtrx{R}\cdot \Mtrx{A}</latex>, where <latex>\Mtrx{R}</latex> is an invertible matrix of a special kind. Here come the details:</para>
+			
+			<def type="Terminology" id="Term_RowRescalingMatrix">
+				<caption>Row Rescaling Matrices</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_RowRescaling"/>
+					<info><para>Examples of row rescaling matrices</para></info>
+				</associate>
+				<associate Description="Explanation">
+					<showme.pack.ref showmePackID="Exa_RowRescalingExplanation"/>
+					<info><para>An explanation for the name &lsquo;row rescaling matrix&rsquo;</para></info>
+				</associate>
+				
+				
+				<para>The <latex>u</latex>-th row rescaling matrix of size <latex>(n,n)</latex> is
+					<index.glossary>
+						<term>matrix</term><term>row rescaling</term>
+						<info>
+							<caption>matrix - row rescaling</caption>
+							<para>The row rescaling matrix of size <latex>(n,n)</latex>, which multiplies the <latex>u</latex>-th row by the number <latex>s</latex> is</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+						D_u(s)\ :=\ \begin{bmatrix}
+						1 & \cdots & 0 & \cdots & 0 \\
+						\vdots & \ddots & \vdots & & \vdots \\
+						0 & \cdots & s & \cdots & 0 \\
+						\vdots & & \vdots & \ddots & \vdots \\
+						0 & \cdots & 0 & \cdots & 1
+						\end{bmatrix}\qquad \text{$s$ in row $u$}
+						]]>
+								</latex>
+							</math.display>
+						</info>
+					</index.glossary>
+					<index.glossary>
+						<term>row rescaling matrix</term>
+						<info>
+							<caption>matrix - row rescaling</caption>
+							<para>The row rescaling matrix of size <latex>(n,n)</latex>, which multiplies the <latex>u</latex>-th row by the number <latex>s</latex> is</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+						D_u(s)\ :=\ \begin{bmatrix}
+						1 & \cdots & 0 & \cdots & 0 \\
+						\vdots & \ddots & \vdots & & \vdots \\
+						0 & \cdots & s & \cdots & 0 \\
+						\vdots & & \vdots & \ddots & \vdots \\
+						0 & \cdots & 0 & \cdots & 1
+						\end{bmatrix}\qquad \text{$s$ in row $u$}
+						]]>
+								</latex>
+							</math.display>
+						</info>
+					</index.glossary>
+					<index.symbol>
+						<symbol><latex>D_{u}(s)</latex></symbol>
+						<info><para>Definition of the row rescaling matrices</para></info>
+					</index.symbol>
+					
+				</para>
+				
+				<math.display>
+					<latex>
+						<![CDATA[
+						D_u(s)\ :=\ \begin{bmatrix}
+						1 & \cdots & 0 & \cdots & 0 \\
+						\vdots & \ddots & \vdots & & \vdots \\
+						0 & \cdots & s & \cdots & 0 \\
+						\vdots & & \vdots & \ddots & \vdots \\
+						0 & \cdots & 0 & \cdots & 1
+						\end{bmatrix}\qquad \text{$s$ in row $u$}
+						]]>
+					</latex>
+				</math.display>
+				
+				<para>If <latex>\Mtrx{B}</latex> is of size <latex>(n,p)</latex>, then the matrix product <latex>D_{u}(s)\cdot \Mtrx{B}</latex> has the effect of multiplying the <latex>u</latex>-th row of <latex>\Mtrx{B}</latex> by <latex>s</latex>. If <latex>s\neq 0</latex>, then <latex magnify="yes">D_{u}(s)</latex> is invertible and &nbsp; <latex magnify="yes">D_{u}(s)^{-1} = D_{u}(1/s)</latex>.</para>
+			</def>
+			
+			<def type="Terminology" id="Term_ElementaryMatrix">
+				<caption>Elementary Matrix</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_ElementaryMatrix"/>
+					<info><para>Examples of elementary matrices</para></info>
+				</associate>
+				<associate Description="Explanation">
+					<showme.pack.ref showmePackID="Exa_ElementaryMatrixExplanation"/>
+					<info><para>An explanation for the role of elementary matrices in the context of elementary row operations.</para></info>
+				</associate>
+				
+				<para>An elementary matrix of size <latex>(n,n)</latex> of type <latex>(i,j)</latex>, <latex>1\leq i\neq j\leq n</latex> is of the form
+					<index.symbol>
+						<symbol><latex>E_{ij}(t)</latex></symbol>
+						<info><para>Definition of elementary matrices</para></info>
+					</index.symbol>
+					<index.glossary>
+						<term>elementary</term><term>matrix</term>
+						<info>
+							<caption>elementary matrix</caption>
+							<para>An elementary matrix of size <latex>(n,n)</latex> of type <latex>(i,j)</latex>, <latex>1\leq i\neq j\leq n</latex> is of the form</para>
+							<math.display>
+								<latex>
+									<![CDATA[
+						E_{ij}(t)\ :=\ \begin{bmatrix}
+						1 & \cdots & 0 & \cdots & 0 \\
+						\vdots & \ddots & \vdots & t & \vdots \\
+						0 & \cdots & 1 & \cdots & 0 \\
+						\vdots & & \vdots & \ddots & \vdots \\
+						0 & \cdots & 0 & \cdots & 1
+						\end{bmatrix}\qquad \text{$t$ in position $(i,j)$}
+						]]>
+								</latex>
+							</math.display>
+						</info>
+					</index.glossary>
+				</para>
+				
+				<math.display>
+					<latex>
+						<![CDATA[
+						E_{ij}(t)\ :=\ \begin{bmatrix}
+						1 & \cdots & 0 & \cdots & 0 \\
+						\vdots & \ddots & \vdots & t & \vdots \\
+						0 & \cdots & 1 & \cdots & 0 \\
+						\vdots & & \vdots & \ddots & \vdots \\
+						0 & \cdots & 0 & \cdots & 1
+						\end{bmatrix}\qquad \text{$t$ in position $(i,j)$}
+						]]>
+					</latex>
+				</math.display>
+				
+				<para>If <latex>\Mtrx{B}</latex> is a matrix of size <latex>(n,p)</latex>, then forming the matrix product <latex>E_{ij}(t)\cdot \Mtrx{B}</latex> has the effect of adding <latex>t</latex> times the <latex>j</latex>-th row of <latex>\Mtrx{B}</latex> to the <latex>i</latex>-th row of <latex>\Mtrx{B}</latex>. Moreover, for each <latex>t</latex> in <latex>\RNr</latex>, <latex magnify="yes">E_{ij}(t)</latex> is invertible and &nbsp; <latex magnify="yes">E_{ij}(t)^{-1} = E_{ij}(-t)</latex>.</para>
+			</def>
+			
+			<def type="Terminology" id="Term_RowInterchangingMatrix">
+				<caption>Row Interchanging Matrix</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_RowInterchangeMatrix"/>
+					<info><para>Examples of row interchange matrices.</para></info>
+				</associate>
+				<associate Description="Explanation">
+					<showme.pack.ref showmePackID="Exa_RowInterchangeMatrixExplanation"/>
+					<info><para>An explanation of the row interchange matrices</para></info>
+				</associate>
+				
+				
+				<para>Given integers <latex><![CDATA[1\leq i < j \leq n]]></latex> the <latex>i,j</latex>-row interchange matrix is</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+\begin{array}{lr}
+R_{ij}\ :=\
+\begin{array}{c}
+ i \qquad\qquad j  \\
+\left[\begin{array}{ccccc}
+1 & \cdots & \cdots & \cdots & 0 \\
+\vdots & 0 & \vdots & 1 & \vdots \\
+0 & \cdots & 1 & \cdots & 0 \\
+\vdots & 1 & \vdots & 0 & \vdots \\
+0 & \cdots & \cdots & \cdots & 1
+\end{array}\right]
+\end{array} & \quad 
+\aligned
+&\text{To obtain $R_{ij}$, interchange} \\
+&\text{$i$-th row and $j$-th row of $\IdMtrx[n]$}
+\endaligned
+\end{array}
+						]]>
+					</latex>
+				</math.display>
+				
+				<para>If <latex>\Mtrx{B}</latex> is a matrix of size <latex>(n,p)</latex>, then forming the matrix product <latex>R_{ij}\cdot \Mtrx{B}</latex> has the effect of interchanging the <latex>i</latex>-th and the <latex>j</latex>-th row of <latex>\Mtrx{B}</latex>. Moreover, <latex>R_{ij}</latex> is invertible and is equal to its own inverse; i.e. <latex>R_{ij}^{-1}=R_{ij}</latex>.</para>
+			</def>
+			
+			<para>We are now ready to show why the inversion procedure for matrices works:</para>
+			
+			<xi:include href="MatrixInversionRREF_Thm.xml"/>
+			
+			<para>The definition of invertibility of a square matrix <latex>\Mtrx{A}</latex> requires of us to find a matrix <latex>\Mtrx{B}</latex> with </para>
+			<math.display><latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n] = \Mtrx{B}\Mtrx{A}</latex></math.display>
+			
+			<para>We will see now that if for <latex>\Mtrx{A}</latex> we can find a <latex>\Mtrx{B}</latex> satisfying one of these two identities, it automatically satisfies the other:</para>
+			
+			<xi:include href="InvertibilitySimplify_Lem.xml"/>
+			
+		</subsection.body>
+	</subsection>
+	
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_MatrixInvertibility"/>
+		<exercise.pack.ref exercisePackID="Exe_InvertibleMatrix"/>
+	</studymaterials>
+</section>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_RCompleteInfSup"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Completeness, Infimum and Supremum</title>
+      <plain.title>Completeness, Infimum and Supremum</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>A\subset\RNr</latex>
+                  </math> has an upper bound then, amongst all of its upper bounds, there is a unique least one. This is called the supremum of <math>
+                     <latex>A</latex>
+                  </math>. Similarly, if <math>
+                     <latex>A</latex>
+                  </math> has a lower bound, it has a unique greatest upper bound. This is called the infimum of <math>
+                     <latex>A</latex>
+                  </math>. Both of these conclusion rely on the completeness axiom of <math>
+                     <latex>\RNr</latex>
+                  </math>. We show that the existence of suprema, alternatively infima, implies the completeness axiom. Moreover, we establish basic properties of ‘infimum’ and ‘supremum’.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="InfSupExists_Thm.xml"/>
+            <def type="Definition" id="Def_InfSup1">
+               <caption>Infimum and supremum</caption>
+               <associate type="Example">
+                  <info>
+                     <info.caption>Examples</info.caption>
+                     <ul>
+                        <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\inf\Set{2,3,7} = 2</latex>
+                                 </math>, while <math>
+                                    <latex>\sup{2,3,7} = 7</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+                        <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\sup \COIntrvl{2}{5} =</latex>
+                                 </math> least element of <math>
+                                    <latex>\COIntrvl{5}{+\infty}=\Set{ x\in \RNr \st \COIntrvl{2}{5}\leq x} = 5</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+                        <li>
+                           <para>
+                              <para.body>If <math>
+                                    <latex>A = \OOIntrvl{-1}{3}\union \OCIntrvl{5}{9}</latex>
+                                 </math>, then <math>
+                                    <latex>\inf(A) = -1</latex>
+                                 </math>, while <math>
+                                    <latex>\sup(A) = 9</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </li>
+                     </ul>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <info>
+                     <info.caption>Example</info.caption>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\inf(\RNr) = -\infty</latex>
+                           </math>, and <math>
+                              <latex>\sup(\RNr) = +\infty</latex>
+                           </math>. – This means, in particular, that <math>
+                              <latex>\inf(\RNr)</latex>
+                           </math> and <math>
+                              <latex>\sup(\RNr)</latex>
+                           </math> do not exist in <math>
+                              <latex>\RNr</latex>
+                           </math>, but in <math>
+                              <latex>\bar{\RNr}</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Remark">
+                  <info>
+                     <info.caption>Remark</info.caption>
+                     <para>
+                        <para.body>Examples show that, given a set <math>
+                              <latex>A</latex>
+                           </math>, <math>
+                              <latex>\sup(A)</latex>
+                           </math> can belong to <math>
+                              <latex>A</latex>
+                           </math> but it does not need to belong to <math>
+                              <latex>A</latex>
+                           </math>. Similarly for <math>
+                              <latex>\inf(A)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>Given <math>
+                           <latex>A\subseteq \RNr</latex>
+                        </math>,</para.body>
+                  </para>
+                  <ul>
+                     <li>
+                        <para>
+                           <para.body>the supremum of <math>
+                                 <latex>A</latex>
+                              </math> is the unique least element <math>
+                                 <latex>s\in \bar{\RNr}</latex>
+                              </math> with <math>
+                                 <latex>A\leq s</latex>
+                              </math>. Notation: <math>
+                                 <latex>\sup(A):=s</latex>
+                              </math>;
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>\sup(A)</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>The supremum of <math>
+                                          <latex>A\subseteq \RNr</latex>
+                                       </math>. It appears here in connection with the completeness axiom.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>supremum</term>
+                              <info>
+                                 <para>
+                                    <para.body>Appears here in connection with the completeness axiom.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>the infimum of <math>
+                                 <latex>A</latex>
+                              </math> is the unique greatest element <math>
+                                 <latex>i\in \bar{\RNr}</latex>
+                              </math> with <math>
+                                 <latex>i\leq A</latex>
+                              </math>. Notation: <math>
+                                 <latex>\inf(A):=i</latex>
+                              </math>.
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>\inf(A)</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>The infimum of <math>
+                                          <latex>A\subseteq \RNr</latex>
+                                       </math>. It appears here in connection with the completeness axiom.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>infimum</term>
+                              <info>
+                                 <para>
+                                    <para.body>Appears here in connection with the completeness axiom.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                  </ul>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Here are some basic properties of ‘supremum’, respectively ‘infimum’</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="InfSupProps_Thm.xml"/>
+            <para>
+               <para.body>There are examples of sets where the following recognition criterion for sup and inf is useful.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="InfSupRecognize_Thm.xml"/>
+            <para>
+               <para.body>It seems obvious that <math>
+                     <latex>\NNr</latex>
+                  </math> does not have an upper bound in <math>
+                     <latex>\RNr</latex>
+                  </math>. The following proposition confirms that this is indeed the case.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="NNotBoundedAbove_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="ArchimedianPropertyOfR_Thm.xml"/>
+            <para>
+               <para.body>We have seen already that the completeness property of <math>
+                     <latex>\RNr</latex>
+                  </math> implies the existence of suprema and infima. We are now going to show that the converse is true as well; i.e. the existence of certain suprema, alternatively infima, implies the completeness property of <math>
+                     <latex>\RNr</latex>
+                  </math>.  So, for the remainder of this section let us drop the
+			<subordinate>
+                     <hot>completeness axiom</hot>
+                     <crossref>
+                        <definition.ref definitionID="Def_CompletenessAxiomForR"/>
+                        <info>
+                           <para>
+                              <para.body>Look up the original statement of the completeness axiom.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate> from our list of structural axiom of <math>
+                     <latex>\RNr</latex>
+                  </math>. Instead we will assume that certain suprema, alternatively infima, exist and deduce from this assumption that <math>
+                     <latex>\RNr</latex>
+                  </math> is complete.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="RCompleteFromInfSup_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_InfSup"/>
+   </studymaterials>
+</unit>

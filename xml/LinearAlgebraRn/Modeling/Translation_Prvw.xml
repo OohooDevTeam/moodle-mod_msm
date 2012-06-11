@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_Translation">
+	<title>Translation - Preview</title>
+	<sub.page.body>
+		<para>When we shift an object in space, each of its points gets moved by the same distance in the same direction. As is illustrated below, a vector can describe such a shift.</para>
+		<para align="center"><img src="ims/Translation.gif" width="318" height="251"/></para>
+		<para>A translation of an object moves each of its points in the same direction by the same distance. Therefore all of the arrows which join a point to its displaced copy represent the same vector. This vector, therefore, describes the translation.</para>
+	</sub.page.body>
+</sub.page>

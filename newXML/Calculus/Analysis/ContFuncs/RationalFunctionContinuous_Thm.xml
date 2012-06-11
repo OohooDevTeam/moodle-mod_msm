@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_RationalFunctionContinuous"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Rational functions are continuous</caption>
+   <statement.theorem>
+      <para>
+         <para.body>For polynomials <math>
+               <latex>p(x)=a_nx^n+\cdots +a_1x+a_0</latex>
+            </math> and <math>
+               <latex>q(x)=b_mx^m+\cdots + b_1x+b_0</latex>
+            </math> the following hold.</para.body>
+      </para>
+      <part.theorem partid="PolynomialCont">
+         <part.body>
+            <para>
+               <para.body>The function <math>
+                     <latex>p\from \RNr\to \RNr</latex>
+                  </math>, <math>
+                     <latex>p(t):=a_nt^n+\cdots +a_0</latex>
+                  </math> is continuous.
+				</para.body>
+               <index.glossary>
+                  <term>polynomial</term>
+                  <term>continuous</term>
+                  <info>
+                     <para>
+                        <para.body>Here we prove that a polynomial function <math>
+                              <latex>\RNr\to \RNr</latex>
+                           </math> is continuous.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>continuous</term>
+                  <term>polynomial</term>
+                  <info>
+                     <para>
+                        <para.body>Here we prove that a polynomial function <math>
+                              <latex>\RNr\to \RNr</latex>
+                           </math> is continuous.</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="RationalFuncCont">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>Z:=\Set{t\in \RNr \st q(t) =0}</latex>
+                  </math>, then the rational function</para.body>
+            </para>
+            <math.display>
+               <latex>p/q\from (\StDffrnc{\RNr}{Z}) \longrightarrow \RNr,\quad (p/q)(t):=\dfrac{ a_nt^n + \cdots +  a_1t+a_0}{ b_mt^m+\cdots + b_1t + b_0}</latex>
+            </math.display>
+            <para>
+               <para.body>is continuous.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>PolynomialCont</part.ref>
+         </logic>
+         <caption>PolynomialCont</caption>
+         <proof.block.body>
+            <para>
+               <para.body>
+                  <strong>Step 1, Claim</strong>   For <math>
+                     <latex>k\geq 1</latex>
+                  </math>, the function</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>RationalFuncCont</part.ref>
+         </logic>
+         <caption>RationalFuncCont</caption>
+         <proof.block.body>
+            <para>
+               <para.body>From the first part of the corollary we know that <math>
+                     <latex>p</latex>
+                  </math> and <math>
+                     <latex>q</latex>
+                  </math> are continuous on all of <math>
+                     <latex>\RNr</latex>
+                  </math>. Removing the set <math>
+                     <latex>Z</latex>
+                  </math> from the domain of both functions gives two functions satisfying the hypotheses of the corollary on the 
+			<subordinate>
+                     <hot>quotient of continuous maps</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_QuotientContinuous"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_QuotientContinuous"/>
+                           <para>
+                              <para.body>Look up this result.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>. So <math>
+                     <latex>p/q</latex>
+                  </math> is continuous on <math>
+                     <latex>(\StDffrnc{\RNr}{Z})</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="TwoEqnsR3NonParallel"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Two Linear Equations in <math>
+            <latex>\RNr[3]</latex>
+         </math> with Non-Parallel Normal Vectors</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we consider the simultaneous solutions of two linear equations with two unknowns</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+						\begin{array}{rcrcrcl}
+\colorbox{lightgreen}{$a_1$}{\color{red} x} &amp; + &amp; \colorbox{lightgreen}{$a_2$}{\color{red} y} &amp; + &amp; \colorbox{lightgreen}{$a_3$}{\color{red} z} &amp; = &amp; {\color{blue} c} \\
+\colorbox{lightgreen}{$b_1$}{\color{red} x} &amp; + &amp; \colorbox{lightgreen}{$b_2$}{\color{red} y} &amp; + &amp; \colorbox{lightgreen}{$b_3$}{\color{red} z} &amp; = &amp; {\color{blue} d}
+						\end{array}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>If the coefficient vectors <math>
+                     <latex>\Vect{n}_1 = (a_1,a_2,a_3)</latex>
+                  </math> and <math>
+                     <latex>\Vect{n}_2 = (b_1,b_2,b_3)</latex>
+                  </math> are not parallel, we find ourselves in the situation sketched below.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="1" inline="0">
+                     <img src="ims/TwoEqnsR3NonParallel.gif" height="281" width="333"/>
+                     <image.mapping xmlns="">
+                        <area xmlns="Unit" shape="circle" coords="109,8,8"/>
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>This red dot marks the origin in <math>
+                                    <latex>\RNr[3]</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                        <area xmlns="Unit" shape="poly" coords="95,28,61,68,50,66,95,11,104,18"/>
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>This is the normal vector of the solution hyperplane of the first equation.</para.body>
+                           </para>
+                        </info>
+                        <area xmlns="Unit" shape="poly" coords="27,91,31,107,1,139,2,118"/>
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>This is the normal vector of the solution hyperplane of the first equation.</para.body>
+                           </para>
+                        </info>
+                        <area xmlns="Unit" shape="poly" coords="111,21,121,12,169,80,160,86"/>
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>This is the normal vector of the solution hyperplane of the second equation.</para.body>
+                           </para>
+                        </info>
+                        <area xmlns="Unit" shape="poly" coords="205,126,194,133,218,166,229,159"/>
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>This is the normal vector of the solution hyperplane of the second equation.</para.body>
+                           </para>
+                        </info>
+                        <area xmlns="Unit"
+                              shape="poly"
+                              coords="216,122,240,108,316,277,70,220,191,139,216,171,233,158,211,126,211,126,211,126"/>
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>This is the solution hyperplane of the first equation.</para.body>
+                           </para>
+                        </info>
+                        <area xmlns="Unit"
+                              shape="poly"
+                              coords="82,49,133,63,63,183,11,32,57,46,42,68,55,81,77,53,77,53"/>
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>This is the solution hyperplane of the first equation.</para.body>
+                           </para>
+                        </info>
+                        <area xmlns="Unit" shape="poly" coords="39,125,62,185,18,141,38,129"/>
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>This is the solution hyperplane of the second equation.</para.body>
+                           </para>
+                        </info>
+                        <area xmlns="Unit"
+                              shape="poly"
+                              coords="157,55,229,9,332,41,78,201,68,191,138,69,142,67,163,95,181,83"/>
+                        <info xmlns="Unit">
+                           <para>
+                              <para.body>This is the solution hyperplane of the second equation.</para.body>
+                           </para>
+                        </info>
+                     </image.mapping>
+                  </media>
+               </para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>The solution hyperplane of the first equation, with coefficient vector <math>
+                           <latex>\Vect{n}_1</latex>
+                        </math> pointing down-left, is a plane in the ordinary sense perpendicular to <math>
+                           <latex>\Vect{n}_1</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>The solution hyperplane of the second equation, with coefficient vector <math>
+                           <latex>\Vect{n}_2</latex>
+                        </math> pointing down-right, is a plane perpendicular to <math>
+                           <latex>\Vect{n}_2</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>If the normal vectors of these planes are not parallel, these planes are not parallel either. So these planes intersect in a line <math>
+                     <latex>L</latex>
+                  </math>. Each point on <math>
+                     <latex>L</latex>
+                  </math> represents a common solution of both equations, and the intersection line consists of all possible simultaneous solutions of these equations.</para.body>
+            </para>
+            <para>
+               <para.body>For emphasis, let us say in different words what this means: Pick a vector <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>. Then <math>
+                     <latex>\Vect{x}</latex>
+                  </math> is given by three coordinates: <math>
+                     <latex>(x_0,y_0,z_0)</latex>
+                  </math>. So these are three numbers, and choosing</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>x:=x_0</latex>
+                  </math>   and   <math>
+                     <latex>y:=y_0</latex>
+                  </math>   and   <math>
+                     <latex>z:=z_0</latex>
+                  </math>
+               </para.body>
+            </para>
+            <para>
+               <para.body>renders both equations true simultaneously if and only if <math>
+                     <latex>\Vect{x}</latex>
+                  </math> belongs to the line of intersection of the two solution hyperplanes of the given equations.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

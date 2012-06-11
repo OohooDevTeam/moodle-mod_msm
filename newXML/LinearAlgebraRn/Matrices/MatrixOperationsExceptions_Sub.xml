@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Exa_MatrixOperationsExceptions"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Matrix Multiplication: Exceptional Properties</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Most rules for computing with numbers continue to hold when we compute with matrices, but not all: The multiplication of matrices is more delicate because there are two basic exceptions:</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Exception 1</strong>   When multiplying two matrices <math>
+                     <latex>A</latex>
+                  </math> and <math>
+                     <latex>B</latex>
+                  </math>, the products <math>
+                     <latex>AB</latex>
+                  </math> and <math>
+                     <latex>BA</latex>
+                  </math> need not be the same, even if both products are defined. – For example</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>[1\ \ 4\ \ 3] \cdot \left[\begin{array}{r} 5 \\ -2 \\ 7 \end{array}\right]</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>[ 18 ]</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\left[\begin{array}{r} 5 \\ -2 \\ 7 \end{array}\right] \cdot [ 1\ \ 4\ \ 3 ]</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>
+					
+					\left[\begin{array}{rrr}
+					5 &amp; 20 &amp; 15 \\
+					-2 &amp; -8 &amp; -6 \\
+					7 &amp; 28 &amp; 21
+					\end{array}\right]
+					
+				</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>In this case the two products don't even have the same size. So they cannot be equal. However, difference in size is not the only possible reason why <math>
+                     <latex>AB</latex>
+                  </math> might be different from <math>
+                     <latex>BA</latex>
+                  </math>:</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>
+					
+					\left[\begin{array}{rr}
+					-3 &amp; -6 \\
+					4 &amp; 8
+					\end{array}\right] \cdot
+					\left[\begin{array}{rr}
+					8 &amp; 6 \\
+					4 &amp; 3
+					\end{array}\right]
+					
+				</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text/>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>
+					
+					\left[\begin{array}{rr}
+					-48 &amp; -36 \\
+					64 &amp; 48
+					\end{array}\right]
+					
+				</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>
+					
+					\left[\begin{array}{rr}
+					8 &amp; 6 \\
+					4 &amp; 3
+					\end{array}\right] \cdot 
+					\left[\begin{array}{rr}
+					-3 &amp; -6 \\
+					4 &amp; 8
+					\end{array}\right]
+					
+				</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>
+					
+					\left[\begin{array}{rr}
+					0 &amp; 0 \\
+					0 &amp; 0
+					\end{array}\right]
+					
+				</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Here <math>
+                     <latex>AB</latex>
+                  </math> and <math>
+                     <latex>BA</latex>
+                  </math> are both of size <math>
+                     <latex>(2,2)</latex>
+                  </math>. Still, they are distinct.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Exception 2</strong>   If <math>
+                     <latex>AX</latex>
+                  </math> is the
+				<subordinate>
+                     <hot>0-matrix</hot>
+                     <info>
+                        <info.caption>What is the 0-matrix?</info.caption>
+                        <para>
+                           <para.body>A matrix all of whose entries are <math>
+                                 <latex>0</latex>
+                              </math> is called a <math>
+                                 <latex>0</latex>
+                              </math>-matrix.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>,
+				it need not be true that at least one of <math>
+                     <latex>A</latex>
+                  </math> or <math>
+                     <latex>X</latex>
+                  </math> is the 0-matrix.</para.body>
+            </para>
+            <para>
+               <para.body>If <math>
+                     <latex>ax=0</latex>
+                  </math> is an equation of numbers, and we know that <math>
+                     <latex>a\neq 0</latex>
+                  </math>, we conclude immediately that <math>
+                     <latex>x=0</latex>
+                  </math>. It is very tempting to assume that we can draw the same conclusion when presented with a matrix equation like</para.body>
+            </para>
+            <math.display>
+               <latex>AX = \mathbf{0}</latex>
+            </math.display>
+            <para>
+               <para.body>However, the example below shows that, in this situation, neither <math>
+                     <latex>A</latex>
+                  </math> nor <math>
+                     <latex>X</latex>
+                  </math> need be <math>
+                     <latex>\mathbf{0}</latex>
+                  </math>.</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>
+					
+					\left[\begin{array}{rr}
+					8 &amp; 6 \\
+					4 &amp; 3
+					\end{array}\right] \cdot 
+					\left[\begin{array}{rr}
+					-3 &amp; -6 \\
+					4 &amp; 8
+					\end{array}\right]
+					
+				</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>
+					
+					\left[\begin{array}{rr}
+					0 &amp; 0 \\
+					0 &amp; 0
+					\end{array}\right]
+					
+				</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>Therefore, a matrix identity like <math>
+                     <latex>\Mtrx{A}\Mtrx{X} = \Vect{0}</latex>
+                  </math> by itself does not support the conclusion that <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> or <math>
+                     <latex>\Mtrx{X}</latex>
+                  </math> are <math>
+                     <latex>\Vect{0}</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Illu_SqueezeTheorem"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Squeeze Theorem: Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>If a sequence <math>
+                     <latex>(x_n)</latex>
+                  </math> is squeezed between two sequences <math>
+                     <latex>(a_n)</latex>
+                  </math> and <math>
+                     <latex>(b_n)</latex>
+                  </math> which converge to the same number <math>
+                     <latex>c</latex>
+                  </math>, then <math>
+                     <latex>(x_n)</latex>
+                  </math> also converges to <math>
+                     <latex>c</latex>
+                  </math>. Intuitively this is quite plausible as the graphic below shows.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/SqueezeTheorem.png"/>
+            </media>
+            <para>
+               <para.body>The sequence elements of <math>
+                     <latex>(x_n)</latex>
+                  </math> are represented by red dots; those of <math>
+                     <latex>(a_n)</latex>
+                  </math> by blue dots, and those of <math>
+                     <latex>(b_n)</latex>
+                  </math> by pale green dots.</para.body>
+            </para>
+            <para>
+               <para.body>Now <math>
+                     <latex>(a_n)</latex>
+                  </math> and <math>
+                     <latex>(b_n)</latex>
+                  </math> converge to  the same limit <math>
+                     <latex>c</latex>
+                  </math>. In such a situation the elements of <math>
+                     <latex>(x_n)</latex>
+                  </math> have no place to go but to converge to <math>
+                     <latex>c</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_OrthogonalVectorDecomposition">
+	<caption>Orthogonal vector decomposition</caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Expla_OrthogonalVectorDecomposition"/>
+		<info>
+			<caption>Explanation</caption>
+			<para>An explanation of this proposition.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Given subspaces <latex>V\subseteq W</latex> of <latex>\RNr[n]</latex>, every <latex>\Vect{x}</latex> in <latex>W</latex> has a unique sum expression</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>\Vect{x}_V + \Vect{x}_{\bot}</right>
+		</computation>
+		<para>where <latex>\Vect{x}_V=\pr_V(\Vect{x})</latex> is in <latex>V</latex> and <latex>\Vect{x}_{\bot}:= \Vect{x}- \pr_V(\Vect{x})</latex> is in <latex>V^{\bot}</latex>.
+			<index.symbol>
+				<symbol><latex>\Vect{x}_V</latex></symbol>
+				<info><para>Setting: a space <latex>W</latex> is split into a subspace <latex>V</latex> and its orthogonal complement <latex>V^{\bot}</latex>. If <latex>\Vect{x}\in W</latex>, then <latex>\Vect{x}_V</latex> denotes the component of <latex>\Vect{x}</latex> in <latex>V</latex>.</para></info>
+			</index.symbol>
+			<index.symbol>
+				<symbol><latex>\Vect{x}_{\bot}</latex></symbol>
+				<info><para>Setting: a space <latex>W</latex> is split into a subspace <latex>V</latex> and its orthogonal complement <latex>V^{\bot}</latex>. If <latex>\Vect{x}\in W</latex>, then <latex>\Vect{x}_{\bot}</latex> denotes the component of <latex>\Vect{x}</latex> in <latex>V^{\bot}</latex>.</para></info>
+			</index.symbol>
+		</para>
+	</statement>
+	<proof type="Proof">
+		<para>If <latex>V</latex> consists only of the zero vector, we have no choice but to set</para>
+		<math.display>
+			<latex>\Vect{x}_{V}:=\Vect{0} \quad\text{and}\quad \Vect{x}_{\bot}:=\Vect{x}</latex>
+		</math.display>
+		<para>These vectors are the only ones satisfying the requirements of the proposition.</para>
+		<para>Turning to the case where <latex>V</latex> has nonzero vectors, we know that</para>
+		<computation>
+			<left>\Vect{x}_V</left>
+			<center>=</center>
+			<right>(\DotPr{ \Vect{x} }{ \Vect{b}_1 }) \Vect{b}_1 + \cdots + (\DotPr{ \Vect{x} }{ \Vect{b}_r })\Vect{b}_r</right>
+		</computation>
+		<para>belongs to <latex>V</latex>, as it is a linear combination of the vectors <latex>\Vect{b}_1</latex>, ... , <latex>\Vect{b}_r</latex> forming an ONB <latex>\EuScript{B}</latex> of <latex>V</latex>. So we show next that <latex>\Vect{x}_{\bot}</latex> is in <latex>V^{\bot}</latex>. It 
+				<subordinate>
+					<hot>suffices</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_OrthogonalComplementOperationProperties"/>
+						<caption>Why is this so?</caption>
+						<para>We know that <latex>V=\span(\EuScript{B})</latex>. This implies <latex>V^{\bot}=\EuScript{B}^{\bot}</latex> by a theorem you can review here.</para>
+					</crossref>
+				</subordinate>
+			to show that <latex>\Vect{x}_{\bot}</latex> is in <latex>\EuScript{B}^{\bot}</latex>. So we compute</para>
+		<computation>
+			<left>\DotPr{ \Vect{x}_{\bot} }{ \Vect{b}_j }</left>
+			<center>=</center>
+			<right>\DotPr{ \left[ \Vect{x} - (\DotPr{ \Vect{x} }{ \Vect{b}_1 }) \Vect{b}_1 - \cdots - (\DotPr{ \Vect{x} }{ \Vect{b}_r })\Vect{b}_r\right] }{ \Vect{b}_j }</right>
+			<left></left>
+			<center>=</center>
+			<right>\DotPr{ \Vect{x} }{ \Vect{b}_j } - (\DotPr{ \Vect{x} }{\Vect{b}_1})(\DotPr{ \Vect{b}_1 }{ \Vect{b}_j }) - \cdots - (\DotPr{ \Vect{x} }{\Vect{b}_j})(\DotPr{ \Vect{b}_j }{ \Vect{b}_j }) - \cdots - (\DotPr{ \Vect{x} }{\Vect{b}_r})(\DotPr{ \Vect{b}_r }{ \Vect{b}_j })</right>
+			<left></left>
+			<center>=</center>
+			<right>\DotPr{ \Vect{x} }{ \Vect{b}_j }\ -\ \DotPr{ \Vect{x} }{ \Vect{b}_j }</right>
+			<left></left>
+			<center>=</center>
+			<right>0</right>
+		</computation>
+		<para>as was to be shown. So the decomposition of <latex>\Vect{x}</latex> as the sum <latex>\Vect{x}_V + \Vect{x}_{\bot}</latex> has the stated properties. It remains to show that it is the only decomposition with these properties. So consider the situation</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>\Vect{y} + \Vect{z}</right>
+		</computation>
+		<para>with <latex>\Vect{y}\in V</latex> and <latex>\Vect{z}\in V^{\bot}</latex>. It follows that</para>
+		<computation>
+			<left>\Vect{x}_V - \Vect{y}</left>
+			<center>=</center>
+			<right>\Vect{z} - \Vect{x}_{\bot}</right>
+		</computation>
+		<para>The vector <latex>\Vect{x}_V - \Vect{y}</latex> belongs to <latex>V</latex>, while <latex>\Vect{z} - \Vect{x}_{\bot}</latex> belongs to <latex>V^{\bot}</latex>. Now the only vector common to <latex>V</latex> and <latex>V^{\bot}</latex> is the zero vector. Therefore</para>
+		<math.display>
+			<latex>\Vect{x}_V - \Vect{y} = \Vect{0} \quad\text{and}\quad \Vect{z} - \Vect{x}_{\bot} = \Vect{0}</latex>
+		</math.display>
+		<para>This gives <latex>\Vect{x}_V=\Vect{y}</latex> and <latex>\Vect{z}=\Vect{x}_{\bot}</latex>, implying that the decomposition of <latex>\Vect{x}</latex> as a sum of a vector in <latex>V</latex> and another in <latex>V^{\bot}</latex> is unique.</para>
+	</proof>
+</theorem>

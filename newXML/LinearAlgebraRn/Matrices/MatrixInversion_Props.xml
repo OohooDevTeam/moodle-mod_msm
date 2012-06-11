@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_MatrixInversionProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Properties of matrix inversion</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment and Warning</caption>
+         </info.caption>
+         <para>
+            <para.body>Property iv. is something we must be particularly mindful of, as it is different from the analogous property for numbers: Indeed, if <math>
+                  <latex>a</latex>
+               </math>, <math>
+                  <latex>b</latex>
+               </math> are numbers, then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(ab)^{-1}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>a^{-1}\cdot b^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>For invertible matrices, the order in which we multiply <math>
+                  <latex>\Mtrx{A}^{-1}</latex>
+               </math> and <math>
+                  <latex>\Mtrx{B}^{-1}</latex>
+               </math> reverses the order in which we multiply <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> and <math>
+                  <latex>\Mtrx{B}</latex>
+               </math>.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>The inverse operation on matrices has the following properties</para.body>
+      </para>
+      <part.theorem partid="InverseSize">
+         <caption>Size of the Inverse</caption>
+         <part.body>
+            <para>
+               <para.body>If the <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible, then an inverse of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> has size <math>
+                     <latex>(n,n)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="InverseUnique">
+         <caption>Uniqueness of the inverse</caption>
+         <part.body>
+            <para>
+               <para.body>If a matrix is invertible, then it has exactly one inverse.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="DoubleInverse">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible, then <math>
+                     <latex>A^{-1}</latex>
+                  </math> is also invertible, and   <math>
+                     <latex>(\Mtrx{A}^{-1})^{-1} = \Mtrx{A}</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="InverseProduct">
+         <caption>Invertibility of a product</caption>
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> and <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> are invertible matrices, then <math>
+                     <latex>\Mtrx{A}\Mtrx{B}</latex>
+                  </math> is also invertible, and   <math>
+                     <latex>(\Mtrx{A}\Mtrx{B})^{-1} = \Mtrx{B}^{-1}  \Mtrx{A}^{-1}</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>InverseSize</part.ref>
+         </logic>
+         <caption>InverseSize</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Suppose <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> is an inverse of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>. Then the identity <math>
+                     <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex>
+                  </math> implies that the product <math>
+                     <latex>\Mtrx{A}\Mtrx{B}</latex>
+                  </math> is defined, and so <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> has <math>
+                     <latex>n</latex>
+                  </math> rows. Moreover, <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> has <math>
+                     <latex>n</latex>
+                  </math> columns because <math>
+                     <latex>\IdMtrx[n]</latex>
+                  </math> has <math>
+                     <latex>n</latex>
+                  </math> columns.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>InverseUnique</part.ref>
+         </logic>
+         <caption>InverseUnique</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Suppose the square matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible, and that we have two inverses <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> and <math>
+                     <latex>\Mtrx{C}</latex>
+                  </math>. We need to show that <math>
+                     <latex>\Mtrx{B} = \Mtrx{C}</latex>
+                  </math>. - Indeed, we know that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>DoubleInverse</part.ref>
+         </logic>
+         <caption>DoubleInverse</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Since <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible, we know that there is a matrix <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> with</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>InverseProduct</part.ref>
+         </logic>
+         <caption>InverseProduct</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> and <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> are invertible matrices, we need to show that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

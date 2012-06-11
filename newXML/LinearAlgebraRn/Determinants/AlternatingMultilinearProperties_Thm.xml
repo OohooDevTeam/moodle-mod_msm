@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Theorem"
+         id="Thm_AlternatingMultilinearProps"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Properties of alternating multilinear functions</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>F\from M_{nn}\to \RNr</latex>
+            </math> be any function which is linear in each column and alternating. Then <math>
+               <latex>F</latex>
+            </math> has the following properties:</para.body>
+      </para>
+      <part.theorem partid="ZeroOnTwoEqualColumns">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Mtrx{A}=[A_1\ \dots\ X\ \dots\ X\ \dots\ A_n]</latex>
+                  </math>, then <math>
+                     <latex>F(\Mtrx{A}) =0</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="AddMultipleOfColumn">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>F[A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n] = F[A_1\ \dots\ (X+tY)\ \dots\ Y\ \dots\ A_n]</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="SumFormula">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Mtrx{A}= [a_{ij}]</latex>
+                  </math>, 
+				<subordinate>
+                     <hot>then</hot>
+                     <info>
+                        <info.caption>
+                           <caption>Explanation of the symbols in this formula</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\SymGrp{n}</latex>
+                              </math> denotes the group of all invertible functions from <math>
+                                 <latex>\Set{ 1,\dots ,n}</latex>
+                              </math> to itself. <math>
+                                 <latex>E_{j}</latex>
+                              </math> denotes the <math>
+                                 <latex>(n,1)</latex>
+                              </math>-column matrix which has a ‘<math>
+                                 <latex>1</latex>
+                              </math>’ in position <math>
+                                 <latex>j</latex>
+                              </math> and <math>
+                                 <latex>0</latex>
+                              </math>’s everywhere else.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+               </para.body>
+            </para>
+            <math.display>
+               <latex>F(\Mtrx{A}) = \sum_{r\in \SymGrp{n}} a_{r(1)1}\cdots a_{r(n)n} F[E_{r(1)}\ \dots\ E_{r(n)}]</latex>
+            </math.display>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="RelationToDet">
+         <part.body>
+            <para>
+               <para.body>There exists a unique number <math>
+                     <latex>c</latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math> such that, for each invertible  <math>
+                     <latex>r\from \Set{1,\dots ,n} \to \Set{1,\dots ,n}</latex>
+                  </math>,</para.body>
+            </para>
+            <math.display>
+               <latex>F[E(r(1))\dots E(r(n))] = c\cdot \det [E(r(1))\dots E(r(n))] = c\cdot \sign(r)</latex>
+            </math.display>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="TranspositionInvariant">
+         <part.body>
+            <para>
+               <para.body>For each <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>, <math>
+                     <latex>F(\Mtrx{A}) = F(\Mtrx{A}^T)</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>ZeroOnTwoEqualColumns</part.ref>
+         </logic>
+         <caption>ZeroOnTwoEqualColumns</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Interchanging the two columns containing <math>
+                     <latex>X</latex>
+                  </math> leaves the matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> unchanged, but the alternating property of <math>
+                     <latex>F</latex>
+                  </math> reverses the sign. Therefore</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>AddMultipleOfColumn</part.ref>
+         </logic>
+         <caption>AddMultipleOfColumn</caption>
+         <proof.block.body>
+            <para>
+               <para.body>With <math>
+                     <latex>M:=F[A_1\ \dots\ (X+tY)\ \dots\ Y\ \dots\ A_n]</latex>
+                  </math>, we compute the expression on the right:</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>SumFormula</part.ref>
+         </logic>
+         <caption>SumFormula</caption>
+         <proof.block.body>
+            <para>
+               <para.body>For <math>
+                     <latex>1\leq j\leq n</latex>
+                  </math>, the <math>
+                     <latex>j</latex>
+                  </math>-th column of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is given by</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>RelationToDet</part.ref>
+         </logic>
+         <caption>RelationToDet</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Let us shorten notation further with <math>
+                     <latex>E(r):= [E_{r(1)}\ \dots\ E_{r(n)}]</latex>
+                  </math>, for any <math>
+                     <latex>r\in \SymGrp{n}</latex>
+                  </math>. Thus <math>
+                     <latex>E(r)</latex>
+                  </math> is the <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix whose column number <math>
+                     <latex>j</latex>
+                  </math> has a single <math>
+                     <latex>1</latex>
+                  </math> in row number <math>
+                     <latex>r(j)</latex>
+                  </math> and <math>
+                     <latex>0</latex>
+                  </math>’s everywhere else. Now the key to verifying the proposed formula is the fact that  <math>
+                     <latex>E(r)</latex>
+                  </math> can be converted into the identity matrix <math>
+                     <latex>\IdMtrx[n]</latex>
+                  </math> through a suitable sequence of column interchanges. While there are many possible such sequences of column interchanges, any two such sequences require either <emphasis>both</emphasis> an even number of interchanges or <emphasis>both</emphasis> an odd number of interchanges.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>TranspositionInvariant</part.ref>
+         </logic>
+         <caption>TranspositionInvariant</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Mtrx{A}=[a_{ij}]</latex>
+                  </math>, we know that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

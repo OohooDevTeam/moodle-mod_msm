@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_BasisNullSpace">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>A Basis for the Null Space: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Find a basis for the null space of the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+A\ =\ 
+\left[\begin{array}{rrrrrr}
+2 & -6 & 0 & 4 & 0 & 2 \\
+-1 & 3 & 0 & -2 & 0 &-1 \\
+1 & -3 & 1 & 1 & 0 & 1 \\
+3 & -9 & 1 & 5 & 0 & 5
+\end{array}\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Solution" version="1">
+			<para>The null space of <latex>\Mtrx{A}</latex> is a sub vector space <latex>V</latex> of <latex>\RNr[6]</latex>. To find a basis for <latex>V</latex> , we consider the RREF <latex>\Mtrx{B}</latex> of <latex>\Mtrx{A}</latex> below.</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{cc}
+\text{matrix $A$}\quad &\quad \text{row reduced matrix $B$} \\
+\left[\begin{array}{rrrrrr}
+2 & -6 & 0 & 4 & 0 & 2 \\
+-1 & 3 & 0 & -2 & 0 &-1 \\
+1 & -3 & 1 & 1 & 0 & 1 \\
+3 & -9 & 1 & 5 & 0 & 5
+\end{array}\right] &
+\left[\begin{array}{rrrrrr}
+1 & {\color{red} -3} & 0 & {\color{blue} 2} & {\color{magenta} 0} & 0 \\
+0 & {\color{magenta} 0} & 1 & {\color{green} -1} & {\color{magenta} 0} & 0 \\
+0 & {\color{magenta} 0} & 0 & {\color{magenta} 0} & {\color{magenta} 0} & 1 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{array}
+\right]
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para><latex>\Mtrx{B}</latex> has three leading <latex>1</latex>'s, implying that</para>
+			<computation>
+				<left>\dim\, \NllSp{ \Mtrx{A} }</left>
+				<center>=</center>
+				<right>6-3=3</right>
+			</computation>
+			<para>To find a basis for the null space of <latex>\Mtrx{A}</latex>, we proceed as follows:</para>
+			<ol>
+				<li><para><latex>\Mtrx{B}</latex> yields free variables in positions <latex>j_1=2</latex>, <latex>j_2=4</latex>, and <latex>j_3=5</latex>,</para></li>
+				<li><para>while <latex>\Mtrx{B}</latex> has leading <latex>1</latex>'s in positions <latex>u_1=1</latex>, <latex>u_2=3</latex>, and <latex>u_3=6</latex></para></li>
+			</ol>
+			<para>Thus we 
+				<subordinate>
+					<hot>find</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_SolutionsConstruct"/>
+						<para>With the method of reading off the solutions of a system of linear equations, we obtain the result stated.</para>
+					</crossref>
+				</subordinate>
+				the following basis vectors for the null space of <latex>\Mtrx{A}</latex>:</para>
+			<computation>
+				<left>\Vect{b}_1</left>
+				<center>:=</center>
+				<right>({\color{red} 3},1,{\color{magenta} 0},0,0,{\color{magenta} 0})</right>
+				<left>\Vect{b}_2</left>
+				<center>:=</center>
+				<right>({\color{blue} -2},0,{\color{green} 1},1,0,{\color{magenta} 0})</right>
+				<left>\Vect{b}_3</left>
+				<center>:=</center>
+				<right>({\color{magenta} 0},0,{\color{magenta} 0},0,1,{\color{magenta} 0})</right>
+			</computation>
+			
+			<para>Alternatively, we obtain the same result with this elementary approach: a vector <latex>(u,v,w,x,y,z)</latex> belongs to the nullspace of <latex>\Mtrx{A}</latex> if and only if it belongs to the nullspace of <latex>\Mtrx{B}</latex>, and this happens if and only if <latex>v</latex>, <latex>x</latex>, <latex>y</latex> are arbitrary and</para>
+			<computation>
+				<left>u</left>
+				<center>=	<info>
+					<para>This follows because the first row of <latex>\Mtrx{B}</latex> corresponds to the linear equation</para>
+					<computation>
+						<left>u - 3v + 2x</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+				</info></center>
+				<right>3v-2x</right>
+				<left>w</left>
+				<center>=	<info>
+					<para>This follows because the second row of <latex>\Mtrx{B}</latex> corresponds to the linear equation</para>
+					<computation>
+						<left>w-x</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+				</info></center>
+				<right>x</right>
+				<left>z</left>
+				<center>=	<info>
+					<para>This follows because the third row of <latex>\Mtrx{B}</latex> corresponds to the linear equation</para>
+					<computation>
+						<left>z</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+				</info></center>
+				<right>0</right>
+			</computation>
+			<para>Thus <latex>(u,v,w,x,y,z)</latex> belongs to the null space of <latex>\Mtrx{A}</latex> if and only if </para>
+			<computation>
+				<left>(u,v,w,x,y,z)</left>
+				<center>=</center>
+				<right>(3v-2x,v,x,x,y,0)</right>
+				<left></left>
+				<center>=</center>
+				<right>v(3,1,0,0,0,0) + x(-2,0,1,1,0,0) + y(0,0,0,0,1,0)</right>
+			</computation>
+			<para>Therefore the vectors <latex>\Vect{b}_1</latex>, <latex>\Vect{b}_2</latex>, <latex>\Vect{b}_3</latex> above form a basis of <latex>\NllSp{ \Mtrx{A} }</latex>.</para>
+		</answer>
+	</showme>
+</showme.pack>

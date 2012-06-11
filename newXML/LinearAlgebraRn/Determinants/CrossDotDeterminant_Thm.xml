@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_CrossDotDeterminant"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Cross product, dot product, and determinant</caption>
+   <statement.theorem>
+      <para>
+         <para.body>If <math>
+               <latex>\Vect{a}</latex>
+            </math>, <math>
+               <latex>\Vect{x}</latex>
+            </math>, and <math>
+               <latex>\Vect{y}</latex>
+            </math> are arbitrary vectors in <math>
+               <latex>\RNr[3]</latex>
+            </math>, then</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\DotPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} } ) }</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\det[ \Vect{a}\ \ \Vect{x}\ \ \Vect{y}]</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We prove this claim by evaluating both sides of the equation</para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\aligned
+&amp;\det
+\left[
+\begin{array}{ccc}
+a_1 &amp; x_1 &amp; y_1 \\
+a_2 &amp; x_2 &amp; y_2 \\
+a_3 &amp; x_3 &amp; y_3\
+\end{array}
+\right]\ =\\
+&amp;\quad =\ a_1\cdot \det
+\left[
+\begin{array}{cc}
+x_2 &amp; y_2 \\
+x_3 &amp; y_3
+\end{array}
+\right]\ -\ 
+a_2\cdot \det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_3 &amp; y_3
+\end{array}
+\right]\ +\ 
+a_3\cdot \det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2
+\end{array}
+\right] \\
+&amp;\quad =\ \DotPr{ (a_1,a_2,a_3) }{ \left(
+\det
+\left[
+\begin{array}{cc}
+x_2 &amp; y_2 \\
+x_3 &amp; y_3
+\end{array}
+\right]\, ,\, -\det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_3 &amp; y_3
+\end{array}
+\right]\, ,\, \det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2
+\end{array}
+\right]  
+\right) } \\
+&amp;\quad =\ \DotPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }
+\endaligned
+
+			</latex>
+            </math.display>
+            <para>
+               <para.body>This is what we wanted to show.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

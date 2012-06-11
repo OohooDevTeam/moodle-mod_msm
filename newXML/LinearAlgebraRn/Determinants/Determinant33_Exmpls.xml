@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Determinant33"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>(3,3)-Determinants: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the determinant of the <math>
+                  <latex>(3,3)</latex>
+               </math>-matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+1 &amp; 4 &amp; 3 \\
+-2 &amp; 1 &amp; 2 \\
+5 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <math.display>
+				              <latex>
+					
+\aligned
+\det(A)\ &amp;=\ 
+\det\, \left[
+\begin{array}{rrr}
+{\color{red} 1} &amp; 4 &amp; 3 \\
+{\color{red} -2} &amp; 1 &amp; 2 \\
+{\color{red} 5} &amp; 0 &amp; 1
+\end{array}
+\right] \\
+	&amp;=\ {\color{red} 1}\cdot
+\left[
+\begin{array}{cc}
+1 &amp; 2 \\
+0 &amp; 1
+\end{array}
+\right]
+- {\color{red} (-2)}\cdot 
+\left[
+\begin{array}{cc}
+4 &amp; 3 \\
+0 &amp; 1
+\end{array}
+\right]
++ {\color{red} 5}\cdot
+\left[
+\begin{array}{rr}
+4 &amp; 3 \\
+1 &amp; 2
+\end{array}
+\right] \\
+	&amp;=\ 1 - (-2)\cdot 4 + 5\cdot (8-3) \\
+	&amp;=\ 34
+\endaligned
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the determinant of the <math>
+                  <latex>(3,3)</latex>
+               </math>-matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{B} = 
+\left[
+\begin{array}{rrr}
+7 &amp; -1 &amp; 9 \\
+3 &amp; 1 &amp; 2 \\
+-2 &amp; -3 &amp; 5
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <math.display>
+				              <latex>
+					
+\aligned
+\det(B)\ &amp;=\ 
+\det\, \left[
+\begin{array}{rrr}
+{\color{red} 7} &amp; -1 &amp; 9 \\
+{\color{red} 3} &amp; 1 &amp; 2 \\
+{\color{red} -2} &amp; -3 &amp; 5
+\end{array}
+\right] \\
+%
+	&amp;=\ {\color{red} 7}\cdot
+\left[
+\begin{array}{rr}
+1 &amp; 2 \\
+-3 &amp; 5
+\end{array}
+\right]
+- {\color{red} 3}\cdot 
+\left[
+\begin{array}{rr}
+-1 &amp; 9 \\
+-3 &amp; 5
+\end{array}
+\right]
++ {\color{red} (-2)}\cdot
+\left[
+\begin{array}{rr}
+-1 &amp; 9 \\
+1 &amp; 2
+\end{array}
+\right] \\
+%
+	&amp;=\ 7\cdot 11 - 3\cdot 22 + (-2)\cdot (-11) \\
+	&amp;=\ 33
+\endaligned
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

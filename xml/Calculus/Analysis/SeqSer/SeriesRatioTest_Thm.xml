@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_SeriesRatioTest">
+	<caption>The ratio test for absolute convergence</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment</caption>
+			<para>The statement of the ratio test leaves open the question: what happens if <latex><![CDATA[ \lim_{n\to \infty} \frac{\Abs{ a_{n+1} } }{ \Abs{ a_n } }=L = 1]]></latex>? &ndash; Answer: in this case the ratio test is inconclusive, as there are series for which <latex>\lim_{n\to \infty} \frac{\Abs{ a_{n+1} } }{ \Abs{ a_n } } = 1</latex> which converge to a number, while others converge to <latex>\pm\infty</latex>, while yet others diverge.</para>
+		</info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_RatioTest"/>
+		<info><para>Examples of working with the ratio test</para></info>
+	</associate>
+	
+	<statement>
+		<para>Let <latex>(a_n)</latex> be a sequence of nonzero numbers in <latex>\RNr</latex>.
+			<index.glossary>
+				<term>ratio test</term>
+				<info>
+					<para>A test for the absolute convergence of a series of numbers.</para>
+				</info>
+			</index.glossary>
+		</para>
+		<part partid="LessThan1">
+			<para>If <latex><![CDATA[ \lim_{n\to \infty} \Abs{ \frac{ a_{n+1} }{ a_n } } =L < 1]]></latex>, then <latex>\sum_{n=0}^{\infty}a_n</latex> converges absolutely.</para>
+		</part>
+		<part partid="GreaterThan1">
+			<para>If <latex><![CDATA[ \lim_{n\to \infty} \Abs{\frac{ a_{n+1} }{ a_n } }=L > 1]]></latex>, then <latex>\sum_{n=0}^{\infty}a_n</latex> does not converge to a number.</para>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<caption><partref>LessThan1</partref> If <latex><![CDATA[ \lim_{n\to \infty} \frac{\Abs{ a_{n+1} } }{ \Abs{ a_n } } < 1]]></latex>, then <latex>\sum_{n=0}^{\infty}a_n</latex> converges absolutely.</caption>
+		<para>We need to show that, under the stated condition, <latex>\sum_{n=0}^{\infty} \Abs{ a_n }</latex> converges to a number. Indeed, we have</para>
+		<math.display>
+			<latex><![CDATA[ L < \dfrac{L+1}{2} =: r < 1]]></latex>
+		</math.display>
+		<para>and, with <latex><![CDATA[ \varepsilon := r-L > 0]]></latex>, we have further</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+				\dfrac{ \Abs{a_{n+1}} }{ \Abs{ a_n } } < L + \varepsilon = r
+				]]>
+			</latex>
+		</math.display>
+		<para>for <latex>n\geq N</latex>, where <latex>N</latex> is sufficiently large. Therefore</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+				0\leq \Abs{ a_{N+k} } < r^k \Abs{a_N} 
+				]]>
+			</latex>
+		</math.display>
+		<para>for <latex>k\geq 0</latex>. Now we make a limit comparison with the (eventually) geometric series <latex>b_{N+k}:=r^k</latex>:</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+				\lim_{k\to\infty}\dfrac{\Abs{a_{N+k}}}{ \Abs{ b_{N+k} } } < \lim_{k\to\infty} \dfrac{ \Abs{a_N}\cdot r^k }{ r^k } = \Abs{ a_N }
+				]]>
+			</latex>
+		</math.display>
+		<para>Thus <latex>\sum_{n=0}^{\infty} \Abs{ a_n }</latex> converges to a number; i.e. the given series converges absolutely.</para>
+		
+		<caption><partref>GreaterThan1</partref> If <latex><![CDATA[ \lim_{n\to \infty} \frac{ \Abs{ a_{n+1} } }{ \Abs{a_n}}=L > 1]]></latex>, then <latex>\sum_{n=0}^{\infty}a_n</latex> does not converges to a number.</caption>
+		<para>Observe</para>
+		<math.display>
+			<latex>
+				<![CDATA[ 1 < \dfrac{1+L}{2} =: r < L ]]>
+			</latex>
+		</math.display>
+		<para>Setting <latex><![CDATA[ \varepsilon := L-r > 0 ]]></latex>, we have for <latex>n</latex> sufficiently large</para>
+		<math.display>
+			<latex>
+				<![CDATA[ 1 < r =  L - \varepsilon < \dfrac{ \Abs{ a_{n+1} } }{ \Abs{ a_n } } ]]>
+			</latex>
+		</math.display>
+		<para>for <latex>n\geq N</latex>, where <latex>N</latex> is sufficiently large. Therefore</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+				\Abs{ a_N } \cdot r^k \leq  \Abs{ a_{N+k} }
+				]]>
+			</latex>
+		</math.display>
+		<para>for <latex>k\geq 0</latex>. As <latex>a_N\neq 0</latex>, we conclude <latex><![CDATA[ \Abs{ a_n } > 1 ]]></latex> for <latex>n</latex> sufficiently large. So the sequence <latex>(a_n)</latex> fails to converge to <latex>0</latex>. <subordinate>
+			<hot>So</hot>
+			<crossref>
+				<theorem.ref theoremID="Thm_ConvergentSeriesOnlyFromNullSequence"/>
+				<para>Recall: if <latex>\sum_{n=0}^{\infty} a_n</latex> converges to a number, then <latex>\lim_{n\to\infty} a_n = 0</latex>.</para>
+			</crossref>
+		</subordinate>
+			 the given sum can not converge to a number.</para>
+	</proof>
+</theorem>

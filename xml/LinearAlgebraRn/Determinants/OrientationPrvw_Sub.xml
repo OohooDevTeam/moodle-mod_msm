@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_Orientation">
+	<title>Preview: Orientation</title>
+	<sub.page.body>
+		<block>
+			<para>We introduce the concept of orientation of <latex>\RNr[n]</latex> as a means for distinguishing an object in <latex>\RNr[n]</latex> from its mirrored image. In this preview we only discuss the visualizable dimensions 1,2,3.</para>
+		</block>
+		
+		<block>
+			<para><b>1-dimensional orientation</b> &ndash; An orientation of <latex>\RNr</latex> is given by a nonzero vector <latex>\Vect{x} = (x)</latex>. We say</para>
+			
+			<table align="center" border="3"  bordercolor="Maroon" cellpadding="2" cellspacing="2">
+				<row>
+					<cell>
+						<para><latex>\Vect{x}</latex> represents the positive orientation of <latex>\RNr</latex></para>
+					</cell>
+					<cell><para>if <latex><![CDATA[ x> 0 ]]></latex></para></cell>
+					<cell><para><latex>\omega(\Vect{x}) = +1</latex></para></cell>
+				</row>
+				<row>
+					<cell>
+						<para><latex>\Vect{x}</latex> represents the negative orientation of <latex>\RNr</latex></para>
+					</cell>
+					<cell><para>if <latex><![CDATA[ x < 0 ]]></latex></para></cell>
+					<cell><para><latex>\omega(\Vect{x}) = -1</latex></para></cell>
+				</row>
+			</table>
+		</block>
+		
+		
+		
+		<block>
+			<para><b>2-dimensional orientation</b> &ndash; An orientation of <latex>\RNr[2]</latex> is given by a pair of 
+				<subordinate>
+					<hot>noncolinear vectors</hot>
+					<info><para>`noncolinear' means: don't lie on one line; in other words: point in distinct directions</para></info>
+				</subordinate>
+				<latex>(\Vect{x} , \Vect{y} )</latex>. We say</para>
+			
+			<table align="center" border="3"  bordercolor="Maroon" cellpadding="2" cellspacing="2">
+				<row>
+					<cell>
+						<para><latex>( \Vect{x} , \Vect{y} )</latex> represents the positive orientation of <latex>\RNr[2]</latex></para>
+					</cell>
+					<cell><para>if the lesser of the two angles from <latex>\Vect{x}</latex> to <latex>\Vect{y}</latex> occurs in the counterclockwise direction</para></cell>
+					<cell><para><latex>\omega(\Vect{x} , \Vect{y} ) = +1</latex></para></cell>
+				</row>
+				<row>
+					<cell>
+						<para><latex>( \Vect{x} , \Vect{y} )</latex> represents the negative orientation of <latex>\RNr[2]</latex></para>
+					</cell>
+					<cell><para>if the lesser of the two angles from <latex>\Vect{x}</latex> to <latex>\Vect{y}</latex> occurs in the clockwise direction</para></cell>
+					<cell><para><latex>\omega(\Vect{x} , \Vect{y} ) = -1</latex></para></cell>
+				</row>
+			</table>
+		</block>
+		
+		
+		
+		<block>
+			<para><b>3-dimensional orientation</b> &ndash; An orientation of <latex>\RNr[3]</latex> is given by a triple of 
+				<subordinate>
+					<hot>noncoplanar vectors</hot>
+					<info><para>`noncoplanar' means: don't lie in one plane</para></info>
+				</subordinate>
+				<latex>(\Vect{x} , \Vect{y} , \Vect{z} )</latex>. We say</para>
+			
+			<table align="center" border="3"  bordercolor="Maroon" cellpadding="2" cellspacing="2">
+				<row>
+					<cell>
+						<para><latex>( \Vect{x} , \Vect{y} , \Vect{z} )</latex> represents the positive orientation of <latex>\RNr[3]</latex></para>
+					</cell>
+					<cell><para>if it is possible to align your right hand's thumb with <latex>\Vect{x}</latex>, its index finger with <latex>\Vect{y}</latex>, and its 
+						<subordinate>
+							<hot>middle finger</hot>
+							<info><para>without harming your hand</para></info>
+						</subordinate>
+						with <latex>\Vect{z}</latex>.</para></cell>
+					<cell><para><latex>\omega(\Vect{x} , \Vect{y} , \Vect{z} ) = +1</latex></para></cell>
+				</row>
+				<row>
+					<cell>
+						<para><latex>( \Vect{x} , \Vect{y} , \Vect{z} )</latex> represents the negative orientation of <latex>\RNr[3]</latex></para>
+					</cell>
+					<cell><para>if it is possible to align your left hand's thumb with <latex>\Vect{x}</latex>, its index finger with <latex>\Vect{y}</latex>, and its 
+						<subordinate>
+							<hot>middle finger</hot>
+							<info><para>without harming your hand</para></info>
+						</subordinate>
+						with <latex>\Vect{z}</latex>.</para></cell>
+					<cell><para><latex>\omega(\Vect{x} , \Vect{y} , \Vect{z} ) = -1</latex></para></cell>
+				</row>
+			</table>
+			
+			<para>We also explain the relationship between orientation of 3-space and rotation about an oriented axis according to the right/left hand rule.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

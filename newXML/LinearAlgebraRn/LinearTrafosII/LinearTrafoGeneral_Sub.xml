@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_LinearTrafoGeneral"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>General Linear Transformation - Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Earlier we already discussed 
+				<subordinate>
+                     <hot>linear transformations <math>
+                           <latex>\RNr[n]\to \RNr[m]</latex>
+                        </math>
+                     </hot>
+                     <crossref>
+                        <definition.ref definitionID="Def_LinearMap"/>
+                        <info>
+                           <para>
+                              <para.body>Look up this definition</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>. So what is new here?</para.body>
+            </para>
+            <para>
+               <para.body>Indeed, the formal properties defined for a linear map <math>
+                     <latex>\RNr[n]\to \RNr[m]</latex>
+                  </math> are the exact same as  those for a linear map <math>
+                     <latex>L\from V\to W</latex>
+                  </math>:</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L</latex>
+                        </math> must commute with vector addition: <math>
+                           <latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L</latex>
+                        </math> must commute with scalar multiplication: <math>
+                           <latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <para>
+               <para.body>New here is merely that the vector spaces <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>W</latex>
+                  </math> need not be equal to <math>
+                     <latex>\RNr[n]</latex>
+                  </math> and <math>
+                     <latex>\RNr[m]</latex>
+                  </math>. Instead, any subvector space is allowed.</para.body>
+            </para>
+            <para>
+               <para.body/>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Comment on a technicality</strong>   When we require <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>W</latex>
+                  </math> to be subvector space of <math>
+                     <latex>\RNr[k]</latex>
+                  </math>, at first sight, it would seem more appropriate to let <math>
+                     <latex>V</latex>
+                  </math> be a subvector space of <math>
+                     <latex>\RNr[p]</latex>
+                  </math> and to let <math>
+                     <latex>W</latex>
+                  </math> be a subvector space of <math>
+                     <latex>\RNr[q]</latex>
+                  </math>. However, we can take <math>
+                     <latex>k</latex>
+                  </math> to be the maximum of <math>
+                     <latex>p</latex>
+                  </math> and <math>
+                     <latex>q</latex>
+                  </math>, and so both <math>
+                     <latex>V</latex>
+                  </math>and <math>
+                     <latex>W</latex>
+                  </math> appear as subspaces of the same vector space <math>
+                     <latex>\RNr[k]</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Outlook</strong>   In a more advanced setting, we will liberate ourselves from the requirement that <math>
+                     <latex>V</latex>
+                  </math> and <math>
+                     <latex>W</latex>
+                  </math> be subsets of any other vector space. Instead, we will just assume that a vector space is an algebraic object in which one may operate ‘as if one were inside some <math>
+                     <latex>\RNr[n]</latex>
+                  </math>’.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

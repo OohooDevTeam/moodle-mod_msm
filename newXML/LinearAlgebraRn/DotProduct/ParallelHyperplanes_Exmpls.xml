@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_ParallelHyperplanes"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	  <title>Parallel Hyperplanes - Examples</title>
+	  <caption xmlns="">Parallel Hyperplanes - Examples</caption>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the solution hyperplanes of the equations below are parallel.</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x + 4y - 1z</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>1</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>2x - 8y - 2z</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>2</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We need to determine if the normal vectors of the two hyperplanes are parallel.</para.body>
+               </para>
+			            <ol>
+				              <li>
+					                <para>
+                        <para.body>The first hyperplane has <math>
+                              <latex>\Vect{u}:=(1,4,-1)</latex>
+                           </math> as a normal vector.</para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The second hyperplane has <math>
+                              <latex>\Vect{v}:=(2,-8,-2)</latex>
+                           </math> as a normal vector.</para.body>
+                     </para>
+				              </li>
+			            </ol>
+			            <para>
+                  <para.body>These vectors are parallel exactly when there exists a number <math>
+                        <latex>t</latex>
+                     </math> with</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{v}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>t\cdot \Vect{u}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left[ \begin{array}{r} 2 \\ -8 \\ -2 \end{array} \right]</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>t\cdot \left[ \begin{array}{r} 1 \\ 4 \\ -1 \end{array} \right]</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Comparing the first coordinates requires <math>
+                        <latex>t=2</latex>
+                     </math>, while comparing the second coordinates requires <math>
+                        <latex>t=-2</latex>
+                     </math>. This means that there is no number <math>
+                        <latex>t</latex>
+                     </math> with</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{v}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>t\cdot \Vect{u}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>So the normal vectors to the two hyperplanes are  not parallel and, therefore, the hyperplanes themselves are not parallel.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the solution hyperplanes of the equations below are parallel.</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>3u + v - w + 2x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-1</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>2w - 6u - 2v - 4x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\pi</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We need to determine if the normal vectors of the two hyperplanes are parallel.</para.body>
+               </para>
+			            <ol>
+				              <li>
+					                <para>
+                        <para.body>The first hyperplane has <math>
+                              <latex>\Vect{v}:=(3,1,-1,2))</latex>
+                           </math> as a normal vector.</para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>The second hyperplane has <math>
+                              <latex>\Vect{w}:=(-6,-2,2,-4)</latex>
+                           </math> as a normal vector.</para.body>
+                     </para>
+				              </li>
+			            </ol>
+			            <para>
+                  <para.body>We note that</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{w}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(-2)\cdot \Vect{v}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>So the normal vectors to the two hyperplanes are  parallel and, therefore, the hyperplanes themselves are parallel.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+</showme.pack>

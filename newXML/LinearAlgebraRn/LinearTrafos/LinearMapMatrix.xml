@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_LinearMapMatrix"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Linear Transformations and Matrices</title>
+      <plain.title>Linear Maps – Matrices</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we introduce the concept of a linear transformation. Then we explain how every matrix determines a linear transformation. Conversely, we show that every linear transformation comes from a matrix and, moreover, that this matrix is unique.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_LinearMaps">
+         <titles>
+            <title>Linear Transformations</title>
+            <plain.title>Linear Maps</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def id="Def_LinearMap">
+                     <caption>Linear Transformation</caption>
+                     <associate type="Explanation">
+                        <unit.ref unitId="Expla_LinearTrafoCommutesPlusTimes"/>
+                        <info>
+                           <para>
+                              <para.body>An explanation of the meaning of the requirements we place here on a linear transformation.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>A function <math>
+                                 <latex>L\from \RNr[n]\to \RNr[m]</latex>
+                              </math> is called linear if it has the two properties below</para.body>
+                        </para>
+                        <ul>
+                           <li>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex>
+                                    </math> for all <math>
+                                       <latex>\Vect{x},\Vect{y}\in\RNr[n]</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex>
+                                    </math> for all <math>
+                                       <latex>t\in\RNr</latex>
+                                    </math>, and all <math>
+                                       <latex>\Vect{x}\in\RNr[n]</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </li>
+                        </ul>
+                        <para>
+                           <para.body>Alternate terms for linear function include: linear map, linear transformation, homomorphism (of vector spaces).
+					</para.body>
+                           <index.glossary>
+                              <term>linear</term>
+                              <term>function</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>linear</term>
+                              <term>transformation</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>linear</term>
+                              <term>map</term>
+                           </index.glossary>
+                           <index.glossary>
+                              <term>homomorphism</term>
+                              <term>of vector spaces</term>
+                           </index.glossary>
+                        </para>
+                     </def.body>
+                  </def>
+                  <para>
+                     <para.body>Here are two examples of linear transformations which appear frequently:</para.body>
+                  </para>
+                  <def type="Definition" id="Def_CoordinateProjection">
+                     <caption>Coordinate Projection</caption>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_Projection"/>
+                        <info>
+                           <info.caption>Example</info.caption>
+                           <para>
+                              <para.body>Verification that a projection is a linear map, plus some examples.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>The projection of <math>
+                                 <latex>\RNr[m]</latex>
+                              </math> onto the <math>
+                                 <latex>i</latex>
+                              </math>-th coordinate is the function</para.body>
+                        </para>
+                        <math.display>
+                           <latex>\Prjctn{i}\from \RNr[m] \longrightarrow \RNr,\qquad \Prjctn{i}(x_1,\dots ,x_m)=x_i</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <def type="Definition" id="Def_CoordinateInclusion">
+                     <caption>Coordinate Inclusion</caption>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_Inclusion"/>
+                        <info>
+                           <info.caption>Example</info.caption>
+                           <para>
+                              <para.body>Verification that coordinate inclusion functions are linear; examples.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>For <math>
+                                 <latex>1\leq j\leq n</latex>
+                              </math> the inclusion of <math>
+                                 <latex>\RNr</latex>
+                              </math> as the  <math>
+                                 <latex>j</latex>
+                              </math>-th coordinate axis of <math>
+                                 <latex>\RNr[n]</latex>
+                              </math> is given by the function</para.body>
+                        </para>
+                        <math.display>
+                           <latex>\Inclsn{j}\from \RNr\longrightarrow \RNr[n],\quad \Inclsn{j}(x):=(0,\dots,0,x,0,\dots ,0)</latex>
+                        </math.display>
+                        <para>
+                           <para.body>where the <math>
+                                 <latex>x</latex>
+                              </math> sits in position <math>
+                                 <latex>j</latex>
+                              </math>.</para.body>
+                        </para>
+                     </def.body>
+                  </def>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_MatrixGivesLinearMap">
+         <titles>
+            <title>A Matrix Gives a Linear Map</title>
+            <plain.title>A Matrix Gives a Linear Map</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>A convenient source of linear maps from <math>
+                           <latex>\RNr[n]</latex>
+                        </math> to <math>
+                           <latex>\RNr[m]</latex>
+                        </math> are matrices of size <math>
+                           <latex>(m,n)</latex>
+                        </math>. To explain this, write a vector of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> as a column matrix with <math>
+                           <latex>n</latex>
+                        </math> rows. Now if <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> is a matrix of size <math>
+                           <latex>(m,n)</latex>
+                        </math>, we may multiply it by vectors <math>
+                           <latex>\Vect{x}</latex>
+                        </math> from <math>
+                           <latex>\RNr[n]</latex>
+                        </math>. The result is the vector <math>
+                           <latex>\Mtrx{A}\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>\RNr[m]</latex>
+                        </math>. Applying this multiplication to each vector in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> yields a function <math>
+                           <latex>\RNr[n]\to \RNr[m]</latex>
+                        </math>, and we show now that this function is linear.</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="MatrixGivesLinearMap_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_LinearMapFromMatrix">
+         <titles>
+            <title>Every Linear Map Comes from a Matrix</title>
+            <plain.title>Every Linear Map Comes from a Matrix</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>We just learned that matrices provide a convenient source for linear transformations. But can we obtain every linear transformation in this way? The answer to this question is: ‘Yes!’, and the following theorem tells us how to find the matrix describing a given linear transformation.</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="LinearMapGivesMatrix_Prop.xml"/>
+                  <para>
+                     <para.body>In the context of the theorem above, we say that the matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> represents <math>
+                           <latex>L</latex>
+                        </math>.
+				</para.body>
+                     <index.glossary>
+                        <term>matrix</term>
+                        <term>representing a linear map</term>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>representing matrix</term>
+                        <term>of a linear map</term>
+                     </index.glossary>
+                  </para>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_MatrixGivesLinearMap"/>
+      <exercise.pack.ref exercisePackID="Exe_LinearMapEffect"/>
+      <exercise.pack.ref exercisePackID="Exe_LinearMapFindMatrix"/>
+   </studymaterials>
+</unit>

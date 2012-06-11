@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_OrthogonalMapRecognize">
+	<caption>Recognizing a distance preserving map</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation of <latex>\DotPr{ A_j }{ A_j } = 1</latex>.</caption>
+			<para>The identity <latex>\DotPr{ A_j }{ A_j } = 1</latex> means that <latex>A_j</latex> has length <latex>1</latex>.</para>
+		</info>
+	</associate>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation of <latex>\DotPr{ A_j }{ A_k } = 0</latex></caption>
+			<para>The identity <latex>\DotPr{ A_j }{ A_k } = 0</latex> for all <latex>1\leq j\neq k\leq n</latex> means that any two distinct column vectors of <latex>\Mtrx{A}</latex> are perpendicular.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>An <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex> represents a distance preserving linear transformation <latex>L\from \RNr[n]\to \RNr[n]</latex> if and only if the column vectors of <latex>\Mtrx{A}</latex> satisfy both of the two conditions below:</para>
+		
+		<ol>
+			<li><para>Each column vector <latex>A_j</latex> of <latex>\Mtrx{A}</latex> satisfies <latex>\DotPr{ A_j }{A_j} = 1</latex>.</para></li>
+			<li><para>Whenever <latex>1\leq j\neq k\leq n</latex>, <latex>\DotPr{ A_j }{ A_k } = 0</latex>.</para></li>
+		</ol>
+		
+	</statement>
+	
+	<proof>
+		<caption>Suppose <latex>L</latex> preserves all distances.</caption>
+		<para>If <latex>L</latex> preserves all distances, we need to show that the columns of the matrix representing <latex>L</latex> have the two properties stated above. Recalling that <latex>L(\StdBss{j}) = A_j</latex>, we compute</para>
+		
+		<math.display>
+			<latex>\DotPr{ A_j }{ A_j } = \abs{ A_j }^2 = \abs{ L(\StdBss{j}) }^2 = \abs{ \StdBss{j} }^2 = 1.</latex>
+		</math.display>
+		
+		<para>So the columns of <latex>\Mtrx{A}</latex> are unit vectors, as claimed. To verify that the columns of <latex>\Mtrx{A}</latex> are perpendicular, suppose <latex>1\leq j\neq k\leq n</latex>. Then <latex>\StdBss{j}</latex> is perpendicular to <latex>\StdBss{k}</latex> and, therefore,</para>
+		
+		<computation>
+			<left>2</left>
+			<center>=</center>
+			<right>\abs{ \StdBss{j} + \StdBss{k} }^2</right>
+			<left></left>
+			<center>=</center>
+			<right>\abs{ L( \StdBss{j} + \StdBss{k} ) }^2</right>
+			<left></left>
+			<center>=</center>
+			<right>\abs{ A_j + A_k }^2</right>
+			<left></left>
+			<center>=</center>
+			<right>\DotPr{ (A_j + A_k) }{ (A_j + A_k) }</right>
+			<left></left>
+			<center>=</center>
+			<right>\DotPr{ A_j }{ A_j } + 2\cdot ( \DotPr{ A_j }{ A_k } ) + \DotPr{ A_k }{ A_k }</right>
+			<left></left>
+			<center>=</center>
+			<right>1 + 2\cdot ( \DotPr{ A_j }{ A_k } ) + 1</right>
+		</computation>
+		
+		<para>Consequently, <latex>\DotPr{ A_j }{ A_k } = 0</latex>, as claimed.</para>
+		
+		<caption>Suppose <latex>\Mtrx{A}</latex> satisfies the conditions of the proposition</caption>
+		<para>If <latex>\Mtrx{A}</latex> satisfies the conditions of the proposition, we need to show that <latex>L</latex> preserves distances; i.e. for all <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>, <latex>\abs{ L(\Vect{x}) } = \abs{ \Vect{x} }</latex> or, equivalently, <latex>\abs{ L(\Vect{x}) }^2 = \abs{ \Vect{x} }^2</latex>. Now, if <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>, then</para>
+		
+		<math.display>
+			<latex>\Vect{x} = x_1 \StdBss{1} + \cdots + x_n \StdBss{n}\quad \text{and} \quad \abs{ \Vect{x} }^2 = x_{1}^{2} + \cdots + x_{n}^{2}</latex>
+		</math.display>
+		
+		<para>Therefore</para>
+		
+		<computation>
+			<left>\abs{ L(\Vect{x}) }^2</left>
+			<center>=</center>
+			<right>\abs{ L(x_1 \StdBss{1} + \cdots + x_n\StdBss{n}) }^2</right>
+			<left></left>
+			<center>=	<info><caption>Explanation</caption><para><latex>L</latex> is linear, hence satisfies <latex>L(s\Vect{u} + t\Vect{v}) = sL(\Vect{u}) + tL(\Vect{v})</latex> for arbitrary vectors <latex>\Vect{u},\Vect{v}</latex> and numbers <latex>s,t</latex>.</para></info></center>
+			<right>\abs{ x_1 L(\StdBss{1}) + \cdots + x_n L(\StdBss{n}) }^2</right>
+			<left></left>
+			<center>=</center>
+			<right>\abs{ x_1 A_1 + \cdots + x_n A_n }^2</right>
+			<left></left>
+			<center>=</center>
+			<right>\sum_{j=1}^{n} x_{j}^{2} (\DotPr{ A_j }{ A_j })\ \ +\ \ \sum_{1\leq j\neq k\leq n} x_j x_k (\DotPr{ A_j }{ A_k })</right>
+			<left></left>
+			<center>=	<info>
+				<caption>Explanation</caption>
+				<para>Here we use that <latex>\DotPr{ A_j }{ A_k }=0</latex> if <latex>j\neq k</latex>, and that <latex>\DotPr{ A_j }{ A_j }=1</latex>.</para>
+			</info></center>
+			<right>x_{1}^{2} + \cdots + x_{n}^{2}</right>
+			<left></left>
+			<center>=</center>
+			<right>\abs{ \Vect{x} }^2</right>
+		</computation>
+		
+		<para>This is exactly what we wanted to show.</para>
+	</proof>
+</theorem>

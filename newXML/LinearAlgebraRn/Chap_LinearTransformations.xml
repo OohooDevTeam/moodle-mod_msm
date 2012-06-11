@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
+      unitid="Chap_LinearTransformations">
+   <titles>
+      <title>Linear Transformations</title>
+      <plain.title>Linear Transformations</plain.title>
+   </titles>
+   <legitimate.children>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearTrafoIntro.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Functions.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapMatrix.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/MainTypes.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/BasicProperties.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/NewFromOld.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/InvertibleLinearTrafos.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/DistancePreservingLinearTrafos.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearEquationsLinearTrafos.xml"/>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/MoebiusStrip_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/TrafoSquareRectangle_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/TrafoSquareRotate_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/TrafoHandReflection_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/TrafoShear3D_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/FunctionPrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapPrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapMatrixPrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapPropertiesPrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapNewFromOldPrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/InvertibleLinearTrafoPrvw_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/DistancePreservingLinearTrafoPrvw_Sub.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/FunctionRRGraph_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/TrafoPlanar_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/TrafoLineSegment_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/FunctionPreimage_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Function_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearTrafoCommutesAddTimes_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/ProjectionInclusion_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Projection_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Inclusion_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/MatrixGivesLinearMap_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/MatrixGivesLinearMap_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapGivesMatrix_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapGivesMatrix1_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapFindMatrix_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/MatrixGivesLinearMap_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapEffect_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearMapFindMatrix_Exrcss.xml"/>
+				
+				  
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/IdentityTrafo_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Dilation_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Contraction_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Inversion_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Rotation_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Rotation_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/OrthogonalProjection_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/OrthogonalProjection_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/OrthogonalReflection_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/OrthogonalReflection_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/ShearTransformation_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/ShearTransformation_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearTrafosTypes1_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearTrafosTypes2_Exrcss.xml"/>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearTrafo0to0_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/0to0NotLinear_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LinearTrafosLinearMotions_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Composition_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/PrdctMaps_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/Composition_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/InvertibleLinearTrafo_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/InvertibleLinearTransformation_Quz.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/InverseMap_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/InvertibleLinearMapsI_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/RotationOrthogonal_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/OrthogonalMap_Quz.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/DistancePreservingOrthogonal_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/OrthogonalMaps_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/OrthogonalMaps1_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LevelSet_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="LinearTrafos/LevelSet_Exrcss.xml"/>
+			</legitimate.children>
+</unit>

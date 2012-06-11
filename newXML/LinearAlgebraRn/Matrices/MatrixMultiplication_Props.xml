@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_MatrixMultiplicationProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Convention when reading this proposition</caption>
+         </info.caption>
+         <para>
+            <para.body>In the formuli of this proposition, we assume that the matrices involved satisfy the size property so that multiplication is defined.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>On the neutral element property</caption>
+         </info.caption>
+         <para>
+            <para.body>In the formula   <math>
+                  <latex>\IdMtrx[m]A = A\IdMtrx[n]</latex>
+               </math>, we also say</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\IdMtrx[m]</latex>
+                     </math> is left neutral with respect to multiplication by by <math>
+                        <latex>(m,n)</latex>
+                     </math>-matrices</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\IdMtrx[n]</latex>
+                     </math> is right neutral with respect to multiplication by by <math>
+                        <latex>(m,n)</latex>
+                     </math>-matrices</para.body>
+               </para>
+            </li>
+         </ul>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>The multiplication of matrices has the following properties</para.body>
+      </para>
+      <part.theorem partid="Associativity">
+         <caption>Associativity</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>(AB)C = A(BC)</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>associativity</term>
+                  <term>matrix multiplication</term>
+               </index.glossary>
+               <index.glossary>
+                  <term>matrix</term>
+                  <term>multiplication</term>
+                  <term>associative</term>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Distributivity">
+         <caption>Distributivity</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>A ( B + C) = AB + AC</latex>
+                  </math>   <math>
+                     <latex>(B + C)D = BD + CD</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>distributivity</term>
+                  <term>matrix multiplication</term>
+               </index.glossary>
+               <index.glossary>
+                  <term>matrix</term>
+                  <term>multiplication</term>
+                  <term>distributive</term>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="IdNeutral">
+         <caption>Identity matrix is neutral element</caption>
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> has size <math>
+                     <latex>(m,n)</latex>
+                  </math>, then   <math>
+                     <latex>\IdMtrx[m]A = A\IdMtrx[n]</latex>
+                  </math>.
+				</para.body>
+               <index.glossary>
+                  <term>neutral element</term>
+                  <term>matrix multiplication</term>
+               </index.glossary>
+               <index.glossary>
+                  <term>matrix</term>
+                  <term>multiplication</term>
+                  <term>neutral element</term>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>Associativity</part.ref>
+         </logic>
+         <caption>Associativity</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Suppose</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Distributivity</part.ref>
+         </logic>
+         <caption>Distributivity</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Suppose</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>IdNeutral</part.ref>
+         </logic>
+         <caption>IdNeutral</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We leave it to the reader to establish this claim.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

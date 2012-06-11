@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE quiz.pack	SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Quz_OrthogonalMap">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Quiz on Distance Preserving Linear Transformations</title>
+	
+	
+	<quiz>
+		<question>
+			<para>Does a shear transformation of the plane preserve distances?</para>
+			<figure>
+				<img src="ims/ShearR2_3.png"></img><!-- svg available -->
+			</figure>
+		</question>
+		<hint>
+			<info><para>In the picture above, consider the effect of shearing on the vector <latex>\StdBss{2}</latex></para></info>
+		</hint>
+		
+		<choice>
+			<answer><para>A shear transformation is distance preserving.</para></answer>
+			<info><para>Sorry! No.</para></info>
+		</choice>
+		<choice>
+			<answer><para>A shear transformation is not distance preserving.</para></answer>
+			<info><para>Correct! - To see why a shear map <latex>S\from \RNr[2]\to \RNr[2]</latex> is, in general, not distance preserving, consider the vector <latex>\Vect{n}</latex> with respect to which we are shearing (in the picture above, this is <latex>\StdBss{2}</latex>). It has length <latex>1</latex>, and gets transformed into the vector <latex>\Vect{n}+\Vect{s}</latex>, where <latex>\Vect{s}</latex> is the shear vector. So, unless <latex>\Vect{s}=\Vect{0}</latex>, the shear transformation increases the length of some vectors. Therefore it is not distance preserving.</para></info>
+		</choice>
+	</quiz>
+	
+	<quiz>
+		<question>
+			<para>Does the dilation transformation below preserve distances?</para>
+			<math.display>
+				<latex>D\from \RNr[2] \longrightarrow \RNr[2],\quad D(\Vect{x}) = 3\cdots \Vect{x}</latex>
+			</math.display>
+		</question>
+		<choice>
+			<answer><para>Yes! <latex>D</latex> preserves distances</para></answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+		<choice>
+			<answer><para>No! <latex>D</latex> does not preserve distances</para></answer>
+			<info><para>Correct! &ndash; <latex>D</latex> increases the distance between any two points by a factor of <latex>3</latex>. Therefore <latex>D</latex> does not preserve distances.</para></info>
+		</choice>
+	</quiz>
+	
+	<quiz>
+		<question>
+			<para>Does a reflection of <latex>\RNr[3]</latex> about a plane passing through the origin preserve distances?</para>
+			
+			<figure>
+				<img src="ims/LeftHandMirrorRightHand.jpg"></img>
+			</figure>
+		</question>
+		<choice>
+			<answer><para>Yes! This reflection preserves distances.</para></answer>
+			<info><para>Correct!</para></info>
+		</choice>
+		<choice>
+			<answer><para>No! This reflection does not preserve distances.</para></answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+	</quiz>
+	
+	
+	<quiz>
+		<question>
+			<para>Does a projection of the plane <latex>\RNr[2]</latex> onto a line through the origin preserve distances?</para>
+			
+			<figure>
+				<img src="ims/OrthogonalProjection"></img><!-- svg available -->
+			</figure>
+		</question>
+		<choice>
+			<answer>
+				<para>Yes, such a projection preserves distances</para>
+			</answer>
+			<info><para>Sorry! No!</para></info>
+		</choice>
+		<choice>
+			<answer><para>No, such a projection does not preserve distances</para></answer>
+			<info>
+				<para>Correct! &ndash; A projection can reduce certain distances. For example: in the picture above, consider the vector <latex>\Vect{c}</latex>. Its length is positive. But it projects to the zero vector. Therefore the projection does not preserve all distances.</para>
+			</info>
+		</choice>
+	</quiz>
+	
+</quiz.pack>

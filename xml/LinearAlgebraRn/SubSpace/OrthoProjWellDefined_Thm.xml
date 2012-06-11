@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_OrthogonalProjectionWellDefined">
+	<caption>Orthogonal projection independent of ONB</caption>
+	<statement>
+		<para>Given subspaces <latex>V\subseteq W</latex> of <latex>\RNr[n]</latex>, let <latex>\EuScript{A}=(\Vect{a}_1,\dots ,\Vect{a}_r)</latex> and <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_r)</latex> be orthonormal bases for <latex>V</latex>. Let</para>
+		<math.display>
+			<latex>p\from W \longrightarrow V \quad\text{and}\quad q\from W \longrightarrow V</latex>
+		</math.display>
+		<para>respectively, be the projection operations of <latex>W</latex> onto <latex>V</latex> defined by</para>
+		<computation>
+			<left>p(\Vect{x})</left>
+			<center>:=</center>
+			<right>(\DotPr{ \Vect{x} }{ \Vect{a}_1 }) \Vect{a}_1 +\cdots + (\DotPr{ \Vect{x} }{ \Vect{a}_r })\Vect{a}_r</right>
+			<left>q(\Vect{x})</left>
+			<center>:=</center>
+			<right>(\DotPr{ \Vect{x} }{ \Vect{b}_1 }) \Vect{b}_1 +\cdots + (\DotPr{ \Vect{x} }{ \Vect{b}_r })\Vect{b}_r</right>
+		</computation>
+		<para>Then <latex>p(\Vect{x} ) = q(\Vect{x})</latex> for all <latex>x\in W</latex>.</para>
+	</statement>
+	<proof type="Proof">
+		<para>For <latex>x\in W</latex> we have</para>
+		<math.display>
+			<latex>p(\Vect{x}) - (\Vect{x}-p(\Vect{x})) = \Vect{x} = q(\Vect{x}) - (\Vect{x} - q(\Vect{x})</latex>
+		</math.display>
+		<para>Therefore</para>
+		<computation>
+			<left>(\Vect{x} - q(\Vect{x}) - (\Vect{x}-p(\Vect{x}))</left>
+			<center>=</center>
+			<right>p(\Vect{x}) - q(\Vect{x} )</right>
+		</computation>
+		<para>The vector on the left 
+			<subordinate>
+				<hot>is in <latex>V^{\bot}</latex></hot>
+				<info>
+					<caption>Why is the vector on the left in <latex>V^{\bot}</latex>?</caption>
+					<para>It suffices to show that <latex>(\Vect{x}-q(\Vect{x}))</latex> and <latex>(\Vect{x}-q(\Vect{x}))</latex> are in <latex>V^{\bot}</latex> because the subspace <latex>W^{\bot}</latex> of <latex>\RNr[n]</latex> is closed under vector addition. So we compute</para>
+					<computation>
+						<left>\DotPr{ \Vect{x} - q(\Vect{x}) }{ \Vect{b}_k }</left>
+						<center>=</center>
+						<right>\DotPr{ \Vect{x} }{ \Vect{b}_k } - \DotPr{\left( (\DotPr{ \Vect{x} }{ \Vect{b}_1 })\Vect{b}_1 +\cdots + (\DotPr{ \Vect{x} }{ \Vect{b}_r })\Vect{b}_r \right) }{ \Vect{b}_k } </right>
+						<left></left>
+						<center>=</center>
+						<right>\DotPr{ \Vect{x} }{ \Vect{b}_k }\ -\ (\DotPr{ \Vect{x} }{ \Vect{b}_k })( \DotPr{ \Vect{b}_k }{ \Vect{b}_k } )</right>
+						<left></left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>The identity <latex>\DotPr{ \Vect{x} - p(\Vect{x}) }{ \Vect{a}_k } = 0</latex> follows with a similar computation.</para>
+				</info>
+			</subordinate>,
+			while the vector on the right 
+				<subordinate>
+					<hot>is in <latex>W</latex></hot>
+					<info>
+						<caption>Why is the vector on the right in <latex>V</latex>?</caption>
+						<para>Because it is a linear combination of vectors in <latex>V</latex>.</para>
+					</info>
+				</subordinate>.
+			It follows that both vectors are <latex>\Vect{0}</latex>, because <latex>V</latex> and <latex>V^{\bot}</latex> have only the zero vector in common. This implies</para>
+		<computation>
+			<left>p(\Vect{x})</left>
+			<center>=</center>
+			<right>q(\Vect{x})</right>
+		</computation>
+		<para>as claimed.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_LinearMapProperties"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Preview: Properties of Linear Transformations</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here are two basic properties which are specific to linear transformations and are not enjoyed by every transformation.</para.body>
+            </para>
+            <ol type="1">
+               <li>
+                  <para>
+                     <para.body>A linear transformation <math>
+                           <latex>f\from \RNr[n]\to \RNr[m]</latex>
+                        </math> sends the <math>
+                           <latex>0</latex>
+                        </math>-vector of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> to the <math>
+                           <latex>0</latex>
+                        </math>-vector of <math>
+                           <latex>\RNr[m]</latex>
+                        </math>; in symbols: <math>
+                           <latex>f(\Vect{0}) = \Vect{0}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>A linear transformation <math>
+                           <latex>f\from \RNr[n]\to \RNr[m]</latex>
+                        </math> transforms any linear motion in <math>
+                           <latex>\RNr[n]</latex>
+                        </math> into a linear motion in <math>
+                           <latex>\RNr[m]</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ol>
+            <para>
+               <para.body>The first property is frequently helpful in detecting non-linear maps. The second property explains the name "linear transformations".</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

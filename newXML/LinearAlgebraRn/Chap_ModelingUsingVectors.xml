@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
+      unitid="Chap_ModelingUsingVectors">
+   <titles>
+      <title>Modeling with Vectors</title>
+      <plain.title>Modeling</plain.title>
+   </titles>
+   <legitimate.children>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Modeling/ModelIntro.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Modeling/Translation.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Modeling/Velocity.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Modeling/Force.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Modeling/Translation_Qz.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Modeling/TranslationAlgebra_Illstrt.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Modeling/Translation_Prvw.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Modeling/Translation_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Modeling/Force_Prvw.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Modeling/Velocity_Prvw.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="Modeling/Velocity_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Modeling/Force_Exrcs.xml"/>
+			</legitimate.children>
+</unit>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_DeterminantCommutesMultiplication"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Examples: Determinant of a Product</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Given an <math>
+                  <latex>(n,n)</latex>
+               </math>-matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> with <math>
+                  <latex>\det(\Mtrx{A}) = 5</latex>
+               </math>, find <math>
+                  <latex>\det(\Mtrx{A}^3)</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We apply the fact that matrix multiplication commutes with the determinant operation:</para.body>
+               </para>
+			            <math.display>
+				              <latex>\det(\Mtrx{A}\Mtrx{B})=\det(\Mtrx{A})\det(\Mtrx{B})</latex>
+			            </math.display>
+			            <para>
+                  <para.body>In the case at hand we obtain</para.body>
+               </para>
+			            <math.display>
+				              <latex>\det( \Mtrx{A}^3 ) = \left( \det(\Mtrx{A}) \right)^3 = 5^3 = 125</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>For an <math>
+                  <latex>(n,n)</latex>
+               </math>-matrix <math>
+                  <latex>\Mtrx{C}</latex>
+               </math> and an integer <math>
+                  <latex>n\geq 1</latex>
+               </math> prove the formula</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\det(\Mtrx{C}^n) = \left( \det(\Mtrx{C}) \right)^n</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We apply the fact that matrix multiplication commutes with the determinant operation:</para.body>
+               </para>
+			            <math.display>
+				              <latex>\det(\Mtrx{A}\Mtrx{B})=\det(\Mtrx{A})\det(\Mtrx{B})</latex>
+			            </math.display>
+			            <para>
+                  <para.body>In the case at hand we obtain</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\det(\Mtrx{C}^n)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=	</text>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>on the right: <math>
+                                       <latex>n</latex>
+                                    </math> copies of <math>
+                                       <latex>\Mtrx{C}</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                        <companion>
+                           <info>
+                              <para>
+                                 <para.body>on the right: <math>
+                                       <latex>n</latex>
+                                    </math> copies of <math>
+                                       <latex>\Mtrx{C}</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </companion>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\det\left( \underset{\leftarrow\hfill \text{$n$ copies of $C$}\hfill\rightarrow}{\Mtrx{C} \cdots \cdots \Mtrx{C}}\right)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\underset{\leftarrow\hfill \text{$n$ copies of $\det(C)$}\hfill\rightarrow}{\det(\Mtrx{C}) \cdots \cdots \det(\Mtrx{C})}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Notice: on the left hand side we first go through the labor intensive process of multiplying the matrix <math>
+                        <latex>\Mtrx{C}</latex>
+                     </math> 
+                     <math>
+                        <latex>n</latex>
+                     </math> times by itself; then we compute the determinant of the resulting matrix. On the right hand side, we first evaluate the determinant, and then raise the resulting number to its <math>
+                        <latex>n</latex>
+                     </math>-th power - a much less labor intensive process.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

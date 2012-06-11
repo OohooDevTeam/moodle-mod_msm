@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Expla_EpsilonDeltaContinuous"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>(<math>
+            <latex>\varepsilon</latex>
+         </math>-<math>
+            <latex>\delta</latex>
+         </math>)-Definition of Continuity: Explanation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>By definition, a function <math>
+                     <latex>f\from D\to \RNr</latex>
+                  </math>, <math>
+                     <latex>D\subseteq \RNr</latex>
+                  </math>, is continuous at <math>
+                     <latex>x\in D</latex>
+                  </math> if, for every <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math>, there exists <math>
+                     <latex> \delta &gt; 0 </latex>
+                  </math>, such that for all <math>
+                     <latex>t\in D</latex>
+                  </math>,</para.body>
+            </para>
+            <math.display>
+               <latex> \Abs{ x-t } &lt; \delta\quad \implies\quad \Abs{ f(x) - f(t) } &lt; \varepsilon </latex>
+            </math.display>
+            <para>
+               <para.body>How can we interpret this definition so that we see that it characterizes a function which does not make jumps?</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We know that <math>
+                     <latex>f</latex>
+                  </math> sends <math>
+                     <latex>x</latex>
+                  </math> to some number <math>
+                     <latex>f(x)\in \RNr</latex>
+                  </math>. Let us interpret the positive number <math>
+                     <latex>\varepsilon</latex>
+                  </math> as a ‘deviation tolerance’ from <math>
+                     <latex>f(x)</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/EpsilonDelta1.png"/>
+            </media>
+            <para>
+               <para.body>Those parts of the graph of <math>
+                     <latex>f</latex>
+                  </math> which lie on the horizontal strip between <math>
+                     <latex>f(x)-\varepsilon</latex>
+                  </math> and <math>
+                     <latex>f(x)+\varepsilon</latex>
+                  </math> stay within the deviation tolerance of <math>
+                     <latex>\varepsilon</latex>
+                  </math> of <math>
+                     <latex>f(x)</latex>
+                  </math>. Then the definition requires the existence of an interval <math>
+                     <latex>\OOIntrvl{x-\delta}{x+\delta}</latex>
+                  </math> such that whenever <math>
+                     <latex>t</latex>
+                  </math> belongs to this interval and to <math>
+                     <latex>D</latex>
+                  </math>, then <math>
+                     <latex>f(t)</latex>
+                  </math> stays within the given deviation tolerance <math>
+                     <latex>\varepsilon</latex>
+                  </math> of <math>
+                     <latex>f(x)</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/EpsilonDelta3.png"/>
+            </media>
+            <para>
+               <para.body>In more pictorial terms: The part of the graph of <math>
+                     <latex>f</latex>
+                  </math> which lies in the vertical strip between <math>
+                     <latex>x-\delta</latex>
+                  </math> and <math>
+                     <latex>x+\delta</latex>
+                  </math> must also lie in the horizontal strip between <math>
+                     <latex>f(x)-\varepsilon</latex>
+                  </math> and <math>
+                     <latex>f(x)+\varepsilon</latex>
+                  </math>.</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/EpsilonDelta2.png"/>
+            </media>
+            <para>
+               <para.body>Note that we do not need to find a largest possible number <math>
+                     <latex>\delta</latex>
+                  </math> so that</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					x-\delta &lt; t &lt; x+\delta\quad \text{implies}\quad f(x)-\varepsilon &lt; f(t) &lt; f(x) + \varepsilon .
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>Some positive number <math>
+                     <latex>\varepsilon</latex>
+                  </math> with this property suffices.</para.body>
+            </para>
+            <para>
+               <para.body>Thus the intuitive interpretation of this definition says: no matter how small a deviation tolerance <math>
+                     <latex>\varepsilon</latex>
+                  </math> we prescribe, there is always a (possibly very small) neighborhood <math>
+                     <latex>\OOIntrvl{x-\delta}{x+\delta}</latex>
+                  </math> of <math>
+                     <latex>x</latex>
+                  </math> such that for points <math>
+                     <latex>t</latex>
+                  </math> from <math>
+                     <latex>D</latex>
+                  </math> within this neighborhood <math>
+                     <latex>f(t)</latex>
+                  </math> strays no further than <math>
+                     <latex>\varepsilon</latex>
+                  </math> from <math>
+                     <latex>f(x)</latex>
+                  </math>; in this way we prevent the numbers <math>
+                     <latex>f(t)</latex>
+                  </math> from making a jump at <math>
+                     <latex>f(x)</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

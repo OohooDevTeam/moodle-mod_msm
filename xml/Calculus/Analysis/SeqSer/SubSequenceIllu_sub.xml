@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page
+	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_SubSequence">
+	<title>Subsequence: Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>Given a sequence <latex>(a_n)</latex> of real numbers, we obtain a subsequence by forming a composite</para>
+			<math.display>
+				<latex>\NNr \overset{n}{\longrightarrow} \NNr \overset{a}{\longrightarrow} \RNr</latex>
+			</math.display>
+			<para>Thus we obtain a new sequence <latex>(b_i)</latex> of real numbers, with</para>
+			<math.display>
+				<latex magnify="yes">b_0:=a_{n(0)}=:a_{n_0},\quad b_1:=a_{n(1)}=:a_{n_1},\quad b_2:=b_{n(2)}=:a_{n_2},\quad \dots</latex>
+			</math.display>
+			<para>In the graphic below this process gives</para>
+			<figure>
+				<img src="ims/SubSequence.png"></img><!-- svg available -->
+			</figure>
+			<ol>
+				<li><para><latex magnify="yes">b_0 = a_{n_0} = a_3</latex></para></li>
+				<li><para><latex magnify="yes">b_1 = a_{n_1} = a_4</latex></para></li>
+				<li><para><latex magnify="yes">b_2 = a_{n_2} = a_7</latex></para></li>
+				<li><para>etc.</para></li>
+			</ol>
+		</block>
+		<block>
+			<para>Thus we may think of a subsequence of <latex>(a_n)</latex> as the outcome of</para>
+			<ol>
+				<li><para>Omitting some members of the original sequence</para></li>
+				<li><para>Re-indexing the remaining sequence elements, as described above.</para></li>
+			</ol>
+		</block>
+	</sub.page.body>
+</sub.page>

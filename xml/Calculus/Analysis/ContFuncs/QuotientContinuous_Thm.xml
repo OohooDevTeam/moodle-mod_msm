@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_QuotientContinuous">
+	<caption>Quotient of continuous maps</caption>
+	
+	<statement>
+		<para>Let <latex>f,g\from D\to \RNr</latex> be functions, and let <latex>Z:=\Set{ t\in \RNr\st g(t) = 0}</latex>. If <latex>f</latex> and <latex>g</latex> are continuous at <latex>x\in \StDffrnc{ D }{ Z}</latex>, then the quotient function</para>
+		<math.display>
+			<latex>(f/g)\from (\StDffrnc{D}{Z}) \longrightarrow \RNr,\quad (f/g)(t):=\dfrac{f(t)}{g(t)}</latex>
+		</math.display>
+		<para>is continuous at <latex>x</latex>.</para>
+	</statement>
+	<proof>
+		<para>Using the inverse function <latex>p\from (\StDffrnc{\RNr}{0})\to (\StDffrnc{ \RNr }{ 0 })</latex>, we express the function <latex>(f/g)</latex> as a composite of functions as follows:</para>
+		<ol>
+			<li>
+				<para><latex>(1/g) = p\Comp g</latex>, which is continuous at <latex>x</latex>, as <latex>g</latex> is continuous at <latex>x</latex> and <latex>p</latex> is continuous at <latex>g(x)</latex>.</para>
+			</li>
+			<li>
+				<para>Thus <latex>f\cdot (1/g)</latex> is continuous at <latex>x</latex>, as both functions <latex>f</latex> and <latex>(1/g)</latex> are continuous at <latex>x</latex>.</para>
+			</li>
+		</ol>
+		<para>This was to be shown.</para>
+	</proof>
+</theorem>

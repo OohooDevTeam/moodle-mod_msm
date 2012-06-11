@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_MatrixGivesLinearMap">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	
+	
+	<title>Exercises: A Linear Map from a Matrix</title>
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below indicate if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>The matrix <latex>\Mtrx{A}</latex> representing a linear function <latex>L\from \RNr[7]\to \RNr[5]</latex> has size <latex>(5,7)</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>If <latex>L\from \RNr[n]\to \RNr[m]</latex> is a linear function, then the matrix representing <latex>L</latex> has <latex>m</latex> rows (horizontal), and <latex>n</latex> columns (vertical). Therefore this matrix has size <latex>(m,n)</latex>.</para>
+					<para>In the question at hand, this means that <latex>\Mtrx{A}</latex> has size <latex>(5,7)</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The matrix <latex>\Mtrx{A}</latex> representing a linear function <latex>L\from \RNr[7]\to \RNr[5]</latex> has size <latex>(7,5)</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>See the solution of the previous part.</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The matrix <latex>\Mtrx{A}</latex> representing a linear function <latex>L\from \RNr[7]\to \RNr[5]</latex> is square shaped with <latex>7</latex> rows and <latex>7</latex> columns.</para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>See the solution of the previous parts.</para></solution.hint>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The linear transformation <latex>L\from \RNr[2]\to \RNr[3]</latex> represented by the matrix</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+				A =
+					\left[
+					\begin{array}{rr}
+					4 & 1 \\
+					0 & 3 \\
+					1 & 2
+					\end{array}
+					\right]
+]]>
+					</latex>
+				</math.display>
+				<para>has domain <latex>\RNr[2]</latex> and target <latex>\RNr[3]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The linear transformation <latex>L\from \RNr[2]\to \RNr[3]</latex> represented by the matrix</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+				A =
+					\left[
+					\begin{array}{rr}
+					4 & 1 \\
+					0 & 3 \\
+					1 & 2
+					\end{array}
+					\right]
+]]>
+					</latex>
+				</math.display>
+				<para>has domain <latex>\RNr[3]</latex> and target <latex>\RNr[2]</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>False.</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The linear transformation <latex>L\from \RNr[2]\to \RNr[3]</latex> represented by the matrix</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+				A =
+					\left[
+					\begin{array}{rr}
+					4 & 1 \\
+					0 & 3 \\
+					1 & 2
+					\end{array}
+					\right]
+]]>
+					</latex>
+				</math.display>
+				<para>transforms the vector <latex>\Vect{a}:=(1,-1)</latex> into the vector <latex>(3,-3,-1)</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>True.</para></answer>
+				<solution>
+					<para>We compute</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+L(\Vect{a})\ &\ 
+\left[
+					\begin{array}{rr}
+					4 & 1 \\
+					0 & 3 \\
+					1 & 2
+					\end{array}
+					\right] \left[\begin{array}{r} 1 \\ -1 \end{array}\right] \\
+& \left[\begin{array}{r} 3 \\ -3 \\ -1 \end{array}\right]
+\endaligned
+]]>
+						</latex>
+					</math.display>
+					<para>Therefore the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	<exercise>
+		<problem>
+			<para>For each of the statements below indicate if it is true or false.</para>
+		</problem>
+		<part>
+			<problem>
+				<para>If <latex>L\from \RNr[2]\to \RNr[2]</latex> is represented by the matrix</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+A =
+\left[
+\begin{array}{rr}
+4 & -1 \\
+2 & 6
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>Then <latex>L(1,0) = (4,2)</latex></para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>We compute</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+L(1,0)\ =\ 
+\left[
+\begin{array}{rr}
+4 & -1 \\
+2 & 6
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+1 \\ 0
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{r}
+4 \\ 2
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Therefore the statement in question is true.</para>
+					<para>Note that <latex>(1,0)=\StdBss{1}</latex> is the first standard basis vector of <latex>\RNr[2]</latex>. Therefore the matrix <latex>\Mtrx{A}</latex> representing <latex>L</latex> transforms it into the first column vector of <latex>\Mtrx{A}</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>L\from \RNr[2]\to \RNr[2]</latex> is represented by the matrix</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+A =
+\left[
+\begin{array}{rr}
+4 & -1 \\
+2 & 6
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>Then <latex>L(1,0) = (4,-1)</latex></para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+				<solution.hint><para>Review the solution of part a) and, in particular, the comment at its end.</para></solution.hint>
+				<solution>
+					<para>We compute</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+L(1,0)\ =\ 
+\left[
+\begin{array}{rr}
+4 & -1 \\
+2 & 6
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+1 \\ 0
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{r}
+4 \\ 2
+\end{array}
+\right] \neq
+\left[
+\begin{array}{r}
+4 \\ -1
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Therefore the statement in question is false.</para>
+					<para>Quicker: <latex>L(\StdBss{1})</latex> is the first column vector of the representing matrix <latex>\Mtrx{A}</latex>. So we see by comparison of the proposed vector <latex>(4,-1)</latex> with the first column vector of <latex>\Mtrx{A}</latex> that the statement in question is false.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>L\from \RNr[2]\to \RNr[2]</latex> is represented by the matrix</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+A =
+\left[
+\begin{array}{rr}
+4 & -1 \\
+2 & 6
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>Then <latex>L(1,0) = (-1,6)</latex></para>
+			</problem>
+			<approach>
+				<answer><para>False!</para></answer>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>L\from \RNr[2]\to \RNr[2]</latex> is represented by the matrix</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+A =
+\left[
+\begin{array}{rr}
+4 & -1 \\
+2 & 6
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>Then <latex>L(1,1) = (3,8)</latex></para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+				<solution>
+					<para>We compute</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+L(1,0)\ =\ 
+\left[
+\begin{array}{rr}
+4 & -1 \\
+2 & 6
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+1 \\ 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{r}
+3 \\ 8
+\end{array}
+\right]
+]]>
+						</latex>
+					</math.display>
+					<para>Therefore the statement in question is true.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>If <latex>L\from \RNr[2]\to \RNr[2]</latex> is represented by the matrix</para>
+				<math.display>
+					<latex>
+						<![CDATA[
+A =
+\left[
+\begin{array}{rr}
+4 & -1 \\
+2 & 6
+\end{array}
+\right]
+]]>
+					</latex>
+				</math.display>
+				<para>Then <latex>L(0,1) = (-1,6)</latex></para>
+			</problem>
+			<approach>
+				<answer><para>True!</para></answer>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para> For the matrices <latex>\Mtrx{A}</latex> below find the coordinate description of the corresponding linear map.</para>
+		</problem>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+A = \left[\begin{array}{rrr}
+-2 & 1 & 0
+\end{array}\right]
+					]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<math.display><latex>L\from \RNr[3] \longrightarrow \RNr,\quad L(x,y,z) = -2x + y</latex></math.display>
+				</answer>
+				<solution>
+					<para>As <latex>\Mtrx{A}</latex>  is a matrix of size <latex>(1,3)</latex>, the linear transfomration represented by it is a map <latex>L\from \RNr[3]\to \RNr</latex>. The effect of <latex>L</latex> on a vector <latex>\Vect{x}=(x,y,z)</latex> of <latex>\RNr[3]</latex> is given by</para>
+					
+					<computation>
+						<left>L(\Vect{x})</left>
+						<center>=</center>
+						<right>\Mtrx{A}\cdot \Vect{x}</right>
+						<left>L(x,y,z)</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[\begin{array}{rrr}
+-2 & 1 & 0
+\end{array}\right] \cdot 
+\left[\begin{array}{r}
+x \\ y \\ z
+\end{array}\right]
+					]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							[-2x + y]
+						</right>
+					</computation>
+					
+					<para>Therefore,</para>
+					<math.display>
+						<latex>L\from \RNr[3] \longrightarrow \RNr,\quad L(x,y,z) = -2x + y</latex>
+					</math.display>
+					
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+A = \left[\begin{array}{r}
+3 \\ -1 \\ \pi \\ 4
+\end{array}\right]
+					]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>\Mtrx{A}</latex> determines the linear map <latex>T\from \RNr \to \RNr[4]</latex> with</para>
+					<computation>
+						<left>T(x)</left>
+						<center>=</center>
+						<right>(3x, -x , \pi x , 4x )</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>The given matrix has size <latex>(4,1)</latex>. So it represents a linear map</para>
+					<math.display>
+						<latex>L\from \RNr[1] \longrightarrow \RNr[4]</latex>
+					</math.display>
+					<para>To find <latex>L(t)</latex> for a number <latex>t</latex> in <latex>\RNr[1]</latex> we compute</para>
+					<computation>
+						<left>L(t)</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[\begin{array}{r}
+3 \\ -1 \\ \pi \\ 4
+\end{array}\right] [t]
+					]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[\begin{array}{r}
+3t \\ -t \\ \pi\cdot t \\ 4t
+\end{array}\right]
+					]]>
+						</right>
+					</computation>
+					<para>Therefore <latex>L(t) = (3t,-t,\pi\cdot t,4t)</latex></para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+A = \left[\begin{array}{rr}
+a & b \\
+c & d
+\end{array}\right]
+					]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>\Mtrx{A}</latex> determines the linear map <latex>U\from \RNr[2] \to \RNr[2]</latex> with</para>
+					<computation>
+						<left>U(x,y)</left>
+						<center>=</center>
+						<right>(ax + by, cx+dy)</right>
+					</computation>
+				</answer>
+				<solution>
+					<para>The given matrix has size <latex>(2,2)</latex>. So it represents a linear map</para>
+					<math.display>
+						<latex>T\from \RNr[2] \longrightarrow \RNr[2].</latex>
+					</math.display>
+					<para>To find its transformation effect on a vector <latex>(u,v)</latex> in <latex>\RNr[2]</latex>, we compute</para>
+					<computation>
+						<left>L(u,v)</left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[\begin{array}{rr}
+a & b \\
+c & d
+\end{array}\right]
+\left[\begin{array}{c}
+u \\ v
+\end{array}\right]
+					]]>
+						</right>
+						<left></left>
+						<center>=</center>
+						<right>
+							<![CDATA[
+\left[\begin{array}{c}
+au + bv \\
+cu + dv
+\end{array}\right]
+					]]>
+						</right>
+					</computation>
+					<para>Therefore, <latex>T(u,v) = (au+bv,cu+dv)</latex></para>
+				</solution>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+\Mtrx{A} = \left[\begin{array}{rrr}
+2 & 1 & -1 \\
+1 & 2 & -3 \\
+1 & 0 & 1
+\end{array}\right]
+					]]>
+					</latex>
+				</math.display>
+			</problem>
+			<approach>
+				<answer>
+					<para><latex>\Mtrx{A}</latex> represents a linear map <latex>L\from \RNr[3]\to \RNr[3]</latex>. It transforms a vector <latex>(x,y,z)</latex> in <latex>\RNr[3]</latex> into</para>
+					<math.display>
+						<latex>L(x,y,z) = (2x+y-z,x+2y-3z,x+z)</latex>
+					</math.display>
+				</answer>
+				<solution.hint>
+					<para>Review the solution of the previous parts of this problem.</para>
+				</solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+A = \left[\begin{array}{rrrr}
+9 & 8 & -6 & -5 \\
+-7 & -3 & 4e & 17
+\end{array}\right]
+					]]>
+					</latex>
+				</math.display>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+A = \left[\begin{array}{rrrr}
+4 & 0 & 1 & 7 \\
+6 & 0 & 9 & -2 \\
+-3 & 0 & 2 & 2
+\end{array}\right]
+					]]>
+					</latex>
+				</math.display>
+			</problem>
+		</part>
+		
+		<part>
+			<problem>
+				<math.display>
+					<latex>
+						<![CDATA[
+A = \left[\begin{array}{rr}
+5 & 1 \\
+0 & 0 \\
+-9 & 3 \\
+-8 & -7
+\end{array}\right]
+					]]>
+					</latex>
+				</math.display>
+			</problem>
+		</part>
+	</exercise>
+</exercise.pack>

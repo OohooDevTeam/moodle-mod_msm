@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack
+  SYSTEM "Symbols.dtd">
+<example.pack xmlns="Compositor"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              id="Exa_CartesianProducts"
+              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+
+	  <title>Cartesian Products Describe Rectangular Objects in <math xmlns="">
+         <latex>\RNr[n]</latex>
+      </math>
+   </title>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>The Cartesian product of the intervals  <math>
+                  <latex>[0,1]</latex>
+               </math>  and  <math>
+                  <latex>[0,2]</latex>
+               </math>  is  <math>
+                  <latex>[0,1] \times [0,2]</latex>
+               </math>  i.e. the rectangle with corners <math>
+                  <latex>(0,0), (1,0), (0,2), (1,2)</latex>
+               </math>.</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+				           <media type="image" active="0" inline="0">
+                  <img src="CrtsnPrdctR2.gif"/>
+               </media>
+			         </para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Explanation" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>The product <math>
+                        <latex>[0,1]\times [0,2]</latex>
+                     </math> consists of all pairs <math>
+                        <latex>(x,y)</latex>
+                     </math> with</para.body>
+               </para>
+			            <para align="center">
+                  <para.body>
+				                 <math>
+                        <latex>0\leq x\leq 1</latex>
+                     </math> and <math>
+                        <latex>0\leq y\leq 2</latex>
+                     </math>
+			               </para.body>
+               </para>
+			            <para>
+                  <para.body>The set of all such pairs forms the rectangle in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>with the corners listed above.</para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>The Cartesian product of the intervals  <math>
+                  <latex>[-1,2], [2,3]</latex>
+               </math>  and  <math>
+                  <latex>[0,5]</latex>
+               </math>  is  <math>
+                  <latex>[-1,2] x [2,3] x [0,5]</latex>
+               </math>  i.e. the rectangular block in <math>
+                  <latex>\RNr[3]</latex>
+               </math> with corners  <math>
+                  <latex>(-1,2,0), (-1,2,5), (-1,3,0), (-1,3,5), (2,2,0), (2,2,5), (2,3,0), (2,3,5)</latex>
+               </math>.</para.body>
+         </para>
+			      <para xmlns="" align="center">
+            <para.body>
+				           <media type="image" active="0" inline="0">
+                  <img src="CrtsnPrdctR3.gif"/>
+               </media>
+			         </para.body>
+         </para>
+		    </statement.example>
+		    <answer xmlns="" type="Explanation" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>The product <math>
+                        <latex>[-1,2]\times [2,3]\times [0,5]</latex>
+                     </math> consists of all triples <math>
+                        <latex>(x,y,z)</latex>
+                     </math> with</para.body>
+               </para>
+			            <para align="center">
+                  <para.body>
+				                 <math>
+                        <latex>-1\leq x\leq 2</latex>
+                     </math>, <math>
+                        <latex>2\leq y\leq 3</latex>
+                     </math>, and <math>
+                        <latex>0\leq z\leq 5</latex>
+                     </math>
+			               </para.body>
+               </para>
+			            <para>
+                  <para.body>The set of all such triples forms the box in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> with the corners listed above.</para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>
+				           <math>
+                  <latex>\RNr</latex>
+               </math> sits inside <math>
+                  <latex>\RNr[2]</latex>
+               </math> as <math>
+                  <latex>\RNr \times \{ 0\}</latex>
+               </math>; i.e. as the set of all ordered pairs of the form <math>
+                  <latex>(x,0)</latex>
+               </math>, with <math>
+                  <latex>x</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+	  </example>
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>
+				           <math>
+                  <latex>\RNr[2]</latex>
+               </math> sits inside <math>
+                  <latex>\RNr[3]</latex>
+               </math> as <math>
+                  <latex>\RNr[2]\times \{ 0\}</latex>
+               </math>; i.e. as the set of all triples of the form <math>
+                  <latex>(x,y,0)</latex>
+               </math> with <math>
+                  <latex>(x,y)</latex>
+               </math> in <math>
+                  <latex>\RNr[2]</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+	  </example>
+</example.pack>

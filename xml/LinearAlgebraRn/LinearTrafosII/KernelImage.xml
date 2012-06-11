@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_KernelImage">
+	<headers>
+		<full>Kernel and Image of a Linear Transformation</full>
+		<toc>Kernel and Image of a Linear Transformation</toc>
+		<short>Kernel and Image</short>
+	</headers>
+	<intro>
+		<para>When analyzing the properties of a given linear transformation <latex>L\from V\to W</latex>, there are two questions that one usually tries to answer first:</para>
+		<ul>
+			<li><para>Which vectors of <latex>V</latex> get sent to the <latex>\Vect{0}</latex>-vector of <latex>W</latex>? These vectors form the kernel of <latex>L</latex>. It coincides with the set of solutions of the system of linear equations <latex>L(\Vect{x}) = \Vect{0}</latex>.</para></li>
+			<li><para>Which vectors of <latex>W</latex> are the target of some vector of <latex>V</latex> under the transformation <latex>L</latex>? &ndash; These vectors form the image of <latex>L</latex>. It coincides with the set of vectors <latex>\Vect{y}</latex> in <latex>W</latex> for which the system of linear equations <latex>L(\Vect{x}) = \Vect{y}</latex> has a solution.</para></li>
+		</ul>
+		<para>Now choose ordered bases <latex>\EuScript{A}</latex> for <latex>V</latex> and <latex>\EuScript{B}</latex> for <latex>W</latex>. Then the linear map <latex>L</latex> is represented by the matrix <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex>, and we obtain matrix counterparts of &lsquo;kernel&rsquo; and &lsquo;image&rsquo; as in the table below:</para>
+		<table align="center" border="3" bordercolor="Maroon" cellpadding="3" cellspacing="3">
+			<row>
+				<cell><para>linear map <latex>L\from V\to W</latex></para></cell>
+				<cell><para><latex>\longleftrightarrow</latex></para></cell>
+				<cell><para>representing matrix <latex>A_{\EuScript{B}\EuScript{A}}(L)</latex></para></cell>
+			</row>
+			<row>
+				<cell><para>kernel of <latex>L</latex></para></cell>
+				<cell><para><latex>\longleftrightarrow</latex></para></cell>
+				<cell><para>null space of <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex></para></cell>
+			</row>
+			<row>
+				<cell><para>image of <latex>L</latex></para></cell>
+				<cell><para><latex>\longleftrightarrow</latex></para></cell>
+				<cell><para>column space of <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(L)</latex></para></cell>
+			</row>
+		</table>
+		<para>Details follow:</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_KernelImage">
+			<caption>Kernel / image of a linear map</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_KernelImage"/>
+				<info>
+					<caption>Explanation</caption>
+					<para>Details on the definition of &lsquo;kernel&rsquo; and &lsquo;image&rsquo;.</para>
+				</info>
+			</associate>
+			
+			<para>Let <latex>L\from V\to W</latex> be a linear map of subvector spaces of <latex>\RNr[k]</latex>.</para>
+			<ul>
+				<li><para>The kernel of <latex>L</latex> is <latex>\ker(L):=\Set{ \Vect{x} \in V \st L(\Vect{x}) = \Vect{0} }</latex>.
+					<index.glossary>
+						<term>kernel of a linear map</term>
+					</index.glossary>
+				</para></li>
+				<li>
+					<para>The image of <latex>L</latex> is
+						<index.glossary>
+							<term>image of a linear map</term>
+						</index.glossary>
+					</para>
+					<computation>
+						<left>\Img{L}</left>
+						<center>:=</center>
+						<right>\Set{ \Vect{y}\in W \st \Vect{y}=L(\Vect{x})\quad \text{for some \ } \Vect{x}\in V }</right>
+					</computation>
+				</li>
+			</ul>
+		</def>
+		<xi:include href="KernelSubspace_Thm.xml"/> 
+		<para>The image of <latex>L\from V\to W</latex> is what <latex>L</latex> transforms <latex>V</latex> into. Intuition suggests that a large kernel should result in a small image and vice versa. The following theorem confirms that this is indeed the case.</para>
+		<xi:include href="DimensionFormula_Thm.xml"/>
+		<xi:include href="DimensionFormulaRn_Thm.xml"/>
+		
+		
+		<para>The notions of kernel and image lead us to the following concepts:</para>
+		<def type="Definition" id="MonoEpiIso">
+			<caption>Monomorphism, Epimorphism, Isomorphism</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_MonoEpiIso"/>
+				<info>
+					<caption>Explanation</caption>
+					<para>An explanation of the concepts of monomorphism, epimorphism, and isomorphism.</para>
+				</info>
+			</associate>
+			
+			<para>A linear transformation <latex>L\from V\to W</latex> is called</para>
+			<ul>
+				<li><para><i>Monomorphic</i> or a <i>monomorphism</i> if <latex>\ker(L)</latex> consists only of the <latex>\Vect{0}</latex>-vector.
+					<index.glossary>
+						<term>monomorphic linear transformation</term>
+						<info><para>A linear map whose kernel consists only of the <latex>\Vect{0}</latex>-vector</para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>linear transformation</term><term>monomorphic</term>
+						<info><para>A linear map whose kernel consists only of the <latex>\Vect{0}</latex>-vector</para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>monomorphism</term>
+						<info><para>A linear map whose kernel consists only of the <latex>\Vect{0}</latex>-vector</para></info>
+					</index.glossary>
+				</para></li>
+				<li><para><i>Epimorphic</i> or an <i>epimorphism</i> if <latex>\im(L)=W</latex>.
+					<index.glossary>
+						<term>epimorphic linear transformation</term>
+						<info><para>A linear map <latex>L\from V\to W</latex> with <latex>\im(L)=W</latex></para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>linear transformation</term><term>epimorphic</term>
+						<info><para>A linear map <latex>L\from V\to W</latex> with <latex>\im(L)=W</latex></para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>epimorphism</term>
+						<info><para>A linear map <latex>L\from V\to W</latex> with <latex>\im(L)=W</latex></para></info>
+					</index.glossary>
+				</para></li>
+				<li><para><i>Isomorphic</i> or an <i>isomorphism</i> if <latex>L</latex> is both a monomorphism and an epimorphism.
+					<index.glossary>
+						<term>isomorphic linear transformation</term>
+						<info><para>A linear map <latex>L\from V\to W</latex> with <latex>\ker(L)=\Set{ \Vect{0} }</latex> and <latex>\im(L)=W</latex></para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>linear transformation</term><term>isomorphic</term>
+						<info><para>A linear map <latex>L\from V\to W</latex> with <latex>\ker(L)=\Set{ \Vect{0} }</latex> and <latex>\im(L)=W</latex></para></info>
+					</index.glossary>
+					<index.glossary>
+						<term>isomorphism</term>
+						<info><para>A linear map <latex>L\from V\to W</latex> with <latex>\ker(L)=\Set{ \Vect{0} }</latex> and <latex>\im(L)=W</latex></para></info>
+					</index.glossary>
+				</para></li>
+			</ul>
+		</def>
+		
+		<para>In order to test whether a given linear map is a monomorphism, an epimorphism, or an isomorphism, we express these three properties in terms of linear equations:</para>
+		<xi:include href="MonoEpiVectorEquation_Thm.xml"/>
+		<para>It follows that a linear isomorphism <latex>L\from V\to W</latex> has exactly one solution for each vector equation <latex>L(\Vect{x}) = \Vect{y}</latex>. We conclude:</para>
+		<xi:include href="IsomorphismInvertible_Thm.xml"/>
+		<para>We now develop another criterion to identify an invertible linear map:</para>
+		<xi:include href="InvertibilityByDimension_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_KernelImage"/>
+	</studymaterials>
+</section>

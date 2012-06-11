@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_AbsoluteValueOperation">
+	<headers>
+		<full>The Absolute Value Operation</full>
+		<toc>The Absolute Value Operation</toc>
+		<short>Absolute Value Operation</short>
+	</headers>
+	
+	<intro>
+		<para>In this section we use the ordering structure on the real number system to define the absolute value operation. We then establish its basic properties.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_AbsoluteValueR">
+			<caption>Absolute value operation on <latex>\RNr</latex></caption>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation</caption>
+					<para>Read this as: &lsquo;The absolute value of x is defined to be x if 0 is less than or equal to x, and is defined to be negative x if x is less than or equal to 0.</para>
+				</info>
+			</associate>
+			<associate Description="Explanation">
+				<info>
+					<caption>Explanation</caption>
+					<para>This definition makes sense because we know from the totality property of the ordering on <latex>\RNr</latex> that one of the two statements &lsquo;<latex>0\leq x</latex>&rsquo; and &lsquo;<latex>x\leq 0</latex>&rsquo; always applies. Moreover, we proved that, if <latex>x\leq 0</latex>, then <latex>0\leq -x</latex>. So <latex>0\leq \Abs{x}</latex> always.</para>
+				</info>
+			</associate>
+			<associate Description="Comment">
+				<info>
+					<caption>Comment</caption>
+					<para>Notice that we do not require a new assumption in the form of an axiom to introduce the absolute value of a real number. Rather this is a construction which can be performed based on axioms and properties discussed earlier.</para>
+				</info>
+			</associate>
+			<para>The absolute value, or norm, of <latex>x\in \RNr</latex> is
+				<index.glossary>
+					<term>absolute valued</term><term>of a number in <latex>\RNr</latex></term>
+					<info>
+						<para>The absolute value, or norm, of <latex>x\in \RNr</latex> is
+							<index.glossary>
+								<term>absolute value of <latex>x\in \RNr</latex></term>
+							</index.glossary>
+							<index.glossary>
+								<term>norm of <latex>x\in \RNr</latex></term>
+							</index.glossary>
+							<index.symbol>
+								<symbol><latex>\Abs{x}</latex></symbol>
+								<info><para>The absolute value of <latex>x\in \RNr</latex></para></info>
+							</index.symbol>
+						</para>
+						<math.display>
+							<latex>
+								<![CDATA[
+\Abs{x}\ :=\ \left\{
+\aligned
+x &\quad \text{if $0\leq x$} \\
+-x &\quad \text{if $x\leq 0$}
+\endaligned
+\right.
+]]>
+							</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Abs{x}\ :=\ \left\{
+\aligned
+x &\quad \text{if $0\leq x$} \\
+-x &\quad \text{if $x\leq 0$}
+\endaligned
+\right.
+]]>
+				</latex>
+			</math.display>
+		</def>
+		<para>Let us now establish the most basic properties of the absolute value operation.</para>
+		<xi:include href="NormProperties_Thm.xml"/>
+	</section.body>
+</section>

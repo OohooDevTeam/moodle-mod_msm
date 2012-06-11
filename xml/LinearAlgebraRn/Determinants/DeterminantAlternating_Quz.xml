@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE quiz.pack	SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Qz_DeterminantAlternating">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Quiz on the Alternating Property of Determinants</title>
+	
+	
+	<quiz>
+		<question>
+			<para>Which of the determinants below have opposite signs?</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+a)\quad \det\ \left[
+\begin{array}{rrrr}
+0 & 3 & -4 & 1 \\
+6 & 12 & 2 & 2 \\
+-1 & 3 & 2 & -1 \\
+4 & -2 & 7 & 6
+\end{array}\right]  \quad &b)\quad
+\det\  
+\left[
+\begin{array}{rrrr}
+0 & 1 & 3 & -3 \\
+6 & 2 & 12 & 2 \\
+-1 & -1 & 3 & 2 \\
+4 & 6 & -2 & 7
+\end{array}
+\right] \\
+c)\quad \det\ \left[
+\begin{array}{rrrr}
+3 & 1 & 0 & -4 \\
+12 & 2 & 6 & 2 \\
+3 & -1 & -1 & 2 \\
+-2 & 6 & 4 & 7
+\end{array}\right]  \quad &d)\quad
+\det\  
+\left[
+\begin{array}{rrrr}
+0 & -4 & 3 & 1 \\
+6 & 2 & 12 & 2 \\
+-1 & 2 & 3 & -1 \\
+4 & 7 & -2 & 6
+\end{array}
+\right]
+\endaligned
+]]>
+				</latex>
+			</math.display>
+		</question>
+		
+		<choice>
+			<answer><para>a) and (b)</para></answer>
+			<info><para>Sorry! No.</para></info>
+		</choice>
+		<choice>
+			<answer><para>a) and d)</para></answer>
+			<info><para>Yes! &ndash; The matrix in d) results from the matrix in a) by interchanging the second and the third columns. Therefore the determinants have opposite signs.</para></info>
+		</choice>
+		<choice>
+			<answer><para>c) and d)</para></answer>
+			<info><para>Sorry, no!</para></info>
+		</choice>
+		<choice>
+			<answer><para>b) and d)</para></answer>
+			<info><para>Yes! &ndash; The matrix in d) results from the matrix in b) by interchanging the second and the fourth columns. Therefore the determinants have opposite signs.</para></info>
+		</choice>
+		<choice>
+			<answer><para>a) and c)</para></answer>
+			<info><para>Yes! The matrix in c) results from the matrix in a) through three column interchanges: e.g. (1 and 3), then (1 and 4), then (1 and 2). Therefore the determinants have opposite signs.</para></info>
+		</choice>
+		<choice>
+			<answer><para>b) and c)</para></answer>
+			<info><para>Yes! The matrix in c) results from the matrix in b) by interchanging columns (1 and 3). Therefore the determinants have opposite signs.</para></info>
+		</choice>
+		<part>
+			<question><para>Which of the determinants above are equal?</para></question>
+			<choice>
+				<answer><para>a) and b)</para></answer>
+				<info><para>Yes! The matrix in b) results from the matrix in a) through 2 interchanges of columns: e.g. (3 and 4), then (2 and 3). Therefore the two determinants are equal.</para></info>
+			</choice>
+			<choice>
+				<answer><para>b) and c)</para></answer>
+				<info><para>Sorry, no!</para></info>
+			</choice>
+			<choice>
+				<answer><para>c) and d)</para></answer>
+				<info><para>Yes! The matrix in d) results from the matrix in c) through two interchanges of columns: e.g. (1 and 3), then (2 and 4). Therefore the determinants are equal.</para></info>
+			</choice>
+		</part>
+	</quiz>
+	
+	
+	
+	<quiz>
+		<question><para>Evaluate the following determinants efficiently using the alternating property.</para></question>
+		<part>
+			<question><math.display>
+				<latex>
+					<![CDATA[
+\det\ 
+\left[
+\begin{array}{cccc}
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			</question>
+			<choice>
+				<answer><para>5</para></answer>
+				<info><para>Sorry, no! &ndash; This cannot be because, after a suitable interchange of columns this matrix can be converted into the identity matrix. Therefore the determinant must be <latex>+1</latex> or <latex>-1</latex>, depending on whether the number of column interchanges needed is even or odd.</para></info>
+			</choice>
+			<choice>
+				<answer><para>1</para></answer>
+				<info><para>Sorry, no!</para></info>
+			</choice>
+			<choice>
+				<answer><para>-1</para></answer>
+				<info>
+					<para>Yes! After three column interchanges (e.g. (1 and 2), then (3 and 4), then (2 and 3)) this matrix turns into the identity matrix. Therefore its determinant is <latex>-1</latex>.</para>
+				</info>
+			</choice>
+		</part>
+		<part>
+			<question><math.display>
+				<latex>
+					<![CDATA[
+\det\ 
+\left[
+\begin{array}{ccc}
+0 & 2 & 3 \\
+5 & 0 & 7 \\
+1 & 0 & 0
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			</question>
+			<choice>
+				<answer><para><latex>-14</latex></para></answer>
+				<info><para>Sorry, no! &ndash; You are on the right track though. Just count the number of column interchanges needed correctly.</para></info>
+			</choice>
+			<choice>
+				<answer><para><latex>14</latex></para></answer>
+				<info>
+					<para>Yes! Interchanging the columns (1 and 2), then (2 and 3) turns the given matrix into an upper triangular matrix. Its determinant is the product of the diagonal entries: <latex>2\cdot 7\cdot 1 = 14</latex>. Since two column interchanges were needed, no sign correction is required. Hence the result.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para><latex>0</latex></para></answer>
+				<info><para>Sorry, no!</para></info>
+			</choice>
+		</part>
+		
+		
+		<part>
+			<question><math.display>
+				<latex>
+					<![CDATA[
+\det\ 
+\left[
+\begin{array}{rrrr}
+-3 & 2 & 1 & -7 \\
+11 & 6 & -1 & 0 \\
+0 & -1 & -2 & 0 \\
+0 & 0 & 1 & 0
+\end{array}
+\right]
+					]]>
+				</latex>
+			</math.display>
+			</question>
+			<choice>
+				<answer><para><latex>-66</latex></para></answer>
+				<info><para>Sorry, no! &ndash; You computed the sign correctly. However, in turning the given matrix into an upper triangular matrix, you made an error in identifying and multiplying the diagonal entires.</para></info>
+			</choice>
+			<choice>
+				<answer><para><latex>-77</latex></para></answer>
+				<info>
+					<para>Yes! This matrix turns into an upper triangular matrix, e.g. by interchanging columns (1 and 4), then (2 and 4), then (3 and 4). The product of the resulting diagonal entries is <latex>(-7)\cdot 11\cdot (-1)\cdot 1 = 77</latex>. Three column interchanges result in a factor of <latex>(-1)^3=-1</latex>, hence the result.</para>
+				</info>
+			</choice>
+			<choice>
+				<answer><para><latex>7</latex></para></answer>
+				<info><para>Sorry, no! &ndash; You are very close to the right answer though. Just count the number of column interchanges you performed correctly.</para></info>
+			</choice>
+		</part>
+	</quiz>
+</quiz.pack>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_EquivalentHyperplanes"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	  <title>Equivalent Hyperplanes - Examples</title>
+	  <caption xmlns="">Equivalent Hyperplanes - Examples</caption>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the equations below are equivalent.</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>2x + 3y - z</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>1</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>4x + 6y - 2z</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>2</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We notice that multiplying the first equation by <math>
+                        <latex>2</latex>
+                     </math> yields the second equation. So each solution of one of these equations is also a solution of the other. Therefore their solution sets form the same hyperplane in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>: the hyperplane perpendicular to <math>
+                        <latex>\Vect{n}:=(2,3,-1)</latex>
+                     </math> passing through <math>
+                        <latex>(0,0,-1)</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine if the equations below are equivalent.</para.body>
+         </para>
+			      <math.array xmlns="" column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>3s + 4t -u+v</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>1</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>9s + 12t - 3u + 3v</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <text>=</text>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>5</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We notice that multiplying the left hand side of the first equation by <math>
+                        <latex>3</latex>
+                     </math> yields the left hand side of the second equation. However, multiplying the right hand side of the first equation by <math>
+                        <latex>3</latex>
+                     </math> yields <math>
+                        <latex>3\neq 5</latex>
+                     </math>. Therefore it is not the case that one equation is a nonzero multiple of the other: the equations are not equivalent.</para.body>
+               </para>
+			            <para>
+                  <para.body>So </para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

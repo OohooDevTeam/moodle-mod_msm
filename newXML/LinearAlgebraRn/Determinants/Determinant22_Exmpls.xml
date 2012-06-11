@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Determinant22"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>(2,2)-Determinants: Examples</title>
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the determinant of the <math>
+                  <latex>(2,2)</latex>
+               </math>-matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{A} = 
+\left[
+\begin{array}{cc}
+3 &amp; 1 \\
+5 &amp; 7
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <math.display>
+				              <latex>
+					
+\det\, \left[
+\begin{array}{cc}
+{\color{red} 3} &amp; 1 \\
+{\color{red} 5} &amp; 7
+\end{array}
+\right]\ =\ {\color{red} 3}\cdot 7 - {\color{red} 5}\cdot 1\ =\ 16.
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the determinant of the <math>
+                  <latex>(2,2)</latex>
+               </math>-matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{B} = 
+\left[
+\begin{array}{rr}
+-4 &amp; 9 \\
+-1 &amp; -5
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <math.display>
+				              <latex>
+					
+\det\, \left[
+\begin{array}{rr}
+{\color{red} -4} &amp; 9 \\
+{\color{red} -1} &amp; -5
+\end{array}
+\right]\ =\ {\color{red} (-4)}\cdot (-5) - {\color{red} (-1)}\cdot 9 = 29
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the determinant of the <math>
+                  <latex>(2,2)</latex>
+               </math>-matrix</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+\Mtrx{C} = 
+\left[
+\begin{array}{rr}
+1 &amp; a \\
+b &amp; 3
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <math.display>
+				              <latex>
+					
+\det\, \left[
+\begin{array}{rr}
+{\color{red} 1} &amp; a \\
+{\color{red} b} &amp; 3
+\end{array}
+\right]\ =\ {\color{red} 1}\cdot 3 - {\color{red} b}\cdot a = 3 - ab
+
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

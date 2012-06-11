@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_InvertibleMapsComposition">
+	<caption>Composition of invertible linear maps</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation for the conclusion of this proposition</caption>
+			<para>Conceptually the conclusion of this proposition is quite transparent: If we want to reverse the effect of the composite <latex>(T\Comp S)</latex>, we can do so by first reversing the effect of <latex>T</latex>, using <latex>T^{-1}</latex>, and then reversing the effect of <latex>S</latex>, using <latex>S^{-1}</latex>. In other words:</para>
+			<math.display>
+				<latex>S^{-1}\Comp T^{-1} \Comp T\Comp S = \Id[n]</latex>
+			</math.display>
+			<para>Hence the claim.</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>If <latex>S,T\from \RNr[n]\to \RNr[n]</latex> are invertible linear transformations, then <latex>(T\Comp S)</latex> is also invertible and</para>
+		<math.display>
+			<latex>(T\Comp S)^{-1} = S^{-1}\Comp T^{-1}</latex>
+		</math.display>
+	</statement>
+	
+	<proof>
+		<para>We need to show that the composite <latex>S^{-1}\Comp T^{-1}</latex> is the inverse of <latex>(T\Comp S)</latex>. To this end we compute:</para>
+		
+		<computation>
+			<left>(S^{-1}\Comp T^{-1})\Comp (T\Comp S)</left>
+			<center>=	<info><para>Here we use the associate law of composition of functions <latex>f,g,h</latex></para>
+				<math.display>
+					<latex>h\Comp (g\Comp f) = (h\Comp g)\Comp f</latex>
+				</math.display>
+			</info></center>
+			<right>S^{-1}\Comp (T^{-1}\Comp T)\Comp S</right>
+			<left></left>
+			<center>=</center>
+			<right>S^{-1}\Comp \Id[n]\Comp S</right>
+			<left></left>
+			<center>=</center>
+			<right>S^{-1}\Comp S</right>
+			<left></left>
+			<center>=</center>
+			<right>\Id[n]</right>
+		</computation>
+		
+		<para>and</para>
+		
+		<computation>
+			<left>(T\Comp S)\Comp (S^{-1}\Comp T)</left>
+			<center>=	<info><para>Here we use the associate law of composition of functions <latex>f,g,h</latex></para>
+				<math.display>
+					<latex>h\Comp (g\Comp f) = (h\Comp g)\Comp f</latex>
+				</math.display>
+			</info></center>
+			<right>T\Comp (S\Comp S^{-1})\Comp T^{-1}</right>
+			<left></left>
+			<center>=</center>
+			<right>T\Comp \Id[n]\Comp T^{-1}</right>
+			<left></left>
+			<center>=</center>
+			<right>T\Comp T^{-1}</right>
+			<left></left>
+			<center>=</center>
+			<right>\Id[n]</right>
+		</computation>
+		
+		<para>This proves the claim.</para>
+	</proof>
+</theorem>

@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_GeometricallySolve1"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Solving Linear Equations Geometrically - Self Test</title>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>About the equation</para.body>
+            </para>
+			         <math.display>
+				           <latex>(E)\qquad 2x - 3y^2 = 1</latex>
+			         </math.display>
+			         <para>
+               <para.body>decide if the following statements are true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(1,2)</latex>
+                     </math> is a solution of (E)</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(1,2)</latex>
+                           </math> is not a solution of <math>
+                              <latex>(E)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>You need to test if setting <math>
+                        <latex>x:=1</latex>
+                     </math> and <math>
+                        <latex>y:=2</latex>
+                     </math> renders equation (E) true.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We need to test if setting <math>
+                           <latex>x:=1</latex>
+                        </math> and <math>
+                           <latex>y:=2</latex>
+                        </math> renders equation (E) true:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2\cdot 1 - 3\cdot (2^2)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>\overset{?}{=}</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2\ -\ 12</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>\overset{?}{=}</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Visibly, this is not true. So <math>
+                           <latex>(1,2)</latex>
+                        </math> is not a solution of <math>
+                           <latex>(E)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(2,1)</latex>
+                     </math> is a solution of (E).</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(2,1)</latex>
+                           </math> is a solution of <math>
+                              <latex>(E)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+               <para>
+                  <para.body>You need to test if setting <math>
+                        <latex>x:=2</latex>
+                     </math> and <math>
+                        <latex>y:=1</latex>
+                     </math> renders equation (E) true.</para.body>
+               </para>
+            </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We need to test if setting <math>
+                           <latex>x:=1</latex>
+                        </math> and <math>
+                           <latex>y:=2</latex>
+                        </math> renders equation (E) true:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2\cdot 2 - 3\cdot (1^2)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>\overset{?}{=}</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>4\ -\ 1</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>\overset{?}{=}</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This is not true. So <math>
+                           <latex>(2,1)</latex>
+                        </math> is a solution of <math>
+                           <latex>(E)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(3,4)</latex>
+                     </math> is a solution of (E).</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(3,4)</latex>
+                           </math> is not a solution of <math>
+                              <latex>(E)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(4,3)</latex>
+                     </math> is a solution of (E).</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(4,3)</latex>
+                           </math> is not a solution of <math>
+                              <latex>(E)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(14,3)</latex>
+                     </math> is a solution of (E).</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes, <math>
+                              <latex>(14,3)</latex>
+                           </math> is a solution of <math>
+                              <latex>(E)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(16,-3)</latex>
+                     </math> is a solution of (E).</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>(16,-3)</latex>
+                           </math> is not a solution of <math>
+                              <latex>(E)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>If <math>
+                        <latex>(s,t)</latex>
+                     </math> is a solution of (E), so is <math>
+                        <latex>(s,-t)</latex>
+                     </math>.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is true.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>To test this statement we substitute <math>
+                           <latex>x:=s</latex>
+                        </math> and <math>
+                           <latex>y:=-t</latex>
+                        </math> and compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2\cdot s - 3\cdot (-t)^2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>\overset{?}{=}</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>2\cdot s - 3\cdot t^2</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>\overset{?}{=}</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Now we see that this identity is true because we are told that <math>
+                           <latex>(s,t)</latex>
+                        </math> is a solution of (E).</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>You are given a system of three linear equations in two variables:</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\aligned
+(E1) &amp;\qquad a_1x + b_1y &amp;= c_1 \\
+(E2) &amp;\qquad a_2x + b_2y &amp;= c_2 \\
+(E3) &amp;\qquad a_3x + b_3y &amp;= c_3
+\endaligned
+					
+				</latex>
+			         </math.display>
+			         <para>
+               <para.body>Suppose <math>
+                     <latex>a_{1},b_{1}</latex>
+                  </math> are not simultaneously <math>
+                     <latex>0</latex>
+                  </math>, <math>
+                     <latex>a_{2},b_{2}</latex>
+                  </math> are not simultaneously <math>
+                     <latex>0</latex>
+                  </math>, and <math>
+                     <latex>a_{3},b_{3}</latex>
+                  </math>, are not simultaneously <math>
+                     <latex>0</latex>
+                  </math>. For each of the following statements indicate if it is true or false?</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>The solution set of each equation by itself is a line in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The solution set of each equation is a line in <math>
+                              <latex>\RNr[2]</latex>
+                           </math>.   This is a fundamental fact about linear equations in two variables.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A point <math>
+                        <latex>P</latex>
+                     </math> is a solution of the system if it is a solution of exactly one of the equations <math>
+                        <latex>(E1)</latex>
+                     </math>, or <math>
+                        <latex>(E2)</latex>
+                     </math>, or <math>
+                        <latex>(E3)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>This is false in general.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>If a point <math>
+                           <latex>P</latex>
+                        </math> in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> solves this system of equations exactly when it solves all three of the equations. But then it fails to solve exactly one of the equations. Therefore the given statement is false, in general.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>	
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A point <math>
+                        <latex>P</latex>
+                     </math> is a solution of the system if it is a solution of at least one of the equations <math>
+                        <latex>(E1)</latex>
+                     </math>, <math>
+                        <latex>(E2)</latex>
+                     </math>, or <math>
+                        <latex>(E3)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>This is false, in general.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>If a point <math>
+                           <latex>P</latex>
+                        </math> in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> solves at least one of the given equations, it is still possible that <math>
+                           <latex>P</latex>
+                        </math> solves only this one equation, and none of the others. Consequently, <math>
+                           <latex>P</latex>
+                        </math> is not a simultaneous solution of the given system of linear equations. Therefore the given statement is false, in general.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>A point <math>
+                        <latex>p</latex>
+                     </math> is a solution of the system if it is a solution of each of the equations <math>
+                        <latex>(E1)</latex>
+                     </math>, <math>
+                        <latex>(E2)</latex>
+                     </math>, or <math>
+                        <latex>(E3)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+            <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is correct!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+         </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(a_3,b_3)=t(a_1,b_1)</latex>
+                     </math> and <math>
+                        <latex>c_3=tc_1</latex>
+                     </math>, for some <math>
+                        <latex>t</latex>
+                     </math>, then the system has no solution.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is not true in general.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Under the stated conditions <math>
+                           <latex>(E1)</latex>
+                        </math> and <math>
+                           <latex>(E3)</latex>
+                        </math> have the same line of solutions. So, if <math>
+                           <latex>(a_2,a_3)</latex>
+                        </math> is not parallel to <math>
+                           <latex>(a_1,a_2)</latex>
+                        </math>, then the given system has exactly one solution in <math>
+                           <latex>\RNr[2]</latex>
+                        </math>. Therefore, the statement in question is false in general.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(a_3,b_3)=t(a_1,b_1)</latex>
+                     </math> and <math>
+                        <latex>c_3\neq tc_1</latex>
+                     </math>, for some <math>
+                        <latex>t</latex>
+                     </math>, then the system has no solution.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Under the stated conditions <math>
+                           <latex>(E1)</latex>
+                        </math> and <math>
+                           <latex>(E3)</latex>
+                        </math> have parallel and distinct lines of solutions. In other words, <math>
+                           <latex>(E1)</latex>
+                        </math> and <math>
+                           <latex>(E2)</latex>
+                        </math> have no simultaneous solutions and, therefore, <math>
+                           <latex>(E1)</latex>
+                        </math>, <math>
+                           <latex>(E2)</latex>
+                        </math>, and <math>
+                           <latex>(E3)</latex>
+                        </math> have no simultaneous solutions. – Therefore the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(a_3,b_3)\neq t(a_1,b_1)</latex>
+                     </math> for all <math>
+                        <latex>t</latex>
+                     </math>, then the system has no solution.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is not true in general.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Under the stated conditions <math>
+                           <latex>(E1)</latex>
+                        </math> and <math>
+                           <latex>(E3)</latex>
+                        </math> have exactly one simultaneous solution. It is now possible that this solution also solves <math>
+                           <latex>(E2)</latex>
+                        </math>. – Therefore the statement in questions is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>(a_3,b_3)\neq t(a_1,b_1)</latex>
+                     </math> for all <math>
+                        <latex>t</latex>
+                     </math>, then the system has exactly one solution.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>This is not true in general.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Under the stated conditions <math>
+                           <latex>(E1)</latex>
+                        </math> and <math>
+                           <latex>(E3)</latex>
+                        </math> have exactly one simultaneous solution. It is now possible that this solution does not solve <math>
+                           <latex>(E2)</latex>
+                        </math>. – Therefore the statement in questions is false, in general.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

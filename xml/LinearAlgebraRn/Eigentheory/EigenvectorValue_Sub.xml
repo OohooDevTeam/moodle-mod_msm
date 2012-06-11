@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="EigenvectorValue_Sub">
+	<title>Eigenvector - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>In the picture below <latex>\Vect{v}</latex> is an eigenvector of the linear transformation <latex>L</latex> (the transformation described by an <latex>(n,n)</latex>-matrix <latex>\Mtrx{A}</latex>) because</para>
+			<ul>
+				<li><para><latex>\Vect{v} \neq \Vect{0}</latex>, and</para></li>
+				<li><para><latex>L(\Vect{v})</latex> is a scalar multiple of <latex>\Vect{v}</latex>.</para></li>
+			</ul>
+			<figure>
+				<img src="ims/EigenLine.png"></img><!-- svg available -->
+			</figure>
+		</block>
+		<block>
+			<para>On the other hand, <latex>\Vect{w}</latex> is not an eigenvector of <latex>L</latex>: <latex>L(\Vect{w})</latex> is linearly independent of <latex>\Vect{w}</latex>, hence cannot be a scalar multiple of <latex>\Vect{w}</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_ROrderingProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Further properties of <math>
+         <latex>(\RNr,+,\cdot,\leq)</latex>
+      </math>
+   </caption>
+   <statement.theorem>
+      <para>
+         <para.body>The following hold:</para.body>
+      </para>
+      <part.theorem partid="PositiveOrNegative">
+         <part.body>
+            <para>
+               <para.body>For every <math>
+                     <latex>x\in \RNr</latex>
+                  </math> exactly one of the following applies: ‘<math>
+                     <latex>x</latex>
+                  </math> is positive’, ‘<math>
+                     <latex>x=0</latex>
+                  </math>’, ‘<math>
+                     <latex>x</latex>
+                  </math> is negative’.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="PositiveToNegative">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>x\in \RNr</latex>
+                  </math> is positive if and only if <math>
+                     <latex>(-x)</latex>
+                  </math> is negative.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="SumComparison">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex> a &lt; b </latex>
+                  </math> and <math>
+                     <latex> x &lt; y </latex>
+                  </math>, then <math>
+                     <latex> a+x &lt; b+y </latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="TimesPositiveComparison">
+         <part.body>
+            <para>
+               <para.body>For <math>
+                     <latex> 0&lt; x </latex>
+                  </math> and <math>
+                     <latex>a,b\in \RNr</latex>
+                  </math> arbitrary,  <math>
+                     <latex> a &lt; b </latex>
+                  </math> if and only if <math>
+                     <latex> ax &lt; bx </latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="TimesNegativeComparison">
+         <part.body>
+            <para>
+               <para.body>For <math>
+                     <latex> x&lt; 0 </latex>
+                  </math> and <math>
+                     <latex>a,b\in \RNr</latex>
+                  </math> arbitrary,  <math>
+                     <latex> a &lt; b </latex>
+                  </math> if and only if <math>
+                     <latex> ax &gt; bx </latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="MultiplicativeInversion">
+         <part.body>
+            <para>
+               <para.body>For <math>
+                     <latex> 0 &lt; x,y </latex>
+                  </math>, <math>
+                     <latex> x&lt;y </latex>
+                  </math> if and only if <math>
+                     <latex> 1/y &lt; 1/x </latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="InequalityTimesInequality">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex> 0 &lt; a &lt; b </latex>
+                  </math> and <math>
+                     <latex> 0 &lt; x &lt; y </latex>
+                  </math>, then <math>
+                     <latex> ax &lt; by </latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="PositiveSquare">
+         <part.body>
+            <para>
+               <para.body>For all <math>
+                     <latex>0\neq x\in \RNr</latex>
+                  </math>, <math>
+                     <latex> 0 &lt; x^2 </latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="ZeroLessOne">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex> 0 &lt; 1 </latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>PositiveOrNegative</part.ref>
+         </logic>
+         <caption>PositiveOrNegative</caption>
+         <proof.block.body>
+            <para>
+               <para.body>This follows from the total ordering structure on <math>
+                     <latex>\RNr</latex>
+                  </math>: If <math>
+                     <latex>x=0</latex>
+                  </math>, there is nothing left to show. Given <math>
+                     <latex>0\neq x\in \RNr</latex>
+                  </math>, we know that <math>
+                     <latex> 0 &lt; x </latex>
+                  </math> or <math>
+                     <latex> x &lt; 0 </latex>
+                  </math>. Both can not be true simultaneously by the antisymmetry property of ‘<math>
+                     <latex>\leq</latex>
+                  </math>’. But in the former case, <math>
+                     <latex>x</latex>
+                  </math> is positive, while in the latter case <math>
+                     <latex>x</latex>
+                  </math> is negative.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>PositiveToNegative</part.ref>
+         </logic>
+         <caption>PositiveToNegative</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>x</latex>
+                  </math> is positive, then <math>
+                     <latex> 0 &lt; x </latex>
+                  </math>. But then</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>SumComparison</part.ref>
+         </logic>
+         <caption>SumComparison</caption>
+         <proof.block.body>
+            <para>
+               <para.body>From the axiom expressing compatibility of addition with the ordering relation in <math>
+                     <latex>\RNr</latex>
+                  </math> we get</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>TimesPositiveComparison</part.ref>
+         </logic>
+         <caption>TimesPositiveComparison</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Consider first the case where <math>
+                     <latex> a&lt;b </latex>
+                  </math>. We need to show that <math>
+                     <latex> ax &lt; bx </latex>
+                  </math>. We get <math>
+                     <latex> 0 &lt; b-a </latex>
+                  </math> from the axiom that says addition is compatible with ordering relation. Further, the axiom which says that multiplication is compatible with the ordering relation gives</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>TimesNegativeComparison</part.ref>
+         </logic>
+         <caption>TimesNegativeComparison</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Consider first the situation where <math>
+                     <latex> a&lt;b </latex>
+                  </math>. We need to show that <math>
+                     <latex> ax &gt; bx </latex>
+                  </math>. If <math>
+                     <latex>x</latex>
+                  </math> is negative, then <math>
+                     <latex>(-x)</latex>
+                  </math> is positive. Now the inequality <math>
+                     <latex> 0&lt; b-a </latex>
+                  </math> gives</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>MultiplicativeInversion</part.ref>
+         </logic>
+         <caption>MultiplicativeInversion</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex> 0&lt;x&lt;y </latex>
+                  </math>, <math>
+                     <latex> 0&lt;1/(xy) </latex>
+                  </math> and, therefore</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>InequalityTimesInequality</part.ref>
+         </logic>
+         <caption>InequalityTimesInequality</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Multiplying the inequality <math>
+                     <latex> a&lt;b </latex>
+                  </math> by the positive <math>
+                     <latex>x</latex>
+                  </math>, we infer with the previous part</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>PositiveSquare</part.ref>
+         </logic>
+         <caption>PositiveSquare</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>x\neq 0</latex>
+                  </math> is positive, this follows from the axiom which says that multiplication is compatible with the ordering. If <math>
+                     <latex>x</latex>
+                  </math> is negative, we have <math>
+                     <latex> x &lt; 0 </latex>
+                  </math>, and
+			<subordinate>
+                     <hot>so</hot>
+                     <info>
+                        <para>
+                           <para.body>Here we use property (v).</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+               </para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>ZeroLessOne</part.ref>
+         </logic>
+         <caption>ZeroLessOne</caption>
+         <proof.block.body>
+            <para>
+               <para.body>By axiom, <math>
+                     <latex>0\neq 1</latex>
+                  </math>. So we just learned that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

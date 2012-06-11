@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_LinearMapMatrix">
+	<headers>
+		<full>Linear Transformations and Matrices</full>
+		<toc>Linear Transformations and Matrices</toc>
+		<short>Linear Maps &ndash; Matrices</short>
+	</headers>
+	
+	<intro>
+		<para>Here we introduce the concept of a linear transformation. Then we explain how every matrix determines a linear transformation. Conversely, we show that every linear transformation comes from a matrix and, moreover, that this matrix is unique.</para>
+	</intro>
+	
+	<subsection id="SubSec_LinearMaps">
+		<headers>
+			<full>Linear Transformations</full>
+			<toc>Linear Transformations</toc>
+			<short>Linear Maps</short>
+		</headers>
+		<subsection.body>
+			<def id="Def_LinearMap">
+				<caption>Linear Transformation</caption>
+				<associate Description="Explanation">
+					<subpage.ref subpageID="Expla_LinearTrafoCommutesPlusTimes"/>
+					<info>
+						<para>An explanation of the meaning of the requirements we place here on a linear transformation.</para>
+					</info>
+				</associate>
+				<para>A function <latex>L\from \RNr[n]\to \RNr[m]</latex> is called linear if it has the two properties below</para>
+				<ul>
+					<li><para><latex>L(\Vect{x}+\Vect{y}) = L(\Vect{x}) + L(\Vect{y})</latex> for all <latex>\Vect{x},\Vect{y}\in\RNr[n]</latex></para></li>
+					<li><para><latex>L(t\cdot \Vect{x}) = t\cdot L(\Vect{x})</latex> for all <latex>t\in\RNr</latex>, and all <latex>\Vect{x}\in\RNr[n]</latex>.</para></li>
+				</ul>
+				<para>Alternate terms for linear function include: linear map, linear transformation, homomorphism (of vector spaces).
+					<index.glossary>
+						<term>linear</term><term>function</term>
+					</index.glossary>
+					<index.glossary>
+						<term>linear</term><term>transformation</term>
+					</index.glossary>
+					<index.glossary>
+						<term>linear</term><term>map</term>
+					</index.glossary>
+					<index.glossary>
+						<term>homomorphism</term><term>of vector spaces</term>
+					</index.glossary>
+				</para>
+			</def>
+			
+			<para>Here are two examples of linear transformations which appear frequently:</para>
+			
+			<def id="Def_CoordinateProjection" type="Definition">
+				<caption>Coordinate Projection</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_Projection"/>
+					<info>
+						<caption>Example</caption>
+						<para>Verification that a projection is a linear map, plus some examples.</para>
+					</info>
+				</associate>
+				
+				<para>The projection of <latex>\RNr[m]</latex> onto the <latex>i</latex>-th coordinate is the function</para>
+				<math.display>
+					<latex>\Prjctn{i}\from \RNr[m] \longrightarrow \RNr,\qquad \Prjctn{i}(x_1,\dots ,x_m)=x_i</latex>
+				</math.display>
+			</def>
+			
+			
+			
+			<def type="Definition" id="Def_CoordinateInclusion">
+				<caption>Coordinate Inclusion</caption>
+				<associate Description="Example">
+					<showme.pack.ref showmePackID="Exa_Inclusion"/>
+					<info>
+						<caption>Example</caption>
+						<para>Verification that coordinate inclusion functions are linear; examples.</para>
+					</info>
+				</associate>
+				
+				<para>For <latex>1\leq j\leq n</latex> the inclusion of <latex>\RNr</latex> as the  <latex>j</latex>-th coordinate axis of <latex>\RNr[n]</latex> is given by the function</para>
+				<math.display>
+					<latex>\Inclsn{j}\from \RNr\longrightarrow \RNr[n],\quad \Inclsn{j}(x):=(0,\dots,0,x,0,\dots ,0)</latex>
+				</math.display>
+				<para>where the <latex>x</latex> sits in position <latex>j</latex>.</para>
+			</def>
+		</subsection.body>
+	</subsection>
+	
+	
+	
+	
+	
+	
+	<subsection id="SubSec_MatrixGivesLinearMap">
+		<headers>
+			<full>A Matrix Gives a Linear Map</full>
+			<toc>A Matrix Gives a Linear Map</toc>
+			<short>A Matrix Gives a Linear Map</short>
+		</headers>
+		<subsection.body>
+			<para>A convenient source of linear maps from <latex>\RNr[n]</latex> to <latex>\RNr[m]</latex> are matrices of size <latex>(m,n)</latex>. To explain this, write a vector of <latex>\RNr[n]</latex> as a column matrix with <latex>n</latex> rows. Now if <latex>\Mtrx{A}</latex> is a matrix of size <latex>(m,n)</latex>, we may multiply it by vectors <latex>\Vect{x}</latex> from <latex>\RNr[n]</latex>. The result is the vector <latex>\Mtrx{A}\Vect{x}</latex> in <latex>\RNr[m]</latex>. Applying this multiplication to each vector in <latex>\RNr[n]</latex> yields a function <latex>\RNr[n]\to \RNr[m]</latex>, and we show now that this function is linear.</para>
+			
+			<xi:include href="MatrixGivesLinearMap_Prop.xml"/>
+		</subsection.body>
+	</subsection>
+	
+	<subsection id="SubSec_LinearMapFromMatrix">
+		<headers>
+			<full>Every Linear Map Comes from a Matrix</full>
+			<toc>Every Linear Map Comes from a Matrix</toc>
+			<short>Every Linear Map Comes from a Matrix</short>
+		</headers>
+		<subsection.body>
+			<para>We just learned that matrices provide a convenient source for linear transformations. But can we obtain every linear transformation in this way? The answer to this question is: &lsquo;Yes!&rsquo;, and the following theorem tells us how to find the matrix describing a given linear transformation.</para>
+			
+			<xi:include href="LinearMapGivesMatrix_Prop.xml"/>
+			
+			<para>In the context of the theorem above, we say that the matrix <latex>\Mtrx{A}</latex> represents <latex>L</latex>.
+				<index.glossary>
+					<term>matrix</term><term>representing a linear map</term>
+				</index.glossary>
+				<index.glossary>
+					<term>representing matrix</term><term>of a linear map</term>
+				</index.glossary>
+			</para>
+		</subsection.body>
+	</subsection>
+	
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_MatrixGivesLinearMap"/>
+		<exercise.pack.ref exercisePackID="Exe_LinearMapEffect"/>
+		<exercise.pack.ref exercisePackID="Exe_LinearMapFindMatrix"/>
+	</studymaterials>
+</section>

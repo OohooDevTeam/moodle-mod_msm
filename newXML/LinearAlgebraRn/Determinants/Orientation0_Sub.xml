@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_Orientation0"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>0-Dimensional Orientation</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We may regard a point <math>
+                     <latex>P</latex>
+                  </math> as a copy of <math>
+                     <latex>\RNr[0]</latex>
+                  </math>. An orientation on <math>
+                     <latex>P</latex>
+                  </math> has no intuitive content. It is given by formally assigning the value <math>
+                     <latex>+1</latex>
+                  </math> or <math>
+                     <latex>-1</latex>
+                  </math> to <math>
+                     <latex>P</latex>
+                  </math>.</para.body>
+            </para>
+            <table align="center" border="3" cellpadding="2" cellspacing="3">
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <media type="image" active="0" inline="0">
+                              <img src="ims/BlueDot.gif"/>
+                           </media>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>positive orientation</para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\omega(P)=+1</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <media type="image" active="0" inline="0">
+                              <img src="ims/RedDot.gif"/>
+                           </media>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>negative orientation</para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\omega(P)=-1</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+               </row>
+            </table>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>While the notion of orientation of a point might seem a bit artificial, it is still quite useful. For example in calculus: pick numbers <math>
+                     <latex> a&lt;b </latex>
+                  </math> in <math>
+                     <latex>\RNr</latex>
+                  </math>, and assign orientations as follows:</para.body>
+            </para>
+            <table align="center" border="3" cellspacing="3" cellpadding="2">
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>To the interval <math>
+                              <latex>[a,b]</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>Positive orientation</para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>To the boundary point <math>
+                              <latex>a</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>Negative orientation</para.body>
+                     </para>
+                  </cell>
+               </row>
+               <row>
+                  <cell>
+                     <para>
+                        <para.body>To the boundary point <math>
+                              <latex>b</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+                  <cell>
+                     <para>
+                        <para.body>Positive orientation</para.body>
+                     </para>
+                  </cell>
+               </row>
+            </table>
+            <para>
+               <para.body>Then the Fundamental Theorem of Calculus for a function <math>
+                     <latex>f\from [a,b]\to \RNr</latex>
+                  </math> with antiderivative <math>
+                     <latex>F</latex>
+                  </math> may be formulated as follows</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\aligned
+\int_{a}^{b} f(x)\, dx\ &amp;=\ F(b) - F(a) \\
+	&amp;=\ \omega(b)F(b) + \omega(a)F(a)
+\endaligned
+
+				</latex>
+            </math.display>
+            <para>
+               <para.body>This means that the integral is a quantity which is sensitive to orientation, an observation which is a prerequisite for a full understanding of Stokes Theorem; i.e. the extension of the Fundamental Theorem of Calculus to higher dimensions.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>

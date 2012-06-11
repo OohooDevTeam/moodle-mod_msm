@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MatrixGivesLinearMap">
+	<caption>Matrix gives linear map</caption>
+	<associate Description="Explanation">
+		<subpage.ref subpageID="Expla_MatrixGivesLinearMap"/>
+		<info>
+			<caption>Explanation: How to construct <latex>L</latex></caption>
+			<para>Details on how the matrix <latex>\Mtrx{A}</latex> determines <latex>L</latex>.</para>
+		</info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_MatrixGivesLinearMap"/>
+		<info>
+			<para>Examples of using a matrix to define a linear map</para>
+		</info>
+	</associate>
+	
+	<statement>
+		<para>Every matrix <latex>\Mtrx{A}</latex> of size <latex>(m,n)</latex> yields a linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex>     via the identity</para>
+		<math.display>
+			<latex>L(\Vect{x}) := \Mtrx{A}\cdot \Vect{x}</latex>
+		</math.display>
+	</statement>
+	
+	<proof>
+		<para>We need to show that  <latex>L</latex> is a function, and that it satisfies the two properties required of a linear function.</para>
+		
+		<caption><latex>L</latex> is a function</caption>
+		<para><latex>L</latex>   is a function from <latex>\RNr[n]</latex> to <latex>\RNr[m]</latex>, because it associates to each vector  <latex>\Vect{x}</latex> a unique vector in <latex>\RNr[m]</latex>, namely the column vector resulting from the matrix product</para>
+		
+		<math.display>
+			<latex>
+				<![CDATA[
+L(\Vect{x}) := 
+\left[
+\begin{array}{ccc}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{m1} & \cdots & a_{mn}
+\end{array}
+\right] \cdot 
+\left[
+\begin{array}{c}
+x_1 \\ \vdots \\ x_n
+\end{array}
+\right]
+					]]>
+			</latex>
+		</math.display>
+		
+		<caption><latex>L</latex> commutes with vector addition</caption>
+		<para>This is so because, if <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are arbitrary vectors in <latex>\RNr[n]</latex>, then</para>
+		
+		<computation>
+			<left>L(\Vect{x} + \Vect{y})</left>
+			<center>=</center>
+			<right>\Mtrx{A}\cdot (\Vect{x}+\Vect{y})</right>
+			<left></left>
+			<center>=	<info><para>This is the distributivity property of matrix multiplication</para></info></center>
+			<right>\Mtrx{A}\cdot \Vect{x}\ +\ \Mtrx{A}\cdot\Vect{y}</right>
+			<left></left>
+			<center>=</center>
+			<right>L(\Vect{x}) + L(\Vect{y})</right>
+		</computation>
+		
+		<caption><latex>L</latex> commutes with scalar multiplication</caption>
+		<para>This is so because, if <latex>t\in \RNr</latex> and <latex>\Vect{x}\in \RNr[n]</latex>, then</para>
+		
+		<computation>
+			<left>L(t\cdot \Vect{x})</left>
+			<center>=</center>
+			<right>A\cdot (t\Vect{x})</right>
+			<left></left>
+			<center>=</center>
+			<right>t\cdot L(\Vect{x})</right>
+		</computation>
+		
+		<para>Therefore <latex>L</latex> satisfies all of the requirements for a linear transformation, hence is linear.</para>
+	</proof>
+</theorem>

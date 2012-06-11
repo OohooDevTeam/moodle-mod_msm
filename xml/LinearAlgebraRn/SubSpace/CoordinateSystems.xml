@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_CoordinateSystems">
+	<headers>
+		<full>Arbitrary Coordinate Systems</full>
+		<toc>Arbitrary Coordinate Systems</toc>
+		<short>Arbitrary Coordinate Systems</short>
+	</headers>
+	<intro>
+		<para>Given a subvector space <latex>V</latex> of <latex>\RNr[n]</latex>, we now use a basis for <latex>V</latex> of  to set up a corresponding coordinate system in <latex>V</latex>.</para>
+	</intro>
+	<section.body>
+		<def type="Definition" id="Def_CoordinateVector">
+			<caption>Coordinate vector</caption>
+			<associate Description="Explanation">
+				<subpage.ref subpageID="Expla_CoordinateVector"/>
+				<info>
+					<caption>Explanation</caption>
+					<para>What does &lsquo;ordered basis&rsquo; mean? &ndash; Explanation</para>
+				</info>
+			</associate>
+			<associate Description="Illustration">
+				<subpage.ref subpageID="Illu_CoordinateVector"/>
+				<info><para>An illustration of &lsquo;coordinate vector&rsquo;</para></info>
+			</associate>
+			<associate Description="Example">
+				<showme.pack.ref showmePackID="Exa_CoordinateVector"/>
+				<info>
+					<caption>Example</caption>
+					<para>Examples of coordinate vectors</para>
+				</info>
+			</associate>
+			<para>Given an ordered basis <latex>\EuScript{B} = (\Vect{b}_1,\dots , \Vect{b}_m)</latex> of a subvector space <latex>V</latex> of  <latex>\RNr[n]</latex>, the coordinate vector of <latex>\Vect{x}</latex> in <latex>V</latex> with respect to <latex>\EuScript{B}</latex> is
+				<index.glossary>
+					<term>coordinate</term><term>vector</term>
+					<info><para>Look up the definition of the term.</para></info>
+				</index.glossary>
+				<index.symbol>
+					<symbol><latex>\Vect{x}_{\EuScript{B}}</latex></symbol>
+					<info>
+						<para>The coordinate vector of <latex>\Vect{x}</latex> with respect to the ordered basis <latex>\EuScript{B}</latex>.</para>
+					</info>
+				</index.symbol>
+				<index.glossary>
+					<term>ordered</term><term>basis</term>
+					<info><para>... when used to define a coordinate vector.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>basis</term><term>ordered</term>
+					<info><para>... when used to define a coordinate vector.</para></info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>\Vect{x}_{\EuScript{B}} = (t_1,\dots ,t_m)\quad \text{if}\quad \Vect{x} = t_1 \Vect{b}_1+\cdots + t_m \Vect{b}_m</latex>
+			</math.display>
+		</def>
+		<para>Let us analyze how our original description of a vector <latex>\Vect{x}=(x_1,\dots ,x_n)</latex> in <latex>\RNr[n]</latex> fits into this context. Let <latex>\EuScript{S}:=(\StdBss{1},\dots ,\StdBss{n})</latex> denote the ordered basis of standard basis vectors in <latex>\RNr[n]</latex>. Then</para>
+		<computation>
+			<left>\Vect{x}</left>
+			<center>=</center>
+			<right>x_1 \StdBss{1} + \cdots + x_n\StdBss{n}</right>
+		</computation>
+		<para>which means that <latex>\Vect{x}_{\EuScript{S}} = (x_1,\dots ,x_n)</latex>. Thus our original description of a vector in <latex>\RNr[n]</latex> uses the coordinate vector of <latex>\Vect{x}</latex> with respect to the standard basis of <latex>\RNr[n]</latex>. Whenever we are working only with the standard basis of <latex>\RNr[n]</latex>, we will continue to write  <latex>\Vect{x}</latex> instead of <latex>\Vect{x}_{\EuScript{S}}</latex>, as this will not cause any confusion.</para>
+		
+		<para>If <latex>\EuScript{B}</latex> is an ordered orthonormal basis, it is easy to find a coordinate vector with respect to <latex>\EuScript{B}</latex>:</para>
+		<xi:include href="CoordinateVectorOrthogonalBss_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_CoordinateSystems"/>
+	</studymaterials>
+</section>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_KernelImage">
+	<title>Kernel / Image - Explanation</title>
+	<sub.page.body>
+		<block>
+			<para><b>On the definition of &lsquo;kernel&rsquo;:</b></para>
+			<computation>
+				<left>\Ker{L}</left>
+				<center>:=</center>
+				<right>\Set{ \Vect{x} \in V \st L(\Vect{x}) = \Vect{0} }</right>
+			</computation>
+			<para>Read this as: &lsquo;kernel of L is, by definition, equal to the set of all those x in V such that L of x equals 0.&rsquo;</para>
+			<para>Thus the kernel of <latex>L</latex> consists of all those <latex>\Vect{x}</latex> in <latex>V</latex> with <latex>L(\Vect{x}) = \Vect{0}</latex>; that is the kernel of <latex>L</latex> consists of those vectors of <latex>V</latex> which get transformed into the <latex>\Vect{0}</latex>-vector by <latex>L</latex>.</para>
+			<para>If several vectors of <latex>V</latex> get transformed into one, then this means that the distinction that previously existed between these vectors has been destroyed. Accordingly, a large kernel corresponds to a highly destructive map. A small kernel corresponds to a map which preserves most of the distinctions between various vectors of <latex>V</latex>. So such a map is less destructive or more faithful.</para>
+			<para>We will see soon that the kernel of <latex>L</latex> is a subvector space of <latex>V</latex>. So it has a dimension, and this dimension provides a measure for the destructiveness of <latex>L</latex>.</para>
+		</block>
+		
+		<block>
+			<para><b>On the definition of &lsquo;image&rsquo;:</b></para>
+			<computation>
+				<left>\im(L)</left>
+				<center>:=</center>
+				<right>\Set{ \Vect{y}\in W \st \Vect{y}=L(\Vect{x})\quad \text{for some \ } \Vect{x}\in V }</right>
+			</computation>
+			<para>Read this as: &lsquo;image of L is, by definition, equal to the set of all those y in W such that L of x equals y, for some x in V.&rsquo;</para>
+			<para>In other words, a vector <latex>\Vect{w}</latex> in <latex>W</latex> belongs to the image of <latex>L</latex> if the equation</para>
+			<computation>
+				<left>L(\Vect{x})</left>
+				<center>=</center>
+				<right>\Vect{y}</right>
+			</computation>
+			<para>has a solution or, in equivalently, if there is a vector in <latex>V</latex> which gets transformed in <latex>\Vect{y}</latex> by <latex>L</latex>.</para>
+			<para>Thus <latex>\im(L)</latex> consists of all those <latex>\Vect{y}</latex> in <latex>W</latex> into which <latex>L</latex> transforms some <latex>\Vect{x}</latex> in <latex>V</latex>. Therefore <latex>L</latex> transforms <latex>V</latex> into its image <latex>\im(L)</latex>.</para>
+			<para>We will soon see that <latex>\im(L)</latex> is a subspace of <latex>W</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

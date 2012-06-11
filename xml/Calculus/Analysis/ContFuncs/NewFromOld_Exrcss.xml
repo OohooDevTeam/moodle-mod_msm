@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_ContinuousFunctionsNewFromOld">
+	<texsupport href="../Analysis_TeXSupport.xml"/>
+	<title>Exercises: New Continuous Functions from Old</title>
+	<exercise>
+		<problem>
+			<para>Explain why the functions below are continuous.</para>
+		</problem>
+		<part>
+			<problem>
+				<para><latex>f\from \RNr \to \RNr</latex>, <latex>f(x) = 3x^4 -x^2 + 1</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para>The function <latex>f</latex> is a polynomial (its degree is <latex>4</latex>). So it is continuous.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para><latex>g\from \RNr\to \RNr</latex>, <latex>g(x) = -2x^6 + 3x - 4</latex></para>
+			</problem>
+		</part>
+		<part>
+			<problem>
+				<para><latex>h\from \RNr\to \RNr</latex>, <latex>h(x) = e^2 \cdot t^9 - \pi\cdot t^6 + (\pi^2-e)\cdot t^3 + t - 6</latex></para>
+			</problem>
+			<approach>
+				<solution>
+					<para>The function <latex>h</latex> is a polynomial (its degree is <latex>9</latex>). So it is continuous. (No need to worry about problems arising from the coefficients <latex>e^2</latex>, <latex>\pi</latex>, <latex>(\pi^2-e)</latex>. These are just numbers. So we are, indeed, dealing with a polynomial.)</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Find the maximal subset <latex>D</latex> of <latex>\RNr</latex> on which the expression below determines a function <latex>D\to \RNr</latex>.</para>
+		</problem>
+		<part>
+			<problem><para><latex>\frac{x^2+1}{x-1}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\frac{2x^3+3}{x^+1}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\frac{x^6+3x^2}{x^2-x -12}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sqrt{x^2}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sqrt{t-1}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sqrt{t^2-1}</latex></para></problem>
+		</part>
+		<part>
+			<problem><para><latex>\sqrt[3]{t^3-1}</latex></para></problem>
+		</part>
+	</exercise>
+</exercise.pack>

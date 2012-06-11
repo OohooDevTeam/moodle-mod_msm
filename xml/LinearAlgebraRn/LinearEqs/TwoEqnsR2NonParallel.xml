@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="TwoEqnsR2NonParallel">
+	<title>Two Linear Equations in <latex>\RNr[2]</latex> with Non-Parallel Normal Vectors</title>
+	<sub.page.body>
+		<block>
+			<para>Here we consider the simultaneous solutions of two linear equations with two unknowns</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+						\begin{array}{rcrcl}
+\colorbox{lightgreen}{$a_1$}{\color{red} x} & + & \colorbox{lightgreen}{$a_2$}{\color{red} y} & = & {\color{blue} c} \\
+\colorbox{lightgreen}{$b_1$}{\color{red} x} & + & \colorbox{lightgreen}{$b_2$}{\color{red} y} & = & {\color{blue} d} \\
+						\end{array}
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>If the coefficient vectors <latex magnify="yes">\Vect{n}_1 = (a_1,a_2)</latex> and <latex magnify="yes">\Vect{n}_2 = (b_1,b_2)</latex> are not parallel, we find ourselves in the situation sketched below.</para>
+			
+			<para align="center"><image src="ims/TwoEqnsR2NonParallel.gif" width="455" height="285">
+				<area shape="poly" coords="264,126,292,93,294,50,275,44,238,104,251,114">
+					<info>
+						<para>The normal vector formed from the coefficients of the first equation.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="202,214,186,166,171,152,154,174,159,188,174,186,191,222,202,218">
+					<info>
+						<para>The normal vector formed from the coefficients of the second equation.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="374,220,378,206,323,169,314,180,368,218">
+					<info>
+						<para>In <latex>\RNr[2]</latex> a hyperplane is just a line. This is the line of solutions of the first equation.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="302,153,242,114,106,14,98,29,284,157">
+					<info>
+						<para>In <latex>\RNr[2]</latex> a hyperplane is just a line. This is the line of solutions of the first equation.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="323,164,426,109,414,96,312,149,323,168">
+					<info>
+						<para>In <latex>\RNr[2]</latex> a hyperplane is just a line. This is the line of solutions of the second equation.</para>
+					</info>
+				</area>
+				<area shape="poly" coords="300,181,146,262,138,250,200,220,288,168,299,176">
+					<info>
+						<para>In <latex>\RNr[2]</latex> a hyperplane is just a line. This is the line of solutions of the second equation.</para>
+					</info>
+				</area>
+				<area shape="circle" coords="308,169,5">
+					<info>
+						<para>Two nonparallel lines in the plane <latex>\RNr[2]</latex>always have a unique point of intersection. This is the one and only simultaneous solution of the two given equations.</para>
+					</info>
+				</area>
+			</image>
+			</para>
+			
+			<ol>
+				<li><para>The solution hyperplane of the first equation, with normal vector <latex>\Vect{n}_1</latex> is the line <latex>H_1</latex>, while</para></li>
+				<li><para>the solution hyperplane of the second the equation, with normal vector <latex>\Vect{n}_2</latex>, is the line <latex>H_2</latex>.</para></li>
+			</ol>
+			
+			<para>If the normal vectors <latex>\Vect{n}_1</latex> and <latex>\Vect{n}_2</latex> are not parallel, the lines <latex>H_1</latex> and <latex>H_2</latex> are not parallel either. So these lines intersect precisely in one point, denoted here <latex magnify="yes">(x_0,y_0)</latex>. This means that there is exactly one solution of the given system of linear equations, namely:</para>
+			
+			<para align="center"><latex magnify="yes">x = x_0</latex> &nbsp; and &nbsp; <latex magnify="yes">y = y_0</latex>.</para>
+		</block>
+		
+		<block>
+			<para><b>Question</b> &nbsp; Amongst all the systems of two linear equations with two unknowns, "how often" do we encounter the situation that there is exactly one common solution?</para>
+			<para><b>Answer</b> &nbsp; Exactly one solution occurs exactly when the solution lines of the individual equations are not parallel. Now, given two arbitrary lines in the plane, their 
+				<subordinate>
+					<hot>chances</hot>
+					<info>
+						<para>This statement has only intuitive value here. It can be made precise using a combination of the more advanced mathematical subjects of measure theory and geometric probability.</para>
+					</info>
+				</subordinate>
+				of not being parallel are greater than their chances of being parallel. Therefore "most of the time" a system of two linear equations in two unknowns will have exactly one solution.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

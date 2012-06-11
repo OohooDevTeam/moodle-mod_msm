@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Exe_SubSpace">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Exercises: Subvector Spaces</title>
+	<exercise>
+		<problem>
+			<para>The subset <latex>S</latex> of the plane below consists of a grid of horizontal and vertical points all of which have the same distance from their neighbors. Is <latex>S</latex> closed under addition?</para>
+			<figure>
+				<img src="ims/Lattice1.gif"></img>
+				<caption>Is the set <latex>S</latex> above closed under vector addition?</caption>
+			</figure>
+		</problem>
+		<approach>
+			<answer><para>Yes! - <latex>S</latex> is closed under vector addition.</para></answer>
+			<solution.hint>
+				<para>Consider any two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> whose tail is at the origin (the red dot) and whose tip is at any one of the dots in <latex>S</latex>. The question is: is the tip of <latex>\Vect{x}+\Vect{y}</latex> also at one of the dots in <latex>S</latex>?</para>
+			</solution.hint>
+			<solution>
+				<para>Introduce the vectors <latex>\Vect{a}</latex> and <latex>\Vect{b}</latex> as shown. Then each vector in <latex>S</latex> is of the form <latex>s \Vect{a} + t \Vect{b}</latex>, where <latex>s</latex> and <latex>t</latex> are integers. For example, <latex>\Vect{x} = 6 \Vect{a} + 2 \Vect{b}</latex>, and <latex>\Vect{y} = -9 \Vect{a} + 2 \Vect{b}</latex>. Adding two such vectors yields:</para>
+				<computation>
+					<left>(s \Vect{a} + t \Vect{b} )\ +\ (u \Vect{a} + v \Vect{b} )</left>
+					<center>=</center>
+					<right>(s+u)\Vect{a}\ +\ (t+v)\Vect{b}</right>
+				</computation>
+				<figure>
+					<img src="ims/Lattice1_1.gif"></img>
+				</figure>
+				<para>This is again a vector of the form</para>
+				<para align="center">(integer multiple of <latex>\Vect{a}</latex>) + (integer multiple of <latex>\Vect{b}</latex>).</para>
+				<para>which is again in <latex>S</latex>. Therefore <latex>S</latex> is closed under vector addition.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>The set <latex>S</latex> below consists of the rectangle shown below (including its interior). Is it closed under addition?</para>
+			<figure>
+				<img src="ims/Rectangle.gif"></img>
+			</figure>
+			
+		</problem>
+		<approach>
+			<answer><para>The set <latex>S</latex> is not closed under vector addition.</para></answer>
+			<solution.hint>
+				<para>Consider any two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> whose tail is at the origin (the red dot) and whose tips are in <latex>S</latex>. The question is: is the tip of <latex>\Vect{x}+\Vect{y}</latex> also in <latex>S</latex>?</para>
+			</solution.hint>
+			<solution>
+				<para>The picture below shows that <latex>S</latex> contains two vectors whose sum is not in <latex>S</latex>. Therefore <latex>S</latex> is not closed under addition.</para>
+				<figure>
+					<img src="ims/ClosedAdditionn2_1.gif"></img>
+				</figure>
+				<para>More generally, whenever a set <latex>S</latex> contains a nonzero vector <latex>\Vect{x}</latex> and fits inside some box,  <latex>S</latex> cannot be closed under addition. Why? Adding up sufficiently many copies of  x  yields a vector outside of  <latex>S</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Is the set <latex>S</latex> below consisting of the rectangle below closed under scalar multiplication?</para>
+			<figure>
+				<img src="ims/Rectangle.gif"></img>
+			</figure>
+		</problem>
+		<approach>
+			<answer><para>No! - <latex>S</latex> is not closed under scalar multiplication.</para></answer>
+			<solution.hint>
+				<para>If <latex>S</latex> is closed under scalar multiplication and contains a nonzero vector <latex>\Vect{x}</latex>, then <latex>S</latex> must also contain the entire line through the origin in the direction of <latex>\Vect{x}</latex>.</para></solution.hint>
+			<solution>
+				<para><latex>S</latex> contains a nonzero vector, for example the one displayed below.</para>
+				<figure>
+					<img src="ims/Rectangle_1.gif"></img>
+				</figure>
+				<para>The line through the origin in the direction of <latex>\Vect{x}</latex> is not entirely contained in <latex>S</latex>. Therefore <latex>S</latex> is not closed under scalar multiplication.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>S</latex> be the collection of points in the ellipse below. Is <latex>S</latex> closed under addition?</para>
+			<figure>
+				<img src="ims/EllipseClosedAddition.gif"></img>
+			</figure>
+		</problem>
+		<approach>
+			<answer><para>No, <latex>S</latex> is not closed under addition.</para></answer>
+		</approach>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>Let <latex>S</latex> consist of the family of parallel lines below. The distance of any line from its two neighbors is the same. Is <latex>S</latex> closed under addition?</para>
+			<figure>
+				<img src="ims/ParallelLines.gif"></img>
+			</figure>
+		</problem>
+		<approach>
+			<answer><para>Yes, <latex>S</latex> is closed under vector addition.</para></answer>
+			<solution.hint>
+				<para>You want to answer the following questions: if <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are vectors whose tail is at <latex>\Vect{0}</latex>, and whose tip is in <latex>S</latex>, is <latex>\Vect{x}+\Vect{y}</latex> also the position vector of a point in <latex>S</latex>?</para>
+			</solution.hint>
+			<solution>
+				<para>The picture below suggests that the sum of any two vectors in <latex>S</latex> is again a vector in <latex>S</latex>.</para>
+				<figure>
+					<img src="ims/ParallelLines_1.gif"></img>
+				</figure>
+				<para>A more rigorous argument runs as follows: Points in <latex>S</latex> have position vectors of the form <latex>s \Vect{a} + t \Vect{b}</latex>, where <latex>s\in \RNr</latex> and <latex>t</latex> is an integer. Adding two such vectors yields again the position vector of a point in <latex>S</latex>:</para>
+				<computation>
+					<left>(s_1 \Vect{a} + t_1 \Vect{b}) + (s_2 \Vect{a} + t_2 \Vect{b} )</left>
+					<center>=</center>
+					<right>(s_1+s_2)\Vect{a} + (t_1+t_2)\Vect{b}</right>
+				</computation>
+				<para>which is again of the form of a vector in <latex>S</latex>.</para>
+			</solution>
+		</approach>
+	</exercise>
+	
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the sets of vectors below determine if it is a subvector space of <latex>\RNr[2]</latex>.</para>
+		</problem>
+		<part>
+			<problem><para>The set <latex>N</latex> containing only the zero vector.</para></problem>
+			<approach><answer><para><latex>N</latex> is a subvector space of <latex>\RNr[n]</latex>.</para></answer></approach>
+		</part>
+		<part>
+			<problem><para>The set <latex>L</latex> consisting of all multiples of <latex>\Vect{a} = (-2,0)</latex>.</para></problem>
+			<approach>
+				<answer><para>Yes! <latex>L</latex> is a subvector space of <latex>\RNr[2]</latex>.</para></answer>
+				<solution>
+					<para>We claim that <latex>L</latex> is a subvector space of <latex>\RNr[n]</latex>. &ndash; Indeed, the zero vector is in <latex>L</latex> because <latex>\Vect{0} = 0\cdot \Vect{a}</latex>.</para>
+					<para><latex>L</latex> is closed under addition. For if <latex>s\cdot \Vect{a}</latex> and <latex>t\cdot \Vect{a}</latex> are in <latex>L</latex>, then</para>
+					<computation>
+						<left>s\cdot \Vect{a} + t\cdot \Vect{a}</left>
+						<center>=</center>
+						<right>(s+t)\cdot \Vect{a}</right>
+					</computation>
+					<para>is again a vector in <latex>L</latex>.</para>
+					<para><latex>L</latex> is closed under scalar multiplication. For if <latex>s\cdot \Vect{a}</latex> is in <latex>L</latex>, and <latex>t</latex> in <latex>\RNr</latex> is arbitrary, then</para>
+					<computation>
+						<left>t\cdot (s\cdot \Vect{a})</left>
+						<center>=</center>
+						<right>(ts)\cdot \Vect{a}</right>
+					</computation>
+					<para>is again in <latex>L</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>The set of  <latex>T</latex> of vectors <latex>\Vect{x} = (x,y)</latex> with <latex>3x-2=2</latex></para></problem>
+			<approach>
+				<answer><para>No! &ndash; The set <latex>T</latex> is not a subvector space of <latex>\RNr[2]</latex>.</para></answer>
+				<solution><para>The origin of <latex>\RNr[2]</latex> is not in <latex>T</latex>. Therefore <latex>T</latex> is not a subvector space of <latex>\RNr[2]</latex>.</para></solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The set <latex>P</latex> of vectors <latex>\Vect{x} = (x,y)</latex> with <latex>x^3+y=0</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>No! &ndash; <latex>P</latex> is not a subvector space of <latex>\RNr[2]</latex>.</para></answer>
+				<solution>
+					<para>We claim that <latex>P</latex> is not a subvector space of <latex>\RNr[2]</latex>. Indeed, <latex>P</latex> fails to be closed under scalar multiplication. One example which proves this is: <latex>\Vect{x}= (-1,1)</latex> is in <latex>P</latex>. However, the test whether <latex>(-4,4)=4\cdot (-1,1)</latex> is in <latex>P</latex> reveals</para>
+					<math.display>
+						<latex>(-4)^3 + 4 = -64 + 4 = 60 \neq 0</latex>
+					</math.display>
+					<para>So <latex>(-4,4)</latex> does not belong to <latex>P</latex>. Therefore <latex>P</latex> is not closed under scalar multiplication and, hence, is not a subvector space of <latex>\RNr[2]</latex>.</para>
+					<para>Alternatively, you can show that <latex>P</latex> fails to be closed under vector addition.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem><para>The set <latex>E</latex> of vectors <latex>\Vect{x} = (x,y)</latex> with <latex>-x+ey=0</latex></para></problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>E</latex> is a subvector space of <latex>\RNr[2]</latex>.</para></answer>
+				<solution><para><latex>E</latex> is the orthogonal complement in <latex>\RNr[2]</latex> of the vector <latex>\Vect{s}=(-1,e)</latex>. 
+					<subordinate>
+						<hot>Therefore</hot>
+						<crossref>
+							<theorem.ref theoremID="Thm_OrthogonalComplementSubSpace"/>
+							<para>Look up this result.</para>
+						</crossref>
+					</subordinate>
+					it is a subvector space of <latex>\RNr[2]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>For each of the sets of vectors below determine if it is a subvector space of <latex>\RNr[3]</latex>.</para>
+		</problem>
+		<part>
+			<problem><para>The set <latex>L</latex> of all vectors <latex>\Vect{x} = (x,y,z)</latex> with <latex>x=1+t</latex>, <latex>y=2t</latex>, and <latex>z=-t</latex>, with <latex>t\in\RNr</latex> arbitrary.</para></problem>
+			<approach version="1">
+				<answer><para>No! &ndash; <latex>L</latex> is not a subvector space of <latex>\RNr[3]</latex>.</para></answer>
+				<solution.hint>
+					<para>Review the defining properties of a subvector space.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>Does <latex>L</latex> contain the <latex>\Vect{0}</latex>-vector?</para>
+				</solution.hint>
+				<solution>
+					<para>The set <latex>L</latex> consists of all vectors <latex>\Vect{x}</latex> of the form</para>
+					<computation>
+						<left>\Vect{x}</left>
+						<center>=</center>
+						<right>(1+t,2t,-t)</right>
+						<left></left>
+						<center>=</center>
+						<right>(1,0,0) + t\cdot (1,2,-1)</right>
+					</computation>
+					<para>It is the line in <latex>\RNr[3]</latex> through <latex>(1,0,0)</latex> in the direction of <latex>(1,2,-1)</latex>. This line does not contain the <latex>\Vect{0}</latex>-vector: The vector equation</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 0
+\end{array}
+\right]\ +\ t\cdot
+\left[
+\begin{array}{r}
+1 \\ 2 \\ -1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+0 \\ 0 \\ 0
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					<para>has no solution. Therefore <latex>L</latex> is not a subvector space of <latex>\RNr[3]</latex>.</para>
+				</solution>
+			</approach>
+			<approach version="2">
+				<solution.hint>
+					<para>Test if <latex>L</latex> is closed under scalar multiplication.</para>
+				</solution.hint>
+				<solution.hint>
+					<para>If <latex>\Vect{x}</latex> is on <latex>L</latex>, you need to test if <latex>s\cdot \Vect{x}</latex> is in <latex>L</latex> for every <latex>s</latex> in <latex>\RNr</latex>.</para>
+				</solution.hint>
+				<solution>
+					<para>We test if <latex>L</latex> is closed under scalar multiplication. For example, setting <latex>t:=0</latex> tells us that <latex>\Vect{x}=(1,0,0)</latex> is on <latex>L</latex>. However,</para>
+					<computation>
+						<left>2\cdot (1,0,0)</left>
+						<center>=</center>
+						<right>(2,0,0)</right>
+					</computation>
+					<para>is not on <latex>L</latex> because the vector equation</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 0
+\end{array}
+\right]\ +\ t\cdot
+\left[
+\begin{array}{r}
+1 \\ 2 \\ -1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+2 \\ 0 \\ 0
+\end{array}
+\right]
+							]]>
+						</latex>
+					</math.display>
+					<para>has no solution. Therefore <latex>L</latex> is not closed under scalar multiplication. Hence it is not a subvector space of <latex>\RNr[3]</latex>.</para>
+					<para><b>Comment</b> &nbsp; You may also check that every vector <latex>\Vect{x}</latex> on <latex>L</latex> has the property that <latex>s\cdot \Vect{x}</latex> is on <latex>L</latex> if and only if <latex>s=1</latex>. So <latex>L</latex> fails to be closed under scalar multiplication with respect to every vector on <latex>L</latex>.</para>
+				</solution>
+			</approach>
+			<approach version="3">
+				<solution.hint><para>Test if <latex>L</latex> is closed under vector addition.</para></solution.hint>
+				<solution.hint><para>If you pick two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> on <latex>L</latex>, you need to test if <latex>\Vect{x} + \Vect{y}</latex> is on <latex>L</latex>.</para></solution.hint>
+				<solution>
+					<para>We test if <latex>L</latex> is closed under vector addition. Let <latex>\Vect{x} = (1+t,2t,-t)</latex> be arbitrary on <latex>L</latex>. Then <latex>\Vect{x}+\Vect{x}</latex> fails to be on <latex>L</latex> because the vector equation</para>
+					<math.display>
+						<latex>
+							<![CDATA[
+\aligned
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 0
+\end{array}
+\right]\ +\ t\cdot
+\left[
+\begin{array}{r}
+1 \\ 2 \\ -1
+\end{array}
+\right]\ +\ 
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 0
+\end{array}
+\right]\ +\ t\cdot
+\left[
+\begin{array}{r}
+1 \\ 2 \\ -1
+\end{array}
+\right]\ &=\ 
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 0
+\end{array}
+\right]\ +\ s\cdot
+\left[
+\begin{array}{r}
+1 \\ 2 \\ -1
+\end{array}
+\right] \\
+\left[
+\begin{array}{c}
+2 \\ 0 \\ 0
+\end{array}
+\right]\ +\ 2t\cdot
+\left[
+\begin{array}{r}
+1 \\ 2 \\ -1
+\end{array}
+\right]\ &=\ 
+\left[
+\begin{array}{c}
+1 \\ 0 \\ 0
+\end{array}
+\right]\ +\ s\cdot
+\left[
+\begin{array}{r}
+1 \\ 2 \\ -1
+\end{array}
+\right] \\
+\left[
+\begin{array}{r}
+1 \\ 0 \\ 0
+\end{array}
+\right]\ +\ 
+(2t-s)\cdot \left[
+\begin{array}{r}
+1 \\ 2 \\ -1
+\end{array}
+\right]\ &=\ 
+\left[
+\begin{array}{r}
+0 \\ 0 \\ 0
+\end{array}
+\right]
+\endaligned
+							]]>
+						</latex>
+					</math.display>
+					<para>has no solution. Therefore <latex>L</latex> is not closed under vector addition. Hence it is not a subvector space of <latex>\RNr[3]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		
+		
+		
+		
+		<part>
+			<problem>
+				<para>The set <latex>Q</latex> of vectors <latex>\Vect{x} = (x,y,z)</latex> in <latex>\RNr[3]</latex> with <latex>x=\pi t</latex>, <latex>y=2t^2</latex>, and <latex>z=t</latex>, where <latex>t\in\RNr</latex> is arbitrary.</para>
+			</problem>
+			<approach>
+				<answer><para>No! <latex>Q</latex> is not a subvector space of <latex>\RNr[3]</latex>.</para></answer>
+				<solution.hint>
+					<para>Try if <latex>Q</latex> is closed under vector addition</para>
+				</solution.hint>
+				<solution.hint><para>The points corresponding to <latex>t=1</latex> and <latex>t=-1</latex> are in <latex>Q</latex>. Is the sum of the two points in <latex>Q</latex>?</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The set <latex>K</latex> of vectors <latex>\Vect{x}=(x,y,z)</latex> in <latex>\RNr[3]</latex> with <latex>x=2t</latex>, <latex>y=2t</latex>, and <latex>z=2</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>No! &ndash; <latex>K</latex> is not a subvector space of <latex>\RNr[3]</latex>.</para></answer>
+				<solution.hint><para>Review the solution of an earlier part of this set of problem.</para></solution.hint>
+				<solution.hint><para>Identify <latex>K</latex> as a line in <latex>\RNr[3]</latex>, which line?</para></solution.hint>
+				<solution.hint><para>Does <latex>K</latex> contain the origin of <latex>\RNr[3]</latex>?</para></solution.hint>
+			</approach>
+		</part>
+		
+		<part>
+			<problem>
+				<para>The set <latex>R</latex> of vectors <latex>\Vect{x}=(x,y,z)</latex> in <latex>\RNr[3]</latex> with <latex>x=4t</latex>, <latex>y=t</latex>, and <latex>z=-2t</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>R</latex> is a subvector space of <latex>\RNr[3]</latex>.</para></answer>
+				<solution.hint>
+					<para><latex>R</latex> consists of all scalar multiples of <latex>\Vect{a}=(4,1,-2)</latex>.</para>
+				</solution.hint>
+				<solution.hint><para>Verify that <latex>R</latex> contains the <latex>\Vect{0}</latex>-vector.</para></solution.hint>
+				<solution.hint><para>Verify that <latex>R</latex> is closed under scalar multiplication.</para></solution.hint>
+				<solution.hint><para>Verify that <latex>R</latex> is closed under vector addition.</para></solution.hint>
+			</approach>
+		</part>
+		
+		
+		<part>
+			<problem>
+				<para>The set <latex>\Pi</latex> of vectors <latex>\Vect{x} = (x,y,z)</latex> in <latex>\RNr[3]</latex> with <latex>z=-x+y</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>Yes! &ndash; <latex>\Pi</latex> is a subvector space of <latex>\RNr[3]</latex>.</para></answer>
+				<solution.hint><para>Is <latex>\Pi</latex> the orthogonal complement of a subset of <latex>\RNr[3]</latex>?</para></solution.hint>
+				<solution>
+					<para>We claim that <latex>\Pi</latex> is a subvector space of <latex>\RNr[3]</latex>. To see this, we note that <latex>\Vect{x}=(x,y,z)</latex> belongs to <latex>\Pi</latex> exactly when</para>
+					<computation>
+						<left>x-y+z</left>
+						<center>=</center>
+						<right>0</right>
+					</computation>
+					<para>This happens exactly when <latex>\Vect{x}</latex> belongs to the hyperspace of <latex>\RNr[3]</latex> which is perpendicular to the vector <latex>\Vect{t}:=(1,-1,1)</latex>. So <latex>\Pi = \Vect{t}^{\bot}</latex> is a subvector space of <latex>\RNr[3]</latex>.</para>
+				</solution>
+			</approach>
+		</part>
+		<part>
+			<problem>
+				<para>The set <latex>Z</latex> of vectors <latex>\Vect{x} = (x,y,z)</latex> in <latex>\RNr[3]</latex> with <latex>x-y+z=-1</latex>.</para>
+			</problem>
+			<approach>
+				<answer><para>No! &ndash; <latex>Z</latex> is not a subvector space of <latex>\RNr[3]</latex>.</para></answer>
+				<solution.hint><para>Does <latex>Z</latex> contain the origin of <latex>\RNr[3]</latex>?</para></solution.hint>
+				<solution.hint><para>Check that <latex>Z</latex> is a hyperplane of <latex>\RNr[3]</latex>. &ndash; How is this hyperplane related to the set <latex>\Pi</latex> in the previous problem?</para></solution.hint>
+			</approach>
+		</part>
+	</exercise>
+	
+	
+	
+	<exercise>
+		<problem>
+			<para>If <latex>V</latex> and <latex>W</latex> are subspaces of <latex>\RNr[n]</latex>, show that the union of <latex>V</latex> and <latex>W</latex> need not be a subvector space of <latex>\RNr[n]</latex>.</para>
+		</problem>
+		<approach>
+			<solution.hint>
+				<para>The problem asks you to show that not every pair <latex>V</latex> and <latex>W</latex> of subspaces of <latex>\RNr[n]</latex> has the property that the union of <latex>V</latex> and <latex>W</latex> is a subspace of <latex>\RNr[n]</latex>.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>It is sufficient to find a number <latex>n</latex> and then two specific subspaces <latex>V</latex> and <latex>W</latex> of <latex>\RNr[n]</latex> whose union is not a subspace.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>It is possible to show this for <latex>n=2</latex>.</para>
+			</solution.hint>
+			<solution.hint>
+				<para>In <latex>\RNr[2]</latex>, let <latex>V</latex> be the <latex>x</latex>-axis, and let <latex>W</latex> be the <latex>y</latex>-axis. Is the union of <latex>V</latex> and <latex>W</latex> closed under vector addition?</para>
+			</solution.hint>
+		</approach>
+	</exercise>
+	
+</exercise.pack>

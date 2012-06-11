@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Lemma"
+         id="Lem_InvertibilitySimplify"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <statement.theorem>
+      <para>
+         <para.body>Given <math>
+               <latex>(n,n)</latex>
+            </math>-matrices <math>
+               <latex>\Mtrx{A}</latex>
+            </math> and <math>
+               <latex>\Mtrx{B}</latex>
+            </math>, then</para.body>
+      </para>
+      <para align="center">
+         <para.body>
+            <math>
+               <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex>
+            </math>   if and only if   <math>
+               <latex>\Mtrx{B}\Mtrx{A} = \IdMtrx[n]</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We need to show that <math>
+                     <latex>\Mtrx{B}\Mtrx{A}=\IdMtrx[n]</latex>
+                  </math>. – We first show that <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible: Using row operations and the corresponding row transformation matrices, we obtain</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>This follows with the previous argument by interchanging the roles of <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> and <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

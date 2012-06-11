@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_AbsoluteValueDistance"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Absolute Value and Distance</title>
+      <plain.title>Absolute Value and Distance</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In this section we use the norm operation to introduce the concept of distance between two real numbers. To this end it is helpful to relate the real numbers to points on a line:</para.body>
+            </para>
+            <media type="image" active="0" inline="0">
+               <img src="ims/RLine.gif"/>
+            </media>
+            <para>
+               <para.body>Given two points <math>
+                     <latex>x</latex>
+                  </math> and <math>
+                     <latex>y</latex>
+                  </math> on such a line, it is natural to ask about ‘the distance’ <math>
+                     <latex>\Dstnc{x}{y}</latex>
+                  </math> between them. If <math>
+                     <latex>0\leq x\leq y</latex>
+                  </math>, we find</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Dstnc{x}{y}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>y-x</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>With this observation, we 
+			<subordinate>
+                     <hot>find</hot>
+                     <companion>
+                        <unit.ref unitId="Sub_DistanceR"/>
+                        <info>
+                           <para>
+                              <para.body>An illustration</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </subordinate>
+			for arbitrary <math>
+                     <latex>x,y\in \RNr</latex>
+                  </math>: <math>
+                     <latex>\Dstnc{x}{y} = \Abs{y-x}</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>Let us be clear: this result was found by geometric inspection. There is no fundamental reason why it must have any connection to the axiomatically characterized real number system we have been discussing. However, matching real numbers to points on a line has already been used in ancient times and is something that we would dearly like to have available to us as well. We therefore turn this notions of ‘distance by inspection’ into a formal definition and then establish its properties.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_DistanceByAbsoluteValue">
+               <caption>Distance between two numbers</caption>
+               <associate type="Example">
+                  <info>
+                     <info.caption>Example</info.caption>
+                     <ul>
+                        <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\Dstnc{2}{5} = 3</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </li>
+                        <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\Dstnc{-1}{1} = 2</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </li>
+                        <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>\Dstnc{3}{-4} = 7</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </li>
+                     </ul>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>The distance between numbers <math>
+                           <latex>x</latex>
+                        </math> and <math>
+                           <latex>y</latex>
+                        </math> in <math>
+                           <latex>\RNr</latex>
+                        </math> is
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>\Dstnc{x}{y}</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>The distance between numbers <math>
+                                    <latex>x</latex>
+                                 </math> and <math>
+                                    <latex>y</latex>
+                                 </math> in <math>
+                                    <latex>\RNr</latex>
+                                 </math> is</para.body>
+                           </para>
+                           <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Dstnc{x}{y}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Abs{y - x}</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>distance</term>
+                        <term>between two numbers in <math>
+                              <latex>\RNr</latex>
+                           </math>
+                        </term>
+                        <info>
+                           <para>
+                              <para.body>The distance between numbers <math>
+                                    <latex>x</latex>
+                                 </math> and <math>
+                                    <latex>y</latex>
+                                 </math> in <math>
+                                    <latex>\RNr</latex>
+                                 </math> is</para.body>
+                           </para>
+                           <math.array column="3">
+                              <row rowspan="1">
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Dstnc{x}{y}</latex>
+                                    </math>
+                                 </cell>
+                                 <cell colspan="1" halign="center" valign="middle">
+                                    <text>:=</text>
+                                 </cell>
+                                 <cell colspan="2" halign="center" valign="middle">
+                                    <math>
+                                       <latex>\Abs{y - x}</latex>
+                                    </math>
+                                 </cell>
+                              </row>
+                           </math.array>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Dstnc{x}{y}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>:=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Abs{y - x}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+               </def.body>
+            </def>
+            <para>
+               <para.body>Here are the most basic properties of the concept of ‘distance between numbers’.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="DistanceProperties_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="AbsoluteValueTriangleInequality_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+</unit>

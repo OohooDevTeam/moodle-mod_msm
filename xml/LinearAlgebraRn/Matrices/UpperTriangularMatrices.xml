@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="UpperTriangularMatrices">
+	<title>Illustration of Upper Triangular Matrices</title>
+	<sub.page.body>
+		<block>
+			<para>Every <latex>(1,1)</latex>-identity matrix is an upper triangular matrix.</para>
+			
+			
+			<para>An example of an upper triangular <latex>(2,2)</latex> matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{bmatrix}
+					2 & 1 \\
+					0 & 3
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			
+			<para>An example of an upper triangular <latex>(3,3)</latex> matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{bmatrix}
+					7 & 0 & 3 \\
+					0 & 1 & 3 \\
+					0 & 0 & 2
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+			
+			
+			<para>An example of an upper triangular <latex>(4,4)</latex> matrix is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+					\begin{bmatrix}
+					9 & 3 & 2 & 6  \\
+					0 & 7 & 4 & 3  \\
+					0 & 0 & 0 & 1\\
+					0 & 0 & 0 & 4
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para>Other examples of upper triangular matrices include</para>
+			
+			<ul>
+				<li><para>all diagonal matrices and,</para></li>
+				<li><para>in  particular, all identity matrices</para></li>
+			</ul>
+		</block>
+	</sub.page.body>
+</sub.page>

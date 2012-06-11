@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_ParallelHyperplanes">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	<title>Parallel Hyperplanes - Examples</title>
+	<caption>Parallel Hyperplanes - Examples</caption>
+	
+	<showme>
+		<statement>
+			<para>Determine if the solution hyperplanes of the equations below are parallel.</para>
+			<computation>
+				<left>x + 4y - 1z</left>
+				<center>=</center>
+				<right>1</right>
+				<left>2x - 8y - 2z</left>
+				<center>=</center>
+				<right>2</right>
+			</computation>
+		</statement>
+		<answer type="Solution">
+			<para>We need to determine if the normal vectors of the two hyperplanes are parallel.</para>
+			<ol>
+				<li>
+					<para>The first hyperplane has <latex>\Vect{u}:=(1,4,-1)</latex> as a normal vector.</para>
+				</li>
+				<li>
+					<para>The second hyperplane has <latex>\Vect{v}:=(2,-8,-2)</latex> as a normal vector.</para>
+				</li>
+			</ol>
+			<para>These vectors are parallel exactly when there exists a number <latex>t</latex> with</para>
+			<computation>
+				<left>\Vect{v}</left>
+				<center>=</center>
+				<right>t\cdot \Vect{u}</right>
+				<left>\left[ \begin{array}{r} 2 \\ -8 \\ -2 \end{array} \right]</left>
+				<center>=</center>
+				<right>t\cdot \left[ \begin{array}{r} 1 \\ 4 \\ -1 \end{array} \right]</right>
+			</computation>
+			<para>Comparing the first coordinates requires <latex>t=2</latex>, while comparing the second coordinates requires <latex>t=-2</latex>. This means that there is no number <latex>t</latex> with</para>
+			<computation>
+				<left>\Vect{v}</left>
+				<center>=</center>
+				<right>t\cdot \Vect{u}</right>
+			</computation>
+			<para>So the normal vectors to the two hyperplanes are  not parallel and, therefore, the hyperplanes themselves are not parallel.</para>
+		</answer>
+	</showme>
+	
+	
+	<showme>
+		<statement>
+			<para>Determine if the solution hyperplanes of the equations below are parallel.</para>
+			<computation>
+				<left>3u + v - w + 2x</left>
+				<center>=</center>
+				<right>-1</right>
+				<left>2w - 6u - 2v - 4x</left>
+				<center>=</center>
+				<right>\pi</right>
+			</computation>
+		</statement>
+		<answer type="Solution">
+			<para>We need to determine if the normal vectors of the two hyperplanes are parallel.</para>
+			<ol>
+				<li>
+					<para>The first hyperplane has <latex>\Vect{v}:=(3,1,-1,2))</latex> as a normal vector.</para>
+				</li>
+				<li>
+					<para>The second hyperplane has <latex>\Vect{w}:=(-6,-2,2,-4)</latex> as a normal vector.</para>
+				</li>
+			</ol>
+			<para>We note that</para>
+			<computation>
+				<left>\Vect{w}</left>
+				<center>=</center>
+				<right>(-2)\cdot \Vect{v}</right>
+			</computation>
+			<para>So the normal vectors to the two hyperplanes are  parallel and, therefore, the hyperplanes themselves are parallel.</para>
+		</answer>
+	</showme>
+	
+</showme.pack>

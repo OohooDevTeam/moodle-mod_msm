@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_LinearIndependenceDeterminant">
+	<caption>Linear independence test using determinants</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_LinearIndependenceDeterminantTest"/>
+		<info>
+			<caption>Example</caption>
+			<para>Examples which show how to use the determinant test detect linear independence.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>For an <latex>(m,n)</latex>-matrix <latex>\Mtrx{A}</latex> the following hold</para>
+		<part partid="ColumnsLinInd">
+			<para>If <latex>n\leq m</latex>, the column vectors of <latex>\Mtrx{A}</latex> are linearly independent if and only if there are <latex>n</latex> rows in <latex>\Mtrx{A}</latex> whose determinant is not <latex>0</latex>.</para>
+		</part>
+		<part partid="RowsLinInd">
+			<para>If <latex>m\leq n</latex>, the row vectors of <latex>\Mtrx{A}</latex> are linearly independent if and only if there are <latex>m</latex> columns in <latex>\Mtrx{A}</latex> whose determinant is not 0.</para>
+		</part>
+	</statement>
+	<proof type="Proof">
+		<para>We write <latex>\Mtrx{A}</latex> in terms of its row vectors <latex>R_1,\dots ,R_m</latex>, and its column vectors <latex>C_1,\dots ,C_n</latex>:</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\Mtrx{A} = 
+\left[
+\begin{array}{ccc}
+a_{11} & \cdots & a_{1n} \\
+\vdots & \ddots & \vdots \\
+a_{mn} & \cdots & a_{mn}
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+R_1 \\ \vdots \\ R_m
+\end{array}
+\right] = [ C_1\ \ \dots\ \ C_n]
+]]>
+			</latex>
+		</math.display>
+		
+		
+		
+		<caption><partref>ColumnsLinInd</partref></caption>
+		<para>To see the relationship between the linear independence of the columns of <latex>\Mtrx{A}</latex> and the determinant of a suitable submatrix of <latex>\Mtrx{A}</latex>, recall that <latex>C_1,\dots , C_n</latex> are linearly independent if and only if the RREF of <latex>\Mtrx{A}</latex> is</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\left[
+\begin{array}{cccc}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & & \ddots & \vdots \\
+0 & 0 & \cdots & 1 \\
+0 & 0 & \cdots & 0 \\
+\vdots & \vdots & & \vdots \\
+0 & 0 & \cdots & 0
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>This 
+			<subordinate>
+				<hot>happens exactly when</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_LinearIndependenceRank"/>
+					<para>Look up this theorem</para>
+				</crossref>
+			</subordinate>
+			<latex>\Mtrx{A}</latex> has <latex>n</latex> rows, forming an <latex>(n,n)</latex>-matrix <latex>\Vect{B}</latex>, whose RREF is the identity matrix; i.e. 
+				<subordinate>
+					<hot>exactly when</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_DeterminantInvertibilityTest"/>
+						<para>Look up this theorem</para>
+					</crossref>
+				</subordinate>
+			<latex>\det(\Mtrx{B})\neq 0</latex>.</para>
+		
+		<caption><partref>RowsLinInd</partref></caption>
+		<para>This follows from the previous part: The rows <latex>R_1,\dots ,R_m</latex>are the columns of <latex>\Mtrx{A}^T</latex>, and the claim follows. &ndash; This completes the proof</para>
+	</proof>
+</theorem>

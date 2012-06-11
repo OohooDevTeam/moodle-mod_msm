@@ -1,0 +1,1337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_DistancePointHyperplane"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Distance from a Point to a Hyperplane: Exercises</title>
+	  <quiz>
+		    <question>
+			      <para>
+            <para.body>Recall that the projection of a vector <math>
+                  <latex>\Vect{x}</latex>
+               </math> in <math>
+                  <latex>\RNr[n]</latex>
+               </math> onto the line <math>
+                  <latex>L</latex>
+               </math> through the origin and in the direction of the nonzero vector <math>
+                  <latex>\Vect{y}</latex>
+               </math> is</para.body>
+         </para>
+			      <math.display>
+				        <latex>\pr_{L}(\Vect{x} = \frac{ \DotPr{\Vect{x}}{\Vect{y}} }{ \DotPr{\Vect{y}}{ \Vect{y}} } \, \cdot\, \Vect{y}</latex>
+			      </math.display>
+		    </question>
+		    <part>
+			      <question>
+            <para>
+               <para.body>Which of the following is true?</para.body>
+            </para>
+         </question>
+			      <choice>
+				        <answer>
+               <para>
+                  <para.body>This projection is a real number.</para.body>
+               </para>
+            </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on ‘This projection is a real number.’</caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>Sorry! No! – If <math>
+                        <latex> n &gt; 1</latex>
+                     </math>, and you project a vector on a line, you get .... ? – If <math>
+                        <latex>n=1</latex>
+                     </math>this projection is <subordinate>
+                        <hot>what?</hot>
+                        <info>
+                           <para>
+                              <para.body>a number, namely the original number <math>
+                                    <latex>x</latex>
+                                 </math>
+                              </para.body>
+                           </para>
+                        </info>
+                     </subordinate>
+					             </para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+               <para>
+                  <para.body>This projection is a vector. </para.body>
+               </para>
+            </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on ‘This projection is a vector’</caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>Correct! – The projection of <math>
+                        <latex>\Vect{x}</latex>
+                     </math> onto <math>
+                        <latex>L</latex>
+                     </math> is a multiple of the vector <math>
+                        <latex>\Vect{y}</latex>
+                     </math>.</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+               <para>
+                  <para.body>This projection is a line.</para.body>
+               </para>
+            </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on ‘This projection is a line’</caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>No! - We start with a vector <math>
+                        <latex>\Vect{x}</latex>
+                     </math>, and projecting it onto a line <math>
+                        <latex>L</latex>
+                     </math> yields a single vector, contained in <math>
+                        <latex>L</latex>
+                     </math>.</para.body>
+               </para>
+				        </info>
+			      </choice>
+		    </part>
+		    <part>
+			      <question>
+            <para>
+               <para.body>If  <math>
+                     <latex>\proj_{L}(\Vect{x}) = 0</latex>
+                  </math> , what can you conclude about <math>
+                     <latex>\Vect{x}</latex>
+                  </math> in relation to the line <math>
+                     <latex>L</latex>
+                  </math>?</para.body>
+            </para>
+         </question>
+			      <choice>
+				        <answer>
+               <para>
+                  <para.body>I conclude that <math>
+                        <latex>\Vect{x} = \Vect{0}</latex>
+                     </math>.</para.body>
+               </para>
+            </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on: <math>
+                        <latex>\Vect{x} = \Vect{0}</latex>
+                     </math>
+                  </caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>If <math>
+                        <latex>\Vect{x} = \Vect{0}</latex>
+                     </math>, its projection onto <math>
+                        <latex>L</latex>
+                     </math> will be the <math>
+                        <latex>0</latex>
+                     </math>-vector. However, in general, this is not the reason why <math>
+                        <latex>\proj_{L}(\Vect{x}) = \Vect{0}</latex>
+                     </math>.</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+               <para>
+                  <para.body>I conclude that <math>
+                        <latex>\Vect{x}</latex>
+                     </math> lies on <math>
+                        <latex>L</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on: <math>
+                        <latex>\Vect{x}</latex>
+                     </math> lies on <math>
+                        <latex>L</latex>
+                     </math>
+                  </caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>Sorry, no! If <math>
+                        <latex>\Vect{x}</latex>
+                     </math> lies on <math>
+                        <latex>L</latex>
+                     </math>, its projection onto <math>
+                        <latex>L</latex>
+                     </math> will be <math>
+                        <latex>\Vect{x}</latex>
+                     </math> itself.</para.body>
+               </para>
+				        </info>
+			      </choice>
+			      <choice>
+				        <answer>
+               <para>
+                  <para.body>I conclude that <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is perpendicular to <math>
+                        <latex>L</latex>
+                     </math>.</para.body>
+               </para>
+            </answer>
+				        <info>
+               <info.caption>
+                  <caption>Comment on: <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is perpendicular to <math>
+                        <latex>L</latex>
+                     </math>
+                  </caption>
+               </info.caption>
+					
+					          <para>
+                  <para.body>Correct! – Given that <math>
+                        <latex>\Vect{y}\neq \Vect{0}</latex>
+                     </math>, <math>
+                        <latex>\proj_{L}(\Vect{x})=\Vect{0}</latex>
+                     </math> exactly when <math>
+                        <latex>\Vect{x} \bullet \Vect{y} = 0</latex>
+                     </math>. This happens exactly when <math>
+                        <latex>\Vect{x}</latex>
+                     </math> is perpendicular to <math>
+                        <latex>\Vect{y}</latex>
+                     </math>.</para.body>
+               </para>
+				        </info>
+			      </choice>	
+		    </part>
+	  </quiz>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find the distance from the point <math>
+                     <latex>Q</latex>
+                  </math> to the given hyperplane in <math>
+                     <latex>\RNr[2]</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>Q(5,3)</latex>
+                     </math>, and <math>
+                        <latex>\Pi</latex>
+                     </math> the solutions of the equation <math>
+                        <latex>2x-y=3</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The distance from <math>
+                              <latex>Q</latex>
+                           </math> to <math>
+                              <latex>\Pi</latex>
+                           </math> is <math>
+                              <latex>4/\sqrt{5}</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Draw a sketch of the situation. Make sure you know the proper formula for the distance of <math>
+                        <latex>Q</latex>
+                     </math> from <math>
+                        <latex>\Pi</latex>
+                     </math>, and what each character in this formula represents. Then substitute into the formula for the distance of a point from a hyperplane, and calculate.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Recall that the distance from <math>
+                           <latex>Q</latex>
+                        </math> to <math>
+                           <latex>\Pi</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Dstnc{Q}{\Pi}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Abs{ \DotPr{ (\Vect{q} - \Vect{p}) }{ \Vect{n} } } }{ \Abs{ \Vect{n} } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>where</para.body>
+                  </para>
+					             <ul>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{q}</latex>
+                              </math> is the position vector of the point <math>
+                                 <latex>Q</latex>
+                              </math>. We know that <math>
+                                 <latex>\Vect{q}= (5,3)</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{p}</latex>
+                              </math> is the position vector of a point on <math>
+                                 <latex>\Pi</latex>
+                              </math>. We are free to use any point we want. <math>
+                                 <latex>\Vect{p}:= (0,-3)</latex>
+                              </math> is a convenient choice.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{n}</latex>
+                              </math> is a normal vector to <math>
+                                 <latex>\Pi</latex>
+                              </math>. The equation for the given line directly offers <math>
+                                 <latex>\Vect{n} := (2,-1)</latex>
+                              </math> as a possible choice.</para.body>
+                        </para>
+                     </li>
+					             </ul>
+					             <para>
+                     <para.body>With this setup we obtain</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Dstnc{Q}{\Pi}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Abs{ \DotPr{ ((5,3)-(0,-3)) }{ (2,-1) } } }{ \Abs{ (2,-1) } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Abs{ 4 } }{ \Abs{ \sqrt{5} } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text/>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ 4 }{ \sqrt{5} }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So the distance from <math>
+                           <latex>Q</latex>
+                        </math> to <math>
+                           <latex>\Pi</latex>
+                        </math> is <math>
+                           <latex>4/\sqrt{5}</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>Q(-3,-1)</latex>
+                     </math>, and <math>
+                        <latex>\Pi</latex>
+                     </math> the solutions of the equation <math>
+                        <latex>x = 3y</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The distance from <math>
+                              <latex>Q</latex>
+                           </math> to <math>
+                              <latex>\Pi</latex>
+                           </math> is <math>
+                              <latex>0</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>There are two ways in which we can arrive at an answer to this problem:</para.body>
+                  </para>
+					             <para>
+                     <para.body>
+                        <emphasis>Approach 1: the lucky check</emphasis> Substituting the coordinates of <math>
+                           <latex>Q</latex>
+                        </math> into the equation for <math>
+                           <latex>\Pi</latex>
+                        </math> shows</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-3</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>3\cdot (-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So <math>
+                           <latex>Q</latex>
+                        </math> lies on <math>
+                           <latex>\Pi</latex>
+                        </math>. Therefore the distance from <math>
+                           <latex>Q</latex>
+                        </math> to <math>
+                           <latex>\Pi</latex>
+                        </math> is <math>
+                           <latex>0</latex>
+                        </math>.</para.body>
+                  </para>
+					
+					             <para>
+                     <para.body>
+                        <emphasis>Approach 2: we just use the distance formula</emphasis> In this case we find</para.body>
+                  </para>
+					             <ul>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{q}=(-3,-1)</latex>
+                              </math> is the position vector of the point <math>
+                                 <latex>Q</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{p}:=(3,1)</latex>
+                              </math> is a point on <math>
+                                 <latex>\Pi</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{n}:=(-1,3)</latex>
+                              </math> is a normal vector for <math>
+                                 <latex>\Pi</latex>
+                              </math>; found by rewriting the equation for <math>
+                                 <latex>\Pi</latex>
+                              </math> as</para.body>
+                        </para>
+							                 <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>-x + 3y</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <text>=</text>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>0</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+						               </li>
+					             </ul>
+					             <para>
+                     <para.body>Substituting these data into the distance formula gives</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Dstnc{Q}{\Pi}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Abs{ \DotPr{ ((-3,-1)-(3,1)) }{ (-1,3) } } }{ \Abs{ (-1,3) } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Abs{ \DotPr{ (-6,-2) }{ (-1,3) } } }{ \Abs{ (-1,3) } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Abs{ 0 } }{ \Abs{ \sqrt{10} } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text/>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This confirms the result obtained with ‘lucky check’ approach described above.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+            <para>
+               <para.body>Find the distance from the point <math>
+                     <latex>Q</latex>
+                  </math> to the given hyperplane of <math>
+                     <latex>\RNr[3]</latex>
+                  </math>.</para.body>
+            </para>
+         </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>Q(3,1,-4)</latex>
+                     </math> and <math>
+                        <latex>\Pi</latex>
+                     </math> the solutions of the equation <math>
+                        <latex>2x-y-z=1</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Dstnc{Q}{\Pi}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\dfrac{8}{\sqrt{6}}</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>First we collect the ingredients for the formula which computes the distance from <math>
+                           <latex>Q</latex>
+                        </math> to <math>
+                           <latex>\Pi</latex>
+                        </math>:</para.body>
+                  </para>
+					             <ul>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{q}=(3,1,-4)</latex>
+                              </math> is the position vector of the point <math>
+                                 <latex>Q</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{p}:=(0,0,-1)</latex>
+                              </math> is the position vector of a point on <math>
+                                 <latex>\Pi</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\Vect{n}:=(2,-1,-1)</latex>
+                              </math> is a normal vector to <math>
+                                 <latex>\Pi</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+					             </ul>
+					             <para>
+                     <para.body>Now the distance formula yields</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Dstnc{Q}{\Pi}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Abs{ \DotPr{ ((3,1,-4)-(0,0,-1)) }{ (2,-1,-1) } } }{ \Abs{ (2,-1,-1) } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{ \Abs{ 8 } }{ \Abs{ \sqrt{6} } }</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text/>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\dfrac{8}{\sqrt{6}}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>Q(0,5,2)</latex>
+                     </math> and <math>
+                        <latex>\Pi</latex>
+                     </math> the solutions of the equation <math>
+                        <latex>y=5</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>Q</latex>
+                           </math> lies on <math>
+                              <latex>\Pi</latex>
+                           </math>. Therefore <math>
+                              <latex>\Dstnc{Q}{\Pi} = 0</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>
+                     <math>
+                        <latex>Q(1,-3,-2)</latex>
+                     </math> and <math>
+                        <latex>\Pi</latex>
+                     </math> the solutions of the equation <math>
+                        <latex>y=-z</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Dstnc{Q}{\Pi}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\dfrac{5}{\sqrt{2}}</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>In <math>
+                     <latex>\RNr[2]</latex>
+                  </math>, find the point <math>
+                     <latex>R</latex>
+                  </math> on the line <math>
+                     <latex>L</latex>
+                  </math> of solutions of the equation <math>
+                     <latex>3x + 2y = -2</latex>
+                  </math> which is closest to the point <math>
+                     <latex>Q(2,–2)</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The point <math>
+                           <latex>R</latex>
+                        </math> on <math>
+                           <latex>L</latex>
+                        </math> closest to <math>
+                           <latex>Q</latex>
+                        </math> is <math>
+                           <latex>\tfrac{1}{13} ( -10 , 2 )</latex>
+                        </math>.</para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+            <para>
+               <para.body>Draw a sketch of the situation.</para.body>
+            </para>
+         </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>We know that the point <math>
+                        <latex>R</latex>
+                     </math> on <math>
+                        <latex>\Pi</latex>
+                     </math> closest to <math>
+                        <latex>Q</latex>
+                     </math> has position vector</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{r}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{q} - \dfrac{ \DotPr{ (\Vect{q} - \Vect{p}) }{ \Vect{n} } }{ \DotPr{ \Vect{n} }{ \Vect{n} }} \cdot \Vect{n}</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <ul>
+					             <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{q}=(2,2)</latex>
+                           </math> the position vector of <math>
+                              <latex>Q</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+					             <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{p}:=(0,-1)</latex>
+                           </math> the position vector of a point on <math>
+                              <latex>L</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+					             <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{n}:=(3,2)</latex>
+                           </math> a normal vector to <math>
+                              <latex>L</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+				           </ul>
+				           <para>
+                  <para.body>With these ingredients, the above formula yields</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{r}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2,2) - \dfrac{ \DotPr{ \left((2,2) - (0,-1)\right) }{ (3,2) } }{ \DotPr{ (3,2) }{ (3,2) }} \cdot (3,2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2,2)\ -\ \dfrac{12}{13}\cdot (3,2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{1}{13}(-10,2)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>Therefore, the point <math>
+                        <latex>R</latex>
+                     </math> on <math>
+                        <latex>L</latex>
+                     </math> closest to <math>
+                        <latex>Q</latex>
+                     </math> is <math>
+                        <latex>\tfrac{1}{13} ( -10,2 )</latex>
+                     </math>.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>In <math>
+                     <latex>\RNr[3]</latex>
+                  </math>, find the point <math>
+                     <latex>R</latex>
+                  </math> on the plane <math>
+                     <latex>H</latex>
+                  </math> of solutions of the equation <math>
+                     <latex>4x + 3z = 3</latex>
+                  </math> which is closest to the point <math>
+                     <latex>Q(1,1,1)</latex>
+                  </math>.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The point <math>
+                           <latex>R</latex>
+                        </math> on <math>
+                           <latex>H</latex>
+                        </math> closest to <math>
+                           <latex>Q</latex>
+                        </math> is <math>
+                           <latex>\tfrac{1}{25} ( 9,25,13)</latex>
+                        </math>.</para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+		
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Verify that the given two lines in <math>
+                     <latex>\RNr[2]</latex>
+                  </math> are parallel. Then find the distance between them.</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\aligned
+L_1: &amp;\quad x &amp; - &amp; 3y &amp; = &amp; 0 \\
+L_2: &amp;\quad2x &amp; - &amp; 6y &amp; = &amp; 1
+\endaligned
+
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The distance between the two parallel lines <math>
+                           <latex>L_1</latex>
+                        </math> and <math>
+                           <latex>L_2</latex>
+                        </math> is <math>
+                           <latex>\tfrac{1 }{ 2\sqrt{10} }</latex>
+                        </math>.</para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Draw a sketch and recall: two lines are parallel exactly when their normal vectors are parallel.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>The two lines are seen to be parallel if and only if their normal vectors are parallel. As normal vectors we find</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{n}_1</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1,-3)</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Vect{n}_2</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>:=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(2,-6) = 2\cdot (1,-3)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				           <para>
+                  <para.body>This means that the lines have parallel normal vectors. So the lines are parallel. To find the distance between the two lines, we pick a point <math>
+                        <latex>Q</latex>
+                     </math> on <math>
+                        <latex>L_1</latex>
+                     </math>, and compute the distance from <math>
+                        <latex>Q</latex>
+                     </math> to <math>
+                        <latex>L_2</latex>
+                     </math>: <math>
+                        <latex>Q(3,1)</latex>
+                     </math> with position vector <math>
+                        <latex>\Vect{q}=(3,1)</latex>
+                     </math> lies on <math>
+                        <latex>L_1</latex>
+                     </math>. A point on <math>
+                        <latex>L_2</latex>
+                     </math> is <math>
+                        <latex>P(\tfrac{1}{2},0)</latex>
+                     </math>. Now the formula for the distance from <math>
+                        <latex>Q</latex>
+                     </math> to <math>
+                        <latex>L_2</latex>
+                     </math> yields</para.body>
+               </para>
+				           <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\Dstnc{q}{L_2}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \Abs{ \DotPr{ ((3,1) - (\tfrac{1}{2},0)) }{ (1,-3) } } }{ \Abs{ (1,-3) } }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ \Abs{ -\tfrac{1}{2} } }{ \sqrt{10} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\dfrac{ 1 }{ 2\sqrt{10} }</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Verify that the given two lines in <math>
+                     <latex>\RNr[3]</latex>
+                  </math> are parallel. Then find the distance between them.</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\aligned
+H_1: &amp;\quad x &amp; + &amp; y &amp; - &amp; 2z &amp; = &amp; 0 \\
+H_2: &amp;\quad3x &amp; + &amp; 3y &amp; - &amp; 6z &amp; =  &amp; 1
+\endaligned
+
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The distance between the two parallel planes <math>
+                           <latex>H_1</latex>
+                        </math> and <math>
+                           <latex>H_2</latex>
+                        </math> is <math>
+                           <latex>\tfrac{\sqrt{6} }{ 18 }</latex>
+                        </math>.</para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Find normal vectors of <math>
+                     <latex>H_1</latex>
+                  </math> and <math>
+                     <latex>H_2</latex>
+                  </math>.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>The normal vectors of <math>
+                     <latex>H_1</latex>
+                  </math> and <math>
+                     <latex>H_2</latex>
+                  </math> are <math>
+                     <latex>\Vect{n}_1=(1,1,-2)</latex>
+                  </math> and <math>
+                     <latex>\Vect{n}_2=(3,3,-6)</latex>
+                  </math>. – Check if they are parallel.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>Observe:</para.body>
+            </para>
+				        <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\Vect{n_2}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>3\cdot \Vect{n}_1</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+				        <para>
+               <para.body>So the normal vectors are parallel. Therefore the planes are parallel.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>Are the planes equal?</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>The planes are not equal as <math>
+                     <latex>\Vect{0}</latex>
+                  </math> lies on <math>
+                     <latex>H_1</latex>
+                  </math> but not on <math>
+                     <latex>H_2</latex>
+                  </math>.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>So the distance between <math>
+                     <latex>H_1</latex>
+                  </math> and <math>
+                     <latex>H_2</latex>
+                  </math> is the distance from <math>
+                     <latex>\Vect{0}</latex>
+                  </math> to <math>
+                     <latex>H_2</latex>
+                  </math>.</para.body>
+            </para>
+			      </solution.hint>
+	
+		    </approach>
+	  </exercise>
+</exercise.pack>

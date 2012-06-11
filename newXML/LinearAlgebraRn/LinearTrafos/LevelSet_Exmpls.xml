@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE example.pack
+  SYSTEM "Symbols.dtd">
+<example.pack xmlns="Compositor"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              id="Exa_LevelSet"
+              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	
+	  <title>Examples: Level Sets of Linear Transformations</title>
+	  <caption xmlns="">Example: A Linear Map from a Matrix</caption>
+	
+	  <example>
+		    <statement.example>
+			      <para xmlns="">
+            <para.body>Let <math>
+                  <latex>T\from \RNr[3] \to \RNr[2]</latex>
+               </math> be given by</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>
+					
+T(x,y,z) = 
+\left[
+\begin{array}{ccc}
+1 &amp; -1 &amp; 2 \\
+1 &amp; 1/2 &amp; 1
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right]
+
+				</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>Find <math>
+                  <latex>T^{-1}(1,1)</latex>
+               </math>; in other words, find the level set of <math>
+                  <latex>\Vect{y}=(1,1)</latex>
+               </math> under <math>
+                  <latex>T</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.example>
+		
+		    <answer xmlns="" type="Solution" version="1">
+         <answer.block>
+            <answer.block.body>
+			            <para>
+                  <para.body>We know that <math>
+                        <latex>T^{-1}(1,1)</latex>
+                     </math> consists of all solutions of the system of linear equations</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+T(x,y,z) = 
+\left[
+\begin{array}{ccc}
+1 &amp; -1 &amp; 2 \\
+1 &amp; 1/2 &amp; 1
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = 
+\left[
+\begin{array}{cc}
+1 \\ 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>In geometrical terms: therefore, <math>
+                        <latex>T^{-1}(1,1)</latex>
+                     </math> consists of the intersection of the two (hyper-)planes which arise from the two linear equations</para.body>
+               </para>
+			
+			            <para align="center">
+                  <para.body>
+                     <math>
+                        <latex>x-y+2z = 1</latex>
+                     </math>   and   <math>
+                        <latex>x + (1/2)y + z = 1</latex>
+                     </math>.</para.body>
+               </para>
+			
+			            <para>
+                  <para.body>To find a numerical description of <math>
+                        <latex>T^{-1}(1,1)</latex>
+                     </math>,  we solve the system of linear equations</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+\left[
+\begin{array}{ccc}
+1 &amp; -1 &amp; 2 \\
+1 &amp; 1/2 &amp; 1
+\end{array}
+\right]
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right] = 
+\left[
+\begin{array}{cc}
+1 \\ 1
+\end{array}
+\right]
+
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>To find the solutions of this system, we form its augmented coefficient matrix and row reduce it.</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+\begin{array}{rrr|c}
+1 &amp; -1 &amp; 2 &amp; 1 \\
+1 &amp; \tfrac{1}{2} &amp; 1 &amp; 1 \\ \hline
+%
+1 &amp; -1 &amp; 2 &amp; 1 \\
+0 &amp; \tfrac{3}{2} &amp; -1 &amp; 0 \\ \hline
+%
+1 &amp; -1 &amp; 2 &amp; 1 \\
+0 &amp; 1 &amp; -\tfrac{2}{3} &amp; 0 \\ \hline
+%
+1 &amp; 0 &amp; \tfrac{4}{3} &amp; 1 \\
+0 &amp; 1 &amp; -\tfrac{2}{3} &amp; 0
+\end{array}
+
+				</latex>
+			            </math.display>
+			
+			            <para>
+                  <para.body>So the variable <math>
+                        <latex>z</latex>
+                     </math> is free, and</para.body>
+               </para>
+			
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>y</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\tfrac{2}{3}z</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>x</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>1 - \tfrac{4}{3}z</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Therefore each solution is of the form</para.body>
+               </para>
+			
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\left( 1 - \tfrac{4}{3} z , \tfrac{2}{3} z,z \right)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>(1,0,0) + z\cdot \left( -\tfrac{4}{3} , \tfrac{2}{3} , 1\right)</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>with <math>
+                        <latex>z</latex>
+                     </math> in <math>
+                        <latex>\RNr</latex>
+                     </math> arbitrary.</para.body>
+               </para>
+			
+			            <para>
+                  <para.body>This is a line in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>. It forms all of <math>
+                        <latex>T^{-1}(1,1)</latex>
+                     </math>. So, in particular, <math>
+                        <latex>T</latex>
+                     </math> transforms this entire line into the point <math>
+                        <latex>(1,1)</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.block.body>
+         </answer.block>
+      </answer>
+	  </example>
+	
+</example.pack>

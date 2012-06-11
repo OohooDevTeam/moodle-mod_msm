@@ -1,0 +1,2076 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_Function"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Functions</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>About the function</para.body>
+            </para>
+			         <math.display>
+				           <latex>f\from \RNr \to \RNr[3],\qquad f(t) = (t,t^2,t^3)</latex>
+			         </math.display>
+			         <para>
+               <para.body>answer the following questions</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is the domain of <math>
+                        <latex>f</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The domain of <math>
+                              <latex>f</latex>
+                           </math> is the set <math>
+                              <latex>\RNr</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is the target set of <math>
+                        <latex>f</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The target of <math>
+                              <latex>f</latex>
+                           </math> is the set <math>
+                              <latex>\RNr[3]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is <math>
+                        <latex>f(1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>f(1) = (1,1,1)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>To find <math>
+                           <latex>f(1)</latex>
+                        </math>, we need to substitute <math>
+                           <latex>1</latex>
+                        </math> for the variable <math>
+                           <latex>t</latex>
+                        </math>. Thus we obtain</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,1^2,1^3)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,1,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the (function) value of <math>
+                        <latex>f</latex>
+                     </math> at <math>
+                        <latex>2</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The value of <math>
+                              <latex>f</latex>
+                           </math> at <math>
+                              <latex>2</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>f(2)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(2,4,8)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The value of <math>
+                           <latex>f</latex>
+                        </math> at <math>
+                           <latex>2</latex>
+                        </math> is <math>
+                           <latex>f(2)</latex>
+                        </math>. Therefore, we must substitute <math>
+                           <latex>2</latex>
+                        </math> for the variable <math>
+                           <latex>t</latex>
+                        </math>. The result is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(2)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,2^2,2^3)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,4,8)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the (function) value of <math>
+                        <latex>f</latex>
+                     </math> at <math>
+                        <latex>-2</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The value of <math>
+                              <latex>f</latex>
+                           </math> at <math>
+                              <latex>-2</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>f(-2)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(-2,4,-8)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The value of <math>
+                           <latex>f</latex>
+                        </math> at <math>
+                           <latex>-2</latex>
+                        </math> is <math>
+                           <latex>f(-2)</latex>
+                        </math>. Therefore, we must substitute <math>
+                           <latex>-2</latex>
+                        </math> for the variable <math>
+                           <latex>t</latex>
+                        </math>. The result is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(-2)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-2,(-2)^2,(-2)^3)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-2,4,-8)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>About the function</para.body>
+            </para>
+			         <math.display>
+				           <latex>s\from \RNr[2] \to \RNr[2],\qquad s(u,v) = (u^2-v^2,2uv)</latex>
+			         </math.display>
+			         <para>
+               <para.body>answer the following questions</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is the domain of <math>
+                        <latex>s</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The domain of <math>
+                              <latex>s</latex>
+                           </math> is the set <math>
+                              <latex>\RNr[2]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is the target set of <math>
+                        <latex>s</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The target of <math>
+                              <latex>s</latex>
+                           </math> is the set <math>
+                              <latex>\RNr[2]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is <math>
+                        <latex>s(0,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>s(0,1) = (-1,0)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>To find <math>
+                           <latex>s(0,1)</latex>
+                        </math>, we need to substitute <math>
+                           <latex>0</latex>
+                        </math> for the variable <math>
+                           <latex>u</latex>
+                        </math>, and <math>
+                           <latex>1</latex>
+                        </math> for the variable <math>
+                           <latex>v</latex>
+                        </math>. Thus we obtain</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>s(0,1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0^2-1^2,2\cdot 0\cdot 1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the (function) value of <math>
+                        <latex>s</latex>
+                     </math> at <math>
+                        <latex>(1,1)</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The value of <math>
+                              <latex>s</latex>
+                           </math> at <math>
+                              <latex>(1,1)</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>s(1,1)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(0,2)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The value of <math>
+                           <latex>s</latex>
+                        </math> at <math>
+                           <latex>(1,1)</latex>
+                        </math> is <math>
+                           <latex>s(1,1)</latex>
+                        </math>. Therefore, we must substitute <math>
+                           <latex>1</latex>
+                        </math> for the variable <math>
+                           <latex>u</latex>
+                        </math> and <math>
+                           <latex>1</latex>
+                        </math> for the variable <math>
+                           <latex>v</latex>
+                        </math>. The result is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>s(1,1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1^2-1^2,2\cdot 1\cdot 1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is the (function) value of <math>
+                        <latex>f</latex>
+                     </math> at <math>
+                        <latex>(-1,-2)</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The value of <math>
+                              <latex>s</latex>
+                           </math> at <math>
+                              <latex>(-1,-2)</latex>
+                           </math> is</para.body>
+                     </para>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>s(-1,-2)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(-3,4)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The value of <math>
+                           <latex>s</latex>
+                        </math> at <math>
+                           <latex>(-1,-2)</latex>
+                        </math> is <math>
+                           <latex>s(-1,-2)</latex>
+                        </math>. Therefore, we must substitute <math>
+                           <latex>-1</latex>
+                        </math> for the variable <math>
+                           <latex>u</latex>
+                        </math> and <math>
+                           <latex>-2</latex>
+                        </math> for the variable <math>
+                           <latex>v</latex>
+                        </math>. The result is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>s(-1,-2)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>((-1)^2 - (-2)^2,2\cdot(-1)\cdot (-2))</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-3,4)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>About the function</para.body>
+            </para>
+			         <math.display>
+				           <latex>f\from \RNr[3] \longrightarrow \RNr[2],\quad f(x,y,z)=(x+y^2,y-z^2)</latex>
+			         </math.display>
+			         <para>
+               <para.body>answer the following questions.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is the domain of <math>
+                        <latex>f</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The domain of <math>
+                              <latex>f</latex>
+                           </math> is the set <math>
+                              <latex>\RNr[3]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>What is the target set of <math>
+                        <latex>f</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>The target of <math>
+                              <latex>f</latex>
+                           </math> is the set <math>
+                              <latex>\RNr[2]</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is <math>
+                        <latex>f(0,0,0)</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>f(0,0,0)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(0,0)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>To find <math>
+                           <latex>f(0,0,0)</latex>
+                        </math>, we must</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>0</latex>
+                              </math> for <math>
+                                 <latex>x</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>0</latex>
+                              </math> for <math>
+                                 <latex>y</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>0</latex>
+                              </math> for <math>
+                                 <latex>z</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>The result is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(0,0,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0+0^2,0-0^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is <math>
+                        <latex>f(2,0,1)</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>f(2,0,1)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(2,-1)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>To find <math>
+                           <latex>f(2,0,1)</latex>
+                        </math>, we must</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>2</latex>
+                              </math> for <math>
+                                 <latex>x</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>0</latex>
+                              </math> for <math>
+                                 <latex>y</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>1</latex>
+                              </math> for <math>
+                                 <latex>z</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>The result is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(2,0,1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2+0^2,0-1^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>What is <math>
+                        <latex>f(-1,2,5)</latex>
+                     </math>?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>f(-1,2,5)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(3,-23)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>To find <math>
+                           <latex>f(-1,2,5)</latex>
+                        </math>, we must</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>-1</latex>
+                              </math> for <math>
+                                 <latex>x</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>2</latex>
+                              </math> for <math>
+                                 <latex>y</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>substitute <math>
+                                 <latex>5</latex>
+                              </math> for <math>
+                                 <latex>z</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>The result is</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(-1,2,5)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-1+2^2,2-5^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(3,-23)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Does the equation <math>
+                        <latex>f(x,y,z) = (1,1)</latex>
+                     </math> have a solution?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Do not look for a method for solving this equation. Just try to find number values for <math>
+                        <latex>x</latex>
+                     </math>, <math>
+                        <latex>y</latex>
+                     </math>, and <math>
+                        <latex>z</latex>
+                     </math> such that the given equation is true.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We need to determine if it is possible to substitute number values for the variables <math>
+                           <latex>x</latex>
+                        </math>, <math>
+                           <latex>y</latex>
+                        </math>, and <math>
+                           <latex>z</latex>
+                        </math> such that the given equation is true.</para.body>
+                  </para>
+					             <para>
+                     <para.body>By trial and error, we find that</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(0,1,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0+1^2,1-0^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore the given equation has at least one solution, namely <math>
+                           <latex>(x,y,z) = (0,1,0)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Does the equation <math>
+                        <latex>f(x,y,z) = (0,0)</latex>
+                     </math> have more than one solution?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Do not look for a method for solving this equation. Just try to find number values for <math>
+                        <latex>x</latex>
+                     </math>, <math>
+                        <latex>y</latex>
+                     </math>, and <math>
+                        <latex>z</latex>
+                     </math> such that the given equation is true.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We need to determine if it is possible to substitute number values for the variables <math>
+                           <latex>x</latex>
+                        </math>, <math>
+                           <latex>y</latex>
+                        </math>, and <math>
+                           <latex>z</latex>
+                        </math> such that the given equation is true.</para.body>
+                  </para>
+					             <para>
+                     <para.body>By trial and error, we find that</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(0,0,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0+0^2,0-0^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>and</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(-1,1,1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-1+1^2,1-1^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So the given equation has at least two solutions. – This is enough to answer the given question. But while we are at it, we can just as well observe that in the last solution the sign of <math>
+                           <latex>z</latex>
+                        </math> does not really matter:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(-1,1,-1)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-1+1^2,1-(-1)^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore the given equation has at least three solutions, namely</para.body>
+                  </para>
+					             <math.display>
+						               <latex>(x,y,z) = (0,0,0)\quad \text{and}\quad (x,y,z) = ( -1,1,\pm 1)</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Does <math>
+                        <latex>f</latex>
+                     </math> transform points on <math>
+                        <latex>x</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> into points on the <math>
+                        <latex>x</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>Yes!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The <math>
+                        <latex>x</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> consists of all points of the form <math>
+                        <latex>(x,0,0)</latex>
+                     </math>. The problem asks if any such point gets transformed into a point on the <math>
+                        <latex>x</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>, that is into a point of the form <math>
+                        <latex>(t,0)</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The <math>
+                           <latex>x</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> consists of all points of the form <math>
+                           <latex>(x,0,0)</latex>
+                        </math>. The problem asks if any such point gets transformed into a point on the <math>
+                           <latex>x</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>, that is into a point of the form <math>
+                           <latex>(t,0)</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Therefore we compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(x,0,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(x+0^2,0-0^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(x,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore <math>
+                           <latex>f</latex>
+                        </math> transforms points on the <math>
+                           <latex>x</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> into points on the <math>
+                           <latex>x</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Does <math>
+                        <latex>f</latex>
+                     </math> transform points on <math>
+                        <latex>y</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> into points on the <math>
+                        <latex>y</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The <math>
+                        <latex>y</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> consists of all points of the form <math>
+                        <latex>(0,y,0)</latex>
+                     </math>. The problem asks if any such point gets transformed into a point on the <math>
+                        <latex>y</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>, that is into a point of the form <math>
+                        <latex>(0,t)</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The <math>
+                           <latex>y</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> consists of all points of the form <math>
+                           <latex>(0,y,0)</latex>
+                        </math>. The problem asks if any such point gets transformed into a point on the <math>
+                           <latex>y</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>, that is into a point of the form <math>
+                           <latex>(0,t)</latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Therefore we compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(0,y,0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0+y^2,y-0^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So, for example, <math>
+                           <latex>f(0,1,0) = (1,1)</latex>
+                        </math>, which does not lie on the <math>
+                           <latex>y</latex>
+                        </math>-axis. Therefore <math>
+                           <latex>f</latex>
+                        </math> fails to transform points on the <math>
+                           <latex>y</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> into points on the <math>
+                           <latex>y</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Does <math>
+                        <latex>f</latex>
+                     </math> transform points on <math>
+                        <latex>z</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> into points on the positive <math>
+                        <latex>y</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>No!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>The <math>
+                        <latex>z</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> consists of all points of the form <math>
+                        <latex>(0,0,z)</latex>
+                     </math>. The problem asks if any such point gets transformed into a point on the positive <math>
+                        <latex>y</latex>
+                     </math>-axis of <math>
+                        <latex>\RNr[2]</latex>
+                     </math>, that is into a point of the form <math>
+                        <latex>(0,t)</latex>
+                     </math>, with <math>
+                        <latex> t&gt; 0 </latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The <math>
+                           <latex>z</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> consists of all points of the form <math>
+                           <latex>(0,0,z)</latex>
+                        </math>. The problem asks if any such point gets transformed into a point on the positive <math>
+                           <latex>y</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>, that is into a point of the form <math>
+                           <latex>(0,t)</latex>
+                        </math>, with <math>
+                           <latex> t&gt; 0 </latex>
+                        </math>.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Therefore we compute</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(0,0,z)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0+0^2,0-z^2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>As <math>
+                           <latex>z^2\leq 0</latex>
+                        </math> for all <math>
+                           <latex>z</latex>
+                        </math>, this implies that <math>
+                           <latex>f</latex>
+                        </math> transforms points on the <math>
+                           <latex>z</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> into points on the nonpositive <math>
+                           <latex>y</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>. Therefore it fails to transform points on the <math>
+                           <latex>z</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> into points on the positive <math>
+                           <latex>y</latex>
+                        </math>-axis of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below indicate if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For a function <math>
+                        <latex>f\from \RNr[3]\to \RNr[2]</latex>
+                     </math>, ‘<math>
+                        <latex>\Vect{a}</latex>
+                     </math> is in <math>
+                        <latex>f^{-1}(2,0)</latex>
+                     </math>’ means that <math>
+                        <latex>f(\Vect{a})=(2,0)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The set <math>
+                           <latex>f^{-1}(2,0)</latex>
+                        </math> consists of all those <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> with <math>
+                           <latex>f(\Vect{x}) = (2,0)</latex>
+                        </math>. According to this definition the statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For a function <math>
+                        <latex>f\from \RNr[3]\to \RNr[2]</latex>
+                     </math>, ‘<math>
+                        <latex>\Vect{a}</latex>
+                     </math> is in <math>
+                        <latex>f^{-1}(2,0)</latex>
+                     </math>’ means that <math>
+                        <latex>f(\mathbf{a})=\mathbf{a}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The set <math>
+                           <latex>f^{-1}(2,0)</latex>
+                        </math> consists of all those <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> with <math>
+                           <latex>f(\Vect{x}) = (2,0)</latex>
+                        </math>. According to this definition the statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For a function <math>
+                        <latex>f\from \RNr[3]\to \RNr[2]</latex>
+                     </math>, if ‘<math>
+                        <latex>\Vect{a}</latex>
+                     </math> is in <math>
+                        <latex>f^{-1}(2,0)</latex>
+                     </math>’ then <math>
+                        <latex>\Vect{a}</latex>
+                     </math> is in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The set <math>
+                           <latex>f^{-1}(2,0)</latex>
+                        </math> consists of all those <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> with <math>
+                           <latex>f(\Vect{x}) = (2,0)</latex>
+                        </math>. Thus, if <math>
+                           <latex>\Vect{a}</latex>
+                        </math> is in <math>
+                           <latex>f^{-1}(2,0)</latex>
+                        </math>, then <math>
+                           <latex>\Vect{a}</latex>
+                        </math> must be a vector in <math>
+                           <latex>\RNr[3]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For a function <math>
+                        <latex>f\from \RNr[3]\to \RNr[2]</latex>
+                     </math>, if ‘<math>
+                        <latex>\Vect{a}</latex>
+                     </math> is in <math>
+                        <latex>f^{-1}(2,0)</latex>
+                     </math>’ then <math>
+                        <latex>\Vect{a}</latex>
+                     </math> is in <math>
+                        <latex>\RNr[2]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The set <math>
+                           <latex>f^{-1}(2,0)</latex>
+                        </math> consists of all those <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>\RNr[3]</latex>
+                        </math> with <math>
+                           <latex>f(\Vect{x}) = (2,0)</latex>
+                        </math>. Thus, if <math>
+                           <latex>\Vect{a}</latex>
+                        </math> is in <math>
+                           <latex>f^{-1}(2,0)</latex>
+                        </math>, then <math>
+                           <latex>\Vect{a}</latex>
+                        </math> must be a vector in <math>
+                           <latex>\RNr[3]</latex>
+                        </math>, not in <math>
+                           <latex>\RNr[2]</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the functions below find the specified preimage.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For <math>
+                        <latex>f\from \RNr\to \RNr</latex>
+                     </math>, <math>
+                        <latex>f(x)=\sin (\pi\cdot x)</latex>
+                     </math>, find <math>
+                        <latex>f^{-1}(0)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>f^{-1} = \ZNr</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Recall: <math>
+                        <latex>f^{-1}(0)</latex>
+                     </math> is the collection of all solutions of the equation</para.body>
+               </para>
+					          <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>f(x)</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>0</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Recall that <math>
+                           <latex>f^{-1}(0)</latex>
+                        </math> is the collection of all solutions of the equation</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f(x)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\sin (\pi x)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>From properties of the sin-function we know that this last equation is true exactly when <math>
+                           <latex>x</latex>
+                        </math> is an integer. Therefore,</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>f^{-1}(0)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\ZNr</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For <math>
+                        <latex>g\from \RNr[2] \to \RNr[2]</latex>
+                     </math>, <math>
+                        <latex>g(x,y) = (2x,2y)</latex>
+                     </math>, find <math>
+                        <latex>g^{-1}(4,-2)</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>g^{-1}(4,-2)</latex>
+                           </math> contains exactly one point, namely <math>
+                              <latex>(2,-1)</latex>
+                           </math>.</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Recall that <math>
+                           <latex>g^{-1}(4,-2)</latex>
+                        </math> is the collection of all solutions of the equation</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>g(x,y)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(4,-2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(2x,2y)</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(4,-2)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This last equation is a vector equation, and such a vector equation is true exactly when the two equations</para.body>
+                  </para>
+					             <math.display>
+						               <latex>2x = 4\quad \text{and}\quad 2y = -2</latex>
+					             </math.display>
+					             <para>
+                     <para.body>are simultaneously true. This happens exactly when</para.body>
+                  </para>
+					             <math.display>
+						               <latex>x = 2\quad \text{and}\quad y = -1</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Therefore <math>
+                           <latex>g^{-1}(4,-2)</latex>
+                        </math> consists exactly of the point <math>
+                           <latex>(2,-1)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+</exercise.pack>

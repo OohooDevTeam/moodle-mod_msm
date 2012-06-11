@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Alternating">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Alternating Property of Determinants: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>The alternating property of determinants says that interchanging two columns in a matrix changes the sign of its determinant. Therefore</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\det
+\left[
+\begin{array}{rr}
+3 & 7 \\
+9 & 1
+\end{array}
+\right] = 
+- \det
+\left[
+\begin{array}{rr}
+7 & 3 \\
+1 & 9
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	<showme>
+		<statement><para>Similarly</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+\det
+\left[
+\begin{array}{rrr}
+1 & 5 & 2 \\
+2 & 3 & 4 \\
+7 & 1 & 6
+\end{array}
+\right]\ &=\  
+- \det
+\left[
+\begin{array}{rrr}
+5 & 1 & 2 \\
+3 & 2 & 4 \\
+1 & 7 & 6
+\end{array}
+\right]\ &=\  
+\det
+\left[
+\begin{array}{rrr}
+2 & 1 & 5 \\
+4 & 2 & 3 \\
+6 & 7 & 1
+\end{array}
+\right] \\
+	&=\ 
+	- \det
+\left[
+\begin{array}{rrr}
+2 & 5 & 1 \\
+4 & 3 & 2 \\
+6 & 1 & 7
+\end{array}
+\right]\ &=\ \det
+\left[
+\begin{array}{rrr}
+5 & 2 & 1 \\
+3 & 4 & 2 \\
+1 & 6 & 7
+\end{array}
+\right]
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		</statement>
+	</showme>
+</showme.pack>

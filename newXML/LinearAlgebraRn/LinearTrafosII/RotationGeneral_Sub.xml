@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Prvw_GeneralRotation"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>General Rotation - Preview</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>How do we describe the rotation of space about an arbitrary axis in <math>
+                     <latex>\RNr[3]</latex>
+                  </math>?</para.body>
+            </para>
+            <media type="image" active="1" inline="0">
+               <img src="ims/RotationGeneral.jpg"/>
+               <extended.caption>
+                  <image.mapping>
+                     <area shape="rect" coord="0,0,200,100"/>
+                  </image.mapping>
+                  <info>
+                     <para>
+                        <para.body>In this picture, take <math>
+                              <latex>\Vect{r}</latex>
+                           </math> to be the unit vector pointing upward, take <math>
+                              <latex>\Vect{a}_1</latex>
+                           </math> to be any unit vector perpendicular to <math>
+                              <latex>\Vect{r}</latex>
+                           </math>, for example the one point toward you. Finally take <math>
+                              <latex>\Vect{a}_2</latex>
+                           </math> to be the cross product <math>
+                              <latex>\CrssPr{ \Vect{r} }{ \Vect{a}_1 }</latex>
+                           </math>. This is the third vector in the picture.</para.body>
+                     </para>
+                  </info>
+               </extended.caption>
+            </media>
+            <para>
+               <para.body>Our strategy is to describe such a rotation ‘as if it were a rotation about the <math>
+                     <latex>z</latex>
+                  </math>-axis’. This is possible via a suitable coordinate system. Here is a more detailed description of this process:</para.body>
+            </para>
+            <ol>
+               <li>
+                  <para>
+                     <para.body>Introduce an ordered orthonormal coordinate system <math>
+                           <latex>\EuScript{B}=(\Vect{a}_1,\Vect{a}_2,\Vect{r})</latex>
+                        </math> such that the axis of rotation has the direction of the basis vector <math>
+                           <latex>\Vect{r}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Using <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>-coordinates, we describe the given rotation as if it were a rotation of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> about the <math>
+                           <latex>z</latex>
+                        </math>-axis.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\Vect{a}_1</latex>
+                        </math> gets transformed into <math>
+                           <latex>\cos\theta \Vect{a}_1 + \sin\theta \Vect{a}_2</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\Vect{a}_2</latex>
+                        </math> gets transformed into <math>
+                           <latex>-\sin\theta \Vect{a}_1 +\cos\theta \Vect{a}_2</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\Vect{r}</latex>
+                        </math> gets transformed into <math>
+                           <latex>\Vect{r}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>In <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>-coordinates this rotation is therefore represented by</para.body>
+                  </para>
+                  <math.display>
+                     <latex>
+							
+\Mtrx{R}_{\EuScript{B}\EuScript{B}}\ =\ 
+\left[
+\begin{array}{rrr}
+\cos \theta &amp; -\sin\theta &amp; 0 \\
+\sin\theta &amp; \cos \theta &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+                  </math.display>
+               </li>
+               <li>
+                  <para>
+                     <para.body>Let <math>
+                           <latex>\Mtrx{C}_{\EuScript{B}\EuScript{S}}</latex>
+                        </math> denote the matrix which converts from standard coordinates to  <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>-coordinates. Then the matrix describing the given rotation in standard coordinates is</para.body>
+                  </para>
+                  <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{R}_{\EuScript{S}\EuScript{S}}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}} \Mtrx{R}_{\EuScript{B}\EuScript{B}} \Mtrx{C}_{\EuScript{B} \EuScript{S}}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+               </li>
+            </ol>
+         </block.body>
+      </block>
+   </body>
+</unit>

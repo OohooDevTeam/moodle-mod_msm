@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_CrossProductGeometricProperties">
+	<title>Geometric Properties of the Cross Products: Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The geometric properties of the cross product operation are used widely. The following illustrations may help you understand them well.</para>
+		</block>
+		<block>
+			<para><b>Direction of the cross product vector</b> &nbsp; Given two vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>, their cross product is perpendicular to both <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>. Moreover, the ordered triple <latex>(\Vect{x},\Vect{y},\CrssPr{ \Vect{x} }{ \Vect{y} })</latex> represents the right hand orientation of <latex>\RNr[3]</latex>.</para>
+			<figure>
+				<img src="ims/CrossProduct1.png"></img><!-- svg available -->
+			</figure>
+			<para>These two properties combined determine the direction of the cross product vector. (If <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel, then  their cross product vanishes.) Thus the only information we are missing about the cross product vector is its length ... </para>
+		</block>
+		
+		<block>
+			<para><b>Length of the cross product vector</b> &nbsp; The length of <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> satisfies</para>
+			<computation>
+				<left>\Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</left>
+				<center>=</center>
+				<right>\Abs{ \Vect{x} } \Abs{ \Vect{y} }\cdot \sin \sphericalangle( \Vect{x} , \Vect{y} )</right>
+			</computation>
+			<para>So it is determined by the length of <latex>\Vect{x}</latex>, the length of <latex>\Vect{y}</latex>, and the angle between them. So it is equal to the area of the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para>
+			<figure>
+				<img src="ims/CrossProduct2.png"></img><!-- svg available -->
+			</figure>
+			<para>In this graphic <latex>\sphericalangle( \Vect{x} , \Vect{y} ) =: \alpha</latex>.</para>
+			
+			<para>Recall now that the area of a parallelogram is the product of base length and its height. Then the following image explains why the area of the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> is <latex>\Abs{ \Vect{x} } \Abs{ \Vect{y} }\cdot \sin\sphericalangle( \Vect{x} , \Vect{y} )</latex>.</para>
+			<figure>
+				<img src="ims/CrossProduct3.png"></img><!-- svg available -->
+			</figure>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_CompositeLinearTrafos"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Composite of linear maps is linear</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment: What does this proposition tell us?</caption>
+         </info.caption>
+         <para>
+            <para.body>This proposition gives us two strong pieces of information:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>The composite of two linear transformations is again linear</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>How is the composite of <math>
+                        <latex>T</latex>
+                     </math> and <math>
+                        <latex>S</latex>
+                     </math> represented?</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>In short: the composite of linear maps corresponds to the product of representing matrices.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_Composition"/>
+      <info>
+         <para>
+            <para.body>An example of composition of linear maps</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>If <math>
+               <latex>S\from \RNr[p] \to \RNr[n]</latex>
+            </math> and <math>
+               <latex>T\from \RNr[n] \to \RNr[m]</latex>
+            </math> are linear transformations, then their composite 
+			</para.body>
+         <index.glossary>
+            <term>composite</term>
+            <term>of linear transformations</term>
+            <term>represented by matrix product</term>
+         </index.glossary>
+      </para>
+      <math.display>
+         <latex>(T\Comp S)\from \RNr[p] \longrightarrow \RNr[m],\quad (T\Comp S)(\Vect{x}) = T(S(\Vect{x}))</latex>
+      </math.display>
+      <para>
+         <para.body>is again linear. Moreover, if <math>
+               <latex>\Mtrx{A}</latex>
+            </math> is the <math>
+               <latex>(n,p)</latex>
+            </math>-matrix representing <math>
+               <latex>S</latex>
+            </math>, and if <math>
+               <latex>\Mtrx{B}</latex>
+            </math> is the <math>
+               <latex>(m,n)</latex>
+            </math>-matrix representing <math>
+               <latex>T</latex>
+            </math>, then <math>
+               <latex>\Mtrx{B}\Mtrx{A}</latex>
+            </math> is the <math>
+               <latex>(m,p)</latex>
+            </math>-matrix which represents <math>
+               <latex>T\Comp S</latex>
+            </math>.</para.body>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We need to show that <math>
+                     <latex>T\Comp S</latex>
+                  </math> satisfies the properties of a linear transformation. To see that it commutes with vector addition, let <math>
+                     <latex>\Vect{x},\Vect{y}\in \RNr[n]</latex>
+                  </math>. We find</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <caption/>
+         <proof.block.body>
+            <para>
+               <para.body>We know now that <math>
+                     <latex>T\Comp S</latex>
+                  </math> is linear. Therefore there is a unique <math>
+                     <latex>(m,p)</latex>
+                  </math>-matrix  which represents it. On the other hand, if <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> represents <math>
+                     <latex>S</latex>
+                  </math>, and <math>
+                     <latex>\Mtrx{B}</latex>
+                  </math> represents <math>
+                     <latex>T</latex>
+                  </math>, we find for arbitrary <math>
+                     <latex>\Vect{x}\in\RNr[p]</latex>
+                  </math>
+               </para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

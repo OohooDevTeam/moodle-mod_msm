@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_SeriesLimitComparison"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	
+	  <title>Limit Comparison Test for Series: Examples</title>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Compare the convergence behavior of</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sum_{n=1}^{\infty} \dfrac{1}{n^2 + n\sin n}\quad \text{and}\quad \sum_{n=1}^{\infty} \dfrac{1}{n^2}</latex>
+			      </math.display>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>We set <math>
+                        <latex>a_n:=\tfrac{1}{n^2+n\sin n}</latex>
+                     </math> and <math>
+                        <latex>b_n:=\tfrac{1}{n^2}</latex>
+                     </math>. Notice that <math>
+                        <latex>b_n</latex>
+                     </math> captures the most dominant part of <math>
+                        <latex>a_n</latex>
+                     </math> for large values of <math>
+                        <latex>n</latex>
+                     </math>. Then</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lim_{n\to\infty}\dfrac{a_n}{b_n}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lim_{n\to\infty}\dfrac{n^2}{n^2 + n\sin n}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\lim_{n\to\infty}\dfrac{1}{1 + \frac{\sin n}{n}}</latex>
+                        </math>
+                     </cell>
+                  </row>
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex/>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>1</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>By limit comparison, either both series converge to a positive number, or both series converge to <math>
+                        <latex>+\infty</latex>
+                     </math>.</para.body>
+               </para>
+			            <para>
+                  <para.body>With the aid of integral calculus, we will see that <math>
+                        <latex>\sum_{n=1}^{\infty}\frac{1}{n^2}</latex>
+                     </math> converges to a number. Consequently, <math>
+                        <latex>\sum_{n=1}^{\infty}a_n</latex>
+                     </math> converges to a number as well.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+	
+	
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Analyze the convergence behavior of</para.body>
+         </para>
+			      <math.display xmlns="">
+				        <latex>\sum_{n=0}^{\infty} \dfrac{n^2-n+2}{\sqrt[4]{n^{10} + n^5 + 3}}\ =:\ \sum_{n=0}^{\infty}a_n</latex>
+			      </math.display>
+			      <para xmlns="">
+            <para.body>by comparing it to <math>
+                  <latex>\sum_{n=?}^{\infty}b_n</latex>
+               </math>, where <math>
+                  <latex>b_n</latex>
+               </math> captures the most dominant part of <math>
+                  <latex>a_n</latex>
+               </math> for large values of <math>
+                  <latex>n</latex>
+               </math>.</para.body>
+         </para>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>To capture the most dominant part of <math>
+                        <latex>a_n</latex>
+                     </math> for large <math>
+                        <latex>n</latex>
+                     </math>, we just use the largest powers of <math>
+                        <latex>n</latex>
+                     </math> by setting for <math>
+                        <latex>n\geq 1</latex>
+                     </math>
+                  </para.body>
+               </para>
+			            <math.display>
+				              <latex>b_n\ :=\ \dfrac{n^2}{\sqrt[4]{n^{10}}}\ =\ \dfrac{n^2}{n^2\sqrt{n}}\ =\ \dfrac{1}{\sqrt{n}}</latex>
+			            </math.display>
+			            <para>
+                  <para.body>So we need to analyze the convergence behavior of <math>
+                        <latex>\sum_{n=1}^{\infty}\frac{1}{\sqrt{n}}</latex>
+                     </math>. To this end we recall that the harmonic series satisfies</para.body>
+               </para>
+			            <math.array column="3">
+                  <row rowspan="1">
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\sum_{n=1}^{\infty} \dfrac{1}{n}</latex>
+                        </math>
+                     </cell>
+                     <cell colspan="1" halign="center" valign="middle">
+                        <text>=</text>
+                     </cell>
+                     <cell colspan="2" halign="center" valign="middle">
+                        <math>
+                           <latex>\infty</latex>
+                        </math>
+                     </cell>
+                  </row>
+               </math.array>
+			            <para>
+                  <para.body>Further, we observe that, for <math>
+                        <latex>n\geq 1</latex>
+                     </math>,</para.body>
+               </para>
+			            <math.display>
+				              <latex>\sqrt{n}\leq n,\quad \text{and so}\quad \dfrac{1}{\sqrt{n}}\geq \dfrac{1}{n}</latex>
+			            </math.display>
+			            <para>
+                  <para.body>Consequently, <math>
+                        <latex>\sum_{n=1}^{\infty}\frac{1}{\sqrt{n}}=\infty</latex>
+                     </math> by comparison with <math>
+                        <latex>\sum_{n=1}^{\infty}\frac{1}{n}</latex>
+                     </math>. Therefore,</para.body>
+               </para>
+			            <math.display>
+				              <latex>\sum_{n=0}^{\infty} \dfrac{n^2-n+2}{\sqrt[4]{n^{10} + n^5 + 3}}\ =\ \infty</latex>
+			            </math.display>
+			            <para>
+                  <para.body>by limit comparison with <math>
+                        <latex>\sum_{n=1}^{\infty}(1/\sqrt{n})</latex>
+                     </math>.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

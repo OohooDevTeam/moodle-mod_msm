@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_CramerRule"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Cramer’s Rule</title>
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Solve the following systems of linear equations using Cramer’s rule</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rcrcrcr}
+x &amp; + &amp; 2y &amp; + &amp; z &amp; = &amp; 3 \\
+2x &amp; + &amp; 4y &amp; + &amp; z &amp; = &amp; 3 \\
+3x &amp; + &amp; 7y &amp;    &amp; &amp; = &amp; 2
+\end{array}
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The unique solution is <math>
+                              <latex>(x,y,z)=(-4,2,3)</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <strong>Preliminaries</strong>   First we need to check if Cramer’s Rule can be used to solve the given system of linear equations.</para.body>
+                  </para>
+					             <para>
+                     <para.body>The unaugmented coefficient matrix of the given system of linear equations is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} = 
+\left[
+\begin{array}{ccc}
+1 &amp; 2 &amp; 1 \\
+2 &amp; 4 &amp; 1 \\
+3 &amp; 7 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This matrix has size <math>
+                           <latex>(3,3)</latex>
+                        </math> and is invertible because</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\det(\Mtrx{A})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>1</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So we can apply Cramer’s rule to find <math>
+                           <latex>\Mtrx{A}^{-1}</latex>
+                        </math>.</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+x\ =\ \dfrac{
+\det
+\left[
+\begin{array}{ccc}
+3 &amp; 2 &amp; 1 \\
+3 &amp; 4 &amp; 1 \\
+2 &amp; 7 &amp; 0
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{ccc}
+1 &amp; 2 &amp; 1 \\
+2 &amp; 4 &amp; 1 \\
+3 &amp; 7 &amp; 0
+\end{array}
+\right] }\ =\ \dfrac{-4}{1}\ =\ -4
+
+						</latex>
+					             </math.display>
+					             <math.display>
+						               <latex>
+							
+y\ =\ \dfrac{
+\det
+\left[
+\begin{array}{ccc}
+1 &amp; 3 &amp; 1 \\
+2 &amp; 3 &amp; 1 \\
+3 &amp; 2 &amp; 0
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{ccc}
+1 &amp; 2 &amp; 1 \\
+2 &amp; 4 &amp; 1 \\
+3 &amp; 7 &amp; 0
+\end{array}
+\right] }\ =\ \dfrac{2}{1}\ =\ 2
+
+						</latex>
+					             </math.display>
+					             <math.display>
+						               <latex>
+							
+y\ =\ \dfrac{
+\det
+\left[
+\begin{array}{ccc}
+1 &amp; 2 &amp; 3 \\
+2 &amp; 4 &amp; 3 \\
+3 &amp; 7 &amp; 2
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{ccc}
+1 &amp; 2 &amp; 1 \\
+2 &amp; 4 &amp; 1 \\
+3 &amp; 7 &amp; 0
+\end{array}
+\right] }\ =\ \dfrac{3}{1}\ =\ 3
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>So the unique solution of the given system of linear equations is  <math>
+                           <latex>(x,y,z) = (-4,2,3)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rcrcrcrcr}
+x &amp; + &amp; 2y &amp; + &amp; z &amp; + &amp; W &amp; = &amp; 1 \\
+x &amp; + &amp; &amp; + &amp; 3z &amp; + &amp; w &amp; = &amp; 2 \\
+x &amp; + &amp; 2y &amp; + &amp; z &amp; + &amp; w &amp; = &amp; 0 \\
+2x &amp; + &amp; &amp; + &amp; z &amp; + &amp; 4w &amp; = &amp; 1
+\end{array}
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The unique solution is <math>
+                              <latex>(x,y,z,w)=(-3/4,1/2,1/2,1/4)</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <strong>Preliminaries</strong>   The unaugmented coefficient matrix of the given system of linear equations is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrr}
+3 &amp; 2 &amp; 1 &amp; 1 \\
+-1 &amp; 0 &amp; 3 &amp; -1 \\
+1 &amp; 2 &amp; -1 &amp; 1 \\
+2 &amp; 0 &amp; -1 &amp; 4
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This matrix has size <math>
+                           <latex>(4,4)</latex>
+                        </math> and is invertible because</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\det(\Mtrx{A})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>-8</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So we can apply Cramer’s rule to find <math>
+                           <latex>\Mtrx{A}^{-1}</latex>
+                        </math>.</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+x\ =\ \dfrac{
+\det
+\left[
+\begin{array}{rrrr}
+1 &amp; 2 &amp; 1 &amp; 1 \\
+2 &amp; 0 &amp; 3 &amp; -1 \\
+0 &amp; 2 &amp; -1 &amp; 1 \\
+-1 &amp; 0 &amp; -1 &amp; 4
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{rrrr}
+3 &amp; 2 &amp; 1 &amp; 1 \\
+-1 &amp; 0 &amp; 3 &amp; -1 \\
+1 &amp; 2 &amp; -1 &amp; 1 \\
+2 &amp; 0 &amp; -1 &amp; 4
+\end{array}
+\right] }\ =\ \dfrac{6}{-8}\ =\ -\dfrac{3}{4}
+
+						</latex>
+					             </math.display>
+					             <math.display>
+						               <latex>
+							
+y\ =\ \dfrac{
+\det
+\left[
+\begin{array}{rrrr}
+3 &amp; 1 &amp; 1 &amp; 1 \\
+-1 &amp; 2 &amp; 3 &amp; -1 \\
+1 &amp; 0 &amp; -1 &amp; 1 \\
+2 &amp; -1 &amp; -1 &amp; 4
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{rrrr}
+3 &amp; 2 &amp; 1 &amp; 1 \\
+-1 &amp; 0 &amp; 3 &amp; -1 \\
+1 &amp; 2 &amp; -1 &amp; 1 \\
+2 &amp; 0 &amp; -1 &amp; 4
+\end{array}
+\right] }\ =\ \dfrac{-4}{-8}\ =\ \dfrac{1}{2}
+
+						</latex>
+					             </math.display>
+					             <math.display>
+						               <latex>
+							
+z\ =\ \dfrac{
+\det
+\left[
+\begin{array}{rrrr}
+3 &amp; 2 &amp; 1 &amp; 1 \\
+-1 &amp; 0 &amp; 2 &amp; -1 \\
+1 &amp; 2 &amp; 0 &amp; 1 \\
+2 &amp; 0 &amp; -1 &amp; 4
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{rrrr}
+3 &amp; 2 &amp; 1 &amp; 1 \\
+-1 &amp; 0 &amp; 3 &amp; -1 \\
+1 &amp; 2 &amp; -1 &amp; 1 \\
+2 &amp; 0 &amp; -1 &amp; 4
+\end{array}
+\right] }\ =\ \dfrac{-4}{-8}\ =\ \dfrac{1}{2}
+
+						</latex>
+					             </math.display>
+					             <math.display>
+						               <latex>
+							
+z\ =\ \dfrac{
+\det
+\left[
+\begin{array}{rrrr}
+3 &amp; 2 &amp; 1 &amp; 1 \\
+-1 &amp; 0 &amp; 3 &amp; 2 \\
+1 &amp; 2 &amp; -1 &amp; 0 \\
+2 &amp; 0 &amp; -1 &amp; -1
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{rrrr}
+3 &amp; 2 &amp; 1 &amp; 1 \\
+-1 &amp; 0 &amp; 3 &amp; -1 \\
+1 &amp; 2 &amp; -1 &amp; 1 \\
+2 &amp; 0 &amp; -1 &amp; 4
+\end{array}
+\right] }\ =\ \dfrac{-2}{-8}\ =\ \dfrac{1}{4}
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>So the unique solution of the given system of linear equations is  <math>
+                           <latex>(x,y,z,w)=(-3/4,1/2,1/2,1/4)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <math.display>
+					             <latex>
+						
+\begin{array}{rcr}
+y+2u-v &amp;= &amp; 0 \\
+y+2z+2u &amp;= &amp; -1 \\
+2x+2y-2z+2u-2v &amp;= &amp; 1 \\
+x-y-u-v &amp; = &amp; 0 \\
+2x+u-2v &amp;= &amp; 1
+\end{array}
+
+					</latex>
+				           </math.display>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The unique solution is <math>
+                              <latex>(u,v,x,y,z)=(5/3 , 4/3 ,1 ,-2 , -7/6)</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>
+                        <strong>Preliminaries</strong>   The given system is not properly organized. So we begin by sorting the variables in the order <math>
+                           <latex>u</latex>
+                        </math>, <math>
+                           <latex>v</latex>
+                        </math>, <math>
+                           <latex>x</latex>
+                        </math>, <math>
+                           <latex>y</latex>
+                        </math>, <math>
+                           <latex>z</latex>
+                        </math>.</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\begin{array}{rcrcrcrcrcr}
+2u &amp; - &amp; v &amp; &amp; &amp; + &amp; y &amp; &amp; &amp; = &amp; 0 \\
+2u &amp; &amp; &amp; &amp; &amp; + &amp; y &amp; + &amp; 2z &amp; = &amp; -1 \\
+2u &amp; - &amp; 2v &amp; + &amp; 2x &amp; + &amp; 2y &amp; - &amp; 2z &amp; = &amp; 1 \\
+-u &amp; - &amp; v &amp; + &amp; x &amp; - &amp; y &amp; &amp; &amp; = &amp; 0 \\
+u &amp; - &amp; 2v &amp; + &amp; 2x &amp; &amp; &amp; &amp; &amp; = &amp; 1
+\end{array}
+
+						</latex>
+					             </math.display>
+						            <para>
+                     <para.body>The unaugmented coefficient matrix of the given system of linear equations is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A} = 
+\left[
+\begin{array}{rrrrr}
+2 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; 0 &amp; 0 &amp; 1 &amp; 2 \\
+2 &amp; -2 &amp; 2 &amp; 2 &amp; -2 \\
+-1 &amp; -1 &amp; 1 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 2 &amp; 0 &amp; 0 
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This matrix has size <math>
+                           <latex>(5,5)</latex>
+                        </math> and is invertible because</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\det(\Mtrx{A})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>6</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So we can apply Cramer’s rule to find <math>
+                           <latex>\Mtrx{A}^{-1}</latex>
+                        </math>.</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+u\ =\ \dfrac{
+\det
+\left[
+\begin{array}{rrrrr}
+0 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+-1 &amp; 0 &amp; 0 &amp; 1 &amp; 2 \\
+1 &amp; -2 &amp; 2 &amp; 2 &amp; -2 \\
+0 &amp; -1 &amp; 1 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 2 &amp; 0 &amp; 0
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{rrrrr}
+2 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; 0 &amp; 0 &amp; 1 &amp; 2 \\
+2 &amp; -2 &amp; 2 &amp; 2 &amp; -2 \\
+-1 &amp; -1 &amp; 1 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 2 &amp; 0 &amp; 0 
+\end{array}
+\right] }\ =\ \dfrac{10}{6}\ =\ \dfrac{5}{3}
+
+						</latex>
+					             </math.display>
+					             <math.display>
+						               <latex>
+							
+v\ =\ \dfrac{
+\det
+\left[
+\begin{array}{rrrrr}
+2 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; -1 &amp; 0 &amp; 1 &amp; 2 \\
+2 &amp; 1 &amp; 2 &amp; 2 &amp; -2 \\
+-1 &amp; 0 &amp; 1 &amp; -1 &amp; 0 \\
+1 &amp; 1 &amp; 2 &amp; 0 &amp; 0
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{rrrrr}
+2 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; 0 &amp; 0 &amp; 1 &amp; 2 \\
+2 &amp; -2 &amp; 2 &amp; 2 &amp; -2 \\
+-1 &amp; -1 &amp; 1 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 2 &amp; 0 &amp; 0 
+\end{array}
+\right] }\ =\ \dfrac{8}{6}\ =\ \dfrac{4}{3}
+
+						</latex>
+					             </math.display>
+					             <math.display>
+						               <latex>
+							
+x\ =\ \dfrac{
+\det
+\left[
+\begin{array}{rrrrr}
+2 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; 0 &amp; -1 &amp; 1 &amp; 2 \\
+2 &amp; -2 &amp; 1 &amp; 2 &amp; -2 \\
+-1 &amp; -1 &amp; 0 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 1 &amp; ) &amp; 0
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{rrrrr}
+2 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; 0 &amp; 0 &amp; 1 &amp; 2 \\
+2 &amp; -2 &amp; 2 &amp; 2 &amp; -2 \\
+-1 &amp; -1 &amp; 1 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 2 &amp; 0 &amp; 0 
+\end{array}
+\right] }\ =\ \dfrac{6}{6}\ =\ 1
+
+						</latex>
+					             </math.display>
+					             <math.display>
+						               <latex>
+							
+y\ =\ \dfrac{
+\det
+\left[
+\begin{array}{rrrrr}
+2 &amp; -1 &amp; 0 &amp; 0 &amp; 0 \\
+2 &amp; 0 &amp; 0 &amp; -1 &amp; 2 \\
+2 &amp; -2 &amp; 2 &amp; 1 &amp; -2 \\
+-1 &amp; -1 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; -2 &amp; 2 &amp; 1 &amp; 0
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{rrrrr}
+2 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; 0 &amp; 0 &amp; 1 &amp; 2 \\
+2 &amp; -2 &amp; 2 &amp; 2 &amp; -2 \\
+-1 &amp; -1 &amp; 1 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 2 &amp; 0 &amp; 0 
+\end{array}
+\right] }\ =\ \dfrac{-12}{6}\ =\ -2
+
+						</latex>
+					             </math.display>
+					             <math.display>
+						               <latex>
+							
+z\ =\ \dfrac{
+\det
+\left[
+\begin{array}{rrrrr}
+2 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; 0 &amp; 0 &amp; 1 &amp; -1 \\
+2 &amp; -2 &amp; 2 &amp; 2 &amp; 1 \\
+-1 &amp; -1 &amp; 1 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 2 &amp; 0 &amp; 1
+\end{array}
+\right] }{
+\det
+\left[
+\begin{array}{rrrrr}
+2 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\
+2 &amp; 0 &amp; 0 &amp; 1 &amp; 2 \\
+2 &amp; -2 &amp; 2 &amp; 2 &amp; -2 \\
+-1 &amp; -1 &amp; 1 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 2 &amp; 0 &amp; 0 
+\end{array}
+\right] }\ =\ \dfrac{-7}{6}
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>So the unique solution of the given system of linear equations is  <math>
+                           <latex>(u,v,x,y,z)=(5/3 , 4/3 ,1 ,-2 , -7/6)</latex>
+                        </math>.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

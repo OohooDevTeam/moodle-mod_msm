@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_LinearMapNewFromOld">
+	<title>Preview: New Linear Transformations from Given Ones</title>
+	<sub.page.body>
+		<block>
+			<para>Here we discuss three ways of generating a new linear transformation from given ones</para>
+			
+			<ol type="1">
+				<li><para>The sum of two linear transformations <latex>L,T\from \RNr[n]\to \RNr[m]</latex> is again linear, and it is given by</para>
+					<math.display>
+						<latex>L+T\from \RNr[n] \longrightarrow \RNr[m],\qquad (L+T)(\Vect{x}) := L(\Vect{x}) + T(\Vect{x})</latex>
+					</math.display>
+				</li>
+				<li><para>The scalar product of a linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex> by a number <latex>t\in \RNr</latex> is again linear, and it is given by</para>
+					<math.display>
+						<latex>(tL)\from \RNr[n]\longrightarrow \RNr[m],\qquad (tL)(\Vect{x}) := t\cdot L(\Vect{x})</latex>
+					</math.display>
+				</li>
+				<li><para>The composition of linear transformations <latex>S</latex> and <latex>T</latex> with</para>
+					<math.display>
+						<latex>\RNr[p] \overset{L}{\longrightarrow} \RNr[n] \overset{T}{\longrightarrow} \RNr[m]</latex>
+					</math.display>
+					<para>is again linear, and it is given by</para>
+					<math.display>
+						<latex>T\Comp S\from \RNr[p] \longrightarrow \RNr[m],\qquad T\Comp S(\Vect{x}) := T(S(\Vect{x}))</latex>
+					</math.display>
+				</li>
+			</ol>
+			
+			<para>We will discuss these operations in detail later on.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

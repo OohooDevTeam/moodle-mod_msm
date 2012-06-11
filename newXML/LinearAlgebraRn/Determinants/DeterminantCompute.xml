@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_DeterminantCompute"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>How to Compute Determinants</title>
+      <plain.title>Computing Determinants</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we learn how to compute the determinant of a square shaped matrix: the determinant of a <math>
+                     <latex>(1,1)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A} = [x]</latex>
+                  </math> is just <math>
+                     <latex>\det [x] := x</latex>
+                  </math>. From this initial definition we obtain, step by step, the determinants of matrices of size <math>
+                     <latex>(2,2)</latex>
+                  </math>, then <math>
+                     <latex>(3,3)</latex>
+                  </math>, then <math>
+                     <latex>(4,4)</latex>
+                  </math> and so on. In each case we express the determinant of a big matrix as a sum of determinants of smaller matrices. – The details follow:</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_Determinants11-33">
+         <titles>
+            <title>Determinants of Small Matrices</title>
+            <plain.title>Small Determinants</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_Determinant11">
+                     <caption>Determinant of <math>
+                           <latex>(1,1)</latex>
+                        </math>-matrix</caption>
+                     <associate type="Example">
+                        <info>
+                           <info.caption>Examples of determinants of (1,1)-matrices</info.caption>
+                           <ul>
+                              <li>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\det [5] = 5</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </li>
+                              <li>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\det [-11] = -11</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </li>
+                           </ul>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>The determinant of a matrix <math>
+                                 <latex>\Mtrx{A} = [x]</latex>
+                              </math> of size <math>
+                                 <latex>(1,1)</latex>
+                              </math> is</para.body>
+                        </para>
+                        <math.display>
+                           <latex>\det(\Mtrx{A}) = \det [x] := x</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <def type="Definition" id="Def_Determinant22">
+                     <caption>Determinant of <math>
+                           <latex>(2,2)</latex>
+                        </math>-matrix</caption>
+                     <associate type="Comment">
+                        <info>
+                           <info.caption>(2,2)-Determinants and (1,1)-Determinants</info.caption>
+                           <para>
+                              <para.body>To see the pattern of how determinants of large matrices are built from determinants of smaller matrices, it is helpful to observe</para.body>
+                           </para>
+                           <math.display>
+                              <latex>
+							
+\det\, 
+\left[
+\begin{array}{cc}
+{\color{red} x_1} &amp; y_1 \\
+{\color{red} x_2} &amp; y_2
+\end{array}
+\right]\ =\ {\color{red} x_1}\cdot \det [y_2]\ -\ {\color{red} x_2}\cdot \det [y_1]
+
+						</latex>
+                           </math.display>
+                        </info>
+                     </associate>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_Determinant22"/>
+                        <info>
+                           <para>
+                              <para.body>Examples of computing <math>
+                                    <latex>(2,2)</latex>
+                                 </math>-matrices.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>The determinant of a matrix <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> of size <math>
+                                 <latex>(2,2)</latex>
+                              </math> with</para.body>
+                        </para>
+                        <math.display>
+                           <latex>
+					
+A = 
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2
+\end{array}
+\right]
+
+				</latex>
+                        </math.display>
+                        <para>
+                           <para.body>is</para.body>
+                        </para>
+                        <math.display>
+                           <latex>
+					
+\det(\Mtrx{A}) = \det\,
+\left[
+\begin{array}{cc}
+{\color{red} x_1} &amp; y_1 \\
+{\color{red} x_2} &amp; y_2
+\end{array}
+\right]\ =\ {\color{red} x_1}y_2 - {\color{red} x_2}y_1
+
+				</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <def type="Definition" id="Def_Determinant33">
+                     <caption>Determinant of <math>
+                           <latex>(3,3)</latex>
+                        </math>-matrix</caption>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_Determinant33"/>
+                        <info>
+                           <para>
+                              <para.body>Examples of computing <math>
+                                    <latex>(3,3)</latex>
+                                 </math>-matrices.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>The determinant of a matrix <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> of size <math>
+                                 <latex>(3,3)</latex>
+                              </math> with</para.body>
+                        </para>
+                        <math.display>
+                           <latex>
+					
+A = 
+\left[
+\begin{array}{ccc}
+x_1 &amp; y_1 &amp; z_1 \\
+x_2 &amp; y_2 &amp; z_2 \\
+x_3 &amp; y_3 &amp; z_3
+\end{array}
+\right]
+
+				</latex>
+                        </math.display>
+                        <para>
+                           <para.body>is</para.body>
+                        </para>
+                        <math.display>
+                           <latex>
+					
+\aligned
+\det(\Mtrx{A})\ &amp;=\ \det\,
+\left[
+\begin{array}{ccc}
+{\color{red} x_1} &amp; y_1 &amp; z_1 \\
+{\color{red} x_2} &amp; y_2 &amp; z_2 \\
+{\color{red} x_3} &amp; y_3 &amp; z_3
+\end{array}
+\right] \\
+	&amp;=\ {\color{red} x_1}\cdot
+\det\, \left[
+\begin{array}{cc}
+y_2 &amp; z_2  \\
+y_3 &amp; z_3 
+\end{array}
+\right]
+	- {\color{red} x_2}\cdot
+\det\, \left[
+\begin{array}{cc}
+y_1 &amp; z_1  \\
+y_3 &amp; z_3 
+\end{array}
+\right]
+	+ {\color{red} x_3}\cdot
+\det\, \left[
+\begin{array}{cc}
+y_1 &amp; z_1  \\
+y_2 &amp; z_2 
+\end{array}
+\right]
+\endaligned
+
+				</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_DeterminantsGeneral">
+         <titles>
+            <title>Determinants of Matrices of Arbitrary Size</title>
+            <plain.title>General Determinants</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_MinorOfDeterminant">
+                     <associate type="Explanation">
+                        <info>
+                           <info.caption>Explanation</info.caption>
+                           <para>
+                              <para.body>The minor <math>
+                                    <latex>\Mtrx{A}_{ij}</latex>
+                                 </math> is <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math> without the <math>
+                                    <latex>i</latex>
+                                 </math>-th row and the <math>
+                                    <latex>j</latex>
+                                 </math>-th column.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_Minor"/>
+                        <info>
+                           <para>
+                              <para.body>Examples of minors of a <math>
+                                    <latex>(4,4)</latex>
+                                 </math>-matrix</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Comment">
+                        <info>
+                           <info.caption>Comment on the number of minors</info.caption>
+                           <para>
+                              <para.body>A matrix of size <math>
+                                    <latex>(n,n)</latex>
+                                 </math> has <math>
+                                    <latex>n^2</latex>
+                                 </math> minors: one minor for each position in <math>
+                                    <latex>\Mtrx{A}</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>Given a matrix <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> of size <math>
+                                 <latex>(r,r)</latex>
+                              </math> and a position <math>
+                                 <latex>(i,j)</latex>
+                              </math> within <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math>,
+					</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>\det(\Mtrx{A})</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>Determinant of <math>
+                                          <latex>\Mtrx{A}</latex>
+                                       </math>
+                                    </para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                           <index.glossary>
+                              <term>minor</term>
+                              <info>
+                                 <para>
+                                    <para.body>The <math>
+                                          <latex>(i,j)</latex>
+                                       </math>-minor of a matrix <math>
+                                          <latex>\Mtrx{A}</latex>
+                                       </math> is the result of omitting the <math>
+                                          <latex>i</latex>
+                                       </math>-th row and the <math>
+                                          <latex>j</latex>
+                                       </math>-th column from <math>
+                                          <latex>\Mtrx{A}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                        <para align="center">
+                           <para.body>
+                              <math>
+                                 <latex>i,j</latex>
+                              </math> with <math>
+                                 <latex>1\leq i\leq r</latex>
+                              </math>, <math>
+                                 <latex>1\leq j\leq r</latex>
+                              </math>,</para.body>
+                        </para>
+                        <para>
+                           <para.body>the <math>
+                                 <latex>(i,j)</latex>
+                              </math>-minor of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> is the <math>
+                                 <latex>(r-1,r-1)</latex>
+                              </math>-matrix <math>
+                                 <latex>\Mtrx{A}_{ij}</latex>
+                              </math> which results from <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> by omitting the <math>
+                                 <latex>i</latex>
+                              </math>-th row and the <math>
+                                 <latex>j</latex>
+                              </math>-th column.</para.body>
+                        </para>
+                        <math.display>
+                           <latex>
+						
+\Mtrx{A}_{ij} = 
+\left[
+\begin{array}{cccccc}
+a_{11} &amp; \cdots &amp; {\color{red} a_{1j}} &amp; \cdots &amp; \cdots &amp; a_{1r} \\
+\vdots &amp; \ddots &amp; {\color{red} \vdots} &amp; &amp; &amp; \vdots \\
+\vdots &amp;        &amp; {\color{red} \ddots} &amp;              &amp; &amp; \vdots \\
+{\color{red} a_{i1}} &amp; {\color{red} \cdots} &amp; {\color{red} a_{ij}} &amp; {\color{red} \ddots } &amp; {\color{red} \cdots} &amp; {\color{red} a_{ir}} \\
+\vdots &amp;  &amp; {\color{red} \vdots} &amp; &amp; \ddots &amp; \vdots \\
+a_{r1} &amp; \cdots &amp; {\color{red} a_{rj}} &amp; \cdots &amp; \cdots &amp; a_{rr}
+\end{array}
+\right]
+
+					</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <def type="Definition" id="Def_Cofactor">
+                     <caption>Cofactor of a matrix</caption>
+                     <associate type="Explanation">
+                        <info>
+                           <info.caption>Explanation</info.caption>
+                           <para>
+                              <para.body>Here we assume that you know how to compute determinants of matrices of size <math>
+                                    <latex>(r-1,r-1)</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_Cofactor"/>
+                        <info>
+                           <para>
+                              <para.body>An example of a cofactor</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>Given a matrix <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> of size <math>
+                                 <latex>(r,r)</latex>
+                              </math> and a position <math>
+                                 <latex>(i,j)</latex>
+                              </math> within <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math>,
+					</para.body>
+                           <index.glossary>
+                              <term>cofactor</term>
+                              <info>
+                                 <para>
+                                    <para.body>The <math>
+                                          <latex>(i,j)</latex>
+                                       </math>-cofactor of a matrix <math>
+                                          <latex>\Mtrx{A}</latex>
+                                       </math> is <math>
+                                          <latex>(-1)^{i+j}</latex>
+                                       </math> times the determinant of the <math>
+                                          <latex>(i,j)</latex>
+                                       </math>-minor of <math>
+                                          <latex>\Mtrx{A}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                        <para align="center">
+                           <para.body>
+                              <math>
+                                 <latex>i,j</latex>
+                              </math> with <math>
+                                 <latex>1\leq i\leq r</latex>
+                              </math>, <math>
+                                 <latex>1\leq j\leq r</latex>
+                              </math>,</para.body>
+                        </para>
+                        <para>
+                           <para.body>the <math>
+                                 <latex>(i,j)</latex>
+                              </math>-cofactor of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> is <math>
+                                 <latex>(-1)^{i+j}</latex>
+                              </math> times the determinant of the <math>
+                                 <latex>(i,j)</latex>
+                              </math>-minor of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math>.</para.body>
+                        </para>
+                        <math.display>
+                           <latex>c_{ij}(\Mtrx{A}) := (-1)^{i+j}\cdot \det(A_{ij})</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <def type="Definition" id="Def_Determinant">
+                     <caption>Determinant</caption>
+                     <associate type="Explanation">
+                        <info>
+                           <info.caption>Determinants of arbitrary size: How?</info.caption>
+                           <para>
+                              <para.body>We have here what is called a recursive definition, and it works as follows:</para.body>
+                           </para>
+                           <ol>
+                              <li>
+                                 <para>
+                                    <para.body>We know already how to compute the determinants of matrices of sizes <math>
+                                          <latex>(1,1)</latex>
+                                       </math>, <math>
+                                          <latex>(2,2)</latex>
+                                       </math>, and <math>
+                                          <latex>(3,3)</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </li>
+                              <li>
+                                 <para>
+                                    <para.body>So this definition tells us how to compute determinants of <math>
+                                          <latex>(4,4)</latex>
+                                       </math>-matrices.</para.body>
+                                 </para>
+                              </li>
+                              <li>
+                                 <para>
+                                    <para.body>Once we have determinants of <math>
+                                          <latex>(4,4)</latex>
+                                       </math>-matrices, the definition tells us how to compute determinants of <math>
+                                          <latex>(5,5)</latex>
+                                       </math>-matrices.</para.body>
+                                 </para>
+                              </li>
+                              <li>
+                                 <para>
+                                    <para.body>Now the definition comes in again and tells us how to compute determinants of matrices of <math>
+                                          <latex>(6,6)</latex>
+                                       </math>-matrices.</para.body>
+                                 </para>
+                              </li>
+                              <li>
+                                 <para>
+                                    <para.body>... and so on.</para.body>
+                                 </para>
+                              </li>
+                           </ol>
+                        </info>
+                     </associate>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_Determinant44"/>
+                        <info>
+                           <para>
+                              <para.body>Examples of computing a determinant.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>Let <math>
+                                 <latex>n\geq 1</latex>
+                              </math> be an integer for which determinants of matrices of size <math>
+                                 <latex>(n,n)</latex>
+                              </math> and smaller have been defined. Then the determinant of a matrix
+					</para.body>
+                           <index.glossary>
+                              <term>determinant</term>
+                              <term>definition using cofactors</term>
+                           </index.glossary>
+                        </para>
+                        <math.display>
+                           <latex>
+						
+\Mtrx{A} =
+\left[
+\begin{array}{cccc}
+{\color{red} a_{1,1}} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n+1} \\
+{\color{red} a_{2,1}} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n+1} \\
+{\color{red} \vdots} &amp; \vdots &amp; \ddots &amp; \vdots \\
+{\color{red} a_{n+1,1}} &amp; a_{n+1,2} &amp; \cdots &amp; a_{n+1,n+1}
+\end{array}
+\right]
+
+					</latex>
+                        </math.display>
+                        <para>
+                           <para.body>of size <math>
+                                 <latex>(n+1,n+1)</latex>
+                              </math> is given by</para.body>
+                        </para>
+                        <math.display>
+                           <latex>\det(A) := {\color{red} a_{1,1}}\cdot c_{1,1}(\Mtrx{A}) + {\color{red} a_{2,1}}\cdot c_{2,1}(\Mtrx{A}) + \cdots + {\color{red} a_{n+1,1}}\cdot c_{n+1,1}(\Mtrx{A}),</latex>
+                        </math.display>
+                        <para>
+                           <para.body>where <math>
+                                 <latex>c_{i,1}(\Mtrx{A})</latex>
+                              </math> is the <math>
+                                 <latex>(i,1)</latex>
+                              </math>-cofactor of <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </def.body>
+                  </def>
+                  <para>
+                     <para.body>When computing determinants with the cofactor method, upper triangular matrices are particularly nice because the computational effort required is quite modest in this case.</para.body>
+                  </para>
+                  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="DetUpperTriangular_Prop.xml"/>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_MinorsCofactor"/>
+      <exercise.pack.ref exercisePackID="Exe_DeterminantCofactor"/>
+   </studymaterials>
+</unit>

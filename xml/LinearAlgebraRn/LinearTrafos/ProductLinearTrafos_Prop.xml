@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ProductLinearTrafos">
+	<caption>Product of linear transformations is linear</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Comment on the matrix representing <latex>S\times T</latex></caption>
+			<para>The matrix representing <latex>(S\times T)</latex> is given here in block form; i.e. the top row consists of <latex>\Mtrx{A}</latex> and the zero matrix of size <latex>(m_1,n_2)</latex>, while the second row consists of the zero matrix of size <latex>(m_2,n_1)</latex> followed by <latex>\Mtrx{B}</latex>.</para>
+		</info>
+	</associate>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_ProductMaps"/>
+		<info><para>An example of the product of two linear maps.</para></info>
+	</associate>
+	
+	
+	<statement>
+		<para>The product of two linear transformations <latex>S\from \RNr[n_1]\to \RNr[m_1]</latex> and <latex>T\from \RNr[n_2]\to \RNr[m_2]</latex> is linear. Moreover, if the <latex>(n_1,m_1)</latex>-matrix <latex>\Mtrx{A}</latex> represents <latex>S</latex> and the <latex>(n_2,m_2)</latex>-matrix <latex>\Mtrx{B}</latex> represents <latex>T</latex>, then <latex>S\times T</latex> is represented by the <latex>(n_1+n_2,m_1+m_2)</latex>-matrix</para>
+		
+		<math.display>
+			<latex>
+				<![CDATA[
+\left[
+\begin{array}{cc}
+A & 0 \\
+0 & B
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+	</statement>
+	<proof>
+		<para>We know that the matrix</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+P\ :=\ \left[
+\begin{array}{cc}
+A & 0 \\
+0 & B
+\end{array}
+\right]
+]]>
+			</latex>
+		</math.display>
+		<para>represents a linear function <latex>L\from \RNr[n_1+n_2] \to \RNr[m_1+m_2]</latex>. If <latex>\Vect{x} = (\Vect{u},\Vect{v})</latex> is in <latex>\StPrdct{\RNr[n_1]}{\RNr[n_2]}</latex>, then</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\left[
+\begin{array}{cc}
+A & 0 \\
+0 & B
+\end{array}
+\right] \left[ \begin{array}{c} \Vect{u} \\ \Vect{v} \end{array} \right]\ =\ 
+\left[ \begin{array}{c} \Mtrx{A}\Vect{u} \\ \Mtrx{B}\Vect{v} \end{array} \right]\ =\ (\StPrdct{S}{T})(\Vect{x})
+]]>
+			</latex>
+		</math.display>
+		<para>This means that <latex>\Mtrx{P}</latex> represents <latex>\StPrdct{S}{T}</latex>, and that <latex>\StPrdct{S}{T}</latex> is linear.</para>
+	</proof>
+</theorem>

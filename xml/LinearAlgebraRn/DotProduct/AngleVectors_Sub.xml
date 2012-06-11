@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_AngleVectors">
+	<title>Angle between Vectors: Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>What exactly do we mean by the angle between two nonzero vectors? &ndash; Consider the image below</para>
+			<figure>
+				<img src="ims/AngleVectors.png"></img><!-- svg available -->
+			</figure>
+			<para>If <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are not parallel, the angle <latex>\theta</latex> from <latex>\Vect{x}</latex> to <latex>\Vect{y}</latex> is the shorter of the two possible arcs from <latex>\Vect{x}</latex> to <latex>\Vect{y}</latex>; the angle <latex>\theta</latex> in the image above. It is always a number between <latex>0</latex> and <latex>\pi</latex>.</para>
+			<para>If <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel,</para>
+			<ul>
+				<li><para><latex>\theta = 0</latex> if the vectors have the same directions.</para></li>
+				<li><para><latex>\theta = \pi</latex> if the vectors have opposite directions.</para></li>
+			</ul>
+		</block>
+		<block>
+			<para>Remarkable is that <latex>\cos \theta</latex> is readily computable using the dot product:</para>
+			<computation>
+				<left>\DotPr{ \Vect{x} }{ \Vect{y} }</left>
+				<center>=</center>
+				<right>\Abs{ \Vect{x} }\Abs{ \Vect{y} } \cdot \cos\theta</right>
+				<left>\cos\theta</left>
+				<center>= <info><para>Here we assume that <latex>\Vect{x},\Vect{y} \neq \Vect{0}</latex>.</para></info></center>
+				<right>\dfrac{ \DotPr{ \Vect{x} }{ \Vect{y} } }{ \Abs{ \Vect{x} }\Abs{ \Vect{y} } }</right>
+			</computation>
+			<para>So the cos of the angle between the vectors is their dot product divided by their lengths. </para>
+		</block>
+	</sub.page.body>
+</sub.page>

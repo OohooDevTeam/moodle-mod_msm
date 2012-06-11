@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_ConstantIdContinuous">
+	<caption>Constant maps, inclusion maps are continuous</caption>
+	
+	<statement>
+		<para>For an arbitrary subsets <latex>D\subseteq T</latex> of <latex>\RNr</latex> the following functions are continuous:</para>
+		<part partid="Constant">
+			<para>For <latex>y\in T</latex> arbitrary, the constant function <latex>c\from D\to T</latex>, <latex>c(x)=y</latex>.
+				<index.glossary>
+					<term>constant</term><term>function is continuous</term>
+					<info><para>Statement and proof of this result.</para></info>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="Inclusion">
+			<para>The inclusion function <latex>i\from D\to T</latex>, <latex>i(x)=x</latex>.
+				<index.glossary>
+					<term>inclusion function</term><term>is continuous</term>
+					<info><para>Statement and proof of this result.</para></info>
+				</index.glossary>
+			</para>
+		</part>
+		<part partid="Inverse">
+			<para>The inverse function <latex>p\from (\StDffrnc{\RNr}{0}) \to (\StDffrnc{\RNr}{0})</latex>, <latex>p(x):=1/x</latex>, is continuous.</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>Constant</partref> Constant functions are continuous</caption>
+		<para>Let <latex>x\in D</latex> be arbitrary, and suppose <latex><![CDATA[ \varepsilon > 0 ]]></latex> is given. We may choose <latex><![CDATA[ \delta > 0 ]]></latex> arbitrary, and find that for <latex>t\in D</latex> and <latex><![CDATA[ x-\delta < t < x + \delta]]></latex>,</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+				\Abs{c(t) - c(x) } = \Abs{ y - y } = 0 < \varepsilon
+				]]>
+			</latex>
+		</math.display>
+		<para>Thus <latex>c</latex> is continuous at <latex>x</latex>. As <latex>x\in D</latex> is arbitrary, we conclude that <latex>c</latex> is continuous.</para>
+		
+		<caption><partref>Inclusion</partref> Inclusion functions are continuous</caption>
+		<para>Let <latex>x\in D</latex> be arbitrary, and suppose <latex><![CDATA[ \varepsilon > 0 ]]></latex> is given. We choose <latex>\delta := \varepsilon</latex> and find that for <latex>t\in D</latex> and <latex><![CDATA[ \Abs{ t - x } < \delta]]></latex>,</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+				\Abs{ i(t) - i(x) } = \Abs{ t - x } < \delta = \varepsilon.
+				]]>
+			</latex>
+		</math.display>
+		<para>Thus <latex>i</latex> is continuous at <latex>x</latex>. As <latex>x\in D</latex> is arbitrary, we conclude that <latex>i</latex> is continuous.</para>
+		
+		<caption><partref>Inverse</partref> The inverse function is continuous</caption>
+		<para>Let <latex>x\neq 0</latex> be arbitrary, and suppose a deviation tolerance <latex><![CDATA[ \varepsilon > 0 ]]></latex> is given. We need to find <latex><![CDATA[ \delta>0 ]]></latex> such that for all <latex>t\neq 0</latex> with <latex><![CDATA[ \Abs{t-x} < \delta ]]></latex>, <latex><![CDATA[ \Abs{ \tfrac{1}{t} - \tfrac{1}{x} } < \varepsilon ]]></latex>. To find such <latex>\delta</latex>, put <latex>\tau:= t-x</latex> so that <latex>t=x+\tau</latex>. Then we require</para>
+		<computation>
+			<left>\Abs{ \dfrac{1}{x+\tau} - \dfrac{1}{x} }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\varepsilon</right>
+			<left>\Abs{ \dfrac{ x\ -\ x -\tau}{x(x+\tau)} }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\varepsilon</right>
+			<left>\Abs{ \dfrac{1}{ x(1/\tau + 1) } }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\varepsilon</right>
+			<left>\Abs{x} \cdot \Abs{ 1/\tau + 1 }</left>
+			<center><![CDATA[ > ]]></center>
+			<right>\dfrac{1}{\varepsilon}</right>
+			<left>\Abs{ 1/\tau + 1 }</left>
+			<center><![CDATA[ > ]]></center>
+			<right>\dfrac{1}{ \varepsilon \Abs{x} }</right>
+		</computation>
+		<para>We know that <latex><![CDATA[ \Abs{ \tfrac{1}{\tau} } - 1 \leq \Abs{\tfrac{1}{\tau} + 1 } ]]></latex>. So the above inequality is certainly satisfied if</para>
+		<computation>
+			<left>\Abs{ \dfrac{1}{\tau} } - 1</left>
+			<center><![CDATA[ > ]]></center>
+			<right>\dfrac{1}{ \varepsilon \Abs{x} }</right>
+			<left>\dfrac{1}{\Abs{\tau}}</left>
+			<center><![CDATA[ > ]]></center>
+			<right>1 + \dfrac{1}{ \varepsilon \Abs{x} }</right>
+			<left>\Abs{\tau}</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\dfrac{ \varepsilon \Abs{x} }{ \varepsilon \Abs{x} + 1 }</right>
+		</computation>
+		<para>Thus, choosing <latex>\delta := \tfrac{ \varepsilon \Abs{x} }{ \varepsilon \Abs{x} + 1 }</latex>, we find that, for <latex><![CDATA[ \Abs{\tau} < \delta ]]></latex>, the required inequality</para>
+		<computation>
+			<left>\Abs{ \dfrac{1}{x+\tau} - \dfrac{1}{x} }</left>
+			<center><![CDATA[ < ]]></center>
+			<right>\varepsilon</right>
+		</computation>
+		<para>holds. Thus the function <latex>p(x)=\tfrac{1}{x}</latex> is continuous at each <latex>x</latex>.</para>
+	</proof>
+</theorem>

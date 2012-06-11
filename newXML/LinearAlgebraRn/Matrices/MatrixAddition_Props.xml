@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_MatrixAdditionProperties"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <statement.theorem>
+      <para>
+         <para.body>The addition of matrices has the following properties</para.body>
+      </para>
+      <part.theorem partid="Associativity">
+         <caption>Associativity</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>(A+B)+C = A + (B+C)</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>associativity</term>
+                  <term>of matrix addition</term>
+                  <info>
+                     <info.caption>
+                        <caption>Associativity of matrix addition</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>The associativity property of matrix addition is the identity</para.body>
+                     </para>
+                     <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(\Mtrx{A} + \Mtrx{B}) + \Mtrx{C}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Mtrx{A} + (\Mtrx{B} + \Mtrx{C})</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>addition</term>
+                  <term>matrices</term>
+                  <term>associativity property</term>
+                  <info>
+                     <info.caption>
+                        <caption>Associativity of matrix addition</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>The associativity property of matrix addition is the identity</para.body>
+                     </para>
+                     <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(\Mtrx{A} + \Mtrx{B}) + \Mtrx{C}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Mtrx{A} + (\Mtrx{B} + \Mtrx{C})</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Commutativity">
+         <caption>Commutativity</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>A + B = B + A</latex>
+                  </math>
+               </para.body>
+               <index.glossary>
+                  <term>commutativity</term>
+                  <term>of matrix addition</term>
+                  <info>
+                     <info.caption>
+                        <caption>Commutativity of matrix addition</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>The commutativity property of matrix addition is the identity</para.body>
+                     </para>
+                     <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Mtrx{A} + \Mtrx{B}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Mtrx{B} + \Mtrx{A}</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+                  </info>
+               </index.glossary>
+               <index.glossary>
+                  <term>addition</term>
+                  <term>matrices</term>
+                  <term>commutativity</term>
+                  <info>
+                     <info.caption>
+                        <caption>Commutativity of matrix addition</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>The commutativity property of matrix addition is the identity</para.body>
+                     </para>
+                     <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Mtrx{A} + \Mtrx{B}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Mtrx{B} + \Mtrx{A}</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="ZeroNeutral">
+         <caption>0 is neutral element</caption>
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>A + \mathbf{0} = A = \mathbf{0} + A</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="MinusAIsAdditiveInverse">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>(-1)\cdot A</latex>
+                  </math> is the additive inverse of <math>
+                     <latex>A</latex>
+                  </math>
+               </para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <math>
+                     <latex>A + (-1)\cdot A = \mathbf{0} = (-1)\cdot A + A</latex>
+                  </math>
+               </para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>Associativity</part.ref>
+         </logic>
+         <caption>Associativity</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Suppose <math>
+                     <latex>A</latex>
+                  </math>, <math>
+                     <latex>B</latex>
+                  </math>, and <math>
+                     <latex>C</latex>
+                  </math> are three matrices of size <math>
+                     <latex>(m,n)</latex>
+                  </math>. Let us work with the entries in position <math>
+                     <latex>(i,j)</latex>
+                  </math> for some fixed <math>
+                     <latex>1\leq i\leq m</latex>
+                  </math> and <math>
+                     <latex>1\leq j\leq n</latex>
+                  </math>. Suppose</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Commutativity</part.ref>
+         </logic>
+         <caption>Commutativity</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Again let's look at the entry in position <math>
+                     <latex>(i,j)</latex>
+                  </math> of the two matrix sums in question.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

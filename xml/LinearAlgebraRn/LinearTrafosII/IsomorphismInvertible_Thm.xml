@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Lemma"
+	id="Thm_IsomorphismInvertible">
+	<caption>Isomorphism same as invertible</caption>
+	<statement>
+		<para>A linear transformation <latex>L\from V\to W</latex> is an isomorphism if and only if it is an invertible linear map.</para>
+	</statement>
+	<proof type="Proof">
+		<para>We consider first the case where <latex>L</latex> is an isomorphism. We need to show that <latex>L</latex> is an invertible linear map. We begin by showing that <latex>L</latex> is an invertible function: Indeed, <latex>L</latex> is onto because it is epimorphic. To see that it is one-to-one, let <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> be in <latex>V</latex> with <latex>L(\Vect{x}) = L(\Vect{y})</latex>. Then</para>
+		<computation>
+			<left>\Vect{0} = L(\Vect{x}) - L(\Vect{y})</left>
+			<center>=</center>
+			<right>L(\Vect{x} - \Vect{y})</right>
+		</computation>
+		<para>Therefore <latex>(\Vect{x} - \Vect{y})</latex> is in <latex>\ker(L) = \Set{ \Vect{0} }</latex>, implying that</para>
+		<para>Therefore <latex>(\Vect{x} - \Vect{y})</latex> is in <latex>\ker(L) = \Vect{0}</latex> and so <latex>\Vect{x} = \Vect{y}</latex>.</para>
+		<para>Therefore <latex>L\from V\to W</latex> is an invertible function. It remains to show:</para>
+		<para><latex>L^{-1} \from W \to V</latex> is linear. So let <latex>\Vect{y}_1</latex>, <latex>\Vect{y}_2</latex> be in <latex>W</latex>, and let <latex>\Vect{x}_1</latex>, <latex>\Vect{x}_2</latex> be the unique vectors in <latex>V</latex> with <latex>L(\Vect{x}_1) = \Vect{y}_1</latex> and <latex>L(\Vect{x}_2) = \Vect{y}_2</latex>, respectively. Then we see that <latex>L^{-1}</latex> commutes with vector addition by computing:</para>
+		<computation>
+			<left>L^{-1}(\Vect{y}_1 + \Vect{y}_2)</left>
+			<center>=</center>
+			<right>L^{-1}(L(\Vect{x}_1) + L(\Vect{x}_2))</right>
+			<left></left>
+			<center>=</center>
+			<right>L^{-1}(L(\Vect{x}_1+\Vect{x}_2))</right>
+			<left></left>
+			<center>=</center>
+			<right>\Vect{x}_1 + \Vect{x}_2</right>
+			<left></left>
+			<center>=</center>
+			<right>L^{-1}(\Vect{y}_1) + L^{-1}(\Vect{y}_2)</right>
+		</computation>
+		<para>So <latex>L^{-1}</latex> commutes with vector addition. To see that it commutes with scalar multiplication as well, let <latex>\Vect{y} = L(\Vect{x})</latex> be in <latex>W</latex>, and let <latex>t</latex> be in <latex>\RNr</latex>. Then we find:</para>
+		<computation>
+			<left>L^{-1}(t\cdot \Vect{y})</left>
+			<center>=</center>
+			<right>L^{-1}(t\cdot L(\Vect{x}))</right>
+			<left></left>
+			<center>=</center>
+			<right>L^{-1}(L(t\cdot \Vect{x}))</right>
+			<left></left>
+			<center>=</center>
+			<right>t\cdot \Vect{x}</right>
+			<left></left>
+			<center></center>
+			<right>t\cdot L^{-1}(\Vect{y})</right>
+		</computation>
+		<para>Thus <latex>L^{-1}</latex> commutes with scalar multiplication as well. This completes the proof that an isomorphism is an invertible linear map.</para>
+		<para>Consider next the case where <latex>L</latex> is an invertible linear map. So we know that <latex>L^{-1}</latex> exists and is linear. We need to show that <latex>L</latex> is an isomorphism.  To see that <latex>L</latex> is monomorphic, suppose <latex>L(\Vect{x}) = \Vect{0}</latex>  for some <latex>\Vect{x}\in V</latex>. We need to show that <latex>\Vect{x} = \Vect{0}</latex>. Indeed, we have</para>
+		<computation>
+			<left>\Vect{x} = L^{-1}(L(\Vect{x}))</left>
+			<center>=</center>
+			<right>L^{-1}(\Vect{0})</right>
+			<left></left>
+			<center>=	<info>
+				<caption>Why is this so?</caption>
+				<para>Recall that a linear map <latex>T</latex> always satisfies <latex>T(\Vect{0}) = \Vect{0}</latex>.</para>
+			</info></center>
+			<right>\Vect{0}</right>
+		</computation>
+		<para>Next we show that <latex>L</latex> is epimorphic. Indeed, if <latex>\Vect{y} \in W</latex> is arbitrary, we have</para>
+		<computation>
+			<left>\Vect{y}</left>
+			<center>=</center>
+			<right>L(L^{-1}(\Vect{y}))</right>
+		</computation>
+		<para>and, therefore, <latex>\Vect{y}</latex> is in <latex>\im(L)</latex>. - This completes the proof of the lemma.</para>
+	</proof>
+</theorem>

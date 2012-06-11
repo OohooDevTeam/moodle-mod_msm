@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_ProjectionGeneral">
+	<title>General Projection - Preview</title>
+	<sub.page.body>
+		<block>
+			<para>We encounter projections of objects onto planar surfaces on a daily basis, for example in the form of the shadow of an object.</para>
+			<figure>
+				<img src="ims/ProjectionParallelToVector.png"></img><!-- svg available -->
+				<info>
+					<para>In this picture, <latex>\text{pr}(\Vect{x})</latex> is the projection of <latex>\Vect{x}</latex> onto <latex>H</latex>, parallel to <latex>\Vect{v}</latex>. Similarly, <latex>\text{pr}(\Vect{y})</latex> is the projection of <latex>\Vect{y}</latex> onto <latex>H</latex>, parallel to <latex>\Vect{v}</latex>.</para>
+				</info>
+			</figure>
+			<para>Here the vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are being projected onto the hyperspace <latex>H</latex>, parallel to the vector <latex>\Vect{v}</latex>. The result of this projection are the vectors <latex>\text{pr}(\Vect{x})</latex> and <latex>\text{pr}(\Vect{y})</latex> in <latex>H</latex>, respectively.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book	SYSTEM "Symbols.dtd">
+<book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Book_NaiveUseOfSets">
+	<texsupport href="Analysis_TeXSupport.xml"/>
+	<literature.db href="../LiteratureDataBase/GePeLiterature.xml"/>
+	<title>Analysis</title>
+	<html.title>Analysis</html.title>
+	<cover></cover>
+	<authors>
+		<person>
+			<name>
+				<first>WMath</first>
+				<last></last>
+			</name>
+		</person>
+	</authors>
+	<date>
+		<month>03</month>
+		<day>09</day>
+		<year>2011</year>
+	</date>
+	<xi:include href="Intro.xml"/>
+	<body>
+		<chapter id="Chap_Reals">
+			<headers>
+				<full>The Real Number System</full>
+				<toc>The Real Number System</toc>
+				<short>The Real Number System</short>
+			</headers>
+			<xi:include href="R/Intro.xml"/>
+			<xi:include href="R/FieldAxioms.xml"/>
+			<xi:include href="R/OrderingStructureR.xml"/>
+			<xi:include href="R/AbsoluteValueOperation.xml"/>
+			<xi:include href="R/NormDistance.xml"/>
+			<xi:include href="R/Intervals.xml"/>
+			<xi:include href="R/RExtended.xml"/>
+			<xi:include href="R/RComplete.xml"/>
+			<xi:include href="R/RComplete_InfSup.xml"/>
+			<!-- Support files for Field Axioms -->
+			<xi:include href="ZenoParadox_sub.xml"/><!-- Support file for Introduction of Book -->
+			<xi:include href="R/R_Axioms_sub.xml"/><!-- Support file for Introduction to this chapter -->
+			<xi:include href="R/FieldAxioms_Exrcss.xml"/>
+			<xi:include href="R/DistanceR_sub.xml"/>
+			<xi:include href="R/TriangleInequalityR_sub.xml"/>
+			<xi:include href="R/Root2NotRational_sub.xml"/>
+			<xi:include href="R/Completeness_Exrcss.xml"/>
+			<xi:include href="R/RExtended_Exrcss.xml"/>
+			<xi:include href="R/InfSup_Exrcss.xml"/>
+		</chapter>
+		<chapter id="Chap_SequencesSeries">
+			<headers>
+				<full>Sequences and Series</full>
+				<toc>Sequences and Series</toc>
+				<short>Sequences and Series</short>
+			</headers>
+			<xi:include href="SeqSer/Intro.xml"/>
+			<xi:include href="SeqSer/Sequences.xml"/>
+			<xi:include href="SeqSer/SequencesNewFromOld.xml"/>
+			<xi:include href="SeqSer/InfSupLim.xml"/>
+			<xi:include href="SeqSer/ConvergenceCriteria.xml"/>
+			<xi:include href="SeqSer/SeriesInR.xml"/>
+			<xi:include href="SeqSer/SeriesConvergenceTests.xml"/>
+			<xi:include href="SeqSer/AbsoluteConvergence.xml"/>
+			<xi:include href="SeqSer/RootRatioTest.xml"/>
+			<!-- Support files for Infinite Sequences -->
+			<xi:include href="SeqSer/SequenceIllu_sub.xml"/>
+			<xi:include href="SeqSer/SequenceTypes_Exmpl.xml"/>
+			<xi:include href="SeqSer/SubSequenceIllu_sub.xml"/>
+			<xi:include href="SeqSer/SubSequence_Exmpl.xml"/>
+			<xi:include href="SeqSer/SequenceTail_Exmpl.xml"/>
+			<xi:include href="SeqSer/Sequences_Exrcss.xml"/>
+			<xi:include href="SeqSer/SequenceSumProduct_Exmpl.xml"/>
+			<xi:include href="SeqSer/SequencesNewFromOld_Exrcss.xml"/>
+			<xi:include href="SeqSer/InfSup_Exmpl.xml"/>
+			<xi:include href="SeqSer/InfSupSequence_Exrcss.xml"/>
+			<xi:include href="SeqSer/InfSupLimSequence_Exrcss.xml"/>
+			<xi:include href="SeqSer/SequenceConvergence_sub.xml"/>
+			<xi:include href="SeqSer/SequenceConverge1_Exmpl.xml"/>
+			<xi:include href="SeqSer/SequenceConvergeInfty_Exmpl.xml"/>
+			<xi:include href="SeqSer/SequenceDivergent_Exmpl.xml"/>
+			<xi:include href="SeqSer/MonotoneBoundedIllu_sub.xml"/>
+			<xi:include href="SeqSer/SqueezeTheoremIllu_sub.xml"/>
+			<xi:include href="SeqSer/MonotoneBoundedConv_Exrcss.xml"/>
+			<xi:include href="SeqSer/SequenceConv_Exrcss.xml"/>
+			<!-- Support files for Series -->
+			<xi:include href="SeqSer/SeriesExmpls_sub.xml"/>
+			<xi:include href="SeqSer/PartialSumExmpls_sub.xml"/>
+			<xi:include href="SeqSer/GeometricSeries_Exmpl.xml"/>
+			<xi:include href="SeqSer/HarmonicSeries_Exmpl.xml"/>
+			<xi:include href="SeqSer/GeometricSeries_Exrcss.xml"/>
+			<xi:include href="SeqSer/SeriesComparison_Exmpl.xml"/>
+			<xi:include href="SeqSer/SeriesLimitComparison_Exmpl.xml"/>
+			<xi:include href="SeqSer/SeriesLimitComparison_Exrcss.xml"/>
+			<xi:include href="SeqSer/AlternatingHarmonic_Exmpl.xml"/>
+			<xi:include href="SeqSer/AlternatingSeries_Exmpl.xml"/>
+			<xi:include href="SeqSer/AlternatingSeries_Exrcss.xml"/>
+			<xi:include href="SeqSer/SeriesRearrange_sub.xml"/>
+			<xi:include href="SeqSer/AbsoluteConditionalConvergence_Exmpl.xml"/>
+			<xi:include href="SeqSer/SeriesAbsoluteConv_Exrcss.xml"/>
+			<xi:include href="SeqSer/RootRest_Exmpl.xml"/>
+			<xi:include href="SeqSer/RatioTest_Exmpl.xml"/>
+			<xi:include href="SeqSer/RootRatioTest_Exrcss.xml"/>
+		</chapter>
+		
+		<chapter id="chap_ContinuousFunctions">
+			<headers>
+				<full>Continuous Functions</full>
+				<toc>Continuous Functions</toc>
+				<short>Continuous Functions</short>
+			</headers>
+			<xi:include href="ContFuncs/Intro.xml"/>
+			<xi:include href="ContFuncs/ContFuncs.xml"/>
+			<xi:include href="ContFuncs/NewContinuousFromOld.xml"/>
+			<!-- Support files for continuous functions -->
+			<xi:include href="ContFuncs/Ancient_sub.xml"/>
+			<xi:include href="ContFuncs/ContGraph_sub.xml"/>
+			<xi:include href="ContFuncs/LimitCommute_sub.xml"/>
+			<xi:include href="ContFuncs/EpsilonDeltaExpli_sub.xml"/>
+			<xi:include href="ContFuncs/EpsilonDeltaExpli1_sub.xml"/>
+			<xi:include href="ContFuncs/ContinuousFunctions_Exrcss.xml"/>
+			<xi:include href="ContFuncs/PastingLemma_sub.xml"/>
+			<xi:include href="ContFuncs/NewFromOld_Exrcss.xml"/>
+		</chapter>
+	</body>
+</book>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_Hyperplanes">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+		
+		
+
+	<title>Examples of Hyperplanes</title>
+	<caption>Hyperplanes - Examples</caption>
+	<showme>
+		<statement>
+			<para>Describe the object in <latex>\RNr[2]</latex> formed by the set of solutions of the equation</para>
+			<math.display>
+				<latex>2x + 3y = 3</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>This is an equation in two variables. So each solution <latex>\Vect{x} = (x,y)</latex> gives a point in <latex>\RNr[2]</latex>. Further, the equation is of the type</para>
+			<para align="center">
+				<latex>ax + by = c</latex> &nbsp; or, equivalently, &nbsp; <latex>\DotPr{ \Vect{x} }{ \Vect{n} } = c</latex>,</para>
+			<para>with <latex>\Vect{n} := (2,3) \neq (0,0)</latex>. Therefore all solutions together form a hyperplane in <latex>\RNr[2]</latex>, i.e. the line <latex>L</latex> which is perpendicular to <latex>\Vect{n} = (2,3)</latex> and passes through the point <latex>(0,1)</latex>.</para>
+			<para align="center">
+				<img src="ims/HyperPlane2D_Exmpl.gif"/>
+			</para>
+			<para>Note that, in the description of <latex>L</latex> above, we are free to replace the point <latex>(0,1)</latex> by any point on <latex>L</latex>. Here are some examples:</para>
+			<ul>
+				<li>
+					<para><latex>L</latex> is the line in <latex>\RNr[2]</latex> which is perpendicular to <latex>\Vect{n}</latex> and passes through the point <latex>(3/2,0)</latex>; or </para>
+				</li>
+				<li>
+					<para><latex>L</latex> is the line in <latex>\RNr[2]</latex> which is perpendicular to <latex>\Vect{n}</latex> and passes through the point <latex>(3,-1)</latex>; or </para>
+				</li>
+				<li>
+					<para><latex>L</latex> is the line in <latex>\RNr[2]</latex> which is perpendicular to <latex>\Vect{n}</latex> and passes through the point <latex>(-3,3)</latex>; etc. </para>
+				</li>
+			</ul>
+		</answer>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Describe the object in <latex>\RNr[3]</latex> formed by the set of solutions of the equation.</para>
+			<math.display>
+				<latex>2x + y + z = -2</latex>
+			</math.display>
+		</statement>
+		<answer type="Solution">
+			<para>This is an equation in three variables. So each solution gives the coordinates of a point in <latex>\RNr[3]</latex>. Further, the equation is of the type</para>
+			<para align="center">
+				<latex>ax + by + cz = k</latex> or, equivalently, <latex>\DotPr{ \Vect{x} }{ \Vect{n} } = k</latex>.</para>
+			<para>with <latex>\Vect{n} = (2,1,1)</latex>. Therefore all solutions together form a hyperplane <latex>H</latex> in <latex>\RNr[3]</latex>, namely the plane, which is perpendicular to <latex>\Vect{n}</latex>, and passes through the point  <latex>(-1,0,0)</latex>.</para>
+			<para>Note that, in the description of <latex>H</latex> above, we are free to replace the point <latex>(-1,0,0)</latex> by any point on <latex>H</latex>. Here are some examples:</para>
+			<ul>
+				<li>
+					<para><latex>H</latex> is the hyperplane in <latex>\RNr[3]</latex> which is perpendicular to <latex>\Vect{n}</latex> and passes through the point <latex>(0,-2,0)</latex>; or</para>
+				</li>
+				<li>
+					<para><latex>H</latex> is the hyperplane in <latex>\RNr[3]</latex> which is perpendicular to <latex>\Vect{n}</latex> and passes through the point <latex>(0,0,-2)</latex>; or</para>
+				</li>
+				<li>
+					<para><latex>H</latex> is the hyperplane in <latex>\RNr[3]</latex> which is perpendicular to <latex>\Vect{n}</latex> and passes through the point <latex>(0,-1,-1)</latex>; or</para>
+				</li>
+				<li>
+					<para><latex>H</latex> is the hyperplane in <latex>\RNr[3]</latex> which is perpendicular to <latex>\Vect{n}</latex> and passes through the point <latex>(-2,1,1)</latex>; etc.</para>
+				</li>
+			</ul>
+		</answer>
+	</showme>
+</showme.pack>

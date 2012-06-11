@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Expla_LinearMapFindMatrix">
+	<title>Linear Map Comes from a Matrix: Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>Every linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex> may be represented by a matrix, ... which matrix? &ndash; Here we explain first how the representing matrix is built. Then we explain which fundamental property of a linear map which makes this result possible.</para>
+		</block>
+			
+			
+		<block>
+			<para><b>How to build the matrix representing a linear map</b> &nbsp; Here we explain the procedure by which we build the matrix <latex>\Mtrx{A}</latex> representing a linear transformation <latex>L\from \RNr[n]\to \RNr[m]</latex>:</para>
+			<ol>
+				<li><para>First apply <latex>L</latex> to the vector <latex>\StdBss{1}=(1,0,\dots ,0)</latex>; then use the resulting vector of <latex>\RNr[m]</latex> as the first column of <latex>\Mtrx{A}</latex>.</para></li>
+				<li><para>Next apply <latex>L</latex> to the vector <latex>\StdBss{2}=(0,1,0,\dots ,0)</latex>, then use the resulting vector of <latex>\RNr[m]</latex> as the second column of <latex>\Mtrx{A}</latex>.</para></li>
+				<li><para>etc. until</para></li>
+				<li><para>Finally apply <latex>L</latex> to the vector <latex>\StdBss{n}=(0,\dots ,0,1)</latex>, then use the resulting vector of <latex>\RNr[m]</latex> as the <latex>n</latex>-th and last column of <latex>\Mtrx{A}</latex>.</para></li>
+			</ol>
+		</block>
+		
+		<block>
+			<para><b>Why does the representing matrix exist?</b> &nbsp; Recall that for <latex>n\geq 1</latex>, <latex>\RNr[n]</latex> contains infinitely many points. Therefore the function <latex>L</latex> must make infinitely many assignments, one assignment of a point <latex>L(\Vect{x})</latex> in <latex>\RNr[m]</latex> for each <latex>\Vect{x}</latex> in <latex>\RNr[n]</latex>.</para>
+			<para>What we learn here is that, because <latex>L</latex> is linear, all of these infinitely many assignments are determined by the finite collection of assignments</para>
+			<ol>
+				<li><para><latex>L</latex> sends <latex>\StdBss{1}</latex> to <latex>L(\StdBss{1})</latex>.</para></li>
+				<li><para><latex>L</latex> sends <latex>\StdBss{2}</latex> to <latex>L(\StdBss{2})</latex>.</para></li>
+				<li><para>etc.</para></li>
+				<li><para><latex>L</latex> sends <latex>\StdBss{n}</latex> to <latex>L(\StdBss{n})</latex>.</para></li>
+			</ol>
+			<para>So this is it: finite base information implies information about infinitely many transformation situations. &ndash; What we describe here is a generalization of familiar linear functions like</para>
+			<ul>
+				<li><para>Info: A particle moves at the constant speed of <latex>100km/h</latex>. This is a single bit of information. Yet it enables us to recover the distance traveled by the particle within any interval of time of length <latex>t</latex>: <latex>t \cdot 100</latex>[km].</para>
+				<para>In this example, the fact that the particle travels at constant speed means that the distance traveled function <latex>d\from \RNr\to \RNr</latex> is a linear function of time. &ndash; Without the information that the particle travels at constant speed, we have no way of telling how far it has traveled after 2 hours or 3 hours, etc.</para>
+				</li>
+				<li>
+					<para>Info: Henry earns 20 dollars per hour. This is a single bit of information. Yet it enables us to tell how much Henry earns after any number of hours at work. His earnings are a linear function of time. If Henry&rsquo;s income is by commission only, his earnings are a nonlinear function of time; we have no way of telling how much he will earn after the first two hours if we only know what he earned after one hour.</para>
+				</li>
+			</ul>
+		</block>
+	</sub.page.body>
+</sub.page>

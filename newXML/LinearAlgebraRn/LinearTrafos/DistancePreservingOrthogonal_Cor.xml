@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Cor_DistancePreservingOrthogonal"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Distance preserving <math>
+         <latex>\longleftrightarrow A^{-1} = A^T</latex>
+      </math>
+   </caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment on this corollary</caption>
+         </info.caption>
+         <para>
+            <para.body>Recall how laborious it is, in general, to determine if a given linear map is invertible. In comparison, this corollary presents us with a pleasant surprise: tthe transpose of a matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is very easy to find, and then we just need to check if <math>
+                  <latex>A\cdot A^T = \IdMtrx[n]</latex>
+               </math>. Moreover, whenever this happens we have immediately three conclusions:</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> is invertible</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\Mtrx{A}^{-1} = A^T</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>The linear map represented by <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> preserves distances.</para.body>
+               </para>
+            </li>
+         </ul>
+      </info>
+   </associate>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_DistancePreservingOrthogonal"/>
+      <info>
+         <para>
+            <para.body>An example of using this corollary.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For an <math>
+               <latex>(n,n)</latex>
+            </math>-matrix <math>
+               <latex>\Mtrx{A}</latex>
+            </math> the following are equivalent</para.body>
+      </para>
+      <part.theorem counter="1" equivalence.mark="1" partid="DistancePreserving">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> represents a distance preserving linear map <math>
+                     <latex>L\from \RNr[n] \to \RNr[n]</latex>
+                  </math>.
+			</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem counter="2" equivalence.mark="1" partid="AATEqualsId">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Mtrx{A}\cdot \Mtrx{A}^T = \IdMtrx[n]</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem counter="3" equivalence.mark="1" partid="InverseEqualsTranspose">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Mtrx{A}^{-1} = \Mtrx{A}^T</latex>
+                  </math>. In particular, a distance preserving map is invertible.
+				</para.body>
+               <index.glossary>
+                  <term>invertible</term>
+                  <term>matrix</term>
+                  <info>
+                     <para>
+                        <para.body>Context: a distance preserving linear map is invertible</para.body>
+                     </para>
+                  </info>
+               </index.glossary>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is an arbitrary <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix with column vectors <math>
+                     <latex>A_i</latex>
+                  </math>, note that the entry of <math>
+                     <latex>\Mtrx{A}\Mtrx{A}^T</latex>
+                  </math> in position <math>
+                     <latex>(i,j)</latex>
+                  </math> is the dot product <math>
+                     <latex>\DotPr{ A_i }{ A_j }</latex>
+                  </math>. Therefore <math>
+                     <latex>\Mtrx{A}\Mtrx{A}^T = \IdMtrx[n]</latex>
+                  </math> if and only if </para.body>
+            </para>
+            <math.display>
+               <latex>
+				
+\DotPr{ A_i }{ A_j } = 
+\left\{
+\aligned
+1 &amp; \quad \text{if $i=j$} \\
+0 &amp; \quad \text{if $i\neq j$}
+\endaligned
+\right.
+
+			</latex>
+            </math.display>
+            <para>
+               <para.body>But this latter condition holds 
+			<subordinate>
+                     <hot>if and only if </hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_OrthogonalMapRecognize"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_OrthogonalMapRecognize"/>
+                           <para>
+                              <para.body>Look up the details.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+                  <math>
+                     <latex>L</latex>
+                  </math> preserves distances.</para.body>
+            </para>
+            <para>
+               <para.body>Further, the identity <math>
+                     <latex>\Mtrx{A}\cdot \Mtrx{A}^T = \IdMtrx[n]</latex>
+                  </math> means exactly that <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible and that its inverse is <math>
+                     <latex>\Mtrx{A}^T</latex>
+                  </math>. – This proves the corollary.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

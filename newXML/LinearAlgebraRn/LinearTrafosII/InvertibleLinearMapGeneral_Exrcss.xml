@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_InvertibleLinearMapGeneral"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: Linear Transformations II - Invertible Maps</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>The linear maps <math>
+                     <latex>L</latex>
+                  </math> and <math>
+                     <latex>T</latex>
+                  </math> below are described in standard coordinates.</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\aligned
+L\from \RNr[4] \longrightarrow \RNr[3] &amp;\quad L(x,y,z,t)= (-t+x,y+x,z-x) \\
+T\from \RNr[3] \longrightarrow \RNr[4] &amp;\quad T(x,y,z) = (x+z,y,-x,-z+y)
+\endaligned
+
+				</latex>
+			         </math.display>
+			         <para>
+               <para.body>Answer the subsequent questions</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Show that <math>
+                        <latex>(L\Comp T)</latex>
+                     </math> is invertible.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We answer this problem via the following steps:</para.body>
+                  </para>
+					             <ol>
+						               <li>
+                        <para>
+                           <para.body>Find the matrix <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> representing <math>
+                                 <latex>L</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>Find the matrix <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math> representing <math>
+                                 <latex>T</latex>
+                              </math>.</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>The matrix representing <math>
+                                 <latex>(L\Comp T)</latex>
+                              </math> is then the matrix product <math>
+                                 <latex>\Mtrx{C}:=\Mtrx{A}\cdot \Mtrx{B}</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>We then know that <math>
+                                 <latex>(L\Comp T)</latex>
+                              </math> is invertible exactly when <math>
+                                 <latex>\Mtrx{C}</latex>
+                              </math> is invertible. So, we may test <math>
+                                 <latex>\Mtrx{C}</latex>
+                              </math> for invertibility by checking if its determinant is nonzero.</para.body>
+                        </para>
+                     </li>
+					             </ol>
+					             <para>
+                     <para.body>
+                        <strong>Step 1</strong>   The matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> representing <math>
+                           <latex>L</latex>
+                        </math> has the following vectors as its columns:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(\StdBss{1})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,1,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(\StdBss{2})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(\StdBss{3})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,0,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(\StdBss{4})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(-1,0,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore,</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A}\ =\ 
+\left[
+\begin{array}{rrrr}
+1 &amp; 0 &amp; 0 &amp; -1 \\
+1 &amp; 1 &amp; 0 &amp; 0 \\
+-1 &amp; 0 &amp; 1 &amp; 0
+\end{array}
+\right] 
+							
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>
+                        <strong>Step 2</strong>   Similarly, the matrix <math>
+                           <latex>\Mtrx{B}</latex>
+                        </math> representing <math>
+                           <latex>T</latex>
+                        </math> has the following vectors as its columns:</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>T(\StdBss{1})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,0,-1,0)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>T(\StdBss{2})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(0,1,0,1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>T(\StdBss{3})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>(1,0,0,-1)</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore,</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{B}\ =\ 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+-1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -1
+\end{array}
+\right]
+							
+						</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>
+                        <strong>Step 3</strong>   The matrix representing <math>
+                           <latex>(L\Comp T)</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{C} := 
+\left[
+\begin{array}{rrrr}
+1 &amp; 0 &amp; 0 &amp; -1 \\
+1 &amp; 1 &amp; 0 &amp; 0 \\
+-1 &amp; 0 &amp; 1 &amp; 0
+\end{array}
+\right] 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+-1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -1
+\end{array}
+\right] = 
+\left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; 1 \\
+1 &amp;  1 &amp; 0 \\
+-2 &amp; 0 &amp; 0 
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					
+					
+					             <para>
+                     <para.body>
+                        <strong>Step 4</strong> testing <math>
+                           <latex>\Mtrx{C}</latex>
+                        </math> for invertibility. We find that <math>
+                           <latex>\det(\Mtrx{C})=2</latex>
+                        </math>. Therefore, <math>
+                           <latex>(\Mtrx{A} \Mtrx{B})</latex>
+                        </math> is invertible, and so  <math>
+                           <latex>(L\Comp T)</latex>
+                        </math> is invertible.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find <math>
+                        <latex>(L\Comp T)^{-1}(x,y,z)</latex>
+                     </math> for an arbitrary vector <math>
+                        <latex>(x,y,z)</latex>
+                     </math> of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>(L\Comp T)^{-1}(x,y,z) = (-(1/2)z , y + (1/2)z , x+y+z)</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Using the first part of the problem, we see</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+(\Mtrx{A} \Mtrx{B})^{-1} =
+\left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; 1 \\
+1 &amp; 1 &amp; 0 \\
+-2 &amp; 0 &amp; 0 
+\end{array}
+\right]^{-1} = 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+0 &amp; 0 &amp; -1 \\
+0 &amp; 2 &amp; 1 \\
+2 &amp; 2 &amp; 2
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Accordingly, we obtain</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+(L\Comp T)^{-1} (x,y,z)\ =\ 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+0 &amp; 0 &amp; -1 \\
+0 &amp; 2 &amp; 1 \\
+2 &amp; 2 &amp; 2
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+x \\ y \\ z
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{c}
+-\tfrac{1}{2}z \\ y + \tfrac{1}{2} z \\ x + y + z
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Determine if <math>
+                        <latex>(T\Comp L)</latex>
+                     </math> is invertible. Explain your answer.</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>(T\Comp L)</latex>
+                           </math> is not invertible.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix representing <math>
+                           <latex>(T\Comp L)</latex>
+                        </math> is <math>
+                           <latex>(B\cdot A)</latex>
+                        </math>, and</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\det(\Mtrx{B} \Mtrx{A})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>0</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>Therefore <math>
+                           <latex>(\Mtrx{B} \Mtrx{A})</latex>
+                        </math> is not invertible and, consequently, <math>
+                           <latex>(T\Comp L)</latex>
+                        </math> is not invertible.</para.body>
+                  </para>
+					
+					             <para>
+                     <para.body>Note that this result may be explained conceptually as follows: in the composite <math>
+                           <latex>(T\Comp L)</latex>
+                        </math>, we first execute the linear map <math>
+                           <latex>L</latex>
+                        </math>. Now <math>
+                           <latex>L</latex>
+                        </math> transforms <math>
+                           <latex>\RNr[4]</latex>
+                        </math> into the lower dimensional <math>
+                           <latex>\RNr[3]</latex>
+                        </math>. In the process some ‘collapsing’ of material in <math>
+                           <latex>\RNr[4]</latex>
+                        </math> must occur; for example the nullspace of the matrix <math>
+                           <latex>\Mtrx{A}</latex>
+                        </math> gets collapsed into the 0-vector of <math>
+                           <latex>\RNr[3]</latex>
+                        </math>. Once such collapsing has occurred, it can never be reversed by another linear map. So <math>
+                           <latex>(T\Comp L)</latex>
+                        </math> is not invertible.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>\EuScript{B}=(\Vect{b}_1,\Vect{b}_2,\Vect{b}_3)</latex>
+                  </math> and <math>
+                     <latex>\EuScript{D}=(\Vect{d}_1,\Vect{d}_2,\Vect{d}_3)</latex>
+                  </math> be the ordered bases of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> with</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\aligned
+\Vect{b}_1 &amp;= (1,0,0), &amp;\quad \Vect{b}_2 &amp;= (-1,-1,1), &amp;\quad \Vect{b}_3 &amp;= (0,0,1) \\
+\Vect{d}_1 &amp;= (1,0,1), &amp;\quad \Vect{d}_2 &amp;= (-1,-1,0), &amp;\quad \Vect{d}_3 &amp;= (0,-1,-1)
+\endaligned
+
+				</latex>
+			         </math.display>
+			         <para>
+               <para.body>Further, let <math>
+                     <latex>L\from \RNr[3] \to \RNr[3]</latex>
+                  </math> be the linear map which is represented by the matrix</para.body>
+            </para>
+			         <math.display>
+				           <latex>
+					
+\Mtrx{A}_{\EuScript{B}\EuScript{D}} = 
+\left[
+\begin{array}{rrr}
+0 &amp; -2 &amp; 1 \\
+0 &amp; -1 &amp; 0 \\
+1 &amp; 0 &amp; 0
+\end{array}
+\right]
+
+				</latex>
+			         </math.display>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix <math>
+                        <latex>\Mtrx{A}_{\EuScript{D}\EuScript{B}}</latex>
+                     </math> representing <math>
+                        <latex>L^{-1}</latex>
+                     </math> with respect to the bases <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> for the domain and <math>
+                        <latex>\EuScript{D}</latex>
+                     </math> for the target.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A}_{\EuScript{D}\EuScript{B}} = \left( \Mtrx{A}_{\EuScript{B}\EuScript{D}}\right)^{-1} =
+\left[
+\begin{array}{rrr}
+0 &amp; -2 &amp; 1 \\
+0 &amp; -1 &amp; 0 \\
+1 &amp; 0 &amp; 0
+\end{array}
+\right]^{-1} = 
+\left[
+\begin{array}{rrr}
+0 &amp; 0 &amp; 1 \\
+0 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the <math>
+                        <latex>\EuScript{D}</latex>
+                     </math>-coordinates of <math>
+                        <latex>L^{-1}(a,b,c)_{\EuScript{B}}</latex>
+                     </math>, where <math>
+                        <latex>(a,b,c)_{\EuScript{B}}</latex>
+                     </math> is arbitrary in <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>If <math>
+                           <latex>\Vect{x}_{\EuScript{B}}=(a,b,c)</latex>
+                        </math>, then</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+L^{-1}(\Vect{x})_{\EuScript{D}} = \Mtrx{A}_{\EuScript{D}\EuScript{B}} \Vect{x}_{\EuScript{B}} = \left[
+\begin{array}{rrr}
+0 &amp; 0 &amp; 1 \\
+0 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 0
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+a \\ b \\ c
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+c \\ -b \\ a-2b
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix <math>
+                        <latex>\Mtrx{A}</latex>
+                     </math> representing <math>
+                        <latex>L^{-1}</latex>
+                     </math> with respect to the standard basis of  <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A} = 
+\left[
+\begin{array}{rrr}
+0 &amp; 0 &amp; 1 \\
+-1 &amp; -2 &amp; 0 \\
+-1 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The matrix <math>
+                           <latex>\Mtrx{A}=\Mtrx{A}_{\EuScript{S}\EuScript{S}}</latex>
+                        </math> representing <math>
+                           <latex>L^{-1}</latex>
+                        </math> with respect to the standard basis of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> is given by</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+\Mtrx{A}\ &amp;=\ \Mtrx{C}_{\EuScript{S}\EuScript{D}}\cdot \Mtrx{A}_{\EuScript{D}\EuScript{B}}(L^{-1})\cdot \Mtrx{C}_{\EuScript{B}\EuScript{S}} \\
+	&amp;=\ 
+	\left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; 0 \\
+0 &amp; -1 &amp; -1 \\
+1 &amp; 0 &amp; -1
+\end{array}
+\right]
+\left[
+\begin{array}{rrr}
+0 &amp; 0 &amp; 1 \\
+0 &amp; -1 &amp; 0 \\
+1 &amp; -2 &amp; 0
+\end{array}
+\right]
+\left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; 1
+\end{array}
+\right]^{-1} \\
+	&amp;=\ 
+	\left[
+\begin{array}{rrr}
+0 &amp; 0 &amp; 1 \\
+-1 &amp; -2 &amp; 0 \\
+-1 &amp; 0 &amp; 1
+\end{array}
+\right]
+\endaligned
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\Vect{x}_{\EuScript{S}}=(x,y,z)</latex>
+                     </math>, express <math>
+                        <latex>L^{-1}(\Vect{x})</latex>
+                     </math> in standard coordinates.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>L^{-1}(x,y,z)</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <text>=</text>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>(z,-x-2y,-x+z)</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Suppose <math>
+                     <latex>L\from \RNr[n] \to \RNr[n]</latex>
+                  </math> is a linear map such that, whenever <math>
+                     <latex>\Vect{u}_1,\dots ,\Vect{u}_r</latex>
+                  </math> are linearly independent vectors in <math>
+                     <latex>\RNr[n]</latex>
+                  </math>, the vectors <math>
+                     <latex>L(\Vect{u}_1),\dots ,L(\Vect{u}_r)</latex>
+                  </math> are also linearly independent.  Show that <math>
+                     <latex>L</latex>
+                  </math> is invertible.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <solution.hint>
+				        <para>
+               <para.body>The hypothesis applies, in particular to a basis of <math>
+                     <latex>\RNr[n]</latex>
+                  </math>.</para.body>
+            </para>
+			      </solution.hint>
+			      <solution>
+            <solution.body>
+				           <para>
+                  <para.body>Choose an ordered basis <math>
+                        <latex>\EuScript{B}=(\Vect{b}_1,\dots ,\Vect{b}_n)</latex>
+                     </math> of <math>
+                        <latex>\RNr[n]</latex>
+                     </math>. The vectors in <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> are linearly independent. So <math>
+                        <latex>\EuScript{D}:=(L(\Vect{b}_1),\dots ,L(\Vect{b}_n))</latex>
+                     </math> is linearly independent and, hence, an ordered basis of <math>
+                        <latex>\RNr[n]</latex>
+                     </math>.</para.body>
+               </para>
+				           <para>
+                  <para.body>The matrix <math>
+                        <latex>\Mtrx{A}_{\EuScript{D}\EuScript{B}}</latex>
+                     </math> representing <math>
+                        <latex>L</latex>
+                     </math> with respect to these two bases is the identity <math>
+                        <latex>(n,n)</latex>
+                     </math>-matrix. This matrix is invertible, and so <math>
+                        <latex>L</latex>
+                     </math> is invertible. – This was to be shown.</para.body>
+               </para>
+			         </solution.body>
+         </solution>
+		    </approach>
+	  </exercise>
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>For each of the statements below determine if it is true or false.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Given an isomorphism <math>
+                        <latex>L\from V\to W</latex>
+                     </math>, there are always vectors <math>
+                        <latex>\Vect{x}\neq \Vect{0}</latex>
+                     </math> in <math>
+                        <latex>V</latex>
+                     </math> with <math>
+                        <latex>L(\Vect{x})=\Vect{0}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Suppose there is a vector <math>
+                        <latex>\Vect{x}\neq \Vect{0}</latex>
+                     </math> in <math>
+                        <latex>V</latex>
+                     </math> with <math>
+                        <latex>L(\Vect{0}) = \Vect{0}</latex>
+                     </math>, and suppose <math>
+                        <latex>M=L^{-1}</latex>
+                     </math>. Then <math>
+                        <latex>M</latex>
+                     </math> reverses the transformation effect of <math>
+                        <latex>L</latex>
+                     </math>. What does this mean in the case at hand?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution.hint>
+					          <para>
+                  <para.body>Previous hint continued: in the case at hand, this means</para.body>
+               </para>
+					          <ol>
+						            <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{0} = M\Comp L(\Vect{0}) = M(\Vect{0})</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+						            <li>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\Vect{x} = M\Comp L(\Vect{x}) = M(\Vect{0})</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </li>
+					          </ol>
+					          <para>
+                  <para.body>So ... ?</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Let us analyze the situation: suppose there is a vector <math>
+                           <latex>\Vect{x}\neq \Vect{0}</latex>
+                        </math> in <math>
+                           <latex>V</latex>
+                        </math> with <math>
+                           <latex>L(\Vect{0}) = \Vect{0}</latex>
+                        </math>, and suppose <math>
+                           <latex>M=L^{-1}</latex>
+                        </math>. Then <math>
+                           <latex>M</latex>
+                        </math> reverses the transformation effect of <math>
+                           <latex>L</latex>
+                        </math>. Therefore,</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{x}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>M\Comp L(\Vect{x})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we use the assumption <math>
+                                          <latex>L(\Vect{x}) = \Vect{0}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we use the assumption <math>
+                                          <latex>L(\Vect{x}) = \Vect{0}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>M(\Vect{0})</latex>
+                           </math>
+                        </cell>
+                     </row>
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex/>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we use the general fact: every linear function <math>
+                                          <latex>M</latex>
+                                       </math> satisfies <math>
+                                          <latex>M(\Vect{0}) = \Vect{0}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <para>
+                                    <para.body>Here we use the general fact: every linear function <math>
+                                          <latex>M</latex>
+                                       </math> satisfies <math>
+                                          <latex>M(\Vect{0}) = \Vect{0}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{0}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>This means that for an isomorphism <math>
+                           <latex>L</latex>
+                        </math> there is never an <math>
+                           <latex>\Vect{x}\neq \Vect{0}</latex>
+                        </math> with <math>
+                           <latex>L(\Vect{x}) = \Vect{0}</latex>
+                        </math>. – The statement in question is false.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Given an isomorphism <math>
+                        <latex>L\from V\to W</latex>
+                     </math>, the vector equation <math>
+                        <latex>L(\Vect{x}) = \Vect{0}</latex>
+                     </math> has exactly one solution, namely <math>
+                        <latex>\Vect{x} = \Vect{0}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Review the solution of the previous problem.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We know that <math>
+                           <latex>L(\Vect{x}) = \Vect{0}</latex>
+                        </math>, as <math>
+                           <latex>L</latex>
+                        </math> is linear. So the equation</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(\Vect{x})</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{0}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>has at least one solution, namely <math>
+                           <latex>\Vect{x} = \Vect{0}</latex>
+                        </math>. To see if there are further solutions, let us analyze the situation:</para.body>
+                  </para>
+					             <para>
+                     <para.body>Suppose there is a vector <math>
+                           <latex>\Vect{x}</latex>
+                        </math> in <math>
+                           <latex>V</latex>
+                        </math> with <math>
+                           <latex>L(\Vect{0}) = \Vect{0}</latex>
+                        </math>, and suppose <math>
+                           <latex>M=L^{-1}</latex>
+                        </math>. Then <math>
+                           <latex>M</latex>
+                        </math> reverses the transformation effect of <math>
+                           <latex>L</latex>
+                        </math>. Therefore,</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Vect{x} = M\Comp L(\Vect{x}) = M(\Vect{0}) = \Vect{0}</latex>
+					             </math.display>
+					             <para>
+                     <para.body>This means that <math>
+                           <latex>\Vect{x} = \Vect{0}</latex>
+                        </math> is the only solution of the given equation. – The statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Given an isomorphism <math>
+                        <latex>L\from V\to W</latex>
+                     </math> and a vector <math>
+                        <latex>\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>W</latex>
+                     </math>, there is a unique <math>
+                        <latex>\Vect{x}</latex>
+                     </math> in <math>
+                        <latex>V</latex>
+                     </math> with <math>
+                        <latex>L(\Vect{x}) = \Vect{y}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Use the fact that <math>
+                        <latex>L\Comp L^{-1} = \Id[W]</latex>
+                     </math>.</para.body>
+               </para>
+				        </solution.hint>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>Put <math>
+                           <latex>M:=L^{-1}</latex>
+                        </math>. Then we know that <math>
+                           <latex>L\Comp M = \Id[W]</latex>
+                        </math>. This means, in particular, that</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>L(M(\Vect{y}))</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=</text>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Vect{y}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					             <para>
+                     <para.body>So set <math>
+                           <latex>\Vect{x} := L(\Vect{y})</latex>
+                        </math>, and we have that <math>
+                           <latex>L(\Vect{x}) = \Vect{y}</latex>
+                        </math>. Therefore the equation</para.body>
+                  </para>
+					             <math.display>
+						               <latex>L(\Vect{x}) = \Vect{y}</latex>
+					             </math.display>
+					             <para>
+                     <para.body>has at least one solution. So we wonder if it could have more solutions. Suppose <math>
+                           <latex>\Vect{s}</latex>
+                        </math> in <math>
+                           <latex>V</latex>
+                        </math> also satisfies <math>
+                           <latex>L(\Vect{s}) = \Vect{y}</latex>
+                        </math>. Then we know</para.body>
+                  </para>
+					             <math.display>
+						               <latex>L(\Vect{x} - \Vect{s}) = L(\Vect{x}) - L(\Vect{s}) = \Vect{y} - \Vect{y} = \Vect{0}</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Now we learned in the previous parts of the exercise that <math>
+                           <latex>\Vect{0}</latex>
+                        </math> is the only vector which gets sent to <math>
+                           <latex>\Vect{0}</latex>
+                        </math> by the isomorphism <math>
+                           <latex>L</latex>
+                        </math>; in other words <math>
+                           <latex>(\Vect{x} - \Vect{s}) = \Vect{0}</latex>
+                        </math> and, therefore <math>
+                           <latex>\Vect{x} = \Vect{0}</latex>
+                        </math>. – The statement in question is true.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Given an isomorphism <math>
+                        <latex>L\from V\to W</latex>
+                     </math> and a vector <math>
+                        <latex>\Vect{y}</latex>
+                     </math> in <math>
+                        <latex>W</latex>
+                     </math>, there are always infinitely many <math>
+                        <latex>\Vect{x}</latex>
+                     </math> in <math>
+                        <latex>V</latex>
+                     </math> with <math>
+                        <latex>L(\Vect{x}) = \Vect{y}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution.hint>
+					          <para>
+                  <para.body>Review the solution of the previous problem.</para.body>
+               </para>
+				        </solution.hint>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+</exercise.pack>

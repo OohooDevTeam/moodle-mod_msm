@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_CrossProduct">
+	<title>Preview: Cross Product</title>
+	<sub.page.body>
+		<block>
+			<para>The cross product of two vectors <latex>\Vect{x} = (x_1,x_2,x_3)</latex> and <latex>\Vect{y} = (y_1,y_2,y_3)</latex> in <latex>\RNr[3]</latex> is the vector in <latex>\RNr[3]</latex> given by the formula</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+\aligned
+\CrssPr{ \Vect{x} }{ \Vect{y} }\ &=\ 
+\left(
+\det
+\left[
+\begin{array}{cc}
+x_2 & y_2 \\
+x_3 & y_3
+\end{array}
+\right] , 
+-\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_3 & y_3
+\end{array}
+\right] , 
+\det
+\left[
+\begin{array}{cc}
+x_1 & y_1 \\
+x_2 & y_2
+\end{array}
+\right]
+\right) \\
+%
+	&=\ \left( x_2y_3-x_3y_2 , -(x_1y_3-x_3y_1) , x_1y_2-x_2y_1 \right)
+\endaligned
+]]>
+				</latex>
+			</math.display>
+			
+			<para>Below we formulate the algebraic properties and the geometric properties of the cross product, as well as its relationship to the dot product and the determinant.</para>
+			
+			<para>For deeper reasons, the cross product of two vectors is only available in <latex>\RNr[3]</latex> and in <latex>\RNr[7]</latex>.</para>
+		</block>
+		
+		<block>
+			<para><b>Algebraic properties of the cross product</b></para>
+			
+			<ul>
+				<li><para><b>bilinear</b></para>
+					<computation>
+						<left>\CrssPr{ (\Vect{x} + \Vect{x}' )}{ \Vect{y} }</left>
+						<center>=</center>
+						<right>\CrssPr{ \Vect{x} }{ \Vect{y} } + \CrssPr{ \Vect{x}' }{ \Vect{y} }</right>
+						
+						<left>\CrssPr{ \Vect{x} }{ (\Vect{y} + \Vect{y}') }</left>
+						<center>=</center>
+						<right>\CrssPr{ \Vect{x} }{ \Vect{y} } + \CrssPr{ \Vect{x} }{ \Vect{y}' }</right>
+						
+						<left>\CrssPr{ (t\cdot \Vect{x}) }{ \Vect{y} }</left>
+						<center>=</center>
+						<right>t\cdot ( \CrssPr{ \Vect{x} }{ \Vect{y} } )</right>
+					</computation>
+				</li>
+				
+				<li><para><b>antisymmetric</b></para>
+				
+					<computation>
+						<left>\CrssPr{ \Vect{x} }{ \Vect{y} }</left>
+						<center>=</center>
+						<right>-\left( \CrssPr{ \Vect{y} }{ \Vect{x} } \right)</right>
+					</computation>
+				</li>
+			</ul>
+		</block>
+		
+		
+		
+		<block>
+			<para><b>Geometric properties of the cross product</b></para>
+			
+			<ul>
+				<li><para><latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex> is perpendicular to both <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para></li>
+				
+				<li><para>If <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } \neq \Vect{0}</latex>, then the vector triple <latex>( \Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex> represents the right hand orientation of <latex>\RNr[3]</latex>.</para></li>
+				
+				<li><para><latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex> if and only if <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are parallel.</para></li>
+				
+				<li><para><latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex> is the area of the parallelogram spanned by <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex>.</para></li>
+				
+				<li><para>If <latex>\Vect{x},\Vect{y} \neq \Vect{0}</latex> then <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \abs{ \Vect{x} } \abs{ \Vect{y} }\cdot \sin \sphericalangle( \Vect{x} , \Vect{y} )</latex>.</para></li>
+				
+				<li><para><latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2 = \abs{ \Vect{x} }^2 \abs{ \Vect{y} }^2 - ( \DotPr{ \Vect{x} }{ \Vect{y} })^2</latex></para></li>
+				
+				<li><para><latex>\CrssPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) } = (\DotPr{ \Vect{a} }{ \Vect{y} } )\cdot \Vect{x}\ -\ (\DotPr{ \Vect{a} }{ \Vect{x} }) \cdot \Vect{y}</latex>.</para></li>
+			</ul>
+		</block>
+		
+		
+		
+		<block>
+			<para><b>Cross product, dot product and determinant</b></para>
+			<math.display>
+				<latex>\DotPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) } = \det[ \Vect{a}\ \ \Vect{x} \ \ \Vect{y} ]</latex>
+			</math.display>
+			
+		</block>
+	</sub.page.body>
+</sub.page>

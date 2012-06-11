@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
+      unitid="Chap_DotProduct">
+   <titles>
+      <title>The Dot Product</title>
+      <plain.title>Dot Product</plain.title>
+   </titles>
+   <legitimate.children>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="DotProduct/Dot_Intro.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="DotProduct/Norm.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="DotProduct/DotProduct.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/ProjectionVectorOnLine.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/Hyperplanes.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DistancePointHyperplane.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DirectionAngle.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="DotProduct/Norm_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DotProduct_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DotProduct_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DotProduct1_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/TriangleInequality_Illstrt.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/ProjectionVectorLineIllu_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/AngleVectors_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/ProjectionVectorLine_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/Hyperspace_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/Hyperplane_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/HyperSpace_Illu.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/Hyperplane_Illstrt.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/EquivalentHyperplanes_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/ParallelHyperplanes_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/Hyperplanes_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/Hyperplanes_Test.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DistancePointHyperplane_Illstrt.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DistancePointHyperplane_Sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DistancePointHyperplane_Exrcs.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DirectionAngle_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DirectionAngle_Illstrt.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DirectionAngleSum_Exmpl.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="DotProduct/DirectionAngles_Exrcs.xml"/>
+			</legitimate.children>
+</unit>

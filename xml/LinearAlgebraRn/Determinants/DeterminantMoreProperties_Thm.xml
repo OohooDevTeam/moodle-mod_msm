@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_DeterminantMoreProperties">
+	<caption>Determinant: additional properties</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_DeterminantMoreExamples"/>
+		<info>
+			<caption>Example</caption>
+			<para>See some examples which explain how to use these rules</para>
+		</info>
+	</associate>
+	<statement>
+		<part partid="EqualColumns0">
+			<para>Whenever two columns of a matrix <latex>\Mtrx{A}</latex> are equal, then <latex>\det(\Mtrx{A}) = 0</latex>.</para>
+		</part>
+		<part partid="AddMultipleColumn">
+			<para>Adding a multiple of one column to another column leaves the determinant unchanged.</para>
+		</part>
+		<part partid="CommutesTransposition">
+			<para>The determinant commutes with transposition: <latex>\det(\Mtrx{A}) = \det(\Mtrx{A}^T)</latex>.
+				<index.glossary>
+					<term>determinant</term><term>commutes with transposition</term>
+				</index.glossary>
+				<index.glossary>
+					<term>transposition</term><term>commutes with determinant</term>
+				</index.glossary>
+			</para>
+		</part>
+	</statement>
+	<proof>
+		<caption><partref>EqualColumns0</partref> Equal columns gives 0-determinant</caption>
+		<para>If two columns in a square matrix <latex>\Mtrx{A}</latex> are equal, then <latex>\Mtrx{A}</latex> is of the form</para>
+		
+		<math.display>
+			<latex>A = [ A_1\ \dots \ X\ \dots\ X\ \dots\ A_n]</latex>
+		</math.display>
+		
+		<para>But then the 
+			<subordinate>
+				<hot>alternating property</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+					<para>Look up the alternating property of the determinant operation</para>
+				</crossref>
+			</subordinate>
+			of the determinant operation gives</para>
+		
+		<computation>
+			<left>\det [ A_1\ \dots \ X\ \dots\ X\ \dots\ A_n]</left>
+			<center>=	<info><para>Interchange the two columns containing the vector <latex>X</latex>.</para></info></center>
+			<right>-\det [ A_1\ \dots \ X\ \dots\ X\ \dots\ A_n]</right>
+		</computation>
+		<para>Therefore <latex>\det(\Mtrx{A}) = 0</latex>.</para>
+		
+		
+		
+		<caption><partref>AddMultipleColumn</partref> </caption>
+		<para>If the square matrix <latex>\Mtrx{A} = [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]</latex>, we need to show</para>
+		<computation>
+			<left>\det\, [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]</left>
+			<center>=	<info><para>Add <latex>t\cdot Y</latex> to the <latex>X</latex>-column</para></info></center>
+			<right>\det\, [A_1\ \dots\ (X+tY)\ \dots\ Y\ \dots\ A_n]</right>
+		</computation>
+		<para>We invoke the multilinearity property of the determinant operation in the <latex>X</latex>-column:</para>
+		<math.display>
+			<latex>
+				<![CDATA[
+\aligned
+&\det\, [A_1\ \dots\ (X+tY)\ \dots\ Y\ \dots\ A_n] \\
+&\quad =\ \det\, [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]\ +\ \det\, [A_1\ \dots\ (tY)\ \dots\ Y\ \dots\ A_n] \\
+&\quad =\ \det\, [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]\ +\ t\cdot \det\, [A_1\ \dots\ Y\ \dots\ Y\ \dots\ A_n]\\
+&\quad =\ \det\, [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]
+\endaligned
+]]>
+			</latex>
+		</math.display>
+		<para>Because <latex>[A_1\ \dots\ Y\ \dots\ Y\ \dots\ A_n]</latex> has two equal columns and, hence, vanishing determinant.</para>
+		
+		
+		
+		
+		<caption><partref>CommutesTransposition</partref> Determinant commutes with transposition</caption>
+		<para>This is a special case of a 
+			<subordinate>
+				<hot>more general result about alternating multilinear functions</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_AlternatingMultilinearProps"/>
+					<para>Look up this result.</para>
+				</crossref>
+			</subordinate>
+			which will be proved in the next section.</para>
+	</proof>
+</theorem>

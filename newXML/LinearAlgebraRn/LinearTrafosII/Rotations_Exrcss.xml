@@ -1,0 +1,1188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE exercise.pack
+  SYSTEM "../Symbols.dtd">
+<exercise.pack xmlns="Compositor"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="Exe_RotationGeneral"
+               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Exercises: General Rotations</title>
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Consider the following four rotations of <math>
+                     <latex>\RNr[3]</latex>
+                  </math>:</para.body>
+            </para>
+			         <table align="center"
+                   border="3"
+                   bordercolor="Maroon"
+                   cellpadding="3"
+                   cellspacing="3">
+				           <row>
+					             <cell>
+                     <para>
+                        <para.body> </para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <strong>Axis</strong>
+                        </para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <strong>Orientation Vector</strong>
+                        </para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <strong>Angle</strong>
+                        </para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <strong>Direction</strong>
+                        </para.body>
+                     </para>
+                  </cell>
+				           </row>
+				           <row>
+					             <cell>
+                     <para>
+                        <para.body>i)</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>z</latex>
+                           </math>-axis</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\StdBss{3}=(0,0,1)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>60°</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>RHR</para.body>
+                     </para>
+                  </cell>
+				           </row>
+				           <row>
+					             <cell>
+                     <para>
+                        <para.body>ii)</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>z</latex>
+                           </math>-axis</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>\StdBss{3}=(0,0,1)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>60°</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>LHR</para.body>
+                     </para>
+                  </cell>
+				           </row>
+				           <row>
+					             <cell>
+                     <para>
+                        <para.body>iii)</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>z</latex>
+                           </math>-axis</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>-\StdBss{3}=(0,0,-1)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>60°</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>RHR</para.body>
+                     </para>
+                  </cell>
+				           </row>
+				           <row>
+					             <cell>
+                     <para>
+                        <para.body>iv)</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>z</latex>
+                           </math>-axis</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>
+                           <math>
+                              <latex>-\StdBss{3}=(0,0,-1)</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>60°</para.body>
+                     </para>
+                  </cell>
+					             <cell>
+                     <para>
+                        <para.body>LHR</para.body>
+                     </para>
+                  </cell>
+				           </row>
+			         </table>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>In each case find the matrix representing the specified rotation with respect to standard coordinates.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A}_{i} = 
+\dfrac{1}{2}\cdot \left[
+\begin{array}{rrr}
+1 &amp; -\sqrt{3} &amp; 0 \\
+\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\qquad
+\Mtrx{A}_{ii} = 
+\dfrac{1}{2}\cdot \left[
+\begin{array}{rrr}
+1 &amp; \sqrt{3} &amp; 0 \\
+-\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A}_{iii} = 
+\dfrac{1}{2}\cdot \left[
+\begin{array}{rrr}
+1 &amp; \sqrt{3} &amp; 0 \\
+-\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\qquad
+\Mtrx{A}_{iv} = 
+\dfrac{1}{2}\cdot \left[
+\begin{array}{rrr}
+1 &amp; -\sqrt{3} &amp; 0 \\
+\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>An ordered ONB of <math>
+                           <latex>\RNr[3]</latex>
+                        </math> adapted to the given situation is the standard basis <math>
+                           <latex>\EuScript{S} = (\StdBss{1},\StdBss{2},\StdBss{3})</latex>
+                        </math>. Thus, if <math>
+                           <latex>\alpha:=\pi/3</latex>
+                        </math>, the matrix representing the given rotation with respect to <math>
+                           <latex>\EuScript{S}</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{rrr}
+\cos\alpha &amp; -\sin \alpha &amp; 0 \\
+\sin\alpha &amp; \cos \alpha &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\ =\ 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+1 &amp; -\sqrt{3} &amp; 0 \\
+\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>Now for the rotation ii), we rotate about the same axis with the same orientation, but in the opposite direction. Therefore this rotation is represented by</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{rrr}
+\cos(-\alpha) &amp; -\sin (-\alpha) &amp; 0 \\
+\sin(-\alpha) &amp; \cos (-\alpha) &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\ =\ 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+1 &amp; \sqrt{3} &amp; 0 \\
+-\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>As for the rotation iii), we rotate about the same axis, but oriented in the opposite direction. To set up an ONB adapted to this situation, we choose</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Vect{n}:=(0,0,-1),\quad \Vect{a}:=(1,0,0),\quad \Vect{b}:=\CrssPr{ \Vect{n} }{ \Vect{a} } = (0,-1,0)</latex>
+					             </math.display>
+					             <para>
+                     <para.body>With respect to the ordered basis <math>
+                           <latex>\EuScript{B} := ( \Vect{a} , \Vect{b} , \Vect{n} )</latex>
+                        </math>, the specified rotation <math>
+                           <latex>R_{iii}</latex>
+                        </math> is represented by the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\left[
+\begin{array}{rrr}
+\cos\alpha &amp; -\sin \alpha &amp; 0 \\
+\sin\alpha &amp; \cos \alpha &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\ =\ 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+1 &amp; -\sqrt{3} &amp; 0 \\
+\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>To find the matrix <math>
+                           <latex>\Mtrx{A}_{iii}</latex>
+                        </math> representing <math>
+                           <latex>R_{iii}</latex>
+                        </math> in standard coordinates, we need first the matrix <math>
+                           <latex>C_{\EuScript{B}\EuScript{S}}</latex>
+                        </math> which converts <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>-coordinates to <math>
+                           <latex>\EuScript{S}</latex>
+                        </math>-coordinates.</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+C_{\EuScript{S}\EuScript{B}} = [\Vect{a}\ \Vect{b}\ \Vect{n}] = 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; -1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>We then notice that <math>
+                           <latex>C_{\EuScript{B}\EuScript{S}} = (C_{\EuScript{S}\EuScript{B}})^{-1} = C_{\EuScript{S}\EuScript{B}}</latex>
+                        </math>, and obtain</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+\Mtrx{A}_{iii}\ &amp;=\ 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; -1
+\end{array}
+\right]\ 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+1 &amp; -\sqrt{3} &amp; 0 \\
+\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\ 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; -1
+\end{array}
+\right] \\
+	&amp;=\ 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+1 &amp; \sqrt{3} &amp; 0 \\
+-\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+\endaligned
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>To find the matrix representing rotation iv), we argue as follows: This has the same oriented axis as in part iii), the same angle of rotation, but in the opposite direction. Therefore the matrix representing it with respect to standard coordinates is the inverse of the matrix found in part iii). So:</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+A_{iv}\ =\ A_{iii}^{-1}\ =\ 
+\dfrac{1}{2}
+\left[
+\begin{array}{rrr}
+1 &amp; -\sqrt{3} &amp; 0 \\
+\sqrt{3} &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Which of the above linear transformations are equal?</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The following pairs of rotations are equal:</para.body>
+                     </para>
+					                <ul>
+						                  <li>
+                           <para>
+                              <para.body>i) and iv)</para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>ii) and iii)</para.body>
+                           </para>
+                        </li>
+					                </ul>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The key is: linear transformations correspond uniquely to the matrices representing them with respect to standard coordinates. Comparing the matrices we found earlier, we therefore conclude that the following pairs of rotations are equal:</para.body>
+                  </para>
+					             <ul>
+						               <li>
+                        <para>
+                           <para.body>i) and iv)</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>ii) and iii)</para.body>
+                        </para>
+                     </li>
+					             </ul>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+               <para>
+                  <para.body>Which of the above linear transformations are inverses of each other?</para.body>
+               </para>
+            </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The following pairs of rotations are inverses of one another</para.body>
+                     </para>
+					                <ul>
+						                  <li>
+                           <para>
+                              <para.body>i) and ii)</para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>i) and iii)</para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>ii) and iv)</para.body>
+                           </para>
+                        </li>
+						                  <li>
+                           <para>
+                              <para.body>iii) and iv)</para.body>
+                           </para>
+                        </li>
+					                </ul>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The key is: Linear transformation correspond uniquely to the matrices representing them with respect to standard coordinates. Thus the answer follows by comparing the matrices found above.</para.body>
+                  </para>
+					             <para>
+                     <para.body>Alternatively, you can compare the transformation effects:</para.body>
+                  </para>
+					             <ul>
+						               <li>
+                        <para>
+                           <para.body>i) and ii): same axis orientation – opposite rules</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>i) and iii):opposite axis orientation – same rule</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>ii) and iv): opposite axis orientation – same rule</para.body>
+                        </para>
+                     </li>
+						               <li>
+                        <para>
+                           <para.body>iii) and iv): same axis orientation – opposite rules</para.body>
+                        </para>
+                     </li>
+					             </ul>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Find the matrix representing the specified rotation of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> with the specified properties.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Rotation about the <math>
+                        <latex>y</latex>
+                     </math>-axis, oriented by <math>
+                        <latex>\StdBss{2} = (0,1,0)</latex>
+                     </math>, through the angle of 45° according to the RHR.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix representing the specified rotation in standard coordinates is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A} = 
+\dfrac{1}{\sqrt{2}}\, 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; \sqrt{2} &amp; 0 \\
+-1 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We begin by setting up an ONB adapted to the given situation: The unit vector representing the orientation of the axis of rotation is <math>
+                           <latex>\Vect{n} = (0,1,0)</latex>
+                        </math>. If we choose <math>
+                           <latex>\Vect{a} = (1,0,0)</latex>
+                        </math>, then <math>
+                           <latex>\Vect{b} := \CrssPr{ \Vect{n} }{ \Vect{a} } = (0,0,-1)</latex>
+                        </math>. With <math>
+                           <latex>\alpha := \pi/4</latex>
+                        </math>, the matrix representing the rotation with respect to <math>
+                           <latex>\EuScript{B} = (\Vect{a},\Vect{b},\Vect{n})</latex>
+                        </math> is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A}_{\EuScript{B}\EuScript{B}}\ =\ 
+\left[
+\begin{array}{rrr}
+\cos \alpha &amp; -\sin \alpha &amp; 0 \\
+\sin\alpha &amp; \cos\alpha &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\ =\ 
+\dfrac{1}{\sqrt{2}}\, \left[
+\begin{array}{rrr}
+1 &amp; -1 &amp; 0 \\
+1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; \sqrt{2}
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The matrix converting from <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>-coordinates to standard coordinates is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+C_{\EuScript{S}\EuScript{B}} = 
+\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+0 &amp; -1 &amp; 0
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>With this information we find</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+A_{\EuScript{S}\EuScript{S}}\ &amp;=\ C_{\EuScript{S}\EuScript{S}}\, A_{\EuScript{B}\EuScript{B}}\, C_{\EuScript{S}\EuScript{S}}^{-1} \\
+	&amp;=\ 
+\dfrac{1}{\sqrt{2}}\left[
+\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; \sqrt{2} &amp; 0 \\
+-1 &amp; 0 &amp; 1
+\end{array}
+\right]
+\endaligned
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Rotation about the <math>
+                        <latex>x</latex>
+                     </math>-axis, oriented by <math>
+                        <latex>(-2,0,0)</latex>
+                     </math>, through the angle of 45° according to the LHR.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The matrix representing the specified rotation in standard coordinates is</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A} = 
+\dfrac{1}{\sqrt{2}}\, 
+\left[
+\begin{array}{rrr}
+\sqrt{2} &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -1 \\
+0 &amp; 1 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+	  </exercise>
+	
+	
+	
+	
+	
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Let <math>
+                     <latex>R\from \RNr[3] \to \RNr[3]</latex>
+                  </math> be the rotation with the following properties:</para.body>
+            </para>
+			         <ul>
+				           <li>
+                  <para>
+                     <para.body>Axis of rotation: the line <math>
+                           <latex>x=-z</latex>
+                        </math>, <math>
+                           <latex>y=0</latex>
+                        </math> oriented by the vector <math>
+                           <latex>(1,0,-1)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </li>
+				           <li>
+                  <para>
+                     <para.body>Angle of rotation: 90° according to the RHR</para.body>
+                  </para>
+               </li>
+			         </ul>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Find the matrix which represents <math>
+                        <latex>R</latex>
+                     </math> with respect to standard coordinates.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>
+                           <math>
+                              <latex>R</latex>
+                           </math> is represented by the matrix</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>
+							
+\Mtrx{A}_{\EuScript{S}\EuScript{S}}\ =\ 
+\dfrac{1}{2}\, \left[
+\begin{array}{rrr}
+1 &amp; \sqrt{2} &amp; -1 \\
+-\sqrt{2} &amp; 0 &amp; -\sqrt{2} \\
+-1 &amp; \sqrt{2} &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					                </math.display>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>We begin by setting up an ONB adapted to the given situation: The unit vector representing the given orientation of the axis of rotation is <math>
+                           <latex>\Vect{n} = \tfrac{1}{\sqrt{2}}(1 , 0 , -1)</latex>
+                        </math>. A unit vector perpendicular to <math>
+                           <latex>\Vect{n}</latex>
+                        </math> is <math>
+                           <latex>\Vect{a} = (0,1,0)</latex>
+                        </math>. This yields</para.body>
+                  </para>
+					             <math.display>
+						               <latex>\Vect{b} = \CrssPr{ \Vect{n} }{ \Vect{a} } = \tfrac{1}{\sqrt{2}}(1, 0 , 1)</latex>
+					             </math.display>
+					
+					             <para>
+                     <para.body>Consequently, with <math>
+                           <latex>\alpha := \pi/2</latex>
+                        </math>, the given rotation is represented by the matrix</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{A}_{\EuScript{B}\EuScript{B}}\ =\ 
+\left[
+\begin{array}{rrr}
+\cos \alpha &amp; -\sin \alpha &amp; 0 \\
+\sin \alpha &amp; \cos \alpha &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]\ =\ 
+\left[
+\begin{array}{rrr}
+0 &amp; -1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>The matrix converting from <math>
+                           <latex>\EuScript{B}=(\Vect{a},\Vect{b},\Vect{n})</latex>
+                        </math>-coordinates to <math>
+                           <latex>\EuScript{S}</latex>
+                        </math>-coordinates is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\Mtrx{C}_{\EuScript{S}\EuScript{B}}\ =\ 
+\dfrac{1}{\sqrt{2}}\, \left[
+\begin{array}{rrr}
+0 &amp; 1 &amp; 1 \\
+\sqrt{2} &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -1
+\end{array}
+\right]
+
+						</latex>
+					             </math.display>
+					             <para>
+                     <para.body>To convert from <math>
+                           <latex>\EuScript{S}</latex>
+                        </math>-coordinates to <math>
+                           <latex>\EuScript{B}</latex>
+                        </math>-coordinates we use</para.body>
+                  </para>
+					             <math.array column="3">
+                     <row rowspan="1">
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{C}_{\EuScript{B}\EuScript{S}}</latex>
+                           </math>
+                        </cell>
+                        <cell colspan="1" halign="center" valign="middle">
+                           <text>=	</text>
+                           <companion>
+                              <info>
+                                 <info.caption>
+                                    <caption>Why is this so?</caption>
+                                 </info.caption>
+							                          <para>
+                                    <para.body>By design, the columns of <math>
+                                          <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>
+                                       </math> form an ONB of <math>
+                                          <latex>\RNr[3]</latex>
+                                       </math>. So this is an orthogonal matrix and, therefore, its inverse is given by its transpose.</para.body>
+                                 </para>
+						                        </info>
+                           </companion>
+                           <companion>
+                              <info>
+                                 <info.caption>
+                                    <caption>Why is this so?</caption>
+                                 </info.caption>
+							                          <para>
+                                    <para.body>By design, the columns of <math>
+                                          <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}</latex>
+                                       </math> form an ONB of <math>
+                                          <latex>\RNr[3]</latex>
+                                       </math>. So this is an orthogonal matrix and, therefore, its inverse is given by its transpose.</para.body>
+                                 </para>
+						                        </info>
+                           </companion>
+                        </cell>
+                        <cell colspan="2" halign="center" valign="middle">
+                           <math>
+                              <latex>\Mtrx{C}_{\EuScript{S}\EuScript{B}}^{-1} = \Mtrx{C}_{\EuScript{S}\EuScript{B}}^{T}</latex>
+                           </math>
+                        </cell>
+                     </row>
+                  </math.array>
+					
+					             <para>
+                     <para.body>Therefore the matrix representing <math>
+                           <latex>R</latex>
+                        </math> in standard coordinates is</para.body>
+                  </para>
+					             <math.display>
+						               <latex>
+							
+\aligned
+\Mtrx{A}_{\EuScript{S}\EuScript{S}}\ &amp;=\ C_{\EuScript{S}\EuScript{B}}\, A_{\EuScript{B}\EuScript{B}}\, C_{\EuScript{B}\EuScript{S}} \\
+	&amp;=\ 
+\dfrac{1}{2}\left[
+\begin{array}{rrr}
+1 &amp; \sqrt{2} &amp; -1 \\
+-\sqrt{2} &amp; 0 &amp; -\sqrt{2} \\
+-1 &amp; \sqrt{2} &amp; 1
+\end{array}
+\right] 
+\endaligned
+
+						</latex>
+					             </math.display>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Is <math>
+                        <latex>R</latex>
+                     </math> invertible? If so, describe its properties as a linear transformation of <math>
+                        <latex>\RNr[3]</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>Yes! <math>
+                              <latex>R</latex>
+                           </math> is invertible. It is the rotation about the axis oriented by <math>
+                              <latex>(1,0,-1)</latex>
+                           </math> through the angle 90° according to the LHR.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+				        <solution>
+               <solution.body>
+					             <para>
+                     <para.body>The transformation effect of any rotation can be reversed by rotating through the same angle in the opposite direction. In particular, <math>
+                           <latex>R</latex>
+                        </math> is invertible, and <math>
+                           <latex>R^{-1}</latex>
+                        </math> is the rotation about the axis oriented by <math>
+                           <latex>(1,0,-1)</latex>
+                        </math> through the angle 90° according to the LHR.</para.body>
+                  </para>
+				           </solution.body>
+            </solution>
+			      </approach>
+		    </part.exercise>
+		
+	  </exercise>
+
+
+
+	  <exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>Each of the statements below refers to a rotation <math>
+                     <latex>R_{\alpha}</latex>
+                  </math> of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> about an axis <math>
+                     <latex>L</latex>
+                  </math> oriented by the unit vector <math>
+                     <latex>\Vect{r}</latex>
+                  </math> through the angle <math>
+                     <latex>\alpha</latex>
+                  </math> according to the Right Hand Rule (RHR). In each case decide if the statement is true or false. Explain your reasoning.</para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Rotating <math>
+                        <latex>\RNr[3]</latex>
+                     </math> about the <math>
+                        <latex>-\Vect{r}</latex>
+                     </math>-oriented <math>
+                        <latex>L</latex>
+                     </math> through the angle <math>
+                        <latex>\alpha</latex>
+                     </math> according to the RHR yields the rotation <math>
+                        <latex>R_{-\alpha}</latex>
+                     </math> about <math>
+                        <latex>\Vect{r}</latex>
+                     </math> oriented <math>
+                        <latex>L</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Rotating <math>
+                        <latex>\RNr[3]</latex>
+                     </math> about the <math>
+                        <latex>-\Vect{r}</latex>
+                     </math>-oriented <math>
+                        <latex>L</latex>
+                     </math> through the angle <math>
+                        <latex>\alpha</latex>
+                     </math> according to the RHR yields the rotation <math>
+                        <latex>R_{\alpha}</latex>
+                     </math> about <math>
+                        <latex>\Vect{r}</latex>
+                     </math> oriented <math>
+                        <latex>L</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>False!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Always: <math>
+                        <latex>R_{-\pi} = R_{\pi}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>If <math>
+                        <latex>\DotPr{ \Vect{x} }{ \Vect{r} } = 0</latex>
+                     </math>, then <math>
+                        <latex>R_{-\frac{\pi}{2}}(\Vect{x}) = - R_{\frac{\pi}{2}}(\Vect{x})</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For any <math>
+                        <latex>\alpha</latex>
+                     </math> and <math>
+                        <latex>t</latex>
+                     </math>, <math>
+                        <latex>R_{\alpha}(t\Vect{r}) = t\Vect{r}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+			      <approach version="1">
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+                     <para>
+                        <para.body>True!</para.body>
+                     </para>
+                  </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
+			      </approach>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>For any <math>
+                        <latex>\alpha</latex>
+                     </math> and <math>
+                        <latex>\beta</latex>
+                     </math>, <math>
+                        <latex>R_{\alpha}\Comp R_{\beta} = R_{\alpha+\beta} = R_{\beta}\Comp R_{\alpha}</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+		    <part.exercise>
+			      <problem>
+            <problem.body>
+				           <para>
+                  <para.body>Let <math>
+                        <latex>R</latex>
+                     </math> and <math>
+                        <latex>S</latex>
+                     </math> be two arbitrary rotations of <math>
+                        <latex>\RNr[3]</latex>
+                     </math> (not necessarily about the same axis). Then <math>
+                        <latex>R\Comp S=S\Comp R</latex>
+                     </math>.</para.body>
+               </para>
+			         </problem.body>
+         </problem>
+		    </part.exercise>
+	  </exercise>
+	
+</exercise.pack>

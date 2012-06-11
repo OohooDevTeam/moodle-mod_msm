@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_InvertibleLinearMap">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Invertible Linear Map - Example</title>
+	<showme>
+		<statement>
+			<para>Let <latex>V</latex> be the orthogonal complement of <latex>\Vect{n} = (1,1,1)</latex>  in <latex>\RNr[3]</latex>, and let <latex>W</latex> be the subspace of <latex>\RNr[4]</latex> spanned by the vectors <latex>\Vect{b}_1:=(1,0,1,0)</latex>  and <latex>\Vect{b}_2:=(1,1,1,1)</latex>. Determine whether the linear transformation</para>
+			<math.display>
+				<latex>L\from V \longrightarrow W,\quad L(x,y,z)= (x+y-z)\cdot \Vect{b}_1\ +\ (y+z)\cdot \Vect{b}_2</latex>
+			</math.display>
+			<para>is invertible. If it is, find its inverse.</para>
+		</statement>
+		<answer type="Solution">
+			<para><b>Step 1</b> &nbsp; Setting up a basis for <latex>V</latex>. <latex>V</latex> has 
+				<subordinate>
+					<hot>dimension 2</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_OrthogonalSplittingByOrthogonalComplement"/>
+						<para>This follows from the dimension formula for orthogonal splittings in a vector space.</para>
+					</crossref>
+				</subordinate>
+				So any basis of <latex>V</latex> has two vectors. The vectors
+			</para>
+			<math.display>
+				<latex>\Vect{a}_1:=(1,0,-1) \quad\text{and}\quad \Vect{a}_2:= (1,-2,1)</latex>
+			</math.display>
+			<para>are 
+				<subordinate>
+					<hot>perpendicular to each other</hot>
+					<info>
+						<para>To see this, evaluate</para>
+						<computation>
+							<left>\DotPr{ \Vect{a}_1 }{ \Vect{a}_2 }</left>
+							<center>=</center>
+							<right>0</right>
+						</computation>
+					</info>
+				</subordinate>, and are 
+				<subordinate>
+					<hot>perpendicular to <latex>\Vect{n}</latex></hot>
+					<info>
+						<para>To see this, evaluate</para>
+						<math.display>
+							<latex>\DotPr{ \Vect{a}_1 }{ \Vect{n} } = 0 = \DotPr{ \Vect{a}_2 }{ \Vect{n} }</latex>
+						</math.display>
+					</info>
+				</subordinate>.
+				So <latex>\EuScript{A}:=(\Vect{a}_1,\Vect{a}_2)</latex> forms an ordered basis of <latex>V</latex>.
+			</para>
+			<para><b>Step 2</b> &nbsp; Setting up a basis for <latex>W</latex>. As <latex>\Vect{b}_1</latex> and <latex>\Vect{b}_2</latex> are linearly independent, they form an ordered 
+				<subordinate>
+					<hot>basis</hot>
+					<info>
+						<caption>Explanation</caption>
+						<para>This is the very definition of a &lsquo;basis&rsquo;: A linearly independent subset of <latex>W</latex> which spans <latex>W</latex>.</para>
+					</info>
+				</subordinate>
+				<latex>\EuScript{B}</latex> for <latex>W</latex>.</para>
+			
+			<para><b>Step 3</b> &nbsp; Finding the matrix representing <latex>L</latex> with respect to the bases <latex>\EuScript{A}</latex> and <latex>\EuScript{B}</latex>. We find</para>
+			<computation>
+				<left>L(\Vect{a}_1)</left>
+				<center>=</center>
+				<right>L(1,0,-1)</right>
+				<left></left>
+				<center>=</center>
+				<right>(1-(-1))\cdot \Vect{b}_1\ +\ (0+(-1))\cdot \Vect{b}_2</right>
+				<left></left>
+				<center>=</center>
+				<right>2\cdot \Vect{b}_1 + (-1)\cdot \Vect{b}_2</right>
+				<left>L(\Vect{a}_2)</left>
+				<center>=</center>
+				<right>L(1,-2,1)</right>
+				<left></left>
+				<center>=</center>
+				<right>(1+(-2)+(-1))\cdot \Vect{b}_1\ +\ ((-2) + 1)\cdot \Vect{b}_2</right>
+				<left></left>
+				<center>=</center>
+				<right>-2\cdot \Vect{b}_1 + (-1)\cdot \Vect{b}_2</right>
+			</computation>
+			<para>Therefore,</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}_{\EuScript{B}\EuScript{A}} = 
+\left[
+\begin{array}{rr}
+2 & -2 \\
+-1 & -1
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>This matrix has</para>
+			<computation>
+				<left>\det(\Mtrx{A}_{\EuScript{B}\EuScript{A}})</left>
+				<center>=</center>
+				<right>-4\neq 0</right>
+			</computation>
+			<para>So <latex>L</latex> is invertible, and <latex>L^{-1}</latex> is represented by</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A}_{\EuScript{A}\EuScript{B}}(L^{-1}) = \left( \Mtrx{A}_{\EuScript{B}\EuScript{A}}\right)^{-1} = 
+-\dfrac{1}{4}
+\left[
+\begin{array}{rr}
+-1 & 2 \\
+1 & 2
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+		</answer>
+	</showme>	
+</showme.pack>

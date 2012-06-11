@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="4808px" height="3606px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 4808 3606"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <font id="FontID0" font-variant="normal" class="str2" style="fill-rule:nonzero" font-style="normal" font-weight="400,700">
+	<font-face 
+		font-family="Arial">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="-" horiz-adv-x="333"><path d="M31.6654 214.831l0 88.3348 270.166 0 0 -88.3348 -270.166 0z"/></glyph>
+   <glyph unicode=")" horiz-adv-x="332"><path d="M123.504 -210.504l-63 0c97.3307,156.339 146,312.669 146,469.339 0,61.1654 -7,121.835 -21,182.165 -11,48.6693 -26.5039,95.6693 -46.3386,140.504 -12.6614,29.3307 -38.8346,78.1654 -78.6614,146.496l63 0c61.1654,-81.6693 106.496,-163.669 135.827,-246 25,-71 37.5039,-145.165 37.5039,-222.669 0,-88 -16.8346,-172.827 -50.5039,-255 -33.6614,-82 -74.6614,-153.661 -122.827,-214.835z"/></glyph>
+   <glyph unicode="(" horiz-adv-x="332"><path d="M233.835 -210.504c-48.5039,61.1732 -89.5039,132.835 -123,214.835 -33.5039,82.1732 -50.3307,167 -50.3307,255 0,77.5039 12.4961,151.669 37.6614,222.669 29.3386,82.3307 74.5039,164.331 135.669,246l63 0c-39.3307,-67.6693 -65.3307,-116 -78,-145 -20,-44.8346 -35.5039,-91.8346 -47,-140.669 -14,-60.8268 -21,-122 -21,-183.496 0,-156.669 48.6693,-313 146,-469.339l-63 0z"/></glyph>
+   <glyph unicode="." horiz-adv-x="277"><path d="M90.8382 0l0 100.169 100.157 0 0 -100.169 -100.157 0z"/></glyph>
+   <glyph unicode="1" horiz-adv-x="556"><path d="M372.503 0l-87.8388 0 0 559.997c-21.1654,-20.1615 -48.8328,-40.3288 -83.1616,-60.4962 -34.5001,-20.1674 -65.3328,-35.3327 -92.6695,-45.3367l0 84.8328c49.1694,23.1674 92.1675,51.1714 129,84.0002 36.6674,33.0001 62.8348,64.8367 78.1655,95.8348l56.504 0 0 -718.832z"/></glyph>
+   <glyph unicode="Y" horiz-adv-x="666"><path d="M260.669 0l0 301.331 -262.173 414.504 169.504 0 168.504 -283.165 165 283.165 166.496 0 -263.165 -415.504 0 -300.331 -144.165 0z"/></glyph>
+   <glyph unicode="X" horiz-adv-x="666"><path d="M0 0l244.669 373.504 -221.669 342.331 168.835 0 143.669 -230 140.496 230 167.504 0 -222.669 -347.669 244.669 -368.165 -174.339 0 -158.661 247.504 -159.173 -247.504 -173.331 0z"/></glyph>
+   <glyph unicode="f" horiz-adv-x="277"><path d="M86.8346 0l0 450.165 -77.5039 0 0 68.3386 77.5039 0 0 55.1654c0,34.8346 3.16535,60.8346 9.33071,77.6614 8.50394,22.8346 23.3386,41.3386 44.6693,55.5039 21.3307,14.1654 51.1654,21.1654 89.6693,21.1654 24.6614,0 52,-2.83465 82,-8.83465l-13.1732 -76.6614c-18.1654,3.33071 -35.4961,5 -51.8268,5 -26.6693,0 -45.5039,-5.66929 -56.5039,-17.1732 -11.1654,-11.3307 -16.6693,-32.6614 -16.6693,-64l0 -47.8268 101 0 0 -68.3386 -101 0 0 -450.165 -87.4961 0z"/></glyph>
+   <glyph unicode="y" horiz-adv-x="499"><path d="M62 -199.669l-9.83465 82.5039c19.3386,-5.16535 36,-7.83465 50.3386,-7.83465 19.4961,0 35.1654,3.33071 46.8268,9.83465 11.8346,6.49606 21.3386,15.4961 28.8346,27.3307 5.66929,8.66929 14.5039,30.5039 26.8346,65.3307 1.66929,5 4.33071,12 7.83465,21.5039l-196.669 519.504 94.6693 0 108 -300.173c13.8346,-38.1654 26.4961,-78.1654 37.4961,-120.165 10.1732,40.3386 22.1732,79.6693 36.1732,118.165l110.827 302.173 87.8346 0 -197.165 -527.339c-21.1654,-57 -37.6693,-96.1654 -49.3307,-117.669 -15.6693,-29 -33.5039,-50.1654 -53.6693,-63.6614 -20.3307,-13.5039 -44.3307,-20.3386 -72.3307,-20.3386 -17,0 -35.8346,3.66929 -56.6693,10.8346z"/></glyph>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Arial";src:url("#FontID0") format(svg)}
+    .str1 {stroke:#1F1A17;stroke-width:1.80601}
+    .str3 {stroke:#009933;stroke-width:1.80601}
+    .str5 {stroke:#00CCFF;stroke-width:1.80601}
+    .str6 {stroke:#663333;stroke-width:1.80601}
+    .str7 {stroke:#FF9966;stroke-width:1.80601}
+    .str0 {stroke:#FFCC99;stroke-width:1.80601}
+    .str8 {stroke-width:4.50079}
+    .str2 {stroke-width:6.00106}
+    .str4 {stroke-width:8.99922}
+    .fil2 {fill:#009933}
+    .fil1 {fill:#00CCFF}
+    .fil4 {fill:#663333}
+    .fil5 {fill:#FF9966}
+    .fil0 {fill:#FFCC99}
+    .fil3 {fill:#663333;fill-rule:nonzero}
+    .fnt1 {font-weight:normal;font-size:200.668;font-family:'Arial'}
+    .fnt2 {font-weight:normal;font-size:301.001;font-family:'Arial'}
+    .fnt0 {font-weight:bold;font-size:301.001;font-family:'Arial'}
+    .fnt3 {font-weight:normal;font-size:200.667;font-family:'Arial';baseline-shift:super}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0 str0" x="1502.49" y="601.016" width="225.374" height="1727.87"/>
+  <circle class="fil1 str1" cx="523.841" cy="3141.86" r="46.302"/>
+  <text x="4056.73" y="901.515"  class="fil2 str3 fnt0">X</text>
+  <text x="4026.88" y="3185.6"  class="fil1 str1 fnt0">Y</text>
+  <circle class="fil1 str1" cx="885.042" cy="3141.86" r="46.302"/>
+  <circle class="fil1 str1" cx="1246.24" cy="3141.86" r="46.302"/>
+  <circle class="fil1 str1" cx="1607.44" cy="3141.86" r="46.302"/>
+  <circle class="fil1 str1" cx="2450.25" cy="3141.86" r="46.302"/>
+  <circle class="fil1 str1" cx="2811.45" cy="3141.86" r="46.302"/>
+  <circle class="fil1 str1" cx="3172.65" cy="3141.86" r="46.302"/>
+  <circle class="fil1 str1" cx="3533.85" cy="3141.86" r="46.302"/>
+  <circle class="fil2 str3" cx="1246.24" cy="1456.25" r="46.302"/>
+  <circle class="fil2 str3" cx="885.042" cy="2539.86" r="46.302"/>
+  <circle class="fil2 str3" cx="1246.24" cy="2178.65" r="46.302"/>
+  <circle class="fil2 str3" cx="1607.44" cy="2178.65" r="46.302"/>
+  <circle class="fil2 str3" cx="2450.25" cy="2178.65" r="46.302"/>
+  <circle class="fil2 str3" cx="3172.65" cy="2539.86" r="46.302"/>
+  <circle class="fil2 str3" cx="3533.85" cy="372.649" r="46.302"/>
+  <circle class="fil2 str3" cx="885.042" cy="372.649" r="46.302"/>
+  <circle class="fil2 str3" cx="885.042" cy="2178.65" r="46.302"/>
+  <circle class="fil2 str3" cx="1246.24" cy="1817.45" r="46.302"/>
+  <circle class="fil2 str3" cx="1607.44" cy="1817.45" r="46.302"/>
+  <circle class="fil2 str3" cx="2811.45" cy="2178.65" r="46.302"/>
+  <circle class="fil2 str3" cx="2450.25" cy="1095.05" r="46.302"/>
+  <circle class="fil2 str3" cx="2811.45" cy="1095.05" r="46.302"/>
+  <circle class="fil2 str3" cx="523.841" cy="372.649" r="46.302"/>
+  <circle class="fil2 str3" cx="885.042" cy="1817.45" r="46.302"/>
+  <circle class="fil2 str3" cx="2450.25" cy="1817.45" r="46.302"/>
+  <circle class="fil2 str3" cx="2811.45" cy="1817.45" r="46.302"/>
+  <circle class="fil2 str3" cx="3172.65" cy="1817.45" r="46.302"/>
+  <circle class="fil2 str3" cx="3533.85" cy="1456.25" r="46.302"/>
+  <circle class="fil2 str3" cx="523.841" cy="1456.25" r="46.302"/>
+  <circle class="fil2 str3" cx="885.042" cy="1095.05" r="46.302"/>
+  <circle class="fil2 str3" cx="523.841" cy="2178.65" r="46.302"/>
+  <circle class="fil2 str3" cx="2450.25" cy="1456.25" r="46.302"/>
+  <circle class="fil2 str3" cx="3172.65" cy="1456.25" r="46.302"/>
+  <circle class="fil2 str3" cx="3533.85" cy="1095.05" r="46.302"/>
+  <circle class="fil2 str3" cx="523.841" cy="733.85" r="46.302"/>
+  <circle class="fil2 str3" cx="885.042" cy="733.85" r="46.302"/>
+  <circle class="fil2 str3" cx="3172.65" cy="2178.65" r="46.302"/>
+  <circle class="fil2 str3" cx="2450.25" cy="733.85" r="46.302"/>
+  <circle class="fil2 str3" cx="3172.65" cy="1095.05" r="46.302"/>
+  <circle class="fil2 str3" cx="523.841" cy="1817.45" r="46.302"/>
+  <circle class="fil2 str3" cx="2450.25" cy="372.649" r="46.302"/>
+  <circle class="fil2 str3" cx="3172.65" cy="733.85" r="46.302"/>
+  <circle class="fil2 str3" cx="1607.44" cy="733.85" r="46.302"/>
+  <circle class="fil2 str3" cx="3533.85" cy="2178.65" r="46.302"/>
+  <circle class="fil2 str3" cx="1607.44" cy="1095.05" r="46.302"/>
+  <text x="1878.12" y="3155.25"  class="fil1 str5 fnt1">....</text>
+  <text x="1878.12" y="747.246"  class="fil2 str3 fnt1">....</text>
+  <text x="1878.12" y="1860.95"  class="fil2 str3 fnt1">....</text>
+  <g>
+   <path class="fil3" d="M4119.31 2634.09l0 -1507.2 25.085 0 0 1507.2 -25.085 0zm12.5425 145.542l-76.8098 -153.57 153.57 0 -76.76 153.57z"/>
+  </g>
+  <text x="4206.98" y="1878.13"  class="fil4 str6 fnt2">f</text>
+  <text x="1427.37" y="3004.5"  class="fil1 str5 fnt2">y</text>
+  <text x="1367.17" y="510.967"  class="fil5 str7 fnt2">f</text>
+  <text x="1629.19" y="510.967"  class="fil5 str7 fnt2">(y)</text>
+  <text x="1478.89" y="551.1"  class="fil5 str7 fnt3">-1</text>
+ </g>
+</svg>

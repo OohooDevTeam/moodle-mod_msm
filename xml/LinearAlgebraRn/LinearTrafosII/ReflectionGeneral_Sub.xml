@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Prvw_ReflectionGeneral">
+	<title>General Reflection - Preview</title>
+	<sub.page.body>
+		<block>
+			<para>Here is a schematic sketch of a reflection of <latex>\RNr[n]</latex> about a hyperspace <latex>H</latex>, parallel to a vector <latex>\Vect{v}</latex> complementary to <latex>H</latex>.</para>
+			<figure>
+				<img src="ims/ReflectionParallelToVector.png"></img><!-- svg available -->
+				<info>
+					<para>In this picture, <latex>R(\Vect{x})</latex> is the reflection of <latex>\Vect{x}</latex> about <latex>H</latex>, parallel to <latex>\Vect{v}</latex>. Similarly, <latex>R(\Vect{y})</latex> is the reflection of <latex>\Vect{y}</latex> about <latex>H</latex>, parallel to <latex>\Vect{v}</latex>.</para>
+				</info>
+			</figure>
+			<para>Here the vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> are being reflected about the hyperspace <latex>H</latex>, parallel to the vector <latex>\Vect{v}</latex>. The result of this projection are the vectors <latex>R(\Vect{x})</latex> and <latex>R(\Vect{y})</latex> in <latex>H</latex>, respectively. &ndash; Note that, contrary to orthogonal reflections, general reflections need not be length preserving.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section	SYSTEM "../Symbols.dtd">
+<section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book" xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book
+	http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sec_ConvergenceCriteriaSequence">
+	<headers>
+		<full>Criteria for Convergence</full>
+		<toc>Criteria for Convergence</toc>
+		<short>Criteria for Convergence</short>
+	</headers>
+	<intro>
+		<para>Recall the 
+			<subordinate>
+				<hot>definition of convergence</hot>
+				<crossref>
+					<definition.ref definitionID="Def_SequenceConvergence"/>
+					<para>Look up the definition of convergence of a sequence.</para>
+				</crossref>
+			</subordinate>
+			of a sequence <latex>(x_n)</latex> in <latex>\RNr</latex>. When trying to decide whether such a sequence converges to a number, it may be quite tedious to rely on this definition only. Fortunately, there is a collection of tools which are very helpful in such situations. The purpose of this section is to develop the following criteria to detect convergence.</para>
+		<ul>
+			<li><para>A sequence which is increasing and bounded above converges to a number.</para></li>
+			<li><para>A sequence which is decreasing and bounded below converges to a number.</para></li>
+			<li><para>Squeeze theorem for convergence to a number</para></li>
+			<li><para>Rules for computing with convergent sequences</para></li>
+		</ul>
+	</intro>
+	<section.body>
+		<xi:include href="MonotoneBoundedSeqConvergences_Thm.xml"/>
+		<xi:include href="BolzanoWeierstrass_Thm.xml"/>
+		<xi:include href="NestedInterval_Thm.xml"/>
+		<para>At times it is possible to squeeze a complicated sequence between two sequences which converge to the same limit <latex>c</latex>. In this case the complicated sequence also converges to <latex>c</latex>.</para>
+		<xi:include href="SqueezeTheorem_Thm.xml"/>
+		<para>We close this section with basic rules for computing with convergent sequences.</para>
+		<xi:include href="LimitRules_Thm.xml"/>
+	</section.body>
+	<studymaterials>
+		<exercise.pack.ref exercisePackID="Exe_MonotoneBoundedConverges"/>
+		<exercise.pack.ref exercisePackID="Exe_SequenceConvergence"/>
+	</studymaterials>
+</section>

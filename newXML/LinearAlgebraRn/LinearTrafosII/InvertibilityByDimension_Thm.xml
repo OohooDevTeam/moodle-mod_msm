@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_InvertibilityByDimension"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <statement.theorem>
+      <para>
+         <para.body>For a linear map <math>
+               <latex>L\from V\to W</latex>
+            </math> with <math>
+               <latex>\Dim{V} = \Dim{W}</latex>
+            </math> the following are equivalent</para.body>
+      </para>
+      <part.theorem equivalence.mark="1" partid="MonoProperty">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>L</latex>
+                  </math> is a monomorphism.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem equivalence.mark="1" partid="EpiProperty">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>L</latex>
+                  </math> is an epimorphism.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem equivalence.mark="1" partid="IsoProperty">
+         <part.body>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>L</latex>
+                  </math> is an isomorphism.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>MonoProperty</part.ref>
+         </logic>
+         <caption>MonoProperty</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>L</latex>
+                  </math> is a monomorphism, we have <math>
+                     <latex>\Dim{ \Ker{ L }} = 0</latex>
+                  </math>, and so</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>EpiProperty</part.ref>
+         </logic>
+         <caption>EpiProperty</caption>
+         <proof.block.body>
+            <para>
+               <para.body>If <math>
+                     <latex>L</latex>
+                  </math> is an epimorphism, we have <math>
+                     <latex>\Img{L} = W</latex>
+                  </math>, and so <math>
+                     <latex>\Dim{ \Img{ L }} = \Dim{ W }</latex>
+                  </math>. By the dimension formula,</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

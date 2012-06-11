@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Corollary"
+         id="Thm_DeterminantCommutesMultiplication"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Determinant of a product</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
+         <para>
+            <para.body>This corollary says that the determinant of a product of two matrices is the product of the two determinants.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_DeterminantCommutesMultiplication"/>
+      <info>
+         <info.caption>
+            <caption>Example</caption>
+         </info.caption>
+         <para>
+            <para.body>A nice way of computing <math>
+                  <latex>\det(\Mtrx{A}^n)</latex>
+               </math>
+            </para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>For <math>
+               <latex>(n,n)</latex>
+            </math>-matrices <math>
+               <latex>\Mtrx{A}</latex>
+            </math> and <math>
+               <latex>\Mtrx{B}</latex>
+            </math>, <math>
+               <latex>\det(\Mtrx{A}\cdot \Mtrx{B}) = \det(\Mtrx{A})\cdot \det(\Mtrx{B})</latex>
+            </math>.
+			</para.body>
+         <index.glossary>
+            <term>determinant</term>
+            <term>commutes with matrix multiplication</term>
+         </index.glossary>
+         <index.glossary>
+            <term>matrix multiplication</term>
+            <term>commutes with determinant</term>
+         </index.glossary>
+      </para>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We distinguish two cases. If <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is not invertible, then <math>
+                     <latex>\Mtrx{A}\Mtrx{B}</latex>
+                  </math> is 
+			<subordinate>
+                     <hot>not invertible</hot>
+                     <info>
+                        <info.caption>
+                           <caption>Why is this so?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>Consider a non invertible <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math>, and assume there is a matrix <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math> such that <math>
+                                 <latex>\Mtrx{A}\Mtrx{B}</latex>
+                              </math> is invertible. We know there is an invertible matrix <math>
+                                 <latex>\Mtrx{R}</latex>
+                              </math> such that <math>
+                                 <latex>\Mtrx{R}\Mtrx{A}</latex>
+                              </math> is in RREF. Given that <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> is not invertible this means that <math>
+                                 <latex>\Mtrx{R}\Mtrx{A}</latex>
+                              </math> has at least one bottom row consisting of <math>
+                                 <latex>0</latex>
+                              </math>’s only.</para.body>
+                        </para>
+                        <para>
+                           <para.body>Now <math>
+                                 <latex>\Mtrx{R}(\Mtrx{A}\Mtrx{B})</latex>
+                              </math> is 
+						<subordinate>
+                                 <hot>invertible</hot>
+                                 <info>
+                                    <para>
+                                       <para.body>because it is a product of invertible matrices</para.body>
+                                    </para>
+                                 </info>
+                              </subordinate>
+						and is equal to <math>
+                                 <latex>(\Mtrx{R} \Mtrx{A})\Mtrx{B}</latex>
+                              </math>, which has at least one bottom row consisting of <math>
+                                 <latex>0</latex>
+                              </math>’s only. So it is not invertible. This contradiction is a consequence of the assumption that <math>
+                                 <latex>\Mtrx{A}\Mtrx{B}</latex>
+                              </math> is invertible. So this assumption is false, and <math>
+                                 <latex>\Mtrx{A}\Mtrx{B}</latex>
+                              </math> is not invertible. 
+					</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+			either. 
+			<subordinate>
+                     <hot>Therefore</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Thm_DeterminantInvertibilityTest"/>
+                        <info>
+                           <theorem.ref theoremID="Thm_DeterminantInvertibilityTest"/>
+                           <para>
+                              <para.body>Look up the determinant test for the invertibility of a matrix.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+			both sides of the claimed identity above are <math>
+                     <latex>0</latex>
+                  </math>.</para.body>
+            </para>
+            <para>
+               <para.body>So let us turn to the case where <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math> is invertible; i.e. <math>
+                     <latex>\det(\Mtrx{A}) \neq 0</latex>
+                  </math>. We have the function</para.body>
+            </para>
+            <math.display>
+               <latex>F\from M_{nn} \longrightarrow \RNr,\quad F(\Mtrx{B}) := \dfrac{\det(\Mtrx{A}\Mtrx{B})}{\det(\Mtrx{A})}</latex>
+            </math.display>
+            <para>
+               <para.body>where <math>
+                     <latex>M_{nn}</latex>
+                  </math> denotes the set of all <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrices. Then <math>
+                     <latex>F</latex>
+                  </math> is 
+			<subordinate>
+                     <hot>linear in each column</hot>
+                     <info>
+                        <info.caption>
+                           <caption>Why is <math>
+                                 <latex>F</latex>
+                              </math> linear in each column?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>Given a matrix <math>
+                                 <latex>\Mtrx{} = [B_1\ \dots\ B_n]</latex>
+                              </math>, expressed in terms of its column vectors. Then</para.body>
+                        </para>
+                        <math.display>
+                           <latex>\Mtrx{A}\Mtrx{B} = [\Mtrx{A}B_1\ \dots\ \Mtrx{A}B_n]</latex>
+                        </math.display>
+                        <para>
+                           <para.body>So each column <math>
+                                 <latex>j</latex>
+                              </math> of the matrix <math>
+                                 <latex>\Mtrx{A}\Mtrx{B}</latex>
+                              </math> is a linear function of the <math>
+                                 <latex>j</latex>
+                              </math>-th column of <math>
+                                 <latex>\Mtrx{B}</latex>
+                              </math>. The determinant operation is linear in the <math>
+                                 <latex>j</latex>
+                              </math>-th column as well, and this implies that <math>
+                                 <latex>F</latex>
+                              </math> is linear in each column.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>
+			and is
+			<subordinate>
+                     <hot>alternating</hot>
+                     <info>
+                        <info.caption>
+                           <caption>Why is <math>
+                                 <latex>F</latex>
+                              </math> alternating?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>To see why <math>
+                                 <latex>F</latex>
+                              </math> is alternating observe first that the following two processes have the same result:</para.body>
+                        </para>
+                        <ul>
+                           <li>
+                              <para>
+                                 <para.body>Interchange two columns <math>
+                                       <latex>j</latex>
+                                    </math> and <math>
+                                       <latex>k</latex>
+                                    </math> of <math>
+                                       <latex>\Mtrx{B}</latex>
+                                    </math>, then multiply on the left by <math>
+                                       <latex>\Mtrx{A}</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>Multiply <math>
+                                       <latex>\Mtrx{B}</latex>
+                                    </math> on the left by <math>
+                                       <latex>\Mtrx{A}</latex>
+                                    </math>, then interchange columns <math>
+                                       <latex>j</latex>
+                                    </math> and <math>
+                                       <latex>k</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </li>
+                        </ul>
+                        <para>
+                           <para.body>Following the second process with the determinant operation gives the required change of sign.</para.body>
+                        </para>
+                     </info>
+                  </subordinate>. 
+			Moreover,
+		</para.body>
+            </para>
+            <math.display>
+               <latex>F(\IdMtrx[n]) = \dfrac{\det(\Mtrx{A} \IdMtrx[n])}{\det(\Mtrx{A})} = \dfrac{\det(\Mtrx{A})}{\det(\Mtrx{A})} = 1</latex>
+            </math.display>
+            <para>
+               <para.body>
+                  <subordinate>
+                     <hot>Therefore</hot>
+                     <crossref>
+                        <theorem.ref theoremID="Prop_DeterminantUnique"/>
+                        <info>
+                           <theorem.ref theoremID="Prop_DeterminantUnique"/>
+                           <para>
+                              <para.body>Here we use that the determinant operation is the only alternating <math>
+                                    <latex>n</latex>
+                                 </math>-fold multilinear map which takes the value <math>
+                                    <latex>1</latex>
+                                 </math> on <math>
+                                    <latex>\IdMtrx[n]</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </crossref>
+                  </subordinate>
+                  <math>
+                     <latex>F=\det</latex>
+                  </math>; i.e. <math>
+                     <latex>\det(\Mtrx{B}) = \det(\Mtrx{A}\Mtrx{B})/\det(\Mtrx{A})</latex>
+                  </math>, and so
+		</para.body>
+            </para>
+            <math.display>
+               <latex>\det(\Mtrx{A})\det(\Mtrx{B}) = \det(\Mtrx{A}\Mtrx{B})</latex>
+            </math.display>
+            <para>
+               <para.body>as claimed.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

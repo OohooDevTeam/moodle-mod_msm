@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE quiz.pack	SYSTEM "../Symbols.dtd">
+<quiz.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd"
+	id="Qz_CoordinateVector">
+	<title>Quizzes on Coordinate Vectors</title>
+	<caption>Quizzes on Coordinate Vectors</caption>
+	
+	<quiz>
+		<question>
+			<para>The coordinate vector of a vector <latex>\mathbf{x}</latex> in <latex>\RNr[n]</latex> is .... ?</para>
+		</question>
+		<choice>
+			<answer>
+				<para>Any arrow representing <latex>\mathbf{x}</latex>.</para>
+			</answer>
+			<info>
+				<para>Sorry, no! - While it is true that a vector can be represented by certain arrows, the coordinate vector of <latex>\mathbf{x}</latex> is something else. For details, click to review the description of the coordinate vector.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>A free floating arrow.</para>
+			</answer>
+			<info>
+				<para>Sorry, no! - A free floating arrow ... this is how we think of a vector, not its coordinate vector.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>This is a <latex>4</latex>-tuple</para>
+			</answer>
+			<info>
+				<para>Yes! - This construct has 4 slots separated by commas. Therefore it is a 4-tuple</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>The <latex>n</latex>-tuple of numbers whose coordinates describe the location of the tip of a representing arrow in relation to the tail.</para>
+			</answer>
+			<info>
+				<para>Yes! - This is correct!</para>
+				<para>Indeed, if <latex>\mathbf{x}=(x_1,\dots ,x_n)</latex>, then this tells us that, in order to get from the tail of a representing arrow to its tip, we need to go from the tail <latex>x_1</latex> units in the first coordinate direction, from there <latex>x_2</latex> units in the second coordinate direction, etc.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>The <latex>n</latex>-tuple of numbers which describes the location of the tail of an arrow representing <latex>\mathbf{x}</latex>.</para>
+			</answer>
+			<info>
+				<para>Sorry, no! - While it is true that the location of a point in <latex>\RNr[n]</latex> is determined by an <latex>n</latex>-tuple of numbers, the coordinate vector of a vector is a different concept.</para>
+			</info>
+		</choice>
+	</quiz>
+
+	<quiz>
+		<question>
+			<para>Given the vector <latex>\mathbf{x} = (2,3,1)</latex> in <latex>\RNr[n]</latex>, how do you find the tip of the arrow representing <latex>x</latex> that has its tail at <latex>R(1,1,1)</latex>?</para>
+		</question>
+		<choice>
+			<answer>
+				<para>add the coordinates of <latex>\mathbf{x}</latex> to the corresponding coordinates of <latex>R</latex></para>
+			</answer>
+			<info>
+				<para>By definition of the coordinate vector <latex>\mathbf{x}</latex>, we need to go <latex>2</latex> units from <latex>R</latex> in the first coordinate direction. So we arrive at the <latex>x</latex>-coordinate <latex>3</latex>. From there we need to go <latex>3</latex> units in the second coordinate direction. So we arrive at the <latex>y</latex>-coordinate <latex>4</latex>; and from there we need to go <latex>1</latex> unit in the third coordinate direction. So we arrive at the <latex>z</latex>-coordinate <latex>2</latex>.</para>
+				<para>Combining these calculations, we find that the tip of the arrow is a <latex>S(3,4,2).</latex>
+				</para>
+			</info>
+		</choice>
+		<choice>
+			<answer>
+				<para>Subtract the coordinates of <latex>\mathbf{X}</latex> from the corresponding coordinates of <latex>R</latex>.</para>
+			</answer>
+			<info>
+				<para>Sorry, no! - If you think you need to subtract the coordinates of <latex>\mathbf{x}</latex> from those of <latex>R</latex>, you need to review how exactly the coordinate vector <latex>x</latex> relates the tail of an arrow representing <latex>\mathbf{x}</latex> to its tip.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer><para>The tip of the arrow is at <latex>(1,1,1)</latex>.</para></answer>
+			<info>
+				<para>Sorry, no! - This cannot be, for in this case the arrow would have its tail and its tip in the same location. However, the coordinate vector of <latex>\mathbf{x}</latex> tells us that we have to move off of <latex>R</latex> to get to the tip of the arrow in question.</para>
+			</info>
+		</choice>
+	</quiz>
+
+	
+	<quiz>
+		<question>
+			<para>Given the points <latex>R(2,–3,1,5)</latex>  and  <latex>S(3,1,–1,4)</latex>  in <latex>\RNr[4]</latex>, how do you find the coordinate vector corresponding to the arrow with tail at <latex>R</latex> and tip at <latex>S</latex>?</para>
+		</question>
+		<choice>
+			<answer><para>I add the coordinates of <latex>R</latex> to the corresponding coordinates of <latex>S</latex>.</para></answer>
+			<info>
+				<para>Sorry, no! - You might be confusing the task at hand with the process of find the tip of an arrow whose tail is given, and whose associated coordinate vector is given.</para>
+			</info>
+		</choice>
+		<choice>
+			<answer><para>I take the difference (coordinates of <latex>S</latex>) – (coordinates of <latex>R</latex>)</para></answer>
+			<info>
+				<para>Correct! - Indeed, this is the correct way to apply the formula</para>
+				<para align="center">(tip coordinates) minus (tail coordinates).</para>
+			</info>
+		</choice>
+		<choice>
+			<answer><para>I take the difference (coordinates of <latex>R</latex>) – (coordinates of <latex>S</latex>)</para></answer>
+			<info>
+				<para>Sorry, no! - You are partially on the right track, as you are taking a difference. However the correct formula is:</para>
+				<para align="center">(tip coordinates) minus (tail coordinates).</para>
+			</info>
+		</choice>
+	</quiz>
+</quiz.pack>

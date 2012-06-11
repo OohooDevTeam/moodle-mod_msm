@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_SumProdCompContinuous"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Sums, products, compositions of continuous maps</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
+         <para>
+            <para.body>We prove this proposition directly from the <math>
+                  <latex>\varepsilon</latex>
+               </math>-<math>
+                  <latex>\delta</latex>
+               </math> definition of continuity. Alternatively, it may be deduced from the corresponding proposition about limits of sequences, once we have shown that a function is continuous exactly  when it commutes with limits.</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>D,T,S\subseteq \RNr</latex>
+            </math>. For functions <math>
+               <latex>f,g\from D\to T</latex>
+            </math> and <math>
+               <latex>h\from T\to S</latex>
+            </math> the following hold</para.body>
+      </para>
+      <part.theorem partid="Sum">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>f</latex>
+                  </math> and <math>
+                     <latex>g</latex>
+                  </math> are continuous at <math>
+                     <latex>x\in D</latex>
+                  </math>, then the sum <math>
+                     <latex>(f+g)\from D\to \RNr</latex>
+                  </math> is continuous at <math>
+                     <latex>x</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Product">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>f</latex>
+                  </math> and <math>
+                     <latex>g</latex>
+                  </math> are continuous at <math>
+                     <latex>x\in D</latex>
+                  </math>, then the product <math>
+                     <latex>(f\cdot g)\from D\to \RNr</latex>
+                  </math> is continuous at <math>
+                     <latex>x</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="Composition">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex>g</latex>
+                  </math> is continuous at <math>
+                     <latex>x\in D</latex>
+                  </math> and <math>
+                     <latex>h</latex>
+                  </math> is continuous at <math>
+                     <latex>g(x)\in T</latex>
+                  </math>, then the composition <math>
+                     <latex>h\Comp g\from D\to S</latex>
+                  </math> is continuous at <math>
+                     <latex>x</latex>
+                  </math>.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof>
+      <proof.block>
+         <logic>
+            <part.ref>Sum</part.ref>
+         </logic>
+         <caption>Sum</caption>
+         <proof.block.body>
+            <para>
+               <para.body>For <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math>, choose <math>
+                     <latex> \delta_1 &gt; 0 </latex>
+                  </math> such that <math>
+                     <latex> \Abs{ f(t) - f(x) } &lt; \varepsilon/2 </latex>
+                  </math> for all <math>
+                     <latex>t\in \OOIntrvl{x - \delta_1}{ x + \delta_1}</latex>
+                  </math>, and choose <math>
+                     <latex> \delta_2 &gt; 0 </latex>
+                  </math> such that <math>
+                     <latex> \Abs{ g(t) - g(x) } &lt; \varepsilon/2 </latex>
+                  </math> for all <math>
+                     <latex>t \in \OOIntrvl{x-\delta_2}{x+\delta_2}</latex>
+                  </math>.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Product</part.ref>
+         </logic>
+         <caption>Product</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Given <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math>, we need to establish the existence of <math>
+                     <latex> \delta &gt;0 </latex>
+                  </math> such that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>Composition</part.ref>
+         </logic>
+         <caption>Composition</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Given <math>
+                     <latex> \varepsilon &gt; 0 </latex>
+                  </math> we need to establish the existence of <math>
+                     <latex> \delta &gt; 0 </latex>
+                  </math> such that</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

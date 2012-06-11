@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_OrthogonalComplement">
+	<title>Orthogonal Complement - Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>The orthogonal complement of a collection of vectors <latex>S</latex> in <latex>\RNr[n]</latex> consists of all those vectors in <latex>\RNr[n]</latex> which are perpendicular to every vector in <latex>S</latex>.</para>
+			
+			<para>For example, the orthogonal complement of a single nonzero vector <latex>\Vect{n}</latex> in <latex>\RNr[n]</latex> consists of all those vectors <latex>\Vect{x}</latex> for which <latex>\DotPr{ \Vect{x} }{ \Vect{n} } = 0</latex>. This, we recognize, is the hyperspace of vectors perpendicular to <latex>\Vect{n}</latex>.</para>
+			
+			<para>For example, the orthogonal complement of two vectors <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> consists of all those vectors <latex>\Vect{x}</latex> which are perpendicular to both <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex>; etc. &ndash; </para>
+		</block>
+		<block>
+			<para>The picture below shows a vector <latex>\Vect{s}</latex> in <latex>\RNr[2]</latex>, together with its orthogonal complement <latex>\Vect{s}^{\bot}</latex>, the line perpendicular to <latex>\Vect{s}</latex>. (The red dot represents the origin.)</para>
+			<figure>
+				<img src="ims/OrthogonalComplement1.png"></img>
+				<caption>The orthogonal complement of <latex>\Vect{s}</latex> in <latex>\RNr[2]</latex></caption>
+			</figure>
+			<para>Note that <latex>\Vect{s}^{\bot}</latex> consists of an infinite collection of vectors, namely all those vectors which are perpendicular to <latex>\Vect{s}</latex></para>
+			<figure>
+				<img src="ims/OrthogonalComplement3.png"></img>
+				<caption>The orthogonal complement of <latex>\Vect{s}</latex> in <latex>\RNr[2]</latex></caption>
+			</figure>
+			<para>The orthogonal complement of a single nonzero vector is always a hyperspace.</para>
+		</block>
+		<block>
+			<para>The picture below shows two vectors <latex>\Vect{s}</latex> and <latex>\Vect{t}</latex> in <latex>\RNr[2]</latex>, together with their respective orthogonal complements:</para>
+			<ul>
+				<li><para>the line perpendicular to <latex>\Vect{s}</latex>, and</para></li>
+				<li><para>the line perpendicular to <latex>\Vect{t}</latex></para></li>
+			</ul>
+			<para>The orthogonal complement of the set <latex>S:=\Set{ \Vect{s},\Vect{t} }</latex> consists of all vectors in the plane which are perpendicular to both <latex>\Vect{s}</latex> and <latex>\Vect{t}</latex>. Thus the orthogonal complement of <latex>S</latex> is the intersection of the hyperspace perpendicular to <latex>\Vect{s}</latex> and the hyperspace perpendicular to <latex>\Vect{t}</latex>. In this case <latex>S^{\bot}</latex> is just the origin, represented here by a red dot.</para>
+			<figure>
+				<img src="ims/OrthogonalComplement2.png"></img>
+			</figure>
+		</block>
+	</sub.page.body>
+</sub.page>

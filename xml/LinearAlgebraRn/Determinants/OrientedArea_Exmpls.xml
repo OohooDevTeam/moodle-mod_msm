@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<example.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_OrientedArea">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	<title>Examples of Oriented Area</title>
+	<caption>Oriented Area</caption>
+	
+	
+	
+	<example>
+		<statement>
+			<para>The oriented area of the parallelogram spanned by the vectors <latex>\Vect{x}=(4,0)</latex>  and <latex>\Vect{y}=(0,3)</latex> is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\OriVol(\Vect{x},\Vect{y}) = \det
+\left[
+\begin{array}{rr}
+4 & 0 \\
+0 & 3
+\end{array}
+\right] = 12
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Explanation">
+			<para>This agrees with what the theorem on 
+				<subordinate>
+					<hot>oriented volume</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_DetOrientedVolume"/>
+						<para>Look up this theorem</para>
+					</crossref>
+				</subordinate>
+				has us expect: the vectors <latex>\Vect{x}</latex> and <latex>\Vect{y}</latex> span a rectangle with edges of length 4 and 3. So its unoriented area is 12. Moreover the pair of vectors <latex>(\Vect{x},\Vect{y})</latex> determine the counterclockwise or positive orientation of the plane. Therefore <latex>\omega(\Vect{x},\Vect{y})=+1</latex>, and this corresponds to the fact that the determinant is positive.</para>
+		</answer>
+	</example>
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>The oriented area of the parallelogram spanned by the vectors <latex>\Vect{u}=(0,5)</latex>  and <latex>\Vect{v}=(2,0)</latex> is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\OriVol(\Vect{x},\Vect{y}) = \det
+\left[
+\begin{array}{rr}
+0 & 2 \\
+5 & 0
+\end{array}
+\right] = -10
+]]>
+				</latex>
+			</math.display>
+		</statement>
+		
+		<answer type="Explanation">
+			<para>This agrees with what the theorem on 
+				<subordinate>
+					<hot>oriented volume</hot>
+					<crossref>
+						<theorem.ref theoremID="Thm_DetOrientedVolume"/>
+						<para>Look up this theorem</para>
+					</crossref>
+				</subordinate>
+				has us expect: the vectors <latex>\Vect{u}</latex> and <latex>\Vect{v}</latex> span a rectangle with edges of length 5 and 2. So its unoriented area is 10. Moreover the pair of vectors <latex>(\Vect{u},\Vect{v})</latex> determine the clockwise or negative orientation of the plane. Therefore <latex>\omega(\Vect{u},\Vect{v})=-1</latex>, and this corresponds to the fact that the determinant is negative.</para>
+		</answer>
+	</example>
+	
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>Find the orientation of <latex>\RNr[2]</latex> given by the pair of vectors <latex>(\Vect{x},\Vect{y})</latex> with <latex>\Vect{x}=(4320,89)</latex> and <latex>\Vect{y}=(4310,87)</latex>. </para>
+		</statement>
+		<answer type="Solution">
+			<para>The orientation of <latex>\RNr[2]</latex> given by <latex>(\Vect{x},\Vect{y})</latex> is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\omega(\Vect{x},\Vect{y}) = \dfrac{
+\det
+\left[
+\begin{array}{rr}
+4320 & 4310 \\
+89 & 87
+\end{array}
+\right] }{
+\abs{
+\det
+\left[
+\begin{array}{rr}
+4320 & 4310 \\
+89 & 87
+\end{array}
+\right]
+} } = \dfrac{ 375840 - 383590}{\abs{ 375840 - 383590 } } = -1
+]]>
+				</latex>
+			</math.display>
+			<para>So the given pair of vectors determines the negative or clockwise orientation of the plane. – Notice that, contrary to the previous two examples, it is not so easy to arrive at this conclusion by &lsquo;inspection&rsquo;.</para>
+		</answer>
+	</example>
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>The picture below shows a grid where the distance between two horizontally or vertically neighboring points is <latex>1</latex>. Also there is a horizontal vector <latex>\Vect{x}</latex> of length <latex>5</latex>. Imagine a second vector  <latex>\Vect{y}</latex>  whose tail is at the tail of  <latex>\Vect{x}</latex>, and whose tip is where you place your mouse pointer. Place your mouse over those grid points so that the oriented area of <latex>(\Vect{x},\Vect{y})</latex> is <latex>+15</latex>.</para>
+			<para align="center"><image src="ims/OrientedAreaPlaneGrid.jpg">
+				<area coords="57,91,383,107" shape="rect">
+					<info>
+						<para>Congratulations! - The grid point you picked is the tip of a vector <latex>\Vect{y}</latex> so that.</para>
+						<computation>
+							<left>\OriVol(\Vect{x},\Vect{y})</left>
+							<center>=</center>
+							<right>+15</right>
+						</computation>
+					</info>
+				</area>
+				<area coords="59,222,383,240" shape="rect">
+					<info>
+						<para>Careful! With the vector <latex>\Vect{y}</latex> you are specifying you determine a parallelogram whose unoriented area is <latex>15</latex>. However, <latex>(\Vect{x},\Vect{y})</latex> determine the negative orientation of the plane. So this is not an acceptable grid point.</para>
+					</info>
+				</area>
+				<area coords="57,113,384,217" shape="rect">
+					<info>
+						<para>Sorry! Try another point.</para>
+					</info>
+				</area>
+				<area coords="59,247,382,304" shape="rect">
+					<info>
+						<para>Sorry! Try another point.</para>
+					</info>
+				</area>
+				<area coords="59,26,382,83" shape="rect">
+					<info>
+						<para>Sorry! Try another point.</para>
+					</info>
+				</area>
+			</image>
+			</para>
+		</statement>
+	</example>
+	
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>The picture below shows a grid where the distance between two horizontally or vertically neighboring points is <latex>1</latex>. Also there is a horizontal vector <latex>\Vect{x}</latex> of length <latex>5</latex>. Imagine a second vector  <latex>\Vect{y}</latex>  whose tail is at the tail of  <latex>\Vect{x}</latex>, and whose tip is where you place your mouse pointer. Place your mouse over those grid points so that the oriented area of <latex>(\Vect{x},\Vect{y})</latex> is <latex>-10</latex>.</para>
+			<para align="center"><image src="ims/OrientedAreaPlaneGrid.jpg">
+				<area coords="57,91,383,107" shape="rect">
+					<info>
+						<para>Correct! The grid point you picked determines a vector <latex>\Vect{y}</latex> so that.</para>
+						<computation>
+							<left>\OriVol(\Vect{x},\Vect{y})</left>
+							<center>=</center>
+							<right>-10</right>
+						</computation>
+					</info>
+				</area>
+				<area coords="60,113,379,129" shape="rect">
+					<info>
+						<para>Careful! With the vector <latex>\Vect{y}</latex> you are specifying you determine a parallelogram whose unoriented area is <latex>+10</latex>. Try again, taking into account the required orientation.</para>
+					</info>
+				</area>
+				<area coords="60,134,380,194" shape="rect">
+					<info>
+						<para>Sorry! Try another point.</para>
+					</info>
+				</area>
+				<area coords="60,224,379,302" shape="rect">
+					<info>
+						<para>Sorry! Try another point.</para>
+					</info>
+				</area>
+				<area coords="60,26,280,106" shape="rect">
+					<info>
+						<para>Sorry! Try another point.</para>
+					</info>
+				</area>
+			</image>
+			</para>
+		</statement>
+	</example>
+	
+	
+	
+	
+	<example>
+		<statement>
+			<para>The picture below shows a grid where the distance between two horizontally or vertically neighboring points is <latex>1</latex>. Also there is a horizontal vector <latex>\Vect{x}</latex> of length <latex>5</latex>. Imagine a second vector  <latex>\Vect{y}</latex>  whose tail is at the tail of  <latex>\Vect{x}</latex>, and whose tip is where you place your mouse pointer. Place your mouse over those grid points so that the oriented area of <latex>(\Vect{y},\Vect{x})</latex> is <latex>-20</latex>.</para>
+			<para align="center"><image src="ims/OrientedAreaPlaneGrid.jpg">
+				<area coords="60,70,380,83" shape="rect">
+					<info>
+						<para>Careful! The grid point you picked is the tip of a vector <latex>\Vect{y}</latex> such that</para>
+						<computation>
+							<left>\OriVol(\Vect{y},\Vect{x})</left>
+							<center>=</center>
+							<right>+20</right>
+						</computation>
+					</info>
+				</area>
+				<area coords="60,246,380,260" shape="rect">
+					<info>
+						<para>Correct! The grid point you picked is the tip of a vector <latex>\Vect{y}</latex> such that</para>
+						<computation>
+							<left>\OriVol(\Vect{y},\Vect{x})</left>
+							<center>=</center>
+							<right>-20</right>
+						</computation>
+					</info>
+				</area>
+				<area coords="60,269,382,304" shape="rect">
+					<info>
+						<para>Sorry! Try another point.</para>
+					</info>
+				</area>
+				<area coords="60,92,380,238" shape="rect">
+					<info>
+						<para>Sorry! Try another point.</para>
+					</info>
+				</area>
+				<area coords="60,27,379,60" shape="rect">
+					<info>
+						<para>Sorry! Try another point.</para>
+					</info>
+				</area>
+			</image>
+			</para>
+		</statement>
+	</example>
+</example.pack>

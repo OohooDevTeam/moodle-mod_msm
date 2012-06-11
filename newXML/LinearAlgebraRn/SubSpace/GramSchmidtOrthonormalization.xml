@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_GramSchmidtOrthonormalization"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Orthonormalizing a Given Basis</title>
+      <plain.title>Orthonormalizing a Given Basis</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In the previous sections we saw how much more convenient it is to work with a basis of orthonormal vectors of a vector space <math>
+                     <latex>V</latex>
+                  </math>, vs. working with an arbitrary basis of <math>
+                     <latex>V</latex>
+                  </math>. So it is useful to learn how to turn an arbitrary ordered basis of <math>
+                     <latex>V</latex>
+                  </math> into an orthonormal one, and this is exactly what we are going to do here.</para.body>
+            </para>
+            <para>
+               <para.body>We will explain a procedure which orthonormalizes an arbitrary basis of <math>
+                     <latex>V</latex>
+                  </math>. This procedure is called Gram-Schmidt orthonormalization, named after Jorgen Pedersen Gram and Eduard Schmidt. It had, however, been used earlier in specialized contexts.
+			</para.body>
+               <index.author>
+                  <name>
+                     <name>
+                        <first>Jorgen</first>
+                        <middle>Pedersen</middle>
+                        <last>Gram</last>
+                        <initials>J.P.</initials>
+                     </name>
+                  </name>
+                  <info>
+                     <para>
+                        <para.body>In connection with the Gram-Schmidt orthonormalization process</para.body>
+                     </para>
+                  </info>
+               </index.author>
+               <index.author>
+                  <name>
+                     <name>
+                        <first>Eduard</first>
+                        <last>Schmidt</last>
+                        <initials>E.</initials>
+                     </name>
+                  </name>
+                  <info>
+                     <para>
+                        <para.body>In connection with the Gram-Schmidt orthonormalization process</para.body>
+                     </para>
+                  </info>
+               </index.author>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="GramSchmidtOrthonormalization_Thm.xml"/>
+            <para>
+               <para.body>The Gram-Schmidt orthonormalization theorem has the following immediate consequence</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ONBExists_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_GramSchmidtOrthonormalization"/>
+   </studymaterials>
+</unit>

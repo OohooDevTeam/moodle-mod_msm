@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE intro
+  SYSTEM "../Symbols.dtd">
+<intro xmlns="Unit"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <block>
+      <block.body>
+         <para>
+            <para.body>As you know, mathematics is very helpful in describing or predicting processes or phenomena in the world around us. Such descriptions or predictions are achieved provided via mathematical models, that is idealized abstracts of the world around us.</para.body>
+         </para>
+         <para>
+            <para.body>One extremely versatile tool that may be used in a mathematical model is the concept of a vector. Indeed, vectors are capable of representing anything that is characterized by "direction" and "magnitude". To give an idea of how this works, we discuss three examples:</para.body>
+         </para>
+         <ul>
+		          <li>
+               <para>
+                  <para.body>
+                     <strong>Translations</strong>   When we <subordinate>
+                        <hot>translate or shift</hot>
+                        <companion>
+                           <unit.ref unitId="Prvw_Translation"/>
+                           <info>
+				
+				                          <para>
+                                 <para.body>An illustration of how a vector describes a translation</para.body>
+                              </para>
+			                        </info>
+                        </companion>
+                     </subordinate> an object we move each of its points in the same direction and by the same distance. So we may represent it by a vector whose direction gives the direction of the translation and whose length corresponds to the distance by which objects are being moved.</para.body>
+               </para>
+            </li>
+		
+		          <li>
+               <para>
+                  <para.body>
+                     <strong>Force</strong>   When we push or pull an object, we say we act on the object by some 
+			<subordinate>
+                        <hot>force</hot>
+                        <companion>
+                           <unit.ref unitId="Prvw_Force"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>Illustration of this</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate>. Such a force is characterized by "its direction" and "its strength". So we may represent it by a vector: the direction of the vector gives the direction of the force, and the length of the vector corresponds to the strength or magnitude of the force.</para.body>
+               </para>
+            </li>
+		
+		          <li>
+               <para>
+                  <para.body>
+                     <strong>Velocity</strong>   When a particle moves in space, it changes its location at each instant. This change of location is characterized by the direction and the speed of the motion at that instant. Both data combined comprise the
+			<subordinate>
+                        <hot>velocity</hot>
+                        <companion>
+                           <unit.ref unitId="Prvw_Velocity"/>
+                           <info>
+					
+					                         <para>
+                                 <para.body>An illustration of ‘velocity’</para.body>
+                              </para>
+				                       </info>
+                        </companion>
+                     </subordinate>
+			at that instant. As velocity is characterized by direction and magnitude, we may represent it by a vector. The direction of the vector gives the direction of the motion and the length of the vector corresponds to the speed.</para.body>
+               </para>
+            </li>
+	        </ul>
+      </block.body>
+   </block>
+</intro>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_OrientationProperties">
+	<caption>Properties of the orientation function</caption>
+	<associate Description="Explanation">
+		<info>
+			<caption>Explanation</caption>
+			<ol type="i">
+				<li><para>Identity i. means: interchanging two vectors in an orientation representing tuple reverses the orientation.</para></li>
+				<li><para>Identity ii. means: reversing the direction in an orientation representing tuple reverses the orientation.</para></li>
+			</ol>
+		</info>
+	</associate>
+	<statement>
+		<para>The orientation function <latex>\omega</latex> on <latex>n</latex>-tuples of vectors of <latex>\RNr[n]</latex> has the following properties.</para>
+		<part partid="Alternating">
+			<para><latex>\omega(\Vect{x}_1, \dots ,{\color{blue} \Vect{x}_i},\dots ,{\color{red} \Vect{x}_j}, \dots ,\Vect{x}_n) = -\omega(\Vect{x}_1,\dots ,{\color{red} \Vect{x}_j},\dots ,{\color{blue} \Vect{x}_i},\dots ,\Vect{x}_n)</latex></para>
+		</part>
+		<part partid="InverseProperty">
+			<para><latex>\omega(\Vect{x}_1,\dots ,\Vect{x}_i,\dots ,\Vect{x}_n) = -\omega(\Vect{x}_1,\dots ,-\Vect{x}_i,\dots ,\Vect{x}_n)</latex></para>
+		</part>
+	</statement>
+	
+	<proof type="Proof">
+		<para>This follows immediately from the  
+			<subordinate>
+				<hot>algebraic properties</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+					<para>Look up these algebraic properties of the determinant operation</para>
+				</crossref>
+			</subordinate>
+			of the determinant operation.
+		</para>
+	</proof>
+</theorem>

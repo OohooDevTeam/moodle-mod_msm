@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_SequencesNewFromOld"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>New Sequences from Old</title>
+      <plain.title>New Sequences from Old</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we describe several ways of building a new sequences from one or several given ones: the product of a sequence bby a number, the sum of two sequences, the product of two sequences, a subsequence of a sequence, and a rearrangement of a sequence.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_SumProductSequences">
+               <caption>Sum and product of sequences</caption>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_SequenceSumProduct"/>
+                  <info>
+                     <para>
+                        <para.body>Some examples of sums and products of sequences</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>Given sequences <math>
+                           <latex>(a_n)</latex>
+                        </math> and <math>
+                           <latex>(b_n)</latex>
+                        </math> in <math>
+                           <latex>\RNr</latex>
+                        </math>,</para.body>
+                  </para>
+                  <ul>
+                     <li>
+                        <para>
+                           <para.body>their sum is <math>
+                                 <latex>(a_n) + (b_n) := (a_n + b_n)</latex>
+                              </math>;
+					</para.body>
+                           <index.glossary>
+                              <term>sum</term>
+                              <term>of two sequences</term>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>their product is <math>
+                                 <latex>(a_n) \cdot (b_n) := (a_n \cdot b_n)</latex>
+                              </math>;
+					</para.body>
+                           <index.glossary>
+                              <term>product</term>
+                              <term>of two sequences</term>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>the product of <math>
+                                 <latex>(a_n)</latex>
+                              </math> by <math>
+                                 <latex>t\in \RNr</latex>
+                              </math> is <math>
+                                 <latex>t\cdot(a_n) := (t\cdot a_n)</latex>
+                              </math>.
+					</para.body>
+                           <index.glossary>
+                              <term>product</term>
+                              <term>of a sequence by a number</term>
+                              <info>
+                                 <para>
+                                    <para.body>Definition of the concept</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </li>
+                  </ul>
+               </def.body>
+            </def>
+            <def type="Definition" id="Def_SubSequence">
+               <caption>Subsequence</caption>
+               <associate type="Illustration">
+                  <unit.ref unitId="Illu_SubSequence"/>
+                  <info>
+                     <para>
+                        <para.body>An illustration of the concept of subsequence.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_SubSequence"/>
+                  <info>
+                     <para>
+                        <para.body>A set of worked examples on subsequences.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A subsequence of a sequence <math>
+                           <latex>(a_n)</latex>
+                        </math> is given by a composite
+				</para.body>
+                     <index.glossary>
+                        <term>subsequence</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>\NNr \overset{n}{\longrightarrow} \NNr \overset{a}{\longrightarrow} \RNr</latex>
+                  </math.display>
+                  <para>
+                     <para.body>where <math>
+                           <latex>n</latex>
+                        </math> is a strictly increasing function. We write <math>
+                           <latex>(a_{n_i})</latex>
+                        </math> for the resulting subsequence of <math>
+                           <latex>(a_n)</latex>
+                        </math>.
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>a_{n_i}</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>Subsequence of the sequence <math>
+                                    <latex>a_n</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>To prepare for the study of limits of sequences, we introduce the following special kind of subsequence.</para.body>
+            </para>
+            <def type="Terminology" id="Def_TailEnd">
+               <caption>Tail (end) of a sequence</caption>
+               <associate type="Example">
+                  <showme.pack.ref showmePackID="Exa_SequenceTail"/>
+                  <info>
+                     <info.caption>Example</info.caption>
+                     <para>
+                        <para.body>A tail end of <math>
+                              <latex>(a_n)</latex>
+                           </math> results from omitting an initial segment</para.body>
+                     </para>
+                     <math.display>
+                        <latex>a_0,\ a_1,\ a_2,\ \dots\ ,a_{N-1}</latex>
+                     </math.display>
+                     <para>
+                        <para.body>from the original sequence. – Worked examples are available here.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A tail (end) of a sequence <math>
+                           <latex>(a_n)</latex>
+                        </math> is a subsequence of the form</para.body>
+                  </para>
+                  <math.display>
+                     <latex>(a_{n_i} = a_{N+i})</latex>
+                  </math.display>
+                  <para>
+                     <para.body>for some <math>
+                           <latex>N\in \NNr</latex>
+                        </math>.
+				</para.body>
+                     <index.glossary>
+                        <term>tail end</term>
+                        <info>
+                           <para>
+                              <para.body>A special kind of subsequence. – Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>sequence</term>
+                        <term>tail (end)</term>
+                        <info>
+                           <para>
+                              <para.body>A special kind of subsequence. – Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+            <para>
+               <para.body>For future reference we include here the less frequently used concept of rearrangement of a sequence.</para.body>
+            </para>
+            <def type="Definition" id="Def_SequenceRearrangement">
+               <caption>Rearrangement of a sequence</caption>
+               <def.body>
+                  <para>
+                     <para.body>A rearrangement of a sequence <math>
+                           <latex>(a_n)</latex>
+                        </math> is given by a composite</para.body>
+                  </para>
+                  <math.display>
+                     <latex>\NNr \overset{n}{\longrightarrow} \NNr \overset{a}{\longrightarrow} \RNr</latex>
+                  </math.display>
+                  <para>
+                     <para.body>in which the function <math>
+                           <latex>n\from \NNr\to \NNr</latex>
+                        </math> is invertible.
+				</para.body>
+                     <index.glossary>
+                        <term>rearrangement</term>
+                        <term>of a sequence</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>sequence</term>
+                        <term>rearrangement</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </def.body>
+            </def>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_SequencesNewFromOld"/>
+   </studymaterials>
+</unit>

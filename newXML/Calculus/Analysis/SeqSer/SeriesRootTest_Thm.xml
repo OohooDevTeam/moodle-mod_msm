@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_SeriesRootTest"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>The root test for absolute convergence</caption>
+   <associate type="Comment">
+      <info>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
+         <para>
+            <para.body>The statement of the root test leaves open the question: what happens if <math>
+                  <latex> \lim_{n\to \infty} \sqrt[n]{\Abs{a_n}}=L = 1</latex>
+               </math>? – Answer: in this case the root test is inconclusive.</para.body>
+         </para>
+      </info>
+   </associate>
+   <associate type="Example">
+      <showme.pack.ref showmePackID="Exa_RootTest"/>
+      <info>
+         <para>
+            <para.body>Examples of working with the root test</para.body>
+         </para>
+      </info>
+   </associate>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>(a_n)</latex>
+            </math> be a sequence in <math>
+               <latex>\RNr</latex>
+            </math>.
+			</para.body>
+         <index.glossary>
+            <term>root test</term>
+         </index.glossary>
+      </para>
+      <part.theorem partid="LessThan1">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex> \lim_{n\to \infty} \sqrt[n]{\Abs{a_n}}=L &lt; 1</latex>
+                  </math>, then <math>
+                     <latex>\sum_{n=0}^{\infty}a_n</latex>
+                  </math> converges absolutely.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+      <part.theorem partid="GreaterThan1">
+         <part.body>
+            <para>
+               <para.body>If <math>
+                     <latex> \lim_{n\to \infty} \sqrt[n]{\Abs{a_n}}=L &gt; 1</latex>
+                  </math>, then <math>
+                     <latex>\sum_{n=0}^{\infty}a_n</latex>
+                  </math> does not converge to a number.</para.body>
+            </para>
+         </part.body>
+      </part.theorem>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <logic>
+            <part.ref>LessThan1</part.ref>
+         </logic>
+         <caption>LessThan1</caption>
+         <proof.block.body>
+            <para>
+               <para.body>We need to show that, under the stated condition, <math>
+                     <latex>\sum_{n=0}^{\infty} \Abs{ a_n }</latex>
+                  </math> converges to a number. Indeed, we have</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+      <proof.block>
+         <logic>
+            <part.ref>GreaterThan1</part.ref>
+         </logic>
+         <caption>GreaterThan1</caption>
+         <proof.block.body>
+            <para>
+               <para.body>Observe</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

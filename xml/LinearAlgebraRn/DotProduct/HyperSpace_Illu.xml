@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_HyperSpace">
+	<title>Hyperspace – Illustration</title>
+	<sub.page.body>
+		<block>
+			<para>Here we illustrate the concept of a hyperspace in <latex>\RNr[2]</latex> or in <latex>\RNr[3]</latex>.</para>
+		</block>
+		<block>
+			<para>A hyperspace in <latex>\RNr[2]</latex> is just a line through the origin. Thus the red line in the picture below is a hyperspace. We characterize it as the collection of all those vectors which are perpendicular to the green vector <latex>\Vect{n}</latex>, called a normal vector to the hyperspace.</para>
+			<figure>
+				<img src="ims/HyperSpace2D.png"></img><!-- SVG available -->
+			</figure>
+			<para>Notice that a hyperspace has many normal vectors: if <latex>\Vect{n}</latex> is a normal  vector, so are <latex>2\cdot \Vect{n}</latex>, <latex>3\cdot \Vect{n}</latex>, <latex>(-1)\cdot \Vect{n}</latex> and, in general, <latex>t\cdot \Vect{n}</latex> for any <latex>t\neq 0</latex>.</para>
+		</block>
+		<block>
+			<para>A hyperspace in <latex>\RNr[3]</latex> is just a plane, in the usual sense of the word, which passes through the origin.</para>
+			<para align="center"><img src="ims/HyperSpace3D.gif"/></para>
+			<para>In the picture above, if we call the hyperspace <latex>H</latex>, then the blue arrow <latex>\Vect{n}</latex>, is called a normal vector of <latex>H</latex> because it is perpendicular to all those vectors which belong to <latex>H</latex>. The second plane in this picture (horizontal) is only there to provide visual reference points. Note that any non-zero multiple of <latex>\Vect{n}</latex> is also a normal vector of <latex>H</latex>: if <latex>n\geq 1</latex>, there are always many normal vectors to a given hyperspace.</para>
+		</block>
+		<block>
+			<para>If <latex>n \geq 4</latex>, we cannot visualize a hyperspace in <latex>\RNr[n]</latex>. Still we can characterize it as the collection of all those vectors in <latex>\RNr[n]</latex> which are perpendicular to a given nonzero vector <latex>\Vect{n}</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

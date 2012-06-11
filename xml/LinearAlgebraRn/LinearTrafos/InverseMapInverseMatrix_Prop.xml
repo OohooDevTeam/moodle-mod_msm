@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_InverseMapInverseMatrix">
+	<caption>Inverse linear map and inverse matrix</caption>
+	<associate Description="Example">
+		<showme.pack.ref showmePackID="Exa_InverseMapInverseMatrix"/>
+		<info><para>Examples illustrating the use of this proposition</para></info>
+	</associate>
+	
+	<statement>
+		<para>Let <latex>L\from \RNr[n]\to \RNr[n]</latex> be a linear transformation represented by the matrix <latex>\Mtrx{A}</latex> of size <latex>(n,n)</latex>. Then <latex>L</latex> is invertible if and only if <latex>A</latex> is invertible. If so, then <latex>L^{-1}</latex> is represented by the matrix <latex>\Mtrx{A}^{-1}</latex>.</para>
+	</statement>
+	
+	<proof>
+		<caption>The case where <latex>L</latex> is invertible</caption>
+		<para>Consider first the case where <latex>L</latex> is invertible. Then we know that there is a linear transformation <latex>L^{-1}</latex>, represented by an <latex>(n,n)</latex>-matrix <latex>\Mtrx{B}</latex>, satisfying</para>
+		<computation>
+			<left>L\Comp L^{-1}</left>
+			<center>= \Id[n] =</center>
+			<right>L^{-1}\Comp L</right>
+			<left>A\cdot B</left>
+			<center>= \IdMtrx[n] =</center>
+			<right>B\cdot A</right>
+		</computation>
+		<para>The second row says that <latex>A</latex> is invertible and that <latex>\Mtrx{A}^{-1} = \Mtrx{B}</latex>.</para>
+		
+		<caption>The case where <latex>\Mtrx{A}</latex> is invertible</caption>
+		<para>Consider now the situation where we know that <latex>\Mtrx{A}</latex> is invertible. Then <latex>\Mtrx{A}</latex> has an inverse <latex>\Mtrx{A}^{-1}</latex>. But then we 
+			<subordinate>
+				<hot>know</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_MatrixGivesLinearMap"/>
+					<para>Look up how a matrix determines a linear map.</para>
+				</crossref>
+			</subordinate>
+			that <latex>\Mtrx{A}^{-1}</latex> determines a linear map <latex>M\from \RNr[n]\to \RNr[n]</latex>, and we have the properties</para>
+		
+		<computation>
+			<left>\Mtrx{A}\cdot \Mtrx{A}^{-1}</left>
+			<center>= \IdMtrx[n] =</center>
+			<right>\Mtrx{A}^{-1}\cdot \Mtrx{A}</right>
+			<left>L\Comp M</left>
+			<center>= \Id[n] =</center>
+			<right>M\Comp L</right>
+		</computation>
+		
+		<para>The second row says that <latex>L</latex> is invertible and that <latex>M=L^{-1}</latex>. This completes the proof of the proposition.</para>
+	</proof>
+</theorem>

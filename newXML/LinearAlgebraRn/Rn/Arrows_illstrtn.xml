@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_ArrowsIllustration"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Arrows - Illustration</title>
+   </titles>
+   <body>
+      <para>
+         <para.body>We think of an arrow in <math>
+               <latex>\RNr[n]</latex>
+            </math> as exactly what the word suggests: a perfectly straight object with a tail and a tip. Thus the location of an arrow in space is determined by two points, namely</para.body>
+      </para>
+      <ol>
+         <li>
+            <para>
+               <para.body>a point, say <math>
+                     <latex>P</latex>
+                  </math>, which marks the tail of the arrow,</para.body>
+            </para>
+         </li>
+         <li>
+            <para>
+               <para.body>a point, say <math>
+                     <latex>Q</latex>
+                  </math>, which marks the tip of the arrow</para.body>
+            </para>
+         </li>
+      </ol>
+      <para>
+         <para.body>We write <math>
+               <latex>\Arrw{PQ}</latex>
+            </math> for the arrow which has its tail at <math>
+               <latex>P</latex>
+            </math> and its tip at <math>
+               <latex>Q</latex>
+            </math>. – The picture below shows three such arrows.</para.body>
+      </para>
+      <para align="center">
+         <para.body>
+            <media type="image" active="0" inline="0">
+               <img src="ims/Arrows_illstrtn1.gif"/>
+            </media>
+         </para.body>
+      </para>
+      <para>
+         <para.body>For example, the pink horizontal arrow on the right has its tail at a point named <math>
+               <latex>R</latex>
+            </math>, and it has its tip at a point named <math>
+               <latex>S</latex>
+            </math>. So we write <math>
+               <latex>\Arrw{RS}</latex>
+            </math> for the arrow joining <math>
+               <latex>R</latex>
+            </math> to <math>
+               <latex>S</latex>
+            </math>. Similarly,</para.body>
+      </para>
+      <ul>
+         <li>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Arrw{PQ}</latex>
+                  </math> denotes the arrow joining the point <math>
+                     <latex>P</latex>
+                  </math> to the point <math>
+                     <latex>Q</latex>
+                  </math>.</para.body>
+            </para>
+         </li>
+         <li>
+            <para>
+               <para.body>
+                  <math>
+                     <latex>\Arrw{TU}</latex>
+                  </math> denotes the arrow joining the point <math>
+                     <latex>T</latex>
+                  </math> to the point <math>
+                     <latex>U</latex>
+                  </math>.</para.body>
+            </para>
+         </li>
+      </ul>
+   </body>
+</unit>

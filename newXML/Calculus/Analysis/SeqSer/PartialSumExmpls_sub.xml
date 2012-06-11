@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Exmpl_PartialSum"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Partial Sums of a Series: Examples</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Partial sums of a constant series</strong>   The first five partial sums of the constant series with summands equal to <math>
+                     <latex>3</latex>
+                  </math> are</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\begin{array}{rcl}
+s_0 &amp; = &amp; 3 \\
+s_1 &amp; = &amp; 3 + 3 = 6 \\
+s_2 &amp; = &amp; 3 + 3 + 3 = 9 \\
+s_3 &amp; = &amp; 3 + 3 + 3 + 3 = 12 \\
+s_4 &amp; = &amp; 3 + 3 + 3 + 3 + 3 = 15 \\
+s_n &amp; = &amp; (n+1)\cdot 3
+\end{array}
+					
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Partial sums of the harmonic series</strong>   The first five partial sums of the harmonic series are</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\begin{array}{rcl}
+s_1 &amp; = &amp; 1 \\
+s_2 &amp; = &amp; 1 + \dfrac{1}{2} = \dfrac{3}{2} \\
+s_3 &amp; = &amp; 1 + \dfrac{1}{2} + \dfrac{1}{3} = \dfrac{11}{6} \\
+s_4 &amp; = &amp; 1 + \dfrac{1}{2} + \dfrac{1}{3} + \dfrac{1}{4} = \dfrac{25}{12} \\
+s_5 &amp; = &amp; 1 + \dfrac{1}{2} + \dfrac{1}{3} + \dfrac{1}{4} + \dfrac{1}{5} = \dfrac{137}{60}
+\end{array}
+					
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>
+                  <strong>Partial sums of a geometric series</strong>   The first five partial sums of the geometric series associated to <math>
+                     <latex>r\neq 1/2</latex>
+                  </math> are</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+\begin{array}{rcl}
+s_0 &amp; = &amp; 1 \\
+s_1 &amp; = &amp; 1+ \dfrac{1}{2} = \dfrac{3}{2} \\
+s_2 &amp; = &amp; 1 + \dfrac{1}{2} + \dfrac{1}{4} = \dfrac{7}{4} \\
+s_3 &amp; = &amp; 1 + \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} = \dfrac{15}{8} \\
+s_4 &amp; = &amp; 1 + \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \dfrac{1}{16} =  \dfrac{31}{16}
+\end{array}
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>For a geometric series with <math>
+                     <latex>r\neq 1</latex>
+                  </math>, we are lucky: it is possible to write out the <math>
+                     <latex>n</latex>
+                  </math>-th partial sum using a simple formula:
+				</para.body>
+               <index.glossary>
+                  <term>geometric</term>
+                  <term>series</term>
+                  <term>partial sum</term>
+                  <info>
+                     <para>
+                        <para.body>The <math>
+                              <latex>n</latex>
+                           </math>-th partial sum of the geometric series is</para.body>
+                     </para>
+                     <math.display>
+                        <latex>s_n = \sum_{k=0}^{n} r^k = \dfrac{1-r^{k+1}}{1-r}</latex>
+                     </math.display>
+                  </info>
+               </index.glossary>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>s_n</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>1 + r+ r^2 + r^3 + \cdots + r^n</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(1 + r+ r^2 + r^3 + \cdots + r^n)\cdot \dfrac{1-r}{1-r}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex/>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\dfrac{1-r^{n+1}}{1-r}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+         </block.body>
+      </block>
+   </body>
+</unit>

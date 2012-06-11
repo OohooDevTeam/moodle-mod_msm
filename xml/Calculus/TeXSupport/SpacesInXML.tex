@@ -1,0 +1,75 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%   Topological Spaces and Constructs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% simplicial
+\newcommand{\AffSmplx}[1]{\bigtriangleup^{#1}}	% Affine n-simplex
+\newcommand{\Aff}[1]{\bigtriangleup^{#1}}				% Affine n-simplex (deprecated)
+\newcommand{\FAff}[2]{\bigtriangleup^{#1}_{#2}} % #2-face of Aff{#1}
+% Homogeneous spaces
+\newcommand{\CStfl}[1]{\mathbb{C} \hskip -.15em \text{\it St}_{#1}}	% complex Stiefel manifold
+\newcommand{\RStfl}[1]{\mathbb{R}\text{\it St}_{#1}}	% real Stiefel manifold
+\newcommand{\CP}[1]{\mathbb{C} \hskip -.2em P^{#1}}		% Complex projective space
+\newcommand{\RP}[1]{\mathbb{R} \hskip -.2em P^{#1}}		% Real projective space
+\newcommand{\CGrmn}[1]{\mathbb{C} \hskip -.2em\text{\it G}_{#1}}		% Complex Grassmann space
+\newcommand{\RGrmn}[1]{\mathbb{R} \hskip -.2em\text{\it G}_{#1}}		% Real Grassmann space
+\newcommand{\Grmn}[1]{\text{\it G}_{#1}}	% Grassmann space
+\newcommand{\wBll}[1]{C\Sigma^{#1}}				% wedge ball: cone on wedge sphere
+\newcommand{\wSphr}[1][]{\Sigma^{#1}}     % wedge of #1-copies of unit circle in C; #1 optional
+%
+%	Topological Constructs
+%
+\newcommand{\homeo}{\overset{\text{homeo}}{\ \cong\ }}
+\DeclareMathOperator{\Homeo}{Homeo} 		% Homeomorphism group
+%
+% Homology and products
+%
+\newcommand{\MpDeg}[1]{\text{\it deg}(#1)}	% Mapping degree of #1
+\newcommand{\CupPr}[2]{#1 \smile #2}    % #1 Cup product #2
+\newcommand{\cupPr}{\smile}             % cup product
+\newcommand{\CapPr}[2]{#1 \frown #2}    % Cap product
+%\newcommand{\IntrSPr}[2]{#1 \hskip .2em \mathbf{\cdot}\hskip .2em #2} % Intersection product
+\newcommand{\IntrSPr}[2]{#1 \hskip .2em \text{\tiny $^\bullet$}\hskip .2em #2} % Intersection product
+\newcommand{\HCrssPr}[2]{#1 \times #2}	% Homological Cross Product
+%
+\DeclareMathOperator{\ho}{ho}
+\DeclareMathOperator{\cofib}{cofib}		% homotopy cofiber
+\DeclareMathOperator{\fib}{fib}				% homotopy fiber
+\DeclareMathOperator{\hocolim}{\text{ho}\varinjlim}
+\DeclareMathOperator{\holim}{\text{ho}\varprojlim}
+\DeclareMathOperator{\pth}{pth}       % deprecated for path space
+%
+% Transformation Groups / Bundle Theory
+%
+\newcommand{\ClSpc}[1]{B#1}           		% Classifying space of #1
+\newcommand{\BU}[1][]{B\mathbb{U}_{#1}} 	% Classifying space of U_(#1)
+\newcommand{\BO}[1][]{B\mathbb{O}_{#1}} 	% Classifying space of O_(#1)
+\newcommand{\BSO}[1][]{BS\mathbb{O}_{#1}} % Classifying space of SO_(#1)
+\newcommand{\BSpin}[1][]{B\text{\it Spin}_{#1}} % Classifying space of Spin_(#1)
+%
+% Vector Bundles
+%
+\newcommand{\NrmlBndl}[2]{\nu(#1,#2)}				% Normal  bundle of #2 in #1
+\newcommand{\nrmlbndl}{\nu}									% Normal bundle symbol
+\newcommand{\ThmSpc}[1]{\text{\it Tm}(#1)}	% Thom space of vector bundle #1
+% characteristic classes
+\newcommand{\EuClss}[1]{e(#1)}				% Euler class of vector bundle #1
+\newcommand{\ChClss}[2]{c_{#1}(#2)}		% #1-Chern class of vector bundle #2
+\newcommand{\ChClssT}[1]{c(#1)}				% Total Chern class of vector bundle #1
+\newcommand{\StWClss}[2]{w_{#1}(#2)}	% #1-Stiefel Whitney class of vector bundle #2
+\newcommand{\StWClssT}[1]{w(#1)}			% Total Stiefel-Whitney class of vector bundle #1
+\newcommand{\PynClss}[2]{p_{#1}(#2)}	% #1-Pontryagin class of vector bundle #2
+\newcommand{\PynClssT}[1]{p(#1)}			% Total Pontryagin class of vector bundle #1
+\newcommand{\ThmClss}[1]{\tau(#1)}		% Thom class of #1
+%
+% Bordism
+%
+\newcommand{\UBord}[2]{\EuScript{N}_{#1} #2}	% Unoriented bordism group in dimension #1 of space #2
+\newcommand{\ubord}{\EuScript{N}_{*}}					% Unoriented bordism ring
+\newcommand{\OBord}[2]{\Omega_{#1} #2}	% Oriented bordism group in dimension #1 of space #2
+\newcommand{\obord}{\Omega_{*}}					% Oriented bordism ring
+%%%%%%%%
+%%% Spectra
+%%%%%%%%
+\newcommand{\SphrSpec}{\mathbb{S}^{\infty}}		% Sphere spectrum
+\newcommand{\ThmSpec}{\text{\it MO}}				% Unoriented Thom spectrum
+\newcommand{\OThmSpec}{\text{\it MSO}}			% Oriented Thom spectrum

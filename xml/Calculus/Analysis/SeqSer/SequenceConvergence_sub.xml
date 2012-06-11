@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page
+	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Explana_SequenceConvergence">
+	<title>Convergence of a Sequence: Explanation</title>
+	<sub.page.body>
+		<block>
+			<para>Recall: A sequence <latex>(x_n)</latex> in <latex>\RNr</latex> converges to a number <latex>c</latex> if, for every <latex><![CDATA[ \varepsilon > 0 ]]></latex> there exists <latex>n_0\in \NNr</latex> such that</para>
+			<math.display>
+				<latex><![CDATA[ x_n\in \OOIntrvl{c-\varepsilon}{c+\varepsilon}\quad \text{for all $n\geq n_0$} ]]></latex>
+			</math.display>
+			<para><b>Intuitively speaking</b>, the number <latex>x_n</latex> get ever closer to or equal to <latex>c</latex> as <latex>n</latex> tends to infinity. What we need to understand here is how this definition expresses this intuitively described behavior of the sequence.</para>
+			<ol>
+				<li><para>Interpret the positive number <latex>\varepsilon</latex> as a &lsquo;deviation tolerance&rsquo;</para></li>
+				<li><para>Given <latex>n_0\in \NNr</latex>, interpret the subsequence <latex>(x_n)</latex>, <latex>n\geq n_0</latex> as a tail end of the original sequence.</para></li>
+				<li><para>Then the definition of convergence of <latex>(x_n)</latex> to <latex>c</latex> asserts: Given any positive deviation tolerance, there exists a tail end of the sequence which stays within the prescribed deviation tolerance of <latex>c</latex>.</para></li>
+			</ol>
+			<para>It is important here that <latex>\varepsilon</latex> is allowed to range over all positive numbers. For each choice of <latex>\varepsilon</latex> some tail end of the sequence must exist which stays within the <latex>\varepsilon</latex>-prescribed deviation tolerance of <latex>c</latex>.</para>
+			
+			<figure>
+				<img src="ims/SequenceConverge.png"></img><!-- svg available -->
+			</figure>
+			
+			<para>Let us address some possible questions about the definition of convergence:</para>
+			<ul>
+				<li><para>We are <i>not</i> required to find a &lsquo;longest possible&rsquo; tail end which stays within the <latex>\varepsilon</latex>-prescribed deviation tolerance.</para></li>
+				<li><para>We do <i>not</i> need to find a tail end which works simultaneously for all <latex><![CDATA[ \varepsilon > 0]]></latex>. To the contrary, the smaller we choose <latex>\varepsilon</latex>, the larger we will in general have to choose the number which marks the beginning of the tail end of sequence elements which stays within the <latex>\varepsilon</latex>-prescribed deviation tolerance.</para></li>
+			</ul>
+		</block>
+		
+		<block>
+			<para>If you are willing to use the quantifiers</para>
+			<ul>
+				<li><para><latex>\forall</latex> &nbsp; &lsquo;for all&rsquo;</para></li>
+				<li><para><latex>\exists</latex> &nbsp; &lsquo;exists&rsquo;</para></li>
+			</ul>
+			<para>we can express the definition of <latex>(x_n)</latex> converges to <latex>c</latex> as</para>
+			<math.display>
+				<latex magnify="yes"><![CDATA[ \forall_{\varepsilon>0}\ \exists_{n_0\in \NNr}\ \forall_{n \geq n_0}\quad \Abs{ x_n-c } < \varepsilon]]></latex>
+			</math.display>
+			<para>Read this as: &lsquo;For all epsilon greater than 0, there exists n-zero in N such that for all n greater than or equal to n-zero the absolute value of <latex>x_n -c</latex> is less than epsilon.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="Molecules.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation> =============   The Example schema describes the formulation of an example which illustrates the use of a definition, a computational procedure, or the application of a theorem, followed by one or several solutions. We distinguish between two solution styles:
+		1. The vanilla style "solution": It provides markup for the linear exposition of a solution of a problem.
+		2. The extended style "solution.ext". It provides markup for one solution-pilot guided solution of a problem.
+		To display an XML-document consistent with this schema, we assume that the problem, together with its solution is loaded into a single browser window / browser frame. The solution pilot can be presented in the form of a sticky hint window.
+ ======================
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="quiz">
+		<xsd:annotation>
+			<xsd:documentation>Quiz with various optional forms of interactivity towards solving it.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType mixed="false">
+			<xsd:sequence>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:element ref="textcaption" minOccurs="0"/>
+				<xsd:element ref="question"/>
+				<xsd:element ref="hint" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="choice" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="part" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="question"/>
+							<xsd:element ref="hint" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element ref="choice" minOccurs="0" maxOccurs="unbounded"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:normalizedString" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="cybertutor">
+		<xsd:annotation>
+			<xsd:documentation>For all kinds of interactive tutorial services</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="title"/>
+				<xsd:element ref="caption" minOccurs="0"/>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element ref="quiz"/>
+					<xsd:element name="test"/>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="choice">
+		<xsd:annotation>
+			<xsd:documentation>For the choice answers of a multiple choice question</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="answer">
+					<xsd:complexType>
+						<xsd:group ref="content_block" maxOccurs="unbounded"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element ref="info" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="question">
+		<xsd:complexType>
+			<xsd:group ref="content_block" maxOccurs="unbounded"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="hint">
+		<xsd:annotation>
+			<xsd:documentation>Hint towards answering a question</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="info"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

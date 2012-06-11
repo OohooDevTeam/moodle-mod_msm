@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sub_MatrixIllstrtn"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Description of a Matrix</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A matrix of numbers is a rectangular arrangement of numbers. Here are some examples:</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+						\left[
+						\begin{array}{rrr}
+						3 &amp; 1 &amp; -1 \\
+						0 &amp; 2 &amp;  5
+						\end{array}
+						\right]
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>This is a matrix with <math>
+                     <latex>2</latex>
+                  </math> rows and <math>
+                     <latex>3</latex>
+                  </math> columns. So we call it a matrix of type <math>
+                     <latex>(2,3)</latex>
+                  </math>.</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+						\left[
+						\begin{array}{rrrr}
+						7 &amp; -4 &amp; 6 &amp; 9 \\
+						3 &amp; 0 &amp; 4 &amp; 11 \\
+						-3 &amp; -1 &amp; 6 &amp; 9 \\
+						2 &amp; 2 &amp; 0 &amp; 4
+						\end{array}
+						\right]
+					
+				</latex>
+            </math.display>
+            <para>
+               <para.body>This is a matrix with <math>
+                     <latex>4</latex>
+                  </math> rows and <math>
+                     <latex>4</latex>
+                  </math> columns. So we call it a matrix of type <math>
+                     <latex>(4,4)</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>We have already used matrices to record the coefficients of a system of linear equations. For example, the matrices above are the (unaugmented) coefficient matrices of the systems of linear equations below.</para.body>
+            </para>
+            <math.display>
+               <latex>
+					
+					\begin{array}{ccccccc}
+\colorbox{lightgreen}{$3$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$1$}{\color{red}y} &amp; - &amp; \colorbox{lightgreen}{$1$}{\color{red}z} &amp; = &amp; 0 \\
+\colorbox{lightgreen}{$0$}{\color{red}x} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}y} &amp; + &amp; \colorbox{lightgreen}{$5$}{\color{red}z} &amp; = &amp; 0
+\end{array}
+					
+				</latex>
+            </math.display>
+            <math.display>
+               <latex>
+					
+					\begin{array}{rcccccrcc}
+\colorbox{lightgreen}{$7$}{\color{red}r} &amp; - &amp; \colorbox{lightgreen}{$4$}{\color{red}s} &amp; + &amp; \colorbox{lightgreen}{$6$}{\color{red}t} &amp; + &amp; \colorbox{lightgreen}{$9$}{\color{red}u} &amp; = &amp; 0 \\
+%
+\colorbox{lightgreen}{$3$}{\color{red}r} &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}s} &amp; + &amp; \colorbox{lightgreen}{$4$}{\color{red}t} &amp; + &amp; \colorbox{lightgreen}{$11$}{\color{red}u} &amp; = &amp; 0 \\
+\colorbox{lightgreen}{$-3$}{\color{red}r} &amp; - &amp; \colorbox{lightgreen}{$1$}{\color{red}s} &amp; + &amp; \colorbox{lightgreen}{$6$}{\color{red}t} &amp; + &amp; \colorbox{lightgreen}{$9$}{\color{red}u} &amp; = &amp; 0 \\
+\colorbox{lightgreen}{$2$}{\color{red}r} &amp; + &amp; \colorbox{lightgreen}{$2$}{\color{red}s} &amp; + &amp; \colorbox{lightgreen}{$0$}{\color{red}t} &amp; + &amp; \colorbox{lightgreen}{$4$}{\color{red}u} &amp; = &amp; 0 \\
+\end{array}
+					
+				</latex>
+            </math.display>
+         </block.body>
+      </block>
+   </body>
+</unit>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
+      unitid="Chap_SubVectorSpaces">
+   <titles>
+      <title>Subvector Spaces</title>
+      <plain.title>Subvector Spaces</plain.title>
+   </titles>
+   <legitimate.children>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/SubSpaceIntro.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SubSpace/SubSpace.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SubSpace/Span.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/LinearIndependence.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/BasisDimension.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SubSpace/BasisSelect.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/CoordinateSystems.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrthogonalSplittings.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/GramSchmidtOrthonormalization.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/ChangeCoordinates.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SubSpace/Orientation.xml"/>
+				
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/SubSpace_Prvw.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/SubSpaceClosedAddition_Illu.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/SubSpaceClosedScalarMult_Illu.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrthogonalComplement_Illu.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/NullSpc_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/SubSpace_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrthogonalComplement_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/LinearCombination_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/LinearCombinationGeo_Illu.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SubSpace/Span_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/RowColumnSpace_Expla.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SubSpace/Span_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/LinearIndependence_sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/LinearIndependence_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/LinearIndependence_Exmpls1.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/LinearIndependenceRank_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/LinearIndependenceDetTest_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/LinearIndependence_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/BasisExplanation_sub.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/BasisDimension_Illu.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/Basis1_Exrcss.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/Basis11_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/BasisRowSpace_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/BasisColumnSpace_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/BasisNullSpace_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/Basis2_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/CoordinateVector_Illu.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/CoordinateVector_Expla.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/CoordinateVector_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/CoordinateVector1_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/CoordinateSystems_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrthoVectorDecomp_Expla.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrthoSplit_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrthogonalSplittings_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/GramSchmidtOrthonormalization_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/GramSchmidtOrthonormalization_Expla.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/GramSchmidtOrthonormalization_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/ChangeBases_Illu.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrthogonalComplement_Expla.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/ChangeCoordinates_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/ChangeCoordinatesReversal_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/ChangeCoordinates_Exrcss.xml"/>
+				
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/Orientation_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrientationSame_Expla.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrientationComparison_Exmpls.xml"/>
+				  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                  href="SubSpace/OrientationGeneral_Exrcss.xml"/>
+			</legitimate.children>
+</unit>

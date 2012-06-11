@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_SeriesInR"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Series of Real Numbers</title>
+      <plain.title>Series of Real Numbers</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>A series of real numbers is an expression of the form</para.body>
+            </para>
+            <math.display>
+               <latex>a_0 + a_1 + a_2 + \cdots + a_n + \cdots = \sum_{n=0}^{\infty} a_n</latex>
+            </math.display>
+            <para>
+               <para.body>where each <math>
+                     <latex>a_n\in \RNr</latex>
+                  </math>. Our objective is to assign a either a number value or one of <math>
+                     <latex>\pm \infty</latex>
+                  </math> to such a series whenever this makes sense. Our strategy is to consider the sequence <math>
+                     <latex>(s_n)</latex>
+                  </math> of partial sums</para.body>
+            </para>
+            <math.display>
+               <latex>s_n := a_0 + a_1 + \cdots + a_n = \sum_{k=0}^{n} a_k</latex>
+            </math.display>
+            <para>
+               <para.body>If <math>
+                     <latex>(s_n)</latex>
+                  </math> converges, we take this limit as the value of the series.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <body>
+      <block>
+         <block.body>
+            <def type="Definition" id="Def_SeriesInR">
+               <caption>Series of real numbers</caption>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>Please note: at this stage this long formal sum of numbers which makes up a series is just that: a formal expression. At this stage, there is no further meaning to it. Writing out such an expression is not meant to imply that we can execute those infinitely many addition operations, as is the case with a sum of finitely many numbers.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Example">
+                  <unit.ref unitId="Exmpl_Series"/>
+                  <info>
+                     <para>
+                        <para.body>Examples of series</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <associate type="Comment">
+                  <info>
+                     <info.caption>Comment</info.caption>
+                     <para>
+                        <para.body>To develop the theory of series, we uniformly use the natural numbers <math>
+                              <latex>0,1,2,3,\dots </latex>
+                           </math> to index the summands in the series. When dealing with a specific series, however, it is often convenient to allow any infinite subsequence of <math>
+                              <latex>\NNr</latex>
+                           </math> to index the summands in the series.</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A series of real numbers is an expression of the form
+				</para.body>
+                     <index.glossary>
+                        <term>series</term>
+                        <term>of real numbers</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>a_0 + a_1 + a_2 + \cdots + a_n + \cdots = \sum_{n=0}^{\infty} a_n</latex>
+                  </math.display>
+                  <para>
+                     <para.body>where each <math>
+                           <latex>a_n\in \RNr</latex>
+                        </math>. The term <math>
+                           <latex>a_n</latex>
+                        </math> is called the <math>
+                           <latex>n</latex>
+                        </math>-th summand of the series.</para.body>
+                  </para>
+               </def.body>
+            </def>
+            <def type="Definition" id="Def_SeriesPartialSum">
+               <caption>Partial sum of a series</caption>
+               <associate type="Example">
+                  <unit.ref unitId="Exmpl_PartialSum"/>
+                  <info>
+                     <para>
+                        <para.body>Examples of partial sums of a series</para.body>
+                     </para>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>The <math>
+                           <latex>n</latex>
+                        </math>-th partial sum of a series <math>
+                           <latex>\sum_{n=0}^{\infty} a_n</latex>
+                        </math> is
+				</para.body>
+                     <index.glossary>
+                        <term>series</term>
+                        <term>partial sum</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>partial sum of a series</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>s_n := a_0 + a_1 + \cdots + a_n = \sum_{k=0}^{n} a_k</latex>
+                  </math.display>
+               </def.body>
+            </def>
+            <def type="Definition" id="Def_SeriesConvergence">
+               <caption>Convergence of a series</caption>
+               <associate type="Explanation">
+                  <info>
+                     <info.caption>Explanation</info.caption>
+                     <para>
+                        <para.body>In our definition of <math>
+                              <latex>\sum_{n=0}^{\infty} a_n = L</latex>
+                           </math>, notice how we get around the fact that we can not execute infinitely many addition operations:</para.body>
+                     </para>
+                     <ol>
+                        <li>
+                           <para>
+                              <para.body>Each partial sum <math>
+                                    <latex>s_n=a_0+a_1+\cdots + a_n</latex>
+                                 </math> is a finite sum.</para.body>
+                           </para>
+                        </li>
+                        <li>
+                           <para>
+                              <para.body>Now we leverage what we learned about convergence of infinite sequences to formulate the definition of an infinite sum.</para.body>
+                           </para>
+                        </li>
+                     </ol>
+                  </info>
+               </associate>
+               <def.body>
+                  <para>
+                     <para.body>A series <math>
+                           <latex>\sum_{n=0}^{\infty} a_n</latex>
+                        </math> converges to <math>
+                           <latex>L</latex>
+                        </math> (a number, or <math>
+                           <latex>+\infty</latex>
+                        </math>, or <math>
+                           <latex>-\infty</latex>
+                        </math>) if
+				</para.body>
+                     <index.glossary>
+                        <term>convergence</term>
+                        <term>of a series</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                     <index.glossary>
+                        <term>series</term>
+                        <term>convergence</term>
+                        <info>
+                           <para>
+                              <para.body>Definition of the concept.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+                  <math.display>
+                     <latex>\lim_{n\to \infty} s_n\ =\ L</latex>
+                  </math.display>
+                  <para>
+                     <para.body>If so, we write <math>
+                           <latex>\sum_{n=0}^{\infty} a_n = L</latex>
+                        </math>. A series which does not converge is said to diverge.
+				</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>\sum_{n=0}^{\infty} a_n=L</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>Limit of a series; definition of the concept</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                  </para>
+               </def.body>
+            </def>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="ConDiVergenceGeometricSeries_Thm.xml"/>
+            <para>
+               <para.body>We infer two immediate consequences for convergent series.</para.body>
+            </para>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="ConvergentSeriesRules_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="SerConvergesNullSequence_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
+   <studymaterials xmlns="">
+      <exercise.pack.ref exercisePackID="Exe_GeometricSeries"/>
+   </studymaterials>
+</unit>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="EqualExa_nTuples"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Equality of <math xmlns="">
+         <latex>n</latex>
+      </math>-tuples.</title>
+	  <caption xmlns="">Equality of <math>
+         <latex>n</latex>
+      </math>-tuples.</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Determine which of the following pairs of tuples are equal.</para.body>
+         </para>
+			      <ol xmlns="">
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(4,1,-6,3)</latex>
+                     </math> and <math>
+                        <latex>(4,1,-6,3)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(1,0,3)</latex>
+                     </math> and <math>
+                        <latex>(1,0,0,3)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(1,3,2)</latex>
+                     </math> and <math>
+                        <latex>(6-5,2+1,3-1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+				        <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(1,2,1,2)</latex>
+                     </math> and <math>
+                        <latex>(2,1,2,1)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+			      </ol>
+		    </statement.showme>
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>To tell if two tuples are equal, we need to check if the numbers in matching positions are the same. Let’s begin with the first pair:</para.body>
+               </para>
+			            <para>
+                  <para.body>1. These two 4-tuples are equal: the numbers in matching positions are the same.</para.body>
+               </para>
+			            <para>
+                  <para.body>2. The first tuple is a 3-tuple, while the second tuple is a 4-tuple. Tuples of distinct size are never equal.</para.body>
+               </para>
+			            <para>
+                  <para.body>3. These two 3-tuples are equal as the entries in matching positions are the same.</para.body>
+               </para>
+			            <para>
+                  <para.body>4. The <math>
+                        <latex>4</latex>
+                     </math>-tuple <math>
+                        <latex>(1,2,1,2)</latex>
+                     </math> has a <math>
+                        <latex>1</latex>
+                     </math> as its first coordinate, whereas the <math>
+                        <latex>4</latex>
+                     </math>-tuple <math>
+                        <latex>(2,1,2,1)</latex>
+                     </math> has a <math>
+                        <latex>2</latex>
+                     </math> as its first coordinate. So the first coordinates are distinct, and this is enough to render the 4-tuples distinct. In this case we could alternatively have observed that the second, or the third, or the fourth coordinates are distinct.</para.body>
+               </para>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

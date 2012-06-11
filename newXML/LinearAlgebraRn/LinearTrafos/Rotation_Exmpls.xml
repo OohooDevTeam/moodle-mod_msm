@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack
+  SYSTEM "../Symbols.dtd">
+<showme.pack xmlns="Compositor"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             id="Exa_Rotation"
+             xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
+	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	  <title>Example of a Rotation of the Plane</title>
+	  <caption xmlns="">Rotation of the Plane</caption>
+	  <showme>
+		    <statement.showme>
+			      <para xmlns="">
+            <para.body>Find the matrix representing the counterclockwise rotation of the plane about the origin through the angle of <math>
+                  <latex>60</latex>
+               </math> degrees.</para.body>
+         </para>
+		    </statement.showme>
+		
+		    <answer.showme xmlns="">
+         <answer.showme.block>
+            <answer.showme.block.body>
+			            <para>
+                  <para.body>The specified rotation transformation has <math>
+                        <latex>\theta = \tfrac{\pi}{3}</latex>
+                     </math>. Therefore it rotates</para.body>
+               </para>
+			            <ul>
+				              <li>
+                     <para>
+                        <para.body>the vector <math>
+                              <latex>\StdBss{1}=(1,0)</latex>
+                           </math> into the vector <math>
+                              <latex>(\cos\theta , \sin\theta) = (\tfrac{1}{2} , \tfrac{\sqrt{3}}{2})</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+				              <li>
+                     <para>
+                        <para.body>the vector <math>
+                              <latex>\StdBss{2}=(0,1)</latex>
+                           </math> into the vector <math>
+                              <latex>(-\sin\theta , \cos\theta) = (-\tfrac{\sqrt{3}}{2},\tfrac{1}{2})</latex>
+                           </math>.</para.body>
+                     </para>
+                  </li>
+			            </ul>
+			            <para>
+                  <para.body>These vectors form the columns of the rotation matrix:</para.body>
+               </para>
+			            <math.display>
+				              <latex>
+					
+R_{\pi/3} := 
+\left[
+\begin{array}{rr}
+\tfrac{1}{2} &amp; -\tfrac{\sqrt{3}}{2} \\
+\tfrac{\sqrt{3}}{2} &amp; \tfrac{1}{2}
+\end{array}
+\right]\ =\ \dfrac{1}{2}\,
+\left[
+\begin{array}{rr}
+1 &amp; -\sqrt{3} \\
+\sqrt{3} &amp; 1
+\end{array}
+\right]
+					
+				</latex>
+			            </math.display>
+			            <para>
+                  <para.body>This means that a point <math>
+                        <latex>(x,y)\in\RNr[2]</latex>
+                     </math> gets transformed into the point</para.body>
+               </para>
+			
+			            <math.display>
+				              <latex>
+					
+R_{\pi/3}(x,y) = 
+\left[
+\begin{array}{rr}
+\tfrac{1}{2} &amp; -\tfrac{\sqrt{3}}{2} \\
+\tfrac{\sqrt{3}}{2} &amp; \tfrac{1}{2}
+\end{array}
+\right]
+\left[
+\begin{array}{r} x \\ y \end{array}
+\right] = \dfrac{1}{2}\cdot
+\left[
+\begin{array}{r} x - \sqrt{3}\, y \\ \sqrt{3}\, x + y \end{array}
+\right]
+					
+				</latex>
+			            </math.display>
+		          </answer.showme.block.body>
+         </answer.showme.block>
+      </answer.showme>
+	  </showme>
+</showme.pack>

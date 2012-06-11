@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Illu_DistancePointHyperplaneCompute">
+	<title>Computing the Distance of a Point from a Hyperplane</title>
+	<sub.page.body>
+		<block>
+			<para>In the picture above, the hyperplane <latex>\Pi</latex> is the line passing through <latex>P</latex>. We wish to find the distance from <latex>Q</latex> to <latex>\Pi</latex>.</para>
+			<figure>
+				<img src="ims/DistancePointHyperplane01.gif"></img>
+			</figure>
+			<para>To this end we express the position vector <latex>\Vect{q}</latex> of <latex>Q</latex> as</para>
+			<computation>
+				<left>\Vect{q}</left>
+				<center>=</center>
+				<right>\Vect{p}\ +\ (\Vect{q}-\Vect{p})</right>
+			</computation>
+			<figure>
+				<img src="ims/DistancePointHyperplane02.gif"></img>
+			</figure>
+			<para>Projecting <latex>(\Vect{q}-\Vect{p})</latex> along the normal vector <latex>\Vect{n}</latex> to <latex>\Pi</latex> yields the shortest possible vector <latex>\Prjctn{\Vect{n}}(\Vect{q}-\Vect{p})</latex> which joins <latex>\Pi</latex> to <latex>Q</latex>. Therefore</para>
+			<computation>
+				<left>\Vect{r}</left>
+				<center>:=</center>
+				<right>\Vect{q}\ -\ \Prjctn{\Vect{n}}(\Vect{q}-\Vect{p})</right>
+			</computation>
+			<para>is the position vector of <latex>R</latex>, the point on <latex>\Pi</latex> closest to <latex>Q</latex>. Finally the distance of <latex>Q</latex> from <latex>\Pi</latex> is</para>
+			<computation>
+				<left>\Dstnc{\Pi}{Q}</left>
+				<center>=</center>
+				<right>\Dstnc{R}{Q}</right>
+				<left></left>
+				<center>=</center>
+				<right>\Abs{\Prjctn{\Vect{n}}(\Vect{q}-\Vect{p})}</right>
+				<left></left>
+				<center>=</center>
+				<right>\Abs{ \DotPr{ (\Vect{q}-\Vect{p}) }{ \frac{\Vect{n}}{\Abs{ \Vect{n} } } } }</right>
+				<left></left>
+				<center>=</center>
+				<right>\dfrac{ \DotPr{ (\Vect{q}-\Vect{p}) }{ \Vect{n} } }{ \Abs{ \Vect{n} } }</right>
+			</computation>
+			<para>So this is where the distance formula for a point from a hyperplane comes from.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

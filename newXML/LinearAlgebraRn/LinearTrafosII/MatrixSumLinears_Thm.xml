@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theorem xmlns="Theorem"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         type="Proposition"
+         id="Thm_MatrixSumOfLinearMaps"
+         xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
+   <caption>Matrix representing sum of linear maps</caption>
+   <statement.theorem>
+      <para>
+         <para.body>Let <math>
+               <latex>V</latex>
+            </math>
+            <math>
+               <latex>W</latex>
+            </math> be subvector spaces of <math>
+               <latex>\RNr[k]</latex>
+            </math> with ordered bases <math>
+               <latex>\EuScript{A}</latex>
+            </math> and <math>
+               <latex>\EuScript{B}</latex>
+            </math>, respectively. Given linear maps <math>
+               <latex>S,T\from V\to W</latex>
+            </math>, denote by</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S)</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>\text{the matrix representing}</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>S</latex>
+               </math>
+            </cell>
+         </row>
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(T)</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>\text{the matrix representing}</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>T</latex>
+               </math>
+            </cell>
+         </row>
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S+T)</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>\text{the matrix representing}</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>S+T</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+      <para>
+         <para.body>Then</para.body>
+      </para>
+      <math.array column="3">
+         <row rowspan="1">
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S+T)</latex>
+               </math>
+            </cell>
+            <cell colspan="1" halign="center" valign="middle">
+               <text>=</text>
+            </cell>
+            <cell colspan="2" halign="center" valign="middle">
+               <math>
+                  <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S) + \Mtrx{A}_{\EuScript{B}\EuScript{A}}(T)</latex>
+               </math>
+            </cell>
+         </row>
+      </math.array>
+   </statement.theorem>
+   <proof type="Proof">
+      <proof.block>
+         <proof.block.body>
+            <para>
+               <para.body>We know that the <math>
+                     <latex>j</latex>
+                  </math>-th column of <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S+T)</latex>
+                  </math> is given by</para.body>
+            </para>
+            <math.array column="3">
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>(S+T)(\Vect{a}_j)_{\EuScript{B}}</latex>
+                     </math>
+                  </cell>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=	</text>
+                     <companion>
+                        <info>
+                           <para>
+                              <para.body>Here we use the definition of <math>
+                                    <latex>(S+T)</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </companion>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>\left( S(\Vect{a}_j) + T(\Vect{a}_j) \right)_{\EuScript{B}}</latex>
+                     </math>
+                  </cell>
+               </row>
+               <row rowspan="1">
+                  <cell colspan="2" halign="center" valign="middle"/>
+                  <cell colspan="1" halign="center" valign="middle">
+                     <text>=</text>
+                  </cell>
+                  <cell colspan="2" halign="center" valign="middle">
+                     <math>
+                        <latex>S(\Vect{a}_j)_{\EuScript{B}} + T(\Vect{a}_j)_{\EuScript{B}}</latex>
+                     </math>
+                  </cell>
+               </row>
+            </math.array>
+            <para>
+               <para.body>This is the sum of the <math>
+                     <latex>j</latex>
+                  </math>-th column of <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S)</latex>
+                  </math> and the <math>
+                     <latex>j</latex>
+                  </math>-th column of <math>
+                     <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(T)</latex>
+                  </math>. This implies the claim.</para.body>
+            </para>
+         </proof.block.body>
+      </proof.block>
+   </proof>
+</theorem>

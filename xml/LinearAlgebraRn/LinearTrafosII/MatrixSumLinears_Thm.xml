@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Proposition"
+	id="Thm_MatrixSumOfLinearMaps">
+	<caption>Matrix representing sum of linear maps</caption>
+	<statement>
+		<para>Let <latex>V</latex> <latex>W</latex> be subvector spaces of <latex>\RNr[k]</latex> with ordered bases <latex>\EuScript{A}</latex> and <latex>\EuScript{B}</latex>, respectively. Given linear maps <latex>S,T\from V\to W</latex>, denote by</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S)</left>
+			<center>\text{the matrix representing}</center>
+			<right>S</right>
+			<left>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(T)</left>
+			<center>\text{the matrix representing}</center>
+			<right>T</right>
+			<left>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S+T)</left>
+			<center>\text{the matrix representing}</center>
+			<right>S+T</right>
+		</computation>
+		<para>Then</para>
+		<computation>
+			<left>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S+T)</left>
+			<center>=</center>
+			<right>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S) + \Mtrx{A}_{\EuScript{B}\EuScript{A}}(T)</right>
+		</computation>
+	</statement>
+	<proof type="Proof">
+		<para>We know that the <latex>j</latex>-th column of <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S+T)</latex> is given by</para>
+		<computation>
+			<left>(S+T)(\Vect{a}_j)_{\EuScript{B}}</left>
+			<center>=	<info><para>Here we use the definition of <latex>(S+T)</latex>.</para></info></center>
+			<right>\left( S(\Vect{a}_j) + T(\Vect{a}_j) \right)_{\EuScript{B}}</right>
+			<left></left>
+			<center>=</center>
+			<right>S(\Vect{a}_j)_{\EuScript{B}} + T(\Vect{a}_j)_{\EuScript{B}}</right>
+		</computation>
+		<para>This is the sum of the <latex>j</latex>-th column of <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(S)</latex> and the <latex>j</latex>-th column of <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}(T)</latex>. This implies the claim.</para>
+	</proof>
+</theorem>

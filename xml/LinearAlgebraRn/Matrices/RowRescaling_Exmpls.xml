@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_RowRescaling">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+
+		
+
+	<title>Examples of Row Rescaling Matrices</title>
+	<caption>Row Rescaling Matrices</caption>
+	
+	<showme>
+		<statement>
+			<para>In the world of <latex>(2,2)</latex>-matrices, the matrix which multiplies the second row by <latex>3</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{2}(3) \ =\ 
+					\begin{bmatrix}
+					1 & 0 \\
+					0 & 3
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the world of <latex>(3,3)</latex>-matrices, the matrix which multiplies the second row by <latex>3</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{2}(3) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 \\
+					0 & 3 & 0 \\
+					0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the world of <latex>(3,3)</latex>-matrices, the matrix which multiplies the third row by <latex>5</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{3}(5) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 \\
+					0 & 1 & 0 \\
+					0 & 0 & 5
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the world of <latex>(4,4)</latex>-matrices, the matrix which multiplies the <latex>1</latex>-st row by <latex>6</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{1}(6) \ =\ 
+					\begin{bmatrix}
+					6 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the world of <latex>(4,4)</latex>-matrices, the matrix which multiplies the <latex>1</latex>-st row by <latex>6</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{1}(6) \ =\ 
+					\begin{bmatrix}
+					6 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 1 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>In the world of <latex>(4,4)</latex>-matrices, the matrix which multiplies the <latex>3</latex>-rd row by <latex>2</latex> is</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+					D_{3}(2) \ =\ 
+					\begin{bmatrix}
+					1 & 0 & 0 & 0 \\
+					0 & 1 & 0 & 0 \\
+					0 & 0 & 2 & 0 \\
+					0 & 0 & 0 & 1
+					\end{bmatrix}
+					]]>
+				</latex>
+			</math.display>
+		</statement>
+	</showme>
+</showme.pack>

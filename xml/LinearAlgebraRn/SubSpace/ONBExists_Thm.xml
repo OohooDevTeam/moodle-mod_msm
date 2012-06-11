@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theorem	SYSTEM "../Symbols.dtd">
+<theorem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Theorem"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Theorem    http://webmath.math.ualberta.ca/Schemas/v1/Theorem.xsd"
+	type="Corollary"
+	id="Thm_ONBExists">
+	<caption>Existence of an ONB</caption>
+	<associate Description="Comment">
+		<info>
+			<caption>Existence of an ONB</caption>
+			<para>Note that this corollary says, in particular, that <latex>V</latex> has an ONB: namely the extension of the empty subset of <latex>V</latex> to an ONB of <latex>V</latex>.</para>
+		</info>
+	</associate>
+	<statement>
+		<para>In a nonzero subvector space <latex>V</latex> of <latex>\RNr[n]</latex> every orthonormal subset <latex>S</latex> of <latex>V</latex> can be complemented to an orthonormal basis of <latex>V</latex>.</para>
+	</statement>
+	<proof>
+		<para>We know already that 
+			<subordinate>
+				<hot><latex>S</latex> is linearly independent</hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_OrthogonalmpliesLinearIndependence"/>
+					<para>Look up this result</para>
+				</crossref>
+			</subordinate>
+			and, hence, 
+			<subordinate>
+				<hot>can be complemented to a basis of <latex>V</latex></hot>
+				<crossref>
+					<theorem.ref theoremID="Thm_BasisExists"/>
+					<para>Look up this result.</para>
+				</crossref>
+			</subordinate>.
+			So, if <latex>S=(\Vect{b}_1,\dots ,\Vect{b}_s)</latex>, choose an ordered set of linearly independent vectors <latex>T=(\Vect{c}_1,\dots ,\Vect{c}_t)</latex> such that</para>
+		<math.display>
+			<latex>\EuScript{A}:=(\Vect{b}_1,\dots ,\Vect{b}_s,\Vect{c}_1,\dots ,\Vect{c}_t)</latex>
+		</math.display>
+		<para>is an ordered basis of <latex>V</latex>. Then apply the Gram-Schmidt process to <latex>\EuScript{A}</latex> so as to obtain an ONB <latex>\EuScript{B}</latex> of <latex>V</latex>. It only remains to observe that the vectors from <latex>S</latex> remain unchanged as they are already orthonormal, and this completes the proof.</para>
+	</proof>
+</theorem>

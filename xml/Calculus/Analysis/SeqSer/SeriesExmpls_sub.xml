@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Exmpl_Series">
+	<title>Series: Examples</title>
+	<sub.page.body>
+		<block>
+			<para><b>Constant series</b> &nbsp; For any <latex>a\in\RNr</latex>, the constant series with summands equal to <latex>a</latex> is
+				<index.glossary>
+					<term>constant</term><term>series</term>
+					<info><para>Introduction of the concept.</para></info>
+				</index.glossary>
+				<index.glossary>
+					<term>series</term><term>constant</term>
+					<info><para>Introduction of the concept.</para></info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>a+a+a+\cdots + a+\cdots = \sum_{n=0}^{\infty} a_n</latex>
+			</math.display>
+			<para>where <latex>a_n:=a</latex> for all <latex>n\in \NNr</latex>. &ndash; For example, the choice <latex>a:=1</latex> yields the constant series</para>
+			<math.display>
+				<latex>1+1+1+\cdots + 1+\cdots</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para><b>Harmonic series</b> &nbsp; The harmonic series is
+				<index.glossary>
+					<term>harmonic</term><term>series</term>
+					<info>
+						<para>The harmonic series is</para>
+						<math.display>
+							<latex>1 + \dfrac{1}{2} + \dfrac{1}{3} + \cdots + \dfrac{1}{n} + \cdots \ =\ \sum_{n=1}^{\infty} \dfrac{1}{n}</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>series</term><term>harmonic</term>
+					<info>
+						<para>The harmonic series is</para>
+						<math.display>
+							<latex>1 + \dfrac{1}{2} + \dfrac{1}{3} + \cdots + \dfrac{1}{n} + \cdots \ =\ \sum_{n=1}^{\infty} \dfrac{1}{n}</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>1 + \dfrac{1}{2} + \dfrac{1}{3} + \cdots + \dfrac{1}{n} + \cdots \ =\ \sum_{n=1}^{\infty} \dfrac{1}{n}</latex>
+			</math.display>
+		</block>
+		
+		<block>
+			<para><b>Geometric series</b> &nbsp; The geometric series associated to <latex>r\neq 0</latex> is
+				<index.glossary>
+					<term>geometric</term><term>series</term>
+					<info>
+						<para>The geometric series associated to <latex>r\neq 0</latex> is</para>
+						<math.display>
+							<latex>1 + r + r^2 + r^3 + \cdots + r^n + \cdots\ =\ \sum_{n=0}^{\infty} r^n</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+				<index.glossary>
+					<term>series</term><term>geometric</term>
+					<info>
+						<para>The geometric series associated to <latex>r\neq 0</latex> is</para>
+						<math.display>
+							<latex>1 + r + r^2 + r^3 + \cdots + r^n + \cdots\ =\ \sum_{n=0}^{\infty} r^n</latex>
+						</math.display>
+					</info>
+				</index.glossary>
+			</para>
+			<math.display>
+				<latex>1 + r + r^2 + r^3 + \cdots + r^n + \cdots\ =\ \sum_{n=0}^{\infty} r^n</latex>
+			</math.display>
+			<para>For example, <latex>r=1/2</latex> yields the geometric series</para>
+			<math.display>
+				<latex>1 + \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \cdots + \dfrac{1}{2^n}+\cdots \ =\ \sum_{n=0}^{\infty} \dfrac{1}{2^n}</latex>
+			</math.display>
+			<para>For example, <latex>r=-3</latex> yields the geometric series</para>
+			<math.display>
+				<latex>1 + -3 + 9 - 27 + \cdots + (-3)^n +\cdots \ =\ \sum_{n=0}^{\infty} (-3)^n</latex>
+			</math.display>
+		</block>
+	</sub.page.body>
+</sub.page>

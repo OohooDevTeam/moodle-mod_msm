@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      unitid="VectorSpaceRn">
+   <titles>
+      <title>The Vector Space <math>
+            <latex>\RNr[n]</latex>
+         </math>
+      </title>
+      <plain.title>n-Space</plain.title>
+   </titles>
+   <legitimate.children>
+			
+			
+			   <unit.choice unitId="Chap_HigherDimensionsRn"/>
+			
+			   <unit.choice unitId="Chap_DotProduct"/>
+			
+			
+			   <unit.choice unitId="Chap_ModelingUsingVectors"/>
+			
+			   <unit.choice unitId="Chap_LinearEquations"/>
+			
+			   <unit.choice unitId="Chap_MatrixAlgebra"/>
+			   <unit.choice unitId="Chap_LinearTransformations"/>
+		</legitimate.children>
+</unit>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_LinearIndependenceRank">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Linear Independence by Rank: Examples</title>
+	
+	<showme>
+		<statement>
+			<para>Determine if the vectors</para>
+			<computation>
+				<left>\Vect{a}</left>
+				<center>=</center>
+				<right>(1,2,3,0)</right>
+				<left>\Vect{b}</left>
+				<center>=</center>
+				<right>(1,1,2,2)</right>
+				<left>\Vect{c}</left>
+				<center>=</center>
+				<right>(3,1,4,1)</right>
+				<left>\Vect{d}</left>
+				<center>=</center>
+				<right>(2,1,3,0)</right>
+			</computation>
+			<para>of <latex>\RNr[4]</latex> are linearly independent.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>We form the matrix</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = \left[
+\begin{array}{cccc}
+1 & 1 & 3 & 2 \\
+2 & 1 & 1 & 1 \\
+3 & 2 & 4 & 3 \\
+0 & 2 & 1 & 0
+\end{array}
+\right]
+]]>
+				</latex>
+			</math.display>
+			<para>which has the given vectors as its column vectors. The RREF of <latex>\Mtrx{A}</latex> is</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\begin{array}{rrrr}
+1 & 0 & 0 & 1/3 \\
+0 & 1 & 0 & -1/3 \\
+0 & 0 & 1 & 2/3 \\
+0 & 0 & 0 & 0
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>So <latex><![CDATA[ \rk(\Mtrx{A}) = 3 < 4 ]]></latex>. Therefore, the vectors are linearly dependent.</para>
+		</answer>
+	</showme>
+	
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>Determine if the vectors</para>
+			<computation>
+				<left>\Vect{w}</left>
+				<center>=</center>
+				<right>(3,1,1,-1,2,6,1,1)</right>
+				<left>\Vect{x}</left>
+				<center>=</center>
+				<right>(0,4,9,6,2,6,3,-2)</right>
+				<left>\Vect{y}</left>
+				<center>=</center>
+				<right>(2,0,0,2,3,1,-1,0)</right>
+				<left>\Vect{z}</left>
+				<center>=</center>
+				<right>(1,1,-2,-1,3,1,1,4)</right>
+			</computation>
+			<para>of <latex>\RNr[8]</latex> are linearly independent.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>If we use the given vectors as the column vectors of a matrix and determine its RREF, we find</para>
+			<math.display>
+				<latex>
+					<![CDATA[
+\Mtrx{A} = \left[
+\begin{array}{rrrr}
+3 & 0 & 2 & 1 \\
+1 & 4 & 0 & 1 \\
+1 & 9 & 0 & -2 \\
+-1 & 6 & 2 & -1 \\
+2 & 2 & 3 & 3 \\
+6 & 6 & 1 & 1 \\
+1 & 3 & -1 & 1 \\
+1 & -2 & 0 & 4
+\end{array}
+\right]\qquad
+\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}
+]]>
+				</latex>
+			</math.display>
+			<para>Thus <latex>\rk(\Mtrx{A}) = 4</latex>, implying that its columns are linearly independent. So <latex>\Vect{w},\Vect{x},\Vect{y},\Vect{z}</latex> are linearly independent.</para>
+		</answer>
+	</showme>
+</showme.pack>

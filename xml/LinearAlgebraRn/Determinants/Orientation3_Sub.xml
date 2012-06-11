@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sub.page	SYSTEM "../Symbols.dtd">
+<sub.page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://webmath.math.ualberta.ca/v1/Book"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Book    http://webmath.math.ualberta.ca/Schemas/v1/Book.xsd"
+	id="Sub_Orientation3">
+	<title>3-Dimensional Orientation</title>
+	<sub.page.body>
+		<block>
+			<para>&lsquo;Right hand&rsquo; and &lsquo;left hand&rsquo; in 3-space are mirrored siblings.</para>
+			<figure>
+				<img src="ims/LeftHandRightHand.jpg"></img>
+			</figure>
+			<para>An orientation of <latex>\RNr[3]</latex> is given by a choice of one of these two hands. Any triple <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> of noncoplanar vectors represents an orientation <latex>\omega(\Vect{x},\Vect{y},\Vect{z})</latex> of  <latex>\RNr[3]</latex> as follows:</para>
+			
+			<table align="center" border="3" cellpadding="2" cellspacing="3" bordercolor="Maroon">
+				<row>
+					<cell><para>If</para></cell>
+					<cell><para>we find</para></cell>
+					<cell><para>and say</para></cell>
+				</row>
+				<row>
+					<cell><para><latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = +1</latex></para></cell>
+					<cell><para>It is possible to align your right hand's thumb with <latex>\Vect{x}</latex>, its index finger with <latex>\Vect{y}</latex>, and its 
+						<subordinate>
+							<hot>middle finger</hot>
+							<info><para>Without harming your hand</para></info>
+						</subordinate>
+						with <latex>\Vect{z}</latex>.</para></cell>
+					<cell><para><latex>(\Vect{x},\Vect{y},\Vect{z})</latex> represents the positive orientation of <latex>\RNr[3]</latex></para></cell>
+				</row>
+				<row>
+					<cell><para><latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = -1</latex></para></cell>
+					<cell><para>It is possible to align your left hand's thumb with <latex>\Vect{x}</latex>, its index finger with <latex>\Vect{y}</latex>, and its 
+						<subordinate>
+							<hot>middle finger</hot>
+							<info><para>Without harming your hand</para></info>
+						</subordinate>
+						with <latex>\Vect{z}</latex>.</para></cell>
+					<cell><para><latex>(\Vect{x},\Vect{y},\Vect{z})</latex> represents the negative orientation of <latex>\RNr[3]</latex></para></cell>
+				</row>
+			</table>
+		</block>
+		
+		<block>
+			<para>For example, the triple <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> below represents the positive or right hand orientation of <latex>\RNr[3]</latex>. We express this by writing <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = +1</latex>.</para>
+			<figure>
+				<img src="ims/3OrientationRightHand.gif"></img>
+			</figure>
+			<para>On the other hand, the triple <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> below represents the negative or left hand orientation of <latex>\RNr[3]</latex>. We express this by writing <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = -1</latex>.</para>
+			<figure>
+				<img src="ims/3OrientationLeftHand.gif"></img>
+			</figure>
+		</block>
+		
+		<block>
+			<para><b>Interchanging a pair of vectors reverses orientation</b> &nbsp; Now start with a triple of vectors <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> representing a given orientation. Then interchange a pair amongst these vectors:  e.g. <latex>(\Vect{y},\Vect{x},\Vect{z})</latex>. This new triple determines an orientation of <latex>\RNr[3]</latex> which is opposite to the orientation given by <latex>(\Vect{x},\Vect{y},\Vect{z})</latex>. Therefore:</para>
+			
+			<computation>
+				<left>\omega(\Vect{x},\Vect{y},\Vect{z})</left>
+				<center>=</center>
+				<right>-\omega(\Vect{y},\Vect{x},\Vect{z})</right>
+				<left></left>
+				<center>=</center>
+				<right>\omega(\Vect{z},\Vect{x},\Vect{y})</right>
+				<left></left>
+				<center>=</center>
+				<right>-\omega(\Vect{x},\Vect{z},\Vect{y})</right>
+				<left></left>
+				<center>=</center>
+				<right>\omega(\Vect{y},\Vect{z},\Vect{x})</right>
+				<left></left>
+				<center>=</center>
+				<right>-\omega(\Vect{z},\Vect{y},\Vect{x})</right>
+			</computation>
+			
+			<para>In this computation, the identity <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = \omega(\Vect{z},\Vect{x},\Vect{y})</latex> means that the triple of vectors <latex>(\Vect{x},\Vect{y},\Vect{z})</latex> represents the same orientation as the triple of vectors <latex>(\Vect{z},\Vect{x},\Vect{y})</latex>.</para>
+			<para>On the other hand, the identity <latex>\omega(\Vect{y},\Vect{z},\Vect{x}) = -\omega(\Vect{x},\Vect{z},\Vect{y})</latex> means that the respective triples of vectors represent opposite orientations of <latex>\RNr[3]</latex>.</para>
+		</block>
+	</sub.page.body>
+</sub.page>

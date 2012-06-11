@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="Sec_PointsCoordinates"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Points and Coordinates</title>
+      <plain.title>Points / Coordinates</plain.title>
+   </titles>
+   <intro>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Here we introduce our work environment: for each number <math>
+                     <latex>0,1,2,\dots</latex>
+                  </math> a straight space which is endless for <math>
+                     <latex>n\geq 1</latex>
+                  </math>. Here are the details.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </intro>
+   <legitimate.children>
+      <unit unitid="SubSec_NumbersAndnTuples">
+         <titles>
+            <title>Numbers and n-Tuples</title>
+            <plain.title>Numbers and n-Tuples</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Notation" id="NumbersR">
+                     <associate type="Explanation">
+                        <unit.ref unitId="Explntn_RealNumbers"/>
+                        <info>
+                           <info.caption>Explanation</info.caption>
+                           <para>
+                              <para.body>What are real numbers? – An explanation by example.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>We will use the symbol <math>
+                                 <latex>\RNr</latex>
+                              </math> to denote the set of all real numbers.
+					</para.body>
+                           <index.glossary>
+                              <term>
+                                 <math>
+                                    <latex>\RNr</latex>
+                                 </math>
+                              </term>
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\RNr</latex>
+                                       </math> denotes the set of all real numbers.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </def.body>
+                  </def>
+                  <def type="Definition" id="Def_NTuple">
+                     <caption>
+                        <math>
+                           <latex>n</latex>
+                        </math>-tuple of numbers</caption>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="Exa_nTuples"/>
+                        <info>
+                           <para>
+                              <para.body>Examples of <math>
+                                    <latex>n</latex>
+                                 </math>-tuples</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Quiz">
+                        <quiz.pack.ref quizPackID="Exe_QuizzesnTuples"/>
+                        <info>
+                           <para>
+                              <para.body>Quizzes on this <math>
+                                    <latex>n</latex>
+                                 </math>-tuples</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>Given an integer <math>
+                                 <latex>n\geq 1</latex>
+                              </math>, an <math>
+                                 <latex>n</latex>
+                              </math>-tuple of numbers
+					 is an expression of the form
+					<subordinate>
+                                 <hot>
+                                    <math>
+                                       <latex>(x_1,x_2,\dots ,x_n)</latex>
+                                    </math>
+                                 </hot>
+                                 <info>
+                                    <para>
+                                       <para.body>Read this expression as: ‘(n-tuple) x-one, x-two, to , x-n’.</para.body>
+                                    </para>
+                                 </info>
+                              </subordinate>.</para.body>
+                           <index.glossary>
+                              <term>
+                                 <math>
+                                    <latex>n</latex>
+                                 </math>-tuple</term>
+                              <info>
+                                 <para>
+                                    <para.body>An expression of the form <math>
+                                          <latex>(x_1,\dots ,x_n)</latex>
+                                       </math>, where <math>
+                                          <latex>x_1,\dots ,x_n</latex>
+                                       </math> are numbers.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                        <ul>
+                           <li>
+                              <para>
+                                 <para.body>The symbol <math>
+                                       <latex>x_1</latex>
+                                    </math> represents a number, called the first coordinate
+							
+							of the <math>
+                                       <latex>n</latex>
+                                    </math>-tuple.</para.body>
+                                 <index.glossary>
+                                    <term>coordinate of an <math>
+                                          <latex>n</latex>
+                                       </math>-tuple</term>
+                                    <info>
+                                       <para>
+                                          <para.body>Example for <math>
+                                                <latex>n=3</latex>
+                                             </math>: <math>
+                                                <latex>(5,1,2)</latex>
+                                             </math> is a <math>
+                                                <latex>3</latex>
+                                             </math>-tuple; i.e. it has 3 positions, each of which is occupied by a number. These numbers are the coordinates of the <math>
+                                                <latex>3</latex>
+                                             </math>-tuple. Thus the first coordinate is <math>
+                                                <latex>5</latex>
+                                             </math>. The second coordinate is <math>
+                                                <latex>1</latex>
+                                             </math>. The third coordinate is <math>
+                                                <latex>2</latex>
+                                             </math>.</para.body>
+                                       </para>
+                                    </info>
+                                 </index.glossary>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>The symbol <math>
+                                       <latex>x_2</latex>
+                                    </math> represents a number, called the second coordinate of the <math>
+                                       <latex>n</latex>
+                                    </math>-tuple.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>In general, if <math>
+                                       <latex>1\leq i\leq n</latex>
+                                    </math> is an integer, then the <math>
+                                       <latex>i</latex>
+                                    </math>-th coordinate of <math>
+                                       <latex>(x_1,\dots ,x_n)</latex>
+                                    </math> is the number <math>
+                                       <latex>x_i</latex>
+                                    </math> in the <math>
+                                       <latex>i</latex>
+                                    </math>-th position.</para.body>
+                              </para>
+                           </li>
+                        </ul>
+                     </def.body>
+                  </def>
+                  <def type="Definition" id="Def_EqualnTuples">
+                     <caption>Equal <math>
+                           <latex>n</latex>
+                        </math>-tuples</caption>
+                     <associate type="Example">
+                        <showme.pack.ref showmePackID="EqualExa_nTuples"/>
+                        <info>
+                           <info.caption>Examples</info.caption>
+                           <para>
+                              <para.body>Examples of (un-)equal <math>
+                                    <latex>n</latex>
+                                 </math>-tuples</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>Two <math>
+                                 <latex>n</latex>
+                              </math>-tuples <math>
+                                 <latex>(x_1,\dots ,x_n)</latex>
+                              </math> and <math>
+                                 <latex>(y_1,\dots ,y_n)</latex>
+                              </math> are equal if and only if, for each <math>
+                                 <latex>1\leq k\leq n</latex>
+                              </math>, <math>
+                                 <latex>x_k=y_k</latex>
+                              </math>.
+					</para.body>
+                           <index.glossary>
+                              <term>equal <math>
+                                    <latex>n</latex>
+                                 </math>tuples</term>
+                              <info>
+                                 <para>
+                                    <para.body>Two <math>
+                                          <latex>n</latex>
+                                       </math>-tuples <math>
+                                          <latex>(x_1,\dots ,x_n)</latex>
+                                       </math> and <math>
+                                          <latex>(y_1,\dots ,y_n)</latex>
+                                       </math> are equal if and only if, for each <math>
+                                          <latex>1\leq k\leq n</latex>
+                                       </math>, <math>
+                                          <latex>x_k=y_k</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </index.glossary>
+                        </para>
+                     </def.body>
+                  </def>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_SpaceRn">
+         <titles>
+            <title>The Space <math>
+                  <latex>\RNr[n]</latex>
+               </math>
+            </title>
+            <plain.title>The Space Rn</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <def type="Definition" id="Def_SetRn">
+                     <caption>The set <math>
+                           <latex>\RNr[n]</latex>
+                        </math>
+                     </caption>
+                     <associate type="Explanation">
+                        <info>
+                           <info.caption>Explanation: How to Read this</info.caption>
+                           <para>
+                              <para.body>Read this expression as follows:</para.body>
+                           </para>
+                           <para>
+                              <para.body>R n is defined to be the set of all n-tuples <math>
+                                    <latex>(x_1,\dots ,x_n)</latex>
+                                 </math> such that <math>
+                                    <latex>x_1,\dots, x_n</latex>
+                                 </math> are in <math>
+                                    <latex>\RNr</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <associate type="Explanation">
+                        <info>
+                           <info.caption>Explanation: on the Meaning of this Definition</info.caption>
+                           <para>
+                              <para.body>Thus, each <math>
+                                    <latex>n</latex>
+                                 </math>-tuple forms a single element in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math>. The collection of all such <math>
+                                    <latex>n</latex>
+                                 </math>-tuples forms the space <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </associate>
+                     <def.body>
+                        <para>
+                           <para.body>For a positive integer <math>
+                                 <latex>n</latex>
+                              </math>, the space <math>
+                                 <latex>\RNr[n]</latex>
+                              </math> is the set of all <math>
+                                 <latex>n</latex>
+                              </math>-tuples of numbers; in symbols</para.body>
+                           <index.symbol>
+                              <symbol>
+                                 <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math>
+                              </symbol>
+                              <info>
+                                 <para>
+                                    <para.body>Consists of the collection of all <math>
+                                          <latex>n</latex>
+                                       </math>-tuples <math>
+                                          <latex>(x_1,\dots ,x_n)</latex>
+                                       </math> of numbers.</para.body>
+                                 </para>
+                              </info>
+                           </index.symbol>
+                        </para>
+                        <math.display>
+                           <latex>\RNr[n]\ :=\ \Set{(x_1,\dots ,x_n)\st x_1,\dots ,x_n\in \RNr }</latex>
+                        </math.display>
+                     </def.body>
+                  </def>
+                  <para>
+                     <para.body>We refer to an <math>
+                           <latex>n</latex>
+                        </math>-tuple of <math>
+                           <latex>\RNr[n]</latex>
+                        </math> as a <strong>point</strong>.
+				 
+				This terminology is motivated by the following paragraph on ‘Visualizing <math>
+                           <latex>\RNr[n]</latex>
+                        </math>. We write <math>
+                           <latex>P(x_1,\dots ,x_n)</latex>
+                        </math> to say that a point, named <math>
+                           <latex>P</latex>
+                        </math>, is given by the <math>
+                           <latex>n</latex>
+                        </math>-tuple <math>
+                           <latex>(x_1,\dots ,x_n)</latex>
+                        </math>.</para.body>
+                     <index.symbol>
+                        <symbol>
+                           <math>
+                              <latex>P(x_1,\dots ,x_n)</latex>
+                           </math>
+                        </symbol>
+                        <info>
+                           <para>
+                              <para.body>A point of <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math> that has been named <math>
+                                    <latex>P</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.symbol>
+                     <index.glossary>
+                        <term>point</term>
+                        <info>
+                           <para>
+                              <para.body>An <math>
+                                    <latex>n</latex>
+                                 </math>-tuple of <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math>.</para.body>
+                           </para>
+                        </info>
+                     </index.glossary>
+                  </para>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+      <unit unitid="SubSec_VisualizeRn">
+         <titles>
+            <title>Visualizing <math>
+                  <latex>\RNr[n]</latex>
+               </math>
+            </title>
+            <plain.title>Visualizing Rn</plain.title>
+         </titles>
+         <body>
+            <block>
+               <block.body>
+                  <para>
+                     <para.body>For <math>
+                           <latex>n\leq 3</latex>
+                        </math>, we can visualize <math>
+                           <latex>\RNr[n]</latex>
+                        </math> as</para.body>
+                  </para>
+                  <ol>
+                     <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\RNr=\RNr[1]</latex>
+                              </math>
+                              <subordinate>
+                                 <hot>appears as a line</hot>
+                                 <companion>
+                                    <unit.ref unitId="Illu_VisualizeRn"/>
+                                    <info>
+                                       <para>
+                                          <para.body>An illustration of <math>
+                                                <latex>\RNr[1]</latex>
+                                             </math>
+                                          </para.body>
+                                       </para>
+                                    </info>
+                                 </companion>
+                              </subordinate>.
+					</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\RNr[2]</latex>
+                              </math>
+                              <subordinate>
+                                 <hot>appears as a plane</hot>
+                                 <companion>
+                                    <unit.ref unitId="Illu_VisualizeRn"/>
+                                    <info>
+                                       <para>
+                                          <para.body>An illustration of <math>
+                                                <latex>\RNr[2]</latex>
+                                             </math>
+                                          </para.body>
+                                       </para>
+                                    </info>
+                                 </companion>
+                              </subordinate>.</para.body>
+                        </para>
+                     </li>
+                     <li>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>\RNr[3]</latex>
+                              </math>
+                              <subordinate>
+                                 <hot>appears as the space surrounding us</hot>
+                                 <companion>
+                                    <unit.ref unitId="Illu_VisualizeRn"/>
+                                    <info>
+                                       <para>
+                                          <para.body>An illustration of <math>
+                                                <latex>\RNr[3]</latex>
+                                             </math>
+                                          </para.body>
+                                       </para>
+                                    </info>
+                                 </companion>
+                              </subordinate>.</para.body>
+                        </para>
+                     </li>
+                  </ol>
+                  <para>
+                     <para.body>If <math>
+                           <latex>n</latex>
+                        </math>  is <math>
+                           <latex>4</latex>
+                        </math> or greater, then <math>
+                           <latex>\RNr[n]</latex>
+                        </math> is not accessible to our visual sense. However, we can still (abstractly) imagine a space in which a point  <math>
+                           <latex>\Vect{0}</latex>
+                        </math>  has been designated as the origin, and in which  <math>
+                           <latex>n</latex>
+                        </math>  orthogonal lines through  <math>
+                           <latex>\Vect{0}</latex>
+                        </math> have been chosen together with a unit of measurement.</para.body>
+                  </para>
+                  <para>
+                     <para.body>The number <math>
+                           <latex>n</latex>
+                        </math> is called the dimension of <math>
+                           <latex>\RNr[n]</latex>
+                        </math>. It counts how many 
+				<subordinate>
+                           <hot>independent directions</hot>
+                           <info>
+                              <info.caption>How do we find directions of motion in <math>
+                                    <latex>\RNr[n]</latex>
+                                 </math>?</info.caption>
+                              <para>
+                                 <para.body>At any given point in <math>
+                                       <latex>\RNr[n]</latex>
+                                    </math> we can run in the direction given by any one of the coordinate axes.</para.body>
+                              </para>
+                              <ul>
+                                 <li>
+                                    <para>
+                                       <para.body>These directions of motion are independent from one another because it is impossible to combine any one of them from motions in the remaining ones.</para.body>
+                                    </para>
+                                 </li>
+                                 <li>
+                                    <para>
+                                       <para.body>There are no more independent directions of motion, as each direction of motion in <math>
+                                             <latex>\RNr[n]</latex>
+                                          </math> can be combined from suitable motions in the various coordinate directions.</para.body>
+                                    </para>
+                                 </li>
+                              </ul>
+                           </info>
+                        </subordinate> of freedom of motion the space of all <math>
+                           <latex>n</latex>
+                        </math>-tuples of numbers in <math>
+                           <latex>\RNr</latex>
+                        </math> has.</para.body>
+                  </para>
+                  <para>
+                     <para.body>It is convenient to define the space <math>
+                           <latex>\RNr[0]</latex>
+                        </math> to consist solely of the origin <math>
+                           <latex>\Vect{0}=(0)</latex>
+                        </math>. This is consistent with the idea that a <math>
+                           <latex>0</latex>
+                        </math>-dimensional space should not permit any movement.</para.body>
+                  </para>
+               </block.body>
+            </block>
+         </body>
+      </unit>
+   </legitimate.children>
+</unit>

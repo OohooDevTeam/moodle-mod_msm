@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE showme.pack	SYSTEM "../Symbols.dtd">
+<showme.pack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns="http://webmath.math.ualberta.ca/v1/Example"
+	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Example    http://webmath.math.ualberta.ca/Schemas/v1/Example.xsd"
+	id="Exa_MatrixGivesLinearMap">
+	<texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	
+	<title>Example: A Linear Map from a Matrix</title>
+	<caption>Example: A Linear Map from a Matrix</caption>
+	<showme>
+		<statement>
+			<para>The matrix</para>
+			
+			<math.display>
+				<latex>A = \left[\begin{array}{c} 2 \\ 1 \end{array}\right]</latex>
+			</math.display>
+			
+			<para>is of size <latex>(2,1)</latex>. Therefore it determines a linear map <latex>L\from \RNr[1] \to \RNr[2]</latex>, namely</para>
+			<math.display>
+				<latex>L(x) = \left[\begin{array}{c} 2 \\ 1 \end{array}\right]\cdot [x] = \left[\begin{array}{c} 2x \\ x \end{array}\right]</latex>
+			</math.display>
+			
+			<para>Thus <latex>L</latex> sends a <latex>1</latex>-tuple <latex>\Vect{x}=(x)</latex> to the coordinate pair <latex>(2x,x)</latex>. Now investigate the transformation properties of <latex>L</latex>.</para>
+		</statement>
+		<answer type="Solution">
+			<para>We investigate the transformation properties of <latex>L</latex> by evaluating it on some small integers</para>
+			
+			<figure>
+				<img src="ims/LinearTrafo2To1.png"></img><!-- svg available -->
+			</figure>
+			
+			<para>So we see that <latex>L</latex> transforms the line 
+				<subordinate>
+					<hot><latex>\RNr</latex></hot>
+					<info><para>This is the domain of <latex>L</latex></para></info>
+				</subordinate>
+				on the left into the 
+				<subordinate>
+					<hot>green line</hot>
+					<info><para>The green line is the image of <latex>L</latex>.</para></info>
+				</subordinate>
+				on the right. If we look more carefully, we can notice that in the process <latex>\RNr</latex> gets stretched by a factor of <latex>\sqrt{5}</latex>. How do we see this? Each interval of length <latex>1</latex> in <latex>\RNr</latex> is transformed into the hypothenuse of the right triangle with edges of length <latex>2</latex> and <latex>1</latex>. </para>
+		</answer>
+	</showme>	
+	
+	
+	
+	
+	
+	
+	<showme>
+		<statement>
+			<para>The matrix</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+A = \left[
+\begin{array}{rr}
+0 & -1 \\
+1 & 0
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>has size <latex>(2,2)</latex>. So it determines a linear transformation <latex>R\from \RNr[2]\to \RNr[2]</latex>, namely</para>
+			
+			<math.display>
+				<latex>
+					<![CDATA[
+R(x,y) = \left[
+\begin{array}{rr}
+0 & -1 \\
+1 & 0
+\end{array}\right]
+\left[
+\begin{array}{r}
+x \\ y
+\end{array}\right] =
+\left[
+\begin{array}{r}
+-y \\ x
+\end{array}\right]
+					]]>
+				</latex>
+			</math.display>
+			
+			<para>In other words, if <latex>(x,y)\in\RNr[2]</latex> is arbitrary, then <latex>R(x,y)=(-y,x)</latex>. Now investigate the transformation properties of <latex>L</latex> by applying it to pairs <latex>(x,y)</latex> where <latex>x,y</latex> are small integers.</para>
+		</statement>
+		
+		<answer type="Solution">
+			<para>We investigate the transformation properties of <latex>R</latex> by evaluating it on pairs of small integers</para>
+			<figure>
+				<img src="ims/Rotation90.png"></img><!-- svg available -->
+			</figure>
+			
+			<computation>
+				<left>R(1,0)</left>
+				<center>=</center>
+				<right>(0,1)</right>
+				<left>R(0,1)</left>
+				<center>=</center>
+				<right>(-1,0)</right>
+			</computation>
+			
+			<para>Inspection of these 
+				<subordinate>
+					<hot>sample points</hot>
+					<info>
+						<para>To confirm this impression, go ahead and compute the effect of <latex>R</latex> on some more sample points, e.g. <latex>(-1,0),(0,-1),(1,1),(-1,1)</latex>, etc.</para>
+					</info>
+				</subordinate>
+				
+				suggests that <latex>R</latex> transforms the plane <latex>\RNr[2]</latex> by rotating it counter clockwise through the angle of  90 degrees. This is, indeed, the case as we will learn later on.</para>
+		</answer>
+	</showme>
+</showme.pack>

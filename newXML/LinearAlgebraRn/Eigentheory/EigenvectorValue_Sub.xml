@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unit
+  SYSTEM "../Symbols.dtd">
+<unit xmlns="Unit"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      unitid="EigenvectorValue_Sub"
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+   <titles>
+      <title>Eigenvector - Illustration</title>
+   </titles>
+   <body>
+      <block>
+         <block.body>
+            <para>
+               <para.body>In the picture below <math>
+                     <latex>\Vect{v}</latex>
+                  </math> is an eigenvector of the linear transformation <math>
+                     <latex>L</latex>
+                  </math> (the transformation described by an <math>
+                     <latex>(n,n)</latex>
+                  </math>-matrix <math>
+                     <latex>\Mtrx{A}</latex>
+                  </math>) because</para.body>
+            </para>
+            <ul>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\Vect{v} \neq \Vect{0}</latex>
+                        </math>, and</para.body>
+                  </para>
+               </li>
+               <li>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>L(\Vect{v})</latex>
+                        </math> is a scalar multiple of <math>
+                           <latex>\Vect{v}</latex>
+                        </math>.</para.body>
+                  </para>
+               </li>
+            </ul>
+            <media type="image" active="0" inline="0">
+               <img src="ims/EigenLine.png"/>
+            </media>
+         </block.body>
+      </block>
+      <block>
+         <block.body>
+            <para>
+               <para.body>On the other hand, <math>
+                     <latex>\Vect{w}</latex>
+                  </math> is not an eigenvector of <math>
+                     <latex>L</latex>
+                  </math>: <math>
+                     <latex>L(\Vect{w})</latex>
+                  </math> is linearly independent of <math>
+                     <latex>\Vect{w}</latex>
+                  </math>, hence cannot be a scalar multiple of <math>
+                     <latex>\Vect{w}</latex>
+                  </math>.</para.body>
+            </para>
+         </block.body>
+      </block>
+   </body>
+</unit>
