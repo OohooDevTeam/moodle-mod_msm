@@ -14,6 +14,10 @@ class MathIndex extends Element
 {
 
     public $position;
+    public $term;
+    public $symbol;
+    public $symbol_type;
+    public $sortstring;
 
     function __construct($xmlpath = '')
     {
@@ -42,7 +46,7 @@ class MathIndex extends Element
         switch ($nameofElement)
         {
             case('index.symbol'):
-                $this->symbol = $this->getDomAttribute($DomElement->getElementsByTagName('symbol'));
+                $this->symbol = $this->getContent($DomElement->getElementsByTagName('symbol')->item(0));
                 $this->symbol_type = $DomElement->getElementsByTagName('symbol')->item(0)->getAttribute('type');
                 $this->sortstring = $this->getDomAttribute($DomElement->getElementsByTagName('sortstring'));
 
@@ -59,7 +63,7 @@ class MathIndex extends Element
                 break;
 
             case('index.glossary'):
-                $this->term = $this->getDomAttribute($DomElement->getElementsByTagName('term'));
+                $this->term = $this->getContent($DomElement->getElementsByTagName('term')->item(0));
 
                 $infos = $DomElement->getElementsByTagName('info');
 
@@ -96,6 +100,47 @@ class MathIndex extends Element
 
                 break;
         }
+      
+    }
+    
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+        if(!empty($this->symbol))
+        {
+            echo "symbol here?";
+            $data->symbol = $this->symbol;
+            $data->symbol_type = $this->symbol_type;
+            $data->sortstring = $this->sortstring;
+            
+            $this->id = $DB->insert_record($this->symboltable, $data);
+        }
+        
+        if(!empty($this->names))
+        {
+            echo "name here?";
+            foreach($this->names as $key=>$name)
+            {
+                $name->saveIntoDb($name->position, 'index');
+            }
+        }
+        
+        if(!empty($this->term))
+        {
+            echo "term here?";
+            $data->term = $this->term;
+            $this->id = $DB->insert_record($this->glossarytable, $data);
+        }
+        
+        foreach($this->infos as $info)
+        {
+            $info->saveIntoDb($info->position);
+        }
+        
+          
+        echo "index";
+        print_object($this);
     }
 
 }

@@ -55,12 +55,12 @@ class Showme extends Element
 
             foreach ($this->processSubordinate($st, $position)->indexglossarys as $indexglossary)
             {
-                $this->indexglossarys[] = $subordinate;
+                $this->indexglossarys[] = $indexglossary;
             }
 
             foreach ($this->processSubordinate($st, $position)->indexsymbols as $indexsymbol)
             {
-                $this->indexsymbols[] = $subordinate;
+                $this->indexsymbols[] = $indexsymbol;
             }
 
             foreach ($this->processSubordinate($st, $position)->content as $content)

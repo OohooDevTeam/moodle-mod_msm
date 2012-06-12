@@ -48,24 +48,75 @@ class ExtraInfo extends Element
                 break;
         }
 
-       $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0)); 
+        foreach ($DomElement->childNodes as $child)
+        {
+            if ($child->nodeType == XML_ELEMENT_NODE)
+            {
+                if ($child->tagName != 'caption')
+                {
+                    foreach ($this->processSubordinate($child, $position)->subordinates as $subordinate)
+                    {
+                        $this->subordinates[] = $subordinate;
+                    }
 
-        $position = $position + 1;
-        $content = new stdClass();
-        $content = $this->getContent($DomElement, $position, $this->xmlpath);
-        $this->content = $content->content;
+                    foreach ($this->processSubordinate($child, $position)->indexauthors as $indexauthor)
+                    {
+                        $this->indexauthors[] = $indexauthor;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->indexglossarys as $indexglossary)
+                    {
+                        $this->indexglossarys[] = $indexglossary;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->indexsymbols as $indexsymbol)
+                    {
+                        $this->indexsymbols[] = $indexsymbol;
+                    }
+
+                    foreach ($this->processSubordinate($child, $position)->content as $content)
+                    {
+                        $this->content .= $content;
+                    }
+                }
+                else
+                {
+                    $this->caption = $this->getContent($child);
+                }
+            }
+        }
     }
-    
+
     function saveIntoDb($position)
     {
         global $DB;
-        
+
         $data = new stdClass();
         $data->name = $this->name;
-        $data->caption = $this->caption->content;
+        $data->caption = $this->caption;
         $data->extra_info_content = $this->content;
-        
+
         $this->id = $DB->insert_record($this->tablename, $data);
+
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
+        }
     }
 
 }

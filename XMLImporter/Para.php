@@ -50,84 +50,32 @@ class Para extends Element
        
        foreach($this->processSubordinate($DomElement, $position)->indexauthors as $indexauthor)
        {
+           echo "index author";
+           print_object($indexauthor);
            $this->indexauthors[] = $indexauthor;
        }
        
        foreach($this->processSubordinate($DomElement, $position)->indexglossarys as $indexglossary)
        {
-           $this->indexglossarys[] = $subordinate;
+           echo "index glossary";
+           print_object($indexglossary);
+           $this->indexglossarys[] = $indexglossary;
        }
        
        foreach($this->processSubordinate($DomElement, $position)->indexsymbols as $indexsymbol)
        {
-           $this->indexsymbols[] = $subordinate;
+           echo "index symbol";
+           print_object($indexsymbol);
+           $this->indexsymbols[] = $indexsymbol;
        }
        
        foreach($this->processSubordinate($DomElement, $position)->content as $content)
        {
            $this->content[] = $content;
        }
-
-//        $doc = new DOMDocument();
-//        
-//        $position = $position + 1;
-//
-//        $subordinates = $DomElement->getElementsByTagName('subordinate');
-//       
-//        $length = $subordinates->length;
-//
-//        for ($i = 0; $i < $length; $i++)
-//        {
-//            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
-//
-//            $position = $position + 1;
-//            $subordinate = new Subordinate($this->xmlpath);
-//            $subordinate->loadFromXml($subordinates->item(0), $position);
-//            $this->subordinates[] = $subordinate;
-//
-//            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
-//        }
-//        
-//
-//        $indexauthors = $DomElement->getElementsByTagName('index.author');
-//        $ialength = $indexauthors->length;
-//        for ($i = 0; $i < $ialength; $i++)
-//        {
-//            $position = $position + 1;
-//            $indexauthor = new MathIndex($this->xmlpath);
-//            $indexauthor->loadFromXml($indexauthors->item(0), $position);
-//            $this->indexauthors[] = $indexauthor;
-//
-//            $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
-//        }
-//
-//        $indexglossarys = $DomElement->getElementsByTagName('index.glossary');
-//        $iglength = $indexglossarys->length;
-//        for ($i = 0; $i < $iglength; $i++)
-//        {
-//            $position = $position + 1;
-//            $indexglossary = new MathIndex($this->xmlpath);
-//            $indexglossary->loadFromXml($indexglossarys->item(0), $position);
-//            $this->indexglossarys[] = $indexglossary;
-//
-//            $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
-//        }
-//       
-//        $indexsymbols = $DomElement->getElementsByTagName('index.symbol');
-//        $islength = $indexsymbols->length;
-//        for ($i = 0; $i < $islength; $i++)
-//        {
-//            $position = $position + 1;
-//            $indexsymbol = new MathIndex($this->xmlpath);
-//            $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
-//            $this->indexsymbols[] = $indexsymbol;
-//
-//            $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
-//        }
-//
-//        $element = $doc->importNode($DomElement, true);
-//        $this->content[] = $doc->saveXML($element);
-//        }
+       
+//       echo "para content";
+//       print_object($this);
     }
 
     function saveIntoDb($position)
@@ -160,6 +108,21 @@ class Para extends Element
         foreach ($this->subordinates as $key => $subordinate)
         {
             $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
         }
     }
 

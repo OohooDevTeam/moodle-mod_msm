@@ -52,18 +52,62 @@ class PartTheorem extends Element
 
             foreach ($this->processSubordinate($parb, $position)->indexglossarys as $indexglossary)
             {
-                $this->indexglossarys[] = $subordinate;
+                $this->indexglossarys[] = $indexglossary;
             }
 
             foreach ($this->processSubordinate($parb, $position)->indexsymbols as $indexsymbol)
             {
-                $this->indexsymbols[] = $subordinate;
+                $this->indexsymbols[] = $indexsymbol;
             }
 
             foreach ($this->processSubordinate($parb, $position)->content as $content)
             {
                 $this->content[] = $content;
             }
+        }
+    }
+
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+
+        $data->partid = $this->partid;
+        $data->counter = $this->counter;
+        $data->equivalence_mark = $this->equiv_mark;
+        $data->caption = $this->caption;
+
+        if (!empty($this->content))
+        {
+            foreach ($this->content as $content)
+            {
+                $data->part_content = $content;
+                $this->id = $DB->insert_record($this->tablename, $data);
+            }
+        }
+        else
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
+
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
         }
     }
 

@@ -81,6 +81,21 @@ class Theorem extends Element
         $data->description = $this->description;
         
         $this->id = $DB->insert_record($this->tablename, $data);
+        
+        foreach($this->associates as $key=>$associate)
+        {
+            $associate->saveIntoDb($associate->position);
+        }
+        
+        foreach($this->statements as $key=>$statement)
+        {
+            $statement->saveIntoDb($statement->position);
+        }
+        
+//        foreach($this->proofs as $key=>$proof)
+//        {
+//            $proof->saveIntoDb($proof->position);
+//        }
     }
 
 }

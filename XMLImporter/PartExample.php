@@ -58,12 +58,12 @@ class PartExample extends Element
 
             foreach ($this->processSubordinate($peb, $position)->indexglossarys as $indexglossary)
             {
-                $this->indexglossarys[] = $subordinate;
+                $this->indexglossarys[] = $indexglossary;
             }
 
             foreach ($this->processSubordinate($peb, $position)->indexsymbols as $indexsymbol)
             {
-                $this->indexsymbols[] = $subordinate;
+                $this->indexsymbols[] = $indexsymbol;
             }
 
             foreach ($this->processSubordinate($peb, $position)->content as $content)

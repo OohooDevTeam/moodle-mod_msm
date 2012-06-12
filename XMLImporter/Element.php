@@ -85,8 +85,16 @@ abstract class Element
 
         $subordinates = $DomElement->getElementsByTagName('subordinate');
 
-        $length = $subordinates->length;
+        $length = 0;
 
+        //to eliminate any nested subordinates from being counted when getting the length of the subordinates
+        foreach ($subordinates as $s)
+        {
+            if ($s->parentNode->parentNode->parentNode->tagName != 'info')
+            {
+                $length++;
+            }
+        }
         for ($i = 0; $i < $length; $i++)
         {
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
@@ -139,6 +147,11 @@ abstract class Element
         $element = $doc->importNode($DomElement, true);
         $content->content[] = $doc->saveXML($element);
 
+        echo "element index";
+        print_object($content->indexglossarys);
+         print_object($content->indexsymbols);
+          print_object($content->indexauthors);
+        
         return $content;
     }
 

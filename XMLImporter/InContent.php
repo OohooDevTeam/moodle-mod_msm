@@ -14,6 +14,7 @@ class InContent extends Element
 {
 
     public $position;
+    public $content;
 
     function __construct($xmlpath = '')
     {
@@ -28,8 +29,9 @@ class InContent extends Element
      */
     public function loadFromXml($DomElement, $position = '')
     {
+        $this->content = '';
         $this->position = $position;
-        $this->content = array();
+        //$this->content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -44,10 +46,12 @@ class InContent extends Element
                 $this->type = 'ordered';
                 $this->additional_attribute = $DomElement->getAttribute('type');
                 break;
+
             case('ul'):
                 $this->type = 'unordered';
                 $this->additional_attribute = $DomElement->getAttribute('bullet');
                 break;
+
             case('math.display'):
                 $this->type = 'display';
                 $this->additional_attribute = $DomElement->getAttribute('id');
@@ -56,36 +60,74 @@ class InContent extends Element
 
         $position = $position + 1;
 
-        $parabodys = $DomElement->getElementsByTagName('para.body');
+//                $ols = $DomElement->getElementsByTagName('ol');
         $doc = new DOMDocument();
 
-        foreach ($parabodys as $p)
+//                foreach ($ols as $ol)
+//                {
+
+        foreach ($this->processSubordinate($DomElement, $position)->subordinates as $subordinate)
         {
+            $this->subordinates[] = $subordinate;
+        }
 
-            foreach ($this->processSubordinate($p, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
+        foreach ($this->processSubordinate($DomElement, $position)->indexauthors as $indexauthor)
+        {
+            $this->indexauthors[] = $indexauthor;
+        }
 
-            foreach ($this->processSubordinate($p, $position)->indexauthors as $indexauthor)
-            {
-                $this->indexauthors[] = $indexauthor;
-            }
+        foreach ($this->processSubordinate($DomElement, $position)->indexglossarys as $indexglossary)
+        {
+            $this->indexglossarys[] = $indexglossary;
+        }
 
-            foreach ($this->processSubordinate($p, $position)->indexglossarys as $indexglossary)
-            {
-                $this->indexglossarys[] = $subordinate;
-            }
+        foreach ($this->processSubordinate($DomElement, $position)->indexsymbols as $indexsymbol)
+        {
+            $this->indexsymbols[] = $indexsymbol;
+        }
 
-            foreach ($this->processSubordinate($p, $position)->indexsymbols as $indexsymbol)
-            {
-                $this->indexsymbols[] = $subordinate;
-            }
+        foreach ($this->processSubordinate($DomElement, $position)->content as $content)
+        {
+            $this->content .= $content;
+        }
+//                }
+    }
 
-            foreach ($this->processSubordinate($p, $position)->content as $content)
-            {
-                $this->content[] = $content;
-            }
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+
+        $data->additional_attribute = $this->additional_attribute;
+        $data->type = $this->type;
+        if (!empty($this->content))
+        {
+            $data->content = $this->content;
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        else
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        
+         foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
         }
     }
 

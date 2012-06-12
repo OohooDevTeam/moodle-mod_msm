@@ -59,12 +59,12 @@ class Example extends Element
 
             foreach ($this->processSubordinate($statement_ex, $position)->indexglossarys as $indexglossary)
             {
-                $this->indexglossarys[] = $subordinate;
+                $this->indexglossarys[] = $indexglossary;
             }
 
             foreach ($this->processSubordinate($statement_ex, $position)->indexsymbols as $indexsymbol)
             {
-                $this->indexsymbols[] = $subordinate;
+                $this->indexsymbols[] = $indexsymbol;
             }
 
             foreach ($this->processSubordinate($statement_ex, $position)->content as $content)

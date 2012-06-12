@@ -35,9 +35,13 @@ class Person extends Element
         {
             $this->type = 'author';
         }
-        else
+        else if ($DomElement->parentNode->tagName == 'contributors')
         {
             $this->type = 'contributor';
+        }
+        else
+        {
+            $this->type = 'index';
         }
 
         $this->name = array();

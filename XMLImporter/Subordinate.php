@@ -63,35 +63,33 @@ class Subordinate extends Element
                             {
                                 case('comment.ref'):
                                     $commentrefID = $grandChild->getAttribute('commentID');
-                                    
-                                    if(!empty($commentrefID))
+
+                                    if (!empty($commentrefID))
                                     {
                                         //when db is set up, add code to check the db records first
                                         // then if there are no records with specified ID, then..
                                         // find the file with comment with specified ID
                                         $filepath = $this->findFile($commentrefID);
-                                        
+
                                         $parser = new DOMDocument();
                                         $parser->load($filepath);
-                                        
-                                        
+
+
                                         // may need to change this code to load the entire file
                                         // containing the specified comment
-                                       $comments = $parser->getElementsByTagName('comment');
-                                       foreach($comments as $c)
-                                       {
-                                          $id = $c->getAttribute('id');
-                                          
-                                          if($id == $commentrefID)
-                                          {
-                                              $position = $position+1;
-                                              $comment = new Comment($this->xmlpath);
-                                              $comment->loadFromXml($c, $position);
-                                              $this->companion = $comment;
-                                          }
-                                          
-                                       }
-                                       
+                                        $comments = $parser->getElementsByTagName('comment');
+                                        foreach ($comments as $c)
+                                        {
+                                            $id = $c->getAttribute('id');
+
+                                            if ($id == $commentrefID)
+                                            {
+                                                $position = $position + 1;
+                                                $comment = new Comment($this->xmlpath);
+                                                $comment->loadFromXml($c, $position);
+                                                $this->companion = $comment;
+                                            }
+                                        }
                                     }
                             }
                         }
@@ -100,20 +98,17 @@ class Subordinate extends Element
             }
         }
     }
-    
+
     function saveIntoDb($position)
     {
         global $DB;
-        
+
         $data = new stdClass();
         $data->hot = $this->hot;
-        
-//        echo "hot in sub";
-//        print_object($data->hot);
-        
+
         $this->id = $DB->insert_record($this->tablename, $data);
-        
-        foreach($this->infos as $key=>$info)
+
+        foreach ($this->infos as $key => $info)
         {
             $info->saveIntoDb($info->position);
         }
@@ -139,7 +134,7 @@ class Subordinate extends Element
                     @$DomParser->load($this->xmlpath . '/' . $file);
 
                     $comment = $Domparser->getElementsByTagName('comment')->item(0);
-                    if(!empty($comment))
+                    if (!empty($comment))
                     {
                         $commentID = $comment->getAttribute('id');
 
@@ -161,7 +156,7 @@ class Subordinate extends Element
                             return $path;
                         }
                     }
-                    
+
                     $theorem = $Domparser->getElementsByTagName('theorem')->item(0);
                     if (!empty($theorem))
                     {
@@ -173,7 +168,7 @@ class Subordinate extends Element
                             return $path;
                         }
                     }
-                    
+
                     $showmepack = $Domparser->getElementsByTagName('showme.pack')->item(0);
                     if (!empty($showmepack))
                     {
@@ -185,7 +180,7 @@ class Subordinate extends Element
                             return $path;
                         }
                     }
-                    
+
                     $quizpack = $Domparser->getElementsByTagName('quiz.pack')->item(0);
                     if (!empty($quizpack))
                     {
@@ -197,21 +192,20 @@ class Subordinate extends Element
                             return $path;
                         }
                     }
-                    
+
                     // need to add code for scientist.ref...??
-                    
+
                     $unit = $Domparser->getElementsByTagName('unit')->item(0);
-                    if(!empty($unit))
+                    if (!empty($unit))
                     {
                         $unitID = $unit->getAttribute('unitId');
-                        
-                        if($unitID == $elementID)
+
+                        if ($unitID == $elementID)
                         {
                             $path = $this->xmlpath . '/' . $file;
                             return $path;
                         }
                     }
-                    
                 }
             }
         }

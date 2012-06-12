@@ -39,6 +39,8 @@ class Comment extends Element
         $this->content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
 
 
         $associates = $DomElement->getElementsByTagName('associate');
@@ -69,12 +71,12 @@ class Comment extends Element
 
             foreach ($this->processSubordinate($c, $position)->indexglossarys as $indexglossary)
             {
-                $this->indexglossarys[] = $subordinate;
+                $this->indexglossarys[] = $indexglossary;
             }
 
             foreach ($this->processSubordinate($c, $position)->indexsymbols as $indexsymbol)
             {
-                $this->indexsymbols[] = $subordinate;
+                $this->indexsymbols[] = $indexsymbol;
             }
 
             foreach ($this->processSubordinate($c, $position)->content as $content)
@@ -110,21 +112,30 @@ class Comment extends Element
             $this->id = $DB->insert_record($this->tablename, $data);
         }
 
-//        foreach($this->associates as $key=>$associate)
-//        {
-//            $associate->saveIntoDb($associate->position);
-//        }
-//           foreach($this->subordinates as $key=>$subordinates)
-//           {
-//               foreach($subordinates as $subkey=>$subordinate)
-//               {
-//                   $subordinate->saveIntoDb($subordinate->position);
-//               }
-//           }
-//        foreach($this->indexs as $key=>$index)
-//        {
-//            $index->saveIntoDb($index->position);
-//        }
+        foreach ($this->associates as $key => $associate)
+        {
+            $associate->saveIntoDb($associate->position);
+        }
+
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
+        }
     }
 
 }

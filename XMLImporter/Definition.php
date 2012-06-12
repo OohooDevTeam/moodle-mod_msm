@@ -14,6 +14,7 @@ class Definition extends Element
 {
 
     public $position;
+    public $content;
 
     /**
      *
@@ -43,8 +44,8 @@ class Definition extends Element
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
 
         $this->associates = array();
-      
-        $this->content = array();
+
+        //$this->content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -79,17 +80,17 @@ class Definition extends Element
 
             foreach ($this->processSubordinate($d, $position)->indexglossarys as $indexglossary)
             {
-                $this->indexglossarys[] = $subordinate;
+                $this->indexglossarys[] = $indexglossary;
             }
 
             foreach ($this->processSubordinate($d, $position)->indexsymbols as $indexsymbol)
             {
-                $this->indexsymbols[] = $subordinate;
+                $this->indexsymbols[] = $indexsymbol;
             }
 
             foreach ($this->processSubordinate($d, $position)->content as $content)
             {
-                $this->content[] = $content;
+                $this->content .= $content;
             }
         }
     }
@@ -109,12 +110,10 @@ class Definition extends Element
 
         if (!empty($this->content))
         {
-            foreach ($this->content as $content)
-            {
-                $data->def_content = $content;
-              
-                $this->id = $DB->insert_record($this->tablename, $data);
-            }
+
+            $data->def_content = $this->content;
+
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
         else // has def.body as child of def
         {
@@ -124,6 +123,26 @@ class Definition extends Element
         foreach ($this->associates as $key => $associate)
         {
             $associate->saveIntoDb($associate->position);
+        }
+
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
         }
     }
 

@@ -101,6 +101,26 @@ class Associate extends Element
         {
             $info->saveIntoDb($info->position);
         }
+        
+        foreach($this->subunits as $key=>$unit)
+        {
+            $unit->saveIntoDb($unit->position);
+        }
+        
+        foreach($this->theorems as $key=>$theorem)
+        {
+            $theorem->saveIntoDb($theorem->position);
+        }
+        
+        foreach($this->defs as $key=>$def)
+        {
+            $def->saveIntoDb($def->position);
+        }
+        
+//        foreach($this->refs as $key=>$ref)
+//        {
+//            $ref->saveIntoDb($ref->position);
+//        }
     }
 
     /**

@@ -32,47 +32,46 @@ class MathInfo extends Element
     {
         $this->position = $position;
 
-        $this->content = array();
+        //$this->content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
 
-
-        foreach ($DomElement->childNodes as $infoChild)
+        foreach ($DomElement->childNodes as $child)
         {
-            if ($infoChild->nodeType == XML_ELEMENT_NODE)
+            if ($child->nodeType == XML_ELEMENT_NODE)
             {
-                if ($infoChild->tagName == 'info.caption')
+                if ($child->tagName != 'info.caption')
                 {
-                    $this->caption = $this->getContent($infoChild);
-                }
-                else
-                {
-                    foreach ($this->processSubordinate($infoChild, $position)->subordinates as $subordinate)
+                    foreach ($this->processSubordinate($child, $position)->subordinates as $subordinate)
                     {
                         $this->subordinates[] = $subordinate;
                     }
 
-                    foreach ($this->processSubordinate($infoChild, $position)->indexauthors as $indexauthor)
+                    foreach ($this->processSubordinate($child, $position)->indexauthors as $indexauthor)
                     {
                         $this->indexauthors[] = $indexauthor;
                     }
 
-                    foreach ($this->processSubordinate($infoChild, $position)->indexglossarys as $indexglossary)
+                    foreach ($this->processSubordinate($child, $position)->indexglossarys as $indexglossary)
                     {
-                        $this->indexglossarys[] = $subordinate;
+                        $this->indexglossarys[] = $indexglossary;
                     }
 
-                    foreach ($this->processSubordinate($infoChild, $position)->indexsymbols as $indexsymbol)
+                    foreach ($this->processSubordinate($child, $position)->indexsymbols as $indexsymbol)
                     {
-                        $this->indexsymbols[] = $subordinate;
+                        $this->indexsymbols[] = $indexsymbol;
                     }
 
-                    foreach ($this->processSubordinate($infoChild, $position)->content as $content)
+                    foreach ($this->processSubordinate($child, $position)->content as $content)
                     {
-                        $this->content[] = $content;
+                        $this->content .= $content;
                     }
+                }
+                else
+                {
+                    $this->caption = $this->getContent($child);
                 }
             }
         }
@@ -89,16 +88,33 @@ class MathInfo extends Element
         }
         if (!empty($this->content))
         {
-            foreach ($this->content as $key => $content)
-            {
-                $data->info_content = $content;
+            $data->info_content = $this->content;
 
-                $this->id = $DB->insert_record($this->tablename, $data);
-            }
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
         else
         {
             $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        
+         foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
         }
     }
 

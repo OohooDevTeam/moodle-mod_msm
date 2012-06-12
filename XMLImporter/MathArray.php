@@ -34,17 +34,13 @@ class MathArray extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
-         $this->suboridnates = array();
+        $this->subordinates = array();
 
         $this->string_id = $DomElement->getAttribute('id');
         $this->no_column = $DomElement->getAttribute('column'); //specifies number of column
 
         $position = $position + 1;
 
-//        $parabodys = $DomElement->getElementsByTagName('para.body');
-//
-//        foreach ($parabodys as $parabody)
-//        {
         foreach ($this->processSubordinate($DomElement, $position)->subordinates as $subordinate)
         {
             $this->subordinates[] = $subordinate;
@@ -57,19 +53,59 @@ class MathArray extends Element
 
         foreach ($this->processSubordinate($DomElement, $position)->indexglossarys as $indexglossary)
         {
-            $this->indexglossarys[] = $subordinate;
+            $this->indexglossarys[] = $indexglossary;
         }
 
         foreach ($this->processSubordinate($DomElement, $position)->indexsymbols as $indexsymbol)
         {
-            $this->indexsymbols[] = $subordinate;
+            $this->indexsymbols[] = $indexsymbol;
         }
 
         foreach ($this->processSubordinate($DomElement, $position)->content as $content)
         {
             $this->content[] = $content;
         }
-//        }
+    }
+
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+        $data->string_id = $this->string_id;
+        $data->no_column = $this->no_column;
+
+        if (!empty($this->content))
+        {
+            foreach ($this->content as $content)
+            {
+                $data->math_array_content = $content;
+                $this->id = $DB->insert_record($this->tablename, $data);
+            }
+        }
+        else
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
+
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
+        }
     }
 
 }
