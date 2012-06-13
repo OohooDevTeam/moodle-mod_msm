@@ -74,13 +74,45 @@ abstract class Element
 
     function processSubordinate($DomElement, $position)
     {
-        $elementcontent = new stdClass();
-        $elementcontent->content = array();
-        $elementcontent->subordinates = array();
-        $elementcontent->indexauthors = array();
-        $elementcontent->indexglossarys = array();
-        $elementcontent->indexsymbols = array();
-        $doc = new DOMDocument();
+        $arrayOfSubordinates = array();
+
+        $position = $position + 1;
+        $subordinates = $DomElement->getElementsByTagName('subordinate');
+        $length = 0;
+
+        //to eliminate any nested subordinates from being counted when getting the length of the subordinates
+        foreach ($subordinates as $s)
+        {
+            if ($s->parentNode->parentNode->parentNode->tagName != 'info')
+            {
+                $length++;
+            }
+        }
+        for ($i = 0; $i < $length; $i++)
+        {
+            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
+
+            $position = $position + 1;
+            $subordinate = new Subordinate($this->xmlpath);
+            $subordinate->loadFromXml($subordinates->item($i), $position);
+            $arrayOfSubordinates[] = $subordinate;
+
+//            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
+        }
+        return $arrayOfSubordinates;
+    }
+
+    function processContent($DomElement, $position)
+    {
+//        $arrayOfSubordinates = array();
+//        $content["content"] = array();
+//        $content["subordinates"] = array();
+//        $content["indexauthors"] = array();
+//        $content["indexglossarys"] = array();
+//        $content["indexsymbols"] = array();
+//        $doc = new DOMDocument();
+        
+        $content = array();
 
         $position = $position + 1;
 
@@ -100,23 +132,22 @@ abstract class Element
         {
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
 
-            $position = $position + 1;
-            $subordinate = new Subordinate($this->xmlpath);
-            $subordinate->loadFromXml($subordinates->item(0), $position);
-            $elementcontent->subordinates[] = $subordinate;
+//            $position = $position + 1;
+//            $subordinate = new Subordinate($this->xmlpath);
+//            $subordinate->loadFromXml($subordinates->item(0), $position);
+//            $arrayOfSubordinates[] = $subordinate;
 
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
-
 
         $indexauthors = $DomElement->getElementsByTagName('index.author');
         $ialength = $indexauthors->length;
         for ($i = 0; $i < $ialength; $i++)
         {
-            $position = $position + 1;
-            $indexauthor = new MathIndex($this->xmlpath);
-            $indexauthor->loadFromXml($indexauthors->item(0), $position);
-            $elementcontent->indexauthors[] = $indexauthor;
+//            $position = $position + 1;
+//            $indexauthor = new MathIndex($this->xmlpath);
+//            $indexauthor->loadFromXml($indexauthors->item(0), $position);
+//            $content["indexauthor"][] = $indexauthor;
 
             $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
         }
@@ -125,10 +156,10 @@ abstract class Element
         $iglength = $indexglossarys->length;
         for ($i = 0; $i < $iglength; $i++)
         {
-            $position = $position + 1;
-            $indexglossary = new MathIndex($this->xmlpath);
-            $indexglossary->loadFromXml($indexglossarys->item(0), $position);
-            $elementcontent->indexglossarys[] = $indexglossary;
+//            $position = $position + 1;
+//            $indexglossary = new MathIndex($this->xmlpath);
+//            $indexglossary->loadFromXml($indexglossarys->item(0), $position);
+//            $content["indexglossarys"][] = $indexglossary;
 
             $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
         }
@@ -137,18 +168,78 @@ abstract class Element
         $islength = $indexsymbols->length;
         for ($i = 0; $i < $islength; $i++)
         {
-            $position = $position + 1;
-            $indexsymbol = new MathIndex($this->xmlpath);
-            $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
-            $elementcontent->indexsymbols[] = $indexsymbol;
+//            $position = $position + 1;
+//            $indexsymbol = new MathIndex($this->xmlpath);
+//            $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
+//            $content["indexsymbols"][] = $indexsymbol;
 
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
-
+        $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
-        $elementcontent->content[] = $doc->saveXML($element);
-        
-        return $elementcontent;
+        $content[] = $doc->saveXML($element);
+
+//        echo "content";
+//        print_object($content);
+
+        return $content;
+    }
+
+    function processIndexAuthor($DomElement, $position)
+    {
+        $position = $position + 1;
+        $arrayOfIndexAuthor = array();
+
+        $indexauthors = $DomElement->getElementsByTagName('index.author');
+        $ialength = $indexauthors->length;
+        for ($i = 0; $i < $ialength; $i++)
+        {
+            $position = $position + 1;
+            $indexauthor = new MathIndex($this->xmlpath);
+            $indexauthor->loadFromXml($indexauthors->item(0), $position);
+            $arrayOfIndexAuthor[] = $indexauthor;
+
+//            $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
+        }
+        return $arrayOfIndexAuthor;
+    }
+
+    function processIndexGlossary($DomElement, $position)
+    {
+        $position = $position + 1;
+        $arrayOfIndexGlossary = array();
+
+        $indexglossarys = $DomElement->getElementsByTagName('index.glossary');
+        $iglength = $indexglossarys->length;
+        for ($i = 0; $i < $iglength; $i++)
+        {
+            $position = $position + 1;
+            $indexglossary = new MathIndex($this->xmlpath);
+            $indexglossary->loadFromXml($indexglossarys->item(0), $position);
+            $arrayOfIndexGlossary[] = $indexglossary;
+
+//            $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
+        }
+        return $arrayOfIndexGlossary;
+    }
+
+    function processIndexSymbols($DomElement, $position)
+    {
+        $position = $position + 1;
+        $arrayOfIndexSymbol = array();
+
+        $indexsymbols = $DomElement->getElementsByTagName('index.symbol');
+        $islength = $indexsymbols->length;
+        for ($i = 0; $i < $islength; $i++)
+        {
+            $position = $position + 1;
+            $indexsymbol = new MathIndex($this->xmlpath);
+            $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
+            $arrayOfIndexSymbol[] = $indexsymbol;
+
+//            $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
+        }
+        return $arrayOfIndexSymbol;
     }
 
     // abstract method that is implemented by each class 

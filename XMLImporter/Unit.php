@@ -265,53 +265,53 @@ class Unit extends Element
                             }
                         }
                     }
-                    else if ($child->tagName == 'studymaterials')
-                    {
-                        foreach ($child->childNodes as $key => $grandChild)
-                        {
-                            if ($grandChild->nodeType == XML_ELEMENT_NODE)
-                            {
-                                if ($grandChild->tagName == 'exercise.pack.ref')
-                                {
-                                    $position = $position + 1;
-                                    $exerciseID = $grandChild->getAttribute('exercisePackID');
-
-                                    $filepath = $this->findUnitFile($exerciseID);
-
-                                    $refdoc = new DOMDocument();
-                                    @$refdoc->load($filepath);
-
-                                    $exerciseElement = $refdoc->documentElement;
-
-                                    if ($exerciseElement->tagName == 'exercise.pack')
-                                    {
-                                        $exercisepack = new Pack($this->xmlpath);
-                                        $exercisepack->loadFromXml($exerciseElement, $position);
-                                        $this->exercises[] = $exercisepack;
-                                    }
-                                }
-                                if ($grandChild->tagName == 'example.pack.ref')
-                                {
-                                    $position = $position + 1;
-                                    $exampleID = $grandChild->getAttribute('examplePackID');
-
-                                    $filepath = $this->findUnitFile($exampleID);
-
-                                    $refdoc = new DOMDocument();
-                                    @$refdoc->load($filepath);
-
-                                    $exampleElement = $refdoc->documentElement;
-
-                                    if ($exampleElement->tagName == 'example.pack')
-                                    {
-                                        $examplePack = new Pack($this->xmlpath);
-                                        $examplePack->loadFromXml($exampleElement, $position);
-                                        $this->examples[] = $examplePack;
-                                    }
-                                }
-                            }
-                        }
-                    }
+//                    else if ($child->tagName == 'studymaterials')
+//                    {
+//                        foreach ($child->childNodes as $key => $grandChild)
+//                        {
+//                            if ($grandChild->nodeType == XML_ELEMENT_NODE)
+//                            {
+//                                if ($grandChild->tagName == 'exercise.pack.ref')
+//                                {
+//                                    $position = $position + 1;
+//                                    $exerciseID = $grandChild->getAttribute('exercisePackID');
+//
+//                                    $filepath = $this->findUnitFile($exerciseID);
+//
+//                                    $refdoc = new DOMDocument();
+//                                    @$refdoc->load($filepath);
+//
+//                                    $exerciseElement = $refdoc->documentElement;
+//
+//                                    if ($exerciseElement->tagName == 'exercise.pack')
+//                                    {
+//                                        $exercisepack = new Pack($this->xmlpath);
+//                                        $exercisepack->loadFromXml($exerciseElement, $position);
+//                                        $this->exercises[] = $exercisepack;
+//                                    }
+//                                }
+//                                if ($grandChild->tagName == 'example.pack.ref')
+//                                {
+//                                    $position = $position + 1;
+//                                    $exampleID = $grandChild->getAttribute('examplePackID');
+//
+//                                    $filepath = $this->findUnitFile($exampleID);
+//
+//                                    $refdoc = new DOMDocument();
+//                                    @$refdoc->load($filepath);
+//
+//                                    $exampleElement = $refdoc->documentElement;
+//
+//                                    if ($exampleElement->tagName == 'example.pack')
+//                                    {
+//                                        $examplePack = new Pack($this->xmlpath);
+//                                        $examplePack->loadFromXml($exampleElement, $position);
+//                                        $this->examples[] = $examplePack;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
                     else if ($child->tagName == 'legitimate.children')
                     {
                         foreach ($child->childNodes as $key => $grandChild)

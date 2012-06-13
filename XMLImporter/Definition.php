@@ -52,15 +52,15 @@ class Definition extends Element
         $this->indexsymbols = array();
 
 
-        $associates = $DomElement->getElementsByTagName('associate');
-
-        foreach ($associates as $a)
-        {
-            $position = $position + 1;
-            $associate = new Associate($this->xmlpath);
-            $associate->loadFromXml($a, $position);
-            $this->associates[] = $associate;
-        }
+//        $associates = $DomElement->getElementsByTagName('associate');
+//
+//        foreach ($associates as $a)
+//        {
+//            $position = $position + 1;
+//            $associate = new Associate($this->xmlpath);
+//            $associate->loadFromXml($a, $position);
+//            $this->associates[] = $associate;
+//        }
 
         $defbodys = $DomElement->getElementsByTagName('def.body');
 
@@ -68,33 +68,56 @@ class Definition extends Element
 
         foreach ($defbodys as $d)
         {
-            foreach ($this->processSubordinate($d, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($d, $position)->indexauthors as $indexauthor)
+            foreach ($this->processIndexAuthor($d, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($d, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexGlossary($d, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($d, $position)->indexsymbols as $indexsymbol)
+            foreach ($this->processIndexSymbols($d, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
+            foreach ($this->processSubordinate($d, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-            foreach ($this->processSubordinate($d, $position)->content as $content)
+            foreach ($this->processContent($d, $position) as $content)
             {
                 $this->content .= $content;
             }
+//            foreach ($this->processSubordinate($d, $position)->subordinates as$subordinate)
+//            {
+//                $this->subordinates[] = $subordinate;
+//            }
+//
+//            foreach ($this->processSubordinate($d, $position)->indexauthors as $indexauthor)
+//            {
+//                $this->indexauthors[] = $indexauthor;
+//            }
+//
+//            foreach ($this->processSubordinate($d, $position)->indexglossarys as $indexglossary)
+//            {
+//                $this->indexglossarys[] = $indexglossary;
+//            }
+//
+//            foreach ($this->processSubordinate($d, $position)->indexsymbols as $indexsymbol)
+//            {
+//                $this->indexsymbols[] = $indexsymbol;
+//            }
+//
+//            foreach ($this->processSubordinate($d, $position)->content as $content)
+//            {
+//                $this->content .= $content;
+//            }
         }
         echo "def";
-        print_object($this->processSubordinate($d, $position));
+        print_object($this);
     }
 
     function saveIntoDb($position)
@@ -109,6 +132,9 @@ class Definition extends Element
         }
 
         $data->description = $this->description;
+        
+        echo "data";
+        print_object($this);
 
         if (!empty($this->content))
         {
@@ -120,13 +146,10 @@ class Definition extends Element
             $this->id = $DB->insert_record($this->tablename, $data);
         }
 
-        foreach ($this->associates as $key => $associate)
-        {
-            $associate->saveIntoDb($associate->position);
-        }
-
-        echo "in def";
-        print_object($this);
+//        foreach ($this->associates as $key => $associate)
+//        {
+//            $associate->saveIntoDb($associate->position);
+//        }
 
         foreach ($this->subordinates as $key => $subordinate)
         {

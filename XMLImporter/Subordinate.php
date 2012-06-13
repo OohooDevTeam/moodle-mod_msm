@@ -14,6 +14,7 @@ class Subordinate extends Element
 {
 
     public $position;
+    public $hot;
 
     function __construct($xmlpath = '')
     {
@@ -29,8 +30,7 @@ class Subordinate extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        $this->hot = $this->getContent($DomElement->getElementsByTagName('hot')->item(0));
-
+        
         $this->infos = array();
         $this->companion = array();
         $this->externalref = array();
@@ -44,6 +44,10 @@ class Subordinate extends Element
         {
             if ($child->nodeType == XML_ELEMENT_NODE)
             {
+                if($child->tagName == 'hot')
+                {
+                    $this->hot = $this->getContent($child);
+                }
                 if ($child->tagName == 'info')
                 {
                     $position = $position + 1;
