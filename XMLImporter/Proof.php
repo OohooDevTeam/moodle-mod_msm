@@ -67,106 +67,31 @@ class Proof extends Element
 
             foreach ($proofbodys as $proofbody)
             {
-
-                foreach ($this->processSubordinate($proofbody, $position)->subordinates as $subordinate)
-                {
-                    $this->subordinates[] = $subordinate;
-                }
-
-                foreach ($this->processSubordinate($proofbody, $position)->indexauthors as $indexauthor)
+                foreach ($this->processIndexAuthor($proofbody, $position) as $indexauthor)
                 {
                     $this->indexauthors[] = $indexauthor;
                 }
 
-                foreach ($this->processSubordinate($proofbody, $position)->indexglossarys as $indexglossary)
+                foreach ($this->processIndexGlossary($proofbody, $position) as $indexglossary)
                 {
                     $this->indexglossarys[] = $indexglossary;
                 }
 
-                foreach ($this->processSubordinate($proofbody, $position)->indexsymbols as $indexsymbol)
+                foreach ($this->processIndexSymbols($proofbody, $position) as $indexsymbol)
                 {
                     $this->indexsymbols[] = $indexsymbol;
                 }
+                foreach ($this->processSubordinate($proofbody, $position) as $subordinate)
+                {
+                    $this->subordinates[] = $subordinate;
+                }
 
-                foreach ($this->processSubordinate($proofbody, $position)->content as $content)
+                foreach ($this->processContent($proofbody, $position) as $content)
                 {
                     $this->proof_block_body[] = $content;
                 }
-//                $position = $position + 1;
-//
-//                $subordinates = $proofbody->getElementsByTagName('subordinate');
-//
-//                $length=0;
-//                
-//              foreach($subordinates as $s)
-//              {
-//                  if($s->parentNode->parentNode->parentNode->tagName != 'info')
-//                  {
-//                      $length++;
-//                  }
-//              }
-//
-//                for ($i = 0; $i < $length; $i++)
-//                {
-//                      echo "length";
-//                print_object($length);
-//                    echo "subordinates";
-//                    print_object($i);
-//                    print_object($subordinates->item(0)->nodeValue);
-//                    
-//                    $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
-//                    
-//                    echo "hot";
-//                    print_object($hot);
-//
-//                    $position = $position + 1;
-//                    $subordinate = new Subordinate($this->xmlpath);
-//                    $subordinate->loadFromXml($subordinates->item(0), $position);
-//                    $this->subordinates[] = $subordinate;
-//
-//                    $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
-//                    
-//                }
-//
-//
-//                $indexauthors = $proofbody->getElementsByTagName('index.author');
-//                foreach ($indexauthors as $ia)
-//                {
-//                    $position = $position + 1;
-//                    $indexauthor = new MathIndex($this->xmlpath);
-//                    $indexauthor->loadFromXml($ia, $position);
-//                    $this->indexauthors[] = $indexauthor;
-//
-//                    $ia->parentNode->removeChild($ia);
-//                }
-//
-//                $indexglossarys = $proofbody->getElementsByTagName('index.glossary');
-//                foreach ($indexglossarys as $ig)
-//                {
-//                    $position = $position + 1;
-//                    $indexglossary = new MathIndex($this->xmlpath);
-//                    $indexglossary->loadFromXml($ig, $position);
-//                    $this->indexglossarys[] = $indexglossary;
-//
-//                    $ig->parentNode->removeChild($ig);
-//                }
-//
-//                $indexsymbols = $proofbody->getElementsByTagName('index.symbol');
-//                foreach ($indexsymbols as $is)
-//                {
-//                    $position = $position + 1;
-//                    $indexsymbol = new MathIndex($this->xmlpath);
-//                    $indexsymbol->loadFromXml($is, $position);
-//                    $this->indexsymbols[] = $indexsymbol;
-//
-//                    $is->parentNode->removeChild($is);
-//                }
-//
-//                $element = $doc->importNode($proofbody, true);
-//                $this->proof_block_body[] = $doc->saveXML($element);
             }
         }
-
     }
 
 }

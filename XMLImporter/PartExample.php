@@ -43,30 +43,29 @@ class PartExample extends Element
         $this->content = array();
 
         $part_example_bodys = $DomElement->getElementsByTagName('part.example.body');
-        
+
         foreach ($part_example_bodys as $peb)
         {
-            foreach ($this->processSubordinate($peb, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($peb, $position)->indexauthors as $indexauthor)
+            foreach ($this->processIndexAuthor($peb, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($peb, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexGlossary($peb, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($peb, $position)->indexsymbols as $indexsymbol)
+            foreach ($this->processIndexSymbols($peb, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
+            foreach ($this->processSubordinate($peb, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-            foreach ($this->processSubordinate($peb, $position)->content as $content)
+            foreach ($this->processContent($peb, $position) as $content)
             {
                 $this->content[] = $content;
             }

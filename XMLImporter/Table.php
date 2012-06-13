@@ -37,27 +37,26 @@ class Table extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
 
-        foreach ($this->processSubordinate($DomElement, $position)->subordinates as $subordinate)
-        {
-            $this->subordinates[] = $subordinate;
-        }
-
-        foreach ($this->processSubordinate($DomElement, $position)->indexauthors as $indexauthor)
+        foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
         }
 
-        foreach ($this->processSubordinate($DomElement, $position)->indexglossarys as $indexglossary)
+        foreach ($this->processIndexGlossary($DomElement, $position) as $indexglossary)
         {
             $this->indexglossarys[] = $indexglossary;
         }
 
-        foreach ($this->processSubordinate($DomElement, $position)->indexsymbols as $indexsymbol)
+        foreach ($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
         {
             $this->indexsymbols[] = $indexsymbol;
         }
+        foreach ($this->processSubordinate($DomElement, $position) as $subordinate)
+        {
+            $this->subordinates[] = $subordinate;
+        }
 
-        foreach ($this->processSubordinate($DomElement, $position)->content as $content)
+        foreach ($this->processContent($DomElement, $position) as $content)
         {
             $this->content[] = $content;
         }

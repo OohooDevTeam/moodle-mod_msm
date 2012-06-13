@@ -379,11 +379,9 @@
 	</para.body>
             <index.author>
                <name>
-                  <name>
-				                 <first>Zeno</first>
-				                 <last>of Elea</last>
-			               </name>
-               </name>
+				              <first>Zeno</first>
+				              <last>of Elea</last>
+			            </name>
                <info>
 				              <para>
                      <para.body>appears here in the introduction to infinite sequences and series.</para.body>
@@ -392,11 +390,9 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first/>
-				                 <last>Archimedes of Syracuse</last>
-			               </name>
-               </name>
+				              <first/>
+				              <last>Archimedes of Syracuse</last>
+			            </name>
                <info>
 				              <para>
                      <para.body>Appears here as the first recorded user of infinite series.</para.body>
@@ -438,11 +434,9 @@
 	</para.body>
             <index.author>
                <name>
-                  <name>
-				                 <first/>
-				                 <last>Madhavan of Sangamagrama</last>
-			               </name>
-               </name>
+				              <first/>
+				              <last>Madhavan of Sangamagrama</last>
+			            </name>
                <info>
                   <para>
                      <para.body>Appears here for his role in founding the subject of analysis.</para.body>
@@ -563,12 +557,10 @@
 	</para.body>
             <index.author>
                <name>
-                  <name>
-				                 <first>James</first>
-				                 <last>Gregory</last>
-				                 <initials>J.</initials>
-			               </name>
-               </name>
+				              <first>James</first>
+				              <last>Gregory</last>
+				              <initials>J.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>In the introduction of the chapter on ‘sequences and series’ for his contributions to infinite sequences and series.</para.body>
@@ -577,12 +569,10 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Isaac</first>
-				                 <last>Newton</last>
-				                 <initials>I.</initials>
-			               </name>
-               </name>
+				              <first>Isaac</first>
+				              <last>Newton</last>
+				              <initials>I.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>In the introduction of the chapter on ‘sequences and series’ for his contributions to infinite sequences and series.</para.body>
@@ -591,13 +581,11 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Gottfried</first>
-				                 <middle>Wilhelm</middle>
-				                 <last>Leibniz</last>
-				                 <initials>G.W.</initials>
-			               </name>
-               </name>
+				              <first>Gottfried</first>
+				              <middle>Wilhelm</middle>
+				              <last>Leibniz</last>
+				              <initials>G.W.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>In the introduction of the chapter on ‘sequences and series’ for his contributions to infinite sequences and series.</para.body>
@@ -606,12 +594,10 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Brook</first>
-				                 <last>Taylor</last>
-				                 <initials>B.</initials>
-			               </name>
-               </name>
+				              <first>Brook</first>
+				              <last>Taylor</last>
+				              <initials>B.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>In the introduction of the chapter on ‘sequences and series’ for his contributions to infinite sequences and series.</para.body>
@@ -620,12 +606,10 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Colin</first>
-				                 <last>MacLaurin</last>
-				                 <initials>C.</initials>
-			               </name>
-               </name>
+				              <first>Colin</first>
+				              <last>MacLaurin</last>
+				              <initials>C.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>In the introduction of the chapter on ‘sequences and series’ for his contributions to infinite sequences and series.</para.body>
@@ -634,12 +618,10 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Leonhard</first>
-				                 <last>Euler</last>
-				                 <initials>L.</initials>
-			               </name>
-               </name>
+				              <first>Leonhard</first>
+				              <last>Euler</last>
+				              <initials>L.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>In the introduction of the chapter on ‘sequences and series’ for his contributions to infinite sequences and series.</para.body>
@@ -648,13 +630,11 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-					                <first>Carl</first>
-					                <middle>Friedrich</middle>
-					                <last>Gauß</last>
-					                <initials>C.F.</initials>
-				              </name>
-               </name>
+					             <first>Carl</first>
+					             <middle>Friedrich</middle>
+					             <last>Gauß</last>
+					             <initials>C.F.</initials>
+				           </name>
                <info>
                   <para>
                      <para.body>In the introduction of the chapter on ‘sequences and series’ for his contributions to convergence questions related to infinite sequences and series.</para.body>
@@ -663,12 +643,10 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Augustin-Louis</first>
-				                 <last>Cauchy</last>
-				                 <initials>A.L.</initials>
-			               </name>
-               </name>
+				              <first>Augustin-Louis</first>
+				              <last>Cauchy</last>
+				              <initials>A.L.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>In the introduction of the chapter on ‘sequences and series’ for his contributions to convergence questions related to infinite sequences and series.</para.body>
@@ -677,12 +655,10 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Karl</first>
-				                 <last>Weierstrass</last>
-				                 <initials>K.</initials>
-			               </name>
-               </name>
+				              <first>Karl</first>
+				              <last>Weierstrass</last>
+				              <initials>K.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>In the introduction of the chapter on ‘sequences and series’ for his contributions to convergence questions related to infinite sequences and series.</para.body>

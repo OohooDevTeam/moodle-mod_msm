@@ -32,7 +32,7 @@ class Solution extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
-         $this->suboridnates = array();
+        $this->suboridnates = array();
 
         $this->content = array();
 
@@ -40,27 +40,26 @@ class Solution extends Element
 
         foreach ($bodys as $b)
         {
-            foreach ($this->processSubordinate($b, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($b, $position)->indexauthors as $indexauthor)
+            foreach ($this->processIndexAuthor($b, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($b, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexGlossary($b, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($b, $position)->indexsymbols as $indexsymbol)
+            foreach ($this->processIndexSymbols($b, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
+            foreach ($this->processSubordinate($b, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-            foreach ($this->processSubordinate($b, $position)->content as $content)
+            foreach ($this->processContent($b, $position) as $content)
             {
                 $this->content[] = $content;
             }

@@ -40,27 +40,26 @@ class PartTheorem extends Element
         $part_bodys = $DomElement->getElementsByTagName('part.body');
         foreach ($part_bodys as $parb)
         {
-            foreach ($this->processSubordinate($parb, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($parb, $position)->indexauthors as $indexauthor)
+            foreach ($this->processIndexAuthor($parb, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($parb, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexGlossary($parb, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($parb, $position)->indexsymbols as $indexsymbol)
+            foreach ($this->processIndexSymbols($parb, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
+            foreach ($this->processSubordinate($parb, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-            foreach ($this->processSubordinate($parb, $position)->content as $content)
+            foreach ($this->processContent($parb, $position) as $content)
             {
                 $this->content[] = $content;
             }

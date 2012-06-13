@@ -42,28 +42,27 @@ class Showme extends Element
         $statements = $DomElement->getElementsByTagName('statement.showme');
 
         foreach ($statements as $st)
-        {         
-            foreach ($this->processSubordinate($st, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($st, $position)->indexauthors as $indexauthor)
+        {
+            foreach ($this->processIndexAuthor($st, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($st, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexGlossary($st, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($st, $position)->indexsymbols as $indexsymbol)
+            foreach ($this->processIndexSymbols($st, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
+            foreach ($this->processSubordinate($st, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-            foreach ($this->processSubordinate($st, $position)->content as $content)
+            foreach ($this->processContent($st, $position) as $content)
             {
                 $this->statements[] = $content;
             }

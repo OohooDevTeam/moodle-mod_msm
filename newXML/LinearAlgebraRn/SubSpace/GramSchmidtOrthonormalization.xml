@@ -28,12 +28,10 @@
 			</para.body>
                <index.author>
                   <name>
-                     <name>
-                        <first>Jorgen</first>
-                        <middle>Pedersen</middle>
-                        <last>Gram</last>
-                        <initials>J.P.</initials>
-                     </name>
+                     <first>Jorgen</first>
+                     <middle>Pedersen</middle>
+                     <last>Gram</last>
+                     <initials>J.P.</initials>
                   </name>
                   <info>
                      <para>
@@ -43,11 +41,9 @@
                </index.author>
                <index.author>
                   <name>
-                     <name>
-                        <first>Eduard</first>
-                        <last>Schmidt</last>
-                        <initials>E.</initials>
-                     </name>
+                     <first>Eduard</first>
+                     <last>Schmidt</last>
+                     <initials>E.</initials>
                   </name>
                   <info>
                      <para>

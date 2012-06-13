@@ -119,13 +119,11 @@
 		</para.body>
                   <index.author>
                      <name>
-                        <name>
-					                      <first>Jiu</first>
-					                      <middle>Shang Suan</middle>
-					                      <last>Shu</last>
-					                      <initials>J.S.S.</initials>
-				                    </name>
-                     </name>
+					                   <first>Jiu</first>
+					                   <middle>Shang Suan</middle>
+					                   <last>Shu</last>
+					                   <initials>J.S.S.</initials>
+				                 </name>
                      <info>
                         <para>
                            <para.body>Appears here as the author of the ancient Chinese work on ‘The Nine Chapters on the Mathematical Art’.</para.body>
@@ -159,13 +157,11 @@
 	</para.body>
             <index.author>
                <name>
-                  <name>
-				                 <first>James</first>
-				                 <middle>Joseph</middle>
-				                 <last>Sylvester</last>
-				                 <initials>J.J.</initials>
-			               </name>
-               </name>
+				              <first>James</first>
+				              <middle>Joseph</middle>
+				              <last>Sylvester</last>
+				              <initials>J.J.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>Appears here for introducing the term ‘matrix’ for a rectangular arrangement of numbers.</para.body>
@@ -174,13 +170,11 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Rowan</first>
-				                 <middle>William</middle>
-				                 <last>Hamilton</last>
-				                 <initials>R.W.</initials>
-			               </name>
-               </name>
+				              <first>Rowan</first>
+				              <middle>William</middle>
+				              <last>Hamilton</last>
+				              <initials>R.W.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>Appears here for contributing to the early evolution of the theory of matrices.</para.body>
@@ -189,13 +183,11 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Hermann</first>
-				                 <middle>Günther</middle>
-				                 <last>Grassmann</last>
-				                 <initials>R.W.</initials>
-			               </name>
-               </name>
+				              <first>Hermann</first>
+				              <middle>Günther</middle>
+				              <last>Grassmann</last>
+				              <initials>R.W.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>Appears here for contributing to the early evolution of the theory of matrices.</para.body>
@@ -204,12 +196,10 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Arthur</first>
-				                 <last>Cayley</last>
-				                 <initials>A.</initials>
-			               </name>
-               </name>
+				              <first>Arthur</first>
+				              <last>Cayley</last>
+				              <initials>A.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>Appears here for contributing to the evolution of the theory of matrices.</para.body>
@@ -218,13 +208,11 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Ferdinand</first>
-				                 <middle>Georg</middle>
-				                 <last>Frobenius</last>
-				                 <initials>F.G.</initials>
-			               </name>
-               </name>
+				              <first>Ferdinand</first>
+				              <middle>Georg</middle>
+				              <last>Frobenius</last>
+				              <initials>F.G.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>Appears here for contributing to the evolution of the theory of matrices.</para.body>
@@ -233,12 +221,10 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>John</first>
-				                 <last>von Neumann</last>
-				                 <initials>J.</initials>
-			               </name>
-               </name>
+				              <first>John</first>
+				              <last>von Neumann</last>
+				              <initials>J.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>Appears here for contributing to the evolution of the theory of matrices.</para.body>
@@ -247,12 +233,10 @@
             </index.author>
             <index.author>
                <name>
-                  <name>
-				                 <first>Olga</first>
-				                 <last>Taussky-Todd</last>
-				                 <initials>O.</initials>
-			               </name>
-               </name>
+				              <first>Olga</first>
+				              <last>Taussky-Todd</last>
+				              <initials>O.</initials>
+			            </name>
                <info>
                   <para>
                      <para.body>Appears here for contributing to the evolution of the theory of matrices.</para.body>

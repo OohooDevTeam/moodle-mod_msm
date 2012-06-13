@@ -96,22 +96,12 @@ abstract class Element
             $subordinate = new Subordinate($this->xmlpath);
             $subordinate->loadFromXml($subordinates->item($i), $position);
             $arrayOfSubordinates[] = $subordinate;
-
-//            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
         return $arrayOfSubordinates;
     }
 
     function processContent($DomElement, $position)
     {
-//        $arrayOfSubordinates = array();
-//        $content["content"] = array();
-//        $content["subordinates"] = array();
-//        $content["indexauthors"] = array();
-//        $content["indexglossarys"] = array();
-//        $content["indexsymbols"] = array();
-//        $doc = new DOMDocument();
-        
         $content = array();
 
         $position = $position + 1;
@@ -131,12 +121,6 @@ abstract class Element
         for ($i = 0; $i < $length; $i++)
         {
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
-
-//            $position = $position + 1;
-//            $subordinate = new Subordinate($this->xmlpath);
-//            $subordinate->loadFromXml($subordinates->item(0), $position);
-//            $arrayOfSubordinates[] = $subordinate;
-
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
 
@@ -144,11 +128,6 @@ abstract class Element
         $ialength = $indexauthors->length;
         for ($i = 0; $i < $ialength; $i++)
         {
-//            $position = $position + 1;
-//            $indexauthor = new MathIndex($this->xmlpath);
-//            $indexauthor->loadFromXml($indexauthors->item(0), $position);
-//            $content["indexauthor"][] = $indexauthor;
-
             $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
         }
 
@@ -156,11 +135,6 @@ abstract class Element
         $iglength = $indexglossarys->length;
         for ($i = 0; $i < $iglength; $i++)
         {
-//            $position = $position + 1;
-//            $indexglossary = new MathIndex($this->xmlpath);
-//            $indexglossary->loadFromXml($indexglossarys->item(0), $position);
-//            $content["indexglossarys"][] = $indexglossary;
-
             $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
         }
 
@@ -168,19 +142,11 @@ abstract class Element
         $islength = $indexsymbols->length;
         for ($i = 0; $i < $islength; $i++)
         {
-//            $position = $position + 1;
-//            $indexsymbol = new MathIndex($this->xmlpath);
-//            $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
-//            $content["indexsymbols"][] = $indexsymbol;
-
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
         $content[] = $doc->saveXML($element);
-
-//        echo "content";
-//        print_object($content);
 
         return $content;
     }
@@ -198,8 +164,6 @@ abstract class Element
             $indexauthor = new MathIndex($this->xmlpath);
             $indexauthor->loadFromXml($indexauthors->item(0), $position);
             $arrayOfIndexAuthor[] = $indexauthor;
-
-//            $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
         }
         return $arrayOfIndexAuthor;
     }
@@ -217,8 +181,6 @@ abstract class Element
             $indexglossary = new MathIndex($this->xmlpath);
             $indexglossary->loadFromXml($indexglossarys->item(0), $position);
             $arrayOfIndexGlossary[] = $indexglossary;
-
-//            $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
         }
         return $arrayOfIndexGlossary;
     }
@@ -236,8 +198,6 @@ abstract class Element
             $indexsymbol = new MathIndex($this->xmlpath);
             $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
             $arrayOfIndexSymbol[] = $indexsymbol;
-
-//            $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
         return $arrayOfIndexSymbol;
     }

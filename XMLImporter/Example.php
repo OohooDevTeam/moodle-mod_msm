@@ -47,27 +47,26 @@ class Example extends Element
 
         foreach ($statement_examples as $statement_ex)
         {
-            foreach ($this->processSubordinate($statement_ex, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($statement_ex, $position)->indexauthors as $indexauthor)
+            foreach ($this->processIndexAuthor($statement_ex, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($statement_ex, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexGlossary($statement_ex, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($statement_ex, $position)->indexsymbols as $indexsymbol)
+            foreach ($this->processIndexSymbols($statement_ex, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
+            foreach ($this->processSubordinate($statement_ex, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-            foreach ($this->processSubordinate($statement_ex, $position)->content as $content)
+            foreach ($this->processContent($statement_ex, $position) as $content)
             {
                 $this->statement_examples[] = $content;
             }

@@ -45,29 +45,28 @@ class AnswerShowme extends Element
 
             foreach ($answer_showme_block_bodys as $asbb)
             {
-                foreach ($this->processSubordinate($asbb, $position)->subordinates as $subordinate)
-                {
-                    $this->subordinates[] = $subordinate;
-                }
-
-                foreach ($this->processSubordinate($asbb, $position)->indexauthors as $indexauthor)
+                foreach ($this->processIndexAuthor($asbb, $position) as $indexauthor)
                 {
                     $this->indexauthors[] = $indexauthor;
                 }
 
-                foreach ($this->processSubordinate($asbb, $position)->indexglossarys as $indexglossary)
+                foreach ($this->processIndexGlossary($asbb, $position) as $indexglossary)
                 {
                     $this->indexglossarys[] = $indexglossary;
                 }
 
-                foreach ($this->processSubordinate($asbb, $position)->indexsymbols as $indexsymbol)
+                foreach ($this->processIndexSymbols($asbb, $position) as $indexsymbol)
                 {
                     $this->indexsymbols[] = $indexsymbol;
                 }
-
-                foreach ($this->processSubordinate($asbb, $position)->content as $content)
+                foreach ($this->processSubordinate($asbb, $position) as $subordinate)
                 {
-                    $this->content[] = $content;
+                    $this->subordinates[] = $subordinate;
+                }
+
+                foreach ($this->processContent($asbb, $position) as $content)
+                {
+                    $this->content []= $content;
                 }
             }
         }

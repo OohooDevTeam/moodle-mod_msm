@@ -59,27 +59,26 @@ class Comment extends Element
 
         foreach ($commentbodys as $c)
         {
-            foreach ($this->processSubordinate($c, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($c, $position)->indexauthors as $indexauthor)
+            foreach ($this->processIndexAuthor($c, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($c, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexGlossary($c, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($c, $position)->indexsymbols as $indexsymbol)
+            foreach ($this->processIndexSymbols($c, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
+            foreach ($this->processSubordinate($c, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-            foreach ($this->processSubordinate($c, $position)->content as $content)
+            foreach ($this->processContent($c, $position) as $content)
             {
                 $this->content[] = $content;
             }

@@ -48,11 +48,9 @@
 	</para.body>
             <index.author>
                <name>
-                  <name>
-				                 <first/>
-				                 <last>Archimedes of Syracuse</last>
-			               </name>
-               </name>
+				              <first/>
+				              <last>Archimedes of Syracuse</last>
+			            </name>
                <info>
 				              <para>
                      <para.body>Appears here for his approach to computing the area of a disk.</para.body>

@@ -25,7 +25,7 @@ class StatementTheorem extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-       // $this->content = array();
+        // $this->content = array();
         $this->part_theorems = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -45,52 +45,50 @@ class StatementTheorem extends Element
                 }
                 else
                 {
-                    foreach ($this->processSubordinate($child, $position)->subordinates as $subordinate)
-                    {
-                        $this->subordinates[] = $subordinate;
-                    }
-
-                    foreach ($this->processSubordinate($child, $position)->indexauthors as $indexauthor)
+                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
                     {
                         $this->indexauthors[] = $indexauthor;
                     }
 
-                    foreach ($this->processSubordinate($child, $position)->indexglossarys as $indexglossary)
+                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
                     {
                         $this->indexglossarys[] = $indexglossary;
                     }
 
-                    foreach ($this->processSubordinate($child, $position)->indexsymbols as $indexsymbol)
+                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
                     {
                         $this->indexsymbols[] = $indexsymbol;
                     }
+                    foreach ($this->processSubordinate($child, $position) as $subordinate)
+                    {
+                        $this->subordinates[] = $subordinate;
+                    }
 
-                    foreach ($this->processSubordinate($child, $position)->content as $content)
+                    foreach ($this->processContent($child, $position) as $content)
                     {
                         $this->content .= $content;
                     }
                 }
             }
         }
-        
-    }   
-    
+    }
+
     function saveIntoDb($position)
     {
         global $DB;
         $data = new stdClass();
-        
-        if(!empty($this->content))
+
+        if (!empty($this->content))
         {
             $data->statement_content = $this->content;
             $this->id = $DB->insert_record($this->tablename, $data);
         }
-        
-        foreach($this->part_theorems as $key=>$part_theorem)
+
+        foreach ($this->part_theorems as $key => $part_theorem)
         {
             $part_theorem->saveIntoDb($part_theorem->position);
         }
-        
+
         foreach ($this->subordinates as $key => $subordinate)
         {
             $subordinate->saveIntoDb($subordinate->position);

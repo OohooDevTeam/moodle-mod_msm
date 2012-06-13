@@ -24,7 +24,6 @@ class MathIndex extends Element
         parent::__construct($xmlpath);
         $this->glossarytable = 'msm_index_glossary';
         $this->symboltable = 'msm_index_symbol';
-
     }
 
     /**
@@ -98,51 +97,40 @@ class MathIndex extends Element
 
                 break;
         }
-      
     }
-    
+
     function saveIntoDb($position)
     {
         global $DB;
         $data = new stdClass();
-        
-        echo "what's in mathindex?";
-        print_object($this);
-        
-        if(!empty($this->symbol))
+
+        if (!empty($this->symbol))
         {
-            echo "symbol here?";
             $data->symbol = $this->symbol;
             $data->symbol_type = $this->symbol_type;
             $data->sortstring = $this->sortstring;
-            
+
             $this->id = $DB->insert_record($this->symboltable, $data);
         }
-        
-        if(!empty($this->names))
+
+        if (!empty($this->names))
         {
-            echo "name here?";
-            foreach($this->names as $key=>$name)
+            foreach ($this->names as $key => $name)
             {
                 $name->saveIntoDb($name->position, 'index');
             }
         }
-        
-        if(!empty($this->term))
+
+        if (!empty($this->term))
         {
-            echo "term here?";
             $data->term = $this->term;
             $this->id = $DB->insert_record($this->glossarytable, $data);
         }
-        
-        foreach($this->infos as $info)
+
+        foreach ($this->infos as $info)
         {
             $info->saveIntoDb($info->position);
         }
-        
-          
-        echo "index";
-        print_object($this);
     }
 
 }

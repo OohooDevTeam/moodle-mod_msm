@@ -613,9 +613,7 @@
     <xsl:template match="bk:index.author">
         <xsl:element name="index.author" namespace="Unit">
             <xsl:for-each select=".">
-                <xsl:element name="name" namespace="Unit">
-                    <xsl:apply-templates select="bk:name"/>
-                </xsl:element>
+                    <xsl:apply-templates select="bk:name"/>                
             </xsl:for-each>
             <xsl:apply-templates select="bk:info"/>
         </xsl:element>

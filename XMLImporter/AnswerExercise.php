@@ -39,27 +39,26 @@ class AnswerExercise extends Element
         $bodys = $DomElement->getElementsByTagName('answer.exercise.block.body');
         foreach ($bodys as $b)
         {
-            foreach ($this->processSubordinate($b, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($b, $position)->indexauthors as $indexauthor)
+            foreach ($this->processIndexAuthor($b, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($b, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexGlossary($b, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($b, $position)->indexsymbols as $indexsymbol)
+            foreach ($this->processIndexSymbols($b, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
+            foreach ($this->processSubordinate($b, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-            foreach ($this->processSubordinate($b, $position)->content as $content)
+            foreach ($this->processContent($b, $position) as $content)
             {
                 $this->content[] = $content;
             }
@@ -71,16 +70,16 @@ class AnswerExercise extends Element
         global $DB;
         $data = new stdClass();
         $data->caption = $this->caption;
-        
-        if(!empty($this->content))
+
+        if (!empty($this->content))
         {
-            foreach($this->content as $content)
+            foreach ($this->content as $content)
             {
                 $data->answer_exercise_content = $content;
                 $this->id = $DB->insert_record($this->tablename, $data);
             }
         }
-        
+
         foreach ($this->subordinates as $key => $subordinate)
         {
             $subordinate->saveIntoDb($subordinate->position);

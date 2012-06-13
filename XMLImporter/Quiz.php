@@ -32,8 +32,8 @@ class Quiz extends Element
 
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
-        $this->questions = array();        
-        
+        $this->questions = array();
+
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -42,27 +42,26 @@ class Quiz extends Element
         $questions = $DomElement->getElementsByTagName('question');
         foreach ($questions as $q)
         {
-            foreach ($this->processSubordinate($q, $position)->subordinates as $subordinate)
+            foreach ($this->processIndexAuthor($q, $position) as $indexauthor)
             {
-                $this->subordinates['question'][] = $subordinate;
+                $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($q, $position)->indexauthors as $indexauthor)
+            foreach ($this->processIndexGlossary($q, $position) as $indexglossary)
             {
-                $this->indexauthors['question'][] = $indexauthor;
+                $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($q, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexSymbols($q, $position) as $indexsymbol)
             {
-                $this->indexglossarys['question'][] = $subordinate;
+                $this->indexsymbols[] = $indexsymbol;
+            }
+            foreach ($this->processSubordinate($q, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
             }
 
-            foreach ($this->processSubordinate($q, $position)->indexsymbols as $indexsymbol)
-            {
-                $this->indexsymbols['question'][] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($q, $position)->content as $content)
+            foreach ($this->processContent($q, $position) as $content)
             {
                 $this->questions[] = $content;
             }
@@ -106,27 +105,26 @@ class Quiz extends Element
                 {
                     if ($child->tagName == 'answer')
                     {
-                        foreach ($this->processSubordinate($child, $position)->subordinates as $subordinate)
+                        foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
                         {
-                            $this->subordinates['answer'][] = $subordinate;
+                            $this->indexauthors[] = $indexauthor;
                         }
 
-                        foreach ($this->processSubordinate($child, $position)->indexauthors as $indexauthor)
+                        foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
                         {
-                            $this->indexauthors['answer'][] = $indexauthor;
+                            $this->indexglossarys[] = $indexglossary;
                         }
 
-                        foreach ($this->processSubordinate($child, $position)->indexglossarys as $indexglossary)
+                        foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
                         {
-                            $this->indexglossarys['answer'][] = $subordinate;
+                            $this->indexsymbols[] = $indexsymbol;
+                        }
+                        foreach ($this->processSubordinate($child, $position) as $subordinate)
+                        {
+                            $this->subordinates[] = $subordinate;
                         }
 
-                        foreach ($this->processSubordinate($child, $position)->indexsymbols as $indexsymbol)
-                        {
-                            $this->indexsymbols['answer'][] = $subordinate;
-                        }
-
-                        foreach ($this->processSubordinate($child, $position)->content as $content)
+                        foreach ($this->processContent($child, $position) as $content)
                         {
                             $this->answers[] = $content;
                         }
@@ -160,27 +158,26 @@ class Quiz extends Element
                 {
                     if ($child->tagName == 'question')
                     {
-                        foreach ($this->processSubordinate($child, $position)->subordinates as $subordinate)
+                        foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
                         {
-                            $this->subordinates['question'][] = $subordinate;
+                            $this->indexauthors[] = $indexauthor;
                         }
 
-                        foreach ($this->processSubordinate($child, $position)->indexauthors as $indexauthor)
+                        foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
                         {
-                            $this->indexauthors['question'][] = $indexauthor;
+                            $this->indexglossarys[] = $indexglossary;
                         }
 
-                        foreach ($this->processSubordinate($child, $position)->indexglossarys as $indexglossary)
+                        foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
                         {
-                            $this->indexglossarys['question'][] = $subordinate;
+                            $this->indexsymbols[] = $indexsymbol;
+                        }
+                        foreach ($this->processSubordinate($child, $position) as $subordinate)
+                        {
+                            $this->subordinates[] = $subordinate;
                         }
 
-                        foreach ($this->processSubordinate($child, $position)->indexsymbols as $indexsymbol)
-                        {
-                            $this->indexsymbols['question'][] = $subordinate;
-                        }
-
-                        foreach ($this->processSubordinate($child, $position)->content as $content)
+                        foreach ($this->processContent($child, $position) as $content)
                         {
                             $this->partquestions[] = $content;
                         }
@@ -213,27 +210,26 @@ class Quiz extends Element
                             {
                                 if ($grandchild->tagName == 'answer')
                                 {
-                                    foreach ($this->processSubordinate($grandchild, $position)->subordinates as $subordinate)
+                                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
                                     {
-                                        $this->subordinates['partanswer'][] = $subordinate;
+                                        $this->indexauthors[] = $indexauthor;
                                     }
 
-                                    foreach ($this->processSubordinate($grandchild, $position)->indexauthors as $indexauthor)
+                                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
                                     {
-                                        $this->indexauthors['partanswer'][] = $indexauthor;
+                                        $this->indexglossarys[] = $indexglossary;
                                     }
 
-                                    foreach ($this->processSubordinate($grandchild, $position)->indexglossarys as $indexglossary)
+                                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
                                     {
-                                        $this->indexglossarys['partanswer'][] = $subordinate;
+                                        $this->indexsymbols[] = $indexsymbol;
+                                    }
+                                    foreach ($this->processSubordinate($child, $position) as $subordinate)
+                                    {
+                                        $this->subordinates[] = $subordinate;
                                     }
 
-                                    foreach ($this->processSubordinate($grandchild, $position)->indexsymbols as $indexsymbol)
-                                    {
-                                        $this->indexsymbols['partanswer'][] = $subordinate;
-                                    }
-
-                                    foreach ($this->processSubordinate($grandchild, $position)->content as $content)
+                                    foreach ($this->processContent($child, $position) as $content)
                                     {
                                         $this->partchoiceanswers[] = $content;
                                     }

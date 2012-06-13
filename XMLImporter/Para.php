@@ -42,64 +42,30 @@ class Para extends Element
         $this->subordinates = array();
 
         $this->content = array();
-        
-        foreach($this->processIndexAuthor($DomElement, $position) as $indexauthor)
+
+        foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
         }
-        
-        foreach($this->processIndexGlossary($DomElement, $position) as $indexglossary)
+
+        foreach ($this->processIndexGlossary($DomElement, $position) as $indexglossary)
         {
             $this->indexglossarys[] = $indexglossary;
         }
-        
-        foreach($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
+
+        foreach ($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
         {
             $this->indexsymbols[] = $indexsymbol;
         }
-        foreach($this->processSubordinate($DomElement, $position) as $subordinate)
+        foreach ($this->processSubordinate($DomElement, $position) as $subordinate)
         {
             $this->subordinates[] = $subordinate;
         }
-        
-        foreach($this->processContent($DomElement, $position) as $content)
+
+        foreach ($this->processContent($DomElement, $position) as $content)
         {
             $this->content[] = $content;
         }
-        
-//       foreach($this->processSubordinate($DomElement, $position)->subordinates as $subordinate)
-//       {
-//           $this->subordinates[] = $subordinate;
-//       }
-//       
-//       foreach($this->processSubordinate($DomElement, $position)->indexauthors as $indexauthor)
-//       {
-//           echo "index author";
-//           print_object($indexauthor);
-//           $this->indexauthors[] = $indexauthor;
-//       }
-//       
-//       foreach($this->processSubordinate($DomElement, $position)->indexglossarys as $indexglossary)
-//       {
-//           echo "index glossary";
-//           print_object($indexglossary);
-//           $this->indexglossarys[] = $indexglossary;
-//       }
-//       
-//       foreach($this->processSubordinate($DomElement, $position)->indexsymbols as $indexsymbol)
-//       {
-//           echo "index symbol";
-//           print_object($indexsymbol);
-//           $this->indexsymbols[] = $indexsymbol;
-//       }
-//       
-//       foreach($this->processSubordinate($DomElement, $position)->content as $content)
-//       {
-//           $this->content[] = $content;
-//       }
-       
-//       echo "para content";
-//       print_object($this);
     }
 
     function saveIntoDb($position)
@@ -114,13 +80,10 @@ class Para extends Element
 
         if (!empty($this->content))
         {
-//            echo "this content";
-//            print_object($this->content);
-
             foreach ($this->content as $key => $content)
             {
                 $data->para_content = $content;
-               
+
                 $this->id = $DB->insert_record($this->tablename, $data);
             }
         }

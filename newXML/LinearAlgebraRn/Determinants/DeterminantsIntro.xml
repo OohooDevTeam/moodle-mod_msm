@@ -224,13 +224,11 @@
 		</para.body>
                   <index.author>
                      <name>
-                        <name>
-					                      <first>Carolo</first>
-					                      <middle>Friderico</middle>
-					                      <last>Gauß</last>
-					                      <initials>C.F.</initials>
-				                    </name>
-                     </name>
+					                   <first>Carolo</first>
+					                   <middle>Friderico</middle>
+					                   <last>Gauß</last>
+					                   <initials>C.F.</initials>
+				                 </name>
                      <info>
                         <info.caption>Carl Friedrich Gauß</info.caption>
 					
@@ -272,12 +270,10 @@
 			</para.body>
                   <index.author>
                      <name>
-                        <name>
-						                     <first>Augustin-Louis</first>
-						                     <last>Cauchy</last>
-						                     <initials>A.-L.</initials>
-					                   </name>
-                     </name>
+						                  <first>Augustin-Louis</first>
+						                  <last>Cauchy</last>
+						                  <initials>A.-L.</initials>
+					                </name>
                      <info>
                         <info.caption>Augustin-Louis Cauchy</info.caption>
 						
@@ -309,12 +305,10 @@
 				used an axiomatic definition of ‘determinant’. This means he used properties like ‘multilinear’, ‘alternating’, to define the determinant.</para.body>
                   <index.author>
                      <name>
-                        <name>
-						                     <first>Karl</first>
-						                     <last>Weierstrass</last>
-						                     <initials>K.</initials>
-					                   </name>
-                     </name>
+						                  <first>Karl</first>
+						                  <last>Weierstrass</last>
+						                  <initials>K.</initials>
+					                </name>
                      <info>
                         <info.caption>Karl Weierstrass</info.caption>
 						

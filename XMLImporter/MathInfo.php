@@ -67,30 +67,6 @@ class MathInfo extends Element
                     {
                         $this->content .= $content;
                     }
-//                    foreach ($this->processSubordinate($child, $position)->subordinates as $subordinate)
-//                    {
-//                        $this->subordinates[] = $subordinate;
-//                    }
-//
-//                    foreach ($this->processSubordinate($child, $position)->indexauthors as $indexauthor)
-//                    {
-//                        $this->indexauthors[] = $indexauthor;
-//                    }
-//
-//                    foreach ($this->processSubordinate($child, $position)->indexglossarys as $indexglossary)
-//                    {
-//                        $this->indexglossarys[] = $indexglossary;
-//                    }
-//
-//                    foreach ($this->processSubordinate($child, $position)->indexsymbols as $indexsymbol)
-//                    {
-//                        $this->indexsymbols[] = $indexsymbol;
-//                    }
-//
-//                    foreach ($this->processSubordinate($child, $position)->content as $content)
-//                    {
-//                        $this->content .= $content;
-//                    }
                 }
                 else
                 {

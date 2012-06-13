@@ -43,27 +43,26 @@ class Problem extends Element
 
         foreach ($problembodys as $prob)
         {
-            foreach ($this->processSubordinate($prob, $position)->subordinates as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processSubordinate($prob, $position)->indexauthors as $indexauthor)
+            foreach ($this->processIndexAuthor($prob, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processSubordinate($prob, $position)->indexglossarys as $indexglossary)
+            foreach ($this->processIndexGlossary($prob, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processSubordinate($prob, $position)->indexsymbols as $indexsymbol)
+            foreach ($this->processIndexSymbols($prob, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
+            foreach ($this->processSubordinate($prob, $position) as $subordinate)
+            {
+                $this->subordinates[] = $subordinate;
+            }
 
-            foreach ($this->processSubordinate($prob, $position)->content as $content)
+            foreach ($this->processContent($prob, $position) as $content)
             {
                 $this->content[] = $content;
             }

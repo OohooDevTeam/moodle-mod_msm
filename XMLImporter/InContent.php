@@ -28,10 +28,8 @@ class InContent extends Element
      * @param int $position 
      */
     public function loadFromXml($DomElement, $position = '')
-    {
-        //$this->content = '';
+    {       
         $this->position = $position;
-        //$this->content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -84,36 +82,6 @@ class InContent extends Element
             $this->content .= $content;
         }
 
-//                $ols = $DomElement->getElementsByTagName('ol');
-//        $doc = new DOMDocument();
-
-//                foreach ($ols as $ol)
-//                {
-
-//        foreach ($this->processSubordinate($DomElement, $position)->subordinates as $subordinate)
-//        {
-//            $this->subordinates[] = $subordinate;
-//        }
-//
-//        foreach ($this->processSubordinate($DomElement, $position)->indexauthors as $indexauthor)
-//        {
-//            $this->indexauthors[] = $indexauthor;
-//        }
-//
-//        foreach ($this->processSubordinate($DomElement, $position)->indexglossarys as $indexglossary)
-//        {
-//            $this->indexglossarys[] = $indexglossary;
-//        }
-//
-//        foreach ($this->processSubordinate($DomElement, $position)->indexsymbols as $indexsymbol)
-//        {
-//            $this->indexsymbols[] = $indexsymbol;
-//        }
-//
-//        foreach ($this->processSubordinate($DomElement, $position)->content as $content)
-//        {
-//            $this->content .= $content;
-//        }
     }
 
     function saveIntoDb($position)

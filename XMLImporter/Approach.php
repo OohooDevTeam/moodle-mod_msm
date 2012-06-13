@@ -44,27 +44,26 @@ class Approach extends Element
             {
                 if ($child->tagName == 'solution.hint')
                 {
-                    foreach ($this->processSubordinate($child, $position)->subordinates as $subordinate)
-                    {
-                        $this->subordinates[] = $subordinate;
-                    }
-
-                    foreach ($this->processSubordinate($child, $position)->indexauthors as $indexauthor)
+                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
                     {
                         $this->indexauthors[] = $indexauthor;
                     }
 
-                    foreach ($this->processSubordinate($child, $position)->indexglossarys as $indexglossary)
+                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
                     {
-                        $this->indexglossarys[] = $subordinate;
+                        $this->indexglossarys[] = $indexglossary;
                     }
 
-                    foreach ($this->processSubordinate($child, $position)->indexsymbols as $indexsymbol)
+                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
                     {
-                        $this->indexsymbols[] = $subordinate;
+                        $this->indexsymbols[] = $indexsymbol;
+                    }
+                    foreach ($this->processSubordinate($child, $position) as $subordinate)
+                    {
+                        $this->subordinates[] = $subordinate;
                     }
 
-                    foreach ($this->processSubordinate($child, $position)->content as $content)
+                    foreach ($this->processContent($child, $position) as $content)
                     {
                         $this->content[] = $content;
                     }
