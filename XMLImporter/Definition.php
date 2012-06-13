@@ -93,6 +93,8 @@ class Definition extends Element
                 $this->content .= $content;
             }
         }
+        echo "def";
+        print_object($this->processSubordinate($d, $position));
     }
 
     function saveIntoDb($position)
@@ -110,9 +112,7 @@ class Definition extends Element
 
         if (!empty($this->content))
         {
-
             $data->def_content = $this->content;
-
             $this->id = $DB->insert_record($this->tablename, $data);
         }
         else // has def.body as child of def
@@ -124,6 +124,9 @@ class Definition extends Element
         {
             $associate->saveIntoDb($associate->position);
         }
+
+        echo "in def";
+        print_object($this);
 
         foreach ($this->subordinates as $key => $subordinate)
         {

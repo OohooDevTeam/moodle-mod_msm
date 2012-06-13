@@ -74,11 +74,11 @@ abstract class Element
 
     function processSubordinate($DomElement, $position)
     {
-        $content->content = array();
-        $content->subordinates = array();
-        $content->indexauthors = array();
-        $content->indexglossarys = array();
-        $content->indexsymbols = array();
+        $elementcontent->content = array();
+        $elementcontent->subordinates = array();
+        $elementcontent->indexauthors = array();
+        $elementcontent->indexglossarys = array();
+        $elementcontent->indexsymbols = array();
         $doc = new DOMDocument();
 
         $position = $position + 1;
@@ -102,7 +102,7 @@ abstract class Element
             $position = $position + 1;
             $subordinate = new Subordinate($this->xmlpath);
             $subordinate->loadFromXml($subordinates->item(0), $position);
-            $content->subordinates[] = $subordinate;
+            $elementcontent->subordinates[] = $subordinate;
 
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
@@ -115,7 +115,7 @@ abstract class Element
             $position = $position + 1;
             $indexauthor = new MathIndex($this->xmlpath);
             $indexauthor->loadFromXml($indexauthors->item(0), $position);
-            $content->indexauthors[] = $indexauthor;
+            $elementcontent->indexauthors[] = $indexauthor;
 
             $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
         }
@@ -127,7 +127,7 @@ abstract class Element
             $position = $position + 1;
             $indexglossary = new MathIndex($this->xmlpath);
             $indexglossary->loadFromXml($indexglossarys->item(0), $position);
-            $content->indexglossarys[] = $indexglossary;
+            $elementcontent->indexglossarys[] = $indexglossary;
 
             $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
         }
@@ -139,20 +139,15 @@ abstract class Element
             $position = $position + 1;
             $indexsymbol = new MathIndex($this->xmlpath);
             $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
-            $content->indexsymbols[] = $indexsymbol;
+            $elementcontent->indexsymbols[] = $indexsymbol;
 
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
 
         $element = $doc->importNode($DomElement, true);
-        $content->content[] = $doc->saveXML($element);
-
-        echo "element index";
-        print_object($content->indexglossarys);
-         print_object($content->indexsymbols);
-          print_object($content->indexauthors);
+        $elementcontent->content[] = $doc->saveXML($element);
         
-        return $content;
+        return $elementcontent;
     }
 
     // abstract method that is implemented by each class 

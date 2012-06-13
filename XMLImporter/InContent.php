@@ -90,7 +90,6 @@ class InContent extends Element
         {
             $this->content .= $content;
         }
-//                }
     }
 
     function saveIntoDb($position)

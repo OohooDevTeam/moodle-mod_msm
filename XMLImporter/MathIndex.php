@@ -25,8 +25,6 @@ class MathIndex extends Element
         $this->glossarytable = 'msm_index_glossary';
         $this->symboltable = 'msm_index_symbol';
 
-        //for index author
-        $this->name = 'msm_name';
     }
 
     /**
@@ -107,6 +105,10 @@ class MathIndex extends Element
     {
         global $DB;
         $data = new stdClass();
+        
+        echo "what's in mathindex?";
+        print_object($this);
+        
         if(!empty($this->symbol))
         {
             echo "symbol here?";
