@@ -74,6 +74,7 @@ abstract class Element
 
     function processSubordinate($DomElement, $position)
     {
+        $elementcontent = new stdClass();
         $elementcontent->content = array();
         $elementcontent->subordinates = array();
         $elementcontent->indexauthors = array();
