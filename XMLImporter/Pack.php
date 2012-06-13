@@ -14,6 +14,12 @@ class Pack extends Element
 {
 
     public $position;
+    public $type;
+    public $title;
+    public $caption;
+    public $doclabel;
+    public $textsupport;
+    public $literature_db;    
 
     function __construct($xmlpath = '')
     {
@@ -62,6 +68,7 @@ class Pack extends Element
 
         if (!empty($showmes))
         {
+            $this->type = 'showme';
             foreach ($showmes as $s)
             {
                 $position = $position+1;
@@ -72,6 +79,7 @@ class Pack extends Element
         }
         if (!empty($examples))
         {
+            $this->type = 'example';
             foreach ($examples as $empl)
             {
                 $position = $position+1;
@@ -82,6 +90,7 @@ class Pack extends Element
         }
         if (!empty($exercises))
         {
+            $this->type = 'exercise';
             foreach ($exercises as $excs)
             {
                 $position = $position+1;
@@ -92,6 +101,7 @@ class Pack extends Element
         }
         if (!empty($quizs))
         {
+            $this->type = 'quiz';
             foreach ($quizs as $q)
             {
                 $position = $position+1;
@@ -100,6 +110,41 @@ class Pack extends Element
                 $this->quizs[] = $quiz;
             }
         }
+    }
+    
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+        
+        $data->string_id = $this->string_id;
+        $data->caption = $this->caption;
+        $data->title = $this->title;
+        $data->doclabel = $this->doclabel;
+        $data->texsupport = $this->texsupport;
+        $data->literature_db = $this->literature_db;
+        $data->type = $this->type;
+        
+        $this->id = $DB->insert_record($this->tablename, $data);
+//      foreach($this->quizs as $quiz)
+//      {
+//          $quiz->saveIntoDb($quiz->position);
+//      }
+      
+      foreach($this->examples as $example)
+      {
+          $example->saveIntoDb($example->position);
+      }
+      
+//      foreach($this->exercises as $exercise)
+//      {
+//          $exercise->saveIntoDb($exercise->position);
+//      }
+      
+//      foreach($this->showmes as $showme)
+//      {
+//          $showme->saveIntoDb($showme->position);
+//      }
     }
 
 }

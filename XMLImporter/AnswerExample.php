@@ -37,9 +37,13 @@ class AnswerExample extends Element
         $this->answer_type = $DomElement->getAttribute('type');
         $this->answer_version = $DomElement->getAttribute('version');
 
-        $answer_blocks = $DomElement->getElementTagName('answer.block');
+        $answer_blocks = $DomElement->getElementsByTagName('answer.block');
 
         $this->answer_block_body = array();
+        $this->subordinates = array();
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
 
         foreach ($answer_blocks as $answer_block)
         {

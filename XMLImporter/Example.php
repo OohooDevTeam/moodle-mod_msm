@@ -30,6 +30,8 @@ class Example extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
+        
+        $this->string_id = $DomElement->getAttribute('id');
 
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
@@ -94,6 +96,54 @@ class Example extends Element
             $answer = new AnswerExample($this->xmlpath);
             $answer->loadFromXml($a, $position);
             $this->answers[] = $answer;
+        }
+    }
+
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+
+        $data->string_id = $this->string_id;
+        $data->caption = $this->caption;
+        $data->textcaption = $this->textcaption;
+        $data->description = $this->description;
+
+        $this->id = $DB->insert_record($this->tablename, $data);
+
+        foreach ($this->answers as $answer)
+        {
+            $answer->saveIntoDb($answer->position);
+        }
+
+//        foreach ($this->statement_examples as $st)
+//        {
+//            $st->saveIntoDb($st->position);
+//        }
+//        
+//        foreach($this->part_examples as $part_example)
+//        {
+//            $part_example->saveIntoDb($part_example->position);
+//        }
+
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
         }
     }
 

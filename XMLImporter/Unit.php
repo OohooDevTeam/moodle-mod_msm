@@ -35,6 +35,7 @@ require_once("AnswerExercise.php");
 require_once("Solution.php");
 require_once("Approach.php");
 require_once("Comment.php");
+require_once("AnswerExample.php");
 
 /**
  * Description of Unit
@@ -457,10 +458,10 @@ class Unit extends Element
 //            $exercise->saveIntoDb($exercise->position);
 //        }
 //
-//        foreach ($this->examples as $key => $example)
-//        {
-//            $example->saveIntoDb($example->position);
-//        }
+        foreach ($this->examples as $key => $example)
+        {
+            $example->saveIntoDb($example->position);
+        }
 
 //        $compositorData = new stdClass();
 //        $compositorData->unit_id = $this->id;
