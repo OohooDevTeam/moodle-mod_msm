@@ -51,9 +51,13 @@ class Intro extends Element
         
         $this->id = $DB->insert_record($this->tablename, $data);
         
-     
+        echo "xmlpath";
+        print_object($this->xmlpath);
+        
         foreach($this->blocks as $key=>$block)
         {
+            echo "block";
+             print_object($block);
             $block->saveIntoDb($block->position);
         }
         

@@ -357,6 +357,14 @@ class Unit extends Element
                                             $unit->loadFromXml($element, $position);
                                             $this->subunits[] = $unit;
                                         }
+                                        if($element->tagName ==  'intro')
+                                        {
+                                            $position = $position +1;
+                                            $intro = new Intro(dirname($this->xmlpath . $href));
+                                            $intro->loadFromXml($element, $position);
+                                            $this->intro = $intro;
+                                        }
+                                        // there are exercise/showme/example/quiz that can be part of this
                                         break;
                                     case('unit'):
                                         $unit = new Unit($this->xmlpath);

@@ -75,15 +75,11 @@ class MathIndex extends Element
                 break;
 
             case('index.author'):
-                $names = $DomElement->getElementsByTagName('name');
 
-                foreach ($names as $n)
-                {
-                    $position = $position + 1;
-                    $name = new Person($this->xmlpath);
-                    $name->loadFromXml($n, $position);
-                    $this->names[] = $name;
-                }
+                $position = $position + 1;
+                $name = new Person($this->xmlpath);
+                $name->loadFromXml($DomElement, $position);
+                $this->names[] = $name;
 
                 $infos = $DomElement->getElementsByTagName('info');
 

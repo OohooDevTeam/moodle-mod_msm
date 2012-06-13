@@ -131,6 +131,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         $id = $unit->saveIntoDb($unit->position);
     }
 
+    echo "done";
     die;
 
     # You may have to add extra stuff in here #

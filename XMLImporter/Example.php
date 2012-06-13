@@ -38,6 +38,7 @@ class Example extends Element
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
 
         $this->statement_examples = array();
+
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -71,7 +72,7 @@ class Example extends Element
                 $this->statement_examples[] = $content;
             }
         }
-        
+
         $part_examples = $DomElement->getElementsByTagName('part.example');
 
         $this->part_examples = array();
@@ -82,6 +83,17 @@ class Example extends Element
             $part_example = new PartExample($this->xmlpath);
             $part_example->loadFromXml($part_ex, $position);
             $this->part_examples[] = $part_example;
+        }
+
+        $answers = $DomElement->getElementsByTagName('answer');
+        $this->answers = array();
+
+        foreach ($answers as $a)
+        {
+            $position = $position + 1;
+            $answer = new AnswerExample($this->xmlpath);
+            $answer->loadFromXml($a, $position);
+            $this->answers[] = $answer;
         }
     }
 

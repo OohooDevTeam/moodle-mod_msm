@@ -162,7 +162,7 @@ abstract class Element
         {
             $position = $position + 1;
             $indexauthor = new MathIndex($this->xmlpath);
-            $indexauthor->loadFromXml($indexauthors->item(0), $position);
+            $indexauthor->loadFromXml($indexauthors->item($i), $position);
             $arrayOfIndexAuthor[] = $indexauthor;
         }
         return $arrayOfIndexAuthor;
@@ -179,7 +179,7 @@ abstract class Element
         {
             $position = $position + 1;
             $indexglossary = new MathIndex($this->xmlpath);
-            $indexglossary->loadFromXml($indexglossarys->item(0), $position);
+            $indexglossary->loadFromXml($indexglossarys->item($i), $position);
             $arrayOfIndexGlossary[] = $indexglossary;
         }
         return $arrayOfIndexGlossary;
@@ -196,7 +196,7 @@ abstract class Element
         {
             $position = $position + 1;
             $indexsymbol = new MathIndex($this->xmlpath);
-            $indexsymbol->loadFromXml($indexsymbols->item(0), $position);
+            $indexsymbol->loadFromXml($indexsymbols->item($i), $position);
             $arrayOfIndexSymbol[] = $indexsymbol;
         }
         return $arrayOfIndexSymbol;
