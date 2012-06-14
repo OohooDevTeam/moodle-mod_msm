@@ -1,38 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE exercise	SYSTEM "../Symbols.dtd">
-<exercise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd">
-	<problem>
-		<para>A house in <latex>\RNr[3]</latex> has the following corner points:</para>
-		<ul>
-			<li>
-				<para>
-					<latex>(0,0,0), (20,0,0), (0,16,0), (20,16,0)</latex>
-				</para>
-			</li>
-			<li>
-				<para>
-					<latex>(0,0,10), (20,0,10), (0,16,10), (20,16,10)</latex>
-				</para>
-			</li>
-			<li>
-				<para>
-					<latex>(0,8,20), (20,8,20)</latex>
-				</para>
-			</li>
-		</ul>
-		<para>Plot the points and sketch the house.</para>
-	</problem>
-	<approach>
-		<answer>
-			<para align="center"><img src="ims/HouseR3.gif" width="425" height="339"/></para>
-		</answer>
-		<solution.hint>
-			<para>The base of the house lies in the <latex>xy</latex>-plane.</para>
-		</solution.hint>
-		<solution.hint>
-			<para>The sides of the house are parallel to the coordinate planes.</para>
-		</solution.hint>
-	</approach>
+<!DOCTYPE exercise
+  SYSTEM "../Symbols.dtd">
+<exercise xmlns="Compositor">
+	  <problem>
+      <problem.body>
+		       <para>
+            <para.body>A house in <math>
+                  <latex>\RNr[3]</latex>
+               </math> has the following corner points:</para.body>
+         </para>
+		       <ul>
+			         <li>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>(0,0,0), (20,0,0), (0,16,0), (20,16,0)</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </li>
+			         <li>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>(0,0,10), (20,0,10), (0,16,10), (20,16,10)</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </li>
+			         <li>
+				           <para>
+                  <para.body>
+					                <math>
+                        <latex>(0,8,20), (20,8,20)</latex>
+                     </math>
+				              </para.body>
+               </para>
+			         </li>
+		       </ul>
+		       <para>
+            <para.body>Plot the points and sketch the house.</para.body>
+         </para>
+	     </problem.body>
+   </problem>
+	  <approach version="1">
+		    <answer.exercise>
+         <answer.exercise.block>
+            <answer.exercise.block.body>
+			            <para align="center">
+                  <para.body>
+                     <media type="image" active="0" inline="0">
+                        <img xmlns="" src="ims/HouseR3.gif" height="339" width="425"/>
+                     </media>
+                  </para.body>
+               </para>
+		          </answer.exercise.block.body>
+         </answer.exercise.block>
+      </answer.exercise>
+		    <solution.hint>
+			      <para>
+            <para.body>The base of the house lies in the <math>
+                  <latex>xy</latex>
+               </math>-plane.</para.body>
+         </para>
+		    </solution.hint>
+		    <solution.hint>
+			      <para>
+            <para.body>The sides of the house are parallel to the coordinate planes.</para.body>
+         </para>
+		    </solution.hint>
+	  </approach>
 </exercise>

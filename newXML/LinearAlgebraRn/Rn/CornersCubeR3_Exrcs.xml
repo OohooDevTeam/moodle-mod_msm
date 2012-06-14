@@ -1,42 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE exercise.pack	SYSTEM "../Symbols.dtd">
-<exercise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
-	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd">
+<!DOCTYPE exercise
+  SYSTEM "../Symbols.dtd">
+<exercise xmlns="Compositor">
 	
-	<caption>Plotting Exercises Using Coordinates</caption>
+	  <caption>Plotting Exercises Using Coordinates</caption>
 	
-	<problem>
-		<para>Find the corner points of the cube in <latex>\RNr[3]</latex> with the following properties:</para>
-		<ul>
-			<li>
-				<para>sides are parallel to the coordinate axes and have length 2</para>
-			</li>
-			<li>
-				<para>the center is at <latex>(1,1,1)</latex>. </para>
-			</li>
-		</ul>
-	</problem>
-	<approach>
-		<answer>
-			<para>The corner points of the cube are</para>
-			<ul>
-				<li>
-					<para>bottom face: <latex>(0,0,0), (2,0,0),(0,2,0), (2,2,0)</latex>
-					</para>
-				</li>
-				<li>
-					<para>top face: <latex>(0,0,2), (2,0,2),(0,2,2), (2,2,2)</latex>
-					</para>
-				</li>
-			</ul>
-		</answer>
-		<solution.hint>
-			<para>The bottom face of the cube lies in the <latex>xy</latex>-plane.</para>
-		</solution.hint>
-		<solution.hint>
-			<para>One corner of the cube is at the origin.</para>
-		</solution.hint>
-	</approach>
+	  <problem>
+      <problem.body>
+		       <para>
+            <para.body>Find the corner points of the cube in <math>
+                  <latex>\RNr[3]</latex>
+               </math> with the following properties:</para.body>
+         </para>
+		       <ul>
+			         <li>
+				           <para>
+                  <para.body>sides are parallel to the coordinate axes and have length 2</para.body>
+               </para>
+			         </li>
+			         <li>
+				           <para>
+                  <para.body>the center is at <math>
+                        <latex>(1,1,1)</latex>
+                     </math>. </para.body>
+               </para>
+			         </li>
+		       </ul>
+	     </problem.body>
+   </problem>
+	  <approach version="1">
+		    <answer.exercise>
+         <answer.exercise.block>
+            <answer.exercise.block.body>
+			            <para>
+                  <para.body>The corner points of the cube are</para.body>
+               </para>
+			            <ul>
+				              <li>
+					                <para>
+                        <para.body>bottom face: <math>
+                              <latex>(0,0,0), (2,0,0),(0,2,0), (2,2,0)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>top face: <math>
+                              <latex>(0,0,2), (2,0,2),(0,2,2), (2,2,2)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+			            </ul>
+		          </answer.exercise.block.body>
+         </answer.exercise.block>
+      </answer.exercise>
+		    <solution.hint>
+			      <para>
+            <para.body>The bottom face of the cube lies in the <math>
+                  <latex>xy</latex>
+               </math>-plane.</para.body>
+         </para>
+		    </solution.hint>
+		    <solution.hint>
+			      <para>
+            <para.body>One corner of the cube is at the origin.</para.body>
+         </para>
+		    </solution.hint>
+	  </approach>
 </exercise>

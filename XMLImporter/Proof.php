@@ -14,6 +14,9 @@ class Proof extends Element
 {
 
     public $position;
+    public $logic_type;
+    public $proof_logic;
+    public $caption;
 
     function __construct($xmlpath = '')
     {
@@ -52,12 +55,12 @@ class Proof extends Element
                 {
                     if ($child->tagName == 'logic')
                     {
-                        $this->logic_type[] = $child->getAttribute('type');
-                        $this->proof_logic[] = $child->nodeValue;
+                        $this->logic_type = $child->getAttribute('type');
+                        $this->proof_logic = $this->getContent($child->getElementsByTagName('part.ref')->item(0));
                     }
                     if ($child->tagName == 'caption')
                     {
-                        $this->caption[] = $this->getContent($child->getElementsByTagName('caption')->item(0));
+                        $this->caption = $this->getContent($child);
                     }
                 }
             }
@@ -91,6 +94,31 @@ class Proof extends Element
                     $this->proof_block_body[] = $content;
                 }
             }
+        }
+    }
+    
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+        
+        $data->string_id = $this->string_id;
+        $data->proof_type = $this->proof_type;
+        $data->logic_type = $this->logic_type;
+        $data->proof_logic = $this->proof_logic;
+        $data->caption = $this->caption;
+        
+        if(!empty($this->proof_block_body))
+        {
+            foreach($this->proof_block_body as $proof_block_body)
+            {
+                $data->proof_content = $proof_block_body;
+                $this->id = $DB->insert_record($this->tablename, $data);
+            }
+        }
+        else
+        {
+             $this->id = $DB->insert_record($this->tablename, $data);
         }
     }
 

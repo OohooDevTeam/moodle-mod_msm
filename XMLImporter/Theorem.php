@@ -92,10 +92,10 @@ class Theorem extends Element
             $statement->saveIntoDb($statement->position);
         }
         
-//        foreach($this->proofs as $key=>$proof)
-//        {
-//            $proof->saveIntoDb($proof->position);
-//        }
+        foreach($this->proofs as $key=>$proof)
+        {
+            $proof->saveIntoDb($proof->position);
+        }
     }
 
 }

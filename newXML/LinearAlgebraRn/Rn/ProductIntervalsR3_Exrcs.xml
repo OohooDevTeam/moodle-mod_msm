@@ -1,60 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE exercise	SYSTEM "../Symbols.dtd">
-<exercise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"
-	xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd">
-	<caption>Products of Intervals in 3-Space</caption>
-	<problem>
-		<para>Describe the object of <latex>\RNr[3]</latex> consisting of the <latex>3</latex>-tuples <latex>[1,2] \times [-2,3] \times [-1,1]</latex>
-		</para>
-	</problem>
-	<approach>
-		<answer>
-			<para>
-				<latex>[1,2]\times [-2,3]\times [-1,1]</latex> is the box in <latex>\RNr[3]</latex> with corners at the points</para>
-			<ul>
-				<li>
-					<para>bottom face: <latex>(1,-2,-1), (1,3,-1), (2,-2,-1), (2,3,-1)</latex>
-					</para>
-				</li>
-				<li>
-					<para>top face: <latex>(1,-2,1), (1,3,1), (2,-2,1), (2,3,1)</latex>
-					</para>
-				</li>
-			</ul>
-		</answer>
-		<solution.hint>
-			<ul>
-				<li>
-					<para>The interval <latex>[1,2]</latex> consists of all numbers <latex>x</latex> with <latex>1\leq x\leq 2</latex>
-					</para>
-				</li>
-				<li>
-					<para>The interval <latex>[-2,3]</latex> consists of all numbers <latex>y</latex> with <latex>-2\leq y\leq 3</latex>
-					</para>
-				</li>
-				<li>
-					<para>The interval <latex>[-1,1]</latex> consists of all numbers <latex>z</latex> with <latex>-1\leq z\leq 1</latex>
-					</para>
-				</li>
-			</ul>
-			<para>Therefore the product <latex>[1,2]\times [-2,3]\times [-1,1]</latex> consists of certain <latex>3</latex>-tuples <latex>(x,y,z)</latex>, namely which?</para>
-		</solution.hint>
-		<solution>
-			<para>the product <latex>[1,2]\times [-2,3]\times [-1,1]</latex> consists of all <latex>3</latex>-tuples <latex>(x,y,z)</latex> satisfying</para>
-			<para align="center">
-				<latex>1\leq x\leq 2</latex> and <latex>-2\leq y\leq 1</latex> and <latex>-1\leq z\leq 1</latex>.
-			</para>
-			<para>Therefore the given product of intervals is the box of <latex>\RNr[3]</latex> with corners at the points</para>
-			<ul>
-				<li>
-					<para>bottom face: <latex>(1,-2,-1), (1,3,-1), (2,-2,-1), (2,3,-1)</latex></para>
-				</li>
-				<li>
-					<para>top face: <latex>(1,-2,1), (1,3,1), (2,-2,1), (2,3,1)</latex></para>
-				</li>
-			</ul>
-		</solution>
-	</approach>
+<!DOCTYPE exercise
+  SYSTEM "../Symbols.dtd">
+<exercise xmlns="Compositor">
+	  <caption>Products of Intervals in 3-Space</caption>
+	  <problem>
+      <problem.body>
+		       <para>
+            <para.body>Describe the object of <math>
+                  <latex>\RNr[3]</latex>
+               </math> consisting of the <math>
+                  <latex>3</latex>
+               </math>-tuples <math>
+                  <latex>[1,2] \times [-2,3] \times [-1,1]</latex>
+               </math>
+		          </para.body>
+         </para>
+	     </problem.body>
+   </problem>
+	  <approach version="1">
+		    <answer.exercise>
+         <answer.exercise.block>
+            <answer.exercise.block.body>
+			            <para>
+                  <para.body>
+				                 <math>
+                        <latex>[1,2]\times [-2,3]\times [-1,1]</latex>
+                     </math> is the box in <math>
+                        <latex>\RNr[3]</latex>
+                     </math> with corners at the points</para.body>
+               </para>
+			            <ul>
+				              <li>
+					                <para>
+                        <para.body>bottom face: <math>
+                              <latex>(1,-2,-1), (1,3,-1), (2,-2,-1), (2,3,-1)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+				              <li>
+					                <para>
+                        <para.body>top face: <math>
+                              <latex>(1,-2,1), (1,3,1), (2,-2,1), (2,3,1)</latex>
+                           </math>
+					                   </para.body>
+                     </para>
+				              </li>
+			            </ul>
+		          </answer.exercise.block.body>
+         </answer.exercise.block>
+      </answer.exercise>
+		    <solution.hint>
+			      <ul>
+				        <li>
+					          <para>
+                  <para.body>The interval <math>
+                        <latex>[1,2]</latex>
+                     </math> consists of all numbers <math>
+                        <latex>x</latex>
+                     </math> with <math>
+                        <latex>1\leq x\leq 2</latex>
+                     </math>
+					             </para.body>
+               </para>
+				        </li>
+				        <li>
+					          <para>
+                  <para.body>The interval <math>
+                        <latex>[-2,3]</latex>
+                     </math> consists of all numbers <math>
+                        <latex>y</latex>
+                     </math> with <math>
+                        <latex>-2\leq y\leq 3</latex>
+                     </math>
+					             </para.body>
+               </para>
+				        </li>
+				        <li>
+					          <para>
+                  <para.body>The interval <math>
+                        <latex>[-1,1]</latex>
+                     </math> consists of all numbers <math>
+                        <latex>z</latex>
+                     </math> with <math>
+                        <latex>-1\leq z\leq 1</latex>
+                     </math>
+					             </para.body>
+               </para>
+				        </li>
+			      </ul>
+			      <para>
+            <para.body>Therefore the product <math>
+                  <latex>[1,2]\times [-2,3]\times [-1,1]</latex>
+               </math> consists of certain <math>
+                  <latex>3</latex>
+               </math>-tuples <math>
+                  <latex>(x,y,z)</latex>
+               </math>, namely which?</para.body>
+         </para>
+		    </solution.hint>
+		    <solution>
+         <solution.body>
+			         <para>
+               <para.body>the product <math>
+                     <latex>[1,2]\times [-2,3]\times [-1,1]</latex>
+                  </math> consists of all <math>
+                     <latex>3</latex>
+                  </math>-tuples <math>
+                     <latex>(x,y,z)</latex>
+                  </math> satisfying</para.body>
+            </para>
+			         <para align="center">
+               <para.body>
+				              <math>
+                     <latex>1\leq x\leq 2</latex>
+                  </math> and <math>
+                     <latex>-2\leq y\leq 1</latex>
+                  </math> and <math>
+                     <latex>-1\leq z\leq 1</latex>
+                  </math>.
+			</para.body>
+            </para>
+			         <para>
+               <para.body>Therefore the given product of intervals is the box of <math>
+                     <latex>\RNr[3]</latex>
+                  </math> with corners at the points</para.body>
+            </para>
+			         <ul>
+				           <li>
+					             <para>
+                     <para.body>bottom face: <math>
+                           <latex>(1,-2,-1), (1,3,-1), (2,-2,-1), (2,3,-1)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+				           </li>
+				           <li>
+					             <para>
+                     <para.body>top face: <math>
+                           <latex>(1,-2,1), (1,3,1), (2,-2,1), (2,3,1)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+				           </li>
+			         </ul>
+		       </solution.body>
+      </solution>
+	  </approach>
 </exercise>

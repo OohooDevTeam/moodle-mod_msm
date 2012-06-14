@@ -30,7 +30,7 @@ class Subordinate extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        
+
         $this->infos = array();
         $this->companion = array();
         $this->externalref = array();
@@ -44,7 +44,7 @@ class Subordinate extends Element
         {
             if ($child->nodeType == XML_ELEMENT_NODE)
             {
-                if($child->tagName == 'hot')
+                if ($child->tagName == 'hot')
                 {
                     $this->hot = $this->getContent($child);
                 }
@@ -57,16 +57,17 @@ class Subordinate extends Element
                 }
                 if ($child->tagName == 'companion')
                 {
-                    foreach ($child->childNodes as $grandChild)
+                    foreach ($child->childNodes as $grandchild)
                     {
-                        if ($grandChild->nodeType == XML_ELEMENT_NODE)
+                        if ($grandchild->nodeType == XML_ELEMENT_NODE)
                         {
-                            $name = $grandChild->tagName;
+                            $name = $grandchild->tagName;
+                            $parser = new DOMDocument();
 
                             switch ($name)
                             {
                                 case('comment.ref'):
-                                    $commentrefID = $grandChild->getAttribute('commentID');
+                                    $commentrefID = $grandchild->getAttribute('commentID');
 
                                     if (!empty($commentrefID))
                                     {
@@ -75,13 +76,11 @@ class Subordinate extends Element
                                         // find the file with comment with specified ID
                                         $filepath = $this->findFile($commentrefID);
 
-                                        $parser = new DOMDocument();
                                         $parser->load($filepath);
-
 
                                         // may need to change this code to load the entire file
                                         // containing the specified comment
-                                        $comments = $parser->getElementsByTagName('comment');
+                                        $comments = $parser->getElementsByTagName('comment')->item(0);
                                         foreach ($comments as $c)
                                         {
                                             $id = $c->getAttribute('id');
@@ -91,11 +90,12 @@ class Subordinate extends Element
                                                 $position = $position + 1;
                                                 $comment = new Comment($this->xmlpath);
                                                 $comment->loadFromXml($c, $position);
-                                                $this->companion = $comment;
+                                                $this->companion[] = $comment;
                                             }
                                         }
                                     }
                             }
+//               
                         }
                     }
                 }

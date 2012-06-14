@@ -6,7 +6,7 @@
  */
 
 /**
- * Description of PartExample
+ * Does not exist in legacy files but will be an option for the author when new materials are generated
  *
  * @author User
  */
@@ -68,6 +68,26 @@ class PartExample extends Element
             foreach ($this->processContent($peb, $position) as $content)
             {
                 $this->content[] = $content;
+            }
+        }
+    }
+    
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClsss;
+        
+        $data->partid = $this->partid;
+        $data->counter = $this->counter;
+        $data->equivalence_mark = $this->equiv_mark;
+        $data->caption = $this->caption;
+        
+        if(!empty($this->content))
+        {
+            foreach($this->content as $content)
+            {
+                $data->part_content = $content;
+                $this->id =$DB->insert_record($this->tablename, $data);
             }
         }
     }

@@ -223,11 +223,11 @@ class Unit extends Element
                             $intro->loadFromXml($element, $position);
                             $this->intro = $intro;
                         }
-                       else
-                       {
-                           echo "another tag?";
-                           print_object(element-tagName);
-                       }
+                        else
+                        {
+                            echo "another tag?";
+                            print_object(element - tagName);
+                        }
                     }
                     else if ($child->tagName == 'historical.notes')
                     {
@@ -358,9 +358,9 @@ class Unit extends Element
                                             $unit->loadFromXml($element, $position);
                                             $this->subunits[] = $unit;
                                         }
-                                        if($element->tagName ==  'intro')
+                                        if ($element->tagName == 'intro')
                                         {
-                                            $position = $position +1;
+                                            $position = $position + 1;
                                             $intro = new Intro(dirname($this->xmlpath . $href));
                                             $intro->loadFromXml($element, $position);
                                             $this->intro = $intro;
@@ -453,11 +453,11 @@ class Unit extends Element
             }
         }
 
-//        foreach ($this->exercises as $key => $exercise)
-//        {
-//            $exercise->saveIntoDb($exercise->position);
-//        }
-//
+        foreach ($this->exercises as $key => $exercise)
+        {
+            $exercise->saveIntoDb($exercise->position);
+        }
+
         foreach ($this->examples as $key => $example)
         {
             $example->saveIntoDb($example->position);

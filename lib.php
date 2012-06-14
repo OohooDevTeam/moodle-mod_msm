@@ -88,7 +88,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     //only one instance in every system
     $sysctx = get_context_instance(CONTEXT_SYSTEM);
 
-    
+
     //temporary delete records.
     $DB->delete_records('msm_unit');
     $DB->delete_records('msm_def');
@@ -113,6 +113,12 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     $DB->delete_records('msm_answer_exercise');
     $DB->delete_records('msm_answer_showme');
     $DB->delete_records('msm_packs');
+    $DB->delete_records('msm_problem');
+    $DB->delete_records('msm_exercise');
+    $DB->delete_records('msm_example');
+    $DB->delete_records('msm_showme');
+    $DB->delete_records('msm_quiz');
+     $DB->delete_records('msm_part_exercise');
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {

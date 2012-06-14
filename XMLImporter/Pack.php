@@ -132,10 +132,10 @@ class Pack extends Element
           $example->saveIntoDb($example->position);
       }
       
-//      foreach($this->exercises as $exercise)
-//      {
-//          $exercise->saveIntoDb($exercise->position);
-//      }
+      foreach($this->exercises as $exercise)
+      {
+          $exercise->saveIntoDb($exercise->position);
+      }
       
 //      foreach($this->showmes as $showme)
 //      {

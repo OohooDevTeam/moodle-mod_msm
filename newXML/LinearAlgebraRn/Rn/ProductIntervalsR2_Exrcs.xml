@@ -1,69 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE exercise	SYSTEM "../Symbols.dtd">
-<exercise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://webmath.math.ualberta.ca/v1/Exercise"    xsi:schemaLocation="http://webmath.math.ualberta.ca/v1/Exercise    http://webmath.math.ualberta.ca/Schemas/v1/ExercisePack.xsd">
-	<caption>Products of Intervals in 2-Space</caption>
-	<problem>
-		<para>For the interval pairs below, sketch their cartesian products in <latex>\RNr[2]</latex>
-		</para>
-	</problem>
-	<part>
-		<problem>
-			<para>
-				<latex>[-3,6]</latex> and <latex>[4,9]</latex>
-			</para>
-		</problem>
-		<approach>
-			<answer>
-				<para>The product of the given intervals is <latex>[-3,6]\times [4,9]</latex>. It is the rectangle in <latex>\RNr[2]</latex> with corner points</para>
-				<para align="center">
-					<latex>(-3,4), (-3,9), (6,4), (6,9)</latex>
-				</para>
-			</answer>
-			<solution.hint>
-				<para>Recall the following</para>
-				<ul>
-					<li>
-						<para>The interval <latex>[-3,6]</latex> is the space of <latex>1</latex>-tuples <latex>(x)</latex> with <latex>-3\leq x\leq 6</latex>.</para>
-					</li>
-					<li>
-						<para>The interval <latex>[4,9]</latex> is the space of <latex>1</latex>-tuples <latex>(y)</latex> with <latex>4\leq y\leq 9</latex>.</para>
-					</li>
-				</ul>
-				<para>Therefore the product of the intervals is a space of <latex>2</latex>-tuples <latex>(x,y)</latex>. – Which?</para>
-			</solution.hint>
-		</approach>
-	</part>
+<!DOCTYPE exercise
+  SYSTEM "../Symbols.dtd">
+<exercise xmlns="Compositor">
+	  <caption>Products of Intervals in 2-Space</caption>
+	  <problem>
+      <problem.body>
+		       <para>
+            <para.body>For the interval pairs below, sketch their cartesian products in <math>
+                  <latex>\RNr[2]</latex>
+               </math>
+		          </para.body>
+         </para>
+	     </problem.body>
+   </problem>
+	  <part.exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>
+				              <math>
+                     <latex>[-3,6]</latex>
+                  </math> and <math>
+                     <latex>[4,9]</latex>
+                  </math>
+			            </para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The product of the given intervals is <math>
+                           <latex>[-3,6]\times [4,9]</latex>
+                        </math>. It is the rectangle in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> with corner points</para.body>
+                  </para>
+				              <para align="center">
+                     <para.body>
+					                   <math>
+                           <latex>(-3,4), (-3,9), (6,4), (6,9)</latex>
+                        </math>
+				                 </para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Recall the following</para.body>
+            </para>
+				        <ul>
+					          <li>
+						            <para>
+                     <para.body>The interval <math>
+                           <latex>[-3,6]</latex>
+                        </math> is the space of <math>
+                           <latex>1</latex>
+                        </math>-tuples <math>
+                           <latex>(x)</latex>
+                        </math> with <math>
+                           <latex>-3\leq x\leq 6</latex>
+                        </math>.</para.body>
+                  </para>
+					          </li>
+					          <li>
+						            <para>
+                     <para.body>The interval <math>
+                           <latex>[4,9]</latex>
+                        </math> is the space of <math>
+                           <latex>1</latex>
+                        </math>-tuples <math>
+                           <latex>(y)</latex>
+                        </math> with <math>
+                           <latex>4\leq y\leq 9</latex>
+                        </math>.</para.body>
+                  </para>
+					          </li>
+				        </ul>
+				        <para>
+               <para.body>Therefore the product of the intervals is a space of <math>
+                     <latex>2</latex>
+                  </math>-tuples <math>
+                     <latex>(x,y)</latex>
+                  </math>. – Which?</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </part.exercise>
 	
-	<part>
-		<problem>
-			<para>
-				<latex>[4,9]</latex> and <latex>[-3,6]</latex>
-			</para>
-		</problem>
-		<approach>
-			<answer>
-				<para>The product of the given intervals is <latex>[4,9]\times [-3,6]</latex>. It is the rectangle in <latex>\RNr[2]</latex> with corner points</para>
-				<para align="center">
-					<latex>(4,-3), (9,-3), (4,6), (9,6)</latex>
-				</para>
-			</answer>
-			<solution.hint>
-				<para>Recall the following</para>
-				<ul>
-					<li>
-						<para>The interval <latex>[4,9]</latex> is the space of <latex>1</latex>-tuples <latex>(y)</latex> with <latex>4\leq y\leq 9</latex>.</para>
-					</li>
-					<li>
-						<para>The interval <latex>[-3,6]</latex> is the space of <latex>1</latex>-tuples <latex>(x)</latex> with <latex>-3\leq x\leq 6</latex>.</para>
-					</li>
-				</ul>
-				<para>Therefore the product of the intervals is a space of <latex>2</latex>-tuples <latex>(x,y)</latex>. – Which?</para>
-			</solution.hint>
-			<solution.hint>
-				<para>Notice the difference between this and the previous problem: interchanging the order in which we multiply the intervals matters: The rectangle <latex>[4,9]\times [-3,6]</latex> results from reflecting the rectangle <latex>[-3,6]\times [4,9]</latex> over the line of all points of the form <latex>(t,t)</latex>.</para>
-			</solution.hint>
-		</approach>
-	</part>
+	  <part.exercise>
+		    <problem>
+         <problem.body>
+			         <para>
+               <para.body>
+				              <math>
+                     <latex>[4,9]</latex>
+                  </math> and <math>
+                     <latex>[-3,6]</latex>
+                  </math>
+			            </para.body>
+            </para>
+		       </problem.body>
+      </problem>
+		    <approach version="1">
+			      <answer.exercise>
+            <answer.exercise.block>
+               <answer.exercise.block.body>
+				              <para>
+                     <para.body>The product of the given intervals is <math>
+                           <latex>[4,9]\times [-3,6]</latex>
+                        </math>. It is the rectangle in <math>
+                           <latex>\RNr[2]</latex>
+                        </math> with corner points</para.body>
+                  </para>
+				              <para align="center">
+                     <para.body>
+					                   <math>
+                           <latex>(4,-3), (9,-3), (4,6), (9,6)</latex>
+                        </math>
+				                 </para.body>
+                  </para>
+			            </answer.exercise.block.body>
+            </answer.exercise.block>
+         </answer.exercise>
+			      <solution.hint>
+				        <para>
+               <para.body>Recall the following</para.body>
+            </para>
+				        <ul>
+					          <li>
+						            <para>
+                     <para.body>The interval <math>
+                           <latex>[4,9]</latex>
+                        </math> is the space of <math>
+                           <latex>1</latex>
+                        </math>-tuples <math>
+                           <latex>(y)</latex>
+                        </math> with <math>
+                           <latex>4\leq y\leq 9</latex>
+                        </math>.</para.body>
+                  </para>
+					          </li>
+					          <li>
+						            <para>
+                     <para.body>The interval <math>
+                           <latex>[-3,6]</latex>
+                        </math> is the space of <math>
+                           <latex>1</latex>
+                        </math>-tuples <math>
+                           <latex>(x)</latex>
+                        </math> with <math>
+                           <latex>-3\leq x\leq 6</latex>
+                        </math>.</para.body>
+                  </para>
+					          </li>
+				        </ul>
+				        <para>
+               <para.body>Therefore the product of the intervals is a space of <math>
+                     <latex>2</latex>
+                  </math>-tuples <math>
+                     <latex>(x,y)</latex>
+                  </math>. – Which?</para.body>
+            </para>
+			      </solution.hint>
+			      <solution.hint>
+				        <para>
+               <para.body>Notice the difference between this and the previous problem: interchanging the order in which we multiply the intervals matters: The rectangle <math>
+                     <latex>[4,9]\times [-3,6]</latex>
+                  </math> results from reflecting the rectangle <math>
+                     <latex>[-3,6]\times [4,9]</latex>
+                  </math> over the line of all points of the form <math>
+                     <latex>(t,t)</latex>
+                  </math>.</para.body>
+            </para>
+			      </solution.hint>
+		    </approach>
+	  </part.exercise>
 </exercise>

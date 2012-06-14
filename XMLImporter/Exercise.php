@@ -54,9 +54,28 @@ class Exercise extends Element
             $this->approachs[] = $approach;
         }
     }
-}
-{
-    //put your code here
+    
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+        
+        $data->string_id = $this->string_id;
+        $data->difficulty = $this->difficulty;
+        $data->caption = $this->caption;
+        
+        $this->id = $DB->insert_record($this->tablename, $data);
+        
+        foreach($this->problems as $problem)
+        {
+            $problem->saveIntoDb($problem->position);
+        }
+//        
+//        foreach($this->approachs as $approach)
+//        {
+//            $approach->saveIntoDb($approach->position);
+//        }
+    }
 }
 
 ?>
