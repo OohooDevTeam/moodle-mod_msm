@@ -22,6 +22,7 @@ class Intro extends Element
     /**
      *
      * @param DOMElement $DomElement 
+     * @param int $position
      */
     function loadFromXml($DomElement, $position = '')
     {

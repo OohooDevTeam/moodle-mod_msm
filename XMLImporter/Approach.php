@@ -91,6 +91,36 @@ class Approach extends Element
         }
     }
 
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+
+        $data->approach_version = $this->version;
+        if (!empty($this->content))
+        {
+            foreach ($this->content as $content)
+            {
+                $data->solution_hint = $content;
+                $this->id = $DB->insert_record($this->tablename, $data);
+            }
+        }
+        else
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        
+        foreach($this->answerexercises as $answerexercise)
+        {
+            $answerexercise->saveIntoDb($answerexercise->position);
+        }
+        
+        foreach($this->solutions as $solution)
+        {
+            $solution->saveIntoDb($solution->position);
+        }
+    }
+
 }
 
 ?>

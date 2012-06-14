@@ -36,6 +36,11 @@ require_once("Solution.php");
 require_once("Approach.php");
 require_once("Comment.php");
 require_once("AnswerExample.php");
+require_once("PartExercise.php");
+require_once("SolutionExt.php");
+require_once("ApproachExt.php");
+require_once("Step.php");
+require_once("Pilot.php");
 
 /**
  * Description of Unit

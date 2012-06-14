@@ -53,6 +53,26 @@ class Exercise extends Element
             $approach->loadFromXml($app, $position);
             $this->approachs[] = $approach;
         }
+        
+        $this->approach_exts = array();
+        $approach_exts = $DomElement->getElementsByTagName('approach.ext');
+        foreach($approach_exts as $ae)
+        {
+            $position = $position+1;
+            $approach_ext = new ApproachExt($this->xmlpath);
+            $approach_ext->loadFromXml($ae, $position);
+            $this->approach_exts[] = $approach_ext;
+        }
+        
+        $this->part_exercises = array();
+        $part_exercises = $DomElement->getElementsByTagName('part.exercise');
+        foreach($part_exercises as $pe)
+        {
+            $position = $position+1;
+            $part_exercise = new PartExercise($this->xmlpath);
+            $part_exercise->loadFromXml($pe, $position);
+            $this->part_exercises[] = $part_exercise;
+        }
     }
     
     function saveIntoDb($position)
@@ -70,11 +90,21 @@ class Exercise extends Element
         {
             $problem->saveIntoDb($problem->position);
         }
-//        
-//        foreach($this->approachs as $approach)
-//        {
-//            $approach->saveIntoDb($approach->position);
-//        }
+        
+        foreach($this->approachs as $approach)
+        {
+            $approach->saveIntoDb($approach->position);
+        }
+        
+        foreach($this->approach_exts as $approach_ext)
+        {
+            $approach_ext->saveIntoDb($approach_ext->position);
+        }
+        
+        foreach($this->part_exercises as $part_exercise)
+        {
+            $part_exercise->saveIntoDb($part_exercise->position);
+        }
     }
 }
 

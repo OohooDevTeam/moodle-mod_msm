@@ -79,6 +79,10 @@ class AnswerExercise extends Element
                 $this->id = $DB->insert_record($this->tablename, $data);
             }
         }
+        else
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
 
         foreach ($this->subordinates as $key => $subordinate)
         {
