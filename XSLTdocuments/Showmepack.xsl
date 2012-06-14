@@ -135,6 +135,71 @@
                 <xsl:apply-templates/>
             </xsl:element>
         </xsl:template>
+    
+    <xsl:template match="exa:figure">
+        <xsl:element name="media" namespace="Theorem">
+            <xsl:if test="./@id">
+                <xsl:attribute name="id">
+                    <xsl:value-of select="./@id"/>
+                </xsl:attribute>
+            </xsl:if>  
+            
+            <xsl:attribute name="type">image</xsl:attribute>
+            <xsl:choose>
+                <xsl:when test="child::node()[name()='info']">
+                    <xsl:attribute name="active">1</xsl:attribute>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="active">0</xsl:attribute>
+                </xsl:otherwise>
+            </xsl:choose>
+            
+            <xsl:attribute name="inline">0</xsl:attribute>
+            
+            <xsl:apply-templates select="exa:img"/>
+            <xsl:if test="child::node()[name()='info' or name()='caption']">
+                
+                <xsl:element name="extended.caption" namespace="Theorem">
+                    
+                    <xsl:if test="child::node()[name()='info']">
+                        
+                        <xsl:element name="image.mapping" namespace="Theorem">
+                            
+                            <xsl:element name="area" namespace="Theorem">
+                                <xsl:attribute name="shape">
+                                    <xsl:text>rect</xsl:text>
+                                </xsl:attribute>
+                                
+                                <xsl:attribute name="coord">
+                                    
+                                    <xsl:choose>
+                                        <xsl:when test="child::node()[name()='img'][attribute::width]">
+                                            <xsl:if test="child::node()[name()='img'][attribute::height]">                                       
+                                                <xsl:text>0&#44;0&#44;</xsl:text>
+                                                <xsl:value-of select="exa:img/@width"/>
+                                                <xsl:text>&#44;</xsl:text>
+                                                <xsl:value-of select="exa:img/@height"/>
+                                            </xsl:if>                                        
+                                        </xsl:when>
+                                        
+                                        <xsl:otherwise>
+                                            <xsl:text>0&#44;0&#44;200&#44;100</xsl:text>
+                                        </xsl:otherwise> 
+                                        
+                                    </xsl:choose>                                    
+                                </xsl:attribute>
+                            </xsl:element>
+                        </xsl:element>
+                        
+                        <xsl:apply-templates select="exa:info"/>
+                    </xsl:if>
+                    <xsl:if test="child::node()[name()='caption']">
+                        <xsl:apply-templates select="child::node()[name()='caption']"/>
+                    </xsl:if>
+                </xsl:element>
+            </xsl:if>
+        </xsl:element>
+    </xsl:template>
         
     <xsl:template match="exa:img">
         <xsl:choose>     

@@ -53,9 +53,9 @@
                      </math> by evaluating it on some small integers</para.body>
                </para>
 			
-			
-				           <img src="ims/LinearTrafo2To1.png"/>
-			
+			            <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/LinearTrafo2To1.png"/>
+               </media>
 			
 			            <para>
                   <para.body>So we see that <math>
@@ -180,9 +180,9 @@ x \\ y
                         <latex>R</latex>
                      </math> by evaluating it on pairs of small integers</para.body>
                </para>
-			
-				           <img src="ims/Rotation90.png"/>
-			
+			            <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/Rotation90.png"/>
+               </media>
 			
 			            <math.array column="3">
                   <row rowspan="1">

@@ -172,9 +172,9 @@
                      </math>.</para.body>
                </para>
 			
-			
-				           <img src="ims/FunctionPreimage_Linear.gif"/>
-			
+			            <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/FunctionPreimage_Linear.gif"/>
+               </media>
 			
 			            <para>
                   <para.body>Thus we see that the preimage of a colored dot on the right is the line of the same color on the left. This implies that the function    transforms each of the colored lines on the left into the single point of the same color on the right.</para.body>

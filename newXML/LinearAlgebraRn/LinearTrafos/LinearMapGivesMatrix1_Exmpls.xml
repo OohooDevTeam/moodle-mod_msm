@@ -153,15 +153,17 @@ A := \left[\begin{array}{cc}
                   </index.glossary>
                </para>
 			
-			
-				           <img src="ims/Trafo2To2_1.png"/>
-				           <caption>The effect of <math>
-                     <latex>L</latex>
-                  </math> on the unit square (left) of <math>
-                     <latex>\RNr[2]</latex>
-                  </math>
-               </caption>
-			
+			            <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/Trafo2To2_1.png"/>
+                  <extended.caption>
+                     <caption xmlns="">The effect of <math>
+                           <latex>L</latex>
+                        </math> on the unit square (left) of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>
+                     </caption>
+                  </extended.caption>
+               </media>
 			
 			            <para>
                   <para.body>Thus we see that <math>
@@ -180,15 +182,17 @@ A := \left[\begin{array}{cc}
                   </index.glossary>
                </para>
 			
-			
-				           <img src="ims/Trafo2To2_2.png"/>
-				           <caption>The effect of <math>
-                     <latex>L</latex>
-                  </math> on the unit lattice (left) of <math>
-                     <latex>\RNr[2]</latex>
-                  </math>
-               </caption>
-			
+			            <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/Trafo2To2_2.png"/>
+                  <extended.caption>
+                     <caption xmlns="">The effect of <math>
+                           <latex>L</latex>
+                        </math> on the unit lattice (left) of <math>
+                           <latex>\RNr[2]</latex>
+                        </math>
+                     </caption>
+                  </extended.caption>
+               </media>
 			
 			            <para>
                   <para.body>We now have two methods to compute how <math>

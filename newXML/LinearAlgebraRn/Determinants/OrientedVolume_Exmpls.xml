@@ -28,9 +28,9 @@
                   <latex>\abs{ \Vect{z} } = 3</latex>
                </math>.</para.body>
          </para>
-			
-				     <img xmlns="" src="ims/RightHandBox.gif"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/RightHandBox.gif"/>
+         </media>
 			
 			      <math.array xmlns="" column="3">
             <row rowspan="1">
@@ -94,9 +94,9 @@
                   <latex>\abs{ \Vect{w} } = 7</latex>
                </math>.</para.body>
          </para>
-			
-				     <img xmlns="" src="ims/LeftHandBox.gif"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/LeftHandBox.gif"/>
+         </media>
 			
 			      <math.array xmlns="" column="3">
             <row rowspan="1">
@@ -168,9 +168,9 @@
                </math>
             </para.body>
          </para>
-			
-				     <img xmlns="" src="ims/OrientedVolumeBox1.jpg"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/OrientedVolumeBox1.jpg"/>
+         </media>
 			
 		    </statement.example>
 		    <answer xmlns="" type="Solution" version="1">
@@ -239,9 +239,9 @@
                </math>
             </para.body>
          </para>
-			
-				     <img xmlns="" src="ims/OrientedVolumeBox2.jpg"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/OrientedVolumeBox2.jpg"/>
+         </media>
 			
 		    </statement.example>
 		    <answer xmlns="" type="Solution" version="1">

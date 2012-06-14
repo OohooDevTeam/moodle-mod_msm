@@ -112,6 +112,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     $DB->delete_records('msm_table');
     $DB->delete_records('msm_answer_exercise');
     $DB->delete_records('msm_answer_showme');
+    $DB->delete_records('msm_packs');
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {

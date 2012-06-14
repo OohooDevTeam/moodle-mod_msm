@@ -70,9 +70,9 @@
                   <latex>2</latex>
                </math>.</para.body>
          </para>
-			
-				     <img xmlns="" src="ims/Diagonalizable01.png"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/Diagonalizable01.png"/>
+         </media>
 			      <para xmlns="">
             <para.body>The picture above shows the plane <math>
                   <latex>\RNr[2]</latex>

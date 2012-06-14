@@ -231,9 +231,9 @@ B = \dfrac{1}{6}
 			      <para xmlns="">
             <para.body>Here is another view of an orthogonal projection. It displays its effect on a box in 3-space.</para.body>
          </para>
-			
-				     <img xmlns="" src="ims/ReflectionHyperplaneBox.jpg"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/ReflectionHyperplaneBox.jpg"/>
+         </media>
 		    </statement.showme>
 	  </showme>
 	

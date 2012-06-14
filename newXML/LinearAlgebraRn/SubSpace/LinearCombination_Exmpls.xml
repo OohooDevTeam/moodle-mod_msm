@@ -24,9 +24,9 @@
                   <latex>\Vect{x} = (2,1)</latex>
                </math>.</para.body>
          </para>
-			
-				     <img xmlns="" src="ims/LinearCombination1_Anim.gif"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/LinearCombination1_Anim.gif"/>
+         </media>
 		    </statement.showme>
 	  </showme>
 	
@@ -89,9 +89,9 @@
 			      <math.display xmlns="">
 				        <latex>\Vect{u} = (-1,-1),\quad \Vect{v} = (2,1), \quad \text{and}\quad \Vect{x} = (1,-1)</latex>
 			      </math.display>
-			
-				     <img xmlns="" src="ims/LinearCombination2_Anim.gif"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/LinearCombination2_Anim.gif"/>
+         </media>
 		    </statement.showme>
 		    <answer.showme xmlns="">
          <answer.showme.block>
@@ -169,9 +169,9 @@
 			      <math.display xmlns="">
 				        <latex>\Vect{u} = (-1,-1),\quad \Vect{v} = (2,1), \quad \text{and}\quad \Vect{x} = (3,2)</latex>
 			      </math.display>
-			
-				     <img xmlns="" src="ims/LinearCombination3_Anim.gif"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/LinearCombination3_Anim.gif"/>
+         </media>
 		    </statement.showme>
 		    <answer.showme xmlns="">
          <answer.showme.block>
@@ -317,9 +317,9 @@ A =
 			      <math.display xmlns="">
 				        <latex>\Vect{u} = (1,0,1/2)\quad \text{and} \quad \Vect{v} = (0,1,1).</latex>
 			      </math.display>
-			
-				     <img xmlns="" src="ims/"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/"/>
+         </media>
 		    </statement.showme>
 		    <answer.showme xmlns="">
          <answer.showme.block>

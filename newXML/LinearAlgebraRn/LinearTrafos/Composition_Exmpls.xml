@@ -119,9 +119,9 @@ x \\ y
                      </math> is given by first performing the shear map, then performing the rotation on the result; as in the picture below.</para.body>
                </para>
 			
-			
-				           <img src="ims/ShearRotate.png"/>
-			
+			            <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/ShearRotate.png"/>
+               </media>
 		          </answer.showme.block.body>
          </answer.showme.block>
       </answer.showme>

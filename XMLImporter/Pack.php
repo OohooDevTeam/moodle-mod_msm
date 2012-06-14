@@ -68,7 +68,6 @@ class Pack extends Element
 
         if (!empty($showmes))
         {
-            $this->type = 'showme';
             foreach ($showmes as $s)
             {
                 $position = $position+1;
@@ -79,7 +78,6 @@ class Pack extends Element
         }
         if (!empty($examples))
         {
-            $this->type = 'example';
             foreach ($examples as $empl)
             {
                 $position = $position+1;
@@ -90,7 +88,6 @@ class Pack extends Element
         }
         if (!empty($exercises))
         {
-            $this->type = 'exercise';
             foreach ($exercises as $excs)
             {
                 $position = $position+1;
@@ -101,7 +98,6 @@ class Pack extends Element
         }
         if (!empty($quizs))
         {
-            $this->type = 'quiz';
             foreach ($quizs as $q)
             {
                 $position = $position+1;
