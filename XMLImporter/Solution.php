@@ -14,6 +14,7 @@ class Solution extends Element
 {
 
     public $position;
+    public $content;
 
     function __construct($xmlpath = '')
     {
@@ -34,36 +35,35 @@ class Solution extends Element
         $this->indexsymbols = array();
         $this->subordinates = array();
 
-        $this->content = array();
+        $body = $DomElement->getElementsByTagName('solution.body')->item(0);
 
-        $bodys = $DomElement->getElementsByTagName('solution.body');
-
-        foreach ($bodys as $b)
-        {
-            foreach ($this->processIndexAuthor($b, $position) as $indexauthor)
+//        foreach ($bodys as $b)
+//        {
+            foreach ($this->processIndexAuthor($body, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processIndexGlossary($b, $position) as $indexglossary)
+            foreach ($this->processIndexGlossary($body, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processIndexSymbols($b, $position) as $indexsymbol)
+            foreach ($this->processIndexSymbols($body, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
-            foreach ($this->processSubordinate($b, $position) as $subordinate)
+            foreach ($this->processSubordinate($body, $position) as $subordinate)
             {
                 $this->subordinates[] = $subordinate;
             }
 
-            foreach ($this->processContent($b, $position) as $content)
+            foreach ($this->processContent($body, $position) as $content)
             {
-                $this->content[] = $content;
+                $this->content .= $content;
             }
-        }
+            
+//        }
     }
 
     function saveIntoDb($position)
@@ -75,11 +75,8 @@ class Solution extends Element
 
         if (!empty($this->content))
         {
-            foreach ($this->content as $content)
-            {
-                $data->content = $content;
-                $this->id = $DB->insert_record($this->tablename, $data);
-            }
+            $data->solution_content = $this->content;
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
         else
         {
