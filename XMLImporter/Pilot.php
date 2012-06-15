@@ -18,7 +18,7 @@ class Pilot extends Element
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
-        $this->tablename = 'msm_step';
+        $this->tablename = 'msm_pilot';
     }
 
     /**
