@@ -38,6 +38,7 @@ class Proof extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         $this->string_id = $DomElement->getAttribute('id');
 
@@ -89,6 +90,11 @@ class Proof extends Element
                     $this->subordinates[] = $subordinate;
                 }
 
+                foreach ($this->processMedia($proofbody, $position) as $media)
+                {
+                    $this->medias[] = $media;
+                }
+
                 foreach ($this->processContent($proofbody, $position) as $content)
                 {
                     $this->proof_block_body[] = $content;
@@ -96,21 +102,21 @@ class Proof extends Element
             }
         }
     }
-    
+
     function saveIntoDb($position)
     {
         global $DB;
         $data = new stdClass();
-        
+
         $data->string_id = $this->string_id;
         $data->proof_type = $this->proof_type;
         $data->logic_type = $this->logic_type;
         $data->proof_logic = $this->proof_logic;
         $data->caption = $this->caption;
-        
-        if(!empty($this->proof_block_body))
+
+        if (!empty($this->proof_block_body))
         {
-            foreach($this->proof_block_body as $proof_block_body)
+            foreach ($this->proof_block_body as $proof_block_body)
             {
                 $data->proof_content = $proof_block_body;
                 $this->id = $DB->insert_record($this->tablename, $data);
@@ -118,9 +124,9 @@ class Proof extends Element
         }
         else
         {
-             $this->id = $DB->insert_record($this->tablename, $data);
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
-        
+
         foreach ($this->subordinates as $key => $subordinate)
         {
             $subordinate->saveIntoDb($subordinate->position);
@@ -139,6 +145,11 @@ class Proof extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

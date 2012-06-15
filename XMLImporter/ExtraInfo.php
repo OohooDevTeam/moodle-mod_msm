@@ -48,6 +48,12 @@ class ExtraInfo extends Element
                 break;
         }
 
+        $this->subordinates = array();
+        $this->indexauthors = array();
+        $this->indexsymbols = array();
+        $this->indexglossary = array();
+        $this->medias = array();
+
         foreach ($DomElement->childNodes as $child)
         {
             if ($child->nodeType == XML_ELEMENT_NODE)
@@ -71,6 +77,11 @@ class ExtraInfo extends Element
                     foreach ($this->processSubordinate($child, $position) as $subordinate)
                     {
                         $this->subordinates[] = $subordinate;
+                    }
+
+                    foreach ($this->processMedia($child, $position) as $media)
+                    {
+                        $this->medias[] = $media;
                     }
 
                     foreach ($this->processContent($child, $position) as $content)
@@ -115,6 +126,11 @@ class ExtraInfo extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

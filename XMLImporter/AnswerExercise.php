@@ -35,6 +35,7 @@ class AnswerExercise extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         $bodys = $DomElement->getElementsByTagName('answer.exercise.block.body');
         foreach ($bodys as $b)
@@ -61,6 +62,11 @@ class AnswerExercise extends Element
             foreach ($this->processContent($b, $position) as $content)
             {
                 $this->content[] = $content;
+            }
+            
+            foreach ($this->processMedia($b, $position) as $media)
+            {
+                $this->medias[] = $media;
             }
         }
     }
@@ -102,6 +108,11 @@ class AnswerExercise extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+        
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

@@ -30,6 +30,7 @@ class PartTheorem extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         $this->partid = $DomElement->getAttribute('partid');
         $this->counter = $DomElement->getAttribute('counter');
@@ -57,6 +58,11 @@ class PartTheorem extends Element
             foreach ($this->processSubordinate($parb, $position) as $subordinate)
             {
                 $this->subordinates[] = $subordinate;
+            }
+
+            foreach ($this->processMedia($parb, $position) as $media)
+            {
+                $this->medias[] = $media;
             }
 
             foreach ($this->processContent($parb, $position) as $content)
@@ -107,6 +113,11 @@ class PartTheorem extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

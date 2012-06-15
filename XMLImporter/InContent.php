@@ -28,12 +28,13 @@ class InContent extends Element
      * @param int $position 
      */
     public function loadFromXml($DomElement, $position = '')
-    {       
+    {
         $this->position = $position;
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         //determining the element node of the passed DOMElement to identify the type in DB field
         $nameofElement = $DomElement->tagName;
@@ -57,31 +58,35 @@ class InContent extends Element
         }
 
         $position = $position + 1;
-        
-        foreach($this->processIndexAuthor($DomElement, $position) as $indexauthor)
+
+        foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
         }
-        
-        foreach($this->processIndexGlossary($DomElement, $position) as $indexglossary)
+
+        foreach ($this->processIndexGlossary($DomElement, $position) as $indexglossary)
         {
             $this->indexglossarys[] = $indexglossary;
         }
-        
-        foreach($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
+
+        foreach ($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
         {
             $this->indexsymbols[] = $indexsymbol;
         }
-        foreach($this->processSubordinate($DomElement, $position) as $subordinate)
+        foreach ($this->processSubordinate($DomElement, $position) as $subordinate)
         {
             $this->subordinates[] = $subordinate;
         }
-        
-        foreach($this->processContent($DomElement, $position) as $content)
+
+        foreach ($this->processMedia($DomElement, $position) as $media)
+        {
+            $this->medias[] = $media;
+        }
+
+        foreach ($this->processContent($DomElement, $position) as $content)
         {
             $this->content .= $content;
         }
-
     }
 
     function saveIntoDb($position)
@@ -100,8 +105,8 @@ class InContent extends Element
         {
             $this->id = $DB->insert_record($this->tablename, $data);
         }
-        
-         foreach ($this->subordinates as $key => $subordinate)
+
+        foreach ($this->subordinates as $key => $subordinate)
         {
             $subordinate->saveIntoDb($subordinate->position);
         }
@@ -119,6 +124,11 @@ class InContent extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

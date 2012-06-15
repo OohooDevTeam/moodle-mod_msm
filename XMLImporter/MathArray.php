@@ -35,6 +35,7 @@ class MathArray extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->subordinates = array();
+        $this->medias = array();
 
         $this->string_id = $DomElement->getAttribute('id');
         $this->no_column = $DomElement->getAttribute('column'); //specifies number of column
@@ -59,6 +60,12 @@ class MathArray extends Element
         {
             $this->subordinates[] = $subordinate;
         }
+
+        foreach ($this->processMedia($DomElement, $position) as $media)
+        {
+            $this->medias[] = $media;
+        }
+
 
         foreach ($this->processContent($DomElement, $position) as $content)
         {
@@ -104,6 +111,11 @@ class MathArray extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

@@ -50,6 +50,7 @@ class Definition extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         $associates = $DomElement->getElementsByTagName('associate');
 
@@ -86,10 +87,15 @@ class Definition extends Element
                 $this->subordinates[] = $subordinate;
             }
 
+            foreach ($this->processMedia($d, $position) as $media)
+            {
+                $this->medias[] = $media;
+            }
+
             foreach ($this->processContent($d, $position) as $content)
             {
                 $this->content .= $content;
-            }           
+            }
         }
     }
 
@@ -105,7 +111,7 @@ class Definition extends Element
         }
 
         $data->description = $this->description;
-        
+
         if (!empty($this->content))
         {
             $data->def_content = $this->content;
@@ -139,6 +145,11 @@ class Definition extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

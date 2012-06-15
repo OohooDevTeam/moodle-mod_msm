@@ -31,6 +31,7 @@ class StatementTheorem extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->subordinates = array();
+        $this->medias = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -62,6 +63,11 @@ class StatementTheorem extends Element
                     foreach ($this->processSubordinate($child, $position) as $subordinate)
                     {
                         $this->subordinates[] = $subordinate;
+                    }
+
+                    foreach ($this->processMedia($child, $position) as $media)
+                    {
+                        $this->medias[] = $media;
                     }
 
                     foreach ($this->processContent($child, $position) as $content)
@@ -107,6 +113,11 @@ class StatementTheorem extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

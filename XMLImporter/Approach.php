@@ -37,6 +37,7 @@ class Approach extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -66,6 +67,11 @@ class Approach extends Element
                     foreach ($this->processContent($child, $position) as $content)
                     {
                         $this->content[] = $content;
+                    }
+
+                    foreach ($this->processMedia($child, $position) as $media)
+                    {
+                        $this->medias[] = $media;
                     }
                 }
                 if ($child->tagName == 'answer.exercise')
@@ -109,15 +115,40 @@ class Approach extends Element
         {
             $this->id = $DB->insert_record($this->tablename, $data);
         }
-        
-        foreach($this->answerexercises as $answerexercise)
+
+        foreach ($this->answerexercises as $answerexercise)
         {
             $answerexercise->saveIntoDb($answerexercise->position);
         }
-        
-        foreach($this->solutions as $solution)
+
+        foreach ($this->solutions as $solution)
         {
             $solution->saveIntoDb($solution->position);
+        }
+        
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
+        }
+        
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

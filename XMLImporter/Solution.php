@@ -34,35 +34,41 @@ class Solution extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->subordinates = array();
+        $this->medias = array();
 
         $body = $DomElement->getElementsByTagName('solution.body')->item(0);
 
 //        foreach ($bodys as $b)
 //        {
-            foreach ($this->processIndexAuthor($body, $position) as $indexauthor)
-            {
-                $this->indexauthors[] = $indexauthor;
-            }
+        foreach ($this->processIndexAuthor($body, $position) as $indexauthor)
+        {
+            $this->indexauthors[] = $indexauthor;
+        }
 
-            foreach ($this->processIndexGlossary($body, $position) as $indexglossary)
-            {
-                $this->indexglossarys[] = $indexglossary;
-            }
+        foreach ($this->processIndexGlossary($body, $position) as $indexglossary)
+        {
+            $this->indexglossarys[] = $indexglossary;
+        }
 
-            foreach ($this->processIndexSymbols($body, $position) as $indexsymbol)
-            {
-                $this->indexsymbols[] = $indexsymbol;
-            }
-            foreach ($this->processSubordinate($body, $position) as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
+        foreach ($this->processIndexSymbols($body, $position) as $indexsymbol)
+        {
+            $this->indexsymbols[] = $indexsymbol;
+        }
+        foreach ($this->processSubordinate($body, $position) as $subordinate)
+        {
+            $this->subordinates[] = $subordinate;
+        }
 
-            foreach ($this->processContent($body, $position) as $content)
-            {
-                $this->content .= $content;
-            }
-            
+        foreach ($this->processMedia($body, $position) as $media)
+        {
+            $this->medias[] = $media;
+        }
+
+        foreach ($this->processContent($body, $position) as $content)
+        {
+            $this->content .= $content;
+        }
+
 //        }
     }
 
@@ -102,6 +108,11 @@ class Solution extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

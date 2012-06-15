@@ -41,6 +41,7 @@ class Comment extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
 
         $associates = $DomElement->getElementsByTagName('associate');
@@ -76,6 +77,11 @@ class Comment extends Element
             foreach ($this->processSubordinate($c, $position) as $subordinate)
             {
                 $this->subordinates[] = $subordinate;
+            }
+
+            foreach ($this->processMedia($c, $position) as $media)
+            {
+                $this->medias[] = $media;
             }
 
             foreach ($this->processContent($c, $position) as $content)
@@ -134,6 +140,11 @@ class Comment extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+        
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

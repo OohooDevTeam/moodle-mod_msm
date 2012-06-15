@@ -37,6 +37,7 @@ class MathInfo extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -61,6 +62,11 @@ class MathInfo extends Element
                     foreach ($this->processSubordinate($child, $position) as $subordinate)
                     {
                         $this->subordinates[] = $subordinate;
+                    }
+
+                    foreach ($this->processMedia($child, $position) as $media)
+                    {
+                        $this->medias[] = $media;
                     }
 
                     foreach ($this->processContent($child, $position) as $content)
@@ -114,6 +120,11 @@ class MathInfo extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

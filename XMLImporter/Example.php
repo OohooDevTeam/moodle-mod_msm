@@ -45,6 +45,7 @@ class Example extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         $statement_examples = $DomElement->getElementsByTagName('statement.example');
 
@@ -67,6 +68,11 @@ class Example extends Element
             foreach ($this->processSubordinate($statement_ex, $position) as $subordinate)
             {
                 $this->subordinates[] = $subordinate;
+            }
+
+            foreach ($this->processMedia($statement_ex, $position) as $media)
+            {
+                $this->medias[] = $media;
             }
 
             foreach ($this->processContent($statement_ex, $position) as $content)
@@ -111,19 +117,19 @@ class Example extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
-        $statement_data = new stdClass();        
+        $statement_data = new stdClass();
         foreach ($this->statement_examples as $st)
         {
             $statement_data->statement_example_content = $st;
             $this->statement_example_id = $DB->insert_record('msm_statement_example', $statement_data);
         }
-        
+
         foreach ($this->answers as $answer)
         {
             $answer->saveIntoDb($answer->position);
         }
 
-        foreach($this->part_examples as $part_example)
+        foreach ($this->part_examples as $part_example)
         {
             $part_example->saveIntoDb($part_example->position);
         }
@@ -146,6 +152,11 @@ class Example extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

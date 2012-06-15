@@ -44,6 +44,7 @@ class AnswerExample extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         foreach ($answer_blocks as $answer_block)
         {
@@ -89,6 +90,11 @@ class AnswerExample extends Element
                 foreach ($this->processContent($answer_block_body, $position) as $content)
                 {
                     $this->answer_block_body[] = $content;
+                }
+
+                foreach ($this->processMedia($answer_block_body, $position) as $media)
+                {
+                    $this->medias[] = $media;
                 }
             }
         }
@@ -136,6 +142,11 @@ class AnswerExample extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

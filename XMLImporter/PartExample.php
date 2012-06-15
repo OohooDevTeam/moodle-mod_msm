@@ -36,9 +36,12 @@ class PartExample extends Element
 
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
+        $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+
+        $this->medias = array();
 
         $this->content = array();
 
@@ -65,30 +68,60 @@ class PartExample extends Element
                 $this->subordinates[] = $subordinate;
             }
 
+            foreach ($this->processMedia($peb, $position) as $media)
+            {
+                $this->medias[] = $media;
+            }
+
             foreach ($this->processContent($peb, $position) as $content)
             {
                 $this->content[] = $content;
             }
         }
     }
-    
+
     function saveIntoDb($position)
     {
         global $DB;
         $data = new stdClsss;
-        
+
         $data->partid = $this->partid;
         $data->counter = $this->counter;
         $data->equivalence_mark = $this->equiv_mark;
         $data->caption = $this->caption;
-        
-        if(!empty($this->content))
+
+        if (!empty($this->content))
         {
-            foreach($this->content as $content)
+            foreach ($this->content as $content)
             {
                 $data->part_content = $content;
-                $this->id =$DB->insert_record($this->tablename, $data);
+                $this->id = $DB->insert_record($this->tablename, $data);
             }
+        }
+
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

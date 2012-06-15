@@ -34,6 +34,7 @@ class AnswerShowme extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         $answer_showme_blocks = $DomElement->getElementsByTagName('answer.showme.block');
 
@@ -66,7 +67,12 @@ class AnswerShowme extends Element
 
                 foreach ($this->processContent($asbb, $position) as $content)
                 {
-                    $this->content []= $content;
+                    $this->content [] = $content;
+                }
+
+                foreach ($this->processMedia($asbb, $position) as $media)
+                {
+                    $this->medias[] = $media;
                 }
             }
         }
@@ -109,6 +115,11 @@ class AnswerShowme extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

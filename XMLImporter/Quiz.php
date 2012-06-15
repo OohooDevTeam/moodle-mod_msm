@@ -38,6 +38,7 @@ class Quiz extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
 
         $questions = $DomElement->getElementsByTagName('question');
         foreach ($questions as $q)
@@ -64,6 +65,11 @@ class Quiz extends Element
             foreach ($this->processContent($q, $position) as $content)
             {
                 $this->questions[] = $content;
+            }
+            
+            foreach ($this->processMedia($q, $position) as $media)
+            {
+                $this->medias[] = $media;
             }
         }
 

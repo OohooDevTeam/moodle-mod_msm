@@ -40,6 +40,7 @@ class Para extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->subordinates = array();
+        $this->medias = array();
 
         $this->content = array();
 
@@ -60,6 +61,11 @@ class Para extends Element
         foreach ($this->processSubordinate($DomElement, $position) as $subordinate)
         {
             $this->subordinates[] = $subordinate;
+        }
+
+        foreach ($this->processMedia($DomElement, $position) as $media)
+        {
+            $this->medias[] = $media;
         }
 
         foreach ($this->processContent($DomElement, $position) as $content)
@@ -110,6 +116,11 @@ class Para extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 

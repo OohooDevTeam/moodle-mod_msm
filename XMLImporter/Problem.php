@@ -36,6 +36,8 @@ class Problem extends Element
         $this->indexsymbols = array();
         $this->subordinates = array();
 
+        $this->medias = array();
+
         $this->content = array();
 
         $problembodys = $DomElement->getElementsByTagName('problem.body');
@@ -60,6 +62,11 @@ class Problem extends Element
             foreach ($this->processSubordinate($prob, $position) as $subordinate)
             {
                 $this->subordinates[] = $subordinate;
+            }
+
+            foreach ($this->processMedia($prob, $position) as $media)
+            {
+                $this->medias[] = $media;
             }
 
             foreach ($this->processContent($prob, $position) as $content)
@@ -108,6 +115,11 @@ class Problem extends Element
         foreach ($this->indexauthors as $key => $indexauthor)
         {
             $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
         }
     }
 
