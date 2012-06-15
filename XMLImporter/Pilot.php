@@ -28,11 +28,19 @@ class Pilot extends Element
      */
     function loadFromXml($DomElement, $position = '')
     {
+        $doc = new DOMDocument();
+        $pilot_step = $DomElement->getElementsByTagName('pilot.step')->item(0);
         
+        $element = $doc->importNode($pilot_step, true);
+        $this->pilot_content .= $doc->saveXML($element);
     }
     function saveIntoDb($position)
     {
+        global $DB;
+        $data = new stdClass();
+        $data->pilot_content = $this->pilot_content;
         
+        $this->id = $DB->insert_record($this->tablename, $data);
     }
 
 }
