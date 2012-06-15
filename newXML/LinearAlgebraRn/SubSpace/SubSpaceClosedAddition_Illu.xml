@@ -23,13 +23,8 @@
                      <latex>\RNr[n]</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/SubSpaceClosedAddition.gif"/>
-               <extended.caption>The sum of two vectors in <math>
-                     <latex>V</latex>
-                  </math> is again in <math>
-                     <latex>V</latex>
-                  </math>.</extended.caption>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/SubSpaceClosedAddition.gif"/>
             </media>
             <para>
                <para.body>In contrast, here is a subset <math>
@@ -38,8 +33,8 @@
                      <latex>\RNr[2]</latex>
                   </math> which fails to be closed under vector addition. It is, therefore, not a subvector space.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/SubSetNotClosedAddition.gif"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/SubSetNotClosedAddition.gif"/>
             </media>
             <para>
                <para.body>Indeed, there are (at least) two vectors <math>
@@ -63,13 +58,8 @@
                      <latex>S</latex>
                   </math> is not a subvector space.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/SubSetClosedAdditionNotScalarMult.gif"/>
-               <extended.caption>The scalar multiple of <math>
-                     <latex>\Vect{x}</latex>
-                  </math> by a negative number is not in <math>
-                     <latex>V</latex>
-                  </math>.</extended.caption>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/SubSetClosedAdditionNotScalarMult.gif"/>
             </media>
          </block.body>
       </block>

@@ -24,50 +24,55 @@
          <block.body>
             <para align="center">
                <para.body>
-                  <media type="image" active="1" inline="0">
-                     <img src="ims/DirectionAnglesR2.gif" height="237" width="343"/>
-                     <image.mapping xmlns="">
-                        <area xmlns="Unit" shape="rect" coords="39,209,101,233"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>
-                                 <math>
-                                    <latex>\Vect{e}_1 = (1,0)</latex>
-                                 </math> is the standard vector in the first coordinate direction.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit" shape="rect" coords="3,142,29,191"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>
-                                 <math>
-                                    <latex>\Vect{e}_2 = (0,1)</latex>
-                                 </math> is the standard vector in the second coordinate direction.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit" shape="poly" coords="35,195,199,112,35,21"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>
-                                 <math>
-                                    <latex>\omega_2 := \sphericalangle(\Vect{e}_2,\Vect{x})</latex>
-                                 </math> is the second direction angle of the vector <math>
-                                    <latex>\Vect{x}</latex>
-                                 </math>.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit" shape="poly" coords="242,104,48,201,288,201"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>
-                                 <math>
-                                    <latex>\omega_1 := \sphericalangle(\Vect{e}_1,\Vect{x})</latex>
-                                 </math> is the first direction angle of the vector <math>
-                                    <latex>\Vect{x}</latex>
-                                 </math>.</para.body>
-                           </para>
-                        </info>
-                     </image.mapping>
+                  <media xmlns="" type="image" active="1" inline="0">
+                     <img src="ims/DirectionAnglesR2.gif" height="237" width="343">
+                        <image.mapping>
+                           <area xmlns="Unit" shape="rect" coords="39,209,101,233">
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\Vect{e}_1 = (1,0)</latex>
+                                       </math> is the standard vector in the first coordinate direction.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="rect" coords="3,142,29,191">
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\Vect{e}_2 = (0,1)</latex>
+                                       </math> is the standard vector in the second coordinate direction.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="35,195,199,112,35,21">
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\omega_2 := \sphericalangle(\Vect{e}_2,\Vect{x})</latex>
+                                       </math> is the second direction angle of the vector <math>
+                                          <latex>\Vect{x}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="242,104,48,201,288,201">
+                              <info>
+                                 <para>
+                                    <para.body>
+                                       <math>
+                                          <latex>\omega_1 := \sphericalangle(\Vect{e}_1,\Vect{x})</latex>
+                                       </math> is the first direction angle of the vector <math>
+                                          <latex>\Vect{x}</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                        </image.mapping>
+                     </img>
                   </media>
                </para.body>
             </para>

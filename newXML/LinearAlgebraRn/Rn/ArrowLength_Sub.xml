@@ -20,7 +20,7 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/ArrowLength_Illstrtn.gif"/>
                   </media>
                </para.body>

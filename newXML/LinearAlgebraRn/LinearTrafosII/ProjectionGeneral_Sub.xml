@@ -14,34 +14,8 @@
             <para>
                <para.body>We encounter projections of objects onto planar surfaces on a daily basis, for example in the form of the shadow of an object.</para.body>
             </para>
-            <media type="image" active="1" inline="0">
-               <img src="ims/ProjectionParallelToVector.png"/>
-               <extended.caption>
-                  <image.mapping>
-                     <area shape="rect" coord="0,0,200,100"/>
-                  </image.mapping>
-                  <info>
-                     <para>
-                        <para.body>In this picture, <math>
-                              <latex>\text{pr}(\Vect{x})</latex>
-                           </math> is the projection of <math>
-                              <latex>\Vect{x}</latex>
-                           </math> onto <math>
-                              <latex>H</latex>
-                           </math>, parallel to <math>
-                              <latex>\Vect{v}</latex>
-                           </math>. Similarly, <math>
-                              <latex>\text{pr}(\Vect{y})</latex>
-                           </math> is the projection of <math>
-                              <latex>\Vect{y}</latex>
-                           </math> onto <math>
-                              <latex>H</latex>
-                           </math>, parallel to <math>
-                              <latex>\Vect{v}</latex>
-                           </math>.</para.body>
-                     </para>
-                  </info>
-               </extended.caption>
+            <media xmlns="Theorem" type="image" active="1" inline="0">
+               <img xmlns="" src="ims/ProjectionParallelToVector.png"/>
             </media>
             <para>
                <para.body>Here the vectors <math>

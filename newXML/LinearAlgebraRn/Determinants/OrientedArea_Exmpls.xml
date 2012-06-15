@@ -210,64 +210,70 @@
 			      <para xmlns="" align="center">
             <para.body>
                <media type="image" active="1" inline="0">
-                  <img src="ims/OrientedAreaPlaneGrid.jpg"/>
-                  <image.mapping>
-                     <area coords="57,91,383,107" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Congratulations! - The grid point you picked is the tip of a vector <math>
-                                 <latex>\Vect{y}</latex>
-                              </math> so that.</para.body>
-                        </para>
-						                  <math.array column="3">
-                           <row rowspan="1">
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>\OriVol(\Vect{x},\Vect{y})</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="1" halign="center" valign="middle">
-                                 <text>=</text>
-                              </cell>
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>+15</latex>
-                                 </math>
-                              </cell>
-                           </row>
-                        </math.array>
-					                </info>
-				                 <area coords="59,222,383,240" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Careful! With the vector <math>
-                                 <latex>\Vect{y}</latex>
-                              </math> you are specifying you determine a parallelogram whose unoriented area is <math>
-                                 <latex>15</latex>
-                              </math>. However, <math>
-                                 <latex>(\Vect{x},\Vect{y})</latex>
-                              </math> determine the negative orientation of the plane. So this is not an acceptable grid point.</para.body>
-                        </para>
-					                </info>
-				                 <area coords="57,113,384,217" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Sorry! Try another point.</para.body>
-                        </para>
-					                </info>
-				                 <area coords="59,247,382,304" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Sorry! Try another point.</para.body>
-                        </para>
-					                </info>
-				                 <area coords="59,26,382,83" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Sorry! Try another point.</para.body>
-                        </para>
-					                </info>
-				              </image.mapping>
+                  <img src="ims/OrientedAreaPlaneGrid.jpg">
+                     <image.mapping>
+                        <area coords="57,91,383,107" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Congratulations! - The grid point you picked is the tip of a vector <math>
+                                       <latex>\Vect{y}</latex>
+                                    </math> so that.</para.body>
+                              </para>
+						                        <math.array column="3">
+                                 <row rowspan="1">
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>\OriVol(\Vect{x},\Vect{y})</latex>
+                                       </math>
+                                    </cell>
+                                    <cell colspan="1" halign="center" valign="middle">
+                                       <text>=</text>
+                                    </cell>
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>+15</latex>
+                                       </math>
+                                    </cell>
+                                 </row>
+                              </math.array>
+					                      </info>
+				                    </area>
+                        <area coords="59,222,383,240" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Careful! With the vector <math>
+                                       <latex>\Vect{y}</latex>
+                                    </math> you are specifying you determine a parallelogram whose unoriented area is <math>
+                                       <latex>15</latex>
+                                    </math>. However, <math>
+                                       <latex>(\Vect{x},\Vect{y})</latex>
+                                    </math> determine the negative orientation of the plane. So this is not an acceptable grid point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                        <area coords="57,113,384,217" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Sorry! Try another point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                        <area coords="59,247,382,304" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Sorry! Try another point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                        <area coords="59,26,382,83" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Sorry! Try another point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                     </image.mapping>
+                  </img>
                </media>
 			         </para.body>
          </para>
@@ -300,62 +306,68 @@
 			      <para xmlns="" align="center">
             <para.body>
                <media type="image" active="1" inline="0">
-                  <img src="ims/OrientedAreaPlaneGrid.jpg"/>
-                  <image.mapping>
-                     <area coords="57,91,383,107" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Correct! The grid point you picked determines a vector <math>
-                                 <latex>\Vect{y}</latex>
-                              </math> so that.</para.body>
-                        </para>
-						                  <math.array column="3">
-                           <row rowspan="1">
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>\OriVol(\Vect{x},\Vect{y})</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="1" halign="center" valign="middle">
-                                 <text>=</text>
-                              </cell>
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>-10</latex>
-                                 </math>
-                              </cell>
-                           </row>
-                        </math.array>
-					                </info>
-				                 <area coords="60,113,379,129" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Careful! With the vector <math>
-                                 <latex>\Vect{y}</latex>
-                              </math> you are specifying you determine a parallelogram whose unoriented area is <math>
-                                 <latex>+10</latex>
-                              </math>. Try again, taking into account the required orientation.</para.body>
-                        </para>
-					                </info>
-				                 <area coords="60,134,380,194" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Sorry! Try another point.</para.body>
-                        </para>
-					                </info>
-				                 <area coords="60,224,379,302" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Sorry! Try another point.</para.body>
-                        </para>
-					                </info>
-				                 <area coords="60,26,280,106" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Sorry! Try another point.</para.body>
-                        </para>
-					                </info>
-				              </image.mapping>
+                  <img src="ims/OrientedAreaPlaneGrid.jpg">
+                     <image.mapping>
+                        <area coords="57,91,383,107" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Correct! The grid point you picked determines a vector <math>
+                                       <latex>\Vect{y}</latex>
+                                    </math> so that.</para.body>
+                              </para>
+						                        <math.array column="3">
+                                 <row rowspan="1">
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>\OriVol(\Vect{x},\Vect{y})</latex>
+                                       </math>
+                                    </cell>
+                                    <cell colspan="1" halign="center" valign="middle">
+                                       <text>=</text>
+                                    </cell>
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>-10</latex>
+                                       </math>
+                                    </cell>
+                                 </row>
+                              </math.array>
+					                      </info>
+				                    </area>
+                        <area coords="60,113,379,129" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Careful! With the vector <math>
+                                       <latex>\Vect{y}</latex>
+                                    </math> you are specifying you determine a parallelogram whose unoriented area is <math>
+                                       <latex>+10</latex>
+                                    </math>. Try again, taking into account the required orientation.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                        <area coords="60,134,380,194" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Sorry! Try another point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                        <area coords="60,224,379,302" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Sorry! Try another point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                        <area coords="60,26,280,106" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Sorry! Try another point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                     </image.mapping>
+                  </img>
                </media>
 			         </para.body>
          </para>
@@ -387,77 +399,83 @@
 			      <para xmlns="" align="center">
             <para.body>
                <media type="image" active="1" inline="0">
-                  <img src="ims/OrientedAreaPlaneGrid.jpg"/>
-                  <image.mapping>
-                     <area coords="60,70,380,83" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Careful! The grid point you picked is the tip of a vector <math>
-                                 <latex>\Vect{y}</latex>
-                              </math> such that</para.body>
-                        </para>
-						                  <math.array column="3">
-                           <row rowspan="1">
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>\OriVol(\Vect{y},\Vect{x})</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="1" halign="center" valign="middle">
-                                 <text>=</text>
-                              </cell>
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>+20</latex>
-                                 </math>
-                              </cell>
-                           </row>
-                        </math.array>
-					                </info>
-				                 <area coords="60,246,380,260" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Correct! The grid point you picked is the tip of a vector <math>
-                                 <latex>\Vect{y}</latex>
-                              </math> such that</para.body>
-                        </para>
-						                  <math.array column="3">
-                           <row rowspan="1">
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>\OriVol(\Vect{y},\Vect{x})</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="1" halign="center" valign="middle">
-                                 <text>=</text>
-                              </cell>
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>-20</latex>
-                                 </math>
-                              </cell>
-                           </row>
-                        </math.array>
-					                </info>
-				                 <area coords="60,269,382,304" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Sorry! Try another point.</para.body>
-                        </para>
-					                </info>
-				                 <area coords="60,92,380,238" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Sorry! Try another point.</para.body>
-                        </para>
-					                </info>
-				                 <area coords="60,27,379,60" shape="rect"/>
-					                <info>
-						                  <para>
-                           <para.body>Sorry! Try another point.</para.body>
-                        </para>
-					                </info>
-				              </image.mapping>
+                  <img src="ims/OrientedAreaPlaneGrid.jpg">
+                     <image.mapping>
+                        <area coords="60,70,380,83" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Careful! The grid point you picked is the tip of a vector <math>
+                                       <latex>\Vect{y}</latex>
+                                    </math> such that</para.body>
+                              </para>
+						                        <math.array column="3">
+                                 <row rowspan="1">
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>\OriVol(\Vect{y},\Vect{x})</latex>
+                                       </math>
+                                    </cell>
+                                    <cell colspan="1" halign="center" valign="middle">
+                                       <text>=</text>
+                                    </cell>
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>+20</latex>
+                                       </math>
+                                    </cell>
+                                 </row>
+                              </math.array>
+					                      </info>
+				                    </area>
+                        <area coords="60,246,380,260" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Correct! The grid point you picked is the tip of a vector <math>
+                                       <latex>\Vect{y}</latex>
+                                    </math> such that</para.body>
+                              </para>
+						                        <math.array column="3">
+                                 <row rowspan="1">
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>\OriVol(\Vect{y},\Vect{x})</latex>
+                                       </math>
+                                    </cell>
+                                    <cell colspan="1" halign="center" valign="middle">
+                                       <text>=</text>
+                                    </cell>
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>-20</latex>
+                                       </math>
+                                    </cell>
+                                 </row>
+                              </math.array>
+					                      </info>
+				                    </area>
+                        <area coords="60,269,382,304" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Sorry! Try another point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                        <area coords="60,92,380,238" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Sorry! Try another point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                        <area coords="60,27,379,60" shape="rect">
+					                      <info>
+						                        <para>
+                                 <para.body>Sorry! Try another point.</para.body>
+                              </para>
+					                      </info>
+				                    </area>
+                     </image.mapping>
+                  </img>
                </media>
 			         </para.body>
          </para>

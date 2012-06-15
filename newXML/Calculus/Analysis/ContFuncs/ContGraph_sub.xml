@@ -20,8 +20,8 @@
                      <latex>f</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/ContDisContGraph.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ContDisContGraph.png"/>
             </media>
             <para>
                <para.body>On the left, a continuous function: its graph makes no jumps. On the right, a function with a discontinuity: its graph makes a vertical jump.</para.body>

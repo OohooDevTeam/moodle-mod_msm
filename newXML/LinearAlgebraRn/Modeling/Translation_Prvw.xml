@@ -14,7 +14,7 @@
       </para>
       <para align="center">
          <para.body>
-            <media type="image" active="0" inline="0">
+            <media xmlns="" type="image" active="0" inline="0">
                <img src="ims/Translation.gif" height="251" width="318"/>
             </media>
          </para.body>

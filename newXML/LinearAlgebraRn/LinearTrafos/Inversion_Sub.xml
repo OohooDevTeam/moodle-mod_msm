@@ -24,12 +24,8 @@
                      <latex>T</latex>
                   </math> is called inversion transformation because it inverts each vector. The effect of this transformation on objects is also described as ‘reflection about the origin’.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/Inversion.png"/>
-               <extended.caption>The inversion of <math>
-                     <latex>\RNr[2]</latex>
-                  </math>
-               </extended.caption>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Inversion.png"/>
             </media>
          </block.body>
       </block>

@@ -30,7 +30,7 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="1" inline="0">
+                  <media xmlns="" type="image" active="1" inline="0">
                      <img src="ims/LinearEqSingle.gif" height="255" width="359"/>
                   </media>
                   <info>
@@ -85,7 +85,7 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/LinearEqsTwo.gif" height="281" width="333"/>
                   </media>
                </para.body>
@@ -96,7 +96,7 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/LinearEqsTwoParallel.gif" height="350" width="377"/>
                   </media>
                </para.body>

@@ -24,25 +24,16 @@
                      <latex>H</latex>
                   </math>. </para.body>
             </para>
-            <media type="image" active="1" inline="0">
-               <img src="ims/LeftHandMirrorRightHand.jpg"/>
-               <extended.caption>
-                  <image.mapping>
-                     <area shape="rect" coord="0,0,200,100"/>
-                  </image.mapping>
-                  <info>
-                     <para>
-                        <para.body>Here we apply an orthogonal reflection to a right hand. The result is a left hand.</para.body>
-                     </para>
-                  </info>Action of an orthogonal reflection on a hand</extended.caption>
+            <media xmlns="Theorem" type="image" active="1" inline="0">
+               <img xmlns="" src="ims/LeftHandMirrorRightHand.jpg"/>
             </media>
             <para>
                <para.body>To describe such an orthogonal reflectiion <math>
                      <latex>M</latex>
                   </math> mathematically, we consider the following schematic sketch.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/OrthogonalReflection.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/OrthogonalReflection.png"/>
             </media>
             <para>
                <para.body>In the picture above, we reflect <math>

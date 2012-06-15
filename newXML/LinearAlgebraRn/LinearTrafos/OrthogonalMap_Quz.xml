@@ -15,9 +15,9 @@
 			      <para>
             <para.body>Does a shear transformation of the plane preserve distances?</para.body>
          </para>
-			
-				     <img src="ims/ShearR2_3.png"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/ShearR2_3.png"/>
+         </media>
 		    </question>
 		    <hint>
 			      <info>
@@ -123,9 +123,9 @@
                </math> about a plane passing through the origin preserve distances?</para.body>
          </para>
 			
-			
-				     <img src="ims/LeftHandMirrorRightHand.jpg"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/LeftHandMirrorRightHand.jpg"/>
+         </media>
 		    </question>
 		    <choice>
 			      <answer>
@@ -162,9 +162,9 @@
                </math> onto a line through the origin preserve distances?</para.body>
          </para>
 			
-			
-				     <img src="ims/OrthogonalProjection"/>
-			
+			      <media xmlns="Theorem" type="image" active="0" inline="0">
+            <img xmlns="" src="ims/OrthogonalProjection"/>
+         </media>
 		    </question>
 		    <choice>
 			      <answer>

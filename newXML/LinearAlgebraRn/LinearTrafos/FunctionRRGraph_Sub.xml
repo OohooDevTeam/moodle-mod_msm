@@ -14,8 +14,8 @@
             <para>
                <para.body>It is very likely that you have already come in contact with the concept of a function. For example, within the context of calculus, you might have gotten used thinking of a function as a curve in a 2D-coordinate system like this one:</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/FunctionGraph.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/FunctionGraph.png"/>
             </media>
             <para>
                <para.body>Here the domain <math>

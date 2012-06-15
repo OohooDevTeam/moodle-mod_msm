@@ -81,60 +81,65 @@
 			            <para align="center">
                   <para.body>
                      <media type="image" active="1" inline="0">
-                        <img src="ims/FunctionPreimage_SquareDistance.gif"/>
-                        <image.mapping>
-                           <area shape="circle" coords="154,154,74"/>
-					                      <info>
-						                        <para>
-                                 <para.body>This black circle has radius <math>
-                                       <latex>1</latex>
-                                    </math>. It forms the preimage of <math>
-                                       <latex>1</latex>
-                                    </math>, denoted <math>
-                                       <latex>f^{-1}(1)</latex>
-                                    </math>.</para.body>
-                              </para>
-					                      </info>
-				                       <area shape="poly"
-                                 coords="149,53,90,73,54,149,82,214,147,241,206,225,240,181,241,128,203,74,162,54,166,45,203,58,228,77,245,103,254,128,255,156,252,179,235,211,210,237,178,251,152,255,116,251,86,234,63,210,47,180,42,143,53,104,74,75,105,52,131,43,148,42"/>
-					                      <info>
-						                        <para>
-                                 <para.body>This purple circle has radius <math>
-                                       <latex>\sqrt{2}</latex>
-                                    </math>. It forms the preimage of <math>
-                                       <latex>2</latex>
-                                    </math>, denoted <math>
-                                       <latex>f^{-1}(2)</latex>
-                                    </math>.</para.body>
-                              </para>
-					                      </info>
-				                       <area shape="poly"
-                                 coords="149,29,119,33,83,50,59,72,42,101,33,140,35,176,44,202,66,228,88,247,124,261,168,262,215,246,243,215,260,186,265,151,263,125,255,98,234,69,204,45,164,31,166,19,203,31,225,42,244,59,261,82,273,105,278,133,279,158,275,184,264,210,245,235,217,258,186,273,154,277,117,275,88,263,58,241,38,215,22,172,22,131,32,96,48,68,82,40,115,23,150,19"/>
-					                      <info>
-						                        <para>
-                                 <para.body>This blue circle has radius <math>
-                                       <latex>\sqrt{3}</latex>
-                                    </math>. It forms the preimage of <math>
-                                       <latex>3</latex>
-                                    </math>, denoted <math>
-                                       <latex>f^{-1}(3)</latex>
-                                    </math>.</para.body>
-                              </para>
-					                      </info>
-				                       <area shape="poly"
-                                 coords="149,11,110,18,65,40,33,76,16,126,16,174,33,220,60,249,93,271,141,284,196,275,240,248,271,209,285,159,280,108,258,67,216,28,164,13,168,1,230,17,284,77,301,149,286,215,236,272,176,297,98,295,41,259,10,206,1,147,9,95,45,41,95,5,149,2"/>
-					                      <info>
-						                        <para>
-                                 <para.body>This yellow circle has radius <math>
-                                       <latex>2</latex>
-                                    </math>. It forms the preimage of <math>
-                                       <latex>4</latex>
-                                    </math>, denoted <math>
-                                       <latex>f^{-1}(4)</latex>
-                                    </math>.</para.body>
-                              </para>
-					                      </info>
-				                    </image.mapping>
+                        <img src="ims/FunctionPreimage_SquareDistance.gif">
+                           <image.mapping>
+                              <area shape="circle" coords="154,154,74">
+					                            <info>
+						                              <para>
+                                       <para.body>This black circle has radius <math>
+                                             <latex>1</latex>
+                                          </math>. It forms the preimage of <math>
+                                             <latex>1</latex>
+                                          </math>, denoted <math>
+                                             <latex>f^{-1}(1)</latex>
+                                          </math>.</para.body>
+                                    </para>
+					                            </info>
+				                          </area>
+                              <area shape="poly"
+                                    coords="149,53,90,73,54,149,82,214,147,241,206,225,240,181,241,128,203,74,162,54,166,45,203,58,228,77,245,103,254,128,255,156,252,179,235,211,210,237,178,251,152,255,116,251,86,234,63,210,47,180,42,143,53,104,74,75,105,52,131,43,148,42">
+					                            <info>
+						                              <para>
+                                       <para.body>This purple circle has radius <math>
+                                             <latex>\sqrt{2}</latex>
+                                          </math>. It forms the preimage of <math>
+                                             <latex>2</latex>
+                                          </math>, denoted <math>
+                                             <latex>f^{-1}(2)</latex>
+                                          </math>.</para.body>
+                                    </para>
+					                            </info>
+				                          </area>
+                              <area shape="poly"
+                                    coords="149,29,119,33,83,50,59,72,42,101,33,140,35,176,44,202,66,228,88,247,124,261,168,262,215,246,243,215,260,186,265,151,263,125,255,98,234,69,204,45,164,31,166,19,203,31,225,42,244,59,261,82,273,105,278,133,279,158,275,184,264,210,245,235,217,258,186,273,154,277,117,275,88,263,58,241,38,215,22,172,22,131,32,96,48,68,82,40,115,23,150,19">
+					                            <info>
+						                              <para>
+                                       <para.body>This blue circle has radius <math>
+                                             <latex>\sqrt{3}</latex>
+                                          </math>. It forms the preimage of <math>
+                                             <latex>3</latex>
+                                          </math>, denoted <math>
+                                             <latex>f^{-1}(3)</latex>
+                                          </math>.</para.body>
+                                    </para>
+					                            </info>
+				                          </area>
+                              <area shape="poly"
+                                    coords="149,11,110,18,65,40,33,76,16,126,16,174,33,220,60,249,93,271,141,284,196,275,240,248,271,209,285,159,280,108,258,67,216,28,164,13,168,1,230,17,284,77,301,149,286,215,236,272,176,297,98,295,41,259,10,206,1,147,9,95,45,41,95,5,149,2">
+					                            <info>
+						                              <para>
+                                       <para.body>This yellow circle has radius <math>
+                                             <latex>2</latex>
+                                          </math>. It forms the preimage of <math>
+                                             <latex>4</latex>
+                                          </math>, denoted <math>
+                                             <latex>f^{-1}(4)</latex>
+                                          </math>.</para.body>
+                                    </para>
+					                            </info>
+				                          </area>
+                           </image.mapping>
+                        </img>
                      </media>
 			               </para.body>
                </para>

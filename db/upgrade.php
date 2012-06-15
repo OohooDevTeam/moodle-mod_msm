@@ -1593,6 +1593,54 @@ function xmldb_msm_upgrade($oldversion)
         upgrade_mod_savepoint(true, 2012060501, 'msm');
     }
 
+    if ($oldversion < 2012061500)
+    {
+
+        // Define field img_content to be dropped from msm_img
+        $table = new xmldb_table('msm_img');
+        $field = new xmldb_field('img_content');
+
+        // Conditionally launch drop field img_content
+        if ($dbman->field_exists($table, $field))
+        {
+            $dbman->drop_field($table, $field);
+        }
+
+        // Define field src to be added to msm_img
+        $table = new xmldb_table('msm_img');
+        $field = new xmldb_field('src', XMLDB_TYPE_CHAR, '400', null, XMLDB_NOTNULL, null, null, 'image_mapping');
+
+        // Conditionally launch add field src
+        if (!$dbman->field_exists($table, $field))
+        {
+            $dbman->add_field($table, $field);
+        }
+
+        // Define field height to be added to msm_img
+        $table = new xmldb_table('msm_img');
+        $field = new xmldb_field('height', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'src');
+
+        // Conditionally launch add field height
+        if (!$dbman->field_exists($table, $field))
+        {
+            $dbman->add_field($table, $field);
+        }
+
+        // Define field width to be added to msm_img
+        $table = new xmldb_table('msm_img');
+        $field = new xmldb_field('width', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'height');
+
+        // Conditionally launch add field width
+        if (!$dbman->field_exists($table, $field))
+        {
+            $dbman->add_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012061500, 'msm');
+    }
+
+
 
 
 

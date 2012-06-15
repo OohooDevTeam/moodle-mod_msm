@@ -29,7 +29,7 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/HyperPlane2D.gif"/>
                   </media>
                </para.body>
@@ -54,7 +54,7 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/HyperPlane3D.gif"/>
                   </media>
                </para.body>

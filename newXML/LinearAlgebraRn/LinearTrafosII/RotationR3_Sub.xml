@@ -16,28 +16,8 @@
                      <latex>\RNr[3]</latex>
                   </math>?</para.body>
             </para>
-            <media type="image" active="1" inline="0">
-               <img src="ims/RotationGeneral.jpg"/>
-               <extended.caption>
-                  <image.mapping>
-                     <area shape="rect" coord="0,0,200,100"/>
-                  </image.mapping>
-                  <info>
-                     <para>
-                        <para.body>In this picture, take <math>
-                              <latex>\Vect{r}</latex>
-                           </math> to be the unit vector pointing upward, take <math>
-                              <latex>\Vect{a}_1</latex>
-                           </math> to be any unit vector perpendicular to <math>
-                              <latex>\Vect{r}</latex>
-                           </math>, for example the one point toward you. Finally take <math>
-                              <latex>\Vect{a}_2</latex>
-                           </math> to be the cross product <math>
-                              <latex>\CrssPr{ \Vect{r} }{ \Vect{a}_1 }</latex>
-                           </math>. This is the third vector in the picture.</para.body>
-                     </para>
-                  </info>
-               </extended.caption>
+            <media xmlns="Theorem" type="image" active="1" inline="0">
+               <img xmlns="" src="ims/RotationGeneral.jpg"/>
             </media>
             <para>
                <para.body>Our strategy is to reduce a rotation about an arbitrary axis through the angle <math>

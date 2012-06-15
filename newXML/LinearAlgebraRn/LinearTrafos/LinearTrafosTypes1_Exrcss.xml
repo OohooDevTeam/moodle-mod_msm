@@ -215,9 +215,9 @@
                            <latex>2</latex>
                         </math> as shown below.</para.body>
                   </para>
-					
-						            <img src="ims/Dilation2.png"/>
-					
+					             <media xmlns="Theorem" type="image" active="0" inline="0">
+                     <img xmlns="" src="ims/Dilation2.png"/>
+                  </media>
 				           </solution.body>
             </solution>
 			      </approach>
@@ -431,9 +431,9 @@
                            <latex>3/4</latex>
                         </math> as shown below.</para.body>
                   </para>
-					
-						            <img src="ims/Contraction075.png"/>
-					
+					             <media xmlns="Theorem" type="image" active="0" inline="0">
+                     <img xmlns="" src="ims/Contraction075.png"/>
+                  </media>
 				           </solution.body>
             </solution>
 			      </approach>
@@ -807,9 +807,9 @@
                            <latex>\RNr[2]</latex>
                         </math>.</para.body>
                   </para>
-					
-						            <img src="ims/Inversion.png"/>
-					
+					             <media xmlns="Theorem" type="image" active="0" inline="0">
+                     <img xmlns="" src="ims/Inversion.png"/>
+                  </media>
 					
 				           </solution.body>
             </solution>
@@ -1326,9 +1326,9 @@ A =
                            <latex>\pi/3</latex>
                         </math>.</para.body>
                   </para>
-					
-						            <img src="ims/RotatePlane60.gif"/>
-					
+					             <media xmlns="Theorem" type="image" active="0" inline="0">
+                     <img xmlns="" src="ims/RotatePlane60.gif"/>
+                  </media>
 					
 				           </solution.body>
             </solution>
@@ -1738,10 +1738,10 @@ A =
                   </para>
 					             <para align="center">
                      <para.body>
-						                  <media type="image" active="0" inline="0">
-                           <img xmlns="" src="ims/UnitCubeR3Smll.gif"/>
-                        </media>   <media type="image" active="0" inline="0">
-                           <img xmlns="" src="ims/UnitCubeR3ReflectedxySmll.gif"/>
+						                  <media xmlns="" type="image" active="0" inline="0">
+                           <img src="ims/UnitCubeR3Smll.gif"/>
+                        </media>   <media xmlns="" type="image" active="0" inline="0">
+                           <img src="ims/UnitCubeR3ReflectedxySmll.gif"/>
                         </media>
 					                </para.body>
                   </para>
@@ -2042,10 +2042,10 @@ A =
                   </para>
 					             <para align="center">
                      <para.body>
-						                  <media type="image" active="0" inline="0">
-                           <img xmlns="" src="ims/UnitCubeR3Smll.gif"/>
-                        </media>   <media type="image" active="0" inline="0">
-                           <img xmlns="" src="ims/UnitCubeR3ProjectxzSmll.gif"/>
+						                  <media xmlns="" type="image" active="0" inline="0">
+                           <img src="ims/UnitCubeR3Smll.gif"/>
+                        </media>   <media xmlns="" type="image" active="0" inline="0">
+                           <img src="ims/UnitCubeR3ProjectxzSmll.gif"/>
                         </media>
 					                </para.body>
                   </para>
@@ -2448,9 +2448,9 @@ A =
                         <latex>S</latex>
                      </math> to the equilateral triangle</para.body>
                </para>
-				
-					          <img src="ims/Triangle.png"/>
-				
+				           <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/Triangle.png"/>
+               </media>
 				           <para>
                   <para.body>and find the location of the vertices of the sheared triangle.</para.body>
                </para>
@@ -2515,9 +2515,9 @@ S(0,\sqrt{3}) =
 						</latex>
 					             </math.display>
 					
-					
-						            <img src="ims/TriangleShear.png"/>
-					
+					             <media xmlns="Theorem" type="image" active="0" inline="0">
+                     <img xmlns="" src="ims/TriangleShear.png"/>
+                  </media>
 					             <para>
                      <para.body> </para.body>
                   </para>
@@ -2540,18 +2540,18 @@ S(0,\sqrt{3}) =
                      <latex>\Vect{s} = (1,0)</latex>
                   </math>.</para.body>
             </para>
-			
-				        <img src="ims/LetterI.gif"/>
-			
+			         <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/LetterI.gif"/>
+            </media>
 		       </problem.body>
       </problem>
 		    <approach version="1">
 			      <answer.exercise>
             <answer.exercise.block>
                <answer.exercise.block.body>
-				
-					             <img src="ims/LetterISheared.gif"/>
-				
+				              <media xmlns="Theorem" type="image" active="0" inline="0">
+                     <img xmlns="" src="ims/LetterISheared.gif"/>
+                  </media>
 			            </answer.exercise.block.body>
             </answer.exercise.block>
          </answer.exercise>
@@ -2973,9 +2973,9 @@ A =
 				           <para>
                   <para.body>Here is a picture of this transformation</para.body>
                </para>
-				
-					          <img src="ims/LetterIShearTrafo.gif"/>
-				
+				           <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/LetterIShearTrafo.gif"/>
+               </media>
 			         </solution.body>
          </solution>
 		    </approach>

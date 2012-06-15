@@ -63,14 +63,8 @@
                      <latex>\Vect{s}</latex>
                   </math>. (The red dot represents the origin.)</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/OrthogonalComplement1.png"/>
-               <extended.caption>The orthogonal complement of <math>
-                     <latex>\Vect{s}</latex>
-                  </math> in <math>
-                     <latex>\RNr[2]</latex>
-                  </math>
-               </extended.caption>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/OrthogonalComplement1.png"/>
             </media>
             <para>
                <para.body>Note that <math>
@@ -80,14 +74,8 @@
                   </math>
                </para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/OrthogonalComplement3.png"/>
-               <extended.caption>The orthogonal complement of <math>
-                     <latex>\Vect{s}</latex>
-                  </math> in <math>
-                     <latex>\RNr[2]</latex>
-                  </math>
-               </extended.caption>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/OrthogonalComplement3.png"/>
             </media>
             <para>
                <para.body>The orthogonal complement of a single nonzero vector is always a hyperspace.</para.body>
@@ -139,8 +127,8 @@
                      <latex>S^{\bot}</latex>
                   </math> is just the origin, represented here by a red dot.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/OrthogonalComplement2.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/OrthogonalComplement2.png"/>
             </media>
          </block.body>
       </block>

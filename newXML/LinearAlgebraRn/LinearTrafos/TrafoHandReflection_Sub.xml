@@ -14,8 +14,8 @@
             <para>
                <para.body>The picture below shows a right hand being transformed into a left hand by a reflection.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/Trafo_HandReflection.jpg"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Trafo_HandReflection.jpg"/>
             </media>
             <para>
                <para.body>We will see that reflection transformations are linear.</para.body>

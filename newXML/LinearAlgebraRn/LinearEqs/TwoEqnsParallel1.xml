@@ -60,107 +60,120 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="1" inline="0">
-                     <img src="ims/TwoEqnsR2Parallel.gif" height="274" width="345"/>
-                     <image.mapping xmlns="">
-                        <area xmlns="Unit" shape="poly" coords="86,98,112,92,101,33,85,39,73,92"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>This is the normal vector associated to the first linear equation.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit"
-                              shape="poly"
-                              coords="196,137,221,131,212,71,195,79,183,131,201,139"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>This is the normal vector associated to the second linear equation.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit" shape="poly" coords="179,192,169,187,180,145,194,152"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>This is the normal vector associated to the second linear equation.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit" shape="poly" coords="299,188,306,163,194,136,191,149"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>In <math>
-                                    <latex>\RNr[2]</latex>
-                                 </math>, the hyperplane of solutions of the first linear equation form a line.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit" shape="poly" coords="181,130,176,144,83,108,88,98"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>In <math>
-                                    <latex>\RNr[2]</latex>
-                                 </math>, the hyperplane of solutions of the first linear equation form a line.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit" shape="poly" coords="70,94,66,106,2,83,6,67,71,91"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>In <math>
-                                    <latex>\RNr[2]</latex>
-                                 </math>, the hyperplane of solutions of the first linear equation form a line.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit"
-                              shape="poly"
-                              coords="326,271,329,243,183,198,295,252,301,272,329,272,329,272"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>In <math>
-                                    <latex>\RNr[2]</latex>
-                                 </math>, the hyperplane of solutions of the first linear equation form a line.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit" shape="poly" coords="163,191,154,203,22,155,29,143"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>In <math>
-                                    <latex>\RNr[2]</latex>
-                                 </math>, the hyperplane of solutions of the second linear equation form a line.</para.body>
-                           </para>
-                        </info>
-                     </image.mapping>
+                  <media xmlns="" type="image" active="1" inline="0">
+                     <img src="ims/TwoEqnsR2Parallel.gif" height="274" width="345">
+                        <image.mapping>
+                           <area xmlns="Unit" shape="poly" coords="86,98,112,92,101,33,85,39,73,92">
+                              <info>
+                                 <para>
+                                    <para.body>This is the normal vector associated to the first linear equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="196,137,221,131,212,71,195,79,183,131,201,139">
+                              <info>
+                                 <para>
+                                    <para.body>This is the normal vector associated to the second linear equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="179,192,169,187,180,145,194,152">
+                              <info>
+                                 <para>
+                                    <para.body>This is the normal vector associated to the second linear equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="299,188,306,163,194,136,191,149">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math>, the hyperplane of solutions of the first linear equation form a line.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="181,130,176,144,83,108,88,98">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math>, the hyperplane of solutions of the first linear equation form a line.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="70,94,66,106,2,83,6,67,71,91">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math>, the hyperplane of solutions of the first linear equation form a line.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="326,271,329,243,183,198,295,252,301,272,329,272,329,272">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math>, the hyperplane of solutions of the first linear equation form a line.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="163,191,154,203,22,155,29,143">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math>, the hyperplane of solutions of the second linear equation form a line.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                        </image.mapping>
+                     </img>
                   </media>
                </para.body>
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="1" inline="0">
-                     <img src="ims/TwoEqnsR3Parallel.gif" height="350" width="377"/>
-                     <image.mapping xmlns="">
-                        <area xmlns="Unit" shape="poly" coords="163,115,174,111,150,15,123,30"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>This is a normal vector common to both hyperplanes.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit"
-                              shape="poly"
-                              coords="163,31,227,2,377,86,133,246,5,129,134,55,162,115,175,115,182,107,165,37"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>In <math>
-                                    <latex>\RNr[3]</latex>
-                                 </math> the solution hyperplane of the first equation form a plane in the ordinary sense.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit"
-                              shape="poly"
-                              coords="310,138,374,180,131,344,3,216,55,186,130,254"/>
-                        <info xmlns="Unit">
-                           <para>
-                              <para.body>In <math>
-                                    <latex>\RNr[3]</latex>
-                                 </math> the solution hyperplane of the second equation form a plane in the ordinary sense, and this plane is parallel and distinct from the solution plane of the first equation.</para.body>
-                           </para>
-                        </info>
-                     </image.mapping>
+                  <media xmlns="" type="image" active="1" inline="0">
+                     <img src="ims/TwoEqnsR3Parallel.gif" height="350" width="377">
+                        <image.mapping>
+                           <area xmlns="Unit" shape="poly" coords="163,115,174,111,150,15,123,30">
+                              <info>
+                                 <para>
+                                    <para.body>This is a normal vector common to both hyperplanes.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="163,31,227,2,377,86,133,246,5,129,134,55,162,115,175,115,182,107,165,37">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[3]</latex>
+                                       </math> the solution hyperplane of the first equation form a plane in the ordinary sense.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="310,138,374,180,131,344,3,216,55,186,130,254">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[3]</latex>
+                                       </math> the solution hyperplane of the second equation form a plane in the ordinary sense, and this plane is parallel and distinct from the solution plane of the first equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                        </image.mapping>
+                     </img>
                   </media>
                </para.body>
             </para>

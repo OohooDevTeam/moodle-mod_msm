@@ -31,8 +31,8 @@
                      <latex>\RNr[3]</latex>
                   </math> determines one coordinate axis.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/BasisDimension_1.gif"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/BasisDimension_1.gif"/>
             </media>
          </block.body>
       </block>
@@ -43,9 +43,9 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/BasisDimension_2.gif"/>
-                  </media>   <media type="image" active="0" inline="0">
+                  </media>   <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/BasisDimension_3.gif"/>
                   </media>
                </para.body>
@@ -61,8 +61,8 @@
                      <latex>\RNr[3]</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/BasisDimension_4.gif"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/BasisDimension_4.gif"/>
             </media>
          </block.body>
       </block>

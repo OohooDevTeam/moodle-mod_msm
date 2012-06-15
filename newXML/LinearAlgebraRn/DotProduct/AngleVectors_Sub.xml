@@ -14,8 +14,8 @@
             <para>
                <para.body>What exactly do we mean by the angle between two nonzero vectors? – Consider the image below</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/AngleVectors.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/AngleVectors.png"/>
             </media>
             <para>
                <para.body>If <math>

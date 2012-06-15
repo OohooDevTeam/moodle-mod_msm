@@ -387,9 +387,9 @@
                            <latex>(0,-2)</latex>
                         </math>; blue in the image below.</para.body>
                   </para>
-					
-						            <img src="ims/Preimage2XPlusY.png"/>
-					
+					             <media xmlns="Theorem" type="image" active="0" inline="0">
+                     <img xmlns="" src="ims/Preimage2XPlusY.png"/>
+                  </media>
 					             <para>
                      <para.body>Thus while <math>
                            <latex>T</latex>

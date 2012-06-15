@@ -14,8 +14,8 @@
             <para>
                <para.body>The picture below shows a square (left) and then the result of transforming it into a rectangle.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/Trafo_SquareRectangle.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Trafo_SquareRectangle.png"/>
             </media>
             <para>
                <para.body>This transformation acts on the square by compressing it a bit vertically and stretching it horizontally. In doing so it transforms lines into lines. We will see that it is a linear transformation.</para.body>

@@ -44,40 +44,40 @@
                   </subordinate>
 				for each position that the arm can assume. For example, holding the arm straight out to the side is one position of the arm, hence accounts for one point in the configuration space of the arm.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/ConfigSpaceArm1.jpg"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ConfigSpaceArm1.jpg"/>
             </media>
             <para>
                <para.body>Moving the arm up and down corresponds to one degree of freedom of motion in the configuration space of the arm.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/ConfigSpaceArm2.jpg"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ConfigSpaceArm2.jpg"/>
             </media>
             <para>
                <para.body>We find a second degree of freedom of motion by moving the arm forward and backward</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/ConfigSpaceArm3.jpg"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ConfigSpaceArm3.jpg"/>
             </media>
-            <media type="image" active="0" inline="0">
-               <img src="ims/ConfigSpaceArm4.jpg"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ConfigSpaceArm4.jpg"/>
             </media>
             <para>
                <para.body>Notice that we can combine ‘up-down’ and ‘forward-backward’ freely. So the configuration space of the arm has at least dimension 2. Its true dimension is, however, higher! Indeed, we find a third degree of freedom of motion in by bending the elbow:</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/ConfigSpaceArm5.jpg"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ConfigSpaceArm5.jpg"/>
             </media>
             <para>
                <para.body>Again: the motions ‘up-down’, ‘forward-backward’, and ‘elbow-bend’ are independent from one another. So the configuration space of the arm has at least dimension 3. However, we find a fourth degree of free of motion in rotating the humerus in the shoulder joint.</para.body>
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/ConfigSpaceArm6.jpg"/>
-                  </media>   <media type="image" active="0" inline="0">
+                  </media>   <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/ConfigSpaceArm7.jpg"/>
-                  </media>   <media type="image" active="0" inline="0">
+                  </media>   <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/ConfigSpaceArm8.jpg"/>
                   </media>
                </para.body>
@@ -87,9 +87,9 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/ConfigSpaceArm9.jpg"/>
-                  </media>   <media type="image" active="0" inline="0">
+                  </media>   <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/ConfigSpaceArm10.jpg"/>
                   </media>
                </para.body>

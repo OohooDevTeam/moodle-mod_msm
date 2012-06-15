@@ -37,7 +37,7 @@ class Proof extends Element
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
-        $this->indexauthors = array();
+        $this->indexsymbols = array();
 
         $this->string_id = $DomElement->getAttribute('id');
 
@@ -119,6 +119,26 @@ class Proof extends Element
         else
         {
              $this->id = $DB->insert_record($this->tablename, $data);
+        }
+        
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
         }
     }
 

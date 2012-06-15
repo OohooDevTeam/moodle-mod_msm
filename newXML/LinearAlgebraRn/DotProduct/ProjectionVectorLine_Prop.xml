@@ -191,8 +191,8 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
-                     <img xmlns="" src="ims/ProjectionVectorLine_1.gif"/>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/ProjectionVectorLine_1.gif"/>
                   </media>
                </para.body>
             </para>
@@ -207,8 +207,8 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
-                     <img xmlns="" src="ims/ProjectionVectorLine_2.gif"/>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/ProjectionVectorLine_2.gif"/>
                   </media>
                </para.body>
             </para>

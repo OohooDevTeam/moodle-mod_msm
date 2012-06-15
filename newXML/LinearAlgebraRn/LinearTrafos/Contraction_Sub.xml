@@ -30,13 +30,8 @@
                      <latex>s</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/Contraction.png"/>
-               <extended.caption>A contraction of <math>
-                     <latex>\RNr[2]</latex>
-                  </math> with contraction factor <math>
-                     <latex>1/2</latex>
-                  </math>.</extended.caption>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Contraction.png"/>
             </media>
          </block.body>
       </block>

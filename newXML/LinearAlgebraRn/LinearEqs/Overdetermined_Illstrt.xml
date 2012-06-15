@@ -16,7 +16,7 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/ThreeEqnsR2Overdetermined.gif" height="318" width="434"/>
                   </media>
                </para.body>

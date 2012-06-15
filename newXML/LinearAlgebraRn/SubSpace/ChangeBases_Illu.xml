@@ -72,8 +72,8 @@
                   </para>
                </li>
             </ol>
-            <media type="image" active="0" inline="0">
-               <img src="ims/ChangeBases.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ChangeBases.png"/>
             </media>
             <para align="center">
                <para.body>Here <math>

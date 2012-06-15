@@ -429,9 +429,9 @@
                            <latex>(-2,3)</latex>
                         </math>; see the picture below.</para.body>
                   </para>
-					
-						            <img src="ims/LinearTrafo1To2_2.png"/>
-					
+					             <media xmlns="Theorem" type="image" active="0" inline="0">
+                     <img xmlns="" src="ims/LinearTrafo1To2_2.png"/>
+                  </media>
 				           </solution.body>
             </solution>
 			      </approach>
@@ -731,8 +731,8 @@
 					
 					             <para align="center">
                      <para.body>
-                        <media type="image" active="0" inline="0">
-                           <img xmlns="" src="ims/LinearTrafoIntrvlLnSgmnt.gif"/>
+                        <media xmlns="" type="image" active="0" inline="0">
+                           <img src="ims/LinearTrafoIntrvlLnSgmnt.gif"/>
                         </media>
                      </para.body>
                   </para>

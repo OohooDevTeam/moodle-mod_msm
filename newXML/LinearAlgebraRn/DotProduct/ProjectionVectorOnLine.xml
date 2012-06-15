@@ -20,50 +20,8 @@
                   </math>
                </para.body>
             </para>
-            <media type="image" active="1" inline="0">
-               <img src="ims/ProjectionVectorLine.png"/>
-               <extended.caption>
-                  <image.mapping>
-                     <area shape="rect" coord="0,0,200,100"/>
-                  </image.mapping>
-                  <info>
-                     <info.caption>What to look for in this picture</info.caption>
-                     <para>
-                        <para.body>Shine a light perpendicularly onto the line <math>
-                              <latex>L</latex>
-                           </math>. Then you can think of <math>
-                              <latex>\pr_L(\Vect{x})</latex>
-                           </math> as the shadow of the arrow <math>
-                              <latex>\Vect{x}</latex>
-                           </math> on <math>
-                              <latex>L</latex>
-                           </math>. This interpretation of the projection allows us to predict immediately that</para.body>
-                     </para>
-                     <ul>
-                        <li>
-                           <para>
-                              <para.body>if <math>
-                                    <latex>\Vect{x}</latex>
-                                 </math> is perpendicular to <math>
-                                    <latex>\Vect{y}</latex>
-                                 </math>, then <math>
-                                    <latex>\pr_{L}(\Vect{x}) = \Vect{0}</latex>
-                                 </math>.</para.body>
-                           </para>
-                        </li>
-                        <li>
-                           <para>
-                              <para.body>if <math>
-                                    <latex>\Vect{x}</latex>
-                                 </math> is parallel to <math>
-                                    <latex>\Vect{y}</latex>
-                                 </math>, then <math>
-                                    <latex>\pr_L(\Vect{x}) = \Vect{x}</latex>
-                                 </math>.</para.body>
-                           </para>
-                        </li>
-                     </ul>
-                  </info>Projection of a vector on a line</extended.caption>
+            <media xmlns="Theorem" type="image" active="1" inline="0">
+               <img xmlns="" src="ims/ProjectionVectorLine.png"/>
             </media>
             <para>
                <para.body>The picture above shows how the vector <math>

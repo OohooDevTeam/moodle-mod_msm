@@ -26,8 +26,8 @@
                      <latex>c</latex>
                   </math>. Intuitively this is quite plausible as the graphic below shows.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/SqueezeTheorem.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/SqueezeTheorem.png"/>
             </media>
             <para>
                <para.body>The sequence elements of <math>

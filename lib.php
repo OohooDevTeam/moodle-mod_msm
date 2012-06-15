@@ -90,38 +90,41 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 
 
     //temporary delete records.
-//    $DB->delete_records('msm_unit');
-//    $DB->delete_records('msm_def');
-//    $DB->delete_records('msm_table_collection');
-//    $DB->delete_records('msm');
-//    $DB->delete_records('msm_intro');
-//    $DB->delete_records('msm_theorem');
-//    $DB->delete_records('msm_associate');
-//    $DB->delete_records('msm_info');
-//    $DB->delete_records('msm_extra_info');
-//    $DB->delete_records('msm_theorem');
-//    $DB->delete_records('msm_proof');
-//    $DB->delete_records('msm_statement_theorem');
-//    $DB->delete_records('msm_comment');
-//    $DB->delete_records('msm_para');
-//    $DB->delete_records('msm_subordinate');
-//    $DB->delete_records('msm_person');
-//    $DB->delete_records('msm_content');
-//    $DB->delete_records('msm_index_glossary');
-//    $DB->delete_records('msm_index_symbol');
-//    $DB->delete_records('msm_table');
-//    $DB->delete_records('msm_answer_exercise');
-//    $DB->delete_records('msm_answer_showme');
-//    $DB->delete_records('msm_packs');
-//    $DB->delete_records('msm_problem');
-//    $DB->delete_records('msm_exercise');
-//    $DB->delete_records('msm_example');
-//    $DB->delete_records('msm_showme');
-//    $DB->delete_records('msm_quiz');
-//     $DB->delete_records('msm_part_exercise');
-//     $DB->delete_records('msm_ext');
-//     $DB->delete_records('msm_approach');
-//     $DB->delete_records('msm_solution');
+    $DB->delete_records('msm_unit');
+    $DB->delete_records('msm_def');
+    $DB->delete_records('msm_table_collection');
+    $DB->delete_records('msm');
+    $DB->delete_records('msm_intro');
+    $DB->delete_records('msm_theorem');
+    $DB->delete_records('msm_associate');
+    $DB->delete_records('msm_info');
+    $DB->delete_records('msm_extra_info');
+    $DB->delete_records('msm_theorem');
+    $DB->delete_records('msm_proof');
+    $DB->delete_records('msm_statement_theorem');
+    $DB->delete_records('msm_comment');
+    $DB->delete_records('msm_para');
+    $DB->delete_records('msm_subordinate');
+    $DB->delete_records('msm_person');
+    $DB->delete_records('msm_content');
+    $DB->delete_records('msm_index_glossary');
+    $DB->delete_records('msm_index_symbol');
+    $DB->delete_records('msm_table');
+    $DB->delete_records('msm_answer_exercise');
+    $DB->delete_records('msm_answer_showme');
+    $DB->delete_records('msm_packs');
+    $DB->delete_records('msm_problem');
+    $DB->delete_records('msm_exercise');
+    $DB->delete_records('msm_example');
+    $DB->delete_records('msm_showme');
+    $DB->delete_records('msm_quiz');
+    $DB->delete_records('msm_part_exercise');
+    $DB->delete_records('msm_ext');
+    $DB->delete_records('msm_approach');
+    $DB->delete_records('msm_solution');
+    $DB->delete_records('msm_statement_example');
+    $DB->delete_records('msm_media');
+    $DB->delete_records('msm_img');
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {

@@ -26,9 +26,8 @@
             <para>
                <para.body>The effect of this projection may be visualized as follows</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/ProjectionVectorLine.png"/>
-               <extended.caption>Projection of a vector on a line</extended.caption>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ProjectionVectorLine.png"/>
             </media>
             <para>
                <para.body>Shine a light vertically onto the line <math>

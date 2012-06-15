@@ -23,33 +23,37 @@
                         </para>
                         <para align="center">
                            <para.body>
-                              <media type="image" active="1" inline="0">
-                                 <img src="ims/VelocityVector02.gif" height="169" width="319"/>
-                                 <image.mapping xmlns="">
-                                    <area xmlns="Unit" shape="rect" coords="21,24,119,48"/>
-                                    <info xmlns="Unit">
-                                       <info.caption>What does the red arrow mean?</info.caption>
-                                       <para>
-                                          <para.body>This vector represents a velocity of 80km/h to the right</para.body>
-                                       </para>
-                                    </info>
-                                    <area xmlns="Unit" shape="poly" coords="17,130,29,152,187,78,175,60,19,124"/>
-                                    <info xmlns="Unit">
-                                       <info.caption>What does the green arrow mean?</info.caption>
-                                       <para>
-                                          <para.body>This vector represents the velocity of <math>
-                                                <latex>\sqrt{58}\cdot 20km/h</latex>
-                                             </math> towords the upper right</para.body>
-                                       </para>
-                                    </info>
-                                    <area xmlns="Unit" shape="poly" coords="191,32,283,104,301,86,207,20"/>
-                                    <info xmlns="Unit">
-                                       <info.caption>What does the blue arrow mean?</info.caption>
-                                       <para>
-                                          <para.body>This vector represent the velocity of 100km/h towards the lower left.</para.body>
-                                       </para>
-                                    </info>
-                                 </image.mapping>
+                              <media xmlns="" type="image" active="1" inline="0">
+                                 <img src="ims/VelocityVector02.gif" height="169" width="319">
+                                    <image.mapping>
+                                       <area xmlns="Unit" shape="rect" coords="21,24,119,48">
+                                          <info>
+                                             <info.caption>What does the red arrow mean?</info.caption>
+                                             <para>
+                                                <para.body>This vector represents a velocity of 80km/h to the right</para.body>
+                                             </para>
+                                          </info>
+                                       </area>
+                                       <area xmlns="Unit" shape="poly" coords="17,130,29,152,187,78,175,60,19,124">
+                                          <info>
+                                             <info.caption>What does the green arrow mean?</info.caption>
+                                             <para>
+                                                <para.body>This vector represents the velocity of <math>
+                                                      <latex>\sqrt{58}\cdot 20km/h</latex>
+                                                   </math> towords the upper right</para.body>
+                                             </para>
+                                          </info>
+                                       </area>
+                                       <area xmlns="Unit" shape="poly" coords="191,32,283,104,301,86,207,20">
+                                          <info>
+                                             <info.caption>What does the blue arrow mean?</info.caption>
+                                             <para>
+                                                <para.body>This vector represent the velocity of 100km/h towards the lower left.</para.body>
+                                             </para>
+                                          </info>
+                                       </area>
+                                    </image.mapping>
+                                 </img>
                               </media>
                            </para.body>
                         </para>
@@ -99,33 +103,37 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="1" inline="0">
-                     <img src="ims/VelocitySuperposition.gif" height="173" width="441"/>
-                     <image.mapping xmlns="">
-                        <area xmlns="Unit" shape="rect" coords="217,39,417,53"/>
-                        <info xmlns="Unit">
-                           <info.caption>What does the blue arrow mean?</info.caption>
-                           <para>
-                              <para.body>This vector represents the velocity of the aircraft relative to the surrounding air.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit" shape="poly" coords="135,115,155,111,219,39,193,35"/>
-                        <info xmlns="Unit">
-                           <info.caption>What does the green arrow mean?</info.caption>
-                           <para>
-                              <para.body>This vector represents the velocity of the air relative to the ground.</para.body>
-                           </para>
-                        </info>
-                        <area xmlns="Unit"
-                              shape="poly"
-                              coords="157,113,161,121,425,47,369,51,159,107"/>
-                        <info xmlns="Unit">
-                           <info.caption>What does the red arrow mean?</info.caption>
-                           <para>
-                              <para.body>This vector represents the velocity of the aircraft relative to the ground.</para.body>
-                           </para>
-                        </info>
-                     </image.mapping>
+                  <media xmlns="" type="image" active="1" inline="0">
+                     <img src="ims/VelocitySuperposition.gif" height="173" width="441">
+                        <image.mapping>
+                           <area xmlns="Unit" shape="rect" coords="217,39,417,53">
+                              <info>
+                                 <info.caption>What does the blue arrow mean?</info.caption>
+                                 <para>
+                                    <para.body>This vector represents the velocity of the aircraft relative to the surrounding air.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="135,115,155,111,219,39,193,35">
+                              <info>
+                                 <info.caption>What does the green arrow mean?</info.caption>
+                                 <para>
+                                    <para.body>This vector represents the velocity of the air relative to the ground.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="157,113,161,121,425,47,369,51,159,107">
+                              <info>
+                                 <info.caption>What does the red arrow mean?</info.caption>
+                                 <para>
+                                    <para.body>This vector represents the velocity of the aircraft relative to the ground.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                        </image.mapping>
+                     </img>
                   </media>
                </para.body>
             </para>

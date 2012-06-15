@@ -19,8 +19,8 @@
             </para>
 			         <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
-                     <img xmlns="" src="ims/Force01_Exrcs.gif" height="171" width="229"/>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/Force01_Exrcs.gif" height="171" width="229"/>
                   </media>
                </para.body>
             </para>
@@ -88,8 +88,8 @@
 				
 				           <para align="center">
                   <para.body>
-                     <media type="image" active="0" inline="0">
-                        <img xmlns="" src="ims/Force.gif" height="267" width="341"/>
+                     <media xmlns="" type="image" active="0" inline="0">
+                        <img src="ims/Force.gif" height="267" width="341"/>
                      </media>
                   </para.body>
                </para>
@@ -106,8 +106,8 @@
 				
 				           <para align="center">
                   <para.body>
-                     <media type="image" active="0" inline="0">
-                        <img xmlns="" src="ims/Force02_Exrcs.gif" height="145" width="341"/>
+                     <media xmlns="" type="image" active="0" inline="0">
+                        <img src="ims/Force02_Exrcs.gif" height="145" width="341"/>
                      </media>
                   </para.body>
                </para>

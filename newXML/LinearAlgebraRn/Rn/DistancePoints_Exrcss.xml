@@ -335,8 +335,8 @@
                </para>
 				           <para align="center">
                   <para.body>
-					                <media type="image" active="0" inline="0">
-                        <img xmlns="" src="ims/DistancePointsExrcs1_sltn.gif"/>
+					                <media xmlns="" type="image" active="0" inline="0">
+                        <img src="ims/DistancePointsExrcs1_sltn.gif"/>
                      </media>
 				              </para.body>
                </para>
@@ -371,8 +371,8 @@
                <solution.body>
 					             <para>
                      <para.body>
-						                  <media type="image" active="0" inline="0">
-                           <img xmlns="" src="ims/DistancePointsExrcs2_sltn.gif"/>
+						                  <media xmlns="" type="image" active="0" inline="0">
+                           <img src="ims/DistancePointsExrcs2_sltn.gif"/>
                         </media>
 						
 					                </para.body>

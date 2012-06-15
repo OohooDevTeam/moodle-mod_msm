@@ -14,8 +14,8 @@
             <para>
                <para.body>‘Counterclockwise’ and ‘clockwise’ motions in the plane are mirrored siblings.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/Orientation2.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Orientation2.png"/>
             </media>
             <para>
                <para.body>An orientation of <math>
@@ -126,8 +126,8 @@
                      <latex>\omega(\Vect{x},\Vect{y}) = +1</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/Orientation2CClockwise.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Orientation2CClockwise.png"/>
             </media>
             <para>
                <para.body>On the other hand, the pair <math>
@@ -138,8 +138,8 @@
                      <latex>\omega(\Vect{x},\Vect{y}) = -1</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/Orientation2Clockwise.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Orientation2Clockwise.png"/>
             </media>
          </block.body>
       </block>

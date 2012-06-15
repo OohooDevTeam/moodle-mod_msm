@@ -382,134 +382,144 @@ A =
 			      <para xmlns="" align="center">
             <para.body>
 				           <media type="image" active="1" inline="0">
-                  <img src="ims/LinearCombination2.gif"/>
-                  <image.mapping>
-                     <area shape="poly" coords="146,210,148,218,259,205,256,191"/>
-						               <info>
-                        <info.caption>
-                           <caption>Comment on vector <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>
-                           </caption>
-                        </info.caption>
+                  <img src="ims/LinearCombination2.gif">
+                     <image.mapping>
+                        <area shape="poly" coords="146,210,148,218,259,205,256,191">
+						                     <info>
+                              <info.caption>
+                                 <caption>Comment on vector <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>
+                                 </caption>
+                              </info.caption>
 							
-							                 <para>
-                           <para.body>
-                              <math>
-                                 <latex>\Vect{x}</latex>
-                              </math> itself is a linear combination of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math> because</para.body>
-                        </para>
-							                 <math.array column="3">
-                           <row rowspan="1">
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>\Vect{x}</latex>
-                                 </math>
-                              </cell>
-                              <cell colspan="1" halign="center" valign="middle">
-                                 <text>=</text>
-                              </cell>
-                              <cell colspan="2" halign="center" valign="middle">
-                                 <math>
-                                    <latex>1\cdot \Vect{x}</latex>
-                                 </math>
-                              </cell>
-                           </row>
-                        </math.array>
-						               </info>
-					                <area shape="poly" coords="261,191,264,205,320,198,316,182"/>
-						               <info>
-							                 <para>
-                           <para.body>This vector is a linear combination of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math> as it can be expressed as (approximately) <math>
-                                 <latex>(3/2)\cdot \Vect{x}</latex>
-                              </math>.</para.body>
-                        </para>
-						               </info>
-					                <area shape="poly" coords="322,182,324,194,446,180,445,162"/>
-						               <info>
-							                 <para>
-                           <para.body>This vector is a linear combination of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math> as it can be expressed as (approximately) <math>
-                                 <latex>(5/2)\cdot \Vect{x}</latex>
-                              </math>.</para.body>
-                        </para>
-						               </info>
-					                <area shape="poly" coords="115,220,119,215,1,225,1,243"/>
-						               <info>
-							                 <para>
-                           <para.body>This vector is a linear combination of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math> as it can be expressed as (approximately) <math>
-                                 <latex>(-1)\cdot \Vect{x}</latex>
-                              </math>.</para.body>
-                        </para>
-						               </info>
-					                <area shape="poly" coords="63,119,115,214,129,206,75,109"/>
-						               <info>
-							                 <para>
-                           <para.body>This vector is not parallel to <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>. Therefore it cannot be expressed in the form <math>
-                                 <latex>t\cdot \Vect{x}</latex>
-                              </math>; i.e. it is not a linear combination of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>.</para.body>
-                        </para>
-						               </info>
-					                <area shape="poly" coords="139,205,251,26,236,22,130,208"/>
-						               <info>
-							                 <para>
-                           <para.body>This vector is not parallel to <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>. Therefore it cannot be expressed in the form <math>
-                                 <latex>t\cdot \Vect{x}</latex>
-                              </math>; i.e. it is not a linear combination of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>.</para.body>
-                        </para>
-						               </info>
-					                <area shape="poly" coords="145,201,150,204,443,2,417,2"/>
-						               <info>
-							                 <para>
-                           <para.body>This vector is not parallel to <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>. Therefore it cannot be expressed in the form <math>
-                                 <latex>t\cdot \Vect{x}</latex>
-                              </math>; i.e. it is not a linear combination of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>.</para.body>
-                        </para>
-						               </info>
-					                <area shape="poly" coords="117,221,58,245,62,257,124,222"/>
-						               <info>
-							                 <para>
-                           <para.body>This vector is not parallel to <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>. Therefore it cannot be expressed in the form <math>
-                                 <latex>t\cdot \Vect{x}</latex>
-                              </math>; i.e. it is not a linear combination of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>.</para.body>
-                        </para>
-						               </info>
-					                <area shape="poly" coords="134,222,307,266,321,261,144,218"/>
-						               <info>
-							                 <para>
-                           <para.body>This vector is not parallel to <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>. Therefore it cannot be expressed in the form <math>
-                                 <latex>t\cdot \Vect{x}</latex>
-                              </math>; i.e. it is not a linear combination of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>.</para.body>
-                        </para>
-						               </info>
-					             </image.mapping>
+							                       <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math> itself is a linear combination of <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math> because</para.body>
+                              </para>
+							                       <math.array column="3">
+                                 <row rowspan="1">
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>\Vect{x}</latex>
+                                       </math>
+                                    </cell>
+                                    <cell colspan="1" halign="center" valign="middle">
+                                       <text>=</text>
+                                    </cell>
+                                    <cell colspan="2" halign="center" valign="middle">
+                                       <math>
+                                          <latex>1\cdot \Vect{x}</latex>
+                                       </math>
+                                    </cell>
+                                 </row>
+                              </math.array>
+						                     </info>
+					                   </area>
+                        <area shape="poly" coords="261,191,264,205,320,198,316,182">
+						                     <info>
+							                       <para>
+                                 <para.body>This vector is a linear combination of <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math> as it can be expressed as (approximately) <math>
+                                       <latex>(3/2)\cdot \Vect{x}</latex>
+                                    </math>.</para.body>
+                              </para>
+						                     </info>
+					                   </area>
+                        <area shape="poly" coords="322,182,324,194,446,180,445,162">
+						                     <info>
+							                       <para>
+                                 <para.body>This vector is a linear combination of <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math> as it can be expressed as (approximately) <math>
+                                       <latex>(5/2)\cdot \Vect{x}</latex>
+                                    </math>.</para.body>
+                              </para>
+						                     </info>
+					                   </area>
+                        <area shape="poly" coords="115,220,119,215,1,225,1,243">
+						                     <info>
+							                       <para>
+                                 <para.body>This vector is a linear combination of <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math> as it can be expressed as (approximately) <math>
+                                       <latex>(-1)\cdot \Vect{x}</latex>
+                                    </math>.</para.body>
+                              </para>
+						                     </info>
+					                   </area>
+                        <area shape="poly" coords="63,119,115,214,129,206,75,109">
+						                     <info>
+							                       <para>
+                                 <para.body>This vector is not parallel to <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>. Therefore it cannot be expressed in the form <math>
+                                       <latex>t\cdot \Vect{x}</latex>
+                                    </math>; i.e. it is not a linear combination of <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>.</para.body>
+                              </para>
+						                     </info>
+					                   </area>
+                        <area shape="poly" coords="139,205,251,26,236,22,130,208">
+						                     <info>
+							                       <para>
+                                 <para.body>This vector is not parallel to <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>. Therefore it cannot be expressed in the form <math>
+                                       <latex>t\cdot \Vect{x}</latex>
+                                    </math>; i.e. it is not a linear combination of <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>.</para.body>
+                              </para>
+						                     </info>
+					                   </area>
+                        <area shape="poly" coords="145,201,150,204,443,2,417,2">
+						                     <info>
+							                       <para>
+                                 <para.body>This vector is not parallel to <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>. Therefore it cannot be expressed in the form <math>
+                                       <latex>t\cdot \Vect{x}</latex>
+                                    </math>; i.e. it is not a linear combination of <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>.</para.body>
+                              </para>
+						                     </info>
+					                   </area>
+                        <area shape="poly" coords="117,221,58,245,62,257,124,222">
+						                     <info>
+							                       <para>
+                                 <para.body>This vector is not parallel to <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>. Therefore it cannot be expressed in the form <math>
+                                       <latex>t\cdot \Vect{x}</latex>
+                                    </math>; i.e. it is not a linear combination of <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>.</para.body>
+                              </para>
+						                     </info>
+					                   </area>
+                        <area shape="poly" coords="134,222,307,266,321,261,144,218">
+						                     <info>
+							                       <para>
+                                 <para.body>This vector is not parallel to <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>. Therefore it cannot be expressed in the form <math>
+                                       <latex>t\cdot \Vect{x}</latex>
+                                    </math>; i.e. it is not a linear combination of <math>
+                                       <latex>\Vect{x}</latex>
+                                    </math>.</para.body>
+                              </para>
+						                     </info>
+					                   </area>
+                     </image.mapping>
+                  </img>
                </media>
 			         </para.body>
          </para>
@@ -557,15 +567,15 @@ A =
 			      <para xmlns="" align="center">
             <para.body>
 				           <media type="image" active="1" inline="0">
-                  <img src="ims/LinearCombination3.gif"/>
-                  <image.mapping>
-                     <area shape="circle" coords="60,57,8"/>
-						               <info>
-							                 <para>
-                           <para.body>Ways in which the position vector for this point can be written include</para.body>
-                        </para>
-							                 <math.display>
-								                   <latex>
+                  <img src="ims/LinearCombination3.gif">
+                     <image.mapping>
+                        <area shape="circle" coords="60,57,8">
+						                     <info>
+							                       <para>
+                                 <para.body>Ways in which the position vector for this point can be written include</para.body>
+                              </para>
+							                       <math.display>
+								                         <latex>
 									
 								\begin{array}{rcrcr}
 								-\mathbf{x} &amp; &amp; &amp; &amp; \mathbf{z} \\ 
@@ -574,15 +584,16 @@ A =
 								\end{array}
 								
 								</latex>
-							                 </math.display>
-						               </info>
-					                <area shape="circle" coords="251,104,8"/>
-						               <info>
-							                 <para>
-                           <para.body>Ways in which the position vector for this point can be written include</para.body>
-                        </para>
-							                 <math.display>
-								                   <latex>
+							                       </math.display>
+						                     </info>
+					                   </area>
+                        <area shape="circle" coords="251,104,8">
+						                     <info>
+							                       <para>
+                                 <para.body>Ways in which the position vector for this point can be written include</para.body>
+                              </para>
+							                       <math.display>
+								                         <latex>
 									
 								\begin{array}{rcrcr}
 								\mathbf{x} &amp; &amp; &amp; &amp; \tfrac{1}{2}\mathbf{z} \\ 
@@ -591,15 +602,16 @@ A =
 								\end{array}
 								
 								</latex>
-							                 </math.display>
-						               </info>
-					                <area shape="circle" coords="298,105,8"/>
-						               <info>
-							                 <para>
-                           <para.body>Ways in which the position vector for this point can be written include</para.body>
-                        </para>
-							                 <math.display>
-								                   <latex>
+							                       </math.display>
+						                     </info>
+					                   </area>
+                        <area shape="circle" coords="298,105,8">
+						                     <info>
+							                       <para>
+                                 <para.body>Ways in which the position vector for this point can be written include</para.body>
+                              </para>
+							                       <math.display>
+								                         <latex>
 									
 								\begin{array}{rcrcr}
 								\mathbf{x} &amp; + &amp; \tfrac{1}{2}\mathbf{y} &amp; &amp; \\ 
@@ -608,15 +620,16 @@ A =
 								\end{array}
 								
 								</latex>
-							                 </math.display>
-						               </info>
-					                <area shape="circle" coords="59,153,8"/>
-						               <info>
-							                 <para>
-                           <para.body>Ways in which the position vector for this point can be written include</para.body>
-                        </para>
-							                 <math.display>
-								                   <latex>
+							                       </math.display>
+						                     </info>
+					                   </area>
+                        <area shape="circle" coords="59,153,8">
+						                     <info>
+							                       <para>
+                                 <para.body>Ways in which the position vector for this point can be written include</para.body>
+                              </para>
+							                       <math.display>
+								                         <latex>
 									
 								\begin{array}{rcrcr}
 								- \mathbf{x} &amp; &amp; &amp; &amp; \\ 
@@ -625,15 +638,16 @@ A =
 								\end{array}
 								
 								</latex>
-							                 </math.display>
-						               </info>
-					                <area shape="circle" coords="203,200,8"/>
-						               <info>
-							                 <para>
-                           <para.body>Ways in which the position vector for this point can be written include</para.body>
-                        </para>
-							                 <math.display>
-								                   <latex>
+							                       </math.display>
+						                     </info>
+					                   </area>
+                        <area shape="circle" coords="203,200,8">
+						                     <info>
+							                       <para>
+                                 <para.body>Ways in which the position vector for this point can be written include</para.body>
+                              </para>
+							                       <math.display>
+								                         <latex>
 									
 								\begin{array}{rcrcr}
 								\tfrac{1}{2} \mathbf{x} &amp; &amp; &amp; - &amp; \tfrac{1}{2}\mathbf{z} \\ 
@@ -642,9 +656,11 @@ A =
 								\end{array}
 								
 								</latex>
-							                 </math.display>
-						               </info>
-					             </image.mapping>
+							                       </math.display>
+						                     </info>
+					                   </area>
+                     </image.mapping>
+                  </img>
                </media>
 			         </para.body>
          </para>

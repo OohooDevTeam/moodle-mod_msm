@@ -22,34 +22,8 @@
                      <latex>H</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="1" inline="0">
-               <img src="ims/ReflectionParallelToVector.png"/>
-               <extended.caption>
-                  <image.mapping>
-                     <area shape="rect" coord="0,0,200,100"/>
-                  </image.mapping>
-                  <info>
-                     <para>
-                        <para.body>In this picture, <math>
-                              <latex>R(\Vect{x})</latex>
-                           </math> is the reflection of <math>
-                              <latex>\Vect{x}</latex>
-                           </math> about <math>
-                              <latex>H</latex>
-                           </math>, parallel to <math>
-                              <latex>\Vect{v}</latex>
-                           </math>. Similarly, <math>
-                              <latex>R(\Vect{y})</latex>
-                           </math> is the reflection of <math>
-                              <latex>\Vect{y}</latex>
-                           </math> about <math>
-                              <latex>H</latex>
-                           </math>, parallel to <math>
-                              <latex>\Vect{v}</latex>
-                           </math>.</para.body>
-                     </para>
-                  </info>
-               </extended.caption>
+            <media xmlns="Theorem" type="image" active="1" inline="0">
+               <img xmlns="" src="ims/ReflectionParallelToVector.png"/>
             </media>
             <para>
                <para.body>Here the vectors <math>

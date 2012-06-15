@@ -109,16 +109,6 @@
                </para>
 			            <media xmlns="Theorem" type="image" active="1" inline="0">
                   <img xmlns="" src="ims/ProjectionDimensionFormula.gif"/>
-                  <extended.caption>
-                     <image.mapping>
-                        <area shape="rect" coord="0,0,200,100"/>
-                     </image.mapping>
-                     <info xmlns="">
-                        <para>
-                           <para.body>Dimension Formula in the Case of a Projection along a Line</para.body>
-                        </para>
-                     </info>
-                  </extended.caption>
                </media>
 			            <para>
                   <para.body>Summarizing: <math>

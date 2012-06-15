@@ -20,8 +20,8 @@
                      <latex>\RNr</latex>
                   </math>. Intuitively this is quite plausible as the graphic below shows.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/MonotoneBounded.png"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/MonotoneBounded.png"/>
             </media>
             <para>
                <para.body>The sequence is increasing but gets squeezed below an upper bound. So it converges to the infimum of all upper bounds.</para.body>

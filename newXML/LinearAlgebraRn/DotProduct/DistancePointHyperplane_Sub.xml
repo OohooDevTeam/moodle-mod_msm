@@ -22,8 +22,8 @@
                      <latex>\Pi</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/DistancePointHyperplane01.gif"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/DistancePointHyperplane01.gif"/>
             </media>
             <para>
                <para.body>To this end we express the position vector <math>
@@ -49,8 +49,8 @@
                   </cell>
                </row>
             </math.array>
-            <media type="image" active="0" inline="0">
-               <img src="ims/DistancePointHyperplane02.gif"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/DistancePointHyperplane02.gif"/>
             </media>
             <para>
                <para.body>Projecting <math>

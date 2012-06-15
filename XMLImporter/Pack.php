@@ -18,7 +18,7 @@ class Pack extends Element
     public $title;
     public $caption;
     public $doclabel;
-    public $textsupport;
+    public $texsupport;
     public $literature_db;    
 
     function __construct($xmlpath = '')
@@ -137,10 +137,10 @@ class Pack extends Element
           $exercise->saveIntoDb($exercise->position);
       }
       
-//      foreach($this->showmes as $showme)
-//      {
-//          $showme->saveIntoDb($showme->position);
-//      }
+      foreach($this->showmes as $showme)
+      {
+          $showme->saveIntoDb($showme->position);
+      }
     }
 
 }

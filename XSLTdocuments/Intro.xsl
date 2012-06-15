@@ -51,7 +51,7 @@
     </xsl:template>
     
     <xsl:template match="bk:figure">
-        <xsl:element name="media" namespace="Unit">
+        <xsl:element name="media" namespace="Theorem">
             <xsl:if test="./@id">
                 <xsl:attribute name="id">
                     <xsl:value-of select="./@id"/>
@@ -67,61 +67,18 @@
                     <xsl:attribute name="active">0</xsl:attribute>
                 </xsl:otherwise>
             </xsl:choose>
-          
+            
             <xsl:attribute name="inline">0</xsl:attribute>
             
             <xsl:apply-templates select="bk:img"/>
-            <xsl:if test="child::node()[name()='info' or name()='caption' or name()='title']">
-                
-                <xsl:element name="extended.caption" namespace="Unit">
-                    
-                    <xsl:if test="child::node()[name()='info']">
-                        
-                        <xsl:element name="image.mapping" namespace="Unit">
-                            
-                            <xsl:element name="area" namespace="Unit">
-                                <xsl:attribute name="shape">
-                                    <xsl:text>rect</xsl:text>
-                                </xsl:attribute>
-                                
-                                <xsl:attribute name="coord">
-                                    
-                                    <xsl:choose>
-                                        <xsl:when test="child::node()[name()='img'][attribute::width]">
-                                            <xsl:if test="child::node()[name()='img'][attribute::height]">                                       
-                                                <xsl:text>0&#44;0&#44;</xsl:text>
-                                                <xsl:value-of select="bk:img/@width"/>
-                                                <xsl:text>&#44;</xsl:text>
-                                                <xsl:value-of select="bk:img/@height"/>
-                                            </xsl:if>                                        
-                                        </xsl:when>
-                                        
-                                        <xsl:otherwise>
-                                            <xsl:text>0&#44;0&#44;200&#44;100</xsl:text>
-                                        </xsl:otherwise> 
-                                        
-                                    </xsl:choose>                                    
-                                </xsl:attribute>
-                            </xsl:element>
-                        </xsl:element>
-                        
-                        <xsl:apply-templates select="bk:info"/>
-                    </xsl:if>
-                    <xsl:if test="child::node()[name()='caption']">
-                        <xsl:apply-templates select="child::node()[name()='caption']"/>
-                    </xsl:if>
-                    <xsl:if test="child::node()[name()='title']">
-                        <xsl:apply-templates select="child::node()[name()='title']"/>
-                    </xsl:if>
-                </xsl:element>
-            </xsl:if>
+            
         </xsl:element>
     </xsl:template>
     
     <xsl:template match="bk:img">
         <xsl:choose>     
             <xsl:when test="parent::node()[name()='figure']">
-                <xsl:element name="img" namespace="Unit">
+                <xsl:element name="img">
                     <xsl:attribute name="src">
                         <xsl:value-of select="./@src"/>
                     </xsl:attribute>
@@ -135,14 +92,56 @@
                             <xsl:value-of select="./@width"/>
                         </xsl:attribute>
                     </xsl:if>
+                    
+                    <xsl:if test="child::node()[name()='info' or name()='caption']">
+                        
+                        <xsl:element name="extended.caption" namespace="Theorem">
+                            
+                            <xsl:if test="child::node()[name()='info']">
+                                
+                                <xsl:element name="image.mapping" namespace="Theorem">
+                                    
+                                    <xsl:element name="area" namespace="Theorem">
+                                        <xsl:attribute name="shape">
+                                            <xsl:text>rect</xsl:text>
+                                        </xsl:attribute>
+                                        
+                                        <xsl:attribute name="coord">
+                                            
+                                            <xsl:choose>
+                                                <xsl:when test="child::node()[name()='img'][attribute::width]">
+                                                    <xsl:if test="child::node()[name()='img'][attribute::height]">                                       
+                                                        <xsl:text>0&#44;0&#44;</xsl:text>
+                                                        <xsl:value-of select="bk:img/@width"/>
+                                                        <xsl:text>&#44;</xsl:text>
+                                                        <xsl:value-of select="bk:img/@height"/>
+                                                    </xsl:if>                                        
+                                                </xsl:when>
+                                                
+                                                <xsl:otherwise>
+                                                    <xsl:text>0&#44;0&#44;200&#44;100</xsl:text>
+                                                </xsl:otherwise> 
+                                                
+                                            </xsl:choose>                                    
+                                        </xsl:attribute>
+                                    </xsl:element>
+                                </xsl:element>
+                                
+                                <xsl:apply-templates select="bk:info"/>
+                            </xsl:if>
+                            <xsl:if test="child::node()[name()='caption']">
+                                <xsl:apply-templates select="child::node()[name()='caption']"/>
+                            </xsl:if>
+                        </xsl:element>
+                    </xsl:if>
                 </xsl:element>         
             </xsl:when>
             <xsl:when test="parent::node()[name()='hot']">
-                <xsl:element name="media" namespace="Unit">
+                <xsl:element name="media">
                     <xsl:attribute name="type">image</xsl:attribute>
                     <xsl:attribute name="active">1</xsl:attribute>
                     <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img" namespace="Unit">
+                    <xsl:element name="img">
                         <xsl:attribute name="src">
                             <xsl:value-of select="./@src"/>
                         </xsl:attribute>
@@ -159,19 +158,18 @@
                     </xsl:element>        
                 </xsl:element>            
             </xsl:when>
-           
             <xsl:otherwise>
-                <xsl:element name="media" namespace="Unit">
+                <xsl:element name="media">
                     <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                         <xsl:attribute name="id">
                             <xsl:value-of select="parent::node()/@id"/>
                         </xsl:attribute>
                     </xsl:if>  
-            
+                    
                     <xsl:attribute name="type">image</xsl:attribute>
                     <xsl:attribute name="active">0</xsl:attribute>
                     <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img" namespace="Unit">
+                    <xsl:element name="img">
                         <xsl:attribute name="src">
                             <xsl:value-of select="./@src"/>
                         </xsl:attribute>
@@ -192,7 +190,7 @@
     </xsl:template>
     
     <xsl:template match="bk:image">
-        <xsl:element name="media" namespace="Unit">
+        <xsl:element name="media">
             <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                 <xsl:attribute name="id">
                     <xsl:value-of select="parent::node()/@id"/>
@@ -209,7 +207,7 @@
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:attribute name="inline">0</xsl:attribute>
-            <xsl:element name="img" namespace="Unit">
+            <xsl:element name="img">
                 <xsl:attribute name="src">
                     <xsl:choose>
                         <xsl:when test="child::node()[name()='path']">
@@ -230,24 +228,25 @@
                         <xsl:value-of select="./@width"/>
                     </xsl:attribute>
                 </xsl:if>
+                
+                <xsl:if test="child::node()[not(name()='path')]">
+                    <xsl:element name="image.mapping">
+                        <xsl:apply-templates select="bk:area"/>
+                    </xsl:element>
+                </xsl:if>
             </xsl:element>
-            <xsl:if test="child::node()[not(name()='path')]">
-                <xsl:element name="image.mapping">
-                    <xsl:apply-templates select="bk:area"/>
-                </xsl:element>
-            </xsl:if>
         </xsl:element>
     </xsl:template>
-    
     <xsl:template match="bk:area">
         <xsl:element name="area" namespace="Unit">
             <xsl:if test="attribute::* !=''">
                 <xsl:copy-of select="attribute::*"/>
             </xsl:if>
-        </xsl:element>
+        
         <xsl:for-each select=".">
             <xsl:apply-templates/>
         </xsl:for-each>
+        </xsl:element>
     </xsl:template>
     
     <xsl:template match="bk:math.display">

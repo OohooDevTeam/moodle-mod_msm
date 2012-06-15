@@ -23,15 +23,8 @@
                      <latex>\RNr[n]</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/SubSpaceClosedScalarMultiplication.gif"/>
-               <extended.caption>The scalar product <math>
-                     <latex>t\cdot \Vect{x}</latex>
-                  </math> of a vector in <math>
-                     <latex>V</latex>
-                  </math> by a number is again in <math>
-                     <latex>V</latex>
-                  </math>.</extended.caption>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/SubSpaceClosedScalarMultiplication.gif"/>
             </media>
          </block.body>
       </block>
@@ -50,8 +43,8 @@
                      <latex>V</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/ClosedScalarMultiplication_1.gif"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ClosedScalarMultiplication_1.gif"/>
             </media>
             <para>
                <para.body>The set <math>
@@ -75,15 +68,8 @@
                      <latex>S</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/Lattice2_2.gif"/>
-               <extended.caption>The scalar multiple of <math>
-                     <latex>\Vect{x}</latex>
-                  </math> in <math>
-                     <latex>S</latex>
-                  </math> by a number is not always again in <math>
-                     <latex>S</latex>
-                  </math>.</extended.caption>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Lattice2_2.gif"/>
             </media>
             <para>
                <para.body>Therefore this set <math>

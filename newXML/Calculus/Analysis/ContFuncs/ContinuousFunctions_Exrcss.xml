@@ -15,9 +15,9 @@
                      <latex>f</latex>
                   </math> below for points of continuity and points of discontinuity. Explain your reasoning.</para.body>
             </para>
-			
-				        <img src="ims/GraphJumps.png"/>
-			
+			         <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/GraphJumps.png"/>
+            </media>
 			         <para>
                <para.body>Solid end points of a curve indicate they are part of the curve; hollow end points indicate they are excluded.</para.body>
             </para>

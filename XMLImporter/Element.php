@@ -11,6 +11,8 @@
  * @author User
  */
 require_once("Subordinate.php");
+require_once("Media.php");
+require_once("MathImg.php");
 
 abstract class Element
 {
@@ -70,6 +72,24 @@ abstract class Element
             }
         }
         return $content;
+    }
+
+    function processMedia($DomElement, $position)
+    {
+        $arrayOfMedia = array();
+
+        $position = $position + 1;
+
+        $medias = $DomElement->getElementsByTagName('media');
+        $mlength = $medias->length;
+        for ($i = 0; $i < $mlength; $i++)
+        {
+            $position = $position + 1;
+            $media = new Media($this->xmlpath);
+            $media->loadFromXml($medias->item($i), $position);
+            $arrayOfMedia[] = $media;
+        }
+        return $arrayOfMedia;
     }
 
     function processSubordinate($DomElement, $position)
@@ -144,6 +164,14 @@ abstract class Element
         {
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
+
+        $medias = $DomElement->getElementsByTagName('media');
+        $mlength = $medias->length;
+        for ($i = 0; $i < $mlength; $i++)
+        {
+            $medias->item(0)->parentNode->removeChild($medias->item(0));
+        }
+
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
         $content[] = $doc->saveXML($element);

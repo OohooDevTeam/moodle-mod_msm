@@ -85,8 +85,8 @@
                      <latex>\Vect{y}</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/LinearCombination1.gif"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/LinearCombination1.gif"/>
             </media>
             <para>
                <para.body>The vectors</para.body>

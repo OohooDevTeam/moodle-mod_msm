@@ -20,9 +20,6 @@
 			
 			      <media xmlns="Theorem" type="image" active="0" inline="0">
             <img xmlns="" src="ims/Trafo_LineSegment.png"/>
-            <extended.caption>
-               <caption xmlns="">Transforming a line segment into a curve.</caption>
-            </extended.caption>
          </media>
 			
 			

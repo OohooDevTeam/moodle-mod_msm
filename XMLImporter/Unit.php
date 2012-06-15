@@ -88,6 +88,7 @@ class Unit extends Element
             $this->trailer = array();
             $this->exercises = array();
             $this->examples = array();
+            $this->showmes = array();
 //            $this->theorem = array(); // theorems are all inside the block.body
 
             foreach ($element->childNodes as $key => $child)
@@ -370,6 +371,27 @@ class Unit extends Element
                                             $intro->loadFromXml($element, $position);
                                             $this->intro = $intro;
                                         }
+                                        if ($element->tagName == 'showme.pack')
+                                        {
+                                            $position = $position + 1;
+                                            $showmepack = new Pack(dirname($this->xmlpath . $href));
+                                            $showmepack->loadFromXml($element, $position);
+                                            $this->showmes[] = $showmepack;
+                                        }
+                                        if ($element->tagName == 'example.pack')
+                                        {
+                                            $position = $position + 1;
+                                            $examplepack = new Pack(dirname($this->xmlpath . $href));
+                                            $examplepack->loadFromXml($element, $position);
+                                            $this->examples[] = $examplepack;
+                                        }
+                                        if ($element->tagName == 'exercise.pack')
+                                        {
+                                            $position = $position + 1;
+                                            $exercisepack = new Pack(dirname($this->xmlpath . $href));
+                                            $exercisepack->loadFromXml($element, $position);
+                                            $this->exercises[] = $exercisepack;
+                                        }
                                         // there are exercise/showme/example/quiz that can be part of this
                                         break;
                                     case('unit'):
@@ -458,14 +480,19 @@ class Unit extends Element
             }
         }
 
-        foreach ($this->exercises as $key => $exercise)
-        {
-            $exercise->saveIntoDb($exercise->position);
-        }
+//        foreach ($this->exercises as $key => $exercise)
+//        {
+//            $exercise->saveIntoDb($exercise->position);
+//        }
 
         foreach ($this->examples as $key => $example)
         {
             $example->saveIntoDb($example->position);
+        }
+
+        foreach ($this->showmes as $key => $showme)
+        {
+            $showme->saveIntoDb($showme->position);
         }
 
 //        $compositorData = new stdClass();

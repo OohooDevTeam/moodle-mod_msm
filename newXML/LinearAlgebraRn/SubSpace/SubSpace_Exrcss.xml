@@ -17,12 +17,9 @@
                      <latex>S</latex>
                   </math> closed under addition?</para.body>
             </para>
-			
-				        <img src="ims/Lattice1.gif"/>
-				        <caption>Is the set <math>
-                  <latex>S</latex>
-               </math> above closed under vector addition?</caption>
-			
+			         <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Lattice1.gif"/>
+            </media>
 		       </problem.body>
       </problem>
 		    <approach version="1">
@@ -90,9 +87,9 @@
                      </cell>
                   </row>
                </math.array>
-				
-					          <img src="ims/Lattice1_1.gif"/>
-				
+				           <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/Lattice1_1.gif"/>
+               </media>
 				           <para>
                   <para.body>This is again a vector of the form</para.body>
                </para>
@@ -126,9 +123,9 @@
                      <latex>S</latex>
                   </math> below consists of the rectangle shown below (including its interior). Is it closed under addition?</para.body>
             </para>
-			
-				        <img src="ims/Rectangle.gif"/>
-			
+			         <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Rectangle.gif"/>
+            </media>
 			
 		       </problem.body>
       </problem>
@@ -170,9 +167,9 @@
                         <latex>S</latex>
                      </math> is not closed under addition.</para.body>
                </para>
-				
-					          <img src="ims/ClosedAdditionn2_1.gif"/>
-				
+				           <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/ClosedAdditionn2_1.gif"/>
+               </media>
 				           <para>
                   <para.body>More generally, whenever a set <math>
                         <latex>S</latex>
@@ -199,9 +196,9 @@
                      <latex>S</latex>
                   </math> below consisting of the rectangle below closed under scalar multiplication?</para.body>
             </para>
-			
-				        <img src="ims/Rectangle.gif"/>
-			
+			         <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/Rectangle.gif"/>
+            </media>
 		       </problem.body>
       </problem>
 		    <approach version="1">
@@ -237,9 +234,9 @@
                         <latex>S</latex>
                      </math> contains a nonzero vector, for example the one displayed below.</para.body>
                </para>
-				
-					          <img src="ims/Rectangle_1.gif"/>
-				
+				           <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/Rectangle_1.gif"/>
+               </media>
 				           <para>
                   <para.body>The line through the origin in the direction of <math>
                         <latex>\Vect{x}</latex>
@@ -267,9 +264,9 @@
                      <latex>S</latex>
                   </math> closed under addition?</para.body>
             </para>
-			
-				        <img src="ims/EllipseClosedAddition.gif"/>
-			
+			         <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/EllipseClosedAddition.gif"/>
+            </media>
 		       </problem.body>
       </problem>
 		    <approach version="1">
@@ -299,9 +296,9 @@
                      <latex>S</latex>
                   </math> closed under addition?</para.body>
             </para>
-			
-				        <img src="ims/ParallelLines.gif"/>
-			
+			         <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/ParallelLines.gif"/>
+            </media>
 		       </problem.body>
       </problem>
 		    <approach version="1">
@@ -342,9 +339,9 @@
                         <latex>S</latex>
                      </math>.</para.body>
                </para>
-				
-					          <img src="ims/ParallelLines_1.gif"/>
-				
+				           <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/ParallelLines_1.gif"/>
+               </media>
 				           <para>
                   <para.body>A more rigorous argument runs as follows: Points in <math>
                         <latex>S</latex>

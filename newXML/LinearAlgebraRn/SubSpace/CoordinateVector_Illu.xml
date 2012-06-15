@@ -18,8 +18,8 @@
                      <latex>\EuScript{B} = (\Vect{a} , \Vect{b} )</latex>
                   </math>.</para.body>
             </para>
-            <media type="image" active="0" inline="0">
-               <img src="ims/CoordinateVector_1.gif"/>
+            <media xmlns="Theorem" type="image" active="0" inline="0">
+               <img xmlns="" src="ims/CoordinateVector_1.gif"/>
             </media>
             <para>
                <para.body>The basis vectors <math>

@@ -677,9 +677,9 @@ L(0,1) &amp;= 2(\cos(8\pi/6),\sin(8\pi/6)) &amp;= 2\left( -1/2 , -\sqrt{3}/2 \ri
                      </row>
                   </math.array>
 					
-					
-						            <img src="ims/Prjctn_Exrcs.png"/>
-					
+					             <media xmlns="Theorem" type="image" active="0" inline="0">
+                     <img xmlns="" src="ims/Prjctn_Exrcs.png"/>
+                  </media>
 					             <para>
                      <para.body>Now we need to contract these vectors by a factor of <math>
                            <latex>1/4</latex>

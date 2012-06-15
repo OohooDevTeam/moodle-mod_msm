@@ -96,7 +96,7 @@
                <para.body>The essence of showing this is encapsulated in the following picture.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img src="ims/OrientedVolumeMultiplicative.png"/>
+               <img xmlns="" src="ims/OrientedVolumeMultiplicative.png"/>
             </media>
             <para>
                <para.body>Next we need to show that the oriented volume operation is additive in each position; i.e.</para.body>
@@ -122,7 +122,7 @@
                <para.body>The essence of showing this is encapsulated in the following picture.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img src="ims/OrientedVolumeAdditive.png"/>
+               <img xmlns="" src="ims/OrientedVolumeAdditive.png"/>
             </media>
             <para>
                <para.body>In the picture above, why is the combined area of the parallelograms spanned by <math>
@@ -138,7 +138,7 @@
                   </math> turns one of the two figures above into the other.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img src="ims/OrientedVolumeAdditive_1.png"/>
+               <img xmlns="" src="ims/OrientedVolumeAdditive_1.png"/>
             </media>
             <para>
                <para.body>If <math>
@@ -148,7 +148,7 @@
                   </math> represent opposite orientations the situation is captured by the picture below.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img src="ims/OrientedVolumeAdditive_2.png"/>
+               <img xmlns="" src="ims/OrientedVolumeAdditive_2.png"/>
             </media>
             <para>
                <para.body>In this case the sum of the oriented areas is the difference of the areas of the two parallelograms. The picture below illustrates why the oriented area of the parallelogram spanned by <math>
@@ -156,7 +156,7 @@
                   </math> is this difference.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img src="ims/OrientedVolumeAdditive_3.png"/>
+               <img xmlns="" src="ims/OrientedVolumeAdditive_3.png"/>
             </media>
             <para>
                <para.body>Visibly the oriented volume operation is additive in this situation as well.</para.body>

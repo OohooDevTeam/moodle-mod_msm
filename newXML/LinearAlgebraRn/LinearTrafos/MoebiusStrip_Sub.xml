@@ -16,9 +16,9 @@
             </para>
             <para align="center">
                <para.body>
-                  <media type="image" active="0" inline="0">
+                  <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/MoebiusStrip1.gif"/>
-                  </media>   <media type="image" active="0" inline="0">
+                  </media>   <media xmlns="" type="image" active="0" inline="0">
                      <img src="ims/MoebiusStrip2.jpg" width="240"/>
                   </media>
                </para.body>

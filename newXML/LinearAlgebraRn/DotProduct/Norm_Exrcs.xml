@@ -640,9 +640,9 @@
                         <latex>\Vect{x} := (1,1)</latex>
                      </math>.</para.body>
                </para>
-				
-					          <img src="ims/Bisector.png"/>
-				
+				           <media xmlns="Theorem" type="image" active="0" inline="0">
+                  <img xmlns="" src="ims/Bisector.png"/>
+               </media>
 				           <para>
                   <para.body>The length of <math>
                         <latex>\Vect{x}</latex>
