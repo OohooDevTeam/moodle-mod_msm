@@ -81,12 +81,16 @@ class Solution extends Element
 
         if (!empty($this->content))
         {
+            echo "inserting solution --> content is not empty";
             $data->solution_content = $this->content;
             $this->id = $DB->insert_record($this->tablename, $data);
+            print_object($this->id);
         }
         else
         {
+             echo "inserting solution --> content is not empty";
             $this->id = $DB->insert_record($this->tablename, $data);
+             print_object($this->id);
         }
 
 

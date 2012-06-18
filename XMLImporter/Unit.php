@@ -41,6 +41,7 @@ require_once("SolutionExt.php");
 require_once("ApproachExt.php");
 require_once("Step.php");
 require_once("Pilot.php");
+require_once("AnswerExt.php");
 
 /**
  * Description of Unit
@@ -79,16 +80,16 @@ class Unit extends Element
             $element = $doc->importNode($DomElement, true);
 
             $this->subunits = array();
-            $this->exercises = array();
             $this->authors = array();
             $this->block = array();
             $this->preface = array();
             $this->summary = array();
             $this->historical = array();
             $this->trailer = array();
-            $this->exercises = array();
-            $this->examples = array();
-            $this->showmes = array();
+            $this->exercisepacks = array();
+            $this->examplepacks = array();
+            $this->showmepacks = array();
+            $this->quizpacks = array();
 //            $this->theorem = array(); // theorems are all inside the block.body
 
             foreach ($element->childNodes as $key => $child)
@@ -101,7 +102,7 @@ class Unit extends Element
                     }
                     else if ($child->tagName == 'titles')
                     {
-                        $this->title = $this->getContent($DomElement->getElementsByTagName('title')->item(0));
+                        $this->title = $this->getContent($child->getElementsByTagName('title')->item(0));
                         $this->plain_title = $this->getDomAttribute($child->getElementsByTagName('plain.title'));
                     }
                     else if ($child->tagName == 'authors')
@@ -272,53 +273,54 @@ class Unit extends Element
                             }
                         }
                     }
-                    else if ($child->tagName == 'studymaterials')
-                    {
-                        foreach ($child->childNodes as $key => $grandChild)
-                        {
-                            if ($grandChild->nodeType == XML_ELEMENT_NODE)
-                            {
-                                if ($grandChild->tagName == 'exercise.pack.ref')
-                                {
-                                    $position = $position + 1;
-                                    $exerciseID = $grandChild->getAttribute('exercisePackID');
-
-                                    $filepath = $this->findUnitFile($exerciseID);
-
-                                    $refdoc = new DOMDocument();
-                                    @$refdoc->load($filepath);
-
-                                    $exerciseElement = $refdoc->documentElement;
-
-                                    if ($exerciseElement->tagName == 'exercise.pack')
-                                    {
-                                        $exercisepack = new Pack($this->xmlpath);
-                                        $exercisepack->loadFromXml($exerciseElement, $position);
-                                        $this->exercises[] = $exercisepack;
-                                    }
-                                }
-                                if ($grandChild->tagName == 'example.pack.ref')
-                                {
-                                    $position = $position + 1;
-                                    $exampleID = $grandChild->getAttribute('examplePackID');
-
-                                    $filepath = $this->findUnitFile($exampleID);
-
-                                    $refdoc = new DOMDocument();
-                                    @$refdoc->load($filepath);
-
-                                    $exampleElement = $refdoc->documentElement;
-
-                                    if ($exampleElement->tagName == 'example.pack')
-                                    {
-                                        $examplePack = new Pack($this->xmlpath);
-                                        $examplePack->loadFromXml($exampleElement, $position);
-                                        $this->examples[] = $examplePack;
-                                    }
-                                }
-                            }
-                        }
-                    }
+//                    else if ($child->tagName == 'studymaterials')
+//                    {
+//                        foreach ($child->childNodes as $key => $grandChild)
+//                        {
+//                            if ($grandChild->nodeType == XML_ELEMENT_NODE)
+//                            {
+//                                if ($grandChild->tagName == 'exercise.pack.ref')
+//                                {
+//                                    $position = $position + 1;
+//                                    $exerciseID = $grandChild->getAttribute('exercisePackID');
+//
+//                                    $filepath = $this->findUnitFile($exerciseID);
+//
+//                                    $refdoc = new DOMDocument();
+//                                    @$refdoc->load($filepath);
+//
+//                                    $exerciseElement = $refdoc->documentElement;
+//
+//                                    if ($exerciseElement->tagName == 'exercise.pack')
+//                                    {
+//                                        echo "in studymaterial";
+//                                        $exercisepack = new Pack($this->xmlpath);
+//                                        $exercisepack->loadFromXml($exerciseElement, $position);
+//                                        $this->exercises[] = $exercisepack;
+//                                    }
+//                                }
+//                                if ($grandChild->tagName == 'example.pack.ref')
+//                                {
+//                                    $position = $position + 1;
+//                                    $exampleID = $grandChild->getAttribute('examplePackID');
+//
+//                                    $filepath = $this->findUnitFile($exampleID);
+//
+//                                    $refdoc = new DOMDocument();
+//                                    @$refdoc->load($filepath);
+//
+//                                    $exampleElement = $refdoc->documentElement;
+//
+//                                    if ($exampleElement->tagName == 'example.pack')
+//                                    {
+//                                        $examplePack = new Pack($this->xmlpath);
+//                                        $examplePack->loadFromXml($exampleElement, $position);
+//                                        $this->examples[] = $examplePack;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
                     else if ($child->tagName == 'legitimate.children')
                     {
                         foreach ($child->childNodes as $key => $grandChild)
@@ -376,21 +378,28 @@ class Unit extends Element
                                             $position = $position + 1;
                                             $showmepack = new Pack(dirname($this->xmlpath . $href));
                                             $showmepack->loadFromXml($element, $position);
-                                            $this->showmes[] = $showmepack;
+                                            $this->showmepacks[] = $showmepack;
                                         }
                                         if ($element->tagName == 'example.pack')
                                         {
                                             $position = $position + 1;
                                             $examplepack = new Pack(dirname($this->xmlpath . $href));
                                             $examplepack->loadFromXml($element, $position);
-                                            $this->examples[] = $examplepack;
+                                            $this->examplepacks[] = $examplepack;
                                         }
                                         if ($element->tagName == 'exercise.pack')
                                         {
                                             $position = $position + 1;
                                             $exercisepack = new Pack(dirname($this->xmlpath . $href));
                                             $exercisepack->loadFromXml($element, $position);
-                                            $this->exercises[] = $exercisepack;
+                                            $this->exercisepacks[] = $exercisepack;
+                                        }
+                                        if ($element->tagName == 'quiz.pack')
+                                        {
+                                            $position = $position + 1;
+                                            $quizpack = new Pack(dirname($this->xmlpath . $href));
+                                            $quizpack->loadFromXml($element, $position);
+                                            $this->quizpacks[] = $quizpack;
                                         }
                                         // there are exercise/showme/example/quiz that can be part of this
                                         break;
@@ -418,10 +427,12 @@ class Unit extends Element
         $data->plain_title = $this->plain_title;
         $data->creationdate = $this->creation;
         $data->last_revision_date = $this->last_revision;
+        
+        print_object($this->exercisepacks);
 
         if (!empty($this->acknowledgement))
         {
-            $data->acknowledgement->$this->acknowledgement;
+            $data->acknowledgement = $this->acknowledgement;
         }
 
         $this->id = $DB->insert_record($this->tablename, $data);
@@ -438,32 +449,32 @@ class Unit extends Element
                 $contributor->saveIntoDb($contributor->position, "contributor");
             }
         }
-
-        if (!empty($this->intro))
-        {
-            $this->intro->saveIntoDb($this->intro->position);
-        }
-
-        if (!empty($this->preface))
-        {
-            $this->preface->saveIntoDb($this->preface->position);
-        }
-
-        if (!empty($this->summary))
-        {
-            $this->summary->saveIntoDb($this->summary->position);
-        }
-
-        if (!empty($this->trailer))
-        {
-            $this->trailer->saveIntoDb($this->trailer->position);
-        }
-
-        if (!empty($this->historical))
-        {
-            $this->historical->saveIntoDb($this->historical->position);
-        }
-
+//
+//        if (!empty($this->intro))
+//        {
+//            $this->intro->saveIntoDb($this->intro->position);
+//        }
+//
+//        if (!empty($this->preface))
+//        {
+//            $this->preface->saveIntoDb($this->preface->position);
+//        }
+//
+//        if (!empty($this->summary))
+//        {
+//            $this->summary->saveIntoDb($this->summary->position);
+//        }
+//
+//        if (!empty($this->trailer))
+//        {
+//            $this->trailer->saveIntoDb($this->trailer->position);
+//        }
+//
+//        if (!empty($this->historical))
+//        {
+//            $this->historical->saveIntoDb($this->historical->position);
+//        }
+//
         if (!empty($this->subunits))
         {
             foreach ($this->subunits as $key => $subunit)
@@ -471,30 +482,34 @@ class Unit extends Element
                 $subunit->saveIntoDb($subunit->position);
             }
         }
-
-        if (!empty($this->block))
-        {
-            foreach ($this->block as $key => $block)
-            {
-                $block->saveIntoDb($block->position);
-            }
-        }
-
-//        foreach ($this->exercises as $key => $exercise)
+//
+//        if (!empty($this->block))
 //        {
-//            $exercise->saveIntoDb($exercise->position);
+//            foreach ($this->block as $key => $block)
+//            {
+//                $block->saveIntoDb($block->position);
+//            }
 //        }
-
-        foreach ($this->examples as $key => $example)
+               
+        foreach ($this->exercisepacks as $key => $exercise)
         {
-            $example->saveIntoDb($example->position);
+            $exercise->saveIntoDb($exercise->position);
         }
-
-        foreach ($this->showmes as $key => $showme)
-        {
-            $showme->saveIntoDb($showme->position);
-        }
-
+//
+//        foreach ($this->examplepacks as $key => $example)
+//        {
+//            $example->saveIntoDb($example->position);
+//        }
+//
+//        foreach ($this->showmepacks as $key => $showme)
+//        {
+//            $showme->saveIntoDb($showme->position);
+//        }
+//        
+//        foreach($this->quizpacks as $key=>$quiz)
+//        {
+//            $quiz->saveIntoDb($quiz->position);
+//        }
 //        $compositorData = new stdClass();
 //        $compositorData->unit_id = $this->id;
 //

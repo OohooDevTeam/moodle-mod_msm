@@ -19,7 +19,7 @@ class Pack extends Element
     public $caption;
     public $doclabel;
     public $texsupport;
-    public $literature_db;    
+    public $literature_db;
 
     function __construct($xmlpath = '')
     {
@@ -40,8 +40,8 @@ class Pack extends Element
         $this->type = $tagName;
 
         $this->string_id = $DomElement->getAttribute('id');
-        $this->title = $this->getDomAttribute($DomElement->getElementsByTagName('title'));
-        $this->caption = $this->getDomAttribute($DomElement->getElementsByTagName('caption'));
+        $this->title = $this->getContent($DomElement->getElementsByTagName('title')->item(0));
+        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
         $this->doclabel = $this->getDomAttribute($DomElement->getElementsByTagName('doclabel'));
         $texsupport = $DomElement->getElementsByTagName('texsupport')->item(0);
         $literaturedb = $DomElement->getElementsByTagName('literature.db')->item(0);
@@ -60,6 +60,8 @@ class Pack extends Element
         $examples = $DomElement->getElementsByTagName('example');
         $exercises = $DomElement->getElementsByTagName('exercise');
         $quizs = $DomElement->getElementsByTagName('quiz');
+
+       $xis = $DomElement->getElementsByTagNameNS('http://www.w3.org/2001/XInclude', '*');
         
         $this->showmes = array();
         $this->exercises = array();
@@ -70,7 +72,7 @@ class Pack extends Element
         {
             foreach ($showmes as $s)
             {
-                $position = $position+1;
+                $position = $position + 1;
                 $showme = new Showme($this->xmlpath);
                 $showme->loadFromXml($s, $position);
                 $this->showmes[] = $showme;
@@ -80,7 +82,7 @@ class Pack extends Element
         {
             foreach ($examples as $empl)
             {
-                $position = $position+1;
+                $position = $position + 1;
                 $example = new Example($this->xmlpath);
                 $example->loadFromXml($empl, $position);
                 $this->examples[] = $example;
@@ -90,7 +92,7 @@ class Pack extends Element
         {
             foreach ($exercises as $excs)
             {
-                $position = $position+1;
+                $position = $position + 1;
                 $exercise = new Exercise($this->xmlpath);
                 $exercise->loadFromXml($excs, $position);
                 $this->exercises[] = $exercise;
@@ -100,19 +102,58 @@ class Pack extends Element
         {
             foreach ($quizs as $q)
             {
-                $position = $position+1;
+                $position = $position + 1;
                 $quiz = new Quiz($this->xmlpath);
                 $quiz->loadFromXml($q, $position);
                 $this->quizs[] = $quiz;
             }
         }
+
+        foreach ($xis as $x)
+        {
+            $href = $x->getAttribute('href');
+
+            $xidoc = new DOMDocument();
+            @$xidoc->load($this->xmlpath . '/' . $href);
+
+            $element = $xidoc->documentElement;
+
+            if ($element->tagName == 'showme')
+            {
+                $position = $position + 1;
+                $showme = new Showme($this->xmlpath);
+                $showme->loadFromXml($element, $position);
+                $this->showmes[] = $showme;
+            }
+            if ($element->tagName == 'example')
+            {
+                $position = $position + 1;
+                $example = new Example($this->xmlpath);
+                $example->loadFromXml($element, $position);
+                $this->examples[] = $example;
+            }
+            if ($element->tagName == 'exercise')
+            {
+                $position = $position + 1;
+                $exercise = new Exercise($this->xmlpath);
+                $exercise->loadFromXml($element, $position);
+                $this->exercises[] = $exercise;
+            }
+            if($element->tagName == 'quiz')
+            {
+                $position = $position+1;
+                $quiz = new Quiz($this->xmlpath);
+                $quiz->loadFromXml($element, $position);
+                $this->quizs[] = $quiz;
+            }
+        }
     }
-    
+
     function saveIntoDb($position)
     {
         global $DB;
         $data = new stdClass();
-        
+
         $data->string_id = $this->string_id;
         $data->caption = $this->caption;
         $data->title = $this->title;
@@ -120,27 +161,27 @@ class Pack extends Element
         $data->texsupport = $this->texsupport;
         $data->literature_db = $this->literature_db;
         $data->type = $this->type;
-        
+
         $this->id = $DB->insert_record($this->tablename, $data);
 //      foreach($this->quizs as $quiz)
 //      {
 //          $quiz->saveIntoDb($quiz->position);
 //      }
-      
-      foreach($this->examples as $example)
-      {
-          $example->saveIntoDb($example->position);
-      }
-      
-      foreach($this->exercises as $exercise)
-      {
-          $exercise->saveIntoDb($exercise->position);
-      }
-      
-      foreach($this->showmes as $showme)
-      {
-          $showme->saveIntoDb($showme->position);
-      }
+
+        foreach ($this->examples as $example)
+        {
+            $example->saveIntoDb($example->position);
+        }
+
+        foreach ($this->exercises as $exercise)
+        {
+            $exercise->saveIntoDb($exercise->position);
+        }
+
+        foreach ($this->showmes as $showme)
+        {
+            $showme->saveIntoDb($showme->position);
+        }
     }
 
 }

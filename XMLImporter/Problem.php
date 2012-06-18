@@ -14,6 +14,7 @@ class Problem extends Element
 {
 
     public $position;
+    public $content;
 
     function __construct($xmlpath = '')
     {
@@ -38,42 +39,42 @@ class Problem extends Element
 
         $this->medias = array();
 
-        $this->content = array();
+        //$this->content = array();
 
-        $problembodys = $DomElement->getElementsByTagName('problem.body');
+        $problembody = $DomElement->getElementsByTagName('problem.body')->item(0);
         $doc = new DOMDocument();
-
-        foreach ($problembodys as $prob)
-        {
-            foreach ($this->processIndexAuthor($prob, $position) as $indexauthor)
+//
+//        foreach ($problembodys as $prob)
+//        {
+            foreach ($this->processIndexAuthor($problembody, $position) as $indexauthor)
             {
                 $this->indexauthors[] = $indexauthor;
             }
 
-            foreach ($this->processIndexGlossary($prob, $position) as $indexglossary)
+            foreach ($this->processIndexGlossary($problembody, $position) as $indexglossary)
             {
                 $this->indexglossarys[] = $indexglossary;
             }
 
-            foreach ($this->processIndexSymbols($prob, $position) as $indexsymbol)
+            foreach ($this->processIndexSymbols($problembody, $position) as $indexsymbol)
             {
                 $this->indexsymbols[] = $indexsymbol;
             }
-            foreach ($this->processSubordinate($prob, $position) as $subordinate)
+            foreach ($this->processSubordinate($problembody, $position) as $subordinate)
             {
                 $this->subordinates[] = $subordinate;
             }
 
-            foreach ($this->processMedia($prob, $position) as $media)
+            foreach ($this->processMedia($problembody, $position) as $media)
             {
                 $this->medias[] = $media;
             }
 
-            foreach ($this->processContent($prob, $position) as $content)
+            foreach ($this->processContent($problembody, $position) as $content)
             {
-                $this->content[] = $content;
+                $this->content .= $content;
             }
-        }
+//        }
     }
 
     function saveIntoDb($position)
@@ -86,11 +87,11 @@ class Problem extends Element
 
         if (!empty($this->content))
         {
-            foreach ($this->content as $content)
-            {
-                $data->problem_content = $content;
+//            foreach ($this->content as $content)
+//            {
+                $data->problem_content = $this->content;
                 $this->id = $DB->insert_record($this->tablename, $data);
-            }
+//            }
         }
         else
         {

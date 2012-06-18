@@ -103,6 +103,17 @@ class Example extends Element
             $answer->loadFromXml($a, $position);
             $this->answers[] = $answer;
         }
+        
+        $answerexts = $DomElement->getElementsByTagName('answer.ext');
+        $this->answer_exts = array();
+
+        foreach ($answerexts as $ax)
+        {
+            $position = $position + 1;
+            $answerext = new AnswerExt($this->xmlpath);
+            $answerext->loadFromXml($ax, $position);
+            $this->answer_exts[] = $answerext;
+        }
     }
 
     function saveIntoDb($position)
@@ -132,6 +143,11 @@ class Example extends Element
         foreach ($this->part_examples as $part_example)
         {
             $part_example->saveIntoDb($part_example->position);
+        }
+        
+        foreach($this->answer_exts as $ans_ext)
+        {
+            $ans_ext->saveIntoDb($ans_ext->position);
         }
 
         foreach ($this->subordinates as $key => $subordinate)

@@ -37,13 +37,13 @@ class Step extends Element
         
         $this->pilots = array();
         $pilots = $DomElement->getElementsByTagName('pilot');        
-//        foreach($pilots as $p)
-//        {
-//            $position = $position+1;
-//            $pilot = new Pilot($this->xmlpath);
-//            $pilot->loadFromXml($p, $position);
-//            $this->pilots[] = $pilot;
-//        }
+        foreach($pilots as $p)
+        {
+            $position = $position+1;
+            $pilot = new Pilot($this->xmlpath);
+            $pilot->loadFromXml($p, $position);
+            $this->pilots[] = $pilot;
+        }
         
         $this->subordinates = array();
         $this->indexauthors = array();
@@ -91,10 +91,10 @@ class Step extends Element
         
         $this->id = $DB->insert_record($this->tablename, $data);
         
-//       foreach($this->pilots as $pilot)
-//       {
-//           $pilot->saveIntoDb($pilot->position);
-//       }
+       foreach($this->pilots as $pilot)
+       {
+           $pilot->saveIntoDb($pilot->position);
+       }
 
         foreach ($this->subordinates as $key => $subordinate)
         {
