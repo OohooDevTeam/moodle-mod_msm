@@ -90,7 +90,10 @@ class Item extends Element
         
         for($i=0; $i < $this->length+1; $i++)
         {
-            $data->item_content = $this->content[$i];
+            if(!empty($this->content[$i]))
+            {
+                 $data->item_content = $this->content[$i];
+            }           
             $data->position = $i;
             $data->citekey = $this->citekey;
         }
