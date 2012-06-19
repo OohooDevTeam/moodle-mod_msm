@@ -54,7 +54,7 @@ class Cite extends Element
         $data->cite_label = $this->cite_label;
         $data->caption = $this->caption;
         
-        $this->it = $DB->insert_record($this->tablename, $data);
+        $this->id = $DB->insert_record($this->tablename, $data);
         
         foreach($this->items as $item)
         {

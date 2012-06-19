@@ -31,49 +31,83 @@ class Item extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         $this->content = array();
-        $i=0;
+        $flag = false;
         foreach ($DomElement->childNodes as $key => $child)
         {
             if ($child->nodeType == XML_ELEMENT_NODE)
             {
                 if ($child->tagName != 'citekey')
                 {
-                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
+                    if ($flag == 'true')
                     {
-                        $this->indexauthors[] = $indexauthor;
-                    }
+                        foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
+                        {
+                            $this->indexauthors[] = $indexauthor;
+                        }
 
-                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
-                    {
-                        $this->indexglossarys[] = $indexglossary;
-                    }
+                        foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
+                        {
+                            $this->indexglossarys[] = $indexglossary;
+                        }
 
-                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
-                    {
-                        $this->indexsymbols[] = $indexsymbol;
-                    }
-                    foreach ($this->processSubordinate($child, $position) as $subordinate)
-                    {
-                        $this->subordinates[] = $subordinate;
-                    }
+                        foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
+                        {
+                            $this->indexsymbols[] = $indexsymbol;
+                        }
+                        foreach ($this->processSubordinate($child, $position) as $subordinate)
+                        {
+                            $this->subordinates[] = $subordinate;
+                        }
 
-                    foreach ($this->processMedia($child, $position) as $media)
-                    {
-                        $this->medias[] = $media;
-                    }
+                        foreach ($this->processMedia($child, $position) as $media)
+                        {
+                            $this->medias[] = $media;
+                        }
 
-                    foreach ($this->processContent($child, $position) as $content)
-                    {
-                        $this->content[$i] .= $content;
+                        foreach ($this->processContent($child, $position) as $content)
+                        {
+                            $this->content[1] .= $content;
+                        }
                     }
-                    $i++;
+                    else
+                    {
+                        foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
+                        {
+                            $this->indexauthors[] = $indexauthor;
+                        }
+
+                        foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
+                        {
+                            $this->indexglossarys[] = $indexglossary;
+                        }
+
+                        foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
+                        {
+                            $this->indexsymbols[] = $indexsymbol;
+                        }
+                        foreach ($this->processSubordinate($child, $position) as $subordinate)
+                        {
+                            $this->subordinates[] = $subordinate;
+                        }
+
+                        foreach ($this->processMedia($child, $position) as $media)
+                        {
+                            $this->medias[] = $media;
+                        }
+
+                        foreach ($this->processContent($child, $position) as $content)
+                        {
+                            $this->content[2] .= $content;
+                        }
+                    }
                 }
-                if($child->tagName == 'citekey')
+                if ($child->tagName == 'citekey')
                 {
-                     $this->itemposition[] = $key;
-                    $this->citekeys = $child;
+                    $doc = new DOMDocument();
+                    $element = $doc->importNode($child, true);
+                    $this->citekey = $doc->saveXML($element);
+                    $flag = true;
                 }
-                $this->length = $i;
             }
         }
     }
@@ -87,15 +121,22 @@ class Item extends Element
     {
         global $DB;
         $data = new stdClass();
-        
-        for($i=0; $i < $this->length+1; $i++)
+
+        $data->citekey = $this->citekey;
+        if (!empty($this->content[1]))
         {
-            if(!empty($this->content[$i]))
-            {
-                 $data->item_content = $this->content[$i];
-            }           
-            $data->position = $i;
+            $data->item_content = $this->content[1];
+            $data->position = 1;
+        }
+
+        $this->id = $DB->insert_record($this->tablename, $data);
+
+        if (!empty($this->content[2]))
+        {
             $data->citekey = $this->citekey;
+            $data->item_content = $this->content[2];
+            $data->position = 2;
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
     }
 
