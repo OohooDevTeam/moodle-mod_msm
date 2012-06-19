@@ -89,13 +89,17 @@ class Problem extends Element
         {
 //            foreach ($this->content as $content)
 //            {
+            echo "problem content not empty";
+            print_object($this->content);
                 $data->problem_content = $this->content;
                 $this->id = $DB->insert_record($this->tablename, $data);
 //            }
         }
         else
         {
+             echo "problem content is empty";
             $this->id = $DB->insert_record($this->tablename, $data);
+            print_object($this->id);
         }
 
         foreach ($this->subordinates as $key => $subordinate)

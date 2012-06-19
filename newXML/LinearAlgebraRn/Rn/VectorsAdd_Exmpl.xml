@@ -82,7 +82,17 @@
 		    </statement.example>
 		    <answer.ext type="solution" version="1">
 			      <step>
-            <pilot/>
+            <pilot>
+               <pilot.step>
+						            <para xmlns="">
+                     <para.body>The answer will be vector in <math>
+                           <latex>\RNr[5]</latex>
+                        </math>. So there are <math>
+                           <latex>5</latex>
+                        </math> coordinates to compute. We begin by applying this procedure to the first coordinates.</para.body>
+                  </para>
+					          </pilot.step>
+            </pilot>
             <step.body>
 				
 				           <para xmlns="">
@@ -94,7 +104,13 @@
 			         </step.body>
          </step>
 			      <step>
-            <pilot/>
+            <pilot>
+               <pilot.step>
+						            <para xmlns="">
+                     <para.body>Next we add the second coordinates:</para.body>
+                  </para>
+					          </pilot.step>
+            </pilot>
             <step.body>
 				
 				           <math.display xmlns="">
@@ -103,7 +119,13 @@
 			         </step.body>
          </step>
 			      <step>
-            <pilot/>
+            <pilot>
+               <pilot.step>
+						            <para xmlns="">
+                     <para.body>Next we add the third coordinates:</para.body>
+                  </para>
+					          </pilot.step>
+            </pilot>
             <step.body>
 				
 				           <math.display xmlns="">
@@ -112,7 +134,13 @@
 			         </step.body>
          </step>
 			      <step>
-            <pilot/>
+            <pilot>
+               <pilot.step>
+						            <para xmlns="">
+                     <para.body>Next we add the fourth coordinates:</para.body>
+                  </para>
+					          </pilot.step>
+            </pilot>
             <step.body>
 				
 				           <math.display xmlns="">
@@ -121,7 +149,13 @@
 			         </step.body>
          </step>
 			      <step>
-            <pilot/>
+            <pilot>
+               <pilot.step>
+						            <para xmlns="">
+                     <para.body>Next we add the fifth coordinates:</para.body>
+                  </para>
+					          </pilot.step>
+            </pilot>
             <step.body>
 				
 				           <math.display xmlns="">

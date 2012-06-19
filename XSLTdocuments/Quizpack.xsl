@@ -70,7 +70,7 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="exe:quiz">
+    <xsl:template match="exe:quiz" name="quiz">
         <xsl:element name="quiz" namespace="Compositor">
             <xsl:if test="./@id != ''">
                 <xsl:attribute name="id">

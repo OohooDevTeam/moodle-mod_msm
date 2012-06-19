@@ -87,6 +87,12 @@ x &amp; - &amp; 2y &amp; = &amp; 3 \\
 				        <solution.ext>
 					          <step>
                   <pilot>
+                     <pilot.body>
+							                 <para>
+                           <para.body>Our strategy is to reduce the given system of linear equations to RREF. So, we ask:</para.body>
+                        </para>
+							
+						               </pilot.body>
                      <quiz>
 								                <question>
 									                  <para>
@@ -126,45 +132,6 @@ x &amp; - &amp; 2y &amp; = &amp; 3 \\
                            </info>
 								                </choice>
 							              </quiz>
-                     <pilot.body>
-								                <question>
-									                  <para>
-                              <para.body>Is the system already in RREF?</para.body>
-                           </para>
-								                </question>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>Yes!</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-										                    <para>
-                                 <para.body>Sorry, no! – If this system were in RREF, the top left <math>
-                                       <latex>1</latex>
-                                    </math> would be a leading <math>
-                                       <latex>1</latex>
-                                    </math>. So we should have <math>
-                                       <latex>0x</latex>
-                                    </math> below it. Instead, we find <math>
-                                       <latex>-2x</latex>
-                                    </math> and conclude that the system is not in RREF.</para.body>
-                              </para>
-									                  </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>No!</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Correct!</para.body>
-                              </para>
-                           </info>
-								                </choice>
-							              </pilot.body>
                   </pilot>
                   <step.body>
 						
@@ -183,6 +150,9 @@ x &amp; - &amp; 2y &amp; = &amp; 3 \\
                </step>
 					          <step>
                   <pilot>
+                     <pilot.body>
+							
+						</pilot.body>
                      <quiz>
 								                <question>
                            <para>
@@ -227,50 +197,6 @@ x &amp; - &amp; 2y &amp; = &amp; 3 \\
                            </info>
 								                </choice>
 							              </quiz>
-                     <pilot.body>
-								                <question>
-                           <para>
-                              <para.body>What can you do to bring the system closer to RREF?</para.body>
-                           </para>
-                        </question>
-								                <hint>
-									                  <info>
-                              <para>
-                                 <para.body>You could try to generate <math>
-                                       <latex>0x</latex>
-                                    </math> in the second row</para.body>
-                              </para>
-                           </info>
-								                </hint>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>I just ignore the second row</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-										                    <para>
-                                 <para.body>Not a good idea! – If you ignore the second row, you will obtain all solutions of the first equations. However, some of these are not solutions of the second equation; e.g. <math>
-                                       <latex>(1,-1)</latex>
-                                    </math> solves the first equation but not the second.</para.body>
-                              </para>
-									                  </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>Add <math>
-                                       <latex>2</latex>
-                                    </math> times Row 1 to Row 2</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Yes! – This will do it!</para.body>
-                              </para>
-                           </info>
-								                </choice>
-							              </pilot.body>
                   </pilot>
                   <step.body>
 						
@@ -295,6 +221,9 @@ x &amp; - &amp; 2y &amp; = &amp; 3 \\
                </step>
 					          <step>
                   <pilot>
+                     <pilot.body>
+							
+						</pilot.body>
                      <quiz>
 								                <question>
                            <para>
@@ -330,41 +259,6 @@ x &amp; - &amp; 2y &amp; = &amp; 3 \\
                            </info>
 								                </choice>
 							              </quiz>
-                     <pilot.body>
-								                <question>
-                           <para>
-                              <para.body>Is the system now in RREF?</para.body>
-                           </para>
-                        </question>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>Yes!</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Sorry! – This is not correct. The second row does not consist of <math>
-                                       <latex>0</latex>
-                                    </math>’s only. So there should be a leading <math>
-                                       <latex>1</latex>
-                                    </math>.</para.body>
-                              </para>
-                           </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>No!</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Correct!</para.body>
-                              </para>
-                           </info>
-								                </choice>
-							              </pilot.body>
                   </pilot>
                   <step.body>
 						
@@ -379,6 +273,9 @@ x &amp; - &amp; 2y &amp; = &amp; 3 \\
                </step>
 					          <step>
                   <pilot>
+                     <pilot.body>
+							
+						</pilot.body>
                      <quiz>
 								                <question>
                            <para>
@@ -430,57 +327,6 @@ x &amp; - &amp; 2y &amp; = &amp; 3 \\
                            </info>
 								                </choice>
 							              </quiz>
-                     <pilot.body>
-								                <question>
-                           <para>
-                              <para.body>What do you do next?</para.body>
-                           </para>
-                        </question>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>I divide Row 2 by <math>
-                                       <latex>3</latex>
-                                    </math> to turn the system into RREF.</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Yes, this is the logical next step. – However, let’ give it a brief thought: Is this really necessary?</para.body>
-                              </para>
-                           </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>I don’t know what to do</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>In this case, please review the criteria which determine if a system of linear equations is in RREF.</para.body>
-                              </para>
-                           </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>I am done! – This system of linear equations has no solution. Therefore it is pointless to reduce it further to RREF.</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Correct! The second equation says that <math>
-                                       <latex>0 = 3</latex>
-                                    </math> for all choices of number values for <math>
-                                       <latex>x</latex>
-                                    </math> and <math>
-                                       <latex>y</latex>
-                                    </math>, which is decidedly false. Therefore the system has no solution, and there is no reason to reduce it fully to RREF.</para.body>
-                              </para>
-                           </info>
-								                </choice>
-							              </pilot.body>
                   </pilot>
                   <step.body>
 						
@@ -604,6 +450,12 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
 				        <solution.ext>
 					          <step>
                   <pilot>
+                     <pilot.body>
+							                 <para>
+                           <para.body>Our strategy is to reduce the given system of linear equations to RREF. So, we ask</para.body>
+                        </para>
+							
+						               </pilot.body>
                      <quiz>
 								                <question>
                            <para>
@@ -641,43 +493,6 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
                            </info>
 								                </choice>
 							              </quiz>
-                     <pilot.body>
-								                <question>
-                           <para>
-                              <para.body>Is the system already in RREF</para.body>
-                           </para>
-                        </question>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>Yes!</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-										                    <para>
-                                 <para.body>Sorry, no! – While there is already a leading <math>
-                                       <latex>1</latex>
-                                    </math> in the top left position, there are nonzero entries below it. A system in RREF must have <math>
-                                       <latex>0</latex>
-                                    </math>’s below a leading <math>
-                                       <latex>1</latex>
-                                    </math>.</para.body>
-                              </para>
-									                  </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>No!</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Correct!</para.body>
-                              </para>
-                           </info>
-								                </choice>
-							              </pilot.body>
                   </pilot>
                   <step.body>
 						
@@ -694,6 +509,9 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
                </step>
 					          <step>
                   <pilot>
+                     <pilot.body>
+							
+						</pilot.body>
                      <quiz>
 								                <question>
                            <para>
@@ -745,57 +563,6 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
                            </info>
 								                </choice>
 							              </quiz>
-                     <pilot.body>
-								                <question>
-                           <para>
-                              <para.body>What do you do next?</para.body>
-                           </para>
-                        </question>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>I use a row operation to transform the given system into an equivalent one which is closer to RREF.</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Yes!</para.body>
-                              </para>
-                           </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-										                    <para>
-                                 <para.body>I add Row 1 to Row 2 and subtract 2 times Row 1 from Row 3 to generate <math>
-                                       <latex>0</latex>
-                                    </math>’s below the leading <math>
-                                       <latex>1</latex>
-                                    </math> in the top row.</para.body>
-                              </para>
-									                  </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Even better!</para.body>
-                              </para>
-                           </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-										                    <para>
-                                 <para.body>I add 2 times Row 2 to Row 3 and then Row 1 to Row 2 to generate <math>
-                                       <latex>0</latex>
-                                    </math>’s below the leading <math>
-                                       <latex>1</latex>
-                                    </math> in the top row.</para.body>
-                              </para>
-									                  </answer>
-									                  <info>
-                              <para>
-                                 <para.body>This will also work.</para.body>
-                              </para>
-                           </info>
-								                </choice>
-							              </pilot.body>
                   </pilot>
                   <step.body>
 						
@@ -822,6 +589,9 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
 					
 					          <step>
                   <pilot>
+                     <pilot.body>
+							
+						</pilot.body>
                      <quiz>
 								                <question>
                            <para>
@@ -861,45 +631,6 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
                            </info>
 								                </choice>
 							              </quiz>
-                     <pilot.body>
-								                <question>
-                           <para>
-                              <para.body>What do you do next?</para.body>
-                           </para>
-                        </question>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>I create a leading <math>
-                                       <latex>1</latex>
-                                    </math> in Row 2 by multiplying it by <math>
-                                       <latex>-1/2</latex>
-                                    </math>.</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Good!</para.body>
-                              </para>
-                           </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>I add Row 2 to Row 3 to generate a row of ‘all <math>
-                                       <latex>0</latex>
-                                    </math>’. This row can then be omitted as it is true for all choices of number values for <math>
-                                       <latex>x,y,z</latex>
-                                    </math>.</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>This will also work!</para.body>
-                              </para>
-                           </info>
-								                </choice>
-							              </pilot.body>
                   </pilot>
                   <step.body>
 						
@@ -921,6 +652,9 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
 					
 					          <step>
                   <pilot>
+                     <pilot.body>
+							
+						</pilot.body>
                      <quiz>
 								                <question>
                            <para>
@@ -952,37 +686,6 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
                            </info>
 								                </choice>
 							              </quiz>
-                     <pilot.body>
-								                <question>
-                           <para>
-                              <para.body>Is the system now in RREF?</para.body>
-                           </para>
-                        </question>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>Yes!</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>Correct!</para.body>
-                              </para>
-                           </info>
-								                </choice>
-								                <choice>
-									                  <answer>
-                              <para>
-                                 <para.body>No!</para.body>
-                              </para>
-                           </answer>
-									                  <info>
-                              <para>
-                                 <para.body>This is curious. Which of the criteria for RREF do you think is not satisfied?</para.body>
-                              </para>
-                           </info>
-								                </choice>
-							              </pilot.body>
                   </pilot>
                   <step.body>
 						
@@ -993,7 +696,13 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
                </step>
 					
 					          <step>
-                  <pilot/>
+                  <pilot>
+                     <pilot.body>
+                        <para>
+                           <para.body>It only remains to read off the solutions of the system.</para.body>
+                        </para>
+                     </pilot.body>
+                  </pilot>
                   <step.body>
 						
 						               <para>

@@ -427,8 +427,6 @@ class Unit extends Element
         $data->plain_title = $this->plain_title;
         $data->creationdate = $this->creation;
         $data->last_revision_date = $this->last_revision;
-        
-        print_object($this->exercisepacks);
 
         if (!empty($this->acknowledgement))
         {

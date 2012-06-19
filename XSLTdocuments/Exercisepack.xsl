@@ -170,14 +170,23 @@
     
     <xsl:template match="exe:pilot">
         <xsl:element name="pilot" namespace="Compositor">
+            <xsl:if test="child::node()[not(name()='quiz')]">
+                <xsl:element name="pilot.body" namespace="Compositor">
+                    <xsl:apply-templates select="child::node()[not(name()='quiz')]"/>
+                </xsl:element>
+            </xsl:if>
             <xsl:if test="child::node()[name()='quiz']">
+                <xsl:apply-templates select="child::node()[name()='quiz']"/>
+            </xsl:if>
+            
+            <!--xsl:if test="child::node()[name()='quiz']">
                 <xsl:for-each select="child::node()[name()='quiz']">
                     <xsl:apply-templates select="."/>
                     <xsl:element name="pilot.body" namespace="Compositor">
                         <xsl:apply-templates select="child::node()[not(name()='quiz')]"/>
                     </xsl:element>
                 </xsl:for-each>
-            </xsl:if>
+            </xsl:if-->
         </xsl:element>
     </xsl:template>
 </xsl:stylesheet>

@@ -247,7 +247,13 @@
 		    <approach.ext version="1">
 			      <solution.ext>
 				        <step>
-               <pilot/>
+               <pilot>
+                  <pilot.body>
+						               <para>
+                        <para.body>Express first how the individual legs of the trip add up to the total distance traveled.</para.body>
+                     </para>
+					             </pilot.body>
+               </pilot>
                <step.body>
 					
 					             <para>
@@ -259,7 +265,13 @@
 				           </step.body>
             </step>
 				        <step>
-               <pilot/>
+               <pilot>
+                  <pilot.body>
+						               <para>
+                        <para.body>Next we compute the distance traveled on each of the straight trips</para.body>
+                     </para>
+					             </pilot.body>
+               </pilot>
                <step.body>
 					
 					             <para>
@@ -280,7 +292,13 @@
             </step>
 				
 				        <step>
-               <pilot/>
+               <pilot>
+                  <pilot.body>
+						               <para>
+                        <para.body>We add the distance traveled on the straight segments up to obtain the total distance traveled.</para.body>
+                     </para>
+					             </pilot.body>
+               </pilot>
                <step.body>
 					
 					             <para>

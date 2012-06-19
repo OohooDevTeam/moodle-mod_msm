@@ -110,6 +110,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     $DB->delete_records('msm_index_glossary');
     $DB->delete_records('msm_index_symbol');
     $DB->delete_records('msm_table');
+    $DB->delete_records('msm_answer');
     $DB->delete_records('msm_answer_exercise');
     $DB->delete_records('msm_answer_showme');
     $DB->delete_records('msm_packs');
@@ -119,12 +120,17 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     $DB->delete_records('msm_showme');
     $DB->delete_records('msm_quiz');
     $DB->delete_records('msm_part_exercise');
+    $DB->delete_records('msm_part_example');
+    $DB->delete_records('msm_part_theorem');
     $DB->delete_records('msm_ext');
     $DB->delete_records('msm_approach');
     $DB->delete_records('msm_solution');
     $DB->delete_records('msm_statement_example');
     $DB->delete_records('msm_media');
     $DB->delete_records('msm_img');
+    $DB->delete_records('msm_pilot');
+    $DB->delete_records('msm_step');
+
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
@@ -140,8 +146,6 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         //$book = new Book(dirname(__FILE__).'/../xml/Calculus/', $parser);
         $position = 1;
         $unit->loadFromXml($parser->documentElement, $position);
-        
-        echo "done loading";
 
         $id = $unit->saveIntoDb($unit->position);
     }

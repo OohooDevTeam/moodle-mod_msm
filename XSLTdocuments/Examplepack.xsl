@@ -79,33 +79,35 @@
     </xsl:template>
     
     <xsl:template match="exa:step">
-        <xsl:element name="step" namespace="Compositor">
-            <xsl:if test="./@partref != ''">
-                <xsl:attribute name="partref">
-                    <xsl:value-of select="./@partref"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="child::node()[name()='caption']">
-                <xsl:apply-templates select="child::node()[name()='caption']"/>
-            </xsl:if>
-            <xsl:if test="child::node()[name()='pilot']">
-                <xsl:apply-templates select="child::node()[name()='pilot']"/>
-            </xsl:if>
-            <xsl:element name="step.body" namespace="Compositor">
-                <xsl:apply-templates select="child::node()[not(name()='caption' or name()='pilot')]"/>
-            </xsl:element>
-        </xsl:element>
+        <xsl:choose>
+            <xsl:when test="parent::node()[not(name()='pilot')]">
+                <xsl:element name="step" namespace="Compositor">
+                    <xsl:if test="./@partref != ''">
+                        <xsl:attribute name="partref">
+                            <xsl:value-of select="./@partref"/>
+                        </xsl:attribute>
+                    </xsl:if>
+                    <xsl:if test="child::node()[name()='pilot']">
+                        <xsl:apply-templates select="child::node()[name()='pilot']"/>
+                    </xsl:if>
+                    <xsl:element name="step.body" namespace="Compositor">
+                        <xsl:apply-templates select="child::node()[not(name()='caption' or name()='pilot')]"/>
+                    </xsl:element>
+                </xsl:element> 
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
+        
     </xsl:template>
     
     <xsl:template match="exa:pilot">
         <xsl:element name="pilot" namespace="Compositor">
-            <xsl:if test="child::node()[name()='quiz']">
-                <xsl:for-each select="child::node()[name()='quiz']">
-                    <xsl:apply-templates select="."/>
-                    <xsl:element name="pilot.body" namespace="Compositor">
-                        <xsl:apply-templates select="child::node()[not(name()='quiz')]"/>
+            <xsl:if test="child::node()[name()='step']">               
+                    <xsl:element name="pilot.step" namespace="Compositor">
+                        <xsl:apply-templates select="child::node()[(name()='step')]"/>
                     </xsl:element>
-                </xsl:for-each>
             </xsl:if>
         </xsl:element>
     </xsl:template>
