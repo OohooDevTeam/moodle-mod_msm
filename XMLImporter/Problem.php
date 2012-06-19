@@ -46,34 +46,34 @@ class Problem extends Element
 //
 //        foreach ($problembodys as $prob)
 //        {
-            foreach ($this->processIndexAuthor($problembody, $position) as $indexauthor)
-            {
-                $this->indexauthors[] = $indexauthor;
-            }
+        foreach ($this->processIndexAuthor($problembody, $position) as $indexauthor)
+        {
+            $this->indexauthors[] = $indexauthor;
+        }
 
-            foreach ($this->processIndexGlossary($problembody, $position) as $indexglossary)
-            {
-                $this->indexglossarys[] = $indexglossary;
-            }
+        foreach ($this->processIndexGlossary($problembody, $position) as $indexglossary)
+        {
+            $this->indexglossarys[] = $indexglossary;
+        }
 
-            foreach ($this->processIndexSymbols($problembody, $position) as $indexsymbol)
-            {
-                $this->indexsymbols[] = $indexsymbol;
-            }
-            foreach ($this->processSubordinate($problembody, $position) as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
+        foreach ($this->processIndexSymbols($problembody, $position) as $indexsymbol)
+        {
+            $this->indexsymbols[] = $indexsymbol;
+        }
+        foreach ($this->processSubordinate($problembody, $position) as $subordinate)
+        {
+            $this->subordinates[] = $subordinate;
+        }
 
-            foreach ($this->processMedia($problembody, $position) as $media)
-            {
-                $this->medias[] = $media;
-            }
+        foreach ($this->processMedia($problembody, $position) as $media)
+        {
+            $this->medias[] = $media;
+        }
 
-            foreach ($this->processContent($problembody, $position) as $content)
-            {
-                $this->content .= $content;
-            }
+        foreach ($this->processContent($problembody, $position) as $content)
+        {
+            $this->content .= $content;
+        }
 //        }
     }
 
@@ -87,19 +87,12 @@ class Problem extends Element
 
         if (!empty($this->content))
         {
-//            foreach ($this->content as $content)
-//            {
-            echo "problem content not empty";
-            print_object($this->content);
-                $data->problem_content = $this->content;
-                $this->id = $DB->insert_record($this->tablename, $data);
-//            }
+            $data->problem_content = $this->content;
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
         else
         {
-             echo "problem content is empty";
             $this->id = $DB->insert_record($this->tablename, $data);
-            print_object($this->id);
         }
 
         foreach ($this->subordinates as $key => $subordinate)

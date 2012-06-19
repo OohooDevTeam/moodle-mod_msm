@@ -61,8 +61,8 @@ class Pack extends Element
         $exercises = $DomElement->getElementsByTagName('exercise');
         $quizs = $DomElement->getElementsByTagName('quiz');
 
-       $xis = $DomElement->getElementsByTagNameNS('http://www.w3.org/2001/XInclude', '*');
-        
+        $xis = $DomElement->getElementsByTagNameNS('http://www.w3.org/2001/XInclude', '*');
+
         $this->showmes = array();
         $this->exercises = array();
         $this->quizs = array();
@@ -139,9 +139,9 @@ class Pack extends Element
                 $exercise->loadFromXml($element, $position);
                 $this->exercises[] = $exercise;
             }
-            if($element->tagName == 'quiz')
+            if ($element->tagName == 'quiz')
             {
-                $position = $position+1;
+                $position = $position + 1;
                 $quiz = new Quiz($this->xmlpath);
                 $quiz->loadFromXml($element, $position);
                 $this->quizs[] = $quiz;
@@ -163,10 +163,11 @@ class Pack extends Element
         $data->type = $this->type;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-//      foreach($this->quizs as $quiz)
-//      {
-//          $quiz->saveIntoDb($quiz->position);
-//      }
+
+        foreach ($this->quizs as $quiz)
+        {
+            $quiz->saveIntoDb($quiz->position);
+        }
 
         foreach ($this->examples as $example)
         {

@@ -101,6 +101,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     $DB->delete_records('msm_extra_info');
     $DB->delete_records('msm_theorem');
     $DB->delete_records('msm_proof');
+    $DB->delete_records('msm_proof_block');
     $DB->delete_records('msm_statement_theorem');
     $DB->delete_records('msm_comment');
     $DB->delete_records('msm_para');
@@ -119,6 +120,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     $DB->delete_records('msm_example');
     $DB->delete_records('msm_showme');
     $DB->delete_records('msm_quiz');
+    $DB->delete_records('msm_quiz_choice');
     $DB->delete_records('msm_part_exercise');
     $DB->delete_records('msm_part_example');
     $DB->delete_records('msm_part_theorem');
@@ -130,7 +132,10 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     $DB->delete_records('msm_img');
     $DB->delete_records('msm_pilot');
     $DB->delete_records('msm_step');
-
+    $DB->delete_records('msm_external_link');
+    $DB->delete_records('msm_cite');
+    $DB->delete_records('msm_item');
+    
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {

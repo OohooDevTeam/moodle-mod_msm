@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/msm/db" VERSION="20120615" COMMENT="XMLDB file for Moodle mod/msm"
+<XMLDB PATH="mod/msm/db" VERSION="20120619" COMMENT="XMLDB file for Moodle mod/msm"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -130,11 +130,7 @@
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
         <FIELD NAME="string_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="proof_type"/>
-        <FIELD NAME="proof_type" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="logic_type"/>
-        <FIELD NAME="logic_type" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="proof_type" NEXT="proof_logic"/>
-        <FIELD NAME="proof_logic" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="logic_type" NEXT="caption"/>
-        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="proof_logic" NEXT="proof_content"/>
-        <FIELD NAME="proof_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+        <FIELD NAME="proof_type" TYPE="char" LENGTH="50" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
@@ -514,16 +510,34 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="msm_quiz" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_packs">
+    <TABLE NAME="msm_quiz" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_packs" NEXT="msm_proof_block">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
         <FIELD NAME="string_id" TYPE="char" LENGTH="300" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="caption"/>
         <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="textcaption"/>
         <FIELD NAME="textcaption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption" NEXT="question"/>
-        <FIELD NAME="question" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="textcaption" NEXT="hint"/>
-        <FIELD NAME="hint" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="question" NEXT="answer"/>
-        <FIELD NAME="answer" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="hint" NEXT="part"/>
-        <FIELD NAME="part" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="answer"/>
+        <FIELD NAME="question" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="textcaption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_proof_block" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_quiz" NEXT="msm_quiz_choice">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="logic_type"/>
+        <FIELD NAME="logic_type" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="proof_logic"/>
+        <FIELD NAME="proof_logic" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="logic_type" NEXT="caption"/>
+        <FIELD NAME="caption" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="proof_logic" NEXT="proof_content"/>
+        <FIELD NAME="proof_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="caption"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_quiz_choice" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_proof_block">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="answer"/>
+        <FIELD NAME="answer" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>

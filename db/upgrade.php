@@ -1640,6 +1640,124 @@ function xmldb_msm_upgrade($oldversion)
         upgrade_mod_savepoint(true, 2012061500, 'msm');
     }
 
+    if ($oldversion < 2012061900)
+    {
+
+        // Define field changeme to be dropped from msm_proof
+        $table = new xmldb_table('msm_proof');
+        $field = new xmldb_field('logic_type');
+
+        // Conditionally launch drop field changeme
+        if ($dbman->field_exists($table, $field))
+        {
+            $dbman->drop_field($table, $field);
+        }
+
+
+        // Define field proof_logic to be dropped from msm_proof
+        $table = new xmldb_table('msm_proof');
+        $field = new xmldb_field('proof_logic');
+
+        // Conditionally launch drop field proof_logic
+        if ($dbman->field_exists($table, $field))
+        {
+            $dbman->drop_field($table, $field);
+        }
+
+        // Define field caption to be dropped from msm_proof
+        $table = new xmldb_table('msm_proof');
+        $field = new xmldb_field('caption');
+
+        // Conditionally launch drop field caption
+        if ($dbman->field_exists($table, $field))
+        {
+            $dbman->drop_field($table, $field);
+        }
+
+        // Define field proof_content to be dropped from msm_proof
+        $table = new xmldb_table('msm_proof');
+        $field = new xmldb_field('proof_content');
+
+        // Conditionally launch drop field proof_content
+        if ($dbman->field_exists($table, $field))
+        {
+            $dbman->drop_field($table, $field);
+        }
+
+
+        // Define table msm_proof_block to be created
+        $table = new xmldb_table('msm_proof_block');
+
+        // Adding fields to table msm_proof_block
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('logic_type', XMLDB_TYPE_CHAR, '200', null, null, null, null);
+        $table->add_field('proof_logic', XMLDB_TYPE_TEXT, 'medium', null, null, null, null);
+        $table->add_field('caption', XMLDB_TYPE_CHAR, '500', null, null, null, null);
+        $table->add_field('proof_content', XMLDB_TYPE_TEXT, 'big', null, null, null, null);
+
+        // Adding keys to table msm_proof_block
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+
+        // Conditionally launch create table for msm_proof_block
+        if (!$dbman->table_exists($table))
+        {
+            $dbman->create_table($table);
+        }
+
+        // Define field hint to be dropped from msm_quiz
+        $table = new xmldb_table('msm_quiz');
+        $field = new xmldb_field('hint');
+
+        // Conditionally launch drop field hint
+        if ($dbman->field_exists($table, $field))
+        {
+            $dbman->drop_field($table, $field);
+        }
+
+        // Define field part to be dropped from msm_quiz
+        $table = new xmldb_table('msm_quiz');
+        $field = new xmldb_field('part');
+
+        // Conditionally launch drop field part
+        if ($dbman->field_exists($table, $field))
+        {
+            $dbman->drop_field($table, $field);
+        }
+
+        // Define field answer to be dropped from msm_quiz
+        $table = new xmldb_table('msm_quiz');
+        $field = new xmldb_field('answer');
+
+        // Conditionally launch drop field answer
+        if ($dbman->field_exists($table, $field))
+        {
+            $dbman->drop_field($table, $field);
+        }
+
+
+        // Define table msm_quiz_choice to be created
+        $table = new xmldb_table('msm_quiz_choice');
+
+        // Adding fields to table msm_quiz_choice
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('answer', XMLDB_TYPE_TEXT, 'big', null, null, null, null);
+
+        // Adding keys to table msm_quiz_choice
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+
+        // Conditionally launch create table for msm_quiz_choice
+        if (!$dbman->table_exists($table))
+        {
+            $dbman->create_table($table);
+        }
+
+
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012061900, 'msm');
+    }
+
+
 
 
 

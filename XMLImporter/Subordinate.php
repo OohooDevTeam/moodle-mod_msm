@@ -99,6 +99,20 @@ class Subordinate extends Element
                         }
                     }
                 }
+                if($child->tagName == 'external.link')
+                {
+                    $position = $position+1;
+                    $link = new ExternalLink($this->xmlpath);
+                    $link->loadFromXml($child, $position);
+                    $this->external_links[] = $link;
+                }
+                if($child->tagName == 'cite')
+                {
+                    $position = $position+1;
+                    $cite = new Cite($this->xmlpath);
+                    $cite->loadFromXml($child, $position);
+                    $this->cites[] = $cite;
+                }
             }
         }
     }
@@ -115,6 +129,16 @@ class Subordinate extends Element
         foreach ($this->infos as $key => $info)
         {
             $info->saveIntoDb($info->position);
+        }
+        
+        foreach($this->external_links as $external_link)
+        {
+            $external_link->saveIntoDb($external_link->position);
+        }
+        
+        foreach($this->cites as $cite)
+        {
+            $cite->saveIntoDb($cite->position);
         }
     }
 

@@ -14,6 +14,7 @@ class Quiz extends Element
 {
 
     public $position;
+    public $question;
 
     function __construct($xmlpath = '')
     {
@@ -32,7 +33,7 @@ class Quiz extends Element
 
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
-        $this->questions = array();
+        //$this->questions = array();
 
         $this->subordinates = array();
         $this->indexauthors = array();
@@ -40,77 +41,20 @@ class Quiz extends Element
         $this->indexsymbols = array();
         $this->medias = array();
 
-        $questions = $DomElement->getElementsByTagName('question');
-        foreach ($questions as $q)
-        {
-            foreach ($this->processIndexAuthor($q, $position) as $indexauthor)
-            {
-                $this->indexauthors[] = $indexauthor;
-            }
-
-            foreach ($this->processIndexGlossary($q, $position) as $indexglossary)
-            {
-                $this->indexglossarys[] = $indexglossary;
-            }
-
-            foreach ($this->processIndexSymbols($q, $position) as $indexsymbol)
-            {
-                $this->indexsymbols[] = $indexsymbol;
-            }
-            foreach ($this->processSubordinate($q, $position) as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
-
-            foreach ($this->processContent($q, $position) as $content)
-            {
-                $this->questions[] = $content;
-            }
-            
-            foreach ($this->processMedia($q, $position) as $media)
-            {
-                $this->medias[] = $media;
-            }
-        }
-
-        //may not even need this... only needed if hint has text without info element
+        $this->questions = array();
         $this->hints = array();
-        $this->hintinfos = array();
-        $hints = $DomElement->getElementsByTagName('hint');
+        $this->choices = array();
+        $this->parts = array();
 
-        foreach ($hints as $h)
+        foreach ($DomElement->childNodes as $child)
         {
-            foreach ($h->childNodes as $child)
+            if ($child->nodeType == XML_ELEMENT_NODE)
             {
-                if ($child->nodeType == XML_ELEMENT_NODE)
-                {
-                    if ($child->tagName == 'info')
-                    {
-                        $position = $position + 1;
-                        $info = new MathInfo($this->xmlpath);
-                        $info->loadFromXml($child, $position);
-                        $this->hintinfos[] = $info;
-                    }
-                }
-                else
-                {
-                    $this->hints[] = $child;
-                }
-            }
-        }
+                $name = $child->tagName;
 
-        $this->answers = array();
-        $this->choiceinfos = array();
-
-        $choices = $DomElement->getElementsByTagName('choice');
-        foreach ($choices as $c)
-        {
-            foreach ($c->childNodes as $child)
-            {
-                if ($child->nodeType == XML_ELEMENT_NODE)
+                switch ($name)
                 {
-                    if ($child->tagName == 'answer')
-                    {
+                    case('question'):
                         foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
                         {
                             $this->indexauthors[] = $indexauthor;
@@ -132,129 +76,102 @@ class Quiz extends Element
 
                         foreach ($this->processContent($child, $position) as $content)
                         {
-                            $this->answers[] = $content;
+                            $this->questions[] = $content;
                         }
-                    }
-                    else if ($child->tagName == 'info')
-                    {
+
+                        foreach ($this->processMedia($child, $position) as $media)
+                        {
+                            $this->medias[] = $media;
+                        }
+                        break;
+
+                    case('hint'):
+                        $info = $child->getElementsByTagName('info')->item(0);
                         $position = $position + 1;
-                        $info = new MathInfo($this->xmlpath);
-                        $info->loadFromXml($child, $position);
-                        $this->choiceinfos[] = $info;
-                    }
+                        $hintinfo = new MathInfo($this->xmlpath);
+                        $hintinfo->loadFromXml($info, $position);
+                        $this->hints[] = $hintinfo;
+                        break;
+
+                    case('choice'):
+                        $position = $position + 1;
+                        $choice = new QuizChoice($this->xmlpath);
+                        $choice->loadFromXml($child, $position);
+                        $this->choices[] = $choice;
+                        break;
+
+                    case('part'):
+                        $position = $position + 1;
+                        $part = new PartQuiz($this->xmlpath);
+                        $part->loadFromXml($child, $position);
+                        $this->parts[] = $part;
+                        break;
                 }
             }
         }
+    }
 
-        //$this->parts = array();
-        $this->partchoiceinfos = array();
-        $this->partchoiceanswers = array();
-        $this->parthints = array();
-        $this->parthintinfos = array();
-        $this->partquestions = array();
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+        $data->string_id = $this->string_id;
+        $data->caption = $this->caption;
+        $data->textcaption = $this->textcaption;
 
-        $parts = $DomElement->getElementsByTagName('part');
-
-        $i = 0;
-        foreach ($parts as $p)
+        if (!empty($this->questions))
         {
-            foreach ($p->childNodes as $child)
+            foreach ($this->questions as $question)
             {
-                if ($child->nodeType == XML_ELEMENT_NODE)
-                {
-                    if ($child->tagName == 'question')
-                    {
-                        foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
-                        {
-                            $this->indexauthors[] = $indexauthor;
-                        }
-
-                        foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
-                        {
-                            $this->indexglossarys[] = $indexglossary;
-                        }
-
-                        foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
-                        {
-                            $this->indexsymbols[] = $indexsymbol;
-                        }
-                        foreach ($this->processSubordinate($child, $position) as $subordinate)
-                        {
-                            $this->subordinates[] = $subordinate;
-                        }
-
-                        foreach ($this->processContent($child, $position) as $content)
-                        {
-                            $this->partquestions[] = $content;
-                        }
-                    }
-                    else if ($child->tagName == 'hint')
-                    {
-                        foreach ($child->childNodes as $grandchild)
-                        {
-                            if ($grandchild->nodeType == XML_ELEMENT_NODE)
-                            {
-                                if ($grandchild->tagName == 'info')
-                                {
-                                    $position = $position + 1;
-                                    $info = new MathInfo($this->xmlpath);
-                                    $info->loadFromXml($grandchild, $position);
-                                    $this->parthintinfos[$i] = $info;
-                                }
-                            }
-                            else
-                            {
-                                $this->parthints[$i] = $grandchild;
-                            }
-                        }
-                    }
-                    else if ($child->tagName == 'choice')
-                    {
-                        foreach ($child->childNodes as $grandchild)
-                        {
-                            if ($grandchild->nodeType == XML_ELEMENT_NODE)
-                            {
-                                if ($grandchild->tagName == 'answer')
-                                {
-                                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
-                                    {
-                                        $this->indexauthors[] = $indexauthor;
-                                    }
-
-                                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
-                                    {
-                                        $this->indexglossarys[] = $indexglossary;
-                                    }
-
-                                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
-                                    {
-                                        $this->indexsymbols[] = $indexsymbol;
-                                    }
-                                    foreach ($this->processSubordinate($child, $position) as $subordinate)
-                                    {
-                                        $this->subordinates[] = $subordinate;
-                                    }
-
-                                    foreach ($this->processContent($child, $position) as $content)
-                                    {
-                                        $this->partchoiceanswers[] = $content;
-                                    }
-                                }
-                                else
-                                {
-                                    $position = $position + 1;
-                                    $info = new MathInfo($this->xmlpath);
-                                    $info->loadFromXml($grandchild, $position);
-                                    $this->parthintinfos[$i] = $info;
-                                }
-                            }
-                        }
-                    }
-                }
+                $data->question = $question;
+                $this->id = $DB->insert_record($this->tablename, $data);
             }
-            $i++;
         }
-        // when saving into db, if hint/choice/answer are from part element, then add the same number to the part field
+
+        foreach ($this->hints as $hint)
+        {
+            $hint->saveIntoDb($hint->position);
+        }
+
+        foreach ($this->choices as $choice)
+        {
+            $choice->saveIntoDb($choice->position);
+        }
+
+        foreach ($this->parts as $part)
+        {
+            $part->saveIntoDb($part->position, $this->string_id, $this->caption, $this->textcaption);
+        }
+
+        foreach ($this->subordinates as $key => $subordinate)
+        {
+            $subordinate->saveIntoDb($subordinate->position);
+        }
+
+        foreach ($this->indexglossarys as $key => $indexglossary)
+        {
+            $indexglossary->saveIntoDb($indexglossary->position);
+        }
+
+        foreach ($this->indexsymbols as $key => $indexsymbol)
+        {
+            $indexsymbol->saveIntoDb($indexsymbol->position);
+        }
+
+        foreach ($this->indexauthors as $key => $indexauthor)
+        {
+            $indexauthor->saveIntoDb($indexauthor->position);
+        }
+
+        foreach ($this->medias as $key => $media)
+        {
+            $media->saveIntoDb($media->position);
+        }
     }
 
 }

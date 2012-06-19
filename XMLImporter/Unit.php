@@ -42,6 +42,12 @@ require_once("ApproachExt.php");
 require_once("Step.php");
 require_once("Pilot.php");
 require_once("AnswerExt.php");
+require_once("PartQuiz.php");
+require_once("QuizChoice.php");
+require_once("ProofBlock.php");
+require_once("ExternalLink.php");
+require_once("Cite.php");
+require_once("Item.php");
 
 /**
  * Description of Unit
@@ -448,31 +454,31 @@ class Unit extends Element
             }
         }
 //
-//        if (!empty($this->intro))
-//        {
-//            $this->intro->saveIntoDb($this->intro->position);
-//        }
-//
-//        if (!empty($this->preface))
-//        {
-//            $this->preface->saveIntoDb($this->preface->position);
-//        }
-//
-//        if (!empty($this->summary))
-//        {
-//            $this->summary->saveIntoDb($this->summary->position);
-//        }
-//
-//        if (!empty($this->trailer))
-//        {
-//            $this->trailer->saveIntoDb($this->trailer->position);
-//        }
-//
-//        if (!empty($this->historical))
-//        {
-//            $this->historical->saveIntoDb($this->historical->position);
-//        }
-//
+        if (!empty($this->intro))
+        {
+            $this->intro->saveIntoDb($this->intro->position);
+        }
+
+        if (!empty($this->preface))
+        {
+            $this->preface->saveIntoDb($this->preface->position);
+        }
+
+        if (!empty($this->summary))
+        {
+            $this->summary->saveIntoDb($this->summary->position);
+        }
+
+        if (!empty($this->trailer))
+        {
+            $this->trailer->saveIntoDb($this->trailer->position);
+        }
+
+        if (!empty($this->historical))
+        {
+            $this->historical->saveIntoDb($this->historical->position);
+        }
+
         if (!empty($this->subunits))
         {
             foreach ($this->subunits as $key => $subunit)
@@ -480,34 +486,34 @@ class Unit extends Element
                 $subunit->saveIntoDb($subunit->position);
             }
         }
-//
-//        if (!empty($this->block))
-//        {
-//            foreach ($this->block as $key => $block)
-//            {
-//                $block->saveIntoDb($block->position);
-//            }
-//        }
-               
+
+        if (!empty($this->block))
+        {
+            foreach ($this->block as $key => $block)
+            {
+                $block->saveIntoDb($block->position);
+            }
+        }
+
         foreach ($this->exercisepacks as $key => $exercise)
         {
             $exercise->saveIntoDb($exercise->position);
         }
-//
-//        foreach ($this->examplepacks as $key => $example)
-//        {
-//            $example->saveIntoDb($example->position);
-//        }
-//
-//        foreach ($this->showmepacks as $key => $showme)
-//        {
-//            $showme->saveIntoDb($showme->position);
-//        }
-//        
-//        foreach($this->quizpacks as $key=>$quiz)
-//        {
-//            $quiz->saveIntoDb($quiz->position);
-//        }
+
+        foreach ($this->examplepacks as $key => $example)
+        {
+            $example->saveIntoDb($example->position);
+        }
+
+        foreach ($this->showmepacks as $key => $showme)
+        {
+            $showme->saveIntoDb($showme->position);
+        }
+
+        foreach ($this->quizpacks as $key => $quiz)
+        {
+            $quiz->saveIntoDb($quiz->position);
+        }
 //        $compositorData = new stdClass();
 //        $compositorData->unit_id = $this->id;
 //
