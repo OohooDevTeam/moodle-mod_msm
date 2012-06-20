@@ -95,6 +95,11 @@ class MathIndex extends Element
         }
     }
 
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
     function saveIntoDb($position)
     {
         global $DB;
@@ -113,19 +118,84 @@ class MathIndex extends Element
         {
             foreach ($this->names as $key => $name)
             {
+//                $recordID = $this->checkForRecord($this, 'name');
+//
+//                if (empty($recordID))
+//                {
+//                    print_object($name);
                 $name->saveIntoDb($name->position, 'index');
+//                }
             }
         }
 
         if (!empty($this->term))
         {
             $data->term = $this->term;
-            $this->id = $DB->insert_record($this->glossarytable, $data);
+
+            // cannot compare the this->term and term field of a record due to XML nature of the two content
+            $numOfRecords = $DB->count_records('msm_index_glossary');
+            if ($numOfRecords > 0)
+            {
+                // need the limit to be $numOfRecords+1 to process the last record
+                for ($i = 1; $i < $numOfRecords+1; $i++)
+                {
+                    $string = $DB->get_field('msm_index_glossary', 'term', array('id' => $i));
+
+                    if ($string == $this->term)
+                    {
+                        $recordID = $i;
+                        break;
+                    }
+                    else
+                    {
+                        $recordID = false;
+                    }
+                }
+            }
+            else
+            {
+                $recordID = false;
+            }
+
+
+
+            if (empty($recordID))
+            {
+                echo "insert record";
+                $this->id = $DB->insert_record($this->glossarytable, $data);
+            }
         }
 
         foreach ($this->infos as $info)
         {
-            $info->saveIntoDb($info->position);
+           $numOfRecords = $DB->count_records('msm_info');
+            if ($numOfRecords > 0)
+            {
+                // need the limit to be $numOfRecords+1 to process the last record
+                for ($i = 1; $i < $numOfRecords+1; $i++)
+                {
+                    $string = $DB->get_field('msm_info', 'info_content', array('id' => $i));
+
+                    if ($string == $info->content)
+                    {
+                        $recordID = $i;
+                        break;
+                    }
+                    else
+                    {
+                        $recordID = false;
+                    }
+                }
+            }
+            else
+            {
+                $recordID = false;
+            }
+            
+            if(empty($recordID))
+            {
+                $info->saveIntoDb($info->position);
+            }
         }
     }
 

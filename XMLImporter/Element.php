@@ -62,15 +62,7 @@ abstract class Element
     function checkForRecord($DomElement, $propertyName = '')
     {
         global $DB;
-
-        print_object($DomElement);
-        print_object($propertyName);
-        if (!empty($propertyName))
-        {
-            print_object($DomElement->$propertyName);
-        }
-
-
+        
         if (property_exists(get_class($DomElement), 'string_id'))
         {
             if (!empty($DomElement->string_id))
