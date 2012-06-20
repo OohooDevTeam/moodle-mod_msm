@@ -14,12 +14,12 @@ class Example extends Element
 {
 
     public $position;
+    public $string_id;
 
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
         $this->tablename = 'msm_example';
-        $this->childtable = 'msm_statement_example';
     }
 
     /**

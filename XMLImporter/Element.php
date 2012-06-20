@@ -28,10 +28,16 @@ abstract class Element
 
     // abstract method that is implemented by each class 
     // This function essentially parses the given XML file to retrive data
+
     abstract function loadFromXml($DomElement, $position = '');
 
-    // this function was created to retrieve the first item in the nodelist generated from
-    // result of getElementsByTagName method
+    /**
+     *  this function was created to retrieve the first item in the nodelist generated from
+     *  result of getElementsByTagName method
+     * 
+     * @param DOMNodeList $nodeList
+     * @return string 
+     */
     function getDomAttribute($nodeList)
     {
         if ($nodeList->length > 0)
@@ -46,13 +52,80 @@ abstract class Element
         }
     }
 
+    /**
+     *
+     * @global moodle_database $DB
+     * @param DOMElement $DomElement
+     * @param String $propertyName
+     * @return int/boolean 
+     */
+    function checkForRecord($DomElement, $propertyName = '')
+    {
+        global $DB;
+
+        print_object($DomElement);
+        print_object($propertyName);
+        if (!empty($propertyName))
+        {
+            print_object($DomElement->$propertyName);
+        }
+
+
+        if (property_exists(get_class($DomElement), 'string_id'))
+        {
+            if (!empty($DomElement->string_id))
+            {
+                $foundID = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
+
+                if (!empty($foundID))
+                {
+                    return $foundID;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if (!empty($DomElement->$propertyName))
+        {
+            $foundID = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
+
+            if (!empty($foundID))
+            {
+                return $foundID;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            echo "debugging checkForRecord";
+            print_object($DomElement->tagName);
+            return false;
+        }
+    }
+
+    /**
+     *
+     * @param DOMElement $DomElement
+     * @param int $position
+     * @param String $xmlpath
+     * @return String 
+     */
     function getContent($DomElement, $position = '', $xmlpath = '')
     {
         $content = '';
         $subordinates = array();
         $doc = new DOMDocument();
 
-        if (!is_null($DomElement))
+        if (!empty($DomElement))
         {
             $element = $doc->importNode($DomElement, true);
 
@@ -74,6 +147,12 @@ abstract class Element
         return $content;
     }
 
+    /**
+     *
+     * @param DOMElement $DomElement
+     * @param int $position
+     * @return array 
+     */
     function processMedia($DomElement, $position)
     {
         $arrayOfMedia = array();
@@ -92,6 +171,12 @@ abstract class Element
         return $arrayOfMedia;
     }
 
+    /**
+     *
+     * @param DOMElement $DomElement
+     * @param int $position
+     * @return array 
+     */
     function processSubordinate($DomElement, $position)
     {
         $arrayOfSubordinates = array();
@@ -120,6 +205,12 @@ abstract class Element
         return $arrayOfSubordinates;
     }
 
+    /**
+     *
+     * @param DOMElement $DomElement
+     * @param int $position
+     * @return array 
+     */
     function processContent($DomElement, $position)
     {
         $content = array();
@@ -179,6 +270,12 @@ abstract class Element
         return $content;
     }
 
+    /**
+     *
+     * @param DOMElement $DomElement
+     * @param int $position
+     * @return array 
+     */
     function processIndexAuthor($DomElement, $position)
     {
         $position = $position + 1;
@@ -196,6 +293,12 @@ abstract class Element
         return $arrayOfIndexAuthor;
     }
 
+    /**
+     *
+     * @param DOMElement $DomElement
+     * @param int $position
+     * @return array 
+     */
     function processIndexGlossary($DomElement, $position)
     {
         $position = $position + 1;
@@ -213,6 +316,12 @@ abstract class Element
         return $arrayOfIndexGlossary;
     }
 
+    /**
+     *
+     * @param DOMElement $DomElement
+     * @param int $position
+     * @return array 
+     */
     function processIndexSymbols($DomElement, $position)
     {
         $position = $position + 1;

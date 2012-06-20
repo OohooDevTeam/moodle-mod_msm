@@ -96,6 +96,9 @@ class Unit extends Element
             $this->examplepacks = array();
             $this->showmepacks = array();
             $this->quizpacks = array();
+
+            $this->studyexercises = array();
+            $this->studyexamples = array();
 //            $this->theorem = array(); // theorems are all inside the block.body
 
             foreach ($element->childNodes as $key => $child)
@@ -229,17 +232,38 @@ class Unit extends Element
 
                         $element = $xidoc->documentElement;
 
-                        if ($element->tagName == 'intro')
+                        if (trim($element->tagName) == 'intro')
                         {
                             $position = $position + 1;
                             $intro = new Intro(dirname($this->xmlpath . '/' . $href));
                             $intro->loadFromXml($element, $position);
                             $this->intro = $intro;
                         }
+                        else if ($element->tagName == 'summary')
+                        {
+                            $position = $position + 1;
+                            $summary = new ExtraInfo($this->xmlpath);
+                            $summary->loadFromXml($element, $position);
+                            $this->summary = $summary;
+                        }
+                        else if ($element->tagName == 'historical.notes')
+                        {
+                            $position = $position + 1;
+                            $historical = new ExtraInfo($this->xmlpath);
+                            $historical->loadFromXml($element, $position);
+                            $this->historical = $historical;
+                        }
+                        else if ($element->tagName == 'trailer')
+                        {
+                            $position = $position + 1;
+                            $trailer = new ExtraInfo($this->xmlpath);
+                            $trailer->loadFromXml($element, $position);
+                            $this->trailer = $trailer;
+                        }
                         else
                         {
                             echo "another tag?";
-                            print_object(element - tagName);
+                            print_object($element->tagName);
                         }
                     }
                     else if ($child->tagName == 'historical.notes')
@@ -279,54 +303,53 @@ class Unit extends Element
                             }
                         }
                     }
-//                    else if ($child->tagName == 'studymaterials')
-//                    {
-//                        foreach ($child->childNodes as $key => $grandChild)
-//                        {
-//                            if ($grandChild->nodeType == XML_ELEMENT_NODE)
-//                            {
-//                                if ($grandChild->tagName == 'exercise.pack.ref')
-//                                {
-//                                    $position = $position + 1;
-//                                    $exerciseID = $grandChild->getAttribute('exercisePackID');
-//
-//                                    $filepath = $this->findUnitFile($exerciseID);
-//
-//                                    $refdoc = new DOMDocument();
-//                                    @$refdoc->load($filepath);
-//
-//                                    $exerciseElement = $refdoc->documentElement;
-//
-//                                    if ($exerciseElement->tagName == 'exercise.pack')
-//                                    {
-//                                        echo "in studymaterial";
-//                                        $exercisepack = new Pack($this->xmlpath);
-//                                        $exercisepack->loadFromXml($exerciseElement, $position);
-//                                        $this->exercises[] = $exercisepack;
-//                                    }
-//                                }
-//                                if ($grandChild->tagName == 'example.pack.ref')
-//                                {
-//                                    $position = $position + 1;
-//                                    $exampleID = $grandChild->getAttribute('examplePackID');
-//
-//                                    $filepath = $this->findUnitFile($exampleID);
-//
-//                                    $refdoc = new DOMDocument();
-//                                    @$refdoc->load($filepath);
-//
-//                                    $exampleElement = $refdoc->documentElement;
-//
-//                                    if ($exampleElement->tagName == 'example.pack')
-//                                    {
-//                                        $examplePack = new Pack($this->xmlpath);
-//                                        $examplePack->loadFromXml($exampleElement, $position);
-//                                        $this->examples[] = $examplePack;
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
+                    else if ($child->tagName == 'studymaterials')
+                    {
+                        foreach ($child->childNodes as $key => $grandChild)
+                        {
+                            if ($grandChild->nodeType == XML_ELEMENT_NODE)
+                            {
+                                if ($grandChild->tagName == 'exercise.pack.ref')
+                                {
+                                    $position = $position + 1;
+                                    $exerciseID = $grandChild->getAttribute('exercisePackID');
+
+                                    $filepath = $this->findUnitFile($exerciseID);
+
+                                    $refdoc = new DOMDocument();
+                                    @$refdoc->load($filepath);
+
+                                    $exerciseElement = $refdoc->documentElement;
+
+                                    if ($exerciseElement->tagName == 'exercise.pack')
+                                    {
+                                        $exercisepack = new Pack($this->xmlpath);
+                                        $exercisepack->loadFromXml($exerciseElement, $position);
+                                        $this->studyexercises[] = $exercisepack;
+                                    }
+                                }
+                                if ($grandChild->tagName == 'example.pack.ref')
+                                {
+                                    $position = $position + 1;
+                                    $exampleID = $grandChild->getAttribute('examplePackID');
+
+                                    $filepath = $this->findUnitFile($exampleID);
+
+                                    $refdoc = new DOMDocument();
+                                    @$refdoc->load($filepath);
+
+                                    $exampleElement = $refdoc->documentElement;
+
+                                    if ($exampleElement->tagName == 'example.pack')
+                                    {
+                                        $examplePack = new Pack($this->xmlpath);
+                                        $examplePack->loadFromXml($exampleElement, $position);
+                                        $this->studyexamples[] = $examplePack;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     else if ($child->tagName == 'legitimate.children')
                     {
                         foreach ($child->childNodes as $key => $grandChild)
@@ -426,6 +449,8 @@ class Unit extends Element
     function saveIntoDb($position)
     {
         global $DB;
+        $exercisepackRecordID = 0;
+        $examplepackRecordID = 0;
 
         $data = new stdClass();
         $data->string_id = $this->unitid;
@@ -453,7 +478,7 @@ class Unit extends Element
                 $contributor->saveIntoDb($contributor->position, "contributor");
             }
         }
-//
+
         if (!empty($this->intro))
         {
             $this->intro->saveIntoDb($this->intro->position);
@@ -497,12 +522,24 @@ class Unit extends Element
 
         foreach ($this->exercisepacks as $key => $exercise)
         {
-            $exercise->saveIntoDb($exercise->position);
+            $exercisepackRecordID = $this->checkForRecord($exercise);
+
+            if (empty($exercisepackRecordID))
+            {
+                $exercise->saveIntoDb($exercise->position);
+                $exercisepackRecordID = $exercise->id;
+            }
         }
 
         foreach ($this->examplepacks as $key => $example)
         {
-            $example->saveIntoDb($example->position);
+            $examplepackRecordID = $this->checkForRecord($example);
+
+            if (empty($examplepackRecordID))
+            {
+                $example->saveIntoDb($example->position);
+                $examplepackRecordID = $example->id;
+            }
         }
 
         foreach ($this->showmepacks as $key => $showme)
@@ -513,6 +550,30 @@ class Unit extends Element
         foreach ($this->quizpacks as $key => $quiz)
         {
             $quiz->saveIntoDb($quiz->position);
+        }
+
+        // add recordID to compositor to make accessories element
+        foreach ($this->studyexercises as $studyexercisepack)
+        {
+            $exercisepackRecordID = $this->checkForRecord($studyexercisepack);
+
+           if (empty($exercisepackRecordID))
+            {
+                $studyexercisepack->saveIntoDb($studyexercisepack->position);
+                $exercisepackRecordID = $studyexercisepack->id;
+            }
+        }
+
+        // add recordID to compositor to make accessories element
+        foreach ($this->studyexamples as $studyexamplepack)
+        {
+            $examplepackRecordID = $this->checkForRecord($studyexamplepack);
+
+            if (empty($examplepackRecordID))
+            {
+                $studyexamplepack->saveIntoDb($studyexamplepack->position);
+                $examplepackRecordID = $studyexamplepack->id;
+            }
         }
 //        $compositorData = new stdClass();
 //        $compositorData->unit_id = $this->id;

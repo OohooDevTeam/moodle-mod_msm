@@ -23,7 +23,8 @@ class StageDate extends Element
 
     /**
      *
-     * @param DOMElement $DomElement 
+     * @param DOMElement $DomElement
+     * @param int $position 
      */
     function loadFromXml($DomElement, $position = '')
     {
@@ -50,6 +51,22 @@ class StageDate extends Element
             $year = $this->getDomAttribute($date->getElementsByTagName('year'));
 
             $this->dates[] = $year . $month . $day;
+        }
+    }
+    
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
+    function saveIntoDb($position)
+    {
+        global $DB;
+        $data = new stdClass();
+        foreach($this->dates as $date)
+        {
+            $data->stagedate = $date;
+            $this->id = $DB->insert_record($this->tablename, $data);
         }
     }
 

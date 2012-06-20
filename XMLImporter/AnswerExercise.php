@@ -14,6 +14,7 @@ class AnswerExercise extends Element
 {
 
     public $position;
+    public $caption;
 
     function __construct($xmlpath = '')
     {

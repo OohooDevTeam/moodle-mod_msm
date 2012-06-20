@@ -20,6 +20,7 @@ class Pack extends Element
     public $doclabel;
     public $texsupport;
     public $literature_db;
+    public $string_id;
 
     function __construct($xmlpath = '')
     {

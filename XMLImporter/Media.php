@@ -53,11 +53,17 @@ class Media extends Element
         $data->string_id = $this->string_id;
         $data->active = $this->active;
         $data->inline = $this->inline;
-        $data->type = $this->type;
-        $data->img = $this->img;
+        $data->media_type = $this->type;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        $this->img->saveIntoDb($this->img->position);
+        
+       $recordID = $this->checkForRecord($this->img, 'src');
+       
+       if(empty($recordID))
+       {
+            $this->img->saveIntoDb($this->img->position);
+       }
+       
     }
 
 }
