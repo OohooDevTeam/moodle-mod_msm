@@ -46,6 +46,10 @@ class SolutionExt extends Element
     
     function saveIntoDb($position)
     {
+        echo "solutionext save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
         $data = new stdClass();
         $data->caption = $this->caption;

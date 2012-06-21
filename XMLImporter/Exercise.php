@@ -79,8 +79,17 @@ class Exercise extends Element
         }
     }
 
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
     function saveIntoDb($position)
     {
+        echo "exercise save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
         $data = new stdClass();
 

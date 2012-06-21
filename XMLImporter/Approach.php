@@ -99,6 +99,10 @@ class Approach extends Element
 
     function saveIntoDb($position)
     {
+         echo "approach save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
         $data = new stdClass();
 

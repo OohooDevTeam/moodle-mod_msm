@@ -46,6 +46,10 @@ class ExternalLink extends Element
     
     function saveIntoDb($position)
     {
+        echo "externallink save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
         $data = new stdClass();
         $data->href = $this->href;

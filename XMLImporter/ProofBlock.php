@@ -93,6 +93,10 @@ class ProofBlock extends Element
      */
     function saveIntoDb($position)
     {
+        echo "proofblock save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
         $data = new stdClass();
         if (!empty($this->proof_logic))

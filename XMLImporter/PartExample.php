@@ -82,6 +82,10 @@ class PartExample extends Element
 
     function saveIntoDb($position)
     {
+        echo "partexample save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
         $data = new stdClsss;
 

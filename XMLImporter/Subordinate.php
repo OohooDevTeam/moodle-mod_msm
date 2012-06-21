@@ -99,16 +99,16 @@ class Subordinate extends Element
                         }
                     }
                 }
-                if($child->tagName == 'external.link')
+                if ($child->tagName == 'external.link')
                 {
-                    $position = $position+1;
+                    $position = $position + 1;
                     $link = new ExternalLink($this->xmlpath);
                     $link->loadFromXml($child, $position);
                     $this->external_links[] = $link;
                 }
-                if($child->tagName == 'cite')
+                if ($child->tagName == 'cite')
                 {
-                    $position = $position+1;
+                    $position = $position + 1;
                     $cite = new Cite($this->xmlpath);
                     $cite->loadFromXml($child, $position);
                     $this->cites[] = $cite;
@@ -117,26 +117,62 @@ class Subordinate extends Element
         }
     }
 
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
     function saveIntoDb($position)
     {
+        echo "subordinate save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
 
         $data = new stdClass();
         $data->hot = $this->hot;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        $numOfRecords = $DB->count_records($this->tablename);
+        if ($numOfRecords > 0)
+        {
+            // need the limit to be $numOfRecords+1 to process the last record
+            for ($i = 1; $i < $numOfRecords + 1; $i++)
+            {
+                $string = $DB->get_field($this->tablename, 'hot', array('id' => $i));
+
+                if ($string == $this->hot)
+                {
+                    $recordID = $i;
+                    break;
+                }
+                else
+                {
+                    $recordID = false;
+                }
+            }
+        }
+        else
+        {
+            $recordID = false;
+        }
+
+        if (empty($recordID))
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
 
         foreach ($this->infos as $key => $info)
         {
             $info->saveIntoDb($info->position);
         }
-        
-        foreach($this->external_links as $external_link)
+
+        foreach ($this->external_links as $external_link)
         {
             $external_link->saveIntoDb($external_link->position);
         }
-        
-        foreach($this->cites as $cite)
+
+        foreach ($this->cites as $cite)
         {
             $cite->saveIntoDb($cite->position);
         }

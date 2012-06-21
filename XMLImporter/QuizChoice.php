@@ -87,6 +87,10 @@ class QuizChoice extends Element
      */
     function saveIntoDb($position)
     {
+        echo "quizchoice save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
         $data->answer = $this->answer;
         

@@ -80,6 +80,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 
     require_once("$CFG->libdir/resourcelib.php");
     require_once("XMLImporter/Unit.php");
+    require_once("XMLImporter/Compositor.php");
     require_once("XMLImporter/TableCollection.php");
 
     $msm->timecreated = time();
@@ -135,7 +136,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
     $DB->delete_records('msm_external_link');
     $DB->delete_records('msm_cite');
     $DB->delete_records('msm_item');
-    
+
 
     if ($msm->id = $DB->insert_record('msm', $msm))
     {
@@ -152,12 +153,17 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         $position = 1;
         $unit->loadFromXml($parser->documentElement, $position);
 
+//        echo "done";
+//        die;
+
         $id = $unit->saveIntoDb($unit->position);
+
+//        $compositor = new Compositor();
+//        $compositor->loadFromUnit($unit);
     }
 
     echo "done";
     die;
-
     # You may have to add extra stuff in here #
 
     return $msm->id;

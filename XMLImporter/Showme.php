@@ -89,6 +89,10 @@ class Showme extends Element
 
     function saveIntoDb($position)
     {
+        echo "showme save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
 
         $data = new stdClass();

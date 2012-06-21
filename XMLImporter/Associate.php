@@ -14,6 +14,10 @@ class Associate extends Element
 {
 
     public $position;
+    public $subunit;
+    public $ref;
+    public $def;
+    public $theorem;
 
     function __construct($xmlpath = '')
     {
@@ -27,10 +31,10 @@ class Associate extends Element
         $this->description = $DomElement->getAttribute('type');
 
         $this->infos = array();
-        $this->subunits = array();
-        $this->refs = array();
-        $this->defs = array();
-        $this->theorems = array();
+//        $this->subunits = array();
+//        $this->refs = array();
+//        $this->defs = array();
+//        $this->theorems = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -102,20 +106,20 @@ class Associate extends Element
             $info->saveIntoDb($info->position);
         }
         
-        foreach($this->subunits as $key=>$unit)
-        {
-            $unit->saveIntoDb($unit->position);
-        }
-        
-        foreach($this->theorems as $key=>$theorem)
-        {
-            $theorem->saveIntoDb($theorem->position);
-        }
-        
-        foreach($this->defs as $key=>$def)
-        {
-            $def->saveIntoDb($def->position);
-        }
+//        foreach($this->subunits as $key=>$unit)
+//        {
+//            $unit->saveIntoDb($unit->position);
+//        }
+//        
+//        foreach($this->theorems as $key=>$theorem)
+//        {
+//            $theorem->saveIntoDb($theorem->position);
+//        }
+//        
+//        foreach($this->defs as $key=>$def)
+//        {
+//            $def->saveIntoDb($def->position);
+//        }
         
 //        foreach($this->refs as $key=>$ref)
 //        {
@@ -163,51 +167,77 @@ class Associate extends Element
                     case('unit'):
                         $unit = new Unit(dirname($path));
                         $unit->loadFromXml($element, $position);
-                        $this->subunits[] = $unit;
+//                        $this->subunits[] = $unit;
+                        $this->subunit = $unit;
                         break;
 
                     case('theorem'):
                         $theorem = new Theorem(dirname($path));
                         $theorem->loadFromXml($element, $position);
-                        $this->theorems[] = $theorem;
+//                        $this->theorems[] = $theorem;
+                        $this->theorem = $theorem;
                         break;
 
                     case('def'):
                         $def = new Definition(dirname($path));
                         $def->loadFromXml($element, $position);
-                        $this->defs[] = $def;
+//                        $this->defs[] = $def;
+                        $this->def = $def;
                         break;
 
                     case('showme.pack'):
                         $pack = new Pack(dirname($path));
                         $pack->loadFromXml($element, $position);
-                        $this->refs[] = $pack;
+//                        $this->refs[] = $pack;
+                        $this->ref = $pack;
                         break;
 
                     case('example.pack'):
                         $pack = new Pack(dirname($path));
                         $pack->loadFromXml($element, $position);
-                        $this->refs[] = $pack;
+//                        $this->refs[] = $pack;
+                        $this->ref = $pack;
                         break;
 
                     case('exercise.pack'):
                         $pack = new Pack(dirname($path));
                         $pack->loadFromXml($element, $position);
-                        $this->refs[] = $pack;
+//                        $this->refs[] = $pack;
+                        $this->ref = $pack;
                         break;
 
                     case('quiz.pack'):
                         $pack = new Pack(dirname($path));
                         $pack->loadFromXml($element, $position);
-                        $this->refs[] = $pack;
+//                        $this->refs[] = $pack;
+                        $this->ref = $pack;
                         break;
                 }
             }
 
-            // insert record to db then retrieve the id
+            if(!empty($this->subunit))
+            {
+                $this->subunit->saveIntoDb($this->subunit->position);
+                $id = $this->subunit->id;
+            }
+            else if(!empty($this->def))
+            {
+                $this->def->saveIntoDb($this->def->position);
+                $id = $this->def->id;
+            }            
+            else if(!empty($this->theorem))
+            {
+                $this->theorem->saveIntoDb($this->theorem->position);
+                $id = $this->theorem->id;
+            }
+            else if(!empty($this->ref))
+            {
+                $this->ref->saveIntoDb($this->ref->position);
+                $id = $this->ref->id;
+            }
         }
 
-        //return $id;
+        return $id;
     }
 
     function findRefFile($refID)

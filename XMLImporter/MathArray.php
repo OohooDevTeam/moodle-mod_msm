@@ -75,6 +75,10 @@ class MathArray extends Element
 
     function saveIntoDb($position)
     {
+        echo "matharray save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
         $data = new stdClass();
         $data->string_id = $this->string_id;

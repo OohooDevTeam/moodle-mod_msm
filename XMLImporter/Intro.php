@@ -45,6 +45,10 @@ class Intro extends Element
 
     function saveIntoDb($position)
     {
+        echo "intro save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
         $data = new stdClass();
         $data->string_id = $this->id;

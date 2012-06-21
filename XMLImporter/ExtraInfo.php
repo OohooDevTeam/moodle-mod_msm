@@ -99,6 +99,10 @@ class ExtraInfo extends Element
 
     function saveIntoDb($position)
     {
+        echo "extrainfo save start";
+        $time = time();
+        print_object($time);
+        
         global $DB;
 
         $data = new stdClass();
