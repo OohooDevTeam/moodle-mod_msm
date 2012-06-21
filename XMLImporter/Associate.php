@@ -31,10 +31,12 @@ class Associate extends Element
         $this->description = $DomElement->getAttribute('type');
 
         $this->infos = array();
-//        $this->subunits = array();
-//        $this->refs = array();
-//        $this->defs = array();
-//        $this->theorems = array();
+        $this->subunitIDs = array();
+        $this->commentIDs = array();
+        $this->showmepackIDs = array();
+        $this->quizpackIDs = array();
+        $this->defIDs = array();
+        $this->theoremIDs = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -47,38 +49,38 @@ class Associate extends Element
                     case('comment.ref'):
                         $position = $position + 1;
                         $commentID = $child->getAttribute('commentID');
-                        $recID = $this->findRef($commentID, 'msm_comment', $position);
+                        $this->commentIDs[] = $this->findRef($commentID, 'msm_comment', $position);
                         break;
 
                     case('showme.pack.ref'):
                         $position = $position + 1;
                         $showmepackID = $child->getAttribute('showmePackID');
-                        $recID = $this->findRef($showmepackID, 'msm_packs', $position);
+                         $this->showmepackIDs[] = $this->findRef($showmepackID, 'msm_packs', $position);
                         break;
 
                     case('quiz.pack.ref'):
                         $position = $position + 1;
                         $quizpackID = $child->getAttribute('quizPackID');
-                        $recID = $this->findRef($quizpackID, 'msm_packs', $position);
+                         $this->quizpackIDs[] = $this->findRef($quizpackID, 'msm_packs', $position);
                         break;
 
                     case('definition.ref'):
                         $position = $position + 1;
                         $definitionID = $child->getAttribute('definitionID');
-                        $recID = $this->findRef($definitionID, 'msm_def', $position);
+                         $this->defIDs[] = $this->findRef($definitionID, 'msm_def', $position);
                         break;
 
                     case('theorem.ref'):
                         $position = $position + 1;
                         $theoremID = $child->getAttribute('theoremID');
                         $theorempartID = $child->getAttibute('theorempartID');
-                        $recID = $this->findRef($theoremID, 'msm_theorem', $position);
+                         $this->theoremIDs[] = $this->findRef($theoremID, 'msm_theorem', $position);
                         break;
 
                     case('unit.ref'):
                         $position = $position + 1;
                         $unitID = $child->getAttribute('unitId');
-                        $recID = $this->findRef($unitID, 'msm_unit', $position);
+                        $this->subunitIDs[] = $this->findRef($unitID, 'msm_unit', $position);
                         break;
 
                     case('info'):
