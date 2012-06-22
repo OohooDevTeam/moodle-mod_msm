@@ -47,9 +47,9 @@ class AnswerExt extends Element
     
     function saveIntoDb($position)
     {
-         echo "answerext save start";
-        $time = time();
-        print_object($time);
+//         echo "answerext save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
         $data = new stdClass();

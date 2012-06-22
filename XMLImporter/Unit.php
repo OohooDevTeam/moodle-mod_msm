@@ -448,9 +448,9 @@ class Unit extends Element
 
     function saveIntoDb($position)
     {
-        echo "unit save start";
-        $time = time();
-        print_object($time);
+//        echo "unit save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
         $exercisepackRecordID = 0;

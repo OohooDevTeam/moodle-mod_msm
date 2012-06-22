@@ -77,23 +77,26 @@ class Subordinate extends Element
 
                                         if (!empty($IDinDB))
                                         {
-                                            $filepath = $this->findFile($commentrefID);
+                                            $filepath = $this->findFile($commentrefID, dirname($this->xmlpath));
 
-                                            $parser->load($filepath);
-
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
-                                            $comments = $parser->getElementsByTagName('comment')->item(0);
-                                            foreach ($comments as $c)
+                                            if (!empty($filepath))
                                             {
-                                                $id = $c->getAttribute('id');
+                                                $parser->load($filepath);
 
-                                                if ($id == $commentrefID)
+                                                // may need to change this code to load the entire file
+                                                // containing the specified comment
+                                                $comments = $parser->getElementsByTagName('comment')->item(0);
+                                                foreach ($comments as $c)
                                                 {
-                                                    $position = $position + 1;
-                                                    $comment = new Comment($this->xmlpath);
-                                                    $comment->loadFromXml($c, $position);
-                                                    $this->companion[] = $comment;
+                                                    $id = $c->getAttribute('id');
+
+                                                    if ($id == $commentrefID)
+                                                    {
+                                                        $position = $position + 1;
+                                                        $comment = new Comment($this->xmlpath);
+                                                        $comment->loadFromXml($c, $position);
+                                                        $this->companion[] = $comment;
+                                                    }
                                                 }
                                             }
                                         }
@@ -106,7 +109,7 @@ class Subordinate extends Element
                                         // find the file with comment with specified ID
                                     }
                                     break;
-                                    
+
                                 case('definition.ref'):
                                     $definitionrefID = $grandchild->getAttribute('definitionID');
 
@@ -116,22 +119,26 @@ class Subordinate extends Element
 
                                         if (!empty($IDinDB))
                                         {
-                                            $filepath = $this->findFile($definitionrefID);
-                                            $parser->load($filepath);
+                                            $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
 
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
-                                            $defs = $parser->getElementsByTagName('def')->item(0);
-                                            foreach ($defs as $d)
+                                            if (!empty($filepath))
                                             {
-                                                $id = $d->getAttribute('id');
+                                                $parser->load($filepath);
 
-                                                if ($id == $definitionrefID)
+                                                // may need to change this code to load the entire file
+                                                // containing the specified comment
+                                                $defs = $parser->getElementsByTagName('def')->item(0);
+                                                foreach ($defs as $d)
                                                 {
-                                                    $position = $position + 1;
-                                                    $def = new Definition($this->xmlpath);
-                                                    $def->loadFromXml($d, $position);
-                                                    $this->companion[] = $def;
+                                                    $id = $d->getAttribute('id');
+
+                                                    if ($id == $definitionrefID)
+                                                    {
+                                                        $position = $position + 1;
+                                                        $def = new Definition($this->xmlpath);
+                                                        $def->loadFromXml($d, $position);
+                                                        $this->companion[] = $def;
+                                                    }
                                                 }
                                             }
                                         }
@@ -151,22 +158,26 @@ class Subordinate extends Element
 
                                         if (!empty($IDinDB))
                                         {
-                                            $filepath = $this->findFile($theoremrefID);
-                                            $parser->load($filepath);
+                                            $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath));
 
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
-                                            $theorems = $parser->getElementsByTagName('theorem')->item(0);
-                                            foreach ($theorems as $t)
+                                            if (!empty($filepath))
                                             {
-                                                $id = $t->getAttribute('id');
+                                                $parser->load($filepath);
 
-                                                if ($id == $theormerefID)
+                                                // may need to change this code to load the entire file
+                                                // containing the specified comment
+                                                $theorems = $parser->getElementsByTagName('theorem')->item(0);
+                                                foreach ($theorems as $t)
                                                 {
-                                                    $position = $position + 1;
-                                                    $theorem = new Theorem($this->xmlpath);
-                                                    $theorem->loadFromXml($t, $position);
-                                                    $this->companion[] = $theorem;
+                                                    $id = $t->getAttribute('id');
+
+                                                    if ($id == $theormerefID)
+                                                    {
+                                                        $position = $position + 1;
+                                                        $theorem = new Theorem($this->xmlpath);
+                                                        $theorem->loadFromXml($t, $position);
+                                                        $this->companion[] = $theorem;
+                                                    }
                                                 }
                                             }
                                         }
@@ -186,22 +197,33 @@ class Subordinate extends Element
 
                                         if (!empty($IDinDB))
                                         {
-                                            $filepath = $this->findFile($showmepackrefID);
-                                            $parser->load($filepath);
+                                            echo "showmeID";
+                                            print_object($showmepackrefID);
 
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
-                                            $showmepacks = $parser->getElementsByTagName('showme.pack')->item(0);
-                                            foreach ($showmepacks as $s)
+                                            $filepath = $this->findFile($showmepackrefID, dirname($this->xmlpath));
+
+
+                                            if (!empty($filepath))
                                             {
-                                                $id = $s->getAttribute('id');
+                                                echo "filepath";
+                                                print_object($filepath);
 
-                                                if ($id == $showmepackrefID)
+                                                $parser->load($filepath);
+
+                                                // may need to change this code to load the entire file
+                                                // containing the specified comment
+                                                $showmepacks = $parser->getElementsByTagName('showme.pack')->item(0);
+                                                foreach ($showmepacks as $s)
                                                 {
-                                                    $position = $position + 1;
-                                                    $showmepack = new Pack($this->xmlpath);
-                                                    $showmepack->loadFromXml($s, $position);
-                                                    $this->companion[] = $showmepack;
+                                                    $id = $s->getAttribute('id');
+
+                                                    if ($id == $showmepackrefID)
+                                                    {
+                                                        $position = $position + 1;
+                                                        $showmepack = new Pack($this->xmlpath);
+                                                        $showmepack->loadFromXml($s, $position);
+                                                        $this->companion[] = $showmepack;
+                                                    }
                                                 }
                                             }
                                         }
@@ -247,40 +269,43 @@ class Subordinate extends Element
 //                                    }
 //                                    break;
 //
-//                                case('unit.ref'):
-//                                    $untiID = $grandchild->getAttribute('unitId');
-//
-//                                    if (!empty($untiID))
-//                                    {
-//                                        $IDinDB = $DB->get_record('msm_unit', array('string_id' => $untiID));
-//
-//                                        if (!empty($IDinDB))
-//                                        {
-//                                            $filepath = $this->findFile($untiID);
-//                                            $parser->load($filepath);
-//
-//                                            // may need to change this code to load the entire file
-//                                            // containing the specified comment
-//                                            $units = $parser->getElementsByTagName('unit')->item(0);
-//                                            foreach ($units as $u)
-//                                            {
-//                                                $id = $u->getAttribute('id');
-//
-//                                                if ($id == $untiID)
-//                                                {
-//                                                    $position = $position + 1;
-//                                                    $unit = new Unit($this->xmlpath);
-//                                                    $unit->loadFromXml($u, $position);
-//                                                    $this->companion[] = $unit;
-//                                                }
-//                                            }
-//                                        }
-//                                        else
-//                                        {
-//                                            $this->companion[] = $untiID;
-//                                        }
-//                                    }
-//                                    break;
+                                case('unit.ref'):
+                                    $untiID = $grandchild->getAttribute('unitId');
+
+                                    if (!empty($untiID))
+                                    {
+                                        $IDinDB = $DB->get_record('msm_unit', array('string_id' => $untiID));
+
+                                        if (!empty($IDinDB))
+                                        {
+                                            $filepath = $this->findFile($untiID);
+                                            if (!empty($filepath))
+                                            {
+                                                $parser->load($filepath);
+
+                                                // may need to change this code to load the entire file
+                                                // containing the specified comment
+                                                $units = $parser->getElementsByTagName('unit')->item(0);
+                                                foreach ($units as $u)
+                                                {
+                                                    $id = $u->getAttribute('id');
+
+                                                    if ($id == $untiID)
+                                                    {
+                                                        $position = $position + 1;
+                                                        $unit = new Unit($this->xmlpath);
+                                                        $unit->loadFromXml($u, $position);
+                                                        $this->companion[] = $unit;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            $this->companion[] = $untiID;
+                                        }
+                                    }
+                                    break;
                             }
 //               
                         }
@@ -306,23 +331,25 @@ class Subordinate extends Element
 
                                         if (!empty($IDinDB))
                                         {
-                                            $filepath = $this->findFile($commentrefID);
-
-                                            $parser->load($filepath);
-
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
-                                            $comments = $parser->getElementsByTagName('comment')->item(0);
-                                            foreach ($comments as $c)
+                                            $filepath = $this->findFile($commentrefID, dirname($this->xmlpath));
+                                            if (!empty($filepath))
                                             {
-                                                $id = $c->getAttribute('id');
+                                                $parser->load($filepath);
 
-                                                if ($id == $commentrefID)
+                                                // may need to change this code to load the entire file
+                                                // containing the specified comment
+                                                $comments = $parser->getElementsByTagName('comment')->item(0);
+                                                foreach ($comments as $c)
                                                 {
-                                                    $position = $position + 1;
-                                                    $comment = new Comment($this->xmlpath);
-                                                    $comment->loadFromXml($c, $position);
-                                                    $this->companion[] = $comment;
+                                                    $id = $c->getAttribute('id');
+
+                                                    if ($id == $commentrefID)
+                                                    {
+                                                        $position = $position + 1;
+                                                        $comment = new Comment($this->xmlpath);
+                                                        $comment->loadFromXml($c, $position);
+                                                        $this->companion[] = $comment;
+                                                    }
                                                 }
                                             }
                                         }
@@ -345,22 +372,26 @@ class Subordinate extends Element
 
                                         if (!empty($IDinDB))
                                         {
-                                            $filepath = $this->findFile($definitionrefID);
-                                            $parser->load($filepath);
+                                            $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
 
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
-                                            $defs = $parser->getElementsByTagName('def')->item(0);
-                                            foreach ($defs as $d)
+                                            if (!empty($filepath))
                                             {
-                                                $id = $d->getAttribute('id');
+                                                $parser->load($filepath);
 
-                                                if ($id == $definitionrefID)
+                                                // may need to change this code to load the entire file
+                                                // containing the specified comment
+                                                $defs = $parser->getElementsByTagName('def')->item(0);
+                                                foreach ($defs as $d)
                                                 {
-                                                    $position = $position + 1;
-                                                    $def = new Definition($this->xmlpath);
-                                                    $def->loadFromXml($d, $position);
-                                                    $this->companion[] = $def;
+                                                    $id = $d->getAttribute('id');
+
+                                                    if ($id == $definitionrefID)
+                                                    {
+                                                        $position = $position + 1;
+                                                        $def = new Definition($this->xmlpath);
+                                                        $def->loadFromXml($d, $position);
+                                                        $this->companion[] = $def;
+                                                    }
                                                 }
                                             }
                                         }
@@ -380,22 +411,26 @@ class Subordinate extends Element
 
                                         if (!empty($IDinDB))
                                         {
-                                            $filepath = $this->findFile($theoremrefID);
-                                            $parser->load($filepath);
+                                            $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath));
 
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
-                                            $theorems = $parser->getElementsByTagName('theorem')->item(0);
-                                            foreach ($theorems as $t)
+                                            if (!empty($filepath))
                                             {
-                                                $id = $t->getAttribute('id');
+                                                $parser->load($filepath);
 
-                                                if ($id == $theormerefID)
+                                                // may need to change this code to load the entire file
+                                                // containing the specified comment
+                                                $theorems = $parser->getElementsByTagName('theorem')->item(0);
+                                                foreach ($theorems as $t)
                                                 {
-                                                    $position = $position + 1;
-                                                    $theorem = new Theorem($this->xmlpath);
-                                                    $theorem->loadFromXml($t, $position);
-                                                    $this->companion[] = $theorem;
+                                                    $id = $t->getAttribute('id');
+
+                                                    if ($id == $theormerefID)
+                                                    {
+                                                        $position = $position + 1;
+                                                        $theorem = new Theorem($this->xmlpath);
+                                                        $theorem->loadFromXml($t, $position);
+                                                        $this->companion[] = $theorem;
+                                                    }
                                                 }
                                             }
                                         }
@@ -510,7 +545,6 @@ class Subordinate extends Element
 //                                        }
 //                                    }
 //                                    break;
-
 //                                case('composition.ref'):
 //                                    $compID = $grandchild->getAttribute('unitId');
 //
@@ -545,7 +579,6 @@ class Subordinate extends Element
 //                                        }
 //                                    }
 //                                     break;
-                                    
                             }
                         }
                     }
@@ -575,9 +608,9 @@ class Subordinate extends Element
      */
     function saveIntoDb($position)
     {
-        echo "subordinate save start";
-        $time = time();
-        print_object($time);
+//        echo "subordinate save start";
+//        $time = time();
+//        print_object($time);
 
         global $DB;
 
@@ -623,30 +656,47 @@ class Subordinate extends Element
             $external_link->saveIntoDb($external_link->position);
         }
 
+        foreach ($this->companion as $companion)
+        {
+            print_object($companion);
+        }
+
         foreach ($this->cites as $cite)
         {
             $cite->saveIntoDb($cite->position);
         }
     }
 
-    function findFile($elementID)
+    function findFile($elementID, $filepath)
     {
-        $path = $this->xmlpath;
+        echo "path";
+        print_object($filepath);
 
-        $dirOrFiles = scandir($path);
+        $dirOrFiles = scandir($filepath);
+
+        echo "before loop";
 
         foreach ($dirOrFiles as $key => $file)
         {
+          
+            echo "in loop";
             // first two items in the array $dirOrFiles refers to the current and parent directories
             // which is not useful in this case
             if ($key > 1)
             {
                 $ext = explode('.', $file);
 
-                if ((sizeof($ext) > 1) && ($ext[1] == 'xml'))
+                if (sizeof($ext) <= 1) // it's a directory
+                {
+                    echo "in directory";
+                    print_object($filepath . '/' . $ext[0]);
+
+                    $this->findFile($elementID, $filepath . '/' . $ext[0]);
+                }
+                else if ((sizeof($ext) > 1) && ($ext[1] == 'xml'))
                 {
                     $Domparser = new DOMDocument();
-                    @$Domparser->load($this->xmlpath . '/' . $file);
+                    @$Domparser->load($filepath . '/' . $file);
 
                     $comment = $Domparser->getElementsByTagName('comment')->item(0);
                     if (!empty($comment))
@@ -655,7 +705,7 @@ class Subordinate extends Element
 
                         if ($commentID == $elementID)
                         {
-                            $path = $this->xmlpath . '/' . $file;
+                            $path = $filepath . '/' . $file;
                             return $path;
                         }
                     }
@@ -667,7 +717,7 @@ class Subordinate extends Element
 
                         if ($defID == $elementID)
                         {
-                            $path = $this->xmlpath . '/' . $file;
+                            $path = $filepath . '/' . $file;
                             return $path;
                         }
                     }
@@ -679,19 +729,26 @@ class Subordinate extends Element
 
                         if ($theoremID == $elementID)
                         {
-                            $path = $this->xmlpath . '/' . $file;
+                            $path = $filepath . '/' . $file;
                             return $path;
                         }
                     }
 
                     $showmepack = $Domparser->getElementsByTagName('showme.pack')->item(0);
+
                     if (!empty($showmepack))
                     {
                         $showmepackID = $showmepack->getAttribute('id');
 
+//                        echo "ID being compared";
+//                        print_object($showmepackID);
+
                         if ($showmepackID == $elementID)
                         {
-                            $path = $this->xmlpath . '/' . $file;
+                            $path = $filepath . '/' . $file;
+
+                            echo "finalpath";
+                            print_object($path);
                             return $path;
                         }
                     }
@@ -703,7 +760,7 @@ class Subordinate extends Element
 
                         if ($quizpackID == $elementID)
                         {
-                            $path = $this->xmlpath . '/' . $file;
+                            $path = $filepath . '/' . $file;
                             return $path;
                         }
                     }
@@ -715,7 +772,7 @@ class Subordinate extends Element
 
                         if ($exercisepackID == $elementID)
                         {
-                            $path = $this->xmlpath . '/' . $file;
+                            $path = $filepath . '/' . $file;
                             return $path;
                         }
                     }
@@ -727,7 +784,7 @@ class Subordinate extends Element
 
                         if ($examplepackID == $elementID)
                         {
-                            $path = $this->xmlpath . '/' . $file;
+                            $path = $filepath . '/' . $file;
                             return $path;
                         }
                     }
@@ -741,7 +798,7 @@ class Subordinate extends Element
 
                         if ($unitID == $elementID)
                         {
-                            $path = $this->xmlpath . '/' . $file;
+                            $path = $filepath . '/' . $file;
                             return $path;
                         }
                     }

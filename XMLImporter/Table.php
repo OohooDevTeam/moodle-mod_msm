@@ -70,9 +70,9 @@ class Table extends Element
 
     function saveIntoDb($position)
     {
-        echo "table save start";
-        $time = time();
-        print_object($time);
+//        echo "table save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
         $data = new stdClass();

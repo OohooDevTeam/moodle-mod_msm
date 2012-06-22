@@ -102,9 +102,9 @@ class MathIndex extends Element
      */
     function saveIntoDb($position)
     {
-        echo "mathindex save start";
-        $time = time();
-        print_object($time);
+//        echo "mathindex save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
         $data = new stdClass();

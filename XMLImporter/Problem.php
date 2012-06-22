@@ -79,9 +79,9 @@ class Problem extends Element
 
     function saveIntoDb($position)
     {
-        echo "problem save start";
-        $time = time();
-        print_object($time);
+//        echo "problem save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
         $data = new stdClass();

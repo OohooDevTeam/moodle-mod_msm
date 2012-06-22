@@ -118,9 +118,9 @@ class Example extends Element
 
     function saveIntoDb($position)
     {
-          echo "example save start";
-        $time = time();
-        print_object($time);
+//          echo "example save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
         $data = new stdClass();

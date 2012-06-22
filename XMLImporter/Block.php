@@ -135,9 +135,9 @@ class Block extends Element
 
     function saveIntoDb($position)
     {
-         echo "block save start";
-        $time = time();
-        print_object($time);
+//         echo "block save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
 

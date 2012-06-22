@@ -49,9 +49,9 @@ class Cite extends Element
      */
     function saveIntoDb($position)
     {
-         echo "cite save start";
-        $time = time();
-        print_object($time);
+//         echo "cite save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
         $data = new stdClass();

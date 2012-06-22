@@ -101,9 +101,9 @@ class Definition extends Element
 
     function saveIntoDb($position)
     {       
-          echo "definition save start";
-        $time = time();
-        print_object($time);
+//          echo "definition save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
 

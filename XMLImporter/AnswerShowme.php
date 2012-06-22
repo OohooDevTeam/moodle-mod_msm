@@ -80,9 +80,9 @@ class AnswerShowme extends Element
 
     function saveIntoDb($position)
     {
-         echo "answershowme save start";
-        $time = time();
-        print_object($time);
+//         echo "answershowme save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
         $data = new stdClass();

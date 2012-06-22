@@ -79,9 +79,9 @@ class Person extends Element
      */
     function saveIntoDb($position, $type)
     {
-        echo "person save start";
-        $time = time();
-        print_object($time);
+//        echo "person save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
 

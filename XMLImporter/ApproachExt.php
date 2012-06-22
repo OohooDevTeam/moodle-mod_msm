@@ -57,9 +57,9 @@ class ApproachExt extends Element
 
     function saveIntoDb($position)
     {
-         echo "approachext save start";
-        $time = time();
-        print_object($time);
+//         echo "approachext save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
         $data = new stdClass();

@@ -94,9 +94,9 @@ class Comment extends Element
     function saveIntoDb($position)
     {
         
-         echo "comment save start";
-        $time = time();
-        print_object($time);
+//         echo "comment save start";
+//        $time = time();
+//        print_object($time);
         
         global $DB;
 
