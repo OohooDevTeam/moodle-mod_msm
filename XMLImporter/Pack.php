@@ -148,6 +148,9 @@ class Pack extends Element
                 $this->quizs[] = $quiz;
             }
         }
+        
+//        echo "exercises";
+//        print_object($this->exercises);
     }
 
     function saveIntoDb($position)
@@ -178,6 +181,7 @@ class Pack extends Element
         {
             $example->saveIntoDb($example->position);
         }
+        
 
         foreach ($this->exercises as $exercise)
         {

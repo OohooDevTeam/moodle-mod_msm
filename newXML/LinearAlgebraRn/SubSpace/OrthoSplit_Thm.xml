@@ -169,7 +169,6 @@
                            <info.caption>
                               <caption>Why is this so?</caption>
                            </info.caption>
-                           <theorem.ref theoremID="Thm_OrthogonalComplementOperationProperties"/>
                            <para>
                               <para.body>We know that <math>
                                     <latex>V=\span(\EuScript{B})</latex>

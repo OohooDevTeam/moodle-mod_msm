@@ -86,7 +86,6 @@
                      <crossref>
                         <definition.ref definitionID="Def_CompletenessAxiomForR"/>
                         <info>
-                           <definition.ref definitionID="Def_CompletenessAxiomForR"/>
                            <para>
                               <para.body>Look up this axiom.</para.body>
                            </para>
@@ -156,7 +155,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_RCompleteFromInfSup"/>
                         <info>
-                           <theorem.ref theoremID="Thm_RCompleteFromInfSup"/>
                            <para>
                               <para.body>Look up this result.</para.body>
                            </para>

@@ -72,7 +72,6 @@
                                  <crossref>
                                     <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
                                     <info>
-                                       <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
                                        <para>
                                           <para.body>Look up this fact.</para.body>
                                        </para>
@@ -98,7 +97,6 @@
                            <crossref>
                               <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
                               <info>
-                                 <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
                                  <para>
                                     <para.body>Look up this fact.</para.body>
                                  </para>
@@ -152,7 +150,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
                         <info>
-                           <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
                            <para>
                               <para.body>Look up this fact.</para.body>
                            </para>
@@ -202,7 +199,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
                         <info>
-                           <theorem.ref theoremID="Thm_LinearIndependenceFacts"/>
                            <para>
                               <para.body>Look up this fact.</para.body>
                            </para>

@@ -128,7 +128,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_LinearMapMatrixGeneral"/>
                         <info>
-                           <theorem.ref theoremID="Thm_LinearMapMatrixGeneral"/>
                            <para>
                               <para.body>Look up this result</para.body>
                            </para>
@@ -153,7 +152,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_ChangeCoordinatesLinearMap"/>
                         <info>
-                           <theorem.ref theoremID="Thm_ChangeCoordinatesLinearMap"/>
                            <para>
                               <para.body>Look up this result.</para.body>
                            </para>

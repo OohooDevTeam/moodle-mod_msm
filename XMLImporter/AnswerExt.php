@@ -60,6 +60,8 @@ class AnswerExt extends Element
         $data->ext_content = null;
         $data->ext_name = $this->ext_name;
         
+        $this->id = $DB->insert_record($this->tablename, $data);
+        
         foreach($this->steps as $step)
         {
             $step->saveIntoDb($step->position);

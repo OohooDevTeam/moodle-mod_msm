@@ -35,7 +35,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_DeterminantRowReduction"/>
                         <info>
-                           <theorem.ref theoremID="Thm_DeterminantRowReduction"/>
                            <para>
                               <para.body>Look up how to compute the determinant of a matrix by reducing it to upper triangular form.</para.body>
                            </para>
@@ -60,7 +59,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_MatrixInversionRREF"/>
                         <info>
-                           <theorem.ref theoremID="Thm_MatrixInversionRREF"/>
                            <para>
                               <para.body>Look up this theorem.</para.body>
                            </para>

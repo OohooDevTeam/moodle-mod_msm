@@ -18,6 +18,17 @@
          </block.body>
       </block>
    </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeriesRootTest_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SeriesRatioTest_Thm.xml"/>
+            <para>
+               <para.body/>
+            </para>
+         </block.body>
+      </block>
+   </body>
    <studymaterials xmlns="">
       <exercise.pack.ref exercisePackID="Exe_RootRatioTest"/>
    </studymaterials>

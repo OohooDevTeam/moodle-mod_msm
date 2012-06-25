@@ -116,7 +116,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_DeterminantInvertibilityTest"/>
                         <info>
-                           <theorem.ref theoremID="Thm_DeterminantInvertibilityTest"/>
                            <para>
                               <para.body>Look up the determinant test for the invertibility of a matrix.</para.body>
                            </para>
@@ -238,7 +237,6 @@
                      <crossref>
                         <theorem.ref theoremID="Prop_DeterminantUnique"/>
                         <info>
-                           <theorem.ref theoremID="Prop_DeterminantUnique"/>
                            <para>
                               <para.body>Here we use that the determinant operation is the only alternating <math>
                                     <latex>n</latex>

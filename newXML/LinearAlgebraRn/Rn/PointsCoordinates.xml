@@ -528,6 +528,10 @@
                </block.body>
             </block>
          </body>
+         <studymaterials xmlns="">
+            <exercise.pack.ref exercisePackID="Exe_PointsCoordinates"/>
+            <exercise.pack.ref exercisePackID="Exe_PointsCoordinatesEquations"/>
+         </studymaterials>
       </unit>
    </legitimate.children>
 </unit>

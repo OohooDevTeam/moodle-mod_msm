@@ -30,6 +30,14 @@
          </block.body>
       </block>
    </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="MatrixEqsLinearEqs_Prop.xml"/>
+         </block.body>
+      </block>
+   </body>
    <studymaterials xmlns="">
       <exercise.pack.ref exercisePackID="Exe_MatrixEqsLinearEqs"/>
    </studymaterials>

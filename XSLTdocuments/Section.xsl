@@ -52,13 +52,13 @@
                 <xsl:apply-templates select="node()[name()='intro']"/>
             </xsl:if>
             
-            <xsl:if test="node()[name()='section.body'] != ''">
+            <xsl:if test="node()[name()='section.body']">
                 <!--xsl:element name="legitimate.children" namespace="Unit"-->
                     <xsl:apply-templates select="bk:section.body"/>
                 <!--/xsl:element-->
             </xsl:if>
             
-            <xsl:if test="node()[name()='subsection'] != ''">
+            <xsl:if test="node()[name()='subsection']">
                 <xsl:element name="legitimate.children" namespace="Unit">
                     <xsl:apply-templates select="bk:subsection"/>
                 </xsl:element>
@@ -107,6 +107,16 @@
         </xsl:element>
     </xsl:template>
     
+    <xsl:template match="xi:include">
+        <xsl:if test="./@href != ''">
+            <xsl:element name="xi:include" namespace="http://www.w3.org/2001/XInclude">
+                <xsl:attribute name="href">
+                    <xsl:value-of select="./@href"/>
+                </xsl:attribute>
+            </xsl:element>
+        </xsl:if>
+    </xsl:template>
+    
     <xsl:template match="bk:subsection" name="subsection">
      
         <xsl:element name="unit" namespace="Unit">
@@ -122,6 +132,12 @@
             
             <xsl:if test="bk:subsection.body">
                 <xsl:apply-templates select="bk:subsection.body"/>
+            </xsl:if>
+            
+            <xsl:if test="node()[name()='studymaterials']">
+                
+                <xsl:apply-templates select="bk:studymaterials"/>
+                
             </xsl:if>
         </xsl:element>
        

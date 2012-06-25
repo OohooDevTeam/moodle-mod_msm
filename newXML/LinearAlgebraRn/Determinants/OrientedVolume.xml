@@ -266,6 +266,9 @@
                </block.body>
             </block>
          </body>
+         <studymaterials xmlns="">
+            <example.pack.ref examplePackID="Exa_OrientedArea"/>
+         </studymaterials>
       </unit>
       <unit unitid="SubSec_OrientedVolume3Tuple">
          <titles>
@@ -295,6 +298,9 @@
                </block.body>
             </block>
          </body>
+         <studymaterials xmlns="">
+            <example.pack.ref examplePackID="Exa_OrientedVolume"/>
+         </studymaterials>
       </unit>
    </legitimate.children>
    <studymaterials xmlns="">

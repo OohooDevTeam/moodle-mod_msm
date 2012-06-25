@@ -49,6 +49,7 @@ class Step extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+//        $this->content = array();
 
         $step_bodys = $DomElement->getElementsByTagName('step.body');
         
@@ -91,9 +92,22 @@ class Step extends Element
         
         $data->partref = $this->partref;
         $data->caption = $this->caption;
-        $data->content = $this->content;
         
-        $this->id = $DB->insert_record($this->tablename, $data);
+//        if(!empty($this->content))
+//        {
+//            foreach($this->content as $content)
+//            {
+                 $data->step_content = $this->content;
+                 $this->id = $DB->insert_record($this->tablename, $data);
+//            }
+//        }
+//        else
+//        {
+//            $this->id = $DB->insert_record($this->tablename, $data);
+//        }
+//       
+        
+        
         
        foreach($this->pilots as $pilot)
        {

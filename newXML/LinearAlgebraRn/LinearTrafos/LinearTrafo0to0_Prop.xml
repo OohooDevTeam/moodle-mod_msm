@@ -82,7 +82,6 @@
                      <crossref>
                         <definition.ref definitionID="Def_LinearMap"/>
                         <info>
-                           <definition.ref definitionID="Def_LinearMap"/>
                            <para>
                               <para.body>Look up the definition of ‘linear transformation’</para.body>
                            </para>

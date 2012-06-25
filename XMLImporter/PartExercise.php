@@ -63,6 +63,8 @@ class PartExercise extends Element
             $approach_ext->loadFromXml($ae, $position);
             $this->approach_exts[] = $approach_ext;
         }
+        
+        
     }
     
     function saveIntoDb($position)
@@ -89,6 +91,9 @@ class PartExercise extends Element
             $approach->saveIntoDb($approach->position);
         }
         
+//        echo "approach ext";
+//        print_object($this->approach_exts);
+//        
         foreach($this->approach_exts as $approach_ext)
         {
             $approach_ext->saveIntoDb($approach_ext->position);

@@ -65,7 +65,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_MatrixGivesLinearMap"/>
                         <info>
-                           <theorem.ref theoremID="Thm_MatrixGivesLinearMap"/>
                            <para>
                               <para.body>Look up how a matrix determines a linear map.</para.body>
                            </para>

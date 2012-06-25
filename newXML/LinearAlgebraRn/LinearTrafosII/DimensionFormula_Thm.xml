@@ -72,7 +72,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_RankFormulaMatrix"/>
                         <info>
-                           <theorem.ref theoremID="Thm_RankFormulaMatrix"/>
                            <para>
                               <para.body>Look up this result.</para.body>
                            </para>

@@ -49,7 +49,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_OrthogonalmpliesLinearIndependence"/>
                         <info>
-                           <theorem.ref theoremID="Thm_OrthogonalmpliesLinearIndependence"/>
                            <para>
                               <para.body>Look up this result</para.body>
                            </para>
@@ -65,7 +64,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_BasisExists"/>
                         <info>
-                           <theorem.ref theoremID="Thm_BasisExists"/>
                            <para>
                               <para.body>Look up this result.</para.body>
                            </para>

@@ -34,9 +34,15 @@ class Subordinate extends Element
         $this->position = $position;
 
         $this->infos = array();
-        $this->companion = array();
+        $this->companion = array(); // if the ref already exists inside db table, then store in here as id number
+        $this->packs = array();
+        $this->comments = array();
         $this->externalref = array();
+        $this->defs = array();
+        $this->theorems = array();
+        $this->subunits = array();
         $this->crossref = array();
+        $this->compositions = array();
 
         $this->cites = array();
         $this->external_links = array();
@@ -75,28 +81,24 @@ class Subordinate extends Element
                                     {
                                         $IDinDB = $DB->get_record('msm_comment', array('string_id' => $commentrefID));
 
-                                        if (!empty($IDinDB))
+                                        if (empty($IDinDB))
                                         {
                                             $filepath = $this->findFile($commentrefID, dirname($this->xmlpath));
 
                                             if (!empty($filepath))
                                             {
-                                                $parser->load($filepath);
+                                                @$parser->load($filepath);
 
                                                 // may need to change this code to load the entire file
                                                 // containing the specified comment
-                                                $comments = $parser->getElementsByTagName('comment')->item(0);
-                                                foreach ($comments as $c)
-                                                {
-                                                    $id = $c->getAttribute('id');
+                                                $element = $parser->documentElement;
 
-                                                    if ($id == $commentrefID)
-                                                    {
-                                                        $position = $position + 1;
-                                                        $comment = new Comment($this->xmlpath);
-                                                        $comment->loadFromXml($c, $position);
-                                                        $this->companion[] = $comment;
-                                                    }
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $comment = new Comment(dirname($filepath));
+                                                    $comment->loadFromXml($element, $position);
+                                                    $this->comments[] = $comment;
                                                 }
                                             }
                                         }
@@ -117,28 +119,24 @@ class Subordinate extends Element
                                     {
                                         $IDinDB = $DB->get_record('msm_def', array('string_id' => $definitionrefID));
 
-                                        if (!empty($IDinDB))
+                                        if (empty($IDinDB))
                                         {
                                             $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
 
                                             if (!empty($filepath))
                                             {
-                                                $parser->load($filepath);
+                                                @$parser->load($filepath);
 
                                                 // may need to change this code to load the entire file
                                                 // containing the specified comment
-                                                $defs = $parser->getElementsByTagName('def')->item(0);
-                                                foreach ($defs as $d)
-                                                {
-                                                    $id = $d->getAttribute('id');
+                                                $element = $parser->documentElement;
 
-                                                    if ($id == $definitionrefID)
-                                                    {
-                                                        $position = $position + 1;
-                                                        $def = new Definition($this->xmlpath);
-                                                        $def->loadFromXml($d, $position);
-                                                        $this->companion[] = $def;
-                                                    }
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $def = new Defintion(dirname($filepath));
+                                                    $def->loadFromXml($element, $position);
+                                                    $this->defs[] = $def;
                                                 }
                                             }
                                         }
@@ -152,9 +150,9 @@ class Subordinate extends Element
                                 case('theorem.ref'):
                                     $theoremrefID = $grandchild->getAttribute('theoremID');
 
-                                    if (!empty($theormerefID))
+                                    if (empty($theoremrefID))
                                     {
-                                        $IDinDB = $DB->get_record('msm_theorem', array('string_id' => $theormerefID));
+                                        $IDinDB = $DB->get_record('msm_theorem', array('string_id' => $theoremrefID));
 
                                         if (!empty($IDinDB))
                                         {
@@ -162,22 +160,18 @@ class Subordinate extends Element
 
                                             if (!empty($filepath))
                                             {
-                                                $parser->load($filepath);
+                                                @$parser->load($filepath);
 
                                                 // may need to change this code to load the entire file
                                                 // containing the specified comment
-                                                $theorems = $parser->getElementsByTagName('theorem')->item(0);
-                                                foreach ($theorems as $t)
-                                                {
-                                                    $id = $t->getAttribute('id');
+                                                $element = $parser->documentElement;
 
-                                                    if ($id == $theormerefID)
-                                                    {
-                                                        $position = $position + 1;
-                                                        $theorem = new Theorem($this->xmlpath);
-                                                        $theorem->loadFromXml($t, $position);
-                                                        $this->companion[] = $theorem;
-                                                    }
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $theorem = new Theorem(dirname($filepath));
+                                                    $theorem->loadFromXml($element, $position);
+                                                    $this->theorems[] = $theorem;
                                                 }
                                             }
                                         }
@@ -195,79 +189,70 @@ class Subordinate extends Element
                                     {
                                         $IDinDB = $DB->get_record('msm_packs', array('string_id' => $showmepackrefID));
 
-                                        if (!empty($IDinDB))
+                                        if (empty($IDinDB))
                                         {
-                                            echo "showmeID";
-                                            print_object($showmepackrefID);
-
                                             $filepath = $this->findFile($showmepackrefID, dirname($this->xmlpath));
 
 
                                             if (!empty($filepath))
                                             {
-                                                echo "filepath";
-                                                print_object($filepath);
+//                                                echo "filepath";
+//                                                print_object($filepath);
 
-                                                $parser->load($filepath);
+                                                @$parser->load($filepath);
 
                                                 // may need to change this code to load the entire file
                                                 // containing the specified comment
-                                                $showmepacks = $parser->getElementsByTagName('showme.pack')->item(0);
-                                                foreach ($showmepacks as $s)
-                                                {
-                                                    $id = $s->getAttribute('id');
+                                                $element = $parser->documentElement;
 
-                                                    if ($id == $showmepackrefID)
-                                                    {
-                                                        $position = $position + 1;
-                                                        $showmepack = new Pack($this->xmlpath);
-                                                        $showmepack->loadFromXml($s, $position);
-                                                        $this->companion[] = $showmepack;
-                                                    }
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $showme = new Pack(dirname($filepath));
+                                                    $showme->loadFromXml($element, $position);
+                                                    $this->packs[] = $showme;
                                                 }
                                             }
                                         }
                                         else
                                         {
+//                                            echo "found in db";
                                             $this->companion[] = $showmepackrefID;
                                         }
                                     }
+
                                     break;
 //
-//                                case('quiz.pack.ref'):
-//                                    $quizpackID = $grandchild->getAttribute('quizPackID');
-//
-//                                    if (!empty($quizpackID))
-//                                    {
-//                                        $IDinDB = $DB->get_record('msm_packs', array('string_id' => $quizpackID));
-//
-//                                        if (!empty($IDinDB))
-//                                        {
-//                                            $filepath = $this->findFile($quizpackID);
-//                                            $parser->load($filepath);
-//
-//                                            // may need to change this code to load the entire file
-//                                            // containing the specified comment
-//                                            $quizpacks = $parser->getElementsByTagName('quiz.pack')->item(0);
-//                                            foreach ($quizpacks as $q)
-//                                            {
-//                                                $id = $q->getAttribute('id');
-//
-//                                                if ($id == $quizpackID)
-//                                                {
-//                                                    $position = $position + 1;
-//                                                    $quizpack = new Pack($this->xmlpath);
-//                                                    $quizpack->loadFromXml($q, $position);
-//                                                    $this->companion[] = $quizpack;
-//                                                }
-//                                            }
-//                                        }
-//                                        else
-//                                        {
-//                                            $this->companion[] = $quizpackID;
-//                                        }
-//                                    }
-//                                    break;
+                                case('quiz.pack.ref'):
+                                    $quizpackID = $grandchild->getAttribute('quizPackID');
+
+                                    if (!empty($quizpackID))
+                                    {
+                                        $IDinDB = $DB->get_record('msm_packs', array('string_id' => $quizpackID));
+
+                                        if (empty($IDinDB))
+                                        {
+                                            $filepath = $this->findFile($quizpackID, dirname($this->xmlpath));
+                                            @$parser->load($filepath);
+
+                                            // may need to change this code to load the entire file
+                                            // containing the specified comment
+                                            $element = $parser->documentElement;
+
+                                            if (!empty($element))
+                                            {
+                                                $position = $position + 1;
+                                                $quiz = new Pack(dirname($filepath));
+                                                $quiz->loadFromXml($element, $position);
+                                                $this->packs[] = $quiz;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            $this->companion[] = $quizpackID;
+                                        }
+                                    }
+                                    break;
 //
                                 case('unit.ref'):
                                     $untiID = $grandchild->getAttribute('unitId');
@@ -276,27 +261,23 @@ class Subordinate extends Element
                                     {
                                         $IDinDB = $DB->get_record('msm_unit', array('string_id' => $untiID));
 
-                                        if (!empty($IDinDB))
+                                        if (empty($IDinDB))
                                         {
-                                            $filepath = $this->findFile($untiID);
+                                            $filepath = $this->findFile($untiID, dirname($this->xmlpath));
                                             if (!empty($filepath))
                                             {
-                                                $parser->load($filepath);
+                                                @$parser->load($filepath);
 
                                                 // may need to change this code to load the entire file
                                                 // containing the specified comment
-                                                $units = $parser->getElementsByTagName('unit')->item(0);
-                                                foreach ($units as $u)
-                                                {
-                                                    $id = $u->getAttribute('id');
+                                                $element = $parser->documentElement;
 
-                                                    if ($id == $untiID)
-                                                    {
-                                                        $position = $position + 1;
-                                                        $unit = new Unit($this->xmlpath);
-                                                        $unit->loadFromXml($u, $position);
-                                                        $this->companion[] = $unit;
-                                                    }
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $unit = new Unit(dirname($filepath));
+                                                    $unit->loadFromXml($element, $position);
+                                                    $this->subunits[] = $unit;
                                                 }
                                             }
                                         }
@@ -329,27 +310,21 @@ class Subordinate extends Element
                                     {
                                         $IDinDB = $DB->get_record('msm_comment', array('string_id' => $commentrefID));
 
-                                        if (!empty($IDinDB))
+                                        if (empty($IDinDB))
                                         {
                                             $filepath = $this->findFile($commentrefID, dirname($this->xmlpath));
                                             if (!empty($filepath))
                                             {
                                                 $parser->load($filepath);
 
-                                                // may need to change this code to load the entire file
-                                                // containing the specified comment
-                                                $comments = $parser->getElementsByTagName('comment')->item(0);
-                                                foreach ($comments as $c)
-                                                {
-                                                    $id = $c->getAttribute('id');
+                                                $element = $parser->documentElement;
 
-                                                    if ($id == $commentrefID)
-                                                    {
-                                                        $position = $position + 1;
-                                                        $comment = new Comment($this->xmlpath);
-                                                        $comment->loadFromXml($c, $position);
-                                                        $this->companion[] = $comment;
-                                                    }
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $comment = new Comment(dirname($filepath));
+                                                    $comment->loadFromXml($element, $position);
+                                                    $this->comments[] = $comment;
                                                 }
                                             }
                                         }
@@ -370,7 +345,7 @@ class Subordinate extends Element
                                     {
                                         $IDinDB = $DB->get_record('msm_def', array('string_id' => $definitionrefID));
 
-                                        if (!empty($IDinDB))
+                                        if (empty($IDinDB))
                                         {
                                             $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
 
@@ -380,18 +355,14 @@ class Subordinate extends Element
 
                                                 // may need to change this code to load the entire file
                                                 // containing the specified comment
-                                                $defs = $parser->getElementsByTagName('def')->item(0);
-                                                foreach ($defs as $d)
-                                                {
-                                                    $id = $d->getAttribute('id');
+                                                $element = $parser->documentElement;
 
-                                                    if ($id == $definitionrefID)
-                                                    {
-                                                        $position = $position + 1;
-                                                        $def = new Definition($this->xmlpath);
-                                                        $def->loadFromXml($d, $position);
-                                                        $this->companion[] = $def;
-                                                    }
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $def = new Definition(dirname($filepath));
+                                                    $def->loadFromXml($element, $position);
+                                                    $this->defs[] = $def;
                                                 }
                                             }
                                         }
@@ -409,7 +380,7 @@ class Subordinate extends Element
                                     {
                                         $IDinDB = $DB->get_record('msm_theorem', array('string_id' => $theormerefID));
 
-                                        if (!empty($IDinDB))
+                                        if (empty($IDinDB))
                                         {
                                             $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath));
 
@@ -419,18 +390,14 @@ class Subordinate extends Element
 
                                                 // may need to change this code to load the entire file
                                                 // containing the specified comment
-                                                $theorems = $parser->getElementsByTagName('theorem')->item(0);
-                                                foreach ($theorems as $t)
-                                                {
-                                                    $id = $t->getAttribute('id');
+                                                $element = $parser->documentElement;
 
-                                                    if ($id == $theormerefID)
-                                                    {
-                                                        $position = $position + 1;
-                                                        $theorem = new Theorem($this->xmlpath);
-                                                        $theorem->loadFromXml($t, $position);
-                                                        $this->companion[] = $theorem;
-                                                    }
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $theorem = new Theorem(dirname($filepath));
+                                                    $theorem->loadFromXml($element, $position);
+                                                    $this->theorems[] = $theorem;
                                                 }
                                             }
                                         }
@@ -441,110 +408,105 @@ class Subordinate extends Element
                                     }
                                     break;
 
-//                                case('exercise.pack.ref'):
-//                                    $exercisePackID = $grandchild->getAttribute('exercisePackID');
+                                case('exercise.pack.ref'):
+                                    $exercisePackID = $grandchild->getAttribute('exercisePackID');
+
+                                    if (!empty($exercisePackID))
+                                    {
+                                        $IDinDB = $DB->get_record('msm_packs', array('string_id' => $exercisePackID));
+
+                                        if (empty($IDinDB))
+                                        {
+                                            $filepath = $this->findFile($exercisePackID, dirname($this->xmlpath));
+                                            @$parser->load($filepath);
+
+                                            // may need to change this code to load the entire file
+                                            // containing the specified comment
+                                            $element = $parser->documentElement;
+
+                                            if (!empty($element))
+                                            {
+                                                $position = $position + 1;
+                                                $exercise = new Pack(dirname($filepath));
+                                                $exercise->loadFromXml($element, $position);
+                                                $this->packs[] = $exercise;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            $this->companion[] = $exercisePackID;
+                                        }
+                                    }
+                                    break;
+
+                                case('example.pack.ref'):
+                                    $examplepackID = $grandchild->getAttribute('examplePackID');
+                                    
+//                                    echo "example?";
+//                                    print_object($examplepackID);
+
+                                    if (!empty($examplepackID))
+                                    {
+                                        $IDinDB = $DB->get_record('msm_packs', array('string_id' => $examplepackID));
+
+                                        if (empty($IDinDB))
+                                        {
+                                            $filepath = $this->findFile($examplepackID, dirname($this->xmlpath));
+                                            
+//                                            echo "filepath";
+//                                            print_object($filepath);
+                                            
+                                            @$parser->load($filepath);
+
+                                            // may need to change this code to load the entire file
+                                            // containing the specified comment
+                                            $element = $parser->documentElement;
+
+                                            if (!empty($element))
+                                            {
+                                                $position = $position + 1;
+                                                $example = new Pack(dirname($filepath));
+                                                $example->loadFromXml($element, $position);
+                                                $this->packs[] = $example;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            $this->companion[] = $examplepackID;
+                                        }
+                                    }
+                                    break;
 //
-//                                    if (!empty($exercisePackID))
-//                                    {
-//                                        $IDinDB = $DB->get_record('msm_packs', array('string_id' => $exercisePackID));
-//
-//                                        if (!empty($IDinDB))
-//                                        {
-//                                            $filepath = $this->findFile($exercisePackID);
-//                                            $parser->load($filepath);
-//
-//                                            // may need to change this code to load the entire file
-//                                            // containing the specified comment
-//                                            $exercisepacks = $parser->getElementsByTagName('exercise.pack')->item(0);
-//                                            foreach ($exercisepacks as $ex)
-//                                            {
-//                                                $id = $ex->getAttribute('id');
-//
-//                                                if ($id == $exercisePackID)
-//                                                {
-//                                                    $position = $position + 1;
-//                                                    $exercisepack = new Pack($this->xmlpath);
-//                                                    $exercisePackID->loadFromXml($ex, $position);
-//                                                    $this->companion[] = $exercisepack;
-//                                                }
-//                                            }
-//                                        }
-//                                        else
-//                                        {
-//                                            $this->companion[] = $exercisePackID;
-//                                        }
-//                                    }
-//                                    break;
-//
-//                                case('example.pack.ref'):
-//                                    $examplepackID = $grandchild->getAttribute('examplePackID');
-//
-//                                    if (!empty($examplepackID))
-//                                    {
-//                                        $IDinDB = $DB->get_record('msm_packs', array('string_id' => $examplepackID));
-//
-//                                        if (!empty($IDinDB))
-//                                        {
-//                                            $filepath = $this->findFile($examplepackID);
-//                                            $parser->load($filepath);
-//
-//                                            // may need to change this code to load the entire file
-//                                            // containing the specified comment
-//                                            $examplepacks = $parser->getElementsByTagName('example.pack')->item(0);
-//                                            foreach ($examplepacks as $emp)
-//                                            {
-//                                                $id = $emp->getAttribute('id');
-//
-//                                                if ($id == $examplepackID)
-//                                                {
-//                                                    $position = $position + 1;
-//                                                    $examplepack = new Pack($this->xmlpath);
-//                                                    $examplepack->loadFromXml($emp, $position);
-//                                                    $this->companion[] = $examplepack;
-//                                                }
-//                                            }
-//                                        }
-//                                        else
-//                                        {
-//                                            $this->companion[] = $examplepackID;
-//                                        }
-//                                    }
-//                                    break;
-//
-//                                case('unit.ref'):
-//                                    $untiID = $grandchild->getAttribute('unitId');
-//
-//                                    if (!empty($untiID))
-//                                    {
-//                                        $IDinDB = $DB->get_record('msm_unit', array('string_id' => $untiID));
-//
-//                                        if (!empty($IDinDB))
-//                                        {
-//                                            $filepath = $this->findFile($untiID);
-//                                            $parser->load($filepath);
-//
-//                                            // may need to change this code to load the entire file
-//                                            // containing the specified comment
-//                                            $units = $parser->getElementsByTagName('unit')->item(0);
-//                                            foreach ($units as $u)
-//                                            {
-//                                                $id = $u->getAttribute('id');
-//
-//                                                if ($id == $untiID)
-//                                                {
-//                                                    $position = $position + 1;
-//                                                    $unit = new Unit($this->xmlpath);
-//                                                    $unit->loadFromXml($u, $position);
-//                                                    $this->companion[] = $unit;
-//                                                }
-//                                            }
-//                                        }
-//                                        else
-//                                        {
-//                                            $this->companion[] = $untiID;
-//                                        }
-//                                    }
-//                                    break;
+                                case('unit.ref'):
+                                    $untiID = $grandchild->getAttribute('unitId');
+
+                                    if (!empty($untiID))
+                                    {
+                                        $IDinDB = $DB->get_record('msm_unit', array('string_id' => $untiID));
+
+                                        if (!empty($IDinDB))
+                                        {
+                                            $filepath = $this->findFile($untiID, dirname($this->xmlpath));
+                                            @$parser->load($filepath);
+
+                                            // may need to change this code to load the entire file
+                                            // containing the specified comment
+                                           $element = $parser->documentElement;
+
+                                            if (!empty($element))
+                                            {
+                                                $position = $position + 1;
+                                                $unit = new Unit(dirname($filepath));
+                                                $unit->loadFromXml($element, $position);
+                                                $this->subunits[] = $unit;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            $this->companion[] = $untiID;
+                                        }
+                                    }
+                                    break;
 //                                case('composition.ref'):
 //                                    $compID = $grandchild->getAttribute('unitId');
 //
@@ -554,23 +516,19 @@ class Subordinate extends Element
 //
 //                                        if (!empty($IDinDB))
 //                                        {
-//                                            $filepath = $this->findFile($compID);
+//                                            $filepath = $this->findFile($compID, dirname($this->xmlpath));
 //                                            $parser->load($filepath);
 //
 //                                            // may need to change this code to load the entire file
 //                                            // containing the specified comment
-//                                            $copmositors = $parser->getElementsByTagName('compositor')->item(0);
-//                                            foreach ($copmositors as $comp)
-//                                            {
-//                                                $id = $comp->getAttribute('id');
+//                                           $element = $parser->documentElement;
 //
-//                                                if ($id == $compID)
-//                                                {
-//                                                    $position = $position + 1;
-//                                                    $compositor = new Compositor($this->xmlpath);
-//                                                    $compositor->loadFromXml($comp, $position);
-//                                                    $this->companion[] = $compositor;
-//                                                }
+//                                            if (!empty($element))
+//                                            {
+//                                                $position = $position + 1;
+//                                                $comp = new Compositior(dirname($filepath));
+//                                                $comp->loadFromXml($element, $position);
+//                                                $this->compositions[] = $comp;
 //                                            }
 //                                        }
 //                                        else
@@ -599,6 +557,8 @@ class Subordinate extends Element
                 }
             }
         }
+        
+//        print_object($this->packs);
     }
 
     /**
@@ -651,14 +611,39 @@ class Subordinate extends Element
             $info->saveIntoDb($info->position);
         }
 
+        foreach ($this->packs as $key => $exercise)
+        {
+            $exercise->saveIntoDb($exercise->position);
+        }
+
+        foreach ($this->comments as $key => $comment)
+        {
+            $comment->saveIntoDb($comment->position);
+        }
+
+        foreach ($this->defs as $key => $def)
+        {
+            $def->saveIntoDb($def->position);
+        }
+
+        foreach ($this->theorems as $key => $theorem)
+        {
+            $theorem->saveIntoDb($theorem->position);
+        }
+
+        foreach ($this->subunits as $key => $unit)
+        {
+            $unit->saveIntoDb($unit->position);
+        }
+
+        foreach ($this->compositions as $key => $comp)
+        {
+            $comp->saveIntoDb($comp->position);
+        }
+
         foreach ($this->external_links as $external_link)
         {
             $external_link->saveIntoDb($external_link->position);
-        }
-
-        foreach ($this->companion as $companion)
-        {
-            print_object($companion);
         }
 
         foreach ($this->cites as $cite)
@@ -666,147 +651,6 @@ class Subordinate extends Element
             $cite->saveIntoDb($cite->position);
         }
     }
-
-    function findFile($elementID, $filepath)
-    {
-        echo "path";
-        print_object($filepath);
-
-        $dirOrFiles = scandir($filepath);
-
-        echo "before loop";
-
-        foreach ($dirOrFiles as $key => $file)
-        {
-          
-            echo "in loop";
-            // first two items in the array $dirOrFiles refers to the current and parent directories
-            // which is not useful in this case
-            if ($key > 1)
-            {
-                $ext = explode('.', $file);
-
-                if (sizeof($ext) <= 1) // it's a directory
-                {
-                    echo "in directory";
-                    print_object($filepath . '/' . $ext[0]);
-
-                    $this->findFile($elementID, $filepath . '/' . $ext[0]);
-                }
-                else if ((sizeof($ext) > 1) && ($ext[1] == 'xml'))
-                {
-                    $Domparser = new DOMDocument();
-                    @$Domparser->load($filepath . '/' . $file);
-
-                    $comment = $Domparser->getElementsByTagName('comment')->item(0);
-                    if (!empty($comment))
-                    {
-                        $commentID = $comment->getAttribute('id');
-
-                        if ($commentID == $elementID)
-                        {
-                            $path = $filepath . '/' . $file;
-                            return $path;
-                        }
-                    }
-
-                    $definition = $Domparser->getElementsByTagName('definition')->item(0);
-                    if (!empty($definition))
-                    {
-                        $defID = $def->getAttribute('id');
-
-                        if ($defID == $elementID)
-                        {
-                            $path = $filepath . '/' . $file;
-                            return $path;
-                        }
-                    }
-
-                    $theorem = $Domparser->getElementsByTagName('theorem')->item(0);
-                    if (!empty($theorem))
-                    {
-                        $theoremID = $theorem->getAttribute('id');
-
-                        if ($theoremID == $elementID)
-                        {
-                            $path = $filepath . '/' . $file;
-                            return $path;
-                        }
-                    }
-
-                    $showmepack = $Domparser->getElementsByTagName('showme.pack')->item(0);
-
-                    if (!empty($showmepack))
-                    {
-                        $showmepackID = $showmepack->getAttribute('id');
-
-//                        echo "ID being compared";
-//                        print_object($showmepackID);
-
-                        if ($showmepackID == $elementID)
-                        {
-                            $path = $filepath . '/' . $file;
-
-                            echo "finalpath";
-                            print_object($path);
-                            return $path;
-                        }
-                    }
-
-                    $quizpack = $Domparser->getElementsByTagName('quiz.pack')->item(0);
-                    if (!empty($quizpack))
-                    {
-                        $quizpackID = $quizpack->getAttribute('id');
-
-                        if ($quizpackID == $elementID)
-                        {
-                            $path = $filepath . '/' . $file;
-                            return $path;
-                        }
-                    }
-
-                    $exercisepack = $Domparser->getElementsByTagName('exercise.pack')->item(0);
-                    if (!empty($exercisepack))
-                    {
-                        $exercisepackID = $exercisepack->getAttribute('id');
-
-                        if ($exercisepackID == $elementID)
-                        {
-                            $path = $filepath . '/' . $file;
-                            return $path;
-                        }
-                    }
-
-                    $examplepack = $Domparser->getElementsByTagName('example.pack')->item(0);
-                    if (!empty($examplepack))
-                    {
-                        $examplepackID = $examplepack->getAttribute('id');
-
-                        if ($examplepackID == $elementID)
-                        {
-                            $path = $filepath . '/' . $file;
-                            return $path;
-                        }
-                    }
-
-                    // need to add code for scientist.ref...??
-
-                    $unit = $Domparser->getElementsByTagName('unit')->item(0);
-                    if (!empty($unit))
-                    {
-                        $unitID = $unit->getAttribute('unitId');
-
-                        if ($unitID == $elementID)
-                        {
-                            $path = $filepath . '/' . $file;
-                            return $path;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
 }
 
 ?>

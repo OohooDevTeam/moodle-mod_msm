@@ -95,4 +95,13 @@
          </block.body>
       </block>
    </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="AlternatingMultilinearProperties_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="DeterminantUnique_Thm.xml"/>
+         </block.body>
+      </block>
+   </body>
 </unit>

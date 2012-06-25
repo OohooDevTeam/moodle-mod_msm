@@ -977,7 +977,7 @@
                             <xsl:apply-templates select="thm:caption"/>
                         </xsl:element>
                     </xsl:if>
-                    <xsl:apply-templates select="child::node()[not(name()='caption')]"/>
+                    <xsl:apply-templates select="child::node()[not(name()='caption' or name()='subpage.ref' or name()='chapter.ref' or name()='subsection.ref' or name()='section.ref' or name()='theorem.ref' or name()='comment.ref' or name()='definition.ref' or name()='exercise.pack.ref' or name()='example.pack.ref' or name()='external.ref')]"/>
                 </xsl:element>
             </xsl:if>
         </xsl:element>

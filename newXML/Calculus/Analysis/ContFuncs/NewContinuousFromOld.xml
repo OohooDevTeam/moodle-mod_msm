@@ -77,6 +77,22 @@
          </block.body>
       </block>
    </intro>
+   <body>
+      <block>
+         <block.body>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="SumProdCompContinuous_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="QuotientContinuous_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                        href="RationalFunctionContinuous_Thm.xml"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="PastingLemma_Thm.xml"/>
+            <para>
+               <para.body/>
+            </para>
+         </block.body>
+      </block>
+   </body>
    <studymaterials xmlns="">
       <exercise.pack.ref exercisePackID="Exe_ContinuousFunctionsNewFromOld"/>
    </studymaterials>

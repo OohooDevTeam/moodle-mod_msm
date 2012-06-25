@@ -102,7 +102,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_InfSupRecognize"/>
                         <info>
-                           <theorem.ref theoremID="Thm_InfSupRecognize"/>
                            <para>
                               <para.body>Look up the lemma which implies this property.</para.body>
                            </para>

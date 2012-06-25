@@ -553,6 +553,10 @@
                </block.body>
             </block>
          </body>
+         <studymaterials xmlns="">
+            <example.pack.ref examplePackID="Exa_PositionVectors"/>
+            <exercise.pack.ref exercisePackID="Exe_VectorsArrows"/>
+         </studymaterials>
       </unit>
    </legitimate.children>
 </unit>

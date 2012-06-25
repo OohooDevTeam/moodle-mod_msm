@@ -70,7 +70,6 @@
                                  <crossref>
                                     <theorem.ref theoremID="Thm_ROrderingProperties"/>
                                     <info>
-                                       <theorem.ref theoremID="Thm_ROrderingProperties"/>
                                        <para>
                                           <para.body>Look up this result.</para.body>
                                        </para>
@@ -99,7 +98,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_ROrderingProperties"/>
                         <info>
-                           <theorem.ref theoremID="Thm_ROrderingProperties"/>
                            <para>
                               <para.body>We proved earlier that <math>
                                     <latex>  u^2 &gt; 0 </latex>

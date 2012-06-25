@@ -99,6 +99,12 @@
                </block.body>
             </block>
          </body>
+         <studymaterials xmlns="">
+            <example.pack.ref examplePackID="Exa_AddingVectors"/>
+            <para xmlns="Unit">
+               <para.body>When adding vectors, we just add coordinates in matching positions. – Here are some examples.</para.body>
+            </para>
+         </studymaterials>
       </unit>
       <unit unitid="SubSec_ScalarMultiplicationVector">
          <titles>
@@ -259,6 +265,11 @@
                </block.body>
             </block>
          </body>
+         <studymaterials xmlns="">
+            <exercise.pack.ref exercisePackID="Exe_VectorAddition"/>
+            <exercise.pack.ref exercisePackID="Exe_VectorsScalarMultiply"/>
+            <exercise.pack.ref exercisePackID="Exe_VectorsAddScalarMultiply"/>
+         </studymaterials>
       </unit>
    </legitimate.children>
 </unit>

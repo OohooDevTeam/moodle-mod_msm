@@ -56,7 +56,6 @@ n &amp; = &amp; \Rnk{ \Mtrx{ A } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
                      <crossref>
                         <theorem.ref theoremID="Thm_BasisNullSpace"/>
                         <info>
-                           <theorem.ref theoremID="Thm_BasisNullSpace"/>
                            <para>
                               <para.body>Look up this theorem.</para.body>
                            </para>
@@ -68,7 +67,6 @@ n &amp; = &amp; \Rnk{ \Mtrx{ A } } + \Dim{ \NllSp{ \Mtrx{ A } } } \\
                      <crossref>
                         <theorem.ref theoremID="Thm_BasisRowColumnSpace"/>
                         <info>
-                           <theorem.ref theoremID="Thm_BasisRowColumnSpace"/>
                            <para>
                               <para.body>Look up this theorem.</para.body>
                            </para>

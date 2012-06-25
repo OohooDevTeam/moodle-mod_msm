@@ -569,16 +569,16 @@ class Unit extends Element
 //        }
 //
 //        // add recordID to compositor to make accessories element
-//        foreach ($this->studyexamples as $studyexamplepack)
-//        {
-//            $examplepackRecordID = $this->checkForRecord($studyexamplepack);
-//
-//            if (empty($examplepackRecordID))
-//            {
-//                $studyexamplepack->saveIntoDb($studyexamplepack->position);
-//                $examplepackRecordID = $studyexamplepack->id;
-//            }
-//        }
+        foreach ($this->studyexamples as $studyexamplepack)
+        {
+            $examplepackRecordID = $this->checkForRecord($studyexamplepack);
+
+            if (empty($examplepackRecordID))
+            {
+                $studyexamplepack->saveIntoDb($studyexamplepack->position);
+                $examplepackRecordID = $studyexamplepack->id;
+            }
+        }
 //        $compositorData = new stdClass();
 //        $compositorData->unit_id = $this->id;
 //

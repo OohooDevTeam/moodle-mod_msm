@@ -29,7 +29,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
                         <info>
-                           <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
                            <para>
                               <para.body>Look up these algebraic properties of the determinant operation</para.body>
                            </para>

@@ -125,7 +125,7 @@ class Definition extends Element
         {
             $this->id = $DB->insert_record($this->tablename, $data);
         }
-
+        
         foreach ($this->associates as $key => $associate)
         {
             $associate->saveIntoDb($associate->position);

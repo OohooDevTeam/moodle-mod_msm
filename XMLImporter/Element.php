@@ -62,7 +62,7 @@ abstract class Element
     function checkForRecord($DomElement, $propertyName = '')
     {
         global $DB;
-        
+
         if (property_exists(get_class($DomElement), 'string_id'))
         {
             if (!empty($DomElement->string_id))
@@ -329,6 +329,86 @@ abstract class Element
             $arrayOfIndexSymbol[] = $indexsymbol;
         }
         return $arrayOfIndexSymbol;
+    }
+
+    function findFile($elementID, $filepath)
+    {
+//        echo "path";
+//        print_object($filepath);
+
+        $dirOrFiles = scandir($filepath);
+
+//        echo "before loop";
+
+        foreach ($dirOrFiles as $key => $file)
+        {
+//            echo "in loop";
+            // first two items in the array $dirOrFiles refers to the current and parent directories
+            // which is not useful in this case
+            if ($key > 1)
+            {
+//                echo "file";
+//                print_object($file);
+                $ext = explode('.', $file);
+
+                if (sizeof($ext) <= 1) // it's a directory
+                {
+//                    echo "in directory";
+//                    print_object($filepath . '/' . $ext[0]);
+
+                    $inputpath = $filepath . '/' . $file;
+                    $path = $this->findFile($elementID, $inputpath);
+
+                }
+                else if ((sizeof($ext) > 1) && ($ext[1] == 'xml'))
+                {
+                    $Domparser = new DOMDocument();
+                    @$Domparser->load($filepath . '/' . $file);
+
+                    $element = $Domparser->documentElement;
+                    
+//                    echo "filepath of xml file";
+//                    print_object($filepath . '/' . $file);
+
+                    $parsedID = $element->getAttribute('id');
+                    
+//                    echo "ID's";
+//                    print_object($parsedID);
+//                    print_object($elementID);
+
+                    if ($parsedID == $elementID)
+                    {
+//                        echo "matched";
+                        $path = $filepath . '/' . $file;
+                        return $path;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                else if ((sizeof($ext) > 1) && ($ext[1] != 'xml'))
+                {
+                   continue;
+                }
+            }
+            if(!empty($path))
+            {
+                return $path;
+            }
+        }
+
+
+        // base case where no match is found at the end of loop
+        if (empty($path))
+        {
+            return null;
+        }
+        else
+        {
+            echo "path returned";
+            return $path;
+        }
     }
 
     // abstract method that is implemented by each class 

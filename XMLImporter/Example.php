@@ -114,6 +114,8 @@ class Example extends Element
             $answerext->loadFromXml($ax, $position);
             $this->answer_exts[] = $answerext;
         }
+        
+        
     }
 
     function saveIntoDb($position)
@@ -148,7 +150,7 @@ class Example extends Element
         {
             $part_example->saveIntoDb($part_example->position);
         }
-        
+       
         foreach($this->answer_exts as $ans_ext)
         {
             $ans_ext->saveIntoDb($ans_ext->position);

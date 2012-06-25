@@ -88,7 +88,6 @@ a_{n1} &amp; \dots &amp; a_{nj-1} &amp; a_{nj} &amp; a_{nj+1} &amp; \dots &amp; 
                      <crossref>
                         <theorem.ref theoremID="Thm_MatrixEqsLinearEqs"/>
                         <info>
-                           <theorem.ref theoremID="Thm_MatrixEqsLinearEqs"/>
                            <para>
                               <para.body>Look this theorem up</para.body>
                            </para>

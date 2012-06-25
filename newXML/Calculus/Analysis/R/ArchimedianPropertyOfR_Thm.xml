@@ -53,7 +53,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_InfSupRecognize"/>
                         <info>
-                           <theorem.ref theoremID="Thm_InfSupRecognize"/>
                            <para>
                               <para.body>Look up this recognition criterion</para.body>
                            </para>
@@ -74,7 +73,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
                         <info>
-                           <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
                            <para>
                               <para.body>Here we use that <math>
                                     <latex>\NNr</latex>
@@ -93,7 +91,6 @@
                      <crossref>
                         <theorem.ref theoremID="Thm_ROrderingProperties"/>
                         <info>
-                           <theorem.ref theoremID="Thm_ROrderingProperties"/>
                            <para>
                               <para.body>Look up this fact</para.body>
                            </para>
