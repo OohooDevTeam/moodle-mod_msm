@@ -69,11 +69,7 @@ class Table extends Element
     }
 
     function saveIntoDb($position)
-    {
-//        echo "table save start";
-//        $time = time();
-//        print_object($time);
-        
+    {        
         global $DB;
         $data = new stdClass();
         $data->string_id = $this->string_id;

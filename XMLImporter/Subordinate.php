@@ -89,8 +89,6 @@ class Subordinate extends Element
                                             {
                                                 @$parser->load($filepath);
 
-                                                // may need to change this code to load the entire file
-                                                // containing the specified comment
                                                 $element = $parser->documentElement;
 
                                                 if (!empty($element))
@@ -126,9 +124,7 @@ class Subordinate extends Element
                                             if (!empty($filepath))
                                             {
                                                 @$parser->load($filepath);
-
-                                                // may need to change this code to load the entire file
-                                                // containing the specified comment
+                                                
                                                 $element = $parser->documentElement;
 
                                                 if (!empty($element))
@@ -146,7 +142,7 @@ class Subordinate extends Element
                                         }
                                     }
                                     break;
-//                                    
+                                    
                                 case('theorem.ref'):
                                     $theoremrefID = $grandchild->getAttribute('theoremID');
 
@@ -162,8 +158,6 @@ class Subordinate extends Element
                                             {
                                                 @$parser->load($filepath);
 
-                                                // may need to change this code to load the entire file
-                                                // containing the specified comment
                                                 $element = $parser->documentElement;
 
                                                 if (!empty($element))
@@ -196,13 +190,8 @@ class Subordinate extends Element
 
                                             if (!empty($filepath))
                                             {
-//                                                echo "filepath";
-//                                                print_object($filepath);
-
                                                 @$parser->load($filepath);
-
-                                                // may need to change this code to load the entire file
-                                                // containing the specified comment
+                                                
                                                 $element = $parser->documentElement;
 
                                                 if (!empty($element))
@@ -216,13 +205,13 @@ class Subordinate extends Element
                                         }
                                         else
                                         {
-//                                            echo "found in db";
+                                            echo "found in db";
                                             $this->companion[] = $showmepackrefID;
                                         }
                                     }
 
                                     break;
-//
+
                                 case('quiz.pack.ref'):
                                     $quizpackID = $grandchild->getAttribute('quizPackID');
 
@@ -234,9 +223,7 @@ class Subordinate extends Element
                                         {
                                             $filepath = $this->findFile($quizpackID, dirname($this->xmlpath));
                                             @$parser->load($filepath);
-
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
+                                            
                                             $element = $parser->documentElement;
 
                                             if (!empty($element))
@@ -253,7 +240,7 @@ class Subordinate extends Element
                                         }
                                     }
                                     break;
-//
+
                                 case('unit.ref'):
                                     $untiID = $grandchild->getAttribute('unitId');
 
@@ -267,9 +254,7 @@ class Subordinate extends Element
                                             if (!empty($filepath))
                                             {
                                                 @$parser->load($filepath);
-
-                                                // may need to change this code to load the entire file
-                                                // containing the specified comment
+                                                
                                                 $element = $parser->documentElement;
 
                                                 if (!empty($element))
@@ -288,7 +273,7 @@ class Subordinate extends Element
                                     }
                                     break;
                             }
-//               
+               
                         }
                     }
                 }
@@ -352,9 +337,7 @@ class Subordinate extends Element
                                             if (!empty($filepath))
                                             {
                                                 $parser->load($filepath);
-
-                                                // may need to change this code to load the entire file
-                                                // containing the specified comment
+                                                
                                                 $element = $parser->documentElement;
 
                                                 if (!empty($element))
@@ -372,7 +355,7 @@ class Subordinate extends Element
                                         }
                                     }
                                     break;
-//
+
                                 case('theorem.ref'):
                                     $theoremrefID = $grandchild->getAttribute('theoremID');
 
@@ -387,9 +370,7 @@ class Subordinate extends Element
                                             if (!empty($filepath))
                                             {
                                                 $parser->load($filepath);
-
-                                                // may need to change this code to load the entire file
-                                                // containing the specified comment
+                                                
                                                 $element = $parser->documentElement;
 
                                                 if (!empty($element))
@@ -419,9 +400,7 @@ class Subordinate extends Element
                                         {
                                             $filepath = $this->findFile($exercisePackID, dirname($this->xmlpath));
                                             @$parser->load($filepath);
-
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
+                                            
                                             $element = $parser->documentElement;
 
                                             if (!empty($element))
@@ -442,9 +421,6 @@ class Subordinate extends Element
                                 case('example.pack.ref'):
                                     $examplepackID = $grandchild->getAttribute('examplePackID');
 
-//                                    echo "example?";
-//                                    print_object($examplepackID);
-
                                     if (!empty($examplepackID))
                                     {
                                         $IDinDB = $DB->get_record('msm_packs', array('string_id' => $examplepackID));
@@ -452,14 +428,8 @@ class Subordinate extends Element
                                         if (empty($IDinDB))
                                         {
                                             $filepath = $this->findFile($examplepackID, dirname($this->xmlpath));
-
-//                                            echo "filepath";
-//                                            print_object($filepath);
-
                                             @$parser->load($filepath);
 
-                                            // may need to change this code to load the entire file
-                                            // containing the specified comment
                                             $element = $parser->documentElement;
 
                                             if (!empty($element))
@@ -476,7 +446,7 @@ class Subordinate extends Element
                                         }
                                     }
                                     break;
-//
+
                                 case('unit.ref'):
                                     $untiID = $grandchild->getAttribute('unitId');
 
@@ -557,8 +527,6 @@ class Subordinate extends Element
                 }
             }
         }
-
-//        print_object($this->packs);
     }
 
     /**
@@ -568,10 +536,6 @@ class Subordinate extends Element
      */
     function saveIntoDb($position)
     {
-//        echo "subordinate save start";
-//        $time = time();
-//        print_object($time);
-
         global $DB;
 
         $data = new stdClass();

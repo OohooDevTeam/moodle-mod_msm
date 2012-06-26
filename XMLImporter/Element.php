@@ -331,34 +331,28 @@ abstract class Element
         return $arrayOfIndexSymbol;
     }
 
+    /**
+     *
+     * @param DOMElement $elementID
+     * @param String $filepath
+     * @return string|null 
+     */
     function findFile($elementID, $filepath)
     {
-//        echo "path";
-//        print_object($filepath);
-
         $dirOrFiles = scandir($filepath);
-
-//        echo "before loop";
 
         foreach ($dirOrFiles as $key => $file)
         {
-//            echo "in loop";
             // first two items in the array $dirOrFiles refers to the current and parent directories
             // which is not useful in this case
             if ($key > 1)
             {
-//                echo "file";
-//                print_object($file);
                 $ext = explode('.', $file);
 
                 if (sizeof($ext) <= 1) // it's a directory
                 {
-//                    echo "in directory";
-//                    print_object($filepath . '/' . $ext[0]);
-
                     $inputpath = $filepath . '/' . $file;
                     $path = $this->findFile($elementID, $inputpath);
-
                 }
                 else if ((sizeof($ext) > 1) && ($ext[1] == 'xml'))
                 {
@@ -366,19 +360,11 @@ abstract class Element
                     @$Domparser->load($filepath . '/' . $file);
 
                     $element = $Domparser->documentElement;
-                    
-//                    echo "filepath of xml file";
-//                    print_object($filepath . '/' . $file);
 
                     $parsedID = $element->getAttribute('id');
-                    
-//                    echo "ID's";
-//                    print_object($parsedID);
-//                    print_object($elementID);
 
                     if ($parsedID == $elementID)
                     {
-//                        echo "matched";
                         $path = $filepath . '/' . $file;
                         return $path;
                     }
@@ -389,15 +375,14 @@ abstract class Element
                 }
                 else if ((sizeof($ext) > 1) && ($ext[1] != 'xml'))
                 {
-                   continue;
+                    continue;
                 }
             }
-            if(!empty($path))
+            if (!empty($path))
             {
                 return $path;
             }
         }
-
 
         // base case where no match is found at the end of loop
         if (empty($path))
@@ -406,7 +391,6 @@ abstract class Element
         }
         else
         {
-            echo "path returned";
             return $path;
         }
     }
@@ -416,17 +400,6 @@ abstract class Element
     // database table
     // abstract function saveIntoDb($position);
 
-    /* The method is used to process strings in content to convert them to
-     * corresonding HTML elements, to allow conversion of math symbols by mathjax, or to 
-     * insert the proper path for images.
-     * 
-     * The $content is passed to be processed and $DomElement and $xmlpath are needed to
-     * create the correct pathing of the images.
-     * 
-     * @param string $content
-     * @param DOMElement $DomElement
-     * @param string $xmlpath
-     */
 }
 
 ?>

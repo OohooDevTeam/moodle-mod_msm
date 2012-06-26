@@ -42,8 +42,6 @@ class Pilot extends Element
 
         if (!empty($pilot_bodys))
         {
-            $doc = new DOMDocument();
-
             foreach ($pilot_bodys as $pib)
             {
                 foreach ($this->processIndexAuthor($pib, $position) as $indexauthor)
@@ -80,10 +78,6 @@ class Pilot extends Element
 
     function saveIntoDb($position)
     {
-//        echo "pilot save start";
-//        $time = time();
-//        print_object($time);
-
         global $DB;
         $data = new stdClass();
 

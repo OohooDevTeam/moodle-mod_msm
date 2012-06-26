@@ -44,8 +44,6 @@ class Definition extends Element
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
 
         $this->associates = array();
-
-        //$this->content = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -99,12 +97,13 @@ class Definition extends Element
         }
     }
 
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
     function saveIntoDb($position)
-    {       
-//          echo "definition save start";
-//        $time = time();
-//        print_object($time);
-        
+    { 
         global $DB;
 
         $data->def_type = $this->type;

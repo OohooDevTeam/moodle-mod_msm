@@ -118,11 +118,7 @@ class Item extends Element
      * @param int $position 
      */
     function saveIntoDb($position)
-    {
-//        echo "item save start";
-//        $time = time();
-//        print_object($time);
-        
+    {        
         global $DB;
         $data = new stdClass();
 

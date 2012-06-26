@@ -61,7 +61,7 @@ class Exercise extends Element
                         $this->approachs[] = $approach;
                         break;
 
-                    case('apporach.ext'):
+                    case('approach.ext'):
                         $position = $position + 1;
                         $approach_ext = new ApproachExt($this->xmlpath);
                         $approach_ext->loadFromXml($child, $position);

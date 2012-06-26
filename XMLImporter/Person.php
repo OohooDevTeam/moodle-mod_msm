@@ -78,11 +78,7 @@ class Person extends Element
      * @param String $type 
      */
     function saveIntoDb($position, $type)
-    {
-//        echo "person save start";
-//        $time = time();
-//        print_object($time);
-        
+    {        
         global $DB;
 
         $data = new stdClass();

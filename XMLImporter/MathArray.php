@@ -73,12 +73,13 @@ class MathArray extends Element
         }
     }
 
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
     function saveIntoDb($position)
-    {
-//        echo "matharray save start";
-//        $time = time();
-//        print_object($time);
-        
+    {        
         global $DB;
         $data = new stdClass();
         $data->string_id = $this->string_id;

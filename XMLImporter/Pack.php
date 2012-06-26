@@ -148,9 +148,6 @@ class Pack extends Element
                 $this->quizs[] = $quiz;
             }
         }
-
-//        echo "exercises";
-//        print_object($this->exercises);
     }
 
     /**
@@ -160,10 +157,6 @@ class Pack extends Element
      */
     function saveIntoDb($position)
     {
-//        echo "pack save start";
-//        $time = time();
-//        print_object($time);
-
         global $DB;
         $data = new stdClass();
 

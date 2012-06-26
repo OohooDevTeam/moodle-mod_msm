@@ -34,25 +34,24 @@ class Step extends Element
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
         $this->partref = $DomElement->getAttribute('partref');
-        
+
         $this->pilots = array();
-        $pilots = $DomElement->getElementsByTagName('pilot');        
-        foreach($pilots as $p)
+        $pilots = $DomElement->getElementsByTagName('pilot');
+        foreach ($pilots as $p)
         {
-            $position = $position+1;
+            $position = $position + 1;
             $pilot = new Pilot($this->xmlpath);
             $pilot->loadFromXml($p, $position);
             $this->pilots[] = $pilot;
         }
-        
+
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
-//        $this->content = array();
 
         $step_bodys = $DomElement->getElementsByTagName('step.body');
-        
+
         foreach ($step_bodys as $stb)
         {
             foreach ($this->processIndexAuthor($stb, $position) as $indexauthor)
@@ -80,39 +79,22 @@ class Step extends Element
             }
         }
     }
-    
+
     function saveIntoDb($position)
     {
-//        echo "step save start";
-//        $time = time();
-//        print_object($time);
-        
         global $DB;
         $data = new stdClass();
-        
+
         $data->partref = $this->partref;
         $data->caption = $this->caption;
-        
-//        if(!empty($this->content))
-//        {
-//            foreach($this->content as $content)
-//            {
-                 $data->step_content = $this->content;
-                 $this->id = $DB->insert_record($this->tablename, $data);
-//            }
-//        }
-//        else
-//        {
-//            $this->id = $DB->insert_record($this->tablename, $data);
-//        }
-//       
-        
-        
-        
-       foreach($this->pilots as $pilot)
-       {
-           $pilot->saveIntoDb($pilot->position);
-       }
+
+        $data->step_content = $this->content;
+        $this->id = $DB->insert_record($this->tablename, $data);
+
+        foreach ($this->pilots as $pilot)
+        {
+            $pilot->saveIntoDb($pilot->position);
+        }
 
         foreach ($this->subordinates as $key => $subordinate)
         {

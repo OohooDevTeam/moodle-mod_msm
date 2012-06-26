@@ -44,12 +44,13 @@ class ExternalLink extends Element
         }
     }
     
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
     function saveIntoDb($position)
-    {
-//        echo "externallink save start";
-//        $time = time();
-//        print_object($time);
-        
+    {        
         global $DB;
         $data = new stdClass();
         $data->href = $this->href;

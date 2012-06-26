@@ -38,8 +38,6 @@ class Solution extends Element
 
         $body = $DomElement->getElementsByTagName('solution.body')->item(0);
 
-//        foreach ($bodys as $b)
-//        {
         foreach ($this->processIndexAuthor($body, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
@@ -69,15 +67,10 @@ class Solution extends Element
             $this->content .= $content;
         }
 
-//        }
     }
 
     function saveIntoDb($position)
-    {
-//        echo "solution save start";
-//        $time = time();
-//        print_object($time);
-        
+    {        
         global $DB;
         $data = new stdClass();
 

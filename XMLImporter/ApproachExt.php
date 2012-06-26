@@ -60,26 +60,15 @@ class ApproachExt extends Element
                 }
             }
         }
-//        $answer_exercises = $DomElement->getElementsByTagName('answer.exercise');
-//        foreach ($answer_exercises as $ae)
-//        {
-//            
-//        }
-//
-//       
-//        $solution_exts = $DomElement->getElementsByTagName('solution.ext');
-//        foreach ($solution_exts as $se)
-//        {
-//            
-//        }
     }
 
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
     function saveIntoDb($position)
     {
-//         echo "approachext save start";
-//        $time = time();
-//        print_object($time);
-
         global $DB;
         $data = new stdClass();
 

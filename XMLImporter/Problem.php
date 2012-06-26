@@ -39,13 +39,8 @@ class Problem extends Element
 
         $this->medias = array();
 
-        //$this->content = array();
-
         $problembody = $DomElement->getElementsByTagName('problem.body')->item(0);
-        $doc = new DOMDocument();
-//
-//        foreach ($problembodys as $prob)
-//        {
+        
         foreach ($this->processIndexAuthor($problembody, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
@@ -74,15 +69,10 @@ class Problem extends Element
         {
             $this->content .= $content;
         }
-//        }
     }
 
     function saveIntoDb($position)
     {
-//        echo "problem save start";
-//        $time = time();
-//        print_object($time);
-        
         global $DB;
         $data = new stdClass();
 

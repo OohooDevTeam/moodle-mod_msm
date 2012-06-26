@@ -108,11 +108,7 @@ class PartQuiz extends Element
      * @param String $textcaption 
      */
     function saveIntoDb($position, $stringid = '', $caption = '', $textcaption = '')
-    {
-//        echo "partquiz save start";
-//        $time = time();
-//        print_object($time);
-        
+    {        
         global $DB;
         $data = new stdClass();
         $data->string_id = $stringid;

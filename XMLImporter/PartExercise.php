@@ -68,34 +68,10 @@ class PartExercise extends Element
                 }
             }
         }
-        
-        print_object($this->approach_exts);
-
-//        $problems = $DomElement->getElementsByTagName('problem');
-//        foreach ($problems as $p)
-//        {
-//            
-//        }
-//
-//        $approachs = $DomElement->getElementsByTagName('approach');
-//        foreach ($approachs as $a)
-//        {
-//            
-//        }
-//
-//        $approach_exts = $DomElement->getElementsByTagName('approach.ext');
-//        foreach ($approach_exts as $ae)
-//        {
-//            
-//        }
     }
 
     function saveIntoDb($position)
     {
-//        echo "partexercise save start";
-//        $time = time();
-//        print_object($time);
-
         global $DB;
         $data = new stdClass();
 

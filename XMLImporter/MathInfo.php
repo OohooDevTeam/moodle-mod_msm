@@ -82,12 +82,13 @@ class MathInfo extends Element
         }
     }
 
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
     function saveIntoDb($position)
-    {
-//        echo "mathinfo save start";
-//        $time = time();
-//        print_object($time);
-        
+    {        
         global $DB;
 
         $data = new stdClass();
