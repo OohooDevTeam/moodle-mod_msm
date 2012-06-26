@@ -151,15 +151,23 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         $unit = new Unit(dirname(__FILE__) . '/newXML/LinearAlgebraRn/', $parser);
         //$book = new Book(dirname(__FILE__).'/../xml/Calculus/', $parser);
         $position = 1;
+       
         $unit->loadFromXml($parser->documentElement, $position);
+        $unit->saveIntoDb($unit->position);
+        
+        
+        
+        //inserting the top element unit
+        $data = new stdClass();
+        $data->unit_id = $unit->id;
+        $data->table_id = $DB->get_record('msm_table_collection', array('tablename'=>'msm_unit'))->id;
+        $data->parent_id = null;
+        $data->prev_sibling_id = null;
+        
+        $id = $DB->insert_record('msm_compositor', $data);
 
-//        echo "done";
-//        die;
-
-        $id = $unit->saveIntoDb($unit->position);
-
-//        $compositor = new Compositor();
-//        $compositor->loadFromUnit($unit);
+        $compositor = new Compositor();
+        $compositor->loadFromUnit($unit);
     }
 
     echo "done";
