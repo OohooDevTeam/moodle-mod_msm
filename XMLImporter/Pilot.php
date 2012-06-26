@@ -83,12 +83,16 @@ class Pilot extends Element
 //        echo "pilot save start";
 //        $time = time();
 //        print_object($time);
-        
+
         global $DB;
         $data = new stdClass();
-        $data->pilot_content = $this->pilot_content;
 
-        $this->id = $DB->insert_record($this->tablename, $data);
+        if (!empty($this->pilot_content))
+        {
+            $data->pilot_content = $this->pilot_content;
+
+            $this->id = $DB->insert_record($this->tablename, $data);
+        }
     }
 
 }

@@ -35,24 +35,43 @@ class ApproachExt extends Element
         $this->ext_name = $DomElement->tagName;
 
         $this->answer_exercises = array();
-        $answer_exercises = $DomElement->getElementsByTagName('answer.exercise');
-        foreach ($answer_exercises as $ae)
-        {
-            $position = $position + 1;
-            $answer_exercise = new AnswerExercise($this->xmlpath);
-            $answer_exercise->loadFromXml($ae, $position);
-            $this->answer_exercises[] = $answer_exercise;
-        }
-
         $this->solution_exts = array();
-        $solution_exts = $DomElement->getElementsByTagName('solution.ext');
-        foreach ($solution_exts as $se)
+
+        foreach ($DomElement->childNodes as $child)
         {
-            $position = $position + 1;
-            $solution_ext = new SolutionExt($this->xmlpath);
-            $solution_ext->loadFromXml($se, $position);
-            $this->solution_exts[] = $solution_ext;
+            if ($child->nodeType == XML_ELEMENT_NODE)
+            {
+                $name = $child->tagName;
+
+                switch ($name)
+                {
+                    case('answer.exercise'):
+                        $position = $position + 1;
+                        $answer_exercise = new AnswerExercise($this->xmlpath);
+                        $answer_exercise->loadFromXml($child, $position);
+                        $this->answer_exercises[] = $answer_exercise;
+                        break;
+                    case('solution.ext'):
+                        $position = $position + 1;
+                        $solution_ext = new SolutionExt($this->xmlpath);
+                        $solution_ext->loadFromXml($child, $position);
+                        $this->solution_exts[] = $solution_ext;
+                        break;
+                }
+            }
         }
+//        $answer_exercises = $DomElement->getElementsByTagName('answer.exercise');
+//        foreach ($answer_exercises as $ae)
+//        {
+//            
+//        }
+//
+//       
+//        $solution_exts = $DomElement->getElementsByTagName('solution.ext');
+//        foreach ($solution_exts as $se)
+//        {
+//            
+//        }
     }
 
     function saveIntoDb($position)
@@ -60,7 +79,7 @@ class ApproachExt extends Element
 //         echo "approachext save start";
 //        $time = time();
 //        print_object($time);
-        
+
         global $DB;
         $data = new stdClass();
 

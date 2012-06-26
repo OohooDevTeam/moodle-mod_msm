@@ -432,21 +432,25 @@ x &amp;  &amp;  &amp; - &amp; z &amp; = &amp; 1 \\
 			         </problem.body>
          </problem>
 			      <approach.ext version="1">
-				        <answer>
-					          <para>
-                  <para.body>The simultaneous solutions of this system of three linear equations in three variables are given by all vectors of the form</para.body>
-               </para>
-					          <math.display>
-						            <latex>(z+1,0,z)\ =\ (1,0,0)\ +\ z\cdot (1,0,1)</latex>
-					          </math.display>
-					          <para>
-                  <para.body>Thus the solutions form the line through <math>
-                        <latex>(1,0,0)</latex>
-                     </math> in the direction of <math>
-                        <latex>(1,0,1)</latex>
-                     </math>.</para.body>
-               </para>
-				        </answer>
+				        <answer.exercise>
+               <answer.exercise.block>
+                  <answer.exercise.block.body>
+					                <para>
+                        <para.body>The simultaneous solutions of this system of three linear equations in three variables are given by all vectors of the form</para.body>
+                     </para>
+					                <math.display>
+						                  <latex>(z+1,0,z)\ =\ (1,0,0)\ +\ z\cdot (1,0,1)</latex>
+					                </math.display>
+					                <para>
+                        <para.body>Thus the solutions form the line through <math>
+                              <latex>(1,0,0)</latex>
+                           </math> in the direction of <math>
+                              <latex>(1,0,1)</latex>
+                           </math>.</para.body>
+                     </para>
+				              </answer.exercise.block.body>
+               </answer.exercise.block>
+            </answer.exercise>
 				        <solution.ext>
 					          <step>
                   <pilot>

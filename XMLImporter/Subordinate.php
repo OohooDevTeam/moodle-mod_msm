@@ -441,7 +441,7 @@ class Subordinate extends Element
 
                                 case('example.pack.ref'):
                                     $examplepackID = $grandchild->getAttribute('examplePackID');
-                                    
+
 //                                    echo "example?";
 //                                    print_object($examplepackID);
 
@@ -452,10 +452,10 @@ class Subordinate extends Element
                                         if (empty($IDinDB))
                                         {
                                             $filepath = $this->findFile($examplepackID, dirname($this->xmlpath));
-                                            
+
 //                                            echo "filepath";
 //                                            print_object($filepath);
-                                            
+
                                             @$parser->load($filepath);
 
                                             // may need to change this code to load the entire file
@@ -491,7 +491,7 @@ class Subordinate extends Element
 
                                             // may need to change this code to load the entire file
                                             // containing the specified comment
-                                           $element = $parser->documentElement;
+                                            $element = $parser->documentElement;
 
                                             if (!empty($element))
                                             {
@@ -557,7 +557,7 @@ class Subordinate extends Element
                 }
             }
         }
-        
+
 //        print_object($this->packs);
     }
 
@@ -613,7 +613,12 @@ class Subordinate extends Element
 
         foreach ($this->packs as $key => $exercise)
         {
-            $exercise->saveIntoDb($exercise->position);
+            $packsID = $this->checkForRecord($exercise);
+
+            if (empty($packsID))
+            {
+                $exercise->saveIntoDb($exercise->position);
+            }
         }
 
         foreach ($this->comments as $key => $comment)
@@ -623,17 +628,32 @@ class Subordinate extends Element
 
         foreach ($this->defs as $key => $def)
         {
-            $def->saveIntoDb($def->position);
+            $defID = $this->checkForRecord($def);
+
+            if (empty($defID))
+            {
+                $def->saveIntoDb($def->position);
+            }
         }
 
         foreach ($this->theorems as $key => $theorem)
         {
-            $theorem->saveIntoDb($theorem->position);
+            $theoremID = $this->checkForRecord($theorem);
+
+            if (empty($theoremID))
+            {
+                $theorem->saveIntoDb($theorem->position);
+            }
         }
 
         foreach ($this->subunits as $key => $unit)
         {
-            $unit->saveIntoDb($unit->position);
+            $unitID = $this->checkForRecord($unit);
+
+            if (empty($unitID))
+            {
+                $unit->saveIntoDb($unit->position);
+            }
         }
 
         foreach ($this->compositions as $key => $comp)
@@ -651,6 +671,7 @@ class Subordinate extends Element
             $cite->saveIntoDb($cite->position);
         }
     }
+
 }
 
 ?>

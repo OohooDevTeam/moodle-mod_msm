@@ -451,7 +451,7 @@ class Unit extends Element
 //        echo "unit save start";
 //        $time = time();
 //        print_object($time);
-        
+
         global $DB;
         $exercisepackRecordID = 0;
         $examplepackRecordID = 0;
@@ -524,50 +524,60 @@ class Unit extends Element
             }
         }
 
-//        foreach ($this->exercisepacks as $key => $exercise)
-//        {
-//            $exercisepackRecordID = $this->checkForRecord($exercise);
-//
-//            if (empty($exercisepackRecordID))
-//            {
-//                $exercise->saveIntoDb($exercise->position);
-//                $exercisepackRecordID = $exercise->id;
-//            }
-//        }
-//
-//        foreach ($this->examplepacks as $key => $example)
-//        {
-//            $examplepackRecordID = $this->checkForRecord($example);
-//
-//            if (empty($examplepackRecordID))
-//            {
-//                $example->saveIntoDb($example->position);
-//                $examplepackRecordID = $example->id;
-//            }
-//        }
-//
-//        foreach ($this->showmepacks as $key => $showme)
-//        {
-//            $showme->saveIntoDb($showme->position);
-//        }
-//
-//        foreach ($this->quizpacks as $key => $quiz)
-//        {
-//            $quiz->saveIntoDb($quiz->position);
-//        }
-//
-//        // add recordID to compositor to make accessories element
-//        foreach ($this->studyexercises as $studyexercisepack)
-//        {
-//            $exercisepackRecordID = $this->checkForRecord($studyexercisepack);
-//
-//           if (empty($exercisepackRecordID))
-//            {
-//                $studyexercisepack->saveIntoDb($studyexercisepack->position);
-//                $exercisepackRecordID = $studyexercisepack->id;
-//            }
-//        }
-//
+        foreach ($this->exercisepacks as $key => $exercise)
+        {
+            $exercisepackRecordID = $this->checkForRecord($exercise);
+
+            if (empty($exercisepackRecordID))
+            {
+                $exercise->saveIntoDb($exercise->position);
+                $exercisepackRecordID = $exercise->id;
+            }
+        }
+
+        foreach ($this->examplepacks as $key => $example)
+        {
+            $examplepackRecordID = $this->checkForRecord($example);
+
+            if (empty($examplepackRecordID))
+            {
+                $example->saveIntoDb($example->position);
+                $examplepackRecordID = $example->id;
+            }
+        }
+
+        foreach ($this->showmepacks as $key => $showme)
+        {
+            $showmepackID = $this->checkForRecord($showme);
+
+            if (empty($showmepackID))
+            {
+                $showme->saveIntoDb($showme->position);
+            }
+        }
+
+        foreach ($this->quizpacks as $key => $quiz)
+        {
+            $quizpackID = $this->checkForRecord($quiz);
+
+            if (empty($quizpackID))
+            {
+                $quiz->saveIntoDb($quiz->position);
+            }
+        }
+
+        // add recordID to compositor to make accessories element
+        foreach ($this->studyexercises as $studyexercisepack)
+        {
+            $exercisepackRecordID = $this->checkForRecord($studyexercisepack);
+
+            if (empty($exercisepackRecordID))
+            {
+                $studyexercisepack->saveIntoDb($studyexercisepack->position);
+                $exercisepackRecordID = $studyexercisepack->id;
+            }
+        }
+
 //        // add recordID to compositor to make accessories element
         foreach ($this->studyexamples as $studyexamplepack)
         {

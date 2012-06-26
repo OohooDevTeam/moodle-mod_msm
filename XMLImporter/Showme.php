@@ -14,6 +14,7 @@ class Showme extends Element
 {
 
     public $position;
+    public $statements;
 
     function __construct($xmlpath = '')
     {
@@ -34,7 +35,7 @@ class Showme extends Element
 
         $this->textcaption = $this->getDomAttribute($DomElement->getElementsByTagName('textcaption'));
 
-        $this->statements = array();
+//        $this->statements = array();
         $this->subordinates = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
@@ -71,7 +72,7 @@ class Showme extends Element
 
             foreach ($this->processContent($st, $position) as $content)
             {
-                $this->statements[] = $content;
+                $this->statements .= $content;
             }
         }
 
@@ -92,24 +93,24 @@ class Showme extends Element
 //        echo "showme save start";
 //        $time = time();
 //        print_object($time);
-        
+//        
         global $DB;
 
         $data = new stdClass();
         $data->caption = $this->caption;
         $data->textcaption = $this->textcaption;
-        if (!empty($this->statements))
-        {
-            foreach ($this->statements as $statement)
-            {
-                $data->statement_showme = $statement;
+//        if (!empty($this->statements))
+//        {
+//            foreach ($this->statements as $statement)
+//            {
+                $data->statement_showme = $this->statements;
                 $this->id = $DB->insert_record($this->tablename, $data);
-            }
-        }
-        else
-        {
-            $this->id = $DB->insert_record($this->tablename, $data);
-        }
+//            }
+//        }
+//        else
+//        {
+//            $this->id = $DB->insert_record($this->tablename, $data);
+//        }
 
         foreach ($this->answer_showmes as $answer_showme)
         {

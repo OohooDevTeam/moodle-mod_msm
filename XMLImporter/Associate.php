@@ -14,6 +14,7 @@ class Associate extends Element
 {
 
     public $position;
+
 //    public $subunit;
 //    public $ref;
 //    public $def;
@@ -56,13 +57,13 @@ class Associate extends Element
                         $position = $position + 1;
                         $commentID = $child->getAttribute('commentID');
                         $path = $this->findFile($commentID, dirname($this->xmlpath));
-                        
-                        if(!empty($path))
+
+                        if (!empty($path))
                         {
                             $parser->load($path);
-                            
+
                             $element = $parser->documentElement;
-                            
+
                             $comment = new Comment(dirname($path));
                             $comment->loadFromXml($element, $position);
                             $this->comments[] = $comment;
@@ -72,22 +73,22 @@ class Associate extends Element
                     case('showme.pack.ref'):
                         $position = $position + 1;
                         $showmepackID = $child->getAttribute('showmePackID');
-                        
+
 //                        echo "id";
 //                        print_object($showmepackID);
 //                        print_object(dirname($this->xmlpath));
-                        
-                         $path = $this->findFile($showmepackID, dirname($this->xmlpath));
-                         
+
+                        $path = $this->findFile($showmepackID, dirname($this->xmlpath));
+
 //                         echo "path returned from findFile in associate";
 //                         print_object($path);
-                        
-                        if(!empty($path))
+
+                        if (!empty($path))
                         {
                             @$parser->load($path);
-                            
+
                             $element = $parser->documentElement;
-                            
+
                             $showmepack = new Pack(dirname($path));
                             $showmepack->loadFromXml($element, $position);
                             $this->refs[] = $showmepack;
@@ -98,13 +99,13 @@ class Associate extends Element
                         $position = $position + 1;
                         $quizpackID = $child->getAttribute('quizPackID');
                         $path = $this->findFile($quizpackID, dirname($this->xmlpath));
-                        
-                        if(!empty($path))
+
+                        if (!empty($path))
                         {
                             @$parser->load($path);
-                            
+
                             $element = $parser->documentElement;
-                            
+
                             $quizpack = new Pack(dirname($path));
                             $quizpack->loadFromXml($element, $position);
                             $this->refs[] = $quizpack;
@@ -114,14 +115,14 @@ class Associate extends Element
                     case('definition.ref'):
                         $position = $position + 1;
                         $definitionID = $child->getAttribute('definitionID');
-                       $path = $this->findFile($definitionID, dirname($this->xmlpath));
-                        
-                        if(!empty($path))
+                        $path = $this->findFile($definitionID, dirname($this->xmlpath));
+
+                        if (!empty($path))
                         {
                             @$parser->load($path);
-                            
+
                             $element = $parser->documentElement;
-                            
+
                             $def = new Definition(dirname($path));
                             $def->loadFromXml($element, $position);
                             $this->defs[] = $def;
@@ -133,13 +134,13 @@ class Associate extends Element
                         $theoremID = $child->getAttribute('theoremID');
                         $theorempartID = $child->getAttibute('theorempartID');
                         $path = $this->findFile($theoremID, dirname($this->xmlpath));
-                        
-                        if(!empty($path))
+
+                        if (!empty($path))
                         {
                             @$parser->load($path);
-                            
+
                             $element = $parser->documentElement;
-                            
+
                             $theorem = new Theorem(dirname($path));
                             $theorem->loadFromXml($element, $position);
                             $this->theorems[] = $theorem;
@@ -150,13 +151,13 @@ class Associate extends Element
                         $position = $position + 1;
                         $unitID = $child->getAttribute('unitId');
                         $path = $this->findFile($unitID, dirname($this->xmlpath));
-                        
-                        if(!empty($path))
+
+                        if (!empty($path))
                         {
                             @$parser->load($path);
-                            
+
                             $element = $parser->documentElement;
-                            
+
                             $unit = new Unit(dirname($path));
                             $unit->loadFromXml($element, $position);
                             $this->subunits[] = $unit;
@@ -171,7 +172,7 @@ class Associate extends Element
                         break;
                 }
             }
-        }       
+        }
     }
 
     function saveIntoDb($position)
@@ -187,29 +188,49 @@ class Associate extends Element
         {
             $info->saveIntoDb($info->position);
         }
-        
-        foreach($this->comments as $key=>$comment)
+
+        foreach ($this->comments as $key => $comment)
         {
             $comment->saveIntoDb($comment->position);
         }
 
-        foreach($this->subunits as $key=>$unit)
+        foreach ($this->subunits as $key => $unit)
         {
-            $unit->saveIntoDb($unit->position);
+            $unitID = $this->checkForRecord($unit);
+
+            if (empty($unitID))
+            {
+                $unit->saveIntoDb($unit->position);
+            }
         }
-        
-        foreach($this->theorems as $key=>$theorem)
+
+        foreach ($this->theorems as $key => $theorem)
         {
-            $theorem->saveIntoDb($theorem->position);
+            $theoremID = $this->checkForRecord($theorem);
+
+            if (empty($theoremID))
+            {
+                $theorem->saveIntoDb($theorem->position);
+            }
         }
-        
-        foreach($this->defs as $key=>$def)
+
+        foreach ($this->defs as $key => $def)
         {
-            $def->saveIntoDb($def->position);
+            $defID = $this->checkForRecord($def);
+
+            if (empty($defID))
+            {
+                $def->saveIntoDb($def->position);
+            }
         }
-        foreach($this->refs as $key=>$ref)
+        foreach ($this->refs as $key => $ref)
         {
-            $ref->saveIntoDb($ref->position);
+            $refID = $this->checkForRecord($ref);
+
+            if (empty($refID))
+            {
+                $ref->saveIntoDb($ref->position);
+            }
         }
     }
 
@@ -313,7 +334,6 @@ class Associate extends Element
 //            }
 //            
 //            return $ref;
-            
 //            if (!empty($this->subunit))
 //            {
 //                $this->subunit->saveIntoDb($this->subunit->position);
@@ -338,7 +358,6 @@ class Associate extends Element
 //
 //        return $id;
 //    }
-
 //    function findRefFile($refID)
 //    {
 //        $path = $this->xmlpath;

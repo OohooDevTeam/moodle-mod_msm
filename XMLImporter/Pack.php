@@ -148,17 +148,22 @@ class Pack extends Element
                 $this->quizs[] = $quiz;
             }
         }
-        
+
 //        echo "exercises";
 //        print_object($this->exercises);
     }
 
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position 
+     */
     function saveIntoDb($position)
     {
 //        echo "pack save start";
 //        $time = time();
 //        print_object($time);
-        
+
         global $DB;
         $data = new stdClass();
 
@@ -181,7 +186,7 @@ class Pack extends Element
         {
             $example->saveIntoDb($example->position);
         }
-        
+
 
         foreach ($this->exercises as $exercise)
         {
@@ -189,8 +194,8 @@ class Pack extends Element
         }
 
         foreach ($this->showmes as $showme)
-        {
-            $showme->saveIntoDb($showme->position);
+        {          
+            $showme->saveIntoDb($showme->position);      
         }
     }
 

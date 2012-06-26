@@ -102,7 +102,7 @@
    
     <xsl:template match="exe:answer">
         <xsl:choose>
-            <xsl:when test="parent::node()[name()='approach']">
+            <xsl:when test="parent::node()[name()='approach' or name()='approach.ext']">
                 <xsl:element name="answer.exercise" namespace="Compositor">
                     <xsl:element name="answer.exercise.block" namespace="Compositor">
                         <xsl:element name="answer.exercise.block.body" namespace="Compositor">
