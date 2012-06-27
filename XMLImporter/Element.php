@@ -394,7 +394,7 @@ abstract class Element
             return $path;
         }
     }
-
+ 
     // abstract method that is implemented by each class 
     // This function saves the data retrieved from loadFromXml method to the appropriate 
     // database table

@@ -73,12 +73,12 @@ class Person extends Element
      * The parameter type is used to specify the class this method was called from. (as this
      * method can be called from either author class or contributor class)
      * 
-     * @global moodledatabase $DB
+     * @global moodle_database $DB
      * @param int $position
      * @param String $type 
      */
     function saveIntoDb($position, $type)
-    {        
+    {
         global $DB;
 
         $data = new stdClass();
@@ -94,10 +94,30 @@ class Person extends Element
             $data->phone = $this->contactdata["phone"];
             $data->address = $this->contactdata["address"];
         }
-        
+
         $data->type = $type;
 
         $this->id = $DB->insert_record($this->tablename, $data);
+    }
+
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $elementid
+     * @param int $parentid
+     * @param int $siblingid 
+     */
+    function insertToCompositor($elementid, $parentid = '', $siblingid = '')
+    {
+        global $DB;
+
+        $compdata = new stdClass();
+        $compdata->unit_id = $this->id;
+        $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_person'))->id;
+        $compdata->parent_id = $parentid;
+        $compdata->prev_sibling_id = $siblingid;
+
+        $this->compid = $DB->insert_record('msm_compositor', $compdata);
     }
 
 }

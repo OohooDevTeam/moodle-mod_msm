@@ -33,7 +33,6 @@ class TableCollection
         $listOfTables[] = "msm_cite";
         $listOfTables[] = "msm_comment";
         $listOfTables[] = "msm_compositor";
-        $listOfTables[] = "msm_contactdata";
         $listOfTables[] = "msm_content";
         $listOfTables[] = "msm_def";
         $listOfTables[] = "msm_example";
@@ -49,15 +48,18 @@ class TableCollection
         $listOfTables[] = "msm_item";
         $listOfTables[] = "msm_math_array";
         $listOfTables[] = "msm_media";
-        $listOfTables[] = "msm_name";
         $listOfTables[] = 'msm_packs';
         $listOfTables[] = "msm_para";
         $listOfTables[] = "msm_part_example";
         $listOfTables[] = "msm_part_exercise";
         $listOfTables[] = "msm_part_theorem";
+        $listOfTables[] = 'msm_person';
         $listOfTables[] = "msm_pilot";
         $listOfTables[] = "msm_problem";
         $listOfTables[] = "msm_proof";
+        $listOfTables[] = "msm_proof_block";
+        $listOfTables[] = 'msm_quiz';
+        $listOfTables[] = 'msm_quiz_choice';
         $listOfTables[] = "msm_showme";
         $listOfTables[] = "msm_solution";
         $listOfTables[] = "msm_solution_hint";

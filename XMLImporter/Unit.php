@@ -61,6 +61,9 @@ class Unit extends Element
     public $creation;
     public $last_revision;
     public $intro;
+    // compid contains the id of the record inserted into the compositor table to be used to 
+    // define parent_id and prev_sibling_id fields in compositor table
+    public $compid;
 
     function __construct($xmlpath = '')
     {
@@ -85,7 +88,7 @@ class Unit extends Element
         {
             $element = $doc->importNode($DomElement, true);
 
-            $this->subunits = array();
+            $this->subunits = array(); //stores all the subunits under legitimate.children element of XML file
             $this->authors = array();
             $this->block = array();
             $this->preface = array();
@@ -97,9 +100,10 @@ class Unit extends Element
             $this->showmepacks = array();
             $this->quizpacks = array();
 
+            // for exercise/examples listed as a studymaterial element
             $this->studyexercises = array();
             $this->studyexamples = array();
-//            $this->theorem = array(); // theorems are all inside the block.body
+            $this->stagedates = array();
 
             foreach ($element->childNodes as $key => $child)
             {
@@ -149,8 +153,6 @@ class Unit extends Element
                     }
                     else if ($child->tagName == 'dates')
                     {
-                        $this->stagedates = array();
-
                         foreach ($child->childNodes as $key => $grandChild)
                         {
                             if ($grandChild->nodeType == XML_ELEMENT_NODE)
@@ -446,7 +448,7 @@ class Unit extends Element
         }
     }
 
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
 //        echo "unit save start";
 //        $time = time();
@@ -470,10 +472,120 @@ class Unit extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
-        foreach ($this->authors as $key => $author)
+        // for inserting unit records in to compositor table
+
+        if ($this->position == 1) // it's the root element, which means, no parent and no previous siblings
         {
-            $author->saveIntoDb($author->position, "author");
+            $compdata = new stdClass();
+            $compdata->unit_id = $this->id;
+            $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+            $compdata->parent_id = null;
+            $compdata->prev_sibling_id = null;
+
+            $this->compid = $DB->insert_record('msm_compositor', $compdata);
         }
+        else // child element, therefore, has a parentid with possible previous sibling id
+        {
+            $compdata = new stdClass();
+            $compdata->unit_id = $this->id;
+            $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+            $compdata->parent_id = $parentid;
+            $compdata->prev_sibling_id = $siblingid;
+
+            $this->compid = $DB->insert_record('msm_compositor', $compdata);
+        }
+
+        $elementPositions = array();
+
+        if (!empty($this->intro))
+        {
+            $elementPositions['intro'] = $this->intro->position;
+        }
+
+        // ** may not be correct **//
+        // it maybe the case where different authors may alternate in order with another element...
+        // in this case, need to think of another method to determine the order of elements 
+        if (!empty($this->authors))
+        {
+            $elementPositions['author'] = $this->authors[0]->position;
+        }
+        if (!empty($this->contributors))
+        {
+            $elementPositions['contributors'] = $this->contributors[0]->position;
+        }
+        if (!empty($this->preface))
+        {
+            $elementPositions['preface'] = $this->preface->position;
+        }
+        if (!empty($this->historical))
+        {
+            $elementPositions['historical'] = $this->historical->position;
+        }
+        if (!empty($this->trailer))
+        {
+            $elementPositions['trailer'] = $this->trailer->position;
+        }
+        if (!empty($this->summary))
+        {
+            $elementPositions['summary'] = $this->summary->position;
+        }
+        if (!empty($this->stagedates))
+        {
+            $elementPositions['stage'] = $this->stagedates[0]->position;
+        }
+        if (!empty($this->subunits))
+        {
+            $elementPositions['subunits'] = $this->subunits[0]->position;
+        }
+        if (!empty($this->block))
+        {
+            $elementPositions['block'] = $this->block[0]->position;
+        }
+
+        // sorts the array according to the position of the element
+        asort($elementPositions);
+
+        foreach ($elementPositions as $element => $value)
+        {
+            switch ($element)
+            {
+                case('author'):
+                    foreach ($this->authors as $key => $author)
+                    {
+                        if ($key == 0)//  first child of the unit which does not have any previous sibling
+                        {
+                            echo "what additional authors are being read?";
+                            print_object($author);
+                            $author->saveIntoDb($author->position, 'author');
+                            $author->insertToCompositor($author->id, $this->compid);
+                        }
+                        else // child has a previous sibling
+                        {
+                            $author->saveIntoDb($author->position, 'author');
+                            $author->insertToCompositor($author->id, $this->compid, $this->authors[$key - 1]->compid);
+                        }
+                    }
+                    break;
+                case('subunits'):
+                    foreach ($this->subunits as $key => $subunit)
+                    {
+                        if ($key == 0)//  first child of the unit which does not have any previous sibling
+                        {
+                            $subunit->saveIntoDb($subunit->position, $this->compid);
+                        }
+                        else // child has a previous sibling
+                        {
+                            $subunit->saveIntoDb($subunit->position, $this->compid, $this->subunits[$key - 1]->compid);
+                        }
+                    }
+                    break;
+            }
+        }
+
+//        foreach ($this->authors as $key => $author)
+//        {
+//            $author->saveIntoDb($author->position, "author");
+//        }
 
         if (!empty($this->contributors))
         {
@@ -481,6 +593,11 @@ class Unit extends Element
             {
                 $contributor->saveIntoDb($contributor->position, "contributor");
             }
+        }
+
+        foreach ($this->stagedates as $key => $stagedate)
+        {
+            $stagedate->saveIntoDb($stagedate->position);
         }
 
         if (!empty($this->intro))
@@ -508,13 +625,20 @@ class Unit extends Element
             $this->historical->saveIntoDb($this->historical->position);
         }
 
-        if (!empty($this->subunits))
-        {
-            foreach ($this->subunits as $key => $subunit)
-            {
-                $subunit->saveIntoDb($subunit->position);
-            }
-        }
+//        if (!empty($this->subunits))
+//        {
+//            foreach ($this->subunits as $key => $subunit)
+//            {
+//                if ($key == 0)//  first child of the unit which does not have any previous sibling
+//                {
+//                    $subunit->saveIntoDb($subunit->position, $this->compid);
+//                }
+//                else // child has a previous sibling
+//                {
+//                    $subunit->saveIntoDb($subunit->position, $this->compid, $this->subunits[$key - 1]->compid);
+//                }
+//            }
+//        }
 
         if (!empty($this->block))
         {
@@ -589,11 +713,6 @@ class Unit extends Element
                 $examplepackRecordID = $studyexamplepack->id;
             }
         }
-//        $compositorData = new stdClass();
-//        $compositorData->unit_id = $this->id;
-//
-//        $tablename = $DB->get_record('msm_table_collection', array('tablename' => $this->tablename));
-//        $compositorData->table_id = $tablename;
     }
 
     /**
