@@ -141,6 +141,41 @@ class Block extends Element
     function saveIntoDb($position)
     {        
         global $DB;
+        
+//         $elementPositions = array();
+//
+//        if (!empty($this->paras))
+//        {
+//            $elementPositions['intro'] = $this->intro->position;
+//        }
+//
+//        // ** may not be correct **//
+//        // it maybe the case where different authors may alternate in order with another element...
+//        // in this case, need to think of another method to determine the order of elements 
+//        if (!empty($this->authors))
+//        {
+//            $elementPositions['author'] = $this->authors[0]->position;
+//        }
+//        if (!empty($this->contributors))
+//        {
+//            $elementPositions['contributors'] = $this->contributors[0]->position;
+//        }
+//        if (!empty($this->preface))
+//        {
+//            $elementPositions['preface'] = $this->preface->position;
+//        }
+//        if (!empty($this->historical))
+//        {
+//            $elementPositions['historical'] = $this->historical->position;
+//        }
+//        if (!empty($this->trailer))
+//        {
+//            $elementPositions['trailer'] = $this->trailer->position;
+//        }
+//        if (!empty($this->summary))
+//        {
+//            $elementPositions['summary'] = $this->summary->position;
+//        }
 
         foreach ($this->defs as $key => $def)
         {

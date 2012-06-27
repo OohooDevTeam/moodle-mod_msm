@@ -394,6 +394,28 @@ abstract class Element
             return $path;
         }
     }
+    
+     /**
+     *
+     * @global moodle_database $DB
+     * @param int $elementid
+     * @param int $parentid
+     * @param int $siblingid 
+     */
+    function insertToCompositor($elementid, $tablename, $parentid = '', $siblingid = '')
+    {
+        global $DB;
+       
+        $compdata = new stdClass();
+        $compdata->unit_id = $elementid;
+        $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => $tablename))->id;
+        $compdata->parent_id = $parentid;
+        $compdata->prev_sibling_id = $siblingid;
+        
+        $compid = $DB->insert_record('msm_compositor', $compdata);
+       
+        return $compid;
+    }
  
     // abstract method that is implemented by each class 
     // This function saves the data retrieved from loadFromXml method to the appropriate 

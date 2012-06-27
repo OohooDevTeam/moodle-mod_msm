@@ -552,23 +552,60 @@ class Unit extends Element
                 case('author'):
                     foreach ($this->authors as $key => $author)
                     {
-                        if ($key == 0)//  first child of the unit which does not have any previous sibling
+                        if ($key == 0)//  first author element which has no previous sibling
                         {
-                            echo "what additional authors are being read?";
-                            print_object($author);
                             $author->saveIntoDb($author->position, 'author');
-                            $author->insertToCompositor($author->id, $this->compid);
+                            $this->authors[0]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid);
                         }
                         else // child has a previous sibling
                         {
                             $author->saveIntoDb($author->position, 'author');
-                            $author->insertToCompositor($author->id, $this->compid, $this->authors[$key - 1]->compid);
+                            $this->authors[$key]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid, $this->authors[$key - 1]->compid);
                         }
                     }
                     break;
+
+                case('contributors'):
+                    foreach ($this->contributors as $key => $contributor)
+                    {
+                        if ($key == 0)//  first contributors element which has no previous sibling
+                        {
+                            $contributor->saveIntoDb($contributor->position, 'contributor');
+                            $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid);
+                        }
+                        else // child has a previous sibling
+                        {
+                            $contributor->saveIntoDb($contributor->position, 'contributor');
+                            $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid, $this->contributors[$key - 1]->compid);
+                        }
+                    }
+                    break;
+
+                case('stage'):
+                    foreach ($this->stagedates as $key => $stage)
+                    {
+                        if ($key == 0)//  first stage.date element which has no previous sibling
+                        {
+                            $stage->saveIntoDb($stage->position);
+                            $stage->insertToCompositor($stage->id, $stage->tablename, $this->compid);
+                        }
+                        else // child has a previous sibling
+                        {
+                            $stage->saveIntoDb($stage->position);
+                            $stage->insertToCompositor($stage->id, $stage->tablename, $this->compid, $this->stagedates[$key - 1]->compid);
+                        }
+                    }
+                    break;
+
+                case('intro'):
+                    $this->intro->saveIntoDb($this->intro->position);
+                    $this->intro->insertToCompositor($this->intro->id, $this->intro->tablename, $this->compid);
+                    break;
+
                 case('subunits'):
                     foreach ($this->subunits as $key => $subunit)
                     {
+
                         if ($key == 0)//  first child of the unit which does not have any previous sibling
                         {
                             $subunit->saveIntoDb($subunit->position, $this->compid);
@@ -586,19 +623,17 @@ class Unit extends Element
 //        {
 //            $author->saveIntoDb($author->position, "author");
 //        }
-
-        if (!empty($this->contributors))
-        {
-            foreach ($this->contributors as $key => $contributor)
-            {
-                $contributor->saveIntoDb($contributor->position, "contributor");
-            }
-        }
-
-        foreach ($this->stagedates as $key => $stagedate)
-        {
-            $stagedate->saveIntoDb($stagedate->position);
-        }
+//        if (!empty($this->contributors))
+//        {
+//            foreach ($this->contributors as $key => $contributor)
+//            {
+//                $contributor->saveIntoDb($contributor->position, "contributor");
+//            }
+//        }
+//        foreach ($this->stagedates as $key => $stagedate)
+//        {
+//            $stagedate->saveIntoDb($stagedate->position);
+//        }
 
         if (!empty($this->intro))
         {

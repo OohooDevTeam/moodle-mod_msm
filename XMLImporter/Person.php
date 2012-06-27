@@ -100,25 +100,7 @@ class Person extends Element
         $this->id = $DB->insert_record($this->tablename, $data);
     }
 
-    /**
-     *
-     * @global moodle_database $DB
-     * @param int $elementid
-     * @param int $parentid
-     * @param int $siblingid 
-     */
-    function insertToCompositor($elementid, $parentid = '', $siblingid = '')
-    {
-        global $DB;
-
-        $compdata = new stdClass();
-        $compdata->unit_id = $this->id;
-        $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_person'))->id;
-        $compdata->parent_id = $parentid;
-        $compdata->prev_sibling_id = $siblingid;
-
-        $this->compid = $DB->insert_record('msm_compositor', $compdata);
-    }
+   
 
 }
 
