@@ -83,7 +83,7 @@ class Table extends Element
             {
                 $data->table_content = $content;
                 $this->id = $DB->insert_record($this->tablename, $data);
-                $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);
+                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
             }
         }
         else
