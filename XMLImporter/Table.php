@@ -68,7 +68,7 @@ class Table extends Element
         }
     }
 
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {        
         global $DB;
         $data = new stdClass();
@@ -83,11 +83,13 @@ class Table extends Element
             {
                 $data->table_content = $content;
                 $this->id = $DB->insert_record($this->tablename, $data);
+                $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);
             }
         }
         else
         {
             $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);
         }
 
         foreach ($this->subordinates as $key => $subordinate)

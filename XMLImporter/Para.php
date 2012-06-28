@@ -79,8 +79,8 @@ class Para extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
-    {        
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    {
         global $DB;
 
         $data = new stdClass();
@@ -96,11 +96,13 @@ class Para extends Element
                 $data->para_content = $content;
 
                 $this->id = $DB->insert_record($this->tablename, $data);
+                $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);
             }
         }
         else
         {
             $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);
         }
 
         foreach ($this->subordinates as $key => $subordinate)

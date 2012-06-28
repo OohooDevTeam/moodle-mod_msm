@@ -274,6 +274,106 @@ class Block extends Element
                         $sibling_id = $comment->compid;
                     }
                     break;
+                case(preg_match("/^(para.\d+)$/", $element) ? true : false):
+                    $paraString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $para = $this->paras[$paraString[1]];
+                        $para->saveIntoDb($para->position, $parentid);
+                        $sibling_id = $para->compid;
+                    }
+                    else
+                    {
+                        $para = $this->paras[$paraString[1]];
+                        $para->saveIntoDb($para->position, $parentid, $sibling_id);
+                        $sibling_id = $para->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(ol.\d+)$/", $element) ? true : false):
+                    $olString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $ol = $this->ols[$olString[1]];
+                        $ol->saveIntoDb($ol->position, $parentid);
+                        $sibling_id = $ol->compid;
+                    }
+                    else
+                    {
+                        $ol = $this->ols[$olString[1]];
+                        $ol->saveIntoDb($ol->position, $parentid, $sibling_id);
+                        $sibling_id = $ol->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(ul.\d+)$/", $element) ? true : false):
+                    $ulString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $ul = $this->uls[$ulString[1]];
+                        $ul->saveIntoDb($ul->position, $parentid);
+                        $sibling_id = $ul->compid;
+                    }
+                    else
+                    {
+                        $ul = $this->uls[$ulString[1]];
+                        $ul->saveIntoDb($ul->position, $parentid, $sibling_id);
+                        $sibling_id = $ul->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(mathdisplay.\d+)$/", $element) ? true : false):
+                    $mathdisplayString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $mathdisplay = $this->math_displays[$mathdisplayString[1]];
+                        $mathdisplay->saveIntoDb($mathdisplay->position, $parentid);
+                        $sibling_id = $mathdisplay->compid;
+                    }
+                    else
+                    {
+                        $mathdisplay = $this->math_displays[$mathdisplayString[1]];
+                        $mathdisplay->saveIntoDb($mathdisplay->position, $parentid, $sibling_id);
+                        $sibling_id = $mathdisplay->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                    $matharrayString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $matharray = $this->math_arrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $parentid);
+                        $sibling_id = $matharray->compid;
+                    }
+                    else
+                    {
+                        $matharray = $this->math_arrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $parentid, $sibling_id);
+                        $sibling_id = $matharray->compid;
+                    }
+                    break;
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $parentid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $parentid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
     }
