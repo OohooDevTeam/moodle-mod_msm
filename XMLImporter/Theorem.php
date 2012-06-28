@@ -69,7 +69,7 @@ class Theorem extends Element
         }
     }
     
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {        
         global $DB;
         
@@ -81,6 +81,7 @@ class Theorem extends Element
         $data->description = $this->description;
         
         $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);        
         
         foreach($this->associates as $key=>$associate)
         {

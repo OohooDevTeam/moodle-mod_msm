@@ -96,7 +96,7 @@ class Comment extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB;
 
@@ -115,11 +115,13 @@ class Comment extends Element
                 $data->comment_content = $content;
 
                 $this->id = $DB->insert_record($this->tablename, $data);
+                $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);        
             }
         }
         else
         {
             $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);        
         }
 
         foreach ($this->associates as $key => $associate)

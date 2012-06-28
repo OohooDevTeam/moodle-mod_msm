@@ -144,8 +144,8 @@ class Block extends Element
 
         $elementPositions = array();
         $sibling_id = null;
-        
-     
+
+
         if (!empty($this->defs))
         {
             foreach ($this->defs as $key => $def)
@@ -219,28 +219,61 @@ class Block extends Element
         }
 
         asort($elementPositions);
-        
-        foreach($elementPositions as $element=>$value)
+
+        foreach ($elementPositions as $element => $value)
         {
-            switch($element)
+            switch ($element)
             {
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
                     $defString = split('-', $element);
-                    
-                    if(empty($sibling_id))
+
+                    if (empty($sibling_id))
                     {
-                       $def = $this->defs[$defString[1]];
-                       $def->saveIntoDb($def->position, $parentid);
-                       $sibling_id = $def->compid;
+                        $def = $this->defs[$defString[1]];
+                        $def->saveIntoDb($def->position, $parentid);
+                        $sibling_id = $def->compid;
                     }
                     else
                     {
                         $def = $this->defs[$defString[1]];
-                       $def->saveIntoDb($def->position, $parentid, $sibling_id);
-                       $sibling_id = $def->compid;
+                        $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                        $sibling_id = $def->compid;
                     }
                     break;
-                  
+
+                case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
+                    $theoremString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $theorem = $this->theorems[$theoremString[1]];
+                        $theorem->saveIntoDb($theorem->position, $parentid);
+                        $sibling_id = $theorem->compid;
+                    }
+                    else
+                    {
+                        $theorem = $this->theorems[$theoremString[1]];
+                        $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
+                        $sibling_id = $theorem->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(comment.\d+)$/", $element) ? true : false):
+                    $commentString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $comment = $this->comments[$commentString[1]];
+                        $comment->saveIntoDb($comment->position, $parentid);
+                        $sibling_id = $comment->compid;
+                    }
+                    else
+                    {
+                        $comment = $this->comments[$commentString[1]];
+                        $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
+                        $sibling_id = $comment->compid;
+                    }
+                    break;
             }
         }
     }
