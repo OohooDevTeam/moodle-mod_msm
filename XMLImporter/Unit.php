@@ -458,6 +458,9 @@ class Unit extends Element
         $exercisepackRecordID = 0;
         $examplepackRecordID = 0;
 
+        // to keep track of prev_sibling ids when going through all child elements
+        $sibling_id = null;
+
         $data = new stdClass();
         $data->string_id = $this->unitid;
         $data->title = $this->title;
@@ -507,39 +510,60 @@ class Unit extends Element
         // in this case, need to think of another method to determine the order of elements 
         if (!empty($this->authors))
         {
-            $elementPositions['author'] = $this->authors[0]->position;
+            foreach ($this->authors as $key => $author)
+            {
+                $elementPositions['author' . '-' . $key] = $author->position;
+            }
         }
         if (!empty($this->contributors))
         {
-            $elementPositions['contributors'] = $this->contributors[0]->position;
+            foreach ($this->contributors as $key => $contributor)
+            {
+                $elementPositions['contributors' . '-' . $key] = $contributor->position;
+            }
         }
         if (!empty($this->preface))
         {
             $elementPositions['preface'] = $this->preface->position;
         }
+
         if (!empty($this->historical))
         {
             $elementPositions['historical'] = $this->historical->position;
         }
+
         if (!empty($this->trailer))
         {
             $elementPositions['trailer'] = $this->trailer->position;
         }
+
         if (!empty($this->summary))
         {
             $elementPositions['summary'] = $this->summary->position;
         }
+
         if (!empty($this->stagedates))
         {
-            $elementPositions['stage'] = $this->stagedates[0]->position;
+            foreach ($this->stagedates as $key => $stagedate)
+            {
+                $elementPositions['stage' . '-' . $key] = $stagedate->position;
+            }
         }
+
         if (!empty($this->subunits))
         {
-            $elementPositions['subunits'] = $this->subunits[0]->position;
+            foreach ($this->subunits as $key => $subunit)
+            {
+                $elementPositions['subunits' . '-' . $key] = $subunit->position;
+            }
         }
+
         if (!empty($this->block))
         {
-            $elementPositions['block'] = $this->block[0]->position;
+            foreach ($this->block as $key => $block)
+            {
+                $elementPositions['block' . '-' . $key] = $block->position;
+            }
         }
 
         // sorts the array according to the position of the element
@@ -549,137 +573,101 @@ class Unit extends Element
         {
             switch ($element)
             {
-                case('author'):
-                    foreach ($this->authors as $key => $author)
+                case(preg_match("/^(author.\d+)$/", $element) ? true : false):
+
+                    $authorstring = split('-', $element);
+
+                    if (empty($sibling_id))//  first author element which has no previous sibling
                     {
-                        if ($key == 0)//  first author element which has no previous sibling
-                        {
-                            $author->saveIntoDb($author->position, 'author');
-                            $this->authors[0]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid);
-                        }
-                        else // child has a previous sibling
-                        {
-                            $author->saveIntoDb($author->position, 'author');
-                            $this->authors[$key]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid, $this->authors[$key - 1]->compid);
-                        }
+                        $author = $this->authors[$authorstring[1]];
+                        $author->saveIntoDb($author->position, 'author');
+                        $this->authors[$authorstring[1]]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid);
+                        $sibling_id = $this->authors[$authorstring[1]]->compid;
+                    }
+                    else // child has a previous sibling
+                    {
+                        $author = $this->authors[$authorstring[1]];
+                        $author->saveIntoDb($author->position, 'author');
+                        $this->authors[$authorstring[1]]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid, $sibling_id);
+                        $sibling_id = $this->authors[$authorstring[1]]->compid;
                     }
                     break;
 
-                case('contributors'):
-                    foreach ($this->contributors as $key => $contributor)
+                case(preg_match("/^(contributors.\d+)$/", $element) ? true : false):
+
+                    $contributorstring = split('-', $element);
+
+                    if (empty($sibling_id))//  first author element which has no previous sibling
                     {
-                        if ($key == 0)//  first contributors element which has no previous sibling
-                        {
-                            $contributor->saveIntoDb($contributor->position, 'contributor');
-                            $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid);
-                        }
-                        else // child has a previous sibling
-                        {
-                            $contributor->saveIntoDb($contributor->position, 'contributor');
-                            $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid, $this->contributors[$key - 1]->compid);
-                        }
+                        $contributor = $this->contributors[$contributorstring[1]];
+                        $contributor->saveIntoDb($contributor->position, 'contributor');
+                        $this->contributors[$contributorstring[1]]->compid = $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid);
+                        $sibling_id = $this->contributors[$contributorstring[1]]->compid;
+                    }
+                    else // child has a previous sibling
+                    {
+                        $contributor = $this->contributors[$contributorstring[1]];
+                        $contributor->saveIntoDb($contributor->position, 'contributor');
+                        $this->contributors[$contributorstring[1]]->compid = $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid, $sibling_id);
+                        $sibling_id = $this->contributors[$contributorstring[1]]->compid;
                     }
                     break;
 
-                case('stage'):
-                    foreach ($this->stagedates as $key => $stage)
+                case(preg_match("/^(stage.\d+)$/", $element) ? true : false):
+                    $stageString = split('-', $element);
+
+                    if (empty($sibling_id))//  first author element which has no previous sibling
                     {
-                        if ($key == 0)//  first stage.date element which has no previous sibling
-                        {
-                            $stage->saveIntoDb($stage->position);
-                            $stage->insertToCompositor($stage->id, $stage->tablename, $this->compid);
-                        }
-                        else // child has a previous sibling
-                        {
-                            $stage->saveIntoDb($stage->position);
-                            $stage->insertToCompositor($stage->id, $stage->tablename, $this->compid, $this->stagedates[$key - 1]->compid);
-                        }
+                        $stagedate = $this->stagedates[$stageString[1]];
+                        $stagedate->saveIntoDb($stagedate->position, 'contributor');
+                        $this->stagedates[$stageString[1]]->compid = $stagedate->insertToCompositor($stagedate->id, $stagedate->tablename, $this->compid);
+                        $sibling_id = $this->stagedates[$stageString[1]]->compid;
+                    }
+                    else // child has a previous sibling
+                    {
+                        $stagedate = $this->stagedates[$stageString[1]];
+                        $stagedate->saveIntoDb($stagedate->position);
+                        $this->stagedates[$stageString[1]]->compid = $stagedate->insertToCompositor($stagedate->id, $stagedate->tablename, $this->compid, $sibling_id);
+                        $sibling_id = $this->stagedates[$stageString[1]]->compid;
                     }
                     break;
 
                 case('intro'):
-                    $this->intro->saveIntoDb($this->intro->position);
-                    $this->intro->insertToCompositor($this->intro->id, $this->intro->tablename, $this->compid);
-                    break;
-
-                case('subunits'):
-                    foreach ($this->subunits as $key => $subunit)
+                    if (empty($sibling_id))
                     {
-
-                        if ($key == 0)//  first child of the unit which does not have any previous sibling
-                        {
-                            $subunit->saveIntoDb($subunit->position, $this->compid);
-                        }
-                        else // child has a previous sibling
-                        {
-                            $subunit->saveIntoDb($subunit->position, $this->compid, $this->subunits[$key - 1]->compid);
-                        }
+                        $this->intro->saveIntoDb($this->intro->position, $this->compid);
+                        $sibling_id = $this->intro->compid;
+                    }
+                    else
+                    {
+                        $this->intro->saveIntoDb($this->intro->position, $this->compid, $sibling_id);
+                        $sibling_id = $this->intro->compid;
                     }
                     break;
-            }
-        }
 
-//        foreach ($this->authors as $key => $author)
-//        {
-//            $author->saveIntoDb($author->position, "author");
-//        }
-//        if (!empty($this->contributors))
-//        {
-//            foreach ($this->contributors as $key => $contributor)
-//            {
-//                $contributor->saveIntoDb($contributor->position, "contributor");
-//            }
-//        }
-//        foreach ($this->stagedates as $key => $stagedate)
-//        {
-//            $stagedate->saveIntoDb($stagedate->position);
-//        }
+                case(preg_match("/^(block.\d+)$/", $element) ? true : false):
+                    $blockString = split('-', $element);
+                    $block = $this->block[$blockString[1]];
+                    $block->saveIntoDb($block->position, $this->compid);
+                    break;
+//
+                case(preg_match("/^(subunits.\d+)$/", $element) ? true : false):
 
-        if (!empty($this->intro))
-        {
-            $this->intro->saveIntoDb($this->intro->position);
-        }
+                    $subunitString = split('-', $element);
 
-        if (!empty($this->preface))
-        {
-            $this->preface->saveIntoDb($this->preface->position);
-        }
-
-        if (!empty($this->summary))
-        {
-            $this->summary->saveIntoDb($this->summary->position);
-        }
-
-        if (!empty($this->trailer))
-        {
-            $this->trailer->saveIntoDb($this->trailer->position);
-        }
-
-        if (!empty($this->historical))
-        {
-            $this->historical->saveIntoDb($this->historical->position);
-        }
-
-//        if (!empty($this->subunits))
-//        {
-//            foreach ($this->subunits as $key => $subunit)
-//            {
-//                if ($key == 0)//  first child of the unit which does not have any previous sibling
-//                {
-//                    $subunit->saveIntoDb($subunit->position, $this->compid);
-//                }
-//                else // child has a previous sibling
-//                {
-//                    $subunit->saveIntoDb($subunit->position, $this->compid, $this->subunits[$key - 1]->compid);
-//                }
-//            }
-//        }
-
-        if (!empty($this->block))
-        {
-            foreach ($this->block as $key => $block)
-            {
-                $block->saveIntoDb($block->position);
+                    if (empty($sibling_id))//  first author element which has no previous sibling
+                    {
+                        $subunit = $this->subunits[$subunitString[1]];
+                        $subunit->saveIntoDb($subunit->position, $this->compid);
+                        $sibling_id = $subunit->compid;
+                    }
+                    else // child has a previous sibling
+                    {
+                        $subunit = $this->subunits[$subunitString[1]];
+                        $subunit->saveIntoDb($subunit->position, $this->compid, $sibling_id);
+                        $sibling_id = $subunit->compid;
+                    }
+                    break;
             }
         }
 

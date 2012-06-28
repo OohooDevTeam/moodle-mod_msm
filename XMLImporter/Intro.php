@@ -27,7 +27,7 @@ class Intro extends Element
     function loadFromXml($DomElement, $position = '')
     {
         $this->position = $position;
-        $this->id = $DomElement->getAttribute('id');
+        $this->string_id = $DomElement->getAttribute('id');
         $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
 
         $blocks = $DomElement->getElementsByTagName('block');
@@ -48,18 +48,31 @@ class Intro extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
-    {        
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    {
         global $DB;
         $data = new stdClass();
-        $data->string_id = $this->id;
+        $data->string_id = $this->string_id;
         $data->caption = $this->caption;
 
         $this->id = $DB->insert_record($this->tablename, $data);
 
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+
+
+        $elementPosition = array();
         foreach ($this->blocks as $key => $block)
         {
-            $block->saveIntoDb($block->position);
+            $elementPosition['block' . '-' . $key] = $block->position;
+        }
+
+        asort($elementPosition);
+
+        foreach ($elementPosition as $element => $value)
+        {
+            $blockString = split('-', $element);
+
+            $this->blocks[$blockString[1]]->saveIntoDb($this->blocks[$blockString[1]]->position, $this->compid);
         }
     }
 

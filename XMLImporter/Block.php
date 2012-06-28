@@ -138,88 +138,110 @@ class Block extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
-    {        
+    function saveIntoDb($position, $parentid = '')
+    {
         global $DB;
+
+        $elementPositions = array();
+        $sibling_id = null;
         
-//         $elementPositions = array();
-//
-//        if (!empty($this->paras))
-//        {
-//            $elementPositions['intro'] = $this->intro->position;
-//        }
-//
-//        // ** may not be correct **//
-//        // it maybe the case where different authors may alternate in order with another element...
-//        // in this case, need to think of another method to determine the order of elements 
-//        if (!empty($this->authors))
-//        {
-//            $elementPositions['author'] = $this->authors[0]->position;
-//        }
-//        if (!empty($this->contributors))
-//        {
-//            $elementPositions['contributors'] = $this->contributors[0]->position;
-//        }
-//        if (!empty($this->preface))
-//        {
-//            $elementPositions['preface'] = $this->preface->position;
-//        }
-//        if (!empty($this->historical))
-//        {
-//            $elementPositions['historical'] = $this->historical->position;
-//        }
-//        if (!empty($this->trailer))
-//        {
-//            $elementPositions['trailer'] = $this->trailer->position;
-//        }
-//        if (!empty($this->summary))
-//        {
-//            $elementPositions['summary'] = $this->summary->position;
-//        }
-
-        foreach ($this->defs as $key => $def)
+     
+        if (!empty($this->defs))
         {
-            $def->saveIntoDb($def->position);
+            foreach ($this->defs as $key => $def)
+            {
+                $elementPositions['def' . '-' . $key] = $def->position;
+            }
         }
 
-        foreach ($this->theorems as $key => $theorem)
+        if (!empty($this->theorems))
         {
-            $theorem->saveIntoDb($theorem->position);
+            foreach ($this->theorems as $key => $theorem)
+            {
+                $elementPositions['theorem' . '-' . $key] = $theorem->position;
+            }
         }
 
-        foreach ($this->comments as $key => $comment)
+        if (!empty($this->comments))
         {
-            $comment->saveIntoDb($comment->position);
+            foreach ($this->comments as $key => $comment)
+            {
+                $elementPositions['comment' . '-' . $key] = $comment->position;
+            }
         }
 
-        foreach ($this->paras as $key => $para)
+        if (!empty($this->paras))
         {
-            $para->saveIntoDb($para->position);
+            foreach ($this->paras as $key => $para)
+            {
+                $elementPositions['para' . '-' . $key] = $para->position;
+            }
         }
 
-        foreach ($this->ols as $key => $ol)
+        if (!empty($this->ols))
         {
-            $ol->saveIntoDb($ol->position);
+            foreach ($this->ols as $key => $ol)
+            {
+                $elementPositions['ol' . '-' . $key] = $ol->position;
+            }
         }
 
-        foreach ($this->uls as $key => $ul)
+        if (!empty($this->uls))
         {
-            $ul->saveIntoDb($ul->position);
+            foreach ($this->uls as $key => $ul)
+            {
+                $elementPositions['ul' . '-' . $key] = $ul->position;
+            }
         }
 
-        foreach ($this->math_displays as $key => $math_display)
+        if (!empty($this->math_diplays))
         {
-            $math_display->saveIntoDb($math_display->position);
+            foreach ($this->math_diplays as $key => $mathdisplay)
+            {
+                $elementPositions['mathdisplay' . '-' . $key] = $mathdisplay->position;
+            }
         }
 
-        foreach ($this->math_arrays as $key => $math_array)
+        if (!empty($this->math_arrays))
         {
-            $math_array->saveIntoDb($math_array->position);
+            foreach ($this->math_arrays as $key => $matharray)
+            {
+                $elementPositions['matharray' . '-' . $key] = $matharray->position;
+            }
         }
 
-        foreach ($this->tables as $key => $table)
+        if (!empty($this->tables))
         {
-            $table->saveIntoDb($table->position);
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
+            }
+        }
+
+        asort($elementPositions);
+        
+        foreach($elementPositions as $element=>$value)
+        {
+            switch($element)
+            {
+                case(preg_match("/^(def.\d+)$/", $element) ? true : false):
+                    $defString = split('-', $element);
+                    
+                    if(empty($sibling_id))
+                    {
+                       $def = $this->defs[$defString[1]];
+                       $def->saveIntoDb($def->position, $parentid);
+                       $sibling_id = $def->compid;
+                    }
+                    else
+                    {
+                        $def = $this->defs[$defString[1]];
+                       $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                       $sibling_id = $def->compid;
+                    }
+                    break;
+                  
+            }
         }
     }
 
