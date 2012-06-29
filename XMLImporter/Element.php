@@ -88,7 +88,7 @@ abstract class Element
             $foundID = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
 
             if (!empty($foundID))
-            {
+            { 
                 return $foundID;
             }
             else

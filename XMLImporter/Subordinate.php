@@ -323,38 +323,38 @@ class Subordinate extends Element
                                     }
                                     break;
 
-//                                case('definition.ref'):
-//                                    $definitionrefID = $grandchild->getAttribute('definitionID');
-//
-//                                    if (!empty($definitionrefID))
-//                                    {
-//                                        $IDinDB = $DB->get_record('msm_def', array('string_id' => $definitionrefID));
-//
-//                                        if (empty($IDinDB))
-//                                        {
-//                                            $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
-//
-//                                            if (!empty($filepath))
-//                                            {
-//                                                $parser->load($filepath);
-//                                                
-//                                                $element = $parser->documentElement;
-//
-//                                                if (!empty($element))
-//                                                {
-//                                                    $position = $position + 1;
-//                                                    $def = new Definition(dirname($filepath));
-//                                                    $def->loadFromXml($element, $position);
-//                                                    $this->defs[] = $def;
-//                                                }
-//                                            }
-//                                        }
-//                                        else
-//                                        {
-//                                            $this->companion[] = $definitionrefID;
-//                                        }
-//                                    }
-//                                    break;
+                                case('definition.ref'):
+                                    $definitionrefID = $grandchild->getAttribute('definitionID');
+
+                                    if (!empty($definitionrefID))
+                                    {
+                                        $IDinDB = $DB->get_record('msm_def', array('string_id' => $definitionrefID));
+
+                                        if (empty($IDinDB))
+                                        {
+                                            $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
+
+                                            if (!empty($filepath))
+                                            {
+                                                $parser->load($filepath);
+                                                
+                                                $element = $parser->documentElement;
+
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $def = new Definition(dirname($filepath));
+                                                    $def->loadFromXml($element, $position);
+                                                    $this->defs[] = $def;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            $this->companion[] = $definitionrefID;
+                                        }
+                                    }
+                                    break;
 
                                 case('theorem.ref'):
                                     $theoremrefID = $grandchild->getAttribute('theoremID');
@@ -534,7 +534,7 @@ class Subordinate extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB;
 
@@ -568,7 +568,14 @@ class Subordinate extends Element
         if (empty($recordID))
         {
             $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
+        else //record already exists
+        {
+            $this->compid = $this->insertToCompositor($recordID, $this->tablename, $parentid, $siblingid);
+        }
+        
+        
 
         foreach ($this->infos as $key => $info)
         {

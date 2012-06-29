@@ -14,7 +14,7 @@ class Proof extends Element
 {
 
     public $position;
-   
+
     function __construct($xmlpath = '')
     {
         parent::__construct($xmlpath);
@@ -31,16 +31,16 @@ class Proof extends Element
         $this->position = $position;
 
         $this->proof_blocks = array();
-       
+
         $this->string_id = $DomElement->getAttribute('proofid');
 
         $this->proof_type = $DomElement->getAttribute('type');
-        
+
         $proof_blocks = $DomElement->getElementsByTagName('proof.block');
-        
-        foreach($proof_blocks as $pb)
+
+        foreach ($proof_blocks as $pb)
         {
-            $position = $position+1;
+            $position = $position + 1;
             $proof_block = new ProofBlock($this->xmlpath);
             $proof_block->loadFromXml($pb, $position);
             $this->proof_blocks[] = $proof_block;
@@ -52,19 +52,31 @@ class Proof extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
-    {        
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    {
         global $DB;
         $data = new stdClass();
 
+        $sibling_id = $siblingid;
+
         $data->string_id = $this->string_id;
         $data->proof_type = $this->proof_type;
-        
+
         $this->id = $DB->insert_record($this->tablename, $data);
-        
-        foreach($this->proof_blocks as $proof_block)
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+
+        foreach ($this->proof_blocks as $proof_block)
         {
-            $proof_block->saveIntoDb($proof_block->position);
+            if (empty($sibling_id))
+            {
+                $proof_block->saveIntoDb($proof_block->position, $this->compid);
+                $sibling_id = $proof_block->compid;
+            }
+            else
+            {
+                $proof_block->saveIntoDb($proof_block->position, $this->compid, $sibling_id);
+                $sibling_id = $proof_block->compid;
+            }
         }
     }
 

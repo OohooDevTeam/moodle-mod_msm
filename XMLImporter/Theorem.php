@@ -91,7 +91,7 @@ class Theorem extends Element
         {
             foreach ($this->associates as $key => $associate)
             {
-                $elementPosition['assocaite' . '/' . $key] = $associate->position;
+                $elementPosition['associate' . '-' . $key] = $associate->position;
             }
         }
 
@@ -99,7 +99,7 @@ class Theorem extends Element
         {
             foreach ($this->statements as $key => $statement)
             {
-                $elementPosition['statement' . '/' . $key] = $statement->position;
+                $elementPosition['statement' . '-' . $key] = $statement->position;
             }
         }
 
@@ -107,7 +107,7 @@ class Theorem extends Element
         {
             foreach ($this->proofs as $key => $proof)
             {
-                $elementPosition['proof' . '/' . $key] = $proof->position;
+                $elementPosition['proof' . '-' . $key] = $proof->position;
             }
         }
 
@@ -131,6 +131,40 @@ class Theorem extends Element
                         $associate = $this->associates[$associateString[1]];
                         $associate->saveIntoDb($associate->position, $this->compid, $sibling_id);
                         $sibling_id = $associate->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(statement.\d+)$/", $element) ? true : false):
+                    $statementString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $statement = $this->statements[$statementString[1]];
+                        $statement->saveIntoDb($statement->position, $this->compid);
+                        $sibling_id = $statement->compid;
+                    }
+                    else
+                    {
+                        $statement = $this->statements[$statementString[1]];
+                        $statement->saveIntoDb($statement->position, $this->compid, $sibling_id);
+                        $sibling_id = $statement->compid;
+                    }
+                    break;
+                    
+                    case(preg_match("/^(proof.\d+)$/", $element) ? true : false):
+                    $proofString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $proof = $this->proofs[$proofString[1]];
+                        $proof->saveIntoDb($proof->position, $this->compid);
+                        $sibling_id = $proof->compid;
+                    }
+                    else
+                    {
+                        $proof = $this->proofs[$proofString[1]];
+                        $proof->saveIntoDb($proof->position, $this->compid, $sibling_id);
+                        $sibling_id = $proof->compid;
                     }
                     break;
             }

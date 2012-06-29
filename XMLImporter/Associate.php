@@ -165,54 +165,265 @@ class Associate extends Element
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
 
-        foreach ($this->infos as $key => $info)
-        {
-            $info->saveIntoDb($info->position);
-        }
+        $elementPositions = array();
+        $sibling_id = null;
 
-        foreach ($this->comments as $key => $comment)
-        {
-            $comment->saveIntoDb($comment->position);
-        }
 
-        foreach ($this->subunits as $key => $unit)
+        if (!empty($this->infos))
         {
-            $unitID = $this->checkForRecord($unit);
-
-            if (empty($unitID))
+            foreach ($this->infos as $key => $info)
             {
-                $unit->saveIntoDb($unit->position);
+                $elementPositions['info' . '-' . $key] = $info->position;
             }
         }
 
-        foreach ($this->theorems as $key => $theorem)
+        if (!empty($this->comments))
         {
-            $theoremID = $this->checkForRecord($theorem);
-
-            if (empty($theoremID))
+            foreach ($this->comments as $key => $comment)
             {
-                $theorem->saveIntoDb($theorem->position);
+                $elementPositions['comment' . '-' . $key] = $comment->position;
             }
         }
 
-        foreach ($this->defs as $key => $def)
+        if (!empty($this->subunits))
         {
-            $defID = $this->checkForRecord($def);
-
-            if (empty($defID))
+            foreach ($this->subunits as $key => $subunit)
             {
-                $def->saveIntoDb($def->position);
+                $elementPositions['subunit' . '-' . $key] = $subunit->position;
             }
         }
-        foreach ($this->refs as $key => $ref)
-        {
-            $refID = $this->checkForRecord($ref);
 
-            if (empty($refID))
+        if (!empty($this->theorems))
+        {
+            foreach ($this->theorems as $key => $theorem)
             {
-                $ref->saveIntoDb($ref->position);
+                $elementPositions['theorem' . '-' . $key] = $theorem->position;
             }
         }
+
+        if (!empty($this->defs))
+        {
+            foreach ($this->defs as $key => $def)
+            {
+                $elementPositions['def' . '-' . $key] = $def->position;
+            }
+        }
+
+        if (!empty($this->refs))
+        {
+            foreach ($this->refs as $key => $ref)
+            {
+                $elementPositions['ref' . '-' . $key] = $ref->position;
+            }
+        }
+
+        asort($elementPositions);
+
+        foreach ($elementPositions as $element => $value)
+        {
+            switch ($element)
+            {
+                case(preg_match("/^(info.\d+)$/", $element) ? true : false):
+                    $infoString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $info = $this->infos[$infoString[1]];
+                        $info->saveIntoDb($info->position, $parentid);
+                        $sibling_id = $info->compid;
+                    }
+                    else
+                    {
+                        $info = $this->infos[$infoString[1]];
+                        $info->saveIntoDb($info->position, $parentid, $sibling_id);
+                        $sibling_id = $info->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(comment.\d+)$/", $element) ? true : false):
+                    $commentString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $comment = $this->comments[$commentString[1]];
+                        $comment->saveIntoDb($comment->position, $parentid);
+                        $sibling_id = $comment->compid;
+                    }
+                    else
+                    {
+                        $comment = $this->comments[$commentString[1]];
+                        $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
+                        $sibling_id = $comment->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
+                    $subunitString = split('-', $element);
+
+                    $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
+
+                    if (empty($subunitRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $subunit = $this->subunits[$subunitString[1]];
+                            $subunit->saveIntoDb($subunit->position, $parentid);
+                            $sibling_id = $subunit->compid;
+                        }
+                        else
+                        {
+                            $subunit = $this->subunits[$subunitString[1]];
+                            $subunit->saveIntoDb($subunit->position, $parentid, $sibling_id);
+                            $sibling_id = $subunit->compid;
+                        }
+                    }
+                    else
+                    {
+                        $subunitID = $subunitRecord->id;
+
+                        $subunit = $this->subunits[$subunitString[1]];
+                        $subunit->compid = $this->insertToCompositor($subunitID, $subunit->tablename, $parentid, $sibling_id);
+                        $sibling_id = $subunit->compid;
+                    }
+
+
+                    break;
+
+                case(preg_match("/^(def.\d+)$/", $element) ? true : false):
+                    $defString = split('-', $element);
+                    $defRecord = $this->checkForRecord($this->defs[$defString[1]]);
+
+                    if (empty($defRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $def = $this->defs[$defString[1]];
+                            $def->saveIntoDb($def->position, $parentid);
+                            $sibling_id = $def->compid;
+                        }
+                        else
+                        {
+                            $def = $this->defs[$defString[1]];
+                            $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                            $sibling_id = $def->compid;
+                        }
+                    }
+                    else
+                    {
+                        $defID = $defRecord->id;
+                        $def = $this->defs[$defString[1]];
+                        $def->compid = $this->insertToCompositor($defID, $def->tablename, $parentid, $sibling_id);
+                    }
+
+
+                    break;
+
+                case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
+                    $theoremString = split('-', $element);
+
+                    $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
+
+                    if (empty($theoremRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $theorem = $this->theorems[$theoremString[1]];
+                            $theorem->saveIntoDb($theorem->position, $parentid);
+                            $sibling_id = $theorem->compid;
+                        }
+                        else
+                        {
+                            $theorem = $this->theorems[$theoremString[1]];
+                            $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
+                            $sibling_id = $theorem->compid;
+                        }
+                    }
+                    else
+                    {
+                        $theoremID = $theoremRecord->id;
+                        $theorem = $this->theorems[$theoremString[1]];
+                        $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $parentid, $sibling_id);
+                    }
+                    break;
+
+                case(preg_match("/^(ref.\d+)$/", $element) ? true : false):
+                    $refString = split('-', $element);
+
+                    $refRecord = $this->checkForRecord($this->refs[$refString[1]]);
+
+                    if (empty($refRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $ref = $this->refs[$refString[1]];
+                            $ref->saveIntoDb($ref->position, $parentid);
+                            $sibling_id = $ref->compid;
+                        }
+                        else
+                        {
+                            $ref = $this->refs[$refString[1]];
+                            $ref->saveIntoDb($ref->position, $parentid, $sibling_id);
+                            $sibling_id = $ref->compid;
+                        }
+                    }
+                    else
+                    {
+                        $refID = $refRecord->id;
+                        $ref = $this->refs[$refString[1]];
+                        $ref->compid = $this->insertToCompositor($refID, $ref->tablename, $parentid, $sibling_id);
+                    }
+                    break;
+            }
+        }
+
+//        foreach ($this->infos as $key => $info)
+//        {
+//            $info->saveIntoDb($info->position);
+//        }
+//
+//        foreach ($this->comments as $key => $comment)
+//        {
+//            $comment->saveIntoDb($comment->position);
+//        }
+//
+//        foreach ($this->subunits as $key => $unit)
+//        {
+//            $unitID = $this->checkForRecord($unit);
+//
+//            if (empty($unitID))
+//            {
+//                $unit->saveIntoDb($unit->position);
+//            }
+//        }
+//
+//        foreach ($this->theorems as $key => $theorem)
+//        {
+//            $theoremID = $this->checkForRecord($theorem);
+//
+//            if (empty($theoremID))
+//            {
+//                $theorem->saveIntoDb($theorem->position);
+//            }
+//        }
+//
+//        foreach ($this->defs as $key => $def)
+//        {
+//            $defID = $this->checkForRecord($def);
+//
+//            if (empty($defID))
+//            {
+//                $def->saveIntoDb($def->position);
+//            }
+//        }
+//        foreach ($this->refs as $key => $ref)
+//        {
+//            $refID = $this->checkForRecord($ref);
+//
+//            if (empty($refID))
+//            {
+//                $ref->saveIntoDb($ref->position);
+//            }
+//        }
     }
 
 }

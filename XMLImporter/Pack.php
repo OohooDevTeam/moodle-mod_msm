@@ -155,7 +155,7 @@ class Pack extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -169,6 +169,7 @@ class Pack extends Element
         $data->type = $this->type;
 
         $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
 
         foreach ($this->quizs as $quiz)
         {

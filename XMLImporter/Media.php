@@ -51,8 +51,8 @@ class Media extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
-    {        
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    {
         global $DB;
         $data = new stdClass();
         $data->string_id = $this->string_id;
@@ -61,14 +61,49 @@ class Media extends Element
         $data->media_type = $this->type;
 
         $this->id = $DB->insert_record($this->tablename, $data);
-        
-       $recordID = $this->checkForRecord($this->img, 'src');
-       
-       if(empty($recordID))
-       {
-            $this->img->saveIntoDb($this->img->position);
-       }
-       
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+
+        $sibling_id = null;
+//        $recordID = null;
+
+
+        $record = $this->checkForRecord($this->img, 'src');
+
+//        if(!empty($record->id))
+//        {
+//            $recordID = $record->id;
+//        }
+
+        if (empty($record))
+        {
+            if (empty($sibling_id))
+            {
+                $this->img->saveIntoDb($this->img->position);
+                $this->img->compid = $this->insertToCompositor($this->img->id, $this->img->tablename, $this->compid);
+                $sibling_id = $this->img->compid;
+            }
+            else
+            {
+                $this->img->saveIntoDb($this->img->position);
+                $this->img->compid = $this->insertToCompositor($this->img->id, $this->img->tablename, $this->compid, $sibling_id);
+                $sibling_id = $this->img->compid;
+            }
+        }
+        else
+        {
+            if (empty($sibling_id))
+            {
+                $recordID = $record->id;
+                $this->img->compid = $this->insertToCompositor($recordID, $this->img->tablename, $this->compid);
+                $sibling_id = $this->img->compid;
+            }
+            else
+            {
+                $recordID = $record->id;
+                $this->img->compid = $this->insertToCompositor($recordID, $this->img->tablename, $this->compid, $sibling_id);
+                $sibling_id = $this->img->compid;
+            }
+        }
     }
 
 }
