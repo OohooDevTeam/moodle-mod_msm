@@ -76,7 +76,14 @@ class Pilot extends Element
         }
     }
 
-    function saveIntoDb($position)
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $position
+     * @param int $parentid
+     * @param int $siblingid 
+     */
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -86,6 +93,12 @@ class Pilot extends Element
             $data->pilot_content = $this->pilot_content;
 
             $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        }
+        else
+        {
+            $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
     }
 

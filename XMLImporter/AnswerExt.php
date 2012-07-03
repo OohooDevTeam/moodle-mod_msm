@@ -50,7 +50,7 @@ class AnswerExt extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -62,11 +62,27 @@ class AnswerExt extends Element
         $data->ext_name = $this->ext_name;
         
         $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         
-        foreach($this->steps as $step)
+        $elementPosition = array();
+        foreach ($this->steps as $key => $step)
         {
-            $step->saveIntoDb($step->position);
+            $elementPosition['step' . '-' . $key] = $step->position;
         }
+
+        asort($elementPosition);
+
+        foreach ($elementPosition as $element => $value)
+        {
+            $stepString = split('-', $element);
+
+            $this->steps[$stepString[1]]->saveIntoDb($this->steps[$stepString[1]]->position, $this->compid);
+        }
+        
+//        foreach($this->steps as $step)
+//        {
+//            $step->saveIntoDb($step->position);
+//        }
     }
 
 }

@@ -103,7 +103,7 @@ class Example extends Element
             $answer->loadFromXml($a, $position);
             $this->answers[] = $answer;
         }
-        
+
         $answerexts = $DomElement->getElementsByTagName('answer.ext');
         $this->answer_exts = array();
 
@@ -114,8 +114,6 @@ class Example extends Element
             $answerext->loadFromXml($ax, $position);
             $this->answer_exts[] = $answerext;
         }
-        
-        
     }
 
     /**
@@ -123,8 +121,8 @@ class Example extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
-    {        
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    {
         global $DB;
         $data = new stdClass();
 
@@ -140,47 +138,259 @@ class Example extends Element
         {
             $statement_data->statement_example_content = $st;
             $this->statement_example_id = $DB->insert_record('msm_statement_example', $statement_data);
+            $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);
         }
 
-        foreach ($this->answers as $answer)
+
+        $elementPositions = array();
+        $sibling_id = null;
+
+        if (!empty($this->answers))
         {
-            $answer->saveIntoDb($answer->position);
+            foreach ($this->answers as $key => $answer)
+            {
+                $elementPositions['answer' . '-' . $key] = $answer->position;
+            }
+        }
+        
+        if (!empty($this->part_examples))
+        {
+            foreach ($this->part_examples as $key => $part_example)
+            {
+                $elementPositions['partexample' . '-' . $key] = $part_example->position;
+            }
+        }
+        
+        if (!empty($this->answer_exts))
+        {
+            foreach ($this->answer_exts as $key => $answer_ext)
+            {
+                $elementPositions['answerext' . '-' . $key] = $answer_ext->position;
+            }
         }
 
-        foreach ($this->part_examples as $part_example)
+        if (!empty($this->subordinates))
         {
-            $part_example->saveIntoDb($part_example->position);
-        }
-       
-        foreach($this->answer_exts as $ans_ext)
-        {
-            $ans_ext->saveIntoDb($ans_ext->position);
+            foreach ($this->subordinates as $key => $subordinate)
+            {
+                $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
+            }
         }
 
-        foreach ($this->subordinates as $key => $subordinate)
+        if (!empty($this->indexauthors))
         {
-            $subordinate->saveIntoDb($subordinate->position);
+            foreach ($this->indexauthors as $key => $indexauthor)
+            {
+                $elementPositions['indexauthor' . '-' . $key] = $indexauthor->position;
+            }
         }
 
-        foreach ($this->indexglossarys as $key => $indexglossary)
+        if (!empty($this->indexglossarys))
         {
-            $indexglossary->saveIntoDb($indexglossary->position);
+            foreach ($this->indexglossarys as $key => $indexglosary)
+            {
+                $elementPositions['indexglossary' . '-' . $key] = $indexglosary->position;
+            }
         }
 
-        foreach ($this->indexsymbols as $key => $indexsymbol)
+        if (!empty($this->indexsymbols))
         {
-            $indexsymbol->saveIntoDb($indexsymbol->position);
+            foreach ($this->indexsymbols as $key => $indexsymbol)
+            {
+                $elementPositions['indexsymbol' . '-' . $key] = $indexsymbol->position;
+            }
         }
 
-        foreach ($this->indexauthors as $key => $indexauthor)
+        if (!empty($this->medias))
         {
-            $indexauthor->saveIntoDb($indexauthor->position);
+            foreach ($this->medias as $key => $media)
+            {
+                $elementPositions['media' . '-' . $key] = $media->position;
+            }
         }
 
-        foreach ($this->medias as $key => $media)
+        asort($elementPositions);
+
+        foreach ($elementPositions as $element => $value)
         {
-            $media->saveIntoDb($media->position);
+            switch ($element)
+            {
+                case(preg_match("/^(answerext.\d+)$/", $element) ? true : false):
+                    $answerextString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $answerext = $this->answer_exts[$answerextString[1]];
+                        $answerext->saveIntoDb($answerext->position, $parentid);
+                        $sibling_id = $answerext->compid;
+                    }
+                    else
+                    {
+                        $answerext = $this->answer_exts[$answerextString[1]];
+                        $answerext->saveIntoDb($answerext->position, $parentid, $sibling_id);
+                        $sibling_id = $answerext->compid;
+                    }
+                    break;
+                case(preg_match("/^(partexample.\d+)$/", $element) ? true : false):
+                    $partexampleString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $partexample = $this->part_examples[$partexampleString[1]];
+                        $partexample->saveIntoDb($partexample->position, $parentid);
+                        $sibling_id = $partexample->compid;
+                    }
+                    else
+                    {
+                        $partexample = $this->part_examples[$partexampleString[1]];
+                        $partexample->saveIntoDb($partexample->position, $parentid, $sibling_id);
+                        $sibling_id = $partexample->compid;
+                    }
+                    break;
+                    
+                 case(preg_match("/^(answer.\d+)$/", $element) ? true : false):
+                    $answerString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $answer = $this->answers[$answerString[1]];
+                        $answer->saveIntoDb($answer->position, $parentid);
+                        $sibling_id = $answer->compid;
+                    }
+                    else
+                    {
+                        $answer = $this->answers[$answerString[1]];
+                        $answer->saveIntoDb($answer->position, $parentid, $sibling_id);
+                        $sibling_id = $answer->compid;
+                    }
+                    break;
+                    
+                case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
+                    $subordinateString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $subordinate = $this->subordinates[$subordinateString[1]];
+                        $subordinate->saveIntoDb($subordinate->position, $parentid);
+                        $sibling_id = $subordinate->compid;
+                    }
+                    else
+                    {
+                        $subordinate = $this->subordinates[$subordinateString[1]];
+                        $subordinate->saveIntoDb($subordinate->position, $parentid, $sibling_id);
+                        $sibling_id = $subordinate->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
+                    $indexauthorString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $indexauthor = $this->indexauthors[$indexauthorString[1]];
+                        $indexauthor->saveIntoDb($indexauthor->position, $parentid);
+                        $sibling_id = $indexauthor->compid;
+                    }
+                    else
+                    {
+                        $indexauthor = $this->indexauthors[$indexauthorString[1]];
+                        $indexauthor->saveIntoDb($indexauthor->position, $parentid, $sibling_id);
+                        $sibling_id = $indexauthor->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
+                    $indexsymbolString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
+                        $indexsymbol->saveIntoDb($indexsymbol->position, $parentid);
+                        $sibling_id = $indexsymbol->compid;
+                    }
+                    else
+                    {
+                        $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
+                        $indexsymbol->saveIntoDb($indexsymbol->position, $parentid, $sibling_id);
+                        $sibling_id = $indexsymbol->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
+                    $indexglossaryString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
+                        $indexglossary->saveIntoDb($indexglossary->position, $parentid);
+                        $sibling_id = $indexglossary->compid;
+                    }
+                    else
+                    {
+                        $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
+                        $indexglossary->saveIntoDb($indexglossary->position, $parentid, $sibling_id);
+                        $sibling_id = $indexglossary->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(media.\d+)$/", $element) ? true : false):
+                    $mediaString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $media = $this->medias[$mediaString[1]];
+                        $media->saveIntoDb($media->position, $parentid);
+                        $sibling_id = $media->compid;
+                    }
+                    else
+                    {
+                        $media = $this->medias[$mediaString[1]];
+                        $media->saveIntoDb($media->position, $parentid, $sibling_id);
+                        $sibling_id = $media->compid;
+                    }
+                    break;
+            }
         }
+
+//        foreach ($this->answers as $answer)
+//        {
+//            $answer->saveIntoDb($answer->position);
+//        }
+//
+//        foreach ($this->part_examples as $part_example)
+//        {
+//            $part_example->saveIntoDb($part_example->position);
+//        }
+//       
+//        foreach($this->answer_exts as $ans_ext)
+//        {
+//            $ans_ext->saveIntoDb($ans_ext->position);
+//        }
+//
+//        foreach ($this->subordinates as $key => $subordinate)
+//        {
+//            $subordinate->saveIntoDb($subordinate->position);
+//        }
+//
+//        foreach ($this->indexglossarys as $key => $indexglossary)
+//        {
+//            $indexglossary->saveIntoDb($indexglossary->position);
+//        }
+//
+//        foreach ($this->indexsymbols as $key => $indexsymbol)
+//        {
+//            $indexsymbol->saveIntoDb($indexsymbol->position);
+//        }
+//
+//        foreach ($this->indexauthors as $key => $indexauthor)
+//        {
+//            $indexauthor->saveIntoDb($indexauthor->position);
+//        }
+//
+//        foreach ($this->medias as $key => $media)
+//        {
+//            $media->saveIntoDb($media->position);
+//        }
     }
 
 }

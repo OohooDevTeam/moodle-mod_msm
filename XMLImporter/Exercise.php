@@ -84,7 +84,7 @@ class Exercise extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
 //        echo "exercise save start";
 //        $time = time();
@@ -98,26 +98,139 @@ class Exercise extends Element
         $data->caption = $this->caption;
 
         $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        
+         $elementPositions = array();
+        $sibling_id = null;
 
-        foreach ($this->problems as $problem)
+
+        if (!empty($this->problems))
         {
-            $problem->saveIntoDb($problem->position);
+            foreach ($this->problems as $key => $problem)
+            {
+                $elementPositions['problem' . '-' . $key] = $problem->position;
+            }
         }
 
-        foreach ($this->approachs as $approach)
+        if (!empty($this->approachs))
         {
-            $approach->saveIntoDb($approach->position);
+            foreach ($this->approachs as $key => $approach)
+            {
+                $elementPositions['approach' . '-' . $key] = $approach->position;
+            }
         }
 
-        foreach ($this->approach_exts as $approach_ext)
+        if (!empty($this->approach_exts))
         {
-            $approach_ext->saveIntoDb($approach_ext->position);
+            foreach ($this->approach_exts as $key => $approach_ext)
+            {
+                $elementPositions['approachext' . '-' . $key] = $approach_ext->position;
+            }
         }
 
-        foreach ($this->part_exercises as $part_exercise)
+        if (!empty($this->part_exercises))
         {
-            $part_exercise->saveIntoDb($part_exercise->position);
+            foreach ($this->part_exercises as $key => $part_exercise)
+            {
+                $elementPositions['partexercise' . '-' . $key] = $part_exercise->position;
+            }
         }
+
+        asort($elementPositions);
+
+        foreach ($elementPositions as $element => $value)
+        {
+            switch ($element)
+            {
+                case(preg_match("/^(problem.\d+)$/", $element) ? true : false):
+                    $problemString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $problem = $this->problems[$problemString[1]];
+                        $problem->saveIntoDb($problem->position, $parentid);
+                        $sibling_id = $problem->compid;
+                    }
+                    else
+                    {
+                        $problem = $this->problems[$problemString[1]];
+                        $problem->saveIntoDb($problem->position, $parentid, $sibling_id);
+                        $sibling_id = $problem->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(approach.\d+)$/", $element) ? true : false):
+                    $approachString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $approach = $this->approachs[$approachString[1]];
+                        $approach->saveIntoDb($approach->position, $parentid);
+                        $sibling_id = $approach->compid;
+                    }
+                    else
+                    {
+                        $approach = $this->approachs[$approachString[1]];
+                        $approach->saveIntoDb($approach->position, $parentid, $sibling_id);
+                        $sibling_id = $approach->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(approachext.\d+)$/", $element) ? true : false):
+                    $approachextString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $approachext = $this->approach_exts[$approachextString[1]];
+                        $approachext->saveIntoDb($approachext->position, $parentid);
+                        $sibling_id = $approachext->compid;
+                    }
+                    else
+                    {
+                        $approachext = $this->approach_exts[$approachextString[1]];
+                        $approachext->saveIntoDb($approachext->position, $parentid, $sibling_id);
+                        $sibling_id = $approachext->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(partexercise.\d+)$/", $element) ? true : false):
+                    $partexerciseString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $partexercise = $this->part_exercises[$partexerciseString[1]];
+                        $partexercise->saveIntoDb($partexercise->position, $parentid);
+                        $sibling_id = $partexercise->compid;
+                    }
+                    else
+                    {
+                        $partexercise = $this->part_exercises[$partexerciseString[1]];
+                        $partexercise->saveIntoDb($partexercise->position, $parentid, $sibling_id);
+                        $sibling_id = $partexercise->compid;
+                    }
+                    break;
+            }
+        }
+
+//        foreach ($this->problems as $problem)
+//        {
+//            $problem->saveIntoDb($problem->position);
+//        }
+//
+//        foreach ($this->approachs as $approach)
+//        {
+//            $approach->saveIntoDb($approach->position);
+//        }
+//
+//        foreach ($this->approach_exts as $approach_ext)
+//        {
+//            $approach_ext->saveIntoDb($approach_ext->position);
+//        }
+//
+//        foreach ($this->part_exercises as $part_exercise)
+//        {
+//            $part_exercise->saveIntoDb($part_exercise->position);
+//        }
     }
 
 }

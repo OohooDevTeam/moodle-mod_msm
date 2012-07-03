@@ -170,27 +170,138 @@ class Pack extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
-
-        foreach ($this->quizs as $quiz)
+        
+        $elementPositions = array();
+        $sibling_id = null;
+      
+        if (!empty($this->quizs))
         {
-            $quiz->saveIntoDb($quiz->position);
+            foreach ($this->quizs as $key => $quiz)
+            {
+                $elementPositions['quiz' . '-' . $key] = $quiz->position;
+            }
         }
 
-        foreach ($this->examples as $example)
+        if (!empty($this->examples))
         {
-            $example->saveIntoDb($example->position);
+            foreach ($this->examples as $key => $example)
+            {
+                $elementPositions['example' . '-' . $key] = $example->position;
+            }
         }
 
-
-        foreach ($this->exercises as $exercise)
+        if (!empty($this->exercises))
         {
-            $exercise->saveIntoDb($exercise->position);
+            foreach ($this->exercises as $key => $exercise)
+            {
+                $elementPositions['exercise' . '-' . $key] = $exercise->position;
+            }
         }
 
-        foreach ($this->showmes as $showme)
-        {          
-            $showme->saveIntoDb($showme->position);      
+        if (!empty($this->showmes))
+        {
+            foreach ($this->showmes as $key => $showme)
+            {
+                $elementPositions['showme' . '-' . $key] = $showme->position;
+            }
         }
+
+        asort($elementPositions);
+
+        foreach ($elementPositions as $element => $value)
+        {
+            switch ($element)
+            {
+                 case(preg_match("/^(quiz.\d+)$/", $element) ? true : false):
+                    $quizString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $quiz = $this->quizs[$quizString[1]];
+                        $quiz->saveIntoDb($quiz->position, $parentid);
+                        $sibling_id = $quiz->compid;
+                    }
+                    else
+                    {
+                        $quiz = $this->quizs[$quizString[1]];
+                        $quiz->saveIntoDb($quiz->position, $parentid, $sibling_id);
+                        $sibling_id = $quiz->compid;
+                    }
+                    break;
+                    
+                case(preg_match("/^(example.\d+)$/", $element) ? true : false):
+                    $exampleString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $example = $this->examples[$exampleString[1]];
+                        $example->saveIntoDb($example->position, $parentid);
+                        $sibling_id = $example->compid;
+                    }
+                    else
+                    {
+                        $example = $this->examples[$exampleString[1]];
+                        $example->saveIntoDb($example->position, $parentid, $sibling_id);
+                        $sibling_id = $example->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(exercise.\d+)$/", $element) ? true : false):
+                    $exerciseString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $exercise = $this->exercises[$exerciseString[1]];
+                        $exercise->saveIntoDb($exercise->position, $parentid);
+                        $sibling_id = $exercise->compid;
+                    }
+                    else
+                    {
+                        $exercise = $this->exercises[$exerciseString[1]];
+                        $exercise->saveIntoDb($exercise->position, $parentid, $sibling_id);
+                        $sibling_id = $exercise->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(showme.\d+)$/", $element) ? true : false):
+                    $showmeString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $showme = $this->showmes[$showmeString[1]];
+                        $showme->saveIntoDb($showme->position, $parentid);
+                        $sibling_id = $showme->compid;
+                    }
+                    else
+                    {
+                        $showme = $this->showmes[$showmeString[1]];
+                        $showme->saveIntoDb($showme->position, $parentid, $sibling_id);
+                        $sibling_id = $showme->compid;
+                    }
+                    break;
+            }
+        }
+
+//        foreach ($this->quizs as $quiz)
+//        {
+//            $quiz->saveIntoDb($quiz->position);
+//        }
+//
+//        foreach ($this->examples as $example)
+//        {
+//            $example->saveIntoDb($example->position);
+//        }
+//
+//
+//        foreach ($this->exercises as $exercise)
+//        {
+//            $exercise->saveIntoDb($exercise->position);
+//        }
+//
+//        foreach ($this->showmes as $showme)
+//        {          
+//            $showme->saveIntoDb($showme->position);      
+//        }
     }
 
 }

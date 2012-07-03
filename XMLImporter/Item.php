@@ -117,8 +117,8 @@ class Item extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
-    {        
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
+    {
         global $DB;
         $data = new stdClass();
 
@@ -130,6 +130,7 @@ class Item extends Element
         }
 
         $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
 
         if (!empty($this->content[2]))
         {
@@ -137,6 +138,7 @@ class Item extends Element
             $data->item_content = $this->content[2];
             $data->position = 2;
             $this->id = $DB->insert_record($this->tablename, $data);
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
     }
 

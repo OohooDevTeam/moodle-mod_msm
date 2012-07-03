@@ -67,7 +67,7 @@ class ApproachExt extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB;
         $data = new stdClass();
@@ -79,16 +79,78 @@ class ApproachExt extends Element
         $data->ext_name = $this->ext_name;
 
         $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+        
+         $elementPositions = array();
+        $sibling_id = null;
 
-        foreach ($this->answer_exercises as $answer_exercise)
+        if (!empty($this->answer_exercises))
         {
-            $answer_exercise->saveIntoDb($answer_exercise->position);
+            foreach ($this->answer_exercises as $key => $answerexercise)
+            {
+                $elementPositions['answerexercise' . '-' . $key] = $answerexercise->position;
+            }
         }
 
-        foreach ($this->solution_exts as $solution_ext)
+        if (!empty($this->solution_exts))
         {
-            $solution_ext->saveIntoDb($solution_ext->position);
+            foreach ($this->solution_exts as $key => $solutionext)
+            {
+                $elementPositions['solutionext' . '-' . $key] = $solutionext->position;
+            }
         }
+
+        asort($elementPositions);
+
+        foreach ($elementPositions as $element => $value)
+        {
+            switch ($element)
+            {               
+                case(preg_match("/^(answerexercise.\d+)$/", $element) ? true : false):
+                    $answerexerciseString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $answerexercise = $this->answer_exercises[$answerexerciseString[1]];
+                        $answerexercise->saveIntoDb($answerexercise->position, $parentid);
+                        $sibling_id = $answerexercise->compid;
+                    }
+                    else
+                    {
+                        $answerexercise = $this->answer_exercises[$answerexerciseString[1]];
+                        $answerexercise->saveIntoDb($answerexercise->position, $parentid, $sibling_id);
+                        $sibling_id = $answerexercise->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(solutionext.\d+)$/", $element) ? true : false):
+                    $solutionextString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $solutionext = $this->solution_exts[$solutionextString[1]];
+                        $solutionext->saveIntoDb($solutionext->position, $parentid);
+                        $sibling_id = $solutionext->compid;
+                    }
+                    else
+                    {
+                        $solutionext = $this->solution_exts[$solutionextString[1]];
+                        $solutionext->saveIntoDb($solutionext->position, $parentid, $sibling_id);
+                        $sibling_id = $solutionext->compid;
+                    }
+                    break;
+            }
+        }
+
+//        foreach ($this->answer_exercises as $answer_exercise)
+//        {
+//            $answer_exercise->saveIntoDb($answer_exercise->position);
+//        }
+//
+//        foreach ($this->solution_exts as $solution_ext)
+//        {
+//            $solution_ext->saveIntoDb($solution_ext->position);
+//        }
     }
 
 }
