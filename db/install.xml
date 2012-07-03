@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/msm/db" VERSION="20120619" COMMENT="XMLDB file for Moodle mod/msm"
+<XMLDB PATH="mod/msm/db" VERSION="20120703" COMMENT="XMLDB file for Moodle mod/msm"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -23,8 +23,9 @@
     </TABLE>
     <TABLE NAME="msm_compositor" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm" NEXT="msm_unit">
       <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="unit_id"/>
-        <FIELD NAME="unit_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="table_id"/>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="msm_id"/>
+        <FIELD NAME="msm_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="unit_id"/>
+        <FIELD NAME="unit_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="msm_id" NEXT="table_id"/>
         <FIELD NAME="table_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" PREVIOUS="unit_id" NEXT="parent_id"/>
         <FIELD NAME="parent_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="table_id" NEXT="prev_sibling_id"/>
         <FIELD NAME="prev_sibling_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="parent_id"/>

@@ -39,3 +39,4 @@ $string['msmname_help'] = 'This is the content of the help tooltip associated wi
 $string['msm'] = 'msm';
 $string['pluginadministration'] = 'msm administration';
 $string['pluginname'] = 'msm';
+$string['updatecomp'] = 'Update this composition';

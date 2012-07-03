@@ -480,6 +480,7 @@ class Unit extends Element
         if ($this->position == 1) // it's the root element, which means, no parent and no previous siblings
         {
             $compdata = new stdClass();
+            $compdata->msm_id = $parentid;
             $compdata->unit_id = $this->id;
             $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
             $compdata->parent_id = null;

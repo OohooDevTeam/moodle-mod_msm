@@ -88,7 +88,7 @@ abstract class Element
             $foundID = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
 
             if (!empty($foundID))
-            { 
+            {
                 return $foundID;
             }
             else
@@ -208,6 +208,9 @@ abstract class Element
         $content = array();
 
         $position = $position + 1;
+        
+//         echo "para?";
+//        print_object($DomElement->nodeValue);
 
         $subordinates = $DomElement->getElementsByTagName('subordinate');
 
@@ -248,12 +251,12 @@ abstract class Element
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
 
-        $medias = $DomElement->getElementsByTagName('media');
-        $mlength = $medias->length;
-        for ($i = 0; $i < $mlength; $i++)
-        {
-            $medias->item(0)->parentNode->removeChild($medias->item(0));
-        }
+//        $medias = $DomElement->getElementsByTagName('media');
+//        $mlength = $medias->length;
+//        for ($i = 0; $i < $mlength; $i++)
+//        {
+//            $medias->item(0)->parentNode->removeChild($medias->item(0));
+//        }
 
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
@@ -293,6 +296,23 @@ abstract class Element
      */
     function processIndexGlossary($DomElement, $position)
     {
+//        $arrayOfIndexGlossary = array();
+//
+//        foreach ($DomElement->childNodes as $child)
+//        {
+//            if ($child->nodeType == XML_ELEMENT_NODE)
+//            {
+//                if ($child->tagName == 'index.glossary')
+//                {
+//                    $position = $position + 1;
+//                    $indexglossary = new MathIndex($this->xmlpath);
+//                    $indexglossary->loadFromXml($child, $position);
+//                    $arrayOfIndexGlossary[] = $indexglossary;
+//                }
+//            }
+//        }
+//        echo "para?";
+//        print_object($DomElement->nodeValue);
         $position = $position + 1;
         $arrayOfIndexGlossary = array();
 
@@ -300,6 +320,8 @@ abstract class Element
         $iglength = $indexglossarys->length;
         for ($i = 0; $i < $iglength; $i++)
         {
+//            echo "in loop";
+//            print_object($indexglossarys->item($i)->nodeValue);
             $position = $position + 1;
             $indexglossary = new MathIndex($this->xmlpath);
             $indexglossary->loadFromXml($indexglossarys->item($i), $position);
@@ -394,8 +416,8 @@ abstract class Element
             return $path;
         }
     }
-    
-     /**
+
+    /**
      *
      * @global moodle_database $DB
      * @param int $elementid
@@ -405,23 +427,22 @@ abstract class Element
     function insertToCompositor($elementid, $tablename, $parentid = '', $siblingid = '')
     {
         global $DB;
-       
+
         $compdata = new stdClass();
         $compdata->unit_id = $elementid;
         $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => $tablename))->id;
         $compdata->parent_id = $parentid;
         $compdata->prev_sibling_id = $siblingid;
-        
+
         $compid = $DB->insert_record('msm_compositor', $compdata);
-       
+
         return $compid;
     }
- 
+
     // abstract method that is implemented by each class 
     // This function saves the data retrieved from loadFromXml method to the appropriate 
     // database table
     // abstract function saveIntoDb($position);
-
 }
 
 ?>

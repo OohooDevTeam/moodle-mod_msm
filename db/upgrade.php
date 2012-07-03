@@ -1757,6 +1757,38 @@ function xmldb_msm_upgrade($oldversion)
         upgrade_mod_savepoint(true, 2012061900, 'msm');
     }
 
+//    if ($oldversion < 2012070300)
+//    {
+//
+//        // Define field msm_id to be added to msm_compositor
+//        $table = new xmldb_table('msm_compositor');
+//        $field = new xmldb_field('msm_id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null, 'id');
+//
+//        // Conditionally launch add field msm_id
+//        if (!$dbman->field_exists($table, $field))
+//        {
+//            $dbman->add_field($table, $field);
+//        }
+//
+//        // msm savepoint reached
+//        upgrade_mod_savepoint(true, 2012070300, 'msm');
+//    }
+    
+     if ($oldversion < 2012070303) {
+
+        // Define field msm_id to be added to msm_compositor
+        $table = new xmldb_table('msm_compositor');
+        $field = new xmldb_field('msm_id', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'id');
+
+        // Conditionally launch add field msm_id
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012070303, 'msm');
+    }
+
 
 
 

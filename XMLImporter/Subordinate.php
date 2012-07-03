@@ -205,7 +205,6 @@ class Subordinate extends Element
                                         }
                                         else
                                         {
-                                            echo "found in db";
                                             $this->companion[] = $showmepackrefID;
                                         }
                                     }

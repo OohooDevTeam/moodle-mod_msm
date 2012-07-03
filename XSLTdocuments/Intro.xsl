@@ -599,7 +599,7 @@
                         <xsl:if test="node()[name()='index.symbol']">
                             <xsl:value-of select="bk:symbol"/>
                         </xsl:if>
-                        <xsl:apply-templates select="node()[not(name() = 'index.glossary' or name() = 'index.symbol' or name() = 'index.author')]"/>
+                        <xsl:apply-templates select="node()[not(name() = 'index.glossary' or name() = 'index.symbol' or name() = 'index.author' or name() = 'img' or name() = 'image')]"/>
                     </xsl:for-each>
                 </xsl:element>
                 <xsl:apply-templates select="bk:index.author"/>

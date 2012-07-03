@@ -60,7 +60,16 @@ class MathIndex extends Element
                 break;
 
             case('index.glossary'):
-                $this->term = $this->getContent($DomElement->getElementsByTagName('term')->item(0));
+                $terms = $DomElement->getElementsByTagName('term');
+                $string = '';
+                
+                foreach($terms as $t)
+                {
+                   $term = $this->getContent($t);
+                   $string = $string . $term . '/';
+                   $this->term = $string;
+                }
+//                $this->term = $this->getContent($DomElement->getElementsByTagName('term')->item(0));
 
                 $infos = $DomElement->getElementsByTagName('info');
 

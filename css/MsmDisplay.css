@@ -1,0 +1,86 @@
+/* 
+    Document   : MsmDisplay
+    Created on : Jul 3, 2012, 1:55:25 PM
+    Author     : User
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body
+{
+    overflow: auto;
+    overflow-y: scroll;
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;    
+    z-index:0;
+}
+
+#MySplitter {
+    height: 100%;
+    width: 100%;
+    min-height: 500px;
+    background-image:url('../pix/background.jpg');
+    /*	border: 5px solid #aaa;*/
+
+}
+/*#MySplitter div {
+    overflow: auto;
+}*/
+.vsplitbar {
+    /*	width: 5px;*/
+    /*	background: #aaa;*/
+    width:0.5%;
+    height:100%-2px;
+    cursor: col-resize;
+    background: #FFFFFF;
+   
+}
+
+.leftcol
+{
+    position: relative;
+    /*        overflow: auto;*/
+    top: 0;
+    /*            top:42px;
+                bottom:0;
+                margin-left:0;
+                margin-right:0;
+                padding-left:1%;
+                padding-right:1%;
+                padding-bottom:2%; */
+    /*        float:left;*/
+    /*        width:50%;*/
+    /*        max-width: 50%;*/
+    /*        background-color:#FFE6E6;*/
+    opacity:0.95;
+    filter:Alpha(opacity=95); 
+    /*    z-index: 10;*/
+}
+
+/* all contents of right colomn is invisible by opacity of zero. Upon a mouseclick the opacity will change to one */
+.rightcol
+{
+    position: relative;
+    /*        overflow: auto;*/
+    top: 0;
+    /*            top:42px;
+                bottom:0;*/
+    /*        left:50%;*/
+
+    /*        float: right;*/
+    /*            margin-left:0;
+                margin-right:0;
+                padding-left:1%;
+                padding-right:1%;*/
+    /*        width:50%;*/
+    /*         max-width: 50%;*/
+    opacity:1.0;
+    filter:Alpha(opacity=100);
+    /*    visibility: visible;*/
+    /*    background-color: 	#FFE0D1;*/
+    /*    z-index: 10;*/
+
+}
+
