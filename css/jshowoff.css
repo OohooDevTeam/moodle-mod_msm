@@ -1,0 +1,179 @@
+/*
+
+Title:		jShowOff: a jQuery Content Rotator Plugin
+Author:		Erik Kallevig
+Version:	0.1.2
+Website:	http://ekallevig.com/jshowoff
+License: 	Dual licensed under the MIT and GPL licenses.
+
+*/
+
+
+/*-- reset styles --*/
+/*
+html,body,div,span,
+applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+a,abbr,acronym,address,big,cite,code,
+del,dfn,em,font,img,ins,kbd,q,s,samp,
+small,strike,strong,sub,sup,tt,var,
+dd,dl,dt,li,ol,ul,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 100%;
+        font-family: inherit;
+        text-align: left;
+        }
+table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        }
+ol,ul {
+        list-style: none;
+        }
+q:before,q:after,
+blockquote:before,blockquote:after {
+        content: "";
+        }
+h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a {
+        font-weight: bold;
+        }
+*/
+/*-- jShowOff module styles --*/
+
+
+#features, #slidingFeatures, #labelFeatures, #basicFeatures, #thumbFeatures {
+    position: absolute;
+    overflow: auto;
+    /*width: 97%;*/
+
+    /*    min-width: inherit;
+        width: inherit;*/
+    min-height: 650px;
+    height: auto !important;
+    height: 800px;
+    /*    margin: 10px;*/
+    margin-left:10px;
+    margin-top: 10px;
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+
+}
+
+
+
+/*.jshowoff {
+        width: 100%;
+
+        }*/
+/*.jshowoff ol,.jshowoff ul {
+        list-style: none;
+        }*/
+/*.jshowoff div {	
+        width: 97%;
+        max-width:97%;
+        }*/
+.jshowoff div, .jshowoff img, .jshowoff {
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+}
+#basicFeatures, .jshowoff.basicFeatures, .jshowoff.basicFeatures img, .jshowoff.basicFeatures div {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+.jshowoff div p, .jshowoff div h2 {
+    _background-color: #efefef;
+}
+.jshowoff h2, .jshowoff p {
+    font-size: 18px;
+    padding: 15px 20px 0px;
+    margin: 0;
+}
+.jshowoff p {
+    font-size: 14px;
+    line-height: 15px;
+}
+.eddie {
+    float: right;
+    padding: 15px 20px 15px 20px;
+}
+.jshowoff p.jshowoff-slidelinks {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    margin: 0;
+    padding: 0;
+}
+.jshowoff-slidelinks a, .jshowoff-controls a{
+    display: block;
+    background-color: #000;
+    color: #fff;
+    padding: 5px 7px 5px;
+    margin: 5px 0 0 5px;
+    float: left;
+    text-decoration: none;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    outline: none;
+    font-size: 11px;
+    line-height: 14px;
+}
+.jshowoff-slidelinks a:hover, .jshowoff-controls a:hover {
+    color: #fff;
+}
+.jshowoff-slidelinks a.jshowoff-active, .jshowoff-slidelinks a.jshowoff-active:hover {
+    background-color: #fff;
+    color: #000;
+}
+p.jshowoff-controls {
+    background: #aaa;
+    overflow: auto;
+    height: 35px;
+    max-height: 35px;
+    width:98%;
+    padding: 0 0px 5px 5px;
+    margin-bottom: 10px;
+    -moz-border-radius-bottomleft: 6px;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+.jshowoff-controls a {
+    margin: 5px 5px 0 0;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 4px 8px 5px;
+}
+
+/*added to format the prev/next buttons properly with the modified interface*/
+a.jshowoff-prev {
+    float:left;
+    margin-right: 35%;
+}
+
+a.jshowoff-next {
+    float:right;
+    margin-left:35%;
+}
+.jshowoff-controls span.jshowoff-page {
+    font-size: 14px;
+    margin: 5px 0 5px; /*centering the page*/
+    color: #fff;
+    font-weight:bold;
+    padding: 5px 7px 5px;
+    float: left;
+    outline: none;
+    line-height: 14px;
+}
+
+.jshowoff-pausetext {
+    color: #fff;
+}
+

@@ -17,70 +17,126 @@ body
     z-index:0;
 }
 
+div.controller{
+    position:absolute;
+    top: 92%;
+    min-width: 99.5%;
+    max-height: 35px;
+    z-index: 11;
+    margin-top: 10px;
+    margin-left: 10px;
+    /*    margin-right:10px;*/
+}
+
 #MySplitter {
-    height: 100%;
-    width: 100%;
-    min-height: 500px;
+    /*    height: 100%;
+        width: 100%;*/
+    min-width: 542px;
+    min-height: 720px;
+    max-width: 100%;
+    max-height: 100%;
     background-image:url('../pix/background.jpg');
+    opacity:0.95;
+    filter:Alpha(opacity=95); 
     /*	border: 5px solid #aaa;*/
 
 }
-/*#MySplitter div {
-    overflow: auto;
-}*/
+
+.leftbox
+{
+   background-image:url('../pix/background2.jpg');
+    /*    min-width: inherit;
+        width: inherit;*/
+    min-height: 650px;
+    width:99.3%
+}
+
+.leftbox p
+{
+    margin:30px 40px;
+    font-weight:bold;
+    color:#000000;
+}
+
+
+.rightbox
+{
+   background-image:url('../pix/background2.jpg');
+    min-height: 695px;
+    width:97%
+}
+
+
+.rightbox p
+{
+    margin:30px 40px;
+    font-weight:bold;
+    color:#000000;
+}
+
+#MySplitter div {
+    overflow: hidden;
+}
 .vsplitbar {
     /*	width: 5px;*/
     /*	background: #aaa;*/
-    width:0.5%;
+    min-width:0.5%;
+    max-width:0.5%;
     height:100%-2px;
     cursor: col-resize;
     background: #FFFFFF;
-   
+    /*    margin-left: 10px;
+        margin-right: 10px;*/
+
 }
 
 .leftcol
 {
-    position: relative;
-    /*        overflow: auto;*/
-    top: 0;
-    /*            top:42px;
-                bottom:0;
-                margin-left:0;
-                margin-right:0;
-                padding-left:1%;
-                padding-right:1%;
-                padding-bottom:2%; */
-    /*        float:left;*/
-    /*        width:50%;*/
-    /*        max-width: 50%;*/
-    /*        background-color:#FFE6E6;*/
-    opacity:0.95;
-    filter:Alpha(opacity=95); 
-    /*    z-index: 10;*/
-}
+    /*    position: relative;*/
+    overflow: hidden;
+    margin-bottom:10px;
+    margin-right:10px;
+    /*    top: 0;
+                    top:42px;
+                    bottom:0;
+                    margin-left:0;
+                    margin-right:0;
+                    padding-left:1%;
+                    padding-right:1%;
+                    padding-bottom:2%; 
+                float:left;
+                width:50%;
+                max-width: 50%;
+                background-color:#FFE6E6;
+        opacity:0.95;
+        filter:Alpha(opacity=95); 
+            z-index: 10;*/
+}/*
 
-/* all contents of right colomn is invisible by opacity of zero. Upon a mouseclick the opacity will change to one */
-.rightcol
+ all contents of right colomn is invisible by opacity of zero. Upon a mouseclick the opacity will change to one 
+/**/.rightcol
 {
-    position: relative;
-    /*        overflow: auto;*/
-    top: 0;
-    /*            top:42px;
-                bottom:0;*/
-    /*        left:50%;*/
-
-    /*        float: right;*/
-    /*            margin-left:0;
-                margin-right:0;
-                padding-left:1%;
-                padding-right:1%;*/
-    /*        width:50%;*/
-    /*         max-width: 50%;*/
-    opacity:1.0;
-    filter:Alpha(opacity=100);
-    /*    visibility: visible;*/
-    /*    background-color: 	#FFE0D1;*/
-    /*    z-index: 10;*/
-
-}
+    /*    position: relative;*/
+    overflow: auto;
+    /*    top: 0;
+                    top:42px;
+                    bottom:0;
+                left:50%;
+    
+                float: right;
+    */                    padding-top:10px;/*
+        padding-bottom:10px;
+    */    padding-left:10px;/*
+        padding-right:50px;*/
+    /*                padding-left:1%;
+                    padding-right:1%;
+                width:50%;
+                 max-width: 50%;
+        opacity:1.0;
+        filter:Alpha(opacity=100);
+            visibility: visible;
+            background-color: 	#FFE0D1;
+            z-index: 10;
+    
+*/    }
 

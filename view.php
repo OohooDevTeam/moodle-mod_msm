@@ -26,26 +26,28 @@
  * @copyright  2011 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-
-require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
-require_once(dirname(__FILE__).'/lib.php');
+require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
+require_once(dirname(__FILE__) . '/lib.php');
 //require_once(dirname(__FILE__) . '/XMLImporter/Unit.php');
-
 //$PAGE->requires->css('/mod/msm/MsmDisplay.css');
 
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
-$m  = optional_param('n', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
+$m = optional_param('n', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
 
-if ($id) {
-    $cm         = get_coursemodule_from_id('msm', $id, 0, false, MUST_EXIST);
-    $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
-    $msm  = $DB->get_record('msm', array('id' => $cm->instance), '*', MUST_EXIST);
-} elseif ($m) {
-    $msm  = $DB->get_record('msm', array('id' => $m), '*', MUST_EXIST);
-    $course     = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
-    $cm         = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
-} else {
+if ($id)
+{
+    $cm = get_coursemodule_from_id('msm', $id, 0, false, MUST_EXIST);
+    $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
+    $msm = $DB->get_record('msm', array('id' => $cm->instance), '*', MUST_EXIST);
+}
+elseif ($m)
+{
+    $msm = $DB->get_record('msm', array('id' => $m), '*', MUST_EXIST);
+    $course = $DB->get_record('course', array('id' => $msm->course), '*', MUST_EXIST);
+    $cm = get_coursemodule_from_instance('msm', $msm->id, $course->id, false, MUST_EXIST);
+}
+else
+{
     error('You must specify a course_module ID or an instance ID');
 }
 
@@ -61,10 +63,11 @@ $PAGE->set_title(format_string($msm->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
 
-if ($PAGE->user_allowed_editing()) {
+if ($PAGE->user_allowed_editing())
+{
     $buttons = '<form method="get" action="' . $CFG->wwwroot . '/course/mod.php"><div>' .
-               '<input type="hidden" name="update" value="' . $cm->id . '" />' .
-               '<input type="submit" value="' . get_string('updatecomp', 'msm') . '" /></div></form>';
+            '<input type="hidden" name="update" value="' . $cm->id . '" />' .
+            '<input type="submit" value="' . get_string('updatecomp', 'msm') . '" /></div></form>';
     $PAGE->set_button($buttons);
 }
 
@@ -72,7 +75,6 @@ if ($PAGE->user_allowed_editing()) {
 //$PAGE->set_cacheable(false);
 //$PAGE->set_focuscontrol('some-html-id');
 //$PAGE->add_body_class('msm-'.$somevar);
-
 // Output starts here
 echo $OUTPUT->header();
 
@@ -80,8 +82,12 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.7.1.
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/Splitter.js'></script>\n";
 echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>\n";
 
+echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
 
-if ($msm->intro) { // Conditions to show the intro can change to look for own settings or whatever
+
+if ($msm->intro)
+{ // Conditions to show the intro can change to look for own settings or whatever
     echo $OUTPUT->box(format_module_intro('msm', $msm, $cm->id), 'generalbox mod_introbox', 'msmintro');
 }
 
@@ -91,19 +97,47 @@ echo $OUTPUT->heading($msm->name);
 $content = '';
 //$content .= "hello";
 //$content .= "<div>";
-$content .= "<div id = 'MySplitter'>";
-$content .= "<div class = 'leftcol'>";
+$content .= "<div id = 'MySplitter' padding:10px;>";
+
+$content .= "<div class = 'leftcol' style='min-width: 542px;'>";
+$content .= "<div id = 'features'>";
+
+$content .= "<div class = 'leftbox'>";
+$content .= "<p>";
 $content .= "left side!!";
+$content .= "</p>";
 $content .= "</div>";
-$content .= "<div class = 'rightcol'>";
+
+$content .= "<div class = 'leftbox'>";
+$content .= "<p>";
+$content .= "left side2!!";
+$content .= "</p>";
+$content .= "</div>";
+
+$content .= "</div>";
+$content .= "<div class='controller'>";
+$content .= "</div>";
+$content .= "</div>";
+
+$content .= "<div class = 'rightcol' style='min-width: 542px;'>";
+$content .= "<div class = 'rightbox'>";
+$content .= "<p>";
 $content .= "right side!!";
+$content .= "</p>";
 $content .= "</div>";
+$content .= "</div>";
+
 $content .= "</div>";
 
 $content .= "
     <script type='text/javascript'>
     jQuery(document).ready(function(){
         $('#MySplitter').splitter();
+         $('#features').jshowoff({
+                    autoplay:false,
+                    links:false
+                  
+                }); 
     });
     </script>";
 
