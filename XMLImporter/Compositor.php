@@ -18,41 +18,61 @@ class Compositor
         $this->tablename = "msm_compositor";
     }
 
-    function loadFromUnit($unit)
+    /**
+     *
+     * @global moodle_database $DB
+     * @param int $instanceid 
+     */
+    function loadFromDb($instanceid, $position)
     {
-        foreach ($unit as $key => $value)
+        global $DB;
+
+        $rootElement = $DB->get_record($this->tablename, array('msm_id' => $instanceid));
+
+        if (!empty($rootElement))
         {
-            echo "key";
-            print_object($key);
+            $this->unit = new stdClass();
 
-            echo "value";
-            print_object($value);
+            $tablename = $DB->get_record('msm_table_collection', array('id' => $rootElement->table_id))->tablename;
+
+            switch ($tablename)
+            {
+                case('msm_unit'):
+                    $unitrecord = $DB->get_record('msm_unit', array('id' => $rootElement->unit_id));
+
+                    $this->unit->title = $unitrecord->title;
+                    $this->unit->creationdate = $unitrecord->creationdate;
+                    $this->unit->last_revision_date = $unitrecord->last_revision_date;
+                    $this->unitp->position = $position;
+                    $position++;
+            }
         }
+        
+        return $this;
+    }
 
+    function displayhtml()
+    {
+        $creationyear = substr($this->unit->creationdate, 0, 4);
+        $creationmonth = substr($this->unit->creationdate, 4,-2);
+        $creationdate = substr($this->unit->creationdate, 6,8);
+        
+        $revisionyear = substr($this->unit->last_revision_date, 0, 4);
+        $revisionmonth = substr($this->unit->last_revision_date, 4,-2);
+        $revisiondate = substr($this->unit->last_revision_date, 6,8);
+        
+        $content = '';
+        $content .= "<div class='title'>";
+        $content .= $this->unit->title;
+        $content .= "</div>";
+        $content .= "<div class='date'>";
+        $content .= "created on: ";
+        $content .= $creationyear . "-" . $creationmonth . "-" . $creationdate . "<br />";
+        $content .= "last revised on: ";
+        $content .= $revisionyear . "-" . $revisionmonth . "-" . $revisiondate . "<br />";
+        $content .= "</div>";
 
-//        $unitChilds = array();
-//        foreach($unit as $key=>$child)
-//        {
-//          switch($key)
-//          {
-//              case('intro'):
-//                  if(!empty($child))
-//                  {
-//                      $unitChilds['intro'][0] = $child->position;
-//                      $unitChilds['intro'][1] = $child->id;
-//                  }
-//                  break;
-//                  case('authors'):
-//                      if(!empty($child))
-//                      {
-//                          foreach($child as $noAuthors=>$author)
-//                          {
-//                             
-//                          }
-//                      }
-//                  
-//          }
-//        }
+        return $content;
     }
 
 }

@@ -28,7 +28,7 @@
  */
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
 require_once(dirname(__FILE__) . '/lib.php');
-//require_once(dirname(__FILE__) . '/XMLImporter/Unit.php');
+require_once(dirname(__FILE__) . '/XMLImporter/Compositor.php');
 //$PAGE->requires->css('/mod/msm/MsmDisplay.css');
 
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
@@ -71,6 +71,10 @@ if ($PAGE->user_allowed_editing())
     $PAGE->set_button($buttons);
 }
 
+$compositor = new Compositor();
+
+//$compositor = $compositor->loadFromDb($msm->id);
+$compositor = $compositor->loadFromDb(1, 1); // db broken for now due to no update method... later use above method
 // other things you may want to set - remove if not needed
 //$PAGE->set_cacheable(false);
 //$PAGE->set_focuscontrol('some-html-id');
@@ -103,16 +107,14 @@ $content .= "<div class = 'leftcol' style='min-width: 542px;'>";
 $content .= "<div id = 'features'>";
 
 $content .= "<div class = 'leftbox'>";
-$content .= "<p>";
-$content .= "left side!!";
-$content .= "</p>";
+$content .= $compositor->displayhtml();
 $content .= "</div>";
 
-$content .= "<div class = 'leftbox'>";
-$content .= "<p>";
-$content .= "left side2!!";
-$content .= "</p>";
-$content .= "</div>";
+//$content .= "<div class = 'leftbox'>";
+//$content .= "<p>";
+//$content .= "left side2!!";
+//$content .= "</p>";
+//$content .= "</div>";
 
 $content .= "</div>";
 $content .= "<div class='controller'>";

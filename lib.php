@@ -153,13 +153,10 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         //$unit = new Unit(dirname(__FILE__) . '/newXML/Calculus/Analysis/', $parser);
         $position = 1;
        
-        $unit->loadFromXml($parser->documentElement, $position);
-        
-        
+        $unit->loadFromXml($parser->documentElement, $position);        
         
 //        $unit->saveIntoDb($unit->position, $msm->id);
-        
-        
+           
         
         //inserting the top element unit
 //        $data = new stdClass();
