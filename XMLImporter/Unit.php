@@ -34,7 +34,7 @@ require_once("Problem.php");
 require_once("AnswerExercise.php");
 require_once("Solution.php");
 require_once("Approach.php");
-require_once("Comment.php");
+require_once("MathComment.php");
 require_once("AnswerExample.php");
 require_once("PartExercise.php");
 require_once("SolutionExt.php");
@@ -450,10 +450,6 @@ class Unit extends Element
 
     function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
-//        echo "unit save start";
-//        $time = time();
-//        print_object($time);
-
         global $DB;
         $exercisepackRecordID = 0;
         $examplepackRecordID = 0;
@@ -737,6 +733,56 @@ class Unit extends Element
                 $examplepackRecordID = $studyexamplepack->id;
             }
         }
+    }
+
+    function loadFromDb($id)
+    {
+        global $DB;
+
+        $unitrecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($unitrecord))
+        {
+            $this->id = $unitrecord->id;
+            $this->title = $unitrecord->title;
+            $this->creationdate = $unitrecord->creationdate;
+            $this->last_revision_date = $unitrecord->last_revision_date;
+        }
+
+        return $this;
+    }
+    
+    function displaytitlehtml()
+    {
+        $content = '';
+        $content .= "<div class='ridge'>";
+        if (!empty($this->title))
+        {
+            $content .= "<div class='title'>";
+            $content .= $this->title;
+            $content .= "</div>";
+        }
+
+        if (!empty($this->creationdate))
+        {
+            $creationyear = substr($this->creationdate, 0, 4);
+            $creationmonth = substr($this->creationdate, 4, -2);
+            $creationdate = substr($this->creationdate, 6, 8);
+
+            $revisionyear = substr($this->last_revision_date, 0, 4);
+            $revisionmonth = substr($this->last_revision_date, 4, -2);
+            $revisiondate = substr($this->last_revision_date, 6, 8);
+
+
+            $content .= "<div class='date'>";
+            $content .= "created on: ";
+            $content .= $creationyear . "-" . $creationmonth . "-" . $creationdate . "<br />";
+            $content .= "last revised on: ";
+            $content .= $revisionyear . "-" . $revisionmonth . "-" . $revisiondate . "<br />";
+            $content .= "</div>";
+        }
+        
+        return $content;
     }
 
     /**

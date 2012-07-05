@@ -123,7 +123,7 @@ class Block extends Element
 
                         case('comment'):
                             $position = $position + 1;
-                            $comment = new Comment($this->xmlpath);
+                            $comment = new MathComment($this->xmlpath);
                             $comment->loadFromXml($child, $position);
                             $this->comments[] = $comment;
                             break;
@@ -376,6 +376,41 @@ class Block extends Element
                     break;
             }
         }
+    }
+
+    function loadFromDb($introcompid)
+    {
+        global $DB;
+        
+        $this->paras = array();
+
+        $whereclause = "parent_id='" . $introcompid . "'" . "and prev_sibling_id='null' OR '0'";
+        $firstchild = $DB->get_record_select('msm_compositor', $whereclause);
+
+        $firstchildtable = $DB->get_field('msm_table_collection', 'tablename', array('id' => $firstchild->table_id));
+
+        switch ($firstchildtable)
+        {
+            case('msm_para'):
+
+                $para = new Para();
+                $para->loadFromDb($firstchild->unit_id);
+                $this->paras[] = $para;
+        }
+
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+        
+        foreach($this->paras as $para)
+        {
+            $content .= $para->displayhtml();
+        }
+        
+        return $content;
     }
 
 }

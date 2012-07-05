@@ -31,6 +31,8 @@ require_once(dirname(__FILE__) . '/lib.php');
 require_once(dirname(__FILE__) . '/XMLImporter/Compositor.php');
 //$PAGE->requires->css('/mod/msm/MsmDisplay.css');
 
+global $PAGE, $OUTPUT;
+
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $m = optional_param('n', 0, PARAM_INT);  // msm instance ID - it should be named as the first character of the module
 
@@ -74,12 +76,13 @@ if ($PAGE->user_allowed_editing())
 $compositor = new Compositor();
 
 //$compositor = $compositor->loadFromDb($msm->id);
-$compositor = $compositor->loadFromDb(1, 1); // db broken for now due to no update method... later use above method
+$compositor = $compositor->loadFromDb(1); // db broken for now due to no update method... later use above method
 // other things you may want to set - remove if not needed
 //$PAGE->set_cacheable(false);
 //$PAGE->set_focuscontrol('some-html-id');
 //$PAGE->add_body_class('msm-'.$somevar);
 // Output starts here
+
 echo $OUTPUT->header();
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.7.1.min.js'></script>\n";
@@ -107,6 +110,7 @@ $content .= "<div class = 'leftcol' style='min-width: 542px;'>";
 $content .= "<div id = 'features'>";
 
 $content .= "<div class = 'leftbox'>";
+
 $content .= $compositor->displayhtml();
 $content .= "</div>";
 

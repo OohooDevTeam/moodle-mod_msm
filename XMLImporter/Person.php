@@ -99,6 +99,95 @@ class Person extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
     }
+    
+    function loadFromDb($id)
+    {
+        global $DB;
+        
+        $this->name = array();
+        $this->contactdata = array();
+        
+        $authorrecord = $DB->get_record($this->tablename, array('id'=>$id));
+        
+        $this->name["first"] = $authorrecord->firstname;
+        $this->name["middle"] = $authorrecord->middlename;
+        $this->name["last"] = $authorrecord->lastname;
+        $this->name["initials"] = $authorrecord->initials;
+        
+        $this->contactdata["email"] = $authorrecord->email;
+        $this->contactdata["webpage"] = $authorrecord->webpage;
+        $this->contactdata["phone"] = $authorrecord->phone;
+        $this->contactdata["address"] = $authorrecord->address;
+        
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+         if (!empty($this->name["first"]))
+            {
+                $firstname = $this->name["first"];
+            }
+            if (!empty($this->name["last"]))
+            {
+                $lastname = $this->name["last"];
+            }
+
+            if (!empty($this->name["middle"]))
+            {
+                $middlename = $this->name["middle"];
+            }
+
+            if (!empty($this->name["initials"]))
+            {
+                $initials = $this->name["initials"];
+            }
+
+            $content .= "<div class='author'>";
+            $content .= "written by: ";
+
+            if ((!empty($firstname)) && (!empty($lastname)) && (!empty($middlename)))  //initals missing or present
+            {
+                $content .= $firstname . " " . $middlename . ", " . $lastname;
+            }
+            else if ((!empty($firstname)) && (!empty($lastname)) && (!empty($initials))) // no middlename
+            {
+                $content .= $firstname . ", " . $lastname . "(" . $initials . ")";
+            }
+            else if ((!empty($initials)) && (!empty($middlename)) && (!empty($lastname))) // no firstname
+            {
+                $content .= "(" . $initials . "), " . $lastname;
+            }
+            else if ((!empty($initials)) && (!empty($middlename)) && (!empty($firstname))) // no lastname
+            {
+                $content .= $firstname . " " . $middlename . "(" . $initials . ")";
+            }
+            else if ((!empty($firstname)) && (!empty($lastname)))
+            {
+                $content .= $firstname . ", " . $lastname;
+            }
+            else if (!empty($initials))
+            {
+                $content .= $initials;
+            }
+            else if (!empty($lastname))
+            {
+                $content .= $lastname;
+            }
+            else if (!empty($firstname))
+            {
+                $content .= $firstname;
+            }
+            else if (!empty($middlename))
+            {
+                $content .= $middlename;
+            }
+            
+            $content .= "</div>";
+            
+            return $content;
+    }
 
    
 

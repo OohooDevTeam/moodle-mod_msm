@@ -94,7 +94,7 @@ class Subordinate extends Element
                                                 if (!empty($element))
                                                 {
                                                     $position = $position + 1;
-                                                    $comment = new Comment(dirname($filepath));
+                                                    $comment = new MathComment(dirname($filepath));
                                                     $comment->loadFromXml($element, $position);
                                                     $this->comments[] = $comment;
                                                 }
@@ -306,7 +306,7 @@ class Subordinate extends Element
                                                 if (!empty($element))
                                                 {
                                                     $position = $position + 1;
-                                                    $comment = new Comment(dirname($filepath));
+                                                    $comment = new MathComment(dirname($filepath));
                                                     $comment->loadFromXml($element, $position);
                                                     $this->comments[] = $comment;
                                                 }

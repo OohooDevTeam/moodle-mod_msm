@@ -75,6 +75,34 @@ class Intro extends Element
             $this->blocks[$blockString[1]]->saveIntoDb($this->blocks[$blockString[1]]->position, $this->compid);
         }
     }
+    
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+        
+        $introrecord  = $DB->get_record($this->tablename, array('id'=>$id));
+        
+        if(!empty($introrecord))
+        {
+            $this->caption = $introrecord->caption;
+        }
+        
+        $block = new Block();
+        $block->loadFromDb($compid); //this should be compositor id
+        $this->block = $block;
+        
+        return $this;       
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+        $content = "<br />";
+        $content .= "<h2> Introduction </h2>";
+        $content .= $this->block->displayhtml();
+        
+        return $content;
+    }
 
 }
 

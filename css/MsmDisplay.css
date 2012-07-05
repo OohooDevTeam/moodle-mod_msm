@@ -1,7 +1,7 @@
 /* 
     Document   : MsmDisplay
     Created on : Jul 3, 2012, 1:55:25 PM
-    Author     : User
+    Author     : Ga Young Kim
     Description:
         Purpose of the stylesheet follows.
 */
@@ -17,6 +17,8 @@ body
     z-index:0;
 }
 
+/*controller for the jShowoff plugin*/
+
 div.controller{
     position:absolute;
     top: 92%;
@@ -25,40 +27,42 @@ div.controller{
     z-index: 11;
     margin-top: 10px;
     margin-left: 10px;
-    /*    margin-right:10px;*/
 }
 
+/*-----------------------------------------------------------------------------*/
+/*css needed for the jSplitter plugin*/
+
 #MySplitter {
-    /*    height: 100%;
-        width: 100%;*/
     min-width: 542px;
     min-height: 720px;
     max-width: 100%;
     max-height: 100%;
     background-image:url('../pix/background.jpg');
     opacity:0.95;
-    filter:Alpha(opacity=95); 
-    /*	border: 5px solid #aaa;*/
+    filter:Alpha(opacity=95);
 
 }
+
+#MySplitter div {
+    overflow: hidden;
+}
+.vsplitbar {
+    min-width:0.5%;
+    max-width:0.5%;
+    height:100%-2px;
+    cursor: col-resize;
+    background: #FFFFFF;
+}
+/*-----------------------------------------------------------------------------*/
+
+/*leftbox and rightbox classes are for the faded background in display*/
 
 .leftbox
 {
     background-image:url('../pix/background2.jpg');
-    /*    min-width: inherit;
-        width: inherit;*/
     min-height: 650px;
-    width:99.3%
+    width:99.3%;
 }
-
-.leftbox p
-{
-    margin:30px 40px;
-    font-weight:bold;
-    color:#000000;
-}
-
-
 .rightbox
 {
     background-image:url('../pix/background2.jpg');
@@ -66,79 +70,21 @@ div.controller{
     width:97%
 }
 
-
-.rightbox p
-{
-    margin:30px 40px;
-    font-weight:bold;
-    color:#000000;
-}
-
-#MySplitter div {
-    overflow: hidden;
-}
-.vsplitbar {
-    /*	width: 5px;*/
-    /*	background: #aaa;*/
-    min-width:0.5%;
-    max-width:0.5%;
-    height:100%-2px;
-    cursor: col-resize;
-    background: #FFFFFF;
-    /*    margin-left: 10px;
-        margin-right: 10px;*/
-
-}
+/*leftcol and rightcol are the divs in MySplitter element*/
 
 .leftcol
 {
-    /*    position: relative;*/
     overflow: hidden;
     margin-bottom:10px;
     margin-right:10px;
-    /*    top: 0;
-                    top:42px;
-                    bottom:0;
-                    margin-left:0;
-                    margin-right:0;
-                    padding-left:1%;
-                    padding-right:1%;
-                    padding-bottom:2%; 
-                float:left;
-                width:50%;
-                max-width: 50%;
-                background-color:#FFE6E6;
-        opacity:0.95;
-        filter:Alpha(opacity=95); 
-            z-index: 10;*/
-}/*
+}
 
- all contents of right colomn is invisible by opacity of zero. Upon a mouseclick the opacity will change to one 
-/**/.rightcol
+.rightcol
 {
-    /*    position: relative;*/
     overflow: auto;
-    /*    top: 0;
-                    top:42px;
-                    bottom:0;
-                left:50%;
-    
-                float: right;
-    */                    padding-top:10px;/*
-        padding-bottom:10px;
-    */    padding-left:10px;/*
-        padding-right:50px;*/
-    /*                padding-left:1%;
-                    padding-right:1%;
-                width:50%;
-                 max-width: 50%;
-        opacity:1.0;
-        filter:Alpha(opacity=100);
-            visibility: visible;
-            background-color: 	#FFE0D1;
-            z-index: 10;
-    
-    */    }
+    padding-top:10px;
+    padding-left:10px;
+}
 
 #features .title
 {
@@ -146,16 +92,29 @@ div.controller{
     padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
-/*    border: 4px solid;
-    border-radius: 10px; 
-    background-color: #E0E0E0;
-    background-origin:border-box;*/
     text-align: center;
-    
     letter-spacing: 5px;
     font-weight: bold;
     font-size: large;
-    
+}
+
+/*for creating double border look*/
+
+.ridge {
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-top-style: double;
+    border-bottom-style: double;
+    border-ctop-olor: #773322;
+    border-bottom-color: #773322;
+    padding: 8px 0px;
+}
+
+/* for creating a border that looks like polaroid*/
+
+.snapshot {
+    border: 1px solid #666666;
+    padding: 10px 10px 60px 10px;
 }
 
 #features .date
@@ -165,18 +124,18 @@ div.controller{
     margin-right: 5px;
 }
 
+#features .author{
+    font-size: 12px;
+    text-align: center;
+    margin-right: 5px;
+}
+
 #features .content
 {
     font-size:14px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: 3px solid #B5DAFF;
-    border-radius: 10px; 
-    background-color: white;
-    background-origin:border-box;
     text-align: left;
+    margin-left: 20px;
+    margin-right: 10px;
 }
 
 

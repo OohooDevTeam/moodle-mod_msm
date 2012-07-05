@@ -53,7 +53,7 @@ class Associate extends Element
 
                             $element = $parser->documentElement;
 
-                            $comment = new Comment(dirname($path));
+                            $comment = new MathComment(dirname($path));
                             $comment->loadFromXml($element, $position);
                             $this->comments[] = $comment;
                         }

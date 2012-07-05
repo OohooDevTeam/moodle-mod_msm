@@ -10,7 +10,7 @@
  *
  * @author User
  */
-class Comment extends Element
+class MathComment extends Element
 {
 
     public $position;
