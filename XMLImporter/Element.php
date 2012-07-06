@@ -206,6 +206,7 @@ abstract class Element
     function processContent($DomElement, $position)
     {
         $content = array();
+//        $content = '';
 
         $position = $position + 1;
 
@@ -247,12 +248,38 @@ abstract class Element
         {
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
-        
+
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
         $content[] = $doc->saveXML($element);
 
-        return $content;
+        $resultcontent = array();
+
+        foreach ($content as $key => $string)
+        {
+            $string = str_replace('<caption>', '<captions>', $string);
+            $string = str_replace('</caption>', '</captions>', $string);
+
+            $string = str_replace('<row>', '<tr>', $string);
+            $string = str_replace('</row>', '</tr>', $string);
+
+            $string = str_replace('<cell>', '<td>', $string);
+            $string = str_replace('</cell>', '</td>', $string);
+
+            $string = str_replace('<para.body', '<p', $string);
+            $string = str_replace('</para.body>', '</p>', $string);
+            
+            $string = str_replace('<strong', '<b', $string);
+            $string = str_replace('</strong>', '</b>', $string);
+            
+            $string = str_replace('<emphasis', '<i', $string);
+            $string = str_replace('</emphasis>', '</i>', $string);
+
+            $string = str_replace('<hot>', '  <a href = "">', $string);
+            $string = str_replace('</hot>', '</a>  ', $string);
+            $resultcontent[] = $string;
+        }
+        return $resultcontent;
     }
 
     /**

@@ -56,10 +56,13 @@ class MathImg extends Element
      */
     function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
-        global $DB;
+        global $DB, $CFG;
         $data = new stdClass();
         $data->string_id = $this->string_id;
-        $data->src = $this->src;
+
+//        print_object($this->xmlpath);
+        $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
+                . basename($this->xmlpath) . '/' . $this->src;
         $data->height = $this->height;
         $data->width = $this->width;
         $data->description = $this->description;
@@ -70,14 +73,18 @@ class MathImg extends Element
             foreach ($this->imagemappings as $imagemapping)
             {
                 $data->image_mapping = $imagemapping;
-                $this->id = $DB->insert_record($this->tablename, $data);
-//                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+                if (!empty($this->src))
+                {
+                    $this->id = $DB->insert_record($this->tablename, $data);
+                }
             }
         }
         else
         {
-            $this->id = $DB->insert_record($this->tablename, $data);
-//            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+            if (!empty($this->src))
+            {
+                $this->id = $DB->insert_record($this->tablename, $data);
+            }
         }
     }
 
