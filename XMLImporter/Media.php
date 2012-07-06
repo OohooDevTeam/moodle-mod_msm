@@ -64,16 +64,7 @@ class Media extends Element
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
 
         $sibling_id = null;
-//        $recordID = null;
-
-
         $record = $this->checkForRecord($this->img, 'src');
-
-//        if(!empty($record->id))
-//        {
-//            $recordID = $record->id;
-//        }
-
         if (empty($record))
         {
             if (empty($sibling_id))

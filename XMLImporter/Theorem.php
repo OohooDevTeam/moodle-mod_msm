@@ -169,21 +169,6 @@ class Theorem extends Element
                     break;
             }
         }
-
-//        foreach($this->associates as $key=>$associate)
-//        {
-//            $associate->saveIntoDb($associate->position);
-//        }
-//        
-//        foreach($this->statements as $key=>$statement)
-//        {
-//            $statement->saveIntoDb($statement->position);
-//        }
-//        
-//        foreach($this->proofs as $key=>$proof)
-//        {
-//            $proof->saveIntoDb($proof->position);
-//        }
     }
 
 }

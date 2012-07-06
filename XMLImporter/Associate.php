@@ -229,13 +229,13 @@ class Associate extends Element
                     if (empty($sibling_id))
                     {
                         $info = $this->infos[$infoString[1]];
-                        $info->saveIntoDb($info->position, $parentid);
+                        $info->saveIntoDb($info->position, $this->compid);
                         $sibling_id = $info->compid;
                     }
                     else
                     {
                         $info = $this->infos[$infoString[1]];
-                        $info->saveIntoDb($info->position, $parentid, $sibling_id);
+                        $info->saveIntoDb($info->position, $this->compid, $sibling_id);
                         $sibling_id = $info->compid;
                     }
                     break;
@@ -246,13 +246,13 @@ class Associate extends Element
                     if (empty($sibling_id))
                     {
                         $comment = $this->comments[$commentString[1]];
-                        $comment->saveIntoDb($comment->position, $parentid);
+                        $comment->saveIntoDb($comment->position, $this->compid);
                         $sibling_id = $comment->compid;
                     }
                     else
                     {
                         $comment = $this->comments[$commentString[1]];
-                        $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
+                        $comment->saveIntoDb($comment->position, $this->compid, $sibling_id);
                         $sibling_id = $comment->compid;
                     }
                     break;
@@ -267,13 +267,13 @@ class Associate extends Element
                         if (empty($sibling_id))
                         {
                             $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $parentid);
+                            $subunit->saveIntoDb($subunit->position, $this->compid);
                             $sibling_id = $subunit->compid;
                         }
                         else
                         {
                             $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $parentid, $sibling_id);
+                            $subunit->saveIntoDb($subunit->position, $this->compid, $sibling_id);
                             $sibling_id = $subunit->compid;
                         }
                     }
@@ -282,7 +282,7 @@ class Associate extends Element
                         $subunitID = $subunitRecord->id;
 
                         $subunit = $this->subunits[$subunitString[1]];
-                        $subunit->compid = $this->insertToCompositor($subunitID, $subunit->tablename, $parentid, $sibling_id);
+                        $subunit->compid = $this->insertToCompositor($subunitID, $subunit->tablename, $this->compid, $sibling_id);
                         $sibling_id = $subunit->compid;
                     }
 
@@ -298,13 +298,13 @@ class Associate extends Element
                         if (empty($sibling_id))
                         {
                             $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $parentid);
+                            $def->saveIntoDb($def->position, $this->compid);
                             $sibling_id = $def->compid;
                         }
                         else
                         {
                             $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                            $def->saveIntoDb($def->position, $this->compid, $sibling_id);
                             $sibling_id = $def->compid;
                         }
                     }
@@ -312,7 +312,7 @@ class Associate extends Element
                     {
                         $defID = $defRecord->id;
                         $def = $this->defs[$defString[1]];
-                        $def->compid = $this->insertToCompositor($defID, $def->tablename, $parentid, $sibling_id);
+                        $def->compid = $this->insertToCompositor($defID, $def->tablename, $this->compid, $sibling_id);
                     }
 
 
@@ -328,13 +328,13 @@ class Associate extends Element
                         if (empty($sibling_id))
                         {
                             $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $parentid);
+                            $theorem->saveIntoDb($theorem->position, $this->compid);
                             $sibling_id = $theorem->compid;
                         }
                         else
                         {
                             $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
+                            $theorem->saveIntoDb($theorem->position, $this->compid, $sibling_id);
                             $sibling_id = $theorem->compid;
                         }
                     }
@@ -342,7 +342,7 @@ class Associate extends Element
                     {
                         $theoremID = $theoremRecord->id;
                         $theorem = $this->theorems[$theoremString[1]];
-                        $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $parentid, $sibling_id);
+                        $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -356,13 +356,13 @@ class Associate extends Element
                         if (empty($sibling_id))
                         {
                             $ref = $this->refs[$refString[1]];
-                            $ref->saveIntoDb($ref->position, $parentid);
+                            $ref->saveIntoDb($ref->position, $this->compid);
                             $sibling_id = $ref->compid;
                         }
                         else
                         {
                             $ref = $this->refs[$refString[1]];
-                            $ref->saveIntoDb($ref->position, $parentid, $sibling_id);
+                            $ref->saveIntoDb($ref->position, $this->compid, $sibling_id);
                             $sibling_id = $ref->compid;
                         }
                     }
@@ -370,60 +370,11 @@ class Associate extends Element
                     {
                         $refID = $refRecord->id;
                         $ref = $this->refs[$refString[1]];
-                        $ref->compid = $this->insertToCompositor($refID, $ref->tablename, $parentid, $sibling_id);
+                        $ref->compid = $this->insertToCompositor($refID, $ref->tablename, $this->compid, $sibling_id);
                     }
                     break;
             }
         }
-
-//        foreach ($this->infos as $key => $info)
-//        {
-//            $info->saveIntoDb($info->position);
-//        }
-//
-//        foreach ($this->comments as $key => $comment)
-//        {
-//            $comment->saveIntoDb($comment->position);
-//        }
-//
-//        foreach ($this->subunits as $key => $unit)
-//        {
-//            $unitID = $this->checkForRecord($unit);
-//
-//            if (empty($unitID))
-//            {
-//                $unit->saveIntoDb($unit->position);
-//            }
-//        }
-//
-//        foreach ($this->theorems as $key => $theorem)
-//        {
-//            $theoremID = $this->checkForRecord($theorem);
-//
-//            if (empty($theoremID))
-//            {
-//                $theorem->saveIntoDb($theorem->position);
-//            }
-//        }
-//
-//        foreach ($this->defs as $key => $def)
-//        {
-//            $defID = $this->checkForRecord($def);
-//
-//            if (empty($defID))
-//            {
-//                $def->saveIntoDb($def->position);
-//            }
-//        }
-//        foreach ($this->refs as $key => $ref)
-//        {
-//            $refID = $this->checkForRecord($ref);
-//
-//            if (empty($refID))
-//            {
-//                $ref->saveIntoDb($ref->position);
-//            }
-//        }
     }
 
 }

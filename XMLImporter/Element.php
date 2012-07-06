@@ -208,9 +208,6 @@ abstract class Element
         $content = array();
 
         $position = $position + 1;
-        
-//         echo "para?";
-//        print_object($DomElement->nodeValue);
 
         $subordinates = $DomElement->getElementsByTagName('subordinate');
 
@@ -250,14 +247,7 @@ abstract class Element
         {
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
-
-//        $medias = $DomElement->getElementsByTagName('media');
-//        $mlength = $medias->length;
-//        for ($i = 0; $i < $mlength; $i++)
-//        {
-//            $medias->item(0)->parentNode->removeChild($medias->item(0));
-//        }
-
+        
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
         $content[] = $doc->saveXML($element);
@@ -296,23 +286,6 @@ abstract class Element
      */
     function processIndexGlossary($DomElement, $position)
     {
-//        $arrayOfIndexGlossary = array();
-//
-//        foreach ($DomElement->childNodes as $child)
-//        {
-//            if ($child->nodeType == XML_ELEMENT_NODE)
-//            {
-//                if ($child->tagName == 'index.glossary')
-//                {
-//                    $position = $position + 1;
-//                    $indexglossary = new MathIndex($this->xmlpath);
-//                    $indexglossary->loadFromXml($child, $position);
-//                    $arrayOfIndexGlossary[] = $indexglossary;
-//                }
-//            }
-//        }
-//        echo "para?";
-//        print_object($DomElement->nodeValue);
         $position = $position + 1;
         $arrayOfIndexGlossary = array();
 
@@ -320,8 +293,6 @@ abstract class Element
         $iglength = $indexglossarys->length;
         for ($i = 0; $i < $iglength; $i++)
         {
-//            echo "in loop";
-//            print_object($indexglossarys->item($i)->nodeValue);
             $position = $position + 1;
             $indexglossary = new MathIndex($this->xmlpath);
             $indexglossary->loadFromXml($indexglossarys->item($i), $position);

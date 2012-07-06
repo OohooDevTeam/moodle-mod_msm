@@ -71,13 +71,13 @@ class MathImg extends Element
             {
                 $data->image_mapping = $imagemapping;
                 $this->id = $DB->insert_record($this->tablename, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+//                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
             }
         }
         else
         {
             $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+//            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
     }
 

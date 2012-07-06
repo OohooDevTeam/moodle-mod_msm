@@ -163,13 +163,13 @@ class Showme extends Element
                     if (empty($sibling_id))
                     {
                         $answershowme = $this->answer_showmes[$answershowmeString[1]];
-                        $answershowme->saveIntoDb($answershowme->position, $parentid);
+                        $answershowme->saveIntoDb($answershowme->position, $this->compid);
                         $sibling_id = $answershowme->compid;
                     }
                     else
                     {
                         $answershowme = $this->answer_showmes[$answershowmeString[1]];
-                        $answershowme->saveIntoDb($answershowme->position, $parentid, $sibling_id);
+                        $answershowme->saveIntoDb($answershowme->position, $this->compid, $sibling_id);
                         $sibling_id = $answershowme->compid;
                     }
                     break;
@@ -180,13 +180,13 @@ class Showme extends Element
                     if (empty($sibling_id))
                     {
                         $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $parentid);
+                        $subordinate->saveIntoDb($subordinate->position, $this->compid);
                         $sibling_id = $subordinate->compid;
                     }
                     else
                     {
                         $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $parentid, $sibling_id);
+                        $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
                         $sibling_id = $subordinate->compid;
                     }
                     break;
@@ -197,13 +197,13 @@ class Showme extends Element
                     if (empty($sibling_id))
                     {
                         $indexauthor = $this->indexauthors[$indexauthorString[1]];
-                        $indexauthor->saveIntoDb($indexauthor->position, $parentid);
+                        $indexauthor->saveIntoDb($indexauthor->position, $this->compid);
                         $sibling_id = $indexauthor->compid;
                     }
                     else
                     {
                         $indexauthor = $this->indexauthors[$indexauthorString[1]];
-                        $indexauthor->saveIntoDb($indexauthor->position, $parentid, $sibling_id);
+                        $indexauthor->saveIntoDb($indexauthor->position, $this->compid, $sibling_id);
                         $sibling_id = $indexauthor->compid;
                     }
                     break;
@@ -214,13 +214,13 @@ class Showme extends Element
                     if (empty($sibling_id))
                     {
                         $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-                        $indexsymbol->saveIntoDb($indexsymbol->position, $parentid);
+                        $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid);
                         $sibling_id = $indexsymbol->compid;
                     }
                     else
                     {
                         $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-                        $indexsymbol->saveIntoDb($indexsymbol->position, $parentid, $sibling_id);
+                        $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid, $sibling_id);
                         $sibling_id = $indexsymbol->compid;
                     }
                     break;
@@ -231,13 +231,13 @@ class Showme extends Element
                     if (empty($sibling_id))
                     {
                         $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-                        $indexglossary->saveIntoDb($indexglossary->position, $parentid);
+                        $indexglossary->saveIntoDb($indexglossary->position, $this->compid);
                         $sibling_id = $indexglossary->compid;
                     }
                     else
                     {
                         $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-                        $indexglossary->saveIntoDb($indexglossary->position, $parentid, $sibling_id);
+                        $indexglossary->saveIntoDb($indexglossary->position, $this->compid, $sibling_id);
                         $sibling_id = $indexglossary->compid;
                     }
                     break;
@@ -248,48 +248,18 @@ class Showme extends Element
                     if (empty($sibling_id))
                     {
                         $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $parentid);
+                        $media->saveIntoDb($media->position, $this->compid);
                         $sibling_id = $media->compid;
                     }
                     else
                     {
                         $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $parentid, $sibling_id);
+                        $media->saveIntoDb($media->position, $this->compid, $sibling_id);
                         $sibling_id = $media->compid;
                     }
                     break;
             }
         }
-
-//        foreach ($this->answer_showmes as $answer_showme)
-//        {
-//            $answer_showme->saveIntoDb($answer_showme->position);
-//        }
-//
-//        foreach ($this->subordinates as $key => $subordinate)
-//        {
-//            $subordinate->saveIntoDb($subordinate->position);
-//        }
-//
-//        foreach ($this->indexglossarys as $key => $indexglossary)
-//        {
-//            $indexglossary->saveIntoDb($indexglossary->position);
-//        }
-//
-//        foreach ($this->indexsymbols as $key => $indexsymbol)
-//        {
-//            $indexsymbol->saveIntoDb($indexsymbol->position);
-//        }
-//
-//        foreach ($this->indexauthors as $key => $indexauthor)
-//        {
-//            $indexauthor->saveIntoDb($indexauthor->position);
-//        }
-//
-//        foreach ($this->medias as $key => $media)
-//        {
-//            $media->saveIntoDb($media->position);
-//        }
     }
 
 }

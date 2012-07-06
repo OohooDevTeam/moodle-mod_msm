@@ -218,13 +218,13 @@ class Pack extends Element
                     if (empty($sibling_id))
                     {
                         $quiz = $this->quizs[$quizString[1]];
-                        $quiz->saveIntoDb($quiz->position, $parentid);
+                        $quiz->saveIntoDb($quiz->position, $this->compid);
                         $sibling_id = $quiz->compid;
                     }
                     else
                     {
                         $quiz = $this->quizs[$quizString[1]];
-                        $quiz->saveIntoDb($quiz->position, $parentid, $sibling_id);
+                        $quiz->saveIntoDb($quiz->position, $this->compid, $sibling_id);
                         $sibling_id = $quiz->compid;
                     }
                     break;
@@ -235,13 +235,13 @@ class Pack extends Element
                     if (empty($sibling_id))
                     {
                         $example = $this->examples[$exampleString[1]];
-                        $example->saveIntoDb($example->position, $parentid);
+                        $example->saveIntoDb($example->position, $this->compid);
                         $sibling_id = $example->compid;
                     }
                     else
                     {
                         $example = $this->examples[$exampleString[1]];
-                        $example->saveIntoDb($example->position, $parentid, $sibling_id);
+                        $example->saveIntoDb($example->position, $this->compid, $sibling_id);
                         $sibling_id = $example->compid;
                     }
                     break;
@@ -252,13 +252,13 @@ class Pack extends Element
                     if (empty($sibling_id))
                     {
                         $exercise = $this->exercises[$exerciseString[1]];
-                        $exercise->saveIntoDb($exercise->position, $parentid);
+                        $exercise->saveIntoDb($exercise->position, $this->compid);
                         $sibling_id = $exercise->compid;
                     }
                     else
                     {
                         $exercise = $this->exercises[$exerciseString[1]];
-                        $exercise->saveIntoDb($exercise->position, $parentid, $sibling_id);
+                        $exercise->saveIntoDb($exercise->position, $this->compid, $sibling_id);
                         $sibling_id = $exercise->compid;
                     }
                     break;
@@ -269,39 +269,18 @@ class Pack extends Element
                     if (empty($sibling_id))
                     {
                         $showme = $this->showmes[$showmeString[1]];
-                        $showme->saveIntoDb($showme->position, $parentid);
+                        $showme->saveIntoDb($showme->position, $this->compid);
                         $sibling_id = $showme->compid;
                     }
                     else
                     {
                         $showme = $this->showmes[$showmeString[1]];
-                        $showme->saveIntoDb($showme->position, $parentid, $sibling_id);
+                        $showme->saveIntoDb($showme->position, $this->compid, $sibling_id);
                         $sibling_id = $showme->compid;
                     }
                     break;
             }
         }
-
-//        foreach ($this->quizs as $quiz)
-//        {
-//            $quiz->saveIntoDb($quiz->position);
-//        }
-//
-//        foreach ($this->examples as $example)
-//        {
-//            $example->saveIntoDb($example->position);
-//        }
-//
-//
-//        foreach ($this->exercises as $exercise)
-//        {
-//            $exercise->saveIntoDb($exercise->position);
-//        }
-//
-//        foreach ($this->showmes as $showme)
-//        {          
-//            $showme->saveIntoDb($showme->position);      
-//        }
     }
 
 }

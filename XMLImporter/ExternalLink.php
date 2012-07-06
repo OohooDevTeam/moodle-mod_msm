@@ -75,10 +75,6 @@ class ExternalLink extends Element
             $this->infos[$infoString[1]]->saveIntoDb($this->infos[$infoString[1]]->position, $this->compid);
         }
         
-//        foreach($this->infos as $info)
-//        {
-//            $info->saveIntoDb($info->position);
-//        }
     }
 }
 

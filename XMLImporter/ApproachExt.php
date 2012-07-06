@@ -112,13 +112,13 @@ class ApproachExt extends Element
                     if (empty($sibling_id))
                     {
                         $answerexercise = $this->answer_exercises[$answerexerciseString[1]];
-                        $answerexercise->saveIntoDb($answerexercise->position, $parentid);
+                        $answerexercise->saveIntoDb($answerexercise->position, $this->compid);
                         $sibling_id = $answerexercise->compid;
                     }
                     else
                     {
                         $answerexercise = $this->answer_exercises[$answerexerciseString[1]];
-                        $answerexercise->saveIntoDb($answerexercise->position, $parentid, $sibling_id);
+                        $answerexercise->saveIntoDb($answerexercise->position, $this->compid, $sibling_id);
                         $sibling_id = $answerexercise->compid;
                     }
                     break;
@@ -129,28 +129,18 @@ class ApproachExt extends Element
                     if (empty($sibling_id))
                     {
                         $solutionext = $this->solution_exts[$solutionextString[1]];
-                        $solutionext->saveIntoDb($solutionext->position, $parentid);
+                        $solutionext->saveIntoDb($solutionext->position, $this->compid);
                         $sibling_id = $solutionext->compid;
                     }
                     else
                     {
                         $solutionext = $this->solution_exts[$solutionextString[1]];
-                        $solutionext->saveIntoDb($solutionext->position, $parentid, $sibling_id);
+                        $solutionext->saveIntoDb($solutionext->position, $this->compid, $sibling_id);
                         $sibling_id = $solutionext->compid;
                     }
                     break;
             }
         }
-
-//        foreach ($this->answer_exercises as $answer_exercise)
-//        {
-//            $answer_exercise->saveIntoDb($answer_exercise->position);
-//        }
-//
-//        foreach ($this->solution_exts as $solution_ext)
-//        {
-//            $solution_ext->saveIntoDb($solution_ext->position);
-//        }
     }
 
 }

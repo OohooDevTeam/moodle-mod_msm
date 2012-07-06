@@ -68,11 +68,6 @@ class SolutionExt extends Element
 
             $this->steps[$stepString[1]]->saveIntoDb($this->steps[$stepString[1]]->position, $this->compid);
         }
-
-//        foreach($this->steps as $step)
-//        {
-//            $step->saveIntoDb($step->position);
-//        }
     }
 
 }

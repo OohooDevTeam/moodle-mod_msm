@@ -72,11 +72,6 @@ class Cite extends Element
 
             $this->items[$itemString[1]]->saveIntoDb($this->items[$itemString[1]]->position, $this->compid);
         }
-
-//        foreach($this->items as $item)
-//        {
-//            $item->saveIntoDb($item->position);
-//        }
     }
 
 }

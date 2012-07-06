@@ -170,7 +170,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
 //        $compositor = new Compositor();
 //        $compositor->loadFromUnit($unit);
     }
-
+//
 //    echo "done";
 //    die;
     # You may have to add extra stuff in here #

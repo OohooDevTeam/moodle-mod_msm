@@ -121,13 +121,13 @@ class PartExercise extends Element
                     if (empty($sibling_id))
                     {
                         $problem = $this->problems[$problemString[1]];
-                        $problem->saveIntoDb($problem->position, $parentid);
+                        $problem->saveIntoDb($problem->position, $this->compid);
                         $sibling_id = $problem->compid;
                     }
                     else
                     {
                         $problem = $this->problems[$problemString[1]];
-                        $problem->saveIntoDb($problem->position, $parentid, $sibling_id);
+                        $problem->saveIntoDb($problem->position, $this->compid, $sibling_id);
                         $sibling_id = $problem->compid;
                     }
                     break;
@@ -138,13 +138,13 @@ class PartExercise extends Element
                     if (empty($sibling_id))
                     {
                         $approach = $this->approachs[$approachString[1]];
-                        $approach->saveIntoDb($approach->position, $parentid);
+                        $approach->saveIntoDb($approach->position, $this->compid);
                         $sibling_id = $approach->compid;
                     }
                     else
                     {
                         $approach = $this->approachs[$approachString[1]];
-                        $approach->saveIntoDb($approach->position, $parentid, $sibling_id);
+                        $approach->saveIntoDb($approach->position, $this->compid, $sibling_id);
                         $sibling_id = $approach->compid;
                     }
                     break;
@@ -155,33 +155,19 @@ class PartExercise extends Element
                     if (empty($sibling_id))
                     {
                         $approachext = $this->approach_exts[$approachextString[1]];
-                        $approachext->saveIntoDb($approachext->position, $parentid);
+                        $approachext->saveIntoDb($approachext->position, $this->compid);
                         $sibling_id = $approachext->compid;
                     }
                     else
                     {
                         $approachext = $this->approach_exts[$approachextString[1]];
-                        $approachext->saveIntoDb($approachext->position, $parentid, $sibling_id);
+                        $approachext->saveIntoDb($approachext->position, $this->compid, $sibling_id);
                         $sibling_id = $approachext->compid;
                     }
                     break;
             }
         }
 
-//        foreach ($this->problems as $problem)
-//        {
-//            $problem->saveIntoDb($problem->position);
-//        }
-//
-//        foreach ($this->approachs as $approach)
-//        {
-//            $approach->saveIntoDb($approach->position);
-//        }
-//
-//        foreach ($this->approach_exts as $approach_ext)
-//        {
-//            $approach_ext->saveIntoDb($approach_ext->position);
-//        }
     }
 
 }

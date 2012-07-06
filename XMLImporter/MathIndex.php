@@ -69,7 +69,6 @@ class MathIndex extends Element
                    $string = $string . $term . '/';
                    $this->term = $string;
                 }
-//                $this->term = $this->getContent($DomElement->getElementsByTagName('term')->item(0));
 
                 $infos = $DomElement->getElementsByTagName('info');
 
@@ -214,13 +213,13 @@ class MathIndex extends Element
                 if (empty($recordID))
                 {
                     $name->saveIntoDb($name->position, 'index');
-                    $name->compid = $this->insertToCompositor($name->id, $name->tablename, $position, $siblingid);
+                    $name->compid = $this->insertToCompositor($name->id, $name->tablename, $parentid, $siblingid);
                      $sibling_id = $name->compid;
                      $this->compid = $name->compid;
                 }
                 else
                 {
-                     $name->compid = $this->insertToCompositor($recordID, $name->tablename, $position, $siblingid);
+                     $name->compid = $this->insertToCompositor($recordID, $name->tablename, $parentid, $siblingid);
                      $sibling_id = $name->compid;
                       $this->compid = $name->compid;
                 }
@@ -261,12 +260,12 @@ class MathIndex extends Element
             if (empty($recordID))
             {
                 $this->id = $DB->insert_record($this->glossarytable, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->glossarytable, $position, $siblingid);
+                $this->compid = $this->insertToCompositor($this->id, $this->glossarytable, $parentid, $siblingid);
                 $sibling_id = $this->compid;
             }
             else
             {
-                 $this->compid = $this->insertToCompositor($recordID, $this->glossarytable, $position, $siblingid);
+                 $this->compid = $this->insertToCompositor($recordID, $this->glossarytable, $parentid, $siblingid);
                 $sibling_id = $this->compid;
             }
         }
@@ -303,7 +302,7 @@ class MathIndex extends Element
             }
             else
             {
-                $info->compid = $this->insertToCompositor($recordID, $info->tablename, $position, $sibling_id);
+                $info->compid = $this->insertToCompositor($recordID, $info->tablename, $parentid, $sibling_id);
                 $sibling_id = $info->compid;
             }
         }

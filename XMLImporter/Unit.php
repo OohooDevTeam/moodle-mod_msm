@@ -563,6 +563,54 @@ class Unit extends Element
             }
         }
 
+        if (!empty($this->exercisepacks))
+        {
+            foreach ($this->exercisepacks as $key => $exercisepack)
+            {
+                $elementPositions['exercisepack' . '-' . $key] = $exercisepack->position;
+            }
+        }
+
+        if (!empty($this->examplepacks))
+        {
+            foreach ($this->examplepacks as $key => $examplepack)
+            {
+                $elementPositions['examplepack' . '-' . $key] = $examplepack->position;
+            }
+        }
+
+        if (!empty($this->showmepacks))
+        {
+            foreach ($this->showmepacks as $key => $showmepack)
+            {
+                $elementPositions['showmepack' . '-' . $key] = $showmepack->position;
+            }
+        }
+
+        if (!empty($this->quizpacks))
+        {
+            foreach ($this->quizpacks as $key => $quizpack)
+            {
+                $elementPositions['quizpack' . '-' . $key] = $quizpack->position;
+            }
+        }
+
+        if (!empty($this->studyexercises))
+        {
+            foreach ($this->studyexercises as $key => $studyexercise)
+            {
+                $elementPositions['studyexercise' . '-' . $key] = $studyexercise->position;
+            }
+        }
+
+        if (!empty($this->studyexamples))
+        {
+            foreach ($this->studyexamples as $key => $studyexample)
+            {
+                $elementPositions['studyexample' . '-' . $key] = $studyexample->position;
+            }
+        }
+
         // sorts the array according to the position of the element
         asort($elementPositions);
 
@@ -665,72 +713,173 @@ class Unit extends Element
                         $sibling_id = $subunit->compid;
                     }
                     break;
-            }
-        }
 
-        foreach ($this->exercisepacks as $key => $exercise)
-        {
-            $exercisepackRecordID = $this->checkForRecord($exercise);
+                case(preg_match("/^(exercisepack.\d+)$/", $element) ? true : false):
+                    $exercisepackString = split('-', $element);
 
-            if (empty($exercisepackRecordID))
-            {
-                $exercise->saveIntoDb($exercise->position);
-                $exercisepackRecordID = $exercise->id;
-            }
-        }
+                    $exercisepackRecord = $this->checkForRecord($this->exercisepacks[$exercisepackString[1]]);
 
-        foreach ($this->examplepacks as $key => $example)
-        {
-            $examplepackRecordID = $this->checkForRecord($example);
+                    if (empty($exercisepackRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $exercisepack = $this->exercisepacks[$exercisepackString[1]];
+                            $exercisepack->saveIntoDb($exercisepack->position, $this->compid);
+                            $sibling_id = $exercisepack->compid;
+                        }
+                        else
+                        {
+                            $exercisepack = $this->exercisepacks[$exercisepackString[1]];
+                            $exercisepack->saveIntoDb($exercisepack->position, $this->compid, $sibling_id);
+                            $sibling_id = $exercisepack->compid;
+                        }
+                    }
+                    else
+                    {
+                        $exercisepackID = $exercisepackRecord->id;
+                        $exercisepack = $this->exercisepacks[$exercisepackString[1]];
+                        $exercisepack->compid = $this->insertToCompositor($exercisepackID, $exercisepack->tablename, $this->compid, $sibling_id);
+                    }
+                    break;
 
-            if (empty($examplepackRecordID))
-            {
-                $example->saveIntoDb($example->position);
-                $examplepackRecordID = $example->id;
-            }
-        }
+                case(preg_match("/^(examplepack.\d+)$/", $element) ? true : false):
+                    $examplepackString = split('-', $element);
 
-        foreach ($this->showmepacks as $key => $showme)
-        {
-            $showmepackID = $this->checkForRecord($showme);
+                    $examplepackRecord = $this->checkForRecord($this->examplepacks[$examplepackString[1]]);
 
-            if (empty($showmepackID))
-            {
-                $showme->saveIntoDb($showme->position);
-            }
-        }
+                    if (empty($examplepackRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $examplepack = $this->examplepacks[$examplepackString[1]];
+                            $examplepack->saveIntoDb($examplepack->position, $this->compid);
+                            $sibling_id = $examplepack->compid;
+                        }
+                        else
+                        {
+                            $examplepack = $this->examplepacks[$examplepackString[1]];
+                            $examplepack->saveIntoDb($examplepack->position, $this->compid, $sibling_id);
+                            $sibling_id = $examplepack->compid;
+                        }
+                    }
+                    else
+                    {
+                        $examplepackID = $examplepackRecord->id;
+                        $examplepack = $this->examplepacks[$examplepackString[1]];
+                        $examplepack->compid = $this->insertToCompositor($examplepackID, $examplepack->tablename, $this->compid, $sibling_id);
+                    }
+                    break;
+                case(preg_match("/^(quizpack.\d+)$/", $element) ? true : false):
+                    $quizpackString = split('-', $element);
 
-        foreach ($this->quizpacks as $key => $quiz)
-        {
-            $quizpackID = $this->checkForRecord($quiz);
+                    $quizpackRecord = $this->checkForRecord($this->quizpacks[$quizpackString[1]]);
 
-            if (empty($quizpackID))
-            {
-                $quiz->saveIntoDb($quiz->position);
-            }
-        }
+                    if (empty($quizpackRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $quizpack = $this->quizpacks[$quizpackString[1]];
+                            $quizpack->saveIntoDb($quizpack->position, $this->compid);
+                            $sibling_id = $quizpack->compid;
+                        }
+                        else
+                        {
+                            $quizpack = $this->quizpacks[$quizpackString[1]];
+                            $quizpack->saveIntoDb($quizpack->position, $this->compid, $sibling_id);
+                            $sibling_id = $quizpack->compid;
+                        }
+                    }
+                    else
+                    {
+                        $quizpackID = $quizpackRecord->id;
+                        $quizpack = $this->quizpacks[$quizpackString[1]];
+                        $quizpack->compid = $this->insertToCompositor($quizpackID, $quizpack->tablename, $this->compid, $sibling_id);
+                    }
+                    break;
 
-        // add recordID to compositor to make accessories element
-        foreach ($this->studyexercises as $studyexercisepack)
-        {
-            $exercisepackRecordID = $this->checkForRecord($studyexercisepack);
+                case(preg_match("/^(showmepack.\d+)$/", $element) ? true : false):
+                    $showmepackString = split('-', $element);
 
-            if (empty($exercisepackRecordID))
-            {
-                $studyexercisepack->saveIntoDb($studyexercisepack->position);
-                $exercisepackRecordID = $studyexercisepack->id;
-            }
-        }
+                    $showmepackRecord = $this->checkForRecord($this->showmepacks[$showmepackString[1]]);
 
-//        // add recordID to compositor to make accessories element
-        foreach ($this->studyexamples as $studyexamplepack)
-        {
-            $examplepackRecordID = $this->checkForRecord($studyexamplepack);
+                    if (empty($showmepackRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $showmepack = $this->showmepacks[$showmepackString[1]];
+                            $showmepack->saveIntoDb($showmepack->position, $this->compid);
+                            $sibling_id = $showmepack->compid;
+                        }
+                        else
+                        {
+                            $showmepack = $this->showmepacks[$showmepackString[1]];
+                            $showmepack->saveIntoDb($showmepack->position, $this->compid, $sibling_id);
+                            $sibling_id = $showmepack->compid;
+                        }
+                    }
+                    else
+                    {
+                        $showmepackID = $showmepackRecord->id;
+                        $showmepack = $this->showmepacks[$showmepackString[1]];
+                        $showmepack->compid = $this->insertToCompositor($showmepackID, $showmepack->tablename, $this->compid, $sibling_id);
+                    }
+                    break;
 
-            if (empty($examplepackRecordID))
-            {
-                $studyexamplepack->saveIntoDb($studyexamplepack->position);
-                $examplepackRecordID = $studyexamplepack->id;
+                case(preg_match("/^(studyexercise.\d+)$/", $element) ? true : false):
+                    $studyexerciseString = split('-', $element);
+
+                    $studyexerciseRecord = $this->checkForRecord($this->studyexercises[$studyexerciseString[1]]);
+
+                    if (empty($studyexerciseRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $studyexercise = $this->studyexercises[$studyexerciseString[1]];
+                            $studyexercise->saveIntoDb($studyexercise->position, $this->compid);
+                            $sibling_id = $studyexercise->compid;
+                        }
+                        else
+                        {
+                            $studyexercise = $this->studyexercises[$studyexerciseString[1]];
+                            $studyexercise->saveIntoDb($studyexercise->position, $this->compid, $sibling_id);
+                            $sibling_id = $studyexercise->compid;
+                        }
+                    }
+                    else
+                    {
+                        $studyexerciseID = $studyexerciseRecord->id;
+                        $studyexercise = $this->studyexercises[$studyexerciseString[1]];
+                        $studyexercise->compid = $this->insertToCompositor($studyexerciseID, $studyexercise->tablename, $this->compid, $sibling_id);
+                    }
+                    break;
+
+                case(preg_match("/^(studyexample.\d+)$/", $element) ? true : false):
+                    $studyexampleString = split('-', $element);
+
+                    $studyexampleRecord = $this->checkForRecord($this->studyexamples[$studyexampleString[1]]);
+
+                    if (empty($studyexampleRecord))
+                    {
+                        if (empty($sibling_id))
+                        {
+                            $studyexample = $this->studyexamples[$studyexampleString[1]];
+                            $studyexample->saveIntoDb($studyexample->position, $this->compid);
+                            $sibling_id = $studyexample->compid;
+                        }
+                        else
+                        {
+                            $studyexample = $this->studyexamples[$studyexampleString[1]];
+                            $studyexample->saveIntoDb($studyexample->position, $this->compid, $sibling_id);
+                            $sibling_id = $studyexample->compid;
+                        }
+                    }
+                    else
+                    {
+                        $studyexampleID = $studyexampleRecord->id;
+                        $studyexample = $this->studyexamples[$studyexampleString[1]];
+                        $studyexample->compid = $this->insertToCompositor($studyexampleID, $studyexample->tablename, $this->compid, $sibling_id);
+                    }
+                    break;
             }
         }
     }
@@ -751,7 +900,7 @@ class Unit extends Element
 
         return $this;
     }
-    
+
     function displaytitlehtml()
     {
         $content = '';
@@ -781,7 +930,7 @@ class Unit extends Element
             $content .= $revisionyear . "-" . $revisionmonth . "-" . $revisiondate . "<br />";
             $content .= "</div>";
         }
-        
+
         return $content;
     }
 

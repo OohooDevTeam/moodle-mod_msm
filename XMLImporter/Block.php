@@ -381,7 +381,7 @@ class Block extends Element
     function loadFromDb($introcompid)
     {
         global $DB;
-        
+
         $this->paras = array();
 
         $whereclause = "parent_id='" . $introcompid . "'" . "and prev_sibling_id='null' OR '0'";
@@ -400,16 +400,16 @@ class Block extends Element
 
         return $this;
     }
-    
+
     function displayhtml()
     {
         $content = '';
-        
-        foreach($this->paras as $para)
+
+        foreach ($this->paras as $para)
         {
             $content .= $para->displayhtml();
         }
-        
+
         return $content;
     }
 

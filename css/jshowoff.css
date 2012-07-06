@@ -80,10 +80,10 @@ h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 
         width: 97%;
         max-width:97%;
         }*/
-.jshowoff div, .jshowoff img, .jshowoff {
+/*.jshowoff div, .jshowoff img, .jshowoff {
     -webkit-border-top-left-radius: 6px;
     -webkit-border-top-right-radius: 6px;
-}
+}*/
 #basicFeatures, .jshowoff.basicFeatures, .jshowoff.basicFeatures img, .jshowoff.basicFeatures div {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
