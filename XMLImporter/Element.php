@@ -114,7 +114,6 @@ abstract class Element
     function getContent($DomElement, $position = '', $xmlpath = '')
     {
         $content = '';
-        $subordinates = array();
         $doc = new DOMDocument();
 
         if (!empty($DomElement))

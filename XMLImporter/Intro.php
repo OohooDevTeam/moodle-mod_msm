@@ -86,7 +86,7 @@ class Intro extends Element
         {
             $this->caption = $introrecord->caption;
         }
-        
+              
         $block = new Block();
         $block->loadFromDb($compid); //this should be compositor id
         $this->block = $block;

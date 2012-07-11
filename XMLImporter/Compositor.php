@@ -51,7 +51,7 @@ class Compositor
                     $unitid = $DB->get_record('msm_unit', array('id' => $rootElement->unit_id))->id;
 
                     $unit = new Unit();
-                    $unit->loadFromDb($unitid);
+                    $unit->loadFromDb($unitid, $rootElement->id);
                     $this->unit = $unit;
                     break;
 
@@ -61,33 +61,33 @@ class Compositor
                 // example/quiz/exercise/showme all could be possible choice...
             }
 
-            $whereclause = "parent_id='" . $rootElement->id . "'" . "and prev_sibling_id='null' OR '0'";
-            $firstchild = $DB->get_record_select('msm_compositor', $whereclause);
-
-            $firstchildtable = $DB->get_field('msm_table_collection', 'tablename', array('id' => $firstchild->table_id));
-
-            switch ($firstchildtable)
-            {
-                case('msm_person'):
-
-                    $author = new Person();
-                    $author->loadFromDb($firstchild->unit_id);
-                    $this->authors[] = $author;
-            }
-            
-              $whereclause = "parent_id='" . $rootElement->id . "'" . "and prev_sibling_id='" . $firstchild->id . "'";
-            $secondchild = $DB->get_record_select('msm_compositor', $whereclause);
-
-            $secondchildtable = $DB->get_field('msm_table_collection', 'tablename', array('id' => $secondchild->table_id));
-            
-            switch ($secondchildtable)
-            {
-                case('msm_intro'):
-
-                    $intro = new Intro();
-                    $intro->loadFromDb($secondchild->unit_id, $secondchild->id);
-                    $this->intro = $intro;
-            }          
+//            $whereclause = "parent_id='" . $rootElement->id . "'" . "and prev_sibling_id='null' OR '0'";
+//            $firstchild = $DB->get_record_select('msm_compositor', $whereclause);
+//
+//            $firstchildtable = $DB->get_field('msm_table_collection', 'tablename', array('id' => $firstchild->table_id));
+//
+//            switch ($firstchildtable)
+//            {
+//                case('msm_person'):
+//
+//                    $author = new Person();
+//                    $author->loadFromDb($firstchild->unit_id);
+//                    $this->authors[] = $author;
+//            }
+//            
+//              $whereclause = "parent_id='" . $rootElement->id . "'" . "and prev_sibling_id='" . $firstchild->id . "'";
+//            $secondchild = $DB->get_record_select('msm_compositor', $whereclause);
+//
+//            $secondchildtable = $DB->get_field('msm_table_collection', 'tablename', array('id' => $secondchild->table_id));
+//            
+//            switch ($secondchildtable)
+//            {
+//                case('msm_intro'):
+//
+//                    $intro = new Intro();
+//                    $intro->loadFromDb($secondchild->unit_id, $secondchild->id);
+//                    $this->intro = $intro;
+//            }          
             
         }
 
@@ -98,15 +98,7 @@ class Compositor
     {
         $content = '';
 
-        $content .= $this->unit->displaytitlehtml();
-
-        foreach ($this->authors as $author)
-        {
-            $content .= $author->displayhtml();
-        }
-        $content .= "</div>"; //for closing the border div
-        
-        $content .= $this->intro->displayhtml();
+        $content .= $this->unit->displayhtml();
 
         return $content;
     }

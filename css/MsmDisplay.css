@@ -27,6 +27,7 @@ div.controller{
     z-index: 11;
     margin-top: 10px;
     margin-left: 10px;
+    overflow: hidden;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -40,12 +41,11 @@ div.controller{
     background-image:url('../pix/background.jpg');
     opacity:0.95;
     filter:Alpha(opacity=95);
-
 }
 
-#MySplitter div {
-    overflow: hidden;
-}
+/*#MySplitter div {
+    overflow: auto;
+}*/
 .vsplitbar {
     min-width:0.5%;
     max-width:0.5%;
@@ -61,33 +61,37 @@ div.controller{
 {
     background-image:url('../pix/background2.jpg');
     min-height: 650px;
+    max-height: 650px;
     width:99.3%;
+    overflow: auto;
 }
 .rightbox
 {
     background-image:url('../pix/background2.jpg');
     min-height: 695px;
-    width:97%
+    width:97%;
+/*    overflow: hidden;*/
 }
 
 /*leftcol and rightcol are the divs in MySplitter element*/
 
 .leftcol
 {
-    overflow: hidden;
+/*    overflow: hidden;*/
     margin-bottom:10px;
     margin-right:10px;
 }
 
 .rightcol
 {
-    overflow: auto;
+/*    overflow: auto;*/
     padding-top:10px;
     padding-left:10px;
 }
 
 #features .title
 {
+/*    overflow: hidden;*/
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -101,6 +105,7 @@ div.controller{
 /*for creating double border look*/
 
 .ridge {
+/*    overflow: hidden;*/
     border-top-width: 5px;
     border-bottom-width: 5px;
     border-top-style: double;
@@ -113,18 +118,21 @@ div.controller{
 /* for creating a border that looks like polaroid*/
 
 .snapshot {
+/*    overflow: hidden;*/
     border: 1px solid #666666;
     padding: 10px 10px 60px 10px;
 }
 
 #features .date
 {
+/*    overflow: hidden;*/
     font-size: 12px;
     text-align: right;
     margin-right: 5px;
 }
 
 #features .author{
+/*    overflow: hidden;*/
     font-size: 12px;
     text-align: center;
     margin-right: 5px;
@@ -132,10 +140,24 @@ div.controller{
 
 #features .content
 {
+/*    overflow: hidden;*/
     font-size:14px;
     text-align: left;
     margin-left: 20px;
     margin-right: 10px;
 }
+
+#features .content a
+{
+/*    overflow: hidden;*/
+    color: #229C79;
+}
+
+/*#features .content table, th, tr, td{
+    border-collapse: separate;
+    width: auto;
+    height: auto;
+}*/
+
 
 

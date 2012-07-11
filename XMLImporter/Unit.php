@@ -884,7 +884,7 @@ class Unit extends Element
         }
     }
 
-    function loadFromDb($id)
+    function loadFromDb($id, $compid)
     {
         global $DB;
 
@@ -896,12 +896,51 @@ class Unit extends Element
             $this->title = $unitrecord->title;
             $this->creationdate = $unitrecord->creationdate;
             $this->last_revision_date = $unitrecord->last_revision_date;
+
+            if (!empty($unitrecord->acknowledgements))
+            {
+                $this->acknowledgement = $unitrecord->acknowledgements;
+            }
         }
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        $this->authors = array();
+        $this->childs = array();
+        
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
+            {
+                case('msm_person'):
+                    $person = new Person();
+                    $person->loadFromDb($child->unit_id);
+                    $this->authors[] = $person;
+                    break;
+
+                case('msm_intro'):
+                    $intro = new Intro();
+                    $intro->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $intro;
+                    break;
+
+//                case('msm_unit'):
+//                    $unit = new Unit();
+//                    $unit->loadFromDb($child->unit_id, $child->id);
+//                    $this->childs[] = $unit;
+//                    break;
+            }
+        }
+//
+//        print_object($this);
+//        die;
 
         return $this;
     }
 
-    function displaytitlehtml()
+    function displayhtml()
     {
         $content = '';
         $content .= "<div class='ridge'>";
@@ -929,6 +968,18 @@ class Unit extends Element
             $content .= "last revised on: ";
             $content .= $revisionyear . "-" . $revisionmonth . "-" . $revisiondate . "<br />";
             $content .= "</div>";
+
+            foreach ($this->authors as $author)
+            {
+                $content .= $author->displayhtml();
+            }
+        }
+
+        $content .= "</div>"; //for closing the border div
+
+        foreach ($this->childs as $child)
+        {
+            $content .= $child->displayhtml();
         }
 
         return $content;

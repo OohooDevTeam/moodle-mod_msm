@@ -42,6 +42,78 @@ class MathArray extends Element
 
         $position = $position + 1;
 
+        $doc = new DOMDocument();
+        $element = $doc->importNode($DomElement, true);
+
+        foreach ($DomElement->childNodes as $rows)
+        {
+            if ($rows->nodeType == XML_ELEMENT_NODE)
+            {
+                if ($rows->tagName == 'row')
+                {
+                    if ($rows->hasAttribute('rowspan'))
+                    {
+                        $rowspan = $rows->getAttribute('rowspan');
+                        $rows->removeAttribute('rowspan');
+                    }
+                    foreach ($rows->childNodes as $columns)
+                    {
+                        if ($columns->nodeType == XML_ELEMENT_NODE)
+                        {
+                            if ($columns->tagName == 'cell')
+                            {     
+                                $halign = $columns->getAttribute("halign");
+                                $valign = $columns->getAttribute("valign");
+                                $bgcolor = $columns->getAttribute("bgcolor");
+                                $colspan = $columns->getAttribute("colspan");
+                                $fontcolor = $columns->getAttribute("fontcolor");
+
+                                $companions = $columns->getElementsByTagName('companion');
+
+                                //companions exists within the cell element
+                                if (!empty($companions))
+                                {
+                                    $text = $columns->getElementsByTagName('text')->item(0);
+                                    $math = $columns->getElementsByTagName('math')->item(0);
+
+                                    if (!empty($text))
+                                    {
+                                        $newhotnode = $doc->createElement('hot');
+                                        foreach($text->childNodes as $child)
+                                        {
+                                            $newhotnode->appendChild($text->removeChild($child));
+                                        }
+                                        
+                                        $text->parentNode->replaceChild($newhotnode, $text);
+                                        
+                                        $celltag = $doc->createElement('td');
+                                        $doc->appendChild($celltag);
+                                        $celltag->setAttribute('align', $halign);
+                                        $celltag->setAttribute('valign', $valign);
+                                        $celltag->setAttribute('bgcolor', $bgcolor);
+                                        $celltag->setAttribute('colspan', $colspan);
+                                        $celltag->setAttribute('rowspan', $rowspan);
+                                        $celltag->setAttribute('fontcolor', $fontcolor);
+
+                                        $subordinate_tag = $doc->createElement('subordinate');
+                                        $doc->apppendChild($subordinate_tag);
+                                        $subordinate_tag->appendChild($text);
+                                        $subordinate_tag->appendChild($companions->item(0));                                        
+                                        
+                                        $celltag->appendChild($subordinate_tag);
+                                        
+                                        $columns->parentNode->replaceChild($celltag, $columns);                                       
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
@@ -236,6 +308,25 @@ class MathArray extends Element
                     break;
             }
         }
+    }
+
+    function loadFromDb($id, $compid)
+    {
+//        global $DB;
+//        
+//        $matharrayRecord = $DB->get_record($this->tablename, array('id'=>$id));
+//        
+//        if(!empty($matharrayRecord))
+//        {
+//            $this->content = $matharrayRecord->math_array_content;
+//        }
+//        
+//        return $this;
+    }
+
+    function displayhtml()
+    {
+        
     }
 
 }

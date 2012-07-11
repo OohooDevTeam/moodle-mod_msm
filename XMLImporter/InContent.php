@@ -251,6 +251,33 @@ class InContent extends Element
         }
     }
 
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $contentRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($contentRecord))
+        {
+            $this->content = $contentRecord->content;
+            $this->type = $contentRecord->type;
+        }
+        
+        //could have child elements of subordinate-->info  and/or media elememts
+
+        return $this;
+    }
+
+    function displayhtml()
+    {
+        $content = '';
+        $content .= "<div class='content'>";
+        $content .= $this->content;
+        $content .= "</div>";
+        
+        return $content;
+    }
+
 }
 
 ?>

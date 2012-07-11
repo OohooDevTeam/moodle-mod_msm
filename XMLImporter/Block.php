@@ -194,9 +194,9 @@ class Block extends Element
             }
         }
 
-        if (!empty($this->math_diplays))
+        if (!empty($this->math_displays))
         {
-            foreach ($this->math_diplays as $key => $mathdisplay)
+            foreach ($this->math_displays as $key => $mathdisplay)
             {
                 $elementPositions['mathdisplay' . '-' . $key] = $mathdisplay->position;
             }
@@ -382,20 +382,40 @@ class Block extends Element
     {
         global $DB;
 
-        $this->paras = array();
-
-        $whereclause = "parent_id='" . $introcompid . "'" . "and prev_sibling_id='null' OR '0'";
-        $firstchild = $DB->get_record_select('msm_compositor', $whereclause);
-
-        $firstchildtable = $DB->get_field('msm_table_collection', 'tablename', array('id' => $firstchild->table_id));
-
-        switch ($firstchildtable)
+        $this->childs = array();
+          
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$introcompid), 'prev_sibling_id');
+        
+        foreach($childElements as $child)
         {
-            case('msm_para'):
+             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-                $para = new Para();
-                $para->loadFromDb($firstchild->unit_id);
-                $this->paras[] = $para;
+            switch ($childtablename)
+            {
+               case('msm_para'):
+                   $para = new Para();
+                   $para->loadFromDb($child->unit_id, $child->id);
+                   $this->childs[] = $para;
+                   break;
+               
+               case('msm_content'):
+                   $incontent = new InContent();
+                   $incontent->loadFromDb($child->unit_id, $child->id);
+                   $this->childs[] = $incontent;
+                   break;
+               
+               case('msm_math_array'):
+                   $matharray = new MathArray();
+                   $matharray->loadFromDb($child->unit_id, $child->id);
+                   $this->childs[] = $matharray;
+                   break;
+//               
+//               case('msm_table'):
+//                   $table = new Table();
+//                   $table->loadFromDb($child->unit_id, $child->id);
+//                   $this->childs[] = $table;
+//                   break;
+            }
         }
 
         return $this;
@@ -404,10 +424,10 @@ class Block extends Element
     function displayhtml()
     {
         $content = '';
-
-        foreach ($this->paras as $para)
+        
+        foreach ($this->childs as $child)
         {
-            $content .= $para->displayhtml();
+            $content .= $child->displayhtml();
         }
 
         return $content;
