@@ -60,7 +60,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -82,7 +84,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -97,7 +101,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>\overset{?}{=}</text>
+                           <math>
+                              <latex>\overset{?}{=}</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -119,7 +125,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -348,7 +356,9 @@ A[x] =
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -363,7 +373,9 @@ A[x] =
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -567,7 +579,9 @@ x + y \\ -x + y
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -582,7 +596,9 @@ x + y \\ -x + y
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>

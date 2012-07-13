@@ -28,11 +28,7 @@
                </para.body>
             </para>
             <para align="center">
-               <para.body>
-                  <media xmlns="" type="image" active="0" inline="0">
-                     <img src="ims/HyperPlane2D.gif"/>
-                  </media>
-               </para.body>
+               <para.body/>
             </para>
             <para>
                <para.body>In the picture above, the blue line is the hyperspace which is perpendicular to the green normal vector. The red line <math>
@@ -53,11 +49,7 @@
                </para.body>
             </para>
             <para align="center">
-               <para.body>
-                  <media xmlns="" type="image" active="0" inline="0">
-                     <img src="ims/HyperPlane3D.gif"/>
-                  </media>
-               </para.body>
+               <para.body/>
             </para>
             <para>
                <para.body>In the picture above, the planes are hyperplanes in 3-space. The tail of the two arrows is supposed to be at the origin. So the lower hyperplane passes through the origin and, hence, is even a hyperspace. In general, we characterize the location of a hyperplane by specifying a vector <math>

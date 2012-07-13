@@ -6,9 +6,11 @@
  */
 
 /**
- * Description of MathArray
+ * MathArray class represents the math.array element in the XML file.  
+ * The contents of the files are parsed, loaded to database then extracted from database to be displayed.
+ * It extends from Element abstract class.
  *
- * @author User
+ * @author Ga Young Kim
  */
 class MathArray extends Element
 {
@@ -22,7 +24,9 @@ class MathArray extends Element
     }
 
     /**
-     *
+     * loadFromXml method parses math.array element in the XML files and saves contents
+     * into different properties of the instance of this class.
+     * 
      * @param DOMElement $DomElement
      * @param int $position 
      */
@@ -42,8 +46,6 @@ class MathArray extends Element
 
         $position = $position + 1;
 
-        $doc = new DOMDocument();
-        $element = $doc->importNode($DomElement, true);
 
         foreach ($DomElement->childNodes as $rows)
         {
@@ -61,50 +63,29 @@ class MathArray extends Element
                         if ($columns->nodeType == XML_ELEMENT_NODE)
                         {
                             if ($columns->tagName == 'cell')
-                            {     
-                                $halign = $columns->getAttribute("halign");
-                                $valign = $columns->getAttribute("valign");
-                                $bgcolor = $columns->getAttribute("bgcolor");
-                                $colspan = $columns->getAttribute("colspan");
-                                $fontcolor = $columns->getAttribute("fontcolor");
+                            {
+                                $companions = $DomElement->getElementsByTagName('companion');
 
-                                $companions = $columns->getElementsByTagName('companion');
-
-                                //companions exists within the cell element
-                                if (!empty($companions))
+                                foreach ($companions as $com)
                                 {
-                                    $text = $columns->getElementsByTagName('text')->item(0);
-                                    $math = $columns->getElementsByTagName('math')->item(0);
+                                    $doc = new DOMDocument;
 
-                                    if (!empty($text))
-                                    {
-                                        $newhotnode = $doc->createElement('hot');
-                                        foreach($text->childNodes as $child)
-                                        {
-                                            $newhotnode->appendChild($text->removeChild($child));
-                                        }
-                                        
-                                        $text->parentNode->replaceChild($newhotnode, $text);
-                                        
-                                        $celltag = $doc->createElement('td');
-                                        $doc->appendChild($celltag);
-                                        $celltag->setAttribute('align', $halign);
-                                        $celltag->setAttribute('valign', $valign);
-                                        $celltag->setAttribute('bgcolor', $bgcolor);
-                                        $celltag->setAttribute('colspan', $colspan);
-                                        $celltag->setAttribute('rowspan', $rowspan);
-                                        $celltag->setAttribute('fontcolor', $fontcolor);
+                                    $element = $doc->importNode($com->previousSibling->previousSibling);
+                                    
+                                    $doc->preserveWhiteSpace = false;
+                                    
+                                    $textcontent = $doc->saveXML($element);
+                                    
+                                    $hottag = $doc->createElement('hot', $textcontent);
+//                                    $hottag->appendChild($textcontent);
+                                    
+                                    $com->previousSibling->previousSibling->appendChild($hottag);
+                                    
+                                    $newdoc = new DOMDocument;
+                                    
+                                    $newelement = $newdoc->importNode($com);
 
-                                        $subordinate_tag = $doc->createElement('subordinate');
-                                        $doc->apppendChild($subordinate_tag);
-                                        $subordinate_tag->appendChild($text);
-                                        $subordinate_tag->appendChild($companions->item(0));                                        
-                                        
-                                        $celltag->appendChild($subordinate_tag);
-                                        
-                                        $columns->parentNode->replaceChild($celltag, $columns);                                       
-                                        
-                                    }
+                                    print_object($newdoc->saveXML($newelement));
                                 }
                             }
                         }

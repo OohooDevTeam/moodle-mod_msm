@@ -104,7 +104,9 @@ L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
                      </math>
                   </cell>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=</text>
+                     <math>
+                        <latex>=</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>
@@ -115,7 +117,9 @@ L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
                <row rowspan="1">
                   <cell colspan="2" halign="center" valign="middle"/>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=	</text>
+                     <math>
+                        <latex>=	</latex>
+                     </math>
                      <companion>
                         <info>
                            <para>
@@ -131,7 +135,9 @@ L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
                                     </math>
                                  </cell>
                                  <cell colspan="1" halign="center" valign="middle">
-                                    <text>=</text>
+                                    <math>
+                                       <latex>=</latex>
+                                    </math>
                                  </cell>
                                  <cell colspan="2" halign="center" valign="middle">
                                     <math>
@@ -142,7 +148,9 @@ L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
                               <row rowspan="1">
                                  <cell colspan="2" halign="center" valign="middle"/>
                                  <cell colspan="1" halign="center" valign="middle">
-                                    <text>=</text>
+                                    <math>
+                                       <latex>=</latex>
+                                    </math>
                                  </cell>
                                  <cell colspan="2" halign="center" valign="middle">
                                     <math>
@@ -163,7 +171,9 @@ L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
                <row rowspan="1">
                   <cell colspan="2" halign="center" valign="middle"/>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=	</text>
+                     <math>
+                        <latex>=	</latex>
+                     </math>
                      <companion>
                         <info>
                            <para>
@@ -185,7 +195,9 @@ L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
                <row rowspan="1">
                   <cell colspan="2" halign="center" valign="middle"/>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=</text>
+                     <math>
+                        <latex>=</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>
@@ -204,7 +216,9 @@ L(\StdBss{1}) &amp; L(\StdBss{2}) &amp; \cdots &amp; L(\StdBss{n}) \\
                <row rowspan="1">
                   <cell colspan="2" halign="center" valign="middle"/>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=</text>
+                     <math>
+                        <latex>=</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>

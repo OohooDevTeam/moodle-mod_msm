@@ -155,7 +155,9 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -182,7 +184,9 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -197,7 +201,9 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -212,7 +218,9 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -227,7 +235,9 @@ x_{n-1}-x_n &amp; x_{n-1}^{2}-x_nx_{n-1} &amp; \cdots &amp; x_{n-1}^{n-1}-x_nx_{
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>

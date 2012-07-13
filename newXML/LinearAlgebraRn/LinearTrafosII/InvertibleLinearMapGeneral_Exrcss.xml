@@ -105,7 +105,9 @@ T\from \RNr[3] \longrightarrow \RNr[4] &amp;\quad T(x,y,z) = (x+z,y,-x,-z+y)
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -120,7 +122,9 @@ T\from \RNr[3] \longrightarrow \RNr[4] &amp;\quad T(x,y,z) = (x+z,y,-x,-z+y)
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -135,7 +139,9 @@ T\from \RNr[3] \longrightarrow \RNr[4] &amp;\quad T(x,y,z) = (x+z,y,-x,-z+y)
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -150,7 +156,9 @@ T\from \RNr[3] \longrightarrow \RNr[4] &amp;\quad T(x,y,z) = (x+z,y,-x,-z+y)
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -193,7 +201,9 @@ T\from \RNr[3] \longrightarrow \RNr[4] &amp;\quad T(x,y,z) = (x+z,y,-x,-z+y)
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -208,7 +218,9 @@ T\from \RNr[3] \longrightarrow \RNr[4] &amp;\quad T(x,y,z) = (x+z,y,-x,-z+y)
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -223,7 +235,9 @@ T\from \RNr[3] \longrightarrow \RNr[4] &amp;\quad T(x,y,z) = (x+z,y,-x,-z+y)
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -429,7 +443,9 @@ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -730,7 +746,9 @@ c \\ -b \\ a-2b
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -913,7 +931,9 @@ c \\ -b \\ a-2b
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -928,7 +948,9 @@ c \\ -b \\ a-2b
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=	</text>
+                           <math>
+                              <latex>=	</latex>
+                           </math>
                            <companion>
                               <info>
                                  <para>
@@ -961,7 +983,9 @@ c \\ -b \\ a-2b
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=	</text>
+                           <math>
+                              <latex>=	</latex>
+                           </math>
                            <companion>
                               <info>
                                  <para>
@@ -1052,7 +1076,9 @@ c \\ -b \\ a-2b
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1148,7 +1174,9 @@ c \\ -b \\ a-2b
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>

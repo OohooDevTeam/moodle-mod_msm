@@ -33,11 +33,7 @@
             </math>. The result is illustrated below.</para.body>
       </para>
       <para align="center">
-         <para.body>
-            <media xmlns="" type="image" active="0" inline="0">
-               <img src="ims/LinearMotion_Illstrtn.gif"/>
-            </media>
-         </para.body>
+         <para.body/>
       </para>
       <para>
          <para.body>In general, the location <math>
@@ -64,7 +60,9 @@
                </math>
             </cell>
             <cell colspan="1" halign="center" valign="middle">
-               <text>=	</text>
+               <math>
+                  <latex>=	</latex>
+               </math>
                <companion xmlns="">
                   <info xmlns="Unit">
                      <info.caption>Computation of displacement vector</info.caption>

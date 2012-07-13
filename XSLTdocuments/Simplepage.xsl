@@ -343,8 +343,10 @@
                 <xsl:text>middle</xsl:text>
             </xsl:attribute>
             
-            <xsl:element name="text" namespace="Unit">
-                <xsl:apply-templates select="child::node()[name()='']"/>
+            <xsl:element name="math" namespace="Unit">
+                <xsl:element name="latex" namespace="Unit">
+                    <xsl:apply-templates select="child::node()[name()='']"/>
+                </xsl:element>               
             </xsl:element>
             
             <xsl:if test="child::node()[name()='info']">

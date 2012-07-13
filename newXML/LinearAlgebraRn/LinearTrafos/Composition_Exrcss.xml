@@ -615,7 +615,9 @@ L(0,1) &amp;= 2(\cos(8\pi/6),\sin(8\pi/6)) &amp;= 2\left( -1/2 , -\sqrt{3}/2 \ri
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -630,7 +632,9 @@ L(0,1) &amp;= 2(\cos(8\pi/6),\sin(8\pi/6)) &amp;= 2\left( -1/2 , -\sqrt{3}/2 \ri
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -652,7 +656,9 @@ L(0,1) &amp;= 2(\cos(8\pi/6),\sin(8\pi/6)) &amp;= 2\left( -1/2 , -\sqrt{3}/2 \ri
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -667,7 +673,9 @@ L(0,1) &amp;= 2(\cos(8\pi/6),\sin(8\pi/6)) &amp;= 2\left( -1/2 , -\sqrt{3}/2 \ri
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -694,7 +702,9 @@ L(0,1) &amp;= 2(\cos(8\pi/6),\sin(8\pi/6)) &amp;= 2\left( -1/2 , -\sqrt{3}/2 \ri
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -709,7 +719,9 @@ L(0,1) &amp;= 2(\cos(8\pi/6),\sin(8\pi/6)) &amp;= 2\left( -1/2 , -\sqrt{3}/2 \ri
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1110,7 +1122,9 @@ B\cdot A = \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=	</text>
+                           <math>
+                              <latex>=	</latex>
+                           </math>
                            <companion>
                               <info>
                                  <para>
@@ -1151,7 +1165,9 @@ B\cdot A = \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1166,7 +1182,9 @@ B\cdot A = \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1213,7 +1231,9 @@ A := \dfrac{1}{2} \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1228,7 +1248,9 @@ A := \dfrac{1}{2} \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1243,7 +1265,9 @@ A := \dfrac{1}{2} \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1474,7 +1498,9 @@ BA := \left[
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -1498,7 +1524,9 @@ BA := \left[
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -1527,7 +1555,9 @@ BA := \left[
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -1562,7 +1592,9 @@ BA := \left[
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -1632,7 +1664,9 @@ BA := \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1647,7 +1681,9 @@ BA := \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1662,7 +1698,9 @@ BA := \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1677,7 +1715,9 @@ BA := \left[
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>

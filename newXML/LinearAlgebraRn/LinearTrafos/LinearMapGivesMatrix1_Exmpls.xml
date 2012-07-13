@@ -53,7 +53,9 @@
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=	</text>
+                        <math>
+                           <latex>=	</latex>
+                        </math>
                         <companion>
                            <info>
                               <para>
@@ -86,7 +88,9 @@
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=	</text>
+                        <math>
+                           <latex>=	</latex>
+                        </math>
                         <companion>
                            <info>
                               <para>

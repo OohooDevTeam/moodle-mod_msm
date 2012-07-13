@@ -23,11 +23,7 @@
             </math> is positive, this has the effect illustrated below.</para.body>
       </para>
       <para align="center">
-         <para.body>
-            <media xmlns="" type="image" active="0" inline="0">
-               <img src="ims/VectorScalarMultiply_2.gif"/>
-            </media>
-         </para.body>
+         <para.body/>
       </para>
       <para>
          <para.body>If we multiply a vector <math>
@@ -39,11 +35,7 @@
             </math>, as is illustrated in the picture below.</para.body>
       </para>
       <para align="center">
-         <para.body>
-            <media xmlns="" type="image" active="0" inline="0">
-               <img src="ims/VectorScalarMultiply_3.gif"/>
-            </media>
-         </para.body>
+         <para.body/>
       </para>
       <para>
          <para.body>Here are a number of scalar multiplications performed on one and the same vector. Click <subordinate>
@@ -51,22 +43,14 @@
                <info>
                   <info.caption>Animation of Scalar Multiplication of a Vector by a Number</info.caption>
                   <para align="center">
-                     <para.body>
-                        <media xmlns="" type="image" active="0" inline="0">
-                           <img src="ims/VectorScalarMultiply_Anmt.gif"/>
-                        </media>
-                     </para.body>
+                     <para.body/>
                   </para>
                </info>
             </subordinate> to animate this example.
 		</para.body>
       </para>
       <para align="center">
-         <para.body>
-            <media xmlns="" type="image" active="0" inline="0">
-               <img src="VectorScalarMultiply_1.gif"/>
-            </media>
-         </para.body>
+         <para.body/>
       </para>
    </body>
 </unit>

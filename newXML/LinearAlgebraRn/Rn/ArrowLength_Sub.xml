@@ -19,11 +19,7 @@
                   </math> is given by the formula</para.body>
             </para>
             <para align="center">
-               <para.body>
-                  <media xmlns="" type="image" active="0" inline="0">
-                     <img src="ims/ArrowLength_Illstrtn.gif"/>
-                  </media>
-               </para.body>
+               <para.body/>
             </para>
             <math.display>
                <latex>\Abs{ \overset{\longrightarrow}{PQ} }\ :=\ \text{dist}(P,Q)\ =\ \sqrt{(y_1-x_1)^2+\cdots +(y_n-x_n)^2}.</latex>

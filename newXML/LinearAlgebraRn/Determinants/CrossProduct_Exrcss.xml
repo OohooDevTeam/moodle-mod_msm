@@ -184,7 +184,9 @@
                      </math>
                   </cell>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=</text>
+                     <math>
+                        <latex>=</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>
@@ -199,7 +201,9 @@
                      </math>
                   </cell>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=</text>
+                     <math>
+                        <latex>=</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>
@@ -214,7 +218,9 @@
                      </math>
                   </cell>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=</text>
+                     <math>
+                        <latex>=</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>
@@ -249,7 +255,9 @@
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -274,7 +282,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -289,7 +299,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -325,7 +337,9 @@
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -347,7 +361,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -362,7 +378,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -377,7 +395,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -392,7 +412,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -428,7 +450,9 @@
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -453,7 +477,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -468,7 +494,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -483,7 +511,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -535,7 +565,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -550,7 +582,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -565,7 +599,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -629,7 +665,9 @@
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -654,7 +692,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -669,7 +709,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -684,7 +726,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -699,7 +743,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -795,7 +841,9 @@
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -820,7 +868,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -844,7 +894,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>:=	</text>
+                           <math>
+                              <latex>:=	</latex>
+                           </math>
                            <companion>
                               <info>
                                  <para>
@@ -879,7 +931,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>:=	</text>
+                           <math>
+                              <latex>:=	</latex>
+                           </math>
                            <companion>
                               <info>
                                  <para>
@@ -919,7 +973,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -939,7 +995,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -954,7 +1012,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1017,7 +1077,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1032,7 +1094,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1054,7 +1118,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1069,7 +1135,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1142,7 +1210,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1176,7 +1246,9 @@ a &amp; + &amp; 2b &amp; &amp; &amp; = &amp; -1
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1191,7 +1263,9 @@ a &amp; + &amp; 2b &amp; &amp; &amp; = &amp; -1
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1248,7 +1322,9 @@ a &amp; + &amp; 2b &amp; &amp; &amp; = &amp; -1
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1336,7 +1412,9 @@ L_2: &amp;\quad (1,0,0) + s(-1,3,0) &amp;\quad s\in \RNr
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>= (x,y,z) =</text>
+                           <math>
+                              <latex>= (x,y,z) =</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1407,7 +1485,9 @@ L_2: &amp;\quad (1,0,0) + s(-1,3,0) &amp;\quad s\in \RNr
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -1463,7 +1543,9 @@ L_2: &amp;\quad (1,0,0) + s(-1,3,0) &amp;\quad s\in \RNr
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>= \CrssPr{ \Vect{u} }{ \Vect{v} } =</text>
+                           <math>
+                              <latex>= \CrssPr{ \Vect{u} }{ \Vect{v} } =</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1485,7 +1567,9 @@ L_2: &amp;\quad (1,0,0) + s(-1,3,0) &amp;\quad s\in \RNr
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1505,7 +1589,9 @@ L_2: &amp;\quad (1,0,0) + s(-1,3,0) &amp;\quad s\in \RNr
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1542,7 +1628,9 @@ L_2: &amp;\quad (1,0,0) + s(-1,3,0) &amp;\quad s\in \RNr
                      </math>
                   </cell>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>\neq</text>
+                     <math>
+                        <latex>\neq</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>
@@ -1627,7 +1715,9 @@ L_2: &amp;\quad (1,0,0) + s(-1,3,0) &amp;\quad s\in \RNr
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1642,7 +1732,9 @@ L_2: &amp;\quad (1,0,0) + s(-1,3,0) &amp;\quad s\in \RNr
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>

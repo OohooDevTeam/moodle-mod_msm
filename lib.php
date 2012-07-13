@@ -155,7 +155,7 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
        
         $unit->loadFromXml($parser->documentElement, $position);        
         
-        $unit->saveIntoDb($unit->position, $msm->id);
+//        $unit->saveIntoDb($unit->position, $msm->id);
            
         
         //inserting the top element unit

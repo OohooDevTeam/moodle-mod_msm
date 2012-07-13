@@ -189,7 +189,9 @@ u \\ v \\ x \\ y \\ z
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -237,7 +239,9 @@ u \\ v \\ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -259,7 +263,9 @@ u \\ v \\ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -283,7 +289,9 @@ u \\ v \\ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -326,7 +334,9 @@ u \\ v \\ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -432,7 +442,9 @@ u \\ v \\ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -460,7 +472,9 @@ u \\ v \\ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -618,7 +632,9 @@ u \\ v \\ x \\ y \\ z
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -677,7 +693,9 @@ u \\ v \\ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -714,7 +732,9 @@ u \\ v \\ x \\ y \\ z
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -736,7 +756,9 @@ u \\ v \\ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -818,7 +840,9 @@ u \\ v \\ x \\ y \\ z
                               </math>
                            </cell>
                            <cell colspan="1" halign="center" valign="middle">
-                              <text>=</text>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
                            </cell>
                            <cell colspan="2" halign="center" valign="middle">
                               <math>
@@ -840,7 +864,9 @@ u \\ v \\ x \\ y \\ z
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -1044,7 +1070,9 @@ u \\ v \\ x \\ y \\ z
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -1068,7 +1096,9 @@ u \\ v \\ x \\ y \\ z
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>\leq</text>
+                        <math>
+                           <latex>\leq</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -1088,7 +1118,9 @@ u \\ v \\ x \\ y \\ z
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>\geq 2</text>
+                        <math>
+                           <latex>\geq 2</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -1114,7 +1146,9 @@ u \\ v \\ x \\ y \\ z
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -1129,7 +1163,9 @@ u \\ v \\ x \\ y \\ z
                         </math>
                      </cell>
                      <cell colspan="1" halign="center" valign="middle">
-                        <text>=</text>
+                        <math>
+                           <latex>=</latex>
+                        </math>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>

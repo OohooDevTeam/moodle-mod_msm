@@ -110,38 +110,38 @@ class Subordinate extends Element
                                     }
                                     break;
 
-//                                case('definition.ref'):
-//                                    $definitionrefID = $grandchild->getAttribute('definitionID');
-//
-//                                    if (!empty($definitionrefID))
-//                                    {
-//                                        $IDinDB = $DB->get_record('msm_def', array('string_id' => $definitionrefID));
-//
-//                                        if (empty($IDinDB))
-//                                        {
-//                                            $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
-//
-//                                            if (!empty($filepath))
-//                                            {
-//                                                @$parser->load($filepath);
-//                                                
-//                                                $element = $parser->documentElement;
-//
-//                                                if (!empty($element))
-//                                                {
-//                                                    $position = $position + 1;
-//                                                    $def = new Defintion(dirname($filepath));
-//                                                    $def->loadFromXml($element, $position);
-//                                                    $this->defs[] = $def;
-//                                                }
-//                                            }
-//                                        }
-//                                        else
-//                                        {
-//                                            $this->companion[] = $definitionrefID;
-//                                        }
-//                                    }
-//                                    break;
+                                case('definition.ref'):
+                                    $definitionrefID = $grandchild->getAttribute('definitionID');
+
+                                    if (!empty($definitionrefID))
+                                    {
+                                        $IDinDB = $DB->get_record('msm_def', array('string_id' => $definitionrefID));
+
+                                        if (empty($IDinDB))
+                                        {
+                                            $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
+
+                                            if (!empty($filepath))
+                                            {
+                                                @$parser->load($filepath);
+                                                
+                                                $element = $parser->documentElement;
+
+                                                if (!empty($element))
+                                                {
+                                                    $position = $position + 1;
+                                                    $def = new Defintion(dirname($filepath));
+                                                    $def->loadFromXml($element, $position);
+                                                    $this->defs[] = $def;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            $this->companion[] = $definitionrefID;
+                                        }
+                                    }
+                                    break;
 
                                 case('theorem.ref'):
                                     $theoremrefID = $grandchild->getAttribute('theoremID');

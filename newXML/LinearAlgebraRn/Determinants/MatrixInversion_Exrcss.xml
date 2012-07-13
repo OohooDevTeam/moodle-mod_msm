@@ -82,7 +82,9 @@ x &amp; + &amp; 2y &amp; + &amp; z &amp; = &amp; 3 \\
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -239,7 +241,9 @@ x &amp; + &amp; 2y &amp; + &amp; z &amp; + &amp; w &amp; = &amp; 0 \\
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>
@@ -457,7 +461,9 @@ u &amp; - &amp; 2v &amp; + &amp; 2x &amp; &amp; &amp; &amp; &amp; = &amp; 1
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>

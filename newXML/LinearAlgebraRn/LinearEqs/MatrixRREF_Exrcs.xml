@@ -384,7 +384,9 @@ x &amp;  &amp;  &amp; - &amp; 2z &amp; + &amp; 7w &amp; = &amp; 11 \\
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>=</text>
+                           <math>
+                              <latex>=</latex>
+                           </math>
                         </cell>
                         <cell colspan="2" halign="center" valign="middle">
                            <math>

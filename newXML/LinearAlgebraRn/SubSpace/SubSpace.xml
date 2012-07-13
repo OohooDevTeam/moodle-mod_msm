@@ -297,7 +297,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>:=	</text>
+                           <math>
+                              <latex>:=	</latex>
+                           </math>
                            <companion xmlns="">
                               <info xmlns="Unit">
                                  <info.caption>How do you read this?</info.caption>
@@ -471,7 +473,9 @@
                            </math>
                         </cell>
                         <cell colspan="1" halign="center" valign="middle">
-                           <text>:=	</text>
+                           <math>
+                              <latex>:=	</latex>
+                           </math>
                            <companion xmlns="">
                               <info xmlns="Unit">
                                  <info.caption>How do I read this?</info.caption>

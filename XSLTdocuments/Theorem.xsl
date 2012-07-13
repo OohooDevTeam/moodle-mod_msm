@@ -563,8 +563,10 @@
                 <xsl:text>middle</xsl:text>
             </xsl:attribute>
             
-            <xsl:element name="text" namespace="Theorem">
-                <xsl:apply-templates select="child::node()[name()='']"/>
+            <xsl:element name="math" namespace="Theorem">
+                <xsl:element name="latex" namespace="Theorem">
+                    <xsl:apply-templates select="child::node()[name()='']"/>
+                </xsl:element>               
             </xsl:element>
             
             <xsl:if test="child::node()[name()='info']">

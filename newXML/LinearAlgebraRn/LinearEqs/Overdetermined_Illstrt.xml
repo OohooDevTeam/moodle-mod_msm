@@ -15,11 +15,7 @@
                <para.body>The picture below shows the lines of solution of three linear equations in two variables.</para.body>
             </para>
             <para align="center">
-               <para.body>
-                  <media xmlns="" type="image" active="0" inline="0">
-                     <img src="ims/ThreeEqnsR2Overdetermined.gif" height="318" width="434"/>
-                  </media>
-               </para.body>
+               <para.body/>
             </para>
             <para>
                <para.body>Each of these 3 lines is the solution set of a linear equation in two unknowns. These three lines have no point in common. Therefore the set of simultaneous solutions of the three equations is empty.</para.body>

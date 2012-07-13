@@ -75,7 +75,9 @@
                      </math>
                   </cell>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=</text>
+                     <math>
+                        <latex>=</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>
@@ -95,7 +97,9 @@
                      </math>
                   </cell>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=</text>
+                     <math>
+                        <latex>=</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>
@@ -110,7 +114,9 @@
                      </math>
                   </cell>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=	</text>
+                     <math>
+                        <latex>=	</latex>
+                     </math>
                      <companion xmlns="">
                         <info xmlns="Unit">
                            <para>
@@ -143,7 +149,9 @@
                      </math>
                   </cell>
                   <cell colspan="1" halign="center" valign="middle">
-                     <text>=</text>
+                     <math>
+                        <latex>=</latex>
+                     </math>
                   </cell>
                   <cell colspan="2" halign="center" valign="middle">
                      <math>
