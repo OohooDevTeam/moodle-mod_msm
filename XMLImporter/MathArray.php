@@ -6,11 +6,9 @@
  */
 
 /**
- * MathArray class represents the math.array element in the XML file.  
- * The contents of the files are parsed, loaded to database then extracted from database to be displayed.
- * It extends from Element abstract class.
+ * Description of MathArray
  *
- * @author Ga Young Kim
+ * @author User
  */
 class MathArray extends Element
 {
@@ -24,9 +22,7 @@ class MathArray extends Element
     }
 
     /**
-     * loadFromXml method parses math.array element in the XML files and saves contents
-     * into different properties of the instance of this class.
-     * 
+     *
      * @param DOMElement $DomElement
      * @param int $position 
      */
@@ -45,55 +41,6 @@ class MathArray extends Element
         $this->no_column = $DomElement->getAttribute('column'); //specifies number of column
 
         $position = $position + 1;
-
-
-        foreach ($DomElement->childNodes as $rows)
-        {
-            if ($rows->nodeType == XML_ELEMENT_NODE)
-            {
-                if ($rows->tagName == 'row')
-                {
-                    if ($rows->hasAttribute('rowspan'))
-                    {
-                        $rowspan = $rows->getAttribute('rowspan');
-                        $rows->removeAttribute('rowspan');
-                    }
-                    foreach ($rows->childNodes as $columns)
-                    {
-                        if ($columns->nodeType == XML_ELEMENT_NODE)
-                        {
-                            if ($columns->tagName == 'cell')
-                            {
-                                $companions = $DomElement->getElementsByTagName('companion');
-
-                                foreach ($companions as $com)
-                                {
-                                    $doc = new DOMDocument;
-
-                                    $element = $doc->importNode($com->previousSibling->previousSibling);
-                                    
-                                    $doc->preserveWhiteSpace = false;
-                                    
-                                    $textcontent = $doc->saveXML($element);
-                                    
-                                    $hottag = $doc->createElement('hot', $textcontent);
-//                                    $hottag->appendChild($textcontent);
-                                    
-                                    $com->previousSibling->previousSibling->appendChild($hottag);
-                                    
-                                    $newdoc = new DOMDocument;
-                                    
-                                    $newelement = $newdoc->importNode($com);
-
-                                    print_object($newdoc->saveXML($newelement));
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
 
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
@@ -289,25 +236,6 @@ class MathArray extends Element
                     break;
             }
         }
-    }
-
-    function loadFromDb($id, $compid)
-    {
-//        global $DB;
-//        
-//        $matharrayRecord = $DB->get_record($this->tablename, array('id'=>$id));
-//        
-//        if(!empty($matharrayRecord))
-//        {
-//            $this->content = $matharrayRecord->math_array_content;
-//        }
-//        
-//        return $this;
-    }
-
-    function displayhtml()
-    {
-        
     }
 
 }
