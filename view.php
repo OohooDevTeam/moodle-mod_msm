@@ -155,14 +155,15 @@ $content .= "
     <script type='text/javascript'>
     jQuery(document).ready(function(){
         $('#MySplitter').splitter();
-        $('.dialogs').dialog({
-                    autoOpen: false,
-                    autoResize:true
-                });
+        
          $('#features').jshowoff({
-                    autoplay:false,
-                    links:false                  
-                }); 
+              autoplay:false,
+              links:false                  
+         }); 
+         $('.dialogs').dialog({
+              autoOpen: false,
+              width: 'auto'
+         });
     });
     </script>";
 
