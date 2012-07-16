@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/msm/db" VERSION="20120703" COMMENT="XMLDB file for Moodle mod/msm"
+<XMLDB PATH="mod/msm/db" VERSION="20120716" COMMENT="XMLDB file for Moodle mod/msm"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -269,8 +269,8 @@
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
         <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="no_column"/>
-        <FIELD NAME="no_column" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="math_array_content"/>
-        <FIELD NAME="math_array_content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="no_column"/>
+        <FIELD NAME="no_column" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="description"/>
+        <FIELD NAME="description" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="no_column"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
@@ -535,10 +535,33 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="msm_quiz_choice" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_proof_block">
+    <TABLE NAME="msm_quiz_choice" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_proof_block" NEXT="msm_math_row">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="answer"/>
         <FIELD NAME="answer" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_math_row" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_quiz_choice" NEXT="msm_math_cell">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="rowspan"/>
+        <FIELD NAME="rowspan" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_math_cell" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_math_row">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="colspan"/>
+        <FIELD NAME="colspan" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="halign"/>
+        <FIELD NAME="halign" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="colspan" NEXT="valign"/>
+        <FIELD NAME="valign" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="halign" NEXT="bgcolor"/>
+        <FIELD NAME="bgcolor" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="valign" NEXT="fontcolor"/>
+        <FIELD NAME="fontcolor" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="bgcolor" NEXT="content"/>
+        <FIELD NAME="content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="fontcolor"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>

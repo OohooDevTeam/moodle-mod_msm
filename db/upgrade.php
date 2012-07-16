@@ -1773,27 +1773,87 @@ function xmldb_msm_upgrade($oldversion)
 //        // msm savepoint reached
 //        upgrade_mod_savepoint(true, 2012070300, 'msm');
 //    }
-    
-     if ($oldversion < 2012070303) {
+
+    if ($oldversion < 2012070303)
+    {
 
         // Define field msm_id to be added to msm_compositor
         $table = new xmldb_table('msm_compositor');
         $field = new xmldb_field('msm_id', XMLDB_TYPE_INTEGER, '10', null, null, null, null, 'id');
 
         // Conditionally launch add field msm_id
-        if (!$dbman->field_exists($table, $field)) {
+        if (!$dbman->field_exists($table, $field))
+        {
             $dbman->add_field($table, $field);
         }
 
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012070303, 'msm');
     }
+    
+    if ($oldversion < 2012071600)
+    {
 
+        // Define field description to be added to msm_math_array
+        $table = new xmldb_table('msm_math_array');
+        $field = new xmldb_field('description', XMLDB_TYPE_TEXT, 'medium', null, null, null, null, 'math_array_content');
 
+        // Conditionally launch add field description
+        if (!$dbman->field_exists($table, $field))
+        {
+            $dbman->add_field($table, $field);
+        }
 
+        // Define field math_array_content to be dropped from msm_math_array
+        $table = new xmldb_table('msm_math_array');
+        $field = new xmldb_field('math_array_content');
 
+        // Conditionally launch drop field math_array_content
+        if ($dbman->field_exists($table, $field))
+        {
+            $dbman->drop_field($table, $field);
+        }
 
+        // Define table msm_math_row to be created
+        $table = new xmldb_table('msm_math_row');
 
+        // Adding fields to table msm_math_row
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('rowspan', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+
+        // Adding keys to table msm_math_row
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+
+        // Conditionally launch create table for msm_math_row
+        if (!$dbman->table_exists($table))
+        {
+            $dbman->create_table($table);
+        }
+
+        // Define table msm_math_cell to be created
+        $table = new xmldb_table('msm_math_cell');
+
+        // Adding fields to table msm_math_cell
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('colspan', XMLDB_TYPE_INTEGER, '10', null, null, null, null);
+        $table->add_field('halign', XMLDB_TYPE_CHAR, '20', null, null, null, null);
+        $table->add_field('valign', XMLDB_TYPE_CHAR, '20', null, null, null, null);
+        $table->add_field('bgcolor', XMLDB_TYPE_CHAR, '10', null, null, null, null);
+        $table->add_field('fontcolor', XMLDB_TYPE_CHAR, '10', null, null, null, null);
+        $table->add_field('content', XMLDB_TYPE_TEXT, 'big', null, null, null, null);
+
+        // Adding keys to table msm_math_cell
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+
+        // Conditionally launch create table for msm_math_cell
+        if (!$dbman->table_exists($table))
+        {
+            $dbman->create_table($table);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012071600, 'msm');
+    }
 
     // And that's all. Please, examine and understand the 3 example blocks above. Also
     // it's interesting to look how other modules are using this script. Remember that

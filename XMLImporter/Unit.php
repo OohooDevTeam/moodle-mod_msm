@@ -48,6 +48,8 @@ require_once("ProofBlock.php");
 require_once("ExternalLink.php");
 require_once("Cite.php");
 require_once("Item.php");
+require_once("MathRow.php");
+require_once("MathCell.php");
 
 /**
  * Description of Unit

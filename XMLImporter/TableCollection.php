@@ -71,6 +71,8 @@ class TableCollection
         $listOfTables[] = "msm_table";
         $listOfTables[] = "msm_theorem";
         $listOfTables[] = "msm_unit";
+        $listOfTables[] = "msm_math_row";
+        $listOfTables[] = "msm_math_cell";
         
         foreach($listOfTables as $key=>$listOfTable)
         {
