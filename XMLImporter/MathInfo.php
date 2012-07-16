@@ -247,6 +247,30 @@ class MathInfo extends Element
         }
     }
 
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $infoRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($infoRecord))
+        {
+            $this->caption = $infoRecord->caption;
+            $this->info_content = $infoRecord->info_content;
+            $this->id = $infoRecord->id;
+        }
+
+        $tableid = $DB->get_record('msm_table_collection', array('tablename' => $this->tablename))->id;
+
+        $whereclause = "unit_id='" . $this->id . "'" . "and table_id='" . $tableid . "'";
+
+        $infoCompRecord = $DB->get_record_select('msm_compositor', $whereclause);
+
+        $this->compid = $infoCompRecord->id;
+
+        return $this;
+    }
+
 }
 
 ?>

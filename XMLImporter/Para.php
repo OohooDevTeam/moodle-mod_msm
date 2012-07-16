@@ -251,31 +251,87 @@ class Para extends Element
             }
         }
     }
-    
-    function loadFromDb($id)
+
+    function loadFromDb($id, $compid)
     {
         global $DB;
-        
-        $pararecord = $DB->get_record($this->tablename, array('id'=>$id));
-        
-        if(!empty($pararecord))
+
+        $pararecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($pararecord))
         {
             $this->para_align = $pararecord->para_align;
             $this->caption = $pararecord->caption;
             $this->para_content = $pararecord->para_content;
         }
-        
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        $this->subordinates = array();
+
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
+            {
+                case('msm_subordinate'):
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+            }
+        }
         return $this;
     }
-    
+
     function displayhtml()
     {
         $content = '';
+        $newtag = '';
         $content .= "<br />";
-        $content .= "<div class='content'>";
+        
+        
+        $doc = new DOMDocument();
+        @$doc->loadXML($this->para_content);
+        
+        $hottags = $doc->getElementsByTagName('a');
+        
+        foreach($hottags as $hottag)
+        {
+            foreach($this->subordinates as $subordinate)
+            {
+//                if($hottag ==  $subordinate->hot)
+//                {
+                    $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+//                    $newtag .= "<span style='cursor:pointer'>";
+                  
+                 if(!is_string($subordinate->hot))
+                 {
+                     echo "not string";
+                     print_object($subordinate->hot);
+                 }
+                 else
+                 {
+                      $newtag .= $subordinate->hot;
+                 }
+//                    $newtag .= "</span>";
+                    $newtag .= "</a>";
+                   
+                    $hotString = $doc->saveXML($hottag);
+                    
+                   $this->para_content = str_replace($hotString, $newtag, $this->para_content);  
+                   
+                   $content .= "<div class='content'>";
         $content .= $this->para_content;
         $content .= "</div>";
-        
+                    
+                    $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
+                    $content .= $subordinate->infos[0]->info_content;
+                    $content .= "</div>";
+//                }
+            }
+        }
         return $content;
     }
 

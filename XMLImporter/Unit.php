@@ -905,6 +905,7 @@ class Unit extends Element
             }
         }
 
+        //return child element records in ascending order of prev_sibling_id field
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->authors = array();

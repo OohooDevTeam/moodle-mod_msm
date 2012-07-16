@@ -908,6 +908,38 @@ class Subordinate extends Element
         }
 
     }
+    
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $subordinaterecord = $DB->get_record($this->tablename, array('id' => $id));
+        
+        if(!empty($subordinaterecord))
+        {
+            $this->hot = $subordinaterecord->hot;
+        }
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        $this->infos = array();
+        
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
+            {
+                case('msm_info'):
+                    $info = new MathInfo();
+                    $info->loadFromDb($child->unit_id, $child->id);
+                    $this->infos[] = $info;
+                    break;
+            }
+        }
+        
+        return $this;
+    }
 
 }
 

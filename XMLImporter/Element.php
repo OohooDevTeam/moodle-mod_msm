@@ -161,6 +161,23 @@ abstract class Element
         }
         return $arrayOfMedia;
     }
+    
+//    function processMathArray($DomElement, $position)
+//    {
+//        $arrayOfMathArray = array();
+//        
+//        $position = $position+1;
+//        
+//        $matharrays = $DomElement->getElementByTagName('math.array');
+//        $matharraylength = $matharrays->length;
+//        for($i=1; $i < $matharraylength; $i++)
+//        {
+//            $position = $position+1;
+//            $matharray = new MathArray($this->xmlpath);
+//            $matharray->loadFromXml($matharrays->item($i), $position);
+//            $arrayOfMathArray[] = $matharray;
+//        }
+//    }
 
     /**
      *
@@ -274,7 +291,7 @@ abstract class Element
             $string = str_replace('<emphasis', '<i', $string);
             $string = str_replace('</emphasis>', '</i>', $string);
 
-            $string = str_replace('<hot>', '  <a href = "">', $string);
+            $string = str_replace('<hot>', '<a href="">', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
             $resultcontent[] = $string;
         }
