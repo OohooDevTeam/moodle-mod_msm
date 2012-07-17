@@ -54,40 +54,7 @@ class Compositor
                     $unit->loadFromDb($unitid, $rootElement->id);
                     $this->unit = $unit;
                     break;
-
-//                case('msm_theorem'):
-//                    break;
-                // can also be theorem maybe?
-                // example/quiz/exercise/showme all could be possible choice...
-            }
-
-//            $whereclause = "parent_id='" . $rootElement->id . "'" . "and prev_sibling_id='null' OR '0'";
-//            $firstchild = $DB->get_record_select('msm_compositor', $whereclause);
-//
-//            $firstchildtable = $DB->get_field('msm_table_collection', 'tablename', array('id' => $firstchild->table_id));
-//
-//            switch ($firstchildtable)
-//            {
-//                case('msm_person'):
-//
-//                    $author = new Person();
-//                    $author->loadFromDb($firstchild->unit_id);
-//                    $this->authors[] = $author;
-//            }
-//            
-//              $whereclause = "parent_id='" . $rootElement->id . "'" . "and prev_sibling_id='" . $firstchild->id . "'";
-//            $secondchild = $DB->get_record_select('msm_compositor', $whereclause);
-//
-//            $secondchildtable = $DB->get_field('msm_table_collection', 'tablename', array('id' => $secondchild->table_id));
-//            
-//            switch ($secondchildtable)
-//            {
-//                case('msm_intro'):
-//
-//                    $intro = new Intro();
-//                    $intro->loadFromDb($secondchild->unit_id, $secondchild->id);
-//                    $this->intro = $intro;
-//            }          
+            }        
             
         }
 
