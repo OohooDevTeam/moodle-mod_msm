@@ -128,8 +128,8 @@ abstract class Element
                     {
                         $content .= $doc->saveXML($child);
 
-                        $content = str_replace('<latex>', '\(', $content);
-                        $content = str_replace('</latex>', '\)', $content);
+                        $content = str_replace('<latex>', '$', $content);
+                        $content = str_replace('</latex>', '$', $content);
                     }
                 }
                 else // child is not a node
@@ -300,8 +300,8 @@ abstract class Element
             $string = str_replace('<hot>', '<a href="">', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
 
-            $string = str_replace('<latex>', '\(', $string);
-            $string = str_replace('</latex>', '\)', $string);
+            $string = str_replace('<latex>', '$', $string);
+            $string = str_replace('</latex>', '$', $string);
             $resultcontent[] = $string;
         }
         return $resultcontent;
@@ -502,7 +502,6 @@ abstract class Element
         $content .= "<div class='content'>";
         $content .= $XMLcontent;
         $content .= "</div>";
-        $content .= "<br />";
         
         return $content;
     }
