@@ -127,6 +127,9 @@ abstract class Element
                     if ($child->tagName == 'math')
                     {
                         $content .= $doc->saveXML($child);
+
+                        $content = str_replace('<latex>', '\(', $content);
+                        $content = str_replace('</latex>', '\)', $content);
                     }
                 }
                 else // child is not a node
@@ -161,7 +164,7 @@ abstract class Element
         }
         return $arrayOfMedia;
     }
-    
+
 //    function processMathArray($DomElement, $position)
 //    {
 //        $arrayOfMathArray = array();
@@ -276,23 +279,29 @@ abstract class Element
             $string = str_replace('<caption>', '<captions>', $string);
             $string = str_replace('</caption>', '</captions>', $string);
 
-            $string = str_replace('<row>', '<tr>', $string);
+            $string = str_replace('<row', '<tr', $string);
             $string = str_replace('</row>', '</tr>', $string);
 
-            $string = str_replace('<cell>', '<td>', $string);
+            $string = str_replace('<cell', '<td', $string);
             $string = str_replace('</cell>', '</td>', $string);
+            
+            $string = str_replace('<math.array', '<table class="math"', $string);
+            $string = str_replace('</math.array>', '</table>', $string);
 
             $string = str_replace('<para.body', '<p', $string);
             $string = str_replace('</para.body>', '</p>', $string);
-            
+
             $string = str_replace('<strong', '<b', $string);
             $string = str_replace('</strong>', '</b>', $string);
-            
+
             $string = str_replace('<emphasis', '<i', $string);
             $string = str_replace('</emphasis>', '</i>', $string);
 
             $string = str_replace('<hot>', '<a href="">', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
+
+            $string = str_replace('<latex>', '\(', $string);
+            $string = str_replace('</latex>', '\)', $string);
             $resultcontent[] = $string;
         }
         return $resultcontent;
@@ -451,6 +460,51 @@ abstract class Element
         $compid = $DB->insert_record('msm_compositor', $compdata);
 
         return $compid;
+    }
+    
+    function displaySubordinate($object, $XMLcontent)
+    {
+        $content = '';
+        $newtag = '';
+        
+        $doc = new DOMDocument();
+        @$doc->loadXML($XMLcontent);
+
+        $hottags = $doc->getElementsByTagName('a');
+
+        foreach ($hottags as $hottag)
+        {
+            foreach ($object->subordinates as $subordinate)
+            {
+                $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+                 $content .= "<span style='cursor:pointer'>";
+
+                if (!is_string($subordinate->hot))
+                {
+                   $newtag .= $this->getContent($subordinate->hot);
+                }
+                else
+                {
+                    $newtag .= $subordinate->hot;
+                }
+                $newtag .="</span>";
+                $newtag .= "</a>";
+
+                $hotString = $doc->saveXML($hottag);
+
+                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+
+                $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
+                $content .= $subordinate->infos[0]->info_content;
+                $content .= "</div>";
+            }
+        }
+        $content .= "<div class='content'>";
+        $content .= $XMLcontent;
+        $content .= "</div>";
+        $content .= "<br />";
+        
+        return $content;
     }
 
     // abstract method that is implemented by each class 

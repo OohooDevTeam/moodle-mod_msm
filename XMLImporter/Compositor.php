@@ -31,45 +31,48 @@ class Compositor
      * @global moodle_database $DB
      * @param int $instanceid 
      */
-    function loadFromDb($instanceid)
+    function loadAndDisplay($parentid, $prevSiblingid, $instanceid)
     {
         global $DB;
-
-        $this->authors = array();
-        // root element has no parent or siblling and it needs to be inside the same instance of msm mmodule
-        $rootElement = $DB->get_record($this->tablename, array('msm_id' => $instanceid, 'parent_id' => null, 'prev_sibling_id' => null));
-
-        if (!empty($rootElement))
-        {
-            // searching the name of the table using table_id field in compositor table
-            $tablename = $DB->get_record('msm_table_collection', array('id' => $rootElement->table_id))->tablename;
-
-            switch ($tablename)
-            {
-                //root element is an object of Unit class
-                case('msm_unit'):
-                    $unitid = $DB->get_record('msm_unit', array('id' => $rootElement->unit_id))->id;
-
-                    $unit = new Unit();
-                    $unit->loadFromDb($unitid, $rootElement->id);
-                    $this->unit = $unit;
-                    break;
-            }        
-            
-        }
-
-        return $this;
-    }
-
-    function displayhtml()
-    {
         $content = '';
 
-        $content .= $this->unit->displayhtml();
+        //top level element
+        if (!is_null($instanceid))
+        {
+            $rootElement = $DB->get_record($this->tablename, array('msm_id' => $instanceid, 'parent_id' => $parentid, 'prev_sibling_id' => null));
+
+            if (!empty($rootElement))
+            {
+                // searching the name of the table using table_id field in compositor table
+                $tablename = $DB->get_record('msm_table_collection', array('id' => $rootElement->table_id))->tablename;
+
+                switch ($tablename)
+                {
+                    //root element is an object of Unit class
+                    case('msm_unit'):
+                        $unitid = $DB->get_record('msm_unit', array('id' => $rootElement->unit_id))->id;
+
+                        $unit = new Unit();
+                        $unit->loadFromDb($unitid, $rootElement->id);
+                        $this->unit = $unit;
+                        break;
+                }
+            }
+
+            $content = "<div class='unit'>";
+            $content .= $this->unit->displayhtml();
+            $content .= "</div>";
+
+            $this->loadAndDisplay($this->unit->id, 0, null);
+        }
+        // child elements
+        else
+        {
+            $elements = $DB->get_records($this->tablename, array('parent_id' => $parentid), 'prev_sibling_id');
+        }
 
         return $content;
     }
 
 }
-
 ?>

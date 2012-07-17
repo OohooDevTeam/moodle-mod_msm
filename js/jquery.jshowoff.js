@@ -33,7 +33,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     var cssClass;
     var $wrap;
     var pagenumber;
-
+ 
     var config = {
         animatePause : true,
         autoPlay : true,
@@ -201,8 +201,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     };
 			
     // load the next slide
-    function next() {
-	
+    function next() {	
         goToAndPause(counter+1);
         pagenumber++;
         if (pagenumber < gallery.length+1)
@@ -277,6 +276,8 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 return false;
             });
             if($(this).hasClass('jshowoff-next')) $(this).click(function(){
+                // probably the place to call for load of next unit?
+                
                 next();
                 return false;
             });

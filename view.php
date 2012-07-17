@@ -72,11 +72,10 @@ if ($PAGE->user_allowed_editing())
             '<input type="submit" value="' . get_string('updatecomp', 'msm') . '" /></div></form>';
     $PAGE->set_button($buttons);
 }
-
-$compositor = new Compositor();
-
+//
+//$compositor = new Compositor();
 //$compositor = $compositor->loadFromDb($msm->id);
-$compositor = $compositor->loadFromDb(1); // db broken for now due to no update method... later use above method
+//$compositor = $compositor->loadFromDb(1); // db broken for now due to no update method... later use above method
 // other things you may want to set - remove if not needed
 //$PAGE->set_cacheable(false);
 //$PAGE->set_focuscontrol('some-html-id');
@@ -108,6 +107,10 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowo
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 
+//echo "<script type='text/javascript'
+//        src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
+//echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/Mathjaxconfig.js'></script>";
+
 
 if ($msm->intro)
 { // Conditions to show the intro can change to look for own settings or whatever
@@ -123,13 +126,16 @@ $content = '';
 $content .= "<div id = 'MySplitter' padding:10px;>";
 
 $content .= "<div class = 'leftcol' style='min-width: 542px;'>";
-$content .= "<div id = 'features'>";
+
+$content .= "<div id='features'>";
 
 $content .= "<div class = 'leftbox'>";
 
-$content .= $compositor->displayhtml();
-$content .= "</div>";
+$compositor = new Compositor();
 
+// top level element do not have parent/previous sibling ids
+$content .= $compositor->loadAndDisplay(null, null, 1);
+$content .= "</div>";
 //$content .= "<div class = 'leftbox'>";
 //$content .= "<p>";
 //$content .= "left side2!!";
@@ -154,16 +160,19 @@ $content .= "</div>";
 $content .= "
     <script type='text/javascript'>
     jQuery(document).ready(function(){
-        $('#MySplitter').splitter();
-        
          $('#features').jshowoff({
               autoplay:false,
               links:false                  
-         }); 
-         $('.dialogs').dialog({
+         });
+         
+     $('.dialogs').dialog({
               autoOpen: false,
               width: 'auto'
          });
+         
+        $('#MySplitter').splitter();
+         
+        
     });
     </script>";
 

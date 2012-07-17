@@ -147,6 +147,11 @@ div.controller{
     margin-right: 10px;
 }
 
+#features .unit .content table
+{
+    max-width:99%;
+}
+
 #features .content a
 {
 /*    overflow: hidden;*/

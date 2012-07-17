@@ -249,7 +249,7 @@ function msm_delete_instance($id)
     {
         return false;
     }
-
+   
     $DB->delete_records('msm', array('id' => $msm->id));
 
     return true;

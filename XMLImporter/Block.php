@@ -404,11 +404,11 @@ class Block extends Element
                    $this->childs[] = $incontent;
                    break;
                
-               case('msm_math_array'):
-                   $matharray = new MathArray();
-                   $matharray->loadFromDb($child->unit_id, $child->id);
-                   $this->childs[] = $matharray;
-                   break;
+//               case('msm_math_array'):
+//                   $matharray = new MathArray();
+//                   $matharray->loadFromDb($child->unit_id, $child->id);
+//                   $this->childs[] = $matharray;
+//                   break;
 //               
 //               case('msm_table'):
 //                   $table = new Table();

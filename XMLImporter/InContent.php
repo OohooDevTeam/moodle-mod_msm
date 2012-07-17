@@ -262,8 +262,24 @@ class InContent extends Element
             $this->content = $contentRecord->content;
             $this->type = $contentRecord->type;
         }
-        
-        //could have child elements of subordinate-->info  and/or media elememts
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        $this->subordinates = array();
+
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
+            {
+                case('msm_subordinate'):
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+            }
+        }
 
         return $this;
     }
@@ -271,10 +287,9 @@ class InContent extends Element
     function displayhtml()
     {
         $content = '';
-        $content .= "<div class='content'>";
-        $content .= $this->content;
-        $content .= "</div>";
-        
+
+        $content .= $this->displaySubordinate($this, $this->content);
+
         return $content;
     }
 

@@ -84,6 +84,7 @@ class Intro extends Element
         
         if(!empty($introrecord))
         {
+            $this->id = $introrecord->id;
             $this->caption = $introrecord->caption;
         }
               
@@ -97,7 +98,6 @@ class Intro extends Element
     function displayhtml()
     {
         $content = '';
-        $content = "<br />";
         $content .= "<h2> Introduction </h2>";
         $content .= $this->block->displayhtml();
         

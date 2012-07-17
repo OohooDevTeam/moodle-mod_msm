@@ -289,41 +289,45 @@ class Para extends Element
     {
         $content = '';
         $newtag = '';
+        
+        $content .= $this->displaySubordinate($this, $this->para_content);
 
-        $doc = new DOMDocument();
-        @$doc->loadXML($this->para_content);
-
-        $hottags = $doc->getElementsByTagName('a');
-
-        foreach ($hottags as $hottag)
-        {
-            foreach ($this->subordinates as $subordinate)
-            {
-                $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
-
-                if (!is_string($subordinate->hot))
-                {
-                   $newtag .= $this->getContent($subordinate->hot);
-                }
-                else
-                {
-                    $newtag .= $subordinate->hot;
-                }
-                $newtag .= "</a>";
-
-                $hotString = $doc->saveXML($hottag);
-
-                $this->para_content = str_replace($hotString, $newtag, $this->para_content);
-
-                $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
-                $content .= $subordinate->infos[0]->info_content;
-                $content .= "</div>";
-            }
-        }
-        $content .= "<div class='content'>";
-        $content .= $this->para_content;
-        $content .= "</div>";
-        $content .= "<br />";
+//        $doc = new DOMDocument();
+//        @$doc->loadXML($this->para_content);
+//
+//        $hottags = $doc->getElementsByTagName('a');
+//
+//        foreach ($hottags as $hottag)
+//        {
+//            foreach ($this->subordinates as $subordinate)
+//            {
+//                $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+//                 $content .= "<span style='cursor:pointer'>";
+//
+//                if (!is_string($subordinate->hot))
+//                {
+//                   $newtag .= $this->getContent($subordinate->hot);
+//                }
+//                else
+//                {
+//                    $newtag .= $subordinate->hot;
+//                }
+//                $newtag .="</span>";
+//                $newtag .= "</a>";
+//
+//                $hotString = $doc->saveXML($hottag);
+//
+//                $this->para_content = str_replace($hotString, $newtag, $this->para_content);
+//
+//                $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
+//                $content .= $subordinate->infos[0]->info_content;
+//                $content .= "</div>";
+//            }
+//        }
+//        $content .= "<div class='content'>";
+//        $content .= $this->para_content;
+//        $content .= "</div>";
+//        $content .= "<br />";
 
 
         return $content;

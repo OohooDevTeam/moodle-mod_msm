@@ -894,6 +894,7 @@ class Unit extends Element
 
         if (!empty($unitrecord))
         {
+            $this->compid = $compid;
             $this->id = $unitrecord->id;
             $this->title = $unitrecord->title;
             $this->creationdate = $unitrecord->creationdate;
@@ -910,7 +911,7 @@ class Unit extends Element
 
         $this->authors = array();
         $this->childs = array();
-        
+
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
@@ -946,41 +947,56 @@ class Unit extends Element
     function displayhtml()
     {
         $content = '';
-        $content .= "<div class='ridge'>";
-        if (!empty($this->title))
+        // most likely a first page if creationdate and authors are there...
+        if ((!empty($this->creationdate)) || (!empty($this->authors)))
         {
-            $content .= "<div class='title'>";
-            $content .= $this->title;
-            $content .= "</div>";
-        }
-
-        if (!empty($this->creationdate))
-        {
-            $creationyear = substr($this->creationdate, 0, 4);
-            $creationmonth = substr($this->creationdate, 4, -2);
-            $creationdate = substr($this->creationdate, 6, 8);
-
-            $revisionyear = substr($this->last_revision_date, 0, 4);
-            $revisionmonth = substr($this->last_revision_date, 4, -2);
-            $revisiondate = substr($this->last_revision_date, 6, 8);
-
-
-            $content .= "<div class='date'>";
-            $content .= "created on: ";
-            $content .= $creationyear . "-" . $creationmonth . "-" . $creationdate . "<br />";
-            $content .= "last revised on: ";
-            $content .= $revisionyear . "-" . $revisionmonth . "-" . $revisiondate . "<br />";
-            $content .= "</div>";
-
-            foreach ($this->authors as $author)
+            $content .= "<div class='ridge'>";
+            if (!empty($this->title))
             {
-                $content .= $author->displayhtml();
+                $content .= "<div class='title'>";
+                $content .= $this->title;
+                $content .= "</div>";
             }
+
+            if (!empty($this->creationdate))
+            {
+                $creationyear = substr($this->creationdate, 0, 4);
+                $creationmonth = substr($this->creationdate, 4, -2);
+                $creationdate = substr($this->creationdate, 6, 8);
+
+                $revisionyear = substr($this->last_revision_date, 0, 4);
+                $revisionmonth = substr($this->last_revision_date, 4, -2);
+                $revisiondate = substr($this->last_revision_date, 6, 8);
+
+
+                $content .= "<div class='date'>";
+                $content .= "created on: ";
+                $content .= $creationyear . "-" . $creationmonth . "-" . $creationdate . "<br />";
+                $content .= "last revised on: ";
+                $content .= $revisionyear . "-" . $revisionmonth . "-" . $revisiondate . "<br />";
+                $content .= "</div>";
+
+                foreach ($this->authors as $author)
+                {
+                    $content .= $author->displayhtml();
+                }
+            }
+
+            $content .= "</div>"; //for closing the border div
+           
+        } // any units that is not a root element
+        else
+        {
+            if (!empty($this->title))
+            {
+                $content .= "<div class='title'>";
+                $content .= $this->title;
+                $content .= "</div>";
+            }
+
         }
-
-        $content .= "</div>"; //for closing the border div
-
-        foreach ($this->childs as $child)
+        
+        foreach($this->childs as $child)
         {
             $content .= $child->displayhtml();
         }
