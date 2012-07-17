@@ -303,8 +303,7 @@ class Para extends Element
 
                 if (!is_string($subordinate->hot))
                 {
-                    echo "not string";
-                    print_object($subordinate->hot);
+                   $newtag .= $this->getContent($subordinate->hot);
                 }
                 else
                 {
@@ -315,7 +314,6 @@ class Para extends Element
                 $hotString = $doc->saveXML($hottag);
 
                 $this->para_content = str_replace($hotString, $newtag, $this->para_content);
-
 
                 $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
                 $content .= $subordinate->infos[0]->info_content;
