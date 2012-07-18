@@ -84,7 +84,11 @@ if ($PAGE->user_allowed_editing())
 
 echo $OUTPUT->header();
 
+echo $CFG->wwwroot;
+
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.7.1.min.js'></script>\n";
+
+
 
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
@@ -107,15 +111,9 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowo
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 
-echo "<script type='text/x-mathjax-config'>
-        MathJax.Hub.Config({
-            tex2jax:{
-                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-             }
-        });
-        </script>";
+//echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
 
-echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
+echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,$CFG->wwwroot/mod/msm/js/Mathjaxconfig.js'></script>";
 //echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/Mathjaxconfig.js'></script>";
 
 

@@ -1,7 +1,7 @@
 MathJax.Hub.Config({
     showProcessingMessages: false,
     tex2jax: {
-        inlineMath: [ ['<latex>','</latex>'], ["\\(","\\)"] ],
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
         processEscapes: true,
         balanceBraces: true
     },
@@ -113,5 +113,8 @@ MathJax.Hub.Config({
         }
     }
 });
+
+MathJax.Ajax.loadComplete("http://localhost/moodle/mod/msm/js/Mathjaxconfig.js");
+
  
        

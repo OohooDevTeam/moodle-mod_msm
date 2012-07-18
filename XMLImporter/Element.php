@@ -128,6 +128,9 @@ abstract class Element
                     {
                         $content .= $doc->saveXML($child);
 
+                        $content = str_replace('<math>', '', $content);
+                        $content = str_replace('</math>', '', $content);
+
                         $content = str_replace('<latex>', '$', $content);
                         $content = str_replace('</latex>', '$', $content);
                     }
@@ -284,7 +287,7 @@ abstract class Element
 
             $string = str_replace('<cell', '<td', $string);
             $string = str_replace('</cell>', '</td>', $string);
-            
+
             $string = str_replace('<math.array', '<table class="math"', $string);
             $string = str_replace('</math.array>', '</table>', $string);
 
@@ -299,6 +302,11 @@ abstract class Element
 
             $string = str_replace('<hot>', '<a href="">', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
+
+            // mathjax will not render contents of <latex> if there is a parent element
+            // so need to delete math element 
+            $string = str_replace('<math>', '', $string);
+            $string = str_replace('</math>', '', $string);
 
             $string = str_replace('<latex>', '$', $string);
             $string = str_replace('</latex>', '$', $string);
@@ -461,12 +469,12 @@ abstract class Element
 
         return $compid;
     }
-    
+
     function displaySubordinate($object, $XMLcontent)
     {
         $content = '';
         $newtag = '';
-        
+
         $doc = new DOMDocument();
         @$doc->loadXML($XMLcontent);
 
@@ -477,11 +485,11 @@ abstract class Element
             foreach ($object->subordinates as $subordinate)
             {
                 $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
-                 $content .= "<span style='cursor:pointer'>";
+                $content .= "<span style='cursor:pointer'>";
 
                 if (!is_string($subordinate->hot))
                 {
-                   $newtag .= $this->getContent($subordinate->hot);
+                    $newtag .= $this->getContent($subordinate->hot);
                 }
                 else
                 {
@@ -502,7 +510,7 @@ abstract class Element
         $content .= "<div class='content'>";
         $content .= $XMLcontent;
         $content .= "</div>";
-        
+
         return $content;
     }
 
