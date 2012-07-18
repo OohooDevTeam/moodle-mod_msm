@@ -22,11 +22,11 @@ body
 div.controller{
     position:absolute;
     top: 92%;
-    min-width: 99.5%;
+    min-width: 96%;
     max-height: 35px;
     z-index: 11;
-    margin-top: 10px;
-    margin-left: 10px;
+/*    margin-top: 10px;*/
+/*    margin-left: 10px;*/
     overflow: hidden;
 }
 
@@ -62,7 +62,7 @@ div.controller{
     background-image:url('../pix/background2.jpg');
     min-height: 650px;
     max-height: 650px;
-    width:99.3%;
+    width:97.5%;
     overflow: auto;
 }
 .rightbox
@@ -79,7 +79,8 @@ div.controller{
 {
 /*    overflow: hidden;*/
     margin-bottom:10px;
-    margin-right:10px;
+    margin-right:10px;    
+    padding:10px;
 }
 
 .rightcol
@@ -152,10 +153,16 @@ div.controller{
     max-width:99%;
 }
 
-#features .content a
+.hottag
 {
 /*    overflow: hidden;*/
     color: #229C79;
+}
+
+.hottag:hover
+{
+    cursor: pointer;
+    color:blue;
 }
 
 /*#features .content table, th, tr, td{

@@ -49,7 +49,7 @@ h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 
 
 #features, #slidingFeatures, #labelFeatures, #basicFeatures, #thumbFeatures {
     position: absolute;
-    overflow: auto;
+/*    overflow: auto;*/
     /*width: 97%;*/
 
     /*    min-width: inherit;

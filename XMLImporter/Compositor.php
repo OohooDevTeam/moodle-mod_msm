@@ -17,8 +17,7 @@ require_once("Unit.php");
 class Compositor
 {
 
-    public $unit;
-
+//    public $unit;
 //    public $theorem;
 
     function __construct()
@@ -35,6 +34,8 @@ class Compositor
     {
         global $DB;
         $content = '';
+
+        $this->unit = array();
 
         //top level element
         if (!is_null($instanceid))
@@ -54,21 +55,42 @@ class Compositor
 
                         $unit = new Unit();
                         $unit->loadFromDb($unitid, $rootElement->id);
-                        $this->unit = $unit;
+                        $this->unit[] = $unit;
                         break;
                 }
             }
 
-            $content = "<div class='unit'>";
-            $content .= $this->unit->displayhtml();
+            $content = "<div id='topunit'>";
+            $content .= $this->unit[0]->displayhtml();
             $content .= "</div>";
 
-            $this->loadAndDisplay($this->unit->id, 0, null);
+            $this->loadAndDisplay($this->unit[0]->id, 0, null);
         }
         // child elements
         else
         {
-            $elements = $DB->get_records($this->tablename, array('parent_id' => $parentid), 'prev_sibling_id');
+            $tableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+
+            $subunitelements = $DB->get_records($this->tablename, array('parent_id' => $parentid, 'table_id' => $tableid), 'prev_sibling_id');
+
+            // subunitStack contains all the subunits of current unit and sort them from last child to first child as a stack
+            $subunitstack = array();
+
+            // transferring from subunitelements to subunitstack because the offset numbers in subunitelements are id of the element instead of incremental index number
+            foreach ($subunitelements as $subunit)
+            {
+                $subunitstack[] = $subunit;
+            }
+
+            $subunitid = $DB->get_record('msm_unit', array('id' => $subunitstack[0]->unit_id))->id;
+            $unit = new Unit();
+            $unit->loadFromDb($subunitid, $subunitstack[0]->id);
+            $this->unit[] = $unit;
+           
+            $content = "<div id='subunit'>";
+            $content .= $this->unit[0]->displayhtml();
+            $content .= "</div>";
+
         }
 
         return $content;

@@ -484,8 +484,7 @@ abstract class Element
         {
             foreach ($object->subordinates as $subordinate)
             {
-                $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
-                $content .= "<span style='cursor:pointer'>";
+                $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
 
                 if (!is_string($subordinate->hot))
                 {
@@ -495,7 +494,6 @@ abstract class Element
                 {
                     $newtag .= $subordinate->hot;
                 }
-                $newtag .="</span>";
                 $newtag .= "</a>";
 
                 $hotString = $doc->saveXML($hottag);

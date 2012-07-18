@@ -84,11 +84,7 @@ if ($PAGE->user_allowed_editing())
 
 echo $OUTPUT->header();
 
-echo $CFG->wwwroot;
-
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.7.1.min.js'></script>\n";
-
-
 
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
@@ -132,9 +128,10 @@ $content .= "<div id = 'MySplitter' padding:10px;>";
 
 $content .= "<div class = 'leftcol' style='min-width: 542px;'>";
 
+$content .= "<div class = 'leftbox'>";
 $content .= "<div id='features'>";
 
-$content .= "<div class = 'leftbox'>";
+
 
 $compositor = new Compositor();
 
