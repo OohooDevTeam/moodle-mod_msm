@@ -99,12 +99,12 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 $('.'+uniqueClass).append('<p>For jShowOff to work, the container element must have child elements.</p>');
             };
 			
-            // end .each
+        // end .each
         });
 	
         return this;
 		
-        // end .jshowoff
+    // end .jshowoff
     };
 
 			
@@ -276,15 +276,19 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 return false;
             });
             if($(this).hasClass('jshowoff-next')) $(this).click(function(){
-                // probably the place to call for load of next unit?
-                
+                $('#features').load('../msm/XMLImporter/ajaxcall.php', function(){
+                    $('.dialogs').dialog({
+                        autoOpen: false,
+                        width: 'auto'
+                    });
+                });
                 next();
                 return false;
             });
         });
     };	
 
-    // end closure
+// end closure
 })(jQuery);
 
 
@@ -316,13 +320,13 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             var endStyle = {};
             endStyle[config1.direction] = config1.showHide == 'show' ? 0 : '-'+measurement+'px';
             $(this).css(startStyle).animate(endStyle,config1.changeSpeed,callback);
-            // end .each
+        // end .each
         });
 	
         return this;
 		
-        // end .slideIt
+    // end .slideIt
     };
 
-    // end closure
+// end closure
 })(jQuery);

@@ -84,7 +84,7 @@ if ($PAGE->user_allowed_editing())
 
 echo $OUTPUT->header();
 
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.7.1.min.js'></script>\n";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery-1.7.1.min.js'></script>";
 
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/development-bundle/themes/ui-lightness/jquery.ui.all.css'/>";
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/jquery-1.7.1.js'></script>";
@@ -98,8 +98,8 @@ echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.resizab
 echo "<script src='$CFG->wwwroot/mod/msm/development-bundle/ui/jquery.ui.dialog.js'></script>";
 
 // these js files need to be after the development-bundle
-echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/Splitter.js'></script>\n";
-echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>\n";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/Splitter.js'></script>";
+echo "<link rel='stylesheet' type='text/css' href='$CFG->wwwroot/mod/msm/css/MsmDisplay.css'/>";
 
 echo "<link rel='stylesheet' href='$CFG->wwwroot/mod/msm/css/jshowoff.css' type='text/css'/>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowoff.js'></script>";
@@ -159,17 +159,18 @@ $content .= "</div>";
 
 $content .= "</div>";
 
+// need to have it in this order or dialog breaks
 $content .= "
     <script type='text/javascript'>
     jQuery(document).ready(function(){
+         $('.dialogs').dialog({
+              autoOpen: false,
+              width: 'auto'
+         });
+         
          $('#features').jshowoff({
               autoplay:false,
               links:false                  
-         });
-         
-     $('.dialogs').dialog({
-              autoOpen: false,
-              width: 'auto'
          });
          
         $('#MySplitter').splitter();

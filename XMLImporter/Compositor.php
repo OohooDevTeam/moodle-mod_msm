@@ -30,7 +30,7 @@ class Compositor
      * @global moodle_database $DB
      * @param int $instanceid 
      */
-    function loadAndDisplay($parentid, $prevSiblingid, $instanceid)
+    function loadAndDisplay($parentid, $prevSiblingid, $instanceid='')
     {
         global $DB;
         $content = '';
@@ -38,7 +38,7 @@ class Compositor
         $this->unit = array();
 
         //top level element
-        if (!is_null($instanceid))
+        if (!empty($instanceid))
         {
             $rootElement = $DB->get_record($this->tablename, array('msm_id' => $instanceid, 'parent_id' => $parentid, 'prev_sibling_id' => null));
 
@@ -59,16 +59,16 @@ class Compositor
                         break;
                 }
             }
-
+          
             $content = "<div id='topunit'>";
             $content .= $this->unit[0]->displayhtml();
-            $content .= "</div>";
-
-            $this->loadAndDisplay($this->unit[0]->id, 0, null);
+            $content .= "</div>";  
+            
+            $this->loadAndDisplay($this->unit[0]->id, 0);
         }
         // child elements
         else
-        {
+        {            
             $tableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
 
             $subunitelements = $DB->get_records($this->tablename, array('parent_id' => $parentid, 'table_id' => $tableid), 'prev_sibling_id');
@@ -89,10 +89,10 @@ class Compositor
            
             $content = "<div id='subunit'>";
             $content .= $this->unit[0]->displayhtml();
-            $content .= "</div>";
-
+            $content .= "</div>"; 
+           
         }
-
+     
         return $content;
     }
 
