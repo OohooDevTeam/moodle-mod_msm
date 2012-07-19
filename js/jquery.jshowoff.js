@@ -276,7 +276,11 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 return false;
             });
             if($(this).hasClass('jshowoff-next')) $(this).click(function(){
-                $('#features').load('../msm/XMLImporter/ajaxcall.php', function(){
+                $('#features').load('../msm/XMLImporter/ajaxcall.php', 
+                {
+                    unitid: $('#unitidval').val()
+                },                    
+                    function(){                    
                     $('.dialogs').dialog({
                         autoOpen: false,
                         width: 'auto'

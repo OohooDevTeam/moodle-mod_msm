@@ -41,6 +41,7 @@ if ($id)
     $cm = get_coursemodule_from_id('msm', $id, 0, false, MUST_EXIST);
     $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $msm = $DB->get_record('msm', array('id' => $cm->instance), '*', MUST_EXIST);
+    
 }
 elseif ($m)
 {
@@ -52,6 +53,8 @@ else
 {
     error('You must specify a course_module ID or an instance ID');
 }
+
+$rootcomp = $DB->get_record('msm_compositor', array('msm_id'=>$msm->id), '*', MUST_EXIST);
 
 require_login($course, true, $cm);
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
@@ -131,12 +134,24 @@ $content .= "<div class = 'leftcol' style='min-width: 542px;'>";
 $content .= "<div class = 'leftbox'>";
 $content .= "<div id='features'>";
 
+$instanceid = $msm->id;
+$parentid = $rootcomp->parent_id;
+$siblingid = $rootcomp->prev_sibling_id;
 
+if(empty($parentid))
+{
+    $parentid = null;    
+}
+
+if(empty($siblingid))
+{
+    $siblingid = null;
+}
 
 $compositor = new Compositor();
 
 // top level element do not have parent/previous sibling ids
-$content .= $compositor->loadAndDisplay(null, null, 1);
+$content .= $compositor->loadAndDisplay($parentid, $siblingid, $instanceid);
 $content .= "</div>";
 //$content .= "<div class = 'leftbox'>";
 //$content .= "<p>";
