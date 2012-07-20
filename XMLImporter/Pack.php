@@ -172,7 +172,7 @@ class Pack extends Element
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         
         $elementPositions = array();
-        $sibling_id = null;
+        $sibling_id = 0;
       
         if (!empty($this->quizs))
         {

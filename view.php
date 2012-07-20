@@ -140,18 +140,21 @@ $siblingid = $rootcomp->prev_sibling_id;
 
 if(empty($parentid))
 {
-    $parentid = null;    
+    $parentid = 0;    
 }
 
 if(empty($siblingid))
 {
-    $siblingid = null;
+    $siblingid = 0;
 }
 
 $compositor = new Compositor();
 
 // top level element do not have parent/previous sibling ids
-$content .= $compositor->loadAndDisplay($parentid, $siblingid, $instanceid);
+$stack = $compositor->makeStack($parentid, $siblingid, $instanceid);
+
+print_object($stack);
+
 $content .= "</div>";
 //$content .= "<div class = 'leftbox'>";
 //$content .= "<p>";

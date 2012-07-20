@@ -481,8 +481,8 @@ class Unit extends Element
             $compdata->msm_id = $parentid;
             $compdata->unit_id = $this->id;
             $compdata->table_id = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
-            $compdata->parent_id = null;
-            $compdata->prev_sibling_id = null;
+            $compdata->parent_id = 0;
+            $compdata->prev_sibling_id = 0;
 
             $this->compid = $DB->insert_record('msm_compositor', $compdata);
         }
@@ -891,6 +891,8 @@ class Unit extends Element
         global $DB;
 
         $unitrecord = $DB->get_record($this->tablename, array('id' => $id));
+        
+        $unitCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
 
         if (!empty($unitrecord))
         {
@@ -899,6 +901,9 @@ class Unit extends Element
             $this->title = $unitrecord->title;
             $this->creationdate = $unitrecord->creationdate;
             $this->last_revision_date = $unitrecord->last_revision_date;
+            
+            $this->parent_id = $unitCompRecord->parent_id;
+            $this->prev_sibling_id = $unitCompRecord->prev_sibling_id;
 
             if (!empty($unitrecord->acknowledgements))
             {

@@ -27,101 +27,67 @@ class Compositor
     }
 
     /**
-     *
-     * @global moodle_database $DB
-     * @param int $instanceid 
+     * A recursive function that finds all the unit records while keeping the order specified by the compositor using the parent-child relationship.  
+     * These records are put into a stack to be passed to an AJAX call to dynamically load each unit page. 
+     * @param int $parentid     Specifies the parent of the element
+     * @param int $instanceid   Moodle msm module instance id to get the root element
      */
-    function loadAndDisplay($parentid, $prevSiblingid, $instanceid = '')
+    function makeStack($parentid, $siblingid = '', $instanceid = '')
     {
         global $DB;
-        $content = '';
 
-        $element = $DB->get_record($this->tablename, array('msm_id' => $instanceid, 'parent_id' => $parentid, 'prev_sibling_id' => $prevSiblingid));
+        // stack that will have all the unit records in order given by the compositor table
+        $this->childs = array();
+        $childs = array();
 
-        if (!empty($element))
+        $unittableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+
+        if (!empty($instanceid))
         {
-            $unitid = $DB->get_record('msm_unit', array('id' => $element->unit_id))->id;
-
-            $unit = new Unit();
-            $unit->loadFromDb($unitid, $element->id);
-            $this->unit = $unit;
-
-
-            $content = "<div id='topunit'>";
-            $content .= $this->unit->displayhtml();
-
-            $content .= "<input id='unitidval' style='visibility:hidden' type='text' name='unitid' value='" . $this->unit->id . "'/>";
-            $content .= "<input id='parentval' style='visibility:hidden' type='text' name='parentid' value='" . $parentid . "'/>";
-            $content .= "<input id='siblingval' style='visibility:hidden' type='text' name='sibllingid' value='" . $prevSiblingid . "'/>";
-
-            $content .= "</div>";
-
-            return $content;
+            $unitRecords = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'msm_id' => $instanceid, 'parent_id' => $parentid, 'prev_sibling_id' => $siblingid));
+        }
+        else if (empty($siblingid))
+        {
+            $unitRecords = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'parent_id' => $parentid), 'prev_sibling_id');
         }
         else
         {
-            echo "no record found";
+            $unitRecords = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'parent_id' => $parentid, 'prev_sibling_id' => $siblingid));
         }
 
+        if (!empty($unitRecords))
+        {
+            foreach ($unitRecords as $unitRecord)
+            {
+                $childUnits = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'parent_id' => $unitRecord->id));
+                $siblingUnits = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'parent_id' => $parentid, 'prev_sibling_id' => $unitRecord->id));
 
 
-
-//        //top level element
-//        if (!empty($instanceid))
-//        {
-//            $rootElement = $DB->get_record($this->tablename, array('msm_id' => $instanceid, 'parent_id' => $parentid, 'prev_sibling_id' => null));
-//
-//            if (!empty($rootElement))
-//            {
-//                // searching the name of the table using table_id field in compositor table
-//                $tablename = $DB->get_record('msm_table_collection', array('id' => $rootElement->table_id))->tablename;
-//
-//                switch ($tablename)
+                if (!empty($childUnits))
+                {
+                    $this->makeStack($unitRecord->id);
+                }
+                if (!empty($siblingUnits))
+                {
+                    $this->makeStack($parentid, $unitRecord->id);
+                }
+//                else
 //                {
-//                    //root element is an object of Unit class
-//                    case('msm_unit'):
-//                        $unitid = $DB->get_record('msm_unit', array('id' => $rootElement->unit_id))->id;
-//
-//                        $unit = new Unit();
-//                        $unit->loadFromDb($unitid, $rootElement->id);
-//                        $this->unit[] = $unit;
-//                        break;
-//                }
-//            }
-//          
-//            $content = "<div id='topunit'>";
-//            $content .= $this->unit[0]->displayhtml();
-//            $content .= "</div>";  
-//            
-//            $this->loadAndDisplay($this->unit[0]->id, 0);
-//        }
-//        // child elements
-//        else
-//        {            
-//            $tableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
-//
-//            $subunitelements = $DB->get_records($this->tablename, array('parent_id' => $parentid, 'table_id' => $tableid), 'prev_sibling_id');
-//
-//            // subunitStack contains all the subunits of current unit and sort them from last child to first child as a stack
-//            $subunitstack = array();
-//
-//            // transferring from subunitelements to subunitstack because the offset numbers in subunitelements are id of the element instead of incremental index number
-//            foreach ($subunitelements as $subunit)
-//            {
-//                $subunitstack[] = $subunit;
-//            }
-//
-//            $subunitid = $DB->get_record('msm_unit', array('id' => $subunitstack[0]->unit_id))->id;
-//            $unit = new Unit();
-//            $unit->loadFromDb($subunitid, $subunitstack[0]->id);
-//            $this->unit[] = $unit;
-//           
-//            $content = "<div id='subunit'>";
-//            $content .= $this->unit[0]->displayhtml();
-//            $content .= "</div>"; 
-//           
+                $unitTableRecord = $DB->get_record('msm_unit', array('id' => $unitRecord->unit_id));
 
-        return $content;
+                $unit_id = $unitTableRecord->id;
+                $unit_compid = $unitRecord->id;
+
+                $unit = new Unit();
+                $unitdata = $unit->loadFromDb($unit_id, $unit_compid);
+                array_push($this->childs, $unitdata);
+//                }
+            }          
+          
+              return $this->childs;
+        }
+
+      
     }
 
 }
