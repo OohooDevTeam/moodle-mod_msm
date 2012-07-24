@@ -13,30 +13,14 @@ global $DB, $PAGE, $CFG;
 
 $comp = new Compositor();
 
-$parentid = $_POST["parentid"];
+$string = $_POST["stackstring"];
+$counter = $_POST["input"];
 
-$siblingid = $_POST["siblingid"];
+print_object($string);
+print_object($counter);
 
-//$unittableid = $Db->get_record('msm_table_collection', array('tablename'=>'msm_unit'));
-//
-//$childElements = $DB->get_records('msm_compositor', array('parent_id'=>$parentid, 'table_id'=>$unittableid),'prev_sibling_id');
-//
-//if(!empty($childElements))
-//{
-//    $numberofChild = $childElements->size();
-//}
-
-
-
-$content = $comp->loadAndDisplay($parentid, $prevSiblingid);
-echo $content;
-
-
-//$PAGE->set_url('/mod/msm/view.php', array('id' => $cm->id,'parentid' => $rootcomp->parent_id, 'siblingid' => $rootcomp->prev_sibling_id))
-
-// $currentURL = $PAGE->url;
-
-//$content = $comp->loadAndDisplay($_GET['parentid'],$_GET['siblingid'],$_GET['instanceid']);
+$content = $comp->loadAndDisplay($string, $counter);
 
 //echo $content;
+
 ?>

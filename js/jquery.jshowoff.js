@@ -33,6 +33,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     var cssClass;
     var $wrap;
     var pagenumber;
+    var inputcounter=0;
  
     var config = {
         animatePause : true,
@@ -68,7 +69,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             gallery = $(this).children().remove();
             $cont = $(this);  
             timer = '';   
-            counter = 0;		
+            counter = 0;
             preloadedImg = [];
             howManyInstances = $('.jshowoff').length+1;
 		
@@ -201,7 +202,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     };
 			
     // load the next slide
-    function next() {	
+    function next() {       
         goToAndPause(counter+1);
         pagenumber++;
         if (pagenumber < gallery.length+1)
@@ -278,14 +279,17 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             if($(this).hasClass('jshowoff-next')) $(this).click(function(){
                 $('#features').load('../msm/XMLImporter/ajaxcall.php', 
                 {
-                    unitid: $('#unitidval').val()
-                },                    
-                    function(){                    
+                    stackstring: $('#stack-'+inputcounter).val(),
+                    input: inputcounter+1
+                },
+                function(){                    
                     $('.dialogs').dialog({
                         autoOpen: false,
                         width: 'auto'
                     });
                 });
+              
+                inputcounter++;
                 next();
                 return false;
             });

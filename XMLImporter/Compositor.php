@@ -59,14 +59,61 @@ class Compositor
 
         return $childs;
     }
-    
-//    function loadAndDisplay($stack)
-//    {
-//        global $DB;
-//        
-//        $recordValue = array_pop($stack);
-//        
-//    }
+
+    function loadAndDisplay($string, $counter)
+    {
+        global $DB;
+
+        $newstring = '';
+        $stack = array();
+
+        //recreating stack from string
+        $eachRecordString = explode(',', $string);
+       
+        $recordLength = count($eachRecordString) - 1;
+
+        // foreach not used because need to eliminate empty array at the end due to ending comma when the string is made
+        for ($i = 0; $i < $recordLength; $i++)
+        {
+            array_push($stack, $eachRecordString[$i]);
+        }
+//         print_object($string);
+      
+        $recordValue = array_pop($stack);
+
+        $recordids = explode('/', $recordValue);
+        
+
+        $unitRecord = $DB->get_record('msm_unit', array('id' => $recordids[1]));
+
+        $unitid = $unitRecord->id;
+        $unitcompid = $recordids[0];
+
+        $unit = new Unit();
+        $unit->loadFromDb($unitid, $unitcompid);
+        $this->unit = $unit;
+        $content = '';
+
+        $content .= "<div class=unit>";
+        $content .= $this->unit->displayhtml();
+
+        foreach ($stack as $key => $record)
+        {
+            $newstring .= $record . ",";
+        }
+        
+//        print_object($counter);
+        
+        // passing contents of stack to ajax call by putting it into an hidden input field
+        $content .= "<input id='stack-" . $counter . "' style='visibility:hidden' type='text' name='stackstring' value='" . $newstring . "'/>";
+      
+        $content .= "</div>";
+
+        echo "compositor counter";
+        print_object($counter);
+        
+        return $content;
+    }
 
 }
 ?>

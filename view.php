@@ -41,7 +41,6 @@ if ($id)
     $cm = get_coursemodule_from_id('msm', $id, 0, false, MUST_EXIST);
     $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $msm = $DB->get_record('msm', array('id' => $cm->instance), '*', MUST_EXIST);
-    
 }
 elseif ($m)
 {
@@ -54,7 +53,7 @@ else
     error('You must specify a course_module ID or an instance ID');
 }
 
-$rootcomp = $DB->get_record('msm_compositor', array('msm_id'=>$msm->id), '*', MUST_EXIST);
+$rootcomp = $DB->get_record('msm_compositor', array('msm_id' => $msm->id), '*', MUST_EXIST);
 
 require_login($course, true, $cm);
 $context = get_context_instance(CONTEXT_MODULE, $cm->id);
@@ -134,35 +133,25 @@ $content .= "<div class = 'leftcol' style='min-width: 542px;'>";
 $content .= "<div class = 'leftbox'>";
 $content .= "<div id='features'>";
 
-//$instanceid = $msm->id;
-//$parentid = $rootcomp->parent_id;
-//$siblingid = $rootcomp->prev_sibling_id;
-
-//if(empty($parentid))
-//{
-//    $parentid = 0;    
-//}
-//
-//if(empty($siblingid))
-//{
-//    $siblingid = 0;
-//}
 
 $compositor = new Compositor();
+$string = '';
 
-// top level element do not have parent/previous sibling ids
+// the stack that is created below is in reverse order
 $stack = $compositor->makeStack($rootcomp);
 
-//$content.= $compositor->loadAndDisplay($stack);
+$stack = array_reverse($stack); // needed to access the contents in proper order
 
-print_object($stack);
+foreach ($stack as $key => $record)
+{
+    $string .= $record->id . "/" . $record->unit_id ."/" . $record->parent_id . "/" . $record->prev_sibling_id . ",";
+}
+
+
+$content.= $compositor->loadAndDisplay($string, 0);
+//print_object($stack);
 
 $content .= "</div>";
-//$content .= "<div class = 'leftbox'>";
-//$content .= "<p>";
-//$content .= "left side2!!";
-//$content .= "</p>";
-//$content .= "</div>";
 
 $content .= "</div>";
 $content .= "<div class='controller'>";
@@ -182,7 +171,7 @@ $content .= "</div>";
 // need to have it in this order or dialog breaks
 $content .= "
     <script type='text/javascript'>
-    jQuery(document).ready(function(){
+    jQuery(document).ready(function(stack){
          $('.dialogs').dialog({
               autoOpen: false,
               width: 'auto'
