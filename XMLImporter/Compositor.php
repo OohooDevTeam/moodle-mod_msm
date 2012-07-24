@@ -27,12 +27,14 @@ class Compositor
     }
 
     /**
-     * A recursive function that finds all the unit records while keeping the order specified by the compositor using the parent-child relationship.  
-     * These records are put into a stack to be passed to an AJAX call to dynamically load each unit page. 
-     * @param int $parentid     Specifies the parent of the element
-     * @param int $instanceid   Moodle msm module instance id to get the root element
+     * This is a method to create a stack that has all the unit elements in compositor table in order they are specified in the compositor.  
+     * The returned stack is needed to dynamically load each unit element for display.
+     * 
+     * @global moodle_database $DB
+     * @param DOMElement $DomElement
+     * @return array 
      */
-    function makeStack($parentid, $siblingid = '', $instanceid = '')
+    function makeStack($DomElement)
     {
         global $DB;
 
@@ -40,55 +42,31 @@ class Compositor
         $this->childs = array();
         $childs = array();
 
+        array_push($childs, $DomElement);
+
         $unittableid = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
 
-        if (!empty($instanceid))
-        {
-            $unitRecords = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'msm_id' => $instanceid, 'parent_id' => $parentid, 'prev_sibling_id' => $siblingid));
-        }
-        else if (empty($siblingid))
-        {
-            $unitRecords = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'parent_id' => $parentid), 'prev_sibling_id');
-        }
-        else
-        {
-            $unitRecords = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'parent_id' => $parentid, 'prev_sibling_id' => $siblingid));
-        }
+        $unitRecords = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'parent_id' => $DomElement->id), 'prev_sibling_id');
+        // prev_sibling_id not the best way to order things... may need to process this to get the order
 
-        if (!empty($unitRecords))
+        foreach ($unitRecords as $unitRecord)
         {
-            foreach ($unitRecords as $unitRecord)
+            foreach ($this->makeStack($unitRecord) as $child)
             {
-                $childUnits = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'parent_id' => $unitRecord->id));
-                $siblingUnits = $DB->get_records('msm_compositor', array('table_id' => $unittableid, 'parent_id' => $parentid, 'prev_sibling_id' => $unitRecord->id));
-
-
-                if (!empty($childUnits))
-                {
-                    $this->makeStack($unitRecord->id);
-                }
-                if (!empty($siblingUnits))
-                {
-                    $this->makeStack($parentid, $unitRecord->id);
-                }
-//                else
-//                {
-                $unitTableRecord = $DB->get_record('msm_unit', array('id' => $unitRecord->unit_id));
-
-                $unit_id = $unitTableRecord->id;
-                $unit_compid = $unitRecord->id;
-
-                $unit = new Unit();
-                $unitdata = $unit->loadFromDb($unit_id, $unit_compid);
-                array_push($this->childs, $unitdata);
-//                }
-            }          
-          
-              return $this->childs;
+                array_push($childs, $child);
+            }
         }
 
-      
+        return $childs;
     }
+    
+//    function loadAndDisplay($stack)
+//    {
+//        global $DB;
+//        
+//        $recordValue = array_pop($stack);
+//        
+//    }
 
 }
 ?>

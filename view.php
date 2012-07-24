@@ -134,24 +134,26 @@ $content .= "<div class = 'leftcol' style='min-width: 542px;'>";
 $content .= "<div class = 'leftbox'>";
 $content .= "<div id='features'>";
 
-$instanceid = $msm->id;
-$parentid = $rootcomp->parent_id;
-$siblingid = $rootcomp->prev_sibling_id;
+//$instanceid = $msm->id;
+//$parentid = $rootcomp->parent_id;
+//$siblingid = $rootcomp->prev_sibling_id;
 
-if(empty($parentid))
-{
-    $parentid = 0;    
-}
-
-if(empty($siblingid))
-{
-    $siblingid = 0;
-}
+//if(empty($parentid))
+//{
+//    $parentid = 0;    
+//}
+//
+//if(empty($siblingid))
+//{
+//    $siblingid = 0;
+//}
 
 $compositor = new Compositor();
 
 // top level element do not have parent/previous sibling ids
-$stack = $compositor->makeStack($parentid, $siblingid, $instanceid);
+$stack = $compositor->makeStack($rootcomp);
+
+//$content.= $compositor->loadAndDisplay($stack);
 
 print_object($stack);
 
