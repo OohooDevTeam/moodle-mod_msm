@@ -290,7 +290,11 @@ class Para extends Element
         $content = '';
         $newtag = '';
         
+        echo "in para";
+        print_object($this);
+        
         $content .= $this->displaySubordinate($this, $this->para_content);
+//        $content .= "<div class='content'>" . $this->para_content . "</div>";
 
 //        $doc = new DOMDocument();
 //        @$doc->loadXML($this->para_content);

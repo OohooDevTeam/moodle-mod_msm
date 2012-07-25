@@ -171,7 +171,7 @@ $content .= "</div>";
 // need to have it in this order or dialog breaks
 $content .= "
     <script type='text/javascript'>
-    jQuery(document).ready(function(stack){
+    jQuery(document).ready(function(){
          $('.dialogs').dialog({
               autoOpen: false,
               width: 'auto'

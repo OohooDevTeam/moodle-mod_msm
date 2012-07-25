@@ -287,8 +287,10 @@ class InContent extends Element
     function displayhtml()
     {
         $content = '';
+        
+        $content .= "<div class='content'>" . $this->content . "</div>";
 
-        $content .= $this->displaySubordinate($this, $this->content);
+//        $content .= $this->displaySubordinate($this, $this->content);
 
         return $content;
     }

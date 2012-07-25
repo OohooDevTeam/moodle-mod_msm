@@ -484,6 +484,7 @@ abstract class Element
         {
             foreach ($object->subordinates as $subordinate)
             {
+                print_object($subordinate);
                 $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
 
                 if (!is_string($subordinate->hot))

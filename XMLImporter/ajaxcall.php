@@ -14,13 +14,15 @@ global $DB, $PAGE, $CFG;
 $comp = new Compositor();
 
 $string = $_POST["stackstring"];
-$counter = $_POST["input"];
+//
+//echo "ajax";
+//print_object($string);
+//echo "string above";
+//$displaycontent = $_POST["displaystring"];
 
-print_object($string);
-print_object($counter);
+$content = $comp->loadAndDisplay($string);
+//echo "in ajaxcall";
+//print_object($content);
 
-$content = $comp->loadAndDisplay($string, $counter);
-
-//echo $content;
-
+echo $content;
 ?>

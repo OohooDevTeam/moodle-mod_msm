@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -60,8 +59,9 @@ class Compositor
         return $childs;
     }
 
-    function loadAndDisplay($string, $counter)
+    function loadAndDisplay($string)
     {
+//        echo "in loadAndDisplay";
         global $DB;
 
         $newstring = '';
@@ -69,7 +69,7 @@ class Compositor
 
         //recreating stack from string
         $eachRecordString = explode(',', $string);
-       
+
         $recordLength = count($eachRecordString) - 1;
 
         // foreach not used because need to eliminate empty array at the end due to ending comma when the string is made
@@ -77,14 +77,16 @@ class Compositor
         {
             array_push($stack, $eachRecordString[$i]);
         }
-//         print_object($string);
-      
+
         $recordValue = array_pop($stack);
+        
+        print_object($recordValue);
 
         $recordids = explode('/', $recordValue);
-        
 
         $unitRecord = $DB->get_record('msm_unit', array('id' => $recordids[1]));
+        
+         print_object($unitRecord);
 
         $unitid = $unitRecord->id;
         $unitcompid = $recordids[0];
@@ -93,7 +95,7 @@ class Compositor
         $unit->loadFromDb($unitid, $unitcompid);
         $this->unit = $unit;
         $content = '';
-
+        
         $content .= "<div class=unit>";
         $content .= $this->unit->displayhtml();
 
@@ -101,17 +103,38 @@ class Compositor
         {
             $newstring .= $record . ",";
         }
-        
-//        print_object($counter);
-        
+
+//        print_object($newstring);
         // passing contents of stack to ajax call by putting it into an hidden input field
-        $content .= "<input id='stack-" . $counter . "' style='visibility:hidden' type='text' name='stackstring' value='" . $newstring . "'/>";
-      
+        ?>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+//                alert("in script");
+                var stackstring = "<?php echo $newstring; ?>";
+//                // if stack input field exists then update the value of the input field but otherwise, create the inputfield
+//                if($('.jshowoff-prev.unit').has('#stack'))
+//                {
+////                    alert("stack exists");
+//                    $('.jshowoff-prev.unit').remove('#stack');
+//                    $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
+//                    $('#stack').val(stackstring);           
+//                }
+//                else
+//                {
+//                    alert("stack does not exists");
+                    $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
+                    $('#stack').val(stackstring);   
+//                }
+            });
+                                    
+        </script>
+
+        <?php
         $content .= "</div>";
 
-        echo "compositor counter";
-        print_object($counter);
-        
+//        print_object($content);
+
         return $content;
     }
 

@@ -33,7 +33,6 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     var cssClass;
     var $wrap;
     var pagenumber;
-    var inputcounter=0;
  
     var config = {
         animatePause : true,
@@ -202,11 +201,12 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     };
 			
     // load the next slide
-    function next() {       
+    function next() {
+        alert("counter value:" + counter);
         goToAndPause(counter+1);
         pagenumber++;
-        if (pagenumber < gallery.length+1)
-        {				
+        if (pagenumber <= (gallery.length+1))
+        {		
             updatepgnumber(pagenumber);
         }
         else
@@ -214,6 +214,20 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             pagenumber = 1;
             updatepgnumber(pagenumber);
         }
+        $('#features').load('../msm/XMLImporter/ajaxcall.php', 
+        {
+                    
+            stackstring: $('#stack').val()
+        },
+               
+        function(){                    
+            $('.dialogs').dialog({
+                autoOpen: false,
+                width: 'auto'
+            });
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        });
+    //        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     };
 		
     // load the previous slide
@@ -277,19 +291,6 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 return false;
             });
             if($(this).hasClass('jshowoff-next')) $(this).click(function(){
-                $('#features').load('../msm/XMLImporter/ajaxcall.php', 
-                {
-                    stackstring: $('#stack-'+inputcounter).val(),
-                    input: inputcounter+1
-                },
-                function(){                    
-                    $('.dialogs').dialog({
-                        autoOpen: false,
-                        width: 'auto'
-                    });
-                });
-              
-                inputcounter++;
                 next();
                 return false;
             });
