@@ -473,19 +473,21 @@ abstract class Element
     function displaySubordinate($object, $XMLcontent)
     {
         $content = '';
-        $newtag = '';
-
         $doc = new DOMDocument();
         @$doc->loadXML($XMLcontent);
 
         $hottags = $doc->getElementsByTagName('a');
 
-        foreach ($hottags as $hottag)
+        foreach ($hottags as $key=>$hottag)
         {
-            foreach ($object->subordinates as $subordinate)
+            if(!empty($object->subordinates[$key]))
             {
-                print_object($subordinate);
-                $newtag .= "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+                $subordinate = $object->subordinates[$key];
+                
+//                print_object($subordinate);
+                
+                $newtag = '';
+                $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
 
                 if (!is_string($subordinate->hot))
                 {
@@ -505,6 +507,31 @@ abstract class Element
                 $content .= $subordinate->infos[0]->info_content;
                 $content .= "</div>";
             }
+//            foreach ($object->subordinates as $subordinate)
+//            {
+//                print_object($subordinate->hot);
+////               
+//                $newtag = '';
+//                $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+//
+//                if (!is_string($subordinate->hot))
+//                {
+//                    $newtag .= $this->getContent($subordinate->hot);
+//                }
+//                else
+//                {
+//                    $newtag .= $subordinate->hot;
+//                }
+//                $newtag .= "</a>";
+//
+//                $hotString = $doc->saveXML($hottag);
+//
+//                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+//
+//                $content = '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
+//                $content .= $subordinate->infos[0]->info_content;
+//                $content .= "</div>";
+//            }
         }
         $content .= "<div class='content'>";
         $content .= $XMLcontent;

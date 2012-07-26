@@ -14,15 +14,8 @@ global $DB, $PAGE, $CFG;
 $comp = new Compositor();
 
 $string = $_POST["stackstring"];
-//
-//echo "ajax";
-//print_object($string);
-//echo "string above";
-//$displaycontent = $_POST["displaystring"];
 
 $content = $comp->loadAndDisplay($string);
-//echo "in ajaxcall";
-//print_object($content);
 
 echo $content;
 ?>

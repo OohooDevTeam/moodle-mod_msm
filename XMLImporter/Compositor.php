@@ -17,6 +17,7 @@ class Compositor
 {
 
     public $unit;
+//    public $displayunits = array();
 
 //    public $theorem;
 
@@ -64,6 +65,8 @@ class Compositor
 //        echo "in loadAndDisplay";
         global $DB;
 
+//        $this->displayunits = array();
+
         $newstring = '';
         $stack = array();
 
@@ -79,14 +82,10 @@ class Compositor
         }
 
         $recordValue = array_pop($stack);
-        
-        print_object($recordValue);
 
         $recordids = explode('/', $recordValue);
 
         $unitRecord = $DB->get_record('msm_unit', array('id' => $recordids[1]));
-        
-         print_object($unitRecord);
 
         $unitid = $unitRecord->id;
         $unitcompid = $recordids[0];
@@ -94,8 +93,11 @@ class Compositor
         $unit = new Unit();
         $unit->loadFromDb($unitid, $unitcompid);
         $this->unit = $unit;
+//        $this->displayunits[] = $unit;
+//        end($this->displayunits);
+//        $displayunitkey = key($this->displayunits);
         $content = '';
-        
+
         $content .= "<div class=unit>";
         $content .= $this->unit->displayhtml();
 
@@ -103,38 +105,20 @@ class Compositor
         {
             $newstring .= $record . ",";
         }
-
-//        print_object($newstring);
         // passing contents of stack to ajax call by putting it into an hidden input field
         ?>
 
         <script type="text/javascript">
             $(document).ready(function() {
-//                alert("in script");
                 var stackstring = "<?php echo $newstring; ?>";
-//                // if stack input field exists then update the value of the input field but otherwise, create the inputfield
-//                if($('.jshowoff-prev.unit').has('#stack'))
-//                {
-////                    alert("stack exists");
-//                    $('.jshowoff-prev.unit').remove('#stack');
-//                    $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
-//                    $('#stack').val(stackstring);           
-//                }
-//                else
-//                {
-//                    alert("stack does not exists");
-                    $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
-                    $('#stack').val(stackstring);   
-//                }
+                $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
+                $('#stack').val(stackstring); 
             });
-                                    
+                                            
         </script>
 
         <?php
         $content .= "</div>";
-
-//        print_object($content);
-
         return $content;
     }
 

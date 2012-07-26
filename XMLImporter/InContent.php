@@ -288,9 +288,12 @@ class InContent extends Element
     {
         $content = '';
         
-        $content .= "<div class='content'>" . $this->content . "</div>";
+//        $content .= "<div class='content'>" . $this->content . "</div>";
+        
+//        echo "inContent subordinate";
+//        print_object($this);
 
-//        $content .= $this->displaySubordinate($this, $this->content);
+        $content .= $this->displaySubordinate($this, $this->content);
 
         return $content;
     }

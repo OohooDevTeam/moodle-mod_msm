@@ -124,7 +124,7 @@ class Subordinate extends Element
                                             if (!empty($filepath))
                                             {
                                                 @$parser->load($filepath);
-                                                
+
                                                 $element = $parser->documentElement;
 
                                                 if (!empty($element))
@@ -270,6 +270,13 @@ class Subordinate extends Element
                                             $this->companion[] = $untiID;
                                         }
                                     }
+                                    break;
+
+                                case('info'):
+                                    $position = $position + 1;
+                                    $info = new MathInfo($this->xmlpath);
+                                    $info->loadFromXml($grandchild, $position);
+                                    $this->infos[] = $info;
                                     break;
                             }
                         }
@@ -505,6 +512,13 @@ class Subordinate extends Element
 //                                        }
 //                                    }
 //                                     break;
+
+                                case('info'):
+                                    $position = $position + 1;
+                                    $info = new MathInfo($this->xmlpath);
+                                    $info->loadFromXml($grandchild, $position);
+                                    $this->infos[] = $info;
+                                    break;
                             }
                         }
                     }
@@ -655,30 +669,18 @@ class Subordinate extends Element
             {
                 case(preg_match("/^(info.\d+)$/", $element) ? true : false):
                     $infoString = split('-', $element);
-//
-//                    $infoRecord = $this->checkForRecord($this->infos[$infoString[1]]);
-//
-//                    if (empty($infoRecord))
-//                    {
-                        if (empty($sibling_id))
-                        {
-                            $info = $this->infos[$infoString[1]];
-                            $info->saveIntoDb($info->position, $this->compid);
-                            $sibling_id = $info->compid;
-                        }
-                        else
-                        {
-                            $info = $this->infos[$infoString[1]];
-                            $info->saveIntoDb($info->position, $this->compid, $sibling_id);
-                            $sibling_id = $info->compid;
-                        }
-//                    }
-//                    else
-//                    {
-//                        $infoID = $infoRecord->id;
-//                        $info = $this->infos[$infoString[1]];
-//                        $info->compid = $this->insertToCompositor($infoID, $info->tablename, $this->compid, $sibling_id);
-//                    }
+                    if (empty($sibling_id))
+                    {
+                        $info = $this->infos[$infoString[1]];
+                        $info->saveIntoDb($info->position, $this->compid);
+                        $sibling_id = $info->compid;
+                    }
+                    else
+                    {
+                        $info = $this->infos[$infoString[1]];
+                        $info->saveIntoDb($info->position, $this->compid, $sibling_id);
+                        $sibling_id = $info->compid;
+                    }
                     break;
 
                 case(preg_match("/^(pack.\d+)$/", $element) ? true : false):
@@ -884,18 +886,18 @@ class Subordinate extends Element
 //
 //                    if (empty($citeRecord))
 //                    {
-                        if (empty($sibling_id))
-                        {
-                            $cite = $this->cites[$citeString[1]];
-                            $cite->saveIntoDb($cite->position, $this->compid);
-                            $sibling_id = $cite->compid;
-                        }
-                        else
-                        {
-                            $cite = $this->cites[$citeString[1]];
-                            $cite->saveIntoDb($cite->position, $this->compid, $sibling_id);
-                            $sibling_id = $cite->compid;
-                        }
+                    if (empty($sibling_id))
+                    {
+                        $cite = $this->cites[$citeString[1]];
+                        $cite->saveIntoDb($cite->position, $this->compid);
+                        $sibling_id = $cite->compid;
+                    }
+                    else
+                    {
+                        $cite = $this->cites[$citeString[1]];
+                        $cite->saveIntoDb($cite->position, $this->compid, $sibling_id);
+                        $sibling_id = $cite->compid;
+                    }
 //                    }
 //                    else
 //                    {
@@ -906,24 +908,23 @@ class Subordinate extends Element
                     break;
             }
         }
-
     }
-    
+
     function loadFromDb($id, $compid)
     {
         global $DB;
 
         $subordinaterecord = $DB->get_record($this->tablename, array('id' => $id));
-        
-        if(!empty($subordinaterecord))
+
+        if (!empty($subordinaterecord))
         {
             $this->hot = $subordinaterecord->hot;
         }
-        
+
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->infos = array();
-        
+
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
@@ -937,7 +938,7 @@ class Subordinate extends Element
                     break;
             }
         }
-        
+
         return $this;
     }
 

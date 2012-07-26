@@ -290,6 +290,56 @@ class Definition extends Element
         }
     }
 
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $defRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($defRecord))
+        {
+            $this->compid = $compid;
+            $this->def_type = $defRecord->def_type;
+            $ths->caption = $defRecord->caption;
+            $this->def_content = $defRecord->def_content;
+        }
+
+//        $this->associates = array();
+//        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+//
+//        foreach($childElements as $child)
+//        {
+//             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+//             
+//             if($childtablename == 'msm_associate')
+//             {
+//                 $associate = new Associate();
+//                 $associate->loadFromDb($child->unit_id, $child->id);
+//                 $this->associates[] = $associate;
+//                 break;
+//             }
+//        }
+
+        return $this;
+    }
+
+    function displayhtml()
+    {
+        $content = '';
+        $content .= "<div class='def'>";
+        if (!empty($this->caption))
+        {
+            $content .= $this->caption;
+        }
+
+        $content .= "<div class='defcontent'>";
+        $content .= $this->displaySubordinate($this, $this->def_content);
+        $content .= "</div>";
+        $content .= "</div>";
+
+        return $content;
+    }
+
 }
 
 ?>

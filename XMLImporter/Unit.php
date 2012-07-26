@@ -382,6 +382,14 @@ class Unit extends Element
                                             $this->subunits[] = $unit;
                                         }
                                         break;
+
+                                    case('unit'):
+                                         $position = $position + 1;
+                                        $unit = new Unit($this->xmlpath);
+                                        $unit->loadFromXml($grandChild, $position);
+                                        $this->subunits[] = $unit;
+                                        break;
+
                                     case('xi:include'):
                                         $position = $position + 1;
 
@@ -435,11 +443,6 @@ class Unit extends Element
                                             $this->quizpacks[] = $quizpack;
                                         }
                                         // there are exercise/showme/example/quiz that can be part of this
-                                        break;
-                                    case('unit'):
-                                        $unit = new Unit($this->xmlpath);
-                                        $unit->loadFromXml($grandChild, $position);
-                                        $this->subunits[] = $unit;
                                         break;
                                 }
                             }
@@ -891,8 +894,8 @@ class Unit extends Element
         global $DB;
 
         $unitrecord = $DB->get_record($this->tablename, array('id' => $id));
-        
-        $unitCompRecord = $DB->get_record('msm_compositor', array('id'=>$compid));
+
+        $unitCompRecord = $DB->get_record('msm_compositor', array('id' => $compid));
 
         if (!empty($unitrecord))
         {
@@ -901,7 +904,7 @@ class Unit extends Element
             $this->title = $unitrecord->title;
             $this->creationdate = $unitrecord->creationdate;
             $this->last_revision_date = $unitrecord->last_revision_date;
-            
+
             $this->parent_id = $unitCompRecord->parent_id;
             $this->prev_sibling_id = $unitCompRecord->prev_sibling_id;
 
@@ -934,18 +937,25 @@ class Unit extends Element
                     $intro->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $intro;
                     break;
+                case('msm_def'):
+                    $def = new Definition();
+                    $def->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $def;
+                    break;
 
-//                case('msm_unit'):
-//                    $unit = new Unit();
-//                    $unit->loadFromDb($child->unit_id, $child->id);
-//                    $this->childs[] = $unit;
-//                    break;
+//               case('msm_theorem'):
+//                   $theorem = new Theorem();
+//                   $theorem->loadFromDb($child->unit_id, $child->id);
+//                   $this->childs[] = $theorem;
+//                   break;
+//                   
+//               case('msm_comment'):
+//                   $comment = new MathComment();
+//                   $comment->loadFromDb($child->unit_id, $child->id);
+//                   $this->childs[] = $comment;
+//                   break;
             }
         }
-//
-//        print_object($this);
-//        die;
-
         return $this;
     }
 
@@ -988,7 +998,6 @@ class Unit extends Element
             }
 
             $content .= "</div>"; //for closing the border div
-           
         } // any units that is not a root element
         else
         {
@@ -998,10 +1007,9 @@ class Unit extends Element
                 $content .= $this->title;
                 $content .= "</div>";
             }
-
         }
-        
-        foreach($this->childs as $child)
+
+        foreach ($this->childs as $child)
         {
             $content .= $child->displayhtml();
         }

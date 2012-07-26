@@ -53,7 +53,6 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 
 
     $.fn.jshowoff = function(settings) {
-
         // merge default global variables with custom variables, modifying 'config'
         if (settings) $.extend(true, config, settings);
 
@@ -109,8 +108,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 
 			
     // utility for loading slides
-    function transitionTo(gallery,index) {
-				
+    function transitionTo(gallery,index) {		
         var oldCounter = counter;
         if((counter >= gallery.length) || (index >= gallery.length)) {
             counter = 0;
@@ -202,37 +200,40 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 			
     // load the next slide
     function next() {
-        alert("counter value:" + counter);
-        goToAndPause(counter+1);
-        pagenumber++;
-        if (pagenumber <= (gallery.length+1))
-        {		
-            updatepgnumber(pagenumber);
-        }
-        else
-        {
-            pagenumber = 1;
-            updatepgnumber(pagenumber);
-        }
+        //        alert("counter value:" + counter);
+        goToAndPause(counter);
+//        alert($('#pgnumberkey').val());
+//        pagenumber = $('#pgnumberkey').val();
+//        pagenumber++;
+//        if (pagenumber <= (gallery.length+1))
+//        {		
+//            updatepgnumber(pagenumber);
+//        }
+//        else
+//        {
+//            alert("always setting to 1? --> gallery.length: "+gallery.length);
+//            pagenumber = 1;
+//            updatepgnumber(pagenumber);
+//        }
         $('#features').load('../msm/XMLImporter/ajaxcall.php', 
         {
                     
             stackstring: $('#stack').val()
         },
-               
-        function(){                    
+        function(){     
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
             $('.dialogs').dialog({
                 autoOpen: false,
                 width: 'auto'
             });
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            
         });
-    //        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+          
     };
 		
     // load the previous slide
     function previous() {
-   
+        alert("counter? "+ counter);
         goToAndPause(counter-1);
         pagenumber--;
         if(pagenumber > 0)
@@ -248,6 +249,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     };
 			
     function updatepgnumber(num) {
+
         var pgnum = ''+num+'';
         document.getElementById('pg').innerHTML= 'pg.'+pgnum;
     }
@@ -267,9 +269,9 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
             transitionTo(gallery,index);
             pause();
         };
-        // added to convert the Math symbols when the pages are changed
+    // added to convert the Math symbols when the pages are changed
         
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+       
     };
 
     // load images into memory
@@ -283,6 +285,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 				
     // generate and add play/pause, prev, next controls
     function addControls() {
+
         $('.controller').append('<p class="jshowoff-controls '+uniqueClass+'-controls"> <a class="jshowoff-prev '+uniqueClass+'-prev" href="#null">'+config.controlText.previous+'</a><span class="jshowoff-page" id="pg">pg.'+pagenumber+'</span><a class="jshowoff-next '+uniqueClass+'-next" href="#null">'+config.controlText.next+'</a></p>');
         $('.'+uniqueClass+'-controls a').each(function(){
             //if($(this).hasClass('jshowoff-play')) $(this).click(function(){ isPlaying() ? pause('playBtn') : play(); return false; } );
@@ -290,7 +293,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 previous();
                 return false;
             });
-            if($(this).hasClass('jshowoff-next')) $(this).click(function(){
+            if($(this).hasClass('jshowoff-next')) $(this).click(function(){        
                 next();
                 return false;
             });
