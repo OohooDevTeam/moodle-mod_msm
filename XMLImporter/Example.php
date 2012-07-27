@@ -132,13 +132,16 @@ class Example extends Element
         $data->description = $this->description;
 
         $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
 
         $statement_data = new stdClass();
+        $statement_sibling_id = 0;
         foreach ($this->statement_examples as $st)
         {
             $statement_data->statement_example_content = $st;
             $this->statement_example_id = $DB->insert_record('msm_statement_example', $statement_data);
-            $this->compid = $this->insertToCompositor($this->position, $this->tablename, $parentid, $siblingid);
+            $this->statement_example_compid = $this->insertToCompositor($this->statement_example_id, 'msm_statement_example', $this->compid, $statement_sibling_id);
+            $statement_sibling_id++;
         }
 
 
