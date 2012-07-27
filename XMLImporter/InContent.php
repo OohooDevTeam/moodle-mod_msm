@@ -259,6 +259,7 @@ class InContent extends Element
 
         if (!empty($contentRecord))
         {
+            $this->compid = $compid;
             $this->content = $contentRecord->content;
             $this->type = $contentRecord->type;
         }

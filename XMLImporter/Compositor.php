@@ -93,9 +93,6 @@ class Compositor
         $unit = new Unit();
         $unit->loadFromDb($unitid, $unitcompid);
         $this->unit = $unit;
-//        $this->displayunits[] = $unit;
-//        end($this->displayunits);
-//        $displayunitkey = key($this->displayunits);
         $content = '';
 
         $content .= "<div class=unit>";
@@ -111,7 +108,7 @@ class Compositor
         <script type="text/javascript">
             $(document).ready(function() {
                 var stackstring = "<?php echo $newstring; ?>";
-                $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
+                $('.unit').append('<input id="stack" style="visibility:hidden;" type="text" name="stackstring"/>');
                 $('#stack').val(stackstring); 
             });
                                             

@@ -228,8 +228,7 @@ abstract class Element
     function processContent($DomElement, $position)
     {
         $content = array();
-//        $content = '';
-
+        
         $position = $position + 1;
 
         $subordinates = $DomElement->getElementsByTagName('subordinate');
@@ -507,31 +506,6 @@ abstract class Element
                 $content .= $subordinate->infos[0]->info_content;
                 $content .= "</div>";
             }
-//            foreach ($object->subordinates as $subordinate)
-//            {
-//                print_object($subordinate->hot);
-////               
-//                $newtag = '';
-//                $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
-//
-//                if (!is_string($subordinate->hot))
-//                {
-//                    $newtag .= $this->getContent($subordinate->hot);
-//                }
-//                else
-//                {
-//                    $newtag .= $subordinate->hot;
-//                }
-//                $newtag .= "</a>";
-//
-//                $hotString = $doc->saveXML($hottag);
-//
-//                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-//
-//                $content = '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
-//                $content .= $subordinate->infos[0]->info_content;
-//                $content .= "</div>";
-//            }
         }
         $content .= "<div class='content'>";
         $content .= $XMLcontent;

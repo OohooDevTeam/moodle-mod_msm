@@ -44,43 +44,104 @@ class Para extends Element
 
         $this->content = array();
 
-        foreach ($DomElement->childNodes as $child)
+        foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
-            if ($child->nodeType == XML_ELEMENT_NODE)
-            {
-                if (($child->tagName !== 'para.body') || ($child->tagName !== 'caption'))
-                {
-                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
-                    {
-                        $this->indexauthors[] = $indexauthor;
-                    }
-
-                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
-                    {
-                        $this->indexglossarys[] = $indexglossary;
-                    }
-
-                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
-                    {
-                        $this->indexsymbols[] = $indexsymbol;
-                    }
-                    foreach ($this->processSubordinate($child, $position) as $subordinate)
-                    {
-                        $this->subordinates[] = $subordinate;
-                    }
-
-                    foreach ($this->processMedia($child, $position) as $media)
-                    {
-                        $this->medias[] = $media;
-                    }
-
-                    foreach ($this->processContent($child, $position) as $content)
-                    {
-                        $this->content[] = $content;
-                    }
-                }
-            }
+            $this->indexauthors[] = $indexauthor;
         }
+
+        foreach ($this->processIndexGlossary($DomElement, $position) as $indexglossary)
+        {
+            $this->indexglossarys[] = $indexglossary;
+        }
+
+        foreach ($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
+        {
+            $this->indexsymbols[] = $indexsymbol;
+        }
+        foreach ($this->processSubordinate($DomElement, $position) as $subordinate)
+        {
+            $this->subordinates[] = $subordinate;
+        }
+
+        foreach ($this->processMedia($DomElement, $position) as $media)
+        {
+            $this->medias[] = $media;
+        }
+
+        foreach ($this->processContent($DomElement, $position) as $content)
+        {
+            $this->content[] = $content;
+        }
+
+//        foreach ($DomElement->childNodes as $child)
+//        {
+//            if ($child->nodeType == XML_ELEMENT_NODE)
+//            {
+//
+//                if ($child->tagName == 'para.body')
+//                {
+//                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
+//                    {
+//                        $this->indexauthors[] = $indexauthor;
+//                    }
+//
+//                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
+//                    {
+//                        $this->indexglossarys[] = $indexglossary;
+//                    }
+//
+//                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
+//                    {
+//                        $this->indexsymbols[] = $indexsymbol;
+//                    }
+//                    foreach ($this->processSubordinate($child, $position) as $subordinate)
+//                    {
+//                        $this->subordinates[] = $subordinate;
+//                    }
+//
+//                    foreach ($this->processMedia($child, $position) as $media)
+//                    {
+//                        $this->medias[] = $media;
+//                    }
+//
+//                    foreach ($this->processContent($child, $position) as $content)
+//                    {
+//                        $this->content[] = $content;
+//                    }
+//                }
+//                if (($child->tagName !== 'para.body') || ($child->tagName !== 'caption') || ($child->tagName !== 'index.symbol')|| ($child->tagName !== 'index.glossary')|| ($child->tagName !== 'index.author'))
+//                {
+//                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
+//                    {
+//                        $this->indexauthors[] = $indexauthor;
+//                    }
+//
+//                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
+//                    {
+//                        $this->indexglossarys[] = $indexglossary;
+//                    }
+//
+//                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
+//                    {
+//                        $this->indexsymbols[] = $indexsymbol;
+//                    }
+//                    foreach ($this->processSubordinate($child, $position) as $subordinate)
+//                    {
+//                        $this->subordinates[] = $subordinate;
+//                    }
+//
+//                    foreach ($this->processMedia($child, $position) as $media)
+//                    {
+//                        $this->medias[] = $media;
+//                    }
+//
+//                    foreach ($this->processContent($child, $position) as $content)
+//                    {
+//                        $this->content[] = $content;
+//                    }
+//                }
+//            }
+//        }
     }
 
     /**

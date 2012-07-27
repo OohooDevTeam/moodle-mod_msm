@@ -384,7 +384,7 @@ class Unit extends Element
                                         break;
 
                                     case('unit'):
-                                         $position = $position + 1;
+                                        $position = $position + 1;
                                         $unit = new Unit($this->xmlpath);
                                         $unit->loadFromXml($grandChild, $position);
                                         $this->subunits[] = $unit;
@@ -943,19 +943,32 @@ class Unit extends Element
                     $this->childs[] = $def;
                     break;
 
-//               case('msm_theorem'):
+                case('msm_para'):
+                    $para = new Para();
+                    $para->loadFromDb($child->unit_id,$child->id);
+                    $this->childs[] = $para;
+                    break;
+
+                case('msm_content'):
+                    $incontent = new InContent();
+                    $incontent->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $incontent;
+                    break;
+
+                case('msm_theorem'):
 //                   $theorem = new Theorem();
 //                   $theorem->loadFromDb($child->unit_id, $child->id);
 //                   $this->childs[] = $theorem;
-//                   break;
+                    break;
 //                   
-//               case('msm_comment'):
+                case('msm_comment'):
 //                   $comment = new MathComment();
 //                   $comment->loadFromDb($child->unit_id, $child->id);
 //                   $this->childs[] = $comment;
-//                   break;
+                    break;
             }
         }
+
         return $this;
     }
 

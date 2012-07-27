@@ -25,8 +25,8 @@ div.controller{
     min-width: 96%;
     max-height: 35px;
     z-index: 11;
-/*    margin-top: 10px;*/
-/*    margin-left: 10px;*/
+    /*    margin-top: 10px;*/
+    /*    margin-left: 10px;*/
     overflow: hidden;
 }
 
@@ -70,14 +70,14 @@ div.controller{
     background-image:url('../pix/background2.jpg');
     min-height: 695px;
     width:97%;
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
 }
 
 /*leftcol and rightcol are the divs in MySplitter element*/
 
 .leftcol
 {
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
     margin-bottom:10px;
     margin-right:10px;    
     padding:10px;
@@ -85,14 +85,14 @@ div.controller{
 
 .rightcol
 {
-/*    overflow: auto;*/
+    /*    overflow: auto;*/
     padding-top:10px;
     padding-left:10px;
 }
 
 #features .title
 {
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -106,7 +106,7 @@ div.controller{
 /*for creating double border look*/
 
 .ridge {
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
     border-top-width: 5px;
     border-bottom-width: 5px;
     border-top-style: double;
@@ -119,21 +119,21 @@ div.controller{
 /* for creating a border that looks like polaroid*/
 
 .snapshot {
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
     border: 1px solid #666666;
     padding: 10px 10px 60px 10px;
 }
 
 #features .date
 {
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
     font-size: 12px;
     text-align: right;
     margin-right: 5px;
 }
 
 #features .author{
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
     font-size: 12px;
     text-align: center;
     margin-right: 5px;
@@ -141,7 +141,7 @@ div.controller{
 
 #features .content
 {
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
     font-size:14px;
     text-align: left;
     margin-left: 20px;
@@ -155,7 +155,7 @@ div.controller{
 
 .hottag
 {
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
     color: #229C79;
 }
 
@@ -169,13 +169,34 @@ div.controller{
 {
     width: 90%;
     background-color: #773322;
-    padding: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .defcontent
 {
+    margin-top: 5px;
+/*    margin-bottom: 5px;*/
     border: 2px solid black;
     background-color: white;
+}
+
+span.deftitle
+{
+/*    font-size: 12px;*/
+    font-weight: bold;
+    color: white;
+    float: right;   
+}
+
+span.deftype
+{
+/*    font-size: 12px;*/
+    font-weight: bold;
+    color: white;
+    float: left;
 }
 
 /*#features .content table, th, tr, td{

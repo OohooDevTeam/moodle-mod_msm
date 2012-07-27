@@ -32,9 +32,26 @@ class testing
                 });
             
         </script>
+        <style>
+            .box
+            {
+                width: 300px;
+                background-color: blue;
+            }
+            .title{
+                float: left;
+            }
+            .deftext
+            {
+                float: right;
+            }
+        </style>
     </head>
     <body>
         <button id="button1" type="button">echo</button>
+        <div class="box">
+        <div class="title"> hello <span class="deftext"> hey </span></div>
+        </div>
     </body>
 </html>
 

@@ -378,13 +378,13 @@ class Block extends Element
         }
     }
 
-    function loadFromDb($introcompid)
+    function loadFromDb($compid)
     {
         global $DB;
 
         $this->childs = array();
           
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$introcompid), 'prev_sibling_id');
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
         
         foreach($childElements as $child)
         {
