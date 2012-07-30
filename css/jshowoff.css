@@ -93,12 +93,12 @@ h1,h2,h3,h4,h5,h6,strong,h1 em,h2 em, h3 em,h4 em,h5 em,h6 em,strong em,h1 a,h2 
 }
 .jshowoff h2, .jshowoff p {
     font-size: 18px;
-    padding: 15px 20px 0px;
+    padding: 5px 20px 5px;
     margin: 0;
 }
 .jshowoff p {
     font-size: 14px;
-    line-height: 15px;
+/*    line-height: 15px;*/
 }
 .eddie {
     float: right;

@@ -945,7 +945,7 @@ class Unit extends Element
 
                 case('msm_para'):
                     $para = new Para();
-                    $para->loadFromDb($child->unit_id,$child->id);
+                    $para->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $para;
                     break;
 
@@ -956,9 +956,9 @@ class Unit extends Element
                     break;
 
                 case('msm_theorem'):
-//                   $theorem = new Theorem();
-//                   $theorem->loadFromDb($child->unit_id, $child->id);
-//                   $this->childs[] = $theorem;
+                    $theorem = new Theorem();
+                    $theorem->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $theorem;
                     break;
 //                   
                 case('msm_comment'):

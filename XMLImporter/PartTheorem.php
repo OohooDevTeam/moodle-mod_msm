@@ -235,6 +235,50 @@ class PartTheorem extends Element
         }
     }
 
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $partTheoremRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($partTheoremRecord))
+        {
+            $this->compid = $compid;
+            $this->caption = $partTheoremRecord->caption;
+            $this->part_content = $partTheoremRecord->part_content;
+        }
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $this->subordinates = array();
+
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
+            {
+                case('msm_subordinate'):
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+            }
+        }
+
+        return $this;
+    }
+
+    function displayhtml()
+    {
+        $content = '';
+
+        $content .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
+        $content .= $this->displaySubordinate($this, $this->part_content);
+        $content .= "<br />";
+
+        return $content;
+    }
+
 }
 
 ?>

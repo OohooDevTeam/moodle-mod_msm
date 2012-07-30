@@ -383,28 +383,28 @@ class Block extends Element
         global $DB;
 
         $this->childs = array();
-          
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
-        
-        foreach($childElements as $child)
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        foreach ($childElements as $child)
         {
-             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
             switch ($childtablename)
             {
-               
-               case('msm_para'):
-                   $para = new Para();
-                   $para->loadFromDb($child->unit_id, $child->id);
-                   $this->childs[] = $para;
-                   break;
-               
-               case('msm_content'):
-                   $incontent = new InContent();
-                   $incontent->loadFromDb($child->unit_id, $child->id);
-                   $this->childs[] = $incontent;
-                   break;
-               
+
+                case('msm_para'):
+                    $para = new Para();
+                    $para->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $para;
+                    break;
+
+                case('msm_content'):
+                    $incontent = new InContent();
+                    $incontent->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $incontent;
+                    break;
+
 //               case('msm_math_array'):
 //                   $matharray = new MathArray();
 //                   $matharray->loadFromDb($child->unit_id, $child->id);
@@ -425,7 +425,7 @@ class Block extends Element
     function displayhtml()
     {
         $content = '';
-        
+
         foreach ($this->childs as $child)
         {
             $content .= $child->displayhtml();

@@ -146,6 +146,7 @@ div.controller{
     text-align: left;
     margin-left: 20px;
     margin-right: 10px;
+    margin-top: 0px;
 }
 
 #features .unit .content table
@@ -168,7 +169,7 @@ div.controller{
 .def
 {
     width: 90%;
-    background-color: #773322;
+    background-color: #FF6140;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -199,11 +200,46 @@ span.deftype
     float: left;
 }
 
-/*#features .content table, th, tr, td{
-    border-collapse: separate;
-    width: auto;
-    height: auto;
-}*/
+.theoremcontent
+{
+    margin-top: 5px;
+/*    margin-bottom: 5px;*/
+    border: 2px solid black;
+    background-color: white;
+}
 
+.theorem
+{
+    width: 90%;
+    background-color: #A61D00;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+span.theoremtitle
+{
+/*    font-size: 12px;*/
+    font-weight: bold;
+    color: white;
+    float: right;   
+}
+
+span.theoremtype
+{
+/*    font-size: 12px;*/
+    font-weight: bold;
+    color: white;
+    float: left;
+}
+
+span.parttheoremtitle
+{
+    font-weight: bold;
+    color: black;
+    font-size: 14px;
+    margin-left: 10px;
+}
 
 

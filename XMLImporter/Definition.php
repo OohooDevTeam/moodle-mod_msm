@@ -304,8 +304,10 @@ class Definition extends Element
             $this->def_content = $defRecord->def_content;
         }
 
-        $this->associates = array();
+//        $this->associates = array();
         $this->subordinates = array();
+        
+        $this->childs = array();
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
@@ -317,7 +319,7 @@ class Definition extends Element
 //            {
 //                $associate = new Associate();
 //                $associate->loadFromDb($child->unit_id, $child->id);
-//                $this->associates[] = $associate;
+//                $this->childs[] = $associate;
 //                break;
 //            }
             if ($childtablename == 'msm_subordinate')
@@ -350,6 +352,7 @@ class Definition extends Element
 
         $content .= "<div class='defcontent'>";
         $content .= $this->displaySubordinate($this, $this->def_content);
+        $content .= "<br />";
         $content .= "</div>";
         
         $content .= "<br />";

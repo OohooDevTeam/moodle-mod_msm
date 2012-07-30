@@ -150,8 +150,8 @@ class Theorem extends Element
                         $sibling_id = $statement->compid;
                     }
                     break;
-                    
-                    case(preg_match("/^(proof.\d+)$/", $element) ? true : false):
+
+                case(preg_match("/^(proof.\d+)$/", $element) ? true : false):
                     $proofString = split('-', $element);
 
                     if (empty($sibling_id))
@@ -169,6 +169,82 @@ class Theorem extends Element
                     break;
             }
         }
+    }
+
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $theoremRecord = $DB->get_record('msm_theorem', array('id' => $id));
+
+        if (!empty($theoremRecord))
+        {
+            $this->compid = $compid;
+            $this->theorem_type = $theoremRecord->theorem_type;
+            $this->caption = $theoremRecord->caption;
+        }
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        $this->childs = array();
+
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
+            {
+//                case('msm_associate'):
+//                    $associate = new Associate();
+//                    $associate->loadFromDb($child->unit_id, $child->id);
+//                    $this->childs[] = $associate;
+//                    break;
+
+                case('msm_statement_theorem'):
+                    $statement = new StatementTheorem();
+                    $statement->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $statement;
+                    break;
+                
+//                case('msm_proof'):
+//                    $proof = new Proof();
+//                    $proof->loadFromDb($child->unit_id, $child->id);
+//                    $this->childs[] = $proof;
+//                    break;
+            }
+        }
+        
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+        $content .= "<br />";
+        $content .= "<div class='theorem'>";
+        if (!empty($this->caption))
+        {
+            $content .= "<span class='theoremtitle'>" . $this->caption . "</span>";
+        }
+        
+        if(!empty($this->theorem_type))
+        {
+            $content .= "<span class='theoremtype'>" . $this->theorem_type . "</span>";
+        }
+        $content .= "<br/>";
+
+        $content .= "<div class='theoremcontent'>";
+        foreach($this->childs as $child)
+        {
+            $content .= $child->displayhtml();
+        }
+        $content .= "</div>";
+        
+        $content .= "<br />";
+        $content .= "</div>";
+        $content .= "<br />";
+        
+        return $content;
     }
 
 }

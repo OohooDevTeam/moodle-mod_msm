@@ -86,8 +86,8 @@ class StatementTheorem extends Element
         $data->statement_content = $this->content;
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
-        
-         $elementPositions = array();
+
+        $elementPositions = array();
         $sibling_id = null;
 
         if (!empty($this->part_theorems))
@@ -160,7 +160,7 @@ class StatementTheorem extends Element
                         $sibling_id = $partTheorem->compid;
                     }
                     break;
-                    
+
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
                     $subordinateString = split('-', $element);
 
@@ -247,6 +247,58 @@ class StatementTheorem extends Element
                     break;
             }
         }
+    }
+
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $statementTheoremRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($statementTheoremRecord))
+        {
+            $this->compid = $compid;
+            $this->statement_content = $statementTheoremRecord->statement_content;
+        }
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        $this->childs = array();
+
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
+            {
+                case('msm_part_theorem'):
+                    $partTheorem = new PartTheorem();
+                    $partTheorem->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $partTheorem;
+                    break;
+
+                case('msm_subordinate'):
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+            }
+        }
+        return $this;
+    }
+
+    function displayhtml()
+    {
+        $content = '';
+        $content .= $this->displaySubordinate($this, $this->statement_content);
+        $content .= "<br />";
+
+        foreach ($this->childs as $childComponent)
+        {
+            $content .= $childComponent->displayhtml();
+        }
+
+        return $content;
     }
 
 }
