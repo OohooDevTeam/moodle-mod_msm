@@ -7,9 +7,7 @@
    <caption>Linear maps transform lines to lines</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Meaning of condition 2) in the proposition</caption>
-         </info.caption>
+         <info.caption>Meaning of condition 2) in the proposition</info.caption>
          <para>
             <para.body>Condition 2) above means that <math>
                   <latex>f</latex>

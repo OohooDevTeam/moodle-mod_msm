@@ -7,9 +7,7 @@
    <caption>Properties of matrix inversion</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment and Warning</caption>
-         </info.caption>
+         <info.caption>Comment and Warning</info.caption>
          <para>
             <para.body>Property iv. is something we must be particularly mindful of, as it is different from the analogous property for numbers: Indeed, if <math>
                   <latex>a</latex>

@@ -187,36 +187,36 @@ class Theorem extends Element
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->childs = array();
+        $this->proofs = array();
+        $this->associates = array();
 
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-            switch ($childtablename)
+            if ($childtablename == 'msm_associate')
             {
-//                case('msm_associate'):
-//                    $associate = new Associate();
-//                    $associate->loadFromDb($child->unit_id, $child->id);
-//                    $this->childs[] = $associate;
-//                    break;
-
-                case('msm_statement_theorem'):
-                    $statement = new StatementTheorem();
-                    $statement->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $statement;
-                    break;
-                
-//                case('msm_proof'):
-//                    $proof = new Proof();
-//                    $proof->loadFromDb($child->unit_id, $child->id);
-//                    $this->childs[] = $proof;
-//                    break;
+                $associate = new Associate();
+                $associate->loadFromDb($child->unit_id, $child->id);
+                $this->associates[] = $associate;
+            }
+            if ($childtablename == 'msm_statement_theorem')
+            {
+                $statement = new StatementTheorem();
+                $statement->loadFromDb($child->unit_id, $child->id);
+                $this->childs[] = $statement;
+            }
+            if ($childtablename == 'msm_proof')
+            {
+                $proof = new Proof();
+                $proof->loadFromDb($child->unit_id, $child->id);
+                $this->proofs[] = $proof;
             }
         }
-        
+
         return $this;
     }
-    
+
     function displayhtml()
     {
         $content = '';
@@ -226,24 +226,33 @@ class Theorem extends Element
         {
             $content .= "<span class='theoremtitle'>" . $this->caption . "</span>";
         }
-        
-        if(!empty($this->theorem_type))
+
+        if (!empty($this->theorem_type))
         {
             $content .= "<span class='theoremtype'>" . $this->theorem_type . "</span>";
         }
         $content .= "<br/>";
 
         $content .= "<div class='theoremcontent'>";
-        foreach($this->childs as $child)
+        foreach ($this->childs as $child)
         {
             $content .= $child->displayhtml();
         }
         $content .= "</div>";
-        
+
         $content .= "<br />";
+
+        $content .= "<ul class='minibuttons'>";
+        foreach ($this->associates as $key => $associate)
+        {
+            $content .= $associate->displayhtml();
+        }
+        $content .= "</ul>";
+
         $content .= "</div>";
         $content .= "<br />";
-        
+//        print_object($content);
+
         return $content;
     }
 

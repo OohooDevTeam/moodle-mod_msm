@@ -7,9 +7,7 @@
    <caption>Recognizing inf / sup</caption>
    <associate type="Remark">
       <info>
-         <info.caption>
-            <caption>Remark: Analogous Recognition Criterion for inf</caption>
-         </info.caption>
+         <info.caption>Remark: Analogous Recognition Criterion for inf</info.caption>
          <para>
             <para.body>For <math>
                   <latex>A\subseteq\RNr</latex>

@@ -7,9 +7,7 @@
    <caption>Matrix representation of a linear map</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>An explanation on how to work with this proposition.</para.body>
          </para>

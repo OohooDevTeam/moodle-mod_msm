@@ -7,9 +7,7 @@
    <caption>Matrix: composite of linear maps</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>What does this proposition say?</caption>
-         </info.caption>
+         <info.caption>What does this proposition say?</info.caption>
          <para>
             <para.body>This proposition says that, with respect to the appropriate bases, the matrix representing the composite <math>
                   <latex>T\Comp S</latex>

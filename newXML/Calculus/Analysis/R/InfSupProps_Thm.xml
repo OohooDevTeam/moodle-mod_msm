@@ -7,9 +7,7 @@
    <caption>Properties of supremum and infimum</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>For <math>
                   <latex>c\in \RNr</latex>
@@ -96,9 +94,7 @@
                   <subordinate>
                      <hot>Let</hot>
                      <info>
-                        <info.caption>
-                           <caption>Try to prove this one yourself!</caption>
-                        </info.caption>
+                        <info.caption>Try to prove this one yourself!</info.caption>
                         <para>
                            <para.body>If you understand the argument just given you should have no difficulty proving this part.</para.body>
                         </para>

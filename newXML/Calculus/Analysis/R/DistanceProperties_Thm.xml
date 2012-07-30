@@ -7,9 +7,7 @@
    <caption>Properties of ‘distance between numbers’</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>Where does the term ‘triangle inequality’ come from? See an explanation and illustration.</para.body>
          </para>

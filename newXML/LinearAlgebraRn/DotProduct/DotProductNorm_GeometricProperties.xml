@@ -7,9 +7,7 @@
    <caption>Geometric Properties of Norm and Dot Product</caption>
    <associate type="Illustration">
       <info>
-         <info.caption>
-            <caption>Illustration of the Triangle Inequality</caption>
-         </info.caption>
+         <info.caption>Illustration of the Triangle Inequality</info.caption>
          <para>
             <para.body>Why the name triangle inequality? – An illustration motivates this name easily.</para.body>
          </para>
@@ -17,9 +15,7 @@
    </associate>
    <associate type="Illustration">
       <info>
-         <info.caption>
-            <caption>Illustration of the Angle Between Vectors</caption>
-         </info.caption>
+         <info.caption>Illustration of the Angle Between Vectors</info.caption>
          <para>
             <para.body>An illustration of the angle between two vectors.</para.body>
          </para>

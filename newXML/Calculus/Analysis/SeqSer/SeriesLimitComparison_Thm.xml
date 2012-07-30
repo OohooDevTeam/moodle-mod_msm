@@ -7,9 +7,7 @@
    <caption>Limit comparison test</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>What is the idea underlying these limit comparison tests? –</para.body>
          </para>

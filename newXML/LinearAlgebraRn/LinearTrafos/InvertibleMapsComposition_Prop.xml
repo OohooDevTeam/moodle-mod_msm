@@ -7,9 +7,7 @@
    <caption>Composition of invertible linear maps</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation for the conclusion of this proposition</caption>
-         </info.caption>
+         <info.caption>Explanation for the conclusion of this proposition</info.caption>
          <para>
             <para.body>Conceptually the conclusion of this proposition is quite transparent: If we want to reverse the effect of the composite <math>
                   <latex>(T\Comp S)</latex>

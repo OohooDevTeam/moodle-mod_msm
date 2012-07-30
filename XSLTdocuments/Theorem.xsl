@@ -49,6 +49,9 @@
                     <xsl:value-of select="child::node()[name()='partref']"/>
                 </xsl:element>               
             </xsl:when>
+            <xsl:when test="parent::node()[name()='info']">                
+                <xsl:apply-templates/>                      
+            </xsl:when>
             <xsl:otherwise>
                 <xsl:element name="caption" namespace="Theorem">
                     <xsl:apply-templates/>
@@ -238,15 +241,15 @@
     
     <xsl:template match="thm:info">
         <xsl:element name="info" namespace="Theorem">
-            <xsl:if test="child::node()[name()='caption']">
+            <xsl:if test="thm:caption != ''">
                 <xsl:element name="info.caption" namespace="Theorem">
-                    <xsl:apply-templates select="child::node()[name()='caption']"/>
+                    <xsl:apply-templates select="thm:caption"/>
                 </xsl:element>
-            </xsl:if>           
-            <xsl:apply-templates select="child::node()[not(name()='caption')]"/>
+            </xsl:if>
+            <xsl:apply-templates select="node()[not(name()='caption')]"/>            
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template match="thm:math.display">
         <xsl:element name="math.display" namespace="Theorem">
             <xsl:if test="./@id != ''">

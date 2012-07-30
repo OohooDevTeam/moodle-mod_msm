@@ -304,7 +304,7 @@ class Definition extends Element
             $this->def_content = $defRecord->def_content;
         }
 
-//        $this->associates = array();
+        $this->associates = array();
         $this->subordinates = array();
         
         $this->childs = array();
@@ -315,19 +315,17 @@ class Definition extends Element
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-//            if ($childtablename == 'msm_associate')
-//            {
-//                $associate = new Associate();
-//                $associate->loadFromDb($child->unit_id, $child->id);
-//                $this->childs[] = $associate;
-//                break;
-//            }
+            if ($childtablename == 'msm_associate')
+            {
+                $associate = new Associate();
+                $associate->loadFromDb($child->unit_id, $child->id);
+                $this->associates[] = $associate;
+            }
             if ($childtablename == 'msm_subordinate')
             {
                 $subordinate = new Subordinate();
                 $subordinate->loadFromDb($child->unit_id, $child->id);
                 $this->subordinates[] = $subordinate;
-                break;
             }
         }
 
@@ -356,8 +354,18 @@ class Definition extends Element
         $content .= "</div>";
         
         $content .= "<br />";
+        
+        $content .= "<ul class='defminibuttons'>";
+        foreach ($this->associates as $key => $associate)
+        {
+            $content .= $associate->displayhtml();
+        }
+         $content .= "</ul>";
+         
         $content .= "</div>";
         $content .= "<br />";
+        
+//        print_object($content);
 
         return $content;
     }

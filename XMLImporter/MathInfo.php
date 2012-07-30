@@ -74,7 +74,7 @@ class MathInfo extends Element
                         $this->content .= $content;
                     }
                 }
-                else
+                else if($child->tagName == 'info.caption')
                 {
                     $this->caption = $this->getContent($child);
                 }
@@ -103,11 +103,6 @@ class MathInfo extends Element
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
-//        else
-//        {
-//            $this->id = $DB->insert_record($this->tablename, $data);
-//            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
-//        }
 
         $elementPositions = array();
         $sibling_id = null;
@@ -255,7 +250,14 @@ class MathInfo extends Element
 
         if (!empty($infoRecord))
         {
-            $this->caption = $infoRecord->caption;
+            if(empty($infoRecord->caption))
+            {
+                $this->caption = null;
+            }
+            else
+            {
+                 $this->caption = $infoRecord->caption;
+            }           
             $this->info_content = $infoRecord->info_content;
             $this->id = $infoRecord->id;
         }

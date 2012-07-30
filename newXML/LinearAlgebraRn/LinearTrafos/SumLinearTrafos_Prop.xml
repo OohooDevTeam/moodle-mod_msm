@@ -7,9 +7,7 @@
    <caption>Sum of linear maps is linear</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment: What does this proposition tell us?</caption>
-         </info.caption>
+         <info.caption>Comment: What does this proposition tell us?</info.caption>
          <para>
             <para.body>This proposition gives us two strong pieces of information:</para.body>
          </para>

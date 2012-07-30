@@ -245,7 +245,45 @@ class ProofBlock extends Element
             }
         }
     }
+    
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+        
+        $proofBlockRecord = $DB->get_record($this->tablename, array('id'=>$id));
+        
+        if(!empty($proofBlockRecord))
+        {
+            $this->compid = $compid;
+            $this->proof_content = $proofBlockRecord->proof_content;
+        }
+        
+        $this->subordinates = array();
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+        
+        foreach($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
+            
+            if($childtablename == 'msm_subordinate')
+            {
+                $subordinate = new Subordinate();
+                $subordinate->loadFromDb($child->unit_id, $child->id);
+                $this->subordinates[]= $subordinate;
+            }
+        }
+        
+        return $this;
+    }
 
+    function displayhtml()
+    {
+        $content = '';
+        
+        $content .= $this->displaySubordinate($this, $this->proof_content);
+        
+        return $content;
+    }
 }
 
 ?>

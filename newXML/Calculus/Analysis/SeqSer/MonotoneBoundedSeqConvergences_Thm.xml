@@ -68,9 +68,7 @@
                         </math>
                      </hot>
                      <info>
-                        <info.caption>
-                           <caption>Why is this so?</caption>
-                        </info.caption>
+                        <info.caption>Why is this so?</info.caption>
                         <para>
                            <para.body>... as <math>
                                  <latex>(x_n)</latex>
@@ -84,9 +82,7 @@
                            <latex>B</latex>
                         </math> is bounded below</hot>
                      <info>
-                        <info.caption>
-                           <caption>Why is this so?</caption>
-                        </info.caption>
+                        <info.caption>Why is this so?</info.caption>
                         <para>
                            <para.body>For example <math>
                                  <latex>x_0\leq B</latex>

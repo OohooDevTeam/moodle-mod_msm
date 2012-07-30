@@ -79,6 +79,49 @@ class Proof extends Element
             }
         }
     }
+    
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+        
+        $proofRecord = $DB->get_record($this->tablename, array('id'=>$id));
+        
+        if(!empty($proofRecord))
+        {
+            $this->compid = $compid;
+            $this->proof_type = $proofRecord->proof_type;
+        }
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+        
+        $this->childs = array();
+        
+        foreach($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
+            
+            if($childtablename == 'msm_proof_block')
+            {
+                $proofblock = new ProofBlock();
+                $proofblock->loadFromDb($child->unit_id, $child->id);
+                $this->childs[] = $proofblock;
+            }
+        }
+        
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content ='';
+        
+        foreach($this->childs as $childComponent)
+        {
+            $content .= $childComponent->displayhtml();
+        }
+        
+        return $content;
+    }
 
 }
 

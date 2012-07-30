@@ -7,9 +7,7 @@
    <caption>Given Linear map, Find Matrix</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>An explanation of the content of the proposition and how to use it.</para.body>
          </para>

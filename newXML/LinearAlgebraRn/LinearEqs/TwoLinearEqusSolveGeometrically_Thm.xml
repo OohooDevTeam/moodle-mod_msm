@@ -7,9 +7,7 @@
    <caption>Simultaneous solutions of two linear equations</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation: How do I test if two vectors are parallel?</caption>
-         </info.caption>
+         <info.caption>Explanation: How do I test if two vectors are parallel?</info.caption>
          <para>
             <para.body>
                <math>

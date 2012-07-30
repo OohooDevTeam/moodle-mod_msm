@@ -7,11 +7,9 @@
    <caption>Algebraic Properties of the Norm Operation</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation of <math>
-                  <latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex>
-               </math>
-            </caption>
+         <info.caption>Explanation of <math>
+               <latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex>
+            </math>
          </info.caption>
          <para>
             <para.body>This property is intuitively quite plausible: The vector <math>
@@ -30,9 +28,7 @@
    </associate>
    <associate type="Example">
       <info>
-         <info.caption>
-            <caption>Example of a Unit Vector</caption>
-         </info.caption>
+         <info.caption>Example of a Unit Vector</info.caption>
          <para>
             <para.body>For example, the unit vector in the direction of <math>
                   <latex>\Vect{x}=(4,2,4)</latex>
@@ -45,9 +41,7 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment on nondegeneracy property of norm</caption>
-         </info.caption>
+         <info.caption>Comment on nondegeneracy property of norm</info.caption>
          <para>
             <para.body>In other words: there is exactly one vector in <math>
                   <latex>\RNr[n]</latex>
@@ -304,9 +298,7 @@
                         </math>
                      </hot>
                      <info>
-                        <info.caption>
-                           <caption>Explanation</caption>
-                        </info.caption>
+                        <info.caption>Explanation</info.caption>
                         <para>
                            <para.body>Here we use the previous property of the norm operation: <math>
                                  <latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex>
@@ -324,9 +316,7 @@
                         </math>
                      </hot>
                      <info>
-                        <info.caption>
-                           <caption>Explanation</caption>
-                        </info.caption>
+                        <info.caption>Explanation</info.caption>
                         <para>
                            <para.body>Here we use that <math>
                                  <latex>|\Vect{x}| &gt; 0</latex>

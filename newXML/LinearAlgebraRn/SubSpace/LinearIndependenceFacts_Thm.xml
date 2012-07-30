@@ -8,9 +8,7 @@
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_LinearIndependenceFacts"/>
       <info>
-         <info.caption>
-            <caption>Examples</caption>
-         </info.caption>
+         <info.caption>Examples</info.caption>
          <para>
             <para.body>Examples demonstrating applications of this proposition.</para.body>
          </para>

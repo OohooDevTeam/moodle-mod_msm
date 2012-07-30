@@ -242,4 +242,68 @@ span.parttheoremtitle
     margin-left: 10px;
 }
 
+.defminibuttons
+{
+    background-color: #FF6140;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    float:top;
+}
+.defminibutton
+{
+    border:1px solid #858181;
+    background-color: #FF6140;
+    background-origin:border-box;
+    display:inline-block;
+    margin-left:5px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family:arial;
+    font-size:11px;
+    font-weight:bold;
+    padding:0px 7px;
+    text-decoration:none;
+    float:left;
+}
+
+.defminibutton:hover
+{
+    background-color:#2DD6D6;
+}
+
+/* for associates that is associated with the theorem */
+.minibuttons
+{
+    background-color: #A61D00;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    float:top;
+}
+.minibutton
+{
+    border:1px solid #858181;
+    background-color: #A61D00;
+    background-origin:border-box;
+    display:inline-block;
+    margin-left:5px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family:arial;
+    font-size:11px;
+    font-weight:bold;
+    padding:0px 7px;
+    text-decoration:none;
+    float:left;
+
+}
+.minibutton:hover
+{
+    background-color:#6060B5;
+}
 

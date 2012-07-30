@@ -8,9 +8,7 @@
    <associate type="Comment">
       <showme.pack.ref showmePackID="Exa_HarmonicSeries"/>
       <info>
-         <info.caption>
-            <caption>Warning</caption>
-         </info.caption>
+         <info.caption>Warning</info.caption>
          <para>
             <para.body>You may wonder if the converse of this proposition is also true: if <math>
                   <latex>\lim_{n\to \infty} a_n = 0</latex>
@@ -36,9 +34,7 @@
             <term>of a series</term>
             <term>to a number</term>
             <info>
-               <info.caption>
-                  <caption>Proposition</caption>
-               </info.caption>
+               <info.caption>Proposition</info.caption>
                <para>
                   <para.body>If <math>
                         <latex>\sum_{n=0}^{\infty} a_n=L\in\RNr</latex>

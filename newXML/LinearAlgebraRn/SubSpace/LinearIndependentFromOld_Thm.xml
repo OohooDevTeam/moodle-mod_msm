@@ -130,9 +130,7 @@
 			<subordinate>
                      <hot>conclude</hot>
                      <info>
-                        <info.caption>
-                           <caption>How do we conclude this?</caption>
-                        </info.caption>
+                        <info.caption>How do we conclude this?</info.caption>
                         <para>
                            <para.body>We know that the vectors <math>
                                  <latex>\Vect{a}_1,\dots ,\Vect{a}_p</latex>
@@ -166,9 +164,7 @@ x_{1p}t_1 &amp; + &amp; \cdots &amp; + &amp; x_{np}t_n &amp; = &amp; 0
 			<subordinate>
                      <hot>linearly independent</hot>
                      <info>
-                        <info.caption>
-                           <caption>Why are these column vectors linearly independent?</caption>
-                        </info.caption>
+                        <info.caption>Why are these column vectors linearly independent?</info.caption>
                         <para>
                            <para.body>This is what it means: the vectors <math>
                                  <latex>\Vect{x}_1,\dots ,\Vect{x}_n</latex>

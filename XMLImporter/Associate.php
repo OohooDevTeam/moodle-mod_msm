@@ -377,6 +377,79 @@ class Associate extends Element
         }
     }
 
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $associateRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($associateRecord))
+        {
+            $this->compid = $compid;
+            $this->description = $associateRecord->description;
+        }
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        $this->infos = array();
+
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            if ($childtablename == 'msm_info')
+            {
+                $info = new MathInfo();
+                $info->loadFromDb($child->unit_id, $child->id);
+                $this->infos[] = $info;
+            }
+        }
+
+//        print_object($this);
+
+        return $this;
+    }
+
+    function displayhtml()
+    {
+        global $DB;
+
+        $content = '';
+
+        $associateParentID = $DB->get_record('msm_compositor', array('id' => $this->compid))->parent_id;
+
+        $associateParenttable = $DB->get_record('msm_compositor', array('id' => $associateParentID))->table_id;
+
+        $associateParentTablename = $DB->get_record('msm_table_collection', array('id' => $associateParenttable))->tablename;
+
+        if (($associateParentTablename == 'msm_def') || ($associateParentTablename == 'msm_comment'))
+        {
+            $content .= "<li class='defminibutton' id='defminibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+            $content .= "<span style='cursor:pointer'>";
+            $content .= $this->description;
+            $content .= "</span>";
+            $content .= "</li>";
+
+            $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
+            $content .= $this->infos[0]->info_content;
+            $content .= "</div>";
+        }
+        if ($associateParentTablename == 'msm_theorem')
+        {
+            $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+            $content .= "<span style='cursor:pointer'>";
+            $content .= $this->description;
+            $content .= "</span>";
+            $content .= "</li>";
+
+            $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
+            $content .= $this->infos[0]->info_content;
+            $content .= "</div>";
+        }
+
+        return $content;
+    }
+
 }
 
 ?>

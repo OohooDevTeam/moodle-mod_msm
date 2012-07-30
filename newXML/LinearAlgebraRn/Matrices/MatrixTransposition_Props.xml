@@ -6,9 +6,7 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Convention when reading this proposition</caption>
-         </info.caption>
+         <info.caption>Convention when reading this proposition</info.caption>
          <para>
             <para.body>In the formuli of this proposition, we assume that the matrices involved satisfy the size property so that multiplication and addition is defined.</para.body>
          </para>
@@ -16,9 +14,7 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment on multiplication and transposition of matrices</caption>
-         </info.caption>
+         <info.caption>Comment on multiplication and transposition of matrices</info.caption>
          <para>
             <para.body>When transposing the product <math>
                   <latex>\Mtrx{A}\Mtrx{B}</latex>

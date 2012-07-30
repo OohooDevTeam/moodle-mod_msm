@@ -7,9 +7,7 @@
    <caption>Bolzano-Weierstraß Theorem</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment</caption>
-         </info.caption>
+         <info.caption>Comment</info.caption>
          <para>
             <para.body>The Bolzano-Weierstraß theorem was first proved by Bolzano in 1817 as a step toward a proof of the intermediate value theorem. About half a century later the theorem was rediscovered by Karl Weierstraß.</para.body>
          </para>
@@ -57,9 +55,7 @@
          <index.glossary>
             <term>Bolzano-Weierstraß theorem</term>
             <info>
-               <info.caption>
-                  <caption>Bolzano-Weierstraß theorem</caption>
-               </info.caption>
+               <info.caption>Bolzano-Weierstraß theorem</info.caption>
                <para>
                   <para.body>Every bounded sequence in <math>
                         <latex>\RNr</latex>

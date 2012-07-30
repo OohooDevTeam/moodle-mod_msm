@@ -44,9 +44,7 @@
 				<subordinate>
                      <hot>then</hot>
                      <info>
-                        <info.caption>
-                           <caption>Explanation of the symbols in this formula</caption>
-                        </info.caption>
+                        <info.caption>Explanation of the symbols in this formula</info.caption>
                         <para>
                            <para.body>
                               <math>

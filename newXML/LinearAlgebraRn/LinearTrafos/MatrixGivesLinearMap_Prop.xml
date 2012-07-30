@@ -7,11 +7,9 @@
    <caption>Matrix gives linear map</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation: How to construct <math>
-                  <latex>L</latex>
-               </math>
-            </caption>
+         <info.caption>Explanation: How to construct <math>
+               <latex>L</latex>
+            </math>
          </info.caption>
          <para>
             <para.body>Details on how the matrix <math>

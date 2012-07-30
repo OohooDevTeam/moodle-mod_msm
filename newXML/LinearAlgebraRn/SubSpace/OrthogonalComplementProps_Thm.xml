@@ -7,9 +7,7 @@
    <caption>Orthogonal complement: properties</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>An explanation of the meaning of the properties of the orthogonal complement operation.</para.body>
          </para>
@@ -34,9 +32,7 @@
                         </math>
                      </hot>
                      <info>
-                        <info.caption>
-                           <caption>What does this notation mean?</caption>
-                        </info.caption>
+                        <info.caption>What does this notation mean?</info.caption>
                         <para>
                            <para.body>Given sets <math>
                                  <latex>S</latex>

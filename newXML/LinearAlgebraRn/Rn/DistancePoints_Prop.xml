@@ -15,9 +15,7 @@
    </associate>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>This formula is a consequence of the Theorem of Pythagoras. – See details of this</para.body>
          </para>
