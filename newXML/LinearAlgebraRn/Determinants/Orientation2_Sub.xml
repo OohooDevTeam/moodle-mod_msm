@@ -14,7 +14,7 @@
             <para>
                <para.body>‘Counterclockwise’ and ‘clockwise’ motions in the plane are mirrored siblings.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/Orientation2.png"/>
             </media>
             <para>
@@ -126,7 +126,7 @@
                      <latex>\omega(\Vect{x},\Vect{y}) = +1</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/Orientation2CClockwise.png"/>
             </media>
             <para>
@@ -138,7 +138,7 @@
                      <latex>\omega(\Vect{x},\Vect{y}) = -1</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/Orientation2Clockwise.png"/>
             </media>
          </block.body>

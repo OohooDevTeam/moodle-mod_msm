@@ -299,7 +299,7 @@
                      <hot>intervals</hot>
                      <info>
                         <info.caption>Interval neighborhood</info.caption>
-                        <media xmlns="Theorem" type="image" active="0" inline="0">
+                        <media type="image" active="0" inline="0">
                            <img xmlns="" src="ims/IntervalNeighborhood.png"/>
                         </media>
                      </info>

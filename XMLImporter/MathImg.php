@@ -59,8 +59,6 @@ class MathImg extends Element
         global $DB, $CFG;
         $data = new stdClass();
         $data->string_id = $this->string_id;
-
-//        print_object($this->xmlpath);
         $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
                 . basename($this->xmlpath) . '/' . $this->src;
         $data->height = $this->height;
@@ -86,6 +84,66 @@ class MathImg extends Element
                 $this->id = $DB->insert_record($this->tablename, $data);
             }
         }
+    }
+
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $imgRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($imgRecord))
+        {
+            $this->image_mapping = $imgRecord->image_mapping;
+            $this->src = $imgRecord->src;
+            $this->height = $imgRecord->height;
+            $this->width = $imgRecord->width;
+        }
+
+        return $this;
+    }
+
+    function displayhtml()
+    {
+        $content = '';
+
+        $imagename = explode('/', $this->src);
+
+        $usemap = explode('.', end($imagename));
+        $usemapname = $usemap[0];
+
+        if ((!empty($this->height)) || (!empty($this->width)))
+        {
+            if (!empty($this->image_mapping))
+            {
+                $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $usemapname . "'/>";
+                $imagemapping = str_replace("<image.mapping>", "<map name='" . $usemapname . "'>", $this->image_mapping);
+                $finalimagemapping = str_replace("</image.mapping>", "</map name>", $imagemapping);
+                $content .= $finalimagemapping;
+            }
+            else
+            {
+                $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "'/>";
+            }
+        }
+        else
+        {
+            if (!empty($this->image_mapping))
+            {
+                $content .= "<img src='" . $this->src . "' usemap='#" . $usemapname . "' height200' width='300'/>";
+                $imagemapping = str_replace("<image.mapping>", "<map name='" . $usemapname . "'>", $this->image_mapping);
+                $finalimagemapping = str_replace("</image.mapping>", "</map name>", $imagemapping);
+                $content .= $finalimagemapping;
+            }
+            else
+            {
+                $content .= "<img src='" . $this->src . "' height='200' width='300'/>";
+            }
+        }
+
+
+
+        return $content;
     }
 
 }

@@ -83,7 +83,9 @@ class StatementTheorem extends Element
     {
         global $DB;
         $data = new stdClass();
-        $data->statement_content = $this->content;
+        
+        // need to group all the children of statement.theorem for loadXML function in displaySubordinate function later...
+        $data->statement_content = "<statement.theorem>" . $this->content . "</statement.theorem>";
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
 
@@ -264,6 +266,7 @@ class StatementTheorem extends Element
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->childs = array();
+        $this->subordinates = array();
 
         foreach ($childElements as $child)
         {
@@ -284,6 +287,7 @@ class StatementTheorem extends Element
                     break;
             }
         }
+        
         return $this;
     }
 
@@ -291,13 +295,13 @@ class StatementTheorem extends Element
     {
         $content = '';
         $content .= $this->displaySubordinate($this, $this->statement_content);
-        $content .= "<br />";
+        $content .= "<br />";      
 
         foreach ($this->childs as $childComponent)
         {
             $content .= $childComponent->displayhtml();
         }
-
+        
         return $content;
     }
 

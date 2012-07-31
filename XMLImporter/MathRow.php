@@ -82,6 +82,53 @@ class MathRow extends Element
             }
         }
     }
+    
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+        
+        $mathrowRecord = $DB->get_record($this->tablename, array('id'=>$id));
+        
+        if(!empty($mathrowRecord))
+        {
+            $this->compid = $compid;
+            $this->rowspan = $mathrowRecord->rowspan;
+        }
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+        $this->childs = array();
+        
+        foreach($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
+            
+            if($childtablename == 'msm_math_cell')
+            {
+                $mathcell = new MathCell();
+                $mathcell->loadFromDb($child->unit_id, $child->id);
+                $this->childs[] = $mathcell;
+            }
+        }
+        
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+        
+        $content .= "<tr class='matharrayrow' align='center'>";
+        
+        foreach($this->childs as $column)
+        {
+            $content .= $column->displayhtml($column->rowspan);
+        }
+        
+        $content .= "</tr>";
+        
+        
+        return $content;
+    }
 }
 
 ?>

@@ -14,7 +14,7 @@
             <para>
                <para.body>We encounter projections of objects onto planar surfaces on a daily basis, for example in the form of the shadow of an object.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="1" inline="0">
+            <media type="image" active="1" inline="0">
                <img xmlns="" src="ims/ProjectionParallelToVector.png"/>
             </media>
             <para>

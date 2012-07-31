@@ -14,7 +14,7 @@
             <para>
                <para.body>‘Right hand’ and ‘left hand’ in 3-space are mirrored siblings.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/LeftHandRightHand.jpg"/>
             </media>
             <para>
@@ -148,7 +148,7 @@
                      <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = +1</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/3OrientationRightHand.gif"/>
             </media>
             <para>
@@ -160,7 +160,7 @@
                      <latex>\omega(\Vect{x},\Vect{y},\Vect{z}) = -1</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/3OrientationLeftHand.gif"/>
             </media>
          </block.body>

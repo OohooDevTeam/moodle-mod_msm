@@ -48,7 +48,7 @@
             <para>
                <para.body>to make a definition of distance between the two numbers</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/DistanceNumbers.png"/>
             </media>
          </block.body>

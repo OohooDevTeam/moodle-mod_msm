@@ -37,7 +37,7 @@ R_{\theta}\from \RNr[2] \longrightarrow \RNr[2],\quad R_{\theta}(x,y) =
             <para>
                <para.body>To understand where this matrix comes from, consider the picture below</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/Rotation.png"/>
             </media>
             <para>

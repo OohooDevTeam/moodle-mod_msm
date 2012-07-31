@@ -51,7 +51,7 @@
     </xsl:template>
     
     <xsl:template match="bk:figure">
-        <xsl:element name="media" namespace="Theorem">
+        <xsl:element name="media" namespace="Unit">
             <xsl:if test="./@id">
                 <xsl:attribute name="id">
                     <xsl:value-of select="./@id"/>
@@ -95,13 +95,13 @@
                     
                     <xsl:if test="child::node()[name()='info' or name()='caption']">
                         
-                        <xsl:element name="extended.caption" namespace="Theorem">
+                        <xsl:element name="extended.caption" namespace="Unit">
                             
                             <xsl:if test="child::node()[name()='info']">
                                 
-                                <xsl:element name="image.mapping" namespace="Theorem">
+                                <xsl:element name="image.mapping" namespace="Unit">
                                     
-                                    <xsl:element name="area" namespace="Theorem">
+                                    <xsl:element name="area" namespace="Unit">
                                         <xsl:attribute name="shape">
                                             <xsl:text>rect</xsl:text>
                                         </xsl:attribute>

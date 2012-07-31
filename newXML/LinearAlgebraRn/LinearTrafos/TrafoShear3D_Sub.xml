@@ -14,7 +14,7 @@
             <para>
                <para.body>The picture below shows a cube being transformed by applying a shear transformation.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/Trafo_Shear3D.jpg"/>
             </media>
             <para>

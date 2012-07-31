@@ -23,7 +23,7 @@
                      <latex>\RNr[n]</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/SubSpaceClosedScalarMultiplication.gif"/>
             </media>
          </block.body>
@@ -43,7 +43,7 @@
                      <latex>V</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/ClosedScalarMultiplication_1.gif"/>
             </media>
             <para>
@@ -68,7 +68,7 @@
                      <latex>S</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/Lattice2_2.gif"/>
             </media>
             <para>

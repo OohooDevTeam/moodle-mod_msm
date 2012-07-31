@@ -30,7 +30,7 @@
             <para>
                <para.body>In the graphic below this process gives</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/SubSequence.png"/>
             </media>
             <ol>

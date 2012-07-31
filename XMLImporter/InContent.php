@@ -267,6 +267,7 @@ class InContent extends Element
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->subordinates = array();
+        $this->childs = array();
 
         foreach ($childElements as $child)
         {
@@ -279,6 +280,11 @@ class InContent extends Element
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
                     break;
+                case('msm_media'):
+                   $media = new Media();
+                   $media->loadFromDb($child->unit_id, $child->id);
+                   $this->childs[] = $media;
+                   break;
             }
         }
 
@@ -295,6 +301,11 @@ class InContent extends Element
 //        print_object($this);
 
         $content .= $this->displaySubordinate($this, $this->content);
+        
+        foreach($this->childs as $child)
+        {
+            $content .= $child->displayhtml();
+        }
 
         return $content;
     }

@@ -34,7 +34,7 @@ class MathCell extends Element
         $this->bgcolor = $DomElement->getAttribute('bgcolor');
         $this->fontcolor = $DomElement->getAttribute('fontcolor');
 
-         $this->infos = array();
+        $this->infos = array();
         $this->companion = array(); // if the ref already exists inside db table, then store in here as id number
         $this->packs = array();
         $this->comments = array();
@@ -281,7 +281,6 @@ class MathCell extends Element
                 }
             }
         }
-
     }
 
     function saveIntoDb($position, $parentid = '', $siblingid = '')
@@ -294,11 +293,11 @@ class MathCell extends Element
         $data->bgcolor = $this->bgcolor;
         $data->fontcolor = $this->fontcolor;
         $data->content = $this->content;
-        
+
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
-        
-       $elementPositions = array();
+
+        $elementPositions = array();
         $sibling_id = null;
 
 
@@ -348,8 +347,8 @@ class MathCell extends Element
                 $elementPositions['subunit' . '-' . $key] = $subunit->position;
             }
         }
-        
-         asort($elementPositions);
+
+        asort($elementPositions);
 
         foreach ($elementPositions as $element => $value)
         {
@@ -362,18 +361,18 @@ class MathCell extends Element
 //
 //                    if (empty($infoRecord))
 //                    {
-                        if (empty($sibling_id))
-                        {
-                            $info = $this->infos[$infoString[1]];
-                            $info->saveIntoDb($info->position, $this->compid);
-                            $sibling_id = $info->compid;
-                        }
-                        else
-                        {
-                            $info = $this->infos[$infoString[1]];
-                            $info->saveIntoDb($info->position, $this->compid, $sibling_id);
-                            $sibling_id = $info->compid;
-                        }
+                    if (empty($sibling_id))
+                    {
+                        $info = $this->infos[$infoString[1]];
+                        $info->saveIntoDb($info->position, $this->compid);
+                        $sibling_id = $info->compid;
+                    }
+                    else
+                    {
+                        $info = $this->infos[$infoString[1]];
+                        $info->saveIntoDb($info->position, $this->compid, $sibling_id);
+                        $sibling_id = $info->compid;
+                    }
 //                    }
 //                    else
 //                    {
@@ -524,7 +523,93 @@ class MathCell extends Element
                     break;
             }
         }
+    }
+
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $mathcellRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($mathcellRecord))
+        {
+            $this->compid = $compid;
+            $this->colspan = $mathcellRecord->colspan;
+            $this->halign = $mathcellRecord->halign;
+            $this->valign = $mathcellRecord->valign;
+            $this->bgcolor = $mathcellRecord->bgcolor;
+            $this->fontcolor = $mathcellRecord->fontcolor;
+            $this->content = $mathcellRecord->content;
+        }
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+        $this->refchilds = array();
+        $this->childs = array();
+
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($chidltablename)
+            {
+                case('msm_comment'):
+                    $comment = new MathComment();
+                    $comment->loadFromDb($child->unit_id, $child->id);
+                    $this->refchilds[] = $comment;
+                    break;
+                case('msm_def'):
+                    $def = new Definition();
+                    $def->loadFromDb($child->unit_id, $child->id);
+                    $this->refchilds[] = $def;
+                    break;
+                case('msm_theorem'):
+                    $theorem = new Theorem();
+                    $theorem->loadFromDb($child->unit_id, $child->id);
+                    $this->refchilds[] = $theorem;
+                    break;
+
+                // depending on what to do with showme/quiz, it maybe included here or not
+                case('msm_unit'):
+                    $unit = new Unit();
+                    $unit->loadFromDb($child->unit_id, $child->id);
+                    $this->refchilds[] = $unit;
+                    break;
+
+                case('msm_info'):
+                    $info = new MathInfo();
+                    $info->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[$this->content] = $info;
+            }
+        }
+
+        return $this;
+    }
+
+    function displayhtml($rowspan)
+    {
+        $content = '';
+
+        $content .= "<td class='matharraycell' colspan='" . $this->colspan . "' rowspan='" . $rowspan . "' align='" . $this->halign . "' valign='" . $this->valign . "'>";
         
+        // if info exists then need to set up the dialog popup window, otherwise, just show the content
+        if (empty($this->childs))
+        {
+            $content .= $this->content;
+        }
+        else
+        {
+            $content .= "<a id='hottag-" . $this->compid . "' class='hottag' onmouseover='popup(" . $this->compid . ")'>";
+            $content .= $this->content;
+            $content .= "</a>";
+
+            $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->childs[$this->content]->caption . '">';
+            $content .= $this->childs[$this->content]->info_content;
+            $content .= "</div>";
+        }
+        
+        $content .= "</td>";
+        
+        return $content;
     }
 
 }

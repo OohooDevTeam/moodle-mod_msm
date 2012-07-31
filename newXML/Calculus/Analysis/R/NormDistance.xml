@@ -15,7 +15,7 @@
             <para>
                <para.body>In this section we use the norm operation to introduce the concept of distance between two real numbers. To this end it is helpful to relate the real numbers to points on a line:</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/RLine.gif"/>
             </media>
             <para>

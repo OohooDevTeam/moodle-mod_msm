@@ -34,6 +34,7 @@ class Block extends Element
         $this->math_displays = array();
         $this->math_arrays = array();
         $this->tables = array();
+        $this->medias = array();
 
         $this->caption = $this->getDomAttribute($DomElement->getElementsByTagName('caption'));
 
@@ -127,6 +128,13 @@ class Block extends Element
                             $comment->loadFromXml($child, $position);
                             $this->comments[] = $comment;
                             break;
+                        
+                        case('media'):
+                            $position = $position + 1;
+                            $media = new Media($this->xmlpath);
+                            $media->loadFromXml($child, $position);
+                            $this->medias[] = $media;
+                            break;
                     }
                 }
             }
@@ -167,6 +175,14 @@ class Block extends Element
             foreach ($this->comments as $key => $comment)
             {
                 $elementPositions['comment' . '-' . $key] = $comment->position;
+            }
+        }
+        
+        if (!empty($this->medias))
+        {
+            foreach ($this->medias as $key => $media)
+            {
+                $elementPositions['media' . '-' . $key] = $media->position;
             }
         }
 
@@ -274,6 +290,24 @@ class Block extends Element
                         $sibling_id = $comment->compid;
                     }
                     break;
+                    
+                    case(preg_match("/^(media.\d+)$/", $element) ? true : false):
+                    $mediaString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $media = $this->medias[$mediaString[1]];
+                        $media->saveIntoDb($media->position, $parentid);
+                        $sibling_id = $media->compid;
+                    }
+                    else
+                    {
+                        $media = $this->medias[$mediaString[1]];
+                        $media->saveIntoDb($media->position, $parentid, $sibling_id);
+                        $sibling_id = $media->compid;
+                    }
+                    break;
+                    
                 case(preg_match("/^(para.\d+)$/", $element) ? true : false):
                     $paraString = split('-', $element);
 
@@ -405,11 +439,17 @@ class Block extends Element
                     $this->childs[] = $incontent;
                     break;
 
-//               case('msm_math_array'):
-//                   $matharray = new MathArray();
-//                   $matharray->loadFromDb($child->unit_id, $child->id);
-//                   $this->childs[] = $matharray;
-//                   break;
+               case('msm_math_array'):
+                   $matharray = new MathArray();
+                   $matharray->loadFromDb($child->unit_id, $child->id);
+                   $this->childs[] = $matharray;
+                   break;
+               
+               case('msm_media'):
+                   $media = new Media();
+                   $media->loadFromDb($child->unit_id, $child->id);
+                   $this->childs[] = $media;
+                   break;
 //               
 //               case('msm_table'):
 //                   $table = new Table();

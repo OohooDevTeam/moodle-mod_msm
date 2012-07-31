@@ -14,7 +14,7 @@
             <para>
                <para.body>Shear transformations occur in a variety of contexts, for example when converting ordinary type into italics.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/ShearingText.gif"/>
             </media>
             <para>
@@ -66,7 +66,7 @@
                   </para>
                </li>
             </ul>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/ShearR2_1.png"/>
             </media>
             <para>

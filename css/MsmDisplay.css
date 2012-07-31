@@ -307,3 +307,8 @@ span.parttheoremtitle
     background-color:#6060B5;
 }
 
+table.matharray
+{
+    width: 200px;
+}
+

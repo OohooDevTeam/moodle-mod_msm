@@ -72,76 +72,6 @@ class Para extends Element
         {
             $this->content[] = $content;
         }
-
-//        foreach ($DomElement->childNodes as $child)
-//        {
-//            if ($child->nodeType == XML_ELEMENT_NODE)
-//            {
-//
-//                if ($child->tagName == 'para.body')
-//                {
-//                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
-//                    {
-//                        $this->indexauthors[] = $indexauthor;
-//                    }
-//
-//                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
-//                    {
-//                        $this->indexglossarys[] = $indexglossary;
-//                    }
-//
-//                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
-//                    {
-//                        $this->indexsymbols[] = $indexsymbol;
-//                    }
-//                    foreach ($this->processSubordinate($child, $position) as $subordinate)
-//                    {
-//                        $this->subordinates[] = $subordinate;
-//                    }
-//
-//                    foreach ($this->processMedia($child, $position) as $media)
-//                    {
-//                        $this->medias[] = $media;
-//                    }
-//
-//                    foreach ($this->processContent($child, $position) as $content)
-//                    {
-//                        $this->content[] = $content;
-//                    }
-//                }
-//                if (($child->tagName !== 'para.body') || ($child->tagName !== 'caption') || ($child->tagName !== 'index.symbol')|| ($child->tagName !== 'index.glossary')|| ($child->tagName !== 'index.author'))
-//                {
-//                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
-//                    {
-//                        $this->indexauthors[] = $indexauthor;
-//                    }
-//
-//                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
-//                    {
-//                        $this->indexglossarys[] = $indexglossary;
-//                    }
-//
-//                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
-//                    {
-//                        $this->indexsymbols[] = $indexsymbol;
-//                    }
-//                    foreach ($this->processSubordinate($child, $position) as $subordinate)
-//                    {
-//                        $this->subordinates[] = $subordinate;
-//                    }
-//
-//                    foreach ($this->processMedia($child, $position) as $media)
-//                    {
-//                        $this->medias[] = $media;
-//                    }
-//
-//                    foreach ($this->processContent($child, $position) as $content)
-//                    {
-//                        $this->content[] = $content;
-//                    }
-//                }
-//            }
-//        }
     }
 
     /**
@@ -167,6 +97,7 @@ class Para extends Element
 
                 $this->id = $DB->insert_record($this->tablename, $data);
                 $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+                $siblingid = $this->compid;
             }
         }
         else
@@ -329,6 +260,7 @@ class Para extends Element
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->subordinates = array();
+        $this->childs = array();
 
         foreach ($childElements as $child)
         {
@@ -341,6 +273,12 @@ class Para extends Element
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
                     break;
+
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $media;
+                    break;
             }
         }
         return $this;
@@ -351,6 +289,11 @@ class Para extends Element
         $content = '';
 
         $content .= $this->displaySubordinate($this, $this->para_content);
+        
+        foreach($this->childs as $child)
+        {
+            $content .= $child->displayhtml();
+        }
 
         return $content;
     }

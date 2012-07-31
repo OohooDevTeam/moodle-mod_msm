@@ -14,7 +14,7 @@
             <para>
                <para.body>To see the difference between ‘volume’ and ‘oriented volume’, consider the picture below</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/OrientedVolume.png"/>
             </media>
             <para>

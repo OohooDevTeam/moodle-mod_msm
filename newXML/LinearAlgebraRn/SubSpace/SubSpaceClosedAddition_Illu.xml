@@ -23,7 +23,7 @@
                      <latex>\RNr[n]</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/SubSpaceClosedAddition.gif"/>
             </media>
             <para>
@@ -33,7 +33,7 @@
                      <latex>\RNr[2]</latex>
                   </math> which fails to be closed under vector addition. It is, therefore, not a subvector space.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/SubSetNotClosedAddition.gif"/>
             </media>
             <para>
@@ -58,7 +58,7 @@
                      <latex>S</latex>
                   </math> is not a subvector space.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/SubSetClosedAdditionNotScalarMult.gif"/>
             </media>
          </block.body>

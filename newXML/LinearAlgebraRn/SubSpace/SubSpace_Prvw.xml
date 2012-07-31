@@ -52,10 +52,10 @@
                   </para>
                </li>
             </ul>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/SubSpaceClosedAddition.gif"/>
             </media>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/SubSpaceClosedScalarMultiplication.gif"/>
             </media>
          </block.body>
@@ -69,7 +69,7 @@
                      <latex>\RNr[2]</latex>
                   </math> which is not a subvector space.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/SubSetNotClosedAddition.gif"/>
             </media>
             <para>

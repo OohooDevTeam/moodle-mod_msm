@@ -63,7 +63,7 @@
                      <latex>\Vect{s}</latex>
                   </math>. (The red dot represents the origin.)</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/OrthogonalComplement1.png"/>
             </media>
             <para>
@@ -74,7 +74,7 @@
                   </math>
                </para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/OrthogonalComplement3.png"/>
             </media>
             <para>
@@ -127,7 +127,7 @@
                      <latex>S^{\bot}</latex>
                   </math> is just the origin, represented here by a red dot.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/OrthogonalComplement2.png"/>
             </media>
          </block.body>

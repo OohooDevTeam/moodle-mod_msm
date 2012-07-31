@@ -24,7 +24,7 @@
                      <latex>\Vect{y}</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/Box2_1.png"/>
             </media>
             <para>
@@ -57,7 +57,7 @@
                      <latex>X</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/ParallelogramSpan.png"/>
             </media>
             <para>
@@ -84,7 +84,7 @@
                      <latex>\Vect{v}</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/Box2_2.png"/>
             </media>
          </block.body>

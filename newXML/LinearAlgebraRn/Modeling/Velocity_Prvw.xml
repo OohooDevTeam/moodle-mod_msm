@@ -15,7 +15,7 @@
       <para>
          <para.body>During its trip,  the particle changes its location at each instant. This change of location is characterized by the direction and the speed of the motion at that instant. Both data combined comprise the velocity at that instant. As velocity is characterized by direction and magnitude, we may represent it by a vector. Below you can see an illustration of the velocity vectors at two instants of this motion</para.body>
       </para>
-      <media xmlns="Theorem" type="image" active="0" inline="0">
+      <media type="image" active="0" inline="0">
          <img xmlns="" src="ims/VelocityVector01.gif"/>
       </media>
    </body>

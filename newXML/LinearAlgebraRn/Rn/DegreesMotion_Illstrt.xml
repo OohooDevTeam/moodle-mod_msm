@@ -13,14 +13,14 @@
          <para.body>
             <strong>A curve is 1-dimensional</strong> At each of its points there is exactly one direction of motion, call it ‘forward-backward’.</para.body>
       </para>
-      <media xmlns="Theorem" type="image" active="0" inline="0">
+      <media type="image" active="0" inline="0">
          <img xmlns="" src="ims/Curve.gif"/>
       </media>
       <para>
          <para.body>
             <strong>A surface is 2-dimensional</strong> At each of its points there are exactly two independent directions of motion, call them ‘forward-backward’ and ‘left-right’.</para.body>
       </para>
-      <media xmlns="Theorem" type="image" active="0" inline="0">
+      <media type="image" active="0" inline="0">
          <img xmlns="" src="ims/Surface.jpg"/>
       </media>
    </body>

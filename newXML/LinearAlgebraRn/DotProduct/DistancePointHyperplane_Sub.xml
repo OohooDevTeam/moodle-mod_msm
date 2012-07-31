@@ -22,7 +22,7 @@
                      <latex>\Pi</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/DistancePointHyperplane01.gif"/>
             </media>
             <para>
@@ -51,7 +51,7 @@
                   </cell>
                </row>
             </math.array>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/DistancePointHyperplane02.gif"/>
             </media>
             <para>

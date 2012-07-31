@@ -96,6 +96,51 @@ class Media extends Element
             }
         }
     }
+    
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+        
+        $mediaRecord = $DB->get_record('msm_media', array('id'=>$id));
+        
+        if(!empty($mediaRecord))
+        {
+            $this->compid = $compid;
+            $this->active = $mediaRecord->active;
+            $this->inline = $mediaRecord->inline;
+            $this->media_type = $mediaRecord->media_type;            
+        }
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+        
+        $this->childs = array();
+        
+        foreach($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
+            
+            if($childtablename == 'msm_img')
+            {
+                $img = new MathImg();
+                $img->loadFromDb($child->unit_id, $child->id);
+                $this->childs[] = $img;
+            }
+        }        
+        
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+        
+        foreach($this->childs as $childComponent)
+        {
+            $content .= $childComponent->displayhtml();
+        }
+        
+        return $content;
+    }
 
 }
 

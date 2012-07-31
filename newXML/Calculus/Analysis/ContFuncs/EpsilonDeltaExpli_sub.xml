@@ -53,7 +53,7 @@
                      <latex>f(x)</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/EpsilonDelta1.png"/>
             </media>
             <para>
@@ -81,7 +81,7 @@
                      <latex>f(x)</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/EpsilonDelta3.png"/>
             </media>
             <para>
@@ -97,7 +97,7 @@
                      <latex>f(x)+\varepsilon</latex>
                   </math>.</para.body>
             </para>
-            <media xmlns="Theorem" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img xmlns="" src="ims/EpsilonDelta2.png"/>
             </media>
             <para>
