@@ -74,7 +74,11 @@
                   </para>
 				
 				              <para align="center">
-                     <para.body/>
+                     <para.body>
+                        <media xmlns="" type="image" active="0" inline="0">
+                           <img src="ims/LinearEq_1Gnrl.gif" height="23" width="351"/>
+                        </media>
+                     </para.body>
                   </para>
 				
 				              <para>
@@ -86,7 +90,101 @@
 	
 	        <para align="center">
             <para.body>
-	</para.body>
+               <media xmlns="" type="image" active="1" inline="0">
+                  <img src="ims/LinearEq_1Gnrl.gif" height="23" width="351">
+                     <image.mapping>
+                        <area xmlns="Unit" shape="rect" coords="0,2,24,19">
+			                        <info>
+                              <info.caption>What does <math>
+                                    <latex>a_1</latex>
+                                 </math> mean</info.caption>
+				
+				                          <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>a_1</latex>
+                                    </math> is the first coefficient of this linear equation.. It is a number which is given.</para.body>
+                              </para>
+			                        </info>
+		                      </area>
+                        <area xmlns="Unit" shape="rect" coords="79,2,103,20">
+			                        <info>
+                              <info.caption>What does <math>
+                                    <latex>a_2</latex>
+                                 </math> mean</info.caption>
+				
+				                          <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>a_2</latex>
+                                    </math> is the second coefficient of this linear equation.. It is a number which is given.</para.body>
+                              </para>
+			                        </info>
+		                      </area>
+                        <area xmlns="Unit" shape="rect" coords="255,2,284,22">
+			                        <info>
+                              <info.caption>What does <math>
+                                    <latex>a_n</latex>
+                                 </math> mean</info.caption>
+				
+				                          <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>a_n</latex>
+                                    </math> is the <math>
+                                       <latex>n</latex>
+                                    </math>-th coefficient of this linear equation.. It is a number which is given.</para.body>
+                              </para>
+			                        </info>
+		                      </area>
+                        <area xmlns="Unit" shape="rect" coords="25,1,47,18">
+			                        <info>
+                              <info.caption>What does <math>
+                                    <latex>x_1</latex>
+                                 </math> mean</info.caption>
+				
+				                          <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>x_1</latex>
+                                    </math> is a variable, also called an unknown. It is the first unknown of this linear equation.</para.body>
+                              </para>
+			                        </info>
+		                      </area>
+                        <area xmlns="Unit" shape="rect" coords="104,1,125,19">
+			                        <info>
+                              <info.caption>What does <math>
+                                    <latex>x_2</latex>
+                                 </math> mean</info.caption>
+				
+				                          <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>x_2</latex>
+                                    </math> is a variable, also called an unknown. It is the second unknown of this linear equation.</para.body>
+                              </para>
+			                        </info>
+		                      </area>
+                        <area xmlns="Unit" shape="rect" coords="284,0,304,19">
+			                        <info>
+                              <info.caption>What does <math>
+                                    <latex>x_n</latex>
+                                 </math> mean</info.caption>
+				
+				                          <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>x_n</latex>
+                                    </math> is a variable, also called an unknown. It is the <math>
+                                       <latex>n</latex>
+                                    </math>-th unknown of this linear equation.</para.body>
+                              </para>
+			                        </info>
+		                      </area>
+                     </image.mapping>
+                  </img>
+               </media>
+	           </para.body>
          </para>
          <para>
             <para.body>We explain the meaning of the symbols in this equation:</para.body>

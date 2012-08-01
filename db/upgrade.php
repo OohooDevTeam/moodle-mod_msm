@@ -1854,6 +1854,38 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012071600, 'msm');
     }
+    
+     if ($oldversion < 2012080100) {
+
+        // Define table msm_image_mapping to be created
+        $table = new xmldb_table('msm_image_mapping');
+
+        // Adding fields to table msm_image_mapping
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('shape', XMLDB_TYPE_CHAR, '20', null, null, null, null);
+        $table->add_field('coordinates', XMLDB_TYPE_CHAR, '200', null, null, null, null);
+
+        // Adding keys to table msm_image_mapping
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
+
+        // Conditionally launch create table for msm_image_mapping
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+        
+         // Define field image_mapping to be dropped from msm_img
+        $table = new xmldb_table('msm_img');
+        $field = new xmldb_field('image_mapping');
+
+        // Conditionally launch drop field image_mapping
+        if ($dbman->field_exists($table, $field)) {
+            $dbman->drop_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012080100, 'msm');
+    }
+
 
     // And that's all. Please, examine and understand the 3 example blocks above. Also
     // it's interesting to look how other modules are using this script. Remember that

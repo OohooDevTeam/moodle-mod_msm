@@ -73,6 +73,7 @@ class TableCollection
         $listOfTables[] = "msm_unit";
         $listOfTables[] = "msm_math_row";
         $listOfTables[] = "msm_math_cell";
+        $listOfTables[] = "msm_image_mapping";
         
         foreach($listOfTables as $key=>$listOfTable)
         {

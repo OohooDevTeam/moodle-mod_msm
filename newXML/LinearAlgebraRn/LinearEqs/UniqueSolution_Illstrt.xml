@@ -17,7 +17,11 @@
                   </math> of three linear equations in three variables.</para.body>
             </para>
             <para align="center">
-               <para.body/>
+               <para.body>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/ThreeEqnsR3Generic.gif" height="333" width="390"/>
+                  </media>
+               </para.body>
             </para>
             <para>
                <para.body>Each of these 3 planes is the solution plane of a linear equation in three unknowns. There is exactly on point which lies on all three planes. Therefore this point is the unique simultaneous solution of the given system of linear equations.</para.body>

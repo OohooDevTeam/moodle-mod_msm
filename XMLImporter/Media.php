@@ -63,38 +63,8 @@ class Media extends Element
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
 
-        $sibling_id = null;
-        $record = $this->checkForRecord($this->img, 'src');
-        if (empty($record))
-        {
-            if (empty($sibling_id))
-            {
-                $this->img->saveIntoDb($this->img->position);
-                $this->img->compid = $this->insertToCompositor($this->img->id, $this->img->tablename, $this->compid);
-                $sibling_id = $this->img->compid;
-            }
-            else
-            {
-                $this->img->saveIntoDb($this->img->position);
-                $this->img->compid = $this->insertToCompositor($this->img->id, $this->img->tablename, $this->compid, $sibling_id);
-                $sibling_id = $this->img->compid;
-            }
-        }
-        else
-        {
-            if (empty($sibling_id))
-            {
-                $recordID = $record->id;
-                $this->img->compid = $this->insertToCompositor($recordID, $this->img->tablename, $this->compid);
-                $sibling_id = $this->img->compid;
-            }
-            else
-            {
-                $recordID = $record->id;
-                $this->img->compid = $this->insertToCompositor($recordID, $this->img->tablename, $this->compid, $sibling_id);
-                $sibling_id = $this->img->compid;
-            }
-        }
+       $this->img->saveIntoDb($this->img->position, $this->compid);
+        
     }
     
     function loadFromDb($id, $compid)

@@ -33,7 +33,11 @@
             </math>. The result is illustrated below.</para.body>
       </para>
       <para align="center">
-         <para.body/>
+         <para.body>
+            <media xmlns="" type="image" active="0" inline="0">
+               <img src="ims/LinearMotion_Illstrtn.gif"/>
+            </media>
+         </para.body>
       </para>
       <para>
          <para.body>In general, the location <math>

@@ -57,7 +57,11 @@
                   </math> is just a plane, in the usual sense of the word, which passes through the origin.</para.body>
             </para>
             <para align="center">
-               <para.body/>
+               <para.body>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/HyperSpace3D.gif"/>
+                  </media>
+               </para.body>
             </para>
             <para>
                <para.body>In the picture above, if we call the hyperspace <math>

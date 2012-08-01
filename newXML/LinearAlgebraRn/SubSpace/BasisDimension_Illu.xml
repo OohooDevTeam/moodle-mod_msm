@@ -42,7 +42,13 @@
                <para.body>A second vector, not parallel to the first, determines a second coordinate axis. These two vectors span a plane, and every vector in this plane can be expressed in exactly one way as a linear combination of the chosen vectors.</para.body>
             </para>
             <para align="center">
-               <para.body>   </para.body>
+               <para.body>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/BasisDimension_2.gif"/>
+                  </media>   <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/BasisDimension_3.gif"/>
+                  </media>
+               </para.body>
             </para>
          </block.body>
       </block>

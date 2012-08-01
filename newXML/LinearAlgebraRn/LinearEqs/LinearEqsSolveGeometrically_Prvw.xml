@@ -84,14 +84,22 @@
                   </math> are not parallel. Therefore, the associated hyperplanes are not parallel and, as a consequence, the simultaneous solutions of the two equations form the intersection of the two planes. It always is a line.</para.body>
             </para>
             <para align="center">
-               <para.body/>
+               <para.body>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/LinearEqsTwo.gif" height="281" width="333"/>
+                  </media>
+               </para.body>
             </para>
             <para>
                <para.body>
                   <strong>Second case</strong> the two hyperplanes are parallel and distinct. There is no point that belongs to both hyperplanes. Therefore there is no simultaneous solution of the given system of two linear equations.</para.body>
             </para>
             <para align="center">
-               <para.body/>
+               <para.body>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/LinearEqsTwoParallel.gif" height="350" width="377"/>
+                  </media>
+               </para.body>
             </para>
             <para>
                <para.body>

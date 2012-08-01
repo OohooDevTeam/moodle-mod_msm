@@ -49,7 +49,11 @@
 		</para.body>
       </para>
       <para align="center">
-         <para.body/>
+         <para.body>
+            <media xmlns="" type="image" active="0" inline="0">
+               <img src="ims/R1_illstrtn.gif"/>
+            </media>
+         </para.body>
       </para>
       <para>
          <para.body>
@@ -101,7 +105,11 @@
          </index.glossary>
       </para>
       <para align="center">
-         <para.body/>
+         <para.body>
+            <media xmlns="" type="image" active="0" inline="0">
+               <img src="ims/R2_illstrtn.gif"/>
+            </media>
+         </para.body>
       </para>
       <para>
          <para.body>If we want to give the name <math>
@@ -114,7 +122,11 @@
                <info>
                   <info.caption>Animation of relating ordered pairs to points in the plane</info.caption>
                   <para align="center">
-                     <para.body/>
+                     <para.body>
+                        <media xmlns="" type="image" active="0" inline="0">
+                           <img src="ims/CrtsnCrdnts2_anm.gif"/>
+                        </media>
+                     </para.body>
                   </para>
                </info>
             </subordinate>, we write <math>
@@ -174,7 +186,11 @@
          </li>
       </ul>
       <para align="center">
-         <para.body/>
+         <para.body>
+            <media xmlns="" type="image" active="0" inline="0">
+               <img src="ims/R3_illstrtn.jpg"/>
+            </media>
+         </para.body>
       </para>
       <para>
          <para.body>If we want to give the name <math>
@@ -215,7 +231,11 @@
                <info>
                   <info.caption>Animation of plotting ordered triples in a 3D-coordinate system.</info.caption>
                   <para align="center">
-                     <para.body/>
+                     <para.body>
+                        <media xmlns="" type="image" active="0" inline="0">
+                           <img src="ims/CrtsnCrdnts3_anm.gif"/>
+                        </media>
+                     </para.body>
                   </para>
                </info>
             </subordinate>  of this plotting process for several points in <math>

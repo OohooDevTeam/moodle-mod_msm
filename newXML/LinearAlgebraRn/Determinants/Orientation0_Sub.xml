@@ -30,7 +30,11 @@
                <row>
                   <cell>
                      <para>
-                        <para.body/>
+                        <para.body>
+                           <media xmlns="" type="image" active="0" inline="0">
+                              <img src="ims/BlueDot.gif"/>
+                           </media>
+                        </para.body>
                      </para>
                   </cell>
                   <cell>
@@ -51,7 +55,11 @@
                <row>
                   <cell>
                      <para>
-                        <para.body/>
+                        <para.body>
+                           <media xmlns="" type="image" active="0" inline="0">
+                              <img src="ims/RedDot.gif"/>
+                           </media>
+                        </para.body>
                      </para>
                   </cell>
                   <cell>

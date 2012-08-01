@@ -15,7 +15,13 @@
                <para.body>The two pictures below show a planar sheet and then the result of deforming it into a twisted band, called a Möbius strip: give</para.body>
             </para>
             <para align="center">
-               <para.body>   </para.body>
+               <para.body>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/MoebiusStrip1.gif"/>
+                  </media>   <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/MoebiusStrip2.jpg" width="240"/>
+                  </media>
+               </para.body>
             </para>
             <para>
                <para.body>This transformation does not transform lines into lines. So it is not linear.</para.body>

@@ -34,7 +34,85 @@
                   </math> are not parallel, we find ourselves in the situation sketched below.</para.body>
             </para>
             <para align="center">
-               <para.body/>
+               <para.body>
+                  <media xmlns="" type="image" active="1" inline="0">
+                     <img src="ims/TwoEqnsR3NonParallel.gif" height="281" width="333">
+                        <image.mapping>
+                           <area xmlns="Unit" shape="circle" coords="109,8,8">
+                              <info>
+                                 <para>
+                                    <para.body>This red dot marks the origin in <math>
+                                          <latex>\RNr[3]</latex>
+                                       </math>.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="95,28,61,68,50,66,95,11,104,18">
+                              <info>
+                                 <para>
+                                    <para.body>This is the normal vector of the solution hyperplane of the first equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="27,91,31,107,1,139,2,118">
+                              <info>
+                                 <para>
+                                    <para.body>This is the normal vector of the solution hyperplane of the first equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="111,21,121,12,169,80,160,86">
+                              <info>
+                                 <para>
+                                    <para.body>This is the normal vector of the solution hyperplane of the second equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="205,126,194,133,218,166,229,159">
+                              <info>
+                                 <para>
+                                    <para.body>This is the normal vector of the solution hyperplane of the second equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="216,122,240,108,316,277,70,220,191,139,216,171,233,158,211,126,211,126,211,126">
+                              <info>
+                                 <para>
+                                    <para.body>This is the solution hyperplane of the first equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="82,49,133,63,63,183,11,32,57,46,42,68,55,81,77,53,77,53">
+                              <info>
+                                 <para>
+                                    <para.body>This is the solution hyperplane of the first equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="39,125,62,185,18,141,38,129">
+                              <info>
+                                 <para>
+                                    <para.body>This is the solution hyperplane of the second equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="157,55,229,9,332,41,78,201,68,191,138,69,142,67,163,95,181,83">
+                              <info>
+                                 <para>
+                                    <para.body>This is the solution hyperplane of the second equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                        </image.mapping>
+                     </img>
+                  </media>
+               </para.body>
             </para>
             <ol>
                <li>

@@ -21,7 +21,11 @@
                   </math> deserves its name: It asserts that in a triangle any one edge is at most as long as the sum of the other two.</para.body>
             </para>
             <para align="center">
-               <para.body/>
+               <para.body>
+                  <media xmlns="" type="image" active="0" inline="0">
+                     <img src="ims/TriangleInequality.png" width="480"/>
+                  </media>
+               </para.body>
             </para>
          </block.body>
       </block>

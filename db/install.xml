@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/msm/db" VERSION="20120716" COMMENT="XMLDB file for Moodle mod/msm"
+<XMLDB PATH="mod/msm/db" VERSION="20120801" COMMENT="XMLDB file for Moodle mod/msm"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -293,9 +293,8 @@
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
         <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="description"/>
         <FIELD NAME="description" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="extended_caption"/>
-        <FIELD NAME="extended_caption" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="description" NEXT="image_mapping"/>
-        <FIELD NAME="image_mapping" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="extended_caption" NEXT="src"/>
-        <FIELD NAME="src" TYPE="char" LENGTH="400" NOTNULL="true" SEQUENCE="false" PREVIOUS="image_mapping" NEXT="height"/>
+        <FIELD NAME="extended_caption" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="description" NEXT="src"/>
+        <FIELD NAME="src" TYPE="char" LENGTH="400" NOTNULL="true" SEQUENCE="false" PREVIOUS="extended_caption" NEXT="height"/>
         <FIELD NAME="height" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="src" NEXT="width"/>
         <FIELD NAME="width" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="height"/>
       </FIELDS>
@@ -553,7 +552,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="msm_math_cell" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_math_row">
+    <TABLE NAME="msm_math_cell" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_math_row" NEXT="msm_image_mapping">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="colspan"/>
         <FIELD NAME="colspan" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="halign"/>
@@ -562,6 +561,16 @@
         <FIELD NAME="bgcolor" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="valign" NEXT="fontcolor"/>
         <FIELD NAME="fontcolor" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="bgcolor" NEXT="content"/>
         <FIELD NAME="content" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" PREVIOUS="fontcolor"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="msm_image_mapping" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_math_cell">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="shape"/>
+        <FIELD NAME="shape" TYPE="char" LENGTH="20" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="coordinates"/>
+        <FIELD NAME="coordinates" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="shape"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>

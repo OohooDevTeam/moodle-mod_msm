@@ -36,16 +36,20 @@ class MathImg extends Element
         $this->description = $this->getDomAttribute($DomElement->getElementsByTagName('description'));
         $this->extended_caption = $this->getContent($DomElement->getElementsByTagName('extended.caption')->item(0));
 
-        $this->imagemappings = array();
+        $this->imageareas = array();
         $imageMappings = $DomElement->getElementsByTagName('image.mapping');
-
-        $doc = new DOMDocument();
 
         foreach ($imageMappings as $im)
         {
-            $position = $position + 1;
-            $element = $doc->importNode($im, true);
-            $this->imagemappings[] = $doc->saveXML($element);
+            $areas = $im->getElementsByTagName('area');
+
+            foreach ($areas as $a)
+            {
+                $position = $position + 1;
+                $imgArea = new ImgArea($this->xmlpath);
+                $imgArea->loadFromXml($a, $position);
+                $this->imageareas[] = $imgArea;
+            }
         }
     }
 
@@ -59,29 +63,65 @@ class MathImg extends Element
         global $DB, $CFG;
         $data = new stdClass();
         $data->string_id = $this->string_id;
-        $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
-                . basename($this->xmlpath) . '/' . $this->src;
+
+        $sourcefolders = explode('/', $this->src);
+
+        if (count($sourcefolders) == 2)
+        {
+            $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
+                    . basename($this->xmlpath) . '/' . $sourcefolders[0] . '/' . $sourcefolders[1];
+        }
+        else if (count($sourcefolders) == 1) // to account for src in xml that does not include the ims folder in its path
+        {
+            $data->src = $CFG->wwwroot . '/mod/msm/newxml/' . basename(dirname($this->xmlpath)) . '/'
+                    . basename($this->xmlpath) . '/ims/' . $sourcefolders[0];
+        }
+        else
+        {
+            print_object(count($sourcefolders));
+        }
+
         $data->height = $this->height;
         $data->width = $this->width;
         $data->description = $this->description;
         $data->extended_caption = $this->extended_caption;
 
-        if (!empty($this->imagemappings))
+        $this->id = $DB->insert_record($this->tablename, $data);
+        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
+
+        $elementPositions = array();
+        $sibling_id = null;
+
+
+        if (!empty($this->imageareas))
         {
-            foreach ($this->imagemappings as $imagemapping)
+            foreach ($this->imageareas as $key => $imagearea)
             {
-                $data->image_mapping = $imagemapping;
-                if (!empty($this->src))
-                {
-                    $this->id = $DB->insert_record($this->tablename, $data);
-                }
+                $elementPositions['imgarea' . '-' . $key] = $imagearea->position;
             }
         }
-        else
+
+        asort($elementPositions);
+
+        foreach ($elementPositions as $element)
         {
-            if (!empty($this->src))
+            switch ($element)
             {
-                $this->id = $DB->insert_record($this->tablename, $data);
+                case(preg_match("/^(imgarea.\d+)$/", $element) ? true : false):
+                    $imageareaString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $imagearea = $this->imageareas[$imageareaString[1]];
+                        $imagearea->saveIntoDb($imagearea->position, $this->compid);
+                        $sibling_id = $imagearea->compid;
+                    }
+                    else
+                    {
+                        $imagearea = $this->imageareas[$imageareaString[1]];
+                        $imagearea->saveIntoDb($imagearea->position, $this->compid, $sibling_id);
+                        $sibling_id = $imagearea->compid;
+                    }
             }
         }
     }
@@ -94,10 +134,25 @@ class MathImg extends Element
 
         if (!empty($imgRecord))
         {
-            $this->image_mapping = $imgRecord->image_mapping;
             $this->src = $imgRecord->src;
             $this->height = $imgRecord->height;
             $this->width = $imgRecord->width;
+        }
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        $this->imageareas = array();
+
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            if ($childtablename == 'msm_image_mapping')
+            {
+                $imagearea = new ImgArea();
+                $imagearea->loadFromDb($child->unit_id, $child->id);
+                $this->imageareas[] = $imagearea;
+            }
         }
 
         return $this;
@@ -107,41 +162,31 @@ class MathImg extends Element
     {
         $content = '';
 
-        $imagename = explode('/', $this->src);
+        $srcfile = explode('/', $this->src);
 
-        $usemap = explode('.', end($imagename));
-        $usemapname = $usemap[0];
+        $filename = explode('.', end($srcfile));
 
-        if ((!empty($this->height)) || (!empty($this->width)))
+        if ((!empty($this->width)) && (!empty($this->height)))
         {
-            if (!empty($this->image_mapping))
-            {
-                $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' usemap='#" . $usemapname . "'/>";
-                $imagemapping = str_replace("<image.mapping>", "<map name='" . $usemapname . "'>", $this->image_mapping);
-                $finalimagemapping = str_replace("</image.mapping>", "</map name>", $imagemapping);
-                $content .= $finalimagemapping;
-            }
-            else
-            {
-                $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "'/>";
-            }
+            $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
+        }
+        else if (!empty($this->width))
+        {
+            $content .= "<img src='" . $this->src . "' height='200' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
+        }
+        else if (!empty($this->height))
+        {
+            $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='350' name='#" . $filename[0] . "'/>";
         }
         else
         {
-            if (!empty($this->image_mapping))
-            {
-                $content .= "<img src='" . $this->src . "' usemap='#" . $usemapname . "' height200' width='300'/>";
-                $imagemapping = str_replace("<image.mapping>", "<map name='" . $usemapname . "'>", $this->image_mapping);
-                $finalimagemapping = str_replace("</image.mapping>", "</map name>", $imagemapping);
-                $content .= $finalimagemapping;
-            }
-            else
-            {
-                $content .= "<img src='" . $this->src . "' height='200' width='300'/>";
-            }
+            $content .= "<img src='" . $this->src . "' height='200' width='350' name='#" . $filename[0] . "'/>";
         }
 
-
+        foreach ($this->imageareas as $imagearea)
+        {
+            $content .= $imagearea->displayhtml();
+        }
 
         return $content;
     }

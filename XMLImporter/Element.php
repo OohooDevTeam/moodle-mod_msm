@@ -269,6 +269,13 @@ abstract class Element
         {
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
+        
+        $medias = $DomElement->getElementsByTagName('media');
+        $mlength = $medias->length;
+        for ($i = 0; $i < $mlength; $i++)
+        {
+            $medias->item(0)->parentNode->removeChild($medias->item(0));
+        }
 
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);

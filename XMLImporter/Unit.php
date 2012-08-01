@@ -50,6 +50,9 @@ require_once("Cite.php");
 require_once("Item.php");
 require_once("MathRow.php");
 require_once("MathCell.php");
+require_once("ImgArea.php");
+require_once("Companion.php");
+require_once("Crossref.php");
 
 /**
  * Description of Unit

@@ -34,7 +34,83 @@
                   </math> are not parallel, we find ourselves in the situation sketched below.</para.body>
             </para>
             <para align="center">
-               <para.body/>
+               <para.body>
+                  <media xmlns="" type="image" active="1" inline="0">
+                     <img src="ims/TwoEqnsR2NonParallel.gif" height="285" width="455">
+                        <image.mapping>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="264,126,292,93,294,50,275,44,238,104,251,114">
+                              <info>
+                                 <para>
+                                    <para.body>The normal vector formed from the coefficients of the first equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="202,214,186,166,171,152,154,174,159,188,174,186,191,222,202,218">
+                              <info>
+                                 <para>
+                                    <para.body>The normal vector formed from the coefficients of the second equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="374,220,378,206,323,169,314,180,368,218">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math> a hyperplane is just a line. This is the line of solutions of the first equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="poly" coords="302,153,242,114,106,14,98,29,284,157">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math> a hyperplane is just a line. This is the line of solutions of the first equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="323,164,426,109,414,96,312,149,323,168">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math> a hyperplane is just a line. This is the line of solutions of the second equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit"
+                                 shape="poly"
+                                 coords="300,181,146,262,138,250,200,220,288,168,299,176">
+                              <info>
+                                 <para>
+                                    <para.body>In <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math> a hyperplane is just a line. This is the line of solutions of the second equation.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                           <area xmlns="Unit" shape="circle" coords="308,169,5">
+                              <info>
+                                 <para>
+                                    <para.body>Two nonparallel lines in the plane <math>
+                                          <latex>\RNr[2]</latex>
+                                       </math>always have a unique point of intersection. This is the one and only simultaneous solution of the two given equations.</para.body>
+                                 </para>
+                              </info>
+                           </area>
+                        </image.mapping>
+                     </img>
+                  </media>
+               </para.body>
             </para>
             <ol>
                <li>
