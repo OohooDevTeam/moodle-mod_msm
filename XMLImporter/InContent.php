@@ -31,6 +31,7 @@ class InContent extends Element
     {
         $this->position = $position;
         $this->subordinates = array();
+        $this->matharrays = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
@@ -58,6 +59,11 @@ class InContent extends Element
         }
 
         $position = $position + 1;
+
+        foreach ($this->processMathArray($DomElement, $position) as $matharray)
+        {
+            $this->matharrays[] = $matharray;
+        }
 
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
@@ -125,6 +131,14 @@ class InContent extends Element
             }
         }
 
+        if (!empty($this->matharrays))
+        {
+            foreach ($this->matharrays as $key => $matharray)
+            {
+                $elementPositions['matharray' . '-' . $key] = $matharray->position;
+            }
+        }
+
         if (!empty($this->indexauthors))
         {
             foreach ($this->indexauthors as $key => $indexauthor)
@@ -177,6 +191,23 @@ class InContent extends Element
                         $subordinate = $this->subordinates[$subordinateString[1]];
                         $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
                         $sibling_id = $subordinate->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                    $matharrayString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid);
+                        $sibling_id = $matharray->compid;
+                    }
+                    else
+                    {
+                        $matharray = $this->matharrays[$matharrayString[1]];
+                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
+                        $sibling_id = $matharray->compid;
                     }
                     break;
 
@@ -280,11 +311,16 @@ class InContent extends Element
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
                     break;
+                case('msm_math_array'):
+                    $matharray = new MathArray();
+                    $matharray->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $matharray;
+                    break;
                 case('msm_media'):
-                   $media = new Media();
-                   $media->loadFromDb($child->unit_id, $child->id);
-                   $this->childs[] = $media;
-                   break;
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $media;
+                    break;
             }
         }
 
@@ -294,15 +330,14 @@ class InContent extends Element
     function displayhtml()
     {
         $content = '';
-        
+
 //        $content .= "<div class='content'>" . $this->content . "</div>";
-        
 //        echo "inContent subordinate";
 //        print_object($this);
 
         $content .= $this->displaySubordinate($this, $this->content);
-        
-        foreach($this->childs as $child)
+
+        foreach ($this->childs as $child)
         {
             $content .= $child->displayhtml();
         }

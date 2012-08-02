@@ -121,7 +121,7 @@ class MathRow extends Element
         
         foreach($this->childs as $column)
         {
-            $content .= $column->displayhtml($column->rowspan);
+            $content .= $column->displayhtml($this->rowspan);
         }
         
         $content .= "</tr>";

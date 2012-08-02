@@ -76,6 +76,46 @@ class ExternalLink extends Element
         }
         
     }
+    
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+        
+        $linkRecord = $DB->get_record($this->tablename, array('id'=>$id));
+        
+        if(!empty($linkRecord))
+        {
+            $this->compid = $compid;
+            $this->href = $linkRecord->href;
+            $this->type = $linkRecord->type;
+            $this->target = $linkRecord->target;
+        }
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
+        
+        $this->infos = array();
+        
+        foreach($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
+            
+            if($childtablename == 'msm_info')
+            {
+                $info = new MathInfo();
+                $info->loadFromDb($child->unit_id, $child->id);
+                $this->infos[] = $info;
+            }
+        }
+        
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content ='';
+        
+        return $content;
+    }
 }
 
 ?>

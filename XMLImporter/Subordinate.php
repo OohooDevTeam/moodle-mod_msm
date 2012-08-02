@@ -304,6 +304,7 @@ class Subordinate extends Element
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->infos = array();
+        $this->childs = array();
 
         foreach ($childElements as $child)
         {
@@ -316,6 +317,17 @@ class Subordinate extends Element
                     $info->loadFromDb($child->unit_id, $child->id);
                     $this->infos[] = $info;
                     break;
+                case('msm_external_link'):
+                    $externallink = new ExternalLink();
+                    $externallink->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $externallink;
+                    break;
+//                case('msm_cite'):
+//                    $cite = new Cite();
+//                    $cite->loadFromDb($child->unit_id, $child->id);
+//                    $this->chlids[] = $cite;
+//                    break;
+                
             }
         }
 

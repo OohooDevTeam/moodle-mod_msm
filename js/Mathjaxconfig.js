@@ -2,6 +2,7 @@ MathJax.Hub.Config({
     showProcessingMessages: false,
     tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
         processEscapes: true,
         balanceBraces: true
     },

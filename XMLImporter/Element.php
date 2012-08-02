@@ -167,23 +167,42 @@ abstract class Element
         }
         return $arrayOfMedia;
     }
-
-//    function processMathArray($DomElement, $position)
-//    {
-//        $arrayOfMathArray = array();
-//        
-//        $position = $position+1;
-//        
-//        $matharrays = $DomElement->getElementByTagName('math.array');
-//        $matharraylength = $matharrays->length;
-//        for($i=1; $i < $matharraylength; $i++)
-//        {
-//            $position = $position+1;
-//            $matharray = new MathArray($this->xmlpath);
-//            $matharray->loadFromXml($matharrays->item($i), $position);
-//            $arrayOfMathArray[] = $matharray;
-//        }
-//    }
+    
+    function processMathArray($DomElement, $position)
+    {
+        $arrayofMathArray = array();
+        $position++;
+        
+        $matharrays = $DomElement->getElementsByTagName('math.array');
+        $matharraylength = $matharrays->length;
+        
+        for($i=0; $i < $matharraylength; $i++)
+        {
+            $position++;
+            $matharray = new MathArray($this->xmlpath);
+            $matharray->loadFromXml($matharrays->item($i), $position);
+            $arrayofMathArray[] = $matharray;
+        }
+        return $arrayofMathArray;
+    }
+    
+    function processTable($DomElement, $position)
+    {
+        $arrayofTable = array();
+        $position++;
+        
+        $tables = $DomElement->getElementsByTagName('table');
+        $tlength = $tables->length;
+        
+        for($i=0; $i < $tlength; $i++)
+        {
+            $position++;
+            $table = new Table($this->xmlpath);
+            $table->loadFromXml($tables->item($i), $position);
+            $arrayofTable[] = $table;
+        }
+        return $arrayofTable;
+    }
 
     /**
      *
@@ -248,7 +267,9 @@ abstract class Element
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
-
+        
+        
+        
         $indexauthors = $DomElement->getElementsByTagName('index.author');
         $ialength = $indexauthors->length;
         for ($i = 0; $i < $ialength; $i++)
@@ -269,13 +290,28 @@ abstract class Element
         {
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
-        
+
         $medias = $DomElement->getElementsByTagName('media');
         $mlength = $medias->length;
         for ($i = 0; $i < $mlength; $i++)
         {
             $medias->item(0)->parentNode->removeChild($medias->item(0));
         }
+        
+//        $matharrays = $DomElement->getElementsByTagName('math.array');
+//        $mathlength = $matharrays->length;
+//        
+//        for ($i = 0; $i < $mathlength; $i++)
+//        {
+//            $DomElement->parentNode->removeChild($matharrays->item(0));
+//        }
+//        
+//        $tables = $DomElement->getElementsByTagName('table');
+//        $tlength = $tables->length;
+//        for ($i = 0; $i < $tlength; $i++)
+//        {
+//            $tables->item(0)->parentNode->removeChild($tables->item(0));
+//        }
 
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
@@ -288,14 +324,14 @@ abstract class Element
             $string = str_replace('<caption>', '<captions>', $string);
             $string = str_replace('</caption>', '</captions>', $string);
 
-            $string = str_replace('<row', '<tr', $string);
-            $string = str_replace('</row>', '</tr>', $string);
-
-            $string = str_replace('<cell', '<td', $string);
-            $string = str_replace('</cell>', '</td>', $string);
-
-            $string = str_replace('<math.array', '<table class="math"', $string);
-            $string = str_replace('</math.array>', '</table>', $string);
+//            $string = str_replace('<row', '<tr', $string);
+//            $string = str_replace('</row>', '</tr>', $string);
+//
+//            $string = str_replace('<cell', '<td', $string);
+//            $string = str_replace('</cell>', '</td>', $string);
+//
+//            $string = str_replace('<math.array', '<table class="math"', $string);
+//            $string = str_replace('</math.array>', '</table>', $string);
 
             $string = str_replace('<para.body', '<p', $string);
             $string = str_replace('</para.body>', '</p>', $string);
@@ -313,6 +349,9 @@ abstract class Element
             // so need to delete math element 
             $string = str_replace('<math>', '', $string);
             $string = str_replace('</math>', '', $string);
+            
+            $string = str_replace('<math.display>', '$$', $string);
+            $string = str_replace('</math.display>', '$$', $string);
 
             $string = str_replace('<latex>', '$', $string);
             $string = str_replace('</latex>', '$', $string);
@@ -489,30 +528,36 @@ abstract class Element
             if (!empty($object->subordinates[$key]))
             {
                 $subordinate = $object->subordinates[$key];
-
-                $newtag = '';
-                $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
-
-                if (is_string($subordinate->hot))
+                if (!empty($subordinate->infos[0]))
                 {
-                    $newtag .= $subordinate->hot;
-                }
-                else
-                {
-                    $newtag .= $this->getContent($subordinate->hot);
-                }
-                $newtag .= "</a>";
+                    $newtag = '';
+                    $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
 
-                $hotString = $doc->saveXML($hottag);
-                
-                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+                    if (is_string($subordinate->hot))
+                    {
+                        $newtag .= $subordinate->hot;
+                    }
+                    else
+                    {
+                        $newtag .= $this->getContent($subordinate->hot);
+                    }
+                    $newtag .= "</a>";
 
-                $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
-                $content .= $subordinate->infos[0]->info_content;
-                $content .= "</div>";
+                    $hotString = $doc->saveXML($hottag);
+
+                    $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+
+                    $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
+                    $content .= $subordinate->infos[0]->info_content;
+                    $content .= "</div>";
+                }
+//                else if(!empty($subordinate->childs))
+//                {
+//                    
+//                }
             }
         }
-        
+
         $content .= "<div class='content'>";
         $content .= $XMLcontent;
         $content .= "</div>";
@@ -520,10 +565,6 @@ abstract class Element
         return $content;
     }
 
-    // abstract method that is implemented by each class 
-    // This function saves the data retrieved from loadFromXml method to the appropriate 
-    // database table
-    // abstract function saveIntoDb($position);
 }
 
 ?>

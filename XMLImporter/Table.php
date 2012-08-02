@@ -230,6 +230,43 @@ class Table extends Element
         }
     }
 
+    function loadFromDb($id, $compid)
+    {
+        global $Db;
+
+        $tableRecord = $DB->get_record('msm_table', array('id' => $id));
+
+        if (!empty($tableRecord))
+        {
+            $this->compid = $compid;
+            $this->table_class = $tableRecord->table_class;
+            $this->table_summary = $tableRecord->table_summary;
+            $this->table_title = $tableRecord->table_title;
+            $this->table_content = $tableRecord->table_content;
+        }
+
+        $string = $this->table_content;
+
+        $string = str_replace('<row', '<tr', $string);
+        $string = str_replace('</row>', '</tr>', $string);
+
+        $string = str_replace('<cell', '<td', $string);
+        $string = str_replace('</cell>', '</td>', $string);
+        
+        $this->table_content = $string;
+
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+        
+        $content .= $this->table_content;
+        
+        return $content;
+    }
+
 }
 
 ?>

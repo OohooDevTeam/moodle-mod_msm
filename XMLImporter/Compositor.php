@@ -17,8 +17,8 @@ class Compositor
 {
 
     public $unit;
-//    public $displayunits = array();
 
+//    public $displayunits = array();
 //    public $theorem;
 
     function __construct()
@@ -62,10 +62,7 @@ class Compositor
 
     function loadAndDisplay($string)
     {
-//        echo "in loadAndDisplay";
         global $DB;
-
-//        $this->displayunits = array();
 
         $newstring = '';
         $stack = array();
@@ -83,39 +80,47 @@ class Compositor
 
         $recordValue = array_pop($stack);
 
-        $recordids = explode('/', $recordValue);
-
-        $unitRecord = $DB->get_record('msm_unit', array('id' => $recordids[1]));
-
-        $unitid = $unitRecord->id;
-        $unitcompid = $recordids[0];
-
-        $unit = new Unit();
-        $unit->loadFromDb($unitid, $unitcompid);
-        $this->unit = $unit;
-        $content = '';
-
-        $content .= "<div class=unit>";
-        $content .= $this->unit->displayhtml();
-
-        foreach ($stack as $key => $record)
+        if (!empty($recordValue))
         {
-            $newstring .= $record . ",";
+            $recordids = explode('/', $recordValue);
+
+            $unitRecord = $DB->get_record('msm_unit', array('id' => $recordids[1]));
+
+            $unitid = $unitRecord->id;
+            $unitcompid = $recordids[0];
+
+            $unit = new Unit();
+            $unit->loadFromDb($unitid, $unitcompid);
+            $this->unit = $unit;
+            $content = '';
+
+            $content .= "<div class=unit>";
+            $content .= $this->unit->displayhtml();
+
+            foreach ($stack as $key => $record)
+            {
+                $newstring .= $record . ",";
+            }
+            // passing contents of stack to ajax call by putting it into an hidden input field
+            ?>
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    var stackstring = "<?php echo $newstring; ?>";
+                    $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
+                    $('#stack').val(stackstring); 
+                });
+                                                        
+            </script>
+
+            <?php
+            $content .= "</div>";
         }
-        // passing contents of stack to ajax call by putting it into an hidden input field
-        ?>
+        else // at the end of textbook
+        {
+            $content ='';
+        }
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var stackstring = "<?php echo $newstring; ?>";
-                $('.unit').append('<input id="stack" style="visibility:hidden;" type="text" name="stackstring"/>');
-                $('#stack').val(stackstring); 
-            });
-                                            
-        </script>
-
-        <?php
-        $content .= "</div>";
         return $content;
     }
 
