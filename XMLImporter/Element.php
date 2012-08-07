@@ -167,41 +167,43 @@ abstract class Element
         }
         return $arrayOfMedia;
     }
-    
+
     function processMathArray($DomElement, $position)
     {
-        $arrayofMathArray = array();
-        $position++;
-        
+        $arrayOfMathArray = array();
+
+        $position = $position + 1;
+
         $matharrays = $DomElement->getElementsByTagName('math.array');
         $matharraylength = $matharrays->length;
-        
-        for($i=0; $i < $matharraylength; $i++)
+        for ($i = 1; $i < $matharraylength; $i++)
         {
-            $position++;
+            $position = $position + 1;
             $matharray = new MathArray($this->xmlpath);
             $matharray->loadFromXml($matharrays->item($i), $position);
-            $arrayofMathArray[] = $matharray;
+            $arrayOfMathArray[] = $matharray;
         }
-        return $arrayofMathArray;
+
+        return $arrayOfMathArray;
     }
-    
+
     function processTable($DomElement, $position)
     {
-        $arrayofTable = array();
-        $position++;
-        
+        $arrayOfTable = array();
+
+        $position = $position + 1;
+
         $tables = $DomElement->getElementsByTagName('table');
-        $tlength = $tables->length;
-        
-        for($i=0; $i < $tlength; $i++)
+        $tablelength = $tables->length;
+        for ($i = 1; $i < $tablelength; $i++)
         {
-            $position++;
+            $position = $position + 1;
             $table = new Table($this->xmlpath);
             $table->loadFromXml($tables->item($i), $position);
-            $arrayofTable[] = $table;
+            $arrayOfTable[] = $table;
         }
-        return $arrayofTable;
+
+        return $arrayOfTable;
     }
 
     /**
@@ -267,9 +269,7 @@ abstract class Element
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
-        
-        
-        
+
         $indexauthors = $DomElement->getElementsByTagName('index.author');
         $ialength = $indexauthors->length;
         for ($i = 0; $i < $ialength; $i++)
@@ -297,21 +297,6 @@ abstract class Element
         {
             $medias->item(0)->parentNode->removeChild($medias->item(0));
         }
-        
-//        $matharrays = $DomElement->getElementsByTagName('math.array');
-//        $mathlength = $matharrays->length;
-//        
-//        for ($i = 0; $i < $mathlength; $i++)
-//        {
-//            $DomElement->parentNode->removeChild($matharrays->item(0));
-//        }
-//        
-//        $tables = $DomElement->getElementsByTagName('table');
-//        $tlength = $tables->length;
-//        for ($i = 0; $i < $tlength; $i++)
-//        {
-//            $tables->item(0)->parentNode->removeChild($tables->item(0));
-//        }
 
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
@@ -324,14 +309,14 @@ abstract class Element
             $string = str_replace('<caption>', '<captions>', $string);
             $string = str_replace('</caption>', '</captions>', $string);
 
-//            $string = str_replace('<row', '<tr', $string);
-//            $string = str_replace('</row>', '</tr>', $string);
-//
-//            $string = str_replace('<cell', '<td', $string);
-//            $string = str_replace('</cell>', '</td>', $string);
-//
-//            $string = str_replace('<math.array', '<table class="math"', $string);
-//            $string = str_replace('</math.array>', '</table>', $string);
+            $string = str_replace('<row', '<tr', $string);
+            $string = str_replace('</row>', '</tr>', $string);
+
+            $string = str_replace('<cell', '<td', $string);
+            $string = str_replace('</cell>', '</td>', $string);
+
+            $string = preg_replace('/^<math.array xmlns=(.+)/', '<table class="matharray"', $string);
+            $string = str_replace('</math.array>', '</table>', $string);
 
             $string = str_replace('<para.body', '<p', $string);
             $string = str_replace('</para.body>', '</p>', $string);
@@ -348,9 +333,10 @@ abstract class Element
             // mathjax will not render contents of <latex> if there is a parent element
             // so need to delete math element 
             $string = str_replace('<math>', '', $string);
+            $string = preg_replace('/^<math xmlns=(.+)>/', '', $string);
             $string = str_replace('</math>', '', $string);
-            
-            $string = str_replace('<math.display>', '$$', $string);
+
+            $string = preg_replace('/^<math.display xmlns=(.+)>/', '$$', $string);
             $string = str_replace('</math.display>', '$$', $string);
 
             $string = str_replace('<latex>', '$', $string);
@@ -551,10 +537,6 @@ abstract class Element
                     $content .= $subordinate->infos[0]->info_content;
                     $content .= "</div>";
                 }
-//                else if(!empty($subordinate->childs))
-//                {
-//                    
-//                }
             }
         }
 

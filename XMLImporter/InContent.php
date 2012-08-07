@@ -32,10 +32,15 @@ class InContent extends Element
         $this->position = $position;
         $this->subordinates = array();
         $this->matharrays = array();
+        $this->tables = array();
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+
+//        $this->content = array();
+
+        $this->childContents = array();
 
         //determining the element node of the passed DOMElement to identify the type in DB field
         $nameofElement = $DomElement->tagName;
@@ -45,26 +50,61 @@ class InContent extends Element
             case('ol'):
                 $this->type = 'ordered';
                 $this->additional_attribute = $DomElement->getAttribute('type');
+
+                foreach ($DomElement->childNodes as $child)
+                {
+                    if ($child->nodeType == XML_ELEMENT_NODE)
+                    {
+                        if ($child->tagName == 'li')
+                        {
+                            foreach ($child->childNodes as $grandChild)
+                            {
+                                if ($grandChild->nodeType == XML_ELEMENT_NODE)
+                                {
+                                    $position++;
+                                    $block = new Block($this->xmlpath);
+                                    $block->loadFromXml($grandChild, $position);
+                                    $this->childContents[] = $block;
+                                }
+                            }
+                        }
+                    }
+                }
                 break;
 
             case('ul'):
                 $this->type = 'unordered';
                 $this->additional_attribute = $DomElement->getAttribute('bullet');
+
+                foreach ($DomElement->childNodes as $child)
+                {
+                    if ($child->nodeType == XML_ELEMENT_NODE)
+                    {
+                        if ($child->tagName == 'li')
+                        {
+                            foreach ($child->childNodes as $grandChild)
+                            {
+                                if ($grandChild->nodeType == XML_ELEMENT_NODE)
+                                {
+                                    $position++;
+                                    $block = new Block($this->xmlpath);
+                                    $block->loadFromXml($grandChild, $position);
+                                    $this->childContents[] = $block;
+                                }
+                            }
+                        }
+                    }
+                }
                 break;
 
             case('math.display'):
                 $this->type = 'display';
                 $this->additional_attribute = $DomElement->getAttribute('id');
+
                 break;
         }
 
         $position = $position + 1;
-
-        foreach ($this->processMathArray($DomElement, $position) as $matharray)
-        {
-            $this->matharrays[] = $matharray;
-        }
-
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
@@ -88,7 +128,7 @@ class InContent extends Element
         {
             $this->medias[] = $media;
         }
-
+//
         foreach ($this->processContent($DomElement, $position) as $content)
         {
             $this->content .= $content;
@@ -122,20 +162,19 @@ class InContent extends Element
         $elementPositions = array();
         $sibling_id = null;
 
+        if (!empty($this->childContents))
+        {
+            foreach ($this->childContents as $key => $childContent)
+            {
+                $elementPositions['childContent' . '-' . $key] = $childContent->position;
+            }
+        }
 
         if (!empty($this->subordinates))
         {
             foreach ($this->subordinates as $key => $subordinate)
             {
                 $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
-            }
-        }
-
-        if (!empty($this->matharrays))
-        {
-            foreach ($this->matharrays as $key => $matharray)
-            {
-                $elementPositions['matharray' . '-' . $key] = $matharray->position;
             }
         }
 
@@ -149,9 +188,9 @@ class InContent extends Element
 
         if (!empty($this->indexglossarys))
         {
-            foreach ($this->indexglossarys as $key => $indexglosary)
+            foreach ($this->indexglossarys as $key => $indexglossary)
             {
-                $elementPositions['indexglossary' . '-' . $key] = $indexglosary->position;
+                $elementPositions['indexglossary' . '-' . $key] = $indexglossary->position;
             }
         }
 
@@ -177,6 +216,23 @@ class InContent extends Element
         {
             switch ($element)
             {
+                case(preg_match("/^(childContent.\d+)$/", $element) ? true : false):
+                    $childString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $block = $this->childContents[$childString[1]];
+                        $block->saveIntoDb($block->position, $parentid);
+//                        $sibling_id = $block->compid;
+                    }
+                    else
+                    {
+                        $block = $this->childContents[$childString[1]];
+                        $block->saveIntoDb($block->position, $parentid, $sibling_id);
+//                        $sibling_id = $block->compid;
+                    }
+                    break;
+
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
                     $subordinateString = split('-', $element);
 
@@ -191,23 +247,6 @@ class InContent extends Element
                         $subordinate = $this->subordinates[$subordinateString[1]];
                         $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
                         $sibling_id = $subordinate->compid;
-                    }
-                    break;
-
-                case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
-                    $matharrayString = split('-', $element);
-
-                    if (empty($sibling_id))
-                    {
-                        $matharray = $this->matharrays[$matharrayString[1]];
-                        $matharray->saveIntoDb($matharray->position, $this->compid);
-                        $sibling_id = $matharray->compid;
-                    }
-                    else
-                    {
-                        $matharray = $this->matharrays[$matharrayString[1]];
-                        $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
-                        $sibling_id = $matharray->compid;
                     }
                     break;
 
@@ -311,11 +350,19 @@ class InContent extends Element
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
                     break;
+
                 case('msm_math_array'):
                     $matharray = new MathArray();
                     $matharray->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $matharray;
                     break;
+
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $table;
+                    break;
+
                 case('msm_media'):
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
@@ -330,10 +377,6 @@ class InContent extends Element
     function displayhtml()
     {
         $content = '';
-
-//        $content .= "<div class='content'>" . $this->content . "</div>";
-//        echo "inContent subordinate";
-//        print_object($this);
 
         $content .= $this->displaySubordinate($this, $this->content);
 

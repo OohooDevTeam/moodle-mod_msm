@@ -423,7 +423,6 @@ class Crossref extends Element
                         $packRecord = $this->checkForRecord($this->packs[$packString[1]]);
                         if (!empty($packRecord))
                         {
-                            print_object($packRecord);
                             $packID = $packRecord->id;
                         }
                     }
