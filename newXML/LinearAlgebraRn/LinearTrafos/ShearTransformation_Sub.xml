@@ -15,7 +15,7 @@
                <para.body>Shear transformations occur in a variety of contexts, for example when converting ordinary type into italics.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/ShearingText.gif"/>
+               <img src="ims/ShearingText.gif"/>
             </media>
             <para>
                <para.body>We can think of this transformation as resulting from holding the base of these characters fixed and sliding the top by a certain amount parallel to the base line (the shear line) of the characters.</para.body>
@@ -67,7 +67,7 @@
                </li>
             </ul>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/ShearR2_1.png"/>
+               <img src="ims/ShearR2_1.png"/>
             </media>
             <para>
                <para.body>How to read the picture above:</para.body>

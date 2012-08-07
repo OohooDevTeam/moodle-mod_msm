@@ -117,8 +117,8 @@
                      <math>
                         <latex>=	</latex>
                      </math>
-                     <companion xmlns="">
-                        <info xmlns="Unit">
+                     <companion>
+                        <info>
                            <para>
                               <para.body>Here we use that <math>
                                     <latex>L</latex>

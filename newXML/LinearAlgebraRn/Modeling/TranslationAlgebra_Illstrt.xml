@@ -15,7 +15,7 @@
                <para.body>Concatenating translations of space corresponds to adding the representing vectors.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/TranslationConcatenation.gif"/>
+               <img src="ims/TranslationConcatenation.gif"/>
             </media>
          </block.body>
       </block>
@@ -29,7 +29,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/TranslationScalarMultiplication.gif"/>
+               <img src="ims/TranslationScalarMultiplication.gif"/>
             </media>
             <para>
                <para.body>In general, shifting the object in the given direction  times as far as the original translation does has the translation vector <math>

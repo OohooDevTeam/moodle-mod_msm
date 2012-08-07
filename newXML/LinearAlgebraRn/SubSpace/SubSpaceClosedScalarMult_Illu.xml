@@ -24,7 +24,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/SubSpaceClosedScalarMultiplication.gif"/>
+               <img src="ims/SubSpaceClosedScalarMultiplication.gif"/>
             </media>
          </block.body>
       </block>
@@ -44,7 +44,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/ClosedScalarMultiplication_1.gif"/>
+               <img src="ims/ClosedScalarMultiplication_1.gif"/>
             </media>
             <para>
                <para.body>The set <math>
@@ -69,7 +69,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/Lattice2_2.gif"/>
+               <img src="ims/Lattice2_2.gif"/>
             </media>
             <para>
                <para.body>Therefore this set <math>

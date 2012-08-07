@@ -24,7 +24,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/SubSpaceClosedAddition.gif"/>
+               <img src="ims/SubSpaceClosedAddition.gif"/>
             </media>
             <para>
                <para.body>In contrast, here is a subset <math>
@@ -34,7 +34,7 @@
                   </math> which fails to be closed under vector addition. It is, therefore, not a subvector space.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/SubSetNotClosedAddition.gif"/>
+               <img src="ims/SubSetNotClosedAddition.gif"/>
             </media>
             <para>
                <para.body>Indeed, there are (at least) two vectors <math>
@@ -59,7 +59,7 @@
                   </math> is not a subvector space.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/SubSetClosedAdditionNotScalarMult.gif"/>
+               <img src="ims/SubSetClosedAdditionNotScalarMult.gif"/>
             </media>
          </block.body>
       </block>

@@ -49,7 +49,7 @@
                <para.body>to make a definition of distance between the two numbers</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/DistanceNumbers.png"/>
+               <img src="ims/DistanceNumbers.png"/>
             </media>
          </block.body>
       </block>

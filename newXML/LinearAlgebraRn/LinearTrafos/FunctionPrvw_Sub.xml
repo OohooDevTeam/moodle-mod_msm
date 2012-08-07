@@ -30,7 +30,7 @@
                   </math> which is described by a function.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/Trafo_NonLinear.png"/>
+               <img src="ims/Trafo_NonLinear.png"/>
             </media>
          </block.body>
       </block>
@@ -70,8 +70,8 @@
                      <math>
                         <latex>=	</latex>
                      </math>
-                     <companion xmlns="">
-                        <info xmlns="Unit">
+                     <companion>
+                        <info>
                            <para>
                               <para.body>Read: ‘z equals f of x’</para.body>
                            </para>
@@ -126,8 +126,8 @@
                      <math>
                         <latex>=	</latex>
                      </math>
-                     <companion xmlns="">
-                        <info xmlns="Unit">
+                     <companion>
+                        <info>
                            <para>
                               <para.body>To see why we have this equation, recall that <math>
                                     <latex>f(u_1)</latex>

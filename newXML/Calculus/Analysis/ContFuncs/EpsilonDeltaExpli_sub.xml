@@ -54,7 +54,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/EpsilonDelta1.png"/>
+               <img src="ims/EpsilonDelta1.png"/>
             </media>
             <para>
                <para.body>Those parts of the graph of <math>
@@ -82,7 +82,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/EpsilonDelta3.png"/>
+               <img src="ims/EpsilonDelta3.png"/>
             </media>
             <para>
                <para.body>In more pictorial terms: The part of the graph of <math>
@@ -98,7 +98,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/EpsilonDelta2.png"/>
+               <img src="ims/EpsilonDelta2.png"/>
             </media>
             <para>
                <para.body>Note that we do not need to find a largest possible number <math>

@@ -164,8 +164,8 @@
                      <math>
                         <latex>=	</latex>
                      </math>
-                     <companion xmlns="">
-                        <info xmlns="Unit">
+                     <companion>
+                        <info>
                            <para>
                               <para.body>Notice: here we divide by <math>
                                     <latex>t_1</latex>

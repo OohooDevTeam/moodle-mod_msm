@@ -15,7 +15,7 @@
                <para.body>‘Forward’ and ‘backward’ on a line are mirrored siblings.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/Orientation1.png"/>
+               <img src="ims/Orientation1.png"/>
             </media>
             <para>
                <para.body>An orientation of <math>

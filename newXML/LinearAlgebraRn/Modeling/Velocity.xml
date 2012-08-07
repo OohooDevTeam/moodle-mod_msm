@@ -23,10 +23,10 @@
                         </para>
                         <para align="center">
                            <para.body>
-                              <media xmlns="" type="image" active="1" inline="0">
+                              <media type="image" active="1" inline="0">
                                  <img src="ims/VelocityVector02.gif" height="169" width="319">
                                     <image.mapping>
-                                       <area xmlns="Unit" shape="rect" coords="21,24,119,48">
+                                       <area shape="rect" coords="21,24,119,48">
                                           <info>
                                              <info.caption>What does the red arrow mean?</info.caption>
                                              <para>
@@ -34,7 +34,7 @@
                                              </para>
                                           </info>
                                        </area>
-                                       <area xmlns="Unit" shape="poly" coords="17,130,29,152,187,78,175,60,19,124">
+                                       <area shape="poly" coords="17,130,29,152,187,78,175,60,19,124">
                                           <info>
                                              <info.caption>What does the green arrow mean?</info.caption>
                                              <para>
@@ -44,7 +44,7 @@
                                              </para>
                                           </info>
                                        </area>
-                                       <area xmlns="Unit" shape="poly" coords="191,32,283,104,301,86,207,20">
+                                       <area shape="poly" coords="191,32,283,104,301,86,207,20">
                                           <info>
                                              <info.caption>What does the blue arrow mean?</info.caption>
                                              <para>
@@ -103,10 +103,10 @@
             </para>
             <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="1" inline="0">
+                  <media type="image" active="1" inline="0">
                      <img src="ims/VelocitySuperposition.gif" height="173" width="441">
                         <image.mapping>
-                           <area xmlns="Unit" shape="rect" coords="217,39,417,53">
+                           <area shape="rect" coords="217,39,417,53">
                               <info>
                                  <info.caption>What does the blue arrow mean?</info.caption>
                                  <para>
@@ -114,7 +114,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="poly" coords="135,115,155,111,219,39,193,35">
+                           <area shape="poly" coords="135,115,155,111,219,39,193,35">
                               <info>
                                  <info.caption>What does the green arrow mean?</info.caption>
                                  <para>
@@ -122,9 +122,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit"
-                                 shape="poly"
-                                 coords="157,113,161,121,425,47,369,51,159,107">
+                           <area shape="poly" coords="157,113,161,121,425,47,369,51,159,107">
                               <info>
                                  <info.caption>What does the red arrow mean?</info.caption>
                                  <para>

@@ -39,7 +39,7 @@
                <para.body>called the triangle inequality. This terminology is motivated by the situation in the plane depicted below:</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/TriangleInequalityR2.png"/>
+               <img src="ims/TriangleInequalityR2.png"/>
             </media>
             <para>
                <para.body>Here we see three points <math>

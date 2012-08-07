@@ -53,10 +53,10 @@
                </li>
             </ul>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/SubSpaceClosedAddition.gif"/>
+               <img src="ims/SubSpaceClosedAddition.gif"/>
             </media>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/SubSpaceClosedScalarMultiplication.gif"/>
+               <img src="ims/SubSpaceClosedScalarMultiplication.gif"/>
             </media>
          </block.body>
       </block>
@@ -70,7 +70,7 @@
                   </math> which is not a subvector space.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/SubSetNotClosedAddition.gif"/>
+               <img src="ims/SubSetNotClosedAddition.gif"/>
             </media>
             <para>
                <para.body>Indeed, there are (at least) two vectors <math>

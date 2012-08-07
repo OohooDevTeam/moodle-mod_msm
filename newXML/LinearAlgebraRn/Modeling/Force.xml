@@ -43,10 +43,10 @@
             </para>
             <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="1" inline="0">
+                  <media type="image" active="1" inline="0">
                      <img src="ims/ForceArrows.gif" height="169" width="319">
                         <image.mapping>
-                           <area xmlns="Unit" shape="rect" coords="25,29,121,47">
+                           <area shape="rect" coords="25,29,121,47">
                               <info>
                                  <info.caption>What does the red vector represent?</info.caption>
                                  <para>
@@ -56,7 +56,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="poly" coords="15,131,25,149,191,77,175,59">
+                           <area shape="poly" coords="15,131,25,149,191,77,175,59">
                               <info>
                                  <info.caption>What does the green vector represent?</info.caption>
                                  <para>
@@ -66,7 +66,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="poly" coords="189,31,285,105,301,87,209,15">
+                           <area shape="poly" coords="189,31,285,105,301,87,209,15">
                               <info>
                                  <info.caption>What does the blue vector represent?</info.caption>
                                  <para>
@@ -92,12 +92,10 @@
             </para>
             <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="1" inline="0">
+                  <media type="image" active="1" inline="0">
                      <img src="ims/ForceSum.gif" height="173" width="391">
                         <image.mapping>
-                           <area xmlns="Unit"
-                                 shape="poly"
-                                 coords="11,97,27,109,285,41,259,23,21,89,21,91,21,97">
+                           <area shape="poly" coords="11,97,27,109,285,41,259,23,21,89,21,91,21,97">
                               <info>
                                  <info.caption>What does the green vector represent?</info.caption>
                                  <para>
@@ -107,7 +105,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="poly" coords="25,113,121,161,133,143,45,105">
+                           <area shape="poly" coords="25,113,121,161,133,143,45,105">
                               <info>
                                  <info.caption>What does the blue vector represent?</info.caption>
                                  <para>
@@ -117,7 +115,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="poly" coords="369,95,369,77,95,93,67,105">
+                           <area shape="poly" coords="369,95,369,77,95,93,67,105">
                               <info>
                                  <info.caption>What does the red vector represent?</info.caption>
                                  <para>

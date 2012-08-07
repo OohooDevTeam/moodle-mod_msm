@@ -35,7 +35,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/CrossProduct1.png"/>
+               <img src="ims/CrossProduct1.png"/>
             </media>
             <para>
                <para.body>These two properties combined determine the direction of the cross product vector. (If <math>
@@ -85,7 +85,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/CrossProduct2.png"/>
+               <img src="ims/CrossProduct2.png"/>
             </media>
             <para>
                <para.body>In this graphic <math>
@@ -102,7 +102,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/CrossProduct3.png"/>
+               <img src="ims/CrossProduct3.png"/>
             </media>
          </block.body>
       </block>

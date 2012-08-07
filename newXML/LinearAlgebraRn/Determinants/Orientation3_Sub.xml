@@ -15,7 +15,7 @@
                <para.body>‘Right hand’ and ‘left hand’ in 3-space are mirrored siblings.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/LeftHandRightHand.jpg"/>
+               <img src="ims/LeftHandRightHand.jpg"/>
             </media>
             <para>
                <para.body>An orientation of <math>
@@ -149,7 +149,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/3OrientationRightHand.gif"/>
+               <img src="ims/3OrientationRightHand.gif"/>
             </media>
             <para>
                <para.body>On the other hand, the triple <math>
@@ -161,7 +161,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/3OrientationLeftHand.gif"/>
+               <img src="ims/3OrientationLeftHand.gif"/>
             </media>
          </block.body>
       </block>

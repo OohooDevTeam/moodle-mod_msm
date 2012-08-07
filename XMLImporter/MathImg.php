@@ -162,8 +162,8 @@ class MathImg extends Element
     {
         $content = '';
 
+        //getting the name of the image file to tag each image with name
         $srcfile = explode('/', $this->src);
-
         $filename = explode('.', end($srcfile));
 
         if ((!empty($this->width)) && (!empty($this->height)))
@@ -180,7 +180,7 @@ class MathImg extends Element
         }
         else
         {
-            $content .= "<img src='" . $this->src . "' height='200' width='350' name='#" . $filename[0] . "'/>";
+            $content .= "<img src='" . $this->src . "' height='200' width='350'/>";
         }
 
         foreach ($this->imageareas as $imagearea)

@@ -43,7 +43,7 @@
                </li>
             </ul>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/EigenLine.png"/>
+               <img src="ims/EigenLine.png"/>
             </media>
          </block.body>
       </block>

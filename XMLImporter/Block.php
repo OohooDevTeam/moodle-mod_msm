@@ -14,6 +14,7 @@ class Block extends Element
 {
 
     public $position;
+    public $root;
 
     function __construct($xmlpath = '')
     {
@@ -128,7 +129,7 @@ class Block extends Element
                             $comment->loadFromXml($child, $position);
                             $this->comments[] = $comment;
                             break;
-                        
+
                         case('media'):
                             $position = $position + 1;
                             $media = new Media($this->xmlpath);
@@ -146,12 +147,12 @@ class Block extends Element
      * @global moodle_database $DB
      * @param int $position 
      */
-    function saveIntoDb($position, $parentid = '')
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB;
 
         $elementPositions = array();
-        $sibling_id = null;
+        $sibling_id = $siblingid;
 
 
         if (!empty($this->defs))
@@ -177,7 +178,7 @@ class Block extends Element
                 $elementPositions['comment' . '-' . $key] = $comment->position;
             }
         }
-        
+
         if (!empty($this->medias))
         {
             foreach ($this->medias as $key => $media)
@@ -290,8 +291,8 @@ class Block extends Element
                         $sibling_id = $comment->compid;
                     }
                     break;
-                    
-                    case(preg_match("/^(media.\d+)$/", $element) ? true : false):
+
+                case(preg_match("/^(media.\d+)$/", $element) ? true : false):
                     $mediaString = split('-', $element);
 
                     if (empty($sibling_id))
@@ -307,7 +308,7 @@ class Block extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
-                    
+
                 case(preg_match("/^(para.\d+)$/", $element) ? true : false):
                     $paraString = split('-', $element);
 
@@ -409,6 +410,7 @@ class Block extends Element
                     }
                     break;
             }
+            $this->root = $sibling_id;
         }
     }
 
@@ -439,17 +441,17 @@ class Block extends Element
                     $this->childs[] = $incontent;
                     break;
 
-               case('msm_math_array'):
-                   $matharray = new MathArray();
-                   $matharray->loadFromDb($child->unit_id, $child->id);
-                   $this->childs[] = $matharray;
-                   break;
-               
-               case('msm_media'):
-                   $media = new Media();
-                   $media->loadFromDb($child->unit_id, $child->id);
-                   $this->childs[] = $media;
-                   break;
+                case('msm_math_array'):
+                    $matharray = new MathArray();
+                    $matharray->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $matharray;
+                    break;
+
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $media;
+                    break;
 //               
 //               case('msm_table'):
 //                   $table = new Table();

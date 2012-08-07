@@ -15,7 +15,7 @@
                <para.body>The essence of the Pasting Lemma is illustrated in the graphic below.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/PastingLemma.png"/>
+               <img src="ims/PastingLemma.png"/>
             </media>
             <para>
                <para.body>We start with two functions:</para.body>

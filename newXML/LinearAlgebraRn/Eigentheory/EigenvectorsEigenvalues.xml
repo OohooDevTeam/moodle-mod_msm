@@ -75,8 +75,8 @@
                            <math>
                               <latex>=	</latex>
                            </math>
-                           <companion xmlns="">
-                              <info xmlns="Unit">
+                           <companion>
+                              <info>
                                  <info.caption>What does this equation mean?</info.caption>
                                  <para>
                                     <para.body>This equation asserts that <math>

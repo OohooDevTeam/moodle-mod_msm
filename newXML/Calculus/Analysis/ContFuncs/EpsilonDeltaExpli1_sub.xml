@@ -48,7 +48,7 @@
                   </math> definition of continuity detect it?</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/EpsilonDelta4.png"/>
+               <img src="ims/EpsilonDelta4.png"/>
             </media>
             <para>
                <para.body>For the deviation tolerance <math>

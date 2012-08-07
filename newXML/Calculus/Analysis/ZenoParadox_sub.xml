@@ -49,8 +49,8 @@
                                  <math>
                                     <latex>=	</latex>
                                  </math>
-                                 <companion xmlns="">
-                                    <info xmlns="Unit">
+                                 <companion>
+                                    <info>
                                        <info.caption>Explain this identity</info.caption>
                                        <para>
                                           <para.body>Indeed, by the time T covers distance <math>

@@ -34,13 +34,7 @@ class MathCell extends Element
         $this->bgcolor = $DomElement->getAttribute('bgcolor');
         $this->fontcolor = $DomElement->getAttribute('fontcolor');
 
-//        $this->infos = array();
         $this->companion = array(); // if the ref already exists inside db table, then store in here as id number
-//        $this->packs = array();
-//        $this->comments = array();
-//        $this->defs = array();
-//        $this->theorems = array();
-//        $this->subunits = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -56,6 +50,19 @@ class MathCell extends Element
                         {
                             $this->content .= $content;
                         }
+
+                        if (!empty($child->nextSibling->nextSibling))
+                        {
+                            if (property_exists($child->nextSibling->nextSibling, 'nodeType'))
+                            {
+                                if ($child->nextSibling->nextSibling->nodeType == XML_ELEMENT_NODE)
+                                {
+                                    $this->content = '<a href="">' . $this->content . '</a>';
+                                }
+                               
+                            }
+                        }
+                        
                         break;
 
                     case('text'):
@@ -86,7 +93,7 @@ class MathCell extends Element
 
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
-        
+
         $elementPositions = array();
         $sibling_id = null;
 

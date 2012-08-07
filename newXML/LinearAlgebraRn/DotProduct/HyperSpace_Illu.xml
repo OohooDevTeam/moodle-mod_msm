@@ -30,7 +30,7 @@
                   </math>, called a normal vector to the hyperspace.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/HyperSpace2D.png"/>
+               <img src="ims/HyperSpace2D.png"/>
             </media>
             <para>
                <para.body>Notice that a hyperspace has many normal vectors: if <math>
@@ -58,7 +58,7 @@
             </para>
             <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="0" inline="0">
+                  <media type="image" active="0" inline="0">
                      <img src="ims/HyperSpace3D.gif"/>
                   </media>
                </para.body>

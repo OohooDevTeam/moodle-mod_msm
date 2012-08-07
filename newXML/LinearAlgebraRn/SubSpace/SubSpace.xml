@@ -300,8 +300,8 @@
                            <math>
                               <latex>:=	</latex>
                            </math>
-                           <companion xmlns="">
-                              <info xmlns="Unit">
+                           <companion>
+                              <info>
                                  <info.caption>How do you read this?</info.caption>
                                  <para>
                                     <para.body>Read this as: ‘S perp is defined to be the set of all those <math>
@@ -476,8 +476,8 @@
                            <math>
                               <latex>:=	</latex>
                            </math>
-                           <companion xmlns="">
-                              <info xmlns="Unit">
+                           <companion>
+                              <info>
                                  <info.caption>How do I read this?</info.caption>
                                  <para>
                                     <para.body>Read this as:  kernel of <math>

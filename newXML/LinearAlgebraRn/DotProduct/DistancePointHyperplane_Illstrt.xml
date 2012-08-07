@@ -37,7 +37,7 @@
             </para>
             <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="1" inline="0">
+                  <media type="image" active="1" inline="0">
                      <img src="ims/DistancePointHyperplane_2D.gif" height="225" width="434"/>
                   </media>
                   <info>
@@ -97,10 +97,10 @@
             </para>
             <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="1" inline="0">
+                  <media type="image" active="1" inline="0">
                      <img src="ims/DistancePointPlane01.gif" height="330" width="440">
                         <image.mapping>
-                           <area xmlns="Unit" shape="circle" coords="420,144,9">
+                           <area shape="circle" coords="420,144,9">
                               <info>
                                  <para>
                                     <para.body>The point <math>
@@ -109,7 +109,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="circle" coords="302,260,7">
+                           <area shape="circle" coords="302,260,7">
                               <info>
                                  <para>
                                     <para.body>The point <math>
@@ -120,8 +120,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit"
-                                 shape="poly"
+                           <area shape="poly"
                                  coords="5,3,3,325,437,325,437,165,419,165,363,301,203,257,71,157,31,67,49,47,177,81,275,103,271,89,81,3,13,5">
                               <info>
                                  <para>
@@ -131,7 +130,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="circle" coords="149,117,14">
+                           <area shape="circle" coords="149,117,14">
                               <info>
                                  <para>
                                     <para.body>Other points on <math>
@@ -146,7 +145,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="circle" coords="93,151,12">
+                           <area shape="circle" coords="93,151,12">
                               <info>
                                  <para>
                                     <para.body>Other points on <math>
@@ -161,7 +160,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="circle" coords="52,70,9">
+                           <area shape="circle" coords="52,70,9">
                               <info>
                                  <para>
                                     <para.body>Other points on <math>
@@ -176,7 +175,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="circle" coords="224,250,9">
+                           <area shape="circle" coords="224,250,9">
                               <info>
                                  <para>
                                     <para.body>Other points on <math>
@@ -191,7 +190,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="circle" coords="355,287,10">
+                           <area shape="circle" coords="355,287,10">
                               <info>
                                  <para>
                                     <para.body>Other points on <math>

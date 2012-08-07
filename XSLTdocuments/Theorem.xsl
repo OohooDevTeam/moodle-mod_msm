@@ -738,7 +738,7 @@
     <xsl:template match="thm:img">
         <xsl:choose>     
             <xsl:when test="parent::node()[name()='figure']">
-                <xsl:element name="img">
+                <xsl:element name="img" namespace="Theorem">
                     <xsl:attribute name="src">
                         <xsl:value-of select="./@src"/>
                     </xsl:attribute>
@@ -797,11 +797,11 @@
                 </xsl:element>         
             </xsl:when>
             <xsl:when test="parent::node()[name()='hot']">
-                <xsl:element name="media">
+                <xsl:element name="media" namespace="Theorem">
                     <xsl:attribute name="type">image</xsl:attribute>
                     <xsl:attribute name="active">1</xsl:attribute>
                     <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img">
+                    <xsl:element name="img" namespace="Theorem">
                         <xsl:attribute name="src">
                             <xsl:value-of select="./@src"/>
                         </xsl:attribute>
@@ -819,7 +819,7 @@
                 </xsl:element>            
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="media">
+                <xsl:element name="media" namespace="Theorem">
                     <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                         <xsl:attribute name="id">
                             <xsl:value-of select="parent::node()/@id"/>
@@ -850,7 +850,7 @@
     </xsl:template>
     
     <xsl:template match="thm:image">
-        <xsl:element name="media">
+        <xsl:element name="media" namespace="Theorem">
             <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                 <xsl:attribute name="id">
                     <xsl:value-of select="parent::node()/@id"/>
@@ -867,7 +867,7 @@
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:attribute name="inline">0</xsl:attribute>
-            <xsl:element name="img">
+            <xsl:element name="img" namespace="Theorem">
                 <xsl:attribute name="src">
                     <xsl:choose>
                         <xsl:when test="child::node()[name()='path']">
@@ -890,7 +890,7 @@
                 </xsl:if>
                 
                 <xsl:if test="child::node()[not(name()='path')]">
-                    <xsl:element name="image.mapping">
+                    <xsl:element name="image.mapping" namespace="Theorem">
                         <xsl:apply-templates select="thm:area"/>
                     </xsl:element>
                 </xsl:if>

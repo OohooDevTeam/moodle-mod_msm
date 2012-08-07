@@ -25,8 +25,8 @@
                      <math>
                         <latex>=	</latex>
                      </math>
-                     <companion xmlns="">
-                        <info xmlns="Unit">
+                     <companion>
+                        <info>
                            <para>
                               <para.body>Here <math>
                                     <latex>c</latex>
@@ -70,7 +70,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/Square.png"/>
+               <img src="ims/Square.png"/>
             </media>
             <para>
                <para.body>Thus, from a geometric point of view, the number <math>

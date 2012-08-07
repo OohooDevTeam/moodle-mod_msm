@@ -81,6 +81,8 @@ class Media extends Element
             $this->media_type = $mediaRecord->media_type;            
         }
         
+//        print_object($mediaRecord);
+        
         $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
         
         $this->childs = array();
@@ -103,11 +105,13 @@ class Media extends Element
     function displayhtml()
     {
         $content = '';
+        $content .= "<div class='picture'>";
         
         foreach($this->childs as $childComponent)
         {
             $content .= $childComponent->displayhtml();
         }
+        $content .= "</div>";
         
         return $content;
     }

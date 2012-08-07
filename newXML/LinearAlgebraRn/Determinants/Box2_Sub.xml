@@ -25,7 +25,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/Box2_1.png"/>
+               <img src="ims/Box2_1.png"/>
             </media>
             <para>
                <para.body>Let us explain how this results from the definition of</para.body>
@@ -58,7 +58,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/ParallelogramSpan.png"/>
+               <img src="ims/ParallelogramSpan.png"/>
             </media>
             <para>
                <para.body>Now a vector sum of the form <math>
@@ -85,7 +85,7 @@
                   </math>.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/Box2_2.png"/>
+               <img src="ims/Box2_2.png"/>
             </media>
          </block.body>
       </block>

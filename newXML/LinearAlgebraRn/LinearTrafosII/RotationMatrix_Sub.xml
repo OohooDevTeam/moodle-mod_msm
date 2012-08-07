@@ -43,7 +43,7 @@
                <para.body>The rotation is to be according to the Right Hand Rule, that is in the direction of the curled fingers of the right hand, with its thumb aligned with the oriented axis of rotation.</para.body>
             </para>
             <media type="image" active="1" inline="0">
-               <img xmlns="" src="ims/RotationGeneral.jpg"/>
+               <img src="ims/RotationGeneral.jpg"/>
             </media>
             <para>
                <para.body>To describe the rotation we introduce a suitable ordered ONB for <math>

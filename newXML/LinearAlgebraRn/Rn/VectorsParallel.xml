@@ -24,7 +24,7 @@
       </para>
       <para align="center">
          <para.body>
-            <media xmlns="" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img src="ims/VectorScalarMultiply_2.gif"/>
             </media>
          </para.body>
@@ -40,7 +40,7 @@
       </para>
       <para align="center">
          <para.body>
-            <media xmlns="" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img src="ims/VectorScalarMultiply_3.gif"/>
             </media>
          </para.body>
@@ -52,7 +52,7 @@
                   <info.caption>Animation of Scalar Multiplication of a Vector by a Number</info.caption>
                   <para align="center">
                      <para.body>
-                        <media xmlns="" type="image" active="0" inline="0">
+                        <media type="image" active="0" inline="0">
                            <img src="ims/VectorScalarMultiply_Anmt.gif"/>
                         </media>
                      </para.body>
@@ -63,7 +63,7 @@
       </para>
       <para align="center">
          <para.body>
-            <media xmlns="" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img src="VectorScalarMultiply_1.gif"/>
             </media>
          </para.body>

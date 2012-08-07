@@ -25,7 +25,7 @@
                   </math>. </para.body>
             </para>
             <media type="image" active="1" inline="0">
-               <img xmlns="" src="ims/LeftHandMirrorRightHand.jpg"/>
+               <img src="ims/LeftHandMirrorRightHand.jpg"/>
             </media>
             <para>
                <para.body>To describe such an orthogonal reflectiion <math>
@@ -33,7 +33,7 @@
                   </math> mathematically, we consider the following schematic sketch.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/OrthogonalReflection.png"/>
+               <img src="ims/OrthogonalReflection.png"/>
             </media>
             <para>
                <para.body>In the picture above, we reflect <math>

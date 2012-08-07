@@ -15,7 +15,7 @@
                <para.body>The picture below shows a cube being transformed by applying a shear transformation.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/Trafo_Shear3D.jpg"/>
+               <img src="ims/Trafo_Shear3D.jpg"/>
             </media>
             <para>
                <para.body>We will see that shear transformations are linear.</para.body>

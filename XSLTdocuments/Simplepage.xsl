@@ -91,7 +91,7 @@
     <xsl:template match="sp:img">
         <xsl:choose>     
             <xsl:when test="parent::node()[name()='figure']">
-                <xsl:element name="img">
+                <xsl:element name="img" namespace="Unit">
                     <xsl:attribute name="src">
                         <xsl:value-of select="./@src"/>
                     </xsl:attribute>
@@ -108,13 +108,13 @@
                     
                     <xsl:if test="child::node()[name()='info' or name()='caption']">
                         
-                        <xsl:element name="extended.caption" namespace="Theorem">
+                        <xsl:element name="extended.caption" namespace="Unit">
                             
                             <xsl:if test="child::node()[name()='info']">
                                 
-                                <xsl:element name="image.mapping" namespace="Theorem">
+                                <xsl:element name="image.mapping" namespace="Unit">
                                     
-                                    <xsl:element name="area" namespace="Theorem">
+                                    <xsl:element name="area" namespace="Unit">
                                         <xsl:attribute name="shape">
                                             <xsl:text>rect</xsl:text>
                                         </xsl:attribute>
@@ -150,11 +150,11 @@
                 </xsl:element>         
             </xsl:when>
             <xsl:when test="parent::node()[name()='hot']">
-                <xsl:element name="media">
+                <xsl:element name="media" namespace="Unit">
                     <xsl:attribute name="type">image</xsl:attribute>
                     <xsl:attribute name="active">1</xsl:attribute>
                     <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img">
+                    <xsl:element name="img" namespace="Unit">
                         <xsl:attribute name="src">
                             <xsl:value-of select="./@src"/>
                         </xsl:attribute>
@@ -172,7 +172,7 @@
                 </xsl:element>            
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="media">
+                <xsl:element name="media" namespace="Unit">
                     <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                         <xsl:attribute name="id">
                             <xsl:value-of select="parent::node()/@id"/>
@@ -203,7 +203,7 @@
     </xsl:template>
     
     <xsl:template match="sp:image">
-        <xsl:element name="media">
+        <xsl:element name="media" namespace="Unit">
             <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                 <xsl:attribute name="id">
                     <xsl:value-of select="parent::node()/@id"/>
@@ -220,7 +220,7 @@
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:attribute name="inline">0</xsl:attribute>
-            <xsl:element name="img">
+            <xsl:element name="img" namespace="Unit">
                 <xsl:attribute name="src">
                     <xsl:choose>
                         <xsl:when test="child::node()[name()='path']">
@@ -243,7 +243,7 @@
                 </xsl:if>
                 
                 <xsl:if test="child::node()[not(name()='path')]">
-                    <xsl:element name="image.mapping">
+                    <xsl:element name="image.mapping" namespace="Unit">
                         <xsl:apply-templates select="sp:area"/>
                     </xsl:element>
                 </xsl:if>

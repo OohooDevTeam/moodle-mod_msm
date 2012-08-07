@@ -24,10 +24,10 @@
          <block.body>
             <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="1" inline="0">
+                  <media type="image" active="1" inline="0">
                      <img src="ims/DirectionAnglesR2.gif" height="237" width="343">
                         <image.mapping>
-                           <area xmlns="Unit" shape="rect" coords="39,209,101,233">
+                           <area shape="rect" coords="39,209,101,233">
                               <info>
                                  <para>
                                     <para.body>
@@ -37,7 +37,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="rect" coords="3,142,29,191">
+                           <area shape="rect" coords="3,142,29,191">
                               <info>
                                  <para>
                                     <para.body>
@@ -47,7 +47,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="poly" coords="35,195,199,112,35,21">
+                           <area shape="poly" coords="35,195,199,112,35,21">
                               <info>
                                  <para>
                                     <para.body>
@@ -59,7 +59,7 @@
                                  </para>
                               </info>
                            </area>
-                           <area xmlns="Unit" shape="poly" coords="242,104,48,201,288,201">
+                           <area shape="poly" coords="242,104,48,201,288,201">
                               <info>
                                  <para>
                                     <para.body>

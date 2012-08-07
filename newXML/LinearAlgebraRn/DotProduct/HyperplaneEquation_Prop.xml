@@ -64,7 +64,7 @@
                <para.body>We use the picture below to guide our argument.</para.body>
             </para>
             <media type="image" active="0" inline="0">
-               <img xmlns="" src="ims/HyperPlaneEquation.gif"/>
+               <img src="ims/HyperPlaneEquation.gif"/>
             </media>
             <para>
                <para.body>If <math>

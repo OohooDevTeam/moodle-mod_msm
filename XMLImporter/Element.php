@@ -230,7 +230,7 @@ abstract class Element
         }
         for ($i = 0; $i < $length; $i++)
         {
-            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
+//            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
 
             $position = $position + 1;
             $subordinate = new Subordinate($this->xmlpath);
@@ -239,7 +239,7 @@ abstract class Element
         }
         return $arrayOfSubordinates;
     }
-
+   
     /**
      *
      * @param DOMElement $DomElement
@@ -315,8 +315,9 @@ abstract class Element
             $string = str_replace('<cell', '<td', $string);
             $string = str_replace('</cell>', '</td>', $string);
 
-            $string = preg_replace('/^<math.array xmlns=(.+)/', '<table class="matharray"', $string);
-            $string = str_replace('</math.array>', '</table>', $string);
+//            $string = preg_replace('/^<math.array xmlns=(.+)/', '<table class="matharray"', $string);
+//            $string = str_replace('<math.array', '<table', $string);
+//            $string = str_replace('</math.array>', '</table>', $string);
 
             $string = str_replace('<para.body', '<p', $string);
             $string = str_replace('</para.body>', '</p>', $string);
@@ -330,17 +331,16 @@ abstract class Element
             $string = str_replace('<hot>', '<a href="">', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
 
-            // mathjax will not render contents of <latex> if there is a parent element
-            // so need to delete math element 
-            $string = str_replace('<math>', '', $string);
-            $string = preg_replace('/^<math xmlns=(.+)>/', '', $string);
-            $string = str_replace('</math>', '', $string);
+            $string = str_replace('<math>', '$', $string);
+            $string = preg_replace('/^<math xmlns=(.+)>/', '$', $string);
+            $string = str_replace('</math>', '$', $string);
 
+            $string = str_replace('<math.display>', '$$', $string);
             $string = preg_replace('/^<math.display xmlns=(.+)>/', '$$', $string);
             $string = str_replace('</math.display>', '$$', $string);
 
-            $string = str_replace('<latex>', '$', $string);
-            $string = str_replace('</latex>', '$', $string);
+            $string = str_replace('<latex>', '', $string);
+            $string = str_replace('</latex>', '', $string);
             $resultcontent[] = $string;
         }
         return $resultcontent;
@@ -540,9 +540,9 @@ abstract class Element
             }
         }
 
-        $content .= "<div class='content'>";
+//        $content .= "<div class='content'>";
         $content .= $XMLcontent;
-        $content .= "</div>";
+//        $content .= "</div>";
 
         return $content;
     }

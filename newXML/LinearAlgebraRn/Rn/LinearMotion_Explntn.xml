@@ -34,7 +34,7 @@
       </para>
       <para align="center">
          <para.body>
-            <media xmlns="" type="image" active="0" inline="0">
+            <media type="image" active="0" inline="0">
                <img src="ims/LinearMotion_Illstrtn.gif"/>
             </media>
          </para.body>
@@ -67,8 +67,8 @@
                <math>
                   <latex>=	</latex>
                </math>
-               <companion xmlns="">
-                  <info xmlns="Unit">
+               <companion>
+                  <info>
                      <info.caption>Computation of displacement vector</info.caption>
                      <para>
                         <para.body>

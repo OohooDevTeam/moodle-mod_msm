@@ -700,15 +700,30 @@ class Unit extends Element
 
                 case(preg_match("/^(block.\d+)$/", $element) ? true : false):
                     $blockString = split('-', $element);
-                    $block = $this->block[$blockString[1]];
-                    $block->saveIntoDb($block->position, $this->compid);
+
+                    if (empty($sibling_id))
+                    {
+                        $block = $this->block[$blockString[1]];
+                        $block->saveIntoDb($block->position, $this->compid);
+                        $sibling_id = $block->root;
+                    }
+                    else
+                    {
+                        $block = $this->block[$blockString[1]];
+                        $block->saveIntoDb($block->position, $this->compid, $sibling_id);
+                        if (!empty($block->root))
+                        {
+                            $sibling_id = $block->root;
+                        }
+                    }
+
                     break;
 //
                 case(preg_match("/^(subunits.\d+)$/", $element) ? true : false):
 
                     $subunitString = split('-', $element);
 
-                    if (empty($sibling_id))//  first author element which has no previous sibling
+                    if (empty($sibling_id))
                     {
                         $subunit = $this->subunits[$subunitString[1]];
                         $subunit->saveIntoDb($subunit->position, $this->compid);
@@ -962,6 +977,12 @@ class Unit extends Element
                     $theorem = new Theorem();
                     $theorem->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $theorem;
+                    break;
+                
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $media;
                     break;
 //                   
                 case('msm_comment'):
