@@ -154,7 +154,7 @@ class MathCell extends Element
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-            switch ($chidltablename)
+            switch ($childtablename)
             {
                 case('msm_comment'):
                     $comment = new MathComment();

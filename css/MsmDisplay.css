@@ -310,5 +310,72 @@ span.parttheoremtitle
 table.matharray
 {
     width: 200px;
+    text-align: center;
+}
+
+.comment
+{
+    width: 90%;
+    background-color: #0F900F;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.commentcontent
+{
+    margin-top: 5px;
+/*    margin-bottom: 5px;*/
+    border: 2px solid black;
+    background-color: white;
+}
+
+span.commenttitle
+{
+/*    font-size: 12px;*/
+    font-weight: bold;
+    color: white;
+    float: right;   
+}
+
+span.commenttype
+{
+/*    font-size: 12px;*/
+    font-weight: bold;
+    color: white;
+    float: left;
+}
+
+.commentminibuttons
+{
+    background-color: #0F900F;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    float:top;
+}
+.commentminibutton
+{
+    border:1px solid #858181;
+    background-color: #0F900F;
+    background-origin:border-box;
+    display:inline-block;
+    margin-left:5px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family:arial;
+    font-size:11px;
+    font-weight:bold;
+    padding:0px 7px;
+    text-decoration:none;
+    float:left;
+}
+
+.commentminibutton:hover
+{
+    background-color:#21B468;
 }
 

@@ -101,6 +101,37 @@ function popup(i) {
         });
    
     });
+    
+    $('#commentminibutton-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#commentminibutton-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#commentminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#commentminibutton-'+i).mouseover(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#commentminibutton-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#commentminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+   
+    });
  
 }
 

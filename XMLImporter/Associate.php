@@ -422,7 +422,7 @@ class Associate extends Element
 
         $associateParentTablename = $DB->get_record('msm_table_collection', array('id' => $associateParenttable))->tablename;
 
-        if (($associateParentTablename == 'msm_def') || ($associateParentTablename == 'msm_comment'))
+        if ($associateParentTablename == 'msm_def')
         {
             $content .= "<li class='defminibutton' id='defminibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
             $content .= "<span style='cursor:pointer'>";
@@ -437,6 +437,19 @@ class Associate extends Element
         if ($associateParentTablename == 'msm_theorem')
         {
             $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+            $content .= "<span style='cursor:pointer'>";
+            $content .= $this->description;
+            $content .= "</span>";
+            $content .= "</li>";
+
+            $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
+            $content .= $this->infos[0]->info_content;
+            $content .= "</div>";
+        }
+        
+        if($associateParentTablename == 'msm_comment')
+        {
+            $content .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
             $content .= "<span style='cursor:pointer'>";
             $content .= $this->description;
             $content .= "</span>";

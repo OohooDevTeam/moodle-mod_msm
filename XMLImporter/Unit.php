@@ -984,11 +984,17 @@ class Unit extends Element
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $media;
                     break;
+                
+                case('msm_math_array'):
+                    $matharray = new MathArray();
+                    $matharray->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $matharray;
+                    break;
 //                   
                 case('msm_comment'):
-//                   $comment = new MathComment();
-//                   $comment->loadFromDb($child->unit_id, $child->id);
-//                   $this->childs[] = $comment;
+                   $comment = new MathComment();
+                   $comment->loadFromDb($child->unit_id, $child->id);
+                   $this->childs[] = $comment;
                     break;
             }
         }

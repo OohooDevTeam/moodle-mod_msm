@@ -74,7 +74,7 @@ class MathInfo extends Element
                         $this->content .= $content;
                     }
                 }
-                else if($child->tagName == 'info.caption')
+                else if ($child->tagName == 'info.caption')
                 {
                     $this->caption = $this->getContent($child);
                 }
@@ -250,26 +250,52 @@ class MathInfo extends Element
 
         if (!empty($infoRecord))
         {
-            if(empty($infoRecord->caption))
+            if (empty($infoRecord->caption))
             {
                 $this->caption = null;
             }
             else
             {
-                 $this->caption = $infoRecord->caption;
-            }           
+                $this->caption = $infoRecord->caption;
+            }
             $this->info_content = $infoRecord->info_content;
             $this->id = $infoRecord->id;
+            $this->compid = $compid;
         }
 
-        $tableid = $DB->get_record('msm_table_collection', array('tablename' => $this->tablename))->id;
+//        $tableid = $DB->get_record('msm_table_collection', array('tablename' => $this->tablename))->id;
+//
+//        $whereclause = "unit_id='" . $this->id . "'" . "and table_id='" . $tableid . "'";
+//
+//        $infoCompRecord = $DB->get_record_select('msm_compositor', $whereclause);
+//
+//        $this->compid = $infoCompRecord->id;
 
-        $whereclause = "unit_id='" . $this->id . "'" . "and table_id='" . $tableid . "'";
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
-        $infoCompRecord = $DB->get_record_select('msm_compositor', $whereclause);
+        $this->medias = array();
+        $this->subordinates = array();
 
-        $this->compid = $infoCompRecord->id;
+        foreach ($childElements as $child)
+        {
+            $childtable = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
+            switch ($childtable)
+            {
+                case('msm_subordinate'):
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->medias[] = $media;
+                    break;
+            }
+        }
+       
         return $this;
     }
 

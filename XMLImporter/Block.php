@@ -452,6 +452,12 @@ class Block extends Element
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $media;
                     break;
+                
+                case('msm_comment'):
+                    $comment = new MathComment();
+                    $comment->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $comment;
+                    break;
 //               
 //               case('msm_table'):
 //                   $table = new Table();

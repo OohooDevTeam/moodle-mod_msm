@@ -260,7 +260,7 @@ class Para extends Element
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->subordinates = array();
-        $this->childs = array();
+        $this->medias = array();
 
         foreach ($childElements as $child)
         {
@@ -277,7 +277,7 @@ class Para extends Element
                 case('msm_media'):
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $media;
+                    $this->medias[] = $media;
                     break;
             }
         }
@@ -289,11 +289,11 @@ class Para extends Element
         $content = '';
 
         $content .= $this->displaySubordinate($this, $this->para_content);
-        
-        foreach($this->childs as $child)
-        {
-            $content .= $child->displayhtml();
-        }
+//        
+//        foreach($this->childs as $child)
+//        {
+//            $content .= $child->displayhtml();
+//        }
 
         return $content;
     }

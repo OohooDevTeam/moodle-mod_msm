@@ -239,7 +239,7 @@ abstract class Element
         }
         return $arrayOfSubordinates;
     }
-   
+
     /**
      *
      * @param DOMElement $DomElement
@@ -266,6 +266,7 @@ abstract class Element
         }
         for ($i = 0; $i < $length; $i++)
         {
+            // replacing the entire subordinate element with just the hot element of the subordinate to show only the hot element 
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
@@ -290,12 +291,26 @@ abstract class Element
         {
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
-
+//
         $medias = $DomElement->getElementsByTagName('media');
         $mlength = $medias->length;
         for ($i = 0; $i < $mlength; $i++)
         {
-            $medias->item(0)->parentNode->removeChild($medias->item(0));
+            foreach ($medias->item(0)->childNodes as $child)
+            {
+                if ($child->nodeType == XML_ELEMENT_NODE)
+                {
+                    if ($child->tagName == 'img')
+                    {
+                        $imgsrc = $child;
+                    }
+                }
+            }
+
+            if (!empty($imgsrc))
+            {
+                $medias->item(0)->parentNode->replaceChild($imgsrc, $medias->item(0));
+            }
         }
 
         $doc = new DOMDocument();
@@ -503,9 +518,55 @@ abstract class Element
 
     function displaySubordinate($object, $XMLcontent)
     {
+        global $DB;
         $content = '';
         $doc = new DOMDocument();
         @$doc->loadXML($XMLcontent);
+
+        $imgs = $doc->getElementsByTagName('img');
+
+        foreach ($imgs as $key => $img)
+        {
+            $newtag = '';
+
+            $src = $img->getAttribute('src');
+
+            $sql = "src LIKE '%" . $src . "%'";
+
+            // array_shift(array_values($array)) grabs the first item of the array --> since the get_records
+            // return an array indexed by the id number of the record, need to grab the first item this way
+
+            if ($DB->count_records_select('msm_img', $sql) > 1)
+            {
+
+                $imgRecord = $DB->get_records_select('msm_img', $sql);
+                $imgparentid = $DB->get_record('msm_compositor', array('unit_id' => array_shift(array_values($imgRecord))->id, 'table_id' => 16))->parent_id;
+            }
+            else
+            {
+                $imgRecord = $DB->get_record_select('msm_img', $sql);
+                $imgparentid = $DB->get_record('msm_compositor', array('unit_id' => $imgRecord->id, 'table_id' => 16))->parent_id;
+            }
+
+
+
+            if (!empty($imgRecord))
+            {
+                $mediaRecord = $DB->get_record('msm_compositor', array('id' => $imgparentid));
+
+                if (!empty($mediaRecord))
+                {
+                    $media = new Media();
+                    $media->loadFromDb($mediaRecord->unit_id, $mediaRecord->id);
+
+                    $newtag .= $media->displayhtml();
+
+                    $imgString = $doc->saveXML($img);
+
+                    $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
+                }
+            }
+        }
 
         $hottags = $doc->getElementsByTagName('a');
 
@@ -534,12 +595,15 @@ abstract class Element
                     $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
 
                     $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
-                    $content .= $subordinate->infos[0]->info_content;
+
+                    $content .= $this->displaySubordinate($subordinate->infos[0], $subordinate->infos[0]->info_content);
+
                     $content .= "</div>";
                 }
             }
         }
 
+//        @$doc->loadXML($XMLcontent);
 //        $content .= "<div class='content'>";
         $content .= $XMLcontent;
 //        $content .= "</div>";
