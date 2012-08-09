@@ -321,8 +321,8 @@ abstract class Element
 
         foreach ($content as $key => $string)
         {
-            $string = str_replace('<caption>', '<captions>', $string);
-            $string = str_replace('</caption>', '</captions>', $string);
+//            $string = str_replace('<caption>', '<captions>', $string);
+//            $string = str_replace('</caption>', '</captions>', $string);
 
             $string = str_replace('<row', '<tr', $string);
             $string = str_replace('</row>', '</tr>', $string);
@@ -517,11 +517,64 @@ abstract class Element
     }
 
     function displaySubordinate($object, $XMLcontent)
-    {
+    {       
         global $DB;
         $content = '';
         $doc = new DOMDocument();
         @$doc->loadXML($XMLcontent);
+
+        $tables = $doc->getElementsByTagName('table');
+
+        foreach ($tables as $table)
+        {
+            $newtabletag = '';
+
+            $trs = $table->getElementsByTagName('tr');
+            $border = $table->getAttribute('border');
+            $cellpadding = $table->getAttribute('cellpadding');
+
+            if (empty($border))
+            {
+                $border = 0;
+            }
+            if (empty($cellpadding))
+            {
+                $cellpadding = 0;
+            }
+
+            $newtabletag .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
+
+            foreach ($trs as $tr)
+            {
+                $newtabletag .= "<tr>";
+                foreach ($tr->childNodes as $grandChild)
+                {
+                    if ($grandChild->nodeType == XML_ELEMENT_NODE)
+                    {
+                        if ($grandChild->tagName == 'td')
+                        {
+                            $newtabletag .= "<td style='border-width:" . $border . "px !important;'>";
+                            foreach ($grandChild->childNodes as $tablecontent)
+                            {
+                                $newtabletag .= $doc->saveXML($tablecontent);
+                            }
+                            $newtabletag .= "</td>";
+                        }
+                    }
+                    else
+                    {
+                        $newtabletag .= $doc->saveXML($grandChild);
+                    }
+                }
+                $newtabletag .= "</tr>";
+            }
+
+            $newtabletag .= "</table>";
+
+            $tableString = $doc->saveXML($table);
+
+            $XMLcontent = str_replace($tableString, $newtabletag, $XMLcontent);
+        }
 
         $imgs = $doc->getElementsByTagName('img');
 
@@ -596,18 +649,16 @@ abstract class Element
 
                     $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
 
-                    $content .= $this->displaySubordinate($subordinate->infos[0], $subordinate->infos[0]->info_content);
+                    $recursivecontent = $this->displaySubordinate($subordinate->infos[0], $subordinate->infos[0]->info_content);
+                    
+                    $content .= $recursivecontent;
 
                     $content .= "</div>";
                 }
             }
         }
 
-//        @$doc->loadXML($XMLcontent);
-//        $content .= "<div class='content'>";
         $content .= $XMLcontent;
-//        $content .= "</div>";
-
         return $content;
     }
 

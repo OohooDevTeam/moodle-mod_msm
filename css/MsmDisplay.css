@@ -17,6 +17,12 @@ body
     z-index:0;
 }
 
+/*body table, body td{
+    border-collapse: separate;
+    border-spacing: 2px;
+    border:none;
+}*/
+
 /*controller for the jShowoff plugin*/
 
 div.controller{
@@ -149,11 +155,6 @@ div.controller{
     margin-top: 0px;
 }
 
-#features .unit .content table
-{
-    max-width:99%;
-}
-
 .hottag
 {
     /*    overflow: hidden;*/
@@ -179,14 +180,14 @@ div.controller{
 .defcontent
 {
     margin-top: 5px;
-/*    margin-bottom: 5px;*/
+    /*    margin-bottom: 5px;*/
     border: 2px solid black;
     background-color: white;
 }
 
 span.deftitle
 {
-/*    font-size: 12px;*/
+    /*    font-size: 12px;*/
     font-weight: bold;
     color: white;
     float: right;   
@@ -194,7 +195,7 @@ span.deftitle
 
 span.deftype
 {
-/*    font-size: 12px;*/
+    /*    font-size: 12px;*/
     font-weight: bold;
     color: white;
     float: left;
@@ -203,7 +204,7 @@ span.deftype
 .theoremcontent
 {
     margin-top: 5px;
-/*    margin-bottom: 5px;*/
+    /*    margin-bottom: 5px;*/
     border: 2px solid black;
     background-color: white;
 }
@@ -220,7 +221,7 @@ span.deftype
 
 span.theoremtitle
 {
-/*    font-size: 12px;*/
+    /*    font-size: 12px;*/
     font-weight: bold;
     color: white;
     float: right;   
@@ -228,7 +229,7 @@ span.theoremtitle
 
 span.theoremtype
 {
-/*    font-size: 12px;*/
+    /*    font-size: 12px;*/
     font-weight: bold;
     color: white;
     float: left;
@@ -309,9 +310,25 @@ span.parttheoremtitle
 
 table.matharray
 {
+    border: none;
     width: 200px;
     text-align: center;
 }
+
+.mathtable, .mathtable td
+{
+    /*    border: 1px solid maroon;*/
+    border-color: maroon;
+    border-collapse: separate !important;
+    border-spacing: 2px;
+    /*    max-width: 90%;*/
+}/*
+
+.dialogs table, td{
+    border: 1px solid maroon;
+    border-collapse: separate;
+    border-spacing: 2px;
+}*/
 
 .comment
 {
@@ -326,14 +343,14 @@ table.matharray
 .commentcontent
 {
     margin-top: 5px;
-/*    margin-bottom: 5px;*/
+    /*    margin-bottom: 5px;*/
     border: 2px solid black;
     background-color: white;
 }
 
 span.commenttitle
 {
-/*    font-size: 12px;*/
+    /*    font-size: 12px;*/
     font-weight: bold;
     color: white;
     float: right;   
@@ -341,7 +358,7 @@ span.commenttitle
 
 span.commenttype
 {
-/*    font-size: 12px;*/
+    /*    font-size: 12px;*/
     font-weight: bold;
     color: white;
     float: left;

@@ -990,6 +990,12 @@ class Unit extends Element
                     $matharray->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $matharray;
                     break;
+                
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $table;
+                    break;
 //                   
                 case('msm_comment'):
                    $comment = new MathComment();

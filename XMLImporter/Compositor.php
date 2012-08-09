@@ -107,7 +107,7 @@ class Compositor
             <script type="text/javascript">
                 $(document).ready(function() {
                     var stackstring = "<?php echo $newstring; ?>";
-                    $('.unit').append('<input id="stack" type="text" name="stackstring"/>');
+                    $('.unit').append('<input id="stack" type="text" name="stackstring" style="visibility:hidden"/>');
                     $('#stack').val(stackstring); 
                 });
                                                         
