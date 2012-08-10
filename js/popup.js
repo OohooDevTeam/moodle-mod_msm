@@ -26,7 +26,7 @@ function popup(i) {
     
     });
                 
-    $('#defminibutton-'+i).mouseover(function(e){
+    $('#defminibutton-'+i).ready(function(e){
         $('#dialog-'+i).dialog('open');
         $('#defminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
@@ -57,7 +57,7 @@ function popup(i) {
     
     });
                 
-    $('#minibutton-'+i).mouseover(function(e){
+    $('#minibutton-'+i).ready(function(e){
         $('#dialog-'+i).dialog('open');
         $('#minibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
@@ -88,7 +88,7 @@ function popup(i) {
     
     });
                 
-    $('#hottag-'+i).mouseover(function(e){
+    $('#hottag-'+i).ready(function(e){
         $('#dialog-'+i).dialog('open');
         $('#hottag-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
@@ -119,7 +119,7 @@ function popup(i) {
     
     });
                 
-    $('#commentminibutton-'+i).mouseover(function(e){
+    $('#commentminibutton-'+i).ready(function(e){
         $('#dialog-'+i).dialog('open');
         $('#commentminibutton-'+i).mousemove(function (e) {
             $('#dialog-'+i).dialog('option', {
@@ -134,4 +134,5 @@ function popup(i) {
     });
  
 }
+
 

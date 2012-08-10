@@ -39,7 +39,7 @@ class Compositor
         global $DB;
 
         // stack that will have all the unit records in order given by the compositor table
-        $this->childs = array();
+//        $this->childs = array();
         $childs = array();
 
         array_push($childs, $DomElement);
@@ -110,7 +110,7 @@ class Compositor
                     $('.unit').append('<input id="stack" type="text" name="stackstring" style="visibility:hidden"/>');
                     $('#stack').val(stackstring); 
                 });
-                                                        
+                                                                                
             </script>
 
             <?php
@@ -118,7 +118,7 @@ class Compositor
         }
         else // at the end of textbook
         {
-            $content ='';
+            $content = '';
         }
 
         return $content;

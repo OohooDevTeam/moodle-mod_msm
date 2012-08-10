@@ -243,10 +243,16 @@ class Theorem extends Element
         $content .= "<br />";
 
         $content .= "<ul class='minibuttons'>";
-        foreach ($this->associates as $key => $associate)
+        foreach ($this->associates as $associate)
         {
             $content .= $associate->displayhtml();
         }
+        
+        foreach($this->proofs as $proof)
+        {
+            $content .= $proof->displayhtml();
+        }
+        
         $content .= "</ul>";
 
         $content .= "</div>";

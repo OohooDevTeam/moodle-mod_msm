@@ -434,6 +434,7 @@ class Associate extends Element
             $content .= $this->infos[0]->info_content;
             $content .= "</div>";
         }
+        
         if ($associateParentTablename == 'msm_theorem')
         {
             $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
