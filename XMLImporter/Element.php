@@ -517,149 +517,156 @@ abstract class Element
     }
 
     function displaySubordinate($object, $XMLcontent)
-    {       
+    {
         global $DB;
         $content = '';
+        $recursivecontent='';
         $doc = new DOMDocument();
         @$doc->loadXML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
-
-        foreach ($tables as $table)
-        {
-            $newtabletag = '';
-
-            $trs = $table->getElementsByTagName('tr');
-            $border = $table->getAttribute('border');
-            $cellpadding = $table->getAttribute('cellpadding');
-
-            if (empty($border))
-            {
-                $border = 0;
-            }
-            if (empty($cellpadding))
-            {
-                $cellpadding = 0;
-            }
-
-            $newtabletag .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
-
-            foreach ($trs as $tr)
-            {
-                $newtabletag .= "<tr>";
-                foreach ($tr->childNodes as $grandChild)
-                {
-                    if ($grandChild->nodeType == XML_ELEMENT_NODE)
-                    {
-                        if ($grandChild->tagName == 'td')
-                        {
-                            $newtabletag .= "<td style='border-width:" . $border . "px !important;'>";
-                            foreach ($grandChild->childNodes as $tablecontent)
-                            {
-                                $newtabletag .= $doc->saveXML($tablecontent);
-                            }
-                            $newtabletag .= "</td>";
-                        }
-                    }
-                    else
-                    {
-                        $newtabletag .= $doc->saveXML($grandChild);
-                    }
-                }
-                $newtabletag .= "</tr>";
-            }
-
-            $newtabletag .= "</table>";
-
-            $tableString = $doc->saveXML($table);
-
-            $XMLcontent = str_replace($tableString, $newtabletag, $XMLcontent);
-        }
-
         $imgs = $doc->getElementsByTagName('img');
-
-        foreach ($imgs as $key => $img)
-        {
-            $newtag = '';
-
-            $src = $img->getAttribute('src');
-
-            $sql = "src LIKE '%" . $src . "%'";
-
-            // array_shift(array_values($array)) grabs the first item of the array --> since the get_records
-            // return an array indexed by the id number of the record, need to grab the first item this way
-
-            if ($DB->count_records_select('msm_img', $sql) > 1)
-            {
-
-                $imgRecord = $DB->get_records_select('msm_img', $sql);
-                $imgparentid = $DB->get_record('msm_compositor', array('unit_id' => array_shift(array_values($imgRecord))->id, 'table_id' => 16))->parent_id;
-            }
-            else
-            {
-                $imgRecord = $DB->get_record_select('msm_img', $sql);
-                $imgparentid = $DB->get_record('msm_compositor', array('unit_id' => $imgRecord->id, 'table_id' => 16))->parent_id;
-            }
-
-
-
-            if (!empty($imgRecord))
-            {
-                $mediaRecord = $DB->get_record('msm_compositor', array('id' => $imgparentid));
-
-                if (!empty($mediaRecord))
-                {
-                    $media = new Media();
-                    $media->loadFromDb($mediaRecord->unit_id, $mediaRecord->id);
-
-                    $newtag .= $media->displayhtml();
-
-                    $imgString = $doc->saveXML($img);
-
-                    $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
-                }
-            }
-        }
-
         $hottags = $doc->getElementsByTagName('a');
 
-        foreach ($hottags as $key => $hottag)
+        if ((empty($tables)) && (empty($imgs)) && (empty($hottags)))
         {
-            if (!empty($object->subordinates[$key]))
+            return null;
+        }
+        else
+        {
+            foreach ($tables as $table)
             {
-                $subordinate = $object->subordinates[$key];
-                if (!empty($subordinate->infos[0]))
+                $newtabletag = '';
+
+                $trs = $table->getElementsByTagName('tr');
+                $border = $table->getAttribute('border');
+                $cellpadding = $table->getAttribute('cellpadding');
+
+                if (empty($border))
                 {
-                    $newtag = '';
-                    $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+                    $border = 0;
+                }
+                if (empty($cellpadding))
+                {
+                    $cellpadding = 0;
+                }
 
-                    if (is_string($subordinate->hot))
+                $newtabletag .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
+
+                foreach ($trs as $tr)
+                {
+                    $newtabletag .= "<tr>";
+                    foreach ($tr->childNodes as $grandChild)
                     {
-                        $newtag .= $subordinate->hot;
+                        if ($grandChild->nodeType == XML_ELEMENT_NODE)
+                        {
+                            if ($grandChild->tagName == 'td')
+                            {
+                                $newtabletag .= "<td style='border-width:" . $border . "px !important;'>";
+                                foreach ($grandChild->childNodes as $tablecontent)
+                                {
+                                    $newtabletag .= $doc->saveXML($tablecontent);
+                                }
+                                $newtabletag .= "</td>";
+                            }
+                        }
+                        else
+                        {
+                            $newtabletag .= $doc->saveXML($grandChild);
+                        }
                     }
-                    else
+                    $newtabletag .= "</tr>";
+                }
+
+                $newtabletag .= "</table>";
+
+                $tableString = $doc->saveXML($table);
+
+                $XMLcontent = str_replace($tableString, $newtabletag, $XMLcontent);
+            }
+
+
+            foreach ($imgs as $key => $img)
+            {
+                $newtag = '';
+
+                $src = $img->getAttribute('src');
+
+                $sql = "src LIKE '%" . $src . "%'";
+
+                // array_shift(array_values($array)) grabs the first item of the array --> since the get_records
+                // return an array indexed by the id number of the record, need to grab the first item this way
+
+                if ($DB->count_records_select('msm_img', $sql) > 1)
+                {
+
+                    $imgRecord = $DB->get_records_select('msm_img', $sql);
+                    $imgparentid = $DB->get_record('msm_compositor', array('unit_id' => array_shift(array_values($imgRecord))->id, 'table_id' => 16))->parent_id;
+                }
+                else
+                {
+                    $imgRecord = $DB->get_record_select('msm_img', $sql);
+                    $imgparentid = $DB->get_record('msm_compositor', array('unit_id' => $imgRecord->id, 'table_id' => 16))->parent_id;
+                }
+
+
+
+                if (!empty($imgRecord))
+                {
+                    $mediaRecord = $DB->get_record('msm_compositor', array('id' => $imgparentid));
+
+                    if (!empty($mediaRecord))
                     {
-                        $newtag .= $this->getContent($subordinate->hot);
+                        $media = new Media();
+                        $media->loadFromDb($mediaRecord->unit_id, $mediaRecord->id);
+
+                        $newtag .= $media->displayhtml();
+
+                        $imgString = $doc->saveXML($img);
+
+                        $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
                     }
-                    $newtag .= "</a>";
-
-                    $hotString = $doc->saveXML($hottag);
-
-                    $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-
-                    $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
-
-                    $recursivecontent = $this->displaySubordinate($subordinate->infos[0], $subordinate->infos[0]->info_content);
-                    
-                    $content .= $recursivecontent;
-
-                    $content .= "</div>";
                 }
             }
-        }
 
-        $content .= $XMLcontent;
-        return $content;
+            foreach ($hottags as $key => $hottag)
+            {
+                if (!empty($object->subordinates[$key]))
+                {
+                    $subordinate = $object->subordinates[$key];
+                    if (!empty($subordinate->infos[0]))
+                    {
+                        $newtag = '';
+                        $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+
+                        if (is_string($subordinate->hot))
+                        {
+                            $newtag .= $subordinate->hot;
+                        }
+                        else
+                        {
+                            $newtag .= $this->getContent($subordinate->hot);
+                        }
+                        $newtag .= "</a>";
+
+                        $hotString = $doc->saveXML($hottag);
+
+                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+
+                        $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
+
+                        $recursivecontent = $this->displaySubordinate($subordinate->infos[0], $subordinate->infos[0]->info_content);
+
+                        $content .= $recursivecontent;
+
+                        $content .= "</div>";
+                    }
+                }
+            }
+
+            $content .= $XMLcontent;
+            return $content;
+        }
     }
 
 }

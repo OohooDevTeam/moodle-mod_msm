@@ -9,25 +9,29 @@
       <title>Force - Preview</title>
    </titles>
    <body>
-      <para>
-         <para.body>When a force acts on an object, it does so in a certain direction and with a certain strength. As is illustrated below, we can model a force using a vector.</para.body>
-      </para>
-      <para align="center">
-         <para.body>
-            <media type="image" active="0" inline="0">
-               <img src="ims/Force.gif" height="191" width="247"/>
-            </media>
-         </para.body>
-      </para>
-      <para>
-         <para.body>Here an object is suspended on a rope. We model the downward force of 1000N, corresponding to the weight of the object, by a downward arrow whose length corresponds to the magnitude of the force of 1000N. Accordingly, the vector representing a downward force of 2000N would be twice as long. The vector representing a downward force of 500N half as long; etc.</para.body>
-      </para>
-      <para>
-         <para.body>To hold the object in suspense, the downward force must be compensated by an upward force of equal magnitude. This upward force results from two forces, denoted <math>
-               <latex>F_1</latex>
-            </math> and <math>
-               <latex>F_2</latex>
-            </math>, sidewards upward in the rope. The magnitude of these forces can be computed with elementary geometric methods.</para.body>
-      </para>
+      <block>
+         <block.body>
+            <para>
+               <para.body>When a force acts on an object, it does so in a certain direction and with a certain strength. As is illustrated below, we can model a force using a vector.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <media type="image" active="0" inline="0">
+                     <img src="ims/Force.gif" height="191" width="247"/>
+                  </media>
+               </para.body>
+            </para>
+            <para>
+               <para.body>Here an object is suspended on a rope. We model the downward force of 1000N, corresponding to the weight of the object, by a downward arrow whose length corresponds to the magnitude of the force of 1000N. Accordingly, the vector representing a downward force of 2000N would be twice as long. The vector representing a downward force of 500N half as long; etc.</para.body>
+            </para>
+            <para>
+               <para.body>To hold the object in suspense, the downward force must be compensated by an upward force of equal magnitude. This upward force results from two forces, denoted <math>
+                     <latex>F_1</latex>
+                  </math> and <math>
+                     <latex>F_2</latex>
+                  </math>, sidewards upward in the rope. The magnitude of these forces can be computed with elementary geometric methods.</para.body>
+            </para>
+         </block.body>
+      </block>
    </body>
 </unit>

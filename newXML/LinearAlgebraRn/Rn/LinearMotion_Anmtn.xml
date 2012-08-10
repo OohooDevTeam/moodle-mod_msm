@@ -9,12 +9,16 @@
       <title>Linear Motion – Animation</title>
    </titles>
    <body>
-      <para>
-         <para.body>Click the ‘start’-button below to see the motion of a particle along a straight line with constant speed.</para.body>
-      </para>
-      <para align="center">
-         <para.body>
-            <strong>Element for placement of an applet is needed here</strong>; Applet document to be linked to: LnrMtn_illstrtn1.htm in legacy materials</para.body>
-      </para>
+      <block>
+         <block.body>
+            <para>
+               <para.body>Click the ‘start’-button below to see the motion of a particle along a straight line with constant speed.</para.body>
+            </para>
+            <para align="center">
+               <para.body>
+                  <strong>Element for placement of an applet is needed here</strong>; Applet document to be linked to: LnrMtn_illstrtn1.htm in legacy materials</para.body>
+            </para>
+         </block.body>
+      </block>
    </body>
 </unit>

@@ -109,7 +109,7 @@ class Media extends Element
         
         foreach($this->childs as $childComponent)
         {
-            $content .= $childComponent->displayhtml();
+            $content .= $childComponent->displayhtml($this->inline);
         }
         $content .= "</div>";
         

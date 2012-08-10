@@ -158,7 +158,7 @@ class MathImg extends Element
         return $this;
     }
 
-    function displayhtml()
+    function displayhtml($inline)
     {
         $content = '';
 
@@ -166,17 +166,33 @@ class MathImg extends Element
         $srcfile = explode('/', $this->src);
         $filename = explode('.', end($srcfile));
 
-        if ((!empty($this->width)) && (!empty($this->height)))
+        if ((!empty($this->width)) && (!empty($this->height)) && ($inline == '0'))
+        {
+            $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
+        }
+        else if((!empty($this->width)) && (!empty($this->height)) && ($inline == '1'))
         {
             $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
         }
-        else if (!empty($this->width))
+        else if ((!empty($this->width)) && ($inline == '0'))
+        {
+            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
+        }
+        else if((!empty($this->width)) && ($inline == '1'))
         {
             $content .= "<img src='" . $this->src . "' height='200' width='" . $this->width . "' name='#" . $filename[0] . "'/>";
         }
-        else if (!empty($this->height))
+        else if ((!empty($this->height)) && ($inline == '0'))
         {
-            $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='350' name='#" . $filename[0] . "'/>";
+            $content .= "<img class='mathimage' src='" . $this->src . "' height='" . $this->height . "' width='350' name='#" . $filename[0] . "'/>";
+        }
+        else if((!empty($this->height)) && ($inline == '1'))
+        {
+             $content .= "<img src='" . $this->src . "' height='" . $this->height . "' width='350' name='#" . $filename[0] . "'/>";
+        }
+        else if ($inline == '0')
+        {
+            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='350'/>";
         }
         else
         {

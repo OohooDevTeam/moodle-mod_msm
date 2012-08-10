@@ -396,3 +396,9 @@ span.commenttype
     background-color:#21B468;
 }
 
+img.mathimage
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

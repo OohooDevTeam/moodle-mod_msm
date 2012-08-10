@@ -271,9 +271,13 @@ class PartTheorem extends Element
     function displayhtml()
     {
         $content = '';
-
-        $content .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
+        $content .= "<li>";
+        if (!empty($this->caption))
+        {
+            $content .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
+        }
         $content .= $this->displaySubordinate($this, $this->part_content);
+        $content .= "</li>";
         $content .= "<br />";
 
         return $content;

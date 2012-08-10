@@ -295,12 +295,13 @@ class StatementTheorem extends Element
     {
         $content = '';
         $content .= $this->displaySubordinate($this, $this->statement_content);
-        $content .= "<br />";      
-
+       
+        $content .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
         foreach ($this->childs as $childComponent)
         {
             $content .= $childComponent->displayhtml();
         }
+        $content .= "</ol>";
         
         return $content;
     }

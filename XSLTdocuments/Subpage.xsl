@@ -46,7 +46,18 @@
     
     <xsl:template match="bk:sub.page.body">
         <xsl:element name="body" namespace="Unit">
-            <xsl:apply-templates/>
+            <xsl:choose>
+                <xsl:when test="child::node()[name() = 'block']">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:element name="block" namespace="Unit">
+                        <xsl:element name="block.body" namespace="Unit">
+                            <xsl:apply-templates/>
+                        </xsl:element>          
+                    </xsl:element>  
+                </xsl:otherwise>
+            </xsl:choose>           
         </xsl:element>      
     </xsl:template>
     
@@ -55,6 +66,6 @@
             <xsl:element name="block.body" namespace="Unit">
                 <xsl:apply-templates/>
             </xsl:element>          
-        </xsl:element>     
+        </xsl:element>   
     </xsl:template>
 </xsl:stylesheet>
