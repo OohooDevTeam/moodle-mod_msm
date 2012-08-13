@@ -4,11 +4,11 @@
  */
 
 
-function showRightpage()
+function showRightpage(id)
 {
-    var strcontent = $('textarea#proofblockinput').val();
-   
-        alert(strcontent);
-        $(strcontent).appendTo($(".rightbox"));
+    $('.rightbox').empty();
+    $('.rightbox').append($('#proof-'+id));
     
+    $('#proof-'+id).css('display', 'block');
+    $('#proof-'+id).toggleClass('proof', 'shownproof');
 }

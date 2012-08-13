@@ -280,7 +280,11 @@ class ProofBlock extends Element
     {
         $content = '';
         
+        $content .="<div class='proofblock'>";
+        
         $content .= $this->displaySubordinate($this, $this->proof_content);
+        
+        $content .="</div>";
         
         return $content;
     }

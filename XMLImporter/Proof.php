@@ -114,20 +114,20 @@ class Proof extends Element
     function displayhtml()
     {
         $content = '';
-        $blockcontent='';
-        
-        foreach ($this->childs as $childComponent)
-        {
-            $blockcontent .= $childComponent->displayhtml();
-        }
 
-        $content .= "<li class='minibutton' id='minibutton-" . $this->childs[0]->compid . "'>";
+        $content .= "<li class='minibutton' id='minibutton-" . $this->compid . "' onclick='showRightpage(" . $this->compid . ")'>";
         $content .= "<span style='cursor:pointer'>";
         $content .= "proof";
         $content .= "</span>";
         $content .= "</li>";
-
         
+        $content .= "<div class='proof' id='proof-" . $this->compid . "'>";
+
+        foreach ($this->childs as $childComponent)
+        {
+            $content .= $childComponent->displayhtml();
+        }
+        $content .= "</div>";
 
         return $content;
     }

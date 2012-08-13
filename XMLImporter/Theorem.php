@@ -247,12 +247,12 @@ class Theorem extends Element
         {
             $content .= $associate->displayhtml();
         }
-        
-        foreach($this->proofs as $proof)
+
+        foreach ($this->proofs as $proof)
         {
             $content .= $proof->displayhtml();
         }
-        
+
         $content .= "</ul>";
 
         $content .= "</div>";
