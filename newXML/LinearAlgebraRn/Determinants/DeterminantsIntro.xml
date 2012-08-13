@@ -182,8 +182,8 @@
                   <external.link href="http://www-history.mcs.st-and.ac.uk/history/HistTopics/Matrices_and_determinants.html"
                                  target="_blank"
                                  type="html">
-                     <info xmlns="">
-                        <para xmlns="Unit">
+                     <info>
+                        <para>
                            <para.body>Details on the history of determinants.</para.body>
                         </para>
                      </info>
@@ -247,10 +247,10 @@
                         <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Cauchy_Augustin/CauchyAugustin.xml"
                                        target="_blank"
                                        type="xml">
-                           <info xmlns="">
-                              <info.caption xmlns="Unit">Augustin-Louis Cauchy</info.caption>
+                           <info>
+                              <info.caption>Augustin-Louis Cauchy</info.caption>
 						
-						                        <para xmlns="Unit">
+						                        <para>
                                  <para.body>A collection of links providing information about Augustin-Louis Cauchy.</para.body>
                               </para>
 					                      </info>
@@ -292,10 +292,10 @@
                         <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Weierstrass_Karl/WeierstrassKarl.xml"
                                        target="_blank"
                                        type="xml">
-                           <info xmlns="">
-                              <info.caption xmlns="Unit">Karl Weierstrass</info.caption>
+                           <info>
+                              <info.caption>Karl Weierstrass</info.caption>
 						
-						                        <para xmlns="Unit">
+						                        <para>
                                  <para.body>A collection of links providing information about Karl Weierstrass.</para.body>
                               </para>
 					                      </info>

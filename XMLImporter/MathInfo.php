@@ -275,7 +275,7 @@ class MathInfo extends Element
 
         $this->medias = array();
         $this->subordinates = array();
-
+        
         foreach ($childElements as $child)
         {
             $childtable = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;

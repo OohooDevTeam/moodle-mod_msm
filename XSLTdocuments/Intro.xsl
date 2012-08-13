@@ -952,7 +952,7 @@
                 <xsl:copy-of select="attribute::*"/>
             </xsl:if>
             <xsl:if test="child::node() != ''">
-                <xsl:element name="info">
+                <xsl:element name="info" namespace="Unit">
                     <xsl:if test="child::node()[name() = 'caption']">
                         <xsl:element name="info.caption" namespace="Unit">
                             <xsl:apply-templates select="bk:caption"/>

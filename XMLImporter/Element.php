@@ -661,6 +661,33 @@ abstract class Element
 
                         $content .= "</div>";
                     }
+                    if(!empty($subordinate->external_links[0]))
+                    {
+                        $newtag = '';
+                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "'' id='hottag-" . $subordinate->external_links[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+
+                        if (is_string($subordinate->hot))
+                        {
+                            $newtag .= $subordinate->hot;
+                        }
+                        else
+                        {
+                            $newtag .= $this->getContent($subordinate->hot);
+                        }
+                        $newtag .= "</a>";
+
+                        $hotString = $doc->saveXML($hottag);
+
+                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+
+                        $content .= '<div id="dialog-' . $subordinate->external_links[0]->compid . '" class="dialogs" title="' . $subordinate->external_links[0]->infos[0]->caption . '">';
+
+                        $recursivecontent = $this->displaySubordinate($subordinate->external_links[0]->infos[0], $subordinate->external_links[0]->infos[0]->info_content);
+
+                        $content .= $recursivecontent;
+
+                        $content .= "</div>";
+                    }
                 }
             }
 

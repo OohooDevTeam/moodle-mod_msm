@@ -19,8 +19,8 @@
                      <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/SetsNaive/Sets.xml"
                                     type="html"
                                     target="sets">
-                        <info xmlns="">
-                           <para xmlns="Unit">
+                        <info>
+                           <para>
                               <para.body>Link to an online book on sets and functions.</para.body>
                            </para>
                         </info>

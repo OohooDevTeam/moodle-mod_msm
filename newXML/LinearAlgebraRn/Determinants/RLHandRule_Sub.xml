@@ -37,8 +37,8 @@
                      <external.link href="http://webmath.math.ualberta.ca/~gepe/LinearAlgebraRn/Determinants/ims/RightHandRule.avi"
                                     target="new"
                                     type="animation">
-                        <info xmlns="">
-                           <para xmlns="Unit">
+                        <info>
+                           <para>
                               <para.body>View an animation of this rotation. You need to have an animation player capable of using the avi-file format.</para.body>
                            </para>
                         </info>

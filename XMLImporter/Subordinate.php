@@ -305,6 +305,7 @@ class Subordinate extends Element
 
         $this->infos = array();
         $this->childs = array();
+        $this->external_links = array();
 
         foreach ($childElements as $child)
         {
@@ -320,7 +321,7 @@ class Subordinate extends Element
                 case('msm_external_link'):
                     $externallink = new ExternalLink();
                     $externallink->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $externallink;
+                    $this->external_links[] = $externallink;
                     break;
 //                case('msm_cite'):
 //                    $cite = new Cite();

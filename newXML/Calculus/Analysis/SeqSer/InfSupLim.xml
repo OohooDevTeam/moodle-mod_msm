@@ -225,8 +225,8 @@
                      <hot>Cauchy</hot>
                      <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Cauchy_Augustin/CauchyAugustin.xml"
                                     target="_blank">
-                        <info xmlns="">
-                           <para xmlns="Unit">
+                        <info>
+                           <para>
                               <para.body>Lookup background on Augustin Cauchy</para.body>
                            </para>
                         </info>

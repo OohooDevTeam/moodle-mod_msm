@@ -425,3 +425,33 @@ img.mathimage
 {
     background-color:#6060B5;
 }
+
+.extrainfo
+{
+    width: 90%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.extrainfocontent
+{
+    margin-top: 5px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+span.extrainfocaption
+{
+    font-weight: bold;
+    color: black;
+    float: right;   
+}
+
+span.extrainfoname
+{
+    font-weight: bold;
+    color: black;
+    float: left;
+}

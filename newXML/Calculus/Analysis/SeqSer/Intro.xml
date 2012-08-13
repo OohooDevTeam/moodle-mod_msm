@@ -355,8 +355,8 @@
                   <hot>Zeno</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Zeno/ZenoElea.xml"
                                  target="_blank">
-                     <info xmlns="">
-			                     <para xmlns="Unit">
+                     <info>
+			                     <para>
                            <para.body>More information on Zeno of Elea</para.body>
                         </para>
 		                   </info>
@@ -368,8 +368,8 @@
                   <hot>Archimedes</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Archimedes/ArchimedesSyracuse.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Archimedes of Syracuse</para.body>
                         </para>
 			                  </info>
@@ -425,8 +425,8 @@
                   <hot>Irinjaatappilly Madhavan Namboodiri</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Nambadoori/Nambadoori.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Irinjaatappilly Madhavan Namboodiri</para.body>
                         </para>
 			                  </info>
@@ -452,8 +452,8 @@
                   <hot>James Gregory</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Gregory_James/GregoryJames.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on James Gregory</para.body>
                         </para>
 			                  </info>
@@ -464,8 +464,8 @@
                   <hot>Isaac Newton</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Newton_Isaac/Newton.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Sir Isaac Newton</para.body>
                         </para>
 			                  </info>
@@ -476,8 +476,8 @@
                   <hot>Gottfried Wilhelm Leibniz</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Leibniz_Gottfried/Leibniz.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Gottfried Wilhelm Leibniz</para.body>
                         </para>
 			                  </info>
@@ -488,8 +488,8 @@
                   <hot>Brook Taylor</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Taylor_Brook/TaylorBrook.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Brook Taylor</para.body>
                         </para>
 			                  </info>
@@ -499,8 +499,8 @@
                   <hot>Colin MacLaurin</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/MacLaurin_Colin/MacLaurinC.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Colin MacLaurin</para.body>
                         </para>
 			                  </info>
@@ -512,8 +512,8 @@
                   <hot>Leonhard Euler</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Euler_Leonhard/EulerLeonhard.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Leonhard Euler</para.body>
                         </para>
 			                  </info>
@@ -524,8 +524,8 @@
                   <hot>Carl Friedrich Gauß</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Gauss_CarlFriedrich/GaussCarl.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Carl Friedrich Gauß</para.body>
                         </para>
 			                  </info>
@@ -535,8 +535,8 @@
                   <hot>Augustin-Louis Cauchy</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Cauchy_Augustin/CauchyAugustin.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Augustin-Louis Cauchy</para.body>
                         </para>
 			                  </info>
@@ -546,8 +546,8 @@
                   <hot>Karl Weierstrass</hot>
                   <external.link href="http://webmath.facsci.ualberta.ca:8080/cocoon/fcm/Content/ExternalSources/Weierstrass_Karl/WeierstrassKarl.xml"
                                  target="_blank">
-                     <info xmlns="">
-				                    <para xmlns="Unit">
+                     <info>
+				                    <para>
                            <para.body>More information on Karl Weierstraß</para.body>
                         </para>
 			                  </info>

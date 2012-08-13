@@ -228,7 +228,6 @@ class Problem extends Element
             }
         }
     }
-
 }
 
 ?>

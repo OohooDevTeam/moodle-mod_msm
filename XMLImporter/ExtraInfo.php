@@ -35,16 +35,16 @@ class ExtraInfo extends Element
         switch ($nameofElement)
         {
             case('preface'):
-                $this->name = 'preface';
+                $this->name = 'Preface';
                 break;
             case('trailer'):
-                $this->name = 'trailer';
+                $this->name = 'Trailer';
                 break;
             case('summary'):
-                $this->name = 'summary';
+                $this->name = 'Summary';
                 break;
             case('historical.notes'):
-                $this->name = 'historical';
+                $this->name = 'Historical';
                 break;
         }
 
@@ -250,6 +250,64 @@ class ExtraInfo extends Element
                     break;
             }
         }
+    }
+
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+
+        $extrainfoRecord = $DB->get_record('msm_extra_info', array('id' => $id));
+
+        if (!empty($extrainfoRecord))
+        {
+            $this->caption = $extrainfoRecord->caption;
+            $this->extra_info_content = $extrainfoRecord->extra_info_content;
+            $this->extra_info_name = $extrainfoRecord->extra_info_name;
+        }
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        $this->subordinates = array();
+        $this->medias = array();
+
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id));
+
+            if ($childtablename == 'msm_subordiante')
+            {
+                $subordinate = new Subordinate();
+                $subordinate->loadFromDb($child->unit_id, $child->id);
+                $this->subordinates[] = $subordinate;
+            }
+            else if ($childtablename == 'msm_media')
+            {
+                $media = new Media();
+                $media->loadFromDb($child->unit_id, $child->id);
+                $this->medias[] = $media;
+            }
+        }
+
+        return $this;
+    }
+
+    function displayhtml()
+    {
+        $content = '';
+        $content .= "<div class='extrainfo'>";
+
+        $content .= "<span class='extrainfoname'>" . $this->name . "</span>";
+        if (!empty($this->caption))
+        {
+            $content .= "<span class='extrainfocaption'>" . $this->caption . "</span>";
+        }
+
+        $content .= "<div class='extrainfocontent'>";
+        $content .= $this->displaySubordinate($this, $this->content);
+        $content .= "</div>";
+
+        $content .= "</div>";
+        return $content;
     }
 
 }

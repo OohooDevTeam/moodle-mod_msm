@@ -944,6 +944,12 @@ class Unit extends Element
 
             switch ($childtablename)
             {
+                case('msm_extra_info'):
+                    $extrainfo = new ExtraInfo();
+                    $extrainfo->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $extrainfo;
+                    break;
+                
                 case('msm_person'):
                     $person = new Person();
                     $person->loadFromDb($child->unit_id);

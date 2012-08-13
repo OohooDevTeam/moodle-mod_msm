@@ -114,6 +114,10 @@ class ExternalLink extends Element
     {
         $content ='';
         
+        $content .= "<a href='" . $this->href . "'>";
+        $content .= $this->href;
+        $content .= "</a>";
+        
         return $content;
     }
 }
