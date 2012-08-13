@@ -76,34 +76,106 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
+         <para>
+            <para.body>We write <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> in terms of its row vectors <math>
+                  <latex>R_1,\dots ,R_m</latex>
+               </math>, and its column vectors <math>
+                  <latex>C_1,\dots ,C_n</latex>
+               </math>:</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+\Mtrx{A} = 
+\left[
+\begin{array}{ccc}
+a_{11} &amp; \cdots &amp; a_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{mn} &amp; \cdots &amp; a_{mn}
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+R_1 \\ \vdots \\ R_m
+\end{array}
+\right] = [ C_1\ \ \dots\ \ C_n]
+
+			</latex>
+         </math.display>
          <logic>
             <part.ref>ColumnRank</part.ref>
          </logic>
-         <caption>ColumnRank</caption>
-         <proof.block.body>
-            <para>
-               <para.body>To see the relationship between the linear independence of the columns of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> and its rank, recall that <math>
-                     <latex>C_1,\dots , C_n</latex>
-                  </math> are linearly independent if and only if the vector equation</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption/>
+         <para>
+            <para.body>To see the relationship between the linear independence of the columns of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> and its rank, recall that <math>
+                  <latex>C_1,\dots , C_n</latex>
+               </math> are linearly independent if and only if the vector equation</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1 C_1 + \cdots + t_n C_n</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>has <math>
+                  <latex>(t_1,\dots ,t_n)=(0,\dots ,0)</latex>
+               </math> as its only solution. We know that this happens if and only if the reduced row echelon form of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+\left[
+\begin{array}{cccc}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 \\
+0 &amp; 0 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 0
+\end{array}
+\right]
+
+			</latex>
+         </math.display>
+         <para>
+            <para.body>This is so if and only if <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>has rank <math>
+                  <latex>n</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>RowRank</part.ref>
          </logic>
-         <caption>RowRank</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This follows from the previous part: The rows <math>
-                     <latex>R_1,\dots ,R_m</latex>
-                  </math>are the columns of <math>
-                     <latex>\Mtrx{A}^T</latex>
-                  </math>, and the claim follows. – This completes the proof</para.body>
-            </para>
-         </proof.block.body>
+         <caption/>
+         <para>
+            <para.body>This follows from the previous part: The rows <math>
+                  <latex>R_1,\dots ,R_m</latex>
+               </math>are the columns of <math>
+                  <latex>\Mtrx{A}^T</latex>
+               </math>, and the claim follows. – This completes the proof</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

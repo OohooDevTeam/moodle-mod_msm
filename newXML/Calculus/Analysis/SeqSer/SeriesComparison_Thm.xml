@@ -53,23 +53,165 @@
          <logic>
             <part.ref>NumberConvergence</part.ref>
          </logic>
-         <caption>NumberConvergence</caption>
-         <proof.block.body>
-            <para>
-               <para.body>According to the definition of convergence of a series, we consider the sequences of partial sums</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   <math>
+               <latex>\left(\sum_{n=0}^{\infty} a_n\ \ \in \RNr\right) \implies \left( \sum_{n=0}^{\infty} b_n\ \ \in \RNr\right)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>According to the definition of convergence of a series, we consider the sequences of partial sums</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s_n</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>:=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>a_0 + \cdots + a_n</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_n</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>:=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>b_0 + \cdots + b_n</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>The idea of the argument is to show that the sequence <math>
+                  <latex>(t_n)</latex>
+               </math> is increasing and bounded above, <subordinate>
+                  <hot>hence</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_MonotoneBoundedSequenceConverges"/>
+                     <info>
+                        <para>
+                           <para.body>Look up background on monotone bounded convergence of a sequence.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate> converges to a number. By assumption, there exists <math>
+                  <latex>N\in \NNr</latex>
+               </math> such that <math>
+                  <latex>a_n\leq b_n</latex>
+               </math> for all <math>
+                  <latex>n\geq N</latex>
+               </math>. It 
+			<subordinate>
+                  <hot>follows</hot>
+                  <info>
+                     <info.caption>
+                        <caption>How does this follow?</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>To see that <math>
+                              <latex>s_n\leq t_n</latex>
+                           </math> for all <math>
+                              <latex>n\geq 0</latex>
+                           </math>, we argue by induction:</para.body>
+                     </para>
+                     <ol>
+                        <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>s_0=a_0\leq b_0=t_0</latex>
+                                 </math> by assumption.</para.body>
+                           </para>
+                        </li>
+                        <li>
+                           <para>
+                              <para.body>As an induction hypothesis, assume that <math>
+                                    <latex>n\geq 0</latex>
+                                 </math> and <math>
+                                    <latex>s_n\leq t_n</latex>
+                                 </math>. Then</para.body>
+                           </para>
+                           <math.display>
+                              <latex>s_{n+1} = s_n+a_{n+1} \leq t_n+b_{n+1} = t_{n+1}</latex>
+                           </math.display>
+                        </li>
+                     </ol>
+                  </info>
+               </subordinate>
+			that <math>
+                  <latex>s_n\leq s_N + t_n </latex>
+               </math> for all <math>
+                  <latex>n\geq N</latex>
+               </math>. Now, <math>
+                  <latex>(t_n)</latex>
+               </math> is an increasing sequence with upper bound</para.body>
+         </para>
+         <math.display>
+            <latex>\sum_{n=0}^{\infty} b_n\ =\ \lim_{n\to \infty} t_n\ =: L\in \RNr</latex>
+         </math.display>
+         <para>
+            <para.body>Therefore, the increasing sequence <math>
+                  <latex>(s_n)</latex>
+               </math> has <math>
+                  <latex>L+s_N</latex>
+               </math> as an upper bound, and so
+			</para.body>
+         </para>
+         <math.display>
+            <latex>L+s_N\ \geq\ \left(\lim_{n\to\infty} t_n\right)\ +\ s_N\ \geq\ \lim_{n\to\infty} s_n\ =\ \sum_{n=0}^{\infty} a_n</latex>
+         </math.display>
+         <para>
+            <para.body>and this was to be shown.</para.body>
+         </para>
          <logic>
             <part.ref>InfinityConvergence</part.ref>
          </logic>
-         <caption>InfinityConvergence</caption>
-         <proof.block.body>
-            <para>
-               <para.body>The essence of the argument is that the sequence of partial sums</para.body>
-            </para>
-         </proof.block.body>
+         <caption>   <math>
+               <latex>\left(\sum_{n=0}^{\infty} a_n = +\infty\right) \implies \left( \sum_{n=0}^{\infty} b_n = +\infty \right)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>The essence of the argument is that the sequence of partial sums</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_n</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>:=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>b_0 + \cdots + b_n</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>is increasing, and exceeds any bound. So <math>
+                  <latex>\sum_{n=0}^{\infty}b_n = +\infty</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

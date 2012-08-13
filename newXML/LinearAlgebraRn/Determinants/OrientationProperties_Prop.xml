@@ -7,7 +7,9 @@
    <caption>Properties of the orientation function</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <ol type="i">
             <li>
                <para>

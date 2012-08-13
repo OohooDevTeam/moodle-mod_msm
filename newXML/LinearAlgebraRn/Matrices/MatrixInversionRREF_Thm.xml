@@ -17,30 +17,270 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>Consider first the situation where <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is invertible. We want to show that the RREF of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is the identity matrix.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>Let us now consider the situation where the RREF of  <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>  is the identity matrix. We need to show that <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is invertible, and we need to verify the proposed method of computing <math>
+         <caption>The case where <math>
+               <latex>\Mtrx{A}</latex>
+            </math> is invertible</caption>
+         <para>
+            <para.body>Consider first the situation where <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is invertible. We want to show that the RREF of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is the identity matrix.</para.body>
+         </para>
+         <para>
+            <para.body>Each of the row operations which accomplish this reduction can be performed by multiplying <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> on the left with a row rescaling matrix <math>
+                  <latex>D_u(s)</latex>
+               </math>, an elementary matrix <math>
+                  <latex>E_{ij}(t)</latex>
+               </math>, or a row interchanging matrix <math>
+                  <latex>R_{ij}</latex>
+               </math>. If <math>
+                  <latex>k</latex>
+               </math> such moves are required, we have</para.body>
+         </para>
+         <para align="center">
+            <para.body>
+               <subordinate>
+                  <hot>
+                     <math>
+                        <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \Mtrx{A}\ =\ \Mtrx{T}</latex>
+                     </math>
+                  </hot>
+                  <info>
+                     <para>
+                        <para.body>Here each of <math>
+                              <latex>\Mtrx{R}_k,\dots ,\Mtrx{R}_1</latex>
+                           </math> denotes the appropriate one of a row rescaling matrix <math>
+                              <latex>D_u(s)</latex>
+                           </math>, an elementary matrix <math>
+                              <latex>E_{ij}(t)</latex>
+                           </math>, or a row interchanging matrix <math>
+                              <latex>R_{ij}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </info>
+               </subordinate>
+            </para.body>
+         </para>
+         <para>
+            <para.body>where <math>
+                  <latex>\Mtrx{T}</latex>
+               </math> is in RREF. If <math>
+                  <latex>\Mtrx{T}</latex>
+               </math> is not the identity matrix, we will show that <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> could not have been invertible. – Indeed, if the RREF <math>
+                  <latex>\Mtrx{T}</latex>
+               </math> of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is not <math>
+                  <latex>\IdMtrx[n]</latex>
+               </math>, then the last row of <math>
+                  <latex>\Mtrx{T}</latex>
+               </math> will consist of <math>
+                  <latex>0</latex>
+               </math>’s only. We can rewrite the above identity as:</para.body>
+         </para>
+         <math.display>
+            <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\ =\ \Mtrx{T} \Mtrx{A}^{-1}</latex>
+         </math.display>
+         <para>
+            <para.body>The matrix on the 
+			<subordinate>
+                  <hot>left</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_MatrixInversionProperties"/>
+                     <info>
+                        <para>
+                           <para.body>because a product of invertible matrices is invertible.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+			is invertible. So <math>
+                  <latex>\Mtrx{T}\Mtrx{A}^{-1}</latex>
+               </math> is invertible. But the bottom row of  <math>
+                  <latex>\Mtrx{T}\Mtrx{A}^{-1}</latex>
+               </math>  consists of <math>
+                  <latex>0</latex>
+               </math>’s  only, 
+				<subordinate>
+                  <hot>hence cannot be invertible</hot>
+                  <info>
+                     <info.caption>
+                        <caption>Reason</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>Denote the inverse of <math>
+                              <latex>\Mtrx{T}\Mtrx{A}^{-1}</latex>
+                           </math> by <math>
+                              <latex>\Mtrx{X}</latex>
+                           </math>. Then</para.body>
+                     </para>
+                     <ul>
+                        <li>
+                           <para>
+                              <para.body>
+                                 <math>
+                                    <latex>(\Mtrx{T}\Mtrx{A}^{-1})\cdot \Mtrx{X}</latex>
+                                 </math> is a matrix whose bottom row consists of <math>
+                                    <latex>0</latex>
+                                 </math>'s only.</para.body>
+                           </para>
+                        </li>
+                        <li>
+                           <para>
+                              <para.body>On the other hand, <math>
+                                    <latex>(\Mtrx{T}\Mtrx{A}^{-1})\cdot \Mtrx{X} = \IdMtrx[n]</latex>
+                                 </math> has a <math>
+                                    <latex>1</latex>
+                                 </math> in the bottom row.</para.body>
+                           </para>
+                        </li>
+                     </ul>
+                  </info>
+               </subordinate>
+			. This contradiction resulted from the assumption that <math>
+                  <latex>\Mtrx{T}\neq \IdMtrx[n]</latex>
+               </math>. Therefore this assumption is false, and we conclude that <math>
+                  <latex>\Mtrx{T} = \IdMtrx[n]</latex>
+               </math>.
+		</para.body>
+         </para>
+         <caption>The case where the RREF of <math>
+               <latex>\Mtrx{A}</latex>
+            </math> is the identity matrix</caption>
+         <para>
+            <para.body>Let us now consider the situation where the RREF of  <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>  is the identity matrix. We need to show that <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is invertible, and we need to verify the proposed method of computing <math>
+                  <latex>\Mtrx{A}^{-1}</latex>
+               </math>. From the above, we know now that</para.body>
+         </para>
+         <para align="center">
+            <para.body>
+               <subordinate>
+                  <hot>
+                     <math>
+                        <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \Mtrx{A}\ =\ \Mtrx{T}</latex>
+                     </math>
+                  </hot>
+                  <info>
+                     <para>
+                        <para.body>Here each of <math>
+                              <latex>\Mtrx{R}_k,\dots ,\Mtrx{R}_1</latex>
+                           </math> denotes the appropriate one of a row rescaling matrix <math>
+                              <latex>D_u(s)</latex>
+                           </math>, an elementary matrix <math>
+                              <latex>E_{ij}(t)</latex>
+                           </math>, or a row interchanging matrix <math>
+                              <latex>R_{ij}</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </info>
+               </subordinate>
+            </para.body>
+         </para>
+         <para>
+            <para.body>Each of the row transformation matrices <math>
+                  <latex>\Mtrx{R}_k,\dots ,\Mtrx{R}_1</latex>
+               </math>  is invertible. So we get</para.body>
+         </para>
+         <math.display>
+            <latex>A = \Mtrx{R}_{1}^{-1}\cdot \dots \cdot \Mtrx{R}_{k}^{-1}\cdot \IdMtrx[n] = \Mtrx{R}_{1}^{-1}\cdot \dots \cdot \Mtrx{R}_{k}^{-1}</latex>
+         </math.display>
+         <para>
+            <para.body>But then we see that <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>  is a product of invertible matrices, 
+			<subordinate>
+                  <hot>hence</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_MatrixInversionProperties"/>
+                     <info>
+                        <para>
+                           <para.body>because a product of invertible matrices is invertible.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+			is itself invertible, and</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\Mtrx{A}^{-1}</latex>
-                  </math>. From the above, we know now that</para.body>
-            </para>
-         </proof.block.body>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\left( \Mtrx{R}_{1}^{-1} \cdot \dots \cdot \Mtrx{R}_{k}^{-1} \right)^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <info.caption>
+                           <caption>Why is this true?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>Here we use repeatedly the formula for the inverse of a product:</para.body>
+                        </para>
+                        <math.display>
+                           <latex>(\Mtrx{U}\Mtrx{V})^{-1} = \Mtrx{V}^{-1} \Mtrx{U}^{-1}</latex>
+                        </math.display>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \IdMtrx[n]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This last identity says exactly that the inverse of  <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> can be found by applying to <math>
+                  <latex>\IdMtrx[n]</latex>
+               </math> the exact same sequence of row operations which transforms <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> to <math>
+                  <latex>\IdMtrx[n]</latex>
+               </math>. – This completes the proof.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

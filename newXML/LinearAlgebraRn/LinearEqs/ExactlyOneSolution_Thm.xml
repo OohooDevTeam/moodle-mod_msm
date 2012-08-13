@@ -15,7 +15,9 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>Comment</info.caption>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
          <para>
             <para.body>In the RREF-display, possible rows of <math>
                   <latex>0</latex>

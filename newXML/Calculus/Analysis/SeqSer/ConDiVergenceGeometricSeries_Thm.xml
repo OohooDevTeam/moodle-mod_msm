@@ -60,46 +60,193 @@
          <logic>
             <part.ref>rgetone</part.ref>
          </logic>
-         <caption>rgetone</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>r\geq 1</latex>
-                  </math>, then <math>
-                     <latex>r=1+t</latex>
-                  </math> for some <math>
-                     <latex>t\geq 0</latex>
-                  </math>. Consequently, the <math>
-                     <latex>n</latex>
-                  </math>-th partial sum satisfies</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   <math>
+               <latex>r\geq 1</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>If <math>
+                  <latex>r\geq 1</latex>
+               </math>, then <math>
+                  <latex>r=1+t</latex>
+               </math> for some <math>
+                  <latex>t\geq 0</latex>
+               </math>. Consequently, the <math>
+                  <latex>n</latex>
+               </math>-th partial sum satisfies</para.body>
+         </para>
+         <math.display>
+            <latex>s_n = 1 + (1+t) + \cdots + (1+t)^n \geq n+1</latex>
+         </math.display>
+         <para>
+            <para.body>Therefore</para.body>
+         </para>
+         <math.display>
+            <latex>\sum_{n=0}^{\infty} r^n = \lim_{n\to \infty} s_n \geq \lim_{n\to \infty}(n+1) = +\infty</latex>
+         </math.display>
+         <para>
+            <para.body>as claimed.</para.body>
+         </para>
          <logic>
             <part.ref>Absrltone</part.ref>
          </logic>
-         <caption>Absrltone</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Then <math>
-                     <latex>n</latex>
-                  </math>-th partial sum of such a geometric series is</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   <math>
+               <latex>r\neq 0</latex>
+            </math> and <math>
+               <latex> -1 &lt; r &lt; 1 </latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Then <math>
+                  <latex>n</latex>
+               </math>-th partial sum of such a geometric series is</para.body>
+         </para>
+         <math.display>
+            <latex>s_n = \dfrac{(1+r+r^2+\cdots +r^n)(1-r)}{1-r} = \dfrac{1-r^{n+1}}{1-r}</latex>
+         </math.display>
+         <para>
+            <para.body>As <math>
+                  <latex> \Abs{r} &lt; 1 </latex>
+               </math>, <math>
+                  <latex>\lim_{n\to\infty} r^{n+1} = 0</latex>
+               </math>. Therefore,</para.body>
+         </para>
+         <math.display>
+            <latex>\lim_{n\to\infty} s_n\ =\ \lim_{n\to\infty} \dfrac{1-r^{n+1}}{1-r}\ =\ \dfrac{1}{1-r}</latex>
+         </math.display>
          <logic>
             <part.ref>rletmone</part.ref>
          </logic>
-         <caption>rletmone</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Consider first the case <math>
-                     <latex>r=-1</latex>
-                  </math>. Then resulting geometric series is</para.body>
-            </para>
-         </proof.block.body>
+         <caption>   <math>
+               <latex>r\leq -1</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Consider first the case <math>
+                  <latex>r=-1</latex>
+               </math>. Then resulting geometric series is</para.body>
+         </para>
+         <math.display>
+            <latex>1-1+1-1+1-1+\cdots +(-1)^n\pm \cdots</latex>
+         </math.display>
+         <para>
+            <para.body>Consequently, the sequence of partial sums is</para.body>
+         </para>
+         <math.display>
+            <latex>1,\, 0,\, 1,\, 0,\, 1\ ,\, 0,\, \dots</latex>
+         </math.display>
+         <para>
+            <para.body>This sequence does not converge. So it diverges, and so <math>
+                  <latex>\sum_{n=0}^{\infty} (-1)^n</latex>
+               </math> diverges.</para.body>
+         </para>
+         <para>
+            <para.body>Now consider the situation <math>
+                  <latex> r&lt; -1 </latex>
+               </math>. We note that</para.body>
+         </para>
+         <math.display>
+            <latex> \Abs{ s_{n+1} - s_n } = \Abs{r^{n+1}} &gt; 1 </latex>
+         </math.display>
+         <para>
+            <para.body>So <math>
+                  <latex>(s_n)</latex>
+               </math> can not converge to a number. To show that <math>
+                  <latex>(s_n)</latex>
+               </math> does not converge to <math>
+                  <latex>+\infty</latex>
+               </math> or to <math>
+                  <latex>-\infty</latex>
+               </math> either, we show that the sign of <math>
+                  <latex>(s_n)</latex>
+               </math> alternates. We argue by induction. With some trial and error we arrive at the claim: for <math>
+                  <latex>k\geq 0</latex>
+               </math>,</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> 0 &lt; s_{2k} &lt; \Abs{r^{2k+1}} </latex>
+                     </math>, and</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> -r^{2k+2} &lt; s_{2k+1} &lt; 0 </latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>To start the induction, consider the case <math>
+                  <latex>k=0</latex>
+               </math>. Indeed, we find</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> 0 &lt; 1 = s_{2\cdot 0} &lt; \Abs{r}^{1} </latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> -r^2 &lt; r &lt; 1+r = s_{2\cdot 0 + 1} &lt; 0 </latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>Now assume the claim is true for <math>
+                  <latex> k\geq 0 </latex>
+               </math>. We find</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> 0 &lt; s_{2k+1} + r^{2(k+1)} = s_{2(k+1)} &lt; r^{2(k+1)} &lt; \Abs{ r^{2(k+1)+1} } </latex>
+                     </math> and, therefore,</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> -r^{2(k+1)+1} &lt; s_{2(k+1)} + r^{2(k+1)+1} = s_{2(k+1)+1} &lt; 0 </latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>So <math>
+                  <latex>(s_n)</latex>
+               </math> alternates, hence does not converge to <math>
+                  <latex>+\infty</latex>
+               </math> or to <math>
+                  <latex>-\infty</latex>
+               </math>. In summary, <math>
+                  <latex>\sum_{n=0}^{\infty} r^n</latex>
+               </math> diverges if <math>
+                  <latex> r&lt; -1 </latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>This completes the proof of the con / divergence properties of geometric series.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

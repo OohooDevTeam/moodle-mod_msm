@@ -92,17 +92,103 @@
    </statement.theorem>
    <proof>
       <proof.block>
+         <para>
+            <para.body>We verify the first distributivity property. The other two properties can be proved with the same method. So let <math>
+                  <latex>A</latex>
+               </math> and <math>
+                  <latex>B</latex>
+               </math> be two matrices of size <math>
+                  <latex>(m,n)</latex>
+               </math>, and let <math>
+                  <latex>t\in\RNr</latex>
+               </math>. We focus our attention on the matrix entries in position <math>
+                  <latex>(i,j)</latex>
+               </math>, for some fixed <math>
+                  <latex>1\leq i\leq m</latex>
+               </math> and <math>
+                  <latex>1\leq j\leq n</latex>
+               </math>. Suppose</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A</latex>
+                     </math> has the number <math>
+                        <latex>a_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>B</latex>
+                     </math> has the number <math>
+                        <latex>b_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ul>
          <logic>
             <part.ref>DistributesOverMatrixSum</part.ref>
          </logic>
-         <caption>DistributesOverMatrixSum</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Let us consider the entry in position <math>
-                     <latex>(i,j)</latex>
-                  </math> of the relevant matrix expressions:</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+			Distributes over a matrix sum
+		</caption>
+         <para>
+            <para.body>Let us consider the entry in position <math>
+                  <latex>(i,j)</latex>
+               </math> of the relevant matrix expressions:</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>t\cdot (A+B)</latex>
+                     </math> has the number <math>
+                        <latex>t\cdot (a_{ij}+b_{ij})</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>tA +tB</latex>
+                     </math> has the number <math>
+                        <latex>ta_{ij} + tb_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>These numbers are equal because of the distributivity law for multiplication and addition of real numbers.</para.body>
+         </para>
+         <para>
+            <para.body>Thus <math>
+                  <latex>t(A+B)</latex>
+               </math> and <math>
+                  <latex>tA+tB</latex>
+               </math> both have the same number in position <math>
+                  <latex>(i,j)</latex>
+               </math>. This computation applies to each position. So the two matrices are equal and, therefore, the distributivity identity for scalar multiplication of matrices holds.</para.body>
+         </para>
+         <para>
+            <para.body>You should try proving the remaining properties of scalar multiplication by adapting the above method.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

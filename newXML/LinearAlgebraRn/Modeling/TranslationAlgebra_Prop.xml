@@ -74,41 +74,72 @@
          <logic>
             <part.ref>Prop_SumTranslations</part.ref>
          </logic>
-         <caption>Prop_SumTranslations</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We need to determine the effect of the concatenated operation <math>
-                     <latex>T_2\Comp T_1</latex>
-                  </math> on an arbitrary vector <math>
-                     <latex>\Vect{x}</latex>
-                  </math> of <math>
-                     <latex>\RNr[n]</latex>
-                  </math>:</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption/>
+         <para>
+            <para.body>We need to determine the effect of the concatenated operation <math>
+                  <latex>T_2\Comp T_1</latex>
+               </math> on an arbitrary vector <math>
+                  <latex>\Vect{x}</latex>
+               </math> of <math>
+                  <latex>\RNr[n]</latex>
+               </math>:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>First <math>
+                        <latex>T_1</latex>
+                     </math> moves <math>
+                        <latex>\Vect{x}</latex>
+                     </math> to <math>
+                        <latex>\Vect{t}_1 + \Vect{x}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>Then <math>
+                        <latex>T_2</latex>
+                     </math> moves <math>
+                        <latex>\Vect{t}_1 + \Vect{x}</latex>
+                     </math> to </para.body>
+               </para>
+               <math.display>
+                  <latex>\Vect{t}_2 + (\Vect{t}_1 + \Vect{x})\ =\ (\Vect{t}_1 + \Vect{t}_2) + \Vect{x}</latex>
+               </math.display>
+            </li>
+         </ol>
+         <para>
+            <para.body>This happens to <emphasis>every</emphasis> vector <math>
+                  <latex>\Vect{x}</latex>
+               </math> of <math>
+                  <latex>\RNr[n]</latex>
+               </math>. Therefore <math>
+                  <latex>T_2\Comp T_1</latex>
+               </math> is a translation, and its translation vector is <math>
+                  <latex>\Vect{t}_1+ \Vect{t}_2</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>Prop_ScalarMultipleTranslation</part.ref>
          </logic>
-         <caption>Prop_ScalarMultipleTranslation</caption>
-         <proof.block.body>
-            <para>
-               <para.body>By description, <math>
-                     <latex>T</latex>
-                  </math> moves every <math>
-                     <latex>\Vect{x}</latex>
-                  </math> of <math>
-                     <latex>\RNr[n]</latex>
-                  </math> to <math>
-                     <latex>t\cdot \Vect{a} + \Vect{x}</latex>
-                  </math>. This means that <math>
-                     <latex>T</latex>
-                  </math> has the translation vector <math>
-                     <latex>t\cdot \Vect{a}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
+         <caption/>
+         <para>
+            <para.body>By description, <math>
+                  <latex>T</latex>
+               </math> moves every <math>
+                  <latex>\Vect{x}</latex>
+               </math> of <math>
+                  <latex>\RNr[n]</latex>
+               </math> to <math>
+                  <latex>t\cdot \Vect{a} + \Vect{x}</latex>
+               </math>. This means that <math>
+                  <latex>T</latex>
+               </math> has the translation vector <math>
+                  <latex>t\cdot \Vect{a}</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

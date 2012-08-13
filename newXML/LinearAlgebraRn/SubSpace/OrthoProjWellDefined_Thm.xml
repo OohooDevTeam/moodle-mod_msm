@@ -114,9 +114,11 @@
                         </math>
                      </hot>
                      <info>
-                        <info.caption>Why is the vector on the left in <math>
-                              <latex>V^{\bot}</latex>
-                           </math>?</info.caption>
+                        <info.caption>
+                           <caption>Why is the vector on the left in <math>
+                                 <latex>V^{\bot}</latex>
+                              </math>?</caption>
+                        </info.caption>
                         <para>
                            <para.body>It suffices to show that <math>
                                  <latex>(\Vect{x}-q(\Vect{x}))</latex>
@@ -189,9 +191,11 @@
                         </math>
                      </hot>
                      <info>
-                        <info.caption>Why is the vector on the right in <math>
-                              <latex>V</latex>
-                           </math>?</info.caption>
+                        <info.caption>
+                           <caption>Why is the vector on the right in <math>
+                                 <latex>V</latex>
+                              </math>?</caption>
+                        </info.caption>
                         <para>
                            <para.body>Because it is a linear combination of vectors in <math>
                                  <latex>V</latex>

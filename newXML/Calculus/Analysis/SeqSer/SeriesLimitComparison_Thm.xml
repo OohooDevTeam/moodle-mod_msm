@@ -7,7 +7,9 @@
    <caption>Limit comparison test</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <para>
             <para.body>What is the idea underlying these limit comparison tests? –</para.body>
          </para>
@@ -135,45 +137,163 @@
          <logic>
             <part.ref>LimitPositive</part.ref>
          </logic>
-         <caption>LimitPositive</caption>
-         <proof.block.body>
-            <para>
-               <para.body>By assumption</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   the case where <math>
+               <latex> 0 &lt; \lim_{n\to \infty}\tfrac{a_n}{b_n} \in \RNr </latex>
+            </math>.</caption>
+         <para>
+            <para.body>By assumption</para.body>
+         </para>
+         <math.display>
+            <latex> \lim_{n\to \infty} \dfrac{a_n}{b_n}\ =\ c,\quad 0 &lt; c \in \RNr </latex>
+         </math.display>
+         <para>
+            <para.body>Therefore, <math>
+                  <latex> \varepsilon := \tfrac{c}{2} &gt; 0 </latex>
+               </math>, and so there exists <math>
+                  <latex>N\in \NNr</latex>
+               </math>, such that</para.body>
+         </para>
+         <math.display>
+            <latex> \Abs{ \dfrac{a_n}{b_n} - c }\ &lt;\ \dfrac{c}{2},\quad \text{for all $n\geq N$} </latex>
+         </math.display>
+         <para>
+            <para.body>In other words, for <math>
+                  <latex>n\geq N</latex>
+               </math>, we have</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+\begin{array}{ccccc}
+-\dfrac{c}{2} &amp; &lt; &amp; \dfrac{a_n}{b_n} - c &amp; &lt; &amp; \dfrac{c}{2} \\
+\dfrac{c}{2} &amp; &lt; &amp; \dfrac{a_n}{b_n} &amp; &lt; &amp; \dfrac{3}{2}c \\
+\dfrac{c}{2}b_n &amp; \overset{(*)}{&lt;} &amp; a_n &amp; \overset{(**)}{&lt;} &amp; \dfrac{3}{2}cb_n
+\end{array}
+				
+			</latex>
+         </math.display>
+         <para>
+            <para.body>From inequality <math>
+                  <latex>(*)</latex>
+               </math>: if <math>
+                  <latex>\sum_{n=0}^{\infty} b_n = \infty</latex>
+               </math>, then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{n=0}^{\infty}\dfrac{c}{2} b_n</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the assumption that <math>
+                                 <latex> c&gt;0 </latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dfrac{c}{2}\, \sum_{n=0}^{\infty}\ =\ +\infty</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Therefore</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{n=0}^{\infty} a_n</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\infty</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>LimitZero</part.ref>
          </logic>
-         <caption>LimitZero</caption>
-         <proof.block.body>
-            <para>
-               <para.body>For <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math> choose <math>
-                     <latex>N\in \NNr</latex>
-                  </math> such that for <math>
-                     <latex>n\geq N</latex>
-                  </math>
-               </para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   the case where <math>
+               <latex>\lim_{n\to \infty} \tfrac{a_n}{b_n} = 0</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>For <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math> choose <math>
+                  <latex>N\in \NNr</latex>
+               </math> such that for <math>
+                  <latex>n\geq N</latex>
+               </math>
+            </para.body>
+         </para>
+         <math.display>
+            <latex>
+				-\varepsilon &lt; \dfrac{a_n}{b_n} &lt; \varepsilon
+				</latex>
+         </math.display>
+         <para>
+            <para.body>Since <math>
+                  <latex> a_n,b_n&gt;0 </latex>
+               </math>, this is equivalent to <math>
+                  <latex> a_n &lt; \varepsilon b_n </latex>
+               </math>. Therefore, <math>
+                  <latex>\sum_{n=0}^{\infty} a_n</latex>
+               </math> converges to a number by comparison with <math>
+                  <latex>\sum_{n=0}^{\infty}(\varepsilon b_n)</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>LimitInfinity</part.ref>
          </logic>
-         <caption>LimitInfinity</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Pick <math>
-                     <latex>\varepsilon :=2</latex>
-                  </math>, and choose <math>
-                     <latex>N\in \NNr</latex>
-                  </math> such that</para.body>
-            </para>
-         </proof.block.body>
+         <caption>   the case where <math>
+               <latex>\lim_{n\to\infty}\tfrac{a_n}{b_n} = \infty</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Pick <math>
+                  <latex>\varepsilon :=2</latex>
+               </math>, and choose <math>
+                  <latex>N\in \NNr</latex>
+               </math> such that</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+				\dfrac{a_n}{b_n}\ &gt;\ 2,\quad \text{for $n\geq N$}
+				
+			</latex>
+         </math.display>
+         <para>
+            <para.body>This is equivalent to <math>
+                  <latex> a_n &gt; 2b_n </latex>
+               </math>. Comparison then shows</para.body>
+         </para>
+         <math.display>
+            <latex>\sum_{n=0}^{\infty} a_n \geq \sum_{n=0}^{\infty} (2b_n)\ =\ 2\cdot \sum_{n=0}^{\infty} b_n\ =\ \infty</latex>
+         </math.display>
+         <para>
+            <para.body>This is what we wanted to show.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

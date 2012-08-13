@@ -8,7 +8,9 @@
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_DeterminantInvertibility"/>
       <info>
-         <info.caption>Example</info.caption>
+         <info.caption>
+            <caption>Example</caption>
+         </info.caption>
          <para>
             <para.body>Some examples to show how to use a determinant to test a matrix for invertibility.</para.body>
          </para>

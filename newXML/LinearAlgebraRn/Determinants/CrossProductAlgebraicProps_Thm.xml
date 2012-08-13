@@ -7,7 +7,9 @@
    <caption>Cross product: algebraic properties</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <para>
             <para.body>What do these equations describing algebraic properties of the cross product actually say? – Find details here.</para.body>
          </para>
@@ -129,49 +131,118 @@
          <logic>
             <part.ref>Bilinear</part.ref>
          </logic>
-         <caption>Bilinear</caption>
-         <proof.block.body>
-            <para>
-               <para.body>These three identities together assert that the cross product operation is bilinear. To verify these bilinearity properties, we recall that the determinant operation on  <math>
-                     <latex>(2,2)</latex>
-                  </math>-matrices is 
+         <caption> Bilinearity Property</caption>
+         <para>
+            <para.body>These three identities together assert that the cross product operation is bilinear. To verify these bilinearity properties, we recall that the determinant operation on  <math>
+                  <latex>(2,2)</latex>
+               </math>-matrices is 
 			<subordinate>
-                     <hot>bilinear</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
-                        <info>
-                           <para>
-                              <para.body>Look up these properties of the determinant operation.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>.
+                  <hot>bilinear</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Look up these properties of the determinant operation.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>.
 			So we obtain, for example,</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         </para>
+         <math.display>
+            <latex>
+				
+\aligned
+\det
+\left[
+\begin{array}{cc}
+u_1 +v_1 &amp; y_1 \\
+u_2 +v_2 &amp; y_2
+\end{array}
+\right]\ &amp;=\
+\det
+\left[
+\begin{array}{cc}
+u_1 &amp; y_1 \\
+u_2 &amp; y_2
+\end{array}
+\right]\ +\ 
+\det
+\left[
+\begin{array}{cc}
+v_1 &amp; y_1 \\
+v_2 &amp; y_2
+\end{array}
+\right] \\
+\det
+\left[
+\begin{array}{cc}
+u_1 &amp; x_1 + y_1 \\
+u_2 &amp; x_2 + y_2
+\end{array}
+\right]\ &amp;=\
+\det
+\left[
+\begin{array}{cc}
+u_1 &amp; x_1 \\
+u_2 &amp; x_2
+\end{array}
+\right]\ +\ 
+\det
+\left[
+\begin{array}{cc}
+u_1 &amp; y_1 \\
+u_2 &amp; y_2
+\end{array}
+\right] \\
+\det
+\left[
+\begin{array}{cc}
+tx_1 &amp; y_1 \\
+tx_2 &amp; y_2
+\end{array}
+\right]\ &amp;=\ 
+t\cdot
+\det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2
+\end{array}
+\right]\ =\ 
+\det
+\left[
+\begin{array}{cc}
+x_1 &amp; t\cdot y_1 \\
+x_2 &amp; t\cdot y_2
+\end{array}
+\right]
+\endaligned
+
+			</latex>
+         </math.display>
+         <para>
+            <para.body>This implies the claim.</para.body>
+         </para>
          <logic>
             <part.ref>AntiSymmetric</part.ref>
          </logic>
-         <caption>AntiSymmetric</caption>
-         <proof.block.body>
-            <para>
-               <para.body>The antisymmetry property of the cross product follows directly from the 
+         <caption> Antisymmetry Property</caption>
+         <para>
+            <para.body>The antisymmetry property of the cross product follows directly from the 
 			<subordinate>
-                     <hot>alternating property</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
-                        <info>
-                           <para>
-                              <para.body>Look up these properties of the determinant operation.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>alternating property</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Look up these properties of the determinant operation.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			of the determinant operation.</para.body>
-            </para>
-         </proof.block.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -7,7 +7,9 @@
    <caption>Properties of ‘distance between numbers’</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <para>
             <para.body>Where does the term ‘triangle inequality’ come from? See an explanation and illustration.</para.body>
          </para>
@@ -173,76 +175,289 @@
          <logic>
             <part.ref>Positivity</part.ref>
          </logic>
-         <caption>Positivity</caption>
-         <proof.block.body>
-            <para>
-               <para.body>By definition, <math>
-                     <latex>\Dstnc{x}{y} = \Abs{ y-x }\geq 0</latex>
-                  </math> by a 
+         <caption> the positivity property</caption>
+         <para>
+            <para.body>By definition, <math>
+                  <latex>\Dstnc{x}{y} = \Abs{ y-x }\geq 0</latex>
+               </math> by a 
 			<subordinate>
-                     <hot>basic property of the absolute value operation</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_NormRProperties"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this fact.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+                  <hot>basic property of the absolute value operation</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_NormRProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this fact.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>.</para.body>
+         </para>
          <logic>
             <part.ref>DistanceSymmetric</part.ref>
          </logic>
-         <caption>DistanceSymmetric</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We compute</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> the symmetry property</caption>
+         <para>
+            <para.body>We compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dstnc{x}{y}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ y-x }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ -(x-y) }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>because <math>
+                                 <latex>\Abs{t} = \Abs{ -t }</latex>
+                              </math> for all <math>
+                                 <latex>t\in \RNr</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ x-y }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dstnc{y}{x}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>TriangleInequality</part.ref>
          </logic>
-         <caption>TriangleInequality</caption>
-         <proof.block.body>
-            <para>
-               <para.body>For <math>
-                     <latex>r,s\in\RNr</latex>
-                  </math> we show first that <math>
-                     <latex>\Abs{s+t} \leq \Abs{s} + \Abs{t}</latex>
-                  </math>
-                  <subordinate>
-                     <hot>know</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_NormRProperties"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this fact.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+         <caption> the triangle inequality</caption>
+         <para>
+            <para.body>For <math>
+                  <latex>r,s\in\RNr</latex>
+               </math> we show first that <math>
+                  <latex>\Abs{s+t} \leq \Abs{s} + \Abs{t}</latex>
+               </math>
+               <subordinate>
+                  <hot>know</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_NormRProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this fact.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			that</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         </para>
+         <math.display>
+            <latex>
+				
+\aligned
+-\Abs{s}\ &amp;\leq\ s\ &amp;\leq\ \Abs{s} \\
+-\Abs{t}\ &amp;\leq\ t\ &amp;\leq\ \Abs{t} \\
+-(\Abs{s} + \Abs{t})\ &amp;\leq\ s+t\ &amp;\leq\ \Abs{s} + \Abs{t}
+\endaligned
+
+			</latex>
+         </math.display>
+         <para>
+            <para.body>If <math>
+                  <latex>s+t=\Abs{s+t}</latex>
+               </math>, this gives <math>
+                  <latex>\Abs{s+t} \leq \Abs{s}+\Abs{t}</latex>
+               </math>. On the other hand, if <math>
+                  <latex>s+t=-\Abs{s+t}</latex>
+               </math>, then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-(\Abs{s}+\Abs{t})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-Abs{s+t}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{s}+\Abs{t}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\geq</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{s+t}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Now the triangle inequality follows because</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dstnc{x}{z}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{z-x}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{z-y + (y-x)}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>In the previous discussion, choose <math>
+                                 <latex>s:=z-y</latex>
+                              </math> and <math>
+                                 <latex>t:=y-x</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{z-y} + \Abs{y-x}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dstnc{y}{z} + \Dstnc{x}{y}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as was to be shown.</para.body>
+         </para>
          <logic>
             <part.ref>Nondegeneracy</part.ref>
          </logic>
-         <caption>Nondegeneracy</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>x=y</latex>
-                  </math>, then</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+            <math>
+               <latex>\Dstnc{x}{y} = 0</latex>
+            </math> if and only if <math>
+               <latex>x=y</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>If <math>
+                  <latex>x=y</latex>
+               </math>, then</para.body>
+         </para>
+         <math.display>
+            <latex>\Dstnc{x}{y} = \Abs{y-x} = \Abs{0} = 0</latex>
+         </math.display>
+         <para>
+            <para.body>For the converse, suppose <math>
+                  <latex>x</latex>
+               </math> and <math>
+                  <latex>y</latex>
+               </math> are numbers for which <math>
+                  <latex>\Dstnc{x}{y}=0</latex>
+               </math>. Then <math>
+                  <latex>\Abs{ y-x } = 0</latex>
+               </math>. We know that this means that <math>
+                  <latex>y-x=0</latex>
+               </math> or <math>
+                  <latex>-(y-x)=0</latex>
+               </math>. Either way it follows that <math>
+                  <latex>x=y</latex>
+               </math>, as was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

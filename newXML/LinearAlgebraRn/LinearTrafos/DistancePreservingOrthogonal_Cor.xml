@@ -10,7 +10,9 @@
    </caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment on this corollary</info.caption>
+         <info.caption>
+            <caption>Comment on this corollary</caption>
+         </info.caption>
          <para>
             <para.body>Recall how laborious it is, in general, to determine if a given linear map is invertible. In comparison, this corollary presents us with a pleasant surprise: tthe transpose of a matrix <math>
                   <latex>\Mtrx{A}</latex>

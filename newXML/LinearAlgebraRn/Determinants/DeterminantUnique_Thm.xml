@@ -7,7 +7,9 @@
    <caption>Uniqueness of the determinant operation</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment on the Uniqueness Corollary</info.caption>
+         <info.caption>
+            <caption>Comment on the Uniqueness Corollary</caption>
+         </info.caption>
          <para>
             <para.body>As a consequence of the corollary, we see that the determinant operation is the only function <math>
                   <latex>F\from M_{nn}\to \RNr</latex>

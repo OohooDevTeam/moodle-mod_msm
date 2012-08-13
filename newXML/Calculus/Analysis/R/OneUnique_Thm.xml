@@ -7,7 +7,9 @@
    <caption>Uniqueness of the number 1</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment of the proof of this lemma</info.caption>
+         <info.caption>
+            <caption>Comment of the proof of this lemma</caption>
+         </info.caption>
          <para>
             <para.body>This lemma can be proven by adapting the proof of uniqueness of the neutral element with respect to addition to the multiplicative setting.</para.body>
          </para>

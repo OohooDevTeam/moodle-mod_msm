@@ -275,7 +275,9 @@
                      </math>
                      <companion>
                         <info>
-                           <info.caption>Why is this so?</info.caption>
+                           <info.caption>
+                              <caption>Why is this so?</caption>
+                           </info.caption>
                            <para>
                               <para.body>Recall that a linear map <math>
                                     <latex>T</latex>

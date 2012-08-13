@@ -52,23 +52,45 @@
          <logic>
             <part.ref>ClosedrNbhd</part.ref>
          </logic>
-         <caption>ClosedrNbhd</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We have that</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\Abs{x-c}\leq r</latex>
+            </math> if and only if <math>
+               <latex>c-r \leq x \leq c+r</latex>
+            </math> if and only if <math>
+               <latex>x\in \CCIntrvl{c-r}{c+r}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We have that</para.body>
+         </para>
+         <math.display>
+            <latex>\Abs{ x-c } \leq r\quad \text{if and only if}\quad -r \leq x-c \leq r</latex>
+         </math.display>
+         <para>
+            <para.body>which holds if and only if </para.body>
+         </para>
+         <math.display>
+            <latex>c-r \leq x\leq c+r,\quad \text{i.e.}\quad x\in \CCIntrvl{ c-r }{c+r}</latex>
+         </math.display>
+         <para>
+            <para.body>as was to be shown.</para.body>
+         </para>
          <logic>
             <part.ref>OpenNbhd</part.ref>
          </logic>
-         <caption>OpenNbhd</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This follows with similar reasoning.</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+            <math>
+               <latex> \Abs{x-c} &lt; r </latex>
+            </math> if and only if <math>
+               <latex> c-r &lt; x &lt; c+r </latex>
+            </math> if and only if <math>
+               <latex>x\in \OOIntrvl{c-r}{c+r}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>This follows with similar reasoning.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

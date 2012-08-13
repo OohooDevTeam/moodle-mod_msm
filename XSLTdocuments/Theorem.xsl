@@ -41,7 +41,7 @@
         </xsl:element>
     </xsl:template>
     
-    <xsl:template match="thm:caption">
+    <!--<xsl:template match="thm:caption">
         <xsl:choose>
             <xsl:when test="parent::node()[name()='proof']">
                 <xsl:apply-templates select="child::node()[name()= 'partref']"/>
@@ -58,6 +58,13 @@
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>     
+    </xsl:template>-->
+    
+    <xsl:template match="thm:caption">
+        <xsl:apply-templates select="child::node()[name()='partref']"/>
+        <xsl:element name="caption" namespace="Theorem">
+            <xsl:apply-templates select="child::node()[not(name()='partref')]"/>
+        </xsl:element>
     </xsl:template>
     
     <xsl:template match="thm:partref">
@@ -93,8 +100,30 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
     <xsl:template match="thm:proof">
+        <xsl:element name="proof" namespace="Theorem">
+            <xsl:if test="attribute::* != ''">
+                <xsl:copy-of select="attribute::*"/>
+            </xsl:if>
+            
+            <xsl:element name="proof.block" namespace="Theorem">
+               <xsl:for-each select=".">
+                   <xsl:choose>
+                       <xsl:when test="node()[name()='caption']">
+                           <xsl:apply-templates/>
+                       </xsl:when>
+                       <xsl:otherwise>
+                           <xsl:element name="proof.block.body" namespace="Theorem">
+                               <xsl:apply-templates/>
+                           </xsl:element>
+                       </xsl:otherwise>
+                   </xsl:choose>
+               </xsl:for-each>
+            </xsl:element>
+        </xsl:element>
+    </xsl:template>
+    
+    <!--<xsl:template match="thm:proof">
         <xsl:element name="proof" namespace="Theorem">
             <xsl:if test="attribute::* != ''">
                 <xsl:copy-of select="attribute::*"/>
@@ -117,22 +146,9 @@
                         </xsl:element>
                     </xsl:for-each> 
                 </xsl:otherwise>
-            </xsl:choose>
-            
-            <!--xsl:choose>
-                <xsl:when test="child::node()[not(name()='caption')]">
-                    <xsl:element name="proof.block" namespace="Theorem">
-                        <xsl:element name="proof.block.body" namespace="Theorem">
-                            <xsl:apply-templates/>
-                        </xsl:element>
-                    </xsl:element>
-                </xsl:when> 
-                <xsl:otherwise-->
-                    
-                <!--/xsl:otherwise>
-            </xsl:choose-->                            
+            </xsl:choose>                       
         </xsl:element>
-    </xsl:template>
+    </xsl:template>-->
     
     <!--xsl:template match="thm:proof.ext">
         <xsl:element name="proof.ext" namespace="Theorem">

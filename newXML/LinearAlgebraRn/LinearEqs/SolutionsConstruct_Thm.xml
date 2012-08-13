@@ -15,7 +15,9 @@
    </associate>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <para>
             <para.body>In other words, the vector <math>
                   <latex>\Vect{b}_k</latex>

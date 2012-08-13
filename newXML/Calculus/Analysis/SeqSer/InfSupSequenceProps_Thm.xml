@@ -73,54 +73,187 @@
    </statement.theorem>
    <proof>
       <proof.block>
+         <para>
+            <para.body>We rely here on properties of 
+			<subordinate>
+                  <hot>inf and sup of a set</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_InfSupProps"/>
+                     <info>
+                        <para>
+                           <para.body>Review the properties of inf and sup of a set.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>.</para.body>
+         </para>
          <logic>
             <part.ref>SupNegativea</part.ref>
          </logic>
-         <caption>SupNegativea</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We unravel the relevant definitions</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   <math>
+               <latex>\sup(-a_n) = -\inf(a_n)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We unravel the relevant definitions</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sup(-a_n)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sup\Set{ -a_n \st n\in \RNr }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sup (-\Set{ a_n \st n\in \RNr } )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>This is so because, for a set <math>
+                                 <latex>A\subseteq\RNr</latex>
+                              </math>,</para.body>
+                        </para>
+                        <math.display>
+                           <latex>\sup(-A) = -\inf(A)</latex>
+                        </math.display>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\inf \Set{ a_n \st n\in \RNr }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\inf(a_n)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>The identity <math>
+                  <latex>\inf(-a_n) = \sup(a_n)</latex>
+               </math> follows with a similar argument. Alternatively, we can use what we just proved:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\inf(-a_n)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\sup(-(-a_n)) = -\sup(a_n)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>SupScalara</part.ref>
          </logic>
-         <caption>SupScalara</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Adapt the method used to prove the previous part.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   If <math>
+               <latex>c\in \RNr</latex>
+            </math> satisfies <math>
+               <latex> c&gt;0 </latex>
+            </math>, then <math>
+               <latex>\sup(ca_n) = c\cdot\sup(a_n)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Adapt the method used to prove the previous part.</para.body>
+         </para>
          <logic>
             <part.ref>Supaplusb</part.ref>
          </logic>
-         <caption>Supaplusb</caption>
-         <proof.block.body>
-            <para>
-               <para.body>For every <math>
-                     <latex>n\in \NNr</latex>
-                  </math> we know</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   <math>
+               <latex>\sup(a_n+b_n) \leq \sup(a_n) + \sup(b_n)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>For every <math>
+                  <latex>n\in \NNr</latex>
+               </math> we know</para.body>
+         </para>
+         <math.display>
+            <latex>a_n \leq \sup(a_n)\quad \text{and}\quad b_n\leq \sup(b_n)</latex>
+         </math.display>
+         <para>
+            <para.body>Therefore, for all <math>
+                  <latex>n\in \NNr</latex>
+               </math>,</para.body>
+         </para>
+         <math.display>
+            <latex>a_n + b_n \leq \sup(a_n) + \sup(b_n)</latex>
+         </math.display>
+         <para>
+            <para.body>This means exactly that <math>
+                  <latex>\sup(a_n+b_n) \leq \sup(a_n) + \sup(b_n)</latex>
+               </math>, as claimed. – The inf-inequality is proved similarly.</para.body>
+         </para>
          <logic>
             <part.ref>SupSubsequence</part.ref>
          </logic>
-         <caption>SupSubsequence</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This is so because each upper bound of <math>
-                     <latex>(b_n)</latex>
-                  </math> is also an upper bound of <math>
-                     <latex>(a_n)</latex>
-                  </math>. Therefore,</para.body>
-            </para>
-         </proof.block.body>
+         <caption>If <math>
+               <latex>(a_n)</latex>
+            </math> is a subsequence of <math>
+               <latex>(b_n)</latex>
+            </math> then <math>
+               <latex>\sup(a_n) \leq \sup(b_n)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>This is so because each upper bound of <math>
+                  <latex>(b_n)</latex>
+               </math> is also an upper bound of <math>
+                  <latex>(a_n)</latex>
+               </math>. Therefore,</para.body>
+         </para>
+         <math.display>
+            <latex>\sup(a_n) = \text{(least upper bound of $(a_n)$)}\ \leq\ \text{(least upper bound of $(b_n)$)} = \sup(b_n)</latex>
+         </math.display>
       </proof.block>
    </proof>
 </theorem>

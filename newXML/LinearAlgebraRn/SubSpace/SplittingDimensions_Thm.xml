@@ -109,28 +109,248 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>Let <math>
-                     <latex>\Vect{w}\in W</latex>
-                  </math> be arbitrary. We need to show that <math>
-                     <latex>\Vect{w}</latex>
-                  </math> is a linear combination of vectors in <math>
-                     <latex>\EuScript{B}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>Consider an expansion of the zero vector as a linear combination of <math>
-                     <latex>\EuScript{B}</latex>
-                  </math>:</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>If <math>
+                  <latex>\EuScript{A} = \Set{ \Vect{a}_1,\dots ,\Vect{a}_p}</latex>
+               </math> and <math>
+                  <latex>\EuScript{C} = \Set{ \Vect{c}_1,\dots ,\Vect{c}_q }</latex>
+               </math>, we claim that</para.body>
+         </para>
+         <math.display>
+            <latex>\EuScript{B} := \EuScript{A} \cup \EuScript{C} = \Set{ \Vect{a}_1,\dots ,\Vect{a}_p, \Vect{c}_1,\dots ,\Vect{c}_q }</latex>
+         </math.display>
+         <para>
+            <para.body>is a basis of <math>
+                  <latex>W</latex>
+               </math>. We verify this claim in two steps:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> spans <math>
+                        <latex>W</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\EuScript{B}</latex>
+                     </math> is linearly independent.</para.body>
+               </para>
+            </li>
+         </ol>
+         <caption>
+            <math>
+               <latex>\EuScript{B}</latex>
+            </math> spans <math>
+               <latex>W</latex>
+            </math>.</caption>
+         <para>
+            <para.body>Let <math>
+                  <latex>\Vect{w}\in W</latex>
+               </math> be arbitrary. We need to show that <math>
+                  <latex>\Vect{w}</latex>
+               </math> is a linear combination of vectors in <math>
+                  <latex>\EuScript{B}</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>We know that <math>
+                  <latex>\Vect{w}</latex>
+               </math> is a linear combination of vectors from <math>
+                  <latex>U</latex>
+               </math> and <math>
+                  <latex>V</latex>
+               </math>:</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{w} = s_1 \Vect{u}_1+\cdots + s_k \Vect{u}_k\ +\ t_1 \Vect{v}_1+\cdots +t_l \Vect{v}_l =: \Vect{u} + \Vect{v}</latex>
+         </math.display>
+         <para>
+            <para.body>for vectors <math>
+                  <latex>\Vect{u}_1,\dots ,\Vect{u}_k</latex>
+               </math> in <math>
+                  <latex>U</latex>
+               </math>, and <math>
+                  <latex>\Vect{v}_1,\dots ,\Vect{v}_l</latex>
+               </math> in <math>
+                  <latex>V</latex>
+               </math>, and scalar coefficients <math>
+                  <latex>s_1,\dots ,s_k</latex>
+               </math>, <math>
+                  <latex>t_1,\dots ,t_l</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math>. Now <math>
+                  <latex>\Vect{u}\in \span(\EuScript{A})</latex>
+               </math>, and <math>
+                  <latex>\Vect{v} \in \span(\EuScript{C})</latex>
+               </math>. Therefore,</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{u} = x_1 \Vect{a}_1 + \cdots + x_p \Vect{a}_p\quad \text{and}\quad \Vect{v} = y_1 \Vect{c}_1+ \cdots + y_q \Vect{c}_q</latex>
+         </math.display>
+         <para>
+            <para.body>with <math>
+                  <latex>x_1,\dots ,x_p</latex>
+               </math>, <math>
+                  <latex>y_1,\dots ,y_q</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math>. Therefore</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{w} = \Vect{u} + \Vect{v} = x_1 \Vect{a}_1 + \cdots + x_p \Vect{a}_p\ +\ y_1 \Vect{c}_1 + \cdots + y_q \Vect{c}_q</latex>
+         </math.display>
+         <para>
+            <para.body>belongs to <math>
+                  <latex>\span(\EuScript{C})</latex>
+               </math>.</para.body>
+         </para>
+         <caption>
+            <math>
+               <latex>\EuScript{B}</latex>
+            </math> is linearly independent</caption>
+         <para>
+            <para.body>Consider an expansion of the zero vector as a linear combination of <math>
+                  <latex>\EuScript{B}</latex>
+               </math>:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x_1 \Vect{a}_1 + \cdots + x_p \Vect{a}_p\ +\ y_1 \Vect{c}_1 + \cdots + y_q \Vect{c}_q</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>We need to show that <math>
+                  <latex>x_1=\cdots =x_p= 0 = y_1=\cdots = y_q</latex>
+               </math>. To see this, we write the identity above as</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{x} := x_1 \Vect{a}_1 + \cdots + x_p \Vect{a}_p = -(y_1 \Vect{c}_1 + \cdots + y_q \Vect{c}_q)</latex>
+         </math.display>
+         <para>
+            <para.body>This means that <math>
+                  <latex>\Vect{x}</latex>
+               </math> belongs to <math>
+                  <latex>U</latex>
+               </math> and also to <math>
+                  <latex>V</latex>
+               </math>. But by hypothesis, the only such vector is the zero vector; i.e. <math>
+                  <latex>\Vect{x} = \Vect{0}</latex>
+               </math>. It follows that</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>x_1=\cdots = x_p=0</latex>
+                     </math> because <math>
+                        <latex>\EuScript{A}</latex>
+                     </math> is linearly independent.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>y_1=\cdots = y_q=0</latex>
+                     </math> because <math>
+                        <latex>\EuScript{C}</latex>
+                     </math> is linearly independent.</para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>Thus <math>
+                  <latex>\EuScript{B}</latex>
+               </math> is linearly independent, and the proof that <math>
+                  <latex>\EuScript{B}</latex>
+               </math> is a basis of <math>
+                  <latex>W</latex>
+               </math> is complete. In particular,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dim(W)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>p+q</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Remember</para.body>
+                        </para>
+                        <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>\EuScript{B}</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <math>
+                                    <latex>=</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>\Set{ \Vect{a}_1,\dots ,\Vect{a}_p , \Vect{c}_1,\dots ,\Vect{c}_q }</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dim(U) + \dim(V)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This completes the proof.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

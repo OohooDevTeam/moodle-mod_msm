@@ -27,9 +27,11 @@
                   <latex>(2,2)</latex>
                </math>-matrix</term>
             <info>
-               <info.caption>Inverse of a <math>
-                     <latex>(2,2)</latex>
-                  </math>-matrix</info.caption>
+               <info.caption>
+                  <caption>Inverse of a <math>
+                        <latex>(2,2)</latex>
+                     </math>-matrix</caption>
+               </info.caption>
                <para>
                   <para.body>An invertible <math>
                         <latex>(2,2)</latex>
@@ -63,9 +65,11 @@ d &amp; -b \\
                   <latex>(2,2)</latex>
                </math>-matrix</term>
             <info>
-               <info.caption>Inverse of a <math>
-                     <latex>(2,2)</latex>
-                  </math>-matrix</info.caption>
+               <info.caption>
+                  <caption>Inverse of a <math>
+                        <latex>(2,2)</latex>
+                     </math>-matrix</caption>
+               </info.caption>
                <para>
                   <para.body>An invertible <math>
                         <latex>(2,2)</latex>

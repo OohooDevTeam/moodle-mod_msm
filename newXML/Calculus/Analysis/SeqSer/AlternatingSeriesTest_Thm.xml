@@ -57,7 +57,9 @@ s_{2n+3} &amp; = &amp; s_{2n+1} &amp; + &amp; \underset{ &gt; 0 }{\left(a_{2n+2}
 			<subordinate>
                      <hot>increasing</hot>
                      <info>
-                        <info.caption>Why is this sequence increasing?</info.caption>
+                        <info.caption>
+                           <caption>Why is this sequence increasing?</caption>
+                        </info.caption>
                         <para>
                            <para.body>We assume that <math>
                                  <latex> a_k&gt; a_{k+1}</latex>

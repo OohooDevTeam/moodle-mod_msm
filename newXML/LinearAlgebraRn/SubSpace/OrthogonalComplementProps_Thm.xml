@@ -7,7 +7,9 @@
    <caption>Orthogonal complement: properties</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <para>
             <para.body>An explanation of the meaning of the properties of the orthogonal complement operation.</para.body>
          </para>
@@ -32,7 +34,9 @@
                         </math>
                      </hot>
                      <info>
-                        <info.caption>What does this notation mean?</info.caption>
+                        <info.caption>
+                           <caption>What does this notation mean?</caption>
+                        </info.caption>
                         <para>
                            <para.body>Given sets <math>
                                  <latex>S</latex>
@@ -132,80 +136,220 @@
          <logic>
             <part.ref>SSubsetT</part.ref>
          </logic>
-         <caption>SSubsetT</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>\Vect{x}\in T^{\bot}</latex>
-                  </math>, we need to show that <math>
-                     <latex>\Vect{x}\in S^{\bot}</latex>
-                  </math>. So we need to show that <math>
-                     <latex>\DotPr{ \Vect{x} }{ \Vect{s} } = 0</latex>
-                  </math>, for every <math>
-                     <latex>s\in S</latex>
-                  </math>. – But if <math>
-                     <latex>\Vect{s}\in S</latex>
-                  </math>, then also <math>
-                     <latex>\Vect{s}\in T</latex>
-                  </math>, and so <math>
-                     <latex>\DotPr{ \Vect{x} }{ \Vect{s} } = 0</latex>
-                  </math> because <math>
-                     <latex>\Vect{x} \in T^{\bot}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   If <math>
+               <latex>S\subseteq T</latex>
+            </math> then <math>
+               <latex>T^{\bot}\subseteq S^{\bot}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>If <math>
+                  <latex>\Vect{x}\in T^{\bot}</latex>
+               </math>, we need to show that <math>
+                  <latex>\Vect{x}\in S^{\bot}</latex>
+               </math>. So we need to show that <math>
+                  <latex>\DotPr{ \Vect{x} }{ \Vect{s} } = 0</latex>
+               </math>, for every <math>
+                  <latex>s\in S</latex>
+               </math>. – But if <math>
+                  <latex>\Vect{s}\in S</latex>
+               </math>, then also <math>
+                  <latex>\Vect{s}\in T</latex>
+               </math>, and so <math>
+                  <latex>\DotPr{ \Vect{x} }{ \Vect{s} } = 0</latex>
+               </math> because <math>
+                  <latex>\Vect{x} \in T^{\bot}</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>SpanPerp</part.ref>
          </logic>
-         <caption>SpanPerp</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We need to verify the two properties below</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption/>
+         <para>
+            <para.body>We need to verify the two properties below</para.body>
+         </para>
+         <ol type="1">
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S^{\bot}</latex>
+                     </math> contains <math>
+                        <latex>\span(S)^{\bot}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\span(S)^{\bot}</latex>
+                     </math> contains <math>
+                        <latex>S^{\bot}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>The inclusion 1. holds by part (i), using that <math>
+                  <latex>S\subseteq \span(S)</latex>
+               </math>. To see that inclusion 2. holds, consider <math>
+                  <latex>\Vect{x}\in S^{\bot}</latex>
+               </math>. We need to show that <math>
+                  <latex>\DotPr{ \Vect{x} }{ \Vect{v} } = 0</latex>
+               </math> for every <math>
+                  <latex>\Vect{v} \in \span(S)</latex>
+               </math>. Now <math>
+                  <latex>\Vect{v} = t_1 \Vect{s}_1 + \cdots + t_k \Vect{s}_k</latex>
+               </math>, for some <math>
+                  <latex>\Vect{s}_1</latex>
+               </math>, ... , <math>
+                  <latex>\Vect{s}_k</latex>
+               </math> in <math>
+                  <latex>S</latex>
+               </math>, and <math>
+                  <latex>t_1</latex>
+               </math>, ... , <math>
+                  <latex>t_k</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math>. Therefore</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ \Vect{x} }{ \Vect{v} }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ \Vect{x} }{t_1 \Vect{s}_1 + \cdots + t_k \Vect{s}_k) }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1(\DotPr{ \Vect{x} }{ \Vect{s}_1 }) + \cdots + t_k(\DotPr{ \Vect{x} }{ \Vect{s}_k })</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This proves part (ii) of the proposition.</para.body>
+         </para>
          <logic>
             <part.ref>OrthogonalSplit0</part.ref>
          </logic>
-         <caption>OrthogonalSplit0</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Suppose <math>
-                     <latex>\Vect{x}</latex>
-                  </math> belongs to <math>
-                     <latex>V</latex>
-                  </math> and to <math>
-                     <latex>V^{\bot}</latex>
-                  </math>, then <math>
-                     <latex>\DotPr{ \Vect{x} }{ \Vect{x} } = 0</latex>
-                  </math>, and 
+         <caption>   <math>
+               <latex>V\cap V^{\bot} = \Vect{0}</latex>
+            </math>.</caption>
+         <para>
+            <para.body>Suppose <math>
+                  <latex>\Vect{x}</latex>
+               </math> belongs to <math>
+                  <latex>V</latex>
+               </math> and to <math>
+                  <latex>V^{\bot}</latex>
+               </math>, then <math>
+                  <latex>\DotPr{ \Vect{x} }{ \Vect{x} } = 0</latex>
+               </math>, and 
 			<subordinate>
-                     <hot>so</hot>
-                     <info>
-                        <para>
-                           <para.body>Here we use the non-degeneracy property of the dot product operation.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>
-                  <math>
-                     <latex>\Vect{x} = \Vect{0}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+                  <hot>so</hot>
+                  <info>
+                     <para>
+                        <para.body>Here we use the non-degeneracy property of the dot product operation.</para.body>
+                     </para>
+                  </info>
+               </subordinate>
+               <math>
+                  <latex>\Vect{x} = \Vect{0}</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>TripleComplement</part.ref>
          </logic>
-         <caption>TripleComplement</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We need to show that the two inclusions below hold</para.body>
-            </para>
-         </proof.block.body>
+         <caption>   <math>
+               <latex>S^{\bot} = S^{\bot\bot\bot}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We need to show that the two inclusions below hold</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S^{\bot}\subseteq S^{\bot\bot\bot}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S^{\bot\bot\bot}\subseteq S^{\bot}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>Consider <math>
+                  <latex>\Vect{x}\in S^{\bot}</latex>
+               </math>. We need to show that <math>
+                  <latex>\DotPr{ \Vect{x} }{ \Vect{y} }=0</latex>
+               </math> for all <math>
+                  <latex>\Vect{y}\in S^{\bot\bot}</latex>
+               </math>. But <math>
+                  <latex>\Vect{y}</latex>
+               </math> is in <math>
+                  <latex>S^{\bot\bot}</latex>
+               </math> because <math>
+                  <latex>\DotPr{ \Vect{x} }{ \Vect{y} }=0</latex>
+               </math> for each <math>
+                  <latex>\Vect{x}\in S^{\bot}</latex>
+               </math>, and this is exactly what we wanted to show.</para.body>
+         </para>
+         <para>
+            <para.body>The converse inclusion <math>
+                  <latex>S^{\bot\bot\bot}\subseteq S^{\bot}</latex>
+               </math> holds because <math>
+                  <latex>S\subseteq S^{\bot\bot}</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>This completes the proof of the proposition.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

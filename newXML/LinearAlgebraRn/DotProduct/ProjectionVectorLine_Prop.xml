@@ -14,7 +14,9 @@
    </associate>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation of a Computational Expression in the Projection Formula</info.caption>
+         <info.caption>
+            <caption>Explanation of a Computational Expression in the Projection Formula</caption>
+         </info.caption>
          <para>
             <para.body>Note that the expression</para.body>
          </para>
@@ -32,7 +34,9 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>A Special Case of this Proposition</info.caption>
+         <info.caption>
+            <caption>A Special Case of this Proposition</caption>
+         </info.caption>
          <para>
             <para.body>Note this special case: if <math>
                   <latex>\Vect{x}</latex>
@@ -147,7 +151,9 @@
                         </math>
                      </hot>
                      <info>
-                        <info.caption>Why does such a number exist?</info.caption>
+                        <info.caption>
+                           <caption>Why does such a number exist?</caption>
+                        </info.caption>
                         <para>
                            <para.body>Here we need the assumption that <math>
                                  <latex>\Vect{y} \neq \Vect{0}</latex>
@@ -261,7 +267,9 @@
                                  </math>
                               </hot>
                               <info>
-                                 <info.caption>Why is this computational step true?</info.caption>
+                                 <info.caption>
+                                    <caption>Why is this computational step true?</caption>
+                                 </info.caption>
                                  <para>
                                     <para.body>Here we use the distributivity law of the dot product.</para.body>
                                  </para>
@@ -296,7 +304,9 @@
                                  </math>
                               </hot>
                               <info>
-                                 <info.caption>Why is this computational step true?</info.caption>
+                                 <info.caption>
+                                    <caption>Why is this computational step true?</caption>
+                                 </info.caption>
                                  <para>
                                     <para.body>Here we use the fact that <math>
                                           <latex>\DotPr{ (t\cdot \Vect{y}) }{ \Vect{y} } = t\, ( \DotPr{ \Vect{y} }{ \Vect{y} })</latex>
@@ -341,7 +351,9 @@
                                  </math>
                               </hot>
                               <info>
-                                 <info.caption>Why is this computational step true?</info.caption>
+                                 <info.caption>
+                                    <caption>Why is this computational step true?</caption>
+                                 </info.caption>
                                  <para>
                                     <para.body>Here we use again that <math>
                                           <latex>\Vect{y} \neq \Vect{0}</latex>
@@ -418,7 +430,9 @@
                                  </math>
                               </hot>
                               <info>
-                                 <info.caption>Why is this true?</info.caption>
+                                 <info.caption>
+                                    <caption>Why is this true?</caption>
+                                 </info.caption>
                                  <para>
                                     <para.body>Here we use the distributivity property of the dot product:</para.body>
                                  </para>
@@ -456,7 +470,9 @@
                                  </math>
                               </hot>
                               <info>
-                                 <info.caption>Why is this true?</info.caption>
+                                 <info.caption>
+                                    <caption>Why is this true?</caption>
+                                 </info.caption>
                                  <para>
                                     <para.body>Here we cancel by <math>
                                           <latex>\DotPr{ \Vect{y} }{ \Vect{y} }</latex>
@@ -494,7 +510,9 @@
                                  </math>
                               </hot>
                               <info>
-                                 <info.caption>Why is this true?</info.caption>
+                                 <info.caption>
+                                    <caption>Why is this true?</caption>
+                                 </info.caption>
                                  <para>
                                     <para.body>Here we use the commutativity property of the dot product: <math>
                                           <latex>\DotPr{ \Vect{x} }{ \Vect{y} } = \DotPr{ \Vect{y} }{ \Vect{x} }</latex>

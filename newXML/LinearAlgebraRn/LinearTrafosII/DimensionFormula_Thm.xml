@@ -67,37 +67,470 @@
    </statement.theorem>
    <proof type="Proof" proofid="1">
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>The 
+         <caption>A proof using the rank formula for a matrix</caption>
+         <para>
+            <para.body>The 
 			<subordinate>
-                     <hot>rank formula</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_RankFormulaMatrix"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this result.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate> for an <math>
-                     <latex>(m,n)</latex>
-                  </math>-matrix tells us that</para.body>
-            </para>
-         </proof.block.body>
+                  <hot>rank formula</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_RankFormulaMatrix"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate> for an <math>
+                  <latex>(m,n)</latex>
+               </math>-matrix tells us that</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>n</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dim{ \ColSp{ \Mtrx{A} } } + \Dim{ \NllSp{\Mtrx{A}} }</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>In our situation, <math>
+                  <latex>n = \Dim{ V }</latex>
+               </math>, and we 
+			<subordinate>
+                  <hot>found</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_KernelSubspace"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate> that</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dim{ \NllSp{\Mtrx{A}} }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dim{ \Ker{ L } }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dim{ \Img{ L } }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dim{ \ColSp{ \Mtrx{A} } }</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This implies the claim.</para.body>
+         </para>
       </proof.block>
    </proof>
    <proof type="Proof" proofid="2">
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>The strategy of this proof is to split <math>
-                     <latex>V</latex>
-                  </math> into two complementary subspaces, namely</para.body>
-            </para>
-         </proof.block.body>
+         <caption>A direct proof of this corollary, relying less on previous results</caption>
+         <para>
+            <para.body>The strategy of this proof is to split <math>
+                  <latex>V</latex>
+               </math> into two complementary subspaces, namely</para.body>
+         </para>
+         <math.display>
+            <latex>K:= \Ker{ L } \quad\text{and}\quad U</latex>
+         </math.display>
+         <para>
+            <para.body>where <math>
+                  <latex>U</latex>
+               </math> has the distinguished property that the restriction of <math>
+                  <latex>L</latex>
+               </math> to <math>
+                  <latex>U</latex>
+               </math> gives an invertible linear map <math>
+                  <latex>L'\from U\to \Img{ L }</latex>
+               </math>. Now the claim follows from the 
+			<subordinate>
+                  <hot>dimension formula</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_SplittingDimensions"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this theorem.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+			for a splitting of <math>
+                  <latex>V</latex>
+               </math> into subspaces. – Here are the details:</para.body>
+         </para>
+         <para>
+            <para.body>Choose an ordered basis <math>
+                  <latex>\EuScript{C}=(\Vect{c}_1,\dots ,\Vect{c}_p)</latex>
+               </math> for <math>
+                  <latex>\im(L)</latex>
+               </math>. Then choose, for each <math>
+                  <latex>\Vect{c}_i</latex>
+               </math> in <math>
+                  <latex>\EuScript{C}</latex>
+               </math> some <math>
+                  <latex>\Vect{u}_i</latex>
+               </math> in <math>
+                  <latex>V</latex>
+               </math> with <math>
+                  <latex>L(\Vect{u}_i)=\Vect{c}_i</latex>
+               </math>. Setting <math>
+                  <latex>\EuScript{U}:=(\Vect{u}_1,\dots ,\Vect{u}_p)</latex>
+               </math>, and <math>
+                  <latex>U:=\span(\EuScript{U})</latex>
+               </math>, we claim:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\EuScript{U}</latex>
+                     </math> is a basis of <math>
+                        <latex>U</latex>
+                     </math>; so <math>
+                        <latex>\Dim{ U }=\Dim{\Img{ L }}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>K\cap U= \Set{ \Vect{0} }</latex>
+                     </math>; i.e. <math>
+                        <latex>K</latex>
+                     </math> and <math>
+                        <latex>U</latex>
+                     </math> only have the <math>
+                        <latex>\Vect{0}</latex>
+                     </math>-vector in common.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\span(K\cup U)=V</latex>
+                     </math>; i.e. <math>
+                        <latex>K</latex>
+                     </math> and <math>
+                        <latex>U</latex>
+                     </math> together span <math>
+                        <latex>V</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>From these facts we obtain</para.body>
+         </para>
+         <math.display>
+            <latex>\Dim{ V } = \Dim{ K } + \Dim{ U } = \Dim{ \Ker{ L }} + \Dim{ \Img{ L }}</latex>
+         </math.display>
+         <para>
+            <para.body>as claimed. – Details follow:</para.body>
+         </para>
+         <para>
+            <para.body>(1)   <math>
+                  <latex>\EuScript{U}</latex>
+               </math> is a basis of <math>
+                  <latex>U</latex>
+               </math>; so <math>
+                  <latex>\Dim{ U } = \Dim{\Img { L }}</latex>
+               </math>   To see this, it only remains to show that <math>
+                  <latex>\EuScript{U}</latex>
+               </math> is linearly independent. If <math>
+                  <latex>\Vect{0}= t_1 \Vect{u}_1</latex>
+               </math>, we find</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{0})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(t_1 \Vect{u}_1 + \cdots + t_p \Vect{u}_p)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1L(\Vect{u}_1) + \cdots + t_p L(\Vect{u}_p)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1 \Vect{c}_1 + \cdots + t_p \Vect{c}_p</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>It follows that <math>
+                  <latex>t_1=\cdots = t_p=0</latex>
+               </math>, because <math>
+                  <latex>\EuScript{C}</latex>
+               </math> is a basis of <math>
+                  <latex>\Img{ L }</latex>
+               </math>. So <math>
+                  <latex>\EuScript{U}</latex>
+               </math> is a basis of <math>
+                  <latex>U</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>(2)   <math>
+                  <latex>K\cap U=\Set{ \Vect{0} }</latex>
+               </math>   Indeed, if <math>
+                  <latex>\Vect{x} = t_1 \Vect{u}_1 + \cdots + t_p \Vect{u}_p</latex>
+               </math> is a vector in <math>
+                  <latex>U</latex>
+               </math> which also belongs to <math>
+                  <latex>K</latex>
+               </math>, we find</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{x})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(t_1 \Vect{u}_1 + \cdots + t_p \Vect{u}_p)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1 L(\Vect{u}_1) + \cdots + t_p L(\Vect{u}_p)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1 \Vect{c}_1 + \cdots + t_p \Vect{c}_p</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Now the linear independence of <math>
+                  <latex>\EuScript{C}</latex>
+               </math> implies that <math>
+                  <latex>t_1=\cdots = t_p=0</latex>
+               </math>, and so <math>
+                  <latex>\Vect{x}=\Vect{0}</latex>
+               </math>. This means that <math>
+                  <latex>K</latex>
+               </math> and <math>
+                  <latex>U</latex>
+               </math> have only the <math>
+                  <latex>\Vect{0}</latex>
+               </math>-vector in common.</para.body>
+         </para>
+         <para>
+            <para.body>(3)   <math>
+                  <latex>\span(K\cup U)=V</latex>
+               </math>   For an arbitrary <math>
+                  <latex>\Vect{x}\in V</latex>
+               </math> we have</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{x})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <info.caption>
+                           <caption>Why is this so?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>L(\Vect{x})</latex>
+                              </math> belongs to the image of <math>
+                                 <latex>L</latex>
+                              </math>. So it can be expressed in a unique way as a linear combination of the basis <math>
+                                 <latex>\EuScript{C}</latex>
+                              </math> of <math>
+                                 <latex>\Img{ L }</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1 \Vect{c}_1 + \cdots + t_p \Vect{c}_p</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Let <math>
+                  <latex>\Vect{u}:=t_1 \Vect{u}_1 + \cdots + t_p \Vect{u}_p</latex>
+               </math> in <math>
+                  <latex>U</latex>
+               </math>. By design, <math>
+                  <latex>L(\Vect{u}) = L(\Vect{x})</latex>
+               </math>. Consequently,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{x}-\Vect{u})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>implying that <math>
+                  <latex>\Vect{k}:= \Vect{x} - \Vect{u}</latex>
+               </math> is in <math>
+                  <latex>K</latex>
+               </math>. But this means that</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{x}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{k} + \Vect{u}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>is a linear combination of a vector in <math>
+                  <latex>K</latex>
+               </math> and a vector in <math>
+                  <latex>U</latex>
+               </math>. So <math>
+                  <latex>K</latex>
+               </math> and <math>
+                  <latex>U</latex>
+               </math> together span <math>
+                  <latex>V</latex>
+               </math>. This completes the proof.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

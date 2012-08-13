@@ -7,7 +7,9 @@
    <caption>Pasting Lemma</caption>
    <associate type="Illustration">
       <info>
-         <info.caption>Illustration</info.caption>
+         <info.caption>
+            <caption>Illustration</caption>
+         </info.caption>
          <para>
             <para.body>An illustration of the Pasting Lemma.</para.body>
          </para>

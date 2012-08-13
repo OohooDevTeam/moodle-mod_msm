@@ -7,7 +7,9 @@
    <caption>Properties of matrix inversion</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment and Warning</info.caption>
+         <info.caption>
+            <caption>Comment and Warning</caption>
+         </info.caption>
          <para>
             <para.body>Property iv. is something we must be particularly mindful of, as it is different from the analogous property for numbers: Indeed, if <math>
                   <latex>a</latex>
@@ -110,81 +112,323 @@
          <logic>
             <part.ref>InverseSize</part.ref>
          </logic>
-         <caption>InverseSize</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Suppose <math>
-                     <latex>\Mtrx{B}</latex>
-                  </math> is an inverse of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>. Then the identity <math>
-                     <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex>
-                  </math> implies that the product <math>
-                     <latex>\Mtrx{A}\Mtrx{B}</latex>
-                  </math> is defined, and so <math>
-                     <latex>\Mtrx{B}</latex>
-                  </math> has <math>
-                     <latex>n</latex>
-                  </math> rows. Moreover, <math>
-                     <latex>\Mtrx{B}</latex>
-                  </math> has <math>
-                     <latex>n</latex>
-                  </math> columns because <math>
-                     <latex>\IdMtrx[n]</latex>
-                  </math> has <math>
-                     <latex>n</latex>
-                  </math> columns.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			Size of the inverse
+		</caption>
+         <para>
+            <para.body>Suppose <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> is an inverse of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>. Then the identity <math>
+                  <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex>
+               </math> implies that the product <math>
+                  <latex>\Mtrx{A}\Mtrx{B}</latex>
+               </math> is defined, and so <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> has <math>
+                  <latex>n</latex>
+               </math> rows. Moreover, <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> has <math>
+                  <latex>n</latex>
+               </math> columns because <math>
+                  <latex>\IdMtrx[n]</latex>
+               </math> has <math>
+                  <latex>n</latex>
+               </math> columns.</para.body>
+         </para>
          <logic>
             <part.ref>InverseUnique</part.ref>
          </logic>
-         <caption>InverseUnique</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Suppose the square matrix <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is invertible, and that we have two inverses <math>
+         <caption>
+			Uniqueness of the inverse
+		</caption>
+         <para>
+            <para.body>Suppose the square matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is invertible, and that we have two inverses <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> and <math>
+                  <latex>\Mtrx{C}</latex>
+               </math>. We need to show that <math>
+                  <latex>\Mtrx{B} = \Mtrx{C}</latex>
+               </math>. - Indeed, we know that</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A} \Mtrx{B}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>= \IdMtrx[n] =</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{B} \Mtrx{A}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A} \Mtrx{C}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>= \IdMtrx[n] =</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{C} \Mtrx{A}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>But then we have the following computation</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}\Mtrx{B}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}\Mtrx{C}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{B}(\Mtrx{A}\Mtrx{B})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{B}(\Mtrx{A}\Mtrx{C})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\Mtrx{B}\Mtrx{A})\Mtrx{B}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\Mtrx{B}\Mtrx{A})\Mtrx{C}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\IdMtrx[n]\Mtrx{B}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\IdMtrx[n]\Mtrx{C}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\Mtrx{B}</latex>
-                  </math> and <math>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\Mtrx{C}</latex>
-                  </math>. We need to show that <math>
-                     <latex>\Mtrx{B} = \Mtrx{C}</latex>
-                  </math>. - Indeed, we know that</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>and this is exactly what we wanted to show.</para.body>
+         </para>
          <logic>
             <part.ref>DoubleInverse</part.ref>
          </logic>
-         <caption>DoubleInverse</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Since <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is invertible, we know that there is a matrix <math>
-                     <latex>\Mtrx{B}</latex>
-                  </math> with</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption/>
+         <para>
+            <para.body>Since <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is invertible, we know that there is a matrix <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> with</para.body>
+         </para>
+         <math.display>
+            <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n] = \Mtrx{B}\Mtrx{A}</latex>
+         </math.display>
+         <para>
+            <para.body>Further, we know that this <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> is unique. So we set <math>
+                  <latex>\Mtrx{A}^{-1} := \Mtrx{B}</latex>
+               </math>. Now the identity above can also be interpreted as saying that <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> is invertible and that its unique inverse is <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>. Therefore</para.body>
+         </para>
+         <math.display>
+            <latex>\Mtrx{A} = \Mtrx{B}^{-1} = (\Mtrx{A}^{-1})^{-1},</latex>
+         </math.display>
+         <para>
+            <para.body>which is exactly what we wanted to show.</para.body>
+         </para>
          <logic>
             <part.ref>InverseProduct</part.ref>
          </logic>
-         <caption>InverseProduct</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> and <math>
-                     <latex>\Mtrx{B}</latex>
-                  </math> are invertible matrices, we need to show that</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+			Inverse of a product
+		</caption>
+         <para>
+            <para.body>If <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> and <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> are invertible matrices, we need to show that</para.body>
+         </para>
+         <math.display>
+            <latex>(\Mtrx{A}\Mtrx{B})(\Mtrx{B}^{-1}\Mtrx{A}^{-1}) = \IdMtrx[n] = (\Mtrx{B}^{-1}\Mtrx{A}^{-1})(\Mtrx{A}\Mtrx{B})</latex>
+         </math.display>
+         <para>
+            <para.body>To see that the left hand side identity is true, we compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\Mtrx{A}\Mtrx{B})(\Mtrx{B}^{-1}\Mtrx{A}^{-1})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <info.caption>
+                           <caption>Why is this identity true?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>This identity follows from the associativity law of matrix multiplication.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A} (\Mtrx{B}\Mtrx{B}^{-1}) \Mtrx{A}^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <info.caption>
+                           <caption>Why is this identity true?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>Using that <math>
+                                 <latex>\Mtrx{B}\Mtrx{B}^{-1} = \IdMtrx[n]</latex>
+                              </math>[</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A} \IdMtrx[n] \Mtrx{A}^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <info.caption>
+                           <caption>Why is this identity true?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>Using that <math>
+                                 <latex>\IdMtrx[n]</latex>
+                              </math> is neutral with respect to multiplication.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A} \Mtrx{A}^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\IdMtrx[n]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>The identity on the right follows from a similar argument.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

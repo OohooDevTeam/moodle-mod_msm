@@ -1,10 +1,4 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 require_once("Element.php");
 require_once("Person.php");
 require_once("ExtraInfo.php");
@@ -55,9 +49,12 @@ require_once("Companion.php");
 require_once("Crossref.php");
 
 /**
- * Description of Unit
+ * The Unit class is representing the unit XML element which is the "top-level" container for all the child elements.  
+ * This class inherits from the abstract class, Element(more detail on this class in Element.php), which has an abstract method of
+ * loadFromXml and saveIntoDb. This class contains five main functions: loadFromXML, saveIntoDb, loadFromDb, displayhtml and
+ * findUnitfile to aid the processing of contents in unit.(more detailed information provided above method declaration)
  *
- * @author User
+ * @author Ga Young Kim
  */
 class Unit extends Element
 {
@@ -78,7 +75,11 @@ class Unit extends Element
     }
 
     /**
-     *
+     * The loadFromXml method is one of the abstract methods inherited from the abstract class Element and it is the main XML parser that
+     * parses the appropriate XML files to extract correct data.  It uses DOM to parse the XML in tree-like fashion and stores the data
+     * into either as an array that is a property of the class.  These arrays are later used in saveIntoDb to store appropriate data to 
+     * the database table
+     * 
      * @param DOMElement $DomElement 
      */
     function loadFromXml($DomElement, $position = '')

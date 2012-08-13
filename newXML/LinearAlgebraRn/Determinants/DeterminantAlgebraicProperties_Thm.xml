@@ -97,29 +97,766 @@
          <logic>
             <part.ref>Alternating</part.ref>
          </logic>
-         <caption>Alternating</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Given an <math>
-                     <latex>(n,n)</latex>
-                  </math>-matrix <math>
-                     <latex>\Mtrx{A}=[A_1\ \dots\ A_n]</latex>
-                  </math> and <math>
-                     <latex> 1\leq k &lt; j\leq n</latex>
-                  </math>, we need to show that</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   Alternating property</caption>
+         <para>
+            <para.body>Given an <math>
+                  <latex>(n,n)</latex>
+               </math>-matrix <math>
+                  <latex>\Mtrx{A}=[A_1\ \dots\ A_n]</latex>
+               </math> and <math>
+                  <latex> 1\leq k &lt; j\leq n</latex>
+               </math>, we need to show that</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det [A_1\ \dots\ {\color{blue} A_j}\ \dots\ {\color{red} A_k}\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\det[A_1\ \dots\ {\color{red} A_k}\ \dots\ {\color{blue} A_j}\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>We prove the claim by induction on <math>
+                  <latex>n</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>Anchoring the induction</strong>   If <math>
+                  <latex>n=2</latex>
+               </math>, we find</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+\det
+\left[
+\begin{array}{cc}
+a &amp; c \\
+b &amp; d
+\end{array}
+\right] = ad-bc = -(cb-da) = -\det
+\left[
+\begin{array}{cc}
+c &amp; a \\
+d &amp; b
+\end{array}
+\right]
+
+			</latex>
+         </math.display>
+         <para>
+            <para.body>So the alternating property holds for <math>
+                  <latex>n=2</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>Induction hypothesis</strong>   Now let <math>
+                  <latex>n\geq 2</latex>
+               </math>, and suppose that the determinant operation is alternating on matrices of size <math>
+                  <latex>(n,n)</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>Induction step</strong>   We need to show that it is alternating on matrices of size  <math>
+                  <latex>(n+1,n+1)</latex>
+               </math>. Let</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{U}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>:=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>[A_1\ \dots\ A_j\ \dots\ A_k\ \dots\ A_{n+1}]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{V}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>:=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>[A_1\ \dots\ A_k\ \dots\ A_j\ \dots\ A_{n+1}]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>We need to show that <math>
+                  <latex>\det(\Mtrx{U}) = - \det(\Mtrx{V})</latex>
+               </math>. To see this we follow these steps:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>The case where <math>
+                        <latex> j,k &gt; 1 </latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>The case where <math>
+                        <latex>j=1</latex>
+                     </math> and <math>
+                        <latex>k=2</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>The case where <math>
+                        <latex>j=1</latex>
+                     </math> and <math>
+                        <latex> k&gt;2 </latex>
+                     </math> is arbitrary</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>The case where <math>
+                  <latex> j,k &gt; 1 </latex>
+               </math>   The critical observation here is that, for each <math>
+                  <latex>1\leq i\leq n+1</latex>
+               </math>, the <math>
+                  <latex>(i,1)</latex>
+               </math>-minor of <math>
+                  <latex>\Mtrx{V}</latex>
+               </math> results from the <math>
+                  <latex>(i,1)</latex>
+               </math>-minor of <math>
+                  <latex>\Mtrx{U}</latex>
+               </math> by interchanging the <math>
+                  <latex>(j-1)</latex>
+               </math>-st and the <math>
+                  <latex>(k-1)</latex>
+               </math>-st columns. Thus if <math>
+                  <latex>A_1 = [a_{11}\ \dots\ a_{n+1,1}]^T</latex>
+               </math>, we find</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{U})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>This is the cofactor expansion of <math>
+                                 <latex>\det(\Mtrx{U})</latex>
+                              </math> along the first column.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1} a_{i1} (-1)^{i+1}\det(\Mtrx{U}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Interchange the <math>
+                                 <latex>(j-1)</latex>
+                              </math>-st and the <math>
+                                 <latex>(k-1)</latex>
+                              </math>-st column of <math>
+                                 <latex>\Mtrx{U}_{i1}</latex>
+                              </math> to obtain <math>
+                                 <latex>\Mtrx{V}_{i1}</latex>
+                              </math>. These are <math>
+                                 <latex>(n,n)</latex>
+                              </math>-matrices. So we can apply the induction hypothesis and use the factor of <math>
+                                 <latex>(-1)</latex>
+                              </math> to account for the interchange of columns.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{i=1}^{n+1}a_{i1}(-1)^{i+1}(-1)\det(\Mtrx{V}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(-1)\cdot \sum_{i=1}^{n+1}a_{i1}(-1)^{i+1}\det(\Mtrx{V}_{i1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\det(\Mtrx{V})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>The case where <math>
+                  <latex>j=1</latex>
+               </math> and <math>
+                  <latex>k=2</latex>
+               </math>   To see this, we require a little preparation. For <math>
+                  <latex>1\leq r\neq s\leq n+1</latex>
+               </math>,  let <math>
+                  <latex>\Mtrx{U}(r,s)</latex>
+               </math> result from <math>
+                  <latex>\Mtrx{U}</latex>
+               </math> by removing the first two columns and rows numbered <math>
+                  <latex>r</latex>
+               </math> and <math>
+                  <latex>s</latex>
+               </math>. This 
+			<subordinate>
+                  <hot>means</hot>
+                  <info>
+                     <para>
+                        <para.body>Recall that <math>
+                              <latex>\Mtrx{V}</latex>
+                           </math> results from <math>
+                              <latex>\Mtrx{U}</latex>
+                           </math> by interchanging the first two columns. In both <math>
+                              <latex>\Mtrx{U}(r,s)</latex>
+                           </math> and <math>
+                              <latex>\Mtrx{V}(r,s)</latex>
+                           </math>, the first two columns have been removed. So the resulting matrices are equal.</para.body>
+                     </para>
+                  </info>
+               </subordinate>
+			that <math>
+                  <latex>\Mtrx{U}(r,s) = \Mtrx{V}(r,s)</latex>
+               </math>. The essence of the argument lies in showing that the first row in the calculation below is true. Granting this, we finish proving this case as follows.</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{U})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <info.caption>
+                           <caption>Explanation of this computational step</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>In passing from the first line to the second, we know two things:</para.body>
+                        </para>
+                        <ol>
+                           <li>
+                              <para>
+                                 <para.body>
+                                    <math>
+                                       <latex>\Mtrx{U}(r,s) = \Mtrx{V}(r,s)</latex>
+                                    </math>. So their determinants are equal.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>Interchanging the two columns of the <math>
+                                       <latex>(2,2)</latex>
+                                    </math>-matrix in the first line gives the <math>
+                                       <latex>(2,2)</latex>
+                                    </math>-matrix in the second line. We know that a factor of <math>
+                                       <latex>(-1)</latex>
+                                    </math> accounts for this interchange of columns.</para.body>
+                              </para>
+                           </li>
+                        </ol>
+                        <para>
+                           <para.body>Combining these two facts shows why the second line is equal to the first.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex> \sum_{r=1}^{n} \sum_{s=r+1}^{n+1} (-1)^{r+s+1}\det\, 
+				\left[
+\begin{array}{cc}
+a_{r1} &amp; a_{r2} \\
+a_{s1} &amp; a_{s2}
+\end{array}
+\right]\cdot \det(\Mtrx{U}(r,s))
+</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex> \sum_{r=1}^{n} \sum_{s=r+1}^{n+1} (-1)^{r+s+1}(-1)\det\, 
+				\left[
+\begin{array}{cc}
+a_{r2} &amp; a_{r1} \\
+a_{s2} &amp; a_{s1}
+\end{array}
+\right]\cdot \det(\Mtrx{V}(r,s))
+</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\det(\Mtrx{V})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>It only remains to establish the truth of the first line in the calculation above. If we expand <math>
+                  <latex>\Mtrx{U}</latex>
+               </math> along the first column and then every <math>
+                  <latex>(n,n)</latex>
+               </math>-cofactor matrix along its first column, we obtain:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\Mtrx{U})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>This is the cofactor expansion of <math>
+                                 <latex>\Mtrx{U}</latex>
+                              </math> along the first column.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{r=1}^{n+1}a_{r1}(-1)^{r+1} \det(\Mtrx{U}_{r1})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>This is the cofactor expansion of <math>
+                                 <latex>\Mtrx{U}_{r1}</latex>
+                              </math> along its first column. We write <math>
+                                 <latex>\hat{a}_{ab}</latex>
+                              </math> for the entry of <math>
+                                 <latex>\Mtrx{U}_{r1}</latex>
+                              </math> in position <math>
+                                 <latex>(a,b)</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{r=1}^{n+1}a_{r1}(-1)^{r+1} \sum_{s=1}^{n} \hat{a}_{s1} (-1)^{s+1} \det(\Mtrx{U}_{r1})_{s1}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{r=1}^{n+1} \sum_{s=1}^{n} a_{r1}\hat{a}_{s1}(-1)^{r+s} \det(\Mtrx{U}(s,r))</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Split the double sum above into the cases where <math>
+                                 <latex> s &lt; r </latex>
+                              </math> and where <math>
+                                 <latex> r &lt; s </latex>
+                              </math>. – The situation <math>
+                                 <latex>r=s</latex>
+                              </math> does not occur, as in <math>
+                                 <latex>\Mtrx{U}_{r1}</latex>
+                              </math> the <math>
+                                 <latex>r</latex>
+                              </math>-th row has been removed.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{r=2}^{n+1}\sum_{s=1}^{r-1}(-1)^{r+s} a_{r1}a_{s2} \cdot \det \Mtrx{U}(s,r)\ +</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex/>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>.{\ }\qquad \sum_{r=1}^{n}\sum_{s=r+1}^{n+1}(-1)^{r+s+1} a_{r1}a_{s2}\cdot \det \Mtrx{U}(s,r)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Change the order of summation in the sum above.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{s=1}^{n} \sum_{r=s+1}^{n+1} (-1)^{r+1} a_{r1}a_{s2}\cdot \det\, \Mtrx{U}(s,r)\ +</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex/>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>.{\ }\qquad \sum_{r=1}^{n} \sum_{s=r+1}^{n+1} (-1)^{r+s+1} a_{r1}a_{s2}\cdot \det\, \Mtrx{U}(s,r)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Rename the summation indices to avoid confusion.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{u=1}^{n}\sum_{v=u+1}^{n+1}(-1)^{u+v} a_{v1}a_{u2}\det(\Mtrx{U}(v,u))\ +</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex/>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>.{\ }\qquad \sum_{r=1}^{n}\sum_{s=r+1}^{n+1} (-1)^{r+s+1} a_{r1}a_{s2}\det\, \Mtrx{U}(s,r)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>If <math>
+                                 <latex>v=r</latex>
+                              </math> and <math>
+                                 <latex>u=s</latex>
+                              </math>, then <math>
+                                 <latex>\Mtrx{U}(v,u) = \Mtrx{U}(s,r)</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{r=1}^{n}\sum_{s=r+1}^{n+1} (-1)^{r+s} a_{s1}a_{r2} \det\, \Mtrx{U}(r,s)\ +</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex/>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>.{\ }\qquad \sum_{r=1}^{n} \sum_{s=r+1}^{n+1}(-1)^{r+s+1} a_{r1} a_{s2} \det\, \Mtrx{U}(r,s)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Consolidate the sum above</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{r=1}\sum_{s=r+1}^{n+1} (-1)^{r+s+1} (a_{r1}a_{s2}-a_{s1}a_{r2}) \det\, \Mtrx{U}(r,s)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>
+				
+				\sum_{r=1}^{n} \sum_{s=r+1}^{n+1} (-1)^{r+s+1} \det
+				\left[
+\begin{array}{cc}
+a_{r1} &amp; a_{r2} \\
+a_{s1} &amp; a_{s2}
+\end{array}
+\right]\ \det\, \Mtrx{U}(r,s)
+				
+			</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This was to be shown.</para.body>
+         </para>
+         <para>
+            <para.body>The case where <math>
+                  <latex>j=1</latex>
+               </math> and <math>
+                  <latex> k&gt;2 </latex>
+               </math>   To see this we combine the previously proven cases as follows.</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det[A_1\ A_2\ \dots\ A_j\ \dots\ A_{n+1}]</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>This identity holds by step 2.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\det[ A_2\ A_1\ \dots\ A_j\ \dots\ A_{n+1}]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>This identity holds by Step 1.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det\, [A_2\ A_j\ \dots\ A_1\ \dots\ A_{n+1}]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>This identity holds by Step 2.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\det\, [ A_j\ A_2\ \dots\ A_1\ \dots\ A_{n+1}]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This completes the induction and, with it, the proof of the alternating property of the determinant operation.</para.body>
+         </para>
          <logic>
             <part.ref>Normalized</part.ref>
          </logic>
-         <caption>Normalized</caption>
-         <proof.block.body>
-            <para>
-               <para.body>The identity matrix is an upper triangular matrix, hence its determinant is the product of its diagonal elements:</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+            <math>
+               <latex>\det(\IdMtrx[n]) = 1</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>The identity matrix is an upper triangular matrix, hence its determinant is the product of its diagonal elements:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det(\IdMtrx[n])</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>1^n = 1</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
       </proof.block>
    </proof>
 </theorem>

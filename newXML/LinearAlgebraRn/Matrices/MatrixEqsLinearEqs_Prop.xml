@@ -6,7 +6,9 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <associate type="Comment">
       <info>
-         <info.caption>Comment on the usefulness of this proposition</info.caption>
+         <info.caption>
+            <caption>Comment on the usefulness of this proposition</caption>
+         </info.caption>
          <para>
             <para.body>This method is particularly effective if we have to solve several systems of linear equations each of which has the same coefficient matrix: We only need to invert the coefficient matrix once. If afterward a new augmentation vector is given, we can find the unique solution of the resulting system of linear equations with a simple matrix multiplication.</para.body>
          </para>
@@ -34,7 +36,9 @@
             <term>matrix</term>
             <term>equation</term>
             <info>
-               <info.caption>matrix equation</info.caption>
+               <info.caption>
+                  <caption>matrix equation</caption>
+               </info.caption>
                <para>
                   <para.body>On the relationship between matrix equations and linear equations</para.body>
                </para>
@@ -44,7 +48,9 @@
             <term>linear</term>
             <term>equation</term>
             <info>
-               <info.caption>linear equation</info.caption>
+               <info.caption>
+                  <caption>linear equation</caption>
+               </info.caption>
                <para>
                   <para.body>On the relationship between matrix equations and linear equations</para.body>
                </para>

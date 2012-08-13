@@ -74,72 +74,276 @@
          <logic>
             <part.ref>Constant</part.ref>
          </logic>
-         <caption>Constant</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Let <math>
-                     <latex>x\in D</latex>
-                  </math> be arbitrary, and suppose <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math> is given. We may choose <math>
-                     <latex> \delta &gt; 0 </latex>
-                  </math> arbitrary, and find that for <math>
-                     <latex>t\in D</latex>
-                  </math> and <math>
-                     <latex> x-\delta &lt; t &lt; x + \delta</latex>
-                  </math>,</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> Constant functions are continuous</caption>
+         <para>
+            <para.body>Let <math>
+                  <latex>x\in D</latex>
+               </math> be arbitrary, and suppose <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math> is given. We may choose <math>
+                  <latex> \delta &gt; 0 </latex>
+               </math> arbitrary, and find that for <math>
+                  <latex>t\in D</latex>
+               </math> and <math>
+                  <latex> x-\delta &lt; t &lt; x + \delta</latex>
+               </math>,</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+				\Abs{c(t) - c(x) } = \Abs{ y - y } = 0 &lt; \varepsilon
+				
+			</latex>
+         </math.display>
+         <para>
+            <para.body>Thus <math>
+                  <latex>c</latex>
+               </math> is continuous at <math>
+                  <latex>x</latex>
+               </math>. As <math>
+                  <latex>x\in D</latex>
+               </math> is arbitrary, we conclude that <math>
+                  <latex>c</latex>
+               </math> is continuous.</para.body>
+         </para>
          <logic>
             <part.ref>Inclusion</part.ref>
          </logic>
-         <caption>Inclusion</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Let <math>
-                     <latex>x\in D</latex>
-                  </math> be arbitrary, and suppose <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math> is given. We choose <math>
-                     <latex>\delta := \varepsilon</latex>
-                  </math> and find that for <math>
-                     <latex>t\in D</latex>
-                  </math> and <math>
-                     <latex> \Abs{ t - x } &lt; \delta</latex>
-                  </math>,</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> Inclusion functions are continuous</caption>
+         <para>
+            <para.body>Let <math>
+                  <latex>x\in D</latex>
+               </math> be arbitrary, and suppose <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math> is given. We choose <math>
+                  <latex>\delta := \varepsilon</latex>
+               </math> and find that for <math>
+                  <latex>t\in D</latex>
+               </math> and <math>
+                  <latex> \Abs{ t - x } &lt; \delta</latex>
+               </math>,</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+				\Abs{ i(t) - i(x) } = \Abs{ t - x } &lt; \delta = \varepsilon.
+				
+			</latex>
+         </math.display>
+         <para>
+            <para.body>Thus <math>
+                  <latex>i</latex>
+               </math> is continuous at <math>
+                  <latex>x</latex>
+               </math>. As <math>
+                  <latex>x\in D</latex>
+               </math> is arbitrary, we conclude that <math>
+                  <latex>i</latex>
+               </math> is continuous.</para.body>
+         </para>
          <logic>
             <part.ref>Inverse</part.ref>
          </logic>
-         <caption>Inverse</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Let <math>
-                     <latex>x\neq 0</latex>
-                  </math> be arbitrary, and suppose a deviation tolerance <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math> is given. We need to find <math>
-                     <latex> \delta&gt;0 </latex>
-                  </math> such that for all <math>
-                     <latex>t\neq 0</latex>
-                  </math> with <math>
-                     <latex> \Abs{t-x} &lt; \delta </latex>
-                  </math>, <math>
-                     <latex> \Abs{ \tfrac{1}{t} - \tfrac{1}{x} } &lt; \varepsilon </latex>
-                  </math>. To find such <math>
-                     <latex>\delta</latex>
-                  </math>, put <math>
-                     <latex>\tau:= t-x</latex>
-                  </math> so that <math>
-                     <latex>t=x+\tau</latex>
-                  </math>. Then we require</para.body>
-            </para>
-         </proof.block.body>
+         <caption> The inverse function is continuous</caption>
+         <para>
+            <para.body>Let <math>
+                  <latex>x\neq 0</latex>
+               </math> be arbitrary, and suppose a deviation tolerance <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math> is given. We need to find <math>
+                  <latex> \delta&gt;0 </latex>
+               </math> such that for all <math>
+                  <latex>t\neq 0</latex>
+               </math> with <math>
+                  <latex> \Abs{t-x} &lt; \delta </latex>
+               </math>, <math>
+                  <latex> \Abs{ \tfrac{1}{t} - \tfrac{1}{x} } &lt; \varepsilon </latex>
+               </math>. To find such <math>
+                  <latex>\delta</latex>
+               </math>, put <math>
+                  <latex>\tau:= t-x</latex>
+               </math> so that <math>
+                  <latex>t=x+\tau</latex>
+               </math>. Then we require</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \dfrac{1}{x+\tau} - \dfrac{1}{x} }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\varepsilon</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \dfrac{ x\ -\ x -\tau}{x(x+\tau)} }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\varepsilon</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \dfrac{1}{ x(1/\tau + 1) } }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\varepsilon</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{x} \cdot \Abs{ 1/\tau + 1 }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &gt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dfrac{1}{\varepsilon}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ 1/\tau + 1 }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &gt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dfrac{1}{ \varepsilon \Abs{x} }</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>We know that <math>
+                  <latex> \Abs{ \tfrac{1}{\tau} } - 1 \leq \Abs{\tfrac{1}{\tau} + 1 } </latex>
+               </math>. So the above inequality is certainly satisfied if</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \dfrac{1}{\tau} } - 1</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &gt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dfrac{1}{ \varepsilon \Abs{x} }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dfrac{1}{\Abs{\tau}}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &gt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>1 + \dfrac{1}{ \varepsilon \Abs{x} }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{\tau}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dfrac{ \varepsilon \Abs{x} }{ \varepsilon \Abs{x} + 1 }</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Thus, choosing <math>
+                  <latex>\delta := \tfrac{ \varepsilon \Abs{x} }{ \varepsilon \Abs{x} + 1 }</latex>
+               </math>, we find that, for <math>
+                  <latex> \Abs{\tau} &lt; \delta </latex>
+               </math>, the required inequality</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \dfrac{1}{x+\tau} - \dfrac{1}{x} }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\varepsilon</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>holds. Thus the function <math>
+                  <latex>p(x)=\tfrac{1}{x}</latex>
+               </math> is continuous at each <math>
+                  <latex>x</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

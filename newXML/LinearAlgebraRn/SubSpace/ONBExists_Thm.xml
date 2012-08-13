@@ -7,7 +7,9 @@
    <caption>Existence of an ONB</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Existence of an ONB</info.caption>
+         <info.caption>
+            <caption>Existence of an ONB</caption>
+         </info.caption>
          <para>
             <para.body>Note that this corollary says, in particular, that <math>
                   <latex>V</latex>

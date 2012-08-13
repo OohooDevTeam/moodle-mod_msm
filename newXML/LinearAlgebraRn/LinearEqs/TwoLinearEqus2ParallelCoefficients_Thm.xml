@@ -7,7 +7,9 @@
    <caption>Two linear equations, parallel coefficients</caption>
    <associate type="Illustration">
       <info>
-         <info.caption>Illustration</info.caption>
+         <info.caption>
+            <caption>Illustration</caption>
+         </info.caption>
          <para>
             <para.body>An illustration of the solutions of two linear equations in two variables with parallel coefficient vectors.</para.body>
          </para>

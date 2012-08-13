@@ -7,7 +7,9 @@
    <caption>Determinant of a product</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment</info.caption>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
          <para>
             <para.body>This corollary says that the determinant of a product of two matrices is the product of the two determinants.</para.body>
          </para>
@@ -16,7 +18,9 @@
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_DeterminantCommutesMultiplication"/>
       <info>
-         <info.caption>Example</info.caption>
+         <info.caption>
+            <caption>Example</caption>
+         </info.caption>
          <para>
             <para.body>A nice way of computing <math>
                   <latex>\det(\Mtrx{A}^n)</latex>
@@ -59,7 +63,9 @@
 			<subordinate>
                      <hot>not invertible</hot>
                      <info>
-                        <info.caption>Why is this so?</info.caption>
+                        <info.caption>
+                           <caption>Why is this so?</caption>
+                        </info.caption>
                         <para>
                            <para.body>Consider a non invertible <math>
                                  <latex>\Mtrx{A}</latex>
@@ -141,9 +147,11 @@
 			<subordinate>
                      <hot>linear in each column</hot>
                      <info>
-                        <info.caption>Why is <math>
-                              <latex>F</latex>
-                           </math> linear in each column?</info.caption>
+                        <info.caption>
+                           <caption>Why is <math>
+                                 <latex>F</latex>
+                              </math> linear in each column?</caption>
+                        </info.caption>
                         <para>
                            <para.body>Given a matrix <math>
                                  <latex>\Mtrx{} = [B_1\ \dots\ B_n]</latex>
@@ -173,9 +181,11 @@
 			<subordinate>
                      <hot>alternating</hot>
                      <info>
-                        <info.caption>Why is <math>
-                              <latex>F</latex>
-                           </math> alternating?</info.caption>
+                        <info.caption>
+                           <caption>Why is <math>
+                                 <latex>F</latex>
+                              </math> alternating?</caption>
+                        </info.caption>
                         <para>
                            <para.body>To see why <math>
                                  <latex>F</latex>

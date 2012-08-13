@@ -7,7 +7,9 @@
    <caption>Linear maps transform lines to lines</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Meaning of condition 2) in the proposition</info.caption>
+         <info.caption>
+            <caption>Meaning of condition 2) in the proposition</caption>
+         </info.caption>
          <para>
             <para.body>Condition 2) above means that <math>
                   <latex>f</latex>
@@ -78,52 +80,239 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>We need to show that <math>
-                     <latex>f</latex>
-                  </math> is has properties 1) and 2) above. Indeed, <math>
-                     <latex>f</latex>
-                  </math> enjoys 
+         <caption>Suppose first that <math>
+               <latex>f</latex>
+            </math> is linear</caption>
+         <para>
+            <para.body>We need to show that <math>
+                  <latex>f</latex>
+               </math> is has properties 1) and 2) above. Indeed, <math>
+                  <latex>f</latex>
+               </math> enjoys 
 			<subordinate>
-                     <hot>property 1)</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_LinearTrafo0To0"/>
-                        <info>
-                           <para>
-                              <para.body>Look up the proof of why this is so</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>. Moreover, <math>
-                     <latex>f</latex>
-                  </math> enjoys property 2) because
+                  <hot>property 1)</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_LinearTrafo0To0"/>
+                     <info>
+                        <para>
+                           <para.body>Look up the proof of why this is so</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>. Moreover, <math>
+                  <latex>f</latex>
+               </math> enjoys property 2) because
 		</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>We need to show that <math>
-                     <latex>f</latex>
-                  </math> is linear. Now if <math>
-                     <latex>\Vect{x}</latex>
-                  </math> and <math>
-                     <latex>\Vect{y}</latex>
-                  </math> are arbitrary in <math>
-                     <latex>\RNr[n]</latex>
-                  </math>, they determine the linear motion <math>
-                     <latex>\Vect{a}(t) = \Vect{x} + t \Vect{y}</latex>
-                  </math>  in <math>
-                     <latex>\RNr[n]</latex>
-                  </math>. Therefore, setting <math>
-                     <latex>t:=1</latex>
-                  </math>, we obtain</para.body>
-            </para>
-         </proof.block.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(\Vect{a} + t \Vect{v})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>f</latex>
+                              </math> is linear, hence satisfies <math>
+                                 <latex>f(\Vect{x} + \Vect{y}) = f(\Vect{x}) + f(\Vect{y})</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(\Vect{a}) + f(t \Vect{v})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>f</latex>
+                              </math>is linear, hence satisfies <math>
+                                 <latex>f(t \Vect{x}) = t f(\Vect{x})</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(\Vect{a}) + t\cdot f(\Vect{v})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as required.</para.body>
+         </para>
+         <caption>Suppose <math>
+               <latex>f</latex>
+            </math> satisfies properties 1) and 2) above</caption>
+         <para>
+            <para.body>We need to show that <math>
+                  <latex>f</latex>
+               </math> is linear. Now if <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> are arbitrary in <math>
+                  <latex>\RNr[n]</latex>
+               </math>, they determine the linear motion <math>
+                  <latex>\Vect{a}(t) = \Vect{x} + t \Vect{y}</latex>
+               </math>  in <math>
+                  <latex>\RNr[n]</latex>
+               </math>. Therefore, setting <math>
+                  <latex>t:=1</latex>
+               </math>, we obtain</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(\Vect{x} + \Vect{y})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(\Vect{x} + 1\cdot \Vect{y})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(\Vect{x}) + 1\cdot f(\Vect{y})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(\Vect{x}) + f(\Vect{y})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>So <math>
+                  <latex>f</latex>
+               </math> commutes with vector addition. To see that <math>
+                  <latex>f</latex>
+               </math> commutes with scalar multiplication, let  <math>
+                  <latex>t\in\RNr</latex>
+               </math> and <math>
+                  <latex>\Vect{x}</latex>
+               </math> in <math>
+                  <latex>\RNr[n]</latex>
+               </math> be arbitrary. Then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(t\cdot \Vect{x})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(\Vect{0} + t\cdot \Vect{x})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Because of assmumption 2. in the proposition: with <math>
+                                 <latex>\Vect{a}:=\Vect{0}</latex>
+                              </math> and <math>
+                                 <latex>\Vect{v}:=\Vect{x}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>f(\Vect{0}) + t\cdot f(\Vect{x})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Remember: we assume that <math>
+                                 <latex>f(\Vect{0}) = \Vect{0}</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot f(\Vect{x})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>So <math>
+                  <latex>f</latex>
+               </math> is linear. – The proof is complete.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

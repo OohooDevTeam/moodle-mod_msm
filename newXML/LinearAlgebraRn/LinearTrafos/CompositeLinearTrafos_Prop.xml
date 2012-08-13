@@ -7,7 +7,9 @@
    <caption>Composite of linear maps is linear</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment: What does this proposition tell us?</info.caption>
+         <info.caption>
+            <caption>Comment: What does this proposition tell us?</caption>
+         </info.caption>
          <para>
             <para.body>This proposition gives us two strong pieces of information:</para.body>
          </para>
@@ -81,39 +83,231 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>We need to show that <math>
-                     <latex>T\Comp S</latex>
-                  </math> satisfies the properties of a linear transformation. To see that it commutes with vector addition, let <math>
-                     <latex>\Vect{x},\Vect{y}\in \RNr[n]</latex>
-                  </math>. We find</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>We know now that <math>
-                     <latex>T\Comp S</latex>
-                  </math> is linear. Therefore there is a unique <math>
-                     <latex>(m,p)</latex>
-                  </math>-matrix  which represents it. On the other hand, if <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> represents <math>
-                     <latex>S</latex>
-                  </math>, and <math>
-                     <latex>\Mtrx{B}</latex>
-                  </math> represents <math>
-                     <latex>T</latex>
-                  </math>, we find for arbitrary <math>
-                     <latex>\Vect{x}\in\RNr[p]</latex>
+         <caption>Linearity of <math>
+               <latex>T\Comp S</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We need to show that <math>
+                  <latex>T\Comp S</latex>
+               </math> satisfies the properties of a linear transformation. To see that it commutes with vector addition, let <math>
+                  <latex>\Vect{x},\Vect{y}\in \RNr[n]</latex>
+               </math>. We find</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(T\Comp S)(\Vect{x}+\Vect{y})</latex>
                   </math>
-               </para.body>
-            </para>
-         </proof.block.body>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>T(S(\Vect{x}+\Vect{y}))</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>As <math>
+                                 <latex>S</latex>
+                              </math> is linear.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>T(S(\Vect{x}) + T(S(\Vect{y}) )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>As <math>
+                                 <latex>T</latex>
+                              </math> is linear.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>T(S(\Vect{x})) + T(S(\Vect{y}))</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>T\Comp S(\Vect{x}) + T\Comp S(\Vect{y})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>So <math>
+                  <latex>T\Comp S</latex>
+               </math> commutes with vector addition.</para.body>
+         </para>
+         <para>
+            <para.body>To see that <math>
+                  <latex>T\Comp S</latex>
+               </math> commutes with scalar multiplication, let <math>
+                  <latex>\Vect{x}\in\RNr[n]</latex>
+               </math> and <math>
+                  <latex>t\in\RNr</latex>
+               </math>. We find:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>T\Comp S(t\Vect{x})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>This is the definition of <math>
+                                 <latex>T\Comp S</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>T(S(t \Vect{x}) )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>... because <math>
+                                 <latex>S</latex>
+                              </math> is linear</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>T(tS(\Vect{x}) )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>as <math>
+                                 <latex>T</latex>
+                              </math> is linear.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot T(S(\Vect{x}))</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot \left( T\Comp S\right)(\Vect{x})</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This means that <math>
+                  <latex>T\Comp S</latex>
+               </math> commutes with scalar multiplication. – The proof that <math>
+                  <latex>T\Comp S</latex>
+               </math> is linear is complete.</para.body>
+         </para>
+         <caption>The matrix which represents <math>
+               <latex>T\Comp S</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We know now that <math>
+                  <latex>T\Comp S</latex>
+               </math> is linear. Therefore there is a unique <math>
+                  <latex>(m,p)</latex>
+               </math>-matrix  which represents it. On the other hand, if <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> represents <math>
+                  <latex>S</latex>
+               </math>, and <math>
+                  <latex>\Mtrx{B}</latex>
+               </math> represents <math>
+                  <latex>T</latex>
+               </math>, we find for arbitrary <math>
+                  <latex>\Vect{x}\in\RNr[p]</latex>
+               </math>
+            </para.body>
+         </para>
+         <math.display>
+            <latex>BA\Vect{x} = B S(\Vect{x}) = T(S(\Vect{x}) ) = T\Comp S(\Vect{x})</latex>
+         </math.display>
+         <para>
+            <para.body>Therefore <math>
+                  <latex>\Mtrx{C}:=\Mtrx{B}\Mtrx{A}</latex>
+               </math> is the unique matrix representing <math>
+                  <latex>T\Comp S</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

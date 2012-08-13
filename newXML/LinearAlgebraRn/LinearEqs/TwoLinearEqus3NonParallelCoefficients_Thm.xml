@@ -7,7 +7,9 @@
    <caption>2 equations, 3 variables non parallel coefficients</caption>
    <associate type="Illustration">
       <info>
-         <info.caption>Illustration</info.caption>
+         <info.caption>
+            <caption>Illustration</caption>
+         </info.caption>
          <para>
             <para.body>An illustration of the solutions of two linear equations in three variables with non parallel coefficient vectors.</para.body>
          </para>

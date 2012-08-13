@@ -54,78 +54,151 @@
          <logic>
             <part.ref>IncreasingBoundedAbove</part.ref>
          </logic>
-         <caption>IncreasingBoundedAbove</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Consider the set <math>
-                     <latex>B</latex>
-                  </math> of all upper bounds of <math>
-                     <latex>(x_n)</latex>
-                  </math>. 
+         <caption>   Suppose <math>
+               <latex>(x_n)</latex>
+            </math> is increasing and bounded above.
+		</caption>
+         <para>
+            <para.body>Consider the set <math>
+                  <latex>B</latex>
+               </math> of all upper bounds of <math>
+                  <latex>(x_n)</latex>
+               </math>. 
 			<subordinate>
-                     <hot>Then <math>
-                           <latex>B\neq \emptyset</latex>
-                        </math>
-                     </hot>
-                     <info>
-                        <info.caption>Why is this so?</info.caption>
-                        <para>
-                           <para.body>... as <math>
-                                 <latex>(x_n)</latex>
-                              </math> is bounded above.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>. Moreover, 
+                  <hot>Then <math>
+                        <latex>B\neq \emptyset</latex>
+                     </math>
+                  </hot>
+                  <info>
+                     <info.caption>
+                        <caption>Why is this so?</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>... as <math>
+                              <latex>(x_n)</latex>
+                           </math> is bounded above.</para.body>
+                     </para>
+                  </info>
+               </subordinate>. Moreover, 
 			<subordinate>
-                     <hot>
-                        <math>
-                           <latex>B</latex>
-                        </math> is bounded below</hot>
-                     <info>
-                        <info.caption>Why is this so?</info.caption>
-                        <para>
-                           <para.body>For example <math>
-                                 <latex>x_0\leq B</latex>
-                              </math>. So <math>
-                                 <latex>B</latex>
-                              </math> is bounded below.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>.
+                  <hot>
+                     <math>
+                        <latex>B</latex>
+                     </math> is bounded below</hot>
+                  <info>
+                     <info.caption>
+                        <caption>Why is this so?</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>For example <math>
+                              <latex>x_0\leq B</latex>
+                           </math>. So <math>
+                              <latex>B</latex>
+                           </math> is bounded below.</para.body>
+                     </para>
+                  </info>
+               </subordinate>.
 			Therefore <math>
-                     <latex>c:=\inf(B) \in \RNr</latex>
-                  </math> exists. We claim that <math>
-                     <latex>\lim_{n\to \infty} x_n = c</latex>
-                  </math>. So let <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math> be given. We need to show that there exists <math>
-                     <latex>n_0\in \NNr</latex>
-                  </math> such that <math>
-                     <latex> \Abs{ x_n - c } &lt; \varepsilon </latex>
-                  </math> for all <math>
-                     <latex>n\geq n_0</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+                  <latex>c:=\inf(B) \in \RNr</latex>
+               </math> exists. We claim that <math>
+                  <latex>\lim_{n\to \infty} x_n = c</latex>
+               </math>. So let <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math> be given. We need to show that there exists <math>
+                  <latex>n_0\in \NNr</latex>
+               </math> such that <math>
+                  <latex> \Abs{ x_n - c } &lt; \varepsilon </latex>
+               </math> for all <math>
+                  <latex>n\geq n_0</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>Now there 
+			<subordinate>
+                  <hot>must exist</hot>
+                  <info>
+                     <info.caption>
+                        <caption>Why is this so?</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>Suppose there does not exist such <math>
+                              <latex>n_0</latex>
+                           </math>. Then where in <math>
+                              <latex>\RNr</latex>
+                           </math> can the sequence elements <math>
+                              <latex>x_n</latex>
+                           </math> be? – We have <math>
+                              <latex> x_n \leq c </latex>
+                           </math> because every <math>
+                              <latex> x_n\leq u</latex>
+                           </math> for each <math>
+                              <latex> u&gt;c </latex>
+                           </math>. Now, if there is no <math>
+                              <latex>n_0\in \NNr</latex>
+                           </math> with <math>
+                              <latex> c - x_{n_0} &lt; \varepsilon </latex>
+                           </math>, then <math>
+                              <latex>x_n \leq c - \varepsilon</latex>
+                           </math> for all <math>
+                              <latex>n\in \NNr</latex>
+                           </math>. But then <math>
+                              <latex>(c-\varepsilon)</latex>
+                           </math> is an upper bound of <math>
+                              <latex>(x_n)</latex>
+                           </math> which is less that the infimum of all upper bounds of <math>
+                              <latex>(x_n)</latex>
+                           </math>, a contradiction.</para.body>
+                     </para>
+                  </info>
+               </subordinate>
+               <math>
+                  <latex>n_0\in \NNr</latex>
+               </math> with <math>
+                  <latex> 0\leq c - x_{n_0} &lt; \varepsilon </latex>
+               </math>. But then we have, for all <math>
+                  <latex>n\geq n_0</latex>
+               </math>,</para.body>
+         </para>
+         <math.display>
+            <latex>
+				 c-\varepsilon &lt; x_{n_0} \leq x_n \leq c &lt; c + \varepsilon 
+			</latex>
+         </math.display>
+         <para>
+            <para.body>which tells us that the tail of <math>
+                  <latex>(x_n)</latex>
+               </math> beginning with <math>
+                  <latex>n_0</latex>
+               </math> stays within <math>
+                  <latex>\varepsilon</latex>
+               </math>-tolerance of <math>
+                  <latex>c</latex>
+               </math>; in other words:</para.body>
+         </para>
+         <math.display>
+            <latex>\lim_{n\to \infty} x_n\ =\ c</latex>
+         </math.display>
+         <para>
+            <para.body>as claimed.</para.body>
+         </para>
          <logic>
             <part.ref>DecreasingBoundedBelow</part.ref>
          </logic>
-         <caption>DecreasingBoundedBelow</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We claim that <math>
-                     <latex>(x_n)</latex>
-                  </math> converges to <math>
-                     <latex>\sup(A)</latex>
-                  </math>, where <math>
-                     <latex>A</latex>
-                  </math> is the collection of lower bounds of <math>
-                     <latex>(x_n)</latex>
-                  </math>. The argument is similar to the one just given.</para.body>
-            </para>
-         </proof.block.body>
+         <caption>   Suppose <math>
+               <latex>(x_n)</latex>
+            </math> is decreasing and bounded below.
+		</caption>
+         <para>
+            <para.body>We claim that <math>
+                  <latex>(x_n)</latex>
+               </math> converges to <math>
+                  <latex>\sup(A)</latex>
+               </math>, where <math>
+                  <latex>A</latex>
+               </math> is the collection of lower bounds of <math>
+                  <latex>(x_n)</latex>
+               </math>. The argument is similar to the one just given.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -6,7 +6,9 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <para>
             <para.body>In other words, the simultaneous solutions of the given system of linear equations consists of the intersection of the hyperplanes <math>
                   <latex>H_1,\dots ,H_n</latex>

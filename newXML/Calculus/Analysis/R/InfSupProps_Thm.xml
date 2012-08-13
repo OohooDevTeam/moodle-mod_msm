@@ -7,7 +7,9 @@
    <caption>Properties of supremum and infimum</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <para>
             <para.body>For <math>
                   <latex>c\in \RNr</latex>
@@ -72,56 +74,239 @@
          <logic>
             <part.ref>SupNegativeA</part.ref>
          </logic>
-         <caption>SupNegativeA</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Let <math>
-                     <latex>i\in \bar{\RNr}</latex>
-                  </math> denote the infimum of <math>
-                     <latex>A</latex>
-                  </math>. Then we know</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   <math>
+               <latex>\sup(-A) = \inf(A)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Let <math>
+                  <latex>i\in \bar{\RNr}</latex>
+               </math> denote the infimum of <math>
+                  <latex>A</latex>
+               </math>. Then we know</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>i\leq A</latex>
+                     </math>, and</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>u\leq i</latex>
+                     </math> for all <math>
+                        <latex>u\in \bar{\RNr}</latex>
+                     </math> with <math>
+                        <latex>u\leq A</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>Using
+			<subordinate>
+                  <hot>properties</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_ROrderingProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this theorem</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+			of multiplying an inequality by a constant, this implies</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>-i\geq -A</latex>
+                     </math>, and</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>-u\geq -i</latex>
+                     </math> for all <math>
+                        <latex>u\in \bar{\RNr}</latex>
+                     </math> with <math>
+                        <latex>u\leq A</latex>
+                     </math>;
+				i.e <math>
+                        <latex>v\geq -i</latex>
+                     </math> for <math>
+                        <latex>v\in \bar{\RNr}</latex>
+                     </math> with <math>
+                        <latex>v\geq -A</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>This means exactly that <math>
+                  <latex>-i=\sup(-A)</latex>
+               </math>. – The identity <math>
+                  <latex>\inf(-A) = -\sup(A)</latex>
+               </math> can be proven by adapting the argument we just gave. Alternatively, we can use the fact we just proved like so:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\inf(-A)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\sup(-(-A))</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use that <math>
+                                 <latex>-(-A) = A</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\sup(A)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>SupScalarA</part.ref>
          </logic>
-         <caption>SupScalarA</caption>
-         <proof.block.body>
-            <para>
-               <para.body>
-                  <subordinate>
-                     <hot>Let</hot>
-                     <info>
-                        <info.caption>Try to prove this one yourself!</info.caption>
-                        <para>
-                           <para.body>If you understand the argument just given you should have no difficulty proving this part.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>
-                  <math>
-                     <latex>s\in \bar{\RNr}</latex>
-                  </math> denote the supremum of <math>
-                     <latex>A</latex>
-                  </math>. Then we know</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   If <math>
+               <latex>c\in \RNr</latex>
+            </math> satisfies <math>
+               <latex> c&gt;0 </latex>
+            </math>, then <math>
+               <latex>\sup(cA) = c\cdot\sup(A)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>
+               <subordinate>
+                  <hot>Let</hot>
+                  <info>
+                     <info.caption>
+                        <caption>Try to prove this one yourself!</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>If you understand the argument just given you should have no difficulty proving this part.</para.body>
+                     </para>
+                  </info>
+               </subordinate>
+               <math>
+                  <latex>s\in \bar{\RNr}</latex>
+               </math> denote the supremum of <math>
+                  <latex>A</latex>
+               </math>. Then we know</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A\leq s</latex>
+                     </math>, and</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>s\leq u</latex>
+                     </math> for all <math>
+                        <latex>u\in \bar{\RNr}</latex>
+                     </math> with <math>
+                        <latex>A\leq u</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>This implies</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>cA\leq cs</latex>
+                     </math>, and</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>cs\leq v</latex>
+                     </math> for all <math>
+                        <latex>v\in \bar{\RNr}</latex>
+                     </math> with <math>
+                        <latex>cA\leq v</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>Therefore <math>
+                  <latex>\sup(cA) = cs = c\sup(A)</latex>
+               </math>, as claimed. – The identity <math>
+                  <latex>\inf(cA) = c\cdot \inf(A)</latex>
+               </math> follows with a similar argument.</para.body>
+         </para>
          <logic>
             <part.ref>SupASubSetB</part.ref>
          </logic>
-         <caption>SupASubSetB</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This is so because each upper bound of <math>
-                     <latex>B</latex>
-                  </math> is also an upper bound of <math>
-                     <latex>A</latex>
-                  </math>. Therefore,</para.body>
-            </para>
-         </proof.block.body>
+         <caption>   If <math>
+               <latex>A\subseteq B</latex>
+            </math> then <math>
+               <latex>\sup(A) \leq \sup(B)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>This is so because each upper bound of <math>
+                  <latex>B</latex>
+               </math> is also an upper bound of <math>
+                  <latex>A</latex>
+               </math>. Therefore,</para.body>
+         </para>
+         <math.display>
+            <latex>\sup(A) = \text{(least upper bound of $A$)}\ \leq\ \text{(least upper bound of $B$)}</latex>
+         </math.display>
+         <para>
+            <para.body>The inequality <math>
+                  <latex>\inf(A) \geq \inf(B)</latex>
+               </math> is proved similarly.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

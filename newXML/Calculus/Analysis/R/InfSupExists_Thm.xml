@@ -55,23 +55,225 @@
          <logic>
             <part.ref>SupExists</part.ref>
          </logic>
-         <caption>SupExists</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Consider the set</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> existence of unique least <math>
+               <latex>s\in\bar{\RNr}</latex>
+            </math> with <math>
+               <latex>A\leq s</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Consider the set</para.body>
+         </para>
+         <math.display>
+            <latex>B := \Set{ x\in \RNr \st A\leq x }</latex>
+         </math.display>
+         <para>
+            <para.body>If <math>
+                  <latex>B=\emptyset</latex>
+               </math>, then <math>
+                  <latex>s:=+\infty</latex>
+               </math> is the only element in <math>
+                  <latex>\bar{\RNr}</latex>
+               </math> with <math>
+                  <latex>A\leq s</latex>
+               </math>. Thus the claim holds in this case.</para.body>
+         </para>
+         <para>
+            <para.body>So let us turn to the case where <math>
+                  <latex>B\neq \emptyset</latex>
+               </math>. If <math>
+                  <latex>A=\emptyset</latex>
+               </math>, it follows that</para.body>
+         </para>
+         <math.display>
+            <latex>\bar{B} := \Set{ x\in \bar{\RNr} \st x\leq A} = \bar{\RNr}</latex>
+         </math.display>
+         <para>
+            <para.body>In this case <math>
+                  <latex>s:=-\infty</latex>
+               </math> is the unique element of <math>
+                  <latex>\bar{\RNr}</latex>
+               </math> with <math>
+                  <latex>A\leq s\leq B</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>It remains to consider the case where <math>
+                  <latex>A,B\neq \emptyset</latex>
+               </math>. By design, we have <math>
+                  <latex>A\leq B</latex>
+               </math>. Therefore the 
+			<subordinate>
+                  <hot>completeness axiom</hot>
+                  <crossref>
+                     <definition.ref definitionID="Def_CompletenessAxiomForR"/>
+                     <info>
+                        <para>
+                           <para.body>Look up the statement of the completeness axiom.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+			gives us the existence of <math>
+                  <latex>s\in \RNr</latex>
+               </math> with <math>
+                  <latex>A\leq s\leq B</latex>
+               </math>. In particular, this means that <math>
+                  <latex>s</latex>
+               </math> is an upper bound of <math>
+                  <latex>A</latex>
+               </math> and, hence, <math>
+                  <latex>s\in B</latex>
+               </math>. But then <math>
+                  <latex>s\leq B</latex>
+               </math> says that <math>
+                  <latex>s</latex>
+               </math> is least among all upper bounds of <math>
+                  <latex>A</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>It remains to show that any least upper bound of <math>
+                  <latex>A</latex>
+               </math> is unique. So consider an arbitrary upper bound <math>
+                  <latex>t</latex>
+               </math> of <math>
+                  <latex>A</latex>
+               </math> with <math>
+                  <latex>t\leq B</latex>
+               </math>. Then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Because <math>
+                                 <latex>s\in B</latex>
+                              </math> and <math>
+                                 <latex>t\leq B</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Because <math>
+                                 <latex>t\in B</latex>
+                              </math> and <math>
+                                 <latex>s\leq B</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Therefore <math>
+                  <latex>s=t</latex>
+               </math>, implying that <math>
+                  <latex>s</latex>
+               </math> is the least upper bound of <math>
+                  <latex>A</latex>
+               </math> is unique. It remains to show that if <math>
+                  <latex>s\in \RNr</latex>
+               </math>, then <math>
+                  <latex>A</latex>
+               </math> has an upper bound in <math>
+                  <latex>\RNr</latex>
+               </math>, and <math>
+                  <latex>A\neq \emptyset</latex>
+               </math>. But this follows readily:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>We know that <math>
+                        <latex>A\leq s</latex>
+                     </math> and <math>
+                        <latex>s\in \RNr</latex>
+                     </math>. So <math>
+                        <latex>s</latex>
+                     </math> is an upper bound of <math>
+                        <latex>A</latex>
+                     </math> in <math>
+                        <latex>\bar{\RNr}</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>To see that <math>
+                        <latex>A\neq \emptyset</latex>
+                     </math>, we argue by contradiction: if <math>
+                        <latex>A=\emptyset</latex>
+                     </math>, we saw earlier that <math>
+                        <latex>s=-\infty\notin\RNr</latex>
+                     </math>, a contradiction to <math>
+                        <latex>s\in \RNr</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ol>
          <logic>
             <part.ref>InfExists</part.ref>
          </logic>
-         <caption>InfExists</caption>
-         <proof.block.body>
-            <para>
-               <para.body>The argument given above for the existence of a unique least upper bound of a nonempty set that is bounded above can be adapted word for word to establish the existence of a unique greatest lower bound of a nonempty set that is bounded below. As an alternative, we can argue as follows:</para.body>
-            </para>
-         </proof.block.body>
+         <caption> existence of unique greatest <math>
+               <latex>i\in\bar{\RNr}</latex>
+            </math> with <math>
+               <latex>i\leq A</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>The argument given above for the existence of a unique least upper bound of a nonempty set that is bounded above can be adapted word for word to establish the existence of a unique greatest lower bound of a nonempty set that is bounded below. As an alternative, we can argue as follows:</para.body>
+         </para>
+         <para>
+            <para.body>
+               <math>
+                  <latex>(-A)</latex>
+               </math> has the unique least upper bound <math>
+                  <latex>s\in \bar{\RNr}</latex>
+               </math>. From this it follows that <math>
+                  <latex>i:=(-s)</latex>
+               </math> is the unique greatest lower bound of <math>
+                  <latex>-(-A)=A</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

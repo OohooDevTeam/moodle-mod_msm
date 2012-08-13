@@ -40,101 +40,183 @@
          <logic>
             <part.ref>ArchimedianPrin</part.ref>
          </logic>
-         <caption>ArchimedianPrin</caption>
-         <proof.block.body>
-            <para>
-               <para.body>It is clear that <math>
-                     <latex>0</latex>
-                  </math> is a lower bound of <math>
-                     <latex>A:=\Set{1,1/2,1/3,\dots}</latex>
-                  </math>. By the 
+         <caption>   <math>
+               <latex>\inf\Set{ 1/n \st n\in \NNr,\ \ n\geq 1} = 0</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>It is clear that <math>
+                  <latex>0</latex>
+               </math> is a lower bound of <math>
+                  <latex>A:=\Set{1,1/2,1/3,\dots}</latex>
+               </math>. By the 
 			<subordinate>
-                     <hot>recognition criterion for inf</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_InfSupRecognize"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this recognition criterion</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>,
+                  <hot>recognition criterion for inf</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_InfSupRecognize"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this recognition criterion</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>,
 			it only remains to show that, whenever <math>
-                     <latex> t&gt;0 </latex>
-                  </math>, <math>
-                     <latex>t</latex>
-                  </math> is not a lower bound of <math>
-                     <latex>A</latex>
-                  </math>. To see this, note that <math>
-                     <latex> 1/t &gt; 0 </latex>
-                  </math> as well and 
+                  <latex> t&gt;0 </latex>
+               </math>, <math>
+                  <latex>t</latex>
+               </math> is not a lower bound of <math>
+                  <latex>A</latex>
+               </math>. To see this, note that <math>
+                  <latex> 1/t &gt; 0 </latex>
+               </math> as well and 
 			<subordinate>
-                     <hot>so</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
-                        <info>
-                           <para>
-                              <para.body>Here we use that <math>
-                                    <latex>\NNr</latex>
-                                 </math> is not bounded above; look up this fact.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>so</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+                     <info>
+                        <para>
+                           <para.body>Here we use that <math>
+                                 <latex>\NNr</latex>
+                              </math> is not bounded above; look up this fact.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			there is <math>
-                     <latex>n\in\NNr</latex>
-                  </math> with <math>
-                     <latex> n&gt; 1/t </latex>
-                  </math>. But
+                  <latex>n\in\NNr</latex>
+               </math> with <math>
+                  <latex> n&gt; 1/t </latex>
+               </math>. But
 				<subordinate>
-                     <hot>then</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_ROrderingProperties"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this fact</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
-                  <math>
-                     <latex> 1/n &lt; 1/(1/t) = t </latex>
-                  </math>. So <math>
-                     <latex>t</latex>
-                  </math> is not a lower bound of <math>
-                     <latex>A</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+                  <hot>then</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_ROrderingProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this fact</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+               <math>
+                  <latex> 1/n &lt; 1/(1/t) = t </latex>
+               </math>. So <math>
+                  <latex>t</latex>
+               </math> is not a lower bound of <math>
+                  <latex>A</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>QBetweenRs</part.ref>
          </logic>
-         <caption>QBetweenRs</caption>
-         <proof.block.body>
-            <para>
-               <para.body>
-                  <strong>Case 1</strong>
-                  <math>
-                     <latex> 0 \leq a &lt; b </latex>
-                  </math>. It follows that <math>
-                     <latex> 0&lt;b-a </latex>
-                  </math>, and so there exists <math>
-                     <latex> n&gt;0 </latex>
-                  </math> in <math>
-                     <latex>\NNr</latex>
-                  </math> with <math>
-                     <latex> 1/n &lt; b-a </latex>
-                  </math>. This implies <math>
-                     <latex> 1 &lt; n(b-a) </latex>
-                  </math>; i.e. <math>
-                     <latex> \Dstnc{na}{nb} &gt; 1 </latex>
-                  </math>. Therefore we expect to find a natural number <math>
-                     <latex>k\in \OOIntrvl{na}{nb}</latex>
-                  </math>. Indeed, the set</para.body>
-            </para>
-         </proof.block.body>
+         <caption>   For arbitrary <math>
+               <latex> a&lt;b \in \RNr </latex>
+            </math>, <math>
+               <latex>\QNr\intrsctn \OOIntrvl{a}{b}\neq \emptyset</latex>
+            </math>.</caption>
+         <para>
+            <para.body>
+               <strong>Case 1</strong>
+               <math>
+                  <latex> 0 \leq a &lt; b </latex>
+               </math>. It follows that <math>
+                  <latex> 0&lt;b-a </latex>
+               </math>, and so there exists <math>
+                  <latex> n&gt;0 </latex>
+               </math> in <math>
+                  <latex>\NNr</latex>
+               </math> with <math>
+                  <latex> 1/n &lt; b-a </latex>
+               </math>. This implies <math>
+                  <latex> 1 &lt; n(b-a) </latex>
+               </math>; i.e. <math>
+                  <latex> \Dstnc{na}{nb} &gt; 1 </latex>
+               </math>. Therefore we expect to find a natural number <math>
+                  <latex>k\in \OOIntrvl{na}{nb}</latex>
+               </math>. Indeed, the set</para.body>
+         </para>
+         <math.display>
+            <latex> A := \Set{ u\in\NNr \st na &lt; u } \neq \emptyset </latex>
+         </math.display>
+         <para>
+            <para.body>because 
+			<subordinate>
+                  <hot>
+                     <math>
+                        <latex>\NNr</latex>
+                     </math> is not bounded above</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_NNotBoundedAbove"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this fact.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>.
+			Our candidate for <math>
+                  <latex>k</latex>
+               </math> is <math>
+                  <latex>k:=\inf(A)\in A</latex>
+               </math>. By design, <math>
+                  <latex> na &lt; k </latex>
+               </math>, and we claim that <math>
+                  <latex> k &lt; nb </latex>
+               </math>. Indeed, if this were not the case, then <math>
+                  <latex>k\geq nb</latex>
+               </math> and so</para.body>
+         </para>
+         <math.display>
+            <latex> na &lt; nb -1 \leq k-1 </latex>
+         </math.display>
+         <para>
+            <para.body>a contradiction to the fact that <math>
+                  <latex>k</latex>
+               </math> is the least element of <math>
+                  <latex>\NNr</latex>
+               </math> with is greater than <math>
+                  <latex>na</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>Summarizing, we have found <math>
+                  <latex>k\in \NNr</latex>
+               </math> with <math>
+                  <latex> na &lt; k &lt; nb </latex>
+               </math>. But then <math>
+                  <latex>k/n\in \QNr</latex>
+               </math> and</para.body>
+         </para>
+         <math.display>
+            <latex> a &lt; k/n &lt; b </latex>
+         </math.display>
+         <para>
+            <para.body>
+               <strong>Case 2</strong>
+               <math>
+                  <latex> x &lt; 0 &lt; y </latex>
+               </math>. In this case <math>
+                  <latex>0\in \StIntrsctn{\QNr}{\OOIntrvl{a}{b}}</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>Case 3</strong>
+               <math>
+                  <latex> a&lt;b\leq 0 </latex>
+               </math>. Then <math>
+                  <latex> 0\leq -b &lt; -a </latex>
+               </math> and, by case 1, there exists <math>
+                  <latex>q\in \QNr</latex>
+               </math> with <math>
+                  <latex> -b &lt; q &lt; -a </latex>
+               </math>. But then <math>
+                  <latex>-q\in \QNr</latex>
+               </math> satisfies <math>
+                  <latex> a &lt; -q &lt; b </latex>
+               </math>. – The proof is complete</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

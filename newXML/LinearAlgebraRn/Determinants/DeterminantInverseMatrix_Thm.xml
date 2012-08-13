@@ -7,7 +7,9 @@
    <caption>Determinant of an inverse matrix</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment</info.caption>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
          <para>
             <para.body>This corollary says that the determinant of the inverse of a matrix is one over the determinant of the matrix.</para.body>
          </para>

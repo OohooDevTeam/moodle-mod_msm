@@ -99,114 +99,228 @@
          <logic>
             <part.ref>NormNonNegative</part.ref>
          </logic>
-         <caption>NormNonNegative</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>x\geq 0</latex>
-                  </math>, then <math>
-                     <latex>\Abs{x} = x \geq 0</latex>
-                  </math>. So it only remains to consider the case where <math>
-                     <latex> x &lt; 0 </latex>
-                  </math>. But then <math>
-                     <latex> \Abs{x} = -x &gt; 0 </latex>
-                  </math>, as was to be shown.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\Abs{x} \geq 0</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>If <math>
+                  <latex>x\geq 0</latex>
+               </math>, then <math>
+                  <latex>\Abs{x} = x \geq 0</latex>
+               </math>. So it only remains to consider the case where <math>
+                  <latex> x &lt; 0 </latex>
+               </math>. But then <math>
+                  <latex> \Abs{x} = -x &gt; 0 </latex>
+               </math>, as was to be shown.</para.body>
+         </para>
          <logic>
             <part.ref>Norm0</part.ref>
          </logic>
-         <caption>Norm0</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>x=0</latex>
-                  </math>, then <math>
-                     <latex>\Abs{x} = 0</latex>
-                  </math> by definition. For the converse, if <math>
-                     <latex>\Abs{x} = 0</latex>
-                  </math>, then</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\Abs{x} \geq 0</latex>
+            </math> if and only if <math>
+               <latex>x=0</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>If <math>
+                  <latex>x=0</latex>
+               </math>, then <math>
+                  <latex>\Abs{x} = 0</latex>
+               </math> by definition. For the converse, if <math>
+                  <latex>\Abs{x} = 0</latex>
+               </math>, then</para.body>
+         </para>
+         <math.display>
+            <latex>x=0 \quad \text{or} \quad -x = 0</latex>
+         </math.display>
+         <para>
+            <para.body>In the former case there is nothing left to show. If <math>
+                  <latex>-x=0</latex>
+               </math>, then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(-1)(-x)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(-1)0</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>On the left, we compute: <math>
+                                 <latex>(-1)(-x) = (-1)(-1)x=x</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                        <para>
+                           <para.body>On the right: we know that <math>
+                                 <latex>x0=0</latex>
+                              </math> for all <math>
+                                 <latex>x\in \RNr</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>NormxNormNegx</part.ref>
          </logic>
-         <caption>NormxNormNegx</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>x\geq 0</latex>
-                  </math>, then <math>
-                     <latex>-x\leq 0</latex>
-                  </math>, and so</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\Abs{-x} = \Abs{x}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>If <math>
+                  <latex>x\geq 0</latex>
+               </math>, then <math>
+                  <latex>-x\leq 0</latex>
+               </math>, and so</para.body>
+         </para>
+         <math.display>
+            <latex>\Abs{x} = x = (-1)\cdot (-1) x = \Abs{-x}</latex>
+         </math.display>
+         <para>
+            <para.body>as claimed. If <math>
+                  <latex>x\leq 0</latex>
+               </math>, then <math>
+                  <latex>-x\geq 0</latex>
+               </math>, and so</para.body>
+         </para>
+         <math.display>
+            <latex>\Abs{x} = -x = \Abs{-x}</latex>
+         </math.display>
+         <para>
+            <para.body>as claimed.</para.body>
+         </para>
          <logic>
             <part.ref>NormDifference</part.ref>
          </logic>
-         <caption>NormDifference</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This follows from the previous part by observing that <math>
-                     <latex>x-y = (-1)(y-x)</latex>
-                  </math>, and so</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\Abs{ x-y } = \Abs{ y-x }</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>This follows from the previous part by observing that <math>
+                  <latex>x-y = (-1)(y-x)</latex>
+               </math>, and so</para.body>
+         </para>
+         <math.display>
+            <latex>\Abs{y-x} = \Abs{(-1)(y-x)} = \Abs{y-x}</latex>
+         </math.display>
          <logic>
             <part.ref>NormProduct</part.ref>
          </logic>
-         <caption>NormProduct</caption>
-         <proof.block.body>
-            <para>
-               <para.body>The key is to treat the case where <math>
-                     <latex>0\leq x,y</latex>
-                  </math>. We then have <math>
-                     <latex>\Abs{x} = x</latex>
-                  </math> and <math>
-                     <latex>\Abs{y}=y</latex>
-                  </math> and, further,</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\Abs{xy} = \Abs{x} \Abs{y}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>The key is to treat the case where <math>
+                  <latex>0\leq x,y</latex>
+               </math>. We then have <math>
+                  <latex>\Abs{x} = x</latex>
+               </math> and <math>
+                  <latex>\Abs{y}=y</latex>
+               </math> and, further,</para.body>
+         </para>
+         <math.display>
+            <latex>0\leq x\quad \text{and so}\quad 0=0\cdot y \leq xy</latex>
+         </math.display>
+         <para>
+            <para.body>This implies <math>
+                  <latex>\Abs{xy}=xy</latex>
+               </math>, and the identity <math>
+                  <latex>\Abs{xy}=\Abs{x}\Abs{y}</latex>
+               </math> follows in this case.</para.body>
+         </para>
+         <para>
+            <para.body>Now, if <math>
+                  <latex>x</latex>
+               </math> or <math>
+                  <latex>y</latex>
+               </math> are negative, we can reduce to the previous case by using the identity <math>
+                  <latex>\Abs{t} = \Abs{ -t }</latex>
+               </math>, repeatedly if necessary.</para.body>
+         </para>
          <logic>
             <part.ref>NormRatio</part.ref>
          </logic>
-         <caption>NormRatio</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This follows from the previous part by recalling the definition <math>
-                     <latex>\frac{x}{y} = x\cdot y^{-1}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> If <math>
+               <latex>y\neq 0</latex>
+            </math>, then <math>
+               <latex>\Abs{\tfrac{x}{y} } = \tfrac{ \Abs{x} }{ \Abs{y} }</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>This follows from the previous part by recalling the definition <math>
+                  <latex>\frac{x}{y} = x\cdot y^{-1}</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>Comparison</part.ref>
          </logic>
-         <caption>Comparison</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>0\leq x</latex>
-                  </math>, then <math>
-                     <latex>x=\Abs{x}</latex>
-                  </math>. On the other hand, if <math>
-                     <latex>x\leq 0</latex>
-                  </math>, then <math>
-                     <latex>0\leq -x=\Abs{x}</latex>
-                  </math> and so</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+            <math>
+               <latex>-\Abs{x} = x</latex>
+            </math> or <math>
+               <latex>x = \Abs{x}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>If <math>
+                  <latex>0\leq x</latex>
+               </math>, then <math>
+                  <latex>x=\Abs{x}</latex>
+               </math>. On the other hand, if <math>
+                  <latex>x\leq 0</latex>
+               </math>, then <math>
+                  <latex>0\leq -x=\Abs{x}</latex>
+               </math> and so</para.body>
+         </para>
+         <math.display>
+            <latex>-\Abs{x} = -(-x) = x \leq 0\leq -x = \Abs{x}</latex>
+         </math.display>
+         <para>
+            <para.body>So the claim holds for all <math>
+                  <latex>x\in \RNr</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -42,33 +42,114 @@
          <logic>
             <part.ref>SupExistsImpliesC</part.ref>
          </logic>
-         <caption>SupExistsImpliesC</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Suppose every nonempty bounded above subset of <math>
-                     <latex>\RNr</latex>
-                  </math> has a supremum in <math>
-                     <latex>\RNr</latex>
-                  </math>. Given nonempty <math>
-                     <latex>A\leq B\subset\RNr</latex>
-                  </math>, we need to verify the existence of <math>
-                     <latex>x\in \RNr</latex>
-                  </math> with <math>
-                     <latex>A\leq x\leq B</latex>
-                  </math>. To see this observe:</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   Completeness and bounded above sets with supremum</caption>
+         <para>
+            <para.body>Suppose every nonempty bounded above subset of <math>
+                  <latex>\RNr</latex>
+               </math> has a supremum in <math>
+                  <latex>\RNr</latex>
+               </math>. Given nonempty <math>
+                  <latex>A\leq B\subset\RNr</latex>
+               </math>, we need to verify the existence of <math>
+                  <latex>x\in \RNr</latex>
+               </math> with <math>
+                  <latex>A\leq x\leq B</latex>
+               </math>. To see this observe:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A</latex>
+                     </math> is bounded above because every <math>
+                        <latex>b\in B\neq \emptyset</latex>
+                     </math> is an upper bound of <math>
+                        <latex>A</latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>By hypothesis <math>
+                        <latex>x:=\sup(A)</latex>
+                     </math> exists.</para.body>
+               </para>
+            </li>
+         </ol>
+         <para>
+            <para.body>This means, in particular, that <math>
+                  <latex>A\leq x</latex>
+               </math>, and we claim that <math>
+                  <latex>x\leq B</latex>
+               </math> as well. From the definition of the supremum we know that <math>
+                  <latex>x\leq u</latex>
+               </math> for every upper bound <math>
+                  <latex>u</latex>
+               </math> of <math>
+                  <latex>A</latex>
+               </math>. Thus <math>
+                  <latex>x\leq B</latex>
+               </math> because every <math>
+                  <latex>b\in B</latex>
+               </math> is an upper bound of <math>
+                  <latex>A</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>For the converse, suppose <math>
+                  <latex>\RNr</latex>
+               </math> is complete. We need to show that every <math>
+                  <latex>\emptyset\neq A\subset \RNr</latex>
+               </math> which is bounded above has a supremum in <math>
+                  <latex>\RNr</latex>
+               </math>. Let</para.body>
+         </para>
+         <math.display>
+            <latex>B := \Set{ u\in \RNr \st A\leq u }</latex>
+         </math.display>
+         <para>
+            <para.body>Then <math>
+                  <latex>B\neq \emptyset</latex>
+               </math> as <math>
+                  <latex>A</latex>
+               </math> is bounded above, and <math>
+                  <latex>A\leq B</latex>
+               </math>. By the completeness axiom there exists <math>
+                  <latex>s\in \RNr</latex>
+               </math> with <math>
+                  <latex>A\leq s \leq B</latex>
+               </math>. We claim that <math>
+                  <latex>s</latex>
+               </math> is the supremum of <math>
+                  <latex>A</latex>
+               </math>. Indeed, by design, <math>
+                  <latex>A\leq s</latex>
+               </math>. So <math>
+                  <latex>s</latex>
+               </math> is an upper bound of <math>
+                  <latex>A</latex>
+               </math>, and it only remains to show that it is the least upper bound. So let <math>
+                  <latex>u\in \RNr</latex>
+               </math> be an arbitrary upper bound of <math>
+                  <latex>A</latex>
+               </math>. Then, by definition, <math>
+                  <latex>u\in B</latex>
+               </math>. But then we know that that <math>
+                  <latex>s\leq u</latex>
+               </math>, and this implies that <math>
+                  <latex>s</latex>
+               </math> is the least upper bound of <math>
+                  <latex>A</latex>
+               </math>, as required.</para.body>
+         </para>
          <logic>
             <part.ref>InfExistsImpliesC</part.ref>
          </logic>
-         <caption>InfExistsImpliesC</caption>
-         <proof.block.body>
-            <para>
-               <para.body>The proof just given can be adapted to the present situation.</para.body>
-            </para>
-         </proof.block.body>
+         <caption>   Completeness and bounded below sets with infimum</caption>
+         <para>
+            <para.body>The proof just given can be adapted to the present situation.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

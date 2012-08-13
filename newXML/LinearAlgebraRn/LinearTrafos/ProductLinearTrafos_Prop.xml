@@ -7,9 +7,11 @@
    <caption>Product of linear transformations is linear</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment on the matrix representing <math>
-               <latex>S\times T</latex>
-            </math>
+         <info.caption>
+            <caption>Comment on the matrix representing <math>
+                  <latex>S\times T</latex>
+               </math>
+            </caption>
          </info.caption>
          <para>
             <para.body>The matrix representing <math>

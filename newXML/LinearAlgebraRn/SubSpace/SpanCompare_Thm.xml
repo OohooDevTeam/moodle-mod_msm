@@ -7,7 +7,9 @@
    <caption>Comparison of span sets</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <para>
             <para.body>Read this as: ‘T is defined to be S union v’</para.body>
          </para>
@@ -26,7 +28,9 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>Comment</info.caption>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
          <para>
             <para.body>Thus adding new vectors to a subset <math>
                   <latex>S</latex>
@@ -103,11 +107,13 @@
                         </math>
                      </hot>
                      <info>
-                        <info.caption>Why is <math>
-                              <latex>\Vect{v}</latex>
-                           </math> in <math>
-                              <latex>\span(T)</latex>
-                           </math>?</info.caption>
+                        <info.caption>
+                           <caption>Why is <math>
+                                 <latex>\Vect{v}</latex>
+                              </math> in <math>
+                                 <latex>\span(T)</latex>
+                              </math>?</caption>
+                        </info.caption>
                         <para>
                            <para.body>We know that <math>
                                  <latex>\Vect{v}</latex>

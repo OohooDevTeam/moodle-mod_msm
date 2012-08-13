@@ -135,163 +135,580 @@
          <logic>
             <part.ref>PositiveOrNegative</part.ref>
          </logic>
-         <caption>PositiveOrNegative</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This follows from the total ordering structure on <math>
-                     <latex>\RNr</latex>
-                  </math>: If <math>
-                     <latex>x=0</latex>
-                  </math>, there is nothing left to show. Given <math>
-                     <latex>0\neq x\in \RNr</latex>
-                  </math>, we know that <math>
-                     <latex> 0 &lt; x </latex>
-                  </math> or <math>
-                     <latex> x &lt; 0 </latex>
-                  </math>. Both can not be true simultaneously by the antisymmetry property of ‘<math>
-                     <latex>\leq</latex>
-                  </math>’. But in the former case, <math>
-                     <latex>x</latex>
-                  </math> is positive, while in the latter case <math>
-                     <latex>x</latex>
-                  </math> is negative.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   exactly one: <math>
+               <latex> x&gt;0 </latex>
+            </math>;  <math>
+               <latex>x=0</latex>
+            </math>; <math>
+               <latex> x&lt;0 </latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>This follows from the total ordering structure on <math>
+                  <latex>\RNr</latex>
+               </math>: If <math>
+                  <latex>x=0</latex>
+               </math>, there is nothing left to show. Given <math>
+                  <latex>0\neq x\in \RNr</latex>
+               </math>, we know that <math>
+                  <latex> 0 &lt; x </latex>
+               </math> or <math>
+                  <latex> x &lt; 0 </latex>
+               </math>. Both can not be true simultaneously by the antisymmetry property of ‘<math>
+                  <latex>\leq</latex>
+               </math>’. But in the former case, <math>
+                  <latex>x</latex>
+               </math> is positive, while in the latter case <math>
+                  <latex>x</latex>
+               </math> is negative.</para.body>
+         </para>
          <logic>
             <part.ref>PositiveToNegative</part.ref>
          </logic>
-         <caption>PositiveToNegative</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>x</latex>
-                  </math> is positive, then <math>
-                     <latex> 0 &lt; x </latex>
-                  </math>. But then</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>x\in \RNr</latex>
+            </math> is positive if and only if <math>
+               <latex>(-x)</latex>
+            </math> is negative.</caption>
+         <para>
+            <para.body>If <math>
+                  <latex>x</latex>
+               </math> is positive, then <math>
+                  <latex> 0 &lt; x </latex>
+               </math>. But then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(-x) + x = 0</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>which says exactly that <math>
+                  <latex>(-x)</latex>
+               </math> is negative. Conversely, if <math>
+                  <latex> x &lt; 0 </latex>
+               </math>, then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0 = (-x) + x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(-x)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>which says that <math>
+                  <latex>(-x)</latex>
+               </math> is positive in this case.</para.body>
+         </para>
          <logic>
             <part.ref>SumComparison</part.ref>
          </logic>
-         <caption>SumComparison</caption>
-         <proof.block.body>
-            <para>
-               <para.body>From the axiom expressing compatibility of addition with the ordering relation in <math>
-                     <latex>\RNr</latex>
-                  </math> we get</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> If <math>
+               <latex> a &lt; b </latex>
+            </math> and <math>
+               <latex> x &lt; y </latex>
+            </math>, then <math>
+               <latex> a+x &lt; b+y </latex>
+            </math>.</caption>
+         <para>
+            <para.body>From the axiom expressing compatibility of addition with the ordering relation in <math>
+                  <latex>\RNr</latex>
+               </math> we get</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> a-b &lt; 0</latex>
+                     </math> from <math>
+                        <latex> a &lt; b </latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex> 0 &lt; y-x </latex>
+                     </math> from <math>
+                        <latex> x &lt; y </latex>
+                     </math>.</para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>The transitivity property of the ordering now gives</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>a-b</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>y-x</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(a-b)+b</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; 		</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>From the axiom stating compatibility of the ordering with addition.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(y-x) + b</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>a</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; 		</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>On the left:</para.body>
+                        </para>
+                        <math.display>
+                           <latex>(a-b)+b = a + ((-b)+b) = a + 0 = a</latex>
+                        </math.display>
+                        <para>
+                           <para.body>using the associativity property of addition, and neutrality of <math>
+                                 <latex>0</latex>
+                              </math> with respect to addition. On the right:</para.body>
+                        </para>
+                        <math.display>
+                           <latex>(y-x)+b = b + (y-x) = (b+y) -x</latex>
+                        </math.display>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(b+y)-x</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>a+x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(b+y) + (-x) + x</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>a+x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>b+y</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>TimesPositiveComparison</part.ref>
          </logic>
-         <caption>TimesPositiveComparison</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Consider first the case where <math>
-                     <latex> a&lt;b </latex>
-                  </math>. We need to show that <math>
-                     <latex> ax &lt; bx </latex>
-                  </math>. We get <math>
-                     <latex> 0 &lt; b-a </latex>
-                  </math> from the axiom that says addition is compatible with ordering relation. Further, the axiom which says that multiplication is compatible with the ordering relation gives</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   If <math>
+               <latex> 0&lt; x </latex>
+            </math>,  then <math>
+               <latex> a &lt; b </latex>
+            </math> if and only if <math>
+               <latex> ax &lt; bx </latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Consider first the case where <math>
+                  <latex> a&lt;b </latex>
+               </math>. We need to show that <math>
+                  <latex> ax &lt; bx </latex>
+               </math>. We get <math>
+                  <latex> 0 &lt; b-a </latex>
+               </math> from the axiom that says addition is compatible with ordering relation. Further, the axiom which says that multiplication is compatible with the ordering relation gives</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(b-a)\cdot x</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; 		</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>By the distributivity axiom</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>bx - ax</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>ax</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>bx</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>For the converse, consider now the situation where <math>
+                  <latex> ax &lt; bx </latex>
+               </math>. We need to show that <math>
+                  <latex> a&lt;b </latex>
+               </math>. Now if this were false, we would have <math>
+                  <latex>b\geq a</latex>
+               </math> and, by what we just proved,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>bx</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>ax</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>a contradiction to the fact that <math>
+                  <latex> ax &lt; bx </latex>
+               </math>. Therefore it is false that <math>
+                  <latex>b\leq a</latex>
+               </math>, and we conclude that <math>
+                  <latex> a&lt;b </latex>
+               </math>, as claimed.</para.body>
+         </para>
          <logic>
             <part.ref>TimesNegativeComparison</part.ref>
          </logic>
-         <caption>TimesNegativeComparison</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Consider first the situation where <math>
-                     <latex> a&lt;b </latex>
-                  </math>. We need to show that <math>
-                     <latex> ax &gt; bx </latex>
-                  </math>. If <math>
-                     <latex>x</latex>
-                  </math> is negative, then <math>
-                     <latex>(-x)</latex>
-                  </math> is positive. Now the inequality <math>
-                     <latex> 0&lt; b-a </latex>
-                  </math> gives</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   If <math>
+               <latex> x&lt; 0 </latex>
+            </math>,  then <math>
+               <latex> a &lt; b </latex>
+            </math> if and only if <math>
+               <latex> ax &gt; bx </latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Consider first the situation where <math>
+                  <latex> a&lt;b </latex>
+               </math>. We need to show that <math>
+                  <latex> ax &gt; bx </latex>
+               </math>. If <math>
+                  <latex>x</latex>
+               </math> is negative, then <math>
+                  <latex>(-x)</latex>
+               </math> is positive. Now the inequality <math>
+                  <latex> 0&lt; b-a </latex>
+               </math> gives</para.body>
+         </para>
+         <math.display>
+            <latex> 0 &lt; (b-a)(-x) = b(-x) + (-a)(-x) = -(bx) + ax </latex>
+         </math.display>
+         <para>
+            <para.body>and, therefore, <math>
+                  <latex> bx &lt; ax </latex>
+               </math>, as claimed.</para.body>
+         </para>
+         <para>
+            <para.body>For the converse consider now the situation where <math>
+                  <latex> bx &lt; ax </latex>
+               </math>. We need to show that <math>
+                  <latex> a&lt;b </latex>
+               </math>. If this were false, we would have <math>
+                  <latex>b\geq a</latex>
+               </math> and, hence, <math>
+                  <latex>ax \leq bx</latex>
+               </math>. This contradicts the fact that <math>
+                  <latex> bx &lt; ax </latex>
+               </math>, and the claim follows.</para.body>
+         </para>
          <logic>
             <part.ref>MultiplicativeInversion</part.ref>
          </logic>
-         <caption>MultiplicativeInversion</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex> 0&lt;x&lt;y </latex>
-                  </math>, <math>
-                     <latex> 0&lt;1/(xy) </latex>
-                  </math> and, therefore</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   For <math>
+               <latex> 0 &lt; x,y </latex>
+            </math>, <math>
+               <latex> x&lt;y </latex>
+            </math> if and only if <math>
+               <latex> 1/y &lt; 1/x </latex>
+            </math>.</caption>
+         <para>
+            <para.body>If <math>
+                  <latex> 0&lt;x&lt;y </latex>
+               </math>, <math>
+                  <latex> 0&lt;1/(xy) </latex>
+               </math> and, therefore</para.body>
+         </para>
+         <math.display>
+            <latex> \dfrac{1}{y} = \dfrac{x}{xy} &lt; \dfrac{y}{xy} = \dfrac{1}{x} </latex>
+         </math.display>
+         <para>
+            <para.body>as was to be shown. Conversely, if <math>
+                  <latex> 1/y &lt; 1/x</latex>
+               </math>, multiply this inequality by <math>
+                  <latex>xy</latex>
+               </math> to infer <math>
+                  <latex> x&lt;y </latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>InequalityTimesInequality</part.ref>
          </logic>
-         <caption>InequalityTimesInequality</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Multiplying the inequality <math>
-                     <latex> a&lt;b </latex>
-                  </math> by the positive <math>
-                     <latex>x</latex>
-                  </math>, we infer with the previous part</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   <math>
+               <latex> a &lt; b </latex>
+            </math> and <math>
+               <latex> 0 &lt; x &lt; y </latex>
+            </math>, then <math>
+               <latex> ax &lt; by </latex>
+            </math>.</caption>
+         <para>
+            <para.body>Multiplying the inequality <math>
+                  <latex> a&lt;b </latex>
+               </math> by the positive <math>
+                  <latex>x</latex>
+               </math>, we infer with the previous part</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>ax</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>bx</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Similarly, multiplying the inequality <math>
+                  <latex> x&lt;y </latex>
+               </math> by the positive <math>
+                  <latex>y</latex>
+               </math> gives</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>bx</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>by</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Now the transitivity property of the ordering relation on <math>
+                  <latex>\RNr</latex>
+               </math> gives</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>ax</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>by</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as claimed.</para.body>
+         </para>
          <logic>
             <part.ref>PositiveSquare</part.ref>
          </logic>
-         <caption>PositiveSquare</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>x\neq 0</latex>
-                  </math> is positive, this follows from the axiom which says that multiplication is compatible with the ordering. If <math>
-                     <latex>x</latex>
-                  </math> is negative, we have <math>
-                     <latex> x &lt; 0 </latex>
-                  </math>, and
+         <caption> For all <math>
+               <latex>x\in \RNr</latex>
+            </math>, <math>
+               <latex>0\leq x^2</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>If <math>
+                  <latex>x\neq 0</latex>
+               </math> is positive, this follows from the axiom which says that multiplication is compatible with the ordering. If <math>
+                  <latex>x</latex>
+               </math> is negative, we have <math>
+                  <latex> x &lt; 0 </latex>
+               </math>, and
 			<subordinate>
-                     <hot>so</hot>
-                     <info>
-                        <para>
-                           <para.body>Here we use property (v).</para.body>
-                        </para>
-                     </info>
-                  </subordinate>
-               </para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+                  <hot>so</hot>
+                  <info>
+                     <para>
+                        <para.body>Here we use property (v).</para.body>
+                     </para>
+                  </info>
+               </subordinate>
+            </para.body>
+         </para>
+         <math.display>
+            <latex> 0 = 0x &lt; x^2 </latex>
+         </math.display>
+         <para>
+            <para.body>as claimed.</para.body>
+         </para>
          <logic>
             <part.ref>ZeroLessOne</part.ref>
          </logic>
-         <caption>ZeroLessOne</caption>
-         <proof.block.body>
-            <para>
-               <para.body>By axiom, <math>
-                     <latex>0\neq 1</latex>
-                  </math>. So we just learned that</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+            <math>
+               <latex> 0 &lt; 1 </latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>By axiom, <math>
+                  <latex>0\neq 1</latex>
+               </math>. So we just learned that</para.body>
+         </para>
+         <math.display>
+            <latex> 0 &lt; 1^2 = 1</latex>
+         </math.display>
       </proof.block>
    </proof>
 </theorem>

@@ -75,49 +75,295 @@
          <logic>
             <part.ref>KernelNullspace</part.ref>
          </logic>
-         <caption>KernelNullspace</caption>
-         <proof.block.body>
-            <para>
-               <para.body>A vector <math>
-                     <latex>\Vect{x}\in V</latex>
-                  </math> belongs to <math>
-                     <latex>\ker(L)</latex>
-                  </math> exactly when</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> Relationship between <math>
+               <latex>\ker(L)</latex>
+            </math> and <math>
+               <latex>\NllSp{\Mtrx{A}}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>A vector <math>
+                  <latex>\Vect{x}\in V</latex>
+               </math> belongs to <math>
+                  <latex>\ker(L)</latex>
+               </math> exactly when</para.body>
+         </para>
+         <math.display>
+            <latex>L(\Vect{x})_{\EuScript{B}} = \Mtrx{A}\cdot \Vect{x}_{\EuScript{A}} = \Vect{0}</latex>
+         </math.display>
+         <para>
+            <para.body>This says precisely that <math>
+                  <latex>\Vect{x}</latex>
+               </math> belongs to <math>
+                  <latex>\Ker{L}</latex>
+               </math> if and only if <math>
+                  <latex>\Vect{x}_{\EuScript{A}}</latex>
+               </math> belongs to <math>
+                  <latex>\NllSp{\Mtrx{A}}</latex>
+               </math>. It follows that <math>
+                  <latex>\Ker{L}</latex>
+               </math> is a subvector space of <math>
+                  <latex>V</latex>
+               </math> Consequently, we have</para.body>
+         </para>
+         <math.display>
+            <latex>\Dim{ \Ker{ L }} = \Dim{ \NllSp{\Mtrx{A}} } = \dim(V)- \Rnk{\Mtrx{A}}</latex>
+         </math.display>
          <logic>
             <part.ref>ImageColumnSpace</part.ref>
          </logic>
-         <caption>ImageColumnSpace</caption>
-         <proof.block.body>
-            <para>
-               <para.body>A vector <math>
-                     <latex>\Vect{y}\in W</latex>
-                  </math> belongs to the image of <math>
-                     <latex>L</latex>
-                  </math> exactly when there exists <math>
-                     <latex>\Vect{x}\in V</latex>
-                  </math> with <math>
-                     <latex>L(\Vect{x}) = \Vect{y}</latex>
-                  </math>. This happens if and only if</para.body>
-            </para>
-         </proof.block.body>
+         <caption/>
+         <para>
+            <para.body>A vector <math>
+                  <latex>\Vect{y}\in W</latex>
+               </math> belongs to the image of <math>
+                  <latex>L</latex>
+               </math> exactly when there exists <math>
+                  <latex>\Vect{x}\in V</latex>
+               </math> with <math>
+                  <latex>L(\Vect{x}) = \Vect{y}</latex>
+               </math>. This happens if and only if</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{y}_{\EuScript{B}} = A\cdot \Vect{x}_{\EuScript{A}}</latex>
+         </math.display>
+         <para>
+            <para.body>i.e. if <math>
+                  <latex>\Vect{y}_{\EuScript{B}}</latex>
+               </math> belongs to the column space of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
    <proof type="Proof" proofid="2">
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>We need to check that <math>
-                     <latex>\ker(L)</latex>
-                  </math> contains the <math>
+         <caption>Direct proof that <math>
+               <latex>\ker(L)</latex>
+            </math> is a subvector space of <math>
+               <latex>V</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We need to check that <math>
+                  <latex>\ker(L)</latex>
+               </math> contains the <math>
+                  <latex>\Vect{0}</latex>
+               </math>-vector and is closed under vector addition and scalar multiplication:</para.body>
+         </para>
+         <math.display>
+            <latex>M\Comp L = \IdMap{V} \quad\text{and}\quad L\Comp M = \IdMap{W}</latex>
+         </math.display>
+         <para>
+            <para.body>Every linear map satisfies
+			<subordinate>
+                  <hot>
+                     <math>
+                        <latex>L(\Vect{0}) = \Vect{0}</latex>
+                     </math>
+                  </hot>
+                  <info>
+                     <info.caption>
+                        <caption>Why is this so?</caption>
+                     </info.caption>
+                     <math.array column="3">
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>L(\Vect{0})</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <math>
+                                 <latex>0</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>L(\Vect{0} + \Vect{0})</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle"/>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>L(\Vect{0}) + L(\Vect{0})</latex>
+                              </math>
+                           </cell>
+                        </row>
+                        <row rowspan="1">
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>\Vect{0}</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="1" halign="center" valign="middle">
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </cell>
+                           <cell colspan="2" halign="center" valign="middle">
+                              <math>
+                                 <latex>L(\Vect{0})</latex>
+                              </math>
+                           </cell>
+                        </row>
+                     </math.array>
+                  </info>
+               </subordinate>. So <math>
+                  <latex>\Vect{0}</latex>
+               </math> is in <math>
+                  <latex>\Ker{ L }</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <math>
+                  <latex>\Ker{ L }</latex>
+               </math> is closed under vector addition: if <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> are in <math>
+                  <latex>\Ker{ L }</latex>
+               </math>, we need to show that <math>
+                  <latex>\Vect{x} + \Vect{y}</latex>
+               </math> also belongs to <math>
+                  <latex>\Ker{ L }</latex>
+               </math>. So we compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{x} + \Vect{y})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(\Vect{x}) + L(\Vect{y})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0} + \Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\Vect{0}</latex>
-                  </math>-vector and is closed under vector addition and scalar multiplication:</para.body>
-            </para>
-         </proof.block.body>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>So <math>
+                  <latex>\Vect{x} + \Vect{y}</latex>
+               </math> belongs to <math>
+                  <latex>\Ker{ L }</latex>
+               </math>, as claimed.</para.body>
+         </para>
+         <para>
+            <para.body>
+               <math>
+                  <latex>\Ker{ L }</latex>
+               </math> is closed under scalar multiplication: Let <math>
+                  <latex>\Vect{x}</latex>
+               </math> be in <math>
+                  <latex>\Ker{ L }</latex>
+               </math>, and let <math>
+                  <latex>t</latex>
+               </math> be in <math>
+                  <latex>\RNr</latex>
+               </math>. We need to show that <math>
+                  <latex>t \Vect{x}</latex>
+               </math> belongs to <math>
+                  <latex>\Ker{ L }</latex>
+               </math>. We compute:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L(t \Vect{x})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot L(\Vect{x})</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t \Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>So <math>
+                  <latex>t \Vect{x}</latex>
+               </math> belongs to the kernel of <math>
+                  <latex>L</latex>
+               </math>. – Combining these two facts, we conclude that <math>
+                  <latex>\Ker{ L }</latex>
+               </math> is a subvector space of <math>
+                  <latex>V</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -57,38 +57,332 @@
          <logic>
             <part.ref>AdditiveEquationSolve</part.ref>
          </logic>
-         <caption>AdditiveEquationSolve</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>x=y</latex>
-                  </math>, then <math>
-                     <latex>a+x=a+y</latex>
-                  </math> by substitution. To see the converse, we compute</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>a + x = a + y \longleftrightarrow x = y</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>If <math>
+                  <latex>x=y</latex>
+               </math>, then <math>
+                  <latex>a+x=a+y</latex>
+               </math> by substitution. To see the converse, we compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>a+x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>a+y</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(-a)+(a+x)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(-a) + (a+y)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>((-a) + a) + x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the associativity axiom for addition in <math>
+                                 <latex>\RNr</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>((-a)+a)+y</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0 + x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0 + y</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>x</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using that <math>
+                                 <latex>0</latex>
+                              </math> neutral with respect of addition.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>y</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>Times0</part.ref>
          </logic>
-         <caption>Times0</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We compute as follows</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>0\cdot a = 0</latex>
+            </math> for all <math>
+               <latex>a\in \RNr</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We compute as follows</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0\cdot a</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>
+                              <math>
+                                 <latex>0</latex>
+                              </math> is neutral with respect to addition in <math>
+                                 <latex>\RNr</latex>
+                              </math>. Therefore,</para.body>
+                        </para>
+                        <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>0</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <math>
+                                    <latex>=</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>0+0</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(0+0)\cdot a</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0\cdot a + 0</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we carried out two steps</para.body>
+                        </para>
+                        <ol>
+                           <li>
+                              <para>
+                                 <para.body>On the left: <math>
+                                       <latex>0\cdot a = 0\cdot a + 0</latex>
+                                    </math> because <math>
+                                       <latex>0</latex>
+                                    </math> is neutral with respect to addition.</para.body>
+                              </para>
+                           </li>
+                           <li>
+                              <para>
+                                 <para.body>On the right: we applied the distributivity law of addition and multiplication in <math>
+                                       <latex>\RNr</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </li>
+                        </ol>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0\cdot a\ +\ 0\cdot a</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we apply the previous part of the proposition.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0\cdot a</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>Negativea</part.ref>
          </logic>
-         <caption>Negativea</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We compute:</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+            <math>
+               <latex>-a = (-1)\cdot a</latex>
+            </math> for all <math>
+               <latex>a\in \RNr</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We compute:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0\cdot a</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(1+(-1))\cdot a</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>1\cdot a + (-1)\cdot a</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>a + (-1)\cdot a</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This means that <math>
+                  <latex>(-1)\cdot</latex>
+               </math> is the unique additive inverse of <math>
+                  <latex>a</latex>
+               </math>; i.e. <math>
+                  <latex>(-a) = (-1)\cdot a</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

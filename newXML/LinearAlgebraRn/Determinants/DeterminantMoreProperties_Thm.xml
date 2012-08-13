@@ -8,7 +8,9 @@
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_DeterminantMoreExamples"/>
       <info>
-         <info.caption>Example</info.caption>
+         <info.caption>
+            <caption>Example</caption>
+         </info.caption>
          <para>
             <para.body>See some examples which explain how to use these rules</para.body>
          </para>
@@ -57,52 +59,145 @@
          <logic>
             <part.ref>EqualColumns0</part.ref>
          </logic>
-         <caption>EqualColumns0</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If two columns in a square matrix <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> are equal, then <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is of the form</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> Equal columns gives 0-determinant</caption>
+         <para>
+            <para.body>If two columns in a square matrix <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> are equal, then <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is of the form</para.body>
+         </para>
+         <math.display>
+            <latex>A = [ A_1\ \dots \ X\ \dots\ X\ \dots\ A_n]</latex>
+         </math.display>
+         <para>
+            <para.body>But then the 
+			<subordinate>
+                  <hot>alternating property</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_DeterminantAlgebraicProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Look up the alternating property of the determinant operation</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+			of the determinant operation gives</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det [ A_1\ \dots \ X\ \dots\ X\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Interchange the two columns containing the vector <math>
+                                 <latex>X</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\det [ A_1\ \dots \ X\ \dots\ X\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Therefore <math>
+                  <latex>\det(\Mtrx{A}) = 0</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>AddMultipleColumn</part.ref>
          </logic>
-         <caption>AddMultipleColumn</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If the square matrix <math>
-                     <latex>\Mtrx{A} = [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]</latex>
-                  </math>, we need to show</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption/>
+         <para>
+            <para.body>If the square matrix <math>
+                  <latex>\Mtrx{A} = [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]</latex>
+               </math>, we need to show</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det\, [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Add <math>
+                                 <latex>t\cdot Y</latex>
+                              </math> to the <math>
+                                 <latex>X</latex>
+                              </math>-column</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det\, [A_1\ \dots\ (X+tY)\ \dots\ Y\ \dots\ A_n]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>We invoke the multilinearity property of the determinant operation in the <math>
+                  <latex>X</latex>
+               </math>-column:</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+\aligned
+&amp;\det\, [A_1\ \dots\ (X+tY)\ \dots\ Y\ \dots\ A_n] \\
+&amp;\quad =\ \det\, [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]\ +\ \det\, [A_1\ \dots\ (tY)\ \dots\ Y\ \dots\ A_n] \\
+&amp;\quad =\ \det\, [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]\ +\ t\cdot \det\, [A_1\ \dots\ Y\ \dots\ Y\ \dots\ A_n]\\
+&amp;\quad =\ \det\, [A_1\ \dots\ X\ \dots\ Y\ \dots\ A_n]
+\endaligned
+
+			</latex>
+         </math.display>
+         <para>
+            <para.body>Because <math>
+                  <latex>[A_1\ \dots\ Y\ \dots\ Y\ \dots\ A_n]</latex>
+               </math> has two equal columns and, hence, vanishing determinant.</para.body>
+         </para>
          <logic>
             <part.ref>CommutesTransposition</part.ref>
          </logic>
-         <caption>CommutesTransposition</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This is a special case of a 
+         <caption> Determinant commutes with transposition</caption>
+         <para>
+            <para.body>This is a special case of a 
 			<subordinate>
-                     <hot>more general result about alternating multilinear functions</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_AlternatingMultilinearProps"/>
-                        <info>
-                           <para>
-                              <para.body>Look up this result.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>more general result about alternating multilinear functions</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_AlternatingMultilinearProps"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this result.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			which will be proved in the next section.</para.body>
-            </para>
-         </proof.block.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

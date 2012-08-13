@@ -7,7 +7,9 @@
    <caption>Positive square roots exist uniquely</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment</info.caption>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
          <para>
             <para.body>The proof of this proposition requires a certain amount of work. Does this mean we have to work like or even harder to establish the existence of cube roots, 4-th roots, etc? – Fortunately not, we will later find powerful tools which will enable us to obtain results of this kind quite easily.</para.body>
          </para>
@@ -46,9 +48,11 @@
 			<subordinate>
                      <hot>design</hot>
                      <info>
-                        <info.caption>Why is <math>
-                              <latex>A\leq B</latex>
-                           </math>?</info.caption>
+                        <info.caption>
+                           <caption>Why is <math>
+                                 <latex>A\leq B</latex>
+                              </math>?</caption>
+                        </info.caption>
                         <para>
                            <para.body>Consider arbitrary elements <math>
                                  <latex>a\in A</latex>

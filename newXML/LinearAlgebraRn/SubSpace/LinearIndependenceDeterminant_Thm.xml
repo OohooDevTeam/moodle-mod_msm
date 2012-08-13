@@ -8,7 +8,9 @@
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_LinearIndependenceDeterminantTest"/>
       <info>
-         <info.caption>Example</info.caption>
+         <info.caption>
+            <caption>Example</caption>
+         </info.caption>
          <para>
             <para.body>Examples which show how to use the determinant test detect linear independence.</para.body>
          </para>
@@ -57,38 +59,114 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
+         <para>
+            <para.body>We write <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> in terms of its row vectors <math>
+                  <latex>R_1,\dots ,R_m</latex>
+               </math>, and its column vectors <math>
+                  <latex>C_1,\dots ,C_n</latex>
+               </math>:</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+\Mtrx{A} = 
+\left[
+\begin{array}{ccc}
+a_{11} &amp; \cdots &amp; a_{1n} \\
+\vdots &amp; \ddots &amp; \vdots \\
+a_{mn} &amp; \cdots &amp; a_{mn}
+\end{array}
+\right] = 
+\left[
+\begin{array}{c}
+R_1 \\ \vdots \\ R_m
+\end{array}
+\right] = [ C_1\ \ \dots\ \ C_n]
+
+			</latex>
+         </math.display>
          <logic>
             <part.ref>ColumnsLinInd</part.ref>
          </logic>
-         <caption>ColumnsLinInd</caption>
-         <proof.block.body>
-            <para>
-               <para.body>To see the relationship between the linear independence of the columns of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> and the determinant of a suitable submatrix of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math>, recall that <math>
-                     <latex>C_1,\dots , C_n</latex>
-                  </math> are linearly independent if and only if the RREF of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption/>
+         <para>
+            <para.body>To see the relationship between the linear independence of the columns of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> and the determinant of a suitable submatrix of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>, recall that <math>
+                  <latex>C_1,\dots , C_n</latex>
+               </math> are linearly independent if and only if the RREF of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+\left[
+\begin{array}{cccc}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 \\
+0 &amp; 0 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 0
+\end{array}
+\right]
+
+			</latex>
+         </math.display>
+         <para>
+            <para.body>This 
+			<subordinate>
+                  <hot>happens exactly when</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_LinearIndependenceRank"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this theorem</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+               <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> has <math>
+                  <latex>n</latex>
+               </math> rows, forming an <math>
+                  <latex>(n,n)</latex>
+               </math>-matrix <math>
+                  <latex>\Vect{B}</latex>
+               </math>, whose RREF is the identity matrix; i.e. 
+				<subordinate>
+                  <hot>exactly when</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_DeterminantInvertibilityTest"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this theorem</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+               <math>
+                  <latex>\det(\Mtrx{B})\neq 0</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>RowsLinInd</part.ref>
          </logic>
-         <caption>RowsLinInd</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This follows from the previous part: The rows <math>
-                     <latex>R_1,\dots ,R_m</latex>
-                  </math>are the columns of <math>
-                     <latex>\Mtrx{A}^T</latex>
-                  </math>, and the claim follows. – This completes the proof</para.body>
-            </para>
-         </proof.block.body>
+         <caption/>
+         <para>
+            <para.body>This follows from the previous part: The rows <math>
+                  <latex>R_1,\dots ,R_m</latex>
+               </math>are the columns of <math>
+                  <latex>\Mtrx{A}^T</latex>
+               </math>, and the claim follows. – This completes the proof</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

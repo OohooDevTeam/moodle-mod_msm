@@ -25,28 +25,224 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>We need to show that <math>
-                     <latex>\Mtrx{B}\Mtrx{A}=\IdMtrx[n]</latex>
-                  </math>. – We first show that <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is invertible: Using row operations and the corresponding row transformation matrices, we obtain</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>This follows with the previous argument by interchanging the roles of <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> and <math>
+         <caption>The case where <math>
+               <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We need to show that <math>
+                  <latex>\Mtrx{B}\Mtrx{A}=\IdMtrx[n]</latex>
+               </math>. – We first show that <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is invertible: Using row operations and the corresponding row transformation matrices, we obtain</para.body>
+         </para>
+         <math.display>
+            <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \Mtrx{A}\ =\ \Mtrx{T}</latex>
+         </math.display>
+         <para>
+            <para.body>where <math>
+                  <latex>\Mtrx{T}</latex>
+               </math> is the RREF of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math>. Consequently,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{T}\Mtrx{B}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \Mtrx{A}\Mtrx{B}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>recalling that <math>
+                                 <latex>\Mtrx{A}\Mtrx{B} = \IdMtrx[n]</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1\cdot \IdMtrx[n]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This shows that <math>
+                  <latex>\Mtrx{T}\Mtrx{B}</latex>
+               </math> is 
+			<subordinate>
+                  <hot>invertible</hot>
+                  <info>
+                     <info.caption>
+                        <caption>Reason</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>Each of the <math>
+                              <latex>\Mtrx{R}_i</latex>
+                           </math> is invertible, and so the product <math>
+                              <latex>\Mtrx{R}_k\cdot \dots \cdot \Mtrx{R}_1</latex>
+                           </math> is invertible.</para.body>
+                     </para>
+                  </info>
+               </subordinate>. Now if <math>
+                  <latex>\Mtrx{T}</latex>
+               </math> is not the identity matrix, then its bottom row consists of  <math>
+                  <latex>0</latex>
+               </math>’s  only. So the bottom row of <math>
+                  <latex>\Mtrx{T}\Mtrx{B}</latex>
+               </math> consists of  <math>
+                  <latex>0</latex>
+               </math>’s  only, 
+			<subordinate>
+                  <hot>hence is not invertible</hot>
+                  <info>
+                     <info.caption>
+                        <caption>Reason</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>If <math>
+                              <latex>\Mtrx{C}</latex>
+                           </math> is a matrix whose last row consists of <math>
+                              <latex>0</latex>
+                           </math>'s only, then for any matrix <math>
+                              <latex>\Mtrx{X}</latex>
+                           </math>, <math>
+                              <latex>\Mtrx{C}\Mtrx{X}</latex>
+                           </math> has a bottom row of <math>
+                              <latex>0</latex>
+                           </math>'s. So it cannot be the identity matrix.</para.body>
+                     </para>
+                  </info>
+               </subordinate>. This contradiction collapses only if <math>
+                  <latex>\Mtrx{T}</latex>
+               </math> is the identity matrix, implying that <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is invertible.</para.body>
+         </para>
+         <para>
+            <para.body>But then we can compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}\Mtrx{B}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\IdMtrx[n]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}^{-1}\Mtrx{A}\Mtrx{B}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}^{-1}\IdMtrx[n]</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\Mtrx{B}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}^{-1}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{B}\Mtrx{A}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}^{-1}\Mtrx{A} = \IdMtrx[n]</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Therefore <math>
+                  <latex>\Mtrx{B}\Mtrx{A} = \IdMtrx[n]</latex>
+               </math>, as claimed.</para.body>
+         </para>
+         <caption>The case where <math>
+               <latex>\Mtrx{B}\Mtrx{A} = \IdMtrx[n]</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>This follows with the previous argument by interchanging the roles of <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> and <math>
+                  <latex>\Mtrx{B}</latex>
+               </math>.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

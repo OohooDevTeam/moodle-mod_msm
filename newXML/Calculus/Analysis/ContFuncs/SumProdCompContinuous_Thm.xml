@@ -7,7 +7,9 @@
    <caption>Sums, products, compositions of continuous maps</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment</info.caption>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
          <para>
             <para.body>We prove this proposition directly from the <math>
                   <latex>\varepsilon</latex>
@@ -86,56 +88,369 @@
          <logic>
             <part.ref>Sum</part.ref>
          </logic>
-         <caption>Sum</caption>
-         <proof.block.body>
-            <para>
-               <para.body>For <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math>, choose <math>
-                     <latex> \delta_1 &gt; 0 </latex>
-                  </math> such that <math>
-                     <latex> \Abs{ f(t) - f(x) } &lt; \varepsilon/2 </latex>
-                  </math> for all <math>
-                     <latex>t\in \OOIntrvl{x - \delta_1}{ x + \delta_1}</latex>
-                  </math>, and choose <math>
-                     <latex> \delta_2 &gt; 0 </latex>
-                  </math> such that <math>
-                     <latex> \Abs{ g(t) - g(x) } &lt; \varepsilon/2 </latex>
-                  </math> for all <math>
-                     <latex>t \in \OOIntrvl{x-\delta_2}{x+\delta_2}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> Sums of continuous functions are continuous</caption>
+         <para>
+            <para.body>For <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math>, choose <math>
+                  <latex> \delta_1 &gt; 0 </latex>
+               </math> such that <math>
+                  <latex> \Abs{ f(t) - f(x) } &lt; \varepsilon/2 </latex>
+               </math> for all <math>
+                  <latex>t\in \OOIntrvl{x - \delta_1}{ x + \delta_1}</latex>
+               </math>, and choose <math>
+                  <latex> \delta_2 &gt; 0 </latex>
+               </math> such that <math>
+                  <latex> \Abs{ g(t) - g(x) } &lt; \varepsilon/2 </latex>
+               </math> for all <math>
+                  <latex>t \in \OOIntrvl{x-\delta_2}{x+\delta_2}</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>Now let <math>
+                  <latex>\delta:=\min\Set{ \delta_1 , \delta_2}</latex>
+               </math>. Then we find that for <math>
+                  <latex>t\in \OOIntrvl{ x-\delta }{ x+\delta}</latex>
+               </math>,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ (g+f)(t) - (g+f)(x) }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ (g(t) - g(x))\ +\ (f(t) - f(x)) }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>by the triangle inequality</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ g(t) - g(x) }\ +\ \Abs{ f(t) - f(x) }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\frac{\varepsilon}{2}\ +\ \frac{\varepsilon}{2}\ =\ \varepsilon</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Thus <math>
+                  <latex>(f+g)</latex>
+               </math> is continuous at <math>
+                  <latex>x</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>Product</part.ref>
          </logic>
-         <caption>Product</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Given <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math>, we need to establish the existence of <math>
-                     <latex> \delta &gt;0 </latex>
-                  </math> such that</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> Products of continuous functions are continuous</caption>
+         <para>
+            <para.body>Given <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math>, we need to establish the existence of <math>
+                  <latex> \delta &gt;0 </latex>
+               </math> such that</para.body>
+         </para>
+         <math.display>
+            <latex>
+				 \Abs{ f(t)g(t) - f(x)g(x) } &lt; \varepsilon
+			</latex>
+         </math.display>
+         <para>
+            <para.body>whenever <math>
+                  <latex> \Abs{ t-x } &lt; \delta </latex>
+               </math>. To this end we make the preliminary estimate:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ f(t)g(t) - f(x)g(x) }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ [f(t)g(t) - f(t)g(x)]\ +\ [f(t)g(x) - f(x)g(x)] }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>... by the triangle inequality</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ f(t)g(t) - f(t)g(x) }\ +\ \Abs{ f(t)g(x) - f(x)g(x) }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ f(t) }\Abs{ g(t)-g(x) }\ +\ \Abs{ f(t)-f(x) } \Abs{ g(x) }</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>By choosing <math>
+                  <latex>t</latex>
+               </math> close enough to <math>
+                  <latex>x</latex>
+               </math>, we can force each of these two summands to be less than <math>
+                  <latex>\varepsilon/2</latex>
+               </math>. Here are the details:</para.body>
+         </para>
+         <ol>
+            <li>
+               <para>
+                  <para.body>Chose <math>
+                        <latex> \delta_1&gt;0 </latex>
+                     </math> such that</para.body>
+               </para>
+               <math.display>
+                  <latex>
+						
+							\Abs{ g(t) - g(x) } &lt; \min \Set{ 1, \dfrac{1}{2}\cdot \dfrac{1}{ \Abs{f(x) + 1} } }
+						
+					</latex>
+               </math.display>
+            </li>
+            <li>
+               <para>
+                  <para.body>Chose <math>
+                        <latex> \delta_2&gt;0 </latex>
+                     </math> such that</para.body>
+               </para>
+               <math.display>
+                  <latex>
+						
+							\Abs{ f(t) - f(x) } &lt; \min \Set{ 1, \dfrac{1}{2}\cdot \dfrac{1}{ \Abs{g(x) + 1} } }
+						
+					</latex>
+               </math.display>
+            </li>
+         </ol>
+         <para>
+            <para.body>Then set <math>
+                  <latex>\delta := \min{\delta_1,\delta_2}</latex>
+               </math>. For <math>
+                  <latex>t\in D</latex>
+               </math> and <math>
+                  <latex> \Abs{ t-x } &lt; \delta </latex>
+               </math> we then obtain</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ f(t)g(t) - f(x)g(x) }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ f(t) }\Abs{ g(t)-g(x) }\ +\ \Abs{ f(t)-f(x) } \Abs{ g(x) }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ f(t) }\cdot \delta_1\ +\ \delta_2\cdot \Abs{ g(x) }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\Abs{ f(x) } + 1)\cdot \dfrac{\varepsilon}{2} \cdot \dfrac{1}{ \Abs{f(x)} + 1 }\ +\ \dfrac{\varepsilon}{2} \cdot \dfrac{\Abs{g(x)}}{ \Abs{g(x)} + 1}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\varepsilon/2\ +\ \varepsilon/2 = \varepsilon</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>So <math>
+                  <latex>(f+g)</latex>
+               </math> is continuous at <math>
+                  <latex>x</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>Composition</part.ref>
          </logic>
-         <caption>Composition</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Given <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math> we need to establish the existence of <math>
-                     <latex> \delta &gt; 0 </latex>
-                  </math> such that</para.body>
-            </para>
-         </proof.block.body>
+         <caption> Composition of continuous functions are continuous</caption>
+         <para>
+            <para.body>Given <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math> we need to establish the existence of <math>
+                  <latex> \delta &gt; 0 </latex>
+               </math> such that</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+					\Abs{ (h\Comp g)(t) - (h\Comp g)(x) } &lt; \varepsilon 
+				
+			</latex>
+         </math.display>
+         <para>
+            <para.body>whenever <math>
+                  <latex> \Abs{ t-x } &lt; \delta </latex>
+               </math>. We achieve this in two steps:</para.body>
+         </para>
+         <para>
+            <para.body>
+               <strong>Step 1</strong>   As <math>
+                  <latex>h</latex>
+               </math> is continuous at <math>
+                  <latex>g(x)</latex>
+               </math>, there is <math>
+                  <latex> \delta_1 &gt; 0 </latex>
+               </math> such that</para.body>
+         </para>
+         <math.display>
+            <latex>
+					\Abs{ h(s) - (h\Comp g)(x) } &lt; \varepsilon\quad \text{whenever}\quad \Abs{ s-g(x) }&lt; \delta_1
+				</latex>
+         </math.display>
+         <para>
+            <para.body>
+               <strong>Step 2</strong>   As <math>
+                  <latex>g</latex>
+               </math> is continuous at <math>
+                  <latex>x</latex>
+               </math>, there is <math>
+                  <latex> \delta&gt;0 </latex>
+               </math> such that</para.body>
+         </para>
+         <math.display>
+            <latex>
+					\Abs{ g(t) - g(x) } &lt; \delta_1\quad \text{whenever}\quad \Abs{ t-x }&lt; \varepsilon
+				</latex>
+         </math.display>
+         <para>
+            <para.body>It follows that, whenever <math>
+                  <latex> \Abs{ t-x } &lt; \delta </latex>
+               </math>,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ (h\Comp g)(t) - (h\Comp g)(x) }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ h(g(t)) - h(g(x)) }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &lt; </latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\varepsilon</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

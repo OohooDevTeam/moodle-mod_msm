@@ -14,7 +14,9 @@
    </associate>
    <associate type="Example">
       <info>
-         <info.caption>Example</info.caption>
+         <info.caption>
+            <caption>Example</caption>
+         </info.caption>
          <math.display>
             <latex>
 					
@@ -33,7 +35,9 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>Comment on the strength of this proposition</info.caption>
+         <info.caption>
+            <caption>Comment on the strength of this proposition</caption>
+         </info.caption>
          <para>
             <para.body>To be able to better appreciate the substance of this proposition here is an estimate of the computational effort required if one wants to evaluate determinants of large matrices with the cofactor method.</para.body>
          </para>

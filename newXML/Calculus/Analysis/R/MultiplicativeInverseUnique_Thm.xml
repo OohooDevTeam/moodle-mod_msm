@@ -7,7 +7,9 @@
    <caption>Multiplicative inverse is unique</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment of the proof of this lemma</info.caption>
+         <info.caption>
+            <caption>Comment of the proof of this lemma</caption>
+         </info.caption>
          <para>
             <para.body>This lemma can be proven by adapting the proof of uniqueness of the additive inverse of <math>
                   <latex>a\in \RNr</latex>

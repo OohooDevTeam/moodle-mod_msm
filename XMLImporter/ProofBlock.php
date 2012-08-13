@@ -53,35 +53,80 @@ class ProofBlock extends Element
         $this->indexsymbols = array();
         $this->medias = array();
 
-        foreach ($proof_block_bodys as $pbb)
+        // some proofs were transformed with proof.block.body but some were not
+        // second condition is to check for the ones without the proof.block.body element
+        if (!empty($proof_block_bodys))
         {
-            foreach ($this->processIndexAuthor($pbb, $position) as $indexauthor)
+            foreach ($proof_block_bodys as $pbb)
             {
-                $this->indexauthors[] = $indexauthor;
-            }
+                foreach ($this->processIndexAuthor($pbb, $position) as $indexauthor)
+                {
+                    $this->indexauthors[] = $indexauthor;
+                }
 
-            foreach ($this->processIndexGlossary($pbb, $position) as $indexglossary)
-            {
-                $this->indexglossarys[] = $indexglossary;
-            }
+                foreach ($this->processIndexGlossary($pbb, $position) as $indexglossary)
+                {
+                    $this->indexglossarys[] = $indexglossary;
+                }
 
-            foreach ($this->processIndexSymbols($pbb, $position) as $indexsymbol)
-            {
-                $this->indexsymbols[] = $indexsymbol;
-            }
-            foreach ($this->processSubordinate($pbb, $position) as $subordinate)
-            {
-                $this->subordinates[] = $subordinate;
-            }
+                foreach ($this->processIndexSymbols($pbb, $position) as $indexsymbol)
+                {
+                    $this->indexsymbols[] = $indexsymbol;
+                }
+                foreach ($this->processSubordinate($pbb, $position) as $subordinate)
+                {
+                    $this->subordinates[] = $subordinate;
+                }
 
-            foreach ($this->processMedia($pbb, $position) as $media)
-            {
-                $this->medias[] = $media;
-            }
+                foreach ($this->processMedia($pbb, $position) as $media)
+                {
+                    $this->medias[] = $media;
+                }
 
-            foreach ($this->processContent($pbb, $position) as $content)
+                foreach ($this->processContent($pbb, $position) as $content)
+                {
+                    $this->proof_block_body .= $content;
+                }
+            }
+        }
+        else
+        {
+            foreach ($DomElement->childNodes as $child)
             {
-                $this->proof_block_body .= $content;
+                if ($child->nodeType == XML_ELEMENT_NODE)
+                {
+                    if (($child->tagName != 'caption') || ($child->tagName != 'logic'))
+                    {
+                        foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
+                        {
+                            $this->indexauthors[] = $indexauthor;
+                        }
+
+                        foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
+                        {
+                            $this->indexglossarys[] = $indexglossary;
+                        }
+
+                        foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
+                        {
+                            $this->indexsymbols[] = $indexsymbol;
+                        }
+                        foreach ($this->processSubordinate($child, $position) as $subordinate)
+                        {
+                            $this->subordinates[] = $subordinate;
+                        }
+
+                        foreach ($this->processMedia($child, $position) as $media)
+                        {
+                            $this->medias[] = $media;
+                        }
+
+                        foreach ($this->processContent($child, $position) as $content)
+                        {
+                            $this->proof_block_body .= $content;
+                        }
+                    }
+                }
             }
         }
     }
@@ -245,49 +290,50 @@ class ProofBlock extends Element
             }
         }
     }
-    
+
     function loadFromDb($id, $compid)
     {
         global $DB;
-        
-        $proofBlockRecord = $DB->get_record($this->tablename, array('id'=>$id));
-        
-        if(!empty($proofBlockRecord))
+
+        $proofBlockRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($proofBlockRecord))
         {
             $this->compid = $compid;
             $this->proof_content = $proofBlockRecord->proof_content;
         }
-        
+
         $this->subordinates = array();
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
-        
-        foreach($childElements as $child)
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
+        foreach ($childElements as $child)
         {
-            $childtablename = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
-            
-            if($childtablename == 'msm_subordinate')
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            if ($childtablename == 'msm_subordinate')
             {
                 $subordinate = new Subordinate();
                 $subordinate->loadFromDb($child->unit_id, $child->id);
-                $this->subordinates[]= $subordinate;
+                $this->subordinates[] = $subordinate;
             }
         }
-        
+
         return $this;
     }
 
     function displayhtml()
     {
         $content = '';
-        
+
         $content .="<div class='proofblock'>";
-        
+
         $content .= $this->displaySubordinate($this, $this->proof_content);
-        
+
         $content .="</div>";
-        
+
         return $content;
     }
+
 }
 
 ?>

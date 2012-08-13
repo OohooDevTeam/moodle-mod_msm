@@ -43,46 +43,133 @@
    </statement.theorem>
    <proof>
       <proof.block>
+         <para>
+            <para.body>To verify both claims our strategy will be to consider the associated sequences of partial sums, and to use rules for computing with sequences.</para.body>
+         </para>
          <logic>
             <part.ref>SeriesScalarProduct</part.ref>
          </logic>
-         <caption>SeriesScalarProduct</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Suppose <math>
-                     <latex>\sum_{n=0}^{\infty} a_n = L</latex>
-                  </math> exists. By definition, this means that the associated sequence of partial sums <math>
-                     <latex>(s_n)</latex>
-                  </math> converges to <math>
-                     <latex>L</latex>
-                  </math>. Now let <math>
-                     <latex>(t_n)</latex>
-                  </math> be the sequence of partial sums of the series <math>
-                     <latex>\sum_{n=0}^{\infty} (ca_n)</latex>
-                  </math>. Then we have for each <math>
-                     <latex>n</latex>
-                  </math>:</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>   <math>
+               <latex>\sum_{n=0}^{\infty}(ca_n) = c\cdot \sum_{n=0}^{\infty}a_n</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Suppose <math>
+                  <latex>\sum_{n=0}^{\infty} a_n = L</latex>
+               </math> exists. By definition, this means that the associated sequence of partial sums <math>
+                  <latex>(s_n)</latex>
+               </math> converges to <math>
+                  <latex>L</latex>
+               </math>. Now let <math>
+                  <latex>(t_n)</latex>
+               </math> be the sequence of partial sums of the series <math>
+                  <latex>\sum_{n=0}^{\infty} (ca_n)</latex>
+               </math>. Then we have for each <math>
+                  <latex>n</latex>
+               </math>:</para.body>
+         </para>
+         <math.display>
+            <latex>t_n = ca_0 +\cdots +ca_n = c(a_0+\cdots a_n) = cs_n</latex>
+         </math.display>
+         <para>
+            <para.body>But then the rules for computing with limits of convergent sequences say</para.body>
+         </para>
+         <math.display>
+            <latex>\sum_{n=0}^{\infty}(ca_n) = \lim_{n\to\infty}(t_n) = \lim_{n\to\infty}(cs_n) = c\cdot \lim_{n\to\infty}s_n = c\cdot \sum_{n=0}^{\infty} a_n </latex>
+         </math.display>
+         <para>
+            <para.body>To see the converse, assume <math>
+                  <latex>\sum_{n=0}^{\infty} (ca_n)</latex>
+               </math> exists. The claim follows by applying the argument just given with <math>
+                  <latex>d:=1/c</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>SeriesSum</part.ref>
          </logic>
-         <caption>SeriesSum</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Let <math>
-                     <latex>(s_n)</latex>
-                  </math> and <math>
-                     <latex>(t_n)</latex>
-                  </math> denote the sequences of partial sums of <math>
-                     <latex>\sum_{n=0}^{\infty} a_n = K</latex>
-                  </math> and <math>
-                     <latex>\sum_{n=0}^{\infty} b_n = L</latex>
-                  </math>, respectively. Then</para.body>
-            </para>
-         </proof.block.body>
+         <caption>   <math>
+               <latex>\sum_{n=0}^{\infty}(a_n+b_n)\ =\ \left(\sum_{n=0}^{\infty}a_n\right)\ +\ \left( \sum_{n=0}^{\infty} b_n\right)</latex>
+            </math> provided the series on the right converge</caption>
+         <para>
+            <para.body>Let <math>
+                  <latex>(s_n)</latex>
+               </math> and <math>
+                  <latex>(t_n)</latex>
+               </math> denote the sequences of partial sums of <math>
+                  <latex>\sum_{n=0}^{\infty} a_n = K</latex>
+               </math> and <math>
+                  <latex>\sum_{n=0}^{\infty} b_n = L</latex>
+               </math>, respectively. Then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\left(\sum_{n=0}^{\infty} a_n\right)\ +\ \left(\sum_{n=0}^{\infty} b_n\right)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\lim_{n\to\infty} s_n\ +\ \lim_{n\to\infty} t_n</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <info.caption>
+                           <caption>Why is this true?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>Here we use the rule for the 
+					<subordinate>
+                                 <hot>sum of two convergent sequences</hot>
+                                 <crossref>
+                                    <theorem.ref theoremID="Thm_RulesForLimits"/>
+                                    <info>
+                                       <para>
+                                          <para.body>Look this rule up.</para.body>
+                                       </para>
+                                    </info>
+                                 </crossref>
+                              </subordinate>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\lim_{n\to\infty} (s_n + t_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sum_{n=0}^{\infty}(a_n+b_n)</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>As was to be shown.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

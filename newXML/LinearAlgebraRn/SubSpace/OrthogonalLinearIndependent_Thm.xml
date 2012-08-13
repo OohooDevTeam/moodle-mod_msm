@@ -78,7 +78,9 @@
                      </math>
                      <companion>
                         <info>
-                           <info.caption>Why is this so?</info.caption>
+                           <info.caption>
+                              <caption>Why is this so?</caption>
+                           </info.caption>
                            <para>
                               <para.body>Here we use that, for <math>
                                     <latex>j\neq i</latex>

@@ -37,43 +37,256 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>To see that <math>
-                     <latex>S^{\bot\bot}=\span(S)=:V</latex>
-                  </math>, 
+         <para>
+            <para.body>To verify the equality of the two subspaces of <math>
+                  <latex>\RNr[n]</latex>
+               </math>, we need to verify two inclusions:</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>S^{\bot\bot}\subseteq \span(S)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>\span(S)\subseteq S^{\bot\bot}</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ul>
+         <caption>
+            <math>
+               <latex>S^{\bot\bot}\subseteq \span(S)</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>To see that <math>
+                  <latex>S^{\bot\bot}=\span(S)=:V</latex>
+               </math>, 
 			<subordinate>
-                     <hot>recall</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_OrthogonalComplementOperationProperties"/>
-                        <info>
-                           <para>
-                              <para.body>Review this fact</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>recall</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_OrthogonalComplementOperationProperties"/>
+                     <info>
+                        <para>
+                           <para.body>Review this fact</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			that <math>
-                     <latex>S^{\bot}=V^{\bot}</latex>
-                  </math>. Therefore, we may equivalently show that <math>
-                     <latex>V^{\bot\bot}=V</latex>
-                  </math>. Now, if
+                  <latex>S^{\bot}=V^{\bot}</latex>
+               </math>. Therefore, we may equivalently show that <math>
+                  <latex>V^{\bot\bot}=V</latex>
+               </math>. Now, if
 <math>
-                     <latex>\Vect{x}\in V^{\bot\bot}</latex>
-                  </math>, write</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>To see that <math>
-                     <latex>V\subseteq S^{\bot\bot}</latex>
-                  </math>, consider a linear combination</para.body>
-            </para>
-         </proof.block.body>
+                  <latex>\Vect{x}\in V^{\bot\bot}</latex>
+               </math>, write</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{x}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{x}_V + \Vect{x}_{\bot}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>with <math>
+                  <latex>\Vect{x}_V\in V</latex>
+               </math>, and <math>
+                  <latex>\Vect{x}_{\bot}\in V^{\bot}</latex>
+               </math>. We have</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <info.caption>
+                           <caption>Why is this so?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>This dot product vanishes because <math>
+                                 <latex>\Vect{x}\in V^{\bot\bot}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ \Vect{x} }{ \Vect{x}_{\bot} }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(\DotPr{ \Vect{x}_V }{ \Vect{x}_{\bot} })\ +\ (\DotPr{ \Vect{x}_{\bot} }{ \Vect{x}_{\bot} })</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ \Vect{x}_{\bot} }{ \Vect{x}_{\bot} }</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This means that <math>
+                  <latex>\Vect{x}_{\bot} = \Vect{0}</latex>
+               </math> and, therefore, <math>
+                  <latex>\Vect{x}=\Vect{x}_{V}\in V</latex>
+               </math>.</para.body>
+         </para>
+         <caption>
+            <math>
+               <latex>V\subseteq S^{\bot\bot}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>To see that <math>
+                  <latex>V\subseteq S^{\bot\bot}</latex>
+               </math>, consider a linear combination</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vect{x}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1 \Vect{s}_1 + \cdots + t_k \Vect{s}_k</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>of <math>
+                  <latex>S</latex>
+               </math>. We need to show that <math>
+                  <latex>\Vect{x}\in S^{\bot\bot}</latex>
+               </math>. So let <math>
+                  <latex>\Vect{z}\in S^{\bot}</latex>
+               </math>. We need to show that <math>
+                  <latex>\DotPr{ \Vect{x} }{ \Vect{z} } = 0</latex>
+               </math>. So we compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ \Vect{x} }{ \Vect{z} }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ (t_1 \Vect{s}_1 +\cdots + t_k \Vect{s}_k) }{ \Vect{z} }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t_1(\DotPr{ \Vect{s}_1 }{ \Vect{z} }) + \cdots + t_k(\DotPr{ \Vect{s}_k }{ \Vect{z} })</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <info.caption>
+                           <caption>Why is this true?</caption>
+                        </info.caption>
+                        <para>
+                           <para.body>Recall: <math>
+                                 <latex>\Vect{z}\in S^{\bot}</latex>
+                              </math>. So it is perpendicular to each of the vectors  <math>
+                                 <latex>\Vect{s}_1</latex>
+                              </math>, ... , <math>
+                                 <latex>\Vect{s}_k</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This means that <math>
+                  <latex>\Vect{x}\in S^{\bot\bot}</latex>
+               </math> as required. – This completes the proof.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -21,7 +21,9 @@
                   <term>associativity</term>
                   <term>of matrix addition</term>
                   <info>
-                     <info.caption>Associativity of matrix addition</info.caption>
+                     <info.caption>
+                        <caption>Associativity of matrix addition</caption>
+                     </info.caption>
                      <para>
                         <para.body>The associativity property of matrix addition is the identity</para.body>
                      </para>
@@ -51,7 +53,9 @@
                   <term>matrices</term>
                   <term>associativity property</term>
                   <info>
-                     <info.caption>Associativity of matrix addition</info.caption>
+                     <info.caption>
+                        <caption>Associativity of matrix addition</caption>
+                     </info.caption>
                      <para>
                         <para.body>The associativity property of matrix addition is the identity</para.body>
                      </para>
@@ -92,7 +96,9 @@
                   <term>commutativity</term>
                   <term>of matrix addition</term>
                   <info>
-                     <info.caption>Commutativity of matrix addition</info.caption>
+                     <info.caption>
+                        <caption>Commutativity of matrix addition</caption>
+                     </info.caption>
                      <para>
                         <para.body>The commutativity property of matrix addition is the identity</para.body>
                      </para>
@@ -122,7 +128,9 @@
                   <term>matrices</term>
                   <term>commutativity</term>
                   <info>
-                     <info.caption>Commutativity of matrix addition</info.caption>
+                     <info.caption>
+                        <caption>Commutativity of matrix addition</caption>
+                     </info.caption>
                      <para>
                         <para.body>The commutativity property of matrix addition is the identity</para.body>
                      </para>
@@ -185,42 +193,154 @@
    </statement.theorem>
    <proof>
       <proof.block>
+         <para>
+            <para.body>Addition of matrices is defined by adding the matrix entries in matching positions. Therefore the above identities for matrix sums follow directly from the corresponding identities for sums of real numbers. – The details follow.</para.body>
+         </para>
          <logic>
             <part.ref>Associativity</part.ref>
          </logic>
-         <caption>Associativity</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Suppose <math>
-                     <latex>A</latex>
-                  </math>, <math>
-                     <latex>B</latex>
-                  </math>, and <math>
-                     <latex>C</latex>
-                  </math> are three matrices of size <math>
-                     <latex>(m,n)</latex>
-                  </math>. Let us work with the entries in position <math>
-                     <latex>(i,j)</latex>
-                  </math> for some fixed <math>
-                     <latex>1\leq i\leq m</latex>
-                  </math> and <math>
-                     <latex>1\leq j\leq n</latex>
-                  </math>. Suppose</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			Associativity
+		</caption>
+         <para>
+            <para.body>Suppose <math>
+                  <latex>A</latex>
+               </math>, <math>
+                  <latex>B</latex>
+               </math>, and <math>
+                  <latex>C</latex>
+               </math> are three matrices of size <math>
+                  <latex>(m,n)</latex>
+               </math>. Let us work with the entries in position <math>
+                  <latex>(i,j)</latex>
+               </math> for some fixed <math>
+                  <latex>1\leq i\leq m</latex>
+               </math> and <math>
+                  <latex>1\leq j\leq n</latex>
+               </math>. Suppose</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A</latex>
+                     </math> has the number <math>
+                        <latex>a_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>B</latex>
+                     </math> has the number <math>
+                        <latex>b_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>C</latex>
+                     </math> has the number <math>
+                        <latex>c_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>Now let’s look at the entry in position <math>
+                  <latex>(i,j)</latex>
+               </math> of the two matrix sums in question:</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>(A+B)+C</latex>
+                     </math> has the number <math>
+                        <latex>(a_{ij}+b_{ij})+c_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A+(B+C)</latex>
+                     </math> has the number <math>
+                        <latex>a_{ij}+(b_{ij}+c_{ij})</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>These two numbers are equal because of the associativity law for the addition of real numbers. – This result applies to each position. Therefore the two matrix sums are equal, and the associativity property of matrix addition is proven.</para.body>
+         </para>
          <logic>
             <part.ref>Commutativity</part.ref>
          </logic>
-         <caption>Commutativity</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Again let's look at the entry in position <math>
-                     <latex>(i,j)</latex>
-                  </math> of the two matrix sums in question.</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+			Commutativity
+		</caption>
+         <para>
+            <para.body>Again let's look at the entry in position <math>
+                  <latex>(i,j)</latex>
+               </math> of the two matrix sums in question.</para.body>
+         </para>
+         <ul>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>A+B</latex>
+                     </math> has the number <math>
+                        <latex>a_{ij}+b_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+            <li>
+               <para>
+                  <para.body>
+                     <math>
+                        <latex>B+A</latex>
+                     </math> has the number <math>
+                        <latex>b_{ij}+a_{ij}</latex>
+                     </math> in position <math>
+                        <latex>(i,j)</latex>
+                     </math>
+                  </para.body>
+               </para>
+            </li>
+         </ul>
+         <para>
+            <para.body>These two numbers are equal because of the commutativity law for the addition of real numbers. – This result applies to each position. Therefore the two matrix sums are equal, and the associativity property of matrix addition is proven.</para.body>
+         </para>
+         <para>
+            <para.body>The remaining properties of matrix addition can be proved with the same method. – Try it!</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

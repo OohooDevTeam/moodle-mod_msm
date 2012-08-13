@@ -7,7 +7,9 @@
    <caption>Triangle inequality of   ‘absolute value’</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation</info.caption>
+         <info.caption>
+            <caption>Explanation</caption>
+         </info.caption>
          <para>
             <para.body>The inequality <math>
                   <latex>\Abs{ x+y } \leq \Abs{x} + \Abs{y}</latex>
@@ -33,50 +35,166 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>We use the triangle inequality of the distance operation</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>We invoke the inequality from Step 1:</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>To see this, observe</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>Using Step 3, we see.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>For arbitrary <math>
-                     <latex>t\in \RNr</latex>
-                  </math> we have <math>
-                     <latex>t\leq \Abs{t}</latex>
-                  </math>. Setting <math>
-                     <latex>t:=\Abs{x} - \Abs{y}</latex>
-                  </math> gives the claim in Step 5. – The proof of the corollary is complete.</para.body>
-            </para>
-         </proof.block.body>
+         <para>
+            <para.body>We break the proof down into several steps.</para.body>
+         </para>
+         <caption>Step 1: <math>
+               <latex>\Abs{x + y} \leq \Abs{x} + \Abs{y}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We use the triangle inequality of the distance operation</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dstnc{ x+y }{ 0 }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>By the triangle inequality</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Dstnc{x}{0} + \Dstnc{0}{y}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ x+y - 0 }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>By the definition of the distance operation</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ x-0 } + \Abs{ 0-y }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ x+y }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>\leq	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Because <math>
+                                 <latex>\Abs{ y } = \Abs{ -y }</latex>
+                              </math> for all <math>
+                                 <latex>y\in \RNr</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ x } + \Abs{ y }</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <caption>Step 2: <math>
+               <latex>\Abs{x-y} \leq \Abs{x} + \Abs{ y }</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We invoke the inequality from Step 1:</para.body>
+         </para>
+         <math.display>
+            <latex>\Abs{ x - y } = \Abs{ x + (-y) } \leq \Abs{ x } + \Abs{ -y } = \Abs{ x } + \Abs{ y }</latex>
+         </math.display>
+         <caption>Step 3: <math>
+               <latex>\Abs{ x } - \Abs{ y } \leq \Abs{ x-y }</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>To see this, observe</para.body>
+         </para>
+         <math.display>
+            <latex>\Abs{ x } = \Abs{ (x - y) + y } \leq \Abs{ x-y } + \Abs{ y }</latex>
+         </math.display>
+         <para>
+            <para.body>Now subtracting <math>
+                  <latex>\Abs{y}</latex>
+               </math> on both sides gives</para.body>
+         </para>
+         <math.display>
+            <latex>\Abs{x-y} \leq \Abs{x} + \Abs{ y }</latex>
+         </math.display>
+         <caption>Step 4: <math>
+               <latex>\Abs{ \Abs{ x } - \Abs{ y } } \leq \Abs{ x - y }</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Using Step 3, we see.</para.body>
+         </para>
+         <math.display>
+            <latex>-(\Abs{x} - \Abs{y}) = \Abs{y} - \Abs{x} \leq \Abs{ y - x } = \Abs{ x-y}</latex>
+         </math.display>
+         <para>
+            <para.body>Multiplying both sides of this inequality by <math>
+                  <latex>(-1)</latex>
+               </math> gives</para.body>
+         </para>
+         <math.display>
+            <latex>-\Abs{ x-y} \leq \Abs{x} - \Abs{y}</latex>
+         </math.display>
+         <para>
+            <para.body>Combining this with the inequality in Step 3 gives</para.body>
+         </para>
+         <math.display>
+            <latex>-\Abs{ x-y } \leq \Abs{x} - \Abs{y} \leq \Abs{x-y}</latex>
+         </math.display>
+         <para>
+            <para.body>and so</para.body>
+         </para>
+         <math.display>
+            <latex>\Abs{ \Abs{x} - \Abs{y} } \leq \Abs{ x-y }</latex>
+         </math.display>
+         <caption>Step 5: <math>
+               <latex>\Abs{x} - \Abs{y} \leq \Abs{ \Abs{x} - \Abs{y} }</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>For arbitrary <math>
+                  <latex>t\in \RNr</latex>
+               </math> we have <math>
+                  <latex>t\leq \Abs{t}</latex>
+               </math>. Setting <math>
+                  <latex>t:=\Abs{x} - \Abs{y}</latex>
+               </math> gives the claim in Step 5. – The proof of the corollary is complete.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

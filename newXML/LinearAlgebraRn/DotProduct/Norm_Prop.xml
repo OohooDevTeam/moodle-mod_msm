@@ -7,9 +7,11 @@
    <caption>Algebraic Properties of the Norm Operation</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation of <math>
-               <latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex>
-            </math>
+         <info.caption>
+            <caption>Explanation of <math>
+                  <latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex>
+               </math>
+            </caption>
          </info.caption>
          <para>
             <para.body>This property is intuitively quite plausible: The vector <math>
@@ -28,7 +30,9 @@
    </associate>
    <associate type="Example">
       <info>
-         <info.caption>Example of a Unit Vector</info.caption>
+         <info.caption>
+            <caption>Example of a Unit Vector</caption>
+         </info.caption>
          <para>
             <para.body>For example, the unit vector in the direction of <math>
                   <latex>\Vect{x}=(4,2,4)</latex>
@@ -41,7 +45,9 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>Comment on nondegeneracy property of norm</info.caption>
+         <info.caption>
+            <caption>Comment on nondegeneracy property of norm</caption>
+         </info.caption>
          <para>
             <para.body>In other words: there is exactly one vector in <math>
                   <latex>\RNr[n]</latex>
@@ -179,177 +185,201 @@
          <logic>
             <part.ref>Prop_NormCommutesScalars</part.ref>
          </logic>
-         <caption>Prop_NormCommutesScalars</caption>
-         <proof.block.body>
-            <math.array column="3">
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>|t\cdot \Vect{x}|</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>|t\cdot (x_1,\dots ,x_n)|</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>|(tx_1,\dots ,tx_n)|</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sqrt{(tx_1)^2+\cdots + (tx_n)^2}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sqrt{t^2x_{1}^{2}+ \cdots + t^2x_{n}^{2}}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>\sqrt{t^2(x_{1}^{2}+\cdots + x_{n}^{2})}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>|t|\cdot \sqrt{x_{1}^{2}+\cdots +x_{n}^{2}}</latex>
-                     </math>
-                  </cell>
-               </row>
-               <row rowspan="1">
-                  <cell colspan="2" halign="center" valign="middle"/>
-                  <cell colspan="1" halign="center" valign="middle">
-                     <math>
-                        <latex>=</latex>
-                     </math>
-                  </cell>
-                  <cell colspan="2" halign="center" valign="middle">
-                     <math>
-                        <latex>|t|\cdot |\Vect{x}|</latex>
-                     </math>
-                  </cell>
-               </row>
-            </math.array>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			We verify this property by direct computation:
+		</caption>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>|t\cdot \Vect{x}|</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>|t\cdot (x_1,\dots ,x_n)|</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>|(tx_1,\dots ,tx_n)|</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sqrt{(tx_1)^2+\cdots + (tx_n)^2}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sqrt{t^2x_{1}^{2}+ \cdots + t^2x_{n}^{2}}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\sqrt{t^2(x_{1}^{2}+\cdots + x_{n}^{2})}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>|t|\cdot \sqrt{x_{1}^{2}+\cdots +x_{n}^{2}}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>|t|\cdot |\Vect{x}|</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as was to be shown.</para.body>
+         </para>
          <logic>
             <part.ref>Prop_ConstructUnitVector</part.ref>
          </logic>
-         <caption>Prop_ConstructUnitVector</caption>
-         <proof.block.body>
-            <para align="center">
-               <para.body>
-                  <math>
-                     <latex>\left| \frac{\Vect{x}}{|\Vect{x}|} \right|</latex>
-                  </math>
-                  <subordinate>
-                     <hot>
-                        <math>
-                           <latex>=</latex>
-                        </math>
-                     </hot>
-                     <info>
-                        <info.caption>Explanation</info.caption>
-                        <para>
-                           <para.body>Here we use the previous property of the norm operation: <math>
-                                 <latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex>
-                              </math>.</para.body>
-                        </para>
-                     </info>
-                  </subordinate>
-                  <math>
-                     <latex>|1/|\Vect{x}| | \cdot |\Vect{x}|</latex>
-                  </math>
-                  <subordinate>
-                     <hot>
-                        <math>
-                           <latex>=</latex>
-                        </math>
-                     </hot>
-                     <info>
-                        <info.caption>Explanation</info.caption>
-                        <para>
-                           <para.body>Here we use that <math>
-                                 <latex>|\Vect{x}| &gt; 0</latex>
-                              </math>
-                           </para.body>
-                        </para>
-                     </info>
-                  </subordinate>
-                  <math>
-                     <latex>= 1</latex>
-                  </math>
-               </para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			We verify this property by direct computation:
+		</caption>
+         <para align="center">
+            <para.body>
+               <math>
+                  <latex>\left| \frac{\Vect{x}}{|\Vect{x}|} \right|</latex>
+               </math>
+               <subordinate>
+                  <hot>
+                     <math>
+                        <latex>=</latex>
+                     </math>
+                  </hot>
+                  <info>
+                     <info.caption>
+                        <caption>Explanation</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>Here we use the previous property of the norm operation: <math>
+                              <latex>|t\cdot \Vect{x}| = |t|\cdot |\Vect{x}|</latex>
+                           </math>.</para.body>
+                     </para>
+                  </info>
+               </subordinate>
+               <math>
+                  <latex>|1/|\Vect{x}| | \cdot |\Vect{x}|</latex>
+               </math>
+               <subordinate>
+                  <hot>
+                     <math>
+                        <latex>=</latex>
+                     </math>
+                  </hot>
+                  <info>
+                     <info.caption>
+                        <caption>Explanation</caption>
+                     </info.caption>
+                     <para>
+                        <para.body>Here we use that <math>
+                              <latex>|\Vect{x}| &gt; 0</latex>
+                           </math>
+                        </para.body>
+                     </para>
+                  </info>
+               </subordinate>
+               <math>
+                  <latex>= 1</latex>
+               </math>
+            </para.body>
+         </para>
          <logic>
             <part.ref>Prop_NormNonDegenerate</part.ref>
          </logic>
-         <caption>Prop_NormNonDegenerate</caption>
-         <proof.block.body>
-            <para>
-               <para.body>If <math>
-                     <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
-                  </math>, consider first the case where <math>
-                     <latex>\Vect{x}= \Vect{0}</latex>
-                  </math>. In this case <math>
-                     <latex>|\Vect{x}| = \sqrt{0^2+\cdots +0^2} = 0</latex>
-                  </math>. So, as expected: the zero vector has norm <math>
-                     <latex>0</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+			Non degeneracy of norm:
+		</caption>
+         <para>
+            <para.body>If <math>
+                  <latex>\Vect{x} = (x_1,\dots ,x_n)</latex>
+               </math>, consider first the case where <math>
+                  <latex>\Vect{x}= \Vect{0}</latex>
+               </math>. In this case <math>
+                  <latex>|\Vect{x}| = \sqrt{0^2+\cdots +0^2} = 0</latex>
+               </math>. So, as expected: the zero vector has norm <math>
+                  <latex>0</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>For the converse, suppose <math>
+                  <latex>\Vect{x}</latex>
+               </math> satisfies <math>
+                  <latex>|\Vect{x}| = 0</latex>
+               </math>. We verify by direct computation that <math>
+                  <latex>\Vect{x} = \Vect{0}</latex>
+               </math>. Indeed, we have</para.body>
+         </para>
+         <math.display>
+            <latex>0 = |\Vect{x}|^2 = x_{1}^{2} + \cdots + x_{n}^{2}</latex>
+         </math.display>
+         <para>
+            <para.body>Each of the squares on the right is greater than or equal to <math>
+                  <latex>0</latex>
+               </math>. So, if the sum of these squares vanishes, so must each square by itself. Therefore <math>
+                  <latex>x_1=\cdots =x_n=0</latex>
+               </math>; i.e. <math>
+                  <latex>\Vect{x}=\Vect{0}</latex>
+               </math> as claimed.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

@@ -8,7 +8,9 @@
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_OrthogonalSplitting"/>
       <info>
-         <info.caption>Examples</info.caption>
+         <info.caption>
+            <caption>Examples</caption>
+         </info.caption>
          <para>
             <para.body>Examples of splittings by orthogonal complement.</para.body>
          </para>

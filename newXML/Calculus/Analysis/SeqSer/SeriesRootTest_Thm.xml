@@ -7,7 +7,9 @@
    <caption>The root test for absolute convergence</caption>
    <associate type="Comment">
       <info>
-         <info.caption>Comment</info.caption>
+         <info.caption>
+            <caption>Comment</caption>
+         </info.caption>
          <para>
             <para.body>The statement of the root test leaves open the question: what happens if <math>
                   <latex> \lim_{n\to \infty} \sqrt[n]{\Abs{a_n}}=L = 1</latex>
@@ -63,25 +65,106 @@
          <logic>
             <part.ref>LessThan1</part.ref>
          </logic>
-         <caption>LessThan1</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We need to show that, under the stated condition, <math>
-                     <latex>\sum_{n=0}^{\infty} \Abs{ a_n }</latex>
-                  </math> converges to a number. Indeed, we have</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> If <math>
+               <latex> \lim_{n\to \infty} \sqrt[n]{\Abs{a_n}}=L &lt; 1</latex>
+            </math>, then <math>
+               <latex>\sum_{n=0}^{\infty}a_n</latex>
+            </math> converges absolutely.</caption>
+         <para>
+            <para.body>We need to show that, under the stated condition, <math>
+                  <latex>\sum_{n=0}^{\infty} \Abs{ a_n }</latex>
+               </math> converges to a number. Indeed, we have</para.body>
+         </para>
+         <math.display>
+            <latex> L &lt; \dfrac{L+1}{2} =: r &lt; 1</latex>
+         </math.display>
+         <para>
+            <para.body>and, with <math>
+                  <latex> \varepsilon := r-L &gt; 0</latex>
+               </math>, we have further</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+				\sqrt[n]{\Abs{ a_n }} &lt; L + \varepsilon = r
+				
+			</latex>
+         </math.display>
+         <para>
+            <para.body>for <math>
+                  <latex>n</latex>
+               </math> sufficiently large. Therefore</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+				0\leq \Abs{ a_n } &lt; r^n
+				
+			</latex>
+         </math.display>
+         <para>
+            <para.body>for <math>
+                  <latex>n</latex>
+               </math> sufficiently large. It follows that <math>
+                  <latex>\sum_{n=0}^{\infty} \Abs{ a_n }</latex>
+               </math> converges to a number by limit comparison with the geometric series <math>
+                  <latex>\sum_{n=0}^{\infty} r^n</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>GreaterThan1</part.ref>
          </logic>
-         <caption>GreaterThan1</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Observe</para.body>
-            </para>
-         </proof.block.body>
+         <caption> If <math>
+               <latex> \lim_{n\to \infty} \sqrt[n]{\Abs{a_n}}=L &gt; 1</latex>
+            </math>, then <math>
+               <latex>\sum_{n=0}^{\infty}a_n</latex>
+            </math> does not converges to a number.</caption>
+         <para>
+            <para.body>Observe</para.body>
+         </para>
+         <math.display>
+            <latex>
+				 1 &lt; \dfrac{1+L}{2} =: r &lt; L 
+			</latex>
+         </math.display>
+         <para>
+            <para.body>Setting <math>
+                  <latex> \varepsilon := L-r &gt; 0 </latex>
+               </math>, we have for <math>
+                  <latex>n</latex>
+               </math> sufficiently large</para.body>
+         </para>
+         <math.display>
+            <latex>
+				 1 &lt; r =  L - \varepsilon &lt; \sqrt[n]{ \Abs{ a_n } } 
+			</latex>
+         </math.display>
+         <para>
+            <para.body>In particular, for <math>
+                  <latex>n</latex>
+               </math> sufficiently large, <math>
+                  <latex> \Abs{ a_n } &gt; 1 </latex>
+               </math>. So the sequence <math>
+                  <latex>(a_n)</latex>
+               </math> fails to converge to <math>
+                  <latex>0</latex>
+               </math>. <subordinate>
+                  <hot>So</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_ConvergentSeriesOnlyFromNullSequence"/>
+                     <info>
+                        <para>
+                           <para.body>Recall: if <math>
+                                 <latex>\sum_{n=0}^{\infty} a_n</latex>
+                              </math> converges to a number, then <math>
+                                 <latex>\lim_{n\to\infty} a_n = 0</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+			 the given sum can not converge to a number.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

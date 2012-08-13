@@ -38,7 +38,9 @@
          <index.glossary>
             <term>Cramer’s rule</term>
             <info>
-               <info.caption>Cramer’ rule</info.caption>
+               <info.caption>
+                  <caption>Cramer’ rule</caption>
+               </info.caption>
                <para>
                   <para.body>is a formula for finding the solution of  a system of <math>
                         <latex>n</latex>

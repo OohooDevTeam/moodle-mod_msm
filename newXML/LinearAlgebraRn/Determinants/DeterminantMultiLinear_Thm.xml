@@ -7,7 +7,9 @@
    <caption>Determinant: Multilinearity properties</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>Explanation: Multilinear</info.caption>
+         <info.caption>
+            <caption>Explanation: Multilinear</caption>
+         </info.caption>
          <para>
             <para.body>What exactly does it mean: ‘the determinant operation is linear in each column’? Here you can find a detailed explanation.</para.body>
          </para>

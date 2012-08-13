@@ -7,7 +7,9 @@
    <caption>Cross product: geometric properties</caption>
    <associate type="Illustration">
       <info>
-         <info.caption>Illustration</info.caption>
+         <info.caption>
+            <caption>Illustration</caption>
+         </info.caption>
          <para>
             <para.body>An illustration of the geometric properties of the cross product</para.body>
          </para>
@@ -117,125 +119,801 @@
    </statement.theorem>
    <proof>
       <proof.block>
+         <para>
+            <para.body>Each of these statements can be proved by computing according to the definitions. However, we derive more conceptual arguments from the 
+			<subordinate>
+                  <hot>fundamental relationship</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_CrossDotDeterminant"/>
+                     <info>
+                        <para>
+                           <para.body>Look up this relationship</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
+			between cross product, dot product, and determinant.</para.body>
+         </para>
          <logic>
             <part.ref>Perpendicular</part.ref>
          </logic>
-         <caption>Perpendicular</caption>
-         <proof.block.body>
-            <para>
-               <para.body>To see that <math>
-                     <latex>\Vect{x}</latex>
-                  </math> and <math>
-                     <latex>\Vect{y}</latex>
-                  </math> are perpendicular to <math>
-                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
-                  </math>, we compute</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+            </math> is perpendicular to both <math>
+               <latex>\Vect{x}</latex>
+            </math> and <math>
+               <latex>\Vect{y}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>To see that <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> are perpendicular to <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+               </math>, we compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ \Vect{x} }{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use that, if two columns of a matrix <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> are equal, then <math>
+                                 <latex>\det(\Mtrx{A}) = 0</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det[ \Vect{x}\ \ \Vect{x}\ \ \Vect{y}] = 0</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ \Vect{y} }{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use that, if two columns of a matrix <math>
+                                 <latex>\Mtrx{A}</latex>
+                              </math> are equal, then <math>
+                                 <latex>\det(\Mtrx{A}) = 0</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det[ \Vect{y}\ \ \Vect{x}\ \ \Vect{y}] = 0</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>So, indeed, <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+               </math> is perpendicular to both of its factors.</para.body>
+         </para>
          <logic>
             <part.ref>RightHandOrientation</part.ref>
          </logic>
-         <caption>RightHandOrientation</caption>
-         <proof.block.body>
-            <para>
-               <para.body>To see that the vector triple <math>
-                     <latex>( \Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
-                  </math> represents the right hand orientation of <math>
-                     <latex>\RNr[3]</latex>
-                  </math>, we compute</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>(\Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+            </math> represents the right hand orientation</caption>
+         <para>
+            <para.body>To see that the vector triple <math>
+                  <latex>( \Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+               </math> represents the right hand orientation of <math>
+                  <latex>\RNr[3]</latex>
+               </math>, we compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det[ \Vect{x}\ \ \Vect{y}\ \ \CrssPr{ \Vect{x} }{ \Vect{y} }]</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex> &gt; 		</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we need to use the assumption that <math>
+                                 <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } \neq \Vect{0}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>Given that the determinant is positive, we deduce that the vector triple <math>
+                  <latex>( \Vect{x} , \Vect{y} , \CrssPr{ \Vect{x} }{ \Vect{y} })</latex>
+               </math> represents the right hand orientation of <math>
+                  <latex>\RNr[3]</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>ZeroIfParallel</part.ref>
          </logic>
-         <caption>ZeroIfParallel</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Consider first the case where <math>
-                     <latex>\Vect{x}</latex>
-                  </math> and <math>
-                     <latex>\Vect{y}</latex>
-                  </math> are parallel, so that <math>
-                     <latex>\Vect{y} = t \Vect{x}</latex>
-                  </math>, say. We need to show that <math>
-                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>
-                  </math>. Indeed,</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>
+            </math> if and only if <math>
+               <latex>\Vect{x}</latex>
+            </math> and <math>
+               <latex>\Vect{y}</latex>
+            </math> are parallel.</caption>
+         <para>
+            <para.body>Consider first the case where <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> are parallel, so that <math>
+                  <latex>\Vect{y} = t \Vect{x}</latex>
+               </math>, say. We need to show that <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>
+               </math>. Indeed,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\CrssPr{ \Vect{x} }{ t\cdot \Vect{y} }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use that the crossproduct operation is linear in the second factor</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot (\CrssPr{ \Vect{x} }{ \Vect{x} })</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the antisymmetry property of the cross product operation. It gives</para.body>
+                        </para>
+                        <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>\CrssPr{ \Vect{x} }{ \Vect{x} }</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <math>
+                                    <latex>=</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>-\CrssPr{ \Vect{x} }{ \Vect{x} }</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+                        <para>
+                           <para.body>Therefore <math>
+                                 <latex>\CrssPr{ \Vect{x} }{ \Vect{x} } = \Vect{0}</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>t\cdot \Vect{0}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>For the converse, assume now that <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>
+               </math>. We need to show that the two vectors <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> are parallel. If one of the vectors is <math>
+                  <latex>\Vect{0}</latex>
+               </math>, we are done. So assume now both vectors are not <math>
+                  <latex>\Vect{0}</latex>
+               </math> and have coordinates</para.body>
+         </para>
+         <para align="center">
+            <para.body>
+               <math>
+                  <latex>\Vect{x} = (x_1,x_2,x_3)</latex>
+               </math>   and   <math>
+                  <latex>\Vect{y} = (y_1,y_2,y_3)</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>We show the existence of <math>
+                  <latex>t</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math> with <math>
+                  <latex>\Vect{y} = t \Vect{x}</latex>
+               </math>. We know that at least one of the coordinates of <math>
+                  <latex>\Vect{x}</latex>
+               </math> is not <math>
+                  <latex>0</latex>
+               </math>; say <math>
+                  <latex>x_1\neq 0</latex>
+               </math>. Then <math>
+                  <latex>t:=y_1/x_1</latex>
+               </math> is defined, and we claim that <math>
+                  <latex>\Vect{y} = t\cdot \Vect{x}</latex>
+               </math>. Indeed, since <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} } = \Vect{0}</latex>
+               </math>, we have</para.body>
+         </para>
+         <math.display>
+            <latex>
+				
+\aligned
+0 &amp;= \det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_3 &amp; y_3
+\end{array}
+\right] &amp;= x_1y_3-x_3y_1 &amp;\quad \text{so}\quad &amp;y_3=\dfrac{y_1}{x_1}x_3 = t x_3 \\
+0 &amp;= \det
+\left[
+\begin{array}{cc}
+x_1 &amp; y_1 \\
+x_2 &amp; y_2
+\end{array}
+\right] &amp;= x_1y_2-x_2y_1 &amp;\quad \text{so}\quad &amp;y_2=\dfrac{y_1}{x_1}x_2 = t x_2
+\endaligned
+
+			</latex>
+         </math.display>
+         <para>
+            <para.body>This shows that <math>
+                  <latex>\Vect{y} = t \Vect{x}</latex>
+               </math>, and so the two vectors are parallel.</para.body>
+         </para>
          <logic>
             <part.ref>Length</part.ref>
          </logic>
-         <caption>Length</caption>
-         <proof.block.body>
-            <para>
-               <para.body>To relate <math>
+         <caption>
+            <math>
+               <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+            </math> is the area of the parallelogram spanned by <math>
+               <latex>\Vect{x}</latex>
+            </math> and <math>
+               <latex>\Vect{y}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>To relate <math>
+                  <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+               </math> to the area of the parallelogram spanned by <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math>, we consider first the case where <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }= \Vect{0}</latex>
+               </math>. From (3) we know that <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> are parallel. Therefore the parallelogram <math>
+                  <latex>P</latex>
+               </math> spanned by <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> is just a line segment. So the claimed identity</para.body>
+         </para>
+         <math.display>
+            <latex>\text{Area}(P) = 0 = \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
+         </math.display>
+         <para>
+            <para.body>holds in this case.</para.body>
+         </para>
+         <para>
+            <para.body>Let us now turn to the situation where <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }\neq \Vect{0}</latex>
+               </math>. It follows that</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{n} := \dfrac{ \CrssPr{ \Vect{x} }{ \Vect{y} }}{ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } }</latex>
+         </math.display>
+         <para>
+            <para.body>is defined and satisfies <math>
+                  <latex>\abs{ \Vect{n} } = 1</latex>
+               </math>. Moreover, we know that <math>
+                  <latex>\Vect{n}</latex>
+               </math> is perpendicular to both <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math>. Therefore</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\text{Area}(P)</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>This is so because the parallelepiped spanned by <math>
+                                 <latex>\Vect{x}</latex>
+                              </math>, <math>
+                                 <latex>\Vect{y}</latex>
+                              </math>, and <math>
+                                 <latex>\Vect{y}</latex>
+                              </math> has as its base the parallelogram <math>
+                                 <latex>P</latex>
+                              </math> spanned by <math>
+                                 <latex>\Vect{x}</latex>
+                              </math> and <math>
+                                 <latex>\Vect{y}</latex>
+                              </math>, and has height <math>
+                                 <latex>\abs{ \Vect{n} }=11</latex>
+                              </math>.</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Vol( \Vect{x} , \Vect{y} , \Vect{n} )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\abs{ \det[ \Vect{x}\ \ \Vect{y} \ \ \Vect{n}] }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\abs{ \DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \Vect{n} } }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\abs{ \DotPr{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }{ \dfrac{ \CrssPr{ \Vect{x} }{ \Vect{y} }}{ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } } } }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\dfrac{ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2 }{ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } }</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }</latex>
-                  </math> to the area of the parallelogram spanned by <math>
-                     <latex>\Vect{x}</latex>
-                  </math> and <math>
-                     <latex>\Vect{y}</latex>
-                  </math>, we consider first the case where <math>
-                     <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }= \Vect{0}</latex>
-                  </math>. From (3) we know that <math>
-                     <latex>\Vect{x}</latex>
-                  </math> and <math>
-                     <latex>\Vect{y}</latex>
-                  </math> are parallel. Therefore the parallelogram <math>
-                     <latex>P</latex>
-                  </math> spanned by <math>
-                     <latex>\Vect{x}</latex>
-                  </math> and <math>
-                     <latex>\Vect{y}</latex>
-                  </math> is just a line segment. So the claimed identity</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>This is what we wanted to show.</para.body>
+         </para>
          <logic>
             <part.ref>SineFormula</part.ref>
          </logic>
-         <caption>SineFormula</caption>
-         <proof.block.body>
-            <para>
-               <para.body>The parallelogram spanned by <math>
-                     <latex>\Vect{x}</latex>
-                  </math> and <math>
-                     <latex>\Vect{y}</latex>
-                  </math> has a base of length <math>
-                     <latex>\abs{ \Vect{x} }</latex>
-                  </math> and a height of <math>
-                     <latex>\sin \sphericalangle( \Vect{x} , \Vect{y} ) \cdot \abs{ \Vect{y} }</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> If <math>
+               <latex>\Vect{x},\Vect{y} \neq \Vect{0}</latex>
+            </math>, then <math>
+               <latex>\abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } } = \abs{ \Vect{x} } \abs{ \Vect{y} } \cdot \sin \sphericalangle(\Vect{x} , \Vect{y} )</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>The parallelogram spanned by <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> has a base of length <math>
+                  <latex>\abs{ \Vect{x} }</latex>
+               </math> and a height of <math>
+                  <latex>\sin \sphericalangle( \Vect{x} , \Vect{y} ) \cdot \abs{ \Vect{y} }</latex>
+               </math>.</para.body>
+         </para>
+         <media type="image" active="0" inline="0">
+            <img src="ims/CrossProductArea.gif"/>
+         </media>
+         <para>
+            <para.body>This means that the area of the parallelogram spanned by <math>
+                  <latex>\Vect{x}</latex>
+               </math> and <math>
+                  <latex>\Vect{y}</latex>
+               </math> is as claimed, namely <math>
+                  <latex>\Abs{ \Vect{x} } \Abs{ \Vect{y} }\cdot \sin\sphericalangle (\Vect{x} , \Vect{y} )</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>LagrangeIdentity</part.ref>
          </logic>
-         <caption>LagrangeIdentity</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This follows now by direct computation</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption> Lagrange's identity</caption>
+         <para>
+            <para.body>This follows now by direct computation</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} } }^2</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\cdot \sin^2\sphericalangle( \Vect{x} , \Vect{y} )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the trigonometric identity</para.body>
+                        </para>
+                        <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>\sin^2\alpha\ +\ \cos^2\alpha</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <math>
+                                    <latex>=</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>1</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\cdot \left(1 - \cos^2\sphericalangle( \Vect{x} , \Vect{y} ) \right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\ -\ \Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\cdot \cos^2(\sphericalangle( \Vect{x} , \Vect{y} ) )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Here we use the geometric interpretation of the dot product:</para.body>
+                        </para>
+                        <math.array column="3">
+                           <row rowspan="1">
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="1" halign="center" valign="middle">
+                                 <math>
+                                    <latex>=</latex>
+                                 </math>
+                              </cell>
+                              <cell colspan="2" halign="center" valign="middle">
+                                 <math>
+                                    <latex>\Abs{ \Vect{x} } \Abs{ \Vect{y} }\cdot \cos(\sphericalangle( \Vect{x} , \Vect{y} ) )</latex>
+                                 </math>
+                              </cell>
+                           </row>
+                        </math.array>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Abs{ \Vect{x} }^2 \Abs{ \Vect{y} }^2\ -\ (\DotPr{ \Vect{x} }{ \Vect{y} })^2</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>DoubleCross</part.ref>
          </logic>
-         <caption>DoubleCross</caption>
-         <proof.block.body>
-            <para>
-               <para.body>The only argument fully available to us at the moment seems to be to evaluate both sides of the equation and check that they agree. Here is a sketch of an alternate argument which involves the concept of a basis.</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+            <math>
+               <latex>\CrssPr{ \Vect{a} }{( \CrssPr{ \Vect{x} }{ \Vect{y} } )} = (\DotPr{ \Vect{a} }{ \Vect{y} })\cdot \Vect{x}\ -\ (\DotPr{ \Vect{a} }{ \Vect{x} })\cdot \Vect{y}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>The only argument fully available to us at the moment seems to be to evaluate both sides of the equation and check that they agree. Here is a sketch of an alternate argument which involves the concept of a basis.</para.body>
+         </para>
+         <para>
+            <para.body>If  <math>
+                  <latex>\Vect{x}</latex>
+               </math>  and  <math>
+                  <latex>\Vect{y}</latex>
+               </math>  are parallel, both sides of the identity are seen to be <math>
+                  <latex>0</latex>
+               </math>. If they are not parallel, the vectors  <math>
+                  <latex>\Vect{x}</latex>
+               </math>, <math>
+                  <latex>\Vect{y}</latex>
+               </math>, and  <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+               </math>  form a basis of  <math>
+                  <latex>\RNr[3]</latex>
+               </math>. Therefore a vector <math>
+                  <latex>\Vect{z}</latex>
+               </math> is <math>
+                  <latex>\Vect{0}</latex>
+               </math> exactly when its dot product with each of the basis vectors is <math>
+                  <latex>0</latex>
+               </math>. Accordingly, we show that the dot product of</para.body>
+         </para>
+         <math.display>
+            <latex>\Vect{z} := \CrssPr{ \Vect{a} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} })} + (\DotPr{ \Vect{a} }{ \Vect{x} })\cdot \Vect{y}\ -\ (\DotPr{\Vect{a} }{ \Vect{y} })\cdot \Vect{x}</latex>
+         </math.display>
+         <para>
+            <para.body>with each of the three basis vectors vanishes. Now  <math>
+                  <latex>\DotPr{ \Vect{z} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) } = 0</latex>
+               </math>, because each summand of <math>
+                  <latex>\Vect{z}</latex>
+               </math> is perpendicular to <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+               </math>. To see that <math>
+                  <latex>\DotPr{ \Vect{z} }{ \Vect{x} } = 0 = \DotPr{ \Vect{z} }{ \Vect{y} }</latex>
+               </math>, we simplify matters further: As a function of <math>
+                  <latex>\Vect{a}</latex>
+               </math>, <math>
+                  <latex>\Vect{z}</latex>
+               </math> is linear. So it suffices to consider the cases where <math>
+                  <latex>\Vect{a} = \Vect{x}</latex>
+               </math>, <math>
+                  <latex>\Vect{y}</latex>
+               </math>, <math>
+                  <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
+               </math>. We find:</para.body>
+         </para>
+         <math.display>
+            <latex>\DotPr{ \left( \CrssPr{ \Vect{x} }{ ( \CrssPr{ \Vect{x} }{ \Vect{y} } ) } \right)}{ \Vect{x} }\ +\ \abs{ \Vect{x} }^2 (\DotPr{ \Vect{y} }{ \Vect{x} })\ -\ (\DotPr{ \Vect{x} }{ \Vect{y} }) \abs{ \Vect{x} }^2\ =\ 0</latex>
+         </math.display>
+         <para>
+            <para.body>as expected. Moreover,</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ \left( \CrssPr{ \Vect{x} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }\right) }{ \Vect{y} } + \abs{ \Vect{x} }^2 \abs{ \Vect{y} }^2 - (\DotPr{ \Vect{x} }{ \Vect{y} })^2</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\DotPr{ \left( \CrssPr{ \Vect{x} }{ (\CrssPr{ \Vect{x} }{ \Vect{y} }) }\right) }{ \Vect{y} }\ +\ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\det[ \Vect{x}\ \ (\CrssPr{ \Vect{x} }{ \Vect{y} })\ \ \Vect{y} ]\ +\ \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\det[ \Vect{x}\ \ \Vect{y}\ \ (\CrssPr{ \Vect{x} }{ \Vect{y} })] + \abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>-\Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2\ +\ \Abs{ \CrssPr{ \Vect{x} }{ \Vect{y} }}^2</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>0</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>The case where <math>
+                  <latex>\Vect{a} = \Vect{y}</latex>
+               </math> is treated similarly.</para.body>
+         </para>
+         <para>
+            <para.body>This completes the proof of the geometric properties of the cross product.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

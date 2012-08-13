@@ -120,186 +120,1251 @@
    </statement.theorem>
    <proof type="Proof">
       <proof.block>
+         <para>
+            <para.body>All of these properties appear ‘totally obvious‘ because they are familiar from the real number system. However, vectors are not the same as real numbers. So we need to verify these claims. What do we have to do? For each of these statements we have to review the underlying definitions and make corresponding computations. We will find that each of these properties can be proven by invoking the corresponding property of the real number system in each coordinate position.</para.body>
+         </para>
          <logic>
             <part.ref>Prop_VectorAdditionCommutes</part.ref>
          </logic>
-         <caption>Prop_VectorAdditionCommutes</caption>
-         <proof.block.body>
-            <para>
-               <para.body>In our geometric interpretation of vector addition, <math>
-                     <latex>\mathbf{x} + \mathbf{y}</latex>
-                  </math> corresponds to an arrow diagram in which <math>
-                     <latex>\mathbf{y}</latex>
-                  </math> follows the vector <math>
-                     <latex>\mathbf{x}</latex>
-                  </math>. On the other hand, <math>
-                     <latex>\mathbf{y} + \mathbf{x}</latex>
-                  </math> corresponds to a vector diagram which <math>
-                     <latex>\mathbf{x}</latex>
-                  </math> follows the vector <math>
-                     <latex>\mathbf{y}</latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			Vector addition is commutative: <math>
+               <latex>\mathbf{x} + \mathbf{y} = \mathbf{y} + \mathbf{x}</latex>
+            </math>, geometric proof
+		</caption>
+         <para>
+            <para.body>In our geometric interpretation of vector addition, <math>
+                  <latex>\mathbf{x} + \mathbf{y}</latex>
+               </math> corresponds to an arrow diagram in which <math>
+                  <latex>\mathbf{y}</latex>
+               </math> follows the vector <math>
+                  <latex>\mathbf{x}</latex>
+               </math>. On the other hand, <math>
+                  <latex>\mathbf{y} + \mathbf{x}</latex>
+               </math> corresponds to a vector diagram which <math>
+                  <latex>\mathbf{x}</latex>
+               </math> follows the vector <math>
+                  <latex>\mathbf{y}</latex>
+               </math>.</para.body>
+         </para>
+         <para align="center">
+            <para.body>
+               <media type="image" active="1" inline="0">
+                  <img src="ims/VectorsAddCommutative.gif"/>
+               </media>
+               <info>
+                  <para>
+                     <para.body>Both of the vectors <math>
+                           <latex>\mathbf{x} + \mathbf{y}</latex>
+                        </math> and <math>
+                           <latex>\mathbf{y} + \mathbf{x}</latex>
+                        </math> are represented by the same diagonal of the vector addition parallelogram.</para.body>
+                  </para>
+               </info>
+            </para.body>
+         </para>
+         <para>
+            <para.body>As the diagram above shows, both sum vectors are represented by the same diagonal in a parallelogram. So both sum vectors are equal.</para.body>
+         </para>
          <logic>
             <part.ref>Prop_VectorAdditionCommutes</part.ref>
          </logic>
-         <caption>Prop_VectorAdditionCommutes</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We compute, using the definition of vector addition: If <math>
-                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
-                  </math> and <math>
-                     <latex>\mathbf{y} = (y_1,\dots ,y_n)</latex>
-                  </math>, then</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			Vector addition is commutative: <math>
+               <latex>\mathbf{x} + \mathbf{y} = \mathbf{y} + \mathbf{x}</latex>
+            </math>, algebraic proof
+		</caption>
+         <para>
+            <para.body>We compute, using the definition of vector addition: If <math>
+                  <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+               </math> and <math>
+                  <latex>\mathbf{y} = (y_1,\dots ,y_n)</latex>
+               </math>, then</para.body>
+         </para>
+         <table align="center">
+            <row>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\mathbf{x} = \mathbf{y}</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para align="center">
+                                 <para.body>recalling the definition of <math>
+                                       <latex>\mathbf{x}</latex>
+                                    </math> and <math>
+                                       <latex>\mathbf{y}</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(x_1,\dots ,x_n)\ +\ (y_1,\dots ,y_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para align="center">
+                                 <para.body>This is the definition of vector addition</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(x_1+y_1,\dots ,x_n+y_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para align="center">
+                                 <para.body>In each coordinate position, we use here that addition of numbers in <math>
+                                       <latex>\RNr[n]</latex>
+                                    </math> is commutative; i.e. <math>
+                                       <latex>u+v=v+u</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(y_1+x_1,\dots ,y_n+x_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para align="center">
+                                 <para.body>This is the definition of vector addition</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(y_1,\dots ,y_n)\ +\ (x_1,\dots ,x_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para align="center">
+                                 <para.body>recalling the definition of <math>
+                                       <latex>\mathbf{x}</latex>
+                                    </math> and <math>
+                                       <latex>\mathbf{y}</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\mathbf{y} + \mathbf{x}</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+         </table>
          <logic>
             <part.ref>Prop_VectorAdditionAssociative</part.ref>
          </logic>
-         <caption>Prop_VectorAdditionAssociative</caption>
-         <proof.block.body>
-            <para>
-               <para.body>We verify this property by direct computation: Given three vectors in <math>
-                     <latex>\RNr[n]</latex>
-                  </math>, <math>
-                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
-                  </math>, <math>
-                     <latex>\mathbf{y}=(y_1,\dots ,y_n)</latex>
-                  </math>, and <math>
-                     <latex>\mathbf{z} = (z_1,\dots ,z_n)</latex>
-                  </math> we find</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			Associativity of vector addition: <math>
+               <latex>(\mathbf{x} + \mathbf{y}) + \mathbf{z} = \mathbf{x} + (\mathbf{y} + \mathbf{z})</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>We verify this property by direct computation: Given three vectors in <math>
+                  <latex>\RNr[n]</latex>
+               </math>, <math>
+                  <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+               </math>, <math>
+                  <latex>\mathbf{y}=(y_1,\dots ,y_n)</latex>
+               </math>, and <math>
+                  <latex>\mathbf{z} = (z_1,\dots ,z_n)</latex>
+               </math> we find</para.body>
+         </para>
+         <table align="center">
+            <row>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(\mathbf{x} + \mathbf{y}) + \mathbf{z})</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>Recalling the definition of <math>
+                                       <latex>\mathbf{x},\mathbf{y},\mathbf{z}</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\left( (x_1,\dots ,x_n) + (y_1,\dots ,y_n)\right)\ +\ (z_1,\dots ,z_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>According to the definition of vector addition.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(x_1+y_1,\dots ,x_n+y_n)\ +\ (z_1,\dots ,z_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>According to the definition of vector addition.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\left((x_1+y_1)+z_1,\dots ,(x_n+y_n)+z_n\right)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>In each coordinate use the associativity property of addition of numbers: <math>
+                                       <latex>(u+v)+w=u+(v+w)</latex>
+                                    </math>.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\left( x_1+(y_1+z_1),\dots ,x_n+(y_n +z_n)\right)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>According to the definition of vector addition.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(x_1,\dots ,x_n)\ +\ (y_1+z_1,\dots ,y_n+z_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>According to the definition of vector addition.</para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(x_1,\dots ,x_n)\ +\ \left( (y_1,\dots ,y_n)+(z_1,\dots ,z_n)\right)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <subordinate>
+                           <hot>
+                              <math>
+                                 <latex>=</latex>
+                              </math>
+                           </hot>
+                           <info>
+                              <para>
+                                 <para.body>Recalling the definition of <math>
+                                       <latex>\mathbf{x},\mathbf{y},\mathbf{z}</latex>
+                                    </math>
+                                 </para.body>
+                              </para>
+                           </info>
+                        </subordinate>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\mathbf{x}\ +\ (\mathbf{y}+\mathbf{z})</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+         </table>
+         <para>
+            <para.body>This is exactly what we wanted to show.</para.body>
+         </para>
          <logic>
             <part.ref>Prop_0Neutral</part.ref>
          </logic>
-         <caption>Prop_0Neutral</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Geometrically this property is evident: Concatenating any vector <math>
+         <caption>
+			Neutrality of the <math>
+               <latex>\Vect{0}</latex>
+            </math>-vector: <math>
+               <latex>\mathbf{x}+\mathbf{0}=\mathbf{x} = \Vect{0} + \Vect{x}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Geometrically this property is evident: Concatenating any vector <math>
+                  <latex>\mathbf{x}</latex>
+               </math>  with the <math>
+                  <latex>\mathbf{0}</latex>
+               </math>-vector just gives us <math>
+                  <latex>\mathbf{x}</latex>
+               </math> back. - Alternatively, we may argue by computation: If  <math>
+                  <latex>\mathbf{x}=(x_1,\dots ,x_n)</latex>
+               </math>, then</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\mathbf{x}+\mathbf{0}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Recalling the definition of <math>
+                                 <latex>\mathbf{x}</latex>
+                              </math>
+                           </para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(x_1,\dots ,x_n) + (0,\dots ,0)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using definition of vector addition</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(x_1+0,\dots ,x_n+0)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(x_1,\dots ,x_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
                      <latex>\mathbf{x}</latex>
-                  </math>  with the <math>
-                     <latex>\mathbf{0}</latex>
-                  </math>-vector just gives us <math>
-                     <latex>\mathbf{x}</latex>
-                  </math> back. - Alternatively, we may argue by computation: If  <math>
-                     <latex>\mathbf{x}=(x_1,\dots ,x_n)</latex>
-                  </math>, then</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>as was to be shown.</para.body>
+         </para>
          <logic>
             <part.ref>Prop_AdditiveInverse</part.ref>
          </logic>
-         <caption>Prop_AdditiveInverse</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Reversing a vector <math>
-                     <latex>\mathbf{x}</latex>
-                  </math>, yields the vector <math>
-                     <latex>-\mathbf{x}</latex>
-                  </math>, and concatenating <math>
-                     <latex>\mathbf{x}</latex>
-                  </math> with its reverse yields the vector which starts and ends at the same point; i.e. the <math>
-                     <latex>\mathbf{0}</latex>
-                  </math>-vector. Accordingly, the additive inverse of <math>
-                     <latex>\mathbf{x}</latex>
-                  </math> is <math>
-                     <latex>-\mathbf{x}</latex>
-                  </math>, as was to be shown.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			Addivitive inverse of   <math>
+               <latex>\mathbf{x}</latex>
+            </math>: <math>
+               <latex>\mathbf{x} + (-1)\cdot \mathbf{x} = \mathbf{0}</latex>
+            </math>, geometric argument
+		</caption>
+         <para>
+            <para.body>Reversing a vector <math>
+                  <latex>\mathbf{x}</latex>
+               </math>, yields the vector <math>
+                  <latex>-\mathbf{x}</latex>
+               </math>, and concatenating <math>
+                  <latex>\mathbf{x}</latex>
+               </math> with its reverse yields the vector which starts and ends at the same point; i.e. the <math>
+                  <latex>\mathbf{0}</latex>
+               </math>-vector. Accordingly, the additive inverse of <math>
+                  <latex>\mathbf{x}</latex>
+               </math> is <math>
+                  <latex>-\mathbf{x}</latex>
+               </math>, as was to be shown.</para.body>
+         </para>
          <logic>
             <part.ref>Prop_AdditiveInverse</part.ref>
          </logic>
-         <caption>Prop_AdditiveInverse</caption>
-         <proof.block.body>
-            <para>
-               <para.body>The additive inverse of <math>
-                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
-                  </math> is a vector <math>
-                     <latex>\mathbf{y}</latex>
-                  </math> such that <math>
-                     <latex>\mathbf{x} + \mathbf{y} = \mathbf{0}</latex>
-                  </math>. Choosing <math>
-                     <latex>\mathbf{y}:= -\mathbf{x} = (-x_1,\dots ,-x_n)</latex>
-                  </math> serves this purpose because</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			Addivitive inverse of <math>
+               <latex>\mathbf{x}</latex>
+            </math>: <math>
+               <latex>\mathbf{x} + (-1)\cdot \mathbf{x} = \mathbf{0}</latex>
+            </math>, algebraic argument
+		</caption>
+         <para>
+            <para.body>The additive inverse of <math>
+                  <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+               </math> is a vector <math>
+                  <latex>\mathbf{y}</latex>
+               </math> such that <math>
+                  <latex>\mathbf{x} + \mathbf{y} = \mathbf{0}</latex>
+               </math>. Choosing <math>
+                  <latex>\mathbf{y}:= -\mathbf{x} = (-x_1,\dots ,-x_n)</latex>
+               </math> serves this purpose because</para.body>
+         </para>
+         <table align="center">
+            <row>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\mathbf{x} + \mathbf{y}</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(x_1,\dots ,x_n)\ +\ (-x_1,\dots ,x_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(x_1-x_1,\dots ,x_n-x_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(0,\dots ,0)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\mathbf{0}</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+         </table>
+         <para>
+            <para.body>This confirms that <math>
+                  <latex>\mathbf{y}=-\mathbf{x}</latex>
+               </math> is the additive inverse of <math>
+                  <latex>\mathbf{x}</latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>Prop_ScalarMultiplicationAssociative</part.ref>
          </logic>
-         <caption>Prop_ScalarMultiplicationAssociative</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Given numbers <math>
-                     <latex>s</latex>
-                  </math> and <math>
-                     <latex>t</latex>
-                  </math>, and a vector <math>
-                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
-                  </math>, we compute:</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			Scalar multiplication is associative: <math>
+               <latex>(st)\cdot \mathbf{x} = s\cdot (t\cdot \mathbf{x})</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>Given numbers <math>
+                  <latex>s</latex>
+               </math> and <math>
+                  <latex>t</latex>
+               </math>, and a vector <math>
+                  <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+               </math>, we compute:</para.body>
+         </para>
+         <table align="center">
+            <row>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(st)\cdot \mathbf{x}</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>(st)\cdot (x_1,\dots ,x_n)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\left( (st)\cdot x_1,\dots ,(st)\cdot x_n\right)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>\left( s(t\cdot x_1),\dots ,s(t\cdot x_n)\right)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>s\cdot \left( t\cdot x_1,\dots ,t\cdot x_n\right)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>s\cdot \left( t\cdot (x_1,\dots ,x_n)\right)</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+            <row>
+               <cell>
+                  <para>
+                     <para.body> </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>=</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+               <cell>
+                  <para>
+                     <para.body>
+                        <math>
+                           <latex>s\cdot (t\cdot \mathbf{x})</latex>
+                        </math>
+                     </para.body>
+                  </para>
+               </cell>
+            </row>
+         </table>
          <logic>
             <part.ref>Prop_DistributivityI</part.ref>
          </logic>
-         <caption>Prop_DistributivityI</caption>
-         <proof.block.body>
-            <para>
-               <para.body>To see why this distributivity law is true, suppose <math>
-                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
-                  </math> and <math>
-                     <latex>s,t</latex>
-                  </math> in <math>
-                     <latex>\RNr</latex>
-                  </math> are given. Then we compute</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			First distributivity law of scalar multiplication: <math>
+               <latex>(s+t)\cdot \mathbf{x} = s\cdot \mathbf{x} + t\cdot \mathbf{x}</latex>
+            </math>.
+		</caption>
+         <para>
+            <para.body>To see why this distributivity law is true, suppose <math>
+                  <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+               </math> and <math>
+                  <latex>s,t</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math> are given. Then we compute</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(s+t)\cdot \mathbf{x}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(s+t)\cdot (x_1,\dots ,x_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using the definition of scalar multiplication</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\left( (s+t)x_1,\dots ,(s+t)x_n \right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using the distributivity law of the real numbers system</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>( sx_1+tx_1,\dots ,sx_n+tx_n )</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using the definition of vector addition</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(sx_1,\dots ,sx_n)\ +\ (tx_1,\dots ,tx_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using the definition of scalar multiplication of vectors</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s\cdot (x_1,\dots ,x_n)\ +\ t\cdot (x_1,\dots ,x_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s\cdot \mathbf{x}\ +\ t\cdot \mathbf{x}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>Prop_DistributivityII</part.ref>
          </logic>
-         <caption>Prop_DistributivityII</caption>
-         <proof.block.body>
-            <para>
-               <para.body>To see why this distributivity law is true, suppose <math>
-                     <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
-                  </math> and <math>
-                     <latex>\mathbf{y}=(y_1,\dots ,y_n)</latex>
-                  </math> and <math>
-                     <latex>s</latex>
-                  </math> in <math>
-                     <latex>\RNr</latex>
-                  </math> are given. Now we compute:</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+			Second distributivity law of scalar multiplication: <math>
+               <latex>s\cdot (\mathbf{x} + \mathbf{y}) = s\cdot \mathbf{x}\ +\ s\cdot \mathbf{y}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>To see why this distributivity law is true, suppose <math>
+                  <latex>\mathbf{x} = (x_1,\dots ,x_n)</latex>
+               </math> and <math>
+                  <latex>\mathbf{y}=(y_1,\dots ,y_n)</latex>
+               </math> and <math>
+                  <latex>s</latex>
+               </math> in <math>
+                  <latex>\RNr</latex>
+               </math> are given. Now we compute:</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s\cdot (\mathbf{x} + \mathbf{y})</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s\cdot \left( (x_1,\dots ,x_n) + (y_1,\dots ,y_n)\right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using the definition of vector addition</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s\cdot (x_1+y_1,\dots ,x_n+y_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using the definition of scalar multiplication</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\left(s(x_1+y_1),\dots ,s(x_n+y_n)\right)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using the distributivity law in the real numbers system</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(sx_1+sy_1,\dots ,sx_n+sy_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using the definition of vector addition</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>(sx_1,\dots ,sx_n)\ +\ (sy_1,\dots ,sy_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=	</latex>
+                  </math>
+                  <companion>
+                     <info>
+                        <para>
+                           <para.body>Using the definition of scalar multiplication twice</para.body>
+                        </para>
+                     </info>
+                  </companion>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s\cdot (x_1,\dots ,x_n)\ +\ s\cdot (y_1,\dots ,y_n)</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle"/>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>=</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>s\cdot \mathbf{x}\ +\ s\cdot \mathbf{y}</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
          <logic>
             <part.ref>Prop_NeutralInScalarMultiplication</part.ref>
          </logic>
-         <caption>Prop_NeutralInScalarMultiplication</caption>
-         <proof.block.body>
-            <para>
-               <para.body>This is obvious.</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+			Neutral element of scalar multiplication: <math>
+               <latex>1\cdot \mathbf{x} = \mathbf{x}</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>This is obvious.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

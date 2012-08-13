@@ -7,7 +7,9 @@
    <caption>Recognizing inf / sup</caption>
    <associate type="Remark">
       <info>
-         <info.caption>Remark: Analogous Recognition Criterion for inf</info.caption>
+         <info.caption>
+            <caption>Remark: Analogous Recognition Criterion for inf</caption>
+         </info.caption>
          <para>
             <para.body>For <math>
                   <latex>A\subseteq\RNr</latex>
@@ -125,78 +127,101 @@
          <logic>
             <part.ref>xEquSup</part.ref>
          </logic>
-         <caption>xEquSup</caption>
-         <proof.block.body>
-            <para>
-               <para.body>Suppose there is a number <math>
-                     <latex>t\in \RNr</latex>
-                  </math> with <math>
-                     <latex> A &lt; t &lt; x </latex>
-                  </math>. Well, then <math>
-                     <latex>t</latex>
-                  </math> is an upper bound of <math>
-                     <latex>A</latex>
-                  </math> which is less than the least upper bound <math>
-                     <latex>x</latex>
-                  </math> of <math>
-                     <latex>A</latex>
-                  </math>. This contradicts the defining property of <math>
-                     <latex>x</latex>
-                  </math> as <math>
-                     <latex>\sup(A)</latex>
-                  </math>. Therefore no such <math>
-                     <latex>t</latex>
-                  </math> exists.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\implies</latex>
+            </math> ii.</caption>
+         <para>
+            <para.body>Suppose there is a number <math>
+                  <latex>t\in \RNr</latex>
+               </math> with <math>
+                  <latex> A &lt; t &lt; x </latex>
+               </math>. Well, then <math>
+                  <latex>t</latex>
+               </math> is an upper bound of <math>
+                  <latex>A</latex>
+               </math> which is less than the least upper bound <math>
+                  <latex>x</latex>
+               </math> of <math>
+                  <latex>A</latex>
+               </math>. This contradicts the defining property of <math>
+                  <latex>x</latex>
+               </math> as <math>
+                  <latex>\sup(A)</latex>
+               </math>. Therefore no such <math>
+                  <latex>t</latex>
+               </math> exists.</para.body>
+         </para>
          <logic>
             <part.ref>LXNotUpperBound</part.ref>
          </logic>
-         <caption>LXNotUpperBound</caption>
-         <proof.block.body>
-            <para>
-               <para.body>It only remains to show that, given <math>
-                     <latex> \varepsilon &gt; 0 </latex>
-                  </math> we need to establish the existence of <math>
-                     <latex>a\in A</latex>
-                  </math> with <math>
-                     <latex> x- \varepsilon &lt; a </latex>
-                  </math>. But we know that <math>
-                     <latex> x-\varepsilon &lt; x </latex>
-                  </math> is not an upper bound of <math>
-                     <latex>A</latex>
-                  </math> and, hence, there exists <math>
-                     <latex>a\in A</latex>
-                  </math> with <math>
-                     <latex> x-\varepsilon &lt; a </latex>
-                  </math>.</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
+         <caption>
+            <math>
+               <latex>\implies</latex>
+            </math> iii.</caption>
+         <para>
+            <para.body>It only remains to show that, given <math>
+                  <latex> \varepsilon &gt; 0 </latex>
+               </math> we need to establish the existence of <math>
+                  <latex>a\in A</latex>
+               </math> with <math>
+                  <latex> x- \varepsilon &lt; a </latex>
+               </math>. But we know that <math>
+                  <latex> x-\varepsilon &lt; x </latex>
+               </math> is not an upper bound of <math>
+                  <latex>A</latex>
+               </math> and, hence, there exists <math>
+                  <latex>a\in A</latex>
+               </math> with <math>
+                  <latex> x-\varepsilon &lt; a </latex>
+               </math>.</para.body>
+         </para>
          <logic>
             <part.ref>EpsilonCrit</part.ref>
          </logic>
-         <caption>EpsilonCrit</caption>
-         <proof.block.body>
-            <para>
-               <para.body>By assumption, <math>
-                     <latex> A&lt;x </latex>
-                  </math>. So it remains to show that, whenever <math>
-                     <latex> A&lt; u </latex>
-                  </math>, then <math>
-                     <latex> x&lt;u </latex>
-                  </math>. We know that, for every <math>
-                     <latex> \varepsilon &gt;0 </latex>
-                  </math>, there is <math>
-                     <latex>a(\varepsilon)</latex>
-                  </math> such that <math>
-                     <latex> x-\varepsilon &lt; a(\varepsilon) \leq u </latex>
-                  </math>. Therefore</para.body>
-            </para>
-         </proof.block.body>
+         <caption>
+            <math>
+               <latex>\implies i.</latex>
+            </math>
+         </caption>
+         <para>
+            <para.body>By assumption, <math>
+                  <latex> A&lt;x </latex>
+               </math>. So it remains to show that, whenever <math>
+                  <latex> A&lt; u </latex>
+               </math>, then <math>
+                  <latex> x&lt;u </latex>
+               </math>. We know that, for every <math>
+                  <latex> \varepsilon &gt;0 </latex>
+               </math>, there is <math>
+                  <latex>a(\varepsilon)</latex>
+               </math> such that <math>
+                  <latex> x-\varepsilon &lt; a(\varepsilon) \leq u </latex>
+               </math>. Therefore</para.body>
+         </para>
+         <math.display>
+            <latex> \OOIntrvl{-\infty}{x} = \Set{ x-\varepsilon \st \varepsilon&gt;0 } \leq u</latex>
+         </math.display>
+         <para>
+            <para.body>But this means</para.body>
+         </para>
+         <math.display>
+            <latex>u\in (\StDffrnc{\RNr}{\OOIntrvl{-\infty}{x}}) = \COIntrvl{x}{+\infty}</latex>
+         </math.display>
+         <para>
+            <para.body>and so <math>
+                  <latex>x\leq u</latex>
+               </math>. In other words, <math>
+                  <latex>x</latex>
+               </math> is the least upper bound of <math>
+                  <latex>A</latex>
+               </math>, and this means: <math>
+                  <latex>x=\sup(A)</latex>
+               </math>.</para.body>
+         </para>
+         <para>
+            <para.body>The proof of the lemma is complete.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>

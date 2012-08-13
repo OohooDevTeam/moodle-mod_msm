@@ -34,50 +34,134 @@
    </statement.theorem>
    <proof>
       <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>Consider first the case where <math>
-                     <latex>L</latex>
-                  </math> is invertible. Then we know that there is a linear transformation <math>
-                     <latex>L^{-1}</latex>
-                  </math>, represented by an <math>
-                     <latex>(n,n)</latex>
-                  </math>-matrix <math>
-                     <latex>\Mtrx{B}</latex>
-                  </math>, satisfying</para.body>
-            </para>
-         </proof.block.body>
-      </proof.block>
-      <proof.block>
-         <caption/>
-         <proof.block.body>
-            <para>
-               <para.body>Consider now the situation where we know that <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> is invertible. Then <math>
-                     <latex>\Mtrx{A}</latex>
-                  </math> has an inverse <math>
-                     <latex>\Mtrx{A}^{-1}</latex>
-                  </math>. But then we 
+         <caption>The case where <math>
+               <latex>L</latex>
+            </math> is invertible</caption>
+         <para>
+            <para.body>Consider first the case where <math>
+                  <latex>L</latex>
+               </math> is invertible. Then we know that there is a linear transformation <math>
+                  <latex>L^{-1}</latex>
+               </math>, represented by an <math>
+                  <latex>(n,n)</latex>
+               </math>-matrix <math>
+                  <latex>\Mtrx{B}</latex>
+               </math>, satisfying</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L\Comp L^{-1}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>= \Id[n] =</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L^{-1}\Comp L</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>A\cdot B</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>= \IdMtrx[n] =</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>B\cdot A</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>The second row says that <math>
+                  <latex>A</latex>
+               </math> is invertible and that <math>
+                  <latex>\Mtrx{A}^{-1} = \Mtrx{B}</latex>
+               </math>.</para.body>
+         </para>
+         <caption>The case where <math>
+               <latex>\Mtrx{A}</latex>
+            </math> is invertible</caption>
+         <para>
+            <para.body>Consider now the situation where we know that <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> is invertible. Then <math>
+                  <latex>\Mtrx{A}</latex>
+               </math> has an inverse <math>
+                  <latex>\Mtrx{A}^{-1}</latex>
+               </math>. But then we 
 			<subordinate>
-                     <hot>know</hot>
-                     <crossref>
-                        <theorem.ref theoremID="Thm_MatrixGivesLinearMap"/>
-                        <info>
-                           <para>
-                              <para.body>Look up how a matrix determines a linear map.</para.body>
-                           </para>
-                        </info>
-                     </crossref>
-                  </subordinate>
+                  <hot>know</hot>
+                  <crossref>
+                     <theorem.ref theoremID="Thm_MatrixGivesLinearMap"/>
+                     <info>
+                        <para>
+                           <para.body>Look up how a matrix determines a linear map.</para.body>
+                        </para>
+                     </info>
+                  </crossref>
+               </subordinate>
 			that <math>
-                     <latex>\Mtrx{A}^{-1}</latex>
-                  </math> determines a linear map <math>
-                     <latex>M\from \RNr[n]\to \RNr[n]</latex>
-                  </math>, and we have the properties</para.body>
-            </para>
-         </proof.block.body>
+                  <latex>\Mtrx{A}^{-1}</latex>
+               </math> determines a linear map <math>
+                  <latex>M\from \RNr[n]\to \RNr[n]</latex>
+               </math>, and we have the properties</para.body>
+         </para>
+         <math.array column="3">
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}\cdot \Mtrx{A}^{-1}</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>= \IdMtrx[n] =</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>\Mtrx{A}^{-1}\cdot \Mtrx{A}</latex>
+                  </math>
+               </cell>
+            </row>
+            <row rowspan="1">
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>L\Comp M</latex>
+                  </math>
+               </cell>
+               <cell colspan="1" halign="center" valign="middle">
+                  <math>
+                     <latex>= \Id[n] =</latex>
+                  </math>
+               </cell>
+               <cell colspan="2" halign="center" valign="middle">
+                  <math>
+                     <latex>M\Comp L</latex>
+                  </math>
+               </cell>
+            </row>
+         </math.array>
+         <para>
+            <para.body>The second row says that <math>
+                  <latex>L</latex>
+               </math> is invertible and that <math>
+                  <latex>M=L^{-1}</latex>
+               </math>. This completes the proof of the proposition.</para.body>
+         </para>
       </proof.block>
    </proof>
 </theorem>
