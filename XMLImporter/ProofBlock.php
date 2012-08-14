@@ -14,7 +14,7 @@ class ProofBlock extends Element
 {
 
     public $position;
-    public $proof_block_body;
+//    public $proof_block_content;
     public $logic_type;
     public $proof_logic;
 
@@ -31,104 +31,76 @@ class ProofBlock extends Element
      */
     public function loadFromXml($DomElement, $position = '')
     {
+
         $this->position = $position;
+        $this->proof_block_bodys = array();
 
-        $logic = $DomElement->getElementsByTagName('logic')->item(0);
+        // initial declaration of the standard class
+        $proofblockbody = new stdClass();
 
-        if (!empty($logic))
+        foreach ($DomElement->childNodes as $child)
         {
-            $doc = new DOMDocument();
-            $element = $doc->importNode($logic, true);
-            $this->logic_type = $element->getAttribute('type');
-            $this->proof_logic = $doc->saveXML($element);
-        }
-
-        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
-
-        $proof_block_bodys = $DomElement->getElementsByTagName('proof.block.body');
-
-        $this->subordinates = array();
-        $this->indexauthors = array();
-        $this->indexglossarys = array();
-        $this->indexsymbols = array();
-        $this->medias = array();
-
-        // some proofs were transformed with proof.block.body but some were not
-        // second condition is to check for the ones without the proof.block.body element
-        if (!empty($proof_block_bodys))
-        {
-            foreach ($proof_block_bodys as $pbb)
+            if ($child->nodeType == XML_ELEMENT_NODE)
             {
-                foreach ($this->processIndexAuthor($pbb, $position) as $indexauthor)
+                if ($child->tagName == 'logic')
                 {
-                    $this->indexauthors[] = $indexauthor;
-                }
-
-                foreach ($this->processIndexGlossary($pbb, $position) as $indexglossary)
-                {
-                    $this->indexglossarys[] = $indexglossary;
-                }
-
-                foreach ($this->processIndexSymbols($pbb, $position) as $indexsymbol)
-                {
-                    $this->indexsymbols[] = $indexsymbol;
-                }
-                foreach ($this->processSubordinate($pbb, $position) as $subordinate)
-                {
-                    $this->subordinates[] = $subordinate;
-                }
-
-                foreach ($this->processMedia($pbb, $position) as $media)
-                {
-                    $this->medias[] = $media;
-                }
-
-                foreach ($this->processContent($pbb, $position) as $content)
-                {
-                    $this->proof_block_body .= $content;
-                }
-            }
-        }
-        else
-        {
-            foreach ($DomElement->childNodes as $child)
-            {
-                if ($child->nodeType == XML_ELEMENT_NODE)
-                {
-                    if (($child->tagName != 'caption') || ($child->tagName != 'logic'))
+                    // for first item, it can be empty
+                    // the array proof_block_bodys stores the parsed content before reading anothe logic
+                    // which is used to divide between proofblock and proof.block.body contents.
+                    if (!empty($proofblockbody->proof_block_content))
                     {
-                        foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
-                        {
-                            $this->indexauthors[] = $indexauthor;
-                        }
+                        // this is a "work-around" solution for the transformed XML that does not have the proof.block.body
+                        // inserted due to difficulty of transforming them to proper schema.
+                        $this->proof_block_bodys[] = $proofblockbody;
+                    }
 
-                        foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
-                        {
-                            $this->indexglossarys[] = $indexglossary;
-                        }
+                    // need to make a new instance of the standard class to reset all the properties
+                    $proofblockbody = new stdClass();
 
-                        foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
-                        {
-                            $this->indexsymbols[] = $indexsymbol;
-                        }
-                        foreach ($this->processSubordinate($child, $position) as $subordinate)
-                        {
-                            $this->subordinates[] = $subordinate;
-                        }
+                    $doc = new DOMDocument();
+                    $element = $doc->importNode($child, true);
+                    $proofblockbody->logic_type = $element->getAttribute('type');
+                    $proofblockbody->proof_logic = $doc->saveXML($element);
+                }
+                else if ($child->tagName == 'caption')
+                {
+                    $proofblockbody->caption = $this->getContent($child);
+                }
+                else// block elements
+                {
+                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
+                    {
+                        $proofblockbody->indexauthors[] = $indexauthor;
+                    }
 
-                        foreach ($this->processMedia($child, $position) as $media)
-                        {
-                            $this->medias[] = $media;
-                        }
+                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
+                    {
+                        $proofblockbody->indexglossarys[] = $indexglossary;
+                    }
 
-                        foreach ($this->processContent($child, $position) as $content)
-                        {
-                            $this->proof_block_body .= $content;
-                        }
+                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
+                    {
+                        $proofblockbody->indexsymbols[] = $indexsymbol;
+                    }
+                    foreach ($this->processSubordinate($child, $position) as $subordinate)
+                    {
+                        $proofblockbody->subordinates[] = $subordinate;
+                    }
+
+                    foreach ($this->processMedia($child, $position) as $media)
+                    {
+                        $proofblockbody->medias[] = $media;
+                    }
+
+                    foreach ($this->processContent($child, $position) as $content)
+                    {
+                        $proofblockbody->proof_block_content .= $content;
                     }
                 }
             }
         }
+        // storing the last contents of proof block that was read
+        $this->proof_block_bodys[] = $proofblockbody;
     }
 
     /**
@@ -139,154 +111,165 @@ class ProofBlock extends Element
     function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB;
-        $data = new stdClass();
-        if (!empty($this->proof_logic))
+
+        foreach ($this->proof_block_bodys as $pbb)
         {
-            $data->logic_type = $this->logic_type;
-            $data->proof_logic = $this->proof_logic;
-        }
-
-        $data->caption = $this->caption;
-
-        $data->proof_content = $this->proof_block_body;
-
-        $this->id = $DB->insert_record($this->tablename, $data);
-        $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
-
-        $elementPositions = array();
-        $sibling_id = null;
-
-
-        if (!empty($this->subordinates))
-        {
-            foreach ($this->subordinates as $key => $subordinate)
+            $data = new stdClass();
+            if (!empty($pbb->proof_logic))
             {
-                $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
+                $data->proof_logic = $pbb->proof_logic;
             }
-        }
-
-        if (!empty($this->indexauthors))
-        {
-            foreach ($this->indexauthors as $key => $indexauthor)
+            if (!empty($pbb->logic_type))
             {
-                $elementPositions['indexauthor' . '-' . $key] = $indexauthor->position;
+                $data->logic_type = $pbb->logic_type;
             }
-        }
-
-        if (!empty($this->indexglossarys))
-        {
-            foreach ($this->indexglossarys as $key => $indexglosary)
+            if (!empty($pbb->caption))
             {
-                $elementPositions['indexglossary' . '-' . $key] = $indexglosary->position;
+                $data->caption = $pbb->caption;
             }
-        }
-
-        if (!empty($this->indexsymbols))
-        {
-            foreach ($this->indexsymbols as $key => $indexsymbol)
+            if (!empty($pbb->proof_block_content))
             {
-                $elementPositions['indexsymbol' . '-' . $key] = $indexsymbol->position;
+                $data->proof_content = $pbb->proof_block_content;
             }
-        }
 
-        if (!empty($this->medias))
-        {
-            foreach ($this->medias as $key => $media)
+            $this->id = $DB->insert_record('msm_proof_block', $data);
+
+            $this->compid = $this->insertToCompositor($this->id, 'msm_proof_block', $parentid, $siblingid);
+            $siblingid = $this->compid;
+            $elementPositions = array();
+            $sibling_id = null;
+
+            if (!empty($pbb->subordinates))
             {
-                $elementPositions['media' . '-' . $key] = $media->position;
+                foreach ($pbb->subordinates as $key => $subordinate)
+                {
+                    $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
+                }
             }
-        }
 
-        asort($elementPositions);
-
-        foreach ($elementPositions as $element => $value)
-        {
-            switch ($element)
+            if (!empty($pbb->indexauthors))
             {
-                case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
-                    $subordinateString = split('-', $element);
+                foreach ($pbb->indexauthors as $key => $indexauthor)
+                {
+                    $elementPositions['indexauthor' . '-' . $key] = $indexauthor->position;
+                }
+            }
 
-                    if (empty($sibling_id))
-                    {
-                        $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $this->compid);
-                        $sibling_id = $subordinate->compid;
-                    }
-                    else
-                    {
-                        $subordinate = $this->subordinates[$subordinateString[1]];
-                        $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
-                        $sibling_id = $subordinate->compid;
-                    }
-                    break;
+            if (!empty($pbb->indexglossarys))
+            {
+                foreach ($pbb->indexglossarys as $key => $indexglosary)
+                {
+                    $elementPositions['indexglossary' . '-' . $key] = $indexglosary->position;
+                }
+            }
 
-                case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
-                    $indexauthorString = split('-', $element);
+            if (!empty($pbb->indexsymbols))
+            {
+                foreach ($pbb->indexsymbols as $key => $indexsymbol)
+                {
+                    $elementPositions['indexsymbol' . '-' . $key] = $indexsymbol->position;
+                }
+            }
 
-                    if (empty($sibling_id))
-                    {
-                        $indexauthor = $this->subordinates[$indexauthorString[1]];
-                        $indexauthor->saveIntoDb($indexauthor->position, $this->compid);
-                        $sibling_id = $indexauthor->compid;
-                    }
-                    else
-                    {
-                        $indexauthor = $this->subordinates[$indexauthorString[1]];
-                        $indexauthor->saveIntoDb($indexauthor->position, $this->compid, $sibling_id);
-                        $sibling_id = $indexauthor->compid;
-                    }
-                    break;
+            if (!empty($pbb->medias))
+            {
+                foreach ($pbb->medias as $key => $media)
+                {
+                    $elementPositions['media' . '-' . $key] = $media->position;
+                }
+            }
 
-                case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
-                    $indexsymbolString = split('-', $element);
+            asort($elementPositions);
 
-                    if (empty($sibling_id))
-                    {
-                        $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-                        $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid);
-                        $sibling_id = $indexsymbol->compid;
-                    }
-                    else
-                    {
-                        $indexsymbol = $this->indexsymbols[$indexsymbolString[1]];
-                        $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid, $sibling_id);
-                        $sibling_id = $indexsymbol->compid;
-                    }
-                    break;
+            foreach ($elementPositions as $element => $value)
+            {
+                switch ($element)
+                {
+                    case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
+                        $subordinateString = split('-', $element);
 
-                case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
-                    $indexglossaryString = split('-', $element);
+                        if (empty($sibling_id))
+                        {
+                            $subordinate = $pbb->subordinates[$subordinateString[1]];
+                            $subordinate->saveIntoDb($subordinate->position, $this->compid);
+                            $sibling_id = $subordinate->compid;
+                        }
+                        else
+                        {
+                            $subordinate = $pbb->subordinates[$subordinateString[1]];
+                            $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
+                            $sibling_id = $subordinate->compid;
+                        }
+                        break;
 
-                    if (empty($sibling_id))
-                    {
-                        $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-                        $indexglossary->saveIntoDb($indexglossary->position, $this->compid);
-                        $sibling_id = $indexglossary->compid;
-                    }
-                    else
-                    {
-                        $indexglossary = $this->indexglossarys[$indexglossaryString[1]];
-                        $indexglossary->saveIntoDb($indexglossary->position, $this->compid, $sibling_id);
-                        $sibling_id = $indexglossary->compid;
-                    }
-                    break;
+                    case(preg_match("/^(indexauthor.\d+)$/", $element) ? true : false):
+                        $indexauthorString = split('-', $element);
 
-                case(preg_match("/^(media.\d+)$/", $element) ? true : false):
-                    $mediaString = split('-', $element);
+                        if (empty($sibling_id))
+                        {
+                            $indexauthor = $pbb->indexauthors[$indexauthorString[1]];
+                            $indexauthor->saveIntoDb($indexauthor->position, $this->compid);
+                            $sibling_id = $indexauthor->compid;
+                        }
+                        else
+                        {
+                            $indexauthor = $pbb->indexauthors[$indexauthorString[1]];
+                            $indexauthor->saveIntoDb($indexauthor->position, $this->compid, $sibling_id);
+                            $sibling_id = $indexauthor->compid;
+                        }
+                        break;
 
-                    if (empty($sibling_id))
-                    {
-                        $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $this->compid);
-                        $sibling_id = $media->compid;
-                    }
-                    else
-                    {
-                        $media = $this->medias[$mediaString[1]];
-                        $media->saveIntoDb($media->position, $this->compid, $sibling_id);
-                        $sibling_id = $media->compid;
-                    }
-                    break;
+                    case(preg_match("/^(indexsymbol.\d+)$/", $element) ? true : false):
+                        $indexsymbolString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $indexsymbol = $pbb->indexsymbols[$indexsymbolString[1]];
+                            $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid);
+                            $sibling_id = $indexsymbol->compid;
+                        }
+                        else
+                        {
+                            $indexsymbol = $pbb->indexsymbols[$indexsymbolString[1]];
+                            $indexsymbol->saveIntoDb($indexsymbol->position, $this->compid, $sibling_id);
+                            $sibling_id = $indexsymbol->compid;
+                        }
+                        break;
+
+                    case(preg_match("/^(indexglossary.\d+)$/", $element) ? true : false):
+                        $indexglossaryString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $indexglossary = $pbb->indexglossarys[$indexglossaryString[1]];
+                            $indexglossary->saveIntoDb($indexglossary->position, $this->compid);
+                            $sibling_id = $indexglossary->compid;
+                        }
+                        else
+                        {
+                            $indexglossary = $pbb->indexglossarys[$indexglossaryString[1]];
+                            $indexglossary->saveIntoDb($indexglossary->position, $this->compid, $sibling_id);
+                            $sibling_id = $indexglossary->compid;
+                        }
+                        break;
+
+                    case(preg_match("/^(media.\d+)$/", $element) ? true : false):
+                        $mediaString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $media = $pbb->medias[$mediaString[1]];
+                            $media->saveIntoDb($media->position, $this->compid);
+                            $sibling_id = $media->compid;
+                        }
+                        else
+                        {
+                            $media = $pbb->medias[$mediaString[1]];
+                            $media->saveIntoDb($media->position, $this->compid, $sibling_id);
+                            $sibling_id = $media->compid;
+                        }
+                        break;
+                }
             }
         }
     }
@@ -300,6 +283,7 @@ class ProofBlock extends Element
         if (!empty($proofBlockRecord))
         {
             $this->compid = $compid;
+            $this->caption = $proofBlockRecord->caption;
             $this->proof_content = $proofBlockRecord->proof_content;
         }
 
@@ -326,6 +310,10 @@ class ProofBlock extends Element
         $content = '';
 
         $content .="<div class='proofblock'>";
+
+        $content .= "<div class='proofblocktitle'>";
+        $content .= $this->caption;
+        $content .= "</div>";
 
         $content .= $this->displaySubordinate($this, $this->proof_content);
 

@@ -75,8 +75,11 @@ div.controller{
 {
     background-image:url('../pix/background2.jpg');
     min-height: 690px;
+    max-height: 690px;
     width:96%;
     padding: 5px;
+    overflow: auto;
+    /*white-space: nowrap;*/
     /*    overflow: hidden;*/
 }
 
@@ -455,4 +458,10 @@ span.extrainfoname
     font-weight: bold;
     color: black;
     float: left;
+}
+
+.proofblocktitle
+{
+    color: black;
+    font-weight: bold;
 }

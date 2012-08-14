@@ -263,19 +263,11 @@ class MathInfo extends Element
             $this->compid = $compid;
         }
 
-//        $tableid = $DB->get_record('msm_table_collection', array('tablename' => $this->tablename))->id;
-//
-//        $whereclause = "unit_id='" . $this->id . "'" . "and table_id='" . $tableid . "'";
-//
-//        $infoCompRecord = $DB->get_record_select('msm_compositor', $whereclause);
-//
-//        $this->compid = $infoCompRecord->id;
-
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->medias = array();
         $this->subordinates = array();
-        
+
         foreach ($childElements as $child)
         {
             $childtable = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
@@ -295,8 +287,21 @@ class MathInfo extends Element
                     break;
             }
         }
-       
+
         return $this;
+    }
+
+    function displayhtml()
+    {
+        $content = '';
+
+        $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->caption . '">';
+
+        $content .= $this->displaySubordinate($this, $this->info_content);
+
+        $content .= "</div>";
+
+        return $content;
     }
 
 }

@@ -107,7 +107,7 @@ class Proof extends Element
                 $this->childs[] = $proofblock;
             }
         }
-
+        
         return $this;
     }
 

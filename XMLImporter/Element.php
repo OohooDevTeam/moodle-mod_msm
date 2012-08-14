@@ -356,6 +356,7 @@ abstract class Element
 
             $string = str_replace('<latex>', '', $string);
             $string = str_replace('</latex>', '', $string);
+            
             $resultcontent[] = $string;
         }
         return $resultcontent;
@@ -520,7 +521,7 @@ abstract class Element
     {
         global $DB;
         $content = '';
-        $recursivecontent='';
+        $recursivecontent = '';
         $doc = new DOMDocument();
         @$doc->loadXML($XMLcontent);
 
@@ -530,10 +531,75 @@ abstract class Element
 
         if ((empty($tables)) && (empty($imgs)) && (empty($hottags)))
         {
+            echo "null?";
             return null;
         }
         else
         {
+            foreach ($hottags as $key => $hottag)
+            {
+                if (!empty($object->subordinates[$key]))
+                {
+                    $subordinate = $object->subordinates[$key];
+                    if (!empty($subordinate->infos[0]))
+                    {
+                        $newtag = '';
+                        $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+
+                        if (is_string($subordinate->hot))
+                        {
+                            $newtag .= $subordinate->hot;
+                        }
+                        else
+                        {
+                            $newtag .= $this->getContent($subordinate->hot);
+                        }
+                        $newtag .= "</a>";
+
+                        $hotString = $doc->saveXML($hottag);
+
+                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+                        
+                        $content .= $subordinate->infos[0]->displayhtml();
+
+//                        $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
+//
+//                        $recursivecontent = $this->displaySubordinate($subordinate->infos[0], $subordinate->infos[0]->info_content);
+//
+//                        $content .= $recursivecontent;
+//
+//                        $content .= "</div>";
+                    }
+                    if (!empty($subordinate->external_links[0]))
+                    {
+                        $newtag = '';
+                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "'' id='hottag-" . $subordinate->external_links[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+
+                        if (is_string($subordinate->hot))
+                        {
+                            $newtag .= $subordinate->hot;
+                        }
+                        else
+                        {
+                            $newtag .= $this->getContent($subordinate->hot);
+                        }
+                        $newtag .= "</a>";
+
+                        $hotString = $doc->saveXML($hottag);
+
+                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+
+                        $content .= '<div id="dialog-' . $subordinate->external_links[0]->compid . '" class="dialogs" title="' . $subordinate->external_links[0]->infos[0]->caption . '">';
+
+                        $recursivecontent = $this->displaySubordinate($subordinate->external_links[0]->infos[0], $subordinate->external_links[0]->infos[0]->info_content);
+
+                        $content .= $recursivecontent;
+
+                        $content .= "</div>";
+                    }
+                }
+            }
+
             foreach ($tables as $table)
             {
                 $newtabletag = '';
@@ -599,7 +665,6 @@ abstract class Element
 
                 if ($DB->count_records_select('msm_img', $sql) > 1)
                 {
-
                     $imgRecord = $DB->get_records_select('msm_img', $sql);
                     $imgparentid = $DB->get_record('msm_compositor', array('unit_id' => array_shift(array_values($imgRecord))->id, 'table_id' => 16))->parent_id;
                 }
@@ -627,69 +692,8 @@ abstract class Element
                         $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
                     }
                 }
-            }
-
-            foreach ($hottags as $key => $hottag)
-            {
-                if (!empty($object->subordinates[$key]))
-                {
-                    $subordinate = $object->subordinates[$key];
-                    if (!empty($subordinate->infos[0]))
-                    {
-                        $newtag = '';
-                        $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
-
-                        if (is_string($subordinate->hot))
-                        {
-                            $newtag .= $subordinate->hot;
-                        }
-                        else
-                        {
-                            $newtag .= $this->getContent($subordinate->hot);
-                        }
-                        $newtag .= "</a>";
-
-                        $hotString = $doc->saveXML($hottag);
-
-                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-
-                        $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
-
-                        $recursivecontent = $this->displaySubordinate($subordinate->infos[0], $subordinate->infos[0]->info_content);
-
-                        $content .= $recursivecontent;
-
-                        $content .= "</div>";
-                    }
-                    if(!empty($subordinate->external_links[0]))
-                    {
-                        $newtag = '';
-                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "'' id='hottag-" . $subordinate->external_links[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
-
-                        if (is_string($subordinate->hot))
-                        {
-                            $newtag .= $subordinate->hot;
-                        }
-                        else
-                        {
-                            $newtag .= $this->getContent($subordinate->hot);
-                        }
-                        $newtag .= "</a>";
-
-                        $hotString = $doc->saveXML($hottag);
-
-                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-
-                        $content .= '<div id="dialog-' . $subordinate->external_links[0]->compid . '" class="dialogs" title="' . $subordinate->external_links[0]->infos[0]->caption . '">';
-
-                        $recursivecontent = $this->displaySubordinate($subordinate->external_links[0]->infos[0], $subordinate->external_links[0]->infos[0]->info_content);
-
-                        $content .= $recursivecontent;
-
-                        $content .= "</div>";
-                    }
-                }
-            }
+            }            
+//            $XMLcontent = preg_replace("/\s\s{2,}/", " ", $XMLcontent);
 
             $content .= $XMLcontent;
             return $content;
