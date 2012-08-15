@@ -1,9 +1,18 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+**************************************************************************
+**                              MSM                                     **
+**************************************************************************
+* @package     mod                                                      **
+* @subpackage  msm                                                      **
+* @name        msm                                                      **
+* @copyright   University of Alberta                                    **
+* @link        http://ualberta.ca                                       **
+* @author      Ga Young Kim                                             **
+* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+**************************************************************************
+**************************************************************************/
 
 /**
  * This class is a support class for Quiz class.  It processes information given under part element in XML files.

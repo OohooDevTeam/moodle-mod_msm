@@ -22,16 +22,25 @@
  * This code fragment is called by moodle_needs_upgrading() and
  * /admin/index.php
  *
- * @package    mod
- * @subpackage msm
- * @copyright  2011 Your Name
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+ * 
+**************************************************************************
+**                              MSM                                     **
+**************************************************************************
+* @package     mod                                                      **
+* @subpackage  msm                                                      **
+* @name        msm                                                      **
+* @copyright   University of Alberta                                    **
+* @link        http://ualberta.ca                                       **
+* @author      Ga Young Kim                                             **
+* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+**************************************************************************
+**************************************************************************/
 
 defined('MOODLE_INTERNAL') || die();
 
-$module->version   = 0;               // If version == 0 then module will not be installed
-$module->version   = 2012080100;      // The current module version (Date: YYYYMMDDXX)
-$module->requires  = 2010031900;      // Requires this Moodle version
-$module->cron      = 0;               // Period for cron to check this module (secs)
+$module->version = 0;               // If version == 0 then module will not be installed
+$module->version = 2012081500;      // The current module version (Date: YYYYMMDDXX)
+$module->requires = 2010112400;      // Requires this Moodle version
+$module->cron = 0;               // Period for cron to check this module (secs)
 $module->component = 'mod_msm'; // To check on upgrade, that module sits in correct place
+$module->release = '0.1.0 (Build: 2012081500)';

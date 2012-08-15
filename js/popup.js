@@ -1,3 +1,18 @@
+/**
+**************************************************************************
+**                              MSM                                     **
+**************************************************************************
+* @package     mod                                                      **
+* @subpackage  msm                                                      **
+* @name        msm                                                      **
+* @copyright   University of Alberta                                    **
+* @link        http://ualberta.ca                                       **
+* @author      Ga Young Kim                                             **
+* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+**************************************************************************
+**************************************************************************/
+
+
 /* 
  * to create a dialog window to display additional informations
  */

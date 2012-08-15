@@ -17,16 +17,18 @@
 
 
 /**
- * English strings for msm
- *
- * You can have a rather longer description of the file as well,
- * if you like, and it can span multiple lines.
- *
- * @package    mod
- * @subpackage msm
- * @copyright  2011 Your Name
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+**************************************************************************
+**                              MSM                                     **
+**************************************************************************
+* @package     mod                                                      **
+* @subpackage  msm                                                      **
+* @name        msm                                                      **
+* @copyright   University of Alberta                                    **
+* @link        http://ualberta.ca                                       **
+* @author      Ga Young Kim                                             **
+* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+**************************************************************************
+**************************************************************************/
 
 defined('MOODLE_INTERNAL') || die();
 

@@ -1,42 +1,16 @@
-The following steps should get you up and running with
-this module template code.
+********************************************************************************
+Math Suite for Moodle(MSM) Module
+********************************************************************************
 
-* DO NOT PANIC!
+This module is for creating and displaying digital textbooks.  It has a built in
+creation tools for the author while it has a note-taking tools for students.
 
-* Unzip the archive and read this file
 
-* Rename the msm/ folder to the name of your module (eg "widget").
-  The module folder MUST be lower case. You should check the CVS contrib
-  area at http://cvs.moodle.org/contrib/plugins/mod/ to make sure that
-  your name is not already used by an other module.
+** Prerequisites for this module **
+- 
 
-* Edit all the files in this directory and its subdirectories and change
-  all the instances of the string "msm" to your module name
-  (eg "widget"). If you are using Linux, you can use the following command
-  $ find . -type f -exec sed -i 's/msm/widget/g' {} \;
-
-* Rename the file lang/en/msm.php to lang/en/widget.php
-  where "widget" is the name of your module
-
-* Place the widget folder into the /mod folder of the moodle
-  directory.
-
-* Go to Settings > Site Administration > Development > XMLDB editor
-  and modify the module's tables.
-
-* Modify version.php and set the initial version of you module.
-
-* Visit Settings > Site Administration > Notifications, you should find
-  the module's tables successfully created
-
-* Go to Site Administration > Plugins > Activity modules > Manage activities
-  and you should find that this msm has been added to the list of
-  installed modules.
-
-* You may now proceed to run your own code in an attempt to develop
-  your module. You will probably want to modify mod_form.php and view.php
-  as a first step. Check db/access.php to add capabilities.
-
-We encourage you to share your code and experience - visit http://moodle.org
-
-Good luck!
+** Steps to install the MSM module **
+1. Copy the folder into .../moodle/mod/
+2. Rename the folder to 'msm'
+3. Go to the moodle webpage
+4. Install the module

@@ -1,9 +1,18 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+**************************************************************************
+**                              MSM                                     **
+**************************************************************************
+* @package     mod                                                      **
+* @subpackage  msm                                                      **
+* @name        msm                                                      **
+* @copyright   University of Alberta                                    **
+* @link        http://ualberta.ca                                       **
+* @author      Ga Young Kim                                             **
+* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+**************************************************************************
+**************************************************************************/
 
 /**
  * Description of Element
@@ -356,7 +365,7 @@ abstract class Element
 
             $string = str_replace('<latex>', '', $string);
             $string = str_replace('</latex>', '', $string);
-            
+
             $resultcontent[] = $string;
         }
         return $resultcontent;
@@ -559,7 +568,7 @@ abstract class Element
                         $hotString = $doc->saveXML($hottag);
 
                         $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-                        
+
                         $content .= $subordinate->infos[0]->displayhtml();
 
 //                        $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
@@ -589,13 +598,16 @@ abstract class Element
 
                         $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
 
-                        $content .= '<div id="dialog-' . $subordinate->external_links[0]->compid . '" class="dialogs" title="' . $subordinate->external_links[0]->infos[0]->caption . '">';
+                        if (!empty($subordinate->external_links[0]->infos[0]))
+                        {
+                            $content .= '<div id="dialog-' . $subordinate->external_links[0]->compid . '" class="dialogs" title="' . $subordinate->external_links[0]->infos[0]->caption . '">';
 
-                        $recursivecontent = $this->displaySubordinate($subordinate->external_links[0]->infos[0], $subordinate->external_links[0]->infos[0]->info_content);
+                            $recursivecontent = $this->displaySubordinate($subordinate->external_links[0]->infos[0], $subordinate->external_links[0]->infos[0]->info_content);
 
-                        $content .= $recursivecontent;
+                            $content .= $recursivecontent;
 
-                        $content .= "</div>";
+                            $content .= "</div>";
+                        }
                     }
                 }
             }
@@ -692,7 +704,7 @@ abstract class Element
                         $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
                     }
                 }
-            }            
+            }
 //            $XMLcontent = preg_replace("/\s\s{2,}/", " ", $XMLcontent);
 
             $content .= $XMLcontent;

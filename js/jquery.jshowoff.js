@@ -1,5 +1,20 @@
-/*
+/**
+**************************************************************************
+**                              MSM                                     **
+**************************************************************************
+* @package     mod                                                      **
+* @subpackage  msm                                                      **
+* @name        msm                                                      **
+* @copyright   University of Alberta                                    **
+* @link        http://ualberta.ca                                       **
+* @author      Ga Young Kim                                             **
+* @author      Erik Kallevig
+* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+**************************************************************************
+**************************************************************************/
 
+/*
+***************************plugin by*******************************************
 Title:		jShowOff: a jQuery Content Rotator Plugin
 Author:		Erik Kallevig
 Version:	0.1.2
@@ -19,7 +34,7 @@ hoverPause :		whether to pause on hover [boolean, defaults to true]
 links :				whether to create & display numeric links to each slide [boolean, defaults to true]
 speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 
- */
+ ******************************************************************************/
 
 (function($) {
     // default global vars
@@ -202,19 +217,19 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
     function next() {
         //        alert("counter value:" + counter);
         goToAndPause(counter);
-//        alert($('#pgnumberkey').val());
-//        pagenumber = $('#pgnumberkey').val();
-//        pagenumber++;
-//        if (pagenumber <= (gallery.length+1))
-//        {		
-//            updatepgnumber(pagenumber);
-//        }
-//        else
-//        {
-//            alert("always setting to 1? --> gallery.length: "+gallery.length);
-//            pagenumber = 1;
-//            updatepgnumber(pagenumber);
-//        }
+        //        alert($('#pgnumberkey').val());
+        //        pagenumber = $('#pgnumberkey').val();
+        //        pagenumber++;
+        //        if (pagenumber <= (gallery.length+1))
+        //        {		
+        //            updatepgnumber(pagenumber);
+        //        }
+        //        else
+        //        {
+        //            alert("always setting to 1? --> gallery.length: "+gallery.length);
+        //            pagenumber = 1;
+        //            updatepgnumber(pagenumber);
+        //        }
         $('#features').load('../msm/XMLImporter/ajaxcall.php', 
         {
                     

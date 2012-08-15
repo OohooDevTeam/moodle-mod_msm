@@ -22,11 +22,19 @@
  * It is not really essential to know about it, but these logs were created as example
  * in the previous 1.9 NEWMODULE.
  *
- * @package    mod
- * @subpackage msm
- * @copyright  2011 Your Name <your@email.adress>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+ *
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
 
 defined('MOODLE_INTERNAL') || die();
 
