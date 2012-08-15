@@ -75,7 +75,7 @@ class Companion extends Element
                                     }
                                 }
                             }
-                            else
+                            else // the file referenced already exists in db
                             {
                                 $position = $position + 1;
                                 $this->comments[] = $commentrefID . '/' . $position;
@@ -112,7 +112,7 @@ class Companion extends Element
                                     }
                                 }
                             }
-                            else
+                            else // the file referenced already exists in db
                             {
                                 $position = $position + 1;
                                 $this->defs[] = $definitionrefID . '/' . $position;
@@ -146,7 +146,7 @@ class Companion extends Element
                                     }
                                 }
                             }
-                            else
+                            else // the file referenced already exists in db
                             {
                                 $position = $position + 1;
                                 $this->theorems[] = $theormerefID . '/' . $position;
@@ -181,7 +181,7 @@ class Companion extends Element
                                     }
                                 }
                             }
-                            else
+                            else // the file referenced already exists in db
                             {
                                 $position = $position + 1;
                                 $this->packs[] = $showmepackrefID . '/' . $position;
@@ -212,7 +212,7 @@ class Companion extends Element
                                     $this->packs[] = $quiz;
                                 }
                             }
-                            else
+                            else // the file referenced already exists in db
                             {
                                 $position = $position + 1;
                                 $this->packs[] = $quizpackID . '/' . $position;
@@ -244,7 +244,7 @@ class Companion extends Element
                                     $this->subunits[] = $unit;
                                 }
                             }
-                            else
+                            else // the file referenced already exists in db
                             {
                                 $position = $position + 1;
                                 $this->subunits[] = $untiID . '/' . $position;
@@ -287,7 +287,7 @@ class Companion extends Element
                 {
                     $elementPositions['pack' . '-' . $key] = $pack->position;
                 }
-                else
+                else // to deal with files that were referenced that already existed in db
                 {
                     $packinfo = explode('/', $pack);
                     $elementPositions['pack' . '-' . $key] = $packinfo[1];

@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Associate
@@ -58,7 +58,7 @@ class Associate extends Element
 
                         if (!empty($path))
                         {
-                            $parser->load($path);
+                            @$parser->load($path);
 
                             $element = $parser->documentElement;
 
@@ -139,8 +139,23 @@ class Associate extends Element
                     case('unit.ref'):
                         $position = $position + 1;
                         $unitID = $child->getAttribute('unitId');
+
+                        echo "unitID from a ref";
+                        print_object($unitID);
+
+//                        $unitRecordID = $DB->get_record('msm_unit', array('string_id' => $unitID))->id;
+//
+//                        if (!empty($unitRecordID))
+//                        {
+//                            $this->subunits[] = $unitRecordID . '/' . $position;
+//                        }
+//                        else
+//                        {
                         $path = $this->findFile($unitID, dirname($this->xmlpath));
 
+                        echo "path?";
+                        print_object($path);
+                        
                         if (!empty($path))
                         {
                             @$parser->load($path);
@@ -151,6 +166,7 @@ class Associate extends Element
                             $unit->loadFromXml($element, $position);
                             $this->subunits[] = $unit;
                         }
+//                        }
                         break;
 
                     case('info'):
@@ -269,10 +285,15 @@ class Associate extends Element
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = split('-', $element);
 
+                    echo "key";
+                    print_object($this->subunits[$subunitString[1]]);
+
                     $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
 
                     if (empty($subunitRecord))
                     {
+                        echo "no subunitRecord";
+                        print_object($subunit = $this->subunits[$subunitString[1]]);
                         if (empty($sibling_id))
                         {
                             $subunit = $this->subunits[$subunitString[1]];
@@ -288,6 +309,9 @@ class Associate extends Element
                     }
                     else
                     {
+                        echo "subunit Record";
+                        print_object($subunitRecord);
+
                         $subunitID = $subunitRecord->id;
 
                         $subunit = $this->subunits[$subunitString[1]];
@@ -443,7 +467,7 @@ class Associate extends Element
             $content .= $this->infos[0]->info_content;
             $content .= "</div>";
         }
-        
+
         if ($associateParentTablename == 'msm_theorem')
         {
             $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
@@ -456,8 +480,8 @@ class Associate extends Element
             $content .= $this->infos[0]->info_content;
             $content .= "</div>";
         }
-        
-        if($associateParentTablename == 'msm_comment')
+
+        if ($associateParentTablename == 'msm_comment')
         {
             $content .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
             $content .= "<span style='cursor:pointer'>";

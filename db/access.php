@@ -42,46 +42,52 @@
  *
  * 
  */
-
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
-
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
-
-/***************************** remove these comment marks and modify the code as needed
-    'mod/msm:view' => array(
-        'captype' => 'read',
-        'contextlevel' => CONTEXT_MODULE,
-        'legacy' => array(
-            'guest' => CAP_ALLOW,
-            'student' => CAP_ALLOW,
-            'teacher' => CAP_ALLOW,
-            'editingteacher' => CAP_ALLOW,
-            'admin' => CAP_ALLOW
-        )
-    ),
-
-    'mod/msm:submit' => array(
-        'riskbitmask' => RISK_SPAM,
+    'mod/msm:addinstance' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_MODULE,
         'legacy' => array(
-            'student' => CAP_ALLOW
+            'teacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
         )
-    ),
-******************************/
+    )
+
+        /*         * *************************** remove these comment marks and modify the code as needed
+          'mod/msm:view' => array(
+          'captype' => 'read',
+          'contextlevel' => CONTEXT_MODULE,
+          'legacy' => array(
+          'guest' => CAP_ALLOW,
+          'student' => CAP_ALLOW,
+          'teacher' => CAP_ALLOW,
+          'editingteacher' => CAP_ALLOW,
+          'admin' => CAP_ALLOW
+          )
+          ),
+
+          'mod/msm:submit' => array(
+          'riskbitmask' => RISK_SPAM,
+          'captype' => 'write',
+          'contextlevel' => CONTEXT_MODULE,
+          'legacy' => array(
+          'student' => CAP_ALLOW
+          )
+          ),
+         * **************************** */
 );
 

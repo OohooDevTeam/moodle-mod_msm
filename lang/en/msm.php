@@ -42,3 +42,4 @@ $string['msm'] = 'msm';
 $string['pluginadministration'] = 'msm administration';
 $string['pluginname'] = 'msm';
 $string['updatecomp'] = 'Update this composition';
+$string['msm:addinstance'] = 'Add a new MSM';
