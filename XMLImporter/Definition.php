@@ -23,7 +23,8 @@ class Definition extends Element
 {
 
     public $position;
-    public $content;
+    public $def_content;
+    public $caption;
 
     /**
      *
@@ -101,7 +102,7 @@ class Definition extends Element
 
             foreach ($this->processContent($d, $position) as $content)
             {
-                $this->content .= $content;
+                $this->def_content .= $content;
             }
         }
     }
@@ -124,9 +125,9 @@ class Definition extends Element
 
         $data->description = $this->description;
 
-        if (!empty($this->content))
+        if (!empty($this->def_content))
         {
-            $data->def_content = $this->content;
+            $data->def_content = $this->def_content;
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }

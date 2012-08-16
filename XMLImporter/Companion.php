@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Companion
@@ -59,10 +59,10 @@ class Companion extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($commentrefID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($commentrefID, dirname($this->xmlpath), 'comment');
                                 if (!empty($filepath))
                                 {
-                                    $parser->load($filepath);
+                                    @$parser->load($filepath);
 
                                     $element = $parser->documentElement;
 
@@ -95,11 +95,11 @@ class Companion extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath), 'def');
 
                                 if (!empty($filepath))
                                 {
-                                    $parser->load($filepath);
+                                    @$parser->load($filepath);
 
                                     $element = $parser->documentElement;
 
@@ -129,11 +129,11 @@ class Companion extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath), 'theorem');
 
                                 if (!empty($filepath))
                                 {
-                                    $parser->load($filepath);
+                                    @$parser->load($filepath);
 
                                     $element = $parser->documentElement;
 
@@ -163,7 +163,7 @@ class Companion extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($showmepackrefID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($showmepackrefID, dirname($this->xmlpath), 'showmepack');
 
 
                                 if (!empty($filepath))
@@ -199,7 +199,7 @@ class Companion extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($quizpackID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($quizpackID, dirname($this->xmlpath), 'quizpack');
                                 @$parser->load($filepath);
 
                                 $element = $parser->documentElement;
@@ -229,7 +229,7 @@ class Companion extends Element
 
                             if (!empty($IDinDB))
                             {
-                                $filepath = $this->findFile($untiID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($untiID, dirname($this->xmlpath), 'unit');
                                 @$parser->load($filepath);
 
                                 // may need to change this code to load the entire file
@@ -457,7 +457,9 @@ class Companion extends Element
 
                     if (is_object($this->defs[$defString[1]]))
                     {
-                        $defID = $this->checkForRecord($this->defs[$defString[1]])->id;
+                        echo "def";
+                        print_object($this->defs[$defString[1]]);
+                        $defID = $this->checkForRecord($this->defs[$defString[1]], 'caption');
                     }
                     else
                     {
@@ -482,7 +484,8 @@ class Companion extends Element
                     }
                     else
                     {
-                      $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                        $defID = $defID->id;
+                        $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
                     }
                     break;
 

@@ -166,18 +166,6 @@ function msm_add_instance(stdClass $msm, mod_msm_mod_form $mform = null)
         
         $unit->saveIntoDb($unit->position, $msm->id);
            
-        
-        //inserting the top element unit
-//        $data = new stdClass();
-//        $data->unit_id = $unit->id;
-//        $data->table_id = $DB->get_record('msm_table_collection', array('tablename'=>'msm_unit'))->id;
-//        $data->parent_id = null;
-//        $data->prev_sibling_id = null;
-//        
-//        $id = $DB->insert_record('msm_compositor', $data);
-//
-//        $compositor = new Compositor();
-//        $compositor->loadFromUnit($unit);
     }
 //
     echo "done";

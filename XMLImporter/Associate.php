@@ -54,7 +54,7 @@ class Associate extends Element
                     case('comment.ref'):
                         $position = $position + 1;
                         $commentID = $child->getAttribute('commentID');
-                        $path = $this->findFile($commentID, dirname($this->xmlpath));
+                        $path = $this->findFile($commentID, dirname($this->xmlpath), 'comment');
 
                         if (!empty($path))
                         {
@@ -71,7 +71,7 @@ class Associate extends Element
                     case('showme.pack.ref'):
                         $position = $position + 1;
                         $showmepackID = $child->getAttribute('showmePackID');
-                        $path = $this->findFile($showmepackID, dirname($this->xmlpath));
+                        $path = $this->findFile($showmepackID, dirname($this->xmlpath), 'showmepack');
 
                         if (!empty($path))
                         {
@@ -87,7 +87,7 @@ class Associate extends Element
                     case('quiz.pack.ref'):
                         $position = $position + 1;
                         $quizpackID = $child->getAttribute('quizPackID');
-                        $path = $this->findFile($quizpackID, dirname($this->xmlpath));
+                        $path = $this->findFile($quizpackID, dirname($this->xmlpath), 'quizpack');
 
                         if (!empty($path))
                         {
@@ -104,7 +104,7 @@ class Associate extends Element
                     case('definition.ref'):
                         $position = $position + 1;
                         $definitionID = $child->getAttribute('definitionID');
-                        $path = $this->findFile($definitionID, dirname($this->xmlpath));
+                        $path = $this->findFile($definitionID, dirname($this->xmlpath), 'def');
 
                         if (!empty($path))
                         {
@@ -122,7 +122,7 @@ class Associate extends Element
                         $position = $position + 1;
                         $theoremID = $child->getAttribute('theoremID');
                         $theorempartID = $child->getAttibute('theorempartID');
-                        $path = $this->findFile($theoremID, dirname($this->xmlpath));
+                        $path = $this->findFile($theoremID, dirname($this->xmlpath), 'theorem');
 
                         if (!empty($path))
                         {
@@ -139,23 +139,15 @@ class Associate extends Element
                     case('unit.ref'):
                         $position = $position + 1;
                         $unitID = $child->getAttribute('unitId');
-
-                        echo "unitID from a ref";
-                        print_object($unitID);
-
-//                        $unitRecordID = $DB->get_record('msm_unit', array('string_id' => $unitID))->id;
-//
-//                        if (!empty($unitRecordID))
-//                        {
-//                            $this->subunits[] = $unitRecordID . '/' . $position;
-//                        }
-//                        else
-//                        {
-                        $path = $this->findFile($unitID, dirname($this->xmlpath));
-
-                        echo "path?";
-                        print_object($path);
+//                        
+//                        echo "dirname?";
+//                        print_object(dirname($this->xmlpath));
                         
+                        $path = $this->findFile($unitID, dirname($this->xmlpath), 'unit');
+//                        
+//                        echo "path";
+//                        print_object($path);
+
                         if (!empty($path))
                         {
                             @$parser->load($path);
@@ -284,16 +276,13 @@ class Associate extends Element
 
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = split('-', $element);
-
-                    echo "key";
-                    print_object($this->subunits[$subunitString[1]]);
-
+                   
                     $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
 
                     if (empty($subunitRecord))
                     {
-                        echo "no subunitRecord";
-                        print_object($subunit = $this->subunits[$subunitString[1]]);
+//                        echo "no subunitRecord";
+//                        print_object($subunit = $this->subunits[$subunitString[1]]);
                         if (empty($sibling_id))
                         {
                             $subunit = $this->subunits[$subunitString[1]];
@@ -309,8 +298,8 @@ class Associate extends Element
                     }
                     else
                     {
-                        echo "subunit Record";
-                        print_object($subunitRecord);
+//                        echo "subunit Record";
+//                        print_object($subunitRecord);
 
                         $subunitID = $subunitRecord->id;
 
@@ -324,7 +313,7 @@ class Associate extends Element
 
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
                     $defString = split('-', $element);
-                    $defRecord = $this->checkForRecord($this->defs[$defString[1]]);
+                    $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');
 
                     if (empty($defRecord))
                     {

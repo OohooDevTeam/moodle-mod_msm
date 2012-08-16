@@ -80,6 +80,7 @@ class Unit extends Element
     // compid contains the id of the record inserted into the compositor table to be used to 
     // define parent_id and prev_sibling_id fields in compositor table
     public $compid;
+    public $string_id;
 
     function __construct($xmlpath = '')
     {
@@ -100,7 +101,7 @@ class Unit extends Element
     {
         $this->position = $position; // keeps track of order of contents
 
-        $this->unitid = $DomElement->getAttribute('unitid');
+        $this->string_id = $DomElement->getAttribute('unitid');
 
         $doc = new DOMDocument();
 
@@ -481,7 +482,7 @@ class Unit extends Element
         $sibling_id = null;
 
         $data = new stdClass();
-        $data->string_id = $this->unitid;
+        $data->string_id = $this->string_id;
         $data->title = $this->title;
         $data->plain_title = $this->plain_title;
         $data->creationdate = $this->creation;
@@ -648,14 +649,14 @@ class Unit extends Element
                     if (empty($sibling_id))//  first author element which has no previous sibling
                     {
                         $author = $this->authors[$authorstring[1]];
-                        $author->saveIntoDb($author->position, 'author');
+                        $author->saveIntoDb($author->position, '', '', 'author');
                         $this->authors[$authorstring[1]]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid);
                         $sibling_id = $this->authors[$authorstring[1]]->compid;
                     }
                     else // child has a previous sibling
                     {
                         $author = $this->authors[$authorstring[1]];
-                        $author->saveIntoDb($author->position, 'author');
+                        $author->saveIntoDb($author->position, '', '', 'author');
                         $this->authors[$authorstring[1]]->compid = $author->insertToCompositor($author->id, $author->tablename, $this->compid, $sibling_id);
                         $sibling_id = $this->authors[$authorstring[1]]->compid;
                     }
@@ -668,14 +669,14 @@ class Unit extends Element
                     if (empty($sibling_id))//  first author element which has no previous sibling
                     {
                         $contributor = $this->contributors[$contributorstring[1]];
-                        $contributor->saveIntoDb($contributor->position, 'contributor');
+                        $contributor->saveIntoDb($contributor->position, '', '', 'contributor');
                         $this->contributors[$contributorstring[1]]->compid = $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid);
                         $sibling_id = $this->contributors[$contributorstring[1]]->compid;
                     }
                     else // child has a previous sibling
                     {
                         $contributor = $this->contributors[$contributorstring[1]];
-                        $contributor->saveIntoDb($contributor->position, 'contributor');
+                        $contributor->saveIntoDb($contributor->position, '', '', 'contributor');
                         $this->contributors[$contributorstring[1]]->compid = $contributor->insertToCompositor($contributor->id, $contributor->tablename, $this->compid, $sibling_id);
                         $sibling_id = $this->contributors[$contributorstring[1]]->compid;
                     }

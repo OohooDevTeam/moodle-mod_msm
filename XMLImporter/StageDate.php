@@ -79,6 +79,7 @@ class StageDate extends Element
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
     }
+    
 
 }
 

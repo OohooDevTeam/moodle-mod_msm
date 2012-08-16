@@ -86,7 +86,7 @@ class Person extends Element
      * @param int $position
      * @param String $type 
      */
-    function saveIntoDb($position, $type)
+    function saveIntoDb($position, $parentid = '', $siblingid = '', $type='')
     {
         global $DB;
 
@@ -109,7 +109,7 @@ class Person extends Element
         $this->id = $DB->insert_record($this->tablename, $data);
     }
     
-    function loadFromDb($id)
+    function loadFromDb($id, $compid)
     {
         global $DB;
         

@@ -89,10 +89,10 @@ class PartExample extends Element
         }
     }
 
-    function saveIntoDb($position)
+    function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
         global $DB;
-        $data = new stdClsss;
+        $data = new stdClass();
 
         $data->partid = $this->partid;
         $data->counter = $this->counter;

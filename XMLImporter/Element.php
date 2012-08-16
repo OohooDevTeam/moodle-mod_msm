@@ -1,23 +1,23 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
-
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 /**
- * Description of Element
- *
- * @author User
+ * The Element class is an abstract class that each of the other classes in the XMLImporter folder inherits from.
+ * This class has an abstract method - loadFromXml.  It also contains several functions that were
+ * refactored from the child classses.  For more information about the mentioned method, see the comments above
+ * the method declaration.
  */
 require_once("Subordinate.php");
 require_once("Media.php");
@@ -26,7 +26,7 @@ require_once("MathImg.php");
 abstract class Element
 {
 
-    public $xmlpath;
+    public $xmlpath; // this property of the class stores the filepath of the current XML file being parsed
     public $id;
 
     // constructor for the class
@@ -37,7 +37,6 @@ abstract class Element
 
     // abstract method that is implemented by each class 
     // This function essentially parses the given XML file to retrive data
-
     abstract function loadFromXml($DomElement, $position = '');
 
     /**
@@ -71,9 +70,14 @@ abstract class Element
     function checkForRecord($DomElement, $propertyName = '')
     {
         global $DB;
+        
+//        echo "Domelement";
+//        print_object($DomElement);
 
         if (property_exists(get_class($DomElement), 'string_id'))
         {
+            echo "has string id";
+            print_object($DomElement->string_id);
             if (!empty($DomElement->string_id))
             {
                 $foundID = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
@@ -89,11 +93,13 @@ abstract class Element
             }
             else
             {
+                echo "empty string_id";
                 return false;
             }
         }
         else if (!empty($DomElement->$propertyName))
         {
+            
             $foundID = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
 
             if (!empty($foundID))
@@ -108,7 +114,7 @@ abstract class Element
         else
         {
             echo "debugging checkForRecord";
-            print_object($DomElement->tagName);
+            print_object($DomElement);
             return false;
         }
     }
@@ -441,13 +447,17 @@ abstract class Element
     }
 
     /**
-     *
-     * @param DOMElement $elementID
-     * @param String $filepath
-     * @return string|null 
+     * 
+     * @param DOMAttribute $elementID
+     * @param string $filepath
+     * @param string $reftype    This variable specified which XML element reference has called the function
+     * @return string|null
      */
-    function findFile($elementID, $filepath)
+    function findFile($elementID, $filepath, $reftype)
     {
+        $defIDs = array();
+        $commentIDs = array();
+
         $dirOrFiles = scandir($filepath);
 
         foreach ($dirOrFiles as $key => $file)
@@ -461,7 +471,7 @@ abstract class Element
                 if (sizeof($ext) <= 1) // it's a directory
                 {
                     $inputpath = $filepath . '/' . $file;
-                    $path = $this->findFile($elementID, $inputpath);
+                    $path = $this->findFile($elementID, $inputpath, $reftype);
                 }
                 else if ((sizeof($ext) > 1) && ($ext[1] == 'xml'))
                 {
@@ -470,17 +480,95 @@ abstract class Element
 
                     $element = $Domparser->documentElement;
 
-                    $parsedID = $element->getAttribute('id');
+                    switch ($reftype)
+                    {
+                        case('comment'):
+                            if ($element->tagName == 'unit')
+                            {
+                                $comments = $element->getElementsByTagName('comment');
 
-                    if ($parsedID == $elementID)
-                    {
-                        $path = $filepath . '/' . $file;
-                        return $path;
+                                foreach ($comments as $comment)
+                                {
+                                    $commentID = $comment->getAttribute('id');
+                                    if ($commentID == $elementID)
+                                    {
+                                        $path = $filepath . '/' . $file;
+                                        return $path;
+                                    }
+                                }
+                            }
+                            
+                        case('def'):
+                            if ($element->tagName == 'unit')
+                            {
+                                $defs = $element->getElementsByTagName('def');
+
+                                foreach ($defs as $def)
+                                {
+                                    $defID = $def->getAttribute('id');
+                                    if ($defID == $elementID)
+                                    {
+                                        $path = $filepath . '/' . $file;
+                                        return $path;
+                                    }
+                                }
+                            }
+                            
+                        case('theorem'):
+                            $parsedID = $element->getAttribute('id');
+
+                            if ($parsedID == $elementID)
+                            {
+                                $path = $filepath . '/' . $file;
+                                return $path;
+                            }
+                            
+                        case('unit'):
+                            $parsedID = $element->getAttribute('unitid');
+
+                            if ($parsedID == $elementID)
+                            {
+                                $path = $filepath . '/' . $file;
+                                return $path;
+                            }
+                            
+                        case('showmepack'):
+                            $parsedID = $element->getAttribute('id');
+
+                            if ($parsedID == $elementID)
+                            {
+                                $path = $filepath . '/' . $file;
+                                return $path;
+                            }
+                            
+                        case('quizpack'):
+                            $parsedID = $element->getAttribute('id');
+
+                            if ($parsedID == $elementID)
+                            {
+                                $path = $filepath . '/' . $file;
+                                return $path;
+                            }
+                            
+                        case('examplepack'):
+                            $parsedID = $element->getAttribute('id');
+
+                            if ($parsedID == $elementID)
+                            {
+                                $path = $filepath . '/' . $file;
+                                return $path;
+                            }
+                            
+                        case('exercisepack'):
+                            $parsedID = $element->getAttribute('id');
+
+                            if ($parsedID == $elementID)
+                            {
+                                $path = $filepath . '/' . $file;
+                                return $path;
+                            }
                     }
-                    else
-                    {
-                        continue;
-                    }
+
                 }
                 else if ((sizeof($ext) > 1) && ($ext[1] != 'xml'))
                 {

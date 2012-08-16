@@ -98,7 +98,7 @@ class Intro extends Element
         }
               
         $block = new Block();
-        $block->loadFromDb($compid); //this should be compositor id
+        $block->loadFromDb('', $compid); //this should be compositor id
         $this->block = $block;
         
         return $this;       

@@ -61,10 +61,10 @@ class Crossref extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($commentrefID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($commentrefID, dirname($this->xmlpath), 'comment');
                                 if (!empty($filepath))
                                 {
-                                    $parser->load($filepath);
+                                    @$parser->load($filepath);
 
                                     $element = $parser->documentElement;
 
@@ -97,11 +97,11 @@ class Crossref extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath), 'def');
 
                                 if (!empty($filepath))
                                 {
-                                    $parser->load($filepath);
+                                    @$parser->load($filepath);
 
                                     $element = $parser->documentElement;
 
@@ -131,11 +131,11 @@ class Crossref extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath),'theorem');
 
                                 if (!empty($filepath))
                                 {
-                                    $parser->load($filepath);
+                                    @$parser->load($filepath);
 
                                     $element = $parser->documentElement;
 
@@ -165,7 +165,7 @@ class Crossref extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($exercisePackID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($exercisePackID, dirname($this->xmlpath), 'exercisepack');
                                 @$parser->load($filepath);
 
                                 $element = $parser->documentElement;
@@ -195,7 +195,7 @@ class Crossref extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($examplepackID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($examplepackID, dirname($this->xmlpath), 'examplepack');
                                 @$parser->load($filepath);
 
                                 $element = $parser->documentElement;
@@ -225,7 +225,7 @@ class Crossref extends Element
 
                             if (!empty($IDinDB))
                             {
-                                $filepath = $this->findFile($untiID, dirname($this->xmlpath));
+                                $filepath = $this->findFile($untiID, dirname($this->xmlpath), 'unit');
                                 @$parser->load($filepath);
 
                                 // may need to change this code to load the entire file
@@ -501,7 +501,7 @@ class Crossref extends Element
 
                     if (is_object($this->defs[$defString[1]]))
                     {
-                        $defID = $this->checkForRecord($this->defs[$defString[1]])->id;
+                        $defID = $this->checkForRecord($this->defs[$defString[1]], 'caption');
                     }
                     else
                     {
@@ -526,6 +526,7 @@ class Crossref extends Element
                     }
                     else
                     {
+                         $defID = $defID->id;
                         $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
                     }
                     break;

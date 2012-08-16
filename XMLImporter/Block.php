@@ -423,7 +423,7 @@ class Block extends Element
         }
     }
 
-    function loadFromDb($compid)
+    function loadFromDb($id, $compid)
     {
         global $DB;
 
