@@ -8,6 +8,7 @@
 * @copyright   University of Alberta                                    **
 * @link        http://ualberta.ca                                       **
 * @author      Ga Young Kim                                             **
+* @author Dave Methvin (dave.methvin@gmail.com)                         **
 * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
 **************************************************************************
 **************************************************************************/
@@ -43,7 +44,7 @@
  * @param Object options Options for the splitter (not required)
  * @cat Plugins/Splitter
  * @return jQuery
- * @author Dave Methvin (dave.methvin@gmail.com)
+ * 
  */
  ;(function($){
  

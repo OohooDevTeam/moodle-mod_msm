@@ -60,22 +60,29 @@ class Companion extends Element
                             if (empty($IDinDB))
                             {
                                 $filepath = $this->findFile($commentrefID, dirname($this->xmlpath), 'comment');
+
                                 if (!empty($filepath))
                                 {
                                     @$parser->load($filepath);
 
                                     $element = $parser->documentElement;
 
-                                    if (!empty($element))
+                                    $comments = $element->getElementsByTagName('comment');
+
+                                    foreach ($comments as $c)
                                     {
-                                        $position = $position + 1;
-                                        $comment = new MathComment(dirname($filepath));
-                                        $comment->loadFromXml($element, $position);
-                                        $this->comments[] = $comment;
+                                        $cID = $d->getAttribute('id');
+                                        if ($cID == $commentrefID)
+                                        {
+                                            $position = $position + 1;
+                                            $comment = new MathComment(dirname($filepath));
+                                            $comment->loadFromXml($c, $position);
+                                            $this->comments[] = $comment;
+                                        }
                                     }
                                 }
                             }
-                            else // the file referenced already exists in db
+                            else
                             {
                                 $position = $position + 1;
                                 $this->comments[] = $commentrefID . '/' . $position;
@@ -103,16 +110,22 @@ class Companion extends Element
 
                                     $element = $parser->documentElement;
 
-                                    if (!empty($element))
+                                    $defs = $element->getElementsByTagName('def');
+
+                                    foreach ($defs as $d)
                                     {
-                                        $position = $position + 1;
-                                        $def = new Definition(dirname($filepath));
-                                        $def->loadFromXml($element, $position);
-                                        $this->defs[] = $def;
+                                        $dID = $d->getAttribute('id');
+                                        if ($dID == $definitionrefID)
+                                        {
+                                            $position = $position + 1;
+                                            $def = new Definition(dirname($filepath));
+                                            $def->loadFromXml($d, $position);
+                                            $this->defs[] = $def;
+                                        }
                                     }
                                 }
                             }
-                            else // the file referenced already exists in db
+                            else
                             {
                                 $position = $position + 1;
                                 $this->defs[] = $definitionrefID . '/' . $position;
@@ -221,15 +234,15 @@ class Companion extends Element
                         break;
 
                     case('unit.ref'):
-                        $untiID = $child->getAttribute('unitId');
+                        $unitID = $child->getAttribute('unitId');
 
-                        if (!empty($untiID))
+                        if (!empty($unitID))
                         {
-                            $IDinDB = $DB->get_record('msm_unit', array('string_id' => $untiID));
+                            $IDinDB = $DB->get_record('msm_unit', array('string_id' => $unitID));
 
-                            if (!empty($IDinDB))
+                            if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($untiID, dirname($this->xmlpath), 'unit');
+                                $filepath = $this->findFile($unitID, dirname($this->xmlpath), 'unit');
                                 @$parser->load($filepath);
 
                                 // may need to change this code to load the entire file
@@ -247,7 +260,7 @@ class Companion extends Element
                             else // the file referenced already exists in db
                             {
                                 $position = $position + 1;
-                                $this->subunits[] = $untiID . '/' . $position;
+                                $this->subunits[] = $unitID . '/' . $position;
                             }
                         }
                         break;
@@ -389,31 +402,31 @@ class Companion extends Element
                         if (!empty($packRecord))
                         {
                             $packID = $packRecord->id;
+                            if (empty($packID))
+                            {
+                                if (empty($sibling_id))
+                                {
+                                    $pack = $this->packs[$packString[1]];
+                                    $pack->saveIntoDb($pack->position, $parentid);
+                                    $sibling_id = $pack->compid;
+                                }
+                                else
+                                {
+                                    $pack = $this->packs[$packString[1]];
+                                    $pack->saveIntoDb($pack->position, $parentid, $sibling_id);
+                                    $sibling_id = $pack->compid;
+                                }
+                            }
+                            else
+                            {
+                                $sibling_id = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
+                            }
                         }
                     }
                     else
                     {
                         $packinfo = explode('/', $this->packs[$packString[1]]);
-                        $packID = $packinfo[1];
-                    }
-
-                    if (empty($packID))
-                    {
-                        if (empty($sibling_id))
-                        {
-                            $pack = $this->packs[$packString[1]];
-                            $pack->saveIntoDb($pack->position, $parentid);
-                            $sibling_id = $pack->compid;
-                        }
-                        else
-                        {
-                            $pack = $this->packs[$packString[1]];
-                            $pack->saveIntoDb($pack->position, $parentid, $sibling_id);
-                            $sibling_id = $pack->compid;
-                        }
-                    }
-                    else
-                    {
+                        $packID = $packinfo[1]->id;
                         $sibling_id = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
                     }
                     break;
@@ -423,31 +436,40 @@ class Companion extends Element
 
                     if (is_object($this->comments[$commentString[1]]))
                     {
-                        $commentID = $this->checkForRecord($this->comments[$commentString[1]])->id;
-                    }
-                    else
-                    {
-                        $commentinfo = explode('/', $this->comments[$commentString[1]]);
-                        $commentID = $commentinfo[1];
-                    }
-
-                    if (empty($commentID))
-                    {
-                        if (empty($sibling_id))
+                        if (!empty($this->comments[$commentString[1]]->string_id))
                         {
-                            $comment = $this->comments[$commentString[1]];
-                            $comment->saveIntoDb($comment->position, $parentid);
-                            $sibling_id = $comment->compid;
+                            $commentID = $this->checkForRecord($this->comments[$commentString[1]]);
                         }
                         else
                         {
-                            $comment = $this->comments[$commentString[1]];
-                            $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
-                            $sibling_id = $comment->compid;
+                            $commentID = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
+                        }
+
+                        if (empty($commentID))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $comment = $this->comments[$commentString[1]];
+                                $comment->saveIntoDb($comment->position, $parentid);
+                                $sibling_id = $comment->compid;
+                            }
+                            else
+                            {
+                                $comment = $this->comments[$commentString[1]];
+                                $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
+                                $sibling_id = $comment->compid;
+                            }
+                        }
+                        else
+                        {
+                            $commentID = $commentID->id;
+                            $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
                         }
                     }
                     else
                     {
+                        $commentinfo = explode('/', $this->defs[$commentString[1]]);
+                        $commentID = $commentinfo[1]->id;
                         $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
                     }
                     break;
@@ -457,33 +479,40 @@ class Companion extends Element
 
                     if (is_object($this->defs[$defString[1]]))
                     {
-                        echo "def";
-                        print_object($this->defs[$defString[1]]);
-                        $defID = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                        if (!empty($this->defs[$defString[1]]->string_id))
+                        {
+                            $defID = $this->checkForRecord($this->defs[$defString[1]]);
+                        }
+                        else
+                        {
+                            $defID = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                        }
+
+                        if (empty($defID))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $def = $this->defs[$defString[1]];
+                                $def->saveIntoDb($def->position, $parentid);
+                                $sibling_id = $def->compid;
+                            }
+                            else
+                            {
+                                $def = $this->defs[$defString[1]];
+                                $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                                $sibling_id = $def->compid;
+                            }
+                        }
+                        else
+                        {
+                            $defID = $defID->id;
+                            $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                        }
                     }
                     else
                     {
                         $definfo = explode('/', $this->defs[$defString[1]]);
                         $defID = $definfo[1];
-                    }
-
-                    if (empty($defID))
-                    {
-                        if (empty($sibling_id))
-                        {
-                            $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $parentid);
-                            $sibling_id = $def->compid;
-                        }
-                        else
-                        {
-                            $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $parentid, $sibling_id);
-                            $sibling_id = $def->compid;
-                        }
-                    }
-                    else
-                    {
                         $defID = $defID->id;
                         $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
                     }
@@ -494,31 +523,34 @@ class Companion extends Element
 
                     if (is_object($this->theorems[$theoremString[1]]))
                     {
-                        $theoremID = $this->checkForRecord($this->theorems[$theoremString[1]])->id;
+                        $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
+
+                        if (empty($theoremRecord))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $theorem = $this->theorems[$theoremString[1]];
+                                $theorem->saveIntoDb($theorem->position, $this->compid);
+                                $sibling_id = $theorem->compid;
+                            }
+                            else
+                            {
+                                $theorem = $this->theorems[$theoremString[1]];
+                                $theorem->saveIntoDb($theorem->position, $this->compid, $sibling_id);
+                                $sibling_id = $theorem->compid;
+                            }
+                        }
+                        else
+                        {
+                            $theoremID = $theoremRecord->id;
+                            $theorem = $this->theorems[$theoremString[1]];
+                            $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $this->compid, $sibling_id);
+                        }
                     }
                     else
                     {
                         $theoreminfo = explode('/', $this->theorems[$theoremString[1]]);
-                        $theoremID = $theoreminfo[1];
-                    }
-
-                    if (empty($theoremID))
-                    {
-                        if (empty($sibling_id))
-                        {
-                            $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $parentid);
-                            $sibling_id = $theorem->compid;
-                        }
-                        else
-                        {
-                            $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
-                            $sibling_id = $theorem->compid;
-                        }
-                    }
-                    else
-                    {
+                        $theoremID = $theoreminfo[1]->id;
                         $sibling_id = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
                     }
                     break;
@@ -529,49 +561,36 @@ class Companion extends Element
                     if (is_object($this->subunits[$subunitString[1]]))
                     {
                         $subunitID = $this->checkForRecord($this->subunits[$subunitString[1]])->id;
+
+                        if (empty($subunitID))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $subunit = $this->subunits[$subunitString[1]];
+                                $subunit->saveIntoDb($subunit->position, $parentid);
+                                $sibling_id = $subunit->compid;
+                            }
+                            else
+                            {
+                                $subunit = $this->subunits[$subunitString[1]];
+                                $subunit->saveIntoDb($subunit->position, $parentid, $sibling_id);
+                                $sibling_id = $subunit->compid;
+                            }
+                        }
+                        else
+                        {
+                            $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
+                        }
                     }
                     else
                     {
                         $subunitinfo = explode('/', $this->subunits[$subunitString[1]]);
-                        $subunitID = $subunitinfo[1];
-                    }
-
-                    if (empty($subunitID))
-                    {
-                        if (empty($sibling_id))
-                        {
-                            $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $parentid);
-                            $sibling_id = $subunit->compid;
-                        }
-                        else
-                        {
-                            $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $parentid, $sibling_id);
-                            $sibling_id = $subunit->compid;
-                        }
-                    }
-                    else
-                    {
+                        $subunitID = $subunitinfo[1]->id;
                         $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
                     }
                     break;
             }
         }
-    }
-
-    function loadFromDb($id, $compid)
-    {
-        global $DB;
-
-        return $this;
-    }
-
-    function displayhtml()
-    {
-        $content = '';
-
-        return $content;
     }
 
 }

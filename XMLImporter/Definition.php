@@ -25,6 +25,7 @@ class Definition extends Element
     public $position;
     public $def_content;
     public $caption;
+    public $string_id;
 
     /**
      *

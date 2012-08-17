@@ -109,7 +109,7 @@ class Person extends Element
         $this->id = $DB->insert_record($this->tablename, $data);
     }
     
-    function loadFromDb($id, $compid)
+    function loadFromDb($id)
     {
         global $DB;
         

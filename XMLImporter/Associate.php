@@ -32,6 +32,8 @@ class Associate extends Element
 
     public function loadFromXml($DomElement, $position = '')
     {
+        global $DB;
+        
         $this->position = $position;
         $this->description = $DomElement->getAttribute('type');
 
@@ -52,113 +54,218 @@ class Associate extends Element
                 switch ($name)
                 {
                     case('comment.ref'):
-                        $position = $position + 1;
-                        $commentID = $child->getAttribute('commentID');
-                        $path = $this->findFile($commentID, dirname($this->xmlpath), 'comment');
+                        $commentrefID = $child->getAttribute('commentID');
 
-                        if (!empty($path))
+                        if (!empty($commentrefID))
                         {
-                            @$parser->load($path);
+                            $IDinDB = $DB->get_record('msm_comment', array('string_id' => $commentrefID));
 
-                            $element = $parser->documentElement;
+                            if (empty($IDinDB))
+                            {
+                                $filepath = $this->findFile($commentrefID, dirname($this->xmlpath), 'comment');
 
-                            $comment = new MathComment(dirname($path));
-                            $comment->loadFromXml($element, $position);
-                            $this->comments[] = $comment;
-                        }
-                        break;
+                                if (!empty($filepath))
+                                {
+                                    @$parser->load($filepath);
 
-                    case('showme.pack.ref'):
-                        $position = $position + 1;
-                        $showmepackID = $child->getAttribute('showmePackID');
-                        $path = $this->findFile($showmepackID, dirname($this->xmlpath), 'showmepack');
+                                    $element = $parser->documentElement;
 
-                        if (!empty($path))
-                        {
-                            @$parser->load($path);
-                            $element = $parser->documentElement;
+                                    $comments = $element->getElementsByTagName('comment');
 
-                            $showmepack = new Pack(dirname($path));
-                            $showmepack->loadFromXml($element, $position);
-                            $this->refs[] = $showmepack;
-                        }
-                        break;
-
-                    case('quiz.pack.ref'):
-                        $position = $position + 1;
-                        $quizpackID = $child->getAttribute('quizPackID');
-                        $path = $this->findFile($quizpackID, dirname($this->xmlpath), 'quizpack');
-
-                        if (!empty($path))
-                        {
-                            @$parser->load($path);
-
-                            $element = $parser->documentElement;
-
-                            $quizpack = new Pack(dirname($path));
-                            $quizpack->loadFromXml($element, $position);
-                            $this->refs[] = $quizpack;
+                                    foreach ($comments as $c)
+                                    {
+                                        $cID = $d->getAttribute('id');
+                                        if ($cID == $commentrefID)
+                                        {
+                                            $position = $position + 1;
+                                            $comment = new MathComment(dirname($filepath));
+                                            $comment->loadFromXml($c, $position);
+                                            $this->comments[] = $comment;
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                $position = $position + 1;
+                                $this->comments[] = $commentrefID . '/' . $position;
+                            }
+                            //when db is set up, add code to check the db records first
+                            // then if there are no records with specified ID, then..
+                            // find the file with comment with specified ID
                         }
                         break;
 
                     case('definition.ref'):
-                        $position = $position + 1;
-                        $definitionID = $child->getAttribute('definitionID');
-                        $path = $this->findFile($definitionID, dirname($this->xmlpath), 'def');
+                        $definitionrefID = $child->getAttribute('definitionID');
 
-                        if (!empty($path))
+                        if (!empty($definitionrefID))
                         {
-                            @$parser->load($path);
+                            $IDinDB = $DB->get_record('msm_def', array('string_id' => $definitionrefID));
 
-                            $element = $parser->documentElement;
+                            if (empty($IDinDB))
+                            {
+                                $filepath = $this->findFile($definitionrefID, dirname($this->xmlpath), 'def');
 
-                            $def = new Definition(dirname($path));
-                            $def->loadFromXml($element, $position);
-                            $this->defs[] = $def;
+                                if (!empty($filepath))
+                                {
+                                    @$parser->load($filepath);
+
+                                    $element = $parser->documentElement;
+
+                                    $defs = $element->getElementsByTagName('def');
+
+                                    foreach ($defs as $d)
+                                    {
+                                        $dID = $d->getAttribute('id');
+                                        if ($dID == $definitionrefID)
+                                        {
+                                            $position = $position + 1;
+                                            $def = new Definition(dirname($filepath));
+                                            $def->loadFromXml($d, $position);
+                                            $this->defs[] = $def;
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                $position = $position + 1;
+                                $this->defs[] = $definitionrefID . '/' . $position;
+                            }
+                        }
+                        break;
+
+                    case('showme.pack.ref'):
+                        $showmepackrefID = $child->getAttribute('showmePackID');
+
+                        if (!empty($showmepackrefID))
+                        {
+                            $IDinDB = $DB->get_record('msm_packs', array('string_id' => $showmepackrefID));
+
+                            if (empty($IDinDB))
+                            {
+                                $filepath = $this->findFile($showmepackrefID, dirname($this->xmlpath), 'showmepack');
+
+
+                                if (!empty($filepath))
+                                {
+                                    @$parser->load($filepath);
+
+                                    $element = $parser->documentElement;
+
+                                    if (!empty($element))
+                                    {
+                                        $position = $position + 1;
+                                        $showme = new Pack(dirname($filepath));
+                                        $showme->loadFromXml($element, $position);
+                                        $this->refs[] = $showme;
+                                    }
+                                }
+                            }
+                            else // the file referenced already exists in db
+                            {
+                                $position = $position + 1;
+                                $this->refs[] = $showmepackrefID . '/' . $position;
+                            }
+                        }
+
+                        break;
+
+                    case('quiz.pack.ref'):
+                        $quizpackID = $child->getAttribute('quizPackID');
+
+                        if (!empty($quizpackID))
+                        {
+                            $IDinDB = $DB->get_record('msm_packs', array('string_id' => $quizpackID));
+
+                            if (empty($IDinDB))
+                            {
+                                $filepath = $this->findFile($quizpackID, dirname($this->xmlpath), 'quizpack');
+                                @$parser->load($filepath);
+
+                                $element = $parser->documentElement;
+
+                                if (!empty($element))
+                                {
+                                    $position = $position + 1;
+                                    $quiz = new Pack(dirname($filepath));
+                                    $quiz->loadFromXml($element, $position);
+                                    $this->refs[] = $quiz;
+                                }
+                            }
+                            else // the file referenced already exists in db
+                            {
+                                $position = $position + 1;
+                                $this->refs[] = $quizpackID . '/' . $position;
+                            }
                         }
                         break;
 
                     case('theorem.ref'):
-                        $position = $position + 1;
-                        $theoremID = $child->getAttribute('theoremID');
-                        $theorempartID = $child->getAttibute('theorempartID');
-                        $path = $this->findFile($theoremID, dirname($this->xmlpath), 'theorem');
+                        $theoremrefID = $child->getAttribute('theoremID');
 
-                        if (!empty($path))
+                        if (!empty($theormerefID))
                         {
-                            @$parser->load($path);
+                            $IDinDB = $DB->get_record('msm_theorem', array('string_id' => $theormerefID));
 
-                            $element = $parser->documentElement;
+                            if (empty($IDinDB))
+                            {
+                                $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath), 'theorem');
 
-                            $theorem = new Theorem(dirname($path));
-                            $theorem->loadFromXml($element, $position);
-                            $this->theorems[] = $theorem;
+                                if (!empty($filepath))
+                                {
+                                    @$parser->load($filepath);
+
+                                    $element = $parser->documentElement;
+
+                                    if (!empty($element))
+                                    {
+                                        $position = $position + 1;
+                                        $theorem = new Theorem(dirname($filepath));
+                                        $theorem->loadFromXml($element, $position);
+                                        $this->theorems[] = $theorem;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                $position = $position + 1;
+                                $this->theorems[] = $theormerefID . '/' . $position;
+                            }
                         }
                         break;
 
                     case('unit.ref'):
-                        $position = $position + 1;
-                        $unitID = $child->getAttribute('unitId');
-//                        
-//                        echo "dirname?";
-//                        print_object(dirname($this->xmlpath));
-                        
-                        $path = $this->findFile($unitID, dirname($this->xmlpath), 'unit');
-//                        
-//                        echo "path";
-//                        print_object($path);
+                        $untiID = $child->getAttribute('unitId');
 
-                        if (!empty($path))
+                        if (!empty($untiID))
                         {
-                            @$parser->load($path);
+                            $IDinDB = $DB->get_record('msm_unit', array('string_id' => $untiID));
 
-                            $element = $parser->documentElement;
+                            if (empty($IDinDB))
+                            {
+                                $filepath = $this->findFile($untiID, dirname($this->xmlpath), 'unit');
+                                @$parser->load($filepath);
 
-                            $unit = new Unit(dirname($path));
-                            $unit->loadFromXml($element, $position);
-                            $this->subunits[] = $unit;
+                                // may need to change this code to load the entire file
+                                // containing the specified comment
+                                $element = $parser->documentElement;
+
+                                if (!empty($element))
+                                {
+                                    $position = $position + 1;
+                                    $unit = new Unit(dirname($filepath));
+                                    $unit->loadFromXml($element, $position);
+                                    $this->subunits[] = $unit;
+                                }
+                            }
+                            else
+                            {
+                                $position = $position + 1;
+                                $this->subunits[] = $untiID . '/' . $position;
+                            }
                         }
-//                        }
                         break;
 
                     case('info'):
@@ -194,27 +301,35 @@ class Associate extends Element
             }
         }
 
+        if (!empty($this->refs))
+        {
+            foreach ($this->refs as $key => $ref)
+            {
+                if (is_object($ref))
+                {
+                    $elementPositions['ref' . '-' . $key] = $ref->position;
+                }
+                else
+                {
+                    $refinfo = explode('/', $ref);
+                    $elementPositions['ref' . '-' . $key] = $refinfo[1];
+                }
+            }
+        }
+
         if (!empty($this->comments))
         {
             foreach ($this->comments as $key => $comment)
             {
-                $elementPositions['comment' . '-' . $key] = $comment->position;
-            }
-        }
-
-        if (!empty($this->subunits))
-        {
-            foreach ($this->subunits as $key => $subunit)
-            {
-                $elementPositions['subunit' . '-' . $key] = $subunit->position;
-            }
-        }
-
-        if (!empty($this->theorems))
-        {
-            foreach ($this->theorems as $key => $theorem)
-            {
-                $elementPositions['theorem' . '-' . $key] = $theorem->position;
+                if (is_object($comment))
+                {
+                    $elementPositions['comment' . '-' . $key] = $comment->position;
+                }
+                else
+                {
+                    $commentinfo = explode('/', $comment);
+                    $elementPositions['comment' . '-' . $key] = $commentinfo[1];
+                }
             }
         }
 
@@ -222,15 +337,46 @@ class Associate extends Element
         {
             foreach ($this->defs as $key => $def)
             {
-                $elementPositions['def' . '-' . $key] = $def->position;
+                if (is_object($def))
+                {
+                    $elementPositions['def' . '-' . $key] = $def->position;
+                }
+                else
+                {
+                    $definfo = explode('/', $def);
+                    $elementPositions['def' . '-' . $key] = $definfo[1];
+                }
             }
         }
 
-        if (!empty($this->refs))
+        if (!empty($this->theorems))
         {
-            foreach ($this->refs as $key => $ref)
+            foreach ($this->theorems as $key => $theorem)
             {
-                $elementPositions['ref' . '-' . $key] = $ref->position;
+                if (is_object($theorem))
+                {
+                    $elementPositions['theorem' . '-' . $key] = $theorem->position;
+                }
+                else
+                {
+                    $theoreminfo = explode('/', $theorem);
+                    $elementPositions['theorem' . '-' . $key] = $theoreminfo[1];
+                }
+            }
+        }
+        if (!empty($this->subunits))
+        {
+            foreach ($this->subunits as $key => $subunit)
+            {
+                if (is_object($subunit))
+                {
+                    $elementPositions['subunit' . '-' . $key] = $subunit->position;
+                }
+                else
+                {
+                    $subunitinfo = explode('/', $subunit);
+                    $elementPositions['subunit' . '-' . $key] = $subunitinfo[1];
+                }
             }
         }
 
@@ -260,52 +406,78 @@ class Associate extends Element
                 case(preg_match("/^(comment.\d+)$/", $element) ? true : false):
                     $commentString = split('-', $element);
 
-                    if (empty($sibling_id))
+                    if (is_object($this->comments[$commentString[1]]))
                     {
-                        $comment = $this->comments[$commentString[1]];
-                        $comment->saveIntoDb($comment->position, $this->compid);
-                        $sibling_id = $comment->compid;
+                        if (!empty($this->comments[$commentString[1]]->string_id))
+                        {
+                            $commentID = $this->checkForRecord($this->comments[$commentString[1]]);
+                        }
+                        else
+                        {
+                            $commentID = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
+                        }
+
+                        if (empty($commentID))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $comment = $this->comments[$commentString[1]];
+                                $comment->saveIntoDb($comment->position, $parentid);
+                                $sibling_id = $comment->compid;
+                            }
+                            else
+                            {
+                                $comment = $this->comments[$commentString[1]];
+                                $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
+                                $sibling_id = $comment->compid;
+                            }
+                        }
+                        else
+                        {
+                            $commentID = $commentID->id;
+                            $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
+                        }
                     }
                     else
                     {
-                        $comment = $this->comments[$commentString[1]];
-                        $comment->saveIntoDb($comment->position, $this->compid, $sibling_id);
-                        $sibling_id = $comment->compid;
+                        $commentinfo = explode('/', $this->defs[$commentString[1]]);
+                        $commentID = $commentinfo[1]->id;
+                        $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
                     }
                     break;
 
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = split('-', $element);
-                   
-                    $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
 
-                    if (empty($subunitRecord))
+                    if (is_object($this->subunits[$subunitString[1]]))
                     {
-//                        echo "no subunitRecord";
-//                        print_object($subunit = $this->subunits[$subunitString[1]]);
-                        if (empty($sibling_id))
+                        $subunitID = $this->checkForRecord($this->subunits[$subunitString[1]])->id;
+
+                        if (empty($subunitID))
                         {
-                            $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $this->compid);
-                            $sibling_id = $subunit->compid;
+                            if (empty($sibling_id))
+                            {
+                                $subunit = $this->subunits[$subunitString[1]];
+                                $subunit->saveIntoDb($subunit->position, $parentid);
+                                $sibling_id = $subunit->compid;
+                            }
+                            else
+                            {
+                                $subunit = $this->subunits[$subunitString[1]];
+                                $subunit->saveIntoDb($subunit->position, $parentid, $sibling_id);
+                                $sibling_id = $subunit->compid;
+                            }
                         }
                         else
                         {
-                            $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $this->compid, $sibling_id);
-                            $sibling_id = $subunit->compid;
+                            $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
                         }
                     }
                     else
                     {
-//                        echo "subunit Record";
-//                        print_object($subunitRecord);
-
-                        $subunitID = $subunitRecord->id;
-
-                        $subunit = $this->subunits[$subunitString[1]];
-                        $subunit->compid = $this->insertToCompositor($subunitID, $subunit->tablename, $this->compid, $sibling_id);
-                        $sibling_id = $subunit->compid;
+                        $subunitinfo = explode('/', $this->subunits[$subunitString[1]]);
+                        $subunitID = $subunitinfo[1]->id;
+                        $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
                     }
 
 
@@ -313,86 +485,119 @@ class Associate extends Element
 
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
                     $defString = split('-', $element);
-                    $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');
 
-                    if (empty($defRecord))
+                    if (is_object($this->defs[$defString[1]]))
                     {
-                        if (empty($sibling_id))
+                        if (!empty($this->defs[$defString[1]]->string_id))
                         {
-                            $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $this->compid);
-                            $sibling_id = $def->compid;
+                            $defID = $this->checkForRecord($this->defs[$defString[1]]);
                         }
                         else
                         {
-                            $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $this->compid, $sibling_id);
-                            $sibling_id = $def->compid;
+                            $defID = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                        }
+
+                        if (empty($defID))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $def = $this->defs[$defString[1]];
+                                $def->saveIntoDb($def->position, $parentid);
+                                $sibling_id = $def->compid;
+                            }
+                            else
+                            {
+                                $def = $this->defs[$defString[1]];
+                                $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                                $sibling_id = $def->compid;
+                            }
+                        }
+                        else
+                        {
+                            $defID = $defID->id;
+                            $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
                         }
                     }
                     else
                     {
-                        $defID = $defRecord->id;
-                        $def = $this->defs[$defString[1]];
-                        $def->compid = $this->insertToCompositor($defID, $def->tablename, $this->compid, $sibling_id);
+                        $definfo = explode('/', $this->defs[$defString[1]]);
+                        $defID = $definfo[1];
+                        $defID = $defID->id;
+                        $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
                     }
-
-
                     break;
 
                 case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
                     $theoremString = split('-', $element);
 
-                    $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
-
-                    if (empty($theoremRecord))
+                    if (is_object($this->theorems[$theoremString[1]]))
                     {
-                        if (empty($sibling_id))
+                        $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
+
+                        if (empty($theoremRecord))
                         {
-                            $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $this->compid);
-                            $sibling_id = $theorem->compid;
+                            if (empty($sibling_id))
+                            {
+                                $theorem = $this->theorems[$theoremString[1]];
+                                $theorem->saveIntoDb($theorem->position, $this->compid);
+                                $sibling_id = $theorem->compid;
+                            }
+                            else
+                            {
+                                $theorem = $this->theorems[$theoremString[1]];
+                                $theorem->saveIntoDb($theorem->position, $this->compid, $sibling_id);
+                                $sibling_id = $theorem->compid;
+                            }
                         }
                         else
                         {
+                            $theoremID = $theoremRecord->id;
                             $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $this->compid, $sibling_id);
-                            $sibling_id = $theorem->compid;
+                            $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $this->compid, $sibling_id);
                         }
                     }
                     else
                     {
-                        $theoremID = $theoremRecord->id;
-                        $theorem = $this->theorems[$theoremString[1]];
-                        $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $this->compid, $sibling_id);
+                        $theoreminfo = explode('/', $this->theorems[$theoremString[1]]);
+                        $theoremID = $theoreminfo[1]->id;
+                        $sibling_id = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
                     }
                     break;
 
                 case(preg_match("/^(ref.\d+)$/", $element) ? true : false):
                     $refString = split('-', $element);
 
-                    $refRecord = $this->checkForRecord($this->refs[$refString[1]]);
-
-                    if (empty($refRecord))
+                    if (is_object($this->refs[$refString[1]]))
                     {
-                        if (empty($sibling_id))
+                        $refRecord = $this->checkForRecord($this->refs[$refString[1]]);
+
+                        if (empty($refRecord))
                         {
-                            $ref = $this->refs[$refString[1]];
-                            $ref->saveIntoDb($ref->position, $this->compid);
-                            $sibling_id = $ref->compid;
+                            if (empty($sibling_id))
+                            {
+                                $ref = $this->refs[$refString[1]];
+                                $ref->saveIntoDb($ref->position, $this->compid);
+                                $sibling_id = $ref->compid;
+                            }
+                            else
+                            {
+                                $ref = $this->refs[$refString[1]];
+                                $ref->saveIntoDb($ref->position, $this->compid, $sibling_id);
+                                $sibling_id = $ref->compid;
+                            }
                         }
                         else
                         {
+                            $refID = $refRecord->id;
                             $ref = $this->refs[$refString[1]];
-                            $ref->saveIntoDb($ref->position, $this->compid, $sibling_id);
-                            $sibling_id = $ref->compid;
+                            $ref->compid = $this->insertToCompositor($refID, $ref->tablename, $this->compid, $sibling_id);
                         }
                     }
                     else
                     {
-                        $refID = $refRecord->id;
-                        $ref = $this->refs[$refString[1]];
-                        $ref->compid = $this->insertToCompositor($refID, $ref->tablename, $this->compid, $sibling_id);
+                        $refinfo = explode('/', $this->refs[$refString[1]]);
+                        $refID = $refinfo[1]->id;
+                        $sibling_id = $this->insertToCompositor($refID, $ref->tablename, $parentid, $sibling_id);
                     }
                     break;
             }

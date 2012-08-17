@@ -13,16 +13,16 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
  * *************************************************************************
  * ************************************************************************ */
+require_once("Subordinate.php");
+require_once("Media.php");
+require_once("MathImg.php");
+
 /**
  * The Element class is an abstract class that each of the other classes in the XMLImporter folder inherits from.
  * This class has an abstract method - loadFromXml.  It also contains several functions that were
  * refactored from the child classses.  For more information about the mentioned method, see the comments above
  * the method declaration.
  */
-require_once("Subordinate.php");
-require_once("Media.php");
-require_once("MathImg.php");
-
 abstract class Element
 {
 
@@ -35,8 +35,11 @@ abstract class Element
         $this->xmlpath = $xmlpath;
     }
 
-    // abstract method that is implemented by each class 
-    // This function essentially parses the given XML file to retrive data
+    /**
+     * This function is an abstract method that is implemented by each class
+     * that extends from this class.  It essentially parses the given XML file
+     *  to retrive data to be inserted into the database tables
+     */
     abstract function loadFromXml($DomElement, $position = '');
 
     /**
@@ -61,26 +64,27 @@ abstract class Element
     }
 
     /**
-     *
+     *  checkForRecord method is used to check if there is already a record in the database table which is identical to the one the class
+     * is about to insert.  It compares the string_id of the instance of the class to records in the database or a specified property
+     * of the class that matches a field of the database table to identify a record with the same values. (ie representing a duplicate record)
+     * The method then returns the record ID in the database table if there is already a record in the database table with the same either string_id
+     * or the value of the specified property or returns false.
+     * 
      * @global moodle_database $DB
-     * @param DOMElement $DomElement
-     * @param String $propertyName
-     * @return int/boolean 
+     * @param object $DomElement    Represents the instance of a class that called the method
+     * @param String $propertyName      Represents the name of the property to be used to identify record in the database table
+     * @return int/boolean              If a duplicate record is found, returns the ID number of the record.  Otherwise returns false.
      */
     function checkForRecord($DomElement, $propertyName = '')
     {
         global $DB;
-        
-//        echo "Domelement";
-//        print_object($DomElement);
 
-        if (property_exists(get_class($DomElement), 'string_id'))
+        // if no property name is specified, then default is to check with string_id
+        if (!empty($propertyName))
         {
-            echo "has string id";
-            print_object($DomElement->string_id);
-            if (!empty($DomElement->string_id))
+            if (isset($DomElement->$propertyName))
             {
-                $foundID = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
+                $foundID = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
 
                 if (!empty($foundID))
                 {
@@ -93,40 +97,44 @@ abstract class Element
             }
             else
             {
-                echo "empty string_id";
                 return false;
             }
         }
-        else if (!empty($DomElement->$propertyName))
-        {
-            
-            $foundID = $DB->get_record($DomElement->tablename, array($propertyName => $DomElement->$propertyName));
-
-            if (!empty($foundID))
-            {
-                return $foundID;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        // $propertyName is defined
         else
         {
-            echo "debugging checkForRecord";
-            print_object($DomElement);
-            return false;
+            if (isset($DomElement->string_id))
+            {
+                if (!empty($DomElement->string_id))
+                {
+                    $foundID = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
+
+                    if (!empty($foundID))
+                    {
+                        return $foundID;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position
-     * @param String $xmlpath
-     * @return String 
+     * This method is used to process the math elements in the title XML elements.  It parses through the title element of the XML file
+     * then if it encounters a child node with tag name of math, it preserves the math and its associated latex tags and their values while
+     * the rest of the value of the title element is also preserved.  The result is a parsed string with preserved XML title structure.
+     * 
+     * @param DOMElement $DomElement    An XML element that has the values to be processed (usually title element)
+     * @return string                   A parsed title XML element that has been converted as a string
      */
-    function getContent($DomElement, $position = '', $xmlpath = '')
+    function getContent($DomElement)
     {
         $content = '';
         $doc = new DOMDocument();
@@ -139,6 +147,8 @@ abstract class Element
             {
                 if ($child->nodeType == XML_ELEMENT_NODE)
                 {
+                    // if the child node is math, then convert the XML to a string then replace the tags with appropriate
+                    // mathjax inline math configuration(ie, '$')
                     if ($child->tagName == 'math')
                     {
                         $content .= $doc->saveXML($child);
@@ -150,7 +160,8 @@ abstract class Element
                         $content = str_replace('</latex>', '$', $content);
                     }
                 }
-                else // child is not a node
+                // child is not an element node but a text node
+                else
                 {
                     $content .= $doc->saveXML($child);
                 }
@@ -160,10 +171,13 @@ abstract class Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position
-     * @return array 
+     * This method is to process the media elements in the XML elements.  This method is
+     * called by most of the classes in XMLImporter folder to process the corresponding content
+     * part of the element to extract all the media elements.
+     * 
+     * @param DOMElement $DomElement    The element that is considered as a main content body of the XML file(eg. def.body, block.body...etc)
+     * @param int $position             This number is used to preserve the structure of the XML during parsing process
+     * @return array                    This is an array with all the media elements in the given DOMElement
      */
     function processMedia($DomElement, $position)
     {
@@ -183,6 +197,15 @@ abstract class Element
         return $arrayOfMedia;
     }
 
+    /**
+     * This method processes the math.array elements in an segment of an XML file
+     * specified by the parameter DomElement.  This method is called in most of the 
+     * classes in XMLImporter folder to process its content parts.
+     * 
+     * @param DOMElement $DomElement    DOMElement that is a main content part of the element represented by the class
+     * @param int $position             Represents the position of this XML element in relation to the other XML elements
+     * @return array                    Represents all the math.array elements that were present in the DOMElement specified
+     */
     function processMathArray($DomElement, $position)
     {
         $arrayOfMathArray = array();
@@ -202,6 +225,15 @@ abstract class Element
         return $arrayOfMathArray;
     }
 
+    /**
+     * This method processes the table elements in an segment of an XML file
+     * specified by the parameter DomElement.  This method is called in most of the 
+     * classes in XMLImporter folder to process its content parts.
+     * 
+     * @param DOMElement $DomElement    DOMElement that is a main content part of the element represented by the class
+     * @param int $position             Represents the position of this XML element in relation to the other XML elements
+     * @return array                    Represents all the table elements that were present in the DOMElement specified
+     */
     function processTable($DomElement, $position)
     {
         $arrayOfTable = array();
@@ -222,10 +254,13 @@ abstract class Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position
-     * @return array 
+     * This method processes the subordinate elements in an segment of an XML file
+     * specified by the parameter DomElement.  This method is called in most of the 
+     * classes in XMLImporter folder to process its content parts.
+     * 
+     * @param DOMElement $DomElement    DOMElement that is a main content part of the element represented by the class
+     * @param int $position             Represents the position of this XML element in relation to the other XML elements
+     * @return array                    Represents all the subordinate elements that were present in the DOMElement specified
      */
     function processSubordinate($DomElement, $position)
     {
@@ -245,8 +280,6 @@ abstract class Element
         }
         for ($i = 0; $i < $length; $i++)
         {
-//            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
-
             $position = $position + 1;
             $subordinate = new Subordinate($this->xmlpath);
             $subordinate->loadFromXml($subordinates->item($i), $position);
@@ -256,10 +289,16 @@ abstract class Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position
-     * @return array 
+     * This method is to process the XML element considered to contain the main contents (such as def.body, block.body...etc).
+     * It is called from most of the classes in the XMLImporter folder to precess its contents.  This method replaces any subordinate
+     * elements and its child nodes with hot element(which depicts the hot taged word that activates the dialog box to display the info element),
+     * deletes any index elements, replaces the media elements with the img element with src attribute to be replaced by the properly processed
+     * media element later before rendering and replaces certain XML elements such as row/cell with equivalent HTML tags such as tr/td.  It also 
+     * replaces any math tags with the inline mathjax conversion delimiter('$') and replace math.display with display mathjax conversion ('$$').
+     * 
+     * @param DOMElement $DomElement    DOMElement that is a main content part of the element represented by the class
+     * @param int $position             Represents the position of this XML element in relation to the other XML elements
+     * @return array                    Represents all the content of the element that is represented by the class that called the method
      */
     function processContent($DomElement, $position)
     {
@@ -286,6 +325,7 @@ abstract class Element
             $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
 
+        // remove index.author elements along with its child nodes from content
         $indexauthors = $DomElement->getElementsByTagName('index.author');
         $ialength = $indexauthors->length;
         for ($i = 0; $i < $ialength; $i++)
@@ -293,6 +333,7 @@ abstract class Element
             $indexauthors->item(0)->parentNode->removeChild($indexauthors->item(0));
         }
 
+        // remove index.glossary elements along with its child nodes from content
         $indexglossarys = $DomElement->getElementsByTagName('index.glossary');
         $iglength = $indexglossarys->length;
         for ($i = 0; $i < $iglength; $i++)
@@ -300,13 +341,15 @@ abstract class Element
             $indexglossarys->item(0)->parentNode->removeChild($indexglossarys->item(0));
         }
 
+        // remove index.symbol elements along with its child nodes from content
         $indexsymbols = $DomElement->getElementsByTagName('index.symbol');
         $islength = $indexsymbols->length;
         for ($i = 0; $i < $islength; $i++)
         {
             $indexsymbols->item(0)->parentNode->removeChild($indexsymbols->item(0));
         }
-//
+
+        // replace media elements with img element with src attribute
         $medias = $DomElement->getElementsByTagName('media');
         $mlength = $medias->length;
         for ($i = 0; $i < $mlength; $i++)
@@ -328,6 +371,7 @@ abstract class Element
             }
         }
 
+        // converting XML content into string for further XML tag processing
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
         $content[] = $doc->saveXML($element);
@@ -378,10 +422,13 @@ abstract class Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position
-     * @return array 
+     * This method processes the index.author elements in an segment of an XML file
+     * specified by the parameter DomElement.  This method is called in most of the 
+     * classes in XMLImporter folder to process its content parts.
+     * 
+     * @param DOMElement $DomElement    DOMElement that is a main content part of the element represented by the class
+     * @param int $position             Represents the position of this XML element in relation to the other XML elements
+     * @return array                    Represents all the index.author elements that were present in the DOMElement specified
      */
     function processIndexAuthor($DomElement, $position)
     {
@@ -401,10 +448,13 @@ abstract class Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position
-     * @return array 
+     * This method processes the index.glossary elements in an segment of an XML file
+     * specified by the parameter DomElement.  This method is called in most of the 
+     * classes in XMLImporter folder to process its content parts.
+     * 
+     * @param DOMElement $DomElement    DOMElement that is a main content part of the element represented by the class
+     * @param int $position             Represents the position of this XML element in relation to the other XML elements
+     * @return array                    Represents all the index.glossary elements that were present in the DOMElement specified
      */
     function processIndexGlossary($DomElement, $position)
     {
@@ -424,10 +474,13 @@ abstract class Element
     }
 
     /**
-     *
-     * @param DOMElement $DomElement
-     * @param int $position
-     * @return array 
+     * This method processes the index.symbol elements in an segment of an XML file
+     * specified by the parameter DomElement.  This method is called in most of the 
+     * classes in XMLImporter folder to process its content parts.
+     * 
+     * @param DOMElement $DomElement    DOMElement that is a main content part of the element represented by the class
+     * @param int $position             Represents the position of this XML element in relation to the other XML elements
+     * @return array                    Represents all the index.symbol elements that were present in the DOMElement specified
      */
     function processIndexSymbols($DomElement, $position)
     {
@@ -447,11 +500,17 @@ abstract class Element
     }
 
     /**
+     * This method is used to find the file path with the specified reference ID in form of a 
+     * string given by the DOMElement's attribute 'id'(or 'unitid').  It parses each of the files in the 
+     * starting file path given by $filepath and if it encounters another direcotry, it parses the files in
+     * that directory.  It parses for the id attribute that matches the DOMElement ID given by $elemetnID.
+     * If the there is a match then it returns the file path to the current file, while if it finds no match, then it returns null.
      * 
-     * @param DOMAttribute $elementID
-     * @param string $filepath
-     * @param string $reftype    This variable specified which XML element reference has called the function
-     * @return string|null
+     * @param DOMAttribute $elementID   Represents the string ID that is unque to each DOMElement
+     * @param string $filepath          Represents the file path
+     * @param string $reftype           This variable specified which XML element reference has called the function
+     * @return string|null              If the XML file with the specified string ID is found, the file path to this file is returned.
+     *                                  Otherwise, null is returned
      */
     function findFile($elementID, $filepath, $reftype)
     {
@@ -480,8 +539,11 @@ abstract class Element
 
                     $element = $Domparser->documentElement;
 
+                    //depending on the element that the reference was for, different actions are taken
                     switch ($reftype)
                     {
+                        // for comment and definition references, it cannot just parse the top element
+                        // because they are nested elements.  
                         case('comment'):
                             if ($element->tagName == 'unit')
                             {
@@ -497,7 +559,7 @@ abstract class Element
                                     }
                                 }
                             }
-                            
+
                         case('def'):
                             if ($element->tagName == 'unit')
                             {
@@ -513,7 +575,10 @@ abstract class Element
                                     }
                                 }
                             }
-                            
+
+                        // for theorem/unit/and all the pack elements,
+                        // the parser just looks for the id attribute in the 
+                        // root element of the file
                         case('theorem'):
                             $parsedID = $element->getAttribute('id');
 
@@ -522,7 +587,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
-                            
+
                         case('unit'):
                             $parsedID = $element->getAttribute('unitid');
 
@@ -531,7 +596,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
-                            
+
                         case('showmepack'):
                             $parsedID = $element->getAttribute('id');
 
@@ -540,7 +605,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
-                            
+
                         case('quizpack'):
                             $parsedID = $element->getAttribute('id');
 
@@ -549,7 +614,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
-                            
+
                         case('examplepack'):
                             $parsedID = $element->getAttribute('id');
 
@@ -558,7 +623,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
-                            
+
                         case('exercisepack'):
                             $parsedID = $element->getAttribute('id');
 
@@ -568,7 +633,6 @@ abstract class Element
                                 return $path;
                             }
                     }
-
                 }
                 else if ((sizeof($ext) > 1) && ($ext[1] != 'xml'))
                 {
@@ -593,11 +657,15 @@ abstract class Element
     }
 
     /**
-     *
+     * This method is called by most of the classes to insert the new records to compositor table
+     * after inserting the record to the element specific database table.(eg msm_unit, msm_def...etc).
+     * 
      * @global moodle_database $DB
-     * @param int $elementid
-     * @param int $parentid
-     * @param int $siblingid 
+     * @param int $elementid        Represents the record ID from the database tables
+     * @param int $parentid         Represents the record ID from the compositor tables that 
+     *                              was the parent element in the XML file.
+     * @param int $siblingid        Represents the record ID from the compositor tables that 
+     *                              was the previous sibling element in the XML file.
      */
     function insertToCompositor($elementid, $tablename, $parentid = '', $siblingid = '')
     {
@@ -614,6 +682,13 @@ abstract class Element
         return $compid;
     }
 
+    /**
+     * 
+     * @global moodle_database $DB
+     * @param object $object
+     * @param XML $XMLcontent
+     * @return string|null
+     */
     function displaySubordinate($object, $XMLcontent)
     {
         global $DB;

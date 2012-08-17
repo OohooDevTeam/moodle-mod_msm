@@ -414,6 +414,8 @@ class Unit extends Element
 
                                         $href = $grandChild->getAttribute('href');
 
+                                        print_object($href);
+                                        
                                         $childxi = new DOMDocument();
                                         @$childxi->load($this->xmlpath . $href);
 

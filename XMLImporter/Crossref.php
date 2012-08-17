@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Crossref
@@ -62,18 +62,25 @@ class Crossref extends Element
                             if (empty($IDinDB))
                             {
                                 $filepath = $this->findFile($commentrefID, dirname($this->xmlpath), 'comment');
+
                                 if (!empty($filepath))
                                 {
                                     @$parser->load($filepath);
 
                                     $element = $parser->documentElement;
 
-                                    if (!empty($element))
+                                    $comments = $element->getElementsByTagName('comment');
+
+                                    foreach ($comments as $c)
                                     {
-                                        $position = $position + 1;
-                                        $comment = new MathComment(dirname($filepath));
-                                        $comment->loadFromXml($element, $position);
-                                        $this->comments[] = $comment;
+                                        $cID = $d->getAttribute('id');
+                                        if ($cID == $commentrefID)
+                                        {
+                                            $position = $position + 1;
+                                            $comment = new MathComment(dirname($filepath));
+                                            $comment->loadFromXml($c, $position);
+                                            $this->comments[] = $comment;
+                                        }
                                     }
                                 }
                             }
@@ -105,12 +112,18 @@ class Crossref extends Element
 
                                     $element = $parser->documentElement;
 
-                                    if (!empty($element))
+                                    $defs = $element->getElementsByTagName('def');
+
+                                    foreach ($defs as $d)
                                     {
-                                        $position = $position + 1;
-                                        $def = new Definition(dirname($filepath));
-                                        $def->loadFromXml($element, $position);
-                                        $this->defs[] = $def;
+                                        $dID = $d->getAttribute('id');
+                                        if ($dID == $definitionrefID)
+                                        {
+                                            $position = $position + 1;
+                                            $def = new Definition(dirname($filepath));
+                                            $def->loadFromXml($d, $position);
+                                            $this->defs[] = $def;
+                                        }
                                     }
                                 }
                             }
@@ -131,7 +144,7 @@ class Crossref extends Element
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath),'theorem');
+                                $filepath = $this->findFile($theoremrefID, dirname($this->xmlpath), 'theorem');
 
                                 if (!empty($filepath))
                                 {
@@ -223,21 +236,27 @@ class Crossref extends Element
                         {
                             $IDinDB = $DB->get_record('msm_unit', array('string_id' => $untiID));
 
-                            if (!empty($IDinDB))
+                            if (empty($IDinDB))
                             {
                                 $filepath = $this->findFile($untiID, dirname($this->xmlpath), 'unit');
-                                @$parser->load($filepath);
 
-                                // may need to change this code to load the entire file
-                                // containing the specified comment
-                                $element = $parser->documentElement;
-
-                                if (!empty($element))
+                                if (!empty($filepath))
                                 {
-                                    $position = $position + 1;
-                                    $unit = new Unit(dirname($filepath));
-                                    $unit->loadFromXml($element, $position);
-                                    $this->subunits[] = $unit;
+                                    echo "filepath";
+                                    print_object($filepath);
+                                    @$parser->load($filepath);
+
+                                    // may need to change this code to load the entire file
+                                    // containing the specified comment
+                                    $element = $parser->documentElement;
+
+                                    if (!empty($element))
+                                    {
+                                        $position = $position + 1;
+                                        $unit = new Unit(dirname($filepath));
+                                        $unit->loadFromXml($element, $position);
+                                        $this->subunits[] = $unit;
+                                    }
                                 }
                             }
                             else
@@ -433,31 +452,31 @@ class Crossref extends Element
                         if (!empty($packRecord))
                         {
                             $packID = $packRecord->id;
+                            if (empty($packID))
+                            {
+                                if (empty($sibling_id))
+                                {
+                                    $pack = $this->packs[$packString[1]];
+                                    $pack->saveIntoDb($pack->position, $parentid);
+                                    $sibling_id = $pack->compid;
+                                }
+                                else
+                                {
+                                    $pack = $this->packs[$packString[1]];
+                                    $pack->saveIntoDb($pack->position, $parentid, $sibling_id);
+                                    $sibling_id = $pack->compid;
+                                }
+                            }
+                            else
+                            {
+                                $sibling_id = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
+                            }
                         }
                     }
                     else
                     {
                         $packinfo = explode('/', $this->packs[$packString[1]]);
-                        $packID = $packinfo[1];
-                    }
-
-                    if (empty($packID))
-                    {
-                        if (empty($sibling_id))
-                        {
-                            $pack = $this->packs[$packString[1]];
-                            $pack->saveIntoDb($pack->position, $parentid);
-                            $sibling_id = $pack->compid;
-                        }
-                        else
-                        {
-                            $pack = $this->packs[$packString[1]];
-                            $pack->saveIntoDb($pack->position, $parentid, $sibling_id);
-                            $sibling_id = $pack->compid;
-                        }
-                    }
-                    else
-                    {
+                        $packID = $packinfo[1]->id;
                         $sibling_id = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
                     }
                     break;
@@ -467,31 +486,40 @@ class Crossref extends Element
 
                     if (is_object($this->comments[$commentString[1]]))
                     {
-                        $commentID = $this->checkForRecord($this->comments[$commentString[1]])->id;
-                    }
-                    else
-                    {
-                        $commentinfo = explode('/', $this->comments[$commentString[1]]);
-                        $commentID = $commentinfo[1];
-                    }
-
-                    if (empty($commentID))
-                    {
-                        if (empty($sibling_id))
+                        if (!empty($this->comments[$commentString[1]]->string_id))
                         {
-                            $comment = $this->comments[$commentString[1]];
-                            $comment->saveIntoDb($comment->position, $parentid);
-                            $sibling_id = $comment->compid;
+                            $commentID = $this->checkForRecord($this->comments[$commentString[1]]);
                         }
                         else
                         {
-                            $comment = $this->comments[$commentString[1]];
-                            $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
-                            $sibling_id = $comment->compid;
+                            $commentID = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
+                        }
+
+                        if (empty($commentID))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $comment = $this->comments[$commentString[1]];
+                                $comment->saveIntoDb($comment->position, $parentid);
+                                $sibling_id = $comment->compid;
+                            }
+                            else
+                            {
+                                $comment = $this->comments[$commentString[1]];
+                                $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
+                                $sibling_id = $comment->compid;
+                            }
+                        }
+                        else
+                        {
+                            $commentID = $commentID->id;
+                            $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
                         }
                     }
                     else
                     {
+                        $commentinfo = explode('/', $this->defs[$commentString[1]]);
+                        $commentID = $commentinfo[1]->id;
                         $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
                     }
                     break;
@@ -501,32 +529,41 @@ class Crossref extends Element
 
                     if (is_object($this->defs[$defString[1]]))
                     {
-                        $defID = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                        if (!empty($this->defs[$defString[1]]->string_id))
+                        {
+                            $defID = $this->checkForRecord($this->defs[$defString[1]]);
+                        }
+                        else
+                        {
+                            $defID = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                        }
+
+                        if (empty($defID))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $def = $this->defs[$defString[1]];
+                                $def->saveIntoDb($def->position, $parentid);
+                                $sibling_id = $def->compid;
+                            }
+                            else
+                            {
+                                $def = $this->defs[$defString[1]];
+                                $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                                $sibling_id = $def->compid;
+                            }
+                        }
+                        else
+                        {
+                            $defID = $defID->id;
+                            $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                        }
                     }
                     else
                     {
                         $definfo = explode('/', $this->defs[$defString[1]]);
                         $defID = $definfo[1];
-                    }
-
-                    if (empty($defID))
-                    {
-                        if (empty($sibling_id))
-                        {
-                            $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $parentid);
-                            $sibling_id = $def->compid;
-                        }
-                        else
-                        {
-                            $def = $this->defs[$defString[1]];
-                            $def->saveIntoDb($def->position, $parentid, $sibling_id);
-                            $sibling_id = $def->compid;
-                        }
-                    }
-                    else
-                    {
-                         $defID = $defID->id;
+                        $defID = $defID->id;
                         $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
                     }
                     break;
@@ -536,31 +573,34 @@ class Crossref extends Element
 
                     if (is_object($this->theorems[$theoremString[1]]))
                     {
-                        $theoremID = $this->checkForRecord($this->theorems[$theoremString[1]])->id;
+                        $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
+
+                        if (empty($theoremRecord))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $theorem = $this->theorems[$theoremString[1]];
+                                $theorem->saveIntoDb($theorem->position, $this->compid);
+                                $sibling_id = $theorem->compid;
+                            }
+                            else
+                            {
+                                $theorem = $this->theorems[$theoremString[1]];
+                                $theorem->saveIntoDb($theorem->position, $this->compid, $sibling_id);
+                                $sibling_id = $theorem->compid;
+                            }
+                        }
+                        else
+                        {
+                            $theoremID = $theoremRecord->id;
+                            $theorem = $this->theorems[$theoremString[1]];
+                            $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $this->compid, $sibling_id);
+                        }
                     }
                     else
                     {
                         $theoreminfo = explode('/', $this->theorems[$theoremString[1]]);
-                        $theoremID = $theoreminfo[1];
-                    }
-
-                    if (empty($theoremID))
-                    {
-                        if (empty($sibling_id))
-                        {
-                            $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $parentid);
-                            $sibling_id = $theorem->compid;
-                        }
-                        else
-                        {
-                            $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
-                            $sibling_id = $theorem->compid;
-                        }
-                    }
-                    else
-                    {
+                        $theoremID = $theoreminfo[1]->id;
                         $sibling_id = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
                     }
                     break;
@@ -571,67 +611,68 @@ class Crossref extends Element
                     if (is_object($this->subunits[$subunitString[1]]))
                     {
                         $subunitID = $this->checkForRecord($this->subunits[$subunitString[1]])->id;
+
+                        if (empty($subunitID))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $subunit = $this->subunits[$subunitString[1]];
+                                $subunit->saveIntoDb($subunit->position, $parentid);
+                                $sibling_id = $subunit->compid;
+                            }
+                            else
+                            {
+                                $subunit = $this->subunits[$subunitString[1]];
+                                $subunit->saveIntoDb($subunit->position, $parentid, $sibling_id);
+                                $sibling_id = $subunit->compid;
+                            }
+                        }
+                        else
+                        {
+                            $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
+                        }
                     }
                     else
                     {
                         $subunitinfo = explode('/', $this->subunits[$subunitString[1]]);
-                        $subunitID = $subunitinfo[1];
-                    }
-
-                    if (empty($subunitID))
-                    {
-                        if (empty($sibling_id))
-                        {
-                            $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $parentid);
-                            $sibling_id = $subunit->compid;
-                        }
-                        else
-                        {
-                            $subunit = $this->subunits[$subunitString[1]];
-                            $subunit->saveIntoDb($subunit->position, $parentid, $sibling_id);
-                            $sibling_id = $subunit->compid;
-                        }
-                    }
-                    else
-                    {
+                        $subunitID = $subunitinfo[1]->id;
                         $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
                     }
                     break;
 
-                case(preg_match("/^(composition.\d+)$/", $element) ? true : false):
-                    $compositionString = split('-', $element);
-
-                    if (is_object($this->compositions[$compositionString[1]]))
-                    {
-                        $compositionID = $this->checkForRecord($this->compositions[$compositionString[1]])->id;
-                    }
-                    else
-                    {
-                        $composittioninfo = explode('/', $this->compositions[$compositionString[1]]);
-                        $compositionID = $composittioninfo[1];
-                    }
-
-                    if (empty($compositionID))
-                    {
-                        if (empty($sibling_id))
-                        {
-                            $composition = $this->compositions[$compositionString[1]];
-                            $composition->saveIntoDb($composition->position, $parentid);
-                            $sibling_id = $composition->compid;
-                        }
-                        else
-                        {
-                            $composition = $this->compositions[$compositionString[1]];
-                            $composition->saveIntoDb($composition->position, $parentid, $sibling_id);
-                            $sibling_id = $composition->compid;
-                        }
-                    }
-                    else
-                    {
-                        $sibling_id = $this->insertToCompositor($compositionID, 'msm_compositor', $parentid, $sibling_id);
-                    }
-                    break;
+//                case(preg_match("/^(composition.\d+)$/", $element) ? true : false):
+//                    $compositionString = split('-', $element);
+//
+//                    if (is_object($this->compositions[$compositionString[1]]))
+//                    {
+//                        $compositionID = $this->checkForRecord($this->compositions[$compositionString[1]])->id;
+//                    }
+//                    else
+//                    {
+//                        $composittioninfo = explode('/', $this->compositions[$compositionString[1]]);
+//                        $compositionID = $composittioninfo[1];
+//                    }
+//
+//                    if (empty($compositionID))
+//                    {
+//                        if (empty($sibling_id))
+//                        {
+//                            $composition = $this->compositions[$compositionString[1]];
+//                            $composition->saveIntoDb($composition->position, $parentid);
+//                            $sibling_id = $composition->compid;
+//                        }
+//                        else
+//                        {
+//                            $composition = $this->compositions[$compositionString[1]];
+//                            $composition->saveIntoDb($composition->position, $parentid, $sibling_id);
+//                            $sibling_id = $composition->compid;
+//                        }
+//                    }
+//                    else
+//                    {
+//                        $sibling_id = $this->insertToCompositor($compositionID, 'msm_compositor', $parentid, $sibling_id);
+//                    }
+//                    break;
             }
         }
     }
