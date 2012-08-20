@@ -230,20 +230,18 @@ class Crossref extends Element
                         break;
 
                     case('unit.ref'):
-                        $untiID = $child->getAttribute('unitId');
+                        $unitID = $child->getAttribute('unitId');
 
                         if (!empty($untiID))
                         {
-                            $IDinDB = $DB->get_record('msm_unit', array('string_id' => $untiID));
+                            $IDinDB = $DB->get_record('msm_unit', array('string_id' => $unitID));
 
                             if (empty($IDinDB))
                             {
-                                $filepath = $this->findFile($untiID, dirname($this->xmlpath), 'unit');
+                                $filepath = $this->findFile($unitID, dirname($this->xmlpath), 'unit');
 
                                 if (!empty($filepath))
                                 {
-                                    echo "filepath";
-                                    print_object($filepath);
                                     @$parser->load($filepath);
 
                                     // may need to change this code to load the entire file
@@ -262,7 +260,7 @@ class Crossref extends Element
                             else
                             {
                                 $position = $position + 1;
-                                $this->subunits[] = $untiID . '/' . $position;
+                                $this->subunits[] = $unitID . '/' . $position;
                             }
                         }
                         break;
@@ -449,28 +447,27 @@ class Crossref extends Element
                     if (is_object($this->packs[$packString[1]]))
                     {
                         $packRecord = $this->checkForRecord($this->packs[$packString[1]]);
-                        if (!empty($packRecord))
+
+                        if (empty($packRecord))
                         {
-                            $packID = $packRecord->id;
-                            if (empty($packID))
+                            if (empty($sibling_id))
                             {
-                                if (empty($sibling_id))
-                                {
-                                    $pack = $this->packs[$packString[1]];
-                                    $pack->saveIntoDb($pack->position, $parentid);
-                                    $sibling_id = $pack->compid;
-                                }
-                                else
-                                {
-                                    $pack = $this->packs[$packString[1]];
-                                    $pack->saveIntoDb($pack->position, $parentid, $sibling_id);
-                                    $sibling_id = $pack->compid;
-                                }
+                                $pack = $this->packs[$packString[1]];
+                                $pack->saveIntoDb($pack->position, $parentid);
+                                $sibling_id = $pack->compid;
                             }
                             else
                             {
-                                $sibling_id = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
+                                $pack = $this->packs[$packString[1]];
+                                $pack->saveIntoDb($pack->position, $parentid, $sibling_id);
+                                $sibling_id = $pack->compid;
                             }
+                        }
+                        else
+                        {
+
+                            $packID = $packRecord->id;
+                            $sibling_id = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
                         }
                     }
                     else
@@ -488,14 +485,14 @@ class Crossref extends Element
                     {
                         if (!empty($this->comments[$commentString[1]]->string_id))
                         {
-                            $commentID = $this->checkForRecord($this->comments[$commentString[1]]);
+                            $commentRecord = $this->checkForRecord($this->comments[$commentString[1]]);
                         }
                         else
                         {
-                            $commentID = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
+                            $commentRecord = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
                         }
 
-                        if (empty($commentID))
+                        if (empty($commentRecord))
                         {
                             if (empty($sibling_id))
                             {
@@ -512,7 +509,7 @@ class Crossref extends Element
                         }
                         else
                         {
-                            $commentID = $commentID->id;
+                            $commentID = $commentRecord->id;
                             $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
                         }
                     }
@@ -531,14 +528,14 @@ class Crossref extends Element
                     {
                         if (!empty($this->defs[$defString[1]]->string_id))
                         {
-                            $defID = $this->checkForRecord($this->defs[$defString[1]]);
+                            $defRecord = $this->checkForRecord($this->defs[$defString[1]]);
                         }
                         else
                         {
-                            $defID = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                            $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');
                         }
 
-                        if (empty($defID))
+                        if (empty($defRecord))
                         {
                             if (empty($sibling_id))
                             {
@@ -555,7 +552,7 @@ class Crossref extends Element
                         }
                         else
                         {
-                            $defID = $defID->id;
+                            $defID = $defRecord->id;
                             $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
                         }
                     }
@@ -580,13 +577,13 @@ class Crossref extends Element
                             if (empty($sibling_id))
                             {
                                 $theorem = $this->theorems[$theoremString[1]];
-                                $theorem->saveIntoDb($theorem->position, $this->compid);
+                                $theorem->saveIntoDb($theorem->position,$parentid);
                                 $sibling_id = $theorem->compid;
                             }
                             else
                             {
                                 $theorem = $this->theorems[$theoremString[1]];
-                                $theorem->saveIntoDb($theorem->position, $this->compid, $sibling_id);
+                                $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
                                 $sibling_id = $theorem->compid;
                             }
                         }
@@ -594,7 +591,7 @@ class Crossref extends Element
                         {
                             $theoremID = $theoremRecord->id;
                             $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $this->compid, $sibling_id);
+                            $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $parentid, $sibling_id);
                         }
                     }
                     else
@@ -610,9 +607,9 @@ class Crossref extends Element
 
                     if (is_object($this->subunits[$subunitString[1]]))
                     {
-                        $subunitID = $this->checkForRecord($this->subunits[$subunitString[1]])->id;
+                        $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
 
-                        if (empty($subunitID))
+                        if (empty($subunitRecord))
                         {
                             if (empty($sibling_id))
                             {
@@ -629,6 +626,7 @@ class Crossref extends Element
                         }
                         else
                         {
+                            $subunitID = $subunitRecord->id;
                             $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
                         }
                     }

@@ -115,6 +115,7 @@ class Companion extends Element
                                     foreach ($defs as $d)
                                     {
                                         $dID = $d->getAttribute('id');
+
                                         if ($dID == $definitionrefID)
                                         {
                                             $position = $position + 1;
@@ -401,7 +402,6 @@ class Companion extends Element
                         $packRecord = $this->checkForRecord($this->packs[$packString[1]]);
                         if (!empty($packRecord))
                         {
-                            $packID = $packRecord->id;
                             if (empty($packID))
                             {
                                 if (empty($sibling_id))
@@ -419,6 +419,7 @@ class Companion extends Element
                             }
                             else
                             {
+                                $packID = $packRecord->id;
                                 $sibling_id = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
                             }
                         }
@@ -530,13 +531,13 @@ class Companion extends Element
                             if (empty($sibling_id))
                             {
                                 $theorem = $this->theorems[$theoremString[1]];
-                                $theorem->saveIntoDb($theorem->position, $this->compid);
+                                $theorem->saveIntoDb($theorem->position, $parentid);
                                 $sibling_id = $theorem->compid;
                             }
                             else
                             {
                                 $theorem = $this->theorems[$theoremString[1]];
-                                $theorem->saveIntoDb($theorem->position, $this->compid, $sibling_id);
+                                $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
                                 $sibling_id = $theorem->compid;
                             }
                         }
@@ -544,7 +545,7 @@ class Companion extends Element
                         {
                             $theoremID = $theoremRecord->id;
                             $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $this->compid, $sibling_id);
+                            $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $parentid, $sibling_id);
                         }
                     }
                     else
@@ -560,9 +561,9 @@ class Companion extends Element
 
                     if (is_object($this->subunits[$subunitString[1]]))
                     {
-                        $subunitID = $this->checkForRecord($this->subunits[$subunitString[1]])->id;
+                        $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
 
-                        if (empty($subunitID))
+                        if (empty($subunitRecord))
                         {
                             if (empty($sibling_id))
                             {
@@ -579,6 +580,7 @@ class Companion extends Element
                         }
                         else
                         {
+                            $subunitID = $subunitRecord->id;
                             $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
                         }
                     }

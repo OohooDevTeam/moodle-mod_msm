@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Block
@@ -32,6 +32,8 @@ class Block extends Element
 
     function loadFromXml($DomElement, $position = '')
     {
+        global $DB;
+        
         $this->position = $position;
 
         $this->defs = array();
@@ -113,10 +115,22 @@ class Block extends Element
 
                             if ($xiElement->tagName == 'theorem')
                             {
-                                $position = $position + 1;
-                                $theorem = new Theorem(dirname($this->xmlpath . '/' . $href));
-                                $theorem->loadFromXml($xiElement, $position);
-                                $this->theorems[] = $theorem;
+                                $theoremID = $child->getAttribute('id');
+
+                                $theoremDuplicateRecord = $DB->get_record('msm_theorem', array('string_id' => $theoremID));
+
+                                if (empty($theoremDuplicateRecord))
+                                {
+                                    $position = $position + 1;
+                                    $theorem = new Theorem(dirname($this->xmlpath . '/' . $href));
+                                    $theorem->loadFromXml($xiElement, $position);
+                                    $this->theorems[] = $theorem;
+                                }
+                                else
+                                {
+                                    $position = $position + 1;
+                                    $this->theorems[] = $theoremDuplicateRecord->id . '/' . $position;
+                                }
                             }
                             else
                             {
@@ -126,17 +140,42 @@ class Block extends Element
                             break;
 
                         case('def'):
-                            $position = $position + 1;
-                            $def = new Definition($this->xmlpath);
-                            $def->loadFromXml($child, $position);
-                            $this->defs[] = $def;
+                            $defID = $child->getAttribute('id');
+
+                            $defDuplicateRecord = $DB->get_record('msm_def', array('string_id' => $defID));
+
+                            if (empty($defDuplicateRecord))
+                            {
+                                $position = $position + 1;
+                                $def = new Definition($this->xmlpath);
+                                $def->loadFromXml($child, $position);
+                                $this->defs[] = $def;
+                            }
+                            else
+                            {
+                                $position = $position + 1;
+                                $this->defs[] = $defDuplicateRecord->id . '/' . $position;
+                            }
+
                             break;
 
                         case('comment'):
-                            $position = $position + 1;
-                            $comment = new MathComment($this->xmlpath);
-                            $comment->loadFromXml($child, $position);
-                            $this->comments[] = $comment;
+                            $commentID = $child->getAttribute('id');
+
+                            $commentDuplicateRecord = $DB->get_record('msm_comment', array('string_id' => $commentID));
+
+                            if (empty($commentDuplicateRecord))
+                            {
+                                $position = $position + 1;
+                                $comment = new MathComment($this->xmlpath);
+                                $comment->loadFromXml($child, $position);
+                                $this->comments[] = $comment;
+                            }
+                            else
+                            {
+                                $position = $position + 1;
+                                $this->comments[] = $commentDuplicateRecord->id;
+                            }
                             break;
 
                         case('media'):
@@ -168,7 +207,15 @@ class Block extends Element
         {
             foreach ($this->defs as $key => $def)
             {
-                $elementPositions['def' . '-' . $key] = $def->position;
+                if (is_object($def))
+                {
+                    $elementPositions['def' . '-' . $key] = $def->position;
+                }
+                else
+                {
+                    $defInfo = explode('/', $def);
+                    $elementPositions['def' . '-' . $key] = $defInfo[1];
+                }
             }
         }
 
@@ -176,7 +223,15 @@ class Block extends Element
         {
             foreach ($this->theorems as $key => $theorem)
             {
-                $elementPositions['theorem' . '-' . $key] = $theorem->position;
+                if (is_object($theorem))
+                {
+                    $elementPositions['theorem' . '-' . $key] = $theorem->position;
+                }
+                else
+                {
+                    $theoremInfo = explode('/', $theorem);
+                    $elementPositions['theorem' . '-' . $key] = $theoremInfo[1];
+                }
             }
         }
 
@@ -184,7 +239,15 @@ class Block extends Element
         {
             foreach ($this->comments as $key => $comment)
             {
-                $elementPositions['comment' . '-' . $key] = $comment->position;
+                if (is_object($comment))
+                {
+                    $elementPositions['comment' . '-' . $key] = $comment->position;
+                }
+                else
+                {
+                    $commentInfo = explode('/', $comment);
+                    $elementPositions['comment' . '-' . $key] = $commentInfo[1];
+                }
             }
         }
 
@@ -253,51 +316,124 @@ class Block extends Element
                 case(preg_match("/^(def.\d+)$/", $element) ? true : false):
                     $defString = split('-', $element);
 
-                    if (empty($sibling_id))
+                    if (is_object($this->defs[$defString[1]]))
                     {
-                        $def = $this->defs[$defString[1]];
-                        $def->saveIntoDb($def->position, $parentid);
-                        $sibling_id = $def->compid;
+                        if (!empty($this->defs[$defString[1]]->string_id))
+                        {
+                            $defRecord = $this->checkForRecord($this->defs[$defString[1]]);
+                        }
+                        else
+                        {
+                            $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                        }
+
+                        if (empty($defRecord))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $def = $this->defs[$defString[1]];
+                                $def->saveIntoDb($def->position, $parentid);
+                                $sibling_id = $def->compid;
+                            }
+                            else
+                            {
+                                $def = $this->defs[$defString[1]];
+                                $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                                $sibling_id = $def->compid;
+                            }
+                        }
+                        else
+                        {
+                            $defID = $defRecord->id;
+                            $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                        }
                     }
                     else
                     {
-                        $def = $this->defs[$defString[1]];
-                        $def->saveIntoDb($def->position, $parentid, $sibling_id);
-                        $sibling_id = $def->compid;
+                        $definfo = explode('/', $this->defs[$defString[1]]);
+                        $defID = $definfo[1];
+                        $defID = $defID->id;
+                        $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
                     }
                     break;
 
                 case(preg_match("/^(theorem.\d+)$/", $element) ? true : false):
                     $theoremString = split('-', $element);
 
-                    if (empty($sibling_id))
+                    if (is_object($this->theorems[$theoremString[1]]))
                     {
-                        $theorem = $this->theorems[$theoremString[1]];
-                        $theorem->saveIntoDb($theorem->position, $parentid);
-                        $sibling_id = $theorem->compid;
+                        $theoremRecord = $this->checkForRecord($this->theorems[$theoremString[1]]);
+
+                        if (empty($theoremRecord))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $theorem = $this->theorems[$theoremString[1]];
+                                $theorem->saveIntoDb($theorem->position, $parentid);
+                                $sibling_id = $theorem->compid;
+                            }
+                            else
+                            {
+                                $theorem = $this->theorems[$theoremString[1]];
+                                $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
+                                $sibling_id = $theorem->compid;
+                            }
+                        }
+                        else
+                        {
+                            $theoremID = $theoremRecord->id;
+                            $theorem = $this->theorems[$theoremString[1]];
+                            $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $parentid, $sibling_id);
+                        }
                     }
                     else
                     {
-                        $theorem = $this->theorems[$theoremString[1]];
-                        $theorem->saveIntoDb($theorem->position, $parentid, $sibling_id);
-                        $sibling_id = $theorem->compid;
+                        $theoreminfo = explode('/', $this->theorems[$theoremString[1]]);
+                        $theoremID = $theoreminfo[1]->id;
+                        $sibling_id = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
                     }
                     break;
 
                 case(preg_match("/^(comment.\d+)$/", $element) ? true : false):
                     $commentString = split('-', $element);
 
-                    if (empty($sibling_id))
+                    if (is_object($this->comments[$commentString[1]]))
                     {
-                        $comment = $this->comments[$commentString[1]];
-                        $comment->saveIntoDb($comment->position, $parentid);
-                        $sibling_id = $comment->compid;
+                        if (!empty($this->comments[$commentString[1]]->string_id))
+                        {
+                            $commentRecord = $this->checkForRecord($this->comments[$commentString[1]]);
+                        }
+                        else
+                        {
+                            $commentRecord = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
+                        }
+
+                        if (empty($commentRecord))
+                        {
+                            if (empty($sibling_id))
+                            {
+                                $comment = $this->comments[$commentString[1]];
+                                $comment->saveIntoDb($comment->position, $parentid);
+                                $sibling_id = $comment->compid;
+                            }
+                            else
+                            {
+                                $comment = $this->comments[$commentString[1]];
+                                $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
+                                $sibling_id = $comment->compid;
+                            }
+                        }
+                        else
+                        {
+                            $commentID = $commentRecord->id;
+                            $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
+                        }
                     }
                     else
                     {
-                        $comment = $this->comments[$commentString[1]];
-                        $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
-                        $sibling_id = $comment->compid;
+                        $commentinfo = explode('/', $this->defs[$commentString[1]]);
+                        $commentID = $commentinfo[1]->id;
+                        $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
                     }
                     break;
 
@@ -461,18 +597,18 @@ class Block extends Element
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $media;
                     break;
-                
+
                 case('msm_comment'):
                     $comment = new MathComment();
                     $comment->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $comment;
                     break;
 //               
-               case('msm_table'):
-                   $table = new Table();
-                   $table->loadFromDb($child->unit_id, $child->id);
-                   $this->childs[] = $table;
-                   break;
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $table;
+                    break;
             }
         }
 

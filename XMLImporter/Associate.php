@@ -33,7 +33,7 @@ class Associate extends Element
     public function loadFromXml($DomElement, $position = '')
     {
         global $DB;
-        
+
         $this->position = $position;
         $this->description = $DomElement->getAttribute('type');
 
@@ -141,12 +141,13 @@ class Associate extends Element
 
                         if (!empty($showmepackrefID))
                         {
+                            // if IDinDB is not empty then there already is a record in DB that has the same string_id as current element
+                            // which defines it as a duplicate data.
                             $IDinDB = $DB->get_record('msm_packs', array('string_id' => $showmepackrefID));
 
                             if (empty($IDinDB))
                             {
                                 $filepath = $this->findFile($showmepackrefID, dirname($this->xmlpath), 'showmepack');
-
 
                                 if (!empty($filepath))
                                 {
@@ -163,7 +164,9 @@ class Associate extends Element
                                     }
                                 }
                             }
-                            else // the file referenced already exists in db
+                            // the file referenced already exists in db
+                            // but still need to keep track of the id because it needs to be added to the compositor table
+                            else
                             {
                                 $position = $position + 1;
                                 $this->refs[] = $showmepackrefID . '/' . $position;
@@ -182,16 +185,19 @@ class Associate extends Element
                             if (empty($IDinDB))
                             {
                                 $filepath = $this->findFile($quizpackID, dirname($this->xmlpath), 'quizpack');
-                                @$parser->load($filepath);
-
-                                $element = $parser->documentElement;
-
-                                if (!empty($element))
+                                if (!empty($filepath))
                                 {
-                                    $position = $position + 1;
-                                    $quiz = new Pack(dirname($filepath));
-                                    $quiz->loadFromXml($element, $position);
-                                    $this->refs[] = $quiz;
+                                    @$parser->load($filepath);
+
+                                    $element = $parser->documentElement;
+
+                                    if (!empty($element))
+                                    {
+                                        $position = $position + 1;
+                                        $quiz = new Pack(dirname($filepath));
+                                        $quiz->loadFromXml($element, $position);
+                                        $this->refs[] = $quiz;
+                                    }
                                 }
                             }
                             else // the file referenced already exists in db
@@ -451,9 +457,9 @@ class Associate extends Element
 
                     if (is_object($this->subunits[$subunitString[1]]))
                     {
-                        $subunitID = $this->checkForRecord($this->subunits[$subunitString[1]])->id;
+                        $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
 
-                        if (empty($subunitID))
+                        if (empty($subunitRecord))
                         {
                             if (empty($sibling_id))
                             {
@@ -470,6 +476,7 @@ class Associate extends Element
                         }
                         else
                         {
+                            $subunitID = $subunitRecord->id;
                             $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
                         }
                     }
