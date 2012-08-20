@@ -428,27 +428,27 @@ class Associate extends Element
                             if (empty($sibling_id))
                             {
                                 $comment = $this->comments[$commentString[1]];
-                                $comment->saveIntoDb($comment->position, $parentid);
+                                $comment->saveIntoDb($comment->position, $this->compid);
                                 $sibling_id = $comment->compid;
                             }
                             else
                             {
                                 $comment = $this->comments[$commentString[1]];
-                                $comment->saveIntoDb($comment->position, $parentid, $sibling_id);
+                                $comment->saveIntoDb($comment->position, $this->compid, $sibling_id);
                                 $sibling_id = $comment->compid;
                             }
                         }
                         else
                         {
                             $commentID = $commentID->id;
-                            $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
+                            $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $this->compid, $sibling_id);
                         }
                     }
                     else
                     {
                         $commentinfo = explode('/', $this->defs[$commentString[1]]);
                         $commentID = $commentinfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
+                        $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $this->compid, $sibling_id);
                     }
                     break;
 
@@ -464,27 +464,27 @@ class Associate extends Element
                             if (empty($sibling_id))
                             {
                                 $subunit = $this->subunits[$subunitString[1]];
-                                $subunit->saveIntoDb($subunit->position, $parentid);
+                                $subunit->saveIntoDb($subunit->position, $this->compid);
                                 $sibling_id = $subunit->compid;
                             }
                             else
                             {
                                 $subunit = $this->subunits[$subunitString[1]];
-                                $subunit->saveIntoDb($subunit->position, $parentid, $sibling_id);
+                                $subunit->saveIntoDb($subunit->position, $this->compid, $sibling_id);
                                 $sibling_id = $subunit->compid;
                             }
                         }
                         else
                         {
                             $subunitID = $subunitRecord->id;
-                            $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
+                            $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
                         }
                     }
                     else
                     {
                         $subunitinfo = explode('/', $this->subunits[$subunitString[1]]);
                         $subunitID = $subunitinfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
+                        $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
                     }
 
 
@@ -509,20 +509,20 @@ class Associate extends Element
                             if (empty($sibling_id))
                             {
                                 $def = $this->defs[$defString[1]];
-                                $def->saveIntoDb($def->position, $parentid);
+                                $def->saveIntoDb($def->position, $this->compid);
                                 $sibling_id = $def->compid;
                             }
                             else
                             {
                                 $def = $this->defs[$defString[1]];
-                                $def->saveIntoDb($def->position, $parentid, $sibling_id);
+                                $def->saveIntoDb($def->position, $this->compid, $sibling_id);
                                 $sibling_id = $def->compid;
                             }
                         }
                         else
                         {
                             $defID = $defID->id;
-                            $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                            $sibling_id = $this->insertToCompositor($defID, 'msm_def', $this->compid, $sibling_id);
                         }
                     }
                     else
@@ -530,7 +530,7 @@ class Associate extends Element
                         $definfo = explode('/', $this->defs[$defString[1]]);
                         $defID = $definfo[1];
                         $defID = $defID->id;
-                        $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                        $sibling_id = $this->insertToCompositor($defID, 'msm_def', $this->compid, $sibling_id);
                     }
                     break;
 
@@ -567,7 +567,7 @@ class Associate extends Element
                     {
                         $theoreminfo = explode('/', $this->theorems[$theoremString[1]]);
                         $theoremID = $theoreminfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
+                        $sibling_id = $this->insertToCompositor($theoremID, 'msm_theorem', $this->compid, $sibling_id);
                     }
                     break;
 
@@ -604,7 +604,7 @@ class Associate extends Element
                     {
                         $refinfo = explode('/', $this->refs[$refString[1]]);
                         $refID = $refinfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($refID, $ref->tablename, $parentid, $sibling_id);
+                        $sibling_id = $this->insertToCompositor($refID, $ref->tablename, $this->compid, $sibling_id);
                     }
                     break;
             }
