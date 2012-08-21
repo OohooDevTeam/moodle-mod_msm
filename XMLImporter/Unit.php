@@ -423,108 +423,49 @@ class Unit extends Element
 
                                         if ($element->tagName == 'unit')
                                         {
-                                            $unitStringId = $element->getAttribute('unitid');
-
-                                            $unitDuplicateRecord = $DB->get_record('msm_unit', array('string_id' => $unitStringId));
-
-                                            if (empty($unitDuplicateRecord))
-                                            {
-//                                                $position = $position + 1;
-                                                $unit = new Unit(dirname($this->xmlpath . $href));
-                                                $unit->loadFromXml($element, $position);
-                                                $this->subunits[] = $unit;
-                                            }
-                                            else
-                                            {
-//                                                $position = $position + 1;
-                                                $this->subunits[] = $unitDuplicateRecord->id . '/' . $position;
-                                            }
+                                            $position = $position + 1;
+                                            $unit = new Unit(dirname($this->xmlpath . $href));
+                                            $unit->loadFromXml($element, $position);
+                                            $this->subunits[] = $unit;
                                         }
                                         if ($element->tagName == 'intro')
                                         {
-//                                            $position = $position + 1;
+                                            $position = $position + 1;
                                             $intro = new Intro(dirname($this->xmlpath . $href));
                                             $intro->loadFromXml($element, $position);
                                             $this->intro = $intro;
                                         }
                                         if ($element->tagName == 'showme.pack')
                                         {
-                                            $showmepackStringId = $element->getAttribute('id');
-
-                                            $showmeDuplicateRecord = $DB->get_record('msm_packs', array('string_id' => $showmepackStringId, 'type' => 'showme.pack'));
-
-                                            if (empty($showmeDuplicateRecord))
-                                            {
-//                                                $position = $position + 1;
-                                                $showmepack = new Pack(dirname($this->xmlpath . $href));
-                                                $showmepack->loadFromXml($element, $position);
-                                                $this->showmepacks[] = $showmepack;
-                                            }
-                                            else
-                                            {
-//                                                $position = $position + 1;
-                                                $this->showmepacks[] = $showmeDuplicateRecord->id . '/' . $position;
-                                            }
+                                            $position = $position + 1;
+                                            $showmepack = new Pack(dirname($this->xmlpath . $href));
+                                            $showmepack->loadFromXml($element, $position);
+                                            $this->showmepacks[] = $showmepack;
                                         }
                                         if ($element->tagName == 'example.pack')
                                         {
-                                            $examplepackStringId = $element->getAttribute('id');
-
-                                            $exampleDuplicateRecord = $DB->get_record('msm_packs', array('string_id' => $examplepackStringId, 'type' => 'example.pack'));
-
-                                            if (empty($exampleDuplicateRecord))
-                                            {
-//                                                $position = $position + 1;
-                                                $examplepack = new Pack(dirname($this->xmlpath . $href));
-                                                $examplepack->loadFromXml($element, $position);
-                                                $this->examplepacks[] = $examplepack;
-                                            }
-                                            else
-                                            {
-//                                                $position = $position + 1;
-                                                $this->examplepacks[] = $exampleDuplicateRecord->id . '/' . $position;
-                                            }
+                                            $position = $position + 1;
+                                            $examplepack = new Pack(dirname($this->xmlpath . $href));
+                                            $examplepack->loadFromXml($element, $position);
+                                            $this->examplepacks[] = $examplepack;
                                         }
                                         if ($element->tagName == 'exercise.pack')
                                         {
-                                            $exercisepackStringid = $element->getAttribute('id');
-
-                                            $exerciseDuplicatRecord = $DB->get_record('msm_packs', array('string_id' => $exercisepackStringid, 'type' => 'exercise.pack'));
-
-                                            if (empty($exerciseDuplicatRecord))
-                                            {
-//                                                $position = $position + 1;
-                                                $exercisepack = new Pack(dirname($this->xmlpath . $href));
-                                                $exercisepack->loadFromXml($element, $position);
-                                                $this->exercisepacks[] = $exercisepack;
-                                            }
-                                            else
-                                            {
-//                                                $position = $position + 1;
-                                                $this->exercisepacks[] = $exerciseDuplicatRecord->id . '/' . $position;
-                                            }
+                                            $position = $position + 1;
+                                            $exercisepack = new Pack(dirname($this->xmlpath . $href));
+                                            $exercisepack->loadFromXml($element, $position);
+                                            $this->exercisepacks[] = $exercisepack;
                                         }
                                         if ($element->tagName == 'quiz.pack')
                                         {
-                                            $quizpackStringid = $element->getAttribute('id');
+                                            $position = $position + 1;
+                                            $quizpack = new Pack(dirname($this->xmlpath . $href));
+                                            $quizpack->loadFromXml($element, $position);
+                                            $this->quizpacks[] = $quizpack;
 
-                                            $quizpackDuplicateRecord = $DB->get_record('msm_packs', array('string_id' => $quizpackStringid, 'type' => 'quiz.pack'));
-
-                                            if (empty($quizpackDuplicateRecord))
-                                            {
-//                                                $position = $position + 1;
-                                                $quizpack = new Pack(dirname($this->xmlpath . $href));
-                                                $quizpack->loadFromXml($element, $position);
-                                                $this->quizpacks[] = $quizpack;
-                                            }
-                                            else
-                                            {
-//                                                $position = $position + 1;
-                                                $this->quizpacks[] = $quizpackDuplicateRecord->id . '/' . $position;
-                                            }
+                                            // there are exercise/showme/example/quiz that can be part of this
+                                            break;
                                         }
-                                        // there are exercise/showme/example/quiz that can be part of this
-                                        break;
                                 }
                             }
                         }
@@ -637,15 +578,7 @@ class Unit extends Element
         {
             foreach ($this->subunits as $key => $subunit)
             {
-                if (is_object($subunit))
-                {
-                    $elementPositions['subunit' . '-' . $key] = $subunit->position;
-                }
-                else
-                {
-                    $subunitinfo = explode('/', $subunit);
-                    $elementPositions['subunit' . '-' . $key] = $subunitinfo[1];
-                }
+                $elementPositions['subunit' . '-' . $key] = $subunit->position;
             }
         }
 
@@ -661,15 +594,7 @@ class Unit extends Element
         {
             foreach ($this->exercisepacks as $key => $exercisepack)
             {
-                if (is_object($exercisepack))
-                {
-                    $elementPositions['exercisepack' . '-' . $key] = $exercisepack->position;
-                }
-                else
-                {
-                    $exercisepackinfo = explode('/', $exercisepack);
-                    $elementPositions['exercisepack' . '-' . $key] = $exercisepackinfo[1];
-                }
+                $elementPositions['exercisepack' . '-' . $key] = $exercisepack->position;
             }
         }
 
@@ -677,15 +602,7 @@ class Unit extends Element
         {
             foreach ($this->examplepacks as $key => $examplepack)
             {
-                if (is_object($examplepack))
-                {
-                    $elementPositions['examplepack' . '-' . $key] = $examplepack->position;
-                }
-                else
-                {
-                    $examplepackinfo = explode('/', $examplepack);
-                    $elementPositions['examplepack' . '-' . $key] = $examplepackinfo[1];
-                }
+                $elementPositions['examplepack' . '-' . $key] = $examplepack->position;
             }
         }
 
@@ -693,15 +610,7 @@ class Unit extends Element
         {
             foreach ($this->showmepacks as $key => $showmepack)
             {
-                if (is_object($showmepack))
-                {
-                    $elementPositions['showmepack' . '-' . $key] = $showmepack->position;
-                }
-                else
-                {
-                    $showmepackinfo = explode('/', $showmepack);
-                    $elementPositions['showmepack' . '-' . $key] = $showmepackinfo[1];
-                }
+                $elementPositions['showmepack' . '-' . $key] = $showmepack->position;
             }
         }
 
@@ -709,15 +618,7 @@ class Unit extends Element
         {
             foreach ($this->quizpacks as $key => $quizpack)
             {
-                if (is_object($quizpack))
-                {
-                    $elementPositions['quizpack' . '-' . $key] = $quizpack->position;
-                }
-                else
-                {
-                    $quizpackinfo = explode('/', $quizpack);
-                    $elementPositions['quizpack' . '-' . $key] = $quizpackinfo[1];
-                }
+                $elementPositions['quizpack' . '-' . $key] = $quizpack->position;
             }
         }
 
@@ -839,186 +740,145 @@ class Unit extends Element
 //
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = split('-', $element);
+                    $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
 
-                    if (is_object($this->subunits[$subunitString[1]]))
+                    if (empty($subunitRecord))
                     {
-                        $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
-
-                        if (empty($subunitRecord))
+                        if (empty($sibling_id))
                         {
-                            if (empty($sibling_id))
-                            {
-                                $subunit = $this->subunits[$subunitString[1]];
-                                $subunit->saveIntoDb($subunit->position, $this->compid);
-                                $sibling_id = $subunit->compid;
-                            }
-                            else
-                            {
-                                $subunit = $this->subunits[$subunitString[1]];
-                                $subunit->saveIntoDb($subunit->position, $this->compid, $sibling_id);
-                                $sibling_id = $subunit->compid;
-                            }
+                            $subunit = $this->subunits[$subunitString[1]];
+                            $subunit->saveIntoDb($subunit->position, $this->compid);
+                            $sibling_id = $subunit->compid;
                         }
                         else
                         {
-                            $subunitID = $subunitRecord->id;
-                            $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
+                            $subunit = $this->subunits[$subunitString[1]];
+                            $subunit->saveIntoDb($subunit->position, $this->compid, $sibling_id);
+                            $sibling_id = $subunit->compid;
                         }
                     }
                     else
                     {
-                        $subunitinfo = explode('/', $this->subunits[$subunitString[1]]);
-                        $subunitID = $subunitinfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
+                        $subunitID = $subunitRecord->id;
+                        $unittableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+
+                        $subunitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $subunitID, 'table_id' => $unittableID));
+                        $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
+                        $sibling_id = $subunitCompID;
+
+
+                        foreach ($subunitCompRecords as $unitCompRecord)
+                        {
+                            $this->grabSubunitChilds($unitCompRecord);
+                        }
                     }
                     break;
 
                 case(preg_match("/^(exercisepack.\d+)$/", $element) ? true : false):
                     $exercisepackString = split('-', $element);
+                    $exercisepackRecord = $this->checkForRecord($this->exercisepacks[$exercisepackString[1]]);
 
-                    if (is_object($this->exercisepacks[$exercisepackString[1]]))
+                    if (empty($exercisepackRecord))
                     {
-                        $exercisepackRecord = $this->checkForRecord($this->exercisepacks[$exercisepackString[1]]);
-
-                        if (empty($exercisepackRecord))
+                        if (empty($sibling_id))
                         {
-                            if (empty($sibling_id))
-                            {
-                                $exercisepack = $this->exercisepacks[$exercisepackString[1]];
-                                $exercisepack->saveIntoDb($exercisepack->position, $this->compid);
-                                $sibling_id = $exercisepack->compid;
-                            }
-                            else
-                            {
-                                $exercisepack = $this->exercisepacks[$exercisepackString[1]];
-                                $exercisepack->saveIntoDb($exercisepack->position, $this->compid, $sibling_id);
-                                $sibling_id = $exercisepack->compid;
-                            }
+                            $exercisepack = $this->exercisepacks[$exercisepackString[1]];
+                            $exercisepack->saveIntoDb($exercisepack->position, $this->compid);
+                            $sibling_id = $exercisepack->compid;
                         }
                         else
                         {
-                            $exercisepackID = $exercisepackRecord->id;
-                            $sibling_id = $this->insertToCompositor($exercisepackID, 'msm_packs', $this->compid, $sibling_id);
+                            $exercisepack = $this->exercisepacks[$exercisepackString[1]];
+                            $exercisepack->saveIntoDb($exercisepack->position, $this->compid, $sibling_id);
+                            $sibling_id = $exercisepack->compid;
                         }
                     }
                     else
                     {
-                        $exercisepackinfo = explode('/', $this->exercisepacks[$exercisepackString[1]]);
-                        $exercisepackID = $exercisepackinfo[1]->id;
+                        $exercisepackID = $exercisepackRecord->id;
                         $sibling_id = $this->insertToCompositor($exercisepackID, 'msm_packs', $this->compid, $sibling_id);
                     }
-
                     break;
 
                 case(preg_match("/^(examplepack.\d+)$/", $element) ? true : false):
                     $examplepackString = split('-', $element);
+                    $examplepackRecord = $this->checkForRecord($this->examplepacks[$examplepackString[1]]);
 
-                    if (is_object($this->examplepacks[$examplepackString[1]]))
+                    if (empty($examplepackRecord))
                     {
-                        $examplepackRecord = $this->checkForRecord($this->examplepacks[$examplepackString[1]]);
-
-                        if (empty($examplepackRecord))
+                        if (empty($sibling_id))
                         {
-                            if (empty($sibling_id))
-                            {
-                                $examplepack = $this->examplepacks[$examplepackString[1]];
-                                $examplepack->saveIntoDb($examplepack->position, $this->compid);
-                                $sibling_id = $examplepack->compid;
-                            }
-                            else
-                            {
-                                $examplepack = $this->examplepacks[$examplepackString[1]];
-                                $examplepack->saveIntoDb($examplepack->position, $this->compid, $sibling_id);
-                                $sibling_id = $examplepack->compid;
-                            }
+                            $examplepack = $this->examplepacks[$examplepackString[1]];
+                            $examplepack->saveIntoDb($examplepack->position, $this->compid);
+                            $sibling_id = $examplepack->compid;
                         }
                         else
                         {
-                            $examplepackID = $examplepackRecord->id;
                             $examplepack = $this->examplepacks[$examplepackString[1]];
-                            $examplepack->compid = $this->insertToCompositor($examplepackID, $examplepack->tablename, $this->compid, $sibling_id);
+                            $examplepack->saveIntoDb($examplepack->position, $this->compid, $sibling_id);
+                            $sibling_id = $examplepack->compid;
                         }
                     }
                     else
                     {
-                        $examplepackinfo = explode('/', $this->examplepacks[$examplepackString[1]]);
-                        $examplepackID = $examplepackinfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($examplepackID, 'msm_packs', $this->compid, $sibling_id);
+                        $examplepackID = $examplepackRecord->id;
+                        $examplepack = $this->examplepacks[$examplepackString[1]];
+                        $examplepack->compid = $this->insertToCompositor($examplepackID, $examplepack->tablename, $this->compid, $sibling_id);
                     }
                     break;
 
                 case(preg_match("/^(quizpack.\d+)$/", $element) ? true : false):
 
                     $quizpackString = split('-', $element);
+                    $quizpackRecord = $this->checkForRecord($this->quizpacks[$quizpackString[1]]);
 
-                    if (is_object($this->quizpacks[$quizpackString[1]]))
+                    if (empty($quizpackRecord))
                     {
-                        $quizpackRecord = $this->checkForRecord($this->quizpacks[$quizpackString[1]]);
-
-                        if (empty($quizpackRecord))
+                        if (empty($sibling_id))
                         {
-                            if (empty($sibling_id))
-                            {
-                                $quizpack = $this->quizpacks[$quizpackString[1]];
-                                $quizpack->saveIntoDb($quizpack->position, $this->compid);
-                                $sibling_id = $quizpack->compid;
-                            }
-                            else
-                            {
-                                $quizpack = $this->quizpacks[$quizpackString[1]];
-                                $quizpack->saveIntoDb($quizpack->position, $this->compid, $sibling_id);
-                                $sibling_id = $quizpack->compid;
-                            }
+                            $quizpack = $this->quizpacks[$quizpackString[1]];
+                            $quizpack->saveIntoDb($quizpack->position, $this->compid);
+                            $sibling_id = $quizpack->compid;
                         }
                         else
                         {
-                            $quizpackID = $quizpackRecord->id;
                             $quizpack = $this->quizpacks[$quizpackString[1]];
-                            $quizpack->compid = $this->insertToCompositor($quizpackID, $quizpack->tablename, $this->compid, $sibling_id);
+                            $quizpack->saveIntoDb($quizpack->position, $this->compid, $sibling_id);
+                            $sibling_id = $quizpack->compid;
                         }
                     }
                     else
                     {
-                        $quizpackinfo = explode('/', $this->quizpacks[$quizpackString[1]]);
-                        $quizpackID = $quizpackinfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($quizpackID, 'msm_packs', $this->compid, $sibling_id);
+                        $quizpackID = $quizpackRecord->id;
+                        $quizpack = $this->quizpacks[$quizpackString[1]];
+                        $quizpack->compid = $this->insertToCompositor($quizpackID, $quizpack->tablename, $this->compid, $sibling_id);
                     }
                     break;
 
                 case(preg_match("/^(showmepack.\d+)$/", $element) ? true : false):
                     $showmepackString = split('-', $element);
+                    $showmepackRecord = $this->checkForRecord($this->showmepacks[$showmepackString[1]]);
 
-                    if (is_object($this->showmepacks[$showmepackString[1]]))
+                    if (empty($showmepackRecord))
                     {
-                        $showmepackRecord = $this->checkForRecord($this->showmepacks[$showmepackString[1]]);
-
-                        if (empty($showmepackRecord))
+                        if (empty($sibling_id))
                         {
-                            if (empty($sibling_id))
-                            {
-                                $showmepack = $this->showmepacks[$showmepackString[1]];
-                                $showmepack->saveIntoDb($showmepack->position, $this->compid);
-                                $sibling_id = $showmepack->compid;
-                            }
-                            else
-                            {
-                                $showmepack = $this->showmepacks[$showmepackString[1]];
-                                $showmepack->saveIntoDb($showmepack->position, $this->compid, $sibling_id);
-                                $sibling_id = $showmepack->compid;
-                            }
+                            $showmepack = $this->showmepacks[$showmepackString[1]];
+                            $showmepack->saveIntoDb($showmepack->position, $this->compid);
+                            $sibling_id = $showmepack->compid;
                         }
                         else
                         {
-                            $showmepackID = $showmepackRecord->id;
                             $showmepack = $this->showmepacks[$showmepackString[1]];
-                            $showmepack->compid = $this->insertToCompositor($showmepackID, $showmepack->tablename, $this->compid, $sibling_id);
+                            $showmepack->saveIntoDb($showmepack->position, $this->compid, $sibling_id);
+                            $sibling_id = $showmepack->compid;
                         }
                     }
                     else
                     {
-                        $showmepackinfo = explode('/', $this->showmepacks[$showmepackString[1]]);
-                        $showmepackID = $showmepackinfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($showmepackID, 'msm_packs', $this->compid, $sibling_id);
+                        $showmepackID = $showmepackRecord->id;
+                        $showmepack = $this->showmepacks[$showmepackString[1]];
+                        $showmepack->compid = $this->insertToCompositor($showmepackID, $showmepack->tablename, $this->compid, $sibling_id);
                     }
                     break;
 
@@ -1308,6 +1168,30 @@ class Unit extends Element
                         }
                     }
                 }
+            }
+        }
+    }
+
+    // unitrecord from compositor table
+    function grabSubunitChilds($elementRecord)
+    {
+        global $DB;
+        
+        $childSibling = 0;
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
+
+        if (empty($childElements))
+        {
+            return null;
+        }
+        else
+        {
+            foreach ($childElements as $child)
+            {
+                $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+                $childCompid = $this->insertToCompositor($child->unit_id, $childtablename, $elementRecord->id, $childSibling);
+                $childSibling = $childCompid;
+                $this->grabSubunitChilds($child);
             }
         }
     }
