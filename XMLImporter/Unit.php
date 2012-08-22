@@ -769,7 +769,7 @@ class Unit extends Element
 
                         foreach ($subunitCompRecords as $unitCompRecord)
                         {
-                            $this->grabSubunitChilds($unitCompRecord);
+                            $this->grabSubunitChilds($unitCompRecord, $subunitCompID);
                         }
                     }
                     break;
@@ -1173,7 +1173,7 @@ class Unit extends Element
     }
 
     // unitrecord from compositor table
-    function grabSubunitChilds($elementRecord)
+    function grabSubunitChilds($elementRecord, $currentUnitID)
     {
         global $DB;
         
@@ -1189,9 +1189,9 @@ class Unit extends Element
             foreach ($childElements as $child)
             {
                 $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
-                $childCompid = $this->insertToCompositor($child->unit_id, $childtablename, $elementRecord->id, $childSibling);
-                $childSibling = $childCompid;
-                $this->grabSubunitChilds($child);
+                $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $currentUnitID, $childSibling);
+                $childSibling = $childCompID;
+                $this->grabSubunitChilds($child, $childCompID);
             }
         }
     }

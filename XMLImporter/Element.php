@@ -763,13 +763,14 @@ abstract class Element
 
                         if (!empty($subordinate->external_links[0]->infos[0]))
                         {
-                            $content .= '<div id="dialog-' . $subordinate->external_links[0]->compid . '" class="dialogs" title="' . $subordinate->external_links[0]->infos[0]->caption . '">';
-
-                            $recursivecontent = $this->displaySubordinate($subordinate->external_links[0]->infos[0], $subordinate->external_links[0]->infos[0]->info_content);
-
-                            $content .= $recursivecontent;
-
-                            $content .= "</div>";
+                            $content .= $subordinate->external_links[0]->infos[0]->displayhtml();
+//                            $content .= '<div id="dialog-' . $subordinate->external_links[0]->compid . '" class="dialogs" title="' . $subordinate->external_links[0]->infos[0]->caption . '">';
+//
+//                            $recursivecontent = $this->displaySubordinate($subordinate->external_links[0]->infos[0], $subordinate->external_links[0]->infos[0]->info_content);
+//
+//                            $content .= $recursivecontent;
+//
+//                            $content .= "</div>";
                         }
                     }
                 }
@@ -841,12 +842,12 @@ abstract class Element
                 if ($DB->count_records_select('msm_img', $sql) > 1)
                 {
                     $imgRecord = $DB->get_records_select('msm_img', $sql);
-                    $imgparentid = $DB->get_record('msm_compositor', array('unit_id' => array_shift(array_values($imgRecord))->id, 'table_id' => 16))->parent_id;
+                    $imgparentid = array_shift(array_values($DB->get_records('msm_compositor', array('unit_id' => array_shift(array_values($imgRecord))->id, 'table_id' => 16))))->parent_id;
                 }
                 else
                 {
                     $imgRecord = $DB->get_record_select('msm_img', $sql);
-                    $imgparentid = $DB->get_record('msm_compositor', array('unit_id' => $imgRecord->id, 'table_id' => 16))->parent_id;
+                    $imgparentid = array_shift(array_values($DB->get_records('msm_compositor', array('unit_id' => $imgRecord->id, 'table_id' => 16))))->parent_id;
                 }
 
 
@@ -868,7 +869,6 @@ abstract class Element
                     }
                 }
             }
-//            $XMLcontent = preg_replace("/\s\s{2,}/", " ", $XMLcontent);
 
             $content .= $XMLcontent;
             return $content;
