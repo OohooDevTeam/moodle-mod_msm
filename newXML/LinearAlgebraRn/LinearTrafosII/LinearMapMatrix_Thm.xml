@@ -6,10 +6,9 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Matrix representation of a linear map</caption>
    <associate type="Comment">
+      <unit.ref unitId="Expla_LinearMapMatrix"/>
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>An explanation on how to work with this proposition.</para.body>
          </para>

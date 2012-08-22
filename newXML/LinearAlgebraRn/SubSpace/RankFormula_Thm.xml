@@ -17,9 +17,7 @@
             <term>rank</term>
             <term>formula for matrices</term>
             <info>
-               <info.caption>
-                  <caption>Rank formula for matrices</caption>
-               </info.caption>
+               <info.caption>Rank formula for matrices</info.caption>
                <math.display>
                   <latex>
 							

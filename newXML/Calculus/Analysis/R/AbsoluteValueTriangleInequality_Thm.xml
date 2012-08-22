@@ -7,9 +7,7 @@
    <caption>Triangle inequality of   ‘absolute value’</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>The inequality <math>
                   <latex>\Abs{ x+y } \leq \Abs{x} + \Abs{y}</latex>

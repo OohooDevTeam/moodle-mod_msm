@@ -7,9 +7,7 @@
    <caption>Properties of matrix inversion</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment and Warning</caption>
-         </info.caption>
+         <info.caption>Comment and Warning</info.caption>
          <para>
             <para.body>Property iv. is something we must be particularly mindful of, as it is different from the analogous property for numbers: Indeed, if <math>
                   <latex>a</latex>
@@ -347,9 +345,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Why is this identity true?</caption>
-                        </info.caption>
+                        <info.caption>Why is this identity true?</info.caption>
                         <para>
                            <para.body>This identity follows from the associativity law of matrix multiplication.</para.body>
                         </para>
@@ -370,9 +366,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Why is this identity true?</caption>
-                        </info.caption>
+                        <info.caption>Why is this identity true?</info.caption>
                         <para>
                            <para.body>Using that <math>
                                  <latex>\Mtrx{B}\Mtrx{B}^{-1} = \IdMtrx[n]</latex>
@@ -395,9 +389,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Why is this identity true?</caption>
-                        </info.caption>
+                        <info.caption>Why is this identity true?</info.caption>
                         <para>
                            <para.body>Using that <math>
                                  <latex>\IdMtrx[n]</latex>

@@ -75,10 +75,19 @@
     </xsl:template>-->
     
     <xsl:template match="thm:caption">
-        <xsl:apply-templates select="child::node()[name()='partref']"/>
-        <xsl:element name="caption" namespace="Theorem">
-            <xsl:apply-templates select="child::node()[not(name()='partref')]"/>
-        </xsl:element>
+        <xsl:choose>
+            <xsl:when test="parent::node()[name()='info']">
+                <xsl:element name="info.caption" namespace="Theorem">
+                    <xsl:apply-templates/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates select="child::node()[name()='partref']"/>
+                <xsl:element name="caption" namespace="Theorem">
+                    <xsl:apply-templates select="child::node()[not(name()='partref')]"/>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>      
     </xsl:template>
     
     <xsl:template match="thm:partref">
@@ -231,6 +240,14 @@
         </xsl:element>
     </xsl:template>
     
+    <xsl:template match="thm:subpage.ref">
+        <xsl:element name="unit.ref" namespace="Theorem">
+            <xsl:attribute name="unitId">
+                <xsl:value-of select="./@subpageID"/>
+            </xsl:attribute>
+        </xsl:element>
+    </xsl:template>
+    
     <xsl:template match="thm:showme.pack.ref">
         <xsl:element name="showme.pack.ref" namespace="Theorem">
             <xsl:attribute name="showmePackID">
@@ -239,10 +256,26 @@
         </xsl:element>
     </xsl:template>
     
+    <xsl:template match="thm:example.pack.ref">
+        <xsl:element name="example.pack.ref" namespace="Theorem">
+            <xsl:attribute name="examplePackID">
+                <xsl:value-of select="./@examplePackID"/>
+            </xsl:attribute>
+        </xsl:element>
+    </xsl:template>
+    
     <xsl:template match="thm:quiz.pack.ref">
         <xsl:element name="quiz.pack.ref" namespace="Theorem">
             <xsl:attribute name="quizPackID">
                 <xsl:value-of select="./@quizPackID"/>
+            </xsl:attribute>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="thm:exercise.pack.ref">
+        <xsl:element name="exercise.pack.ref" namespace="Theorem">
+            <xsl:attribute name="exercisePackID">
+                <xsl:value-of select="./@exercisePackID"/>
             </xsl:attribute>
         </xsl:element>
     </xsl:template>
@@ -272,9 +305,7 @@
     <xsl:template match="thm:info">
         <xsl:element name="info" namespace="Theorem">
             <xsl:if test="thm:caption != ''">
-                <xsl:element name="info.caption" namespace="Theorem">
-                    <xsl:apply-templates select="thm:caption"/>
-                </xsl:element>
+               <xsl:apply-templates select="thm:caption"/>
             </xsl:if>
             <xsl:apply-templates select="node()[not(name()='caption')]"/>            
         </xsl:element>

@@ -586,9 +586,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because</info.caption>
                               <para>
                                  <para.body>... by the definition of vector addition</para.body>
                               </para>
@@ -623,9 +621,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because</info.caption>
                               <para>
                                  <para.body>... by the definition of the dot product</para.body>
                               </para>
@@ -660,9 +656,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because</info.caption>
                               <para>
                                  <para.body>... by the distributivity law for real numbers; i.e.</para.body>
                               </para>
@@ -706,9 +700,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because</info.caption>
                               <para>
                                  <para.body>... by the commutativity law for the addition of real numbers; i.e.</para.body>
                               </para>
@@ -752,9 +744,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because</info.caption>
                               <para>
                                  <para.body>... by the definition of the dot product.</para.body>
                               </para>
@@ -832,9 +822,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because ...</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because ...</info.caption>
                               <para>
                                  <para.body>... of the definition of the dot product</para.body>
                               </para>
@@ -869,9 +857,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because ...</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because ...</info.caption>
                               <para>
                                  <para.body>... of the commutativity property of multiplication of numbers: <math>
                                        <latex>st = ts</latex>
@@ -909,9 +895,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because ...</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because ...</info.caption>
                               <para>
                                  <para.body>... of the definition of the dot product</para.body>
                               </para>

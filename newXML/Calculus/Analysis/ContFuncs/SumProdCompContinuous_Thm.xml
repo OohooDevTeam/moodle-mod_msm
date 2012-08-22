@@ -7,9 +7,7 @@
    <caption>Sums, products, compositions of continuous maps</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment</caption>
-         </info.caption>
+         <info.caption>Comment</info.caption>
          <para>
             <para.body>We prove this proposition directly from the <math>
                   <latex>\varepsilon</latex>

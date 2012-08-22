@@ -6,6 +6,7 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Distance of a Point from a Hyperplane</caption>
    <associate type="Illustration">
+      <unit.ref unitId="Illu_DistancePointHyperplaneCompute"/>
       <info>
          <para>
             <para.body>Illustration of the Situation in the Proposition</para.body>
@@ -22,9 +23,7 @@
                   </math>
                </hot>
                <info>
-                  <info.caption>
-                     <caption>What is this symbol?</caption>
-                  </info.caption>
+                  <info.caption>What is this symbol?</info.caption>
                   <para>
                      <para.body>‘<math>
                            <latex>\Pi</latex>
@@ -50,11 +49,9 @@
                   </math>
                </hot>
                <info>
-                  <info.caption>
-                     <caption>Meaning of <math>
-                           <latex>\Vect{p}</latex>
-                        </math>
-                     </caption>
+                  <info.caption>Meaning of <math>
+                        <latex>\Vect{p}</latex>
+                     </math>
                   </info.caption>
                   <para>
                      <para.body>In this formula <math>
@@ -72,11 +69,9 @@
                   </math>
                </hot>
                <info>
-                  <info.caption>
-                     <caption>Meaning of <math>
-                           <latex>\Vect{n}</latex>
-                        </math>
-                     </caption>
+                  <info.caption>Meaning of <math>
+                        <latex>\Vect{n}</latex>
+                     </math>
                   </info.caption>
                   <para>
                      <para.body>In this formula <math>

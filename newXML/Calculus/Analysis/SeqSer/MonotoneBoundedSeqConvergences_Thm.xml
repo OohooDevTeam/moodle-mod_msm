@@ -6,6 +6,7 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Convergence of monotone bounded sequences</caption>
    <associate type="Illustration">
+      <unit.ref unitId="Illu_MonotoneBoundedSequenceConverges"/>
       <info>
          <para>
             <para.body>The convergence property of the monotone bounded sequences is actually quite intuitive. See an illustration of this.</para.body>
@@ -70,9 +71,7 @@
                      </math>
                   </hot>
                   <info>
-                     <info.caption>
-                        <caption>Why is this so?</caption>
-                     </info.caption>
+                     <info.caption>Why is this so?</info.caption>
                      <para>
                         <para.body>... as <math>
                               <latex>(x_n)</latex>
@@ -86,9 +85,7 @@
                         <latex>B</latex>
                      </math> is bounded below</hot>
                   <info>
-                     <info.caption>
-                        <caption>Why is this so?</caption>
-                     </info.caption>
+                     <info.caption>Why is this so?</info.caption>
                      <para>
                         <para.body>For example <math>
                               <latex>x_0\leq B</latex>
@@ -117,9 +114,7 @@
 			<subordinate>
                   <hot>must exist</hot>
                   <info>
-                     <info.caption>
-                        <caption>Why is this so?</caption>
-                     </info.caption>
+                     <info.caption>Why is this so?</info.caption>
                      <para>
                         <para.body>Suppose there does not exist such <math>
                               <latex>n_0</latex>

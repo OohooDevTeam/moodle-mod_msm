@@ -9,10 +9,9 @@
       </math>
    </caption>
    <associate type="Explanation">
+      <unit.ref unitId="Expla_GeneralRotationMatrix"/>
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>How does a rotation matrix work?</para.body>
          </para>

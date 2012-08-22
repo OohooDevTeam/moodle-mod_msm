@@ -24,6 +24,7 @@ class Subordinate extends Element
 
     public $position;
     public $hot;
+    public $subpage;
 
     function __construct($xmlpath = '')
     {
@@ -332,11 +333,19 @@ class Subordinate extends Element
                     $externallink->loadFromDb($child->unit_id, $child->id);
                     $this->external_links[] = $externallink;
                     break;
+                
+                case('msm_unit'):
+                    $unit = new Unit();
+                    $unit->loadFromDb($child->unit_id, $child->id);
+                    $this->subpage = $unit;
+                    break;
+                
 //                case('msm_cite'):
 //                    $cite = new Cite();
 //                    $cite->loadFromDb($child->unit_id, $child->id);
 //                    $this->chlids[] = $cite;
 //                    break;
+                // need to add all the reference materials
                 
             }
         }
@@ -344,6 +353,16 @@ class Subordinate extends Element
         return $this;
     }
 
+    function displaySubpages()
+    {
+        $content = '';
+        
+        $content .= "<div class='subpage' id='subpage-" . $this->subpage->compid . "'>";
+        $content .= $this->subpage->displayhtml();
+        $content .= "</div>";
+        
+        return $content;
+    }
 }
 
 ?>

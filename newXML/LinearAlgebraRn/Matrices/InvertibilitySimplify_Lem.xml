@@ -108,9 +108,7 @@
 			<subordinate>
                   <hot>invertible</hot>
                   <info>
-                     <info.caption>
-                        <caption>Reason</caption>
-                     </info.caption>
+                     <info.caption>Reason</info.caption>
                      <para>
                         <para.body>Each of the <math>
                               <latex>\Mtrx{R}_i</latex>
@@ -131,9 +129,7 @@
 			<subordinate>
                   <hot>hence is not invertible</hot>
                   <info>
-                     <info.caption>
-                        <caption>Reason</caption>
-                     </info.caption>
+                     <info.caption>Reason</info.caption>
                      <para>
                         <para.body>If <math>
                               <latex>\Mtrx{C}</latex>

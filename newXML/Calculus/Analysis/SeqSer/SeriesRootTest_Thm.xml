@@ -7,9 +7,7 @@
    <caption>The root test for absolute convergence</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment</caption>
-         </info.caption>
+         <info.caption>Comment</info.caption>
          <para>
             <para.body>The statement of the root test leaves open the question: what happens if <math>
                   <latex> \lim_{n\to \infty} \sqrt[n]{\Abs{a_n}}=L = 1</latex>

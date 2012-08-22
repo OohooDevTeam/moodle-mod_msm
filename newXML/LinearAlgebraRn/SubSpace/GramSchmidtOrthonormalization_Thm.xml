@@ -6,10 +6,9 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Gram-Schmidt orthonormalization</caption>
    <associate type="Explanation">
+      <unit.ref unitId="Expla_GramSchmidtOrthonormalization"/>
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>An explanation of the idea underlying the Gram-Schmidt orthonormalization procedure.</para.body>
          </para>
@@ -18,9 +17,7 @@
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_GramSchmidtOrthonormalization"/>
       <info>
-         <info.caption>
-            <caption>Example</caption>
-         </info.caption>
+         <info.caption>Example</info.caption>
          <para>
             <para.body>An example of orthonormalizing a set of vectors.</para.body>
          </para>
@@ -252,9 +249,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>Why is the vector distinct from 0?</caption>
-                              </info.caption>
+                              <info.caption>Why is the vector distinct from 0?</info.caption>
                               <para>
                                  <para.body>If this vector were <math>
                                        <latex>\Vect{0}</latex>
@@ -288,9 +283,7 @@
 					<subordinate>
                            <hot>remains</hot>
                            <info>
-                              <info.caption>
-                                 <caption>Why is this so?</caption>
-                              </info.caption>
+                              <info.caption>Why is this so?</info.caption>
                               <para>
                                  <para.body>From the induction hypothesis we already know that <math>
                                        <latex>\span(\EuScript{A}_{j-1})=\span(\EuScript{B}_{j-1})</latex>

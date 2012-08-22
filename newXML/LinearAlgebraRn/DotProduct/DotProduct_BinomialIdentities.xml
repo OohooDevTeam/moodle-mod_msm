@@ -78,9 +78,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because ...</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because ...</info.caption>
                               <para>
                                  <para.body>... of the distributivity property of the dot product operation.</para.body>
                               </para>
@@ -115,9 +113,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because</info.caption>
                               <para>
                                  <para.body>... of the distributivity property of the dot product operation.</para.body>
                               </para>
@@ -152,9 +148,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because of</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because of</info.caption>
                               <para>
                                  <para.body>... the commutativity property of the dot product operation</para.body>
                               </para>
@@ -229,9 +223,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because ...</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because ...</info.caption>
                               <para>
                                  <para.body>... of the distributivity property of the dot product operation.</para.body>
                               </para>
@@ -266,9 +258,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because</info.caption>
                               <para>
                                  <para.body>... of the distributivity property of the dot product operation.</para.body>
                               </para>
@@ -303,9 +293,7 @@
                               </math>
                            </hot>
                            <info>
-                              <info.caption>
-                                 <caption>This computational step holds because of</caption>
-                              </info.caption>
+                              <info.caption>This computational step holds because of</info.caption>
                               <para>
                                  <para.body>... the commutativity property of the dot product operation</para.body>
                               </para>

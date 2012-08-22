@@ -7,9 +7,7 @@
    <caption>The ratio test for absolute convergence</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment</caption>
-         </info.caption>
+         <info.caption>Comment</info.caption>
          <para>
             <para.body>The statement of the ratio test leaves open the question: what happens if <math>
                   <latex> \lim_{n\to \infty} \frac{\Abs{ a_{n+1} } }{ \Abs{ a_n } }=L = 1</latex>

@@ -110,9 +110,7 @@
 				<subordinate>
                   <hot>hence cannot be invertible</hot>
                   <info>
-                     <info.caption>
-                        <caption>Reason</caption>
-                     </info.caption>
+                     <info.caption>Reason</info.caption>
                      <para>
                         <para.body>Denote the inverse of <math>
                               <latex>\Mtrx{T}\Mtrx{A}^{-1}</latex>
@@ -251,9 +249,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Why is this true?</caption>
-                        </info.caption>
+                        <info.caption>Why is this true?</info.caption>
                         <para>
                            <para.body>Here we use repeatedly the formula for the inverse of a product:</para.body>
                         </para>

@@ -7,11 +7,9 @@
    <caption>Inverting a matrix using Cramer’s rule</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>What is <math>
-                  <latex>\Mtrx{A}_{ji}</latex>
-               </math>?</caption>
-         </info.caption>
+         <info.caption>What is <math>
+               <latex>\Mtrx{A}_{ji}</latex>
+            </math>?</info.caption>
          <para>
             <para.body>
                <math>

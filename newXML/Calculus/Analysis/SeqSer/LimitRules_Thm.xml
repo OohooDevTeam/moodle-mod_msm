@@ -7,9 +7,7 @@
    <caption>Rules for computing with limits</caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment</caption>
-         </info.caption>
+         <info.caption>Comment</info.caption>
          <para>
             <para.body>When using this theorem for computing with limits, it is important to verify that <math>
                   <latex>\lim_{n\to\infty}x_n</latex>
@@ -21,9 +19,7 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Comment</caption>
-         </info.caption>
+         <info.caption>Comment</info.caption>
          <para>
             <para.body>These operations hold also when <math>
                   <latex>a,b=\pm \infty</latex>

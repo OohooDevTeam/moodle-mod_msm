@@ -119,9 +119,7 @@
 			<subordinate>
                   <hot>follows</hot>
                   <info>
-                     <info.caption>
-                        <caption>How does this follow?</caption>
-                     </info.caption>
+                     <info.caption>How does this follow?</info.caption>
                      <para>
                         <para.body>To see that <math>
                               <latex>s_n\leq t_n</latex>

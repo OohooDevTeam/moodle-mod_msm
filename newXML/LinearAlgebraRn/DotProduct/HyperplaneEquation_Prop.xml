@@ -7,9 +7,7 @@
    <caption>Equation of a Hyperplane</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>In other words: the hyperplane in <math>
                   <latex>\RNr[n]</latex>
@@ -28,10 +26,9 @@
       </info>
    </associate>
    <associate type="Illustration">
+      <unit.ref unitId="Illustr_Hyperplane"/>
       <info>
-         <info.caption>
-            <caption>Illustration</caption>
-         </info.caption>
+         <info.caption>Illustration</info.caption>
          <para>
             <para.body>An illustration of a hyperplane</para.body>
          </para>

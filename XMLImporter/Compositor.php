@@ -1,18 +1,17 @@
 <?php
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
-
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 require_once("Element.php");
 require_once("Person.php");
 require_once("Unit.php");
@@ -74,6 +73,7 @@ class Compositor
         global $DB;
 
         $newstring = '';
+        $content = '';
         $stack = array();
 
         //recreating stack from string
@@ -98,32 +98,73 @@ class Compositor
             $unitid = $unitRecord->id;
             $unitcompid = $recordids[0];
 
-            $unit = new Unit();
-            $unit->loadFromDb($unitid, $unitcompid);
-            $this->unit = $unit;
-            $content = '';
+            $unitTable = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+            $unitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $unitid, 'table_id' => $unitTable));
 
-            $content .= "<div class=unit>";
-            $content .= $this->unit->displayhtml();
+            // a flag for indicating if the unit element in current debate is
+            $isSubpage = false;
+            // if the unit has a record with parent id being associate/subordinate, do not display the unit
 
-            foreach ($stack as $key => $record)
+            foreach ($unitCompRecords as $unitRecord)
             {
-                $newstring .= $record . ",";
+                $parentRecord = $DB->get_record('msm_compositor', array('id' => $unitRecord->parent_id));
+
+                // for the root element, the parentRecord will be null
+                if (!empty($parentRecord))
+                {
+                    $parentTable = $DB->get_record('msm_table_collection', array('id' => $parentRecord->table_id))->tablename;
+
+                    if (($parentTable != 'msm_associate') && ($parentTable != 'msm_subordinate'))
+                    {
+                        $isSubpage = false;
+                    }
+                    else
+                    {
+                        $isSubpage = true;
+                        break;
+                    }
+                }
             }
-            // passing contents of stack to ajax call by putting it into an hidden input field
-            ?>
 
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    var stackstring = "<?php echo $newstring; ?>";
-                    $('.unit').append('<input id="stack" type="text" name="stackstring" style="visibility:hidden"/>');
-                    $('#stack').val(stackstring); 
-                });
-                                                                                
-            </script>
+            if (!$isSubpage)
+            {
+                $unit = new Unit();
+                $unit->loadFromDb($unitid, $unitcompid);
+                $this->unit = $unit;
+//                $content = '';
+                $content .= "<div class=unit>";
+                $content .= $this->unit->displayhtml();
 
-            <?php
-            $content .= "</div>";
+                foreach ($stack as $key => $record)
+                {
+                    $newstring .= $record . ",";
+                }
+                // passing contents of stack to ajax call by putting it into an hidden input field
+                ?>
+
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        var stackstring = "<?php echo $newstring; ?>";
+                        $('.unit').append('<input id="stack" type="text" name="stackstring" style="visibility:hidden"/>');
+                        $('#stack').val(stackstring); 
+                    });
+                                                                                                                                                                                            
+                </script>
+
+                <?php
+                $content .= "</div>";
+                return $content;
+            }
+            else
+            {
+                foreach ($stack as $key => $record)
+                {
+                    $newstring .= $record . ",";
+                }
+               
+                $content.= $this->loadAndDisplay($newstring);
+                return $content;
+            }
         }
         else // at the end of textbook
         {

@@ -127,9 +127,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Why is this true?</caption>
-                        </info.caption>
+                        <info.caption>Why is this true?</info.caption>
                         <para>
                            <para.body>Here we use the rule for the 
 					<subordinate>

@@ -6,6 +6,7 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Squeeze Theorem</caption>
    <associate type="Illustration">
+      <unit.ref unitId="Illu_SqueezeTheorem"/>
       <info>
          <para>
             <para.body>The content of the Squeeze Theorem is actually quite intuitive. See an illustration of this.</para.body>

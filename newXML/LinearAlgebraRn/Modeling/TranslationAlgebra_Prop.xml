@@ -6,6 +6,7 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Algebraic Properties of Translations</caption>
    <associate type="Illustration">
+      <unit.ref unitId="Illustr_TranslationAlgebra"/>
       <info>
          <para>
             <para.body>See an illustration of this</para.body>

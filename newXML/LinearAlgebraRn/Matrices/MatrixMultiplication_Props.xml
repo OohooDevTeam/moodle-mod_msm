@@ -6,9 +6,7 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Convention when reading this proposition</caption>
-         </info.caption>
+         <info.caption>Convention when reading this proposition</info.caption>
          <para>
             <para.body>In the formuli of this proposition, we assume that the matrices involved satisfy the size property so that multiplication is defined.</para.body>
          </para>
@@ -16,9 +14,7 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>On the neutral element property</caption>
-         </info.caption>
+         <info.caption>On the neutral element property</info.caption>
          <para>
             <para.body>In the formula   <math>
                   <latex>\IdMtrx[m]A = A\IdMtrx[n]</latex>

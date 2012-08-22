@@ -163,9 +163,7 @@
                      </math>
                   </hot>
                   <info>
-                     <info.caption>
-                        <caption>Why is this so?</caption>
-                     </info.caption>
+                     <info.caption>Why is this so?</info.caption>
                      <math.array column="3">
                         <row rowspan="1">
                            <cell colspan="2" halign="center" valign="middle">

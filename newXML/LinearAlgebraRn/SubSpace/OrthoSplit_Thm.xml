@@ -6,10 +6,9 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Orthogonal vector decomposition</caption>
    <associate type="Explanation">
+      <unit.ref unitId="Expla_OrthogonalVectorDecomposition"/>
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>An explanation of this proposition.</para.body>
          </para>

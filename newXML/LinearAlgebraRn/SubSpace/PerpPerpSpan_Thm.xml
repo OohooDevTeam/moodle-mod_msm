@@ -130,9 +130,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Why is this so?</caption>
-                        </info.caption>
+                        <info.caption>Why is this so?</info.caption>
                         <para>
                            <para.body>This dot product vanishes because <math>
                                  <latex>\Vect{x}\in V^{\bot\bot}</latex>
@@ -260,9 +258,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Why is this true?</caption>
-                        </info.caption>
+                        <info.caption>Why is this true?</info.caption>
                         <para>
                            <para.body>Recall: <math>
                                  <latex>\Vect{z}\in S^{\bot}</latex>

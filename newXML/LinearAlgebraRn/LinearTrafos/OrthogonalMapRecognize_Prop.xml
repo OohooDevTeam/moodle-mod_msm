@@ -7,11 +7,9 @@
    <caption>Recognizing a distance preserving map</caption>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation of <math>
-                  <latex>\DotPr{ A_j }{ A_j } = 1</latex>
-               </math>.</caption>
-         </info.caption>
+         <info.caption>Explanation of <math>
+               <latex>\DotPr{ A_j }{ A_j } = 1</latex>
+            </math>.</info.caption>
          <para>
             <para.body>The identity <math>
                   <latex>\DotPr{ A_j }{ A_j } = 1</latex>
@@ -25,11 +23,9 @@
    </associate>
    <associate type="Explanation">
       <info>
-         <info.caption>
-            <caption>Explanation of <math>
-                  <latex>\DotPr{ A_j }{ A_k } = 0</latex>
-               </math>
-            </caption>
+         <info.caption>Explanation of <math>
+               <latex>\DotPr{ A_j }{ A_k } = 0</latex>
+            </math>
          </info.caption>
          <para>
             <para.body>The identity <math>
@@ -248,9 +244,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Explanation</caption>
-                        </info.caption>
+                        <info.caption>Explanation</info.caption>
                         <para>
                            <para.body>
                               <math>
@@ -306,9 +300,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Explanation</caption>
-                        </info.caption>
+                        <info.caption>Explanation</info.caption>
                         <para>
                            <para.body>Here we use that <math>
                                  <latex>\DotPr{ A_j }{ A_k }=0</latex>

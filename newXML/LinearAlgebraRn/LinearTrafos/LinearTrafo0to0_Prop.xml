@@ -12,9 +12,7 @@
    </caption>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Why is this a special property?</caption>
-         </info.caption>
+         <info.caption>Why is this a special property?</info.caption>
          <para>
             <para.body>To appreciate this property of linear functions, we need to be aware that arbitrary functions need to have it. Consider, for example, the constant function <math>
                   <latex>f\from \RNr\to \RNr</latex>

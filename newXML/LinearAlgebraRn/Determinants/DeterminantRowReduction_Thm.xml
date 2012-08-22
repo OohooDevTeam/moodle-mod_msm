@@ -23,9 +23,7 @@
    </associate>
    <associate type="Comment">
       <info>
-         <info.caption>
-            <caption>Warning</caption>
-         </info.caption>
+         <info.caption>Warning</info.caption>
          <para>
             <para.body>To evaluate a determinant you can use row and column operations freely. However, to reduce the coefficient matrix of a system of linear equations you can only use row operations.</para.body>
          </para>

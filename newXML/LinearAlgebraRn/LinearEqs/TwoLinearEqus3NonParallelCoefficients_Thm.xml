@@ -6,10 +6,9 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>2 equations, 3 variables non parallel coefficients</caption>
    <associate type="Illustration">
+      <unit.ref unitId="TwoEqnsR3NonParallel"/>
       <info>
-         <info.caption>
-            <caption>Illustration</caption>
-         </info.caption>
+         <info.caption>Illustration</info.caption>
          <para>
             <para.body>An illustration of the solutions of two linear equations in three variables with non parallel coefficient vectors.</para.body>
          </para>

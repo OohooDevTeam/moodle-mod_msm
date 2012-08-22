@@ -6,10 +6,9 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Simultaneous solutions of two linear equations</caption>
    <associate type="Explanation">
+      <unit.ref unitId="Illust_ScalarMultiplicationOfVectors"/>
       <info>
-         <info.caption>
-            <caption>Explanation: How do I test if two vectors are parallel?</caption>
-         </info.caption>
+         <info.caption>Explanation: How do I test if two vectors are parallel?</info.caption>
          <para>
             <para.body>
                <math>

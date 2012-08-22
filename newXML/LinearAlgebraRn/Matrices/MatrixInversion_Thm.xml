@@ -7,9 +7,7 @@
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_MatrixInverse"/>
       <info>
-         <info.caption>
-            <caption>Explanation</caption>
-         </info.caption>
+         <info.caption>Explanation</info.caption>
          <para>
             <para.body>What is happening here? – We assume that the RREF of <math>
                   <latex>\Mtrx{A}</latex>

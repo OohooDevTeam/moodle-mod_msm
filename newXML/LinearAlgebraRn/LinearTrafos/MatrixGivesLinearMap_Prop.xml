@@ -6,12 +6,11 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Matrix gives linear map</caption>
    <associate type="Explanation">
+      <unit.ref unitId="Expla_MatrixGivesLinearMap"/>
       <info>
-         <info.caption>
-            <caption>Explanation: How to construct <math>
-                  <latex>L</latex>
-               </math>
-            </caption>
+         <info.caption>Explanation: How to construct <math>
+               <latex>L</latex>
+            </math>
          </info.caption>
          <para>
             <para.body>Details on how the matrix <math>

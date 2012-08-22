@@ -401,9 +401,7 @@ d &amp; b
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Explanation of this computational step</caption>
-                        </info.caption>
+                        <info.caption>Explanation of this computational step</info.caption>
                         <para>
                            <para.body>In passing from the first line to the second, we know two things:</para.body>
                         </para>

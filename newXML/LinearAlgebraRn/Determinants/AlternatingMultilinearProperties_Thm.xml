@@ -44,9 +44,7 @@
 				<subordinate>
                      <hot>then</hot>
                      <info>
-                        <info.caption>
-                           <caption>Explanation of the symbols in this formula</caption>
-                        </info.caption>
+                        <info.caption>Explanation of the symbols in this formula</info.caption>
                         <para>
                            <para.body>
                               <math>
@@ -506,9 +504,7 @@
                   </math>
                   <companion>
                      <info>
-                        <info.caption>
-                           <caption>Why is this true?</caption>
-                        </info.caption>
+                        <info.caption>Why is this true?</info.caption>
                         <para>
                            <para.body>If a certain sequence of column interchanges turns <math>
                                  <latex>\Mtrx{E}(r)</latex>

@@ -8,9 +8,7 @@
    <associate type="Example">
       <showme.pack.ref showmePackID="Exa_LinearIndependenceFacts"/>
       <info>
-         <info.caption>
-            <caption>Examples</caption>
-         </info.caption>
+         <info.caption>Examples</info.caption>
          <para>
             <para.body>Examples demonstrating applications of this proposition.</para.body>
          </para>
@@ -338,9 +336,7 @@
 			<subordinate>
                   <hot>exactly one solution</hot>
                   <info>
-                     <info.caption>
-                        <caption>Why is this so?</caption>
-                     </info.caption>
+                     <info.caption>Why is this so?</info.caption>
                      <para>
                         <para.body>... because the vectors <math>
                               <latex>\Vect{b}_1,\dots ,\Vect{b}_n</latex>
@@ -354,9 +350,7 @@
 			<subordinate>
                   <hot>implies</hot>
                   <info>
-                     <info.caption>
-                        <caption>How does it imply this?</caption>
-                     </info.caption>
+                     <info.caption>How does it imply this?</info.caption>
                      <para>
                         <para.body>Substitute <math>
                               <latex>\Vect{b}_i = t_{1i} \Vect{a}_1 + \cdots + t_{mi}\Vect{a}_m</latex>

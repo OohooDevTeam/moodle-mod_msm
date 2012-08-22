@@ -6,20 +6,18 @@
          xsi:schemaLocation="Theorem file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Theorem.xsd">
    <caption>Geometric Properties of Norm and Dot Product</caption>
    <associate type="Illustration">
+      <unit.ref unitId="Illstr_TriangleInequality"/>
       <info>
-         <info.caption>
-            <caption>Illustration of the Triangle Inequality</caption>
-         </info.caption>
+         <info.caption>Illustration of the Triangle Inequality</info.caption>
          <para>
             <para.body>Why the name triangle inequality? – An illustration motivates this name easily.</para.body>
          </para>
       </info>
    </associate>
    <associate type="Illustration">
+      <unit.ref unitId="Illu_AngleVectors"/>
       <info>
-         <info.caption>
-            <caption>Illustration of the Angle Between Vectors</caption>
-         </info.caption>
+         <info.caption>Illustration of the Angle Between Vectors</info.caption>
          <para>
             <para.body>An illustration of the angle between two vectors.</para.body>
          </para>
