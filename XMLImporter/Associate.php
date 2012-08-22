@@ -466,20 +466,45 @@ class Associate extends Element
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->infos = array();
+        $this->childs = array();
 
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-            if ($childtablename == 'msm_info')
+            switch ($childtablename)
             {
-                $info = new MathInfo();
-                $info->loadFromDb($child->unit_id, $child->id);
-                $this->infos[] = $info;
+                case('msm_info'):
+                    $info = new MathInfo();
+                    $info->loadFromDb($child->unit_id, $child->id);
+                    $this->infos[] = $info;
+                    break;
+
+                case('msm_theorem'):
+                    $theorem = new Theorem();
+                    $theorem->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $theorem;
+                    break;
+
+                case('msm_def'):
+                    $def = new Definition();
+                    $def->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $def;
+                    break;
+
+                case('msm_unit'):
+                    $unit = new Unit();
+                    $unit->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $unit;
+                    break;
+
+//                case('msm_packs'):
+//                    $pack = new Pack();
+//                    $pack->loadFromDb($child->unit_id, $child->id);
+//                    $this->childs[] = $pack;
+//                    break;
             }
         }
-
-//        print_object($this);
 
         return $this;
     }
@@ -498,12 +523,29 @@ class Associate extends Element
 
         if ($associateParentTablename == 'msm_def')
         {
-            $content .= "<li class='defminibutton' id='defminibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
-            $content .= "<span style='cursor:pointer'>";
-            $content .= $this->description;
-            $content .= "</span>";
-            $content .= "</li>";
-
+            if (!empty($this->childs))
+            {
+                $content .= "<li class='defminibutton' id='defminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+                $content .= "<span style='cursor:pointer'>";
+                $content .= $this->description;
+//                $content .= "child";
+                $content .= "</span>";
+                $content .= "</li>";
+                $content .= "<div class='refcontent' id='refcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
+                foreach ($this->childs as $child)
+                {
+                    $content .= $child->displayhtml();
+                }
+                $content .= "</div>";
+            }
+            else
+            {
+                $content .= "<li class='defminibutton' id='defminibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+                $content .= "<span style='cursor:pointer'>";
+                $content .= $this->description;
+                $content .= "</span>";
+                $content .= "</li>";
+            }
             $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
             $content .= $this->infos[0]->info_content;
             $content .= "</div>";
@@ -511,11 +553,29 @@ class Associate extends Element
 
         if ($associateParentTablename == 'msm_theorem')
         {
-            $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
-            $content .= "<span style='cursor:pointer'>";
-            $content .= $this->description;
-            $content .= "</span>";
-            $content .= "</li>";
+            if (!empty($this->childs))
+            {
+                $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+                $content .= "<span style='cursor:pointer'>";
+                $content .= $this->description;
+//                $content .= "child";
+                $content .= "</span>";
+                $content .= "</li>";
+                $content .= "<div class='refcontent' id='refcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
+                foreach ($this->childs as $child)
+                {
+                    $content .= $child->displayhtml();
+                }
+                $content .= "</div>";
+            }
+            else
+            {
+                $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+                $content .= "<span style='cursor:pointer'>";
+                $content .= $this->description;
+                $content .= "</span>";
+                $content .= "</li>";
+            }
 
             $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
             $content .= $this->infos[0]->info_content;
@@ -524,11 +584,29 @@ class Associate extends Element
 
         if ($associateParentTablename == 'msm_comment')
         {
-            $content .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
-            $content .= "<span style='cursor:pointer'>";
-            $content .= $this->description;
-            $content .= "</span>";
-            $content .= "</li>";
+            if (!empty($this->childs))
+            {
+                $content .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
+                $content .= "<span style='cursor:pointer'>";
+                $content .= $this->description;
+//                $content .= "child";
+                $content .= "</span>";
+                $content .= "</li>";
+                $content .= "<div class='refcontent' id='refcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
+                foreach ($this->childs as $child)
+                {
+                    $content .= $child->displayhtml();
+                }
+                $content .= "</div>";
+            }
+            else
+            {
+                $content .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+                $content .= "<span style='cursor:pointer'>";
+                $content .= $this->description;
+                $content .= "</span>";
+                $content .= "</li>";
+            }
 
             $content .= '<div id="dialog-' . $this->infos[0]->compid . '" class="dialogs" title="' . $this->infos[0]->caption . '">';
             $content .= $this->infos[0]->info_content;

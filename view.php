@@ -119,6 +119,7 @@ echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/jquery.jshowo
 
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/popup.js'></script>";
 echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/showRightPage.js'></script>";
+echo "<script type='text/javascript' src='$CFG->wwwroot/mod/msm/js/infoopen.js'></script>";
 
 //echo "<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>";
 
@@ -194,7 +195,7 @@ $content .= "
          });
          
         $('#MySplitter').splitter();
-        $('.leftbox .proof').hide();        
+        
         
     });
     </script>";
