@@ -17,34 +17,34 @@ function showRightpage(id)
 {   
     $('#proofminibutton-'+id).ready(function() {
         $('.rightbox').empty();
-        //    $('.rightbox').append($('#proof-'+id));
-        $('#proof-'+id).appendTo('.rightbox');
+        $('.rightbox').append($('#proof-'+id));
+        //        $('#proof-'+id).appendTo('.rightbox');
     
         $('#proof-'+id).css('display', 'block');
-        $('#proof-'+id).toggleClass('proof', 'shownproof');    
+//        $('#proof-'+id).toggleClass('proof', 'shownproof');    
     });           
-        
-    $('#defminibutton').ready(function(e) {
-        $('.rightbox').empty();
-        $('.rightbox').append($('#refcontent-'+id));
-    
-        $('#refcontent-'+id).css('display', 'block');
-        $('#refcontent-'+id).toggleClass('refcontent', 'shownrefcontent');
-    });
-    
-    $('#minibutton').ready(function(e) {
-        $('.rightbox').empty();
-        $('.rightbox').append($('#refcontent-'+id));
-    
-        $('#refcontent-'+id).css('display', 'block');
-        $('#refcontent-'+id).toggleClass('refcontent', 'shownrefcontent');
-    });
-    
-    $('#commentminibutton').ready(function(e) {
-        $('.rightbox').empty();
-        $('.rightbox').append($('#refcontent-'+id));
-    
-        $('#refcontent-'+id).css('display', 'block');
-        $('#refcontent-'+id).toggleClass('refcontent', 'shownrefcontent');
-    });
+//        
+//    $('#defminibutton-'+id).ready(function() {
+//        $('.rightbox').empty();
+//        $('.rightbox').append($('#refcontent-'+id));
+//    
+//        $('#refcontent-'+id).css('display', 'block');
+//        $('#refcontent-'+id).toggleClass('refcontent', 'shownrefcontent');
+//    });
+//    
+//    $('#minibutton-'+id).ready(function() {
+//        $('.rightbox').empty();
+//        $('.rightbox').append($('#refcontent-'+id));
+//    
+//        $('#refcontent-'+id).css('display', 'block');
+//        $('#refcontent-'+id).toggleClass('refcontent', 'shownrefcontent');
+//    });
+//    
+//    $('#commentminibutton-'+id).ready(function() {
+//        $('.rightbox').empty();
+//        $('.rightbox').append($('#refcontent-'+id));
+//    
+//        $('#refcontent-'+id).css('display', 'block');
+//        $('#refcontent-'+id).toggleClass('refcontent', 'shownrefcontent');
+//    });
 }

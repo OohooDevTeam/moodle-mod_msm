@@ -737,7 +737,7 @@ class Unit extends Element
                     }
 
                     break;
-//
+
                 case(preg_match("/^(subunit.\d+)$/", $element) ? true : false):
                     $subunitString = split('-', $element);
                     $subunitRecord = $this->checkForRecord($this->subunits[$subunitString[1]]);
@@ -765,8 +765,7 @@ class Unit extends Element
                         $subunitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $subunitID, 'table_id' => $unittableID));
                         $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
                         $sibling_id = $subunitCompID;
-
-
+                        
                         foreach ($subunitCompRecords as $unitCompRecord)
                         {
                             $this->grabSubunitChilds($unitCompRecord, $subunitCompID);
@@ -1103,7 +1102,7 @@ class Unit extends Element
         {
             $content .= $child->displayhtml();
         }
-        
+
 //        $content .= "</div>";
 
         return $content;
@@ -1179,10 +1178,10 @@ class Unit extends Element
     function grabSubunitChilds($elementRecord, $currentUnitID)
     {
         global $DB;
-        
-        $childSibling = 0;
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
 
+        $childSibling = $currentUnitID;
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
+        
         if (empty($childElements))
         {
             return null;

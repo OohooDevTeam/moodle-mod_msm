@@ -26,8 +26,16 @@ var y = 0; // stores the y-axis position of the mouse
 /* variable i is passed by each time the defminibutton/minibutton in definition.php/theorem.php has a mouse hovering over and 
  * it tracks the unique ID number of the buttons to call the correct dialog windows.
  */
-function infoopen(i) {    
-                    
+
+function infoopen(i) {
+    $('#defminibutton-'+i).unbind('click');
+    $('#defminibutton-'+i).click(function() {
+        $('.rightbox').empty();
+        $('.rightbox').append($('#refcontent-'+i));    
+        $('#refcontent-'+i).css('display', 'block');
+//        $('#refcontent-'+i).toggleClass('refcontent', 'shownrefcontent');
+    });
+    
     $('#defminibutton-'+i).ready(function(e){
         $('#dialog-'+i).dialog('open');
         $('#defminibutton-'+i).mousemove(function (e) {
@@ -42,6 +50,14 @@ function infoopen(i) {
    
     });
         
+    $('#minibutton-'+i).unbind('click');
+    $('#minibutton-'+i).click(function() {
+        $('.rightbox').empty();
+        $('.rightbox').append($('#refcontent-'+i));    
+        $('#refcontent-'+i).css('display', 'block');
+//        $('#refcontent-'+i).toggleClass('refcontent', 'shownrefcontent');
+    });
+    
     $('#minibutton-'+i).ready(function(e){
         $('#dialog-'+i).dialog('open');
         $('#minibutton-'+i).mousemove(function (e) {
@@ -68,6 +84,14 @@ function infoopen(i) {
             $('#dialog-'+i).dialog('close');
         });
    
+    });
+    
+    $('#commentminibutton-'+i).unbind('click');
+    $('#commentminibutton-'+i).click(function() {
+        $('.rightbox').empty();
+        $('.rightbox').append($('#refcontent-'+i));    
+        $('#refcontent-'+i).css('display', 'block');
+//        $('#refcontent-'+i).toggleClass('refcontent', 'shownrefcontent');
     });
     
     $('#commentminibutton-'+i).ready(function(e){

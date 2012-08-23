@@ -8,20 +8,24 @@
     <head>
         <link rel="stylesheet" type="text/css" media = "screen" href="css/MsmDisplay.css" />
 
-<!--        <style type="text/css">
-            .proofblock
-            {
-                visibility:hidden;
-            }
-        </style>-->
         <script src="development-bundle/jquery-1.7.1.js"></script>
         <script type='text/javascript' src='js/Splitter.js'></script>
         <script type='text/javascript' src='js/showRightPage.js'></script>
         <script type='text/javascript'>
-            jQuery(document).ready(function(){         
-                $('#MySplitter').splitter();
-                $('.proofblock').hide();
-            });
+            function showme(i){
+                $('#defminibutton-'+i).unbind('click');
+                $('#defminibutton-'+i).click(function() {
+                    alert("pressed the button");
+                    $('.rightbox').empty();
+                    $('.rightbox').append($('#refcontent-'+i));
+                    alert("done append");
+    
+                    $('#refcontent-'+i).css('display', 'block');
+                    alert("done css");
+                    $('#refcontent-'+i).toggleClass('refcontent', 'shownrefcontent');
+                    alert("done toggling class");
+                });
+            }
         </script>
     </head>
 </html>
@@ -31,37 +35,37 @@
 
 $content = '';
 $content .= "<div id='MySplitter'>";
-$content .= "<div class='leftcol'>";
+$content .= "<div class='leftcol' style='min-width: 542px;'>";
 $content .= "<div class='leftbox'>";
-$content .= "<div class='theorem'>";
+$content .= "<div class='def'>";
 
-$content .= "<span class='theoremtitle'>";
+$content .= "<span class='deftitle'>";
 $content .= "Title of Theorem";
 $content .= "</span>";
 
-$content .= "<span class='theoremtype'>";
-$content .="Proposition";
+$content .= "<span class='deftype'>";
+$content .="Definition";
 $content .= "</span>";
 
 $content .= "<br />";
 
-$content .= "<div class='theoremcontent'>";
+$content .= "<div class='defcontent'>";
 $content .= "theorizing something!";
 $content .= "</div>"; // end of theoremcontent
 
-$content .= "<ul class=minibuttons>";
+$content .= "<ul class=defminibuttons>";
 
-$content .= "<li class='minibutton'>";
+$content .= '<li id="defminibutton-1" class="defminibutton" onmouseover="showme(' . 1 . ')">';
 $content .="<span style='cursor:pointer;'>";
 $content .="Comment";
 $content .= "</span>";
 $content .= "</li>";
 
-$content .= '<li class="proofbutton" onclick="showRightpage(' . 1 . ')">';
-$content .="<span style='cursor:pointer;'>";
-$content .="Proof";
-$content .= "</span>";
-$content .= "</li>";
+//$content .= '<li class="proofbutton" onclick="showRightpage(' . 1 . ')">';
+//$content .="<span style='cursor:pointer;'>";
+//$content .="Proof";
+//$content .= "</span>";
+//$content .= "</li>";
 
 $content .= "</ul>";
 
@@ -69,7 +73,7 @@ $content .= "</div>"; //theorem
 $content .= "</div>"; //leftbox
 $content .= "</div>"; //leftcol
 
-$content .= "<div class='rightcol'>";
+$content .= "<div class='rightcol' style='min-width: 542px;'>";
 $content .= "<div class='rightbox'>";
 
 $content .= "hey!";
@@ -79,11 +83,14 @@ $content .= "</div>";
 
 $content .= "</div>"; //splitter
 
-$content .= "<div id='proofblock-1' class='proofblock'>";
-//$content .= "<div id='proofblock-1' class='proofblock'>";
-$content .= "hey include me!!";
+$content .= "<div id='refcontent-1' class='refcontent' style='display:none;'>";
+$content .= "reference material?";
 $content .= "</div>";
 
+//$content .= "<div id='proofblock-1' class='proofblock'>";
+////$content .= "<div id='proofblock-1' class='proofblock'>";
+//$content .= "hey include me!!";
+//$content .= "</div>";
 
 echo $content;
 ?>

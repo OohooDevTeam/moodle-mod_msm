@@ -1,16 +1,16 @@
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ **************************************************************************
+ **                              MSM                                     **
+ **************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ **************************************************************************
+ **************************************************************************/
 
 MathJax.Hub.Config({
     showProcessingMessages: false,
@@ -126,7 +126,12 @@ MathJax.Hub.Config({
 		
             FakeString: '{\\text{fake}}'
         }
-    }
+    },
+    
+    jax: ["input/TeX", "output/HTML-CSS"]
+//    "HTML-CSS": {
+//        extensions: ["handle-floats.js"]
+//    }
 });
 
 MathJax.Ajax.loadComplete("http://localhost/moodle/mod/msm/js/Mathjaxconfig.js");
