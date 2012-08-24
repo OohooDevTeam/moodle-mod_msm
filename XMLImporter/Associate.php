@@ -357,7 +357,16 @@ class Associate extends Element
                     else
                     {
                         $subunitID = $subunitRecord->id;
-                        $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
+                        $unittableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+
+                        $subunitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $subunitID, 'table_id' => $unittableID));
+                        $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $this->compid, $sibling_id);
+                        $sibling_id = $subunitCompID;
+
+                        foreach ($subunitCompRecords as $unitCompRecord)
+                        {
+                            $this->grabSubunitChilds($unitCompRecord, $subunitCompID);
+                        }
                     }
                     break;
 

@@ -1174,29 +1174,7 @@ class Unit extends Element
         }
     }
 
-    // unitrecord from compositor table
-    function grabSubunitChilds($elementRecord, $currentUnitID)
-    {
-        global $DB;
-
-        $childSibling = $currentUnitID;
-        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
-        
-        if (empty($childElements))
-        {
-            return null;
-        }
-        else
-        {
-            foreach ($childElements as $child)
-            {
-                $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
-                $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $currentUnitID, $childSibling);
-                $childSibling = $childCompID;
-                $this->grabSubunitChilds($child, $childCompID);
-            }
-        }
-    }
+   
 
 }
 

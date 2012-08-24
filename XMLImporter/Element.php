@@ -108,7 +108,7 @@ abstract class Element
                 if (!empty($DomElement->string_id))
                 {
                     $foundID = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
-                    
+
                     if (!empty($foundID))
                     {
                         return $foundID;
@@ -559,6 +559,7 @@ abstract class Element
                                     }
                                 }
                             }
+                            break;
 
                         case('def'):
                             if ($element->tagName == 'unit')
@@ -575,6 +576,7 @@ abstract class Element
                                     }
                                 }
                             }
+                            break;
 
                         // for theorem/unit/and all the pack elements,
                         // the parser just looks for the id attribute in the 
@@ -587,6 +589,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
+                            break;
 
                         case('unit'):
                             $parsedID = $element->getAttribute('unitid');
@@ -596,6 +599,24 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
+                            break;
+
+                        case('subunit'):
+                            if ($element->tagName == 'unit')
+                            {
+                                $units = $element->getElementsByTagName('unit');
+
+                                foreach ($units as $unit)
+                                {
+                                    $subunitID = $unit->getAttribute('unitid');
+                                    if ($subunitID == $elementID)
+                                    {
+                                        $path = $filepath . '/' . $file;
+                                        return $path;
+                                    }
+                                }
+                            }
+                            break;
 
                         case('showmepack'):
                             $parsedID = $element->getAttribute('id');
@@ -605,6 +626,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
+                            break;
 
                         case('quizpack'):
                             $parsedID = $element->getAttribute('id');
@@ -614,6 +636,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
+                            break;
 
                         case('examplepack'):
                             $parsedID = $element->getAttribute('id');
@@ -623,6 +646,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
+                            break;
 
                         case('exercisepack'):
                             $parsedID = $element->getAttribute('id');
@@ -632,6 +656,7 @@ abstract class Element
                                 $path = $filepath . '/' . $file;
                                 return $path;
                             }
+                            break;
                     }
                 }
                 else if ((sizeof($ext) > 1) && ($ext[1] != 'xml'))
@@ -681,6 +706,30 @@ abstract class Element
 
         return $compid;
     }
+    
+     // unitrecord from compositor table
+    function grabSubunitChilds($elementRecord, $currentUnitID)
+    {
+        global $DB;
+
+        $childSibling = 0;
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
+        
+        if (empty($childElements))
+        {
+            return null;
+        }
+        else
+        {
+            foreach ($childElements as $child)
+            {
+                $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+                $childCompID = $this->insertToCompositor($child->unit_id, $childtablename, $currentUnitID, $childSibling);
+                $childSibling = $childCompID;
+                $this->grabSubunitChilds($child, $childCompID);
+            }
+        }
+    }
 
     /**
      * 
@@ -713,39 +762,68 @@ abstract class Element
                 if (!empty($object->subordinates[$key]))
                 {
                     $subordinate = $object->subordinates[$key];
-                    if (!empty($subordinate->infos[0]))
+
+                    // this subordinate element has reference child elements
+                    if (!empty($subordinate->childs))
                     {
-                        $newtag = '';
-                        $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
-
-                        if (is_string($subordinate->hot))
+                        if (!empty($subordinate->infos[0]))
                         {
-                            $newtag .= $subordinate->hot;
+                            $newtag = '';
+                            $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='infoopen(" . $subordinate->infos[0]->compid . ")'>";
+
+                            if (is_string($subordinate->hot))
+                            {
+                                $newtag .= $subordinate->hot;
+                            }
+                            else
+                            {
+                                $newtag .= $this->getContent($subordinate->hot);
+                            }
+                            $newtag .= "</a>";
+
+                            $hotString = $doc->saveXML($hottag);
+
+                            $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+
+                            $content .= $subordinate->infos[0]->displayhtml();
                         }
-                        else
+
+                        $content .= "<div class='refcontent' id='refcontent-" . $subordinate->infos[0]->compid . "' style='display:none;'>";
+                        foreach ($subordinate->childs as $child)
                         {
-                            $newtag .= $this->getContent($subordinate->hot);
+                            $content .= $child->displayhtml();
                         }
-                        $newtag .= "</a>";
-
-                        $hotString = $doc->saveXML($hottag);
-
-                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-
-                        $content .= $subordinate->infos[0]->displayhtml();
-
-//                        $content .= '<div id="dialog-' . $subordinate->infos[0]->compid . '" class="dialogs" title="' . $subordinate->infos[0]->caption . '">';
-//
-//                        $recursivecontent = $this->displaySubordinate($subordinate->infos[0], $subordinate->infos[0]->info_content);
-//
-//                        $content .= $recursivecontent;
-//
-//                        $content .= "</div>";
+                        $content .= "</div>";
                     }
+                    else
+                    {
+                        if (!empty($subordinate->infos[0]))
+                        {
+                            $newtag = '';
+                            $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+
+                            if (is_string($subordinate->hot))
+                            {
+                                $newtag .= $subordinate->hot;
+                            }
+                            else
+                            {
+                                $newtag .= $this->getContent($subordinate->hot);
+                            }
+                            $newtag .= "</a>";
+
+                            $hotString = $doc->saveXML($hottag);
+
+                            $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+
+                            $content .= $subordinate->infos[0]->displayhtml();
+                        }
+                    }
+
                     if (!empty($subordinate->external_links[0]))
                     {
                         $newtag = '';
-                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "'' id='hottag-" . $subordinate->external_links[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "'' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
 
                         if (is_string($subordinate->hot))
                         {
@@ -764,13 +842,6 @@ abstract class Element
                         if (!empty($subordinate->external_links[0]->infos[0]))
                         {
                             $content .= $subordinate->external_links[0]->infos[0]->displayhtml();
-//                            $content .= '<div id="dialog-' . $subordinate->external_links[0]->compid . '" class="dialogs" title="' . $subordinate->external_links[0]->infos[0]->caption . '">';
-//
-//                            $recursivecontent = $this->displaySubordinate($subordinate->external_links[0]->infos[0], $subordinate->external_links[0]->infos[0]->info_content);
-//
-//                            $content .= $recursivecontent;
-//
-//                            $content .= "</div>";
                         }
                     }
                 }

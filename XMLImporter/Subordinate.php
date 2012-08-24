@@ -239,7 +239,7 @@ class Subordinate extends Element
 
                 case(preg_match("/^(crossref.\d+)$/", $element) ? true : false):
                     $crossrefString = split('-', $element);
-
+                    
                     if (empty($sibling_id))
                     {
                         $crossref = $this->crossrefs[$crossrefString[1]];
@@ -334,12 +334,30 @@ class Subordinate extends Element
                     $this->external_links[] = $externallink;
                     break;
                 
+//                case('msm_theorem'):
+//                    $theorem = new Theorem();
+//                    $theorem->loadFromDb($child->unit_id, $child->id);
+//                    $this->childs[] = $theorem;
+//                    break;
+//
+                case('msm_def'):
+                    $def = new Definition();
+                    $def->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $def;
+                    break;
+
                 case('msm_unit'):
                     $unit = new Unit();
                     $unit->loadFromDb($child->unit_id, $child->id);
-                    $this->subpage = $unit;
+                    $this->childs[] = $unit;
                     break;
-                
+
+//                case('msm_packs'):
+//                    $pack = new Pack();
+//                    $pack->loadFromDb($child->unit_id, $child->id);
+//                    $this->childs[] = $pack;
+//                    break;
+             
 //                case('msm_cite'):
 //                    $cite = new Cite();
 //                    $cite->loadFromDb($child->unit_id, $child->id);
@@ -353,16 +371,16 @@ class Subordinate extends Element
         return $this;
     }
 
-    function displaySubpages()
-    {
-        $content = '';
-        
-        $content .= "<div class='subpage' id='subpage-" . $this->subpage->compid . "'>";
-        $content .= $this->subpage->displayhtml();
-        $content .= "</div>";
-        
-        return $content;
-    }
+//    function displaySubpages()
+//    {
+//        $content = '';
+//        
+//        $content .= "<div class='subpage' id='subpage-" . $this->subpage->compid . "'>";
+//        $content .= $this->subpage->displayhtml();
+//        $content .= "</div>";
+//        
+//        return $content;
+//    }
 }
 
 ?>

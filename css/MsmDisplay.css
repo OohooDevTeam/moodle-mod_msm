@@ -167,7 +167,6 @@ div.controller{
 
 .hottag
 {
-    /*    overflow: hidden;*/
     color: #229C79;
 }
 
@@ -175,6 +174,26 @@ div.controller{
 {
     cursor: pointer;
     color:blue;
+}
+.hottag:visited
+{
+    color:mediumorchid;
+}
+
+.externallink
+{
+    color: #0F900F;
+}
+
+.externallink:hover
+{
+    cursor: pointer;
+    color:blue;
+}
+
+.externallink:visited
+{
+    color:mediumorchid;
 }
 
 .def

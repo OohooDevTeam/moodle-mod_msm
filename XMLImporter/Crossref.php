@@ -180,7 +180,7 @@ class Crossref extends Element
                         $unitID = $child->getAttribute('unitId');
 
                         if (!empty($unitID))
-                        {                         
+                        {
                             $filepath = $this->findFile($unitID, dirname($this->xmlpath), 'unit');
 
                             if (!empty($filepath))
@@ -197,6 +197,35 @@ class Crossref extends Element
                                     $unit = new Unit(dirname($filepath) . '/');
                                     $unit->loadFromXml($element, $position);
                                     $this->subunits[] = $unit;
+                                }
+                            }
+                            else
+                            {
+                                $filepath = $this->findFile($unitID, dirname($this->xmlpath), 'subunit');
+
+                                if (!empty($filepath))
+                                {
+
+                                    @$parser->load($filepath);
+
+                                    // may need to change this code to load the entire file
+                                    // containing the specified comment
+                                    $element = $parser->documentElement;
+
+                                    $subunits = $element->getElementsByTagName('unit');
+
+                                    foreach ($subunits as $sub)
+                                    {
+                                        $subID = $sub->getAttribute('unitid');
+
+                                        if ($subID == $unitID)
+                                        {
+                                            $position++;
+                                            $unit = new Unit(dirname($filepath) . '/');
+                                            $unit->loadFromXml($sub, $position);
+                                            $this->subunits[] = $unit;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -245,8 +274,6 @@ class Crossref extends Element
 
     function saveIntoDb($position, $parentid = '', $siblingid = '')
     {
-        global $DB;
-
         global $DB;
 
         $elementPositions = array();
@@ -473,7 +500,16 @@ class Crossref extends Element
                     else
                     {
                         $subunitID = $subunitRecord->id;
-                        $sibling_id = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
+                        $unittableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_unit'))->id;
+
+                        $subunitCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $subunitID, 'table_id' => $unittableID));
+                        $subunitCompID = $this->insertToCompositor($subunitID, 'msm_unit', $parentid, $sibling_id);
+                        $sibling_id = $subunitCompID;
+
+                        foreach ($subunitCompRecords as $unitCompRecord)
+                        {
+                            $this->grabSubunitChilds($unitCompRecord, $subunitCompID);
+                        }
                     }
                     break;
 
@@ -512,20 +548,6 @@ class Crossref extends Element
 //                    break;
             }
         }
-    }
-
-    function loadFromDb($id, $compid)
-    {
-        global $DB;
-
-        return $this;
-    }
-
-    function displayhtml()
-    {
-        $content = '';
-
-        return $content;
     }
 
 }
