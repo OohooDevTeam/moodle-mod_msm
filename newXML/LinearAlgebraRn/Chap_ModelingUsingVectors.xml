@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
-      unitid="Chap_ModelingUsingVectors">
+      unitid="Chap_ModelingUsingVectors"
+      standalone="false">
    <titles>
       <title>Modeling with Vectors</title>
       <plain.title>Modeling</plain.title>

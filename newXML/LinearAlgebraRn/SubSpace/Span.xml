@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_LinearCombinationSpan"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Linear Combination and Span</title>
       <plain.title>Span</plain.title>
@@ -78,7 +79,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_LinearCombination">
+      <unit unitid="SubSec_LinearCombination" standalone="false">
          <titles>
             <title>Linear Combinations</title>
             <plain.title>Linear Combinations</plain.title>
@@ -158,7 +159,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSecSpan">
+      <unit unitid="SubSecSpan" standalone="false">
          <titles>
             <title>The Span of a Set of Vectors</title>
             <plain.title>Span</plain.title>

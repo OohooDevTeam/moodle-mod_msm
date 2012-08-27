@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
-      unitid="VectorSpaceRn">
+      unitid="VectorSpaceRn"
+      standalone="false">
    <titles>
       <title>The Vector Space <math>
             <latex>\RNr[n]</latex>

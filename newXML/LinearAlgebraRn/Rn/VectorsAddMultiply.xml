@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_AdditionScalarMultiplicationVectors"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Addition and Scalar Multiplication of Vectors</title>
       <plain.title>Addition, Scalar Multiplication</plain.title>
@@ -19,7 +20,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="Subsec_AdditionVectors">
+      <unit unitid="Subsec_AdditionVectors" standalone="false">
          <titles>
             <title>Addition of Vectors</title>
             <plain.title>Addition</plain.title>
@@ -106,7 +107,7 @@
             </para>
          </studymaterials>
       </unit>
-      <unit unitid="SubSec_ScalarMultiplicationVector">
+      <unit unitid="SubSec_ScalarMultiplicationVector" standalone="false">
          <titles>
             <title>Multiplication of a Vector by a Scalar</title>
             <plain.title>Scalar Multiplication</plain.title>
@@ -249,7 +250,8 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_VectorAdditionScalarMultiplicationProperties">
+      <unit unitid="SubSec_VectorAdditionScalarMultiplicationProperties"
+            standalone="false">
          <titles>
             <title>Properties of Vector Addition and Scalar Multiplication</title>
             <plain.title>Properties</plain.title>

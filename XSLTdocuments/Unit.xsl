@@ -46,6 +46,9 @@
                     <xsl:value-of select="./@xsi"/>
                 </xsl:attribute>
             </xsl:if>
+            <xsl:attribute name="standalone">
+                <xsl:value-of>false</xsl:value-of>
+            </xsl:attribute>
       
             <xsl:if test="node()[name()='texsupport' or name()='literature.db']">
                 <xsl:element name="headers" namespace="Unit">
@@ -268,6 +271,9 @@
                     <xsl:attribute name="unitid">
                         <xsl:value-of select="bk:book.part[position()=$i]/@id"/>
                     </xsl:attribute>
+                    <xsl:attribute name="standalone">
+                        <xsl:value-of>false</xsl:value-of>
+                    </xsl:attribute>
                
                 <xsl:apply-templates select="bk:book.part[position()=$i]/bk:headers"/>
                
@@ -350,7 +356,10 @@
                 <xsl:attribute name="xsi:schemaLocation">Unit ../../NewSchemas/Unit.xsd</xsl:attribute>
                 <xsl:attribute name="unitid">
                     <xsl:value-of select="$unitID"/>
-                </xsl:attribute> 
+                </xsl:attribute>
+                <xsl:attribute name="standalone">
+                    <xsl:value-of>false</xsl:value-of>
+                </xsl:attribute>
                 <xsl:apply-templates select="child::node()[name()='headers']"/>
                 <xsl:element name="legitimate.children" namespace="Unit">
                     <xsl:apply-templates select="child::node()[not(name()='headers')]"/>

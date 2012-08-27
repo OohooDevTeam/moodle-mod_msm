@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_OrientedVolume"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Orientated Volume</title>
       <plain.title>Orientated Volume</plain.title>
@@ -44,7 +45,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_OrientedVolumenTuples">
+      <unit unitid="SubSec_OrientedVolumenTuples" standalone="false">
          <titles>
             <title>Oriented Volume of an n-Tuple of Vectors</title>
             <plain.title>Oriented Volume</plain.title>
@@ -189,7 +190,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_OrientedVolume1Tuple">
+      <unit unitid="SubSec_OrientedVolume1Tuple" standalone="false">
          <titles>
             <title>Oriented Volume of a 1-Tuple</title>
             <plain.title>1-Tuple Oriented Volume</plain.title>
@@ -244,7 +245,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_OrientedVolume2Tuple">
+      <unit unitid="SubSec_OrientedVolume2Tuple" standalone="false">
          <titles>
             <title>Oriented Volume of a Pair of Vectors</title>
             <plain.title>Oriented Area</plain.title>
@@ -274,7 +275,7 @@
             <example.pack.ref examplePackID="Exa_OrientedArea"/>
          </studymaterials>
       </unit>
-      <unit unitid="SubSec_OrientedVolume3Tuple">
+      <unit unitid="SubSec_OrientedVolume3Tuple" standalone="false">
          <titles>
             <title>Oriented Volume of a Triple of Vectors</title>
             <plain.title>Oriented Volume</plain.title>

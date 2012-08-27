@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_Orientation"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Orientation of Space</title>
       <plain.title>Orientation</plain.title>
@@ -25,7 +26,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_nDimensionalOrientation">
+      <unit unitid="SubSec_nDimensionalOrientation" standalone="false">
          <titles>
             <title>n-Dimensional Orientation</title>
             <plain.title>n-Dimensional Orientation</plain.title>
@@ -118,7 +119,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_1DimensionalOrientation">
+      <unit unitid="SubSec_1DimensionalOrientation" standalone="false">
          <titles>
             <title>1-Dimensional Orientation</title>
             <plain.title>1-Dimensional Orientation</plain.title>
@@ -239,7 +240,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_2DimensionalOrientation">
+      <unit unitid="SubSec_2DimensionalOrientation" standalone="false">
          <titles>
             <title>2-Dimensional Orientation</title>
             <plain.title>2-Dimensional Orientation</plain.title>
@@ -360,7 +361,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_3DimensionalOrientation">
+      <unit unitid="SubSec_3DimensionalOrientation" standalone="false">
          <titles>
             <title>3-Dimensional Orientation</title>
             <plain.title>3-Dimensional Orientation</plain.title>
@@ -550,7 +551,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_0DimensionalOrientation">
+      <unit unitid="SubSec_0DimensionalOrientation" standalone="false">
          <titles>
             <title>0-Dimensional Orientation</title>
             <plain.title>0-Dimensional Orientation</plain.title>

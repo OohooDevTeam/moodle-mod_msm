@@ -81,6 +81,7 @@ class Unit extends Element
     // define parent_id and prev_sibling_id fields in compositor table
     public $compid;
     public $string_id;
+    public $standalone;
 
     function __construct($xmlpath = '')
     {
@@ -104,6 +105,7 @@ class Unit extends Element
         $this->position = $position; // keeps track of order of contents
 
         $this->string_id = $DomElement->getAttribute('unitid');
+        $this->standalone = $DomElement->getAttribute('standalone');
 
         $doc = new DOMDocument();
 
@@ -485,6 +487,7 @@ class Unit extends Element
         $sibling_id = null;
 
         $data = new stdClass();
+        $data->standalone = $this->standalone;
         $data->string_id = $this->string_id;
         $data->title = $this->title;
         $data->plain_title = $this->plain_title;

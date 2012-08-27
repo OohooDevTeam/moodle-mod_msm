@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_InvertibleLinearTransformations"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Invertible Linear Transformations</title>
       <plain.title>Invertible Transformations</plain.title>
@@ -48,7 +49,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_InvertibilityOfLinearTransformations">
+      <unit unitid="SubSec_InvertibilityOfLinearTransformations" standalone="false">
          <titles>
             <title>Invertibility of Linear Transformations</title>
             <plain.title>Invertibility of Linear Transformations</plain.title>
@@ -180,7 +181,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_InverseLinearMapInverseMatrix">
+      <unit unitid="SubSec_InverseLinearMapInverseMatrix" standalone="false">
          <titles>
             <title>Inverse Transformation and Inverse Matrix</title>
             <plain.title>Inverse Map, Inverse Matrix</plain.title>

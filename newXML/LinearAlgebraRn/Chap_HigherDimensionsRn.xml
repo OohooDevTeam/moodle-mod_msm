@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
-      unitid="Chap_HigherDimensionsRn">
+      unitid="Chap_HigherDimensionsRn"
+      standalone="false">
    <titles>
       <title>Higher Dimensions and the Vector Space <math>
             <latex>\RNr[n]</latex>

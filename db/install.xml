@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/msm/db" VERSION="20120801" COMMENT="XMLDB file for Moodle mod/msm"
+<XMLDB PATH="mod/msm/db" VERSION="20120827" COMMENT="XMLDB file for Moodle mod/msm"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
@@ -36,8 +36,9 @@
     </TABLE>
     <TABLE NAME="msm_unit" COMMENT="Default comment for the table, please edit me" PREVIOUS="msm_compositor" NEXT="msm_intro">
       <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="string_id"/>
-        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="title"/>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="standalone"/>
+        <FIELD NAME="standalone" TYPE="char" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="id" NEXT="string_id"/>
+        <FIELD NAME="string_id" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false" PREVIOUS="standalone" NEXT="title"/>
         <FIELD NAME="title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="string_id" NEXT="plain_title"/>
         <FIELD NAME="plain_title" TYPE="char" LENGTH="500" NOTNULL="false" SEQUENCE="false" PREVIOUS="title" NEXT="creationdate"/>
         <FIELD NAME="creationdate" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="plain_title" NEXT="last_revision_date"/>

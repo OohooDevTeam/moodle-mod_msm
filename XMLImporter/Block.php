@@ -263,10 +263,13 @@ class Block extends Element
                         if (!empty($this->defs[$defString[1]]->string_id))
                         {
                             $defRecord = $this->checkForRecord($this->defs[$defString[1]]);
+//                            echo "string_id def";
+//                            print_object($this->defs[$defString[1]]);
+//                            print_object($defRecord);
                         }
                         else
                         {
-                            $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+                            $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');                          
                         }
 
                         if (empty($defRecord))
@@ -286,15 +289,11 @@ class Block extends Element
                         }
                         else
                         {
-                            echo "defID?";
                             $defID = $defRecord->id;
-                            print_object($defID);
                             $deftableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_def'))->id;
 
                             $defCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $defID, 'table_id' => $deftableID));
                             $defCompID = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
-                            echo "inserted record";
-                            print_object($defCompID);
                             $sibling_id = $defCompID;
 
                             foreach ($defCompRecords as $defCompRecord)

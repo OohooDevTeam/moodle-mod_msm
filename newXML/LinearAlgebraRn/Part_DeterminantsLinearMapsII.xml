@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
-      unitid="Part_DeterminantsLinearMapsII">
+      unitid="Part_DeterminantsLinearMapsII"
+      standalone="false">
    <titles>
       <title>Determinants and a Second Encounter with Spaces and Linear Maps</title>
       <plain.title>Determinants - Spaces - Linear Maps II</plain.title>

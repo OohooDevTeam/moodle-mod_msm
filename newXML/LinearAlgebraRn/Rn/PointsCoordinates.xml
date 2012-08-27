@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_PointsCoordinates"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Points and Coordinates</title>
       <plain.title>Points / Coordinates</plain.title>
@@ -23,7 +24,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_NumbersAndnTuples">
+      <unit unitid="SubSec_NumbersAndnTuples" standalone="false">
          <titles>
             <title>Numbers and n-Tuples</title>
             <plain.title>Numbers and n-Tuples</plain.title>
@@ -245,7 +246,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_SpaceRn">
+      <unit unitid="SubSec_SpaceRn" standalone="false">
          <titles>
             <title>The Space <math>
                   <latex>\RNr[n]</latex>
@@ -376,7 +377,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_VisualizeRn">
+      <unit unitid="SubSec_VisualizeRn" standalone="false">
          <titles>
             <title>Visualizing <math>
                   <latex>\RNr[n]</latex>

@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_DeterminantRules"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Rules for Computing with Determinants</title>
       <plain.title>Computing with Determinants</plain.title>
@@ -19,7 +20,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_DeterminantsAlgebraicProperties">
+      <unit unitid="SubSec_DeterminantsAlgebraicProperties" standalone="false">
          <titles>
             <title>Algebraic Properties of the Determinant</title>
             <plain.title>Algebraic Properties</plain.title>
@@ -94,7 +95,7 @@ A_3 =
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_DeterminantProperties">
+      <unit unitid="SubSec_DeterminantProperties" standalone="false">
          <titles>
             <title>Further properties of the determinant operation</title>
             <plain.title>Further properties</plain.title>

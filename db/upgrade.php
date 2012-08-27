@@ -1894,6 +1894,21 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012080100, 'msm');
     }
+    
+     if ($oldversion < 2012082700) {
+
+        // Define field standalone to be added to msm_unit
+        $table = new xmldb_table('msm_unit');
+        $field = new xmldb_field('standalone', XMLDB_TYPE_CHAR, '10', null, null, null, null, 'id');
+
+        // Conditionally launch add field standalone
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012082700, 'msm');
+    }
 
 
     // And that's all. Please, examine and understand the 3 example blocks above. Also

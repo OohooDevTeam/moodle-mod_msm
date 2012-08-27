@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_LinearTransformationsNewFromOld"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>New Linear Transformations from Old</title>
       <plain.title>New from Old</plain.title>
@@ -41,7 +42,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_SumLinearTransformations">
+      <unit unitid="SubSec_SumLinearTransformations" standalone="false">
          <titles>
             <title>Sum of Linear Transformations</title>
             <plain.title>Sum of Linear Transformations</plain.title>
@@ -109,7 +110,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_ScalarProductOfLinearTransformation">
+      <unit unitid="SubSec_ScalarProductOfLinearTransformation" standalone="false">
          <titles>
             <title>The Scalar Product of a Linear Transformation by a Number</title>
             <plain.title>Scalar Product</plain.title>
@@ -180,7 +181,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_LinearTrafosComposition">
+      <unit unitid="SubSec_LinearTrafosComposition" standalone="false">
          <titles>
             <title>Composition of Linear Transformation</title>
             <plain.title>Composition</plain.title>
@@ -278,7 +279,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_ProductLinearTrafos">
+      <unit unitid="SubSec_ProductLinearTrafos" standalone="false">
          <titles>
             <title>Product of Linear Transformations</title>
             <plain.title>Product of Linear Transformations</plain.title>

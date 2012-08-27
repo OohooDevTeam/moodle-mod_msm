@@ -103,27 +103,41 @@ class Compositor
 
             // a flag for indicating if the unit element in current debate is
             $isSubpage = false;
+            
             // if the unit has a record with parent id being associate/subordinate, do not display the unit
 
             foreach ($unitCompRecords as $unitRecord)
             {
-                $parentRecord = $DB->get_record('msm_compositor', array('id' => $unitRecord->parent_id));
-
-                // for the root element, the parentRecord will be null
-                if (!empty($parentRecord))
+                
+                $standalone = $DB->get_record('msm_unit', array('id'=>$unitRecord->unit_id))->standalone;
+                
+                if($standalone=='true')
                 {
-                    $parentTable = $DB->get_record('msm_table_collection', array('id' => $parentRecord->table_id))->tablename;
-
-                    if (($parentTable != 'msm_associate') && ($parentTable != 'msm_subordinate'))
-                    {
-                        $isSubpage = false;
-                    }
-                    else
-                    {
-                        $isSubpage = true;
-                        break;
-                    }
+                    $isSubpage = true;
+                    break;
                 }
+                else
+                {
+                    $isSubpage = false;
+                }
+                
+//                $parentRecord = $DB->get_record('msm_compositor', array('id' => $unitRecord->parent_id));
+//
+//                // for the root element, the parentRecord will be null
+//                if (!empty($parentRecord))
+//                {
+//                    $parentTable = $DB->get_record('msm_table_collection', array('id' => $parentRecord->table_id))->tablename;
+//
+//                    if (($parentTable != 'msm_associate') && ($parentTable != 'msm_subordinate'))
+//                    {
+//                        $isSubpage = false;
+//                    }
+//                    else
+//                    {
+//                        $isSubpage = true;
+//                        break;
+//                    }
+//                }
             }
 
             if (!$isSubpage)

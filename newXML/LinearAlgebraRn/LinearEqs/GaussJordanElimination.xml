@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_GaussJordanElimination"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Solving a System of Linear Equations by Gauß-Jordan Elimination</title>
       <plain.title>Gauß-Jordan Elimination</plain.title>
@@ -76,7 +77,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_SolvingFromRREF">
+      <unit unitid="SubSec_SolvingFromRREF" standalone="false">
          <titles>
             <title>Solutions of a System of Linear Equations in Reduced Row Echelon Form</title>
             <plain.title>RREF</plain.title>
@@ -117,7 +118,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_DefiningRREF">
+      <unit unitid="SubSec_DefiningRREF" standalone="false">
          <titles>
             <title>Defining Row Reduced Echelon Form</title>
             <plain.title>Defining RREF</plain.title>
@@ -260,7 +261,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_TransformingToRREF">
+      <unit unitid="SubSec_TransformingToRREF" standalone="false">
          <titles>
             <title>Transforming a System of Linear Equations into RREF</title>
             <plain.title>Transformation into RREF</plain.title>

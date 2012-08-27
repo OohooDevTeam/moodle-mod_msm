@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_CrossProduct"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>The Cross Product</title>
       <plain.title>Cross Product</plain.title>
@@ -46,7 +47,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_CrossProduct">
+      <unit unitid="SubSec_CrossProduct" standalone="false">
          <titles>
             <title>The Definition of the Cross Product</title>
             <plain.title>Definition</plain.title>
@@ -166,7 +167,7 @@ x_2 &amp; y_2
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_CrossProductAlgebraicProperties">
+      <unit unitid="SubSec_CrossProductAlgebraicProperties" standalone="false">
          <titles>
             <title>Algebraic Properties of the Cross Product</title>
             <plain.title>Algebraic Properties</plain.title>
@@ -183,7 +184,7 @@ x_2 &amp; y_2
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_CrossProductGeometricProperties">
+      <unit unitid="SubSec_CrossProductGeometricProperties" standalone="false">
          <titles>
             <title>Geometric Properties of the Cross Product</title>
             <plain.title>Geometric Properties</plain.title>

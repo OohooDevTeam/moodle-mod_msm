@@ -323,14 +323,14 @@ class Companion extends Element
                     $commentString = split('-', $element);
                     if (!empty($this->comments[$commentString[1]]->string_id))
                     {
-                        $commentID = $this->checkForRecord($this->comments[$commentString[1]]);
+                        $commentRecord = $this->checkForRecord($this->comments[$commentString[1]]);
                     }
                     else
                     {
-                        $commentID = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
+                        $commentRecord = $this->checkForRecord($this->comments[$commentString[1]], 'caption');
                     }
 
-                    if (empty($commentID))
+                    if (empty($commentRecord))
                     {
                         if (empty($sibling_id))
                         {
@@ -366,14 +366,21 @@ class Companion extends Element
                     if (!empty($this->defs[$defString[1]]->string_id))
                     {
                         $defRecord = $this->checkForRecord($this->defs[$defString[1]]);
+//                          echo "string_id def";
+//                            print_object($this->defs[$defString[1]]);
+//                            print_object($defRecord);
                     }
                     else
                     {
                         $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');
+//                          echo "caption def";
+//                            print_object($this->defs[$defString[1]]);
+//                            print_object($defRecord);
                     }
 
-                    if (empty($defID))
+                    if (empty($defRecord))
                     {
+//                        echo "empty defID";
                         if (empty($sibling_id))
                         {
                             $def = $this->defs[$defString[1]];

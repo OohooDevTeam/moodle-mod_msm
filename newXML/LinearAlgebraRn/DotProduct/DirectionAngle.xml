@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_DirectionAngle"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Direction Angles</title>
       <plain.title>Direction Angles</plain.title>
@@ -35,7 +36,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_DirectionAngles">
+      <unit unitid="SubSec_DirectionAngles" standalone="false">
          <titles>
             <title>Definition of Direction Angles</title>
             <plain.title>Definition</plain.title>
@@ -122,7 +123,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_RelationshipAmongDirectionAngles">
+      <unit unitid="SubSec_RelationshipAmongDirectionAngles" standalone="false">
          <titles>
             <title>A Relationship among Direction Angles</title>
             <plain.title>Relationship: Direction Angles</plain.title>

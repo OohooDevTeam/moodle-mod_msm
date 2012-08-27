@@ -23,23 +23,22 @@
  * /admin/index.php
  *
  * 
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
-
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 defined('MOODLE_INTERNAL') || die();
 
 $module->version = 0;               // If version == 0 then module will not be installed
-$module->version = 2012081502;      // The current module version (Date: YYYYMMDDXX)
+$module->version = 2012082700;      // The current module version (Date: YYYYMMDDXX)
 $module->requires = 2010112400;      // Requires this Moodle version
 $module->cron = 0;               // Period for cron to check this module (secs)
 $module->component = 'mod_msm'; // To check on upgrade, that module sits in correct place

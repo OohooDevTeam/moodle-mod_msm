@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_MatrixOperationsProperties"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Properties of Matrix Operations</title>
       <plain.title>Matrix Operations: Properties</plain.title>
@@ -156,7 +157,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_MatrixAdditionRules">
+      <unit unitid="SubSec_MatrixAdditionRules" standalone="false">
          <titles>
             <title>Rules for Adding Matrices</title>
             <plain.title>Rules for Adding Matrices</plain.title>
@@ -169,7 +170,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_MatrixScalarMultiplicationRules">
+      <unit unitid="SubSec_MatrixScalarMultiplicationRules" standalone="false">
          <titles>
             <title>Rules for Multiplying a Matrix by a Number</title>
             <plain.title>Rules for Matrix Scalar Multiplication</plain.title>
@@ -183,7 +184,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_MatrixMultiplicationRules">
+      <unit unitid="SubSec_MatrixMultiplicationRules" standalone="false">
          <titles>
             <title>Rules for Multiplying Matrices</title>
             <plain.title>Rules for Multiplying Matrices</plain.title>
@@ -197,7 +198,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_MatrixTranspositionRules">
+      <unit unitid="SubSec_MatrixTranspositionRules" standalone="false">
          <titles>
             <title>Rules for Transposition of Matrices</title>
             <plain.title>Rules for Transposition</plain.title>

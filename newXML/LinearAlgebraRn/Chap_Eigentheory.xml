@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
-      unitid="Chap_Eigentheory">
+      unitid="Chap_Eigentheory"
+      standalone="false">
    <titles>
       <title>Eigentheory</title>
       <plain.title>Eigentheory</plain.title>

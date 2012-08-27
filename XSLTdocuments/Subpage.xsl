@@ -47,6 +47,9 @@
                     <xsl:value-of select="./@xsi"/>
                 </xsl:attribute>
             </xsl:if>
+            <xsl:attribute name="standalone">
+                <xsl:value-of>true</xsl:value-of>
+            </xsl:attribute>
             
             <xsl:element name="titles" namespace="Unit">              
                <xsl:apply-templates select="bk:title"/>                

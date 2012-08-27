@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="Unit ../../NewSchemas/Unit.xsd"
-      unitid="Chap_MatrixAlgebra">
+      unitid="Chap_MatrixAlgebra"
+      standalone="false">
    <titles>
       <title>Matrix Algebra</title>
       <plain.title>Matrices</plain.title>

@@ -107,6 +107,8 @@ abstract class Element
             {
                 if (!empty($DomElement->string_id))
                 {
+//                    echo "string_id";
+//                    print_object($DomElement->string_id);
                     $foundID = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
 
                     if (!empty($foundID))

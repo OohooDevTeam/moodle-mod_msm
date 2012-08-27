@@ -4,7 +4,8 @@
 <unit xmlns="Unit"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       unitid="Sec_Hyperplanes"
-      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd">
+      xsi:schemaLocation="Unit file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Unit.xsd"
+      standalone="false">
    <titles>
       <title>Hyperplanes</title>
       <plain.title>Hyperplanes</plain.title>
@@ -49,7 +50,7 @@
       </block>
    </intro>
    <legitimate.children>
-      <unit unitid="SubSec_Hyperspaces">
+      <unit unitid="SubSec_Hyperspaces" standalone="false">
          <titles>
             <title>Hyperspaces</title>
             <plain.title>Hyperspaces</plain.title>
@@ -283,7 +284,7 @@
             </block>
          </body>
       </unit>
-      <unit unitid="SubSec_Hyperplanes">
+      <unit unitid="SubSec_Hyperplanes" standalone="false">
          <titles>
             <title>Hyperplanes</title>
             <plain.title>Hyperplanes</plain.title>

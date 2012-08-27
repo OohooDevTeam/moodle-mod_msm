@@ -48,6 +48,9 @@
                     <xsl:value-of select="./@xsi"/>
                 </xsl:attribute>
             </xsl:if>
+            <xsl:attribute name="standalone">
+                <xsl:value-of>false</xsl:value-of>
+            </xsl:attribute>
             
             <xsl:if test="bk:headers">
                 <xsl:apply-templates select="bk:headers"/>
@@ -139,6 +142,9 @@
                     <xsl:value-of select="./@id"/>
                 </xsl:attribute>
             </xsl:if>
+            <xsl:attribute name="standalone">
+                <xsl:value-of>false</xsl:value-of>
+            </xsl:attribute>
             
             <xsl:if test="bk:headers">
                 <xsl:apply-templates select="bk:headers"/>
