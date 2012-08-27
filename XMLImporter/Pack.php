@@ -291,6 +291,69 @@ class Pack extends Element
             }
         }
     }
+    
+    /**
+     * 
+     * @global moodle_database $DB
+     * @param type $id
+     * @param type $compid
+     * @return \Pack
+     */
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+        
+        $packRecord = $DB->get_record($this->tablename, array('id'=>$id));
+        
+        if(!empty($packRecord))
+        {
+            $this->compid = $compid;
+            $this->string_id = $packRecord->string_id;
+            $this->title = $packRecord->title;
+            $this->caption = $packRecord->caption;
+            $this->doclabel = $packRecord->doclabel;
+            $this->type = $packRecord->type;
+        }
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+        
+        $this->childs = array();
+        
+        foreach($childElements as $child)
+        {
+            $childtable = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
+            
+            switch($childtable)
+            {
+                case('msm_showme'):
+                    $showme = new Showme();
+                    $showme->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $showme;
+                    break;
+            }
+        }
+        
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+        
+        $content .= "<div class='pack'>";
+
+        $content .= "<div class='title'>";
+        $content .= $this->caption;
+        $content .= "</div>";
+        
+        foreach ($this->childs as $childComponent)
+        {
+            $content .= $childComponent->displayhtml();
+        }
+        $content .= "</div>";
+        
+        return $content;
+    }
 
 }
 

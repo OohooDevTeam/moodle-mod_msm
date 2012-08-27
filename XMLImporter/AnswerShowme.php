@@ -250,6 +250,64 @@ class AnswerShowme extends Element
             }
         }
     }
+    
+    function loadFromDb($id, $compid)
+    {
+        global $DB;
+        
+        $answershowmeRecord = $DB->get_record($this->tablename, array('id'=>$id));
+        
+        if(!empty($answershowmeRecord))
+        {
+            $this->compid = $compid;
+            $this->caption = $answershowmeRecord->caption;
+            $this->content = $answershowmeRecord->answer_showme_content;
+        }
+        
+        $this->subordinates = array();
+        $this->medias = array();
+        
+        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$this->compid), 'prev_sibling_id');
+        
+        foreach ($childElements as $child)
+        {
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
+            {
+                case('msm_subordinate'):
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->medias[] = $media;
+                    break;
+            }
+        }
+        
+        return $this;
+    }
+    
+    function displayhtml()
+    {
+        $content = '';
+        
+        $content .= "<div class='answershowme'>";
+        
+        $content .= "<div class='title'>";
+        $content .= $this->caption;
+        $content .= "</div>";
+        
+        $content .= $this->content;
+        
+        $content .= "</div>";
+        
+        return $content;
+    }
 
 }
 

@@ -533,11 +533,11 @@ class Associate extends Element
                     $this->childs[] = $unit;
                     break;
 
-//                case('msm_packs'):
-//                    $pack = new Pack();
-//                    $pack->loadFromDb($child->unit_id, $child->id);
-//                    $this->childs[] = $pack;
-//                    break;
+                case('msm_packs'):
+                    $pack = new Pack();
+                    $pack->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $pack;
+                    break;
             }
         }
 
@@ -560,12 +560,10 @@ class Associate extends Element
         {
             if (!empty($this->childs))
             {
-//              $content .= "<li class='defminibutton' id='defminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
                 $content .= "<li class='defminibutton' id='defminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")'>";
 
                 $content .= "<span style='cursor:pointer'>";
                 $content .= $this->description;
-//                $content .= "child";
                 $content .= "</span>";
                 $content .= "</li>";
                 $content .= "<div class='refcontent' id='refcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
