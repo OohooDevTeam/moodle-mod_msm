@@ -330,8 +330,17 @@ class Associate extends Element
                     }
                     else
                     {
-                        $commentID = $commentID->id;
-                        $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $this->compid, $sibling_id);
+                        $commentID = $commentRecord->id;
+                        $commenttableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_comment'))->id;
+
+                        $commentCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $commentID, 'table_id' => $commenttableID));
+                        $commentCompID = $this->insertToCompositor($commentID, 'msm_comment', $this->compid, $sibling_id);
+                        $sibling_id = $commentCompID;
+
+                        foreach ($commentCompRecords as $commentCompRecord)
+                        {
+                            $this->grabSubunitChilds($commentCompRecord, $commentCompID);
+                        }
                     }
                     break;
 
@@ -398,8 +407,17 @@ class Associate extends Element
                     }
                     else
                     {
-                        $defID = $defID->id;
-                        $sibling_id = $this->insertToCompositor($defID, 'msm_def', $this->compid, $sibling_id);
+                        $defID = $defRecord->id;
+                        $deftableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_def'))->id;
+
+                        $defCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $defID, 'table_id' => $deftableID));
+                        $defCompID = $this->insertToCompositor($defID, 'msm_def', $this->compid, $sibling_id);
+                        $sibling_id = $defCompID;
+
+                        foreach ($defCompRecords as $defCompRecord)
+                        {
+                            $this->grabSubunitChilds($defCompRecord, $defCompID);
+                        }
                     }
                     break;
 
@@ -425,8 +443,16 @@ class Associate extends Element
                     else
                     {
                         $theoremID = $theoremRecord->id;
-                        $theorem = $this->theorems[$theoremString[1]];
-                        $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $this->compid, $sibling_id);
+                        $theoremtableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
+
+                        $theoremCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $theoremID, 'table_id' => $theoremtableID));
+                        $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $this->compid, $sibling_id);
+                        $sibling_id = $theoremCompID;
+
+                        foreach ($theoremCompRecords as $theoremCompRecord)
+                        {
+                            $this->grabSubunitChilds($theoremCompRecord, $theoremCompID);
+                        }
                     }
                     break;
 

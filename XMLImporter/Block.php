@@ -33,7 +33,7 @@ class Block extends Element
     function loadFromXml($DomElement, $position = '')
     {
         global $DB;
-        
+
         $this->position = $position;
 
         $this->defs = array();
@@ -116,21 +116,10 @@ class Block extends Element
                             if ($xiElement->tagName == 'theorem')
                             {
                                 $theoremID = $child->getAttribute('id');
-
-                                $theoremDuplicateRecord = $DB->get_record('msm_theorem', array('string_id' => $theoremID));
-
-                                if (empty($theoremDuplicateRecord))
-                                {
-                                    $position = $position + 1;
-                                    $theorem = new Theorem(dirname($this->xmlpath . '/' . $href));
-                                    $theorem->loadFromXml($xiElement, $position);
-                                    $this->theorems[] = $theorem;
-                                }
-                                else
-                                {
-                                    $position = $position + 1;
-                                    $this->theorems[] = $theoremDuplicateRecord->id . '/' . $position;
-                                }
+                                $position = $position + 1;
+                                $theorem = new Theorem(dirname($this->xmlpath . '/' . $href));
+                                $theorem->loadFromXml($xiElement, $position);
+                                $this->theorems[] = $theorem;
                             }
                             else
                             {
@@ -141,41 +130,18 @@ class Block extends Element
 
                         case('def'):
                             $defID = $child->getAttribute('id');
-
-                            $defDuplicateRecord = $DB->get_record('msm_def', array('string_id' => $defID));
-
-                            if (empty($defDuplicateRecord))
-                            {
-                                $position = $position + 1;
-                                $def = new Definition($this->xmlpath);
-                                $def->loadFromXml($child, $position);
-                                $this->defs[] = $def;
-                            }
-                            else
-                            {
-                                $position = $position + 1;
-                                $this->defs[] = $defDuplicateRecord->id . '/' . $position;
-                            }
-
+                            $position = $position + 1;
+                            $def = new Definition($this->xmlpath);
+                            $def->loadFromXml($child, $position);
+                            $this->defs[] = $def;
                             break;
 
                         case('comment'):
                             $commentID = $child->getAttribute('id');
-
-                            $commentDuplicateRecord = $DB->get_record('msm_comment', array('string_id' => $commentID));
-
-                            if (empty($commentDuplicateRecord))
-                            {
-                                $position = $position + 1;
-                                $comment = new MathComment($this->xmlpath);
-                                $comment->loadFromXml($child, $position);
-                                $this->comments[] = $comment;
-                            }
-                            else
-                            {
-                                $position = $position + 1;
-                                $this->comments[] = $commentDuplicateRecord->id;
-                            }
+                            $position = $position + 1;
+                            $comment = new MathComment($this->xmlpath);
+                            $comment->loadFromXml($child, $position);
+                            $this->comments[] = $comment;
                             break;
 
                         case('media'):
@@ -207,15 +173,7 @@ class Block extends Element
         {
             foreach ($this->defs as $key => $def)
             {
-                if (is_object($def))
-                {
-                    $elementPositions['def' . '-' . $key] = $def->position;
-                }
-                else
-                {
-                    $defInfo = explode('/', $def);
-                    $elementPositions['def' . '-' . $key] = $defInfo[1];
-                }
+                $elementPositions['def' . '-' . $key] = $def->position;
             }
         }
 
@@ -223,15 +181,7 @@ class Block extends Element
         {
             foreach ($this->theorems as $key => $theorem)
             {
-                if (is_object($theorem))
-                {
-                    $elementPositions['theorem' . '-' . $key] = $theorem->position;
-                }
-                else
-                {
-                    $theoremInfo = explode('/', $theorem);
-                    $elementPositions['theorem' . '-' . $key] = $theoremInfo[1];
-                }
+                $elementPositions['theorem' . '-' . $key] = $theorem->position;
             }
         }
 
@@ -239,15 +189,7 @@ class Block extends Element
         {
             foreach ($this->comments as $key => $comment)
             {
-                if (is_object($comment))
-                {
-                    $elementPositions['comment' . '-' . $key] = $comment->position;
-                }
-                else
-                {
-                    $commentInfo = explode('/', $comment);
-                    $elementPositions['comment' . '-' . $key] = $commentInfo[1];
-                }
+                $elementPositions['comment' . '-' . $key] = $comment->position;
             }
         }
 
@@ -344,16 +286,22 @@ class Block extends Element
                         }
                         else
                         {
+                            echo "defID?";
                             $defID = $defRecord->id;
-                            $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                            print_object($defID);
+                            $deftableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_def'))->id;
+
+                            $defCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $defID, 'table_id' => $deftableID));
+                            $defCompID = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                            echo "inserted record";
+                            print_object($defCompID);
+                            $sibling_id = $defCompID;
+
+                            foreach ($defCompRecords as $defCompRecord)
+                            {
+                                $this->grabSubunitChilds($defCompRecord, $defCompID);
+                            }
                         }
-                    }
-                    else
-                    {
-                        $definfo = explode('/', $this->defs[$defString[1]]);
-                        $defID = $definfo[1];
-                        $defID = $defID->id;
-                        $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
                     }
                     break;
 
@@ -382,15 +330,17 @@ class Block extends Element
                         else
                         {
                             $theoremID = $theoremRecord->id;
-                            $theorem = $this->theorems[$theoremString[1]];
-                            $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $parentid, $sibling_id);
+                            $theoremtableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
+
+                            $theoremCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $theoremID, 'table_id' => $theoremtableID));
+                            $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
+                            $sibling_id = $theoremCompID;
+
+                            foreach ($theoremCompRecords as $theoremCompRecord)
+                            {
+                                $this->grabSubunitChilds($theoremCompRecord, $theoremCompID);
+                            }
                         }
-                    }
-                    else
-                    {
-                        $theoreminfo = explode('/', $this->theorems[$theoremString[1]]);
-                        $theoremID = $theoreminfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
                     }
                     break;
 
@@ -426,14 +376,17 @@ class Block extends Element
                         else
                         {
                             $commentID = $commentRecord->id;
-                            $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
+                            $commenttableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_comment'))->id;
+
+                            $commentCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $commentID, 'table_id' => $commenttableID));
+                            $commentCompID = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
+                            $sibling_id = $commentCompID;
+
+                            foreach ($commentCompRecords as $commentCompRecord)
+                            {
+                                $this->grabSubunitChilds($commentCompRecord, $commentCompID);
+                            }
                         }
-                    }
-                    else
-                    {
-                        $commentinfo = explode('/', $this->defs[$commentString[1]]);
-                        $commentID = $commentinfo[1]->id;
-                        $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
                     }
                     break;
 

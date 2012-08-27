@@ -130,7 +130,7 @@ class Proof extends Element
         $content .= "</span>";
         $content .= "</li>";
         
-        $content .= "<div class='proof' id='proof-" . $this->compid . "'>";
+        $content .= "<div class='proof' id='proof-" . $this->compid . "' style='display:none;'>";
 
         foreach ($this->childs as $childComponent)
         {

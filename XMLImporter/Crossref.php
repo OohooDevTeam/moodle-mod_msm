@@ -414,7 +414,16 @@ class Crossref extends Element
                     else
                     {
                         $commentID = $commentRecord->id;
-                        $sibling_id = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
+                        $commenttableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_comment'))->id;
+
+                        $commentCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $commentID, 'table_id' => $commenttableID));
+                        $commentCompID = $this->insertToCompositor($commentID, 'msm_comment', $parentid, $sibling_id);
+                        $sibling_id = $commentCompID;
+
+                        foreach ($commentCompRecords as $commentCompRecord)
+                        {
+                            $this->grabSubunitChilds($commentCompRecord, $commentCompID);
+                        }
                     }
                     break;
 
@@ -447,7 +456,16 @@ class Crossref extends Element
                     else
                     {
                         $defID = $defRecord->id;
-                        $sibling_id = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                        $deftableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_def'))->id;
+
+                        $defCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $defID, 'table_id' => $deftableID));
+                        $defCompID = $this->insertToCompositor($defID, 'msm_def', $parentid, $sibling_id);
+                        $sibling_id = $defCompID;
+
+                        foreach ($defCompRecords as $defCompRecord)
+                        {
+                            $this->grabSubunitChilds($defCompRecord, $defCompID);
+                        }
                     }
                     break;
 
@@ -473,8 +491,16 @@ class Crossref extends Element
                     else
                     {
                         $theoremID = $theoremRecord->id;
-                        $theorem = $this->theorems[$theoremString[1]];
-                        $theorem->compid = $this->insertToCompositor($theoremID, $theorem->tablename, $parentid, $sibling_id);
+                        $theoremtableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_theorem'))->id;
+
+                        $theoremCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $theoremID, 'table_id' => $theoremtableID));
+                        $theoremCompID = $this->insertToCompositor($theoremID, 'msm_theorem', $parentid, $sibling_id);
+                        $sibling_id = $theoremCompID;
+
+                        foreach ($theoremCompRecords as $theoremCompRecord)
+                        {
+                            $this->grabSubunitChilds($theoremCompRecord, $theoremCompID);
+                        }
                     }
                     break;
 

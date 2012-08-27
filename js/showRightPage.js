@@ -19,6 +19,5 @@ function showRightpage(id)
         $('.rightbox').empty();
         $('.rightbox').append($('#proof-'+id));    
         $('#proof-'+id).css('display', 'block');
-//        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);   
     });
 }

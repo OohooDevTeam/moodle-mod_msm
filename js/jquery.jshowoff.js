@@ -245,7 +245,6 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
                 autoOpen: false,
                 width: 'auto'
             });
-            $('.proof').hide(); 
         });
           
     };
