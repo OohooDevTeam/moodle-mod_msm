@@ -27,12 +27,19 @@ var y = 0; // stores the y-axis position of the mouse
  * it tracks the unique ID number of the buttons to call the correct dialog windows.
  */
 
-function infoopen(i) {
+function infoopen(i) {    
     $('#defminibutton-'+i).unbind('click');
-    $('#defminibutton-'+i).click(function() {
-        $('.rightbox').empty();
-        $('#refcontent-'+i).clone().attr('id', 'copyrefcontent-'+i).appendTo($('.rightbox')).css('display', 'block');
-    });
+    $('#defminibutton-'+i).click(
+        function() {
+            $('.rightbox').empty();
+            var cloned = $('#refcontent-'+i).clone();
+            cloned.find('*').each(function(){
+                var currentid = $(this).attr('id');
+                $(this).attr('id', 'copy'+currentid);
+            });
+            cloned.appendTo($('.rightbox')).css('display', 'block');
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        });
     
     $('#defminibutton-'+i).ready(function(e){
         $('#dialog-'+i).dialog('open');
@@ -44,14 +51,19 @@ function infoopen(i) {
          
         $('#defminibutton-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
-        });
-   
+        });   
     });
         
     $('#minibutton-'+i).unbind('click');
     $('#minibutton-'+i).click(function() {
         $('.rightbox').empty();
-        $('#refcontent-'+i).clone().attr('id', 'copyrefcontent-'+i).appendTo($('.rightbox')).css('display', 'block');
+        var cloned = $('#refcontent-'+i).clone();
+        cloned.find('*').each(function(){
+            var currentid = $(this).attr('id');
+            $(this).attr('id', 'copy'+currentid);
+        });
+        cloned.appendTo($('.rightbox')).css('display', 'block');
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     });
     
     $('#minibutton-'+i).ready(function(e){
@@ -69,11 +81,18 @@ function infoopen(i) {
     });
     
     $('#hottag-'+i).unbind('click');
-    $('#hottag-'+i).click(function() {
-        $('.rightbox').empty();
-        $('#refcontent-'+i).clone().attr('id', 'copyrefcontent-'+i).appendTo($('.rightbox')).css('display', 'block');
-    });
-      
+    $('#hottag-'+i).click(
+        function() {
+            $('.rightbox').empty();
+            var cloned = $('#refcontent-'+i).clone();
+            cloned.find('*').each(function(){
+                var currentid = $(this).attr('id');
+                $(this).attr('id', 'copy'+currentid);
+            });
+            cloned.appendTo($('.rightbox')).css('display', 'block');
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        });
+
     $('#hottag-'+i).ready(function(e){
         $('#dialog-'+i).dialog('open');
         $('#hottag-'+i).mousemove(function (e) {
@@ -81,17 +100,22 @@ function infoopen(i) {
                 position: [e.pageX+5, e.pageY+5]
             });
         });
-         
+
         $('#hottag-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
-        });
-   
+        });   
     });
-    
+
     $('#commentminibutton-'+i).unbind('click');
     $('#commentminibutton-'+i).click(function() {
         $('.rightbox').empty();
-        $('#refcontent-'+i).clone().attr('id', 'copyrefcontent-'+i).appendTo($('.rightbox')).css('display', 'block');
+        var cloned = $('#refcontent-'+i).clone();
+        cloned.find('*').each(function(){
+            var currentid = $(this).attr('id');
+            $(this).attr('id', 'copy'+currentid);
+        });
+        cloned.appendTo($('.rightbox')).css('display', 'block');
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     });
     
     $('#commentminibutton-'+i).ready(function(e){
@@ -108,8 +132,130 @@ function infoopen(i) {
    
     });
  
-}
+    $('#copydefminibutton-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
 
+        $('#dialog'+i).dialog('open');
+        $('#copydefminibutton-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#copydefminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#copydefminibutton-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copydefminibutton-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copydefminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+   
+    });
+    
+    $('#copyminibutton-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#copyminibutton-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#copyminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#copyminibutton-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copyminibutton-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copyminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+   
+    });
+    
+    $('#copyhottag-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#copyhottag-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#copyhottag-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#copyhottag-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copyhottag-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copyhottag-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+   
+    });
+    
+    $('#copycommentminibutton-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#copycommentminibutton-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#copycommentminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#copycommentminibutton-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copycommentminibutton-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copycommentminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+   
+    });
+}
 
  
 

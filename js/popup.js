@@ -23,7 +23,6 @@ var y = 0; // stores the y-axis position of the mouse
  * it tracks the unique ID number of the buttons to call the correct dialog windows.
  */
 function popup(i) {
-             
     $('#defminibutton-'+i).click(function(e) {
         x = e.pageX+5;
         y = e.pageY+5;
@@ -143,6 +142,130 @@ function popup(i) {
         });
          
         $('#commentminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+   
+    });
+    
+    $('#copydefminibutton-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#copydefminibutton-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#copydefminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#copydefminibutton-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copydefminibutton-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copydefminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+   
+    });
+    
+    $('#copyminibutton-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#copyminibutton-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#copyminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#copyminibutton-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copyminibutton-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copyminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+   
+    });
+    
+    $('#copyhottag-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#copyhottag-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#copyhottag-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#copyhottag-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copyhottag-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copyhottag-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('close');
+        });
+   
+    });
+    
+    $('#copycommentminibutton-'+i).click(function(e) {
+        x = e.pageX+5;
+        y = e.pageY+5;
+
+        $('#dialog'+i).dialog('open');
+        $('#copycommentminibutton-'+i).mousemove(function () {
+            $('#dialog-'+i).dialog('option', {
+                position: [x, y]
+            });
+        });
+     
+        $('#copycommentminibutton-'+i).mouseout(function(){
+            $('#dialog-'+i).dialog('open');
+        });
+    
+    });
+                
+    $('#copycommentminibutton-'+i).ready(function(e){
+        $('#dialog-'+i).dialog('open');
+        $('#copycommentminibutton-'+i).mousemove(function (e) {
+            $('#dialog-'+i).dialog('option', {
+                position: [e.pageX+5, e.pageY+5]
+            });
+        });
+         
+        $('#copycommentminibutton-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });
    

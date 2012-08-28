@@ -14,9 +14,16 @@
 
 
 function showRightpage(id)
-{   
+{ 
     $('#proofminibutton-'+id).ready(function() {
         $('.rightbox').empty();
-        $('#proof-'+id).clone().attr('id', 'copyproof-'+id).appendTo($('.rightbox')).css('display', 'block');
+        var cloned = $('#proof-'+id).clone();
+        cloned.find('*').each(function(){
+            var currentid = $(this).attr('id');
+            $(this).attr('id', 'copy'+currentid);
+        });
+        cloned.appendTo($('.rightbox')).css('display', 'block');
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+
     });
 }

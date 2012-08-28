@@ -569,7 +569,6 @@ class Associate extends Element
             if (!empty($this->childs))
             {
                 $content .= "<li class='defminibutton' id='defminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")'>";
-
                 $content .= "<span style='cursor:pointer'>";
                 $content .= $this->description;
                 $content .= "</span>";
