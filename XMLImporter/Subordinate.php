@@ -352,11 +352,11 @@ class Subordinate extends Element
                     $this->childs[] = $unit;
                     break;
 
-//                case('msm_packs'):
-//                    $pack = new Pack();
-//                    $pack->loadFromDb($child->unit_id, $child->id);
-//                    $this->childs[] = $pack;
-//                    break;
+                case('msm_packs'):
+                    $pack = new Pack();
+                    $pack->loadFromDb($child->unit_id, $child->id);
+                    $this->childs[] = $pack;
+                    break;
              
 //                case('msm_cite'):
 //                    $cite = new Cite();

@@ -478,8 +478,16 @@ class Associate extends Element
                     else
                     {
                         $refID = $refRecord->id;
-                        $ref = $this->refs[$refString[1]];
-                        $ref->compid = $this->insertToCompositor($refID, $ref->tablename, $this->compid, $sibling_id);
+                        $reftableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_packs'))->id;
+
+                        $refCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $refID, 'table_id' => $reftableID));
+                        $refCompID = $this->insertToCompositor($refID, 'msm_packs', $this->compid, $sibling_id);
+                        $sibling_id = $refCompID;
+
+                        foreach ($refCompRecords as $refCompRecord)
+                        {
+                            $this->grabSubunitChilds($refCompRecord, $refCompID);
+                        }
                     }
                     break;
             }
@@ -593,7 +601,6 @@ class Associate extends Element
                 $content .= "<li class='minibutton' id='minibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
                 $content .= "<span style='cursor:pointer'>";
                 $content .= $this->description;
-//                $content .= "child";
                 $content .= "</span>";
                 $content .= "</li>";
                 $content .= "<div class='refcontent' id='refcontent-" . $this->infos[0]->compid . "' style='display:none;'>";
@@ -624,7 +631,6 @@ class Associate extends Element
                 $content .= "<li class='commentminibutton' id='commentminibutton-" . $this->infos[0]->compid . "' onmouseover='infoopen(" . $this->infos[0]->compid . ")' onclick='showRightpage(" . $this->infos[0]->compid . ")'>";
                 $content .= "<span style='cursor:pointer'>";
                 $content .= $this->description;
-//                $content .= "child";
                 $content .= "</span>";
                 $content .= "</li>";
                 $content .= "<div class='refcontent' id='refcontent-" . $this->infos[0]->compid . "' style='display:none;'>";

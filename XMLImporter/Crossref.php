@@ -379,9 +379,17 @@ class Crossref extends Element
                     }
                     else
                     {
-
                         $packID = $packRecord->id;
-                        $sibling_id = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
+                        $packtableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_packs'))->id;
+
+                        $packCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $packID, 'table_id' => $packtableID));
+                        $packCompID = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
+                        $sibling_id = $packCompID;
+
+                        foreach ($packCompRecords as $packCompRecord)
+                        {
+                            $this->grabSubunitChilds($packCompRecord, $packCompID);
+                        }
                     }
                     break;
 

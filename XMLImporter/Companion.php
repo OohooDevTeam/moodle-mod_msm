@@ -294,27 +294,33 @@ class Companion extends Element
                 case(preg_match("/^(pack.\d+)$/", $element) ? true : false):
                     $packString = split('-', $element);
                     $packRecord = $this->checkForRecord($this->packs[$packString[1]]);
-                    if (!empty($packRecord))
+                    if (empty($packRecord))
                     {
-                        if (empty($packID))
+                        if (empty($sibling_id))
                         {
-                            if (empty($sibling_id))
-                            {
-                                $pack = $this->packs[$packString[1]];
-                                $pack->saveIntoDb($pack->position, $parentid);
-                                $sibling_id = $pack->compid;
-                            }
-                            else
-                            {
-                                $pack = $this->packs[$packString[1]];
-                                $pack->saveIntoDb($pack->position, $parentid, $sibling_id);
-                                $sibling_id = $pack->compid;
-                            }
+                            $pack = $this->packs[$packString[1]];
+                            $pack->saveIntoDb($pack->position, $parentid);
+                            $sibling_id = $pack->compid;
                         }
                         else
                         {
-                            $packID = $packRecord->id;
-                            $sibling_id = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
+                            $pack = $this->packs[$packString[1]];
+                            $pack->saveIntoDb($pack->position, $parentid, $sibling_id);
+                            $sibling_id = $pack->compid;
+                        }
+                    }
+                    else
+                    {
+                        $packID = $packRecord->id;
+                        $packtableID = $DB->get_record('msm_table_collection', array('tablename' => 'msm_packs'))->id;
+
+                        $packCompRecords = $DB->get_records('msm_compositor', array('unit_id' => $packID, 'table_id' => $packtableID));
+                        $packCompID = $this->insertToCompositor($packID, 'msm_packs', $parentid, $sibling_id);
+                        $sibling_id = $packCompID;
+
+                        foreach ($packCompRecords as $packCompRecord)
+                        {
+                            $this->grabSubunitChilds($packCompRecord, $packCompID);
                         }
                     }
                     break;
@@ -366,21 +372,14 @@ class Companion extends Element
                     if (!empty($this->defs[$defString[1]]->string_id))
                     {
                         $defRecord = $this->checkForRecord($this->defs[$defString[1]]);
-//                          echo "string_id def";
-//                            print_object($this->defs[$defString[1]]);
-//                            print_object($defRecord);
                     }
                     else
                     {
                         $defRecord = $this->checkForRecord($this->defs[$defString[1]], 'caption');
-//                          echo "caption def";
-//                            print_object($this->defs[$defString[1]]);
-//                            print_object($defRecord);
                     }
 
                     if (empty($defRecord))
                     {
-//                        echo "empty defID";
                         if (empty($sibling_id))
                         {
                             $def = $this->defs[$defString[1]];
