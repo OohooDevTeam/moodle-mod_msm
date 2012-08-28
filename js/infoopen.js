@@ -31,8 +31,9 @@ function infoopen(i) {
     $('#defminibutton-'+i).unbind('click');
     $('#defminibutton-'+i).click(function() {
         $('.rightbox').empty();
-        $('.rightbox').append($('#refcontent-'+i));    
-        $('#refcontent-'+i).css('display', 'block');
+        $('#refcontent-'+i).clone().attr('id', 'copyrefcontent-'+i).appendTo($('.rightbox')).css('display', 'block');
+    //        $('.rightbox').append($('#refcontent-'+i));    
+    //        $('#refcontent-'+i).css('display', 'block');
     //        $('#refcontent-'+i).toggleClass('refcontent', 'shownrefcontent');            
     });
     
@@ -53,8 +54,9 @@ function infoopen(i) {
     $('#minibutton-'+i).unbind('click');
     $('#minibutton-'+i).click(function() {
         $('.rightbox').empty();
-        $('.rightbox').append($('#refcontent-'+i));    
-        $('#refcontent-'+i).css('display', 'block');
+        $('#refcontent-'+i).clone().attr('id', 'copyrefcontent-'+i).appendTo($('.rightbox')).css('display', 'block');
+    //        $('.rightbox').append($('#refcontent-'+i));    
+    //        $('#refcontent-'+i).css('display', 'block');
     //        $('#refcontent-'+i).toggleClass('refcontent', 'shownrefcontent');
     });
     
@@ -75,8 +77,9 @@ function infoopen(i) {
     $('#hottag-'+i).unbind('click');
     $('#hottag-'+i).click(function() {
         $('.rightbox').empty();
-        $('.rightbox').append($('#refcontent-'+i));    
-        $('#refcontent-'+i).css('display', 'block');
+        $('#refcontent-'+i).clone().attr('id', 'copyrefcontent-'+i).appendTo($('.rightbox')).css('display', 'block');
+    //        $('.rightbox').append($('#refcontent-'+i));    
+    //        $('#refcontent-'+i).css('display', 'block');
     //        $('#refcontent-'+i).toggleClass('refcontent', 'shownrefcontent');            
     });
       
@@ -97,8 +100,9 @@ function infoopen(i) {
     $('#commentminibutton-'+i).unbind('click');
     $('#commentminibutton-'+i).click(function() {
         $('.rightbox').empty();
-        $('.rightbox').append($('#refcontent-'+i));    
-        $('#refcontent-'+i).css('display', 'block');
+        $('#refcontent-'+i).clone().attr('id', 'copyrefcontent-'+i).appendTo($('.rightbox')).css('display', 'block');
+    //        $('.rightbox').append($('#refcontent-'+i));    
+    //        $('#refcontent-'+i).css('display', 'block');
     //        $('#refcontent-'+i).toggleClass('refcontent', 'shownrefcontent');
     });
     

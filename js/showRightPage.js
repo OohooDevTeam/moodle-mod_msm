@@ -17,7 +17,6 @@ function showRightpage(id)
 {   
     $('#proofminibutton-'+id).ready(function() {
         $('.rightbox').empty();
-        $('.rightbox').append($('#proof-'+id));    
-        $('#proof-'+id).css('display', 'block');
+        $('#proof-'+id).clone().attr('id', 'copyproof-'+id).appendTo($('.rightbox')).css('display', 'block');
     });
 }
