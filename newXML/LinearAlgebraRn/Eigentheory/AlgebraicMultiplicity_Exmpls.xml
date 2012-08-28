@@ -5,17 +5,17 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_AlgebraicMultiplicity"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Algebraic Multiplicity: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the roots of the polynomial <math>
                   <latex>q(\lambda)</latex>
                </math> and their algebraic multiplicities if</para.body>
          </para>
-			      <math.array xmlns="" column="3">
-            <row rowspan="1">
+			      <math.array column="3">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>q(\lambda)</latex>
@@ -34,7 +34,7 @@
             </row>
          </math.array>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -50,7 +50,7 @@
                   <para.body>By trial and error we find</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>q(2)</latex>
@@ -67,7 +67,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -97,7 +97,7 @@
                      </math>. Via long division we find</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>q(\lambda)</latex>
@@ -114,7 +114,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -163,11 +163,11 @@
 	  </showme>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the algebraic multiplicities of the roots of the polynomial</para.body>
          </para>
-			      <math.array xmlns="" column="3">
-            <row rowspan="1">
+			      <math.array column="3">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>p(\lambda)</latex>
@@ -186,7 +186,7 @@
             </row>
          </math.array>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

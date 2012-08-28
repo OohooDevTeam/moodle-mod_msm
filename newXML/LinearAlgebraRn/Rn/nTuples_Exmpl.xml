@@ -5,22 +5,22 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_nTuples"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
-	  <title>Examples of <math xmlns="">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Examples of <math>
          <latex>n</latex>
       </math>-tuples.</title>
-	  <caption xmlns="">Examples of <math>
+	  <caption>Examples of <math>
          <latex>n</latex>
       </math>-tuples.</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Here are some examples of <math>
                   <latex>n</latex>
                </math>-tuples:</para.body>
          </para>
 			
-			      <ul xmlns="">
+			      <ul>
 				        <li>
 					          <para>
                   <para.body>

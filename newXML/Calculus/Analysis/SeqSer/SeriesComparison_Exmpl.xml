@@ -5,22 +5,22 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_SeriesComparison"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>Comparison Test for Series: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Show that the series</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sum_{n=0}^{\infty} \dfrac{1}{(3+(-1)^n)^n}</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>converges to a number.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -56,17 +56,17 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Show that the series</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sum_{n=0}^{\infty} \dfrac{n^2}{3^n}</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>converges to a number.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -95,14 +95,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Show that </para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sum_{n=1}^{\infty} \dfrac{1}{n + (1+(-1)^n)}\ =\ +\infty</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

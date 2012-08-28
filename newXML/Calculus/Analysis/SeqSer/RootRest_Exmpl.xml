@@ -5,22 +5,22 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_RootTest"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>Root Test: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Use the root test to determine if the series</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sum_{n=0}^{\infty} \left( \dfrac{ 2 - 6n }{ 9 + 7n }\right)^n</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>converges absolutely.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -35,7 +35,7 @@
                   <para.body>So,</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\sqrt[n]{\Abs{ a_n } }</latex>
@@ -52,7 +52,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -69,7 +69,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -86,7 +86,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -123,17 +123,17 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Use the root test to determine if the series</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sum_{n=0}^{\infty} \dfrac{ n \cdot 3^{2n} }{ (n+1)\cdot 5^n }</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>converges absolutely.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -148,7 +148,7 @@
                   <para.body>So,</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\sqrt[n]{\Abs{ a_n } }</latex>
@@ -165,7 +165,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -182,7 +182,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -199,7 +199,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

@@ -20,9 +20,9 @@
 			
 			         <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="1" inline="0">
+                  <media type="image" active="1" inline="0">
                      <img src="ims/VelocitySuperposition.gif" height="173" width="441">
-                        <image.mapping>
+                        <image.mapping xmlns="">
                            <area xmlns="Compositor" shape="rect" coords="217,39,417,53">
 					                         <info>
                                  <info.caption>

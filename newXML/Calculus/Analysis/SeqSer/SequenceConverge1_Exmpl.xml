@@ -5,12 +5,12 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_SequenceConverge1"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>Convergent Sequences: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Show that the sequence <math>
                   <latex>(x_n)</latex>
                </math> with <math>
@@ -20,7 +20,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

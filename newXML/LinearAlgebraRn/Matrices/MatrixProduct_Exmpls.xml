@@ -5,19 +5,19 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_MatrixMultiplication"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of Matrix Multiplication</title>
-	  <caption xmlns="">Matrix Multiplication</caption>
+	  <caption>Matrix Multiplication</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the product of the two matrices</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					{\color{blue} \Mtrx{A}}\ =\ 
@@ -35,13 +35,13 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>is defined. If it is, compute the product <math>
                   <latex>\Mtrx{A}\Mtrx{B}</latex>
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

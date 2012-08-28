@@ -5,20 +5,20 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_BasicCoordinateVectors"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 
 	  <title>Examples of Basic Coordinate Vectors</title>
-	  <caption xmlns="">Basic Coordinate Vectors - Examples</caption>
+	  <caption>Basic Coordinate Vectors - Examples</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>
 				           <math>
                   <latex>\RNr[3]</latex>
                </math> has three basic coordinate vectors.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
 				           <media type="image" active="0" inline="0">
                   <img src="ims/BasicCoordinateVectorsR3.gif"/>
@@ -26,7 +26,7 @@
 			         </para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <ul>
@@ -77,14 +77,14 @@
 	  </showme>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>
 				           <math>
                   <latex>\RNr[4]</latex>
                </math> has four basic coordinate vectors</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <ul>

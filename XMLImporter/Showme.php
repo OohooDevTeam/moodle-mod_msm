@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Showme
@@ -107,11 +107,11 @@ class Showme extends Element
         $data->statement_showme = $this->statements;
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
-        
+
         $elementPositions = array();
         $sibling_id = null;
-        
-         if (!empty($this->answer_showmes))
+
+        if (!empty($this->answer_showmes))
         {
             foreach ($this->answer_showmes as $key => $answer_showme)
             {
@@ -166,7 +166,7 @@ class Showme extends Element
         {
             switch ($element)
             {
-                 case(preg_match("/^(answershowme.\d+)$/", $element) ? true : false):
+                case(preg_match("/^(answershowme.\d+)$/", $element) ? true : false):
                     $answershowmeString = split('-', $element);
 
                     if (empty($sibling_id))
@@ -182,7 +182,7 @@ class Showme extends Element
                         $sibling_id = $answershowme->compid;
                     }
                     break;
-                    
+
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
                     $subordinateString = split('-', $element);
 
@@ -270,38 +270,38 @@ class Showme extends Element
             }
         }
     }
-    
+
     function loadFromDb($id, $compid)
     {
         global $DB;
-        
-        $showmeRecord = $DB->get_record($this->tablename, array('id'=>$id));
-        
-        if(!empty($showmeRecord))
+
+        $showmeRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($showmeRecord))
         {
             $this->compid = $compid;
             $this->caption = $showmeRecord->caption;
             $this->textcaption = $showmeRecord->textcaption;
             $this->statement_showme = $showmeRecord->statement_showme;
         }
-        
+
         $this->childs = array();
         $this->subordinates = array();
         $this->medias = array();
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$this->compid), 'prev_sibling_id');
-        
-        foreach($childElements as $child)
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+
+        foreach ($childElements as $child)
         {
-            $childtablename = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
-            
-            switch($childtablename)
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
             {
                 case('msm_answer_showme'):
                     $answershowme = new AnswerShowme();
                     $answershowme->loadFromDb($child->unit_id, $child->id);
                     $this->childs[] = $answershowme;
                     break;
-                
+
                 case('msm_subordinate'):
                     $subordinate = new Subordinate();
                     $subordinate->loadFromDb($child->unit_id, $child->id);
@@ -315,31 +315,34 @@ class Showme extends Element
                     break;
             }
         }
-        
+
         return $this;
     }
-    
+
     function displayhtml()
     {
         $content = '';
-        
+        $content .= "<br />";
         $content .= "<div class='showme'>";
-        
-        $content .= "<div class='title'>";
+
+        $content .= "<span class='showmetitle'>";
         $content .= $this->caption;
-        $content .= "</div>";
-        
+        $content .= "</span>";
+        $content .= "<br />";
+
         $content .= "<div class='showmecontent'>";
-        $content .= $this->statement_showme;
+        $content .= $this->displaySubordinate($this, $this->statement_showme);
         $content .= "</div>";
-        
-        foreach($this->childs as $childComponent)
+        $content .= "<br />";
+        $content .= "</div>";
+        $content .= "<br />";
+
+        foreach ($this->childs as $childComponent)
         {
             $content .= $childComponent->displayhtml();
         }
-        
-        $content .= "</div>";
-        
+
+
         return $content;
     }
 

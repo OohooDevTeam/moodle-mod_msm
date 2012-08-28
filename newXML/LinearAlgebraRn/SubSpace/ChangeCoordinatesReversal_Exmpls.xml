@@ -5,18 +5,18 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ChangeCoordinatesReversal"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Reversal of Change Coordinates: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Converting from standard coordinates to general coordinates:  Consider these two ordered bases of <math>
                   <latex>\RNr[3]</latex>
                </math>:</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{array}{ccclcclccl}
@@ -26,7 +26,7 @@
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the matrix <math>
                   <latex>\Mtrx{C}_{\EuScript{B}\EuScript{S}}</latex>
                </math> which converts from <math>
@@ -40,7 +40,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -61,7 +61,7 @@
                      </math>, we have</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(\Vect{b}_1)_{\EuScript{S}}</latex>
@@ -78,7 +78,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(\Vect{b}_2)_{\EuScript{S}}</latex>
@@ -95,7 +95,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(\Vect{b}_3)_{\EuScript{S}}</latex>

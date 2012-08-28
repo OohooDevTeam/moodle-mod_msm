@@ -5,16 +5,16 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_Inclusion"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Example: Inclusion as a Coordinate Axis</title>
-	  <caption xmlns="">Example: Inclusion as a Coordinate Axis</caption>
+	  <caption>Example: Inclusion as a Coordinate Axis</caption>
 	
 	
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Recall: the inclusion of <math>
                   <latex>\RNr</latex>
                </math> as the <math>
@@ -23,17 +23,17 @@
                   <latex>\RNr[n]</latex>
                </math> is given by the function</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Inclsn{j}\from \RNr\longrightarrow \RNr[n],\quad \Inclsn{j}(x):=(0,\dots,0,x,0,\dots ,0)</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Show that <math>
                   <latex>\Inclsn{j}</latex>
                </math> is a linear function.</para.body>
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Proof">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -42,7 +42,7 @@
                      </math> is linear, we check that it commutes with vector addition and scalar multiplication:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{j}(x+y)</latex>
@@ -63,17 +63,6 @@
                               </para>
                            </info>
                         </companion>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>The number <math>
-                                       <latex>x+y</latex>
-                                    </math> on the right appears in position <math>
-                                       <latex>i</latex>
-                                    </math>.</para.body>
-                              </para>
-                           </info>
-                        </companion>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -81,7 +70,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -98,7 +87,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -115,13 +104,6 @@
                               </para>
                            </info>
                         </companion>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>By definition of the inclusion function.</para.body>
-                              </para>
-                           </info>
-                        </companion>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -129,7 +111,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\inc_j(tx)</latex>
@@ -146,7 +128,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -163,7 +145,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -190,7 +172,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find all coordinate inclusions of <math>
                   <latex>\RNr</latex>
                </math> in <math>
@@ -202,7 +184,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -223,7 +205,7 @@
                      </math> is given by</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{1}(u)</latex>
@@ -240,7 +222,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{2}(u)</latex>
@@ -257,7 +239,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{3}(u)</latex>
@@ -284,7 +266,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the effect of the three coordinate inclusion functions of <math>
                   <latex>\RNr</latex>
                </math> in  <math>
@@ -294,7 +276,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -307,7 +289,7 @@
                      </math> is given by</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{1}(-1)</latex>
@@ -324,7 +306,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{2}(-1)</latex>
@@ -341,7 +323,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Inclsn{3}(-1)</latex>

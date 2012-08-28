@@ -5,16 +5,16 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_DotProductsCompute"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 		
 		
 
 	  <title>Computing Dot Products - Examples</title>
-	  <caption xmlns="">Computing Dot Products - Examples</caption>
+	  <caption>Computing Dot Products - Examples</caption>
 	
 	  <showme>
 		    <statement.showme>
-         <para xmlns="">
+         <para>
             <para.body>Find the dot product of the vectors <math>
                   <latex>\Vect{x} = (-2)</latex>
                </math> and <math>
@@ -24,7 +24,7 @@
                </math>.</para.body>
          </para>
       </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -47,7 +47,7 @@
 	
 	  <showme>
 		    <statement.showme>
-         <para xmlns="">
+         <para>
             <para.body>Find the dot product of the vectors <math>
                   <latex>\Vect{x} = (-1,-3)</latex>
                </math> and <math>
@@ -57,7 +57,7 @@
                </math>.</para.body>
          </para>
       </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -69,7 +69,7 @@
                </para>
 			
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex>
@@ -86,7 +86,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -103,13 +103,6 @@
                               </para>
                            </info>
                         </companion>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>By definition of the dot product</para.body>
-                              </para>
-                           </info>
-                        </companion>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -117,7 +110,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -144,7 +137,7 @@
 	
 	  <showme>
 		    <statement.showme>
-         <para xmlns="">
+         <para>
             <para.body>Find the dot product of the vectors <math>
                   <latex>\Vect{x} = (7,0,-3)</latex>
                </math> and <math>
@@ -154,7 +147,7 @@
                </math>.</para.body>
          </para>
       </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -166,7 +159,7 @@
                </para>
 			
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\DotPr{ \Vect{x} }{ \Vect{y} }</latex>
@@ -183,7 +176,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -200,13 +193,6 @@
                               </para>
                            </info>
                         </companion>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>By definition of the dot product</para.body>
-                              </para>
-                           </info>
-                        </companion>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -214,7 +200,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

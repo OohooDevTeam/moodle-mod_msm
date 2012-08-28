@@ -6,10 +6,10 @@
               id="Exa_PositionVectors"
               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
 	  <title>Examples of Position Vectors</title>
-	  <caption xmlns="">Position Vectors - Examples</caption>
+	  <caption>Position Vectors - Examples</caption>
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>The position vector of the point <math>
                   <latex>X(3,1)</latex>
                </math> in <math>
@@ -18,7 +18,7 @@
                   <latex>\mathbf{x}=(3,1)</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
 				           <media type="image" active="0" inline="0">
                   <img src="PositionVector.gif"/>
@@ -26,7 +26,7 @@
 			         </para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Explanation" version="1">
+		    <answer type="Explanation" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -46,7 +46,7 @@
 	  </example>
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>The point <math>
                   <latex>X(7,-5,2)</latex>
                </math> in <math>
@@ -57,7 +57,7 @@
 			         </para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Explanation" version="1">
+		    <answer type="Explanation" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -77,14 +77,14 @@
 	  </example>
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>
 				           <math>
                   <latex>\RNr[4]</latex>
                </math> has four basic coordinate vectors</para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Explanation" version="1">
+		    <answer type="Explanation" version="1">
          <answer.block>
             <answer.block.body>
 			            <ul>

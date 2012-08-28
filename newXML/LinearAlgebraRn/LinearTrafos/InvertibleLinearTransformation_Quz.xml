@@ -17,8 +17,8 @@
                   <latex>\theta</latex>
                </math> invertible?</para.body>
          </para>
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/Rotation.png"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/Rotation.png"/>
          </media>
 		    </question>
 		    <choice>
@@ -70,8 +70,8 @@
                   <latex>\RNr[3]</latex>
                </math> about a hyperspace invertible?</para.body>
          </para>
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/LeftHandMirrorRightHand.jpg"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/LeftHandMirrorRightHand.jpg"/>
          </media>
 		    </question>
 		    <choice>
@@ -158,8 +158,8 @@
                   <latex>x</latex>
                </math>-axis invertible?</para.body>
          </para>
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/ShearR2_3.png"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/ShearR2_3.png"/>
          </media>
 		    </question>
 		    <choice>

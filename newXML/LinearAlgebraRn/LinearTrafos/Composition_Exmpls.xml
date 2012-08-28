@@ -5,13 +5,13 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_Composition"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Example: Composition of Linear Transformations</title>
-	  <caption xmlns="">Example: Composition of Linear Transformations</caption>
+	  <caption>Example: Composition of Linear Transformations</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Form the composite <math>
                   <latex>R\Comp S</latex>
                </math> of the two linear transformations <math>
@@ -21,7 +21,7 @@
                </math> below. Then describe the transformation properties of the composite.</para.body>
          </para>
 			
-			      <ul xmlns="">
+			      <ul>
 				        <li>
                <para>
                   <para.body>
@@ -78,7 +78,7 @@ x \\ y
 				        </li>
 			      </ul>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -119,8 +119,8 @@ x \\ y
                      </math> is given by first performing the shear map, then performing the rotation on the result; as in the picture below.</para.body>
                </para>
 			
-			            <media xmlns="Theorem" type="image" active="0" inline="0">
-                  <img xmlns="" src="ims/ShearRotate.png"/>
+			            <media type="image" active="0" inline="0">
+                  <img src="ims/ShearRotate.png"/>
                </media>
 		          </answer.showme.block.body>
          </answer.showme.block>

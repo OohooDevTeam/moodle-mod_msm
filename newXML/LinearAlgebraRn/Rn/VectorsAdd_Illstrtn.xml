@@ -5,11 +5,11 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_VectorAddition"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Geometric Interpretation of Vector Addition: Illustration</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>To form the sum of two vectors <math>
                   <latex>\Vect{x}</latex>
                </math> and <math>
@@ -21,7 +21,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para align="center">
@@ -69,11 +69,11 @@
 	  </showme>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Similarly, we obtain the sum of several vectors by forming the concatenation circuit of representing arrows, as in the picture below. If you like, you can watch an animation of this process.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para align="center">
@@ -108,13 +108,13 @@
 	  </showme>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Let’s have another example, this time we form the sum of six vectors and obtain the <math>
                   <latex>0</latex>
                </math>-vector as the final answer:</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme>
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para align="center">

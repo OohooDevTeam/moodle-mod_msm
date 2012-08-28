@@ -5,18 +5,18 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_Diagonalize"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Diagonalizable Matrix: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Diagonalize the matrix <math>
                   <latex>\Mtrx{A}</latex>
                </math> below if possible.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{A} =
@@ -30,7 +30,7 @@
 				</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -166,7 +166,7 @@ x \\ y
                   <para.body>The solutions of the corresponding system of linear equations are of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(x,y)</latex>
@@ -194,7 +194,7 @@ x \\ y
                      </math> is</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>E_1</latex>
@@ -254,7 +254,7 @@ x \\ y
                   <para.body>The solutions of the corresponding system of linear equations are of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(x,y)</latex>
@@ -282,7 +282,7 @@ x \\ y
                      </math> is</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>E_2</latex>
@@ -394,12 +394,12 @@ x \\ y
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Diagonalize the matrix <math>
                   <latex>\Mtrx{A}</latex>
                </math> below if possible.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{A}\ =\ \dfrac{1}{6}\left[
@@ -413,7 +413,7 @@ x \\ y
 			      </math.display>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -732,7 +732,7 @@ x \\ y \\ z
                      </math>. Accordingly, we have</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Mtrx{D}</latex>

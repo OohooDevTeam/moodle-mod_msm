@@ -5,12 +5,12 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_DistancePoints"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Examples of Computing the Distance Between Points</title>
-	  <caption xmlns="">Distance between Points - Example</caption>
+	  <caption>Distance between Points - Example</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the distance between the points <math>
                   <latex>R(4,-1,11)</latex>
                </math> and <math>
@@ -21,7 +21,7 @@
 			</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -63,7 +63,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the distance between the points <math>
                   <latex>A(6,0,3,-1,5)</latex>
                </math> and <math>
@@ -73,7 +73,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

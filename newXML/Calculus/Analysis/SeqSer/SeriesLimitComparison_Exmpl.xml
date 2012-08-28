@@ -5,19 +5,19 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_SeriesLimitComparison"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>Limit Comparison Test for Series: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Compare the convergence behavior of</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sum_{n=1}^{\infty} \dfrac{1}{n^2 + n\sin n}\quad \text{and}\quad \sum_{n=1}^{\infty} \dfrac{1}{n^2}</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -34,7 +34,7 @@
                      </math>. Then</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\lim_{n\to\infty}\dfrac{a_n}{b_n}</latex>
@@ -51,7 +51,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -68,7 +68,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -106,13 +106,13 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Analyze the convergence behavior of</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sum_{n=0}^{\infty} \dfrac{n^2-n+2}{\sqrt[4]{n^{10} + n^5 + 3}}\ =:\ \sum_{n=0}^{\infty}a_n</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>by comparing it to <math>
                   <latex>\sum_{n=?}^{\infty}b_n</latex>
                </math>, where <math>
@@ -124,7 +124,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -148,7 +148,7 @@
                      </math>. To this end we recall that the harmonic series satisfies</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\sum_{n=1}^{\infty} \dfrac{1}{n}</latex>

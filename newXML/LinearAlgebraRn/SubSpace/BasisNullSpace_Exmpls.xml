@@ -5,16 +5,16 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_BasisNullSpace"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>A Basis for the Null Space: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find a basis for the null space of the matrix</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 A\ =\ 
@@ -29,7 +29,7 @@ A\ =\
 			      </math.display>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -78,7 +78,7 @@ A\ =\
                      </math>'s, implying that</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\dim\, \NllSp{ \Mtrx{A} }</latex>
@@ -152,7 +152,7 @@ A\ =\
                      </math>:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{b}_1</latex>
@@ -169,7 +169,7 @@ A\ =\
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{b}_2</latex>
@@ -186,7 +186,7 @@ A\ =\
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{b}_3</latex>
@@ -221,7 +221,7 @@ A\ =\
                      </math> are arbitrary and</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>u</latex>
@@ -239,35 +239,7 @@ A\ =\
                                     </math> corresponds to the linear equation</para.body>
                               </para>
 					                         <math.array column="3">
-                                 <row rowspan="1">
-                                    <cell colspan="2" halign="center" valign="middle">
-                                       <math>
-                                          <latex>u - 3v + 2x</latex>
-                                       </math>
-                                    </cell>
-                                    <cell colspan="1" halign="center" valign="middle">
-                                       <math>
-                                          <latex>=</latex>
-                                       </math>
-                                    </cell>
-                                    <cell colspan="2" halign="center" valign="middle">
-                                       <math>
-                                          <latex>0</latex>
-                                       </math>
-                                    </cell>
-                                 </row>
-                              </math.array>
-				                       </info>
-                        </companion>
-                        <companion>
-                           <info>
-					                         <para>
-                                 <para.body>This follows because the first row of <math>
-                                       <latex>\Mtrx{B}</latex>
-                                    </math> corresponds to the linear equation</para.body>
-                              </para>
-					                         <math.array column="3">
-                                 <row rowspan="1">
+                                 <row compositor:rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>u - 3v + 2x</latex>
@@ -294,7 +266,7 @@ A\ =\
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>w</latex>
@@ -312,35 +284,7 @@ A\ =\
                                     </math> corresponds to the linear equation</para.body>
                               </para>
 					                         <math.array column="3">
-                                 <row rowspan="1">
-                                    <cell colspan="2" halign="center" valign="middle">
-                                       <math>
-                                          <latex>w-x</latex>
-                                       </math>
-                                    </cell>
-                                    <cell colspan="1" halign="center" valign="middle">
-                                       <math>
-                                          <latex>=</latex>
-                                       </math>
-                                    </cell>
-                                    <cell colspan="2" halign="center" valign="middle">
-                                       <math>
-                                          <latex>0</latex>
-                                       </math>
-                                    </cell>
-                                 </row>
-                              </math.array>
-				                       </info>
-                        </companion>
-                        <companion>
-                           <info>
-					                         <para>
-                                 <para.body>This follows because the second row of <math>
-                                       <latex>\Mtrx{B}</latex>
-                                    </math> corresponds to the linear equation</para.body>
-                              </para>
-					                         <math.array column="3">
-                                 <row rowspan="1">
+                                 <row compositor:rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>w-x</latex>
@@ -367,7 +311,7 @@ A\ =\
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>z</latex>
@@ -385,35 +329,7 @@ A\ =\
                                     </math> corresponds to the linear equation</para.body>
                               </para>
 					                         <math.array column="3">
-                                 <row rowspan="1">
-                                    <cell colspan="2" halign="center" valign="middle">
-                                       <math>
-                                          <latex>z</latex>
-                                       </math>
-                                    </cell>
-                                    <cell colspan="1" halign="center" valign="middle">
-                                       <math>
-                                          <latex>=</latex>
-                                       </math>
-                                    </cell>
-                                    <cell colspan="2" halign="center" valign="middle">
-                                       <math>
-                                          <latex>0</latex>
-                                       </math>
-                                    </cell>
-                                 </row>
-                              </math.array>
-				                       </info>
-                        </companion>
-                        <companion>
-                           <info>
-					                         <para>
-                                 <para.body>This follows because the third row of <math>
-                                       <latex>\Mtrx{B}</latex>
-                                    </math> corresponds to the linear equation</para.body>
-                              </para>
-					                         <math.array column="3">
-                                 <row rowspan="1">
+                                 <row compositor:rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>z</latex>
@@ -449,7 +365,7 @@ A\ =\
                      </math> if and only if </para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(u,v,w,x,y,z)</latex>
@@ -466,7 +382,7 @@ A\ =\
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

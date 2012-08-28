@@ -5,12 +5,12 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_OrientationComparison"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Orientation Comparison: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Let <math>
                   <latex>V:= (1,1,1)^{\bot}</latex>
                </math> be the orthogonal complement of the vector <math>
@@ -19,7 +19,7 @@
                   <latex>\RNr[3]</latex>
                </math>. Check that</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{array}{rclrclrcl}
@@ -29,7 +29,7 @@
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>are two ordered bases of <math>
                   <latex>V</latex>
                </math>. Then test whether they determine the same or opposite orientations of <math>
@@ -38,7 +38,7 @@
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -51,7 +51,7 @@
                      </math>: We know that</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\dim(\span(1,1,1))</latex>
@@ -73,7 +73,7 @@
                   <para.body>Therefore</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\dim(V)</latex>

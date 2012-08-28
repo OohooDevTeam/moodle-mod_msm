@@ -5,11 +5,11 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               id="LinearMotion_Exmpl"
               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Linear Motion: Examples</title>
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the parametric equation which describes the motion of a particle in <math>
                   <latex>\RNr[2]</latex>
                </math> which moves through <math>
@@ -23,7 +23,7 @@
                </math>.</para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -133,7 +133,7 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the parametric equation of the linear motion in <math>
                   <latex>\RNr[3]</latex>
                </math> which passes through  <math>
@@ -147,7 +147,7 @@
                </math>.</para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -208,7 +208,7 @@
                   <para.body>(III) in (I) yields</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{a}</latex>
@@ -225,7 +225,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -242,7 +242,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

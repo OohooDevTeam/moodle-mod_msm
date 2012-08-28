@@ -343,12 +343,13 @@ class Pack extends Element
         $content .= "<div class='pack'>";
 
         $content .= "<div class='title'>";
-        $content .= $this->caption;
+        $content .= $this->title;
         $content .= "</div>";
         
         foreach ($this->childs as $childComponent)
         {
             $content .= $childComponent->displayhtml();
+            $content .= "<br />";
         }
         $content .= "</div>";
         

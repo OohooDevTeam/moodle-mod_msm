@@ -5,16 +5,16 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_RowInterchangeMatrixExplanation"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of Row Interchange Matrices</title>
-	  <caption xmlns="">Examples of Interchange Matrices</caption>
+	  <caption>Examples of Interchange Matrices</caption>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The matrix <math>
                   <latex>R_{ij}</latex>
                </math> allows us to perform the row operation ‘interchange rows <math>
@@ -28,7 +28,7 @@
                </math>’. In symbols</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{bmatrix}
@@ -65,7 +65,7 @@ a_{i1} &amp; \cdots &amp; a_{ip} \\
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The matrix which, in the set of <math>
                   <latex>(5,5)</latex>
                </math>-matrices interchanges rows <math>
@@ -75,7 +75,7 @@ a_{i1} &amp; \cdots &amp; a_{ip} \\
                </math> is</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 R_{1,4}\ :=\ \begin{bmatrix}

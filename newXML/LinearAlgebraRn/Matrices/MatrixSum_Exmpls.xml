@@ -5,19 +5,19 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_MatrixAddition"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of Matrix Addition</title>
-	  <caption xmlns="">Matrix Addition</caption>
+	  <caption>Matrix Addition</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The sum of the two matrices</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					{\color{blue}A}\ =\ 
@@ -36,13 +36,13 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>is defined because both matrices are of the same size <math>
                   <latex>(3,2)</latex>
                </math>. Their sum is</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					{\color{blue}A} + {\color{red}B}\ =\ 
@@ -64,14 +64,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In general, the sum of two matrices of size <math>
                   <latex>(m,n)</latex>
                </math>
             </para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					{\color{blue}A}\ =\ 
@@ -89,11 +89,11 @@
 					
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>is</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					\aligned

@@ -556,3 +556,63 @@ span.extrainfoname
     font-weight: bold;
     font-size: large;
 }
+
+.answershowme
+{
+    width: 90%;
+    background-color: #0F900F;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.answershowmecontent
+{
+    margin-top: 5px;
+    padding: 2px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+span.answershowmetitle
+{
+    /*    font-size: 12px;*/
+    font-weight: bold;
+    color: white;
+    float: right;   
+}
+
+span.answershowmetype
+{
+    /*    font-size: 12px;*/
+    font-weight: bold;
+    color: white;
+    float: left;
+}
+
+.showme
+{
+    width: 90%;
+    background-color: #0F900F;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.showmecontent
+{
+    margin-top: 5px;
+    padding: 2px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+span.showmetitle
+{
+    /*    font-size: 12px;*/
+    font-weight: bold;
+    color: white;
+    float: right;   
+}

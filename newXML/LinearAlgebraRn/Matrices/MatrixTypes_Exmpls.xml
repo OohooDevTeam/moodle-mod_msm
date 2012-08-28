@@ -5,21 +5,21 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_TypesMatrices"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of Types of Matrices</title>
-	  <caption xmlns="">Matrix Types</caption>
+	  <caption>Matrix Types</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>A matrix is square shaped if it is of type <math>
                   <latex>(n,n)</latex>
                </math>. For example, the matrices below are square shaped.</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					\left[
@@ -47,7 +47,7 @@
 					
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Indeed, the matrix on the left has size <math>
                   <latex>(2,2)</latex>
                </math>. The matrix in the middle has size <math>
@@ -62,10 +62,10 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the following matrix is square shaped.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 				
 				\left[
@@ -79,7 +79,7 @@
 				</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

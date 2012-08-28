@@ -5,22 +5,22 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_AlternatingHarmonicConverges"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>The Alternating Harmonic Series Converges.</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The alternating harmonic series</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sum_{n=1}^{\infty} (-1)^{n+1}\dfrac{1}{n}</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>converges to a number between 0 and 1.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Proof">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

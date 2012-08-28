@@ -5,18 +5,18 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Illstrtn_LinearEqsNoSolution"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 		
 		
 	  <title>Linear Equations with no Solutions</title>
-	  <caption xmlns="">Linear Equations with no Solutions</caption>
+	  <caption>Linear Equations with no Solutions</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>If a system of linear equations has no solution, then the solution hyperplanes of its equations have no point in common.</para.body>
          </para>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>
                <media type="image" active="0" inline="0">
                   <img src="ims/ThreeEqnsR2Overdetermined.gif"/>
@@ -24,13 +24,13 @@
             </para.body>
          </para>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>There is exactly one way in which the RREF of the system indicates that there is no solution: The RREF contains a leading <math>
                   <latex>1</latex>
                </math> in its augmented part.</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{array}{ccccccccccccccc|c}
@@ -47,13 +47,13 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>Why does the above system have no solution? – To see this we only need to recall that a row with a leading <math>
                   <latex>1</latex>
                </math> in its augmented part corresponds to an equation in the reduced system of the form:</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{array}{cccccccccc}
@@ -63,7 +63,7 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>The left hand side is always <math>
                   <latex>0</latex>
                </math>, while the right hand side is <math>

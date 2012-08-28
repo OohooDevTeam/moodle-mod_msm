@@ -5,20 +5,20 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_LinearEqsHomoInHomo"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 		
 		
 
 	  <title>Homogeneous and Inhomogeneous Systems of Linear Equations</title>
-	  <caption xmlns="">Homogeneous and Inhomogeneous Systems of Linear Equations</caption>
+	  <caption>Homogeneous and Inhomogeneous Systems of Linear Equations</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>A system of linear equations is called homogeneous if all of the augmented constants are <math>
                   <latex>0</latex>
                </math>.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{array}{rcr}
@@ -32,7 +32,7 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>This means that choosing all unknowns equal to <math>
                   <latex>0</latex>
                </math> is a solution. Therefore a homogeneous system of linear equations always has at least one solution, namely <math>
@@ -46,14 +46,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>A system of linear equations is called inhomogeneous if at least one of its augmented constants is different from <math>
                   <latex>0</latex>
                </math>. This implies that setting all variables equal to <math>
                   <latex>0</latex>
                </math> can never be a solution of an inhomogeneous system.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{array}{rcr}

@@ -5,17 +5,17 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ReductionRREF"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 		
 		
 	  <title>Finding the Solutions of a System of Linear Equations by Reduction to RREF - Example</title>
-	  <caption xmlns="">Reduction to RREF - Example</caption>
+	  <caption>Reduction to RREF - Example</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Use the method of reduction to RREF to find all solutions of the system of 3 linear equations in 4 variables below.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					\begin{array}{rcrcrcrcr}
@@ -29,7 +29,7 @@
 				</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -268,7 +268,7 @@ w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
                      </math> of the form</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>(w,x,y,z)</latex>
@@ -290,7 +290,7 @@ w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
                   <para.body>with</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{a}</latex>
@@ -307,7 +307,7 @@ w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{u}</latex>
@@ -324,7 +324,7 @@ w\ &amp;=\ \dfrac{9}{2}\ -\ \dfrac{1}{2}\, y\ -\ \dfrac{5}{2}\, z
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{v}</latex>

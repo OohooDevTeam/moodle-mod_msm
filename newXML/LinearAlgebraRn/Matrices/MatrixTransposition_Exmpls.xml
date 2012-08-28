@@ -5,21 +5,21 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_MatrixTransposition"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of Matrix Transposition</title>
-	  <caption xmlns="">Matrix Transposition</caption>
+	  <caption>Matrix Transposition</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The transpose of the <math>
                   <latex>(3,2)</latex>
                </math>-matrix</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					A\ =\ 
@@ -32,13 +32,13 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>is the <math>
                   <latex>(2,3)</latex>
                </math>-matrix</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					A^T\ =\ 
@@ -56,12 +56,12 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In general, the transpose of an <math>
                   <latex>(m,n)</latex>
                </math>-matrix</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					A\ =\ 
@@ -73,12 +73,12 @@
 					
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>is the <math>
                   <latex>(m,n)</latex>
                </math>-matrix</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					\aligned

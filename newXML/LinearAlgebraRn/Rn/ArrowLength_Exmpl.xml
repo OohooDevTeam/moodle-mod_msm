@@ -5,15 +5,15 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ArrowLength"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	
 	  <title>Length of an Arrow: Examples</title>
-	  <caption xmlns="">Length of an Arrow: Examples</caption>
+	  <caption>Length of an Arrow: Examples</caption>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the length of the arrow joining the point <math>
                   <latex>P(4,-1,11)</latex>
                </math> to the point <math>
@@ -24,7 +24,7 @@
 			</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -55,7 +55,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the length of the arrow joining the point <math>
                   <latex>A(1,3,0,5)</latex>
                </math> to the point <math>
@@ -66,7 +66,7 @@
 			</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

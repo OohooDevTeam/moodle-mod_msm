@@ -5,14 +5,14 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_CharacteristicPolynomial"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Characteristic Polynomial: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Here are some examples of polynomials:</para.body>
          </para>
-			      <ul xmlns="">
+			      <ul>
 				        <li>
                <para>
                   <para.body>
@@ -55,10 +55,10 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the characteristic polynomial of the matrix</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{A} =
@@ -72,7 +72,7 @@
 				</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -121,7 +121,7 @@ p(\lambda)\ &amp;=\
                      </math> vanishes at two places, namely:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\lambda_1</latex>
@@ -138,7 +138,7 @@ p(\lambda)\ &amp;=\
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\lambda_2</latex>

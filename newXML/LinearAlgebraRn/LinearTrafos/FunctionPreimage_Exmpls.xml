@@ -5,25 +5,25 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               id="Exa_FunctionPreimage"
               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of Preimage of a Function</title>
-	  <caption xmlns="">Preimage of a Function</caption>
+	  <caption>Preimage of a Function</caption>
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the preimage of <math>
                   <latex>y\in \RNr</latex>
                </math> of the function</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>f\from \RNr[2] \longrightarrow \RNr,\qquad f(u,v) = u^2 +v^2</latex>
 			      </math.display>
 		    </statement.example>
 		
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -153,18 +153,18 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the preimage of the number <math>
                   <latex>k</latex>
                </math> under the function </para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>f\from \RNr[2] \longrightarrow \RNr,\qquad f(x,y) = 2x + y</latex>
 			      </math.display>
 		    </statement.example>
 		
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -177,8 +177,8 @@
                      </math>.</para.body>
                </para>
 			
-			            <media xmlns="Theorem" type="image" active="0" inline="0">
-                  <img xmlns="" src="ims/FunctionPreimage_Linear.gif"/>
+			            <media type="image" active="0" inline="0">
+                  <img src="ims/FunctionPreimage_Linear.gif"/>
                </media>
 			
 			            <para>

@@ -5,11 +5,11 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_MatrixFromLinearMap"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Representing a Linear Map by a Matrix: Example</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Let <math>
                   <latex>V</latex>
                </math> be a subspace of <math>
@@ -27,7 +27,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -40,7 +40,7 @@
                      </math>, we find</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Id(\Vect{b}_i)</latex>
@@ -62,7 +62,7 @@
                   <para.body>and, therefore,</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Id(\Vect{b}_i)_{\EuScript{B}}</latex>
@@ -117,7 +117,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Consider the subspaces <math>
                   <latex>V</latex>
                </math> and <math>
@@ -130,7 +130,7 @@
                   <latex>\EuScript{B}</latex>
                </math>, respectively, where</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \aligned
@@ -140,17 +140,17 @@
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the matrix <math>
                   <latex>\Mtrx{A}_{\EuScript{B}\EuScript{A}}</latex>
                </math> representing the linear transformation <math>
                   <latex>L\from V\to W</latex>
                </math> satisfying</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>L(\Vect{a}_1) = -\Vect{b}_2,\qquad L(\Vect{a}_2)=3 \Vect{b}_1 + \Vect{b}_2</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Then find <math>
                   <latex>L(\Vect{x})_{\EuScript{B}}</latex>
                </math> and <math>
@@ -162,7 +162,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

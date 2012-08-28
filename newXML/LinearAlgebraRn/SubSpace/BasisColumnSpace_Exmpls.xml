@@ -5,16 +5,16 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_BasisColumnSpace"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>A Basis for the Column Space: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find a basis for the column space of the matrix</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{A}\ =\ \left[
@@ -29,7 +29,7 @@
 			      </math.display>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -78,7 +78,7 @@
                      </math>:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\EuScript{B}</latex>
@@ -108,7 +108,7 @@
 		          </answer.showme.block.body>
          </answer.showme.block>
       </answer.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Discussion">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

@@ -5,18 +5,18 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_MatrixTypes"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 
 	  <title>Examples of Matrices</title>
-	  <caption xmlns="">Matrices</caption>
+	  <caption>Matrices</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Identify the type and the entries of the matrix</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					A = 
@@ -30,7 +30,7 @@
 				</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -64,11 +64,11 @@ a_{21} &amp; = &amp; 1 &amp; \quad &amp; a_{22} &amp; = &amp; 4 &amp; \quad &amp
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Identify the type and the entries of the matrix</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 				
 				B = 
@@ -84,7 +84,7 @@ a_{21} &amp; = &amp; 1 &amp; \quad &amp; a_{22} &amp; = &amp; 4 &amp; \quad &amp
 			      </math.display>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

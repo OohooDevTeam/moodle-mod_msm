@@ -5,15 +5,15 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_LinearEqsSolveFromRREF"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Solving from Row Reduced Echelon Form - Example</title>
-	  <caption xmlns="">Solving from RREF - Example</caption>
+	  <caption>Solving from RREF - Example</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find all solutions of the system of 3 linear equations in 7 variables below.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					\begin{array}{rcr}
@@ -27,7 +27,7 @@
 				</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

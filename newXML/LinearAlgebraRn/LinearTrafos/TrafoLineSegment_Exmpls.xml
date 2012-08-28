@@ -5,29 +5,29 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_TrafoLineSegment"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 
 	  <title>Example: Transformation of a Line Segment</title>
-	  <caption xmlns="">Transformation of a Line Segment</caption>
+	  <caption>Transformation of a Line Segment</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In the picture below the line segment <math>
                   <latex>[a,b]</latex>
                </math> on the left gets transformed into the red curve on the right.</para.body>
          </para>
 			
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/Trafo_LineSegment.png"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/Trafo_LineSegment.png"/>
          </media>
 			
 			
-			      <para xmlns="">
+			      <para>
             <para.body>To fit this intuitive process into the mathematical formalism of functions, we do the following:</para.body>
          </para>
 			
-			      <ul xmlns="">
+			      <ul>
 				        <li>
                <para>
                   <para.body>We take the interval <math>
@@ -57,7 +57,7 @@
             </li>
 			      </ul>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>The function <math>
                   <latex>f\from [a,b]\to \RNr[2]</latex>
                </math> transforms <math>

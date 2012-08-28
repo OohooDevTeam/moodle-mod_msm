@@ -5,13 +5,13 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_GramSchmidtOrthonormalization"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Gram-Schmidt Orthonormalization: Example</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>You are given the vectors <math>
                   <latex>\Vect{a}</latex>
                </math>, <math>
@@ -22,8 +22,8 @@
                   <latex>\RNr[3]</latex>
                </math> with</para.body>
          </para>
-			      <math.array xmlns="" column="3">
-            <row rowspan="1">
+			      <math.array column="3">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{a}</latex>
@@ -40,7 +40,7 @@
                   </math>
                </cell>
             </row>
-            <row rowspan="1">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{b}</latex>
@@ -57,7 +57,7 @@
                   </math>
                </cell>
             </row>
-            <row rowspan="1">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{c}</latex>
@@ -75,13 +75,13 @@
                </cell>
             </row>
          </math.array>
-			      <para xmlns="">
+			      <para>
             <para.body>Verify that these vectors form a basis of <math>
                   <latex>\RNr[3]</latex>
                </math>, then orthonormalize them.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -120,7 +120,7 @@
                      </math>.</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{u}</latex>
@@ -137,7 +137,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -164,7 +164,7 @@
                      </math>, we encounter the expression</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\left[ \DotPr{ (0,-1,1) }{ \left( \tfrac{1}{\sqrt{3}}\cdot (1,1,1) \right) }\right]\cdot \tfrac{1}{\sqrt{3}}\cdot (1,1,1)</latex>
@@ -186,7 +186,7 @@
                   <para.body>So we find</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{v}</latex>
@@ -203,7 +203,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -232,7 +232,7 @@
                      </math> we encounter the expressions</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\left[ \DotPr{ (1,1,0) }{ \left( \tfrac{1}{\sqrt{3}}\cdot (1,1,1) \right) }\right]\cdot \tfrac{1}{\sqrt{3}}\cdot (1,1,1)</latex>
@@ -249,7 +249,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\left[ \DotPr{ (1,1,0) }{ \left( \tfrac{1}{\sqrt{2}}\cdot (0,-1,1) \right) }\right]\cdot \tfrac{1}{\sqrt{2}}\cdot (0,-1,1)</latex>
@@ -277,7 +277,7 @@
                      </math> is</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{w}</latex>
@@ -294,7 +294,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -311,7 +311,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

@@ -5,33 +5,33 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_LinearIndependence"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Linear Independence: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the vectors</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Vect{a}_1=(1,2,5)\quad \text{and} \quad \Vect{a}_2=(2,-1,4)</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>of <math>
                   <latex>\RNr[3]</latex>
                </math> are linearly independent.</para.body>
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
                   <para.body>We need to examine the possible solutions of the vector equation</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>t_1 \Vect{a}_1 + t_2 \Vect{a}_2</latex>
@@ -106,27 +106,27 @@ t_1
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the vectors</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Vect{a}_1=(1,2,5), \quad \Vect{a}_2=(2,-1,4),\quad \text{and}\quad \Vect{a}_3=(0,5,6)</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>of <math>
                   <latex>\RNr[3]</latex>
                </math> are linearly independent. If they are not, express one vector as a linear combination of the others.</para.body>
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
                   <para.body>We need to examine the possible solutions of the vector equation</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>t_1 \Vect{a}_1 + t_2 \Vect{a}_2 + t_3 \Vect{a}_3</latex>
@@ -200,7 +200,7 @@ t_1
                      </math> yields</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>t_1</latex>
@@ -217,7 +217,7 @@ t_1
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>t_2</latex>
@@ -239,7 +239,7 @@ t_1
                   <para.body>This means that</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>-8\cdot \Vect{a}_1 + 4\cdot \Vect{a}_2 + 4\cdot \Vect{a}_3</latex>
@@ -256,7 +256,7 @@ t_1
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{a}_2</latex>
@@ -284,7 +284,7 @@ t_1
                      </math>:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{a}_1</latex>

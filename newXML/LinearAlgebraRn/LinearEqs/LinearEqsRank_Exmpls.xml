@@ -5,17 +5,17 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_LinearEqsRank"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 		
 		
 	  <title>The rank of a system of linear equations</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the rank of the system of linear equations</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{array}{rcrcrcr}
@@ -26,7 +26,7 @@ x &amp; + &amp; 3y &amp; &amp; &amp; = &amp; 4 \\
 				</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -56,10 +56,10 @@ x &amp; + &amp; 3y &amp; &amp; &amp; = &amp; 4 \\
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Suppose a system of linear equations has a coefficient matrix which row reduces to </para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{array}{rrrrrr|r}
@@ -71,11 +71,11 @@ x &amp; + &amp; 3y &amp; &amp; &amp; = &amp; 4 \\
 					
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the rank of the system.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

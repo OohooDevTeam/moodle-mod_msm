@@ -5,20 +5,20 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_LinearEquations"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Examples of Linear Equations</title>
-	  <caption xmlns="">Linear Equations - Examples</caption>
+	  <caption>Linear Equations - Examples</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the following is a linear equation.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>3x -5 +2z = w -5y</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -84,14 +84,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the following is a linear equation.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>e^2 x + \sin \frac{x}{12}\, y - 3^{50} = \ln(10)\, z - 4x</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -147,14 +147,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the following is a linear equation.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>(x+y+z)^2\ +\ 3xyz\ =\ 1</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

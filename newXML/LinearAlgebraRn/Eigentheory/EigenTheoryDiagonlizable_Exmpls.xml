@@ -5,15 +5,15 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_EigenTheoryDiagonalizable1"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Example of Eigentheory</title>
-	  <caption xmlns="">Composed of Scalings</caption>
+	  <caption>Composed of Scalings</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Consider the matrix</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{A} =
@@ -26,7 +26,7 @@
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>It transforms the vector <math>
                   <latex>\Vect{a} := (1,1)</latex>
                </math> into the vector <math>
@@ -47,7 +47,7 @@
                   <latex>4</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="">
+			      <para>
             <para.body>Further <math>
                   <latex>\Mtrx{A}</latex>
                </math> transforms the vector <math>
@@ -70,17 +70,17 @@
                   <latex>2</latex>
                </math>.</para.body>
          </para>
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/Diagonalizable01.png"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/Diagonalizable01.png"/>
          </media>
-			      <para xmlns="">
+			      <para>
             <para.body>The picture above shows the plane <math>
                   <latex>\RNr[2]</latex>
                </math> before and after transformation by <math>
                   <latex>\Mtrx{A}</latex>
                </math>.</para.body>
          </para>
-			      <ul xmlns="">
+			      <ul>
 				        <li>
                <para>
                   <para.body>The vectors <math>

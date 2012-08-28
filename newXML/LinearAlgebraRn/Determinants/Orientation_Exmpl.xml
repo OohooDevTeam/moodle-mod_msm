@@ -5,20 +5,20 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_Orientation"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Examples: Orientation</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the orientation of <math>
                   <latex>\RNr[2]</latex>
                </math> given by the pair of vectors <math>
                   <latex>(\Vect{a},\Vect{b})</latex>
                </math> with</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <math>
                   <latex>\Vect{a}=(4,1)</latex>
@@ -28,7 +28,7 @@
             </para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -41,7 +41,7 @@
                      </math> and compute its determinant:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\det [\Vect{a}\ \ \Vect{b}]</latex>
@@ -68,7 +68,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -87,7 +87,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -109,7 +109,7 @@
                   <para.body>Therefore</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\omega(\Vect{a},\Vect{b})</latex>
@@ -142,14 +142,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the orientation of <math>
                   <latex>\RNr[3]</latex>
                </math> represented by the triple of vectors <math>
                   <latex>(\Vect{a},\Vect{b},\Vect{c})</latex>
                </math> with</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <math>
                   <latex>\Vect{a} = (1,0,-1)</latex>
@@ -160,7 +160,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -175,7 +175,7 @@
                      </math>; then we compute its determinant:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\det [\Vect{a}\ \ \Vect{b}\ \ \Vect{c}]</latex>
@@ -203,7 +203,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -222,7 +222,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -244,7 +244,7 @@
                   <para.body>Therefore</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\omega(\Vect{a},\Vect{b},\Vect{c})</latex>

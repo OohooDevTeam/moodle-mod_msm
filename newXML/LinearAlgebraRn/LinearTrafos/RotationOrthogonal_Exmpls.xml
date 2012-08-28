@@ -5,13 +5,13 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_RotationOrthogonal"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Rotations are Distance Preserving</title>
-	  <caption xmlns="">Rotations are Distance Preserving</caption>
+	  <caption>Rotations are Distance Preserving</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>We say that a linear transformation <math>
                   <latex>L</latex>
                </math> preserves the distance between two points <math>
@@ -30,8 +30,8 @@
          </para>
 			
 			
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/RotationOrthogonal.png"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/RotationOrthogonal.png"/>
          </media>
 			
 		    </statement.showme>

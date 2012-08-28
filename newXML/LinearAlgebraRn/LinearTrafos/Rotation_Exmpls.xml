@@ -5,22 +5,22 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_Rotation"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Example of a Rotation of the Plane</title>
-	  <caption xmlns="">Rotation of the Plane</caption>
+	  <caption>Rotation of the Plane</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the matrix representing the counterclockwise rotation of the plane about the origin through the angle of <math>
                   <latex>60</latex>
                </math> degrees.</para.body>
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

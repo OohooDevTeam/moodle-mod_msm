@@ -5,20 +5,20 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_CoordinateVector"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Coordinate Vector: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>You are given the ordered basis <math>
                   <latex>\EuScript{B} = (\Vect{a},\Vect{b})</latex>
                </math> of <math>
                   <latex>\RNr[2]</latex>
                </math> with</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <math>
                   <latex>\Vect{a} = (2,1)</latex>
@@ -26,7 +26,7 @@
                   <latex>\Vect{b} = (-3,4)</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="">
+			      <para>
             <para.body>Find <math>
                   <latex>\Vect{x}_{\EuScript{S}}</latex>
                </math> if <math>
@@ -35,7 +35,7 @@
             </para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -44,7 +44,7 @@
                      </math> means that</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}</latex>
@@ -61,7 +61,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -78,7 +78,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -95,7 +95,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -120,7 +120,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Let <math>
                   <latex>V</latex>
                </math> be the subspace of <math>
@@ -138,7 +138,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -151,7 +151,7 @@
                      </math> satisfying</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}</latex>
@@ -235,7 +235,7 @@ s &amp; + &amp; 3t &amp; = &amp; 0 \\
                      </math> are the only solution of the given vector equation, and so we conclude:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}</latex>
@@ -252,7 +252,7 @@ s &amp; + &amp; 3t &amp; = &amp; 0 \\
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}_{\EuScript{B}}</latex>
@@ -284,7 +284,7 @@ s &amp; + &amp; 3t &amp; = &amp; 0 \\
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Suppose <math>
                   <latex>\EuScript{B}=(\Vect{a},\Vect{b},\Vect{c})</latex>
                </math> is an ordered basis of a subvector space <math>
@@ -295,7 +295,7 @@ s &amp; + &amp; 3t &amp; = &amp; 0 \\
                   <latex>\Vect{x}_{\EuScript{B}}</latex>
                </math> if</para.body>
          </para>
-			      <ol xmlns="">
+			      <ol>
 				        <li>
                <para>
                   <para.body>
@@ -334,7 +334,7 @@ s &amp; + &amp; 3t &amp; = &amp; 0 \\
             </li>
 			      </ol>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -394,7 +394,7 @@ s &amp; + &amp; 3t &amp; = &amp; 0 \\
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Suppose <math>
                   <latex>\EuScript{B}=(\Vect{a},\Vect{b},\Vect{c})</latex>
                </math> is an ordered basis of a subvector space <math>
@@ -412,14 +412,14 @@ s &amp; + &amp; 3t &amp; = &amp; 0 \\
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
                   <para.body>We know that</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}</latex>
@@ -436,7 +436,7 @@ s &amp; + &amp; 3t &amp; = &amp; 0 \\
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -458,7 +458,7 @@ s &amp; + &amp; 3t &amp; = &amp; 0 \\
                   <para.body>Therefore</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}_{\EuScript{C}}</latex>

@@ -5,18 +5,18 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_SubSequence"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>Subsequences: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Given the sequence <math>
                   <latex>(a_n := \tfrac{1}{n+1})</latex>
                </math>, write out the subsequence of even indexed sequence elements.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -336,16 +336,16 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Given the sequence <math>
                   <latex>(a_n = n)</latex>
                </math>, find the subsequence corresponding to the function</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>n\from \NNr \longrightarrow \NNr,\quad n(i):= i^2</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

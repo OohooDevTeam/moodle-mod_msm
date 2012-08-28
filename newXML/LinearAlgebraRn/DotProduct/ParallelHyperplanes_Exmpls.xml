@@ -5,20 +5,20 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ParallelHyperplanes"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 		
 		
 
 	  <title>Parallel Hyperplanes - Examples</title>
-	  <caption xmlns="">Parallel Hyperplanes - Examples</caption>
+	  <caption>Parallel Hyperplanes - Examples</caption>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the solution hyperplanes of the equations below are parallel.</para.body>
          </para>
-			      <math.array xmlns="" column="3">
-            <row rowspan="1">
+			      <math.array column="3">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>x + 4y - 1z</latex>
@@ -35,7 +35,7 @@
                   </math>
                </cell>
             </row>
-            <row rowspan="1">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>2x - 8y - 2z</latex>
@@ -54,7 +54,7 @@
             </row>
          </math.array>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -82,7 +82,7 @@
                      </math> with</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{v}</latex>
@@ -99,7 +99,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\left[ \begin{array}{r} 2 \\ -8 \\ -2 \end{array} \right]</latex>
@@ -127,7 +127,7 @@
                      </math> with</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{v}</latex>
@@ -156,11 +156,11 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the solution hyperplanes of the equations below are parallel.</para.body>
          </para>
-			      <math.array xmlns="" column="3">
-            <row rowspan="1">
+			      <math.array column="3">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>3u + v - w + 2x</latex>
@@ -177,7 +177,7 @@
                   </math>
                </cell>
             </row>
-            <row rowspan="1">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>2w - 6u - 2v - 4x</latex>
@@ -196,7 +196,7 @@
             </row>
          </math.array>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -222,7 +222,7 @@
                   <para.body>We note that</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{w}</latex>

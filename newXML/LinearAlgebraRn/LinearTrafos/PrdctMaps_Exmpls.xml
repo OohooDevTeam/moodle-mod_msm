@@ -5,18 +5,18 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ProductMaps"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Product of Linear Maps: Examples</title>
-	  <caption xmlns="">Product of Linears Maps</caption>
+	  <caption>Product of Linears Maps</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the product <math>
                   <latex>\Prdct{S}{T}</latex>
                </math> of the linear maps</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <math>
                   <latex>S\from \RNr[2] \longrightarrow \RNr[3]</latex>
@@ -25,12 +25,12 @@
                </math>
             </para.body>
          </para>
-			      <para xmlns="">
+			      <para>
             <para.body>if <math>
                   <latex>S</latex>
                </math> is represented by</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{A} = 
@@ -44,12 +44,12 @@
 					
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>and <math>
                   <latex>T</latex>
                </math> is represented by</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					 
 \Mtrx{B} = 
@@ -63,7 +63,7 @@
 				</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

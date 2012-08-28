@@ -5,15 +5,15 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               id="Exa_CrossProductPlaneInR3"
               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Examples: Cross Product and Planes in 3-Space</title>
-	  <caption xmlns="">Examples: Cross Product and Planes</caption>
+	  <caption>Examples: Cross Product and Planes</caption>
 	
 	
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find an equation for the plane <math>
                   <latex>P</latex>
                </math> passing through the three points <math>
@@ -24,7 +24,7 @@
                   <latex>(2,2,-2)</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <math>
                   <latex>\Vect{x} = (1,1,-2)</latex>
@@ -35,7 +35,7 @@
          </para>
 		    </statement.example>
 		
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -45,7 +45,7 @@
                   </para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\DotPr{ (\Vect{x} - \Vect{a} ) }{ \Vect{n} }</latex>
@@ -80,7 +80,7 @@
                      </math>. Further,</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{u}</latex>
@@ -97,7 +97,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{v}</latex>
@@ -121,7 +121,7 @@
                      </math>, which are not parallel. Therefore,</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{n}</latex>
@@ -147,7 +147,7 @@
                      </math>:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\CrssPr{ (\Vect{x} - (3,0,4)) }{ (10,23,6) }</latex>
@@ -169,7 +169,7 @@
                   <para.body>or</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>10x + 23y + 6z</latex>
@@ -197,15 +197,15 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find an equation for the plane <math>
                   <latex>P</latex>
                </math> passing through the point <math>
                   <latex>(3,3,-1)</latex>
                </math> and containing the line with the parametric equation</para.body>
          </para>
-			      <math.array xmlns="" column="3">
-            <row rowspan="1">
+			      <math.array column="3">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\ell(t)</latex>
@@ -224,7 +224,7 @@
             </row>
          </math.array>
 		    </statement.example>
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -234,7 +234,7 @@
                   </para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\DotPr{ (\Vect{x} - \Vect{a} ) }{ \Vect{n} }</latex>
@@ -269,7 +269,7 @@
                      </math>. Further,</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{u}</latex>
@@ -286,7 +286,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{v}</latex>
@@ -310,7 +310,7 @@
                      </math>, which are not parallel. Therefore,</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{n}</latex>
@@ -336,7 +336,7 @@
                      </math>:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\DotPr{ ( \Vect{x} - (3,3,-1)) }{ (10,-7,1) }</latex>
@@ -358,7 +358,7 @@
                   <para.body>or</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>10x -7y + z</latex>
@@ -390,12 +390,12 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine whether there is a plane <math>
                   <latex>P</latex>
                </math> containing the two lines</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \aligned
@@ -405,13 +405,13 @@ L_2 &amp;\quad k(t) &amp; = &amp; (1,-1,0) + t(1,1,2)
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>If so, find an equation for <math>
                   <latex>P</latex>
                </math>.</para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -434,7 +434,7 @@ L_2 &amp;\quad k(t) &amp; = &amp; (1,-1,0) + t(1,1,2)
                      </math> lie on a common plane only if they intersect. We approach this problem as follows. If there is a plane</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\DotPr{ (\Vect{x} - \Vect{a}) }{ \Vect{n} }</latex>
@@ -472,7 +472,7 @@ L_2 &amp;\quad k(t) &amp; = &amp; (1,-1,0) + t(1,1,2)
                      </math> has the equation.</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\DotPr{ (\Vect{x} - (2,1,3)) }{ (1,1,-1) }</latex>
@@ -489,7 +489,7 @@ L_2 &amp;\quad k(t) &amp; = &amp; (1,-1,0) + t(1,1,2)
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>x+y-z</latex>

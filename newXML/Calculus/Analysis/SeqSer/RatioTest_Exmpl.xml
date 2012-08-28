@@ -5,29 +5,29 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_RatioTest"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>Ratio Test: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Use the ratio test to determine if the series</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sum_{n=0}^{\infty} (-1)^n \dfrac{ 3^n n^2 }{ n! }</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>converges absolutely.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
                   <para.body>We analyze the quotient</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\lim_{n\to \infty} \dfrac{ \Abs{ a_{n+1} } }{ \Abs{ a_n } }</latex>
@@ -44,7 +44,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -61,7 +61,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

@@ -5,11 +5,11 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_EigenvectorEigenvalue"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Eigenvector / Eigenvalue: Example</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>With respect to standard coordinates of <math>
                   <latex>\RNr[3]</latex>
                </math>, the <math>
@@ -22,7 +22,7 @@
                   <latex>xy</latex>
                </math>-plane.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{A} = 
@@ -53,11 +53,11 @@ x \\ y \\ 0
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Relate its transformation properties to its eigenvectors and eigenvalues.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Discussion">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

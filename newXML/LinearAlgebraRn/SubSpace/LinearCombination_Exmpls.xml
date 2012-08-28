@@ -5,13 +5,13 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_LinearCombination"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Linear Combination: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The linear combinations of a single vector <math>
                   <latex>\Vect{x}</latex>
                </math> consist of all vectors of the form <math>
@@ -24,8 +24,8 @@
                   <latex>\Vect{x} = (2,1)</latex>
                </math>.</para.body>
          </para>
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/LinearCombination1_Anim.gif"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/LinearCombination1_Anim.gif"/>
          </media>
 		    </statement.showme>
 	  </showme>
@@ -35,7 +35,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>We say that a vector <math>
                   <latex>\Vect{x}</latex>
                </math> is a linear combination of two vectors <math>
@@ -50,8 +50,8 @@
                   <latex>\RNr</latex>
                </math> such that</para.body>
          </para>
-			      <math.array xmlns="" column="3">
-            <row rowspan="1">
+			      <math.array column="3">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{x}</latex>
@@ -69,7 +69,7 @@
                </cell>
             </row>
          </math.array>
-			      <para xmlns="">
+			      <para>
             <para.body>Now if <math>
                   <latex>\Vect{x}</latex>
                </math>, <math>
@@ -88,14 +88,14 @@
                   <latex>t</latex>
                </math>? – In general, this question leads to a system of linear equations. The animation below illustrates this issue for the vectors</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Vect{u} = (-1,-1),\quad \Vect{v} = (2,1), \quad \text{and}\quad \Vect{x} = (1,-1)</latex>
 			      </math.display>
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/LinearCombination2_Anim.gif"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/LinearCombination2_Anim.gif"/>
          </media>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -165,17 +165,17 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>For another example of the previous type, let</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Vect{u} = (-1,-1),\quad \Vect{v} = (2,1), \quad \text{and}\quad \Vect{x} = (3,2)</latex>
 			      </math.display>
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/LinearCombination3_Anim.gif"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/LinearCombination3_Anim.gif"/>
          </media>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -245,18 +245,18 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Any vector <math>
                   <latex>\Vect{x}=(x,y)</latex>
                </math> in <math>
                   <latex>\RNr[2]</latex>
                </math> can be expressed uniquely as a linear combination of the vectors</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Vect{u} = (-1,-1)\quad \text{and} \quad \Vect{v} = (2,1)</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Proof">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -309,21 +309,21 @@ A =
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The animation below illustrates how to express the vector <math>
                   <latex>\Vect{x} = (2,1,2)</latex>
                </math> of <math>
                   <latex>\RNr[3]</latex>
                </math> as a linear combination of the vectors.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Vect{u} = (1,0,1/2)\quad \text{and} \quad \Vect{v} = (0,1,1).</latex>
 			      </math.display>
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/"/>
          </media>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -376,12 +376,12 @@ A =
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>With your mouse point to vectors which are linear combinations of <math>
                   <latex>\Vect{x}</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
 				           <media type="image" active="1" inline="0">
                   <img src="ims/LinearCombination2.gif">
@@ -404,7 +404,7 @@ A =
                                     </math> because</para.body>
                               </para>
 							                       <math.array column="3">
-                                 <row rowspan="1">
+                                 <row xmlns:compositor="Compositor" compositor:rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>\Vect{x}</latex>
@@ -528,7 +528,7 @@ A =
 			         </para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -559,7 +559,7 @@ A =
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Express the position vector of each of the yellow dots as a linear combination of <math>
                   <latex>\mathbf{x}</latex>
                </math>, <math>
@@ -568,7 +568,7 @@ A =
                   <latex>\mathbf{z}</latex>
                </math> in a least three distinct ways. – Place your mouse over top the point in question to find answers.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
 				           <media type="image" active="1" inline="0">
                   <img src="ims/LinearCombination3.gif">

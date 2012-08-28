@@ -5,16 +5,16 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Illstrtn_LinearEqsManySolutions"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Linear Equations with Infinitely Many Solutions</title>
-	  <caption xmlns="">Linear Equations with Infinitely Many Solutions</caption>
+	  <caption>Linear Equations with Infinitely Many Solutions</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>If a system of linear equations has more than one solution, it automatically has infinitely many such. This is so because the solution hyperplanes of its equations intersect in a line or a plane or in a higher dimensional space.</para.body>
          </para>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>
                <media type="image" active="0" inline="0">
                   <img src="ims/TwoEqnsR3NonParallel.gif"/>
@@ -22,7 +22,7 @@
             </para.body>
          </para>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>The RREF of a system of linear equations indicates that the system has infinitely many solutions as follows: there are
 				<subordinate>
                   <hot>free variables</hot>
@@ -39,7 +39,7 @@
                </math>.</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{array}{ccccccccccccccc|c}
@@ -56,13 +56,13 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>Each column in the non-augmented part without a leading <math>
                   <latex>1</latex>
                </math> corresponds to a variable whose number values can be chosen freely. So there are infinitely many solutions. Visibly,</para.body>
          </para>
 			
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>(number of free variables) = (number of variables) - 
 				<subordinate>
                   <hot>rank(system)</hot>

@@ -5,32 +5,32 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_MatrixGivesLinearMap"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Example: A Linear Map from a Matrix</title>
-	  <caption xmlns="">Example: A Linear Map from a Matrix</caption>
+	  <caption>Example: A Linear Map from a Matrix</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The matrix</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>A = \left[\begin{array}{c} 2 \\ 1 \end{array}\right]</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>is of size <math>
                   <latex>(2,1)</latex>
                </math>. Therefore it determines a linear map <math>
                   <latex>L\from \RNr[1] \to \RNr[2]</latex>
                </math>, namely</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>L(x) = \left[\begin{array}{c} 2 \\ 1 \end{array}\right]\cdot [x] = \left[\begin{array}{c} 2x \\ x \end{array}\right]</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>Thus <math>
                   <latex>L</latex>
                </math> sends a <math>
@@ -44,7 +44,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -53,8 +53,8 @@
                      </math> by evaluating it on some small integers</para.body>
                </para>
 			
-			            <media xmlns="Theorem" type="image" active="0" inline="0">
-                  <img xmlns="" src="ims/LinearTrafo2To1.png"/>
+			            <media type="image" active="0" inline="0">
+                  <img src="ims/LinearTrafo2To1.png"/>
                </media>
 			
 			            <para>
@@ -113,11 +113,11 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The matrix</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 A = \left[
@@ -129,7 +129,7 @@ A = \left[
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>has size <math>
                   <latex>(2,2)</latex>
                </math>. So it determines a linear transformation <math>
@@ -137,7 +137,7 @@ A = \left[
                </math>, namely</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 R(x,y) = \left[
@@ -157,7 +157,7 @@ x \\ y
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>In other words, if <math>
                   <latex>(x,y)\in\RNr[2]</latex>
                </math> is arbitrary, then <math>
@@ -172,7 +172,7 @@ x \\ y
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -180,12 +180,12 @@ x \\ y
                         <latex>R</latex>
                      </math> by evaluating it on pairs of small integers</para.body>
                </para>
-			            <media xmlns="Theorem" type="image" active="0" inline="0">
-                  <img xmlns="" src="ims/Rotation90.png"/>
+			            <media type="image" active="0" inline="0">
+                  <img src="ims/Rotation90.png"/>
                </media>
 			
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>R(1,0)</latex>
@@ -202,7 +202,7 @@ x \\ y
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>R(0,1)</latex>

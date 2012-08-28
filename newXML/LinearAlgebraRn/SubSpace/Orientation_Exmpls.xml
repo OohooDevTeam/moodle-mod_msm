@@ -5,13 +5,13 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_OrientationGeneral"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Orientation in General: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Describe possible orientations of a 1-dimensional subspace <math>
                   <latex>V</latex>
                </math> of <math>
@@ -19,7 +19,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Discussion">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -44,7 +44,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Describe possible orientations of a 2-dimensional subspace <math>
                   <latex>V</latex>
                </math> of <math>
@@ -52,7 +52,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Discussion">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

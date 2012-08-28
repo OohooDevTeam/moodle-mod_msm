@@ -5,11 +5,11 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_DimensionFormulaLinearMap"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Dimension Formula for a Linear Map - Example</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Given a unit vector <math>
                   <latex>\Vect{e}</latex>
                </math> in <math>
@@ -18,10 +18,10 @@
                   <latex>n\geq 1</latex>
                </math>, let</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>P\from \RNr[n] \longrightarrow \RNr[n],\quad P(\Vect{x}) = (\DotPr{ \Vect{x} }{ \Vect{e} })\cdot \Vect{e}</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>be the linear map which sends a vector <math>
                   <latex>\Vect{x}</latex>
                </math> to its projection along <math>
@@ -31,7 +31,7 @@
                </math> and their dimensions.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -56,7 +56,7 @@
                      </math>. Therefore,</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\dim(\im(P))</latex>
@@ -78,7 +78,7 @@
                   <para.body>From the dimension formula we get</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\dim(\ker(P))</latex>
@@ -111,8 +111,8 @@
                         <latex>n-1</latex>
                      </math>.</para.body>
                </para>
-			            <media xmlns="Theorem" type="image" active="1" inline="0">
-                  <img xmlns="" src="ims/ProjectionDimensionFormula.gif"/>
+			            <media type="image" active="1" inline="0">
+                  <img src="ims/ProjectionDimensionFormula.gif"/>
                </media>
 			            <para>
                   <para.body>Summarizing: <math>

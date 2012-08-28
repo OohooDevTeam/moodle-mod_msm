@@ -5,19 +5,19 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               id="Exa_LevelSet"
               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Examples: Level Sets of Linear Transformations</title>
-	  <caption xmlns="">Example: A Linear Map from a Matrix</caption>
+	  <caption>Example: A Linear Map from a Matrix</caption>
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Let <math>
                   <latex>T\from \RNr[3] \to \RNr[2]</latex>
                </math> be given by</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 T(x,y,z) = 
@@ -35,7 +35,7 @@ x \\ y \\ z
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Find <math>
                   <latex>T^{-1}(1,1)</latex>
                </math>; in other words, find the level set of <math>
@@ -46,7 +46,7 @@ x \\ y \\ z
          </para>
 		    </statement.example>
 		
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -154,7 +154,7 @@ x \\ y \\ z
                </para>
 			
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>y</latex>
@@ -171,7 +171,7 @@ x \\ y \\ z
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>x</latex>
@@ -194,7 +194,7 @@ x \\ y \\ z
                </para>
 			
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\left( 1 - \tfrac{4}{3} z , \tfrac{2}{3} z,z \right)</latex>

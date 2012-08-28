@@ -5,16 +5,16 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_Alternating"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Alternating Property of Determinants: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The alternating property of determinants says that interchanging two columns in a matrix changes the sign of its determinant. Therefore</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \det
@@ -39,10 +39,10 @@
 	
 	  <showme>
 		    <statement.showme>
-         <para xmlns="">
+         <para>
             <para.body>Similarly</para.body>
          </para>
-		       <math.display xmlns="">
+		       <math.display>
 			         <latex>
 				
 \aligned

@@ -5,18 +5,18 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_SymmetricMatrix"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of (non-)Symmetric Matrices</title>
-	  <caption xmlns="">(Non-)Symmetric Matrices</caption>
+	  <caption>(Non-)Symmetric Matrices</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The following matrices are symmetric</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					\left[\begin{array}{rrr}
@@ -40,10 +40,10 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The following matrices are not symmetric</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					\left[\begin{array}{rrr}
@@ -60,7 +60,7 @@
 					
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Note that, while the <math>
                   <latex>(4,4)</latex>
                </math>-matrix on the right displays a different kind of symmetry, it is not equal to its transpose, and so it is not symmetric.</para.body>

@@ -5,17 +5,17 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_DeterminantMultilinear"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Multilinearity Property of the Determinant: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The following computation is valid:</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \det\, 
@@ -44,7 +44,7 @@ b &amp; 3
 			      </math.display>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -92,11 +92,11 @@ y &amp; 3
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The following computation is valid.</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \det\, 
@@ -124,7 +124,7 @@ y &amp; 3
 			      </math.display>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -171,11 +171,11 @@ y &amp; 3
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The following computation is valid.</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \aligned
@@ -223,7 +223,7 @@ y &amp; 3
 			      </math.display>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -248,7 +248,7 @@ y &amp; 3
                </para>
 			
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>L(1+a,2+a,3+a)</latex>
@@ -265,7 +265,7 @@ y &amp; 3
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

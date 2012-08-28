@@ -5,22 +5,22 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               id="Exa_OrientedArea"
               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Examples of Oriented Area</title>
-	  <caption xmlns="">Oriented Area</caption>
+	  <caption>Oriented Area</caption>
 	
 	
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>The oriented area of the parallelogram spanned by the vectors <math>
                   <latex>\Vect{x}=(4,0)</latex>
                </math>  and <math>
                   <latex>\Vect{y}=(0,3)</latex>
                </math> is</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \OriVol(\Vect{x},\Vect{y}) = \det
@@ -35,7 +35,7 @@
 			      </math.display>
 		    </statement.example>
 		
-		    <answer xmlns="" type="Explanation" version="1">
+		    <answer type="Explanation" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -72,14 +72,14 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>The oriented area of the parallelogram spanned by the vectors <math>
                   <latex>\Vect{u}=(0,5)</latex>
                </math>  and <math>
                   <latex>\Vect{v}=(2,0)</latex>
                </math> is</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \OriVol(\Vect{x},\Vect{y}) = \det
@@ -94,7 +94,7 @@
 			      </math.display>
 		    </statement.example>
 		
-		    <answer xmlns="" type="Explanation" version="1">
+		    <answer type="Explanation" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -132,7 +132,7 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the orientation of <math>
                   <latex>\RNr[2]</latex>
                </math> given by the pair of vectors <math>
@@ -144,7 +144,7 @@
                </math>. </para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -190,7 +190,7 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>The picture below shows a grid where the distance between two horizontally or vertically neighboring points is <math>
                   <latex>1</latex>
                </math>. Also there is a horizontal vector <math>
@@ -207,7 +207,7 @@
                   <latex>+15</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <media type="image" active="1" inline="0">
                   <img src="ims/OrientedAreaPlaneGrid.jpg">
@@ -220,7 +220,7 @@
                                     </math> so that.</para.body>
                               </para>
 						                        <math.array column="3">
-                                 <row rowspan="1">
+                                 <row xmlns:compositor="Compositor" compositor:rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>\OriVol(\Vect{x},\Vect{y})</latex>
@@ -288,7 +288,7 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>The picture below shows a grid where the distance between two horizontally or vertically neighboring points is <math>
                   <latex>1</latex>
                </math>. Also there is a horizontal vector <math>
@@ -305,7 +305,7 @@
                   <latex>-10</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <media type="image" active="1" inline="0">
                   <img src="ims/OrientedAreaPlaneGrid.jpg">
@@ -318,7 +318,7 @@
                                     </math> so that.</para.body>
                               </para>
 						                        <math.array column="3">
-                                 <row rowspan="1">
+                                 <row xmlns:compositor="Compositor" compositor:rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>\OriVol(\Vect{x},\Vect{y})</latex>
@@ -383,7 +383,7 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>The picture below shows a grid where the distance between two horizontally or vertically neighboring points is <math>
                   <latex>1</latex>
                </math>. Also there is a horizontal vector <math>
@@ -400,7 +400,7 @@
                   <latex>-20</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <media type="image" active="1" inline="0">
                   <img src="ims/OrientedAreaPlaneGrid.jpg">
@@ -413,7 +413,7 @@
                                     </math> such that</para.body>
                               </para>
 						                        <math.array column="3">
-                                 <row rowspan="1">
+                                 <row xmlns:compositor="Compositor" compositor:rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>\OriVol(\Vect{y},\Vect{x})</latex>
@@ -441,7 +441,7 @@
                                     </math> such that</para.body>
                               </para>
 						                        <math.array column="3">
-                                 <row rowspan="1">
+                                 <row xmlns:compositor="Compositor" compositor:rowspan="1">
                                     <cell colspan="2" halign="center" valign="middle">
                                        <math>
                                           <latex>\OriVol(\Vect{y},\Vect{x})</latex>

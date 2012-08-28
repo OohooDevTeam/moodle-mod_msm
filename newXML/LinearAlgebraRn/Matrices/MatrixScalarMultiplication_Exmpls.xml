@@ -5,19 +5,19 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_NumberScalarMultiplicationMatrix"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of Multiplying a Matrix by a Number</title>
-	  <caption xmlns="">Multiplying a Matrix by a Number</caption>
+	  <caption>Multiplying a Matrix by a Number</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The (scalar) product of the matrix</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					{\color{blue}A}\ =\ 
@@ -29,13 +29,13 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>by the number <math>
                   <latex>t={\color{red}3}</latex>
                </math> is</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					\aligned
@@ -63,7 +63,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In general, the product of a matrix <math>
                   <latex>{\color{blue}A}</latex>
                </math> of size <math>
@@ -73,7 +73,7 @@
                </math> with</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					{\color{blue}A}\ =\ 
@@ -85,11 +85,11 @@
 					
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>is</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					\aligned

@@ -5,15 +5,15 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ProductsSubsetsRn"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
-	  <title>Examples of Products of Subsets of <math xmlns="">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Examples of Products of Subsets of <math>
          <latex>\RNr[n]</latex>
       </math>
    </title>
 	  <showme>
-		    <caption xmlns="">Products of Two Intervals</caption>
+		    <caption>Products of Two Intervals</caption>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The cartesian product of the intervals  <math>
                   <latex>[0,1]</latex>
                </math>  and  <math>
@@ -24,7 +24,7 @@
                   <latex>(0,0), (1,0), (0,2), (1,2)</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
 				           <media type="image" active="0" inline="0">
                   <img src="CrtsnPrdctR2.gif"/>
@@ -32,7 +32,7 @@
 			         </para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -65,9 +65,9 @@
 	
 	
 	  <showme>
-		    <caption xmlns="">Product of Three Intervals</caption>
+		    <caption>Product of Three Intervals</caption>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The cartesian product of the intervals  <math>
                   <latex>[-1,2], [2,3]</latex>
                </math>  and  <math>
@@ -78,11 +78,11 @@
                   <latex>\RNr[3]</latex>
                </math> with corners </para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>(-1,2,0), (-1,2,5), (-1,3,0), (-1,3,5), (2,2,0), (2,2,5), (2,3,0), (2,3,5)</latex>
 			      </math.display>
 			
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <media type="image" active="0" inline="0">
                   <img src="ims/CrtsnPrdctR3.gif"/>
@@ -91,7 +91,7 @@
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -123,7 +123,7 @@
 	  </showme>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>
 				           <math>
                   <latex>\RNr</latex>
@@ -143,7 +143,7 @@
 	  </showme>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>
 				           <math>
                   <latex>\RNr[2]</latex>

@@ -73,7 +73,7 @@
     <xsl:template match="exa:answer">
         <xsl:choose>
             <xsl:when test="parent::node()[name()='example']">
-                <xsl:element name="answer">
+                <xsl:element name="answer" namespace="Compositor">
                     <xsl:choose>
                         <xsl:when test="./@type != ''">
                             <xsl:attribute name="type">
@@ -99,23 +99,28 @@
                             </xsl:attribute>
                         </xsl:otherwise>
                     </xsl:choose>
-                    <xsl:element name="answer.block">
+                    <xsl:element name="answer.block" namespace="Compositor">
                         <xsl:if test="child::node()[name()='caption']">
                             <xsl:apply-templates select="exa:caption"/>
                         </xsl:if>
-                        <xsl:element name="answer.block.body">                            
+                        <xsl:element name="answer.block.body" namespace="Compositor">                            
                             <xsl:apply-templates select="child::node()[not(name()='caption')]"/>
                         </xsl:element>
                     </xsl:element>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="answer.showme">
-                    <xsl:element name="answer.showme.block">
+                <xsl:element name="answer.showme" namespace="Compositor">
+                    <xsl:if test="./@type != ''">
+                        <xsl:attribute name="type">
+                            <xsl:value-of select="./@type"/>
+                        </xsl:attribute>                           
+                    </xsl:if>
+                    <xsl:element name="answer.showme.block" namespace="Compositor">
                         <xsl:if test="child::node()[name()='caption']">
                             <xsl:apply-templates select="exa:caption"/>
                         </xsl:if>
-                        <xsl:element name="answer.showme.block.body">                            
+                        <xsl:element name="answer.showme.block.body" namespace="Compositor">                            
                             <xsl:apply-templates select="child::node()[not(name()='caption')]"/>
                         </xsl:element>
                     </xsl:element>
@@ -125,7 +130,7 @@
     </xsl:template>
     
     <xsl:template match="exa:texsupport">
-        <xsl:element name="texsupport">
+        <xsl:element name="texsupport" namespace="Compositor">
             <xsl:attribute name="href">
                 <xsl:value-of select="./@href"/>
             </xsl:attribute>
@@ -139,19 +144,19 @@
     </xsl:template>
     
     <xsl:template match="exa:caption">
-        <xsl:element name="caption">
+        <xsl:element name="caption" namespace="Compositor">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
         
         <xsl:template match="exa:tablabel">
-            <xsl:element name="textcaption">
+            <xsl:element name="textcaption" namespace="Compositor">
                 <xsl:apply-templates/>
             </xsl:element>
         </xsl:template>
     
     <xsl:template match="exa:figure">
-        <xsl:element name="media" namespace="Theorem">
+        <xsl:element name="media" namespace="Compositor">
             <xsl:if test="./@id">
                 <xsl:attribute name="id">
                     <xsl:value-of select="./@id"/>
@@ -178,7 +183,7 @@
     <xsl:template match="exa:img">
         <xsl:choose>     
             <xsl:when test="parent::node()[name()='figure']">
-                <xsl:element name="img">
+                <xsl:element name="img" namespace="Compositor">
                     <xsl:attribute name="src">
                         <xsl:value-of select="./@src"/>
                     </xsl:attribute>
@@ -195,13 +200,13 @@
                     
                     <xsl:if test="child::node()[name()='info' or name()='caption']">
                         
-                        <xsl:element name="extended.caption" namespace="Theorem">
+                        <xsl:element name="extended.caption" namespace="Compositor">
                             
                             <xsl:if test="child::node()[name()='info']">
                                 
-                                <xsl:element name="image.mapping" namespace="Theorem">
+                                <xsl:element name="image.mapping" namespace="Compositor">
                                     
-                                    <xsl:element name="area" namespace="Theorem">
+                                    <xsl:element name="area" namespace="Compositor">
                                         <xsl:attribute name="shape">
                                             <xsl:text>rect</xsl:text>
                                         </xsl:attribute>
@@ -237,11 +242,11 @@
                 </xsl:element>         
             </xsl:when>
             <xsl:when test="parent::node()[name()='hot']">
-                <xsl:element name="media">
+                <xsl:element name="media" namespace="Compositor">
                     <xsl:attribute name="type">image</xsl:attribute>
                     <xsl:attribute name="active">1</xsl:attribute>
                     <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img">
+                    <xsl:element name="img" namespace="Compositor">
                         <xsl:attribute name="src">
                             <xsl:value-of select="./@src"/>
                         </xsl:attribute>
@@ -259,7 +264,7 @@
                 </xsl:element>            
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="media">
+                <xsl:element name="media" namespace="Compositor">
                     <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                         <xsl:attribute name="id">
                             <xsl:value-of select="parent::node()/@id"/>
@@ -269,7 +274,7 @@
                     <xsl:attribute name="type">image</xsl:attribute>
                     <xsl:attribute name="active">0</xsl:attribute>
                     <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img">
+                    <xsl:element name="img" namespace="Compositor">
                         <xsl:attribute name="src">
                             <xsl:value-of select="./@src"/>
                         </xsl:attribute>
@@ -290,7 +295,7 @@
     </xsl:template>
     
     <xsl:template match="exa:image">
-        <xsl:element name="media">
+        <xsl:element name="media" namespace="Compositor">
             <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                 <xsl:attribute name="id">
                     <xsl:value-of select="parent::node()/@id"/>
@@ -307,7 +312,7 @@
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:attribute name="inline">0</xsl:attribute>
-            <xsl:element name="img">
+            <xsl:element name="img" namespace="Compositor">
                 <xsl:attribute name="src">
                     <xsl:choose>
                         <xsl:when test="child::node()[name()='path']">
@@ -330,7 +335,7 @@
                 </xsl:if>
             
             <xsl:if test="child::node()[not(name()='path')]">
-                <xsl:element name="image.mapping">
+                <xsl:element name="image.mapping" namespace="Compositor">
                     <xsl:apply-templates select="exa:area"/>
                 </xsl:element>
             </xsl:if>
@@ -339,7 +344,7 @@
     </xsl:template>
     
     <xsl:template match="exa:area">
-        <xsl:element name="area">
+        <xsl:element name="area" namespace="Compositor">
             <xsl:if test="attribute::* !=''">
                 <xsl:copy-of select="attribute::*"/>
             </xsl:if>
@@ -351,7 +356,7 @@
     </xsl:template>
     
     <xsl:template match="exa:math.display">
-        <xsl:element name="math.display">
+        <xsl:element name="math.display" namespace="Compositor">
             <xsl:if test="attribute::* !=''">
                 <xsl:copy-of select="attribute::*"/>
             </xsl:if>
@@ -360,11 +365,11 @@
     </xsl:template>
     
     <xsl:template match="exa:computation">
-        <xsl:element name="math.array">
+        <xsl:element name="math.array" namespace="Compositor">
             <xsl:attribute name="column">3</xsl:attribute>
             <xsl:for-each select="child::node()[name()='left']">
-                <xsl:element name="row">
-                    <xsl:attribute name="rowspan">
+                <xsl:element name="row" namespace="Compositor">
+                    <xsl:attribute name="rowspan" namespace="Compositor">
                         <xsl:value-of select="1"/>
                     </xsl:attribute>
                     <xsl:apply-templates select="."/>
@@ -376,7 +381,7 @@
     </xsl:template>
     
     <xsl:template match="exa:left">
-        <xsl:element name="cell">
+        <xsl:element name="cell" namespace="Compositor">
             <xsl:attribute name="colspan">
                 <xsl:value-of select="2"/>
             </xsl:attribute>
@@ -387,31 +392,26 @@
                 <xsl:text>middle</xsl:text>
             </xsl:attribute>
             
-            <xsl:element name="math">
-                <xsl:element name="latex">
+            <xsl:element name="math" namespace="Compositor">
+                <xsl:element name="latex" namespace="Compositor">
                     <xsl:apply-templates select="child::node()[name()='']"/>
                 </xsl:element>
             </xsl:element>
             
             <xsl:if test="child::node()[name()='info']">
-                <xsl:element name="companion">
-                    <xsl:apply-templates select="exa:info"/>
-                </xsl:element>
-            </xsl:if>
-            <xsl:if test="child::node()[name()='info']">
-                <xsl:element name="companion">
+                <xsl:element name="companion" namespace="Compositor">
                     <xsl:apply-templates select="exa:info"/>
                 </xsl:element>
             </xsl:if>
         
             <xsl:if test="child::node()[name()='cite']">
-                <xsl:element name="cite">
+                <xsl:element name="cite" namespace="Compositor">
                     <xsl:apply-templates select="exa:cite"/>
                 </xsl:element>
             </xsl:if>
         
             <xsl:if test="child::node()[name()='link']">
-                <xsl:element name="link">
+                <xsl:element name="link" namespace="Compositor">
                     <xsl:apply-templates select="exa:link"/>
                 </xsl:element>
             </xsl:if>
@@ -419,7 +419,7 @@
     </xsl:template>
     
     <xsl:template match="exa:center">
-        <xsl:element name="cell">
+        <xsl:element name="cell" namespace="Compositor">
             <xsl:attribute name="colspan">
                 <xsl:value-of select="1"/>
             </xsl:attribute>
@@ -430,31 +430,26 @@
                 <xsl:text>middle</xsl:text>
             </xsl:attribute>
             
-            <xsl:element name="math">
-                <xsl:element name="latex">
+            <xsl:element name="math" namespace="Compositor">
+                <xsl:element name="latex" namespace="Compositor">
                     <xsl:apply-templates select="child::node()[name()='']"/>
                 </xsl:element>               
             </xsl:element>
             
             <xsl:if test="child::node()[name()='info']">
-                <xsl:element name="companion">
+                <xsl:element name="companion" namespace="Compositor">
                     <xsl:apply-templates select="exa:info"/>
                 </xsl:element>
             </xsl:if>
-            <xsl:if test="child::node()[name()='info']">
-                <xsl:element name="companion">
-                    <xsl:apply-templates select="exa:info"/>
-                </xsl:element>
-            </xsl:if>
-            
+           
             <xsl:if test="child::node()[name()='cite']">
-                <xsl:element name="cite">
+                <xsl:element name="cite" namespace="Compositor">
                     <xsl:apply-templates select="exa:cite"/>
                 </xsl:element>
             </xsl:if>
             
             <xsl:if test="child::node()[name()='link']">
-                <xsl:element name="link">
+                <xsl:element name="link" namespace="Compositor">
                     <xsl:apply-templates select="exa:link"/>
                 </xsl:element>
             </xsl:if>          
@@ -462,7 +457,7 @@
     </xsl:template>
     
     <xsl:template match="exa:right">
-        <xsl:element name="cell">
+        <xsl:element name="cell" namespace="Compositor">
             <xsl:attribute name="colspan">
                 <xsl:value-of select="2"/>
             </xsl:attribute>
@@ -473,26 +468,26 @@
                 <xsl:text>middle</xsl:text>
             </xsl:attribute>
             
-            <xsl:element name="math">
-                <xsl:element name="latex">
+            <xsl:element name="math" namespace="Compositor">
+                <xsl:element name="latex" namespace="Compositor">
                     <xsl:apply-templates select="child::node()[name()='']"/>
                 </xsl:element>
             </xsl:element>
             
             <xsl:if test="child::node()[name()='info']">
-                <xsl:element name="companion">
+                <xsl:element name="companion" namespace="Compositor">
                     <xsl:apply-templates select="exa:info"/>
                 </xsl:element>
             </xsl:if>
             
             <xsl:if test="child::node()[name()='cite']">
-                <xsl:element name="cite">
+                <xsl:element name="cite" namespace="Compositor">
                     <xsl:apply-templates select="exa:cite"/>
                 </xsl:element>
             </xsl:if>
             
             <xsl:if test="child::node()[name()='link']">
-                <xsl:element name="link">
+                <xsl:element name="link" namespace="Compositor">
                     <xsl:apply-templates select="exa:link"/>
                 </xsl:element>
             </xsl:if>
@@ -501,7 +496,7 @@
     </xsl:template>
     
     <xsl:template match="exa:ul">
-        <xsl:element name="ul">
+        <xsl:element name="ul" namespace="Compositor">
             <xsl:if test="./@bullet">
                 <xsl:copy-of select="./@bullet"/>
             </xsl:if>
@@ -512,7 +507,7 @@
     </xsl:template>
     
     <xsl:template match="exa:ol">
-        <xsl:element name="ol">
+        <xsl:element name="ol" namespace="Compositor">
             <xsl:if test="./@type">
                 <xsl:copy-of select="./@type"/>
             </xsl:if>
@@ -523,7 +518,7 @@
     </xsl:template>
     
     <xsl:template match="exa:li">
-        <xsl:element name="li">
+        <xsl:element name="li" namespace="Compositor">
             <xsl:for-each select=".">
                 <xsl:apply-templates/>
             </xsl:for-each>
@@ -531,7 +526,7 @@
     </xsl:template>
     
     <xsl:template match="exa:table">
-        <xsl:element name="table">
+        <xsl:element name="table" namespace="Compositor">
             <xsl:if test="attribute::* !=''">
                 <xsl:copy-of select="attribute::*"/>
             </xsl:if>
@@ -542,7 +537,7 @@
     </xsl:template>
     
     <xsl:template match="exa:row">
-        <xsl:element name="row">
+        <xsl:element name="row" namespace="Compositor">
             <xsl:for-each select=".">
                 <xsl:apply-templates/>
             </xsl:for-each>
@@ -550,7 +545,7 @@
     </xsl:template>
     
     <xsl:template match="exa:cell">
-        <xsl:element name="cell">
+        <xsl:element name="cell" namespace="Compositor">
             <xsl:for-each select=".">
                 <xsl:apply-templates/>
             </xsl:for-each>
@@ -558,7 +553,7 @@
     </xsl:template>
   
     <xsl:template match="exa:para">
-        <xsl:element name="para">
+        <xsl:element name="para" namespace="Compositor">
             <xsl:if test="./@align != ''">
                 <xsl:attribute name="align">
                     <xsl:value-of select="./@align"/>
@@ -570,7 +565,7 @@
                 </xsl:attribute>
             </xsl:if>
             <xsl:for-each select=".">
-                <xsl:element name="para.body">
+                <xsl:element name="para.body" namespace="Compositor">
                     <xsl:for-each select=".">
                         <xsl:if test="node()[name()='index.glossary']">
                             <xsl:value-of select="exa:term"/>
@@ -589,9 +584,9 @@
     </xsl:template>
     
     <xsl:template match="exa:index.author">
-        <xsl:element name="index.author">
+        <xsl:element name="index.author" namespace="Compositor">
             <xsl:for-each select=".">
-                <xsl:element name="name">
+                <xsl:element name="name" namespace="Compositor">
                     <xsl:apply-templates select="exa:name"/>
                 </xsl:element>
             </xsl:for-each>
@@ -600,13 +595,13 @@
     </xsl:template>
     
     <xsl:template match="exa:index.symbol">
-        <xsl:element name="index.symbol">
+        <xsl:element name="index.symbol" namespace="Compositor">
             <xsl:for-each select=".">
                 <xsl:apply-templates select="exa:symbol"/>
             </xsl:for-each>
             <xsl:apply-templates select="exa:info"/>
             <xsl:if test="exa:sortstring != ''">
-                <xsl:element name="sortstring">
+                <xsl:element name="sortstring" namespace="Compositor">
                     <xsl:apply-templates select="exa:sortstring"/>
                 </xsl:element>
             </xsl:if>
@@ -614,7 +609,7 @@
     </xsl:template>
     
     <xsl:template match="exa:index.glossary">
-        <xsl:element name="index.glossary">
+        <xsl:element name="index.glossary" namespace="Compositor">
             <xsl:for-each select=".">
                 <xsl:apply-templates select="exa:term"/>
             </xsl:for-each>
@@ -625,41 +620,41 @@
     </xsl:template>
     
     <xsl:template match="exa:symbol">
-        <xsl:element name="symbol">
+        <xsl:element name="symbol" namespace="Compositor">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
     
     <xsl:template match="exa:term">
-        <xsl:element name="term">
+        <xsl:element name="term" namespace="Compositor">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
     
     
     <xsl:template match="exa:name">
-        <xsl:element name="name" namespace="Exercise">
+        <xsl:element name="name" namespace="Compositor">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
     
     <xsl:template match="exa:first">
-        <xsl:element name="first" namespace="Exercise">
+        <xsl:element name="first" namespace="Compositor">
             <xsl:value-of select="."/>
         </xsl:element>
     </xsl:template>
     <xsl:template match="exa:middle">
-        <xsl:element name="middle" namespace="Exercise">
+        <xsl:element name="middle" namespace="Compositor">
             <xsl:value-of select="."/>
         </xsl:element>
     </xsl:template>
     <xsl:template match="exa:last">
-        <xsl:element name="last" namespace="Exercise">
+        <xsl:element name="last" namespace="Compositor">
             <xsl:value-of select="."/>
         </xsl:element>
     </xsl:template>
     <xsl:template match="exa:initials">
-        <xsl:element name="initials" namespace="Exercise">
+        <xsl:element name="initials" namespace="Compositor">
             <xsl:value-of select="."/>
         </xsl:element>
     </xsl:template>
@@ -667,13 +662,13 @@
     <xsl:template match="exa:latex">
         <xsl:choose>
             <xsl:when test="parent::node()[name()='math.display']">
-                <xsl:element name="latex">
+                <xsl:element name="latex" namespace="Compositor">
                     <xsl:apply-templates/>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="math">
-                    <xsl:element name="latex">
+                <xsl:element name="math" namespace="Compositor">
+                    <xsl:element name="latex" namespace="Compositor">
                         <xsl:apply-templates/>
                     </xsl:element>
                 </xsl:element>
@@ -682,12 +677,12 @@
     </xsl:template>
     
     <xsl:template match="exa:b">
-        <xsl:element name="strong">
+        <xsl:element name="strong" namespace="Compositor">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
     <xsl:template match="exa:i">
-        <xsl:element name="emphasis">
+        <xsl:element name="emphasis" namespace="Compositor">
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
@@ -713,7 +708,7 @@
                 </xsl:if>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="subordinate">
+                <xsl:element name="subordinate" namespace="Compositor">
                     <xsl:apply-templates select="node()[name()='hot']"/>
                     <xsl:if test="exa:info">
                         <xsl:apply-templates select="node()[name()='info']"/>
@@ -742,7 +737,7 @@
                 <xsl:apply-templates select="child::node()[name()='img' or name()='image']"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="hot">
+                <xsl:element name="hot" namespace="Compositor">
                     <xsl:apply-templates/>
                 </xsl:element>
             </xsl:otherwise>
@@ -750,9 +745,9 @@
     </xsl:template>
     
     <xsl:template match="exa:info">
-        <xsl:element name="info">
+        <xsl:element name="info" namespace="Compositor">
             <xsl:if test="exa:caption != ''">
-                <xsl:element name="info.caption">
+                <xsl:element name="info.caption" namespace="Compositor">
                     <xsl:apply-templates select="exa:caption"/>
                 </xsl:element>
             </xsl:if>
@@ -764,45 +759,45 @@
         <xsl:if test="child::node()[name() = 'external.ref']">
             <xsl:apply-templates select ="exa:external.ref"/>
         </xsl:if>
-        <xsl:element name="crossref">
+        <xsl:element name="crossref" namespace="Compositor">
             <xsl:for-each select=".">
                 <xsl:if test="child::node()[name() = 'exercise.pack.ref']">
-                    <xsl:element name="exercise.pack.ref">
+                    <xsl:element name="exercise.pack.ref" namespace="Compositor">
                         <xsl:attribute name="exercisePackID">
                             <xsl:value-of select="exa:exercise.pack.ref/@exercisePackID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'example.pack.ref']">
-                    <xsl:element name="example.pack.ref">
+                    <xsl:element name="example.pack.ref" namespace="Compositor">
                         <xsl:attribute name="examplePackID">
                             <xsl:value-of select="exa:example.pack.ref/@examplePackID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'theorem.ref']">
-                    <xsl:element name="theorem.ref">
+                    <xsl:element name="theorem.ref" namespace="Compositor">
                         <xsl:attribute name="theoremID">
                             <xsl:value-of select="exa:theorem.ref/@theoremID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'definition.ref']">
-                    <xsl:element name="definition.ref">
+                    <xsl:element name="definition.ref" namespace="Compositor">
                         <xsl:attribute name="definitionID">
                             <xsl:value-of select="exa:definition.ref/@definitionID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'comment.ref']">
-                    <xsl:element name="comment.ref">
+                    <xsl:element name="comment.ref" namespace="Compositor">
                         <xsl:attribute name="commentID">
                             <xsl:value-of select="exa:comment.ref/@commentID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'subpage.ref' or name() = 'chapter.ref' or name() = 'subsection.ref'] or name() = 'section.ref'">
-                    <xsl:element name="unit.ref">
+                    <xsl:element name="unit.ref" namespace="Compositor">
                         <xsl:attribute name="unitId">
                             <xsl:choose>
                                 <xsl:when test="child::node()[name() = 'subpage.ref']">
@@ -826,9 +821,9 @@
             </xsl:for-each>
             
             <xsl:if test="child::node() != ''">
-                <xsl:element name="info">
+                <xsl:element name="info" namespace="Compositor">
                     <xsl:if test="child::node()[name() = 'caption']">
-                        <xsl:element name="info.caption">
+                        <xsl:element name="info.caption" namespace="Compositor">
                             <xsl:apply-templates select="exa:caption"/>
                         </xsl:element>
                     </xsl:if>
@@ -839,50 +834,50 @@
     </xsl:template>
     
     <xsl:template match="exa:external.ref">
-        <xsl:element name="external.ref">
+        <xsl:element name="external.ref" namespace="Compositor">
             <xsl:if test="./@bookID">
-                <xsl:element name="compositionID">
+                <xsl:element name="compositionID" namespace="Compositor">
                     <xsl:value-of select="./@bookID"/>
                 </xsl:element>
             </xsl:if>
             <xsl:for-each select=".">
                 <xsl:if test="child::node()[name() = 'exercise.pack.ref']">
-                    <xsl:element name="exercise.pack.ref">
+                    <xsl:element name="exercise.pack.ref" namespace="Compositor">
                         <xsl:attribute name="exercisePackID">
                             <xsl:value-of select="exa:exercise.pack.ref/@exercisePackID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'example.pack.ref']">
-                    <xsl:element name="example.pack.ref">
+                    <xsl:element name="example.pack.ref" namespace="Compositor">
                         <xsl:attribute name="examplePackID">
                             <xsl:value-of select="exa:example.pack.ref/@examplePackID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'theorem.ref']">
-                    <xsl:element name="theorem.ref">
+                    <xsl:element name="theorem.ref" namespace="Compositor">
                         <xsl:attribute name="theoremID">
                             <xsl:value-of select="exa:theorem.ref/@theoremID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'definition.ref']">
-                    <xsl:element name="definition.ref">
+                    <xsl:element name="definition.ref" namespace="Compositor">
                         <xsl:attribute name="definitionID">
                             <xsl:value-of select="exa:definition.ref/@definitionID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'comment.ref']">
-                    <xsl:element name="comment.ref">
+                    <xsl:element name="comment.ref" namespace="Compositor">
                         <xsl:attribute name="commentID">
                             <xsl:value-of select="exa:comment.ref/@commentID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'subpage.ref' or name() = 'chapter.ref' or name() = 'subsection.ref'] or name() = 'section.ref'">
-                    <xsl:element name="unit.ref">
+                    <xsl:element name="unit.ref" namespace="">
                         <xsl:attribute name="unitId">
                             <xsl:choose>
                                 <xsl:when test="child::node()[name() = 'subpage.ref']">
@@ -914,7 +909,7 @@
         
         <xsl:element name="cite">
             <xsl:if test="child::node()[name() = 'caption']">
-                <xsl:element name="caption">
+                <xsl:element name="caption" namespace="Compositor">
                     <xsl:apply-templates select="exa:caption"/>
                 </xsl:element>
             </xsl:if>
@@ -924,14 +919,14 @@
     </xsl:template>
     
     <xsl:template match="exa:link">
-        <xsl:element name="external.link">
+        <xsl:element name="external.link" namespace="Compositor">
             <xsl:if test="attribute::* !=''">
                 <xsl:copy-of select="attribute::*"/>
             </xsl:if>
             <xsl:if test="child::node() != ''">
-                <xsl:element name="info">
+                <xsl:element name="info" namespace="Compositor">
                     <xsl:if test="child::node()[name() = 'caption']">
-                        <xsl:element name="info.caption">
+                        <xsl:element name="info.caption" namespace="Compositor">
                             <xsl:apply-templates select="exa:caption"/>
                         </xsl:element>
                     </xsl:if>
@@ -942,7 +937,7 @@
     </xsl:template>
     
     <xsl:template match="exa:item">
-        <xsl:element name="item">
+        <xsl:element name="item" namespace="Compositor">
             <xsl:if test="child::node()[not(name() = 'citekey')]">
                 <xsl:apply-templates select="child::node()[not(name() = 'citekey')]"/>
             </xsl:if>
@@ -953,60 +948,60 @@
     </xsl:template>
     
     <xsl:template match="exa:citekey">
-        <xsl:element name="citekey">
+        <xsl:element name="citekey" namespace="Compositor">
             <xsl:value-of select="."/>
         </xsl:element>
     </xsl:template>
     
     <xsl:template match="exa:companion">
-        <xsl:element name="companion">
+        <xsl:element name="companion" namespace="Compositor">
             <xsl:for-each select=".">
                 <xsl:if test="child::node()[name() = 'showme.pack.ref']">
-                    <xsl:element name="showme.pack.ref">
+                    <xsl:element name="showme.pack.ref" namespace="Compositor">
                         <xsl:attribute name="showmePackID">
                             <xsl:value-of select="exa:showme.pack.ref/@showmePackID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'quiz.pack.ref']">
-                    <xsl:element name="quiz.pack.ref">
+                    <xsl:element name="quiz.pack.ref" namespace="Compositor">
                         <xsl:attribute name="quizPackID">
                             <xsl:value-of select="exa:quiz.pack.ref/@quizPackID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'theorem.ref']">
-                    <xsl:element name="theorem.ref">
+                    <xsl:element name="theorem.ref" namespace="Compositor">
                         <xsl:attribute name="theoremID">
                             <xsl:value-of select="exa:theorem.ref/@theoremID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'definition.ref']">
-                    <xsl:element name="definition.ref">
+                    <xsl:element name="definition.ref" namespace="Compositor">
                         <xsl:attribute name="definitionID">
                             <xsl:value-of select="exa:definition.ref/@definitionID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'comment.ref']">
-                    <xsl:element name="comment.ref">
+                    <xsl:element name="comment.ref" namespace="Compositor">
                         <xsl:attribute name="commentID">
                             <xsl:value-of select="exa:comment.ref/@commentID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[name() = 'subpage.ref']">
-                    <xsl:element name="unit.ref">
+                    <xsl:element name="unit.ref" namespace="Compositor">
                         <xsl:attribute name="unitId">
                             <xsl:value-of select="exa:subpage.ref/@subpageID"/>
                         </xsl:attribute>
                     </xsl:element>
                 </xsl:if>
                 <xsl:if test="child::node()[not(name()='subpage.ref' or name()='definition.ref' or name()='comment.ref' or name()='theorem.ref' or name()='quiz.pack.ref' or name()='showme.pack.ref')]">
-                    <xsl:element name="info">
+                    <xsl:element name="info" namespace="Compositor">
                         <xsl:if test="child::node()[name() = 'caption']">
-                            <xsl:element name="info.caption">
+                            <xsl:element name="info.caption" namespace="Compositor">
                                 <xsl:apply-templates select="exa:caption"/>
                             </xsl:element>
                         </xsl:if>

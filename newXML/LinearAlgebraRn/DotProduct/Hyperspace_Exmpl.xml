@@ -5,21 +5,21 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_Hyperspaces"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 		
 		
 
    <title>Examples of Hyperspaces</title>
-	  <caption xmlns="">Hyperspaces - Examples</caption>
+	  <caption>Hyperspaces - Examples</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The set of solutions of the equation</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>{\color{red} 2}x + {\color{blue} 3}y = 0</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>forms the line through the origin of <math>
                   <latex>\RNr[2]</latex>
                </math> which is <subordinate>
@@ -42,20 +42,20 @@
                   <latex>\RNr[2]</latex>
                </math>.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
 				           <media type="image" active="0" inline="0">
                   <img src="ims/HyperSpace2D_Exmpl.gif"/>
                </media>
 			         </para.body>
          </para>
-			      <para xmlns="">
+			      <para>
             <para.body>Notice that a linear equation of the form</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>{\color{red} 2}x + {\color{blue} 3}y = 0</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>always reveals a normal vector to the hyperspace of its solutions, namely the vector <math>
                   <latex>({\color{red} 2},{\color{blue} 3})</latex>
                </math> of its coefficients.</para.body>
@@ -67,13 +67,13 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The set of solutions of the equation</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>{\color{red} 2}x + {\color{red} 9}y {\color{red} - 3}z = 0</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>forms the plane through the origin of <math>
                   <latex>\RNr[3]</latex>
                </math> which is <subordinate>

@@ -5,16 +5,16 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ElementaryMatrix"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of Elementary Matrices</title>
-	  <caption xmlns="">Examples of Elementary Matrices</caption>
+	  <caption>Examples of Elementary Matrices</caption>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In the set of <math>
                   <latex>(3,3)</latex>
                </math>-matrices an elementary matrix of type <math>
@@ -22,7 +22,7 @@
                </math> is</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					E_{1,3}(5)\ :=\ \begin{bmatrix}
@@ -34,13 +34,13 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>This matrix is invertible with inverse   <math>
                   <latex>E_{1,3}(-5)</latex>
                </math> because</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{bmatrix}
@@ -76,7 +76,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In the set of <math>
                   <latex>(4,4)</latex>
                </math>-matrices an elementary matrix of type <math>
@@ -84,7 +84,7 @@
                </math> is</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 					E_{3,2}(4)\ :=\ \begin{bmatrix}
@@ -97,14 +97,14 @@
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>This matrix is invertible with inverse   <math>
                   <latex>E_{3,2}(-4)</latex>
                </math> because</para.body>
          </para>
 			
-			      <math.array xmlns="" column="3">
-            <row rowspan="1">
+			      <math.array column="3">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>
@@ -145,7 +145,7 @@
                   </math>
                </cell>
             </row>
-            <row rowspan="1">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex/>

@@ -5,16 +5,16 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ElementaryMatrixExplanation"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Explanation for Elementary Matrices</title>
-	  <caption xmlns="">Explanation for Elementary Matrices</caption>
+	  <caption>Explanation for Elementary Matrices</caption>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The elementary matrix <math>
                   <latex>E_{ij}(s)</latex>
                </math> allows us to perform the row operation ‘add <math>
@@ -32,7 +32,7 @@
                </math>’. In symbols:</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \begin{bmatrix}
@@ -69,7 +69,7 @@ a_{j1} &amp; \cdots &amp; a_{jp} \\
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The matrix which, in the set of <math>
                   <latex>(5,5)</latex>
                </math>-matrices adds <math>
@@ -81,7 +81,7 @@ a_{j1} &amp; \cdots &amp; a_{jp} \\
                </math>-th row is</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 E_{3,4}(5)\ =\ 
@@ -96,13 +96,13 @@ E_{3,4}(5)\ =\
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>The inverse of <math>
                   <latex>E_{3,4}(5)</latex>
                </math> is</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 E_{3,4}(-5)\ =\ 

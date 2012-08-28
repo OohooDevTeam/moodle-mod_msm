@@ -5,12 +5,12 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_HarmonicSeries"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>Harmonic Series: Example</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the harmonic series below convergences to a number.
 				
 			</para.body>
@@ -24,11 +24,11 @@
                </info>
             </index.glossary>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>1 + \dfrac{1}{2} + \dfrac{1}{3} + \dfrac{1}{4} + \cdots + \dfrac{1}{n} + \cdots</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

@@ -5,19 +5,19 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_LinearMapGivesMatrix"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Example: Matrices for Coordinate Projection and Coordinate Inclusion</title>
-	  <caption xmlns="">Example: Matrices for Coordinate Projection and Coordinate Inclusion</caption>
+	  <caption>Example: Matrices for Coordinate Projection and Coordinate Inclusion</caption>
 	
 	
 	
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The matrix which represents the projection of <math>
                   <latex>\RNr[m]</latex>
                </math> onto its <math>
@@ -25,11 +25,11 @@
                </math>-th coordinate</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Prjctn{i}\from \RNr[m]\longrightarrow \RNr,\qquad \Prjctn{i}(x_1,\dots ,x_m)= x_i</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>is given by <math>
                   <latex>A := [0\ \dots \ 0\ \ 1\ \ 0\ \dots \ 0]</latex>
                </math>, the ‘<math>
@@ -40,7 +40,7 @@
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Proof">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -50,7 +50,7 @@
                </para>
 			
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>A\Vect{x}</latex>
@@ -67,7 +67,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -84,7 +84,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -115,7 +115,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The inclusion of <math>
                   <latex>\RNr</latex>
                </math> in <math>
@@ -125,17 +125,17 @@
                </math>-th coordinate axis</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Inclsn{j}\from \RNr \longrightarrow \RNr[n],\quad \Inclsn{j}(x) := (0,\dots ,0,x,0,\dots , 0)</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>is represented by the <math>
                   <latex>(n,1)</latex>
                </math>-matrix</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 B := \left[\begin{array}{c}
@@ -145,7 +145,7 @@ B := \left[\begin{array}{c}
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>the <math>
                   <latex>1</latex>
                </math> in row <math>
@@ -154,7 +154,7 @@ B := \left[\begin{array}{c}
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Proof">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -164,7 +164,7 @@ B := \left[\begin{array}{c}
                </para>
 			
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>B[x]</latex>

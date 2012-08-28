@@ -5,19 +5,19 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_DeterminantInvertibility"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Examples: Invertibility Test Using Determinants</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Use the determinant to test if the matrix <math>
                   <latex>\Mtrx{A}</latex>
                </math>
             </para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{A} = 
@@ -30,11 +30,11 @@
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>is invertible.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -67,10 +67,10 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Use the determinant to test if the matrix</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{B}\ :=\  
@@ -86,12 +86,12 @@
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>is invertible.</para.body>
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -120,7 +120,7 @@
                   <para.body>Therefore</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\det\, \Mtrx{B}</latex>
@@ -154,7 +154,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Use the the determinant to test if the <math>
                   <latex>(3,3)</latex>
                </math>-matrix <math>
@@ -162,7 +162,7 @@
                </math>
             </para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{C}\ :=  
@@ -176,11 +176,11 @@
 
 				</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>is invertible.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme>
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -189,7 +189,7 @@
                      </math> into an upper triangular matrix. The effect on the determinant is recorded in the following computation</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>
@@ -209,13 +209,6 @@
                         <math>
                            <latex>=	</latex>
                         </math>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>Interchange 1st and 2nd rows. This operation flips the sign of the determinant.</para.body>
-                              </para>
-                           </info>
-                        </companion>
                         <companion>
                            <info>
                               <para>
@@ -240,7 +233,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -250,13 +243,6 @@
                         <math>
                            <latex>=	</latex>
                         </math>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>Interchange 2nd and 3rd rows. This operation flips the sign of the determinant.</para.body>
-                              </para>
-                           </info>
-                        </companion>
                         <companion>
                            <info>
                               <para>
@@ -281,7 +267,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -291,13 +277,6 @@
                         <math>
                            <latex>=	</latex>
                         </math>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>Subtract the 3rd column from the 1st to create an uppter triangular matrix. This operation does not change the determinant.</para.body>
-                              </para>
-                           </info>
-                        </companion>
                         <companion>
                            <info>
                               <para>
@@ -322,7 +301,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -332,13 +311,6 @@
                         <math>
                            <latex>=	</latex>
                         </math>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>The determinant of an upper triangular matrix is the product of its diagonal entries.</para.body>
-                              </para>
-                           </info>
-                        </companion>
                         <companion>
                            <info>
                               <para>

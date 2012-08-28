@@ -5,17 +5,17 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_DefSolveFromRREF"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Row Reduced Echelon Form - Quiz</title>
-	  <caption xmlns="">RREF - Quiz</caption>
+	  <caption>RREF - Quiz</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In the display below, identify each leading <math>
                   <latex>1</latex>
                </math> by placing your mouse over it.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
 				           <media type="image" active="1" inline="0">
                   <img src="ims/RREF_qz.gif" height="64" width="476">
@@ -57,14 +57,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In the display below, identify each number that must be <math>
                   <latex>0</latex>
                </math> given the position of a leading <math>
                   <latex>1</latex>
                </math>. Place your mouse over it to find out.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
 				           <media type="image" active="1" inline="0">
                   <img src="ims/RREF_qz.gif" height="64" width="476">
@@ -175,10 +175,10 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the rank of the system of linear equations below:</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <media type="image" active="0" inline="0">
                   <img src="ims/RREF_qz.gif" height="64" width="476"/>
@@ -186,7 +186,7 @@
             </para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

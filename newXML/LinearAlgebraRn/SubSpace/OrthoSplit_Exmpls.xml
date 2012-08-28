@@ -5,12 +5,12 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_OrthogonalSplitting"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Orthogonal Splittings: Examples</title>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In <math>
                   <latex>\RNr[3]</latex>
                </math> let <math>
@@ -24,7 +24,7 @@
                </math>, and compute their dimensions.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme>
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -45,7 +45,7 @@
                      </math>. So</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Dim{V}</latex>
@@ -71,7 +71,7 @@
                      </math>. The dimension formula confirms</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Dim{V^{\bot}}</latex>
@@ -88,7 +88,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -105,7 +105,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -131,7 +131,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In <math>
                   <latex>\RNr[5]</latex>
                </math> let <math>
@@ -144,8 +144,8 @@
                   <latex>\Vect{c}</latex>
                </math> with</para.body>
          </para>
-			      <math.array xmlns="" column="3">
-            <row rowspan="1">
+			      <math.array column="3">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{a}</latex>
@@ -162,7 +162,7 @@
                   </math>
                </cell>
             </row>
-            <row rowspan="1">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{b}</latex>
@@ -179,7 +179,7 @@
                   </math>
                </cell>
             </row>
-            <row rowspan="1">
+            <row xmlns:compositor="Compositor" compositor:rowspan="1">
                <cell colspan="2" halign="center" valign="middle">
                   <math>
                      <latex>\Vect{c}</latex>
@@ -197,13 +197,13 @@
                </cell>
             </row>
          </math.array>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the dimension of <math>
                   <latex>V</latex>
                </math> and its orthogonal complement.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme>
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -216,7 +216,7 @@
                      </math>? – Solving the vector equation</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>s\cdot \Vect{a} + t\cdot \Vect{b}</latex>
@@ -248,7 +248,7 @@
                      </math>. Therefore</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>V</latex>
@@ -274,7 +274,7 @@
                      </math>. So</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Dim{V}</latex>
@@ -298,7 +298,7 @@
                      </math> may be computed using the dimension formula:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Dim{V^{\bot}}</latex>
@@ -315,7 +315,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -332,7 +332,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>

@@ -5,20 +5,20 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_VectorCoordinates"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Vectors and Coordinates: Examples</title>
 	  <showme>
-		    <caption xmlns="">Arrows representing <math>
+		    <caption>Arrows representing <math>
             <latex>\Vect{x} = (3,-1)</latex>
          </math>
 		    </caption>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The vector <math>
                   <latex>\Vect{x} = (3,-1)</latex>
                </math> is represented by any of the arrows in the picture below.</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <media type="image" active="0" inline="0">
                   <img src="ims/VectorCoordinates_Exmpl1.gif"/>
@@ -26,7 +26,7 @@
             </para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Explanation">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

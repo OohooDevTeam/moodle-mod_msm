@@ -5,23 +5,23 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_InfSupSequence"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../Analysis_TeXSupport.xml"/>
+	  <texsupport href="../Analysis_TeXSupport.xml"/>
 	
 	  <title>Infimum and Supremum of Sequences: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Suppose <math>
                   <latex>(a_n)</latex>
                </math> is a sequence with <math>
                   <latex>\sup(a_n) = \lambda</latex>
                </math>. Find</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sup(a_n +1),\quad \sup(2a_n),\quad \sup(a_{n}^{2})</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -100,7 +100,7 @@
 		          </answer.showme.block.body>
          </answer.showme.block>
       </answer.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -137,18 +137,18 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Suppose <math>
                   <latex>(a_n)</latex>
                </math> is a sequence with <math>
                   <latex>\sup(a_n) = \lambda</latex>
                </math>. Find</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\sup(2a_n),\quad \sup(a_{n}^{2})</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

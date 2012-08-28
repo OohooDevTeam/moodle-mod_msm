@@ -5,24 +5,24 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_Hyperplanes"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 		
 		
 
 	  <title>Examples of Hyperplanes</title>
-	  <caption xmlns="">Hyperplanes - Examples</caption>
+	  <caption>Hyperplanes - Examples</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Describe the object in <math>
                   <latex>\RNr[2]</latex>
                </math> formed by the set of solutions of the equation</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>2x + 3y = 3</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -122,16 +122,16 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Describe the object in <math>
                   <latex>\RNr[3]</latex>
                </math> formed by the set of solutions of the equation.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>2x + y + z = -2</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

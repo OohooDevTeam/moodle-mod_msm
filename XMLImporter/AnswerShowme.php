@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of AnswerShowme
@@ -23,6 +23,7 @@ class AnswerShowme extends Element
 {
 
     public $position;
+    public $type;
 
     function __construct($xmlpath = '')
     {
@@ -37,6 +38,8 @@ class AnswerShowme extends Element
      */
     public function loadFromXml($DomElement, $position = '')
     {
+        $this->type = $DomElement->getAttribute('type');
+
         $this->position = $position;
         $this->content = array();
         $this->subordinates = array();
@@ -73,15 +76,13 @@ class AnswerShowme extends Element
                 {
                     $this->subordinates[] = $subordinate;
                 }
-
-                foreach ($this->processContent($asbb, $position) as $content)
-                {
-                    $this->content [] = $content;
-                }
-
                 foreach ($this->processMedia($asbb, $position) as $media)
                 {
                     $this->medias[] = $media;
+                }
+                foreach ($this->processContent($asbb, $position) as $content)
+                {
+                    $this->content [] = $content;
                 }
             }
         }
@@ -97,6 +98,7 @@ class AnswerShowme extends Element
         global $DB;
         $data = new stdClass();
         $data->caption = $this->caption;
+        $data->type = $this->type;
 
         if (!empty($this->content))
         {
@@ -112,8 +114,8 @@ class AnswerShowme extends Element
             $this->id = $DB->insert_record($this->tablename, $data);
             $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
-        
-         $elementPositions = array();
+
+        $elementPositions = array();
         $sibling_id = null;
 
 
@@ -250,25 +252,26 @@ class AnswerShowme extends Element
             }
         }
     }
-    
+
     function loadFromDb($id, $compid)
     {
         global $DB;
-        
-        $answershowmeRecord = $DB->get_record($this->tablename, array('id'=>$id));
-        
-        if(!empty($answershowmeRecord))
+
+        $answershowmeRecord = $DB->get_record($this->tablename, array('id' => $id));
+
+        if (!empty($answershowmeRecord))
         {
             $this->compid = $compid;
             $this->caption = $answershowmeRecord->caption;
             $this->content = $answershowmeRecord->answer_showme_content;
+            $this->type = $answershowmeRecord->type;
         }
-        
+
         $this->subordinates = array();
         $this->medias = array();
-        
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$this->compid), 'prev_sibling_id');
-        
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
@@ -288,24 +291,32 @@ class AnswerShowme extends Element
                     break;
             }
         }
-        
+
         return $this;
     }
-    
+
     function displayhtml()
     {
         $content = '';
-        
+        $content .= "<br />";
         $content .= "<div class='answershowme'>";
-        
-        $content .= "<div class='title'>";
+
+        $content .= "<span class='answershowmetitle'>";
         $content .= $this->caption;
+        $content .= "</span>";
+
+        $content .= "<span class='answershowmetype'>";
+        $content .= $this->type;
+        $content .= "</span>";
+        $content .= "<br />";
+
+        $content .= "<div class='answershowmecontent'>";
+        $content .= $this->displaySubordinate($this, $this->content);
         $content .= "</div>";
-        
-        $content .= $this->content;
-        
+        $content .= "<br />";
+
         $content .= "</div>";
-        
+
         return $content;
     }
 

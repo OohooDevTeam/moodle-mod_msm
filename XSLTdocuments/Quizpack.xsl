@@ -155,7 +155,7 @@
     </xsl:template>
     
     <xsl:template match="exe:figure">
-        <xsl:element name="media" namespace="Theorem">
+        <xsl:element name="media" namespace="Compositor">
             <xsl:if test="./@id">
                 <xsl:attribute name="id">
                     <xsl:value-of select="./@id"/>
@@ -182,7 +182,7 @@
     <xsl:template match="exe:img">
         <xsl:choose>     
             <xsl:when test="parent::node()[name()='figure']">
-                <xsl:element name="img">
+                <xsl:element name="img" namespace="Compositor">
                     <xsl:attribute name="src">
                         <xsl:value-of select="./@src"/>
                     </xsl:attribute>
@@ -199,13 +199,13 @@
                     
                     <xsl:if test="child::node()[name()='info' or name()='caption']">
                         
-                        <xsl:element name="extended.caption" namespace="Theorem">
+                        <xsl:element name="extended.caption" namespace="Compositor">
                             
                             <xsl:if test="child::node()[name()='info']">
                                 
-                                <xsl:element name="image.mapping" namespace="Theorem">
+                                <xsl:element name="image.mapping" namespace="Compositor">
                                     
-                                    <xsl:element name="area" namespace="Theorem">
+                                    <xsl:element name="area" namespace="Compositor">
                                         <xsl:attribute name="shape">
                                             <xsl:text>rect</xsl:text>
                                         </xsl:attribute>
@@ -241,11 +241,11 @@
                 </xsl:element>         
             </xsl:when>
             <xsl:when test="parent::node()[name()='hot']">
-                <xsl:element name="media">
+                <xsl:element name="media" namespace="Compositor">
                     <xsl:attribute name="type">image</xsl:attribute>
                     <xsl:attribute name="active">1</xsl:attribute>
                     <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img">
+                    <xsl:element name="img" namespace="Compositor">
                         <xsl:attribute name="src">
                             <xsl:value-of select="./@src"/>
                         </xsl:attribute>
@@ -263,7 +263,7 @@
                 </xsl:element>            
             </xsl:when>
             <xsl:otherwise>
-                <xsl:element name="media">
+                <xsl:element name="media" namespace="Compositor">
                     <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                         <xsl:attribute name="id">
                             <xsl:value-of select="parent::node()/@id"/>
@@ -273,7 +273,7 @@
                     <xsl:attribute name="type">image</xsl:attribute>
                     <xsl:attribute name="active">0</xsl:attribute>
                     <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img">
+                    <xsl:element name="img" namespace="Compositor">
                         <xsl:attribute name="src">
                             <xsl:value-of select="./@src"/>
                         </xsl:attribute>
@@ -294,7 +294,7 @@
     </xsl:template>
     
     <xsl:template match="exe:image">
-        <xsl:element name="media">
+        <xsl:element name="media" namespace="Compositor">
             <xsl:if test="parent::node()[name()='figure'][attribute::id]">
                 <xsl:attribute name="id">
                     <xsl:value-of select="parent::node()/@id"/>
@@ -311,7 +311,7 @@
                 </xsl:otherwise>
             </xsl:choose>
             <xsl:attribute name="inline">0</xsl:attribute>
-            <xsl:element name="img">
+            <xsl:element name="img" namespace="Compositor">
                 <xsl:attribute name="src">
                     <xsl:choose>
                         <xsl:when test="child::node()[name()='path']">
@@ -912,7 +912,7 @@
     
     <xsl:template match="exe:cite">
         <xsl:if test="./@label != ''">
-            <xsl:attribute name="label" namespace="Compositor">
+            <xsl:attribute name="label">
                 <xsl:value-of select="./@label"/>
             </xsl:attribute>
         </xsl:if>

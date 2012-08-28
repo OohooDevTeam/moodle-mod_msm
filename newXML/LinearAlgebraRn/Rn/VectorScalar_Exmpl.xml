@@ -5,11 +5,11 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_MultiplyVectorByScalar"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Multiplying a Vector by a Scalar: Examples</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>To multiply a vector <math>
                   <latex>\Vect{x}</latex>
                </math> by a scalar <math>
@@ -25,7 +25,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <math.display>
@@ -37,7 +37,7 @@
 	  </showme>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In <math>
                   <latex>\RNr[3]</latex>
                </math> find the scalar product of <math>
@@ -47,7 +47,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <math.display>
@@ -59,7 +59,7 @@
 	  </showme>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>In <math>
                   <latex>\RNr[3]</latex>
                </math> find the scalar product of <math>
@@ -69,7 +69,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme>
          <answer.showme.block>
             <answer.showme.block.body>
 			            <math.display>

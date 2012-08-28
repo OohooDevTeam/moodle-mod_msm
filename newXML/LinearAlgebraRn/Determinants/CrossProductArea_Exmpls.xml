@@ -5,20 +5,20 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               id="Exa_CrossProductArea"
               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Examples: Area of a Parallelogram Using Cross Products</title>
-	  <caption xmlns="">Examples: Parallelogram Area</caption>
+	  <caption>Examples: Parallelogram Area</caption>
 	
 	
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the area of the parallelogram in <math>
                   <latex>\RNr[3]</latex>
                </math> spanned by the vectors</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <math>
                   <latex>\Vect{x} = (1,1,-2)</latex>
@@ -29,7 +29,7 @@
          </para>
 		    </statement.example>
 		
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -42,7 +42,7 @@
                      </math>. We find:</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\CrssPr{ \Vect{x} }{ \Vect{y} }</latex>
@@ -64,7 +64,7 @@
                   <para.body>Therefore the area of the given parallelogram is</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\abs{ (-1,5,2) }</latex>
@@ -92,12 +92,12 @@
 	
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the area of the triangle in <math>
                   <latex>\RNr[3]</latex>
                </math> with vertices</para.body>
          </para>
-			      <para xmlns="" align="center">
+			      <para align="center">
             <para.body>
                <math>
                   <latex>(2,-1,3)</latex>
@@ -108,7 +108,7 @@
                </math>.</para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -121,7 +121,7 @@
                      </math>, respectively, are given by</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{x}</latex>
@@ -138,7 +138,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Vect{y}</latex>

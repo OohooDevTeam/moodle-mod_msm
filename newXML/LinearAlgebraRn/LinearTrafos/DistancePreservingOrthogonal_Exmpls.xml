@@ -5,19 +5,19 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_DistancePreservingOrthogonal"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Example: Distance Preserving Map Has Orthogonal Matrix</title>
-	  <caption xmlns="">Example: Distance Preserving Map - Orthogonal Matrix</caption>
+	  <caption>Example: Distance Preserving Map - Orthogonal Matrix</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the linear transformation <math>
                   <latex>L\from \RNr[3]\to \RNr[3]</latex>
                </math> represented by the matrix</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 A\ =\ \dfrac{1}{4}\cdot
@@ -32,11 +32,11 @@ A\ =\ \dfrac{1}{4}\cdot
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>preserves distances.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -62,14 +62,14 @@ A\ =\ \dfrac{1}{4}\cdot
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine if the matrix <math>
                   <latex>\Mtrx{B}</latex>
                </math> below represents a distance preserving linear transformation <math>
                   <latex>\RNr[3]\to \RNr[3]</latex>
                </math>.</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 \Mtrx{B}\ =\ 
@@ -84,7 +84,7 @@ A\ =\ \dfrac{1}{4}\cdot
 				</latex>
 			      </math.display>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

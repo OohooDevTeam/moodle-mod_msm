@@ -5,11 +5,11 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_InvertibleLinearMap"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Invertible Linear Map - Example</title>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Let <math>
                   <latex>V</latex>
                </math> be the orthogonal complement of <math>
@@ -26,14 +26,14 @@
                   <latex>\Vect{b}_2:=(1,1,1,1)</latex>
                </math>. Determine whether the linear transformation</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>L\from V \longrightarrow W,\quad L(x,y,z)= (x+y-z)\cdot \Vect{b}_1\ +\ (y+z)\cdot \Vect{b}_2</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>is invertible. If it is, find its inverse.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -72,7 +72,7 @@
                               <para.body>To see this, evaluate</para.body>
                            </para>
 						                     <math.array column="3">
-                              <row rowspan="1">
+                              <row xmlns:compositor="Compositor" compositor:rowspan="1">
                                  <cell colspan="2" halign="center" valign="middle">
                                     <math>
                                        <latex>\DotPr{ \Vect{a}_1 }{ \Vect{a}_2 }</latex>
@@ -156,7 +156,7 @@
                      </math>. We find</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>L(\Vect{a}_1)</latex>
@@ -173,7 +173,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -190,7 +190,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -207,7 +207,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>L(\Vect{a}_2)</latex>
@@ -224,7 +224,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -241,7 +241,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -279,7 +279,7 @@
                   <para.body>This matrix has</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\det(\Mtrx{A}_{\EuScript{B}\EuScript{A}})</latex>

@@ -5,19 +5,19 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="EqualExa_nTuples"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
-	  <title>Equality of <math xmlns="">
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
+	  <title>Equality of <math>
          <latex>n</latex>
       </math>-tuples.</title>
-	  <caption xmlns="">Equality of <math>
+	  <caption>Equality of <math>
          <latex>n</latex>
       </math>-tuples.</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Determine which of the following pairs of tuples are equal.</para.body>
          </para>
-			      <ol xmlns="">
+			      <ol>
 				        <li>
                <para>
                   <para.body>
@@ -64,7 +64,7 @@
             </li>
 			      </ol>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>

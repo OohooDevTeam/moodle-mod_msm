@@ -25,10 +25,10 @@
  * it cannot do itself, it will tell you what you need to do.  The commands in
  * here will all be database-neutral, using the functions defined in DLL libraries.
  *
- **
- **************************************************************************
- **                              MSM                                     **
- **************************************************************************
+ * *
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
  * @package     mod                                                      **
  * @subpackage  msm                                                      **
  * @name        msm                                                      **
@@ -36,9 +36,8 @@
  * @link        http://ualberta.ca                                       **
  * @author      Ga Young Kim                                             **
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
- **************************************************************************
- **************************************************************************/
-
+ * *************************************************************************
+ * ************************************************************************ */
 defined('MOODLE_INTERNAL') || die();
 
 /**
@@ -1799,7 +1798,7 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012070303, 'msm');
     }
-    
+
     if ($oldversion < 2012071600)
     {
 
@@ -1863,8 +1862,9 @@ function xmldb_msm_upgrade($oldversion)
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012071600, 'msm');
     }
-    
-     if ($oldversion < 2012080100) {
+
+    if ($oldversion < 2012080100)
+    {
 
         // Define table msm_image_mapping to be created
         $table = new xmldb_table('msm_image_mapping');
@@ -1878,37 +1878,59 @@ function xmldb_msm_upgrade($oldversion)
         $table->add_key('primary', XMLDB_KEY_PRIMARY, array('id'));
 
         // Conditionally launch create table for msm_image_mapping
-        if (!$dbman->table_exists($table)) {
+        if (!$dbman->table_exists($table))
+        {
             $dbman->create_table($table);
         }
-        
-         // Define field image_mapping to be dropped from msm_img
+
+        // Define field image_mapping to be dropped from msm_img
         $table = new xmldb_table('msm_img');
         $field = new xmldb_field('image_mapping');
 
         // Conditionally launch drop field image_mapping
-        if ($dbman->field_exists($table, $field)) {
+        if ($dbman->field_exists($table, $field))
+        {
             $dbman->drop_field($table, $field);
         }
 
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012080100, 'msm');
     }
-    
-     if ($oldversion < 2012082700) {
+
+    if ($oldversion < 2012082700)
+    {
 
         // Define field standalone to be added to msm_unit
         $table = new xmldb_table('msm_unit');
         $field = new xmldb_field('standalone', XMLDB_TYPE_CHAR, '10', null, null, null, null, 'id');
 
         // Conditionally launch add field standalone
-        if (!$dbman->field_exists($table, $field)) {
+        if (!$dbman->field_exists($table, $field))
+        {
             $dbman->add_field($table, $field);
         }
 
         // msm savepoint reached
         upgrade_mod_savepoint(true, 2012082700, 'msm');
     }
+
+    if ($oldversion < 2012082800)
+    {
+
+        // Define field type to be added to msm_answer_showme
+        $table = new xmldb_table('msm_answer_showme');
+        $field = new xmldb_field('type', XMLDB_TYPE_CHAR, '20', null, null, null, null, 'id');
+
+        // Conditionally launch add field type
+        if (!$dbman->field_exists($table, $field))
+        {
+            $dbman->add_field($table, $field);
+        }
+
+        // msm savepoint reached
+        upgrade_mod_savepoint(true, 2012082800, 'msm');
+    }
+
 
 
     // And that's all. Please, examine and understand the 3 example blocks above. Also

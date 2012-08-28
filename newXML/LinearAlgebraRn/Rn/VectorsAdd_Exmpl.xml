@@ -5,11 +5,11 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               id="Exa_AddingVectors"
               xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	  <title>Examples of Adding Vectors</title>
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the sum of the vectors <math>
                   <latex>\Vect{x}=(2,-1)</latex>
                </math> and <math>
@@ -20,7 +20,7 @@
 			</para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -37,7 +37,7 @@
 	  </example>
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the sum of the vectors <math>
                   <latex>\Vect{x}=(1/2,-1,5)</latex>
                </math> and <math>
@@ -47,7 +47,7 @@
                </math>.</para.body>
          </para>
 		    </statement.example>
-		    <answer xmlns="" type="Solution" version="1">
+		    <answer type="Solution" version="1">
          <answer.block>
             <answer.block.body>
 			            <para>
@@ -70,7 +70,7 @@
 	  </example>
 	  <example>
 		    <statement.example>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the sum of the vectors <math>
                   <latex>\Vect{x}=(2/3,/14,-2,4,-7)</latex>
                </math> and <math>
@@ -84,7 +84,7 @@
 			      <step>
             <pilot>
                <pilot.step>
-						            <para xmlns="">
+						            <para>
                      <para.body>The answer will be vector in <math>
                            <latex>\RNr[5]</latex>
                         </math>. So there are <math>
@@ -95,10 +95,10 @@
             </pilot>
             <step.body>
 				
-				           <para xmlns="">
+				           <para>
                   <para.body>To add the given vectors, we add the numbers in matching coordinates. Applying this to the first coordinates yields</para.body>
                </para>
-				           <math.display xmlns="">
+				           <math.display>
 					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,?,?,?,?) </latex>
 				           </math.display>
 			         </step.body>
@@ -106,14 +106,14 @@
 			      <step>
             <pilot>
                <pilot.step>
-						            <para xmlns="">
+						            <para>
                      <para.body>Next we add the second coordinates:</para.body>
                   </para>
 					          </pilot.step>
             </pilot>
             <step.body>
 				
-				           <math.display xmlns="">
+				           <math.display>
 					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,?,?,?) </latex>
 				           </math.display>
 			         </step.body>
@@ -121,14 +121,14 @@
 			      <step>
             <pilot>
                <pilot.step>
-						            <para xmlns="">
+						            <para>
                      <para.body>Next we add the third coordinates:</para.body>
                   </para>
 					          </pilot.step>
             </pilot>
             <step.body>
 				
-				           <math.display xmlns="">
+				           <math.display>
 					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,-2,?,?) </latex>
 				           </math.display>
 			         </step.body>
@@ -136,14 +136,14 @@
 			      <step>
             <pilot>
                <pilot.step>
-						            <para xmlns="">
+						            <para>
                      <para.body>Next we add the fourth coordinates:</para.body>
                   </para>
 					          </pilot.step>
             </pilot>
             <step.body>
 				
-				           <math.display xmlns="">
+				           <math.display>
 					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,-2,3,?) </latex>
 				           </math.display>
 			         </step.body>
@@ -151,14 +151,14 @@
 			      <step>
             <pilot>
                <pilot.step>
-						            <para xmlns="">
+						            <para>
                      <para.body>Next we add the fifth coordinates:</para.body>
                   </para>
 					          </pilot.step>
             </pilot>
             <step.body>
 				
-				           <math.display xmlns="">
+				           <math.display>
 					             <latex>\Vect{x}\ +\ \Vect{y}\ =\ (5/3,-3/4,-2,3,-6). </latex>
 				           </math.display>
 			         </step.body>

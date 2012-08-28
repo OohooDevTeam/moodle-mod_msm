@@ -708,17 +708,17 @@ abstract class Element
 
         return $compid;
     }
-    
-     /**
-      * This recursive method is called if a duplicate record is read in XML.  Its purpose is to find all the child elements of the first
-      * record of the duplicate record and to copy it onto the duplicate record in compositor table.  This is to remove any duplicate records in the
-      * data tables but still to keep the data structure consistent with the XML files.
-      * 
-      * @global moodle_database $DB
-      * @param int $elementRecord   A reference element that possibly has child elements that can be copied to other subunits without child elements
-      * @param int $currentUnitID   The reference element that just has been read as a duplicate which needs alll its child element ids to be copied
-      * @return boolean             returns false if no child has been copied/ returns true if child elements have been copied
-      */
+
+    /**
+     * This recursive method is called if a duplicate record is read in XML.  Its purpose is to find all the child elements of the first
+     * record of the duplicate record and to copy it onto the duplicate record in compositor table.  This is to remove any duplicate records in the
+     * data tables but still to keep the data structure consistent with the XML files.
+     * 
+     * @global moodle_database $DB
+     * @param int $elementRecord   A reference element that possibly has child elements that can be copied to other subunits without child elements
+     * @param int $currentUnitID   The reference element that just has been read as a duplicate which needs alll its child element ids to be copied
+     * @return boolean             returns false if no child has been copied/ returns true if child elements have been copied
+     */
     function grabSubunitChilds($elementRecord, $currentUnitID)
     {
         global $DB;
@@ -726,11 +726,11 @@ abstract class Element
         $childSibling = 0;
         // checking if there are child elements to be copied
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $elementRecord->id), 'prev_sibling_id');
-        
+
         // checking if the following record is a duplicate or not
         // if it is the original record, it will already have a child elemnts associated with it
         $existingchildElements = $DB->get_records('msm_compositor', array('parent_id' => $currentUnitID), 'prev_sibling_id');
-        
+
         // no child element detected to be copied
         if (empty($childElements))
         {
@@ -749,7 +749,7 @@ abstract class Element
             return true;
         }
         // child element exist but the current record is the original record and already has child elements associated with it
-        else if((!empty($childElements)) && (!empty($existingchildElements)))
+        else if ((!empty($childElements)) && (!empty($existingchildElements)))
         {
             return false;
         }
@@ -927,7 +927,7 @@ abstract class Element
             {
                 $newtag = '';
 
-                $src = $img->getAttribute('src');
+                $src = trim($img->getAttribute('src'));
 
                 $sql = "src LIKE '%" . $src . "%'";
 
@@ -944,8 +944,6 @@ abstract class Element
                     $imgRecord = $DB->get_record_select('msm_img', $sql);
                     $imgparentid = array_shift(array_values($DB->get_records('msm_compositor', array('unit_id' => $imgRecord->id, 'table_id' => 16))))->parent_id;
                 }
-
-
 
                 if (!empty($imgRecord))
                 {

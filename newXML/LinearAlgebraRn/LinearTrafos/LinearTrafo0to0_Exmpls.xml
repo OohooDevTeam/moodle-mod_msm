@@ -5,21 +5,21 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_LinearTrafo0To0"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Linear Functions Send 0 To 0</title>
-	  <caption xmlns="">Linear Functions Send 0 To 0</caption>
+	  <caption>Linear Functions Send 0 To 0</caption>
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The cosine function <math>
                   <latex>\cos\from \RNr\to \RNr</latex>
                </math> is not linear because</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\cos 0 = 1 \neq 0</latex>
 			      </math.display>
 		    </statement.showme>
@@ -27,14 +27,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The exponential function <math>
                   <latex>\exp\from \RNr\to \RNr</latex>
                </math>, <math>
                   <latex>\exp(x)=e^x</latex>
                </math>, is not linear because</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>e^0 = 1 \neq 0</latex>
 			      </math.display>
 		    </statement.showme>
@@ -42,14 +42,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The polynomial function <math>
                   <latex>p\from \RNr\to \RNr</latex>
                </math>, <math>
                   <latex>p(x)=2x^3 - x + 3</latex>
                </math>, is not linear because</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>p(0) = 2\cdot 0^3 - 0 + 3 = 3 \neq 0</latex>
 			      </math.display>
 		    </statement.showme>
@@ -57,14 +57,14 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>The function <math>
                   <latex>f\from \RNr[3]\to \RNr</latex>
                </math>, <math>
                   <latex>f(x,y,z) = x + y + z -2</latex>
                </math> is not linear because</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>f(\Vect{0}) = f(0,0,0) = 0+0+0 -2 = -2 \neq 0</latex>
 			      </math.display>
 		    </statement.showme>

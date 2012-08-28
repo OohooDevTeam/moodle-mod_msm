@@ -5,30 +5,30 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ProjectionInclusion"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 	
 	  <title>Example: Projection onto a Coordinate Axis</title>
-	  <caption xmlns="">Example: Projection onto a Coordinate Axis</caption>
+	  <caption>Example: Projection onto a Coordinate Axis</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Recall: the projection of <math>
                   <latex>\RNr[m]</latex>
                </math> onto the <math>
                   <latex>i</latex>
                </math>-th coordinate is the function</para.body>
          </para>
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>\Prjctn{i}\from \RNr[m] \longrightarrow \RNr,\qquad \Prjctn{i}(x_1,\dots ,x_m)=x_i</latex>
 			      </math.display>
-			      <para xmlns="">
+			      <para>
             <para.body>Show that <math>
                   <latex>\Prjctn{i}</latex>
                </math> is a linear function.</para.body>
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Proof">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -37,7 +37,7 @@
                      </math> is linear, we check that it commutes with vector addition and with scalar multiplication</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{i}\left( (x_1,\dots ,x_m)+(y_1,\dots ,y_m) \right)</latex>
@@ -54,13 +54,6 @@
                               </para>
                            </info>
                         </companion>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>Here we just add the two vectors.</para.body>
-                              </para>
-                           </info>
-                        </companion>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -68,7 +61,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -78,19 +71,6 @@
                         <math>
                            <latex>=	</latex>
                         </math>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>Here we apply the definition of the <math>
-                                       <latex>i</latex>
-                                    </math>-th coordinate projection: from the <math>
-                                       <latex>n</latex>
-                                    </math>-tuple it picks the entry in the <math>
-                                       <latex>i</latex>
-                                    </math>-th position.</para.body>
-                              </para>
-                           </info>
-                        </companion>
                         <companion>
                            <info>
                               <para>
@@ -111,7 +91,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -133,18 +113,6 @@
                               </para>
                            </info>
                         </companion>
-                        <companion>
-                           <info>
-                              <para>
-                                 <para.body>Now we just observe that <math>
-                                       <latex>x_i=\Prjctn{i}(x_1,\dots ,x_i,\dots ,x_n)</latex>
-                                    </math> and <math>
-                                       <latex>y_i=\Prjctn{i}(y_1,\dots ,y_i,\dots ,y_n)</latex>
-                                    </math>
-                                 </para.body>
-                              </para>
-                           </info>
-                        </companion>
                      </cell>
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
@@ -152,7 +120,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{i}\left( t\cdot (x_1,\dots ,x_m) \right)</latex>
@@ -169,7 +137,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -186,7 +154,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex/>
@@ -213,7 +181,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>List all coordinate projections of <math>
                   <latex>\RNr[3]</latex>
                </math>, and find their effect on a vector <math>
@@ -221,7 +189,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -239,7 +207,7 @@
                      </math> is given by</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{1}(x,y,z)</latex>
@@ -256,7 +224,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{2}(x,y,z)</latex>
@@ -273,7 +241,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{3}(x,y,z)</latex>
@@ -300,7 +268,7 @@
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the effect of the three coordinate projections of <math>
                   <latex>\RNr[3]</latex>
                </math> on the vector <math>
@@ -308,7 +276,7 @@
                </math>.</para.body>
          </para>
 		    </statement.showme>
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -317,7 +285,7 @@
                      </math> has three coordinate projections, namely</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{1}(x,y,z)</latex>
@@ -334,7 +302,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{2}(x,y,z)</latex>
@@ -351,7 +319,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{3}(x,y,z)</latex>
@@ -373,7 +341,7 @@
                   <para.body>Therefore,</para.body>
                </para>
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{1}(2,5,7)</latex>
@@ -390,7 +358,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{2}(2,5,7)</latex>
@@ -407,7 +375,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>\Prjctn{3}(2,5,7)</latex>

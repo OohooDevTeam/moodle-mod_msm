@@ -5,15 +5,15 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              id="Exa_ShearTransformation"
              xsi:schemaLocation="Compositor file:/C:/xampp/htdocs/moodle/mod/msm/NewSchemas/Compositor.xsd">
-	  <texsupport xmlns="" href="../LinearAlgebraTeXSupport.xml"/>
+	  <texsupport href="../LinearAlgebraTeXSupport.xml"/>
 
 		
 
 	  <title>Examples of Shear Transformations</title>
-	  <caption xmlns="">Shear Transformations</caption>
+	  <caption>Shear Transformations</caption>
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Find the matrix representing the shear transformation <math>
                   <latex>S</latex>
                </math> of <math>
@@ -28,7 +28,7 @@
          </para>
 		    </statement.showme>
 		
-		    <answer.showme xmlns="">
+		    <answer.showme type="Solution">
          <answer.showme.block>
             <answer.showme.block.body>
 			            <para>
@@ -42,8 +42,8 @@
 				              <latex>\Vect{s} = S(\Vect{n}) - \Vect{n} = (1,1) - (0,1) = (1,0)</latex>
 			            </math.display>
 			
-			            <media xmlns="Theorem" type="image" active="0" inline="0">
-                  <img xmlns="" src="ims/ShearR2_2.png"/>
+			            <media type="image" active="0" inline="0">
+                  <img src="ims/ShearR2_2.png"/>
                </media>
 			
 			            <para>
@@ -73,7 +73,7 @@
                </para>
 			
 			            <math.array column="3">
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>S(1,0)</latex>
@@ -90,7 +90,7 @@
                         </math>
                      </cell>
                   </row>
-                  <row rowspan="1">
+                  <row xmlns:compositor="Compositor" compositor:rowspan="1">
                      <cell colspan="2" halign="center" valign="middle">
                         <math>
                            <latex>S(0,1)</latex>
@@ -134,7 +134,7 @@ A =
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>As in the example above we see that the general shear transformation of <math>
                   <latex>\RNr[2]</latex>
                </math> parallel to the <math>
@@ -142,7 +142,7 @@ A =
                </math>-axis is described by</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 S(x,y) = 
@@ -161,7 +161,7 @@ x \\ y
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>In particular, <math>
                   <latex>S</latex>
                </math> leaves <math>
@@ -175,8 +175,8 @@ x \\ y
                </math>.</para.body>
          </para>
 			
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/ShearR2_3.png"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/ShearR2_3.png"/>
          </media>
 			
 		    </statement.showme>
@@ -188,7 +188,7 @@ x \\ y
 	
 	  <showme>
 		    <statement.showme>
-			      <para xmlns="">
+			      <para>
             <para.body>Similarly, the shear transformation of <math>
                   <latex>\RNr[3]</latex>
                </math> parallel to the <math>
@@ -198,7 +198,7 @@ x \\ y
                </math>  is given by</para.body>
          </para>
 			
-			      <math.display xmlns="">
+			      <math.display>
 				        <latex>
 					
 S\from \RNr[3] \longrightarrow \RNr[3],\quad S(x,y,z) =
@@ -218,14 +218,14 @@ x \\ y \\ z
 				</latex>
 			      </math.display>
 			
-			      <para xmlns="">
+			      <para>
             <para.body>The picture below shows the effect of such a shear transformation on the unit cube of <math>
                   <latex>\RNr[3]</latex>
                </math>.</para.body>
          </para>
 			
-			      <media xmlns="Theorem" type="image" active="0" inline="0">
-            <img xmlns="" src="ims/Trafo_Shear3D.jpg"/>
+			      <media type="image" active="0" inline="0">
+            <img src="ims/Trafo_Shear3D.jpg"/>
          </media>
 		    </statement.showme>
 	  </showme>

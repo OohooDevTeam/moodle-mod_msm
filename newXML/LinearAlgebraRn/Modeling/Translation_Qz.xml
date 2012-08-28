@@ -20,7 +20,7 @@
 			      <question>
 				        <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="0" inline="0">
+                  <media type="image" active="0" inline="0">
                      <img src="Translation01_Qz.gif" height="99" width="325"/>
                   </media>
                </para.body>
@@ -68,7 +68,7 @@
 			      <question>
 				        <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="0" inline="0">
+                  <media type="image" active="0" inline="0">
                      <img src="Translation02_Qz.gif" height="155" width="307"/>
                   </media>
                </para.body>
@@ -116,7 +116,7 @@
 			      <question>
 				        <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="0" inline="0">
+                  <media type="image" active="0" inline="0">
                      <img src="Translation03_Qz.gif" height="101" width="301"/>
                   </media>
                </para.body>
@@ -164,7 +164,7 @@
 			      <question>
 				        <para align="center">
                <para.body>
-                  <media xmlns="" type="image" active="0" inline="0">
+                  <media type="image" active="0" inline="0">
                      <img src="Translation04_Qz.gif" height="139" width="243"/>
                   </media>
                </para.body>
