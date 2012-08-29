@@ -21,6 +21,13 @@
  */
 class MathCell extends Element
 {
+    public $position;
+    public $content;
+    public $colspan;
+    public $halign;
+    public $valign;
+    public $bgcolor;
+    public $fontcolor;
 
     function __construct($xmlpath = '')
     {

@@ -51,7 +51,6 @@ function popup(i) {
         $('#defminibutton-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });
-   
     });
     
     $('#minibutton-'+i).click(function(e) {
@@ -82,7 +81,6 @@ function popup(i) {
         $('#minibutton-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });
-   
     });
     
     $('#hottag-'+i).click(function(e) {
@@ -113,7 +111,7 @@ function popup(i) {
         $('#hottag-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });
-   
+
     });
     
     $('#commentminibutton-'+i).click(function(e) {
@@ -130,7 +128,7 @@ function popup(i) {
         $('#commentminibutton-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('open');
         });
-    
+        
     });
                 
     $('#commentminibutton-'+i).ready(function(e){
@@ -144,7 +142,6 @@ function popup(i) {
         $('#commentminibutton-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });
-   
     });
     
     $('#copydefminibutton-'+i).click(function(e) {
@@ -175,7 +172,6 @@ function popup(i) {
         $('#copydefminibutton-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });
-   
     });
     
     $('#copyminibutton-'+i).click(function(e) {
@@ -206,7 +202,6 @@ function popup(i) {
         $('#copyminibutton-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });
-   
     });
     
     $('#copyhottag-'+i).click(function(e) {
@@ -237,7 +232,6 @@ function popup(i) {
         $('#copyhottag-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });
-   
     });
     
     $('#copycommentminibutton-'+i).click(function(e) {
@@ -268,7 +262,6 @@ function popup(i) {
         $('#copycommentminibutton-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });
-   
     });
  
 }

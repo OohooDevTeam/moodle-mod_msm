@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of ProofBlock
@@ -101,6 +101,16 @@ class ProofBlock extends Element
                         $proofblockbody->medias[] = $media;
                     }
 
+                    foreach ($this->processMathArray($child, $position) as $matharray)
+                    {
+                        $proofblockbody->matharrays[] = $matharray;
+                    }
+
+                    foreach ($this->processTable($child, $position) as $table)
+                    {
+                        $proofblockbody->tables[] = $table;
+                    }
+
                     foreach ($this->processContent($child, $position) as $content)
                     {
                         $proofblockbody->proof_block_content .= $content;
@@ -185,6 +195,22 @@ class ProofBlock extends Element
                 foreach ($pbb->medias as $key => $media)
                 {
                     $elementPositions['media' . '-' . $key] = $media->position;
+                }
+            }
+
+            if (!empty($pbb->matharrays))
+            {
+                foreach ($pbb->matharrays as $key => $matharray)
+                {
+                    $elementPositions['matharray' . '-' . $key] = $matharray->position;
+                }
+            }
+
+            if (!empty($pbb->tables))
+            {
+                foreach ($pbb->tables as $key => $table)
+                {
+                    $elementPositions['table' . '-' . $key] = $table->position;
                 }
             }
 
@@ -278,6 +304,40 @@ class ProofBlock extends Element
                             $sibling_id = $media->compid;
                         }
                         break;
+
+                    case(preg_match("/^(matharray.\d+)$/", $element) ? true : false):
+                        $matharrayString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $matharray = $pbb->matharrays[$matharrayString[1]];
+                            $matharray->saveIntoDb($matharray->position, $this->compid);
+                            $sibling_id = $matharray->compid;
+                        }
+                        else
+                        {
+                            $matharray = $pbb->matharrays[$matharrayString[1]];
+                            $matharray->saveIntoDb($matharray->position, $this->compid, $sibling_id);
+                            $sibling_id = $matharray->compid;
+                        }
+                        break;
+
+                    case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                        $tableString = split('-', $element);
+
+                        if (empty($sibling_id))
+                        {
+                            $table = $pbb->tables[$tableString[1]];
+                            $table->saveIntoDb($table->position, $this->compid);
+                            $sibling_id = $table->compid;
+                        }
+                        else
+                        {
+                            $table = $pbb->tables[$tableString[1]];
+                            $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                            $sibling_id = $table->compid;
+                        }
+                        break;
                 }
             }
         }
@@ -297,17 +357,43 @@ class ProofBlock extends Element
         }
 
         $this->subordinates = array();
+        $this->matharrays = array();
+        $this->medias = array();
+        $this->tables = array();
+
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         foreach ($childElements as $child)
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-            if ($childtablename == 'msm_subordinate')
+            switch ($childtablename)
             {
-                $subordinate = new Subordinate();
-                $subordinate->loadFromDb($child->unit_id, $child->id);
-                $this->subordinates[] = $subordinate;
+                case('msm_subordinate'):
+
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+
+                case('msm_math_array'):
+
+                    $matharray = new MathArray();
+                    $matharray->loadFromDb($child->unit_id, $child->id);
+                    $this->matharrays[] = $matharray;
+                    break;
+
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->medias[] = $media;
+                    break;
+                
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->tables[] = $table;
+                    break;
             }
         }
 

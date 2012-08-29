@@ -107,8 +107,6 @@ abstract class Element
             {
                 if (!empty($DomElement->string_id))
                 {
-//                    echo "string_id";
-//                    print_object($DomElement->string_id);
                     $foundID = $DB->get_record($DomElement->tablename, array('string_id' => $DomElement->string_id));
 
                     if (!empty($foundID))
@@ -308,24 +306,24 @@ abstract class Element
 
         $position = $position + 1;
 
-        $subordinates = $DomElement->getElementsByTagName('subordinate');
-
-        $length = 0;
-
-        //to eliminate any nested subordinates from being counted when getting the length of the subordinates
-        foreach ($subordinates as $s)
-        {
-            if ($s->parentNode->parentNode->parentNode->tagName != 'info')
-            {
-                $length++;
-            }
-        }
-        for ($i = 0; $i < $length; $i++)
-        {
-            // replacing the entire subordinate element with just the hot element of the subordinate to show only the hot element 
-            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
-            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
-        }
+//        $subordinates = $DomElement->getElementsByTagName('subordinate');
+//
+//        $length = 0;
+//
+//        //to eliminate any nested subordinates from being counted when getting the length of the subordinates
+//        foreach ($subordinates as $s)
+//        {
+//            if ($s->parentNode->parentNode->parentNode->tagName != 'info')
+//            {
+//                $length++;
+//            }
+//        }
+//        for ($i = 0; $i < $length; $i++)
+//        {
+//            // replacing the entire subordinate element with just the hot element of the subordinate to show only the hot element 
+//            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
+//            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
+//        }
 
         // remove index.author elements along with its child nodes from content
         $indexauthors = $DomElement->getElementsByTagName('index.author');
@@ -372,7 +370,6 @@ abstract class Element
                 $medias->item(0)->parentNode->replaceChild($imgsrc, $medias->item(0));
             }
         }
-
         // converting XML content into string for further XML tag processing
         $doc = new DOMDocument();
         $element = $doc->importNode($DomElement, true);
@@ -773,14 +770,36 @@ abstract class Element
         $tables = $doc->getElementsByTagName('table');
         $imgs = $doc->getElementsByTagName('img');
         $hottags = $doc->getElementsByTagName('a');
+        $matharrays = $doc->getElementsByTagName('math.array');
 
-        if ((empty($tables)) && (empty($imgs)) && (empty($hottags)))
+
+        if ((empty($tables)) && (empty($imgs)) && (empty($hottags)) && (empty($matharrays)))
         {
             echo "null?";
             return null;
         }
         else
         {
+            foreach ($matharrays as $key => $marray)
+            {
+                if (!empty($object->matharrays))
+                {
+                    $matharray = $object->matharrays[$key];
+                    $matharrayString = $matharray->displayhtml();
+                    $XMLcontent = str_replace($marray, $matharrayString, $XMLcontent);
+                }
+            }
+
+            foreach ($tables as $key => $t)
+            {
+                if (!empty($object->tables))
+                {
+                    $table = $object->tables[$key];
+                    $tableString = $table->displayhtml();
+                    $XMLcontent = str_replace($t, $tableString, $XMLcontent);
+                }
+            }
+
             foreach ($hottags as $key => $hottag)
             {
                 if (!empty($object->subordinates[$key]))
@@ -835,13 +854,53 @@ abstract class Element
                                 $newtag .= $this->getContent($subordinate->hot);
                             }
                             $newtag .= "</a>";
+                            
+                            $newtag .= $subordinate->infos[0]->displayhtml();
 
                             $hotString = $doc->saveXML($hottag);
+                            // to pass to preg_replace, need to escape the / in end tags
+                            $newhotString = preg_replace("/<\/a>/", "<\/a>", $hotString);     
+                            print_object($newhotString);
+                            
+                            if (!empty($subordinate->infos[0]->caption))
+                            {
+                                $newcaption = preg_replace("/<\/(\w+)>/", "<\/$1>", $subordinate->infos[0]->caption);
+                                $newcontent = preg_replace("/<\/(\w+)>/", "<\/$1>", $subordinate->infos[0]->info_content);
+                                
+                                echo "has caption";
+                                $oldtag ="<subordinate>\s+<a\shref=''>\s*" . $newhotString . "\s*<\/a>\s*<info>\s*<info.caption>\s*" . $newcaption . "\s*<\/info.caption>\s*". $newcontent . "\s+<\/info>\s+<\/subordinate>";
+                            }
+                            else
+                            {
+                                echo "no caption";
+                                $oldtag ="<a\shref=''>\s*" . $hotString . "\s*<\/a>\s*<info>\s*" . $subordinate->infos[0]->info_content . "\s+<\/info>";
+                            }
+                            $count = preg_match("/$oldtag/", $XMLcontent);
+                            print_object($count);
 
-                            $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-
-                            $content .= $subordinate->infos[0]->displayhtml();
+//                            $XMLcontent = preg_replace("/$oldtag/siU", $newtag, $XMLcontent);
                         }
+//                        if (!empty($subordinate->infos[0]))
+//                        {
+//                            $newtag = '';
+//                            $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+//
+//                            if (is_string($subordinate->hot))
+//                            {
+//                                $newtag .= $subordinate->hot;
+//                            }
+//                            else
+//                            {
+//                                $newtag .= $this->getContent($subordinate->hot);
+//                            }
+//                            $newtag .= "</a>";
+//
+//                            $hotString = $doc->saveXML($hottag);
+//
+//                            $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+//
+//                            $content .= $subordinate->infos[0]->displayhtml();
+//                        }
                     }
 
                     if (!empty($subordinate->external_links[0]))
@@ -871,56 +930,56 @@ abstract class Element
                 }
             }
 
-            foreach ($tables as $table)
-            {
-                $newtabletag = '';
-
-                $trs = $table->getElementsByTagName('tr');
-                $border = $table->getAttribute('border');
-                $cellpadding = $table->getAttribute('cellpadding');
-
-                if (empty($border))
-                {
-                    $border = 0;
-                }
-                if (empty($cellpadding))
-                {
-                    $cellpadding = 0;
-                }
-
-                $newtabletag .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
-
-                foreach ($trs as $tr)
-                {
-                    $newtabletag .= "<tr>";
-                    foreach ($tr->childNodes as $grandChild)
-                    {
-                        if ($grandChild->nodeType == XML_ELEMENT_NODE)
-                        {
-                            if ($grandChild->tagName == 'td')
-                            {
-                                $newtabletag .= "<td style='border-width:" . $border . "px !important;'>";
-                                foreach ($grandChild->childNodes as $tablecontent)
-                                {
-                                    $newtabletag .= $doc->saveXML($tablecontent);
-                                }
-                                $newtabletag .= "</td>";
-                            }
-                        }
-                        else
-                        {
-                            $newtabletag .= $doc->saveXML($grandChild);
-                        }
-                    }
-                    $newtabletag .= "</tr>";
-                }
-
-                $newtabletag .= "</table>";
-
-                $tableString = $doc->saveXML($table);
-
-                $XMLcontent = str_replace($tableString, $newtabletag, $XMLcontent);
-            }
+//            foreach ($tables as $table)
+//            {
+//                $newtabletag = '';
+//
+//                $trs = $table->getElementsByTagName('tr');
+//                $border = $table->getAttribute('border');
+//                $cellpadding = $table->getAttribute('cellpadding');
+//
+//                if (empty($border))
+//                {
+//                    $border = 0;
+//                }
+//                if (empty($cellpadding))
+//                {
+//                    $cellpadding = 0;
+//                }
+//
+//                $newtabletag .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
+//
+//                foreach ($trs as $tr)
+//                {
+//                    $newtabletag .= "<tr>";
+//                    foreach ($tr->childNodes as $grandChild)
+//                    {
+//                        if ($grandChild->nodeType == XML_ELEMENT_NODE)
+//                        {
+//                            if ($grandChild->tagName == 'td')
+//                            {
+//                                $newtabletag .= "<td style='border-width:" . $border . "px !important;'>";
+//                                foreach ($grandChild->childNodes as $tablecontent)
+//                                {
+//                                    $newtabletag .= $doc->saveXML($tablecontent);
+//                                }
+//                                $newtabletag .= "</td>";
+//                            }
+//                        }
+//                        else
+//                        {
+//                            $newtabletag .= $doc->saveXML($grandChild);
+//                        }
+//                    }
+//                    $newtabletag .= "</tr>";
+//                }
+//
+//                $newtabletag .= "</table>";
+//
+//                $tableString = $doc->saveXML($table);
+//
+//                $XMLcontent = str_replace($tableString, $newtabletag, $XMLcontent);
+//            }
 
 
             foreach ($imgs as $key => $img)

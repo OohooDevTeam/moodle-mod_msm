@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Table
@@ -69,6 +69,11 @@ class Table extends Element
         foreach ($this->processMedia($DomElement, $position) as $media)
         {
             $this->medias[] = $media;
+        }
+
+        foreach ($this->processTable($DomElement, $position) as $table)
+        {
+            $this->tables[] = $table;
         }
 
         foreach ($this->processContent($DomElement, $position) as $content)
@@ -142,6 +147,14 @@ class Table extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -235,6 +248,23 @@ class Table extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $pbb->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $pbb->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
     }
@@ -256,9 +286,100 @@ class Table extends Element
             $this->table_content = $tableRecord->table_content;
         }
 
+        $this->subordinates = array();
+        $this->tables = array();
+        $this->medias = array();
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
+
+        foreach ($childElements as $child)
+        {
+            $childtable = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtable)
+            {
+                case('msm_subordinate'):
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->tables[] = $table;
+                    break;
+
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->medias[] = $media;
+                    break;
+            }
+        }
+        return $this;
+
+//        $doc = new DOMDocument;
+//
+//        @$doc->loadXML($this->table_content);
+//
+//        $table = $doc->getElementsByTagName('table')->item(0);
+//        $trs = $doc->getElementsByTagName('tr');
+//
+//        $border = $table->getAttribute('border');
+//        $cellpadding = $table->getAttribute('cellpadding');
+//
+//        if (empty($border))
+//        {
+//            $border = 0;
+//        }
+//        if (empty($cellpadding))
+//        {
+//           $cellpadding = 0;
+//        }
+//
+//        $newcontent .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
+//
+//        foreach ($trs as $tr)
+//        {
+//            $newcontent .= "<tr>";
+//            foreach ($tr->childNodes as $grandChild)
+//            {
+//                if ($grandChild->nodeType == XML_ELEMENT_NODE)
+//                {
+//                    if ($grandChild->tagName == 'td')
+//                    {
+//                        $newcontent .= "<td style='border-width:" . $border . "px !important;'>";
+//                        foreach ($grandChild->childNodes as $content)
+//                        {
+//                            $newcontent .= $doc->saveXML($content);
+//                        }
+//                        $newcontent .= "</td>";
+//                    }
+//                }
+//                else
+//                {
+//                    $newcontent .= $doc->saveXML($grandChild);
+//                }
+//            }
+//            $newcontent .= "</tr>";
+//        }
+//
+//        $newcontent .= "</table>";
+//
+//        $this->table_content = $newcontent;
+//
+//        return $this;
+    }
+
+    function displayhtml()
+    {
+        $content = '';
+        $newtablecontent = $this->displaySubordinate($this, $this->table_content);
+
         $doc = new DOMDocument;
 
-        @$doc->loadXML($this->table_content);
+        @$doc->loadXML($newtablecontent);
 
         $table = $doc->getElementsByTagName('table')->item(0);
         $trs = $doc->getElementsByTagName('tr');
@@ -272,48 +393,37 @@ class Table extends Element
         }
         if (empty($cellpadding))
         {
-           $cellpadding = 0;
+            $cellpadding = 0;
         }
 
-        $newcontent .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
+        $content .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
 
         foreach ($trs as $tr)
         {
-            $newcontent .= "<tr>";
+            $content .= "<tr>";
             foreach ($tr->childNodes as $grandChild)
             {
                 if ($grandChild->nodeType == XML_ELEMENT_NODE)
                 {
                     if ($grandChild->tagName == 'td')
                     {
-                        $newcontent .= "<td style='border-width:" . $border . "px !important;'>";
+                        $content .= "<td style='border-width:" . $border . "px !important;'>";
                         foreach ($grandChild->childNodes as $content)
                         {
-                            $newcontent .= $doc->saveXML($content);
+                            $content .= $doc->saveXML($content);
                         }
-                        $newcontent .= "</td>";
+                        $content .= "</td>";
                     }
                 }
                 else
                 {
-                    $newcontent .= $doc->saveXML($grandChild);
+                    $content .= $doc->saveXML($grandChild);
                 }
             }
-            $newcontent .= "</tr>";
+            $content .= "</tr>";
         }
 
-        $newcontent .= "</table>";
-
-        $this->table_content = $newcontent;
-
-        return $this;
-    }
-
-    function displayhtml()
-    {
-        $content = '';
-        $content .= $this->displaySubordinate($this, $this->table_content);
-
+        $content .= "</table>";
         return $content;
     }
 

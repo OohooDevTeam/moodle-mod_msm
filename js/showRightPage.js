@@ -20,7 +20,10 @@ function showRightpage(id)
         var cloned = $('#proof-'+id).clone();
         cloned.find('*').each(function(){
             var currentid = $(this).attr('id');
-            $(this).attr('id', 'copy'+currentid);
+            if(typeof currentid != 'undefined')
+            {
+                $(this).attr('id', 'copy'+currentid);
+            }
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);

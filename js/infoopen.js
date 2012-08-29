@@ -35,7 +35,10 @@ function infoopen(i) {
             var cloned = $('#refcontent-'+i).clone();
             cloned.find('*').each(function(){
                 var currentid = $(this).attr('id');
-                $(this).attr('id', 'copy'+currentid);
+                if(typeof currentid != 'undefined')
+                {
+                    $(this).attr('id', 'copy'+currentid);
+                }
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
@@ -60,7 +63,10 @@ function infoopen(i) {
         var cloned = $('#refcontent-'+i).clone();
         cloned.find('*').each(function(){
             var currentid = $(this).attr('id');
-            $(this).attr('id', 'copy'+currentid);
+            if(typeof currentid != 'undefined')
+            {
+                $(this).attr('id', 'copy'+currentid);
+            }
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
@@ -87,7 +93,11 @@ function infoopen(i) {
             var cloned = $('#refcontent-'+i).clone();
             cloned.find('*').each(function(){
                 var currentid = $(this).attr('id');
-                $(this).attr('id', 'copy'+currentid);
+                if(typeof currentid != 'undefined')
+                {
+                    $(this).attr('id', 'copy'+currentid);
+                }
+               
             });
             cloned.appendTo($('.rightbox')).css('display', 'block');
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
@@ -104,6 +114,7 @@ function infoopen(i) {
         $('#hottag-'+i).mouseout(function(){
             $('#dialog-'+i).dialog('close');
         });   
+
     });
 
     $('#commentminibutton-'+i).unbind('click');
@@ -112,7 +123,10 @@ function infoopen(i) {
         var cloned = $('#refcontent-'+i).clone();
         cloned.find('*').each(function(){
             var currentid = $(this).attr('id');
-            $(this).attr('id', 'copy'+currentid);
+            if(typeof currentid != 'undefined')
+            {
+                $(this).attr('id', 'copy'+currentid);
+            }
         });
         cloned.appendTo($('.rightbox')).css('display', 'block');
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
