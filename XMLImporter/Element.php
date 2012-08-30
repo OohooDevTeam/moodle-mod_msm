@@ -306,24 +306,24 @@ abstract class Element
 
         $position = $position + 1;
 
-//        $subordinates = $DomElement->getElementsByTagName('subordinate');
-//
-//        $length = 0;
-//
-//        //to eliminate any nested subordinates from being counted when getting the length of the subordinates
-//        foreach ($subordinates as $s)
-//        {
-//            if ($s->parentNode->parentNode->parentNode->tagName != 'info')
-//            {
-//                $length++;
-//            }
-//        }
-//        for ($i = 0; $i < $length; $i++)
-//        {
-//            // replacing the entire subordinate element with just the hot element of the subordinate to show only the hot element 
-//            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
-//            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
-//        }
+        $subordinates = $DomElement->getElementsByTagName('subordinate');
+
+        $length = 0;
+
+        //to eliminate any nested subordinates from being counted when getting the length of the subordinates
+        foreach ($subordinates as $s)
+        {
+            if ($s->parentNode->parentNode->parentNode->tagName != 'info')
+            {
+                $length++;
+            }
+        }
+        for ($i = 0; $i < $length; $i++)
+        {
+            // replacing the entire subordinate element with just the hot element of the subordinate to show only the hot element 
+            $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
+            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
+        }
 
         // remove index.author elements along with its child nodes from content
         $indexauthors = $DomElement->getElementsByTagName('index.author');
@@ -840,46 +840,6 @@ abstract class Element
                     }
                     else
                     {
-                        if (!empty($subordinate->infos[0]))
-                        {
-                            $newtag = '';
-                            $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
-
-                            if (is_string($subordinate->hot))
-                            {
-                                $newtag .= $subordinate->hot;
-                            }
-                            else
-                            {
-                                $newtag .= $this->getContent($subordinate->hot);
-                            }
-                            $newtag .= "</a>";
-                            
-                            $newtag .= $subordinate->infos[0]->displayhtml();
-
-                            $hotString = $doc->saveXML($hottag);
-                            // to pass to preg_replace, need to escape the / in end tags
-                            $newhotString = preg_replace("/<\/a>/", "<\/a>", $hotString);     
-                            print_object($newhotString);
-                            
-                            if (!empty($subordinate->infos[0]->caption))
-                            {
-                                $newcaption = preg_replace("/<\/(\w+)>/", "<\/$1>", $subordinate->infos[0]->caption);
-                                $newcontent = preg_replace("/<\/(\w+)>/", "<\/$1>", $subordinate->infos[0]->info_content);
-                                
-                                echo "has caption";
-                                $oldtag ="<subordinate>\s+<a\shref=''>\s*" . $newhotString . "\s*<\/a>\s*<info>\s*<info.caption>\s*" . $newcaption . "\s*<\/info.caption>\s*". $newcontent . "\s+<\/info>\s+<\/subordinate>";
-                            }
-                            else
-                            {
-                                echo "no caption";
-                                $oldtag ="<a\shref=''>\s*" . $hotString . "\s*<\/a>\s*<info>\s*" . $subordinate->infos[0]->info_content . "\s+<\/info>";
-                            }
-                            $count = preg_match("/$oldtag/", $XMLcontent);
-                            print_object($count);
-
-//                            $XMLcontent = preg_replace("/$oldtag/siU", $newtag, $XMLcontent);
-                        }
 //                        if (!empty($subordinate->infos[0]))
 //                        {
 //                            $newtag = '';
@@ -894,13 +854,75 @@ abstract class Element
 //                                $newtag .= $this->getContent($subordinate->hot);
 //                            }
 //                            $newtag .= "</a>";
+//                            
+//                            $newtag .= $subordinate->infos[0]->displayhtml();
 //
 //                            $hotString = $doc->saveXML($hottag);
+//                            // to pass to preg_replace, need to escape the / in end tags
+////                            $newhotString = preg_replace("/<\/a>/", "<\/a>", $hotString);
+//                            $newcontent = preg_replace('/<(\w+)\s*xmlns="(\w+)"/', "<$1", $subordinate->infos[0]->info_content);
+//                            $newxmlcontent = preg_replace('/<(\w+)\s*xmlns="(\w+)"/', "<$1", $XMLcontent);
+//                            
+//                            $newcontent = preg_replace('/\s+/', ' ' ,$newcontent);
+//                            $newxmlcontent = preg_replace('/\s+/', ' ' ,$newxmlcontent);
+////                             $newcontent = preg_replace('/\t+/', '' ,$newcontent);
+////                            $newxmlcontent = preg_replace('/\t+/', '' ,$newxmlcontent);
+////                             $newcontent = preg_replace('/\s{2,}/', '' ,$newcontent);
+////                            $newxmlcontent = preg_replace('/\s{2,}/', '' ,$newxmlcontent);
+//                            
+//                            if (!empty($subordinate->infos[0]->caption))
+//                            {
+////                                $newcaption = preg_replace("/<\/(\w+)>/", "<\/$1>", $subordinate->infos[0]->caption);
+////                                $newcontent = preg_replace("/<\/(\w+)>/", "<\/$1>", $newcontent);
+//                                $newcaption = preg_replace('/\s+/', ' ' ,$subordinate->infos[0]->caption);
+////                                $newhotString = preg_replace('/\s+/', ' ' ,$hotString);
+//                                
+//                                
+//                                echo "has caption";
+//                                $oldtag ="<subordinate> " . $hotString. " <info> <info.caption> " . $newcaption . " </info.caption> " . $newcontent . " </info> </subordinate>";
+////                                $oldtag =$newcontent;
+//                            }
+//                            else
+//                            {
+//                                echo "no caption";
+//                                $oldtag ="<a\shref=''>\s*" . $hotString . "\s*<\/a>\s*<info>\s*" . $subordinate->infos[0]->info_content . "\s*<\/info>";
+//                            }
+//                         
+////                            echo "xml content";
+////                            print_object($newxmlcontent);
+////                            echo "old tag" . "\n";
+////                            print_object($oldtag);
+////                            
+//                            $XMLcontent = str_replace($oldtag, $newtag, $newxmlcontent);
+//                            
+//                            print_object($content);
+//                            
+////                            $count = preg_match("/$oldtag/", $newxmlcontent);
+////                            print_object($count);
 //
-//                            $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-//
-//                            $content .= $subordinate->infos[0]->displayhtml();
+////                            $XMLcontent = preg_replace("/$oldtag/siU", $newtag, $XMLcontent);
 //                        }
+                        if (!empty($subordinate->infos[0]))
+                        {
+                            $newtag = '';
+                            $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+
+                            if (is_string($subordinate->hot))
+                            {
+                                $newtag .= $subordinate->hot;
+                            }
+                            else
+                            {
+                                $newtag .= $this->getContent($subordinate->hot);
+                            }
+                            $newtag .= "</a>";
+
+                            $hotString = $doc->saveXML($hottag);
+
+                            $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+
+                            $content .= $subordinate->infos[0]->displayhtml();
+                        }
                     }
 
                     if (!empty($subordinate->external_links[0]))
