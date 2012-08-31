@@ -112,8 +112,9 @@ class Subordinate extends Element
         global $DB;
 
         $data = new stdClass();
-        $data->hot = $this->hot;
+        $data->hot = $position . ", " . $this->hot;
 
+        // checking for duplicate records
         $numOfRecords = $DB->count_records($this->tablename);
         if ($numOfRecords > 0)
         {

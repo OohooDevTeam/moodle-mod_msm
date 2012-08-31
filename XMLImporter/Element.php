@@ -305,25 +305,47 @@ abstract class Element
         $content = array();
 
         $position = $position + 1;
+        $subDocument = new DOMDocument();
 
-        $subordinates = $DomElement->getElementsByTagName('subordinate');
+        $element = $subDocument->importNode($DomElement, true);
+
+        $subordinates = $element->getElementsByTagName('subordinate');
 
         $length = 0;
 
         //to eliminate any nested subordinates from being counted when getting the length of the subordinates
         foreach ($subordinates as $s)
         {
-            if ($s->parentNode->parentNode->parentNode->tagName != 'info')
+            if (!empty($s->parentNode->parentNode->parentNode))
             {
-                $length++;
+                if ($s->parentNode->parentNode->parentNode->nodeType == XML_ELEMENT_NODE)
+                {
+                    if ($s->parentNode->parentNode->parentNode->tagName != 'info')
+                    {
+                        $length++;
+                    }
+                }
             }
         }
+        
         for ($i = 0; $i < $length; $i++)
         {
             // replacing the entire subordinate element with just the hot element of the subordinate to show only the hot element 
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
-            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
+            $document = new DOMDocument();
+            $hotelement = $document->importNode($hot, true);
+            $stringhot = $document->saveXML($hotelement);
+            $stringhot = str_replace("<hot xmlns=\"Unit\">", '', $stringhot);
+            $stringhot = str_replace("<hot>", '', $stringhot);
+            $stringhot = str_replace("</hot>", '', $stringhot);
+            $newhot = $position . "," . $stringhot;
+
+            $newhotNode = $subDocument->createElement('hot', $newhot);
+
+            $subordinates->item(0)->parentNode->replaceChild($newhotNode, $subordinates->item(0));
         }
+        
+        $DomElement = $subDocument->importNode($element);
 
         // remove index.author elements along with its child nodes from content
         $indexauthors = $DomElement->getElementsByTagName('index.author');
@@ -909,7 +931,8 @@ abstract class Element
 
                             if (is_string($subordinate->hot))
                             {
-                                $newtag .= $subordinate->hot;
+                                $rawhotString = explode(',', $subordinate->hot);
+                                $newtag .= $rawhotString[1];
                             }
                             else
                             {
