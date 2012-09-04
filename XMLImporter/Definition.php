@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Definition
@@ -60,6 +60,7 @@ class Definition extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+        $this->tables = array();
 
         $associates = $DomElement->getElementsByTagName('associate');
 
@@ -99,6 +100,11 @@ class Definition extends Element
             foreach ($this->processMedia($d, $position) as $media)
             {
                 $this->medias[] = $media;
+            }
+
+            foreach ($this->processTable($d, $position) as $table)
+            {
+                $this->tables[] = $table;
             }
 
             foreach ($this->processContent($d, $position) as $content)
@@ -187,6 +193,14 @@ class Definition extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -297,6 +311,23 @@ class Definition extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
     }
@@ -317,7 +348,9 @@ class Definition extends Element
 
         $this->associates = array();
         $this->subordinates = array();
-        
+        $this->medias = array();
+        $this->tables = array();
+
         $this->childs = array();
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
@@ -326,17 +359,31 @@ class Definition extends Element
         {
             $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
 
-            if ($childtablename == 'msm_associate')
+            switch ($childtablename)
             {
-                $associate = new Associate();
-                $associate->loadFromDb($child->unit_id, $child->id);
-                $this->associates[] = $associate;
-            }
-            if ($childtablename == 'msm_subordinate')
-            {
-                $subordinate = new Subordinate();
-                $subordinate->loadFromDb($child->unit_id, $child->id);
-                $this->subordinates[] = $subordinate;
+                case('msm_associate'):
+                    $associate = new Associate();
+                    $associate->loadFromDb($child->unit_id, $child->id);
+                    $this->associates[] = $associate;
+                    break;
+
+                case('msm_subordinate'):
+                    $subordinate = new Subordinate();
+                    $subordinate->loadFromDb($child->unit_id, $child->id);
+                    $this->subordinates[] = $subordinate;
+                    break;
+
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->medias[] = $media;
+                    break;
+
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->tables[] = $table;
+                    break;
             }
         }
 
@@ -352,8 +399,8 @@ class Definition extends Element
         {
             $content .= "<span class='deftitle'>" . $this->caption . "</span>";
         }
-        
-        if(!empty($this->def_type))
+
+        if (!empty($this->def_type))
         {
             $content .= "<span class='deftype'>" . $this->def_type . "</span>";
         }
@@ -363,19 +410,19 @@ class Definition extends Element
         $content .= $this->displaySubordinate($this, $this->def_content);
         $content .= "<br />";
         $content .= "</div>";
-        
+
         $content .= "<br />";
-        
+
         $content .= "<ul class='defminibuttons'>";
         foreach ($this->associates as $key => $associate)
         {
             $content .= $associate->displayhtml();
         }
-         $content .= "</ul>";
-         
+        $content .= "</ul>";
+
         $content .= "</div>";
         $content .= "<br />";
-        
+
 //        print_object($content);
 
         return $content;

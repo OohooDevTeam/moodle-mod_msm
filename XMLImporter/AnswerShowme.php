@@ -47,6 +47,7 @@ class AnswerShowme extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+        $this->tables = array();
 
         $answer_showme_blocks = $DomElement->getElementsByTagName('answer.showme.block');
 
@@ -79,6 +80,10 @@ class AnswerShowme extends Element
                 foreach ($this->processMedia($asbb, $position) as $media)
                 {
                     $this->medias[] = $media;
+                }
+                foreach ($this->processTable($asbb, $position) as $table)
+                {
+                    $this->tables[] = $table;
                 }
                 foreach ($this->processContent($asbb, $position) as $content)
                 {
@@ -156,6 +161,14 @@ class AnswerShowme extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -249,6 +262,23 @@ class AnswerShowme extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
     }
@@ -269,6 +299,7 @@ class AnswerShowme extends Element
 
         $this->subordinates = array();
         $this->medias = array();
+        $this->tables = array();
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $this->compid), 'prev_sibling_id');
 
@@ -288,6 +319,12 @@ class AnswerShowme extends Element
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
+                    break;
+                
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->tables[] = $table;
                     break;
             }
         }

@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Approach
@@ -47,6 +47,7 @@ class Approach extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+        $this->tables = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -81,6 +82,11 @@ class Approach extends Element
                     foreach ($this->processMedia($child, $position) as $media)
                     {
                         $this->medias[] = $media;
+                    }
+
+                    foreach ($this->processTable($child, $position) as $table)
+                    {
+                        $this->tables[] = $table;
                     }
                 }
                 if ($child->tagName == 'answer.exercise')
@@ -191,6 +197,14 @@ class Approach extends Element
             }
         }
 
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
+            }
+        }
+
         asort($elementPositions);
 
         foreach ($elementPositions as $element => $value)
@@ -213,7 +227,7 @@ class Approach extends Element
                         $sibling_id = $answerexercise->compid;
                     }
                     break;
-                    
+
                 case(preg_match("/^(soltuion.\d+)$/", $element) ? true : false):
                     $solutionString = split('-', $element);
 
@@ -315,9 +329,25 @@ class Approach extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
-
     }
 
 }

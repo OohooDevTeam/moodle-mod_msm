@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Statement
@@ -41,6 +41,7 @@ class StatementTheorem extends Element
         $this->indexsymbols = array();
         $this->subordinates = array();
         $this->medias = array();
+        $this->tables = array();
 
         foreach ($DomElement->childNodes as $key => $child)
         {
@@ -79,6 +80,11 @@ class StatementTheorem extends Element
                         $this->medias[] = $media;
                     }
 
+                    foreach ($this->processTable($child, $position) as $table)
+                    {
+                        $this->tables[] = $table;
+                    }
+
                     foreach ($this->processContent($child, $position) as $content)
                     {
                         $this->content .= $content;
@@ -92,7 +98,7 @@ class StatementTheorem extends Element
     {
         global $DB;
         $data = new stdClass();
-        
+
         // need to group all the children of statement.theorem for loadXML function in displaySubordinate function later...
         $data->statement_content = "<statement.theorem>" . $this->content . "</statement.theorem>";
         $this->id = $DB->insert_record($this->tablename, $data);
@@ -146,6 +152,14 @@ class StatementTheorem extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -256,6 +270,23 @@ class StatementTheorem extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
     }
@@ -276,6 +307,8 @@ class StatementTheorem extends Element
 
         $this->childs = array();
         $this->subordinates = array();
+        $this->medias = array();
+        $this->tables = array();
 
         foreach ($childElements as $child)
         {
@@ -294,9 +327,21 @@ class StatementTheorem extends Element
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
                     break;
+                
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->medias[] = $media;
+                    break;
+                
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->tables[] = $table;
+                    break;
             }
         }
-        
+
         return $this;
     }
 
@@ -304,14 +349,14 @@ class StatementTheorem extends Element
     {
         $content = '';
         $content .= $this->displaySubordinate($this, $this->statement_content);
-       
+
         $content .= "<ol class='parttheorem' style='list-style-type:lower-roman;'>";
         foreach ($this->childs as $childComponent)
         {
             $content .= $childComponent->displayhtml();
         }
         $content .= "</ol>";
-        
+
         return $content;
     }
 

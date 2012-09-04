@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of AnswerExample
@@ -54,6 +54,7 @@ class AnswerExample extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+        $this->tables = array();
 
         foreach ($answer_blocks as $answer_block)
         {
@@ -105,6 +106,11 @@ class AnswerExample extends Element
                 {
                     $this->medias[] = $media;
                 }
+
+                foreach ($this->processTable($answer_block_body, $position) as $table)
+                {
+                    $this->tables[] = $table;
+                }
             }
         }
     }
@@ -115,7 +121,7 @@ class AnswerExample extends Element
      * @param int $position 
      */
     function saveIntoDb($position, $parentid = '', $siblingid = '')
-    { 
+    {
         global $DB;
         $data = new stdClass();
 
@@ -131,16 +137,16 @@ class AnswerExample extends Element
             {
                 $data->answer_content = $block_body;
                 $this->id = $DB->insert_record($this->tablename, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);     
+                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
             }
         }
         else
         {
             $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);     
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
-        
-         $elementPositions = array();
+
+        $elementPositions = array();
         $sibling_id = null;
 
 
@@ -181,6 +187,14 @@ class AnswerExample extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -272,6 +286,23 @@ class AnswerExample extends Element
                         $media = $this->medias[$mediaString[1]];
                         $media->saveIntoDb($media->position, $this->compid, $sibling_id);
                         $sibling_id = $media->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
                     }
                     break;
             }

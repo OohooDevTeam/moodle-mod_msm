@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Info
@@ -47,6 +47,7 @@ class MathInfo extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+        $this->tables = array();
 
         foreach ($DomElement->childNodes as $child)
         {
@@ -76,6 +77,11 @@ class MathInfo extends Element
                     foreach ($this->processMedia($child, $position) as $media)
                     {
                         $this->medias[] = $media;
+                    }
+
+                    foreach ($this->processTable($child, $position) as $table)
+                    {
+                        $this->tables[] = $table;
                     }
 
                     foreach ($this->processContent($child, $position) as $content)
@@ -154,6 +160,14 @@ class MathInfo extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -247,6 +261,23 @@ class MathInfo extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
     }
@@ -276,6 +307,7 @@ class MathInfo extends Element
 
         $this->medias = array();
         $this->subordinates = array();
+        $this->tables = array();
 
         foreach ($childElements as $child)
         {
@@ -293,6 +325,12 @@ class MathInfo extends Element
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
+                    break;
+                
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->tables[] = $table;
                     break;
             }
         }

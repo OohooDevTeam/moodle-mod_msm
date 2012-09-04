@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Does not exist in legacy files but will be an option for the author when new materials are generated
@@ -49,7 +49,7 @@ class PartExample extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
-
+        $this->tables = array();
         $this->medias = array();
 
         $this->content = array();
@@ -80,6 +80,11 @@ class PartExample extends Element
             foreach ($this->processMedia($peb, $position) as $media)
             {
                 $this->medias[] = $media;
+            }
+
+            foreach ($this->processTable($peb, $position) as $table)
+            {
+                $this->tables[] = $table;
             }
 
             foreach ($this->processContent($peb, $position) as $content)
@@ -150,6 +155,14 @@ class PartExample extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -241,6 +254,23 @@ class PartExample extends Element
                         $media = $this->medias[$mediaString[1]];
                         $media->saveIntoDb($media->position, $this->compid, $sibling_id);
                         $sibling_id = $media->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
                     }
                     break;
             }

@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Pilot
@@ -46,6 +46,13 @@ class Pilot extends Element
             $this->pilot_content .= $doc->saveXML($element);
         }
 
+        $this->indexauthors = array();
+        $this->indexglossarys = array();
+        $this->indexsymbols = array();
+        $this->subordinates = array();
+        $this->tables = array();
+        $this->medias = array();
+
         $pilot_bodys = $DomElement->getElementsByTagName('pilot.body');
 
 
@@ -75,6 +82,11 @@ class Pilot extends Element
                 foreach ($this->processMedia($pib, $position) as $media)
                 {
                     $this->medias[] = $media;
+                }
+
+                foreach ($this->processTable($pib, $position) as $table)
+                {
+                    $this->tables[] = $table;
                 }
 
                 foreach ($this->processContent($pib, $position) as $content)

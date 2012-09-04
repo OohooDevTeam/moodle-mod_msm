@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Para
@@ -50,6 +50,7 @@ class Para extends Element
         $this->indexsymbols = array();
         $this->subordinates = array();
         $this->medias = array();
+        $this->tables = array();
 
         $this->content = array();
 
@@ -75,6 +76,11 @@ class Para extends Element
         foreach ($this->processMedia($DomElement, $position) as $media)
         {
             $this->medias[] = $media;
+        }
+
+        foreach ($this->processTable($DomElement, $position) as $table)
+        {
+            $this->tables[] = $table;
         }
 
         foreach ($this->processContent($DomElement, $position) as $content)
@@ -156,6 +162,14 @@ class Para extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -249,6 +263,23 @@ class Para extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
     }
@@ -270,6 +301,7 @@ class Para extends Element
 
         $this->subordinates = array();
         $this->medias = array();
+        $this->tables = array();
 
         foreach ($childElements as $child)
         {
@@ -287,6 +319,12 @@ class Para extends Element
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
+                    break;
+                
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->tables[] = $table;
                     break;
             }
         }

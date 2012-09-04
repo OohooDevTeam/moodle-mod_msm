@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Class representing ol, ul and math.display elements in the transformed XML files.
@@ -119,6 +119,12 @@ class InContent extends Element
         {
             $this->matharrays[] = $matharray;
         }
+
+        foreach ($this->processTable($DomElement, $position) as $table)
+        {
+            $this->tables[] = $table;
+        }
+
         foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
             $this->indexauthors[] = $indexauthor;
@@ -189,6 +195,14 @@ class InContent extends Element
             foreach ($this->subordinates as $key => $subordinate)
             {
                 $elementPositions['subordinate' . '-' . $key] = $subordinate->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -269,6 +283,23 @@ class InContent extends Element
                         $subordinate = $this->subordinates[$subordinateString[1]];
                         $subordinate->saveIntoDb($subordinate->position, $this->compid, $sibling_id);
                         $sibling_id = $subordinate->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
                     }
                     break;
 
@@ -376,6 +407,7 @@ class InContent extends Element
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
 
         $this->subordinates = array();
+        $this->tables = array();
         $this->childs = array();
 
         foreach ($childElements as $child)
@@ -399,7 +431,7 @@ class InContent extends Element
                 case('msm_table'):
                     $table = new Table();
                     $table->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[] = $table;
+                    $this->tables[] = $table;
                     break;
 
                 case('msm_media'):

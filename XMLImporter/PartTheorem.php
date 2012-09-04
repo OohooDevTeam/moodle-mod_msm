@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of PartTheorem
@@ -40,6 +40,7 @@ class PartTheorem extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+        $this->tables = array();
 
         $this->partid = $DomElement->getAttribute('partid');
         $this->counter = $DomElement->getAttribute('counter');
@@ -72,6 +73,11 @@ class PartTheorem extends Element
             foreach ($this->processMedia($parb, $position) as $media)
             {
                 $this->medias[] = $media;
+            }
+
+            foreach ($this->processTable($parb, $position) as $table)
+            {
+                $this->tables[] = $table;
             }
 
             foreach ($this->processContent($parb, $position) as $content)
@@ -147,6 +153,14 @@ class PartTheorem extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -240,6 +254,23 @@ class PartTheorem extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
     }
@@ -259,6 +290,8 @@ class PartTheorem extends Element
 
         $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
         $this->subordinates = array();
+        $this->medias = array();
+        $this->tables = array();
 
         foreach ($childElements as $child)
         {
@@ -270,6 +303,18 @@ class PartTheorem extends Element
                     $subordinate = new Subordinate();
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
+                    break;
+                
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->tables[] = $table;
+                    break;
+                
+                case('msm_media'):
+                    $media = new Media();
+                    $media->loadFromDb($child->unit_id, $child->id);
+                    $this->medias[] = $media;
                     break;
             }
         }

@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Comment
@@ -51,6 +51,7 @@ class MathComment extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+        $this->tables = array();
 
 
         $associates = $DomElement->getElementsByTagName('associate');
@@ -93,6 +94,11 @@ class MathComment extends Element
                 $this->medias[] = $media;
             }
 
+            foreach ($this->processTable($c, $position) as $table)
+            {
+                $this->tables[] = $table;
+            }
+
             foreach ($this->processContent($c, $position) as $content)
             {
                 $this->content[] = $content;
@@ -124,19 +130,19 @@ class MathComment extends Element
                 $data->comment_content = $content;
 
                 $this->id = $DB->insert_record($this->tablename, $data);
-                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);        
+                $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
             }
         }
         else
         {
             $this->id = $DB->insert_record($this->tablename, $data);
-            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);        
+            $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
         }
-        
+
         $elementPositions = array();
         $sibling_id = null;
-        
-         if (!empty($this->associates))
+
+        if (!empty($this->associates))
         {
             foreach ($this->associates as $key => $associate)
             {
@@ -185,13 +191,21 @@ class MathComment extends Element
             }
         }
 
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
+            }
+        }
+
         asort($elementPositions);
 
         foreach ($elementPositions as $element => $value)
         {
             switch ($element)
             {
-                 case(preg_match("/^(associate.\d+)$/", $element) ? true : false):
+                case(preg_match("/^(associate.\d+)$/", $element) ? true : false):
                     $associateString = split('-', $element);
 
                     if (empty($sibling_id))
@@ -207,7 +221,7 @@ class MathComment extends Element
                         $sibling_id = $associate->compid;
                     }
                     break;
-                    
+
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
                     $subordinateString = split('-', $element);
 
@@ -292,73 +306,96 @@ class MathComment extends Element
                         $sibling_id = $media->compid;
                     }
                     break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
+                    }
+                    break;
             }
         }
     }
-    
+
     function loadFromDb($id, $compid)
     {
         global $DB;
-        
-        $commentRecord = $DB->get_record('msm_comment', array('id'=>$id));
-        
-        if(!empty($commentRecord))
+
+        $commentRecord = $DB->get_record('msm_comment', array('id' => $id));
+
+        if (!empty($commentRecord))
         {
             $this->compid = $compid;
             $this->comment_type = $commentRecord->comment_type;
             $this->caption = $commentRecord->caption;
             $this->comment_content = $commentRecord->comment_content;
         }
-        
-        $childElement = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
-        
+
+        $childElement = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
         $this->subordinates = array();
         $this->medias = array();
         $this->associates = array();
+        $this->tables = array();
         $this->childs = array();
-        
-        foreach($childElement as $child)
+
+        foreach ($childElement as $child)
         {
-            $childtablename = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
-            
-            switch($childtablename)
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            switch ($childtablename)
             {
                 case('msm_subordinate'):
                     $subordinate = new Subordinate();
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
                     break;
-                
+
                 case('msm_media'):
                     $media = new Media();
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
                     break;
-                
+
                 case('msm_associate'):
                     $associate = new Associate();
                     $associate->loadFromDb($child->unit_id, $child->id);
                     $this->associates[] = $associate;
                     break;
                 
+                case('msm_table'):
+                    $table = new Table();
+                    $table->loadFromDb($child->unit_id, $child->id);
+                    $this->tables[] = $table;
+                    break;
             }
         }
-        
+
         return $this;
     }
 
     function displayhtml()
     {
         $content = '';
-        
+
         $content .= "<br />";
         $content .= "<div class='comment'>";
         if (!empty($this->caption))
         {
             $content .= "<span class='commenttitle'>" . $this->caption . "</span>";
         }
-        
-        if(!empty($this->def_type))
+
+        if (!empty($this->def_type))
         {
             $content .= "<span class='commentype'>" . $this->comment_type . "</span>";
         }
@@ -368,24 +405,25 @@ class MathComment extends Element
         $content .= $this->displaySubordinate($this, $this->comment_content);
         $content .= "<br />";
         $content .= "</div>";
-        
+
         $content .= "<br />";
-        
+
         $content .= "<ul class='commentminibuttons'>";
         foreach ($this->associates as $key => $associate)
         {
             $content .= $associate->displayhtml();
         }
-         $content .= "</ul>";
-         
+        $content .= "</ul>";
+
         $content .= "</div>";
         $content .= "<br />";
-        
+
 //        print_object($content);
 
-        
+
         return $content;
     }
+
 }
 
 ?>

@@ -214,7 +214,7 @@ abstract class Element
 
         $matharrays = $DomElement->getElementsByTagName('math.array');
         $matharraylength = $matharrays->length;
-        for ($i = 1; $i < $matharraylength; $i++)
+        for ($i = 0; $i < $matharraylength; $i++)
         {
             $position = $position + 1;
             $matharray = new MathArray($this->xmlpath);
@@ -242,7 +242,7 @@ abstract class Element
 
         $tables = $DomElement->getElementsByTagName('table');
         $tablelength = $tables->length;
-        for ($i = 1; $i < $tablelength; $i++)
+        for ($i = 0; $i < $tablelength; $i++)
         {
             $position = $position + 1;
             $table = new Table($this->xmlpath);
@@ -383,18 +383,11 @@ abstract class Element
 
         foreach ($content as $key => $string)
         {
-//            $string = str_replace('<caption>', '<captions>', $string);
-//            $string = str_replace('</caption>', '</captions>', $string);
-
             $string = str_replace('<row', '<tr', $string);
             $string = str_replace('</row>', '</tr>', $string);
 
             $string = str_replace('<cell', '<td', $string);
             $string = str_replace('</cell>', '</td>', $string);
-
-//            $string = preg_replace('/^<math.array xmlns=(.+)/', '<table class="matharray"', $string);
-//            $string = str_replace('<math.array', '<table', $string);
-//            $string = str_replace('</math.array>', '</table>', $string);
 
             $string = str_replace('<para.body', '<p', $string);
             $string = str_replace('</para.body>', '</p>', $string);
@@ -407,6 +400,8 @@ abstract class Element
 
             $string = str_replace('<hot', '<a href=""', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
+            
+            $string = preg_replace('/\sxmlns[^"]+"[^"]+"/', '', $string);
 
             $string = str_replace('<math>', '$', $string);
             $string = preg_replace('/^<math xmlns=(.+)>/', '$', $string);
@@ -767,8 +762,8 @@ abstract class Element
     {
         global $DB;
         $content = '';
-        $recursivecontent = '';
         $doc = new DOMDocument();
+        $doc->preserveWhiteSpace = true;
         @$doc->loadXML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
@@ -789,8 +784,9 @@ abstract class Element
                 if (!empty($object->matharrays))
                 {
                     $matharray = $object->matharrays[$key];
-                    $matharrayString = $matharray->displayhtml();
-                    $XMLcontent = str_replace($marray, $matharrayString, $XMLcontent);
+                    $newmatharrayString = $matharray->displayhtml();
+                    $matharrayString = $doc->saveXML($marray);
+                    $XMLcontent = str_replace($matharrayString, $newmatharrayString, $XMLcontent);
                 }
             }
 
@@ -799,8 +795,10 @@ abstract class Element
                 if (!empty($object->tables))
                 {
                     $table = $object->tables[$key];
-                    $tableString = $table->displayhtml();
-                    $XMLcontent = str_replace($t, $tableString, $XMLcontent);
+                    $newtableString = $table->displayhtml();
+                    $tableString = $doc->saveXML($t);
+                    
+                    $XMLcontent = str_replace($tableString, $newtableString, $XMLcontent);
                 }
             }
 
@@ -832,7 +830,7 @@ abstract class Element
                                 {
                                     $rawhotContent .= $rawhotString[$i] . ',';
                                 }
-                                $rawhotContent .= $rawhotString[sizeof($rawhotString)-1];
+                                $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
                             }
                             // only comma in the hot string is the one separating the position value and the rest of the hot content
                             else
@@ -889,7 +887,7 @@ abstract class Element
                                 {
                                     $rawhotContent .= $rawhotString[$i] . ',';
                                 }
-                                $rawhotContent .= $rawhotString[sizeof($rawhotString)-1];
+                                $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
                             }
                             // only comma in the hot string is the one separating the position value and the rest of the hot content
                             else
@@ -938,7 +936,7 @@ abstract class Element
                             {
                                 $rawhotContent .= $rawhotString[$i] . ',';
                             }
-                            $rawhotContent .= $rawhotString[sizeof($rawhotString)-1];
+                            $rawhotContent .= $rawhotString[sizeof($rawhotString) - 1];
                         }
                         // only comma in the hot string is the one separating the position value and the rest of the hot content
                         else
@@ -969,96 +967,63 @@ abstract class Element
                 }
             }
 
-//            foreach ($tables as $table)
-//            {
-//                $newtabletag = '';
-//
-//                $trs = $table->getElementsByTagName('tr');
-//                $border = $table->getAttribute('border');
-//                $cellpadding = $table->getAttribute('cellpadding');
-//
-//                if (empty($border))
-//                {
-//                    $border = 0;
-//                }
-//                if (empty($cellpadding))
-//                {
-//                    $cellpadding = 0;
-//                }
-//
-//                $newtabletag .= "<table class='mathtable' border='" . $border . "' cellpadding='" . $cellpadding . "'>";
-//
-//                foreach ($trs as $tr)
-//                {
-//                    $newtabletag .= "<tr>";
-//                    foreach ($tr->childNodes as $grandChild)
-//                    {
-//                        if ($grandChild->nodeType == XML_ELEMENT_NODE)
-//                        {
-//                            if ($grandChild->tagName == 'td')
-//                            {
-//                                $newtabletag .= "<td style='border-width:" . $border . "px !important;'>";
-//                                foreach ($grandChild->childNodes as $tablecontent)
-//                                {
-//                                    $newtabletag .= $doc->saveXML($tablecontent);
-//                                }
-//                                $newtabletag .= "</td>";
-//                            }
-//                        }
-//                        else
-//                        {
-//                            $newtabletag .= $doc->saveXML($grandChild);
-//                        }
-//                    }
-//                    $newtabletag .= "</tr>";
-//                }
-//
-//                $newtabletag .= "</table>";
-//
-//                $tableString = $doc->saveXML($table);
-//
-//                $XMLcontent = str_replace($tableString, $newtabletag, $XMLcontent);
-//            }
-
-
             foreach ($imgs as $key => $img)
             {
-                $newtag = '';
-
-                $src = trim($img->getAttribute('src'));
-
-                $sql = "src LIKE '%" . $src . "%'";
-
-                // array_shift(array_values($array)) grabs the first item of the array --> since the get_records
-                // return an array indexed by the id number of the record, need to grab the first item this way
-
-                if ($DB->count_records_select('msm_img', $sql) > 1)
+                if (!empty($object->medias[$key]))
                 {
-                    $imgRecord = $DB->get_records_select('msm_img', $sql);
-                    $imgparentid = array_shift(array_values($DB->get_records('msm_compositor', array('unit_id' => array_shift(array_values($imgRecord))->id, 'table_id' => 16))))->parent_id;
-                }
-                else
-                {
-                    $imgRecord = $DB->get_record_select('msm_img', $sql);
-                    $imgparentid = array_shift(array_values($DB->get_records('msm_compositor', array('unit_id' => $imgRecord->id, 'table_id' => 16))))->parent_id;
-                }
+                    $media = $object->medias[$key];
 
-                if (!empty($imgRecord))
-                {
-                    $mediaRecord = $DB->get_record('msm_compositor', array('id' => $imgparentid));
-
-                    if (!empty($mediaRecord))
+                    if (!empty($media->childs[0]))
                     {
-                        $media = new Media();
-                        $media->loadFromDb($mediaRecord->unit_id, $mediaRecord->id);
-
+                        $image = $media->childs[0];
+                        $newtag = '';
                         $newtag .= $media->displayhtml();
 
                         $imgString = $doc->saveXML($img);
 
-                        $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
+                        if ($image->src == $img->getAttribute(src))
+                        {
+                            $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
+                        }
                     }
                 }
+
+//                $newtag = '';
+//
+//                $src = trim($img->getAttribute('src'));
+//
+//                $sql = "src LIKE '%" . $src . "%'";
+//
+//                // array_shift(array_values($array)) grabs the first item of the array --> since the get_records
+//                // return an array indexed by the id number of the record, need to grab the first item this way
+//
+//                if ($DB->count_records_select('msm_img', $sql) > 1)
+//                {
+//                    $imgRecord = $DB->get_records_select('msm_img', $sql);
+//                    $imgparentid = array_shift(array_values($DB->get_records('msm_compositor', array('unit_id' => array_shift(array_values($imgRecord))->id, 'table_id' => 16))))->parent_id;
+//                }
+//                else
+//                {
+//                    $imgRecord = $DB->get_record_select('msm_img', $sql);
+//                    $imgparentid = array_shift(array_values($DB->get_records('msm_compositor', array('unit_id' => $imgRecord->id, 'table_id' => 16))))->parent_id;
+//                }
+//
+//                if (!empty($imgRecord))
+//                {
+//                    $mediaRecord = $DB->get_record('msm_compositor', array('id' => $imgparentid));
+//
+//                    if (!empty($mediaRecord))
+//                    {
+//                        $media = new Media();
+//                        $media->loadFromDb($mediaRecord->unit_id, $mediaRecord->id);
+//
+//                        $newtag .= $media->displayhtml();
+//
+//                        $imgString = $doc->saveXML($img);
+//
+//                        $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
+//                    }
+//                }
             }
 
             $content .= $XMLcontent;

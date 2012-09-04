@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Step
@@ -58,6 +58,8 @@ class Step extends Element
         $this->indexauthors = array();
         $this->indexglossarys = array();
         $this->indexsymbols = array();
+        $this->medias = array();
+        $this->tables = array();
 
         $step_bodys = $DomElement->getElementsByTagName('step.body');
 
@@ -80,6 +82,16 @@ class Step extends Element
             foreach ($this->processSubordinate($stb, $position) as $subordinate)
             {
                 $this->subordinates[] = $subordinate;
+            }
+            
+            foreach($this->processMedia($stb, $position) as $media)
+            {
+                $this->medias[] = $media;
+            }
+            
+            foreach($this->processTable($stb, $position) as $table)
+            {
+                $this->tables[] = $table;
             }
 
             foreach ($this->processContent($stb, $position) as $content)
@@ -150,6 +162,14 @@ class Step extends Element
             foreach ($this->medias as $key => $media)
             {
                 $elementPositions['media' . '-' . $key] = $media->position;
+            }
+        }
+
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
             }
         }
 
@@ -258,6 +278,23 @@ class Step extends Element
                         $media = $this->medias[$mediaString[1]];
                         $media->saveIntoDb($media->position, $this->compid, $sibling_id);
                         $sibling_id = $media->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
                     }
                     break;
             }

@@ -408,9 +408,12 @@ class Table extends Element
                     if ($grandChild->tagName == 'td')
                     {
                         $content .= "<td style='border-width:" . $border . "px !important;'>";
-                        foreach ($grandChild->childNodes as $content)
+                        foreach ($grandChild->childNodes as $contentElement)
                         {
-                            $content .= $doc->saveXML($content);
+                            if ($contentElement->nodeType == XML_ELEMENT_NODE)
+                            {
+                                $content .= $doc->saveXML($contentElement);
+                            }
                         }
                         $content .= "</td>";
                     }

@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Example
@@ -55,6 +55,7 @@ class Example extends Element
         $this->indexglossarys = array();
         $this->indexsymbols = array();
         $this->medias = array();
+        $this->tables = array();
 
         $statement_examples = $DomElement->getElementsByTagName('statement.example');
 
@@ -82,6 +83,11 @@ class Example extends Element
             foreach ($this->processMedia($statement_ex, $position) as $media)
             {
                 $this->medias[] = $media;
+            }
+
+            foreach ($this->processTable($statement_ex, $position) as $table)
+            {
+                $this->tables[] = $table;
             }
 
             foreach ($this->processContent($statement_ex, $position) as $content)
@@ -164,7 +170,7 @@ class Example extends Element
                 $elementPositions['answer' . '-' . $key] = $answer->position;
             }
         }
-        
+
         if (!empty($this->part_examples))
         {
             foreach ($this->part_examples as $key => $part_example)
@@ -172,7 +178,7 @@ class Example extends Element
                 $elementPositions['partexample' . '-' . $key] = $part_example->position;
             }
         }
-        
+
         if (!empty($this->answer_exts))
         {
             foreach ($this->answer_exts as $key => $answer_ext)
@@ -221,6 +227,14 @@ class Example extends Element
             }
         }
 
+        if (!empty($this->tables))
+        {
+            foreach ($this->tables as $key => $table)
+            {
+                $elementPositions['table' . '-' . $key] = $table->position;
+            }
+        }
+
         asort($elementPositions);
 
         foreach ($elementPositions as $element => $value)
@@ -259,8 +273,8 @@ class Example extends Element
                         $sibling_id = $partexample->compid;
                     }
                     break;
-                    
-                 case(preg_match("/^(answer.\d+)$/", $element) ? true : false):
+
+                case(preg_match("/^(answer.\d+)$/", $element) ? true : false):
                     $answerString = split('-', $element);
 
                     if (empty($sibling_id))
@@ -276,7 +290,7 @@ class Example extends Element
                         $sibling_id = $answer->compid;
                     }
                     break;
-                    
+
                 case(preg_match("/^(subordinate.\d+)$/", $element) ? true : false):
                     $subordinateString = split('-', $element);
 
@@ -359,6 +373,23 @@ class Example extends Element
                         $media = $this->medias[$mediaString[1]];
                         $media->saveIntoDb($media->position, $this->compid, $sibling_id);
                         $sibling_id = $media->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(table.\d+)$/", $element) ? true : false):
+                    $tableString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid);
+                        $sibling_id = $table->compid;
+                    }
+                    else
+                    {
+                        $table = $this->tables[$tableString[1]];
+                        $table->saveIntoDb($table->position, $this->compid, $sibling_id);
+                        $sibling_id = $table->compid;
                     }
                     break;
             }
