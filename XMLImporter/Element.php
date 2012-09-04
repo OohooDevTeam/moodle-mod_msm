@@ -305,47 +305,29 @@ abstract class Element
         $content = array();
 
         $position = $position + 1;
-        $subDocument = new DOMDocument();
 
-        $element = $subDocument->importNode($DomElement, true);
-
-        $subordinates = $element->getElementsByTagName('subordinate');
+        $subordinates = $DomElement->getElementsByTagName('subordinate');
 
         $length = 0;
 
         //to eliminate any nested subordinates from being counted when getting the length of the subordinates
         foreach ($subordinates as $s)
         {
-            if (!empty($s->parentNode->parentNode->parentNode))
+            if ($s->parentNode->parentNode->parentNode->tagName != 'info')
             {
-                if ($s->parentNode->parentNode->parentNode->nodeType == XML_ELEMENT_NODE)
-                {
-                    if ($s->parentNode->parentNode->parentNode->tagName != 'info')
-                    {
-                        $length++;
-                    }
-                }
+                $length++;
             }
         }
-        
+
         for ($i = 0; $i < $length; $i++)
         {
+            $position++;
             // replacing the entire subordinate element with just the hot element of the subordinate to show only the hot element 
             $hot = $subordinates->item(0)->getElementsByTagName('hot')->item(0);
-            $document = new DOMDocument();
-            $hotelement = $document->importNode($hot, true);
-            $stringhot = $document->saveXML($hotelement);
-            $stringhot = str_replace("<hot xmlns=\"Unit\">", '', $stringhot);
-            $stringhot = str_replace("<hot>", '', $stringhot);
-            $stringhot = str_replace("</hot>", '', $stringhot);
-            $newhot = $position . "," . $stringhot;
-
-            $newhotNode = $subDocument->createElement('hot', $newhot);
-
-            $subordinates->item(0)->parentNode->replaceChild($newhotNode, $subordinates->item(0));
+            $hot->setAttribute("id", $position);
+            $subordinates->item(0)->parentNode->replaceChild($hot, $subordinates->item(0));
         }
-        
-        $DomElement = $subDocument->importNode($element);
+
 
         // remove index.author elements along with its child nodes from content
         $indexauthors = $DomElement->getElementsByTagName('index.author');
@@ -423,7 +405,7 @@ abstract class Element
             $string = str_replace('<emphasis', '<i', $string);
             $string = str_replace('</emphasis>', '</i>', $string);
 
-            $string = str_replace('<hot>', '<a href="">', $string);
+            $string = str_replace('<hot', '<a href=""', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
 
             $string = str_replace('<math>', '$', $string);
@@ -836,115 +818,105 @@ abstract class Element
                             $newtag = '';
                             $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='infoopen(" . $subordinate->infos[0]->compid . ")'>";
 
+                            $rawhotString = explode(',', $subordinate->hot);
+
+                            // there are other commas in the content 
+                            // therefore, get the position value from index 0 then concatenate the rest of the string
+                            if (sizeof($rawhotString) >= 3)
+                            {
+                                $positionvalue = $rawhotString[0];
+
+                                $rawhotContent = '';
+
+                                for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
+                                {
+                                    $rawhotContent .= $rawhotString[$i] . ',';
+                                }
+                                $rawhotContent .= $rawhotString[sizeof($rawhotString)-1];
+                            }
+                            // only comma in the hot string is the one separating the position value and the rest of the hot content
+                            else
+                            {
+                                $positionvalue = $rawhotString[0];
+                                $rawhotContent = $rawhotString[1];
+                            }
+
                             if (is_string($subordinate->hot))
                             {
-                                $newtag .= $subordinate->hot;
+
+                                $newtag .= $rawhotContent;
+//                                $newtag .= $subordinate->hot;
                             }
                             else
                             {
-                                $newtag .= $this->getContent($subordinate->hot);
+                                $newtag .= $this->getContent($rawhotContent);
                             }
                             $newtag .= "</a>";
 
                             $hotString = $doc->saveXML($hottag);
+                            $hottagid = $hottag->getAttribute('id');
 
-                            $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-
-                            $content .= $subordinate->infos[0]->displayhtml();
+                            if ($positionvalue == $hottagid)
+                            {
+                                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+                                $content .= $subordinate->infos[0]->displayhtml();
+                                $content .= "<div class='refcontent' id='refcontent-" . $subordinate->infos[0]->compid . "' style='display:none;'>";
+                                foreach ($subordinate->childs as $child)
+                                {
+                                    $content .= $child->displayhtml();
+                                }
+                                $content .= "</div>";
+                            }
                         }
-
-                        $content .= "<div class='refcontent' id='refcontent-" . $subordinate->infos[0]->compid . "' style='display:none;'>";
-                        foreach ($subordinate->childs as $child)
-                        {
-                            $content .= $child->displayhtml();
-                        }
-                        $content .= "</div>";
                     }
                     else
                     {
-//                        if (!empty($subordinate->infos[0]))
-//                        {
-//                            $newtag = '';
-//                            $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
-//
-//                            if (is_string($subordinate->hot))
-//                            {
-//                                $newtag .= $subordinate->hot;
-//                            }
-//                            else
-//                            {
-//                                $newtag .= $this->getContent($subordinate->hot);
-//                            }
-//                            $newtag .= "</a>";
-//                            
-//                            $newtag .= $subordinate->infos[0]->displayhtml();
-//
-//                            $hotString = $doc->saveXML($hottag);
-//                            // to pass to preg_replace, need to escape the / in end tags
-////                            $newhotString = preg_replace("/<\/a>/", "<\/a>", $hotString);
-//                            $newcontent = preg_replace('/<(\w+)\s*xmlns="(\w+)"/', "<$1", $subordinate->infos[0]->info_content);
-//                            $newxmlcontent = preg_replace('/<(\w+)\s*xmlns="(\w+)"/', "<$1", $XMLcontent);
-//                            
-//                            $newcontent = preg_replace('/\s+/', ' ' ,$newcontent);
-//                            $newxmlcontent = preg_replace('/\s+/', ' ' ,$newxmlcontent);
-////                             $newcontent = preg_replace('/\t+/', '' ,$newcontent);
-////                            $newxmlcontent = preg_replace('/\t+/', '' ,$newxmlcontent);
-////                             $newcontent = preg_replace('/\s{2,}/', '' ,$newcontent);
-////                            $newxmlcontent = preg_replace('/\s{2,}/', '' ,$newxmlcontent);
-//                            
-//                            if (!empty($subordinate->infos[0]->caption))
-//                            {
-////                                $newcaption = preg_replace("/<\/(\w+)>/", "<\/$1>", $subordinate->infos[0]->caption);
-////                                $newcontent = preg_replace("/<\/(\w+)>/", "<\/$1>", $newcontent);
-//                                $newcaption = preg_replace('/\s+/', ' ' ,$subordinate->infos[0]->caption);
-////                                $newhotString = preg_replace('/\s+/', ' ' ,$hotString);
-//                                
-//                                
-//                                echo "has caption";
-//                                $oldtag ="<subordinate> " . $hotString. " <info> <info.caption> " . $newcaption . " </info.caption> " . $newcontent . " </info> </subordinate>";
-////                                $oldtag =$newcontent;
-//                            }
-//                            else
-//                            {
-//                                echo "no caption";
-//                                $oldtag ="<a\shref=''>\s*" . $hotString . "\s*<\/a>\s*<info>\s*" . $subordinate->infos[0]->info_content . "\s*<\/info>";
-//                            }
-//                         
-////                            echo "xml content";
-////                            print_object($newxmlcontent);
-////                            echo "old tag" . "\n";
-////                            print_object($oldtag);
-////                            
-//                            $XMLcontent = str_replace($oldtag, $newtag, $newxmlcontent);
-//                            
-//                            print_object($content);
-//                            
-////                            $count = preg_match("/$oldtag/", $newxmlcontent);
-////                            print_object($count);
-//
-////                            $XMLcontent = preg_replace("/$oldtag/siU", $newtag, $XMLcontent);
-//                        }
                         if (!empty($subordinate->infos[0]))
                         {
                             $newtag = '';
                             $newtag = "<a id='hottag-" . $subordinate->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $subordinate->infos[0]->compid . ")'>";
+                            $rawhotString = explode(',', $subordinate->hot);
+
+                            // there are other commas in the content 
+                            // therefore, get the position value from index 0 then concatenate the rest of the string
+                            if (sizeof($rawhotString) >= 3)
+                            {
+                                $positionvalue = $rawhotString[0];
+
+                                $rawhotContent = '';
+
+                                for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
+                                {
+                                    $rawhotContent .= $rawhotString[$i] . ',';
+                                }
+                                $rawhotContent .= $rawhotString[sizeof($rawhotString)-1];
+                            }
+                            // only comma in the hot string is the one separating the position value and the rest of the hot content
+                            else
+                            {
+                                $positionvalue = $rawhotString[0];
+                                $rawhotContent = $rawhotString[1];
+                            }
 
                             if (is_string($subordinate->hot))
                             {
-                                $rawhotString = explode(',', $subordinate->hot);
-                                $newtag .= $rawhotString[1];
+                                $newtag .= $rawhotContent;
                             }
                             else
                             {
-                                $newtag .= $this->getContent($subordinate->hot);
+                                $newtag .= $this->getContent($rawhotContent);
                             }
                             $newtag .= "</a>";
 
                             $hotString = $doc->saveXML($hottag);
+                            $hottagid = $hottag->getAttribute('id');
 
-                            $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+                            if ($positionvalue == $hottagid)
+                            {
+                                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
 
-                            $content .= $subordinate->infos[0]->displayhtml();
+                                $content .= $subordinate->infos[0]->displayhtml();
+                            }
                         }
                     }
 
@@ -952,14 +924,36 @@ abstract class Element
                     {
                         $newtag = '';
                         $newtag = "<a href='" . $subordinate->external_links[0]->href . "'' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+                        $rawhotString = explode(',', $subordinate->hot);
+
+                        // there are other commas in the content 
+                        // therefore, get the position value from index 0 then concatenate the rest of the string
+                        if (sizeof($rawhotString) >= 3)
+                        {
+                            $positionvalue = $rawhotString[0];
+
+                            $rawhotContent = '';
+
+                            for ($i = 1; $i < sizeof($rawhotString) - 1; $i++)
+                            {
+                                $rawhotContent .= $rawhotString[$i] . ',';
+                            }
+                            $rawhotContent .= $rawhotString[sizeof($rawhotString)-1];
+                        }
+                        // only comma in the hot string is the one separating the position value and the rest of the hot content
+                        else
+                        {
+                            $positionvalue = $rawhotString[0];
+                            $rawhotContent = $rawhotString[1];
+                        }
 
                         if (is_string($subordinate->hot))
                         {
-                            $newtag .= $subordinate->hot;
+                            $newtag .= $rawhotContent;
                         }
                         else
                         {
-                            $newtag .= $this->getContent($subordinate->hot);
+                            $newtag .= $this->getContent($rawhotContent);
                         }
                         $newtag .= "</a>";
 
