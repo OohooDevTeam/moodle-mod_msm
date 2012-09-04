@@ -23,6 +23,7 @@ class MathImg extends Element
 {
 
     public $position;
+  
 
     function __construct($xmlpath = '')
     {

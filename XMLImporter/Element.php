@@ -976,12 +976,13 @@ abstract class Element
                     if (!empty($media->childs[0]))
                     {
                         $image = $media->childs[0];
+                        
                         $newtag = '';
                         $newtag .= $media->displayhtml();
 
                         $imgString = $doc->saveXML($img);
 
-                        if ($image->src == $img->getAttribute(src))
+                        if ($image->src == $img->getAttribute('src'))
                         {
                             $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
                         }
