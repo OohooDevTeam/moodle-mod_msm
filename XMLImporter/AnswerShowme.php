@@ -348,7 +348,7 @@ class AnswerShowme extends Element
         $content .= "<br />";
 
         $content .= "<div class='answershowmecontent'>";
-        $content .= $this->displaySubordinate($this, $this->content);
+        $content .= $this->displayContent($this, $this->content);
         $content .= "</div>";
         $content .= "<br />";
 

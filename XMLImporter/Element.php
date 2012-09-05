@@ -306,6 +306,14 @@ abstract class Element
 
         $position = $position + 1;
 
+        // to eliminate the caption of info element --> could not eliminate it from being included in the DomElement argument
+        $infocaption = $DomElement->getElementsByTagName('info.caption');
+
+        if ($infocaption->length > 0)
+        {
+            $infocaption->item(0)->parentNode->removeChild($infocaption->item(0));
+        }
+
         $subordinates = $DomElement->getElementsByTagName('subordinate');
 
         $length = 0;
@@ -400,7 +408,7 @@ abstract class Element
 
             $string = str_replace('<hot', '<a href=""', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
-            
+
             $string = preg_replace('/\sxmlns[^"]+"[^"]+"/', '', $string);
 
             $string = str_replace('<math>', '$', $string);
@@ -753,14 +761,13 @@ abstract class Element
 
     /**
      * 
-     * @global moodle_database $DB
-     * @param object $object
-     * @param XML $XMLcontent
-     * @return string|null
+     * @param Object $object
+     * @param String $XMLcontent
+     * @return null|String
      */
-    function displaySubordinate($object, $XMLcontent)
+    function displayContent($object, $XMLcontent)
     {
-        global $DB;
+//        global $DB;
         $content = '';
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
@@ -771,6 +778,7 @@ abstract class Element
         $hottags = $doc->getElementsByTagName('a');
         $matharrays = $doc->getElementsByTagName('math.array');
 
+        $newElementdoc = new DOMDocument();
 
         if ((empty($tables)) && (empty($imgs)) && (empty($hottags)) && (empty($matharrays)))
         {
@@ -784,22 +792,27 @@ abstract class Element
                 if (!empty($object->matharrays))
                 {
                     $matharray = $object->matharrays[$key];
-                    $newmatharrayString = $matharray->displayhtml();
-                    $matharrayString = $doc->saveXML($marray);
-                    $XMLcontent = str_replace($matharrayString, $newmatharrayString, $XMLcontent);
+                    $newmarrayString = $matharray->displayhtml();
+                    $newElementdoc->loadXML($newmarrayString);
+
+                    $marray->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $marray);
                 }
+                $XMLcontent = $doc->saveXML();
             }
 
             foreach ($tables as $key => $t)
             {
-                if (!empty($object->tables))
+                if (!empty($object->tables[$key]))
                 {
+//                    print_object($object->tables[$key]);
+//                    print_object($doc->saveXML($t));
                     $table = $object->tables[$key];
                     $newtableString = $table->displayhtml();
-                    $tableString = $doc->saveXML($t);
-                    
-                    $XMLcontent = str_replace($tableString, $newtableString, $XMLcontent);
+                    $newElementdoc->loadXML($newtableString);
+
+                    $t->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $t);
                 }
+                $XMLcontent = $doc->saveXML();
             }
 
             foreach ($hottags as $key => $hottag)
@@ -851,12 +864,17 @@ abstract class Element
                             }
                             $newtag .= "</a>";
 
-                            $hotString = $doc->saveXML($hottag);
+//                            $hotString = $doc->saveXML($hottag);
                             $hottagid = $hottag->getAttribute('id');
 
                             if ($positionvalue == $hottagid)
                             {
-                                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+                                $newElementdoc->loadXML($newtag);
+
+                                $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
+                                $XMLcontent = $doc->saveXML();
+
+//                                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
                                 $content .= $subordinate->infos[0]->displayhtml();
                                 $content .= "<div class='refcontent' id='refcontent-" . $subordinate->infos[0]->compid . "' style='display:none;'>";
                                 foreach ($subordinate->childs as $child)
@@ -906,12 +924,17 @@ abstract class Element
                             }
                             $newtag .= "</a>";
 
-                            $hotString = $doc->saveXML($hottag);
+//                            $hotString = $doc->saveXML($hottag);
                             $hottagid = $hottag->getAttribute('id');
 
                             if ($positionvalue == $hottagid)
                             {
-                                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+//                                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+
+                                $newElementdoc->loadXML($newtag);
+
+                                $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
+                                $XMLcontent = $doc->saveXML();
 
                                 $content .= $subordinate->infos[0]->displayhtml();
                             }
@@ -955,9 +978,14 @@ abstract class Element
                         }
                         $newtag .= "</a>";
 
-                        $hotString = $doc->saveXML($hottag);
+//                        $hotString = $doc->saveXML($hottag);
 
-                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
+                        $newElementdoc->loadXML($newtag);
+
+                        $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
+                        $XMLcontent = $doc->saveXML();
+
+//                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
 
                         if (!empty($subordinate->external_links[0]->infos[0]))
                         {
@@ -976,16 +1004,18 @@ abstract class Element
                     if (!empty($media->childs[0]))
                     {
                         $image = $media->childs[0];
-                        
+
                         $newtag = '';
                         $newtag .= $media->displayhtml();
 
-                        $imgString = $doc->saveXML($img);
+//                        if ($image->src == $img->getAttribute('src'))
+//                        {
+                        $newElementdoc->loadXML($newtag);
 
-                        if ($image->src == $img->getAttribute('src'))
-                        {
-                            $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
-                        }
+                        $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
+                        $XMLcontent = $doc->saveXML();
+//                            $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
+//                        }
                     }
                 }
 

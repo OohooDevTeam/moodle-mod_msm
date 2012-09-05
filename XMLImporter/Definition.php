@@ -407,7 +407,7 @@ class Definition extends Element
         $content .= "<br/>";
 
         $content .= "<div class='defcontent'>";
-        $content .= $this->displaySubordinate($this, $this->def_content);
+        $content .= $this->displayContent($this, $this->def_content);
         $content .= "<br />";
         $content .= "</div>";
 

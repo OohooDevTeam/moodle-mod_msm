@@ -410,7 +410,7 @@ class ProofBlock extends Element
         $content .= $this->caption;
         $content .= "</div>";
 
-        $content .= $this->displaySubordinate($this, $this->proof_content);
+        $content .= $this->displayContent($this, $this->proof_content);
 
         $content .="</div>";
 

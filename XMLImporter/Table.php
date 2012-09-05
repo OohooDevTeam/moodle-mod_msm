@@ -375,7 +375,7 @@ class Table extends Element
     function displayhtml()
     {
         $content = '';
-        $newtablecontent = $this->displaySubordinate($this, $this->table_content);
+        $newtablecontent = $this->displayContent($this, $this->table_content);
 
         $doc = new DOMDocument;
 

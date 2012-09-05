@@ -335,7 +335,7 @@ class Para extends Element
     {
         $content = '';
 
-        $content .= $this->displaySubordinate($this, $this->para_content);
+        $content .= $this->displayContent($this, $this->para_content);
 //        
 //        foreach($this->childs as $child)
 //        {

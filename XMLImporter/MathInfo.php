@@ -49,52 +49,104 @@ class MathInfo extends Element
         $this->medias = array();
         $this->tables = array();
 
-        foreach ($DomElement->childNodes as $child)
+        $this->caption = $this->getContent($DomElement->getElementsByTagName('info.caption')->item(0));
+
+
+        foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
         {
-            if ($child->nodeType == XML_ELEMENT_NODE)
-            {
-                if ($child->tagName != 'info.caption')
-                {
-                    foreach ($this->processIndexAuthor($child, $position) as $indexauthor)
-                    {
-                        $this->indexauthors[] = $indexauthor;
-                    }
-
-                    foreach ($this->processIndexGlossary($child, $position) as $indexglossary)
-                    {
-                        $this->indexglossarys[] = $indexglossary;
-                    }
-
-                    foreach ($this->processIndexSymbols($child, $position) as $indexsymbol)
-                    {
-                        $this->indexsymbols[] = $indexsymbol;
-                    }
-                    foreach ($this->processSubordinate($child, $position) as $subordinate)
-                    {
-                        $this->subordinates[] = $subordinate;
-                    }
-
-                    foreach ($this->processMedia($child, $position) as $media)
-                    {
-                        $this->medias[] = $media;
-                    }
-
-                    foreach ($this->processTable($child, $position) as $table)
-                    {
-                        $this->tables[] = $table;
-                    }
-
-                    foreach ($this->processContent($child, $position) as $content)
-                    {
-                        $this->content .= $content;
-                    }
-                }
-                else if ($child->tagName == 'info.caption')
-                {
-                    $this->caption = $this->getContent($child);
-                }
-            }
+            $this->indexauthors[] = $indexauthor;
         }
+
+        foreach ($this->processIndexGlossary($DomElement, $position) as $indexglossary)
+        {
+            $this->indexglossarys[] = $indexglossary;
+        }
+
+        foreach ($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
+        {
+            $this->indexsymbols[] = $indexsymbol;
+        }
+        foreach ($this->processSubordinate($DomElement, $position) as $subordinate)
+        {
+            $this->subordinates[] = $subordinate;
+        }
+
+        foreach ($this->processMedia($DomElement, $position) as $media)
+        {
+            $this->medias[] = $media;
+        }
+
+        foreach ($this->processTable($DomElement, $position) as $table)
+        {
+            $this->tables[] = $table;
+        }
+
+        foreach ($this->processContent($DomElement, $position) as $content)
+        {
+            $this->content .= $content;
+        }
+
+//        foreach ($DomElement->childNodes as $child)
+//        {
+//            if ($child->nodeType == XML_ELEMENT_NODE)
+//            {
+//                if ($child->tagName != 'info.caption')
+//                {
+//                    foreach ($this->processContent($child, $position) as $content)
+//                    {
+//                        $this->content .= $content;
+//                    }
+//                }
+//            }
+//        }
+//        foreach ($DomElement->childNodes as $child)
+//        {
+//            if ($child->nodeType == XML_ELEMENT_NODE)
+//            {
+//                if ($child->tagName == 'info.caption')
+//                {
+//                    $this->caption = $this->getContent($child);
+//                }
+//                
+//                else
+//                {
+//                    foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
+//                    {
+//                        $this->indexauthors[] = $indexauthor;
+//                    }
+//
+//                    foreach ($this->processIndexGlossary($DomElement, $position) as $indexglossary)
+//                    {
+//                        $this->indexglossarys[] = $indexglossary;
+//                    }
+//
+//                    foreach ($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
+//                    {
+//                        $this->indexsymbols[] = $indexsymbol;
+//                    }
+//                    foreach ($this->processSubordinate($DomElement, $position) as $subordinate)
+//                    {
+//                        $this->subordinates[] = $subordinate;
+//                    }
+//
+//                    foreach ($this->processMedia($DomElement, $position) as $media)
+//                    {
+//                        $this->medias[] = $media;
+//                    }
+//
+//                    foreach ($this->processTable($DomElement, $position) as $table)
+//                    {
+//                        $this->tables[] = $table;
+//                    }
+//
+//                    foreach ($this->processContent($DomElement, $position) as $content)
+//                    {
+//                        $this->content .= $content;
+//                    }
+//                }
+//            }
+//        }
+//        print_object($this->tables);
     }
 
     /**
@@ -326,7 +378,7 @@ class MathInfo extends Element
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
                     break;
-                
+
                 case('msm_table'):
                     $table = new Table();
                     $table->loadFromDb($child->unit_id, $child->id);
@@ -342,9 +394,16 @@ class MathInfo extends Element
     {
         $content = '';
 
-        $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->caption . '">';
+        if (empty($this->caption))
+        {
+            $content .= '<div id="dialog-' . $this->compid . '" class="dialogs">';
+        }
+        else
+        {
+            $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->caption . '">';
+        }
 
-        $content .= $this->displaySubordinate($this, $this->info_content);
+        $content .= $this->displayContent($this, $this->info_content);
 
         $content .= "</div>";
 

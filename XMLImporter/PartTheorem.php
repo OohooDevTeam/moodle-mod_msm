@@ -330,7 +330,7 @@ class PartTheorem extends Element
         {
             $content .= "<span class='parttheoremtitle'>" . $this->caption . "</span>";
         }
-        $content .= $this->displaySubordinate($this, $this->part_content);
+        $content .= $this->displayContent($this, $this->part_content);
         $content .= "</li>";
         $content .= "<br />";
 

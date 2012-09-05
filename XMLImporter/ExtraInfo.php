@@ -352,7 +352,7 @@ class ExtraInfo extends Element
         }
 
         $content .= "<div class='extrainfocontent'>";
-        $content .= $this->displaySubordinate($this, $this->content);
+        $content .= $this->displayContent($this, $this->content);
         $content .= "</div>";
 
         $content .= "</div>";

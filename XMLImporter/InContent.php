@@ -449,7 +449,7 @@ class InContent extends Element
     {
         $content = '';
 
-        $content .= $this->displaySubordinate($this, $this->content);
+        $content .= $this->displayContent($this, $this->content);
 
         foreach ($this->childs as $child)
         {
