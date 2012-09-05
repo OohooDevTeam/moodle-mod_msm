@@ -409,8 +409,6 @@ abstract class Element
             $string = str_replace('<hot', '<a href=""', $string);
             $string = str_replace('</hot>', '</a>  ', $string);
 
-            $string = preg_replace('/\sxmlns[^"]+"[^"]+"/', '', $string);
-
             $string = str_replace('<math>', '$', $string);
             $string = preg_replace('/^<math xmlns=(.+)>/', '$', $string);
             $string = str_replace('</math>', '$', $string);
@@ -789,11 +787,11 @@ abstract class Element
         {
             foreach ($matharrays as $key => $marray)
             {
-                if (!empty($object->matharrays))
+                if (!empty($object->matharrays[$key]))
                 {
                     $matharray = $object->matharrays[$key];
                     $newmarrayString = $matharray->displayhtml();
-                    $newElementdoc->loadXML($newmarrayString);
+                    @$newElementdoc->loadXML($newmarrayString);
 
                     $marray->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $marray);
                 }
@@ -804,8 +802,6 @@ abstract class Element
             {
                 if (!empty($object->tables[$key]))
                 {
-//                    print_object($object->tables[$key]);
-//                    print_object($doc->saveXML($t));
                     $table = $object->tables[$key];
                     $newtableString = $table->displayhtml();
                     $newElementdoc->loadXML($newtableString);
@@ -856,7 +852,6 @@ abstract class Element
                             {
 
                                 $newtag .= $rawhotContent;
-//                                $newtag .= $subordinate->hot;
                             }
                             else
                             {
@@ -864,7 +859,6 @@ abstract class Element
                             }
                             $newtag .= "</a>";
 
-//                            $hotString = $doc->saveXML($hottag);
                             $hottagid = $hottag->getAttribute('id');
 
                             if ($positionvalue == $hottagid)
@@ -874,7 +868,6 @@ abstract class Element
                                 $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
                                 $XMLcontent = $doc->saveXML();
 
-//                                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
                                 $content .= $subordinate->infos[0]->displayhtml();
                                 $content .= "<div class='refcontent' id='refcontent-" . $subordinate->infos[0]->compid . "' style='display:none;'>";
                                 foreach ($subordinate->childs as $child)
@@ -923,14 +916,10 @@ abstract class Element
                                 $newtag .= $this->getContent($rawhotContent);
                             }
                             $newtag .= "</a>";
-
-//                            $hotString = $doc->saveXML($hottag);
                             $hottagid = $hottag->getAttribute('id');
 
                             if ($positionvalue == $hottagid)
-                            {
-//                                $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
-
+                            {//                               
                                 $newElementdoc->loadXML($newtag);
 
                                 $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
@@ -944,7 +933,7 @@ abstract class Element
                     if (!empty($subordinate->external_links[0]))
                     {
                         $newtag = '';
-                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "'' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
+                        $newtag = "<a href='" . $subordinate->external_links[0]->href . "' id='hottag-" . $subordinate->external_links[0]->compid . "' class='externallink' onmouseover='popup(" . $subordinate->external_links[0]->compid . ")'>";
                         $rawhotString = explode(',', $subordinate->hot);
 
                         // there are other commas in the content 
@@ -977,15 +966,13 @@ abstract class Element
                             $newtag .= $this->getContent($rawhotContent);
                         }
                         $newtag .= "</a>";
-
-//                        $hotString = $doc->saveXML($hottag);
-
+                        
+//                        print_object($newtag);
+                        
                         $newElementdoc->loadXML($newtag);
 
                         $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
                         $XMLcontent = $doc->saveXML();
-
-//                        $XMLcontent = str_replace($hotString, $newtag, $XMLcontent);
 
                         if (!empty($subordinate->external_links[0]->infos[0]))
                         {
@@ -1007,57 +994,16 @@ abstract class Element
 
                         $newtag = '';
                         $newtag .= $media->displayhtml();
-
-//                        if ($image->src == $img->getAttribute('src'))
-//                        {
                         $newElementdoc->loadXML($newtag);
 
                         $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
                         $XMLcontent = $doc->saveXML();
-//                            $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
-//                        }
                     }
                 }
-
-//                $newtag = '';
-//
-//                $src = trim($img->getAttribute('src'));
-//
-//                $sql = "src LIKE '%" . $src . "%'";
-//
-//                // array_shift(array_values($array)) grabs the first item of the array --> since the get_records
-//                // return an array indexed by the id number of the record, need to grab the first item this way
-//
-//                if ($DB->count_records_select('msm_img', $sql) > 1)
-//                {
-//                    $imgRecord = $DB->get_records_select('msm_img', $sql);
-//                    $imgparentid = array_shift(array_values($DB->get_records('msm_compositor', array('unit_id' => array_shift(array_values($imgRecord))->id, 'table_id' => 16))))->parent_id;
-//                }
-//                else
-//                {
-//                    $imgRecord = $DB->get_record_select('msm_img', $sql);
-//                    $imgparentid = array_shift(array_values($DB->get_records('msm_compositor', array('unit_id' => $imgRecord->id, 'table_id' => 16))))->parent_id;
-//                }
-//
-//                if (!empty($imgRecord))
-//                {
-//                    $mediaRecord = $DB->get_record('msm_compositor', array('id' => $imgparentid));
-//
-//                    if (!empty($mediaRecord))
-//                    {
-//                        $media = new Media();
-//                        $media->loadFromDb($mediaRecord->unit_id, $mediaRecord->id);
-//
-//                        $newtag .= $media->displayhtml();
-//
-//                        $imgString = $doc->saveXML($img);
-//
-//                        $XMLcontent = str_replace($imgString, $newtag, $XMLcontent);
-//                    }
-//                }
             }
 
             $content .= $XMLcontent;
+
             return $content;
         }
     }

@@ -68,6 +68,7 @@ class Compositor
         return $childs;
     }
 
+//    function loadAndDisplay($prevstring, $string)
     function loadAndDisplay($string)
     {
         global $DB;
@@ -75,6 +76,7 @@ class Compositor
         $newstring = '';
         $content = '';
         $stack = array();
+//        $prevstack = array();
 
         //recreating stack from string
         $eachRecordString = explode(',', $string);

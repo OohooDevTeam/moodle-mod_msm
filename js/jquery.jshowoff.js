@@ -219,21 +219,7 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 			
     // load the next slide
     function next() {
-        //        alert("counter value:" + counter);
         goToAndPause(counter);
-        //        alert($('#pgnumberkey').val());
-        //        pagenumber = $('#pgnumberkey').val();
-        //        pagenumber++;
-        //        if (pagenumber <= (gallery.length+1))
-        //        {		
-        //            updatepgnumber(pagenumber);
-        //        }
-        //        else
-        //        {
-        //            alert("always setting to 1? --> gallery.length: "+gallery.length);
-        //            pagenumber = 1;
-        //            updatepgnumber(pagenumber);
-        //        }
         $('#features').load('../msm/XMLImporter/ajaxcall.php', 
         {
                     
@@ -251,18 +237,30 @@ speed :				time each slide is shown [integer, milliseconds, defaults to 3000]
 		
     // load the previous slide
     function previous() {
-        alert("counter? "+ counter);
-        goToAndPause(counter-1);
-        pagenumber--;
-        if(pagenumber > 0)
-        {				
-            updatepgnumber(pagenumber);
-        }
-        else
+        goToAndPause(counter);
+        
+        $('#features').load('../msm/XMLImporter/ajaxcall.php', 
         {
-            pagenumber = gallery.length;
-            updatepgnumber(pagenumber);
-        }
+                    
+            prevstackstring: $('#prevstack').val()
+        },
+        function(){     
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            $('.dialogs').dialog({
+                autoOpen: false,
+                width: 'auto'
+            });
+        });
+//        pagenumber--;
+//        if(pagenumber > 0)
+//        {				
+//            updatepgnumber(pagenumber);
+//        }
+//        else
+//        {
+//            pagenumber = gallery.length;
+//            updatepgnumber(pagenumber);
+//        }
 				
     };
 			

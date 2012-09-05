@@ -375,17 +375,32 @@ class Table extends Element
     function displayhtml()
     {
         $content = '';
-        $newtablecontent = $this->displayContent($this, $this->table_content);
+//        $newtablecontent = $this->displayContent($this, $this->table_content);
 
         $doc = new DOMDocument;
 
-        @$doc->loadXML($newtablecontent);
+        @$doc->loadXML($this->table_content);
 
         $table = $doc->getElementsByTagName('table')->item(0);
+       
         $trs = $doc->getElementsByTagName('tr');
 
-        $border = $table->getAttribute('border');
-        $cellpadding = $table->getAttribute('cellpadding');
+        if ($table->hasAttribute('border'))
+        {
+            $border = $table->getAttribute('border');
+        }
+        else
+        {
+            $border = 0;
+        }
+        if ($table->hasAttribute('cellpadding'))
+        {
+            $cellpadding = $table->getAttribute('cellpadding');
+        }
+        else
+        {
+            $cellpadding = 0;
+        }
 
         if (empty($border))
         {

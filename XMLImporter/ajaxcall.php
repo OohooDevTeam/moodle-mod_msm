@@ -28,8 +28,11 @@ global $DB, $PAGE, $CFG;
 $comp = new Compositor();
 
 $string = $_POST["stackstring"];
+//$prevstring = $_POST["prevstackstring"];
 
 $content = $comp->loadAndDisplay($string);
+
+//$content = $comp->loadAndDisplay($prevstring, $string);
 
 echo $content;
 ?>
