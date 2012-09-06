@@ -67,17 +67,17 @@ class MathCell extends Element
                             $this->content .= $content;
                         }
 
-                        if (!empty($child->nextSibling->nextSibling))
-                        {
-                            if (property_exists($child->nextSibling->nextSibling, 'nodeType'))
-                            {
-                                if ($child->nextSibling->nextSibling->nodeType == XML_ELEMENT_NODE)
-                                {
-                                    $this->content = '<a href="">' . $this->content . '</a>';
-                                }
-                               
-                            }
-                        }
+//                        if (!empty($child->nextSibling->nextSibling))
+//                        {
+//                            if (property_exists($child->nextSibling->nextSibling, 'nodeType'))
+//                            {
+//                                if ($child->nextSibling->nextSibling->nodeType == XML_ELEMENT_NODE)
+//                                {
+//                                    $this->content = '<a href="">' . $this->content . '</a>';
+//                                }
+//                               
+//                            }
+//                        }
                         
                         break;
 
@@ -198,7 +198,8 @@ class MathCell extends Element
                 case('msm_info'):
                     $info = new MathInfo();
                     $info->loadFromDb($child->unit_id, $child->id);
-                    $this->childs[$this->content] = $info;
+                    $this->childs[$this->compid] = $info;
+                    break;
             }
         }
 
@@ -222,8 +223,8 @@ class MathCell extends Element
             $content .= $this->content;
             $content .= "</a>";
 
-            $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->childs[$this->content]->caption . '">';
-            $content .= $this->childs[$this->content]->info_content;
+            $content .= '<div id="dialog-' . $this->compid . '" class="dialogs" title="' . $this->childs[$this->compid]->caption . '">';
+            $content .= $this->childs[$this->compid]->info_content;
             $content .= "</div>";
         }
 

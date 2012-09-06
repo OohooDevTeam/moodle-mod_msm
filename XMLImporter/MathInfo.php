@@ -86,67 +86,6 @@ class MathInfo extends Element
             $this->content .= $content;
         }
 
-//        foreach ($DomElement->childNodes as $child)
-//        {
-//            if ($child->nodeType == XML_ELEMENT_NODE)
-//            {
-//                if ($child->tagName != 'info.caption')
-//                {
-//                    foreach ($this->processContent($child, $position) as $content)
-//                    {
-//                        $this->content .= $content;
-//                    }
-//                }
-//            }
-//        }
-//        foreach ($DomElement->childNodes as $child)
-//        {
-//            if ($child->nodeType == XML_ELEMENT_NODE)
-//            {
-//                if ($child->tagName == 'info.caption')
-//                {
-//                    $this->caption = $this->getContent($child);
-//                }
-//                
-//                else
-//                {
-//                    foreach ($this->processIndexAuthor($DomElement, $position) as $indexauthor)
-//                    {
-//                        $this->indexauthors[] = $indexauthor;
-//                    }
-//
-//                    foreach ($this->processIndexGlossary($DomElement, $position) as $indexglossary)
-//                    {
-//                        $this->indexglossarys[] = $indexglossary;
-//                    }
-//
-//                    foreach ($this->processIndexSymbols($DomElement, $position) as $indexsymbol)
-//                    {
-//                        $this->indexsymbols[] = $indexsymbol;
-//                    }
-//                    foreach ($this->processSubordinate($DomElement, $position) as $subordinate)
-//                    {
-//                        $this->subordinates[] = $subordinate;
-//                    }
-//
-//                    foreach ($this->processMedia($DomElement, $position) as $media)
-//                    {
-//                        $this->medias[] = $media;
-//                    }
-//
-//                    foreach ($this->processTable($DomElement, $position) as $table)
-//                    {
-//                        $this->tables[] = $table;
-//                    }
-//
-//                    foreach ($this->processContent($DomElement, $position) as $content)
-//                    {
-//                        $this->content .= $content;
-//                    }
-//                }
-//            }
-//        }
-//        print_object($this->tables);
     }
 
     /**

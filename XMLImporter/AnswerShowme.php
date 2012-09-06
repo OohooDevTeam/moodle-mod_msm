@@ -51,10 +51,10 @@ class AnswerShowme extends Element
 
         $answer_showme_blocks = $DomElement->getElementsByTagName('answer.showme.block');
 
+        $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
+
         foreach ($answer_showme_blocks as $asb)
         {
-            $this->caption = $this->getContent($DomElement->getElementsByTagName('caption')->item(0));
-
             $answer_showme_block_bodys = $asb->getElementsByTagName('answer.showme.block.body');
 
             foreach ($answer_showme_block_bodys as $asbb)
@@ -320,7 +320,7 @@ class AnswerShowme extends Element
                     $media->loadFromDb($child->unit_id, $child->id);
                     $this->medias[] = $media;
                     break;
-                
+
                 case('msm_table'):
                     $table = new Table();
                     $table->loadFromDb($child->unit_id, $child->id);

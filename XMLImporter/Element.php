@@ -186,7 +186,19 @@ abstract class Element
         $position = $position + 1;
 
         $medias = $DomElement->getElementsByTagName('media');
+//        $mlength = $medias->length;
+        
         $mlength = $medias->length;
+
+        //to eliminate any nested subordinates from being counted when getting the length of the subordinates
+        foreach ($medias as $m)
+        {
+            if (($m->parentNode->parentNode->parentNode->tagName == 'info') &&($DomElement->tagName != 'info'))
+            {
+                $mlength--;
+            }
+        }
+        
         for ($i = 0; $i < $mlength; $i++)
         {
             $position = $position + 1;
@@ -995,6 +1007,9 @@ abstract class Element
 
                         $newtag = '';
                         $newtag .= $media->displayhtml();
+                        // there can be only one xml declaration for the loadXML to work
+                        // so if there are other xml declarations were added, remove them
+                        $newtag = str_replace('<?xml version="1.0"?>', '', $newtag);
                         @$newElementdoc->loadXML($newtag);
 
                         $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);

@@ -407,7 +407,8 @@ class ProofBlock extends Element
         $content .= "<div class='proofblocktitle'>";
         $content .= $this->caption;
         $content .= "</div>";
-        
+        // this content needs proof.block.body tags to be added due to it lacking a root element
+        // (without it, it will error out in displayContent due to loadXML method needing a root element)
         $content .= $this->displayContent($this, "<proof.block.body>$this->proof_content</proof.block.body>");
 
         $content .="</div>";
