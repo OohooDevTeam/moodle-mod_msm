@@ -130,18 +130,18 @@
             </xsl:if>
             
             <xsl:element name="proof.block" namespace="Theorem">
-               <xsl:for-each select=".">
-                   <xsl:choose>
-                       <xsl:when test="node()[name()='caption']">
-                           <xsl:apply-templates/>
-                       </xsl:when>
-                       <xsl:otherwise>
-                           <xsl:element name="proof.block.body" namespace="Theorem">
-                               <xsl:apply-templates/>
-                           </xsl:element>
-                       </xsl:otherwise>
-                   </xsl:choose>
-               </xsl:for-each>
+                <xsl:for-each select=".">
+                    <xsl:choose>
+                        <xsl:when test="node()[name()='caption']">
+                            <xsl:apply-templates/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:element name="proof.block.body" namespace="Theorem">
+                                <xsl:apply-templates/>
+                            </xsl:element>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
             </xsl:element>
         </xsl:element>
     </xsl:template>
@@ -305,7 +305,7 @@
     <xsl:template match="thm:info">
         <xsl:element name="info" namespace="Theorem">
             <xsl:if test="thm:caption != ''">
-               <xsl:apply-templates select="thm:caption"/>
+                <xsl:apply-templates select="thm:caption"/>
             </xsl:if>
             <xsl:apply-templates select="node()[not(name()='caption')]"/>            
         </xsl:element>
@@ -858,26 +858,26 @@
                 </xsl:element>         
             </xsl:when>
             <xsl:when test="parent::node()[name()='hot']">
-                <xsl:element name="media" namespace="Theorem">
-                    <xsl:attribute name="type">image</xsl:attribute>
-                    <xsl:attribute name="active">1</xsl:attribute>
-                    <xsl:attribute name="inline">0</xsl:attribute>
-                    <xsl:element name="img" namespace="Theorem">
-                        <xsl:attribute name="src">
-                            <xsl:value-of select="./@src"/>
+                <!--xsl:element name="media" namespace="Theorem"-->
+                <xsl:attribute name="type">image</xsl:attribute>
+                <xsl:attribute name="active">1</xsl:attribute>
+                <xsl:attribute name="inline">0</xsl:attribute>
+                <xsl:element name="img" namespace="Theorem">
+                    <xsl:attribute name="src">
+                        <xsl:value-of select="./@src"/>
+                    </xsl:attribute>
+                    <xsl:if test="./@height">
+                        <xsl:attribute name="height">
+                            <xsl:value-of select="./@height"/>
                         </xsl:attribute>
-                        <xsl:if test="./@height">
-                            <xsl:attribute name="height">
-                                <xsl:value-of select="./@height"/>
-                            </xsl:attribute>
-                        </xsl:if>
-                        <xsl:if test="./@width">
-                            <xsl:attribute name="width">
-                                <xsl:value-of select="./@width"/>
-                            </xsl:attribute>
-                        </xsl:if>
-                    </xsl:element>        
-                </xsl:element>            
+                    </xsl:if>
+                    <xsl:if test="./@width">
+                        <xsl:attribute name="width">
+                            <xsl:value-of select="./@width"/>
+                        </xsl:attribute>
+                    </xsl:if>
+                </xsl:element>        
+                <!--/xsl:element-->            
             </xsl:when>
             <xsl:otherwise>
                 <xsl:element name="media" namespace="Theorem">
@@ -965,9 +965,9 @@
                 <xsl:copy-of select="attribute::*"/>
             </xsl:if>
        
-        <xsl:for-each select=".">
-            <xsl:apply-templates/>
-        </xsl:for-each>
+            <xsl:for-each select=".">
+                <xsl:apply-templates/>
+            </xsl:for-each>
         </xsl:element>
     </xsl:template>
     
@@ -1233,22 +1233,24 @@
     <xsl:template match="thm:subordinate">
         <xsl:choose>
             <xsl:when test="child::node()[child::node()[name()='img' or name()='image']]">
-                <xsl:apply-templates select="child::node()[child::node()[name()='img' or name()='image']]"/>
-                <xsl:if test="thm:info">
-                    <xsl:apply-templates select="node()[name()='info']"/>
-                </xsl:if>
-                <xsl:if test="thm:companion">
-                    <xsl:apply-templates select="node()[name()='companion']"/>
-                </xsl:if>
-                <xsl:if test="thm:crossref">
-                    <xsl:apply-templates select="node()[name()='crossref']"/>
-                </xsl:if>
-                <xsl:if test="thm:cite">
-                    <xsl:apply-templates select="node()[name()='cite']"/>
-                </xsl:if>
-                <xsl:if test="thm:link">
-                    <xsl:apply-templates select="node()[name()='link']"/>
-                </xsl:if>
+                <xsl:element name="media" namespace="Theorem">
+                    <xsl:apply-templates select="child::node()[child::node()[name()='img' or name()='image']]"/>
+                    <xsl:if test="thm:info">
+                        <xsl:apply-templates select="node()[name()='info']"/>
+                    </xsl:if>
+                    <xsl:if test="thm:companion">
+                        <xsl:apply-templates select="node()[name()='companion']"/>
+                    </xsl:if>
+                    <xsl:if test="thm:crossref">
+                        <xsl:apply-templates select="node()[name()='crossref']"/>
+                    </xsl:if>
+                    <xsl:if test="thm:cite">
+                        <xsl:apply-templates select="node()[name()='cite']"/>
+                    </xsl:if>
+                    <xsl:if test="thm:link">
+                        <xsl:apply-templates select="node()[name()='link']"/>
+                    </xsl:if>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:element name="subordinate" namespace="Theorem">
@@ -1268,7 +1270,7 @@
                     <xsl:if test="thm:link">
                         <xsl:apply-templates select="node()[name()='link']"/>
                     </xsl:if>
-                        <!-- presentation may be the same processing as link, left unprocessed for now-->
+                    <!-- presentation may be the same processing as link, left unprocessed for now-->
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>      

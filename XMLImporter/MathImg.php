@@ -202,17 +202,17 @@ class MathImg extends Element
         }
         else if ($inline == '0')
         {
-            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='350'/>";
+            $content .= "<img class='mathimage' src='" . $this->src . "' height='200' width='350' name='#$filename[0]'/>";
         }
         else
         {
-            $content .= "<img src='" . $this->src . "' height='200' width='350'/>";
+            $content .= "<img src='" . $this->src . "' height='200' width='350' name='#$filename[0]'/>";
         }
 
-        foreach ($this->imageareas as $imagearea)
-        {
-            $content .= $imagearea->displayhtml();
-        }
+//        foreach ($this->imageareas as $imagearea)
+//        {
+//            $content .= $imagearea->displayhtml();
+//        }
 
         return $content;
     }

@@ -370,14 +370,12 @@ class ProofBlock extends Element
             switch ($childtablename)
             {
                 case('msm_subordinate'):
-
                     $subordinate = new Subordinate();
                     $subordinate->loadFromDb($child->unit_id, $child->id);
                     $this->subordinates[] = $subordinate;
                     break;
 
                 case('msm_math_array'):
-
                     $matharray = new MathArray();
                     $matharray->loadFromDb($child->unit_id, $child->id);
                     $this->matharrays[] = $matharray;
@@ -409,8 +407,8 @@ class ProofBlock extends Element
         $content .= "<div class='proofblocktitle'>";
         $content .= $this->caption;
         $content .= "</div>";
-
-        $content .= $this->displayContent($this, $this->proof_content);
+        
+        $content .= $this->displayContent($this, "<proof.block.body>$this->proof_content</proof.block.body>");
 
         $content .="</div>";
 

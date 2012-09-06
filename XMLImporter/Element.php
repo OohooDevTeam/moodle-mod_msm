@@ -769,6 +769,7 @@ abstract class Element
         $content = '';
         $doc = new DOMDocument();
         $doc->preserveWhiteSpace = true;
+
         @$doc->loadXML($XMLcontent);
 
         $tables = $doc->getElementsByTagName('table');
@@ -966,9 +967,9 @@ abstract class Element
                             $newtag .= $this->getContent($rawhotContent);
                         }
                         $newtag .= "</a>";
-                        
+
 //                        print_object($newtag);
-                        
+
                         $newElementdoc->loadXML($newtag);
 
                         $hottag->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $hottag);
@@ -994,7 +995,7 @@ abstract class Element
 
                         $newtag = '';
                         $newtag .= $media->displayhtml();
-                        $newElementdoc->loadXML($newtag);
+                        @$newElementdoc->loadXML($newtag);
 
                         $img->parentNode->replaceChild($doc->importNode($newElementdoc->documentElement, true), $img);
                         $XMLcontent = $doc->saveXML();

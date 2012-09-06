@@ -1,18 +1,18 @@
 <?php
 
 /**
-**************************************************************************
-**                              MSM                                     **
-**************************************************************************
-* @package     mod                                                      **
-* @subpackage  msm                                                      **
-* @name        msm                                                      **
-* @copyright   University of Alberta                                    **
-* @link        http://ualberta.ca                                       **
-* @author      Ga Young Kim                                             **
-* @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
-**************************************************************************
-**************************************************************************/
+ * *************************************************************************
+ * *                              MSM                                     **
+ * *************************************************************************
+ * @package     mod                                                      **
+ * @subpackage  msm                                                      **
+ * @name        msm                                                      **
+ * @copyright   University of Alberta                                    **
+ * @link        http://ualberta.ca                                       **
+ * @author      Ga Young Kim                                             **
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later **
+ * *************************************************************************
+ * ************************************************************************ */
 
 /**
  * Description of Media
@@ -26,7 +26,8 @@ class Media extends Element
     public $string_id;
     public $inline;
     public $type;
-    public $img;
+
+//    public $img;
 
     function __construct($xmlpath = '')
     {
@@ -47,12 +48,29 @@ class Media extends Element
         $this->inline = $DomElement->getAttribute('inline');
         $this->type = $DomElement->getAttribute('type');
 
-        $img = $DomElement->getElementsByTagName('img')->item(0);
+        $this->imgs = array();
+        $this->infos = array();
 
-        $position = $position + 1;
-        $image = new MathImg($this->xmlpath);
-        $image->loadFromXml($img, $position);
-        $this->img = $image;
+        foreach ($DomElement->childNodes as $child)
+        {
+            if ($child->nodeType == XML_ELEMENT_NODE)
+            {
+                if ($child->tagName == 'img')
+                {
+                    $position = $position + 1;
+                    $image = new MathImg($this->xmlpath);
+                    $image->loadFromXml($child, $position);
+                    $this->imgs[] = $image;
+                }
+                else if ($child->tagName == 'info')
+                {
+                    $position = $position + 1;
+                    $info = new MathInfo($this->xmlpath);
+                    $info->loadFromXml($child, $position);
+                    $this->infos[] = $info;
+                }
+            }
+        }
     }
 
     /**
@@ -72,56 +90,135 @@ class Media extends Element
         $this->id = $DB->insert_record($this->tablename, $data);
         $this->compid = $this->insertToCompositor($this->id, $this->tablename, $parentid, $siblingid);
 
-       $this->img->saveIntoDb($this->img->position, $this->compid);
-        
+        $elementPositions = array();
+        $sibling_id = null;
+
+        if (!empty($this->infos))
+        {
+            foreach ($this->infos as $key => $info)
+            {
+                $elementPositions['info-' . $key] = $info->position;
+            }
+        }
+
+        if (!empty($this->imgs))
+        {
+            foreach ($this->imgs as $key => $img)
+            {
+                $elementPositions['img-' . $key] = $img->position;
+            }
+        }
+
+        asort($elementPositions);
+
+        foreach ($elementPositions as $element => $value)
+        {
+            switch ($element)
+            {
+                case(preg_match("/^(info.\d+)$/", $element) ? true : false):
+                    $infoString = split('-', $element);
+                    if (empty($sibling_id))
+                    {
+                        $info = $this->infos[$infoString[1]];
+                        $info->saveIntoDb($info->position, $this->compid);
+                        $sibling_id = $info->compid;
+                    }
+                    else
+                    {
+                        $info = $this->infos[$infoString[1]];
+                        $info->saveIntoDb($info->position, $this->compid, $sibling_id);
+                        $sibling_id = $info->compid;
+                    }
+                    break;
+
+                case(preg_match("/^(img.\d+)$/", $element) ? true : false):
+                    $imgString = split('-', $element);
+
+                    if (empty($sibling_id))
+                    {
+                        $image = $this->imgs[$imgString[1]];
+                        $image->saveIntoDb($image->position, $this->compid);
+                        $sibling_id = $image->compid;
+                    }
+                    else
+                    {
+                        $image = $this->imgs[$imgString[1]];
+                        $image->saveIntoDb($image->position, $this->compid, $sibling_id);
+                        $sibling_id = $image->compid;
+                    }
+                    break;
+            }
+        }
     }
-    
+
     function loadFromDb($id, $compid)
     {
         global $DB;
-        
-        $mediaRecord = $DB->get_record('msm_media', array('id'=>$id));
-        
-        if(!empty($mediaRecord))
+
+        $mediaRecord = $DB->get_record('msm_media', array('id' => $id));
+
+        if (!empty($mediaRecord))
         {
             $this->compid = $compid;
             $this->active = $mediaRecord->active;
             $this->inline = $mediaRecord->inline;
-            $this->media_type = $mediaRecord->media_type;            
+            $this->media_type = $mediaRecord->media_type;
         }
-        
-//        print_object($mediaRecord);
-        
-        $childElements = $DB->get_records('msm_compositor', array('parent_id'=>$compid), 'prev_sibling_id');
-        
+
+        $childElements = $DB->get_records('msm_compositor', array('parent_id' => $compid), 'prev_sibling_id');
+
         $this->childs = array();
-        
-        foreach($childElements as $child)
+        $this->infos = array();
+
+        foreach ($childElements as $child)
         {
-            $childtablename = $DB->get_record('msm_table_collection', array('id'=>$child->table_id))->tablename;
-            
-            if($childtablename == 'msm_img')
+            $childtablename = $DB->get_record('msm_table_collection', array('id' => $child->table_id))->tablename;
+
+            if ($childtablename == 'msm_img')
             {
                 $img = new MathImg();
                 $img->loadFromDb($child->unit_id, $child->id);
                 $this->childs[] = $img;
             }
-        }        
-        
+            else
+            {
+                $info = new MathInfo();
+                $info->loadFromDb($child->unit_id, $child->id);
+                $this->infos[] = $info;
+            }
+        }
+
         return $this;
     }
-    
+
     function displayhtml()
     {
         $content = '';
         $content .= "<div class='picture'>";
-        
-        foreach($this->childs as $childComponent)
+
+        if (empty($this->infos))
         {
-            $content .= $childComponent->displayhtml($this->inline);
+            foreach ($this->childs as $childComponent)
+            {
+                $content .= $childComponent->displayhtml($this->inline);
+            }
         }
+        else
+        {
+            $imagehtml = '';
+            foreach ($this->childs as $childComponent)
+            {
+                $imagehtml .= $childComponent->displayhtml($this->inline);
+            }
+            $content .= "<a id='hottag-" . $this->infos[0]->compid . "' class='hottag' onmouseover='popup(" . $this->infos[0]->compid . ")'>";
+            $content .= $imagehtml;
+            $content .= "</a>";
+
+            $content .= $this->infos[0]->displayhtml();
+        }
+
         $content .= "</div>";
-        
+
         return $content;
     }
 

@@ -150,16 +150,16 @@
             <para.body>
                <media type="image" active="1" inline="0">
                   <img src="ims/VectorsAddCommutative.gif"/>
+                  <info>
+                     <para>
+                        <para.body>Both of the vectors <math>
+                              <latex>\mathbf{x} + \mathbf{y}</latex>
+                           </math> and <math>
+                              <latex>\mathbf{y} + \mathbf{x}</latex>
+                           </math> are represented by the same diagonal of the vector addition parallelogram.</para.body>
+                     </para>
+                  </info>
                </media>
-               <info>
-                  <para>
-                     <para.body>Both of the vectors <math>
-                           <latex>\mathbf{x} + \mathbf{y}</latex>
-                        </math> and <math>
-                           <latex>\mathbf{y} + \mathbf{x}</latex>
-                        </math> are represented by the same diagonal of the vector addition parallelogram.</para.body>
-                  </para>
-               </info>
             </para.body>
          </para>
          <para>
