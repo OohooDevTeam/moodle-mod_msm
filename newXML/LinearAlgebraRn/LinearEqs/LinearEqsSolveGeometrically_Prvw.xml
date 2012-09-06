@@ -33,27 +33,27 @@
                <para.body>
                   <media type="image" active="1" inline="0">
                      <img src="ims/LinearEqSingle.gif" height="255" width="359"/>
-                  </media>
-                  <info>
-                     <info.caption>Illustration</info.caption>
-                     <para>
-                        <para.body>Of the solution set of the linear equation</para.body>
-                     </para>
-                     <math.display>
-                        <latex>
+                     <info>
+                        <info.caption>Illustration</info.caption>
+                        <para>
+                           <para.body>Of the solution set of the linear equation</para.body>
+                        </para>
+                        <math.display>
+                           <latex>
 							
 					\begin{array}{cccccccccc}
 \colorbox{lightgreen}{$a_{1}$}{\color{red}x_1} &amp; + &amp; \colorbox{lightgreen}{$a_{2}$}{\color{red}x_2} &amp; + &amp; \cdots &amp; \cdots &amp; + &amp; \colorbox{lightgreen}{$a_{n}$}{\color{red}x_n} &amp; = &amp; c \\
 \end{array}
 					
 						</latex>
-                     </math.display>
-                     <para>
-                        <para.body>Here we assume tacitly that the normal vector <math>
-                              <latex>\mathbf{n}:= (a_1,\dots ,a_n)</latex>
-                           </math> is not the 0-vector.</para.body>
-                     </para>
-                  </info>
+                        </math.display>
+                        <para>
+                           <para.body>Here we assume tacitly that the normal vector <math>
+                                 <latex>\mathbf{n}:= (a_1,\dots ,a_n)</latex>
+                              </math> is not the 0-vector.</para.body>
+                        </para>
+                     </info>
+                  </media>
                </para.body>
             </para>
          </block.body>

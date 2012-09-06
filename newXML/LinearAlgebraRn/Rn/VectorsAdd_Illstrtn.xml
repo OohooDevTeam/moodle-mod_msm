@@ -28,39 +28,39 @@
                   <para.body>
 				                 <media type="image" active="1" inline="0">
                         <img src="ims/VectorAdd_Illstrtn.gif"/>
-                     </media>
-                     <info>
-						                  <para>
-                           <para.body>Remember that we can represent a vector as a ‘free floating arrow’; i.e. an arrow which we can shift freely in space without changing its length or its direction. Therefore, when given two vectors <math>
-                                 <latex>\Vect{x}</latex>
-                              </math> and <math>
-                                 <latex>\Vect{y}</latex>
-                              </math>, we can always float them so that the tail of <math>
-                                 <latex>\Vect{y}</latex>
-                              </math> lies at the tip of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>. Now the arrow joining the tail of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math> to the tip of <math>
-                                 <latex>\Vect{y}</latex>
-                              </math> represents the sum to the two vectors. – Why is this so?</para.body>
-                        </para>
-						                  <para>
-                           <para.body>If we start from the tail of <math>
-                                 <latex>\Vect{x}</latex>
-                              </math>, we first move <math>
-                                 <latex>3</latex>
-                              </math> units and then  <math>
-                                 <latex>1</latex>
-                              </math> unit in the first coordinate direction to get to the tip of <math>
-                                 <latex>\Vect{y}</latex>
-                              </math>. So this is just adding first coordinates. Moreover this same trip has us move <math>
-                                 <latex>1</latex>
-                              </math> unit and then <math>
-                                 <latex>-.5</latex>
-                              </math> units in the second coordinate direction. Thus adding coordinates in matching positions corresponds to concatenating arrows as shown.</para.body>
-                        </para>
-					                </info>	
+                        <info>
+						                     <para>
+                              <para.body>Remember that we can represent a vector as a ‘free floating arrow’; i.e. an arrow which we can shift freely in space without changing its length or its direction. Therefore, when given two vectors <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> and <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math>, we can always float them so that the tail of <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math> lies at the tip of <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math>. Now the arrow joining the tail of <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math> to the tip of <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math> represents the sum to the two vectors. – Why is this so?</para.body>
+                           </para>
+						                     <para>
+                              <para.body>If we start from the tail of <math>
+                                    <latex>\Vect{x}</latex>
+                                 </math>, we first move <math>
+                                    <latex>3</latex>
+                                 </math> units and then  <math>
+                                    <latex>1</latex>
+                                 </math> unit in the first coordinate direction to get to the tip of <math>
+                                    <latex>\Vect{y}</latex>
+                                 </math>. So this is just adding first coordinates. Moreover this same trip has us move <math>
+                                    <latex>1</latex>
+                                 </math> unit and then <math>
+                                    <latex>-.5</latex>
+                                 </math> units in the second coordinate direction. Thus adding coordinates in matching positions corresponds to concatenating arrows as shown.</para.body>
+                           </para>
+					                   </info>
+                     </media>	
 			               </para.body>
                </para>
 		          </answer.showme.block.body>
@@ -80,25 +80,25 @@
                   <para.body>
 				                 <media type="image" active="1" inline="0">
                         <img src="ims/VectorAdd_Illstrtn2.gif"/>
+                        <info>
+						                     <para>
+                              <para.body>Here we are adding three vectors, represented by the arrows <math>
+                                    <latex>\overset{\longrightarrow}{AB}</latex>
+                                 </math>, <math>
+                                    <latex>\overset{\longrightarrow}{BC}</latex>
+                                 </math>, and <math>
+                                    <latex>\overset{\longrightarrow}{CD}</latex>
+                                 </math>. Below you can watch an animation of this process.</para.body>
+                           </para>
+						                     <para align="center">
+                              <para.body>
+							                          <media type="image" active="0" inline="0">
+                                    <img src="ims/VectorAdd_Anmtn2.gif"/>
+                                 </media>
+						                        </para.body>
+                           </para>
+					                   </info>
                      </media>
-                     <info>
-						                  <para>
-                           <para.body>Here we are adding three vectors, represented by the arrows <math>
-                                 <latex>\overset{\longrightarrow}{AB}</latex>
-                              </math>, <math>
-                                 <latex>\overset{\longrightarrow}{BC}</latex>
-                              </math>, and <math>
-                                 <latex>\overset{\longrightarrow}{CD}</latex>
-                              </math>. Below you can watch an animation of this process.</para.body>
-                        </para>
-						                  <para align="center">
-                           <para.body>
-							                       <media type="image" active="0" inline="0">
-                                 <img src="ims/VectorAdd_Anmtn2.gif"/>
-                              </media>
-						                     </para.body>
-                        </para>
-					                </info>
 				
 			               </para.body>
                </para>
@@ -121,21 +121,21 @@
                   <para.body>
 				                 <media type="image" active="1" inline="0">
                         <img src="ims/VectorAdd_Illstrtn3.gif"/>
+                        <info>
+						                     <para>
+                              <para.body>Here we are adding six vectors, and obtain the <math>
+                                    <latex>0</latex>
+                                 </math>-vector as the final answer. Below you can watch an animation of this process.</para.body>
+                           </para>
+						                     <para align="center">
+                              <para.body>
+							                          <media type="image" active="0" inline="0">
+                                    <img src="ims/VectorAdd_Anmtn3.gif"/>
+                                 </media>
+						                        </para.body>
+                           </para>
+					                   </info>
                      </media>
-                     <info>
-						                  <para>
-                           <para.body>Here we are adding six vectors, and obtain the <math>
-                                 <latex>0</latex>
-                              </math>-vector as the final answer. Below you can watch an animation of this process.</para.body>
-                        </para>
-						                  <para align="center">
-                           <para.body>
-							                       <media type="image" active="0" inline="0">
-                                 <img src="ims/VectorAdd_Anmtn3.gif"/>
-                              </media>
-						                     </para.body>
-                        </para>
-					                </info>
 			               </para.body>
                </para>
 		          </answer.showme.block.body>

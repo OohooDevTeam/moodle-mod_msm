@@ -40,20 +40,20 @@
                <para.body>
                   <media type="image" active="1" inline="0">
                      <img src="ims/DistancePointHyperplane_2D.gif" height="225" width="434"/>
+                     <info>
+                        <para>
+                           <para.body>Connections from <math>
+                                 <latex>Q</latex>
+                              </math> to points on <math>
+                                 <latex>L</latex>
+                              </math> have varying lengths. So what shall we mean by ‘distance of <math>
+                                 <latex>Q</latex>
+                              </math> from <math>
+                                 <latex>L</latex>
+                              </math>?</para.body>
+                        </para>
+                     </info>
                   </media>
-                  <info>
-                     <para>
-                        <para.body>Connections from <math>
-                              <latex>Q</latex>
-                           </math> to points on <math>
-                              <latex>L</latex>
-                           </math> have varying lengths. So what shall we mean by ‘distance of <math>
-                              <latex>Q</latex>
-                           </math> from <math>
-                              <latex>L</latex>
-                           </math>?</para.body>
-                     </para>
-                  </info>
                </para.body>
             </para>
             <para>
